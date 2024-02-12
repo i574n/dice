@@ -21,10 +21,6 @@ output-name = "ui"
 
 [dev-dependencies]
 
-[[bin]]
-name = "dice"
-path = "lib/dice.rs"
-
 [lib]
 path = "lib/dice_wasm.rs"
 

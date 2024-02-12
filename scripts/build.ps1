@@ -1,4 +1,5 @@
 param(
+    $fast,
     $ScriptDir = $PSScriptRoot
 )
 Set-Location $ScriptDir
@@ -14,5 +15,19 @@ $ErrorActionPreference = "Stop"
 { . "$ScriptDir/../../polyglot/apps/spiral/temp/test/build.ps1" -fast 1 } | Invoke-Block
 { . "$ScriptDir/../../polyglot/apps/dir-tree-html/build.ps1" -fast 1 } | Invoke-Block
 
-{ . "$ScriptDir/../build.ps1" } | Invoke-Block
+{ pwsh "$ScriptDir/../lib/build.ps1" } | Invoke-Block
+
+if (!$fast) {
+    { dotnet run --configuration Release --project ../temp/dice.fsproj } | Invoke-Block
+}
+
+{ pwsh ../contract/build.ps1 -fast 1 } | Invoke-Block
+
+{ pwsh ../contract/tests/build.ps1 } | Invoke-Block
+
+{ pwsh ../ui/build.ps1 -fast $($fast ?? '') } | Invoke-Block
+
+
 { . "$ScriptDir/../fsharp/build.ps1" } | Invoke-Block
+
+{ . "$ScriptDir/../scripts/outdated.ps1" } | Invoke-Block
