@@ -11,7 +11,7 @@ $ErrorActionPreference = "Stop"
 { . "$ScriptDir/../../polyglot/lib/fsharp/build.ps1" -fast 1 } | Invoke-Block
 { . "$ScriptDir/../../polyglot/apps/spiral/build.ps1" -fast 1 } | Invoke-Block
 { . "$ScriptDir/../../polyglot/lib/spiral/build.ps1" -fast 1 } | Invoke-Block
-{ . "$ScriptDir/../../polyglot/apps/spiral/temp/extension/build.ps1" -fast 1 } | Invoke-Block
+{ . "$ScriptDir/../../polyglot/apps/spiral/temp/test/build.ps1" -fast 1 } | Invoke-Block
 { . "$ScriptDir/../../polyglot/apps/dir-tree-html/build.ps1" -fast 1 } | Invoke-Block
 
 { . "$ScriptDir/../build.ps1" } | Invoke-Block
