@@ -13,3 +13,6 @@ git pull
 pwsh scripts/init.ps1
 
 Set-Location $ScriptDir
+
+
+dotnet paket restore
