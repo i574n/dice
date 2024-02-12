@@ -1,0 +1,45 @@
+cargo-features = ["profile-rustflags"]
+
+[package]
+name = "dice"
+version = "0.0.1"
+edition = "2021"
+
+[workspace]
+
+[workspace.package]
+repository = "https://github.com/i574n/dice"
+license-file = "../polyglot/LICENSE"
+
+[[workspace.metadata.leptos]]
+name = "dice_ui"
+bin-package = "dice_ui"
+lib-package = "dice_ui"
+output-name = "ui"
+
+[dependencies]
+
+[dev-dependencies]
+
+[[bin]]
+name = "dice"
+path = "lib/dice.rs"
+
+[lib]
+path = "lib/dice_wasm.rs"
+
+[build-dependencies]
+dice_contract = { path = "./contract" }
+dice_contract_tests = { path = "./contract/tests" }
+dice_fsharp = { path = "./fsharp" }
+dice_lib = { path = "./lib" }
+dice_ui = { path = "./ui" }
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
+rustflags = ["-C", "link-arg=-s"]

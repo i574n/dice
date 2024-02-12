@@ -1,0 +1,19 @@
+packageDir: ../../polyglot/lib
+packages:
+    |core-
+    spiral-
+modules:
+    src/
+        model/
+            near/
+                nearblocks
+        state
+        components/
+            transaction
+            transactions
+            settings
+            menu_tabs
+            content
+            home
+            app
+        dice_ui
