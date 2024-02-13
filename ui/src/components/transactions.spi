@@ -37,9 +37,14 @@ inl render () =
                 inl x_log = x |> sm'.format_debug
                 leptos.log $'"transactions.render () / txns move / result length: " + (!x_log |> string |> String.length |> string) + ""'
                 x
+    
+    inl settings_button =
+        leptos.icon_button
+            (leptos.settings_svg ())
+        |> leptos.element_to_view
 
     ;[
-        leptos.accordion "Transactions" true fun () =>
+        leptos.accordion "Transactions" true (Some settings_button) fun () =>
             match txns |> rust.func0_get with
             | Ok (Some transactions) =>
                 leptos.div [
@@ -87,7 +92,7 @@ inl render () =
         |> leptos.element_to_view
 
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
-            leptos.accordion "Debug" true fun () =>
+            leptos.accordion "Debug" true None fun () =>
                 :>(;[
                     leptos.grid_pair
                         { padding = None; cols = None; class = "" }
