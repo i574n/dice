@@ -107,7 +107,7 @@ and [<Struct>] US1 =
 and [<Struct>] US2 =
     | US2_0 of f0_0 : rexie_Error
     | US2_1 of f1_0 : rexie_Rexie
-and Heap2 = {l0 : bool; l1 : bool; l2 : std_string_String}
+and  Heap2 = {l0 : bool; l1 : bool; l2 : std_string_String}
 and [<Struct>] US3 =
     | US3_0
     | US3_1 of f1_0 : Heap2

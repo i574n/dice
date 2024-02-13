@@ -371,7 +371,7 @@ mod module_dc8717e1 {
     }
 }
 pub use module_dc8717e1::*;
-#[path = "../../../lib/fsharp/CommonWasm.rs"]
+#[path = "../../polyglot/lib/fsharp/CommonWasm.rs"]
 mod module_8cb3e09e;
 pub use module_8cb3e09e::*;
 pub mod Polyglot {

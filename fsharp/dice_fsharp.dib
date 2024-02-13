@@ -8,11 +8,12 @@
 
 #!fsharp
 
-#!import ../../../lib/fsharp/Testing.dib
+#!import ../../polyglot/lib/fsharp/Notebooks.dib
+#!import ../../polyglot/lib/fsharp/Testing.dib
 
 #!fsharp
 
-#!import ../../../lib/fsharp/Common.fs
+#!import ../../polyglot/lib/fsharp/Common.fs
 
 #!fsharp
 
