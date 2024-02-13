@@ -27,7 +27,7 @@ inl render () =
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
     ;[
-        leptos.accordion "View" true fun () =>
+        leptos.accordion "View" true None fun () =>
             :>(;[
                 leptos.grid_pair
                     { padding = None; cols = None; class = $'"items-center"' }
@@ -81,7 +81,7 @@ inl render () =
         // |> leptos.element_to_view
 
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
-            leptos.accordion "Debug" true fun () =>
+            leptos.accordion "Debug" true None fun () =>
                 leptos.grid_pair
                     { padding = None; cols = None; class = "" }
                     fun () => "Global State" |> leptos.text_fragment
