@@ -57,6 +57,7 @@ $path = "$targetDir/trunk/index.html"
 $path = "dist/index.html"
 
 Move-Item $path dist/popup.html -Force
+Copy-Item dist/popup.html dist/index.html -Force
 Copy-Item public/manifest.json dist/manifest.json -Force
 
 if (!$fast) {
