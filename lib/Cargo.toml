@@ -1,0 +1,22 @@
+[package]
+name = "dice_lib"
+version = "0.0.1"
+edition = "2021"
+workspace = "../"
+
+[dependencies]
+fable_library_rust = { path = "../../polyglot/apps/spiral/temp/test/fable_modules/fable-library-rust", optional = true, default-features = false }
+rand = { version = "~0.8", optional = true }
+
+[dev-dependencies]
+
+[features]
+wasm = ["fable_library_rust"]
+default = ["fable_library_rust/default", "dep:rand"]
+
+[[bin]]
+name = "dice"
+path = "dice.rs"
+
+[lib]
+path = "dice_wasm.rs"

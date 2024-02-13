@@ -1,0 +1,7 @@
+packageDir: ../polyglot/lib
+packages:
+    |core-
+    spiral-
+modules:
+    lib/
+        dice
