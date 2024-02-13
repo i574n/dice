@@ -99,9 +99,6 @@ This assessment, while highlighting the hurdles we've faced, also stands as a te
 - Repository File Tree
 <https://i574n.github.io/dice/index.html>
 
-- Full Build Output
-<https://i574n.github.io/dice/scripts/build.dib.html>
-
 - Smart Contract Dice Rolls History (Rust WASM frontend, display of on-chain data using NEAR Protocol queried from their Public API)
 <https://i574n.github.io/dice/ui/dist>
 
