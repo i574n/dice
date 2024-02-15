@@ -90,3 +90,4 @@ inl render () =
             |> leptos.element_to_view
         else ;[] |> leptos.views_to_view
     ]
+    |> leptos.views_to_fragment

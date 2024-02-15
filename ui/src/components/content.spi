@@ -74,14 +74,12 @@ inl render () : _ leptos.div =
                             $'"class=\\\"flex flex-1 flex-col [overflow-y:auto]\\\""'
                         ] fun () =>
                             transactions.render ()
-                            |> leptos.views_to_fragment
                         |> leptos.element_to_view
                     | Settings =>
                         leptos.div [
                             $'"class=\\\"flex flex-1 flex-col [overflow-y:auto]\\\""'
                         ] fun () =>
                             settings.render ()
-                            |> leptos.views_to_fragment
                         |> leptos.element_to_view
                     | _ => ;[] |> leptos.views_to_view
                     |> leptos.view_to_fragment
