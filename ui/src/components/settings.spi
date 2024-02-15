@@ -35,12 +35,12 @@ inl render () =
                     fun () =>
                         leptos.toggle
                             "dark-mode"
-                            fun _ =>
-                                leptos.signal_get_untracked global_state.core_state .dark_mode
-                                |> leptos.signal_update not
                             fun () =>
                                 leptos.signal_get_untracked global_state.core_state .dark_mode
                                 |> leptos.signal_get
+                            fun _ =>
+                                leptos.signal_get_untracked global_state.core_state .dark_mode
+                                |> leptos.signal_update not
                             |> leptos.element_to_fragment
 
                 leptos.grid_pair
@@ -49,12 +49,12 @@ inl render () =
                     fun () =>
                         leptos.toggle
                             "debug"
-                            fun _ =>
-                                leptos.signal_get_untracked global_state.core_state .debug
-                                |> leptos.signal_update not
                             fun () =>
                                 leptos.signal_get_untracked global_state.core_state .debug
                                 |> leptos.signal_get
+                            fun _ =>
+                                leptos.signal_get_untracked global_state.core_state .debug
+                                |> leptos.signal_update not
                             |> leptos.element_to_fragment
             ])
         |> leptos.element_to_view

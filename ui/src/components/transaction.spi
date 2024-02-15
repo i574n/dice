@@ -1,17 +1,30 @@
 open rust_operators
 open model.near.nearblocks
 
+inl format_block_timestamp (block_timestamp : rust.std_string) =
+    inl block_timestamp = join block_timestamp
+    block_timestamp
+    |> fun x => !\($'"!x.parse().unwrap()"') : i64
+    |> date_time.from_timestamp'
+    |> optionm.map fun x =>
+        x
+        |> date_time.to_local
+        |> date_time.format'' "%Y-%m-%d %H:%M:%S"
+        |> sm'.from_std_string
+    |> resultm.from_option
+
 inl render (index : i64) (transaction : txn) : _ leptos.div =
     print_static "<transaction.render>"
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
     leptos.div [
-        $'"class=\\\"flex flex-1 flex-col\\\""'
+        $'"class=\\\"flex flex-1 flex-col overflow-x-auto\\\""'
     ] fun () => :>(;[
         leptos.divider fun () =>
             $'"Transaction " + string (!index + 1L) + ""' |> leptos.text_fragment
         |> leptos.element_to_view
+
 
         leptos.div [
             $'"class=\\\"grid flex-1 divide-y-[1px] divide-gray-500/[.10]\\\""'
@@ -21,14 +34,7 @@ inl render (index : i64) (transaction : txn) : _ leptos.div =
                 fun () => "Block Timestamp" |> leptos.text_fragment
                 fun () =>
                     transaction.block_timestamp
-                    |> fun x => !\($'"!x.parse().unwrap()"') : i64
-                    |> date_time.from_timestamp'
-                    |> optionm.map fun x =>
-                        x
-                        |> date_time.to_local
-                        |> date_time.format'' "%Y-%m-%d %H:%M:%S"
-                        |> sm'.from_std_string
-                    |> resultm.from_option
+                    |> format_block_timestamp
                     |> to_string
                     |> leptos.text_fragment
             |> leptos.element_to_view
