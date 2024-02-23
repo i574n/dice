@@ -138,7 +138,13 @@ inl render () =
                                                 leptos.th [
                                                     $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
                                                 ] fun () =>
-                                                    "Actions" |> leptos.text_fragment
+                                                    "Action" |> leptos.text_fragment
+                                                |> leptos.element_to_view
+
+                                                leptos.th [
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                                                ] fun () =>
+                                                    "Action Method" |> leptos.text_fragment
                                                 |> leptos.element_to_view
 
                                                 leptos.th [
@@ -236,72 +242,32 @@ inl render () =
                                                         |> leptos.text_fragment
                                                     |> leptos.element_to_view
 
-                                                    leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
-                                                        a transaction'.actions
-                                                        |> am'.map_vec fun { action method } =>
-                                                            :>(;[
+                                                    a transaction'.actions
+                                                    |> am'.map_vec fun { action method } =>
+                                                        :>(;[
+                                                            leptos.td [
+                                                                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                                                            ] fun () =>
                                                                 match action |> sm'.from_std_string with
-                                                                | "FUNCTION_CALL" => "Function Call:"
-                                                                | "DEPLOY_CONTRACT" => "Contract Deploy:"
-                                                                | "TRANSFER" => "Transfer:"
+                                                                | "FUNCTION_CALL" => "Function Call"
+                                                                | "DEPLOY_CONTRACT" => "Contract Deploy"
+                                                                | "TRANSFER" => "Transfer"
                                                                 | action => action
-                                                                |> leptos.text_view
+                                                                |> leptos.text_fragment
+                                                            |> leptos.element_to_view
 
-                                                                leptos.table [
-                                                                    $'"class=\\\"min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700\\\""'
-                                                                ] fun () => 
-                                                                    :>(;[
-                                                                        "" |> leptos.text_view
-                                                                        // leptos.thead [
-                                                                        //     $'"class=\\\"ltr:text-left rtl:text-right\\\""'
-                                                                        // ] fun () =>
-                                                                        //     :>(;[
-                                                                        //         leptos.tr [
-
-                                                                        //         ] fun () =>
-                                                                        //             :>(;[
-                                                                        //                 leptos.th [
-                                                                        //                     $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                                        //                 ] fun () =>
-                                                                        //                     "Method" |> leptos.text_fragment
-                                                                        //                 |> leptos.element_to_view
-                                                                        //             ])
-                                                                        //     ])
-                                                                        // |> leptos.element_to_view
-
-                                                                        // leptos.tbody [
-                                                                        //     $'"class=\\\"ltr:text-left rtl:text-right\\\""'
-                                                                        // ] fun () =>
-                                                                        //     :>(;[
-                                                                        //         leptos.tr [
-
-                                                                        //         ] fun () =>
-                                                                        //             :>(;[
-                                                                        //                 leptos.td [
-                                                                        //                     $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                                        //                 ] fun () =>
-                                                                        //                     match method with
-                                                                        //                     | Some method =>
-                                                                        //                         method
-                                                                        //                         |> to_string
-                                                                        //                         |> leptos.text_fragment
-                                                                        //                     | None =>
-                                                                        //                         "None" |> leptos.text_fragment
-                                                                        //                 |> leptos.element_to_view
-                                                                        //             ])
-                                                                        //     ])
-                                                                        // |> leptos.element_to_view
-                                                                    ])
-                                                                |> leptos.element_to_view
-                                                            ])
-                                                        |> am'.map_vec leptos.fragment_to_view
-                                                        // |> fun (a x : _ i32 leptos.view) => :>x
-                                                        // |> fun (a x : _ i32 leptos.view) => :>x
-                                                        // |> fun (a x : _ i32 leptos.view) => x |> leptos.views_to_fragment
-                                                        |> fun (a x : _ i32 leptos.view) => x |> leptos.views_to_fragment
-                                                    |> leptos.element_to_view
+                                                            leptos.td [
+                                                                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                                                            ] fun () =>
+                                                                method
+                                                                |> optionm.map to_string
+                                                                |> optionm'.default_value "None"
+                                                                |> leptos.text_fragment
+                                                            |> leptos.element_to_view
+                                                        ])
+                                                    |> am'.map_vec leptos.fragment_to_view
+                                                    |> fun (a x : _ i32 leptos.view) => :>x
+                                                    |> leptos.fragment_to_view
 
                                                     leptos.td [
                                                         $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'

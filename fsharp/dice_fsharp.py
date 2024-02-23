@@ -1,6 +1,7 @@
 from __future__ import annotations
+from collections.abc import Callable
 import sys
-from typing import (Any, Callable, TypeVar)
+from typing import (Any, TypeVar)
 from lib.fsharp.common import (trace, TraceLevel)
 from fable_modules.fable_library.list import (is_empty, head, tail, FSharpList, length, try_item, cons, initialize, empty)
 from fable_modules.fable_library.option import (to_array, value as value_1)

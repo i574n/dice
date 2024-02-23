@@ -1,11 +1,11 @@
-import { Record, Union } from "./fable_modules/fable-library-ts/Types.js";
-import { int32, int8, uint8 } from "./fable_modules/fable-library-ts/Int32.js";
-import { uint64_type, int64_type, record_type, string_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "./fable_modules/fable-library-ts/Reflection.js";
-import { op_Multiply, toUInt64, equals, compare, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "./fable_modules/fable-library-ts/BigInt.js";
-import { IComparable, IEquatable } from "./fable_modules/fable-library-ts/Util.js";
-import { interpolate, toText } from "./fable_modules/fable-library-ts/String.js";
-import { value as value_47, Option, map, defaultArg } from "./fable_modules/fable-library-ts/Option.js";
-import { nonSeeded } from "./fable_modules/fable-library-ts/Random.js";
+import { FSharpRef, Record, Union } from "./fable_modules/fable-library-ts.4.13.0/Types.js";
+import { int32, int8, uint8 } from "./fable_modules/fable-library-ts.4.13.0/Int32.js";
+import { uint64_type, int64_type, record_type, string_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "./fable_modules/fable-library-ts.4.13.0/Reflection.js";
+import { op_Multiply, toUInt64, equals, compare, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "./fable_modules/fable-library-ts.4.13.0/BigInt.js";
+import { IComparable, IEquatable } from "./fable_modules/fable-library-ts.4.13.0/Util.js";
+import { interpolate, toText } from "./fable_modules/fable-library-ts.4.13.0/String.js";
+import { value as value_47, Option, map, defaultArg } from "./fable_modules/fable-library-ts.4.13.0/Option.js";
+import { nonSeeded } from "./fable_modules/fable-library-ts.4.13.0/Random.js";
 
 export type UH0_$union = 
     | UH0<0>
@@ -311,6 +311,168 @@ export class US5<Tag extends keyof US5_$cases> extends Union<Tag, US5_$cases[Tag
 
 export function US5_$reflection(): TypeInfo {
     return union_type("Dice.US5", [], US5, () => [[], [["f1_0", int64_type], ["f1_1", UH1_$reflection()]]]);
+}
+
+export function UH0__get_IsUH0_0(this$: UH0_$union, unitArg: void): boolean {
+    if (this$.tag === /* UH0_0 */ 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function UH0__get_IsUH0_1(this$: UH0_$union, unitArg: void): boolean {
+    if (this$.tag === /* UH0_1 */ 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function UH1__get_IsUH1_0(this$: UH1_$union, unitArg: void): boolean {
+    if (this$.tag === /* UH1_0 */ 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function UH1__get_IsUH1_1(this$: UH1_$union, unitArg: void): boolean {
+    if (this$.tag === /* UH1_1 */ 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US0__get_IsUS0_0(this$: FSharpRef<US0_$union>, unitArg: void): boolean {
+    if (this$.tag === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US0__get_IsUS0_1(this$: FSharpRef<US0_$union>, unitArg: void): boolean {
+    if (this$.tag === 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US1__get_IsUS1_0(this$: FSharpRef<US1_$union>, unitArg: void): boolean {
+    if (this$.tag === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US1__get_IsUS1_1(this$: FSharpRef<US1_$union>, unitArg: void): boolean {
+    if (this$.tag === 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US2__get_IsUS2_0(this$: FSharpRef<US2_$union>, unitArg: void): boolean {
+    if (this$.tag === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US2__get_IsUS2_1(this$: FSharpRef<US2_$union>, unitArg: void): boolean {
+    if (this$.tag === 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US3__get_IsUS3_0(this$: FSharpRef<US3_$union>, unitArg: void): boolean {
+    if (this$.tag === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US3__get_IsUS3_1(this$: FSharpRef<US3_$union>, unitArg: void): boolean {
+    if (this$.tag === 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function UH2__get_IsUH2_0(this$: UH2_$union, unitArg: void): boolean {
+    if (this$.tag === /* UH2_0 */ 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function UH2__get_IsUH2_1(this$: UH2_$union, unitArg: void): boolean {
+    if (this$.tag === /* UH2_1 */ 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US4__get_IsUS4_0(this$: FSharpRef<US4_$union>, unitArg: void): boolean {
+    if (this$.tag === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US4__get_IsUS4_1(this$: FSharpRef<US4_$union>, unitArg: void): boolean {
+    if (this$.tag === 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US5__get_IsUS5_0(this$: FSharpRef<US5_$union>, unitArg: void): boolean {
+    if (this$.tag === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export function US5__get_IsUS5_1(this$: FSharpRef<US5_$union>, unitArg: void): boolean {
+    if (this$.tag === 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 export function closure2(v0_1: UH0_$union, unitVar: void): UH0_$union {

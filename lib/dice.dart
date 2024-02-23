@@ -234,6 +234,150 @@ class US5_US5_1 extends US5 {
     }
 }
 
+bool UH0__get_IsUH0_0(UH0 this$, void unitArg) {
+    if (this$.tag == /* UH0_0 */ 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool UH0__get_IsUH0_1(UH0 this$, void unitArg) {
+    if (this$.tag == /* UH0_1 */ 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool UH1__get_IsUH1_0(UH1 this$, void unitArg) {
+    if (this$.tag == /* UH1_0 */ 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool UH1__get_IsUH1_1(UH1 this$, void unitArg) {
+    if (this$.tag == /* UH1_1 */ 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US0__get_IsUS0_0(types.FSharpRef<US0, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US0__get_IsUS0_1(types.FSharpRef<US0, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US1__get_IsUS1_0(types.FSharpRef<US1, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US1__get_IsUS1_1(types.FSharpRef<US1, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US2__get_IsUS2_0(types.FSharpRef<US2, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US2__get_IsUS2_1(types.FSharpRef<US2, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US3__get_IsUS3_0(types.FSharpRef<US3, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US3__get_IsUS3_1(types.FSharpRef<US3, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool UH2__get_IsUH2_0(UH2 this$, void unitArg) {
+    if (this$.tag == /* UH2_0 */ 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool UH2__get_IsUH2_1(UH2 this$, void unitArg) {
+    if (this$.tag == /* UH2_1 */ 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US4__get_IsUS4_0(types.FSharpRef<US4, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US4__get_IsUS4_1(types.FSharpRef<US4, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US5__get_IsUS5_0(types.FSharpRef<US5, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US5__get_IsUS5_1(types.FSharpRef<US5, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 UH0 closure2(UH0 v0_1, void unitVar) => v0_1;
 
 UH0 method0(int v0_1, UH0 v1_1, UH0 v2_1) {
