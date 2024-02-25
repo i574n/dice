@@ -63,6 +63,7 @@ inl render () =
             class
             [
                 $'"on:click=move |_| on_click()"'
+                $'"aria-label=\\\"Settings\\\""'
             ]
         |> leptos.element_to_view
 

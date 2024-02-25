@@ -15,10 +15,7 @@ inl global_state_log_render () : _ leptos.pre =
         | Ok json => json |> sm'.from_std_string
         | Error error => $'"Error: " + string !error + ""'
 
-    leptos.pre [
-        $'"class=\\\"[padding:7px] [font-size:11px] [line-height:11px]\\\""'
-    ] fun () =>
-        global_state_json |> leptos.memo_get |> leptos.text_fragment
+    global_state_json |> leptos.memo_get |> leptos.text_block_pre ""
 
 inl render () =
     print_static "<settings.render>"
