@@ -64,7 +64,7 @@ inl render () : _ leptos.div =
             $'"class=\\\"flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] [height:100vh] [max-height:100vh] max-[60px]:[min-height:600px] bg-gray-50 text-gray-700 text-sm\\\""'
         ] fun () =>
             :>(;[
-                leptos.div [
+                leptos.main [
                     $'"class=\\\"flex flex-1 flex-col [overflow:hidden]\\\""'
                 ] fun () =>
                     open menu_tabs

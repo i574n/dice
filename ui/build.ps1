@@ -30,11 +30,11 @@ Copy-Item $targetDir/rs/lib/fsharp/Common.rs ../../polyglot/lib/fsharp/CommonWas
     -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, PartialEq)] pub struct Heap3 {" `
     -replace "/Common.rs", "/CommonWasm.rs" `
 | Set-Content src/dice_ui_wasm.rs
-    # -replace "pub struct Heap0 {", "#[derive(serde::Serialize)] pub struct Heap0 {" `
-    # -replace "pub struct Heap1 {", "#[derive(serde::Serialize, serde::Deserialize)] pub struct Heap1 {" `
-    # -replace "pub struct Heap2 {", "#[derive(serde::Serialize)] pub struct Heap2 {" `
-    # -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap3 {" `
-    # -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap4 {" `
+# -replace "pub struct Heap0 {", "#[derive(serde::Serialize)] pub struct Heap0 {" `
+# -replace "pub struct Heap1 {", "#[derive(serde::Serialize, serde::Deserialize)] pub struct Heap1 {" `
+# -replace "pub struct Heap2 {", "#[derive(serde::Serialize)] pub struct Heap2 {" `
+# -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap3 {" `
+# -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap4 {" `
 
 cargo fmt --
 leptosfmt ./src/dice_ui_wasm.rs
@@ -48,11 +48,23 @@ if (!$fast) {
 
 { pnpm build-css } | Invoke-Block
 
-{ trunk build $($fast ? $() : '--release') --dist="$targetDir/trunk" --public-url="./" --no-sri } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.89" }
+Write-Output "trunk:"
+
+{ trunk build $($fast ? $() : '--release') --dist="$targetDir/trunk" --public-url="./" --no-sri --no-minification } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.89" }
 # { cargo leptos build --release } | Invoke-Block
 
 $path = "$targetDir/trunk/index.html"
-{ rna build --bundle --minify --no-map --assetNames "[name]" $path --output dist } | Invoke-Block
+$html = Get-Content $path -Raw
+
+$wasmFile = ($html | Select-String -Pattern "init\('\./(.*?)'\);").Matches[0].Groups[1].Value
+$jsFile = ($html | Select-String -Pattern "import init, \* as bindings from '\./(.*?)';").Matches[0].Groups[1].Value
+
+(Get-Content "$targetDir/trunk/$jsFile" -Raw) `
+    -replace "\('.*', import.meta.url\);", "('$wasmFile', import.meta.url);" `
+| Set-Content "$targetDir/trunk/$jsFile"
+
+Write-Output "rna:"
+{ rna build --bundle --minify --assetNames "[name]" $path --output dist } | Invoke-Block
 
 $path = "dist/index.html"
 
