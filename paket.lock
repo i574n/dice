@@ -9,7 +9,7 @@ NUGET
       Expecto (>= 10.1)
       FsCheck (>= 3.0.0-beta2)
     Fable.Core (4.3)
-    FsCheck (3.0.0-rc1)
+    FsCheck (3.0.0-rc2)
       FSharp.Core (>= 5.0.2)
     FSharp.Core (8.0.300-beta.24080.5)
     Mono.Cecil (0.11.5)
