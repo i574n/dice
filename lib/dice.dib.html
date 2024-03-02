@@ -7690,8 +7690,9 @@ method0()
     <span class="n">inl</span> <span class="n">rec</span> <span class="n">body</span> <span class="n">acc</span> <span class="n">power</span> <span class="n">rolls</span> <span class="o">=</span>
         <span class="k">match</span> <span class="n">rolls</span> <span class="k">with</span>
         <span class="o">|</span> <span class="n">_</span> <span class="n">when</span> <span class="n">power</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">=&gt;</span>
-            <span class="n">log</span> <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.iter ((|&gt;) $"$</span><span class="se">\"</span><span class="s1">accumulate_dice_rolls / power: {!power} / acc: {!acc}</span><span class="se">\"</span><span class="s1">")</span>
-            <span class="n">Some</span> <span class="p">(</span><span class="n">acc</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">rolls</span><span class="p">)</span>
+            <span class="n">inl</span> <span class="n">result</span> <span class="o">=</span> <span class="n">acc</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">log</span> <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.iter ((|&gt;) $"$</span><span class="se">\"</span><span class="s1">accumulate_dice_rolls / power: {!power} / acc: {!acc} / result: {!result}</span><span class="se">\"</span><span class="s1">")</span>
+            <span class="n">Some</span> <span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">rolls</span><span class="p">)</span>
         <span class="o">|</span> <span class="p">[]</span> <span class="o">=&gt;</span> <span class="kc">None</span>
         <span class="o">|</span> <span class="n">roll</span> <span class="p">::</span> <span class="n">rest</span> <span class="n">when</span> <span class="n">roll</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">=&gt;</span>
             <span class="n">inl</span> <span class="n">coeff</span> <span class="o">=</span> <span class="n">sixth_power_sequence</span> <span class="p">()</span> <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">item</span> <span class="n">power</span>
@@ -7761,7 +7762,7 @@ and [&lt;Struct&gt;] US0 =
 let rec method0 () : unit =
     let v0 : string = $"accumulate_dice_rolls / power: {0y} / acc: {1000} / roll: {6uy} / value: {5}"
     System.Console.WriteLine v0
-    let v1 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1005}"
+    let v1 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1005} / result: {1006}"
     System.Console.WriteLine v1
     let v2 : UH0 = UH0_1
     let v3 : UH0 = UH0_0(2uy, v2)
@@ -7780,7 +7781,7 @@ let rec method0 () : unit =
 method0()
 
 accumulate_dice_rolls / power: 0 / acc: 1000 / roll: 6 / value: 5
-accumulate_dice_rolls / power: -1 / acc: 1005
+accumulate_dice_rolls / power: -1 / acc: 1005 / result: 1006
 </pre>
 </div>
 </div>
@@ -7821,7 +7822,7 @@ let rec method0 () : unit =
     System.Console.WriteLine v0
     let v1 : string = $"accumulate_dice_rolls / power: {0y} / acc: {1030} / roll: {5uy} / value: {4}"
     System.Console.WriteLine v1
-    let v2 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1034}"
+    let v2 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1034} / result: {1035}"
     System.Console.WriteLine v2
     let v3 : UH0 = UH0_1
     let v4 : UH0 = UH0_0(2uy, v3)
@@ -7839,7 +7840,7 @@ method0()
 
 accumulate_dice_rolls / power: 1 / acc: 1000 / roll: 6 / value: 30
 accumulate_dice_rolls / power: 0 / acc: 1030 / roll: 5 / value: 4
-accumulate_dice_rolls / power: -1 / acc: 1034
+accumulate_dice_rolls / power: -1 / acc: 1034 / result: 1035
 </pre>
 </div>
 </div>
@@ -7882,7 +7883,7 @@ let rec method0 () : unit =
     System.Console.WriteLine v1
     let v2 : string = $"accumulate_dice_rolls / power: {0y} / acc: {1204} / roll: {4uy} / value: {3}"
     System.Console.WriteLine v2
-    let v3 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1207}"
+    let v3 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1207} / result: {1208}"
     System.Console.WriteLine v3
     let v4 : UH0 = UH0_1
     let v5 : UH0 = UH0_0(2uy, v4)
@@ -7899,7 +7900,7 @@ method0()
 accumulate_dice_rolls / power: 2 / acc: 1000 / roll: 6 / value: 180
 accumulate_dice_rolls / power: 1 / acc: 1180 / roll: 5 / value: 24
 accumulate_dice_rolls / power: 0 / acc: 1204 / roll: 4 / value: 3
-accumulate_dice_rolls / power: -1 / acc: 1207
+accumulate_dice_rolls / power: -1 / acc: 1207 / result: 1208
 </pre>
 </div>
 </div>
@@ -7986,7 +7987,7 @@ let rec method0 () : unit =
     System.Console.WriteLine v3
     let v4 : string = $"accumulate_dice_rolls / power: {0y} / acc: {990} / roll: {5uy} / value: {4}"
     System.Console.WriteLine v4
-    let v5 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {994}"
+    let v5 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {994} / result: {995}"
     System.Console.WriteLine v5
     let v6 : US0 = US0_1(995)
     let v7 : US0 = US0_1(995)
@@ -7999,7 +8000,7 @@ accumulate_dice_rolls / power: 3 / acc: 0 / roll: 5 / value: 864
 accumulate_dice_rolls / power: 2 / acc: 864 / roll: 4 / value: 108
 accumulate_dice_rolls / power: 1 / acc: 972 / roll: 4 / value: 18
 accumulate_dice_rolls / power: 0 / acc: 990 / roll: 5 / value: 4
-accumulate_dice_rolls / power: -1 / acc: 994
+accumulate_dice_rolls / power: -1 / acc: 994 / result: 995
 </pre>
 </div>
 </div>
@@ -8043,7 +8044,7 @@ let rec method0 () : unit =
     System.Console.WriteLine v3
     let v4 : string = $"accumulate_dice_rolls / power: {0y} / acc: {1710} / roll: {5uy} / value: {4}"
     System.Console.WriteLine v4
-    let v5 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1714}"
+    let v5 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1714} / result: {1715}"
     System.Console.WriteLine v5
     let v6 : US0 = US0_1(1715)
     let v7 : US0 = US0_1(1715)
@@ -8056,7 +8057,7 @@ accumulate_dice_rolls / power: 3 / acc: 1296 / roll: 2 / value: 216
 accumulate_dice_rolls / power: 2 / acc: 1512 / roll: 6 / value: 180
 accumulate_dice_rolls / power: 1 / acc: 1692 / roll: 4 / value: 18
 accumulate_dice_rolls / power: 0 / acc: 1710 / roll: 5 / value: 4
-accumulate_dice_rolls / power: -1 / acc: 1714
+accumulate_dice_rolls / power: -1 / acc: 1714 / result: 1715
 </pre>
 </div>
 </div>
@@ -8100,7 +8101,7 @@ let rec method0 () : unit =
     System.Console.WriteLine v3
     let v4 : string = $"accumulate_dice_rolls / power: {0y} / acc: {3894} / roll: {3uy} / value: {2}"
     System.Console.WriteLine v4
-    let v5 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {3896}"
+    let v5 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {3896} / result: {3897}"
     System.Console.WriteLine v5
     let v6 : US0 = US0_0
     let v7 : US0 = US0_0
@@ -8113,7 +8114,7 @@ accumulate_dice_rolls / power: 3 / acc: 3888 / roll: 1
 accumulate_dice_rolls / power: 2 / acc: 3888 / roll: 1
 accumulate_dice_rolls / power: 1 / acc: 3888 / roll: 2 / value: 6
 accumulate_dice_rolls / power: 0 / acc: 3894 / roll: 3 / value: 2
-accumulate_dice_rolls / power: -1 / acc: 3896
+accumulate_dice_rolls / power: -1 / acc: 3896 / result: 3897
 </pre>
 </div>
 </div>
@@ -8891,9 +8892,9 @@ and [&lt;Struct&gt;] US0 =
     | US0_0
     | US0_1 of f1_0 : int32 * f1_1 : UH0
 let rec method3 (v0 : UH0, v1 : int32) : US0 =
-    let v2 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1}"
-    let v3 : int32 = v1 + 1
-    US0_1(v3, v0)
+    let v2 : int32 = v1 + 1
+    let v3 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1} / result: {v2}"
+    US0_1(v2, v0)
 and method2 (v0 : UH0, v1 : int32) : US0 =
     match v0 with
     | UH0_0(v3, v4) -&gt; (* Cons *)
@@ -9168,10 +9169,10 @@ and method2 (v0 : Mut0, v1 : Mut1, v2 : Mut1, v3 : Mut1, v4 : Mut2) : uint8 =
         v4.l0 &lt;- v31
         v28
 and method9 (v0 : UH1, v1 : int32) : US2 =
-    let v2 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1}"
-    System.Console.WriteLine v2
-    let v3 : int32 = v1 + 1
-    US2_1(v3, v0)
+    let v2 : int32 = v1 + 1
+    let v3 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1} / result: {v2}"
+    System.Console.WriteLine v3
+    US2_1(v2, v0)
 and method8 (v0 : UH1, v1 : int32) : US2 =
     match v0 with
     | UH1_0(v3, v4) -&gt; (* Cons *)
@@ -9321,7 +9322,7 @@ accumulate_dice_rolls / power: 3 / acc: 0 / roll: 5 / value: 864
 accumulate_dice_rolls / power: 2 / acc: 864 / roll: 4 / value: 108
 accumulate_dice_rolls / power: 1 / acc: 972 / roll: 4 / value: 18
 accumulate_dice_rolls / power: 0 / acc: 990 / roll: 5 / value: 4
-accumulate_dice_rolls / power: -1 / acc: 994
+accumulate_dice_rolls / power: -1 / acc: 994 / result: 995
 </pre>
 </div>
 </div>
@@ -9497,10 +9498,10 @@ and method2 (v0 : Mut0, v1 : Mut1, v2 : Mut1, v3 : Mut1, v4 : Mut2) : uint8 =
         v4.l0 &lt;- v31
         v28
 and method9 (v0 : UH1, v1 : int32) : US2 =
-    let v2 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1}"
-    System.Console.WriteLine v2
-    let v3 : int32 = v1 + 1
-    US2_1(v3, v0)
+    let v2 : int32 = v1 + 1
+    let v3 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1} / result: {v2}"
+    System.Console.WriteLine v3
+    US2_1(v2, v0)
 and method8 (v0 : UH1, v1 : int32) : US2 =
     match v0 with
     | UH1_0(v3, v4) -&gt; (* Cons *)
@@ -9650,14 +9651,14 @@ accumulate_dice_rolls / power: 3 / acc: 1296 / roll: 5 / value: 864
 accumulate_dice_rolls / power: 2 / acc: 2160 / roll: 4 / value: 108
 accumulate_dice_rolls / power: 1 / acc: 2268 / roll: 4 / value: 18
 accumulate_dice_rolls / power: 0 / acc: 2286 / roll: 5 / value: 4
-accumulate_dice_rolls / power: -1 / acc: 2290
+accumulate_dice_rolls / power: -1 / acc: 2290 / result: 2291
 create_sequential_roller / roll / current_index: 5 / acc: 1 / len: -1 / last_item: US1_1 2uy
 accumulate_dice_rolls / power: 4 / acc: 0 / roll: 2 / value: 1296
 accumulate_dice_rolls / power: 3 / acc: 1296 / roll: 2 / value: 216
 accumulate_dice_rolls / power: 2 / acc: 1512 / roll: 5 / value: 144
 accumulate_dice_rolls / power: 1 / acc: 1656 / roll: 4 / value: 18
 accumulate_dice_rolls / power: 0 / acc: 1674 / roll: 4 / value: 3
-accumulate_dice_rolls / power: -1 / acc: 1677
+accumulate_dice_rolls / power: -1 / acc: 1677 / result: 1678
 </pre>
 </div>
 </div>
@@ -9692,7 +9693,7 @@ accumulate_dice_rolls / power: -1 / acc: 1677
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 309)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>309</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 754)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>754</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1333)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1333</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1312)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1312</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1340)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1340</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1329)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1329</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 270)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>270</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 735)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>735</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1325)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1325</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1293)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1293</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
+<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 278)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>278</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 696)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>696</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1382)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1382</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1273)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1273</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1350)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1350</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1327)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1327</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 297)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>297</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 700)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>700</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1358)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1358</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1339)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1339</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
 .dni-code-hint {
     font-style: italic;
     overflow: hidden;
@@ -9772,9 +9773,9 @@ and method1 () : UH0 =
     let v2 : (int32 -&gt; UH0) = v1 10000
     v2 1
 and method7 (v0 : UH1, v1 : int32) : US0 =
-    let v2 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1}"
-    let v3 : int32 = v1 + 1
-    US0_1(v3, v0)
+    let v2 : int32 = v1 + 1
+    let v3 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1} / result: {v2}"
+    US0_1(v2, v0)
 and method6 (v0 : UH1, v1 : int32) : US0 =
     match v0 with
     | UH1_0(v3, v4) -&gt; (* Cons *)
@@ -10006,7 +10007,7 @@ method0()
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 1039)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1039</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 1056)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1056</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1019)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1019</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 962)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>962</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1005)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1005</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 988)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>988</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 1000)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1000</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 927)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>927</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1008)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1008</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 996)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>996</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
+<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 1058)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1058</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 975)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>975</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1017)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1017</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 974)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>974</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1011)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1011</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1003)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1003</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 990)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>990</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 980)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>980</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 985)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>985</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1007)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1007</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
 .dni-code-hint {
     font-style: italic;
     overflow: hidden;
@@ -10249,9 +10250,9 @@ and method9 (v0 : int8, v1 : UH2) : US1 =
 and method8 (v0 : int8, v1 : UH1, v2 : int32) : US0 =
     let v3 : bool = v0 &lt; 0y
     if v3 then
-        let v4 : string = $"accumulate_dice_rolls / power: {v0} / acc: {v2}"
-        let v5 : int32 = v2 + 1
-        US0_1(v5, v1)
+        let v4 : int32 = v2 + 1
+        let v5 : string = $"accumulate_dice_rolls / power: {v0} / acc: {v2} / result: {v4}"
+        US0_1(v4, v1)
     else
         match v1 with
         | UH1_0(v8, v9) -&gt; (* Cons *)
@@ -11067,14 +11068,14 @@ and method10 (v0 : int8, v1 : UH2) : US4 =
 and method9 (v0 : US0, v1 : int8, v2 : UH1, v3 : uint64) : US3 =
     let v4 : bool = v1 &lt; 0y
     if v4 then
-        let v5 : string = $"accumulate_dice_rolls / power: {v1} / acc: {v3}"
+        let v5 : uint64 = v3 + 1UL
+        let v6 : string = $"accumulate_dice_rolls / power: {v1} / acc: {v3} / result: {v5}"
         match v0 with
         | US0_0 -&gt; (* None *)
             ()
-        | US0_1(v6) -&gt; (* Some *)
-            v6 v5
-        let v7 : uint64 = v3 + 1UL
-        US3_1(v7, v2)
+        | US0_1(v7) -&gt; (* Some *)
+            v7 v6
+        US3_1(v5, v2)
     else
         match v2 with
         | UH1_0(v10, v11) -&gt; (* Cons *)
@@ -11257,10 +11258,10 @@ and closure79 (v0 : (string -&gt; unit) option) (v1 : uint64) : (UH1 -&gt; uint6
 and closure78 () (v0 : (string -&gt; unit) option) : (uint64 -&gt; (UH1 -&gt; uint64 option)) =
     closure79(v0)
 and method39 (v0 : UH1, v1 : int64) : US5 =
-    let v2 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1}"
-    System.Console.WriteLine v2
-    let v3 : int64 = v1 + 1L
-    US5_1(v3, v0)
+    let v2 : int64 = v1 + 1L
+    let v3 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1} / result: {v2}"
+    System.Console.WriteLine v3
+    US5_1(v2, v0)
 and method38 (v0 : UH1, v1 : int64) : US5 =
     match v0 with
     | UH1_0(v3, v4) -&gt; (* Cons *)

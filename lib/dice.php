@@ -599,11 +599,173 @@ class US5_US5_1 extends US5 implements IComparable {
 }
 
 #12
+function UH0__get_IsUH0_0($this_, $unitArg) {
+    if ($this_->get_Tag() == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#13
+function UH0__get_IsUH0_1($this_, $unitArg) {
+    if ($this_->get_Tag() == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#14
+function UH1__get_IsUH1_0($this_, $unitArg) {
+    if ($this_->get_Tag() == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#15
+function UH1__get_IsUH1_1($this_, $unitArg) {
+    if ($this_->get_Tag() == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#16
+function US0__get_IsUS0_0($this_, $unitArg) {
+    if ($this_->get_Tag() == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#17
+function US0__get_IsUS0_1($this_, $unitArg) {
+    if ($this_->get_Tag() == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#18
+function US1__get_IsUS1_0($this_, $unitArg) {
+    if ($this_->get_Tag() == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#19
+function US1__get_IsUS1_1($this_, $unitArg) {
+    if ($this_->get_Tag() == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#20
+function US2__get_IsUS2_0($this_, $unitArg) {
+    if ($this_->get_Tag() == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#21
+function US2__get_IsUS2_1($this_, $unitArg) {
+    if ($this_->get_Tag() == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#22
+function US3__get_IsUS3_0($this_, $unitArg) {
+    if ($this_->get_Tag() == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#23
+function US3__get_IsUS3_1($this_, $unitArg) {
+    if ($this_->get_Tag() == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#24
+function UH2__get_IsUH2_0($this_, $unitArg) {
+    if ($this_->get_Tag() == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#25
+function UH2__get_IsUH2_1($this_, $unitArg) {
+    if ($this_->get_Tag() == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#26
+function US4__get_IsUS4_0($this_, $unitArg) {
+    if ($this_->get_Tag() == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#27
+function US4__get_IsUS4_1($this_, $unitArg) {
+    if ($this_->get_Tag() == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#28
+function US5__get_IsUS5_0($this_, $unitArg) {
+    if ($this_->get_Tag() == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#29
+function US5__get_IsUS5_1($this_, $unitArg) {
+    if ($this_->get_Tag() == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+#30
 function closure2($v0_1, $unitVar) {
     return $v0_1;
 }
 
-#13
+#31
 function method0($v0_1, $v1_1, $v2_1) {
     switch ($v1_1->get_Tag())
     {
@@ -617,23 +779,23 @@ function method0($v0_1, $v1_1, $v2_1) {
     }
 }
 
-#14
+#32
 function closure1($v0_1, $v1_1) {
     return method0($v0_1, $v1_1, new UH0_UH0_1());
 }
 
-#15
+#33
 function closure0($unitVar, $v0_1) {
     return function ($v) use ($closure1, $v0_1) {     return closure1($v0_1, $v);
  };
 }
 
-#16
+#34
 function closure4($unitVar, $v0_1) {
     return new US0_US0_1($v0_1);
 }
 
-#17
+#35
 function method1($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -644,7 +806,7 @@ function method1($v0_1, $v1_1) {
     }
 }
 
-#18
+#36
 function method2($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -655,12 +817,12 @@ function method2($v0_1, $v1_1) {
     }
 }
 
-#19
+#37
 function closure6($v0_1, $unitVar) {
     return $v0_1;
 }
 
-#20
+#38
 function method3($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -673,12 +835,12 @@ function method3($v0_1, $v1_1) {
     }
 }
 
-#21
+#39
 function closure7($v0_1, $unitVar) {
     return $v0_1;
 }
 
-#22
+#40
 function closure8($v0_1, $v1_1, $unitVar) {
     $v2_1 = $v1_1->l0;
     switch ($v2_1->get_Tag())
@@ -701,14 +863,14 @@ function closure8($v0_1, $v1_1, $unitVar) {
     }
 }
 
-#23
+#41
 function method4($v0_1, $v1_1) {
     $v3_1 = new Mut0(new US1_US1_1($v1_1));
     return function ($arg10_0040) use ($closure8, $v0_1, $v3_1) {     return closure8($v0_1, $v3_1, NULL);
  };
 }
 
-#24
+#42
 function method6($v0_1, $v1_1) {
     switch ($v1_1->get_Tag())
     {
@@ -723,7 +885,7 @@ function method6($v0_1, $v1_1) {
     }
 }
 
-#25
+#43
 function method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
     $v10 = \String\toText(\String\interpolate('create_sequential_roller / roll / current_index: %P() / acc: %P() / len: %P() / last_item: %A%P()', [ $v2_1->l0, $v3_1->l0, $v4_1->l0, $v5->l0 ]));
     switch ($v0_1->get_Tag())
@@ -771,12 +933,12 @@ function method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
     }
 }
 
-#26
+#44
 function closure9($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5, $unitVar) {
     return method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5);
 }
 
-#27
+#45
 function closure5($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -797,7 +959,7 @@ function closure5($v0_1, $v1_1) {
  };
 }
 
-#28
+#46
 function closure3($unitVar, $v0_1) {
     $v3_1 = \Option\defaultArg(\Option\map(function ($v) use ($closure4) {     return closure4(NULL, $v);
  }, $v0_1), new US0_US0_0());
@@ -805,7 +967,7 @@ function closure3($unitVar, $v0_1) {
  };
 }
 
-#29
+#47
 function method7($v0_1, $v1_1, $v2_1, $v3_1) {
     if (\BigInt\compare($v3_1, $v1_1) < 0) {
         $v5 = \BigInt\toUInt64(\BigInt\op_Multiply($v3_1, NULL));
@@ -837,391 +999,391 @@ function method7($v0_1, $v1_1, $v2_1, $v3_1) {
     }
 }
 
-#30
+#48
 function closure77($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure77) {     return closure77(NULL, NULL);
  });
 }
 
-#31
+#49
 function closure76($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure77) {     return closure77(NULL, NULL);
  });
 }
 
-#32
+#50
 function closure75($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure76) {     return closure76(NULL, NULL);
  });
 }
 
-#33
+#51
 function closure74($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure75) {     return closure75(NULL, NULL);
  });
 }
 
-#34
+#52
 function closure73($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure74) {     return closure74(NULL, NULL);
  });
 }
 
-#35
+#53
 function closure72($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure73) {     return closure73(NULL, NULL);
  });
 }
 
-#36
+#54
 function closure71($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure72) {     return closure72(NULL, NULL);
  });
 }
 
-#37
+#55
 function closure70($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure71) {     return closure71(NULL, NULL);
  });
 }
 
-#38
+#56
 function closure69($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure70) {     return closure70(NULL, NULL);
  });
 }
 
-#39
+#57
 function closure68($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure69) {     return closure69(NULL, NULL);
  });
 }
 
-#40
+#58
 function closure67($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure68) {     return closure68(NULL, NULL);
  });
 }
 
-#41
+#59
 function closure66($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure67) {     return closure67(NULL, NULL);
  });
 }
 
-#42
+#60
 function closure65($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure66) {     return closure66(NULL, NULL);
  });
 }
 
-#43
+#61
 function closure64($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure65) {     return closure65(NULL, NULL);
  });
 }
 
-#44
+#62
 function closure63($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure64) {     return closure64(NULL, NULL);
  });
 }
 
-#45
+#63
 function closure62($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure63) {     return closure63(NULL, NULL);
  });
 }
 
-#46
+#64
 function closure61($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure62) {     return closure62(NULL, NULL);
  });
 }
 
-#47
+#65
 function closure60($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure61) {     return closure61(NULL, NULL);
  });
 }
 
-#48
+#66
 function closure59($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure60) {     return closure60(NULL, NULL);
  });
 }
 
-#49
+#67
 function closure58($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure59) {     return closure59(NULL, NULL);
  });
 }
 
-#50
+#68
 function closure57($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure58) {     return closure58(NULL, NULL);
  });
 }
 
-#51
+#69
 function closure56($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure57) {     return closure57(NULL, NULL);
  });
 }
 
-#52
+#70
 function closure55($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure56) {     return closure56(NULL, NULL);
  });
 }
 
-#53
+#71
 function closure54($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure55) {     return closure55(NULL, NULL);
  });
 }
 
-#54
+#72
 function closure53($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure54) {     return closure54(NULL, NULL);
  });
 }
 
-#55
+#73
 function closure52($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure53) {     return closure53(NULL, NULL);
  });
 }
 
-#56
+#74
 function closure51($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure52) {     return closure52(NULL, NULL);
  });
 }
 
-#57
+#75
 function closure50($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure51) {     return closure51(NULL, NULL);
  });
 }
 
-#58
+#76
 function closure49($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure50) {     return closure50(NULL, NULL);
  });
 }
 
-#59
+#77
 function closure48($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure49) {     return closure49(NULL, NULL);
  });
 }
 
-#60
+#78
 function closure47($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure48) {     return closure48(NULL, NULL);
  });
 }
 
-#61
+#79
 function closure46($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure47) {     return closure47(NULL, NULL);
  });
 }
 
-#62
+#80
 function closure45($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure46) {     return closure46(NULL, NULL);
  });
 }
 
-#63
+#81
 function closure44($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure45) {     return closure45(NULL, NULL);
  });
 }
 
-#64
+#82
 function closure43($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure44) {     return closure44(NULL, NULL);
  });
 }
 
-#65
+#83
 function closure42($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure43) {     return closure43(NULL, NULL);
  });
 }
 
-#66
+#84
 function closure41($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure42) {     return closure42(NULL, NULL);
  });
 }
 
-#67
+#85
 function closure40($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure41) {     return closure41(NULL, NULL);
  });
 }
 
-#68
+#86
 function closure39($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure40) {     return closure40(NULL, NULL);
  });
 }
 
-#69
+#87
 function closure38($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure39) {     return closure39(NULL, NULL);
  });
 }
 
-#70
+#88
 function closure37($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure38) {     return closure38(NULL, NULL);
  });
 }
 
-#71
+#89
 function closure36($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure37) {     return closure37(NULL, NULL);
  });
 }
 
-#72
+#90
 function closure35($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure36) {     return closure36(NULL, NULL);
  });
 }
 
-#73
+#91
 function closure34($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure35) {     return closure35(NULL, NULL);
  });
 }
 
-#74
+#92
 function closure33($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure34) {     return closure34(NULL, NULL);
  });
 }
 
-#75
+#93
 function closure32($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure33) {     return closure33(NULL, NULL);
  });
 }
 
-#76
+#94
 function closure31($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure32) {     return closure32(NULL, NULL);
  });
 }
 
-#77
+#95
 function closure30($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure31) {     return closure31(NULL, NULL);
  });
 }
 
-#78
+#96
 function closure29($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure30) {     return closure30(NULL, NULL);
  });
 }
 
-#79
+#97
 function closure28($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure29) {     return closure29(NULL, NULL);
  });
 }
 
-#80
+#98
 function closure27($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure28) {     return closure28(NULL, NULL);
  });
 }
 
-#81
+#99
 function closure26($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure27) {     return closure27(NULL, NULL);
  });
 }
 
-#82
+#100
 function closure25($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure26) {     return closure26(NULL, NULL);
  });
 }
 
-#83
+#101
 function closure24($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure25) {     return closure25(NULL, NULL);
  });
 }
 
-#84
+#102
 function closure23($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure24) {     return closure24(NULL, NULL);
  });
 }
 
-#85
+#103
 function closure22($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure23) {     return closure23(NULL, NULL);
  });
 }
 
-#86
+#104
 function closure21($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure22) {     return closure22(NULL, NULL);
  });
 }
 
-#87
+#105
 function closure20($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure21) {     return closure21(NULL, NULL);
  });
 }
 
-#88
+#106
 function closure19($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure20) {     return closure20(NULL, NULL);
  });
 }
 
-#89
+#107
 function closure18($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure19) {     return closure19(NULL, NULL);
  });
 }
 
-#90
+#108
 function closure17($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure18) {     return closure18(NULL, NULL);
  });
 }
 
-#91
+#109
 function closure16($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure17) {     return closure17(NULL, NULL);
  });
 }
 
-#92
+#110
 function closure15($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure16) {     return closure16(NULL, NULL);
  });
 }
 
-#93
+#111
 function closure14($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure15) {     return closure15(NULL, NULL);
  });
 }
 
-#94
+#112
 function method10($v0_1, $v1_1) {
     switch ($v1_1->get_Tag())
     {
@@ -1236,19 +1398,20 @@ function method10($v0_1, $v1_1) {
     }
 }
 
-#95
+#113
 function method9($v0_1, $v1_1, $v2_1, $v3_1) {
     if ($v1_1 < 0) {
-        $v5 = NULL;
+        $v5 = \BigInt\toUInt64(\BigInt\op_Addition($v3_1, NULL));
+        $v6 = NULL;
         switch ($v0_1->get_Tag())
         {
             case 1:
-                $v0_1->f1_0($v5);
+                $v0_1->f1_0($v6);
                 break;
             default:
                 break;
         }
-        return new US3_US3_1(\BigInt\toUInt64(\BigInt\op_Addition($v3_1, NULL)), $v2_1);
+        return new US3_US3_1($v5, $v2_1);
     } else {
         switch ($v2_1->get_Tag())
         {
@@ -1296,7 +1459,7 @@ function method9($v0_1, $v1_1, $v2_1, $v3_1) {
     }
 }
 
-#96
+#114
 function method11($v0_1, $v1_1, $v2_1) {
     if ($v2_1 < $v0_1) {
         return new UH1_UH1_0($v1_1(NULL), method11($v0_1, $v1_1, ($v2_1 + 1)));
@@ -1305,7 +1468,7 @@ function method11($v0_1, $v1_1, $v2_1) {
     }
 }
 
-#97
+#115
 function method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
     $v6 = $v4_1 + 1;
     if ($v4_1 < $v6) {
@@ -1333,7 +1496,7 @@ function method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
     }
 }
 
-#98
+#116
 function method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5, $v6) {
     if ($v6 < $v4_1 + 1) {
         return method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_0($v1_1(NULL), $v5), $v6 + 1);
@@ -1360,24 +1523,24 @@ function method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5, $v6) {
     }
 }
 
-#99
+#117
 function closure13($v0_1, $v1_1, $v2_1, $v3_1) {
     return method8($v0_1, $v1_1, $v2_1, $v3_1, (\BigInt\equals($v3_1, NULL) ? 1 : method7($v0_1, $v3_1, 0, NULL)) - 1, new UH1_UH1_1(), 0);
 }
 
-#100
+#118
 function closure12($v0_1, $v1_1, $v2_1) {
     return function ($v) use ($closure13, $v0_1, $v1_1, $v2_1) {     return closure13($v0_1, $v1_1, $v2_1, $v);
  };
 }
 
-#101
+#119
 function closure11($v0_1, $v1_1) {
     return function ($v) use ($closure12, $v0_1, $v1_1) {     return closure12($v0_1, $v1_1, $v);
  };
 }
 
-#102
+#120
 function closure10($unitVar, $v0_1) {
     $v3_1 = \Option\defaultArg(\Option\map(function ($v) use ($closure4) {     return closure4(NULL, $v);
  }, $v0_1), new US0_US0_0());
@@ -1385,7 +1548,7 @@ function closure10($unitVar, $v0_1) {
  };
 }
 
-#103
+#121
 function method13($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1396,7 +1559,7 @@ function method13($v0_1, $v1_1) {
     }
 }
 
-#104
+#122
 function closure80($v0_1, $v1_1, $v2_1) {
     $v10 = method9(\Option\defaultArg(\Option\map(function ($v) use ($closure4) {     return closure4(NULL, $v);
  }, $v0_1), new US0_US0_0()), method13($v2_1, 0) - 1, $v2_1, NULL);
@@ -1419,26 +1582,27 @@ function closure80($v0_1, $v1_1, $v2_1) {
     }
 }
 
-#105
+#123
 function closure79($v0_1, $v1_1) {
     return function ($v) use ($closure80, $v0_1, $v1_1) {     return closure80($v0_1, $v1_1, $v);
  };
 }
 
-#106
+#124
 function closure78($unitVar, $v0_1) {
     return function ($v) use ($closure79, $v0_1) {     return closure79($v0_1, $v);
  };
 }
 
-#107
+#125
 function method39($v0_1, $v1_1) {
-    $v2_1 = NULL;
+    $v2_1 = \BigInt\toInt64(\BigInt\op_Addition($v1_1, NULL));
+    $v3_1 = NULL;
     $console->log;
-    return new US5_US5_1(\BigInt\toInt64(\BigInt\op_Addition($v1_1, NULL)), $v0_1);
+    return new US5_US5_1($v2_1, $v0_1);
 }
 
-#108
+#126
 function method38($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1460,7 +1624,7 @@ function method38($v0_1, $v1_1) {
     }
 }
 
-#109
+#127
 function method37($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1482,7 +1646,7 @@ function method37($v0_1, $v1_1) {
     }
 }
 
-#110
+#128
 function method36($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1504,7 +1668,7 @@ function method36($v0_1, $v1_1) {
     }
 }
 
-#111
+#129
 function method35($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1526,7 +1690,7 @@ function method35($v0_1, $v1_1) {
     }
 }
 
-#112
+#130
 function method34($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1548,7 +1712,7 @@ function method34($v0_1, $v1_1) {
     }
 }
 
-#113
+#131
 function method33($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1570,7 +1734,7 @@ function method33($v0_1, $v1_1) {
     }
 }
 
-#114
+#132
 function method32($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1592,7 +1756,7 @@ function method32($v0_1, $v1_1) {
     }
 }
 
-#115
+#133
 function method31($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1614,7 +1778,7 @@ function method31($v0_1, $v1_1) {
     }
 }
 
-#116
+#134
 function method30($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1636,7 +1800,7 @@ function method30($v0_1, $v1_1) {
     }
 }
 
-#117
+#135
 function method29($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1658,7 +1822,7 @@ function method29($v0_1, $v1_1) {
     }
 }
 
-#118
+#136
 function method28($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1680,7 +1844,7 @@ function method28($v0_1, $v1_1) {
     }
 }
 
-#119
+#137
 function method27($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1702,7 +1866,7 @@ function method27($v0_1, $v1_1) {
     }
 }
 
-#120
+#138
 function method26($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1724,7 +1888,7 @@ function method26($v0_1, $v1_1) {
     }
 }
 
-#121
+#139
 function method25($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1746,7 +1910,7 @@ function method25($v0_1, $v1_1) {
     }
 }
 
-#122
+#140
 function method24($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1768,7 +1932,7 @@ function method24($v0_1, $v1_1) {
     }
 }
 
-#123
+#141
 function method23($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1790,7 +1954,7 @@ function method23($v0_1, $v1_1) {
     }
 }
 
-#124
+#142
 function method22($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1812,7 +1976,7 @@ function method22($v0_1, $v1_1) {
     }
 }
 
-#125
+#143
 function method21($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1834,7 +1998,7 @@ function method21($v0_1, $v1_1) {
     }
 }
 
-#126
+#144
 function method20($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1856,7 +2020,7 @@ function method20($v0_1, $v1_1) {
     }
 }
 
-#127
+#145
 function method19($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1878,7 +2042,7 @@ function method19($v0_1, $v1_1) {
     }
 }
 
-#128
+#146
 function method18($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1900,7 +2064,7 @@ function method18($v0_1, $v1_1) {
     }
 }
 
-#129
+#147
 function method17($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1922,7 +2086,7 @@ function method17($v0_1, $v1_1) {
     }
 }
 
-#130
+#148
 function method16($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1944,7 +2108,7 @@ function method16($v0_1, $v1_1) {
     }
 }
 
-#131
+#149
 function method15($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1966,7 +2130,7 @@ function method15($v0_1, $v1_1) {
     }
 }
 
-#132
+#150
 function method14($v0_1, $v1_1) {
     if ($v1_1 < 24) {
         $result = NULL;
@@ -2217,7 +2381,7 @@ function method14($v0_1, $v1_1) {
     }
 }
 
-#133
+#151
 function closure81($unitVar, $v0_1) {
     $v1_1 = NULL;
     $console->log;
@@ -2226,47 +2390,47 @@ function closure81($unitVar, $v0_1) {
     return 0;
 }
 
-#134
+#152
 $GLOBALS['v0'] = function ($v) use ($closure0) { return closure0(NULL, $v);
  };
 
-#135
+#153
 function rotate_numbers($x) {
     return $GLOBALS['v0']($x);
 }
 
-#136
+#154
 $GLOBALS['v1'] = function ($v) use ($closure3) { return closure3(NULL, $v);
  };
 
-#137
+#155
 function create_sequential_roller($x) {
     return $GLOBALS['v1']($x);
 }
 
-#138
+#156
 $GLOBALS['v2'] = function ($v) use ($closure10) { return closure10(NULL, $v);
  };
 
-#139
+#157
 function roll_progressively($x) {
     return $GLOBALS['v2']($x);
 }
 
-#140
+#158
 $GLOBALS['v3'] = function ($v) use ($closure78) { return closure78(NULL, $v);
  };
 
-#141
+#159
 function roll_within_bounds($x) {
     return $GLOBALS['v3']($x);
 }
 
-#142
+#160
 $GLOBALS['v4'] = function ($v) use ($closure81) { return closure81(NULL, $v);
  };
 
-#143
+#161
 function main($args) {
     return $GLOBALS['v4']($args);
 }

@@ -16,8 +16,9 @@ inl accumulate_dice_rolls
     inl rec body acc power rolls =
         match rolls with
         | _ when power < 0 =>
-            log |> optionm'.iter ((|>) $"$\"accumulate_dice_rolls / power: {!power} / acc: {!acc}\"")
-            Some (acc + 1, rolls)
+            inl result = acc + 1
+            log |> optionm'.iter ((|>) $"$\"accumulate_dice_rolls / power: {!power} / acc: {!acc} / result: {!result}\"")
+            Some (result, rolls)
         | [] => None
         | roll :: rest when roll > 1 =>
             inl coeff = sixth_power_sequence () |> stream.item power

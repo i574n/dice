@@ -421,14 +421,14 @@ and method10 (v0 : int8, v1 : UH2) : US4 =
 and method9 (v0 : US0, v1 : int8, v2 : UH1, v3 : uint64) : US3 =
     let v4 : bool = v1 < 0y
     if v4 then
-        let v5 : string = $"accumulate_dice_rolls / power: {v1} / acc: {v3}"
+        let v5 : uint64 = v3 + 1UL
+        let v6 : string = $"accumulate_dice_rolls / power: {v1} / acc: {v3} / result: {v5}"
         match v0 with
         | US0_0 -> (* None *)
             ()
-        | US0_1(v6) -> (* Some *)
-            v6 v5
-        let v7 : uint64 = v3 + 1UL
-        US3_1(v7, v2)
+        | US0_1(v7) -> (* Some *)
+            v7 v6
+        US3_1(v5, v2)
     else
         match v2 with
         | UH1_0(v10, v11) -> (* Cons *)
@@ -611,10 +611,10 @@ and closure79 (v0 : (string -> unit) option) (v1 : uint64) : (UH1 -> uint64 opti
 and closure78 () (v0 : (string -> unit) option) : (uint64 -> (UH1 -> uint64 option)) =
     closure79(v0)
 and method39 (v0 : UH1, v1 : int64) : US5 =
-    let v2 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1}"
-    System.Console.WriteLine v2
-    let v3 : int64 = v1 + 1L
-    US5_1(v3, v0)
+    let v2 : int64 = v1 + 1L
+    let v3 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1} / result: {v2}"
+    System.Console.WriteLine v3
+    US5_1(v2, v0)
 and method38 (v0 : UH1, v1 : int64) : US5 =
     match v0 with
     | UH1_0(v3, v4) -> (* Cons *)

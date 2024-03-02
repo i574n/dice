@@ -1,12 +1,13 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass
 import sys
-from typing import (Any, Callable)
+from typing import Any
 from fable_modules.fable_library.long import (op_addition, op_modulus, op_subtraction, from_integer, to_int, op_multiply)
 from fable_modules.fable_library.option import (default_arg, map, value as value_47)
 from fable_modules.fable_library.reflection import (TypeInfo, uint8_type, unit_type, lambda_type, union_type, string_type, record_type, int64_type, uint64_type)
 from fable_modules.fable_library.string_ import (to_text, interpolate)
-from fable_modules.fable_library.types import (Array, Union, Record, int64, uint8, uint64, int8)
+from fable_modules.fable_library.types import (Array, Union, Record, int64, FSharpRef, uint8, uint64, int8)
 from fable_modules.fable_library.util import randint
 
 def _expr2() -> TypeInfo:
@@ -83,7 +84,7 @@ def _expr6() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", US1_reflection())])
 
 
-@dataclass(eq = False, repr = False)
+@dataclass(eq = False, repr = False, slots = True)
 class Mut0(Record):
     l0: US1
 
@@ -93,7 +94,7 @@ def _expr7() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", int64_type)])
 
 
-@dataclass(eq = False, repr = False)
+@dataclass(eq = False, repr = False, slots = True)
 class Mut1(Record):
     l0: int64
 
@@ -121,7 +122,7 @@ def _expr9() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", US2_reflection())])
 
 
-@dataclass(eq = False, repr = False)
+@dataclass(eq = False, repr = False, slots = True)
 class Mut2(Record):
     l0: US2
 
@@ -197,6 +198,168 @@ class US5(Union):
 
 
 US5_reflection = _expr13
+
+def UH0__get_IsUH0_0(this: UH0, unit_arg: None) -> bool:
+    if this.tag == 0:
+        return True
+
+    else: 
+        return False
+
+
+
+def UH0__get_IsUH0_1(this: UH0, unit_arg: None) -> bool:
+    if this.tag == 1:
+        return True
+
+    else: 
+        return False
+
+
+
+def UH1__get_IsUH1_0(this: UH1, unit_arg: None) -> bool:
+    if this.tag == 0:
+        return True
+
+    else: 
+        return False
+
+
+
+def UH1__get_IsUH1_1(this: UH1, unit_arg: None) -> bool:
+    if this.tag == 1:
+        return True
+
+    else: 
+        return False
+
+
+
+def US0__get_IsUS0_0(this: FSharpRef[US0], unit_arg: None) -> bool:
+    if this.tag == 0:
+        return True
+
+    else: 
+        return False
+
+
+
+def US0__get_IsUS0_1(this: FSharpRef[US0], unit_arg: None) -> bool:
+    if this.tag == 1:
+        return True
+
+    else: 
+        return False
+
+
+
+def US1__get_IsUS1_0(this: FSharpRef[US1], unit_arg: None) -> bool:
+    if this.tag == 0:
+        return True
+
+    else: 
+        return False
+
+
+
+def US1__get_IsUS1_1(this: FSharpRef[US1], unit_arg: None) -> bool:
+    if this.tag == 1:
+        return True
+
+    else: 
+        return False
+
+
+
+def US2__get_IsUS2_0(this: FSharpRef[US2], unit_arg: None) -> bool:
+    if this.tag == 0:
+        return True
+
+    else: 
+        return False
+
+
+
+def US2__get_IsUS2_1(this: FSharpRef[US2], unit_arg: None) -> bool:
+    if this.tag == 1:
+        return True
+
+    else: 
+        return False
+
+
+
+def US3__get_IsUS3_0(this: FSharpRef[US3], unit_arg: None) -> bool:
+    if this.tag == 0:
+        return True
+
+    else: 
+        return False
+
+
+
+def US3__get_IsUS3_1(this: FSharpRef[US3], unit_arg: None) -> bool:
+    if this.tag == 1:
+        return True
+
+    else: 
+        return False
+
+
+
+def UH2__get_IsUH2_0(this: UH2, unit_arg: None) -> bool:
+    if this.tag == 0:
+        return True
+
+    else: 
+        return False
+
+
+
+def UH2__get_IsUH2_1(this: UH2, unit_arg: None) -> bool:
+    if this.tag == 1:
+        return True
+
+    else: 
+        return False
+
+
+
+def US4__get_IsUS4_0(this: FSharpRef[US4], unit_arg: None) -> bool:
+    if this.tag == 0:
+        return True
+
+    else: 
+        return False
+
+
+
+def US4__get_IsUS4_1(this: FSharpRef[US4], unit_arg: None) -> bool:
+    if this.tag == 1:
+        return True
+
+    else: 
+        return False
+
+
+
+def US5__get_IsUS5_0(this: FSharpRef[US5], unit_arg: None) -> bool:
+    if this.tag == 0:
+        return True
+
+    else: 
+        return False
+
+
+
+def US5__get_IsUS5_1(this: FSharpRef[US5], unit_arg: None) -> bool:
+    if this.tag == 1:
+        return True
+
+    else: 
+        return False
+
+
 
 def closure2(v0_1: UH0, unit_var: None) -> UH0:
     return v0_1
@@ -884,10 +1047,11 @@ def method9(v0_1_mut: US0, v1_1_mut: int8, v2_1_mut: UH1, v3_1_mut: uint64) -> U
     while True:
         (v0_1, v1_1, v2_1, v3_1) = (v0_1_mut, v1_1_mut, v2_1_mut, v3_1_mut)
         if v1_1 < int8(0):
+            v5: uint64 = op_addition(v3_1, uint64(1))
             if v0_1.tag == 1:
-                v0_1.fields[0](((("accumulate_dice_rolls / power: " + str(v1_1)) + " / acc: ") + str(v3_1)) + "")
+                v0_1.fields[0](((((("accumulate_dice_rolls / power: " + str(v1_1)) + " / acc: ") + str(v3_1)) + " / result: ") + str(v5)) + "")
 
-            return US3(1, op_addition(v3_1, uint64(1)), v2_1)
+            return US3(1, v5, v2_1)
 
         elif v2_1.tag == 1:
             return US3(0)
@@ -1113,8 +1277,9 @@ def closure78(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callab
 
 
 def method39(v0_1: UH1, v1_1: int64) -> US5:
-    print(((("accumulate_dice_rolls / power: " + str(int8(-1))) + " / acc: ") + str(v1_1)) + "")
-    return US5(1, op_addition(v1_1, int64(1)), v0_1)
+    v2_1: int64 = op_addition(v1_1, int64(1))
+    print(((((("accumulate_dice_rolls / power: " + str(int8(-1))) + " / acc: ") + str(v1_1)) + " / result: ") + str(v2_1)) + "")
+    return US5(1, v2_1, v0_1)
 
 
 def method38(v0_1: UH1, v1_1: int64) -> US5:

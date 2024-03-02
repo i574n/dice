@@ -234,6 +234,150 @@ class US5_US5_1 extends US5 {
     }
 }
 
+bool UH0__get_IsUH0_0(UH0 this$, void unitArg) {
+    if (this$.tag == /* UH0_0 */ 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool UH0__get_IsUH0_1(UH0 this$, void unitArg) {
+    if (this$.tag == /* UH0_1 */ 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool UH1__get_IsUH1_0(UH1 this$, void unitArg) {
+    if (this$.tag == /* UH1_0 */ 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool UH1__get_IsUH1_1(UH1 this$, void unitArg) {
+    if (this$.tag == /* UH1_1 */ 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US0__get_IsUS0_0(types.FSharpRef<US0, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US0__get_IsUS0_1(types.FSharpRef<US0, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US1__get_IsUS1_0(types.FSharpRef<US1, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US1__get_IsUS1_1(types.FSharpRef<US1, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US2__get_IsUS2_0(types.FSharpRef<US2, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US2__get_IsUS2_1(types.FSharpRef<US2, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US3__get_IsUS3_0(types.FSharpRef<US3, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US3__get_IsUS3_1(types.FSharpRef<US3, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool UH2__get_IsUH2_0(UH2 this$, void unitArg) {
+    if (this$.tag == /* UH2_0 */ 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool UH2__get_IsUH2_1(UH2 this$, void unitArg) {
+    if (this$.tag == /* UH2_1 */ 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US4__get_IsUS4_0(types.FSharpRef<US4, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US4__get_IsUS4_1(types.FSharpRef<US4, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US5__get_IsUS5_0(types.FSharpRef<US5, InOut> this$, void unitArg) {
+    if (this$.tag == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool US5__get_IsUS5_1(types.FSharpRef<US5, InOut> this$, void unitArg) {
+    if (this$.tag == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 UH0 closure2(UH0 v0_1, void unitVar) => v0_1;
 
 UH0 method0(int v0_1, UH0 v1_1, UH0 v2_1) {
@@ -594,12 +738,13 @@ US3 method9(US0 v0_1_mut, int v1_1_mut, UH1 v2_1_mut, int v3_1_mut) {
         final UH1 v2_1 = v2_1_mut;
         final v3_1 = v3_1_mut;
         if (v1_1 < 0) {
-            final v5 = 'accumulate_dice_rolls / power: $v1_1 / acc: $v3_1';
+            final v5 = v3_1 + 1;
+            final v6 = 'accumulate_dice_rolls / power: $v1_1 / acc: $v3_1 / result: $v5';
             if (v0_1.tag == /* US0_1 */ 1) {
                 final v0_1_1 = v0_1 as US0_US0_1;
-                v0_1_1.f1_0(v5);
+                v0_1_1.f1_0(v6);
             }
-            return US3_US3_1(v3_1 + 1, v2_1);
+            return US3_US3_1(v5, v2_1);
         } else if (v2_1.tag == /* UH1_1 */ 1) {
             return const US3(/* US3_0 */ 0);
         } else {
@@ -800,9 +945,10 @@ types.Some<int>? Function(UH1) closure79(types.Some<void Function(String)>? v0_1
 types.Some<int>? Function(UH1) Function(int) closure78(void unitVar, types.Some<void Function(String)>? v0_1) => (int v) => closure79(v0_1, v);
 
 US5 method39(UH1 v0_1, int v1_1) {
-    final v2_1 = 'accumulate_dice_rolls / power: ${-1} / acc: $v1_1';
-    console.log(v2_1);
-    return US5_US5_1(v1_1 + 1, v0_1);
+    final v2_1 = v1_1 + 1;
+    final v3_1 = 'accumulate_dice_rolls / power: ${-1} / acc: $v1_1 / result: $v2_1';
+    console.log(v3_1);
+    return US5_US5_1(v2_1, v0_1);
 }
 
 US5 method38(UH1 v0_1, int v1_1) {
