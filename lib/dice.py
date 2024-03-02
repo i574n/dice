@@ -1047,10 +1047,11 @@ def method9(v0_1_mut: US0, v1_1_mut: int8, v2_1_mut: UH1, v3_1_mut: uint64) -> U
     while True:
         (v0_1, v1_1, v2_1, v3_1) = (v0_1_mut, v1_1_mut, v2_1_mut, v3_1_mut)
         if v1_1 < int8(0):
+            v5: uint64 = op_addition(v3_1, uint64(1))
             if v0_1.tag == 1:
-                v0_1.fields[0](((("accumulate_dice_rolls / power: " + str(v1_1)) + " / acc: ") + str(v3_1)) + "")
+                v0_1.fields[0](((((("accumulate_dice_rolls / power: " + str(v1_1)) + " / acc: ") + str(v3_1)) + " / result: ") + str(v5)) + "")
 
-            return US3(1, op_addition(v3_1, uint64(1)), v2_1)
+            return US3(1, v5, v2_1)
 
         elif v2_1.tag == 1:
             return US3(0)
@@ -1276,8 +1277,9 @@ def closure78(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callab
 
 
 def method39(v0_1: UH1, v1_1: int64) -> US5:
-    print(((("accumulate_dice_rolls / power: " + str(int8(-1))) + " / acc: ") + str(v1_1)) + "")
-    return US5(1, op_addition(v1_1, int64(1)), v0_1)
+    v2_1: int64 = op_addition(v1_1, int64(1))
+    print(((((("accumulate_dice_rolls / power: " + str(int8(-1))) + " / acc: ") + str(v1_1)) + " / result: ") + str(v2_1)) + "")
+    return US5(1, v2_1, v0_1)
 
 
 def method38(v0_1: UH1, v1_1: int64) -> US5:

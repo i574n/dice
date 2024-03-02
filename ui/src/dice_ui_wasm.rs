@@ -3296,7 +3296,7 @@ mod module_eef1bd43 {
         }
         pub fn closure54(v0_1: LrcPtr<Dice_ui::Heap1>, unitVar: ()) -> leptos::Fragment {
             let v10: string =
-                string(" class=\"grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[9px] pl-[10px] items-center\"");
+                string(" class=\"grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[11px] pl-[10px] items-center\"");
             let v12 = Dice_ui::method124(Dice_ui::method123(Dice_ui::method130(
                 Dice_ui::method107(),
                 Dice_ui::method110(v0_1.clone()),
@@ -3314,9 +3314,9 @@ mod module_eef1bd43 {
                 ),
                 string(" }"),
             );
-            let v17: leptos::HtmlElement<leptos::html::Dl> = leptos::view! { <dl  class="grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[9px] pl-[10px] items-center">{v12()}</dl> };
+            let v17: leptos::HtmlElement<leptos::html::Dl> = leptos::view! { <dl  class="grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[11px] pl-[10px] items-center">{v12()}</dl> };
             let v24: string =
-                string(" class=\"grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[9px] pl-[10px] items-center\"");
+                string(" class=\"grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[11px] pl-[10px] items-center\"");
             let v26 = Dice_ui::method124(Dice_ui::method123(Dice_ui::method130(
                 Dice_ui::method134(),
                 Dice_ui::method136(v0_1),
@@ -3337,7 +3337,7 @@ mod module_eef1bd43 {
             let v32: Array<leptos::HtmlElement<leptos::html::Dl>> = Dice_ui::method140(new_array(
                 &[
                     v17,
-                    leptos::view! { <dl  class="grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[9px] pl-[10px] items-center">{v26()}</dl> },
+                    leptos::view! { <dl  class="grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[11px] pl-[10px] items-center">{v26()}</dl> },
                 ],
             ));
             let v33 = Dice_ui::method141();
@@ -3548,7 +3548,7 @@ mod module_eef1bd43 {
                 leptos::view! { <summary  class="group flex flex-1 items-center justify-between px-4 py-2 cursor-pointer text-gray-500 bg-gray-100 hover:bg-gray-200 hover:text-gray-700".to_owned() + v8>{v13()}</summary> },
             );
             let v21: leptos::View = leptos::IntoView::into_view(v19);
-            let v24: string = string(" class=\"flex flex-1 flex-col [overflow:auto]\"");
+            let v24: string = string(" class=\"flex flex-1 flex-col\"");
             let v26 = Dice_ui::method124(Dice_ui::method123(Dice_ui::method155(v1)));
             let v29: string = append(
                 append(
@@ -3564,7 +3564,7 @@ mod module_eef1bd43 {
                 string(" }"),
             );
             let v32: leptos::HtmlElement<leptos::html::Div> = Dice_ui::method147(
-                leptos::view! { <div  class="flex flex-1 flex-col [overflow:auto]">{v26()}</div> },
+                leptos::view! { <div  class="flex flex-1 flex-col">{v26()}</div> },
             );
             let v37: Array<leptos::View> = Dice_ui::method122(Dice_ui::method103(new_array(&[
                 v21,
@@ -3773,7 +3773,7 @@ mod module_eef1bd43 {
         }
         pub fn closure81(unitVar: (), unitVar_1: ()) -> leptos::Fragment {
             let v8: string =
-                string(" class=\"grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[9px] pl-[10px] \"");
+                string(" class=\"grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[11px] pl-[10px] \"");
             let v10 = Dice_ui::method124(Dice_ui::method123(Dice_ui::method130(
                 Dice_ui::method159(),
                 Dice_ui::method161(),
@@ -3792,7 +3792,7 @@ mod module_eef1bd43 {
                 string(" }"),
             );
             let v16: leptos::HtmlElement<leptos::html::Dl> = Dice_ui::method142(
-                leptos::view! { <dl  class="grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[9px] pl-[10px] ">{v10()}</dl> },
+                leptos::view! { <dl  class="grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[11px] pl-[10px] ">{v10()}</dl> },
             );
             let v19: leptos::View = Dice_ui::method109(leptos::IntoView::into_view(v16));
             leptos::Fragment::new(vec![v19])
@@ -3818,7 +3818,7 @@ mod module_eef1bd43 {
                 let v21: string =
                     string("<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" viewBox=\"0 0 20 20\" fill=\"currentColor\"><path fill-rule=\"evenodd\" d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\" clip-rule=\"evenodd\" /></svg>");
                 let v22: string = append(append(string("leptos::view! { "), v21), string(" }"));
-                let v28: string = string(" class=\"flex flex-1 flex-col [position:relative]\"");
+                let v28: string = string(" class=\"flex flex-col [position:relative]\"");
                 let v30 = Dice_ui::method124(Dice_ui::method123(Dice_ui::method145(
                     v12,
                     leptos::CollectView::collect_view(v16.to_vec()),
@@ -3839,7 +3839,7 @@ mod module_eef1bd43 {
                     string(" }"),
                 );
                 let v36: leptos::HtmlElement<leptos::html::Div> = Dice_ui::method147(
-                    leptos::view! { <div  class="flex flex-1 flex-col [position:relative]">{v30()}</div> },
+                    leptos::view! { <div  class="flex flex-col [position:relative]">{v30()}</div> },
                 );
                 let v38: leptos::View = leptos::IntoView::into_view(v36);
                 let v40: leptos::RwSignal<LrcPtr<Dice_ui::Heap0>> =
@@ -3862,7 +3862,7 @@ mod module_eef1bd43 {
                             let v62: string =
                                 append(append(string("leptos::view! { "), v61), string(" }"));
                             let v67: string =
-                                string(" class=\"flex flex-1 flex-col [position:relative]\"");
+                                string(" class=\"flex flex-col [position:relative]\"");
                             let v69 = Dice_ui::method124(Dice_ui::method123(Dice_ui::method145(
                                 v52,
                                 leptos::CollectView::collect_view(v56.to_vec()),
@@ -3886,7 +3886,7 @@ mod module_eef1bd43 {
                                 string(" }"),
                             );
                             let v74: leptos::HtmlElement<leptos::html::Div> = Dice_ui::method147(
-                                leptos::view! { <div  class="flex flex-1 flex-col [position:relative]">{v69()}</div> },
+                                leptos::view! { <div  class="flex flex-col [position:relative]">{v69()}</div> },
                             );
                             leptos::IntoView::into_view(v74)
                         } else {
@@ -10260,7 +10260,7 @@ mod module_eef1bd43 {
             let v4: leptos::ReadSignal<bool> = Dice_ui::method65(v3);
             if leptos::SignalGet::get(&v4) {
                 let v16: string =
-                    string(" class=\"grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[9px] pl-[10px] items-center\"");
+                    string(" class=\"grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[11px] pl-[10px] items-center\"");
                 let v18 = Dice_ui::method124(Dice_ui::method123(Dice_ui::method130(
                     Dice_ui::method232(),
                     Dice_ui::method234(v1, v2.clone()),
@@ -10280,7 +10280,7 @@ mod module_eef1bd43 {
                 );
                 let v25: Array<leptos::HtmlElement<leptos::html::Dl>> = Dice_ui::method140(
                     new_array(&[
-                        leptos::view! { <dl  class="grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[9px] pl-[10px] items-center">{v18()}</dl> },
+                        leptos::view! { <dl  class="grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[11px] pl-[10px] items-center">{v18()}</dl> },
                     ]),
                 );
                 let v26 = Dice_ui::method141();
@@ -10474,7 +10474,7 @@ mod module_eef1bd43 {
                 leptos::view! { <summary  class="group flex flex-1 items-center justify-between px-4 py-2 cursor-pointer text-gray-500 bg-gray-100 hover:bg-gray-200 hover:text-gray-700".to_owned() + v9>{v15()}</summary> },
             );
             let v23: leptos::View = leptos::IntoView::into_view(v21);
-            let v26: string = string(" class=\"flex flex-1 flex-col [overflow:auto]\"");
+            let v26: string = string(" class=\"flex flex-1 flex-col\"");
             let v28 = Dice_ui::method124(Dice_ui::method123(Dice_ui::method155(v2)));
             let v31: string = append(
                 append(
@@ -10490,7 +10490,7 @@ mod module_eef1bd43 {
                 string(" }"),
             );
             let v34: leptos::HtmlElement<leptos::html::Div> = Dice_ui::method147(
-                leptos::view! { <div  class="flex flex-1 flex-col [overflow:auto]">{v28()}</div> },
+                leptos::view! { <div  class="flex flex-1 flex-col">{v28()}</div> },
             );
             let v39: Array<leptos::View> = Dice_ui::method122(Dice_ui::method103(new_array(&[
                 v23,
@@ -10630,7 +10630,7 @@ mod module_eef1bd43 {
         }
         pub fn closure215(v0_1: Func0<Dice_ui::US32>, unitVar: ()) -> leptos::Fragment {
             let v9: string =
-                string(" class=\"grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[9px] pl-[10px] \"");
+                string(" class=\"grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[11px] pl-[10px] \"");
             let v11 = Dice_ui::method124(Dice_ui::method123(Dice_ui::method130(
                 Dice_ui::method366(),
                 Dice_ui::method368(v0_1),
@@ -10650,7 +10650,7 @@ mod module_eef1bd43 {
             );
             let v18: Array<leptos::HtmlElement<leptos::html::Dl>> = Dice_ui::method140(new_array(
                 &[
-                    leptos::view! { <dl  class="grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[9px] pl-[10px] ">{v11()}</dl> },
+                    leptos::view! { <dl  class="grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] sm:grid-cols-[150px_repeat(2,minmax(0,1fr))] pt-[9px] pr-[10px] pb-[11px] pl-[10px] ">{v11()}</dl> },
                 ],
             ));
             let v19 = Dice_ui::method141();
@@ -10815,7 +10815,7 @@ mod module_eef1bd43 {
                                 let v100: string =
                                     append(append(string("leptos::view! { "), v99), string(" }"));
                                 let v105: string =
-                                    string(" class=\"flex flex-1 flex-col [position:relative]\"");
+                                    string(" class=\"flex flex-col [position:relative]\"");
                                 let v107 = Dice_ui::method124(Dice_ui::method123(
                                     Dice_ui::method363(
                                         v84,
@@ -10847,7 +10847,7 @@ mod module_eef1bd43 {
                                 );
                                 let v113: leptos::HtmlElement<leptos::html::Div> =
                                     Dice_ui::method147(
-                                        leptos::view! { <div  class="flex flex-1 flex-col [position:relative]">{v107()}</div> },
+                                        leptos::view! { <div  class="flex flex-col [position:relative]">{v107()}</div> },
                                     );
                                 let v115: leptos::View = leptos::IntoView::into_view(v113);
                                 let v117: leptos::RwSignal<LrcPtr<Dice_ui::Heap0>> =
@@ -10877,9 +10877,9 @@ mod module_eef1bd43 {
                                                 append(string("leptos::view! { "), v138),
                                                 string(" }"),
                                             );
-                                            let v144:
-                                                                                                  string =
-                                                                                              string(" class=\"flex flex-1 flex-col [position:relative]\"");
+                                            let v144: string = string(
+                                                " class=\"flex flex-col [position:relative]\"",
+                                            );
                                             let v146 = Dice_ui::method124(Dice_ui::method123(
                                                 Dice_ui::method145(
                                                     v129,
@@ -10908,7 +10908,7 @@ mod module_eef1bd43 {
                                             );
                                             let v151: leptos::HtmlElement<leptos::html::Div> =
                                                 Dice_ui::method147(
-                                                    leptos::view! { <div  class="flex flex-1 flex-col [position:relative]">{v146()}</div> },
+                                                    leptos::view! { <div  class="flex flex-col [position:relative]">{v146()}</div> },
                                                 );
                                             leptos::IntoView::into_view(v151)
                                         } else {
@@ -11669,7 +11669,7 @@ mod module_eef1bd43 {
         }
         pub fn closure50(v0_1: leptos::ReadSignal<Dice_ui::US18>, unitVar: ()) -> leptos::Fragment {
             let v1: string =
-                string("class=\"flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] [height:100vh] [max-height:100vh] max-[60px]:[min-height:600px] bg-gray-50 text-gray-700 text-sm\"");
+                string("class=\"flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] [height:100vh] [max-height:-webkit-fill-available] max-[60px]:[min-height:600px] bg-gray-50 text-gray-700 text-sm\"");
             let v4: string = append(append(append(string(" "), v1), string("")), string(""));
             let v6 = Dice_ui::method124(Dice_ui::method123(Dice_ui::method98(v0_1)));
             let v9: string = append(
@@ -11686,7 +11686,7 @@ mod module_eef1bd43 {
                 string(" }"),
             );
             let v12: leptos::HtmlElement<leptos::html::Div> = Dice_ui::method147(
-                leptos::view! { <div  class="flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] [height:100vh] [max-height:100vh] max-[60px]:[min-height:600px] bg-gray-50 text-gray-700 text-sm">{v6()}</div> },
+                leptos::view! { <div  class="flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] [height:100vh] [max-height:-webkit-fill-available] max-[60px]:[min-height:600px] bg-gray-50 text-gray-700 text-sm">{v6()}</div> },
             );
             let v15: leptos::View = Dice_ui::method109(leptos::IntoView::into_view(v12));
             leptos::Fragment::new(vec![v15])

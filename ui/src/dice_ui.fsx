@@ -1712,7 +1712,7 @@ and closure54 (v0 : Heap1) () : leptos_Fragment =
     let v2 : (unit -> leptos_Fragment) = method107()
     let v3 : (unit -> leptos_Fragment) = method110(v0)
     let v4 : string = "sm:grid-cols-[150px_repeat(2,minmax(0,1fr))]"
-    let v5 : string = "pt-[9px] pr-[10px] pb-[9px] pl-[10px]"
+    let v5 : string = "pt-[9px] pr-[10px] pb-[11px] pl-[10px]"
     let v6 : string = "grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] " + v4 + " " + v5 + " " + v1 + ""
     let v7 : string = "class=\"" + v6 + "\""
     let v8 : (unit -> leptos_Fragment) = method130(v2, v3)
@@ -1894,7 +1894,7 @@ and closure75 (v0 : std_string_String, v1 : (unit -> leptos_Fragment), v2 : lept
     let v19 : leptos_HtmlElement<leptos_html_Summary> = method154(v18)
     let v20 : string = "leptos::IntoView::into_view(v19)"
     let v21 : leptos_View = Fable.Core.RustInterop.emitRustExpr () v20
-    let v22 : string = "class=\"flex flex-1 flex-col [overflow:auto]\""
+    let v22 : string = "class=\"flex flex-1 flex-col\""
     let v23 : (unit -> leptos_Fragment) = method155(v1)
     let v24 : string = " " + v22 + v6 + ""
     let v25 : (unit -> leptos_Fragment) = method123(v23)
@@ -2072,7 +2072,7 @@ and closure81 () () : leptos_Fragment =
     let v0 : (unit -> leptos_Fragment) = method159()
     let v1 : (unit -> leptos_Fragment) = method161()
     let v2 : string = "sm:grid-cols-[150px_repeat(2,minmax(0,1fr))]"
-    let v3 : string = "pt-[9px] pr-[10px] pb-[9px] pl-[10px]"
+    let v3 : string = "pt-[9px] pr-[10px] pb-[11px] pl-[10px]"
     let v4 : string = ""
     let v5 : string = "grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] " + v2 + " " + v3 + " " + v4 + ""
     let v6 : string = "class=\"" + v5 + "\""
@@ -2121,7 +2121,7 @@ and closure53 () () : leptos_Fragment =
     let v22 : string = "leptos::view! { " + v21 + " }"
     let v23 : Impl<leptos_IntoView> = Fable.Core.RustInterop.emitRustExpr () v22
     let v24 : leptos_HtmlElement<leptos_svg_Svg> = v23 |> unbox
-    let v25 : string = "class=\"flex flex-1 flex-col [position:relative]\""
+    let v25 : string = "class=\"flex flex-col [position:relative]\""
     let v26 : (unit -> leptos_Fragment) = method145(v12, v18, v20, v24)
     let v27 : string = ""
     let v28 : string = " " + v25 + v27 + ""
@@ -2163,7 +2163,7 @@ and closure53 () () : leptos_Fragment =
             let v62 : string = "leptos::view! { " + v61 + " }"
             let v63 : Impl<leptos_IntoView> = Fable.Core.RustInterop.emitRustExpr () v62
             let v64 : leptos_HtmlElement<leptos_svg_Svg> = v63 |> unbox
-            let v65 : string = "class=\"flex flex-1 flex-col [position:relative]\""
+            let v65 : string = "class=\"flex flex-col [position:relative]\""
             let v66 : (unit -> leptos_Fragment) = method145(v52, v58, v60, v64)
             let v67 : string = " " + v65 + v27 + ""
             let v68 : (unit -> leptos_Fragment) = method123(v66)
@@ -5966,7 +5966,7 @@ and closure123 (v0 : Func0<US32>, v1 : leptos_WriteSignal<US36>, v2 : leptos_Rea
         let v8 : (unit -> leptos_Fragment) = method232()
         let v9 : (unit -> leptos_Fragment) = method234(v1, v2)
         let v10 : string = "sm:grid-cols-[150px_repeat(2,minmax(0,1fr))]"
-        let v11 : string = "pt-[9px] pr-[10px] pb-[9px] pl-[10px]"
+        let v11 : string = "pt-[9px] pr-[10px] pb-[11px] pl-[10px]"
         let v12 : string = "grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] " + v10 + " " + v11 + " " + v7 + ""
         let v13 : string = "class=\"" + v12 + "\""
         let v14 : (unit -> leptos_Fragment) = method130(v8, v9)
@@ -6104,7 +6104,7 @@ and closure214 (v0 : leptos_View, v1 : std_string_String, v2 : (unit -> leptos_F
     let v21 : leptos_HtmlElement<leptos_html_Summary> = method154(v20)
     let v22 : string = "leptos::IntoView::into_view(v21)"
     let v23 : leptos_View = Fable.Core.RustInterop.emitRustExpr () v22
-    let v24 : string = "class=\"flex flex-1 flex-col [overflow:auto]\""
+    let v24 : string = "class=\"flex flex-1 flex-col\""
     let v25 : (unit -> leptos_Fragment) = method155(v2)
     let v26 : string = " " + v24 + v12 + ""
     let v27 : (unit -> leptos_Fragment) = method123(v25)
@@ -6222,7 +6222,7 @@ and closure215 (v0 : Func0<US32>) () : leptos_Fragment =
     let v1 : (unit -> leptos_Fragment) = method366()
     let v2 : (unit -> leptos_Fragment) = method368(v0)
     let v3 : string = "sm:grid-cols-[150px_repeat(2,minmax(0,1fr))]"
-    let v4 : string = "pt-[9px] pr-[10px] pb-[9px] pl-[10px]"
+    let v4 : string = "pt-[9px] pr-[10px] pb-[11px] pl-[10px]"
     let v5 : string = ""
     let v6 : string = "grid gap-[1px] flex-1 even:bg-gray-50 [inline-size:max-content] [width:100%] " + v3 + " " + v4 + " " + v5 + ""
     let v7 : string = "class=\"" + v6 + "\""
@@ -6361,7 +6361,7 @@ and closure88 () () : leptos_Fragment =
     let v100 : string = "leptos::view! { " + v99 + " }"
     let v101 : Impl<leptos_IntoView> = Fable.Core.RustInterop.emitRustExpr () v100
     let v102 : leptos_HtmlElement<leptos_svg_Svg> = v101 |> unbox
-    let v103 : string = "class=\"flex flex-1 flex-col [position:relative]\""
+    let v103 : string = "class=\"flex flex-col [position:relative]\""
     let v104 : (unit -> leptos_Fragment) = method363(v84, v90, v98, v102)
     let v105 : string = " " + v103 + v71 + ""
     let v106 : (unit -> leptos_Fragment) = method123(v104)
@@ -6402,7 +6402,7 @@ and closure88 () () : leptos_Fragment =
             let v139 : string = "leptos::view! { " + v138 + " }"
             let v140 : Impl<leptos_IntoView> = Fable.Core.RustInterop.emitRustExpr () v139
             let v141 : leptos_HtmlElement<leptos_svg_Svg> = v140 |> unbox
-            let v142 : string = "class=\"flex flex-1 flex-col [position:relative]\""
+            let v142 : string = "class=\"flex flex-col [position:relative]\""
             let v143 : (unit -> leptos_Fragment) = method145(v129, v135, v137, v141)
             let v144 : string = " " + v142 + v71 + ""
             let v145 : (unit -> leptos_Fragment) = method123(v143)
@@ -7014,7 +7014,7 @@ and closure51 (v0 : leptos_ReadSignal<US18>) () : leptos_Fragment =
 and method98 (v0 : leptos_ReadSignal<US18>) : (unit -> leptos_Fragment) =
     closure51(v0)
 and closure50 (v0 : leptos_ReadSignal<US18>) () : leptos_Fragment =
-    let v1 : string = "class=\"flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] [height:100vh] [max-height:100vh] max-[60px]:[min-height:600px] bg-gray-50 text-gray-700 text-sm\""
+    let v1 : string = "class=\"flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] [height:100vh] [max-height:-webkit-fill-available] max-[60px]:[min-height:600px] bg-gray-50 text-gray-700 text-sm\""
     let v2 : (unit -> leptos_Fragment) = method98(v0)
     let v3 : string = ""
     let v4 : string = " " + v1 + v3 + ""

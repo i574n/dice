@@ -738,12 +738,13 @@ US3 method9(US0 v0_1_mut, int v1_1_mut, UH1 v2_1_mut, int v3_1_mut) {
         final UH1 v2_1 = v2_1_mut;
         final v3_1 = v3_1_mut;
         if (v1_1 < 0) {
-            final v5 = 'accumulate_dice_rolls / power: $v1_1 / acc: $v3_1';
+            final v5 = v3_1 + 1;
+            final v6 = 'accumulate_dice_rolls / power: $v1_1 / acc: $v3_1 / result: $v5';
             if (v0_1.tag == /* US0_1 */ 1) {
                 final v0_1_1 = v0_1 as US0_US0_1;
-                v0_1_1.f1_0(v5);
+                v0_1_1.f1_0(v6);
             }
-            return US3_US3_1(v3_1 + 1, v2_1);
+            return US3_US3_1(v5, v2_1);
         } else if (v2_1.tag == /* UH1_1 */ 1) {
             return const US3(/* US3_0 */ 0);
         } else {
@@ -944,9 +945,10 @@ types.Some<int>? Function(UH1) closure79(types.Some<void Function(String)>? v0_1
 types.Some<int>? Function(UH1) Function(int) closure78(void unitVar, types.Some<void Function(String)>? v0_1) => (int v) => closure79(v0_1, v);
 
 US5 method39(UH1 v0_1, int v1_1) {
-    final v2_1 = 'accumulate_dice_rolls / power: ${-1} / acc: $v1_1';
-    console.log(v2_1);
-    return US5_US5_1(v1_1 + 1, v0_1);
+    final v2_1 = v1_1 + 1;
+    final v3_1 = 'accumulate_dice_rolls / power: ${-1} / acc: $v1_1 / result: $v2_1';
+    console.log(v3_1);
+    return US5_US5_1(v2_1, v0_1);
 }
 
 US5 method38(UH1 v0_1, int v1_1) {

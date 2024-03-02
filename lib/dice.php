@@ -1404,16 +1404,17 @@ function method10($v0_1, $v1_1) {
 #113
 function method9($v0_1, $v1_1, $v2_1, $v3_1) {
     if ($v1_1 < 0) {
-        $v5 = NULL;
+        $v5 = \BigInt\toUInt64(\BigInt\op_Addition($v3_1, NULL));
+        $v6 = NULL;
         switch ($v0_1->get_Tag())
         {
             case 1:
-                $v0_1->f1_0($v5);
+                $v0_1->f1_0($v6);
                 break;
             default:
                 break;
         }
-        return new US3_US3_1(\BigInt\toUInt64(\BigInt\op_Addition($v3_1, NULL)), $v2_1);
+        return new US3_US3_1($v5, $v2_1);
     } else {
         switch ($v2_1->get_Tag())
         {
@@ -1598,9 +1599,10 @@ function closure78($unitVar, $v0_1) {
 
 #125
 function method39($v0_1, $v1_1) {
-    $v2_1 = NULL;
+    $v2_1 = \BigInt\toInt64(\BigInt\op_Addition($v1_1, NULL));
+    $v3_1 = NULL;
     $console->log;
-    return new US5_US5_1(\BigInt\toInt64(\BigInt\op_Addition($v1_1, NULL)), $v0_1);
+    return new US5_US5_1($v2_1, $v0_1);
 }
 
 #126

@@ -1043,16 +1043,18 @@ mod module_a51efde0 {
             let v3_1: MutCell<u64> = MutCell::new(v3_1);
             '_method9: loop {
                 break '_method9 (if v1_1.get().clone() < 0_i8 {
-                    let v5: string = sprintf!(
-                        "accumulate_dice_rolls / power: {} / acc: {}",
+                    let v5: u64 = v3_1.get().clone() + 1_u64;
+                    let v6: string = sprintf!(
+                        "accumulate_dice_rolls / power: {} / acc: {} / result: {}",
                         &v1_1.get().clone(),
-                        &v3_1.get().clone()
+                        &v3_1.get().clone(),
+                        &v5
                     );
                     match &v0_1.get().clone() {
-                        Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v5),
+                        Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v6),
                         _ => (),
                     }
-                    Dice::US3::US3_1(v3_1.get().clone() + 1_u64, v2_1.get().clone())
+                    Dice::US3::US3_1(v5, v2_1.get().clone())
                 } else {
                     match v2_1.get().clone().as_ref() {
                         Dice::UH1::UH1_1 => Dice::US3::US3_0,
@@ -1460,10 +1462,15 @@ mod module_a51efde0 {
             })
         }
         pub fn method39(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
-            let v2_1: string =
-                sprintf!("accumulate_dice_rolls / power: {} / acc: {}", &-1_i8, &v1_1);
-            println!("{0}", v2_1,);
-            Dice::US5::US5_1(v1_1 + 1_i64, v0_1)
+            let v2_1: i64 = v1_1 + 1_i64;
+            let v3_1: string = sprintf!(
+                "accumulate_dice_rolls / power: {} / acc: {} / result: {}",
+                &-1_i8,
+                &v1_1,
+                &v2_1
+            );
+            println!("{0}", v3_1,);
+            Dice::US5::US5_1(v2_1, v0_1)
         }
         pub fn method38(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
