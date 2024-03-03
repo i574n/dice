@@ -24,10 +24,13 @@ Copy-Item $targetDir/rs/lib/fsharp/Common.rs ../../polyglot/lib/fsharp/CommonWas
 (Get-Content $targetDir/rs/dice_ui.rs) `
     -replace "../../../../lib/fsharp", "../../../polyglot/lib/fsharp" `
     -replace "pub use crate::module_", "// pub use crate::module_" `
-    -replace "pub struct Heap0 {", "#[derive(serde::Serialize)] pub struct Heap0 {" `
+    -replace "pub struct Heap0 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub struct Heap0 {" `
     -replace "pub struct Heap1 {", "#[derive(serde::Serialize)] pub struct Heap1 {" `
-    -replace "pub struct Heap2 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap2 {" `
-    -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, PartialEq)] pub struct Heap3 {" `
+    -replace "pub struct Heap2 {", "#[derive(serde::Serialize)] pub struct Heap2 {" `
+    -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap3 {" `
+    -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, PartialEq)] pub struct Heap4 {" `
+    -replace "pub enum US1 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub enum US1 {" `
+    -replace " US1_0,", "#[default] US1_0," `
     -replace "/Common.rs", "/CommonWasm.rs" `
 | Set-Content src/dice_ui_wasm.rs
 # -replace "pub struct Heap0 {", "#[derive(serde::Serialize)] pub struct Heap0 {" `

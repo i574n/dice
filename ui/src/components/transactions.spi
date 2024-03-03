@@ -1,8 +1,5 @@
 open rust_operators
 
-union view_type =
-    | Table
-    | Details
 
 inl render () =
     print_static "<transactions.render>"
@@ -22,7 +19,7 @@ inl render () =
             x
 
     inl root : rust.func0 (resultm.result' (optionm'.option' model.near.nearblocks.root) rust.std_string) =
-        state.use_request url model.near.nearblocks.root_unbox
+        state_core.use_request url model.near.nearblocks.root_unbox
 
     inl txns : rust.func0 (result (option (array_base (unativeint * heap model.near.nearblocks.txn))) rust.std_string) =
         rust.move fun () =>
@@ -42,10 +39,8 @@ inl render () =
                 leptos.log $'"transactions.render () / txns move / result length: " + (!x_log |> string |> String.length |> string) + ""'
                 x
     
-    inl (view_type, set_view_type) = leptos.create_signal Details
-
     inl (settings_visible, set_settings_visible) = leptos.create_signal false
-    
+
     inl settings_button =
         inl on_click () =
             set_settings_visible
@@ -69,29 +64,52 @@ inl render () =
 
     ;[
         leptos.accordion "Transactions" true (Some settings_button) fun () =>
-            match settings_visible |> leptos.signal_get with
-            | true =>
-                :>(;[
-                    leptos.grid_pair
-                        { padding = None; cols = None; class = $'"items-center"' }
-                        fun () => "Table View" |> leptos.text_fragment
-                        fun () =>
-                            leptos.toggle
-                                "table-view"
+            :>(;[
+                if settings_visible |> leptos.signal_get
+                then
+                    leptos.div [
+                        $'"class=\\\"px-[12px] py-[10px]\\\""'
+                    ] fun () =>
+                        :>(;[
+                            leptos.divider fun () =>
+                                "Settings" |> leptos.text_fragment
+                            |> leptos.element_to_view
+
+                            leptos.grid_pair
+                                { padding = None; cols = None; class = $'"items-center"' }
+                                fun () => "Table View" |> leptos.text_fragment
                                 fun () =>
-                                    view_type
-                                    |> leptos.signal_get
-                                    |> fun x => x = Table
-                                fun _ =>
-                                    set_view_type
-                                    |> leptos.signal_update fun x => if x = Table then Details else Table
-                                |> leptos.element_to_fragment
-                ])
-            | false =>
+                                    leptos.toggle
+                                        "table-view"
+                                        fun () =>
+                                            leptos.signal_get_untracked global_state.core_state .data 
+                                            |> leptos.signal_get
+                                            |> fun data => data.transactions_view_type = state.Table
+                                        fun _ =>
+                                            leptos.signal_get_untracked global_state.core_state .data
+                                            |> leptos.signal_update fun data =>
+                                                inl data = !data
+                                                heap {
+                                                    data with
+                                                        transactions_view_type = 
+                                                            if data.transactions_view_type = state.Table
+                                                            then state.Details
+                                                            else state.Table
+                                                }
+                                        |> leptos.element_to_fragment
+                            |> leptos.element_to_view
+                        ])
+                    |> leptos.element_to_view
+                else ;[] |> leptos.views_to_view
+
                 match txns |> rust.func0_get with
                 | Ok (Some transactions) =>
-                    match view_type |> leptos.signal_get with
-                    | Details =>
+                    match 
+                        leptos.signal_get_untracked global_state.core_state .data
+                        |> leptos.signal_get
+                        |> fun data => data.transactions_view_type = state.Details
+                    with
+                    | true =>
                         leptos.div [
                             $'"class=\\\"grid flex-1 py-[10px] px-[12px] [gap:15px] sm:[grid-template-columns:repeat(auto-fill,minmax(500px,1fr))]\\\""'
                         ] fun () =>
@@ -103,9 +121,9 @@ inl render () =
                                     |> transaction.render (index |> i64)
                                     |> leptos.element_to_fragment
                             |> leptos.view_to_fragment
-                        |> leptos.element_to_fragment
+                        |> leptos.element_to_view
 
-                    | Table =>
+                    | false =>
                         leptos.table [
                             $'"class=\\\"flex-1 min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700\\\""'
                         ] fun () =>
@@ -344,7 +362,7 @@ inl render () =
                                     |> leptos.view_to_fragment
                                 |> leptos.element_to_view
                             ])
-                        |> leptos.element_to_fragment
+                        |> leptos.element_to_view
                 | Error error =>
                     leptos.div [
                         $'"class=\\\"flex flex-1 [gap:4px] [padding:5px]\\\""'
@@ -362,7 +380,7 @@ inl render () =
                             error |> sm'.from_std_string |> leptos.text_fragment
                         |> leptos.element_to_view
                     ])
-                    |> leptos.element_to_fragment
+                    |> leptos.element_to_view
                 | _ =>
                     leptos.div [
                         $'"class=\\\"grid place-content-center py-[10vh]\\\""'
@@ -374,7 +392,8 @@ inl render () =
                             $'"Loading..."' |> leptos.text_view
                         ])
                         |> leptos.element_to_fragment
-                    |> leptos.element_to_fragment
+                    |> leptos.element_to_view
+            ])
         |> leptos.element_to_view
 
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then

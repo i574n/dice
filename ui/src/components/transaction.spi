@@ -25,7 +25,6 @@ inl render (index : i64) (transaction : txn) : _ leptos.div =
             $'"Transaction " + string (!index + 1L) + ""' |> leptos.text_fragment
         |> leptos.element_to_view
 
-
         leptos.div [
             $'"class=\\\"grid flex-1 divide-y-[1px] divide-gray-500/[.10]\\\""'
         ] fun () => :>(;[

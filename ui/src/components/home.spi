@@ -7,7 +7,7 @@ inl render { router } =
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
-    inl database = state.use_database ()
+    inl database = state_core.use_database ()
 
     state_core.use_core_database database global_state
 

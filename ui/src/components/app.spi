@@ -14,6 +14,11 @@ inl render () =
                         dark_mode = leptos.create_rw_signal false
                         debug = leptos.create_rw_signal false
                         url_hash = leptos.create_rw_signal ("" |> sm'.to_std_string)
+                        data =
+                            leptos.create_rw_signal <|
+                                heap {
+                                    transactions_view_type = state.Details
+                                }
                     }
             loading = mapm.new_hash_map () |> leptos.create_rw_signal
         }
