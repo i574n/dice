@@ -29,6 +29,7 @@ Copy-Item $targetDir/rs/lib/fsharp/Common.rs ../../polyglot/lib/fsharp/CommonWas
     -replace "pub struct Heap2 {", "#[derive(serde::Serialize)] pub struct Heap2 {" `
     -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap3 {" `
     -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, PartialEq)] pub struct Heap4 {" `
+    -replace "pub struct Heap5 {", "#[derive(PartialEq)] pub struct Heap5 {" `
     -replace "pub enum US1 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub enum US1 {" `
     -replace " US1_0,", "#[default] US1_0," `
     -replace "/Common.rs", "/CommonWasm.rs" `
@@ -53,7 +54,7 @@ if (!$fast) {
 
 Write-Output "trunk:"
 
-{ trunk build $($fast ? $() : '--release') --dist="$targetDir/trunk" --public-url="./" --no-sri --no-minification } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.89" }
+{ trunk build $($fast ? $() : '--release') --dist="$targetDir/trunk" --public-url="./" --no-sri --no-minification } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.92" }
 # { cargo leptos build --release } | Invoke-Block
 
 $path = "$targetDir/trunk/index.html"

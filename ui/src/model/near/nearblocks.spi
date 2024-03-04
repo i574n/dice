@@ -27,7 +27,7 @@ type block =
 type action =
     {
         action : rust.std_string
-        method : option rust.std_string
+        method : optionm'.option' rust.std_string
     }
 
 type actions_agg =
@@ -70,7 +70,6 @@ inl block_box ({ block_height } : block) : block' =
     !\($'"crate::model::near::nearblocks::Block { block_height: !block_height }"')
 
 inl action_box ({ action method } : action) : action' =
-    inl method = method |> optionm'.box
     !\($'"crate::model::near::nearblocks::Action { action: !action, method: !method }"')
 
 inl actions_agg_box ({ deposit } : actions_agg) : actions_agg' =
@@ -102,7 +101,7 @@ inl block_unbox (x : block') : block =
 inl action_unbox (x : action') : action =
     inl x = join x
     inl action = !\($'"!x.action"')
-    inl method = !\($'"!x.method"') |> optionm'.unbox
+    inl method = !\($'"!x.method"')
     { action; method }
 
 inl actions_agg_unbox (x : actions_agg') : actions_agg =

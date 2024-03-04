@@ -21,8 +21,8 @@ inl render () =
     inl root : rust.func0 (resultm.result' (optionm'.option' model.near.nearblocks.root) rust.std_string) =
         state_core.use_request url model.near.nearblocks.root_unbox
 
-    inl txns : rust.func0 (result (option (array_base (unativeint * heap model.near.nearblocks.txn))) rust.std_string) =
-        rust.move fun () =>
+    inl txns : leptos.memo (resultm.result' (optionm'.option' (array_base (unativeint * heap model.near.nearblocks.txn))) rust.std_string) =
+        leptos.create_memo fun () =>
             root
             |> rust.func0_get
             |> resultm.unbox
@@ -38,6 +38,8 @@ inl render () =
                 inl x_log = x |> sm'.format_debug
                 leptos.log $'"transactions.render () / txns move / result length: " + (!x_log |> string |> String.length |> string) + ""'
                 x
+                |> resultm.map optionm'.box
+                |> resultm.box
     
     inl (settings_visible, set_settings_visible) = leptos.create_signal false
 
@@ -82,7 +84,7 @@ inl render () =
                                     leptos.toggle
                                         "table-view"
                                         fun () =>
-                                            leptos.signal_get_untracked global_state.core_state .data 
+                                            leptos.signal_get_untracked global_state.core_state .data
                                             |> leptos.signal_get
                                             |> fun data => data.transactions_view_type = state.Table
                                         fun _ =>
@@ -91,7 +93,7 @@ inl render () =
                                                 inl data = !data
                                                 heap {
                                                     data with
-                                                        transactions_view_type = 
+                                                        transactions_view_type =
                                                             if data.transactions_view_type = state.Table
                                                             then state.Details
                                                             else state.Table
@@ -102,7 +104,7 @@ inl render () =
                     |> leptos.element_to_view
                 else ;[] |> leptos.views_to_view
 
-                match txns |> rust.func0_get with
+                match txns |> leptos.memo_get |> resultm.unbox |> resultm.map optionm'.unbox with
                 | Ok (Some transactions) =>
                     match 
                         leptos.signal_get_untracked global_state.core_state .data
@@ -279,6 +281,7 @@ inl render () =
                                                                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                             ] fun () =>
                                                                 method
+                                                                |> optionm'.unbox
                                                                 |> optionm.map to_string
                                                                 |> optionm'.default_value "None"
                                                                 |> leptos.text_fragment
@@ -404,7 +407,7 @@ inl render () =
                         fun () => "Transactions" |> leptos.text_fragment
                         fun () =>
                             txns
-                            |> rust.func0_get
+                            |> leptos.memo_get
                             |> sm'.format_pretty'
                             |> sm'.from_std_string
                             |> leptos.text_block_pre "[max-height:70vh]"

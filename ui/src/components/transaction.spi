@@ -79,7 +79,7 @@ inl render (index : i64) (transaction : txn) : _ leptos.div =
                                         { padding = Some ""; cols = None; class = "" }
                                         fun () => "Method" |> leptos.text_fragment
                                         fun () =>
-                                            match method with
+                                            match method |> optionm'.unbox with
                                             | Some method =>
                                                 method
                                                 |> to_string
