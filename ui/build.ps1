@@ -54,7 +54,7 @@ if (!$fast) {
 
 Write-Output "trunk:"
 
-{ trunk build $($fast ? $() : '--release') --dist="$targetDir/trunk" --public-url="./" --no-sri --no-minification } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.89" }
+{ trunk build $($fast ? $() : '--release') --dist="$targetDir/trunk" --public-url="./" --no-sri --no-minification } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.92" }
 # { cargo leptos build --release } | Invoke-Block
 
 $path = "$targetDir/trunk/index.html"
