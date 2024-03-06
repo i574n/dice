@@ -18,6 +18,7 @@ inl render () =
                             leptos.create_rw_signal <|
                                 heap {
                                     transactions_view_type = state.Details
+                                    accounts = rust.slice' None
                                 }
                     }
             loading = mapm.new_hash_map () |> leptos.create_rw_signal

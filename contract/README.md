@@ -1,6 +1,7 @@
 # dice_contract
 
 ```ps1
+near login
 near deploy luckier.near "dist/dice.wasm" --networkId mainnet
 near call luckier.near new --networkId mainnet --accountId=i574n.near
 ```

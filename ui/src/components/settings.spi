@@ -24,6 +24,31 @@ inl render () =
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
     ;[
+        leptos.accordion "Accounts" true None fun () =>
+            :>(;[
+                leptos.input' None [
+
+                ] 
+                    fun () =>
+                        leptos.signal_get_untracked global_state.core_state .data
+                        |> leptos.signal_get
+                        |> fun x =>
+                            x.accounts // |> a : _ i32 _
+                            |> rust.slice_to_array
+                            |> index
+                            |> fun account => account 0i32
+
+                    fun value =>
+                        inl data =
+                            leptos.signal_get_untracked global_state.core_state .data
+                            |> leptos.signal_get
+                            |> fun data => !data
+
+                        leptos.signal_get_untracked global_state.core_state .data
+                        |> leptos.signal_set (heap { data with accounts = rust.slice' (Some value) })
+            ])
+        |> leptos.element_to_view
+
         leptos.accordion "View" true None fun () =>
             :>(;[
                 leptos.grid_pair
@@ -55,27 +80,6 @@ inl render () =
                             |> leptos.element_to_fragment
             ])
         |> leptos.element_to_view
-
-        // leptos.accordion "Connection" true fun () =>
-        //     leptos.grid_pair
-        //         { padding = None; cols = None; class = $'"items-baseline"' }
-        //         fun () => "Explorer Backend Host" |> leptos.text_fragment
-        //         fun () =>
-        //             leptos.input
-        //                 fun () =>
-        //                     leptos.signal_get_untracked global_state.state .explorer_backend_host
-        //                     |> leptos.read_only
-        //                     |> leptos.signal_get
-
-        //                 fun value =>
-        //                     value
-        //                     |> leptos.signal_set (
-        //                         leptos.signal_get_untracked global_state.state .explorer_backend_host
-        //                         |> leptos.write_only
-        //                     )
-        //                 |> leptos.element_to_fragment
-        //     |> leptos.element_to_fragment
-        // |> leptos.element_to_view
 
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
             leptos.accordion "Debug" true None fun () =>
