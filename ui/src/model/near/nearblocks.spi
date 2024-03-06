@@ -32,7 +32,7 @@ type action =
 
 type actions_agg =
     {
-        deposit : u64
+        deposit : f64
     }
 
 type outcomes =

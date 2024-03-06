@@ -13,7 +13,7 @@ pub struct Action {
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ActionsAgg {
-    pub deposit: u64,
+    pub deposit: f64,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
