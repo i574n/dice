@@ -22,8 +22,136 @@ inl render () =
     leptos.log $'"settings.render ()"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
+    
+    inl accounts =
+        leptos.create_memo fun () =>
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_get
+            |> fun data =>
+                data.accounts
+                |> am'.vec_mapi fun i x => (i : i32), x
+    
+    inl add_button () =
+        inl on_click () =
+            inl data =
+                leptos.signal_get_untracked global_state.core_state .data
+                |> leptos.signal_get_untracked
+                |> fun data => !data
+            
+            inl accounts =
+                accounts
+                |> leptos.memo_get
+
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_set (heap { data with
+                accounts =
+                    accounts
+                    |> am'.vec_map snd
+                    |> am'.vec_map fun x => x
+                    // |> am'.from_vec
+                    // |> am'.map_vec snd
+                    |> fun x =>
+                        // inl x' = x |> rust.to_mut
+                        // rust.emit_expr () $"\"let mut !x = !x\""
+                        x
+                        |> am'.vec_push ("" |> sm'.to_std_string)
+                        // |> am'.map_vec fun x => x
+                    // |> fun (a x : _ i32 _) => x
+                    // |> am'.to_vec
+                    |> am'.vec_map fun x => x
+            })
+        inl on_click = join on_click
+
+        inl class () =
+            if true
+            then ##""
+            else ##" bg-gray-100"
+
+        !\($'"let on_click = !on_click"')
+        leptos.icon_button
+            (leptos.add_svg ())
+            class
+            [
+                $'"on:click=move |_| on_click()"'
+                $'"aria-label=\\\"Add\\\""'
+            ]
 
     ;[
+        leptos.accordion "Accounts" true None fun () =>
+            leptos.for
+                accounts
+                fun i, _ => i
+                fun i, account =>
+                    leptos.div [
+                        $'"class=\\\"p-[10px] [display:flex] [align-items:center]\\\""'
+                    ] fun () =>
+                        :>(;[
+                            leptos.input' None [
+                            ] 
+                                fun () => account // |> leptos.signal_get
+                                // fun value => () // account |> leptos.signal_set value
+                                // fun value =>
+                                //     leptos.signal_get_untracked global_state.core_state .data
+                                //     |> leptos.signal_get_untracked
+                                //     |> fun data => data.accounts
+                                //     |> am'.from_vec
+                                //     |> fun x => x : _ i32 _
+                                //     |> am.iteri fun i' account' =>
+                                //                 // if $"!i' = !i"
+                                //                 if i' = i
+                                //                 then account' |> leptos.signal_set value
+
+                                fun value =>
+                                    inl data =
+                                        leptos.signal_get_untracked global_state.core_state .data
+                                        |> leptos.signal_get_untracked
+                                        |> fun data => !data
+
+                                    leptos.signal_get_untracked global_state.core_state .data
+                                    |> leptos.signal_set (heap { data with
+                                        accounts =
+                                            data.accounts
+                                            // |> am'.from_vec
+                                            // |> am.mapi fun i' account' =>
+                                            |> am'.vec_mapi fun i' account' =>
+                                                // if $"!i' = !i"
+                                                if i' = i
+                                                then value
+                                                else account'
+                                            // |> fun (a x : _ i32 _) => x
+                                            // |> am'.to_vec
+                                    })
+                            |> leptos.element_to_view
+
+                            add_button ()
+                            |> leptos.element_to_view
+                        ])
+                    |> leptos.element_to_fragment
+            |> leptos.view_to_fragment
+
+            // accounts_signals
+            // |> rust.func0_get
+            // |> fun accounts =>
+            //     accounts
+            //     |> am.mapi fun i (account, set_account) =>
+            //         leptos.div [
+            //             $'"class=\\\"[display:flex] [align-items:center]\\\""'
+            //         ] fun () =>
+            //             :>(;[
+            //                 leptos.input' None [
+            //                 ] 
+            //                     fun () => account |> leptos.signal_get
+            //                     fun value => set_account |> leptos.signal_set value
+            //                 |> leptos.element_to_view
+
+            //                 add_button i
+            //                 |> leptos.element_to_view
+            //             ])
+            //         |> leptos.element_to_view
+            //     |> fun (a x) => x |> leptos.views_to_fragment
+            // |> fun x => :>x
+        |> leptos.element_to_view
+
         leptos.accordion "View" true None fun () =>
             :>(;[
                 leptos.grid_pair
@@ -56,27 +184,6 @@ inl render () =
             ])
         |> leptos.element_to_view
 
-        // leptos.accordion "Connection" true fun () =>
-        //     leptos.grid_pair
-        //         { padding = None; cols = None; class = $'"items-baseline"' }
-        //         fun () => "Explorer Backend Host" |> leptos.text_fragment
-        //         fun () =>
-        //             leptos.input
-        //                 fun () =>
-        //                     leptos.signal_get_untracked global_state.state .explorer_backend_host
-        //                     |> leptos.read_only
-        //                     |> leptos.signal_get
-
-        //                 fun value =>
-        //                     value
-        //                     |> leptos.signal_set (
-        //                         leptos.signal_get_untracked global_state.state .explorer_backend_host
-        //                         |> leptos.write_only
-        //                     )
-        //                 |> leptos.element_to_fragment
-        //     |> leptos.element_to_fragment
-        // |> leptos.element_to_view
-
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
             leptos.accordion "Debug" true None fun () =>
                 leptos.grid_pair
@@ -87,4 +194,4 @@ inl render () =
             |> leptos.element_to_view
         else ;[] |> leptos.views_to_view
     ]
-    |> leptos.views_to_fragment
+    |> leptos.view_array_to_fragment

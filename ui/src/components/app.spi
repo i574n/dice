@@ -18,6 +18,12 @@ inl render () =
                             leptos.create_rw_signal <|
                                 heap {
                                     transactions_view_type = state.Details
+                                    accounts =
+                                        ;["i574n.near" |> sm'.to_std_string; "luckier.near" |> sm'.to_std_string]
+                                        |> fun x => a x : _ i32 _
+                                        // |> am'.map_vec leptos.create_rw_signal
+                                        |> fun (a x) => x
+                                        |> am'.to_vec
                                 }
                     }
             loading = mapm.new_hash_map () |> leptos.create_rw_signal
@@ -34,7 +40,7 @@ inl render () =
             fun () =>
                 view () |> leptos.element_to_fragment
             fun () =>
-                ;[] |> leptos.views_to_fragment
+                ;[] |> leptos.view_array_to_fragment
 
     leptos.router fun () =>
         leptos.routes fun () =>
