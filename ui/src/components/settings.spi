@@ -23,13 +23,13 @@ inl render () =
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
     
-    inl accounts_signals =
-        rust.move fun () =>
+    inl accounts =
+        leptos.create_memo fun () =>
             leptos.signal_get_untracked global_state.core_state .data
             |> leptos.signal_get
-            |> fun data => data.accounts
-            |> am'.from_slice
-            |> am'.map_vec leptos.create_signal
+            |> fun data =>
+                data.accounts
+                |> am'.vec_mapi fun i x => (i : i32), x
     
     inl add_button () =
         inl on_click () =
@@ -37,16 +37,28 @@ inl render () =
                 leptos.signal_get_untracked global_state.core_state .data
                 |> leptos.signal_get_untracked
                 |> fun data => !data
+            
+            inl accounts =
+                accounts
+                |> leptos.memo_get
 
             leptos.signal_get_untracked global_state.core_state .data
             |> leptos.signal_set (heap { data with
                 accounts =
-                    data.accounts
-                    |> am'.from_slice
-                    |> fun x => x /@ a ;["" |> sm'.to_std_string]
-                    |> fun (a x) => x
-                    |> am'.to_slice
-                    |> fun x => x : _ _ i32
+                    accounts
+                    |> am'.vec_map snd
+                    |> am'.vec_map fun x => x
+                    // |> am'.from_vec
+                    // |> am'.map_vec snd
+                    |> fun x =>
+                        // inl x' = x |> rust.to_mut
+                        // rust.emit_expr () $"\"let mut !x = !x\""
+                        x
+                        |> am'.vec_push ("" |> sm'.to_std_string)
+                        // |> am'.map_vec fun x => x
+                    // |> fun (a x : _ i32 _) => x
+                    // |> am'.to_vec
+                    |> am'.vec_map fun x => x
             })
         inl on_click = join on_click
 
@@ -67,17 +79,48 @@ inl render () =
     ;[
         leptos.accordion "Accounts" true None fun () =>
             leptos.for
-                (accounts_signals |> rust.func0_get |> fun (a x) => x)
-                fun account, _ => account |> leptos.signal_get
-                fun account, set_account =>
+                accounts
+                fun i, _ => i
+                fun i, account =>
                     leptos.div [
-                        $'"class=\\\"[display:flex] [align-items:center]\\\""'
+                        $'"class=\\\"p-[10px] [display:flex] [align-items:center]\\\""'
                     ] fun () =>
                         :>(;[
                             leptos.input' None [
                             ] 
-                                fun () => account |> leptos.signal_get
-                                fun value => set_account |> leptos.signal_set value
+                                fun () => account // |> leptos.signal_get
+                                // fun value => () // account |> leptos.signal_set value
+                                // fun value =>
+                                //     leptos.signal_get_untracked global_state.core_state .data
+                                //     |> leptos.signal_get_untracked
+                                //     |> fun data => data.accounts
+                                //     |> am'.from_vec
+                                //     |> fun x => x : _ i32 _
+                                //     |> am.iteri fun i' account' =>
+                                //                 // if $"!i' = !i"
+                                //                 if i' = i
+                                //                 then account' |> leptos.signal_set value
+
+                                fun value =>
+                                    inl data =
+                                        leptos.signal_get_untracked global_state.core_state .data
+                                        |> leptos.signal_get_untracked
+                                        |> fun data => !data
+
+                                    leptos.signal_get_untracked global_state.core_state .data
+                                    |> leptos.signal_set (heap { data with
+                                        accounts =
+                                            data.accounts
+                                            // |> am'.from_vec
+                                            // |> am.mapi fun i' account' =>
+                                            |> am'.vec_mapi fun i' account' =>
+                                                // if $"!i' = !i"
+                                                if i' = i
+                                                then value
+                                                else account'
+                                            // |> fun (a x : _ i32 _) => x
+                                            // |> am'.to_vec
+                                    })
                             |> leptos.element_to_view
 
                             add_button ()
@@ -151,4 +194,4 @@ inl render () =
             |> leptos.element_to_view
         else ;[] |> leptos.views_to_view
     ]
-    |> leptos.views_to_fragment
+    |> leptos.view_array_to_fragment
