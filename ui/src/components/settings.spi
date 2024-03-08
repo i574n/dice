@@ -17,6 +17,15 @@ inl global_state_log_render () : _ leptos.pre =
 
     global_state_json |> leptos.memo_get |> leptos.text_block_pre ""
 
+union button_type =
+    | Add
+    | Delete
+
+inl button_type index accounts_count =
+    if index + 1 = accounts_count
+    then Add
+    else Delete
+
 inl render () =
     print_static "<settings.render>"
     leptos.log $'"settings.render ()"'
@@ -29,61 +38,85 @@ inl render () =
             |> leptos.signal_get
             |> fun data =>
                 data.accounts
-                |> am'.vec_mapi fun i x => (i : i32), x
-    
-    inl add_button () =
-        inl on_click () =
-            inl data =
-                leptos.signal_get_untracked global_state.core_state .data
-                |> leptos.signal_get_untracked
-                |> fun data => !data
-            
-            inl accounts =
-                accounts
-                |> leptos.memo_get
+                |> am'.vec_mapi fun (i : i32) account =>
+                    new_pair i (new_pair (new_raw_guid () |> sm'.format') account)
 
+    inl accounts_count =
+        leptos.create_memo fun () =>
+            accounts
+            |> leptos.memo_get
+            |> am'.from_vec
+            |> length : i32
+    
+    inl button index guid =
+        inl on_click () =
             leptos.signal_get_untracked global_state.core_state .data
-            |> leptos.signal_set (heap { data with
-                accounts =
-                    accounts
-                    |> am'.vec_map snd
-                    |> am'.vec_map fun x => x
-                    // |> am'.from_vec
-                    // |> am'.map_vec snd
-                    |> fun x =>
-                        // inl x' = x |> rust.to_mut
-                        // rust.emit_expr () $"\"let mut !x = !x\""
-                        x
-                        |> am'.vec_push ("" |> sm'.to_std_string)
-                        // |> am'.map_vec fun x => x
-                    // |> fun (a x : _ i32 _) => x
-                    // |> am'.to_vec
-                    |> am'.vec_map fun x => x
-            })
+            |> leptos.signal_update fun data =>
+                inl data = !data
+                heap { data with
+                    accounts =
+                        accounts
+                        |> leptos.memo_get
+                        // |> am'.from_vec
+                        // |> am'.map_vec snd
+                        |> fun accounts =>
+                            // inl x' = x |> rust.to_mut
+                            // rust.emit_expr () $"\"let mut !x = !x\""
+                            inl accounts_count = accounts |> am'.from_vec |> length
+                            match accounts_count |> button_type index with
+                            | Delete =>
+                                accounts
+                                // |> am'.vec_retain (from_pair >> fun i', _ => i' <> index)
+                                // |> am'.vec_retain (from_pair >> function i', _ when i' <> index => true | _ => false)
+                                |> am'.vec_retain (fun x => x |> from_pair |> fun i, _ => i = index |> join fun x => x |> not)
+                            | Add =>
+                                accounts
+                                |> am'.vec_push (new_pair accounts_count (new_pair (new_raw_guid () |> sm'.format') ("" |> sm'.to_std_string)))
+                            // |> am'.map_vec fun x => x
+                        // |> fun (a x : _ i32 _) => x
+                        // |> am'.to_vec
+                        // |> am'.vec_map from_pair
+                        |> am'.vec_map (from_pair >> snd >> from_pair >> snd)
+                }
         inl on_click = join on_click
+        !\($'"let on_click = !on_click"')
 
         inl class () =
             if true
             then ##""
             else ##" bg-gray-100"
 
-        !\($'"let on_click = !on_click"')
+        // if accounts_count |> leptos.memo_get |> (=) (i + 1)
+        // then add_button ()
+        // else delete_button ()
+
+        inl aria_label () =
+            match accounts_count |> leptos.memo_get |> button_type index with
+            | Delete => ##"Delete"
+            | Add => ##"Add"
+        inl aria_label = join aria_label
+        !\($'"let aria_label = !aria_label"')
+
         leptos.icon_button
-            (leptos.add_svg ())
+            match accounts_count |> leptos.memo_get |> button_type index with
+            | Delete => leptos.cross_svg ()
+            | Add => leptos.plus_svg ()
             class
             [
                 $'"on:click=move |_| on_click()"'
-                $'"aria-label=\\\"Add\\\""'
+                $'"aria-label=move || aria_label()"'
             ]
 
     ;[
         leptos.accordion "Accounts" true None fun () =>
             leptos.for
                 accounts
-                fun i, _ => i
-                fun i, account =>
+                fun pair => pair |> from_pair |> snd |> from_pair |> fst
+                fun pair =>
+                    inl i, pair = pair |> from_pair
+                    inl guid, account = pair |> from_pair
                     leptos.div [
-                        $'"class=\\\"p-[10px] [display:flex] [align-items:center]\\\""'
+                        $'"class=\\\"pl-[10px] py-[6px] [display:flex] [align-items:center]\\\""'
                     ] fun () =>
                         :>(;[
                             leptos.input' None [
@@ -123,7 +156,7 @@ inl render () =
                                     })
                             |> leptos.element_to_view
 
-                            add_button ()
+                            button i guid
                             |> leptos.element_to_view
                         ])
                     |> leptos.element_to_fragment
