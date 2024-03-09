@@ -69,7 +69,7 @@ inl render () =
         !\($'"let on_click = !on_click"')
 
         leptos.icon_button
-            (leptos.cross_svg ())
+            (leptos.cross_svg (Some "h-5 w-5") [])
             fun () => ##""
             [
                 $'"on:click=move |_| on_click()"'
@@ -101,7 +101,7 @@ inl render () =
         !\($'"let on_click = !on_click"')
 
         leptos.icon_button
-            (leptos.plus_svg ())
+            (leptos.plus_svg (Some "h-5 w-5") [])
             fun () => ##" bg-gray-100"
             [
                 $'"on:click=move |_| on_click()"'

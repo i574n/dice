@@ -9,9 +9,11 @@ modules:
                 nearblocks
         state
         components/
+            settings
             transaction
             transactions
-            settings
+            lists
+            dice
             menu_tabs
             content
             home

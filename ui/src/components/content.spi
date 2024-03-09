@@ -47,11 +47,23 @@ inl render () : _ leptos.div =
 
         match hash_url with
         | Ok hash_url =>
-            inl hash_url = join hash_url
-            inl tab =
-                if hash_url |> leptos.url_pathname |> sm'.starts_with ("/settings" |> sm'.to_std_string)
-                then menu_tabs.Settings
-                else menu_tabs.Transactions
+            inl tab : menu_tabs.menu_tab =
+                inl tabs = menu_tabs.tabs () |> a
+                tabs
+                |> fun x => x : _ i32 _
+                |> am.fold
+                    fun acc tab' =>
+                        match acc with
+                        | Some acc => Some acc
+                        | None =>
+                            inl id = tab' |> menu_tabs.menu_tab_id
+                            if hash_url
+                                |> leptos.url_pathname
+                                |> sm'.starts_with ($'"/" + !id + ""' |> sm'.to_std_string)
+                            then Some tab'
+                            else None
+                    None
+                |> optionm'.default_value (index tabs 0)
 
             inl tab_log = tab |> sm'.format_pretty'
             leptos.log $'"content.render () / effect 2 / new_tab: " + string !tab_log + ""'
@@ -72,19 +84,19 @@ inl render () : _ leptos.div =
                 ] fun () =>
                     open menu_tabs
                     match tab |> leptos.signal_get with
-                    | Transactions =>
+                    | Dice _ => dice.render () |> Some
+                    | Lists => lists.render () |> Some
+                    | Transactions => transactions.render () |> Some
+                    | Settings => settings.render () |> Some
+                    | _ => None
+                    |> function
+                    | Some fragment =>
                         leptos.div [
                             $'"class=\\\"flex flex-1 flex-col [overflow-y:auto]\\\""'
                         ] fun () =>
-                            transactions.render ()
+                            fragment
                         |> leptos.element_to_view
-                    | Settings =>
-                        leptos.div [
-                            $'"class=\\\"flex flex-1 flex-col [overflow-y:auto]\\\""'
-                        ] fun () =>
-                            settings.render ()
-                        |> leptos.element_to_view
-                    | _ => ;[] |> leptos.views_to_view
+                    | None => ;[] |> leptos.views_to_view
                     |> leptos.view_to_fragment
                 |> leptos.element_to_view
 
