@@ -10,7 +10,7 @@ type account = rust.std_string
 type state_data =
     heap {
         transactions_view_type : view_type
-        accounts : rust.vec account
+        accounts : rust.vec (pair bool account)
     }
 
 type global_state = state_core.global_state state_data

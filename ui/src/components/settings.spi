@@ -70,7 +70,7 @@ inl render () =
 
         leptos.icon_button
             (leptos.cross_svg (Some "h-5 w-5") [])
-            fun () => ##""
+            fun () => ##" pr-[7px] pl-[5px]"
             [
                 $'"on:click=move |_| on_click()"'
                 $'"aria-label=\\\"Delete\\\""'
@@ -90,7 +90,7 @@ inl render () =
                             |> am'.vec_push (
                                 new_pair
                                     accounts_count
-                                    ("" |> sm'.to_std_string |> leptos.create_signal)
+                                    (new_pair false ("" |> sm'.to_std_string) |> leptos.create_signal)
                             )
                             |> am'.vec_map (from_pair >> snd >> fst >> leptos.signal_get)
                     }
@@ -118,13 +118,40 @@ inl render () =
                 fun pair =>
                     inl (_, i), account = pair
                     leptos.div [
-                        $'"class=\\\"pl-[10px] py-[7px] pr-[4px] [display:flex] [align-items:center]\\\""'
+                        $'"class=\\\"pl-[10px] py-[7px] gap-[7px] pr-[4px] [display:flex] [align-items:center]\\\""'
                     ] fun () =>
+                        inl i = join i
                         :>(;[
-                            leptos.input' None [
+                            leptos.toggle
+                                $'"account-" + string !i + ""'
+                                fun () =>
+                                    account
+                                    |> leptos.signal_get
+                                    |> from_pair
+                                    |> fst
+                                fun _ =>
+                                    inl data =
+                                        leptos.signal_get_untracked global_state.core_state .data
+                                        |> leptos.signal_get_untracked
+                                        |> fun data => !data
+
+                                    leptos.signal_get_untracked global_state.core_state .data
+                                    |> leptos.signal_set (heap { data with
+                                        accounts =
+                                            data.accounts
+                                            |> am'.vec_mapi fun i' pair =>
+                                                if i' = i |> fun x => join not x
+                                                then pair
+                                                else
+                                                    inl enabled', account' = pair |> from_pair
+                                                    new_pair (not enabled') account'
+                                    })
+                            |> leptos.element_to_view
+
+                            leptos.text_input None [
                             ]
                                 fun () =>
-                                    account |> leptos.signal_get
+                                    account |> leptos.signal_get |> from_pair |> snd
 
                                 fun value =>
                                     inl data =
@@ -136,10 +163,12 @@ inl render () =
                                     |> leptos.signal_set (heap { data with
                                         accounts =
                                             data.accounts
-                                            |> am'.vec_mapi fun i' account' =>
-                                                if i' = i
-                                                then value
-                                                else account'
+                                            |> am'.vec_mapi fun i' pair =>
+                                                if i' = i |> fun x => join not x
+                                                then pair
+                                                else
+                                                    inl enabled', _ = pair |> from_pair
+                                                    new_pair enabled' value
                                     })
                             |> leptos.element_to_view
 
