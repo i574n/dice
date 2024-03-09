@@ -1,7 +1,34 @@
+union dice =
+    | Dice'
+
 union menu_tab =
     | Blank
+    | Dice : dice
+    | Lists
     | Transactions
     | Settings
+
+inl menu_tab_label = function
+    | Blank => ""
+    | Dice _ => "Dice"
+    | Lists => "Lists"
+    | Transactions => "Transactions"
+    | Settings => "Settings"
+
+inl menu_tab_id = function
+    | Blank => ""
+    | Dice _ => "dice"
+    | Lists => "lists"
+    | Transactions => "transactions"
+    | Settings => "settings"
+
+inl tabs () =
+    ;[
+        Dice Dice'
+        Lists
+        Transactions
+        Settings
+    ]
 
 inl render tab =
     print_static "<menu_tabs.render>"
@@ -24,15 +51,15 @@ inl render tab =
                     $'"id=\\\"Tab\\\""'
                     $'"class=\\\"w-full rounded-md border-gray-200\\\""'
                 ] fun () =>
-                    :>(;[
+                    tabs () |> a
+                    |> am'.map_vec fun tab' =>
                         leptos.option'
-                            (fun () => (tab |> leptos.signal_get) = Transactions)
-                            "Transactions"
-
-                        leptos.option'
-                            (fun () => (tab |> leptos.signal_get) = Settings)
-                            "Settings"
-                    ])
+                            (fun () => (tab |> leptos.signal_get) = tab')
+                            (tab' |> menu_tab_label)
+                        |> leptos.element_to_view
+                    |> fun (a x : _ i32 _) => x
+                    |> leptos.view_array_to_fragment
+                    |> (~:>)
                 |> leptos.element_to_view
             ])
 
@@ -46,19 +73,24 @@ inl render tab =
                     $'"class=\\\"-mb-px flex [flex-flow:wrap] [flex-grow:1] [flex-shrink:0] gap-[3px] [overflow-wrap:anywhere]\\\""'
                     $'"aria-label=\\\"Tabs\\\""'
                 ] fun () =>
-                    :>(;[
+                    tabs () |> a
+                    |> am'.map_vec fun tab' =>
+                        inl id = tab' |> menu_tab_id
+                        inl class = Some $'"h-5 w-5"'
                         leptos.tab_link
-                            $'!url + "#/transactions"'
-                            (leptos.inbox_svg ())
-                            "Transactions"
-                            (fun () => (tab |> leptos.signal_get) = Transactions)
-
-                        leptos.tab_link
-                            $'!url + "#/settings"'
-                            (leptos.settings_svg ())
-                            "Settings"
-                            (fun () => (tab |> leptos.signal_get) = Settings)
-                    ])
+                            $'!url + "#/" + !id + ""'
+                            match tab' with
+                            | Dice _ => leptos.dice_svg class [] |> leptos.element_to_fragment
+                            | Lists => leptos.lists_svg class [] |> leptos.element_to_fragment
+                            | Transactions => leptos.transactions_svg class [] |> leptos.element_to_fragment
+                            | Settings => leptos.settings_svg class [] |> leptos.element_to_fragment
+                            | _ => ;[] |> leptos.view_array_to_fragment
+                            (tab' |> menu_tab_label)
+                            (fun () => (tab |> leptos.signal_get) = tab')
+                        |> leptos.element_to_view
+                    |> fun (a x : _ i32 _) => x
+                    |> leptos.view_array_to_fragment
+                    |> (~:>)
                 |> leptos.element_to_fragment
             |> leptos.element_to_fragment
     ])

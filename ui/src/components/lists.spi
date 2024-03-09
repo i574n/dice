@@ -1,0 +1,11 @@
+open rust_operators
+
+
+inl render () =
+    print_static "<lists.render>"
+    leptos.log $'"lists.render ()"'
+
+    inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
+
+    ;[]
+    |> leptos.view_array_to_fragment
