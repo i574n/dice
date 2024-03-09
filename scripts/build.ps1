@@ -23,7 +23,7 @@ if (!$fast) {
 
 { pwsh "$ScriptDir/../contract/build.ps1" -fast 1 } | Invoke-Block
 
-{ pwsh "$ScriptDir/../contract/tests/build.ps1" } | Invoke-Block
+{ pwsh "$ScriptDir/../contract/tests/build.ps1" } | Invoke-Block -Retries 3
 
 { pwsh "$ScriptDir/../ui/build.ps1" -fast $($fast ?? '') } | Invoke-Block
 
