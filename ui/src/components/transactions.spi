@@ -7,7 +7,7 @@ inl render () =
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
-    inl urls = leptos.create_memo fun () =>
+    inl accounts = leptos.create_memo fun () =>
         inl accounts =
             leptos.signal_get_untracked global_state.core_state .data
             |> leptos.signal_get_untracked
@@ -21,21 +21,31 @@ inl render () =
         accounts
         |> am'.map_vec fun account =>
             inl account = account |> sm'.from_std_string
-            $'"https://api2.nearblocks.io/v1/account/" + !account + "/txns?&order=desc&page=1&per_page=25"'
+            account, $'"https://api2.nearblocks.io/v1/account/" + !account + "/txns?&order=desc&page=1&per_page=25"'
         |> fun x =>
             inl x_log = x |> sm'.format_debug
             leptos.log $'"transactions.render () / url create_memo / result: " + string !x_log + ""'
             x
 
-    inl root : rust.func0 (a i32 (resultm.result' (optionm'.option' model.near.nearblocks.root) rust.std_string)) =
+    inl urls = leptos.create_memo fun () =>
+        accounts
+        |> leptos.memo_get
+        |> am'.map_vec snd
+
+    inl root : rust.func0 (a _ (resultm.result' (optionm'.option' model.near.nearblocks.root) rust.std_string)) =
         state_core.use_requests urls model.near.nearblocks.root_unbox
 
-    inl txns : leptos.memo (a i32 (resultm.result' (optionm'.option' (array_base (unativeint * heap model.near.nearblocks.txn))) rust.std_string)) =
+    inl txns : leptos.memo (resultm.result' (optionm'.option' (array_base (string * unativeint * heap model.near.nearblocks.txn))) rust.std_string) =
         leptos.create_memo fun () =>
+            inl accounts =
+                accounts
+                |> leptos.memo_get
+
             root
             |> rust.func0_get
             |> am'.map_vec resultm.unbox
-            |> am'.map_vec fun x =>
+            |> am'.mapi_vec fun i x =>
+                inl account = index accounts i
                 x
                 |> resultm.map fun result =>
                     result
@@ -43,7 +53,7 @@ inl render () =
                     |> optionm.map fun result =>
                         (a result.txns : _ i32 _)
                         |> am'.enumerate
-                        |> am'.map_vec fun i, x => i, heap x
+                        |> am'.map_vec fun i', x' => account |> fst, i', heap x'
                         |> fun (a x : _ i32 _) => x
             |> fun x =>
                 inl x_log = x |> sm'.format_debug
@@ -51,6 +61,20 @@ inl render () =
                 x
                 |> am'.map_vec (resultm.map optionm'.box)
                 |> am'.map_vec resultm.box
+                |> fun x =>
+                    ((;[] |> am'.to_vec |> Ok), x)
+                    ||> am.fold fun acc x =>
+                        x
+                        |> resultm.unbox
+                        |> resultm.map optionm'.unbox
+                        |> fun x =>
+                            match acc, x with
+                            | Ok acc, Ok (Some x) => acc |> am'.vec_extend (x |> am'.to_vec) |> Ok
+                            | _, Error error => error |> Error
+                            | _ => acc
+                |> resultm.map am'.from_vec
+                |> resultm.map fun (a x : _ i32 _) => x |> Some |> optionm'.box
+                |> resultm.box
     
     inl (settings_visible, set_settings_visible) = leptos.create_signal false
 
@@ -117,11 +141,11 @@ inl render () =
 
                 txns
                 |> leptos.memo_get
-                |> am'.map_vec resultm.unbox
-                |> am'.map_vec (resultm.map optionm'.unbox)
-                |> am'.map_vec function
+                |> resultm.unbox
+                |> resultm.map optionm'.unbox
+                |> function
                     | Ok (Some transactions) =>
-                        match 
+                        match
                             leptos.signal_get_untracked global_state.core_state .data
                             |> leptos.signal_get
                             |> fun data => data.transactions_view_type = state.Details
@@ -131,9 +155,9 @@ inl render () =
                                 $'"class=\\\"grid flex-1 py-[10px] px-[12px] [gap:15px] sm:[grid-template-columns:repeat(auto-fill,minmax(500px,1fr))]\\\""'
                             ] fun () =>
                                 a transactions
-                                |> am'.map_vec fun index, transaction' =>
+                                |> am'.map_vec fun account, index', transaction' =>
                                     !transaction'
-                                    |> transaction.render (index |> i64)
+                                    |> transaction.render (index' |> i64)
                                     |> leptos.element_to_view
                                 |> fun (a x : _ i32 _) => x
                                 |> leptos.view_array_to_fragment
@@ -152,6 +176,12 @@ inl render () =
 
                                             ] fun () =>
                                                 :>(;[
+                                                    leptos.th [
+                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                                                    ] fun () =>
+                                                        "Account" |> leptos.text_fragment
+                                                    |> leptos.element_to_view
+
                                                     leptos.th [
                                                         $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
                                                     ] fun () =>
@@ -204,7 +234,7 @@ inl render () =
                                                         $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
                                                     ] fun () =>
                                                         (a transactions : _ i32 _)
-                                                        |> am.exists fun _index, transaction' =>
+                                                        |> am.exists fun account, _index, transaction' =>
                                                             (a transaction'.logs : _ i32 _)
                                                             |> am.exists fun log =>
                                                                 (log |> sm'.from_std_string |> sm.length) > 0i32
@@ -245,11 +275,18 @@ inl render () =
                                         $'"class=\\\"divide-y divide-gray-200 dark:divide-gray-700\\\""'
                                     ] fun () =>
                                         a transactions
-                                        |> am'.map_vec fun index, transaction' =>
+                                        |> am'.map_vec fun account, index', transaction' =>
                                             leptos.tr [
                                                 $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
                                             ] fun () =>
                                                 :>(;[
+                                                    leptos.td [
+                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                                                    ] fun () =>
+                                                        account
+                                                        |> leptos.text_fragment
+                                                    |> leptos.element_to_view
+
                                                     leptos.td [
                                                         $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                     ] fun () =>
@@ -409,7 +446,6 @@ inl render () =
                             ])
                             |> leptos.element_to_fragment
                         |> leptos.element_to_view
-                |> fun (a x) => x |> leptos.views_to_view
             ])
         |> leptos.element_to_view
 
