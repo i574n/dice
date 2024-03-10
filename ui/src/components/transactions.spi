@@ -73,7 +73,7 @@ inl render () =
                             | _, Error error => error |> Error
                             | _ => acc
                 |> resultm.map (am'.vec_sort_by_key fun _, _, x => x.block_timestamp)
-                |> resultm.map am'.from_vec
+                |> resultm.map (am'.vec_reverse >> am'.from_vec)
                 |> resultm.map fun (a x : _ i32 _) => x |> Some |> optionm'.box
                 |> resultm.box
     
@@ -158,7 +158,7 @@ inl render () =
                                 a transactions
                                 |> am'.map_vec fun account, index', transaction' =>
                                     !transaction'
-                                    |> transaction.render (index' |> i64)
+                                    |> transaction.render account (index' |> i64)
                                     |> leptos.element_to_view
                                 |> fun (a x : _ i32 _) => x
                                 |> leptos.view_array_to_fragment

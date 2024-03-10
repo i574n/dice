@@ -13,7 +13,7 @@ inl format_block_timestamp (block_timestamp : rust.std_string) =
         |> sm'.from_std_string
     |> resultm.from_option
 
-inl render (index : i64) (transaction : txn) : _ leptos.div =
+inl render account (index : i64) (transaction : txn) : _ leptos.div =
     print_static "<transaction.render>"
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
@@ -28,6 +28,14 @@ inl render (index : i64) (transaction : txn) : _ leptos.div =
         leptos.div [
             $'"class=\\\"grid flex-1 divide-y-[1px] divide-gray-500/[.10]\\\""'
         ] fun () => :>(;[
+            leptos.grid_pair
+                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+                fun () => "Account" |> leptos.text_fragment
+                fun () =>
+                    account
+                    |> leptos.text_fragment
+            |> leptos.element_to_view
+
             leptos.grid_pair
                 { padding = Some ""; cols = None; class = "items-center py-[4px]" }
                 fun () => "Block Timestamp" |> leptos.text_fragment
