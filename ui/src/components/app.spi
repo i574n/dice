@@ -23,9 +23,6 @@ inl render () =
                                             new_pair true ("i574n.near" |> sm'.to_std_string)
                                             new_pair true ("luckier.near" |> sm'.to_std_string)
                                         ]
-                                        |> fun x => a x : _ i32 _
-                                        // |> am'.map_vec leptos.create_rw_signal
-                                        |> fun (a x) => x
                                         |> am'.to_vec
                                 }
                     }
