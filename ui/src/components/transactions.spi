@@ -72,6 +72,7 @@ inl render () =
                             | Ok acc, Ok (Some x) => acc |> am'.vec_extend (x |> am'.to_vec) |> Ok
                             | _, Error error => error |> Error
                             | _ => acc
+                |> resultm.map (am'.vec_sort_by_key fun _, _, x => x.block_timestamp)
                 |> resultm.map am'.from_vec
                 |> resultm.map fun (a x : _ i32 _) => x |> Some |> optionm'.box
                 |> resultm.box
