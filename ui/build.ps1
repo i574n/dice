@@ -28,7 +28,7 @@ Copy-Item $targetDir/rs/lib/fsharp/Common.rs ../../polyglot/lib/fsharp/CommonWas
     -replace "pub struct Heap1 {", "#[derive(serde::Serialize)] pub struct Heap1 {" `
     -replace "pub struct Heap2 {", "#[derive(serde::Serialize)] pub struct Heap2 {" `
     -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap3 {" `
-    -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, PartialEq)] pub struct Heap4 {" `
+    -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, PartialEq, PartialOrd, Hash, Eq)] pub struct Heap4 {" `
     -replace "pub struct Heap5 {", "#[derive(PartialEq)] pub struct Heap5 {" `
     -replace "pub enum US1 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub enum US1 {" `
     -replace " US1_0,", "#[default] US1_0," `
