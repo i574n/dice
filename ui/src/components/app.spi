@@ -17,13 +17,14 @@ inl render () =
                         data =
                             leptos.create_rw_signal <|
                                 heap {
-                                    transactions_view_type = state.Details
                                     accounts =
                                         ;[
                                             new_pair true ("i574n.near" |> sm'.to_std_string)
                                             new_pair true ("luckier.near" |> sm'.to_std_string)
                                         ]
                                         |> am'.to_vec
+                                    transactions_pages = 1
+                                    transactions_view_type = state.Details
                                 }
                     }
             loading = mapm.new_hash_map () |> leptos.create_rw_signal

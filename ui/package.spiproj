@@ -8,6 +8,8 @@ modules:
             near/
                 nearblocks
         state
+        hooks/
+            use_transactions
         components/
             settings
             transaction
