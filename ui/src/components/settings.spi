@@ -148,7 +148,7 @@ inl render () =
                                     })
                             |> leptos.element_to_view
 
-                            leptos.text_input None [
+                            leptos.text_input (Some "flex-1") [
                             ]
                                 fun () =>
                                     account |> leptos.signal_get |> from_pair |> snd

@@ -23,6 +23,7 @@ inl render () =
                                             new_pair true ("luckier.near" |> sm'.to_std_string)
                                         ]
                                         |> am'.to_vec
+                                    max = 1
                                     transactions_pages = 1
                                     transactions_view_type = state.Details
                                 }

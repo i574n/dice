@@ -9,6 +9,56 @@ inl render () =
     inl { accounts txns } = hooks.use_transactions.render global_state
 
     ;[
+        leptos.accordion "Roll" true None fun () =>
+            :>(;[
+                leptos.div [
+                    $'"class=\\\"p-[10px] flex [flex-direction:column] gap-[8px]\\\""'
+                ] fun () =>
+                    :>(;[
+                        leptos.div [
+                            $'"class=\\\"flex [flex-direction:column] [align-items:flex-start]\\\""'
+                        ] fun () =>
+                            :>(;[
+                                "Max" |> leptos.text_view
+
+                                leptos.text_input None [
+                                
+                                ]
+                                    fun () =>
+                                        leptos.signal_get_untracked global_state.core_state .data
+                                        |> leptos.signal_get_untracked
+                                        |> fun x => x.max
+
+                                    fun value =>
+                                        inl data =
+                                            leptos.signal_get_untracked global_state.core_state .data
+                                            |> leptos.signal_get_untracked
+                                            |> fun data => !data
+
+                                        leptos.signal_get_untracked global_state.core_state .data
+                                        |> leptos.signal_set (heap { data with
+                                            max =
+                                                match $"!value |> string" with
+                                                | "" => 1
+                                                | x => $"!x |> int32"
+                                        })
+                                |> leptos.element_to_view
+                            ])
+                        
+                        leptos.div [
+
+                        ] fun () =>
+                            :>(;[
+                                leptos.button [
+                                    $'"class=\\\"inline-block rounded border border-gray-200 bg-gray-200 px-4 py-1 text-sm font-medium text-white hover:bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500\\\""'
+                                ] fun () =>
+                                    "Roll" |> leptos.text_fragment
+                                |> leptos.element_to_view
+                            ])
+                    ])
+            ])
+        |> leptos.element_to_view
+
         leptos.accordion "History" true None fun () =>
             :>(;[
                 match accounts |> leptos.memo_get with
