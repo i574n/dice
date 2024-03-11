@@ -7,6 +7,8 @@ inl render () =
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
+    inl pages, set_pages = leptos.create_signal 1i32
+
     inl accounts = leptos.create_memo fun () =>
         inl accounts =
             leptos.signal_get_untracked global_state.core_state .data
@@ -17,11 +19,20 @@ inl render () =
             |> am'.filter_vec fst
             |> am'.map_vec snd
             |> fun x => x : _ i32 _
+            
+        inl pages = pages |> leptos.signal_get
 
         accounts
         |> am'.map_vec fun account =>
             inl account = account |> sm'.from_std_string
-            account, $'"https://api2.nearblocks.io/v1/account/" + !account + "/txns?&order=desc&page=1&per_page=25"'
+            inl per_page = 25i32
+            inl pages : a _ _ = am.init pages id
+            inl pages =
+                pages
+                |> am.map fun i =>
+                    inl page = i + 1
+                    $'"https://api2.nearblocks.io/v1/account/" + !account + "/txns?&order=desc&page=" + string !page + "&per_page=" + string !per_page + ""'
+            account, pages
         |> fun x =>
             inl x_log = x |> sm'.format_debug
             leptos.log $'"transactions.render () / url create_memo / result: " + string !x_log + ""'
@@ -31,21 +42,35 @@ inl render () =
         accounts
         |> leptos.memo_get
         |> am'.map_vec snd
+        |> am'.map_vec fun (a x) => x |> am'.to_vec
+        |> fun (a x) => x
+        |> am'.to_vec
+        |> am'.vec_collect
+        |> am'.from_vec
+
+    inl urls_accounts = leptos.create_memo fun () =>
+        accounts
+        |> leptos.memo_get
+        |> am'.map_vec fun account, x => (x |> am.map fun _ => account) |> fun (a x) => x |> am'.to_vec
+        |> fun (a x) => x
+        |> am'.to_vec
+        |> am'.vec_collect
+        |> am'.from_vec
 
     inl root : rust.func0 (a _ (resultm.result' (optionm'.option' model.near.nearblocks.root) rust.std_string)) =
         state_core.use_requests urls model.near.nearblocks.root_unbox
 
     inl txns : leptos.memo (resultm.result' (optionm'.option' (array_base (string * unativeint * heap model.near.nearblocks.txn))) rust.std_string) =
         leptos.create_memo fun () =>
-            inl accounts =
-                accounts
+            inl urls_accounts =
+                urls_accounts
                 |> leptos.memo_get
 
             root
             |> rust.func0_get
             |> am'.map_vec resultm.unbox
             |> am'.mapi_vec fun i x =>
-                inl account = index accounts i
+                inl account = index urls_accounts i
                 x
                 |> resultm.map fun result =>
                     result
@@ -53,7 +78,7 @@ inl render () =
                     |> optionm.map fun result =>
                         (a result.txns : _ i32 _)
                         |> am'.enumerate
-                        |> am'.map_vec fun i', x' => account |> fst, i', heap x'
+                        |> am'.map_vec fun i', x' => account, i', heap x'
                         |> fun (a x : _ i32 _) => x
             |> fun x =>
                 inl x_log = x |> sm'.format_debug
@@ -61,17 +86,12 @@ inl render () =
                 x
                 |> am'.map_vec (resultm.map optionm'.box)
                 |> am'.map_vec resultm.box
-                |> fun x =>
-                    ((;[] |> am'.to_vec |> Ok), x)
-                    ||> am.fold fun acc x =>
-                        x
-                        |> resultm.unbox
-                        |> resultm.map optionm'.unbox
-                        |> fun x =>
-                            match acc, x with
-                            | Ok acc, Ok (Some x) => acc |> am'.vec_extend (x |> am'.to_vec) |> Ok
-                            | _, Error error => error |> Error
-                            | _ => acc
+                |> am'.map_vec fun x =>
+                    x
+                    |> resultm.map' (optionm'.map am'.to_vec)
+                |> fun (a x) => x
+                |> am'.to_vec
+                |> am'.vec_collect'
                 |> resultm.map (am'.vec_sort_by_key fun _, _, x => x.block_timestamp)
                 |> resultm.map (am'.vec_reverse >> am'.from_vec)
                 |> resultm.map fun (a x : _ i32 _) => x |> Some |> optionm'.box
@@ -140,85 +160,105 @@ inl render () =
                     |> leptos.element_to_view
                 else ;[] |> leptos.views_to_view
 
-                txns
-                |> leptos.memo_get
-                |> resultm.unbox
-                |> resultm.map optionm'.unbox
-                |> function
-                    | Ok (Some transactions) =>
-                        match
-                            leptos.signal_get_untracked global_state.core_state .data
-                            |> leptos.signal_get
-                            |> fun data => data.transactions_view_type = state.Details
-                        with
-                        | true =>
-                            leptos.div [
-                                $'"class=\\\"grid flex-1 py-[10px] px-[12px] [gap:15px] sm:[grid-template-columns:repeat(auto-fill,minmax(500px,1fr))]\\\""'
-                            ] fun () =>
-                                a transactions
-                                |> am'.map_vec fun account, index', transaction' =>
-                                    !transaction'
-                                    |> transaction.render account (index' |> i64)
-                                    |> leptos.element_to_view
-                                |> fun (a x : _ i32 _) => x
-                                |> leptos.view_array_to_fragment
-                            |> leptos.element_to_view
-
-                        | false =>
-                            leptos.table [
-                                $'"class=\\\"flex-1 min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700\\\""'
-                            ] fun () =>
-                                :>(;[
-                                    leptos.thead [
-                                        $'"class=\\\"ltr:text-left rtl:text-right\\\""'
-                                    ] fun () =>
-                                        :>(;[
-                                            transaction.tr_head_render transactions
-                                        ])
-                                    |> leptos.element_to_view
-
-                                    leptos.tbody [
-                                        $'"class=\\\"divide-y divide-gray-200 dark:divide-gray-700\\\""'
-                                    ] fun () =>
-                                        a transactions
-                                        |> am'.map_vec fun account, index', transaction' =>
-                                            transaction.tr_render (account, index', transaction')
-                                            |> leptos.element_to_view
-                                        |> fun (a x : _ i32 _) => x
-                                        |> leptos.view_array_to_fragment
-                                    |> leptos.element_to_view
-                                ])
-                            |> leptos.element_to_view
-                    | Error error =>
-                        leptos.div [
-                            $'"class=\\\"flex flex-1 items-center [gap:4px] [padding:5px]\\\""'
+                match accounts |> leptos.memo_get with
+                | a ;[] =>
+                    leptos.div [
+                        $'"class=\\\"flex flex-1 items-center [gap:4px] [padding:5px]\\\""'
+                    ] fun () => :>(;[
+                        leptos.span [
+                            $'"class=\\\"[height:20px]\\\""'
                         ] fun () => :>(;[
-                            leptos.span [
-                                $'"class=\\\"[height:20px]\\\""'
-                            ] fun () => :>(;[
-                                leptos.x_red_svg () |> leptos.element_to_view
-                            ])
-                            |> leptos.element_to_view
-
-                            leptos.pre [
-                                $'"class=\\\"[overflow-y:auto]\\\""'
-                            ] fun () =>
-                                error |> sm'.from_std_string |> leptos.text_fragment
-                            |> leptos.element_to_view
+                            leptos.x_red_svg () |> leptos.element_to_view
                         ])
                         |> leptos.element_to_view
-                    | _ =>
-                        leptos.div [
-                            $'"class=\\\"grid place-content-center py-[10vh]\\\""'
+
+                        leptos.pre [
+                            $'"class=\\\"[overflow-y:auto]\\\""'
                         ] fun () =>
-                            leptos.div [
-                                $'"class=\\\"flex flex-1 [gap:4px] items-center\\\""'
-                            ] fun () => :>(;[
-                                leptos.loading_svg () |> leptos.element_to_view
-                                $'"Loading..."' |> leptos.text_view
-                            ])
-                            |> leptos.element_to_fragment
+                            "No account selected" |> leptos.text_fragment
                         |> leptos.element_to_view
+                    ])
+                    |> leptos.element_to_view
+                | _ =>
+                    txns
+                    |> leptos.memo_get
+                    |> resultm.unbox
+                    |> resultm.map optionm'.unbox
+                    |> function
+                        | Ok (Some transactions) =>
+                            match
+                                leptos.signal_get_untracked global_state.core_state .data
+                                |> leptos.signal_get
+                                |> fun data => data.transactions_view_type = state.Details
+                            with
+                            | true =>
+                                leptos.div [
+                                    $'"class=\\\"grid flex-1 py-[10px] px-[12px] [gap:15px] sm:[grid-template-columns:repeat(auto-fill,minmax(500px,1fr))]\\\""'
+                                ] fun () =>
+                                    a transactions
+                                    |> am'.map_vec fun account, index', transaction' =>
+                                        !transaction'
+                                        |> transaction.render account (index' |> i64)
+                                        |> leptos.element_to_view
+                                    |> fun (a x : _ i32 _) => x
+                                    |> leptos.view_array_to_fragment
+                                |> leptos.element_to_view
+
+                            | false =>
+                                leptos.table [
+                                    $'"class=\\\"flex-1 min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700\\\""'
+                                ] fun () =>
+                                    :>(;[
+                                        leptos.thead [
+                                            $'"class=\\\"ltr:text-left rtl:text-right\\\""'
+                                        ] fun () =>
+                                            :>(;[
+                                                transaction.tr_head_render transactions
+                                            ])
+                                        |> leptos.element_to_view
+
+                                        leptos.tbody [
+                                            $'"class=\\\"divide-y divide-gray-200 dark:divide-gray-700\\\""'
+                                        ] fun () =>
+                                            a transactions
+                                            |> am'.map_vec fun account, index', transaction' =>
+                                                transaction.tr_render (account, index', transaction')
+                                                |> leptos.element_to_view
+                                            |> fun (a x : _ i32 _) => x
+                                            |> leptos.view_array_to_fragment
+                                        |> leptos.element_to_view
+                                    ])
+                                |> leptos.element_to_view
+                        | Error error =>
+                            leptos.div [
+                                $'"class=\\\"flex flex-1 items-center [gap:4px] [padding:5px]\\\""'
+                            ] fun () => :>(;[
+                                leptos.span [
+                                    $'"class=\\\"[height:20px]\\\""'
+                                ] fun () => :>(;[
+                                    leptos.x_red_svg () |> leptos.element_to_view
+                                ])
+                                |> leptos.element_to_view
+
+                                leptos.pre [
+                                    $'"class=\\\"[overflow-y:auto]\\\""'
+                                ] fun () =>
+                                    error |> sm'.from_std_string |> leptos.text_fragment
+                                |> leptos.element_to_view
+                            ])
+                            |> leptos.element_to_view
+                        | _ =>
+                            leptos.div [
+                                $'"class=\\\"grid place-content-center py-[10vh]\\\""'
+                            ] fun () =>
+                                leptos.div [
+                                    $'"class=\\\"flex flex-1 [gap:4px] items-center\\\""'
+                                ] fun () => :>(;[
+                                    leptos.loading_svg () |> leptos.element_to_view
+                                    $'"Loading..."' |> leptos.text_view
+                                ])
+                                |> leptos.element_to_fragment
+                            |> leptos.element_to_view
             ])
         |> leptos.element_to_view
 
