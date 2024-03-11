@@ -1,117 +1,12 @@
 open rust_operators
 
-
 inl render () =
     print_static "<transactions.render>"
     leptos.log $'"transactions.render (1)"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
-
-    inl pages, set_pages = leptos.create_signal 1i32
-
-    inl accounts = leptos.create_memo fun () =>
-        inl accounts =
-            leptos.signal_get_untracked global_state.core_state .data
-            |> leptos.signal_get_untracked
-            |> fun data => data.accounts
-            |> am'.from_vec
-            |> am'.map_vec from_pair
-            |> am'.filter_vec fst
-            |> am'.map_vec snd
-            |> fun x => x : _ i32 _
-            
-        inl pages = pages |> leptos.signal_get
-
-        accounts
-        |> am'.map_vec fun account =>
-            inl account = account |> sm'.from_std_string
-            inl per_page = 25i32
-            inl pages : a _ _ = am.init pages id
-            inl pages =
-                pages
-                |> am.map fun i =>
-                    inl page = i + 1
-                    $'"https://api2.nearblocks.io/v1/account/" + !account + "/txns?&order=desc&page=" + string !page + "&per_page=" + string !per_page + ""'
-            account, pages
-        |> fun x =>
-            inl x_log = x |> sm'.format_debug
-            leptos.log $'"transactions.render (2) / url create_memo / result: " + string !x_log + ""'
-            x
-
-    inl urls = leptos.create_memo fun () =>
-        accounts
-        |> leptos.memo_get
-        |> am'.map_vec snd
-        |> am'.map_vec fun (a x) => x |> am'.to_vec
-        |> fun (a x) => x
-        |> am'.to_vec
-        |> am'.vec_collect
-        |> am'.from_vec
-
-    inl urls_accounts = leptos.create_memo fun () =>
-        accounts
-        |> leptos.memo_get
-        |> am'.map_vec fun account, x => (x |> am.map fun _ => account) |> fun (a x) => x |> am'.to_vec
-        |> fun (a x) => x
-        |> am'.to_vec
-        |> am'.vec_collect
-        |> am'.from_vec
-
-    inl root : rust.func0 (a _ (resultm.result' (optionm'.option' model.near.nearblocks.root) rust.std_string)) =
-        state_core.use_requests urls model.near.nearblocks.root_unbox
-
-    inl txns : leptos.memo (resultm.result' (optionm'.option' (array_base (string * unativeint * heap model.near.nearblocks.txn))) rust.std_string) =
-        leptos.create_memo fun () =>
-            inl urls_accounts =
-                urls_accounts
-                |> leptos.memo_get
-
-            inl root =
-                root
-                |> rust.func0_get
-                |> am'.map_vec resultm.unbox
-                |> am'.map_vec (resultm.map optionm'.unbox)
-
-            inl root_log = root |> sm'.format_debug |> sm'.ellipsis 200i32
-            leptos.log $'"transactions.render (3-1) / txns move / root: " + string !root_log + ""'
-            
-            inl loading =
-                root
-                |> am'.map_vec function
-                    | Ok (None) => true
-                    | _ => false
-                |> am'.filter_vec id
-                |> fun x => length x = length root
-
-            if loading
-            then Ok None
-            else
-                root
-                |> am'.mapi_vec fun i x =>
-                    inl account = index urls_accounts i
-                    x
-                    |> resultm.map fun result =>
-                        result
-                        |> optionm.map fun result =>
-                            (a result.txns : _ i32 _)
-                            |> am'.enumerate
-                            |> am'.map_vec fun i', x' => account, i', heap x'
-                            |> fun (a x : _ i32 _) => x
-                |> am'.map_vec (resultm.map optionm'.box)
-                |> am'.map_vec resultm.box
-                |> am'.map_vec (resultm.map' (optionm'.map am'.to_vec))
-                |> fun (a x) => x
-                |> am'.to_vec
-                |> am'.vec_collect'
-                |> resultm.map (am'.vec_sort_by_key fun _, _, x => x.block_timestamp)
-                |> resultm.map (am'.vec_reverse >> am'.from_vec)
-                |> resultm.map fun (a x : _ i32 _) => x |> Some
-            |> resultm.map optionm'.box
-            |> resultm.box
-            |> fun x =>
-                inl x_log = x |> sm'.format_debug |> sm'.ellipsis 200i32
-                leptos.log $'"transactions.render (3) / txns move / loading: " + string !loading + " / result: " + string !x_log + ""'
-                x
+    
+    inl { accounts txns } = hooks.use_transactions.render global_state
 
     inl (settings_visible, set_settings_visible) = leptos.create_signal false
 
