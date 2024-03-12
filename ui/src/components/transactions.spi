@@ -15,13 +15,13 @@ inl render () =
             set_settings_visible
             |> leptos.signal_update not
         inl on_click = join on_click
+        !\($'"let on_click = !on_click"')
             
         inl class () =
             if settings_visible |> leptos.signal_get
             then ##""
-            else ##" bg-gray-100"
+            else ##"bg-gray-100"
 
-        !\($'"let on_click = !on_click"')
         leptos.icon_button
             (leptos.settings_svg (Some $'"h-5 w-5"') [])
             class

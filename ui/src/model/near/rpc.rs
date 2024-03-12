@@ -30,53 +30,21 @@ pub struct RpcError {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RpcResponse {
-    pub jsonrpc: String,
-    pub result: Option<TransactionStatus>,
-    pub error: Option<RpcError>,
-    pub id: Option<String>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TransactionStatus {
-    pub receipts: Vec<Receipt>,
-    pub receipts_outcome: Vec<ReceiptsOutcome>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Receipt {
-    pub predecessor_id: String,
-    pub receipt: ReceiptDetail,
-    pub receipt_id: String,
-    pub receiver_id: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "PascalCase")]
-pub struct ReceiptDetail {
-    pub action: ActionDetail,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ActionDetail {
-    pub actions: Vec<HashMap<String, TransferDetail>>,
-    pub gas_price: String,
-    pub input_data_ids: Vec<String>,
-    pub output_data_receivers: Vec<String>,
-    pub signer_id: String,
-    pub signer_public_key: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct TransferDetail {
     pub deposit: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ReceiptsOutcome {
-    pub block_hash: String,
-    pub id: String,
-    pub outcome: OutcomeDetail,
+pub struct GasProfile {
+    pub cost: String,
+    pub cost_category: String,
+    pub gas_used: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Metadata {
+    pub gas_profile: Vec<GasProfile>,
+    pub version: u8,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -90,16 +58,48 @@ pub struct OutcomeDetail {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Metadata {
-    pub gas_profile: Vec<GasProfile>,
-    pub version: u8,
+pub struct ReceiptsOutcome {
+    pub block_hash: String,
+    pub id: String,
+    pub outcome: OutcomeDetail,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct GasProfile {
-    pub cost: String,
-    pub cost_category: String,
-    pub gas_used: String,
+pub struct ActionDetail {
+    pub actions: Vec<HashMap<String, TransferDetail>>,
+    pub gas_price: String,
+    pub input_data_ids: Vec<String>,
+    pub output_data_receivers: Vec<String>,
+    pub signer_id: String,
+    pub signer_public_key: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "PascalCase")]
+pub struct ReceiptDetail {
+    pub action: ActionDetail,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Receipt {
+    pub predecessor_id: String,
+    pub receipt: ReceiptDetail,
+    pub receipt_id: String,
+    pub receiver_id: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TransactionStatus {
+    pub receipts: Vec<Receipt>,
+    pub receipts_outcome: Vec<ReceiptsOutcome>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RpcResponse {
+    pub jsonrpc: String,
+    pub result: Option<TransactionStatus>,
+    pub error: Option<RpcError>,
+    pub id: Option<String>,
 }
 
 pub async fn fetch_transaction_status(hash: String) -> RpcResponse {
