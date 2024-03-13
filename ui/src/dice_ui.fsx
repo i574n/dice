@@ -3823,7 +3823,7 @@ and method313 (v0 : leptos_HtmlElement<leptos_html_Button>) : leptos_HtmlElement
     v0
 and closure134 (v0 : Heap2, v1 : leptos_Action<Heap6, Result<US15, std_string_String>>) () : leptos_Fragment =
     let v2 : (unit -> unit) = method308(v0, v1)
-    let v3 : string = "class=\"inline-block rounded border border-gray-700 bg-gray-700 px-4 py-1 text-sm font-medium text-white hover:bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500\""
+    let v3 : string = "class=\"inline-block rounded border border-gray-500 bg-gray-500 px-4 py-1 text-sm font-medium text-white hover:bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500\""
     let v4 : string = "on:click=move |_| v2()"
     let v5 : (unit -> leptos_Fragment) = method311()
     let v6 : string = ""

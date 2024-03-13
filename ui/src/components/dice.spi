@@ -113,7 +113,7 @@ inl render () =
                             inl on_click = join on_click
                             :>(;[
                                 leptos.button [
-                                    $'"class=\\\"inline-block rounded border border-gray-700 bg-gray-700 px-4 py-1 text-sm font-medium text-white hover:bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500\\\""'
+                                    $'"class=\\\"inline-block rounded border border-gray-500 bg-gray-500 px-4 py-1 text-sm font-medium text-white hover:bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500\\\""'
                                     $'"on:click=move |_| !on_click()"'
                                 ] fun () =>
                                     "Roll" |> leptos.text_fragment

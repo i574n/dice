@@ -1845,13 +1845,16 @@ mod module_eef1bd43 {
                                 Dice_ui::US3::US3_1(v21_1_0) => v21_1_0.clone(),
                                 Dice_ui::US3::US3_0(v21_0_0) => panic!(
                                     "{}",
-                                    sprintf!("resultm.get / Result value was Error: {}", v21_0_0),
+                                    sprintf!(
+                                        "resultm.get / Result value was Error: {}",
+                                        v21_0_0.clone()
+                                    ),
                                 ),
                             };
                             let v30: string =
                                 Dice_ui::method0(append(append(string("state_core.use_database (3) / database create_local_resource / result: "),
                                                                sprintf!("{:?}",
-                                                                        &v27)),
+                                                                        v27.clone())),
                                                         string("")));
                             leptos::logging::log!("{}", v30);
                             {
@@ -1919,7 +1922,7 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn closure14(unitVar: (), v0_1: rexie::Error) -> std::string::String {
-            format!("{}", &v0_1)
+            format!("{}", v0_1)
         }
         pub fn method30() -> Func1<rexie::Error, std::string::String> {
             Func1::new(move |v: rexie::Error| Dice_ui::closure14((), v))
@@ -1933,7 +1936,7 @@ mod module_eef1bd43 {
             string("store")
         }
         pub fn closure15(unitVar: (), v0_1: rexie::Error) -> std::string::String {
-            format!("{}", &v0_1)
+            format!("{}", v0_1)
         }
         pub fn method33() -> Func1<rexie::Error, std::string::String> {
             Func1::new(move |v: rexie::Error| Dice_ui::closure15((), v))
@@ -1947,7 +1950,7 @@ mod module_eef1bd43 {
             string("core-state-heap")
         }
         pub fn closure16(unitVar: (), v0_1: rexie::Error) -> std::string::String {
-            format!("{}", &v0_1)
+            format!("{}", v0_1)
         }
         pub fn method36() -> Func1<rexie::Error, std::string::String> {
             Func1::new(move |v: rexie::Error| Dice_ui::closure16((), v))
@@ -1961,7 +1964,7 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn closure17(unitVar: (), v0_1: serde_wasm_bindgen::Error) -> std::string::String {
-            format!("{}", &v0_1)
+            format!("{}", v0_1)
         }
         pub fn method39() -> Func1<serde_wasm_bindgen::Error, std::string::String> {
             Func1::new(move |v: serde_wasm_bindgen::Error| Dice_ui::closure17((), v))
@@ -1978,7 +1981,7 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn closure19(unitVar: (), v0_1: serde_json::Error) -> std::string::String {
-            format!("{}", &v0_1)
+            format!("{}", v0_1)
         }
         pub fn method42() -> Func1<serde_json::Error, std::string::String> {
             Func1::new(move |v: serde_json::Error| Dice_ui::closure19((), v))
@@ -1995,7 +1998,7 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn closure20(unitVar: (), v0_1: borsh::io::Error) -> std::string::String {
-            format!("{}", &v0_1)
+            format!("{}", v0_1)
         }
         pub fn method46() -> Func1<borsh::io::Error, std::string::String> {
             Func1::new(move |v: borsh::io::Error| Dice_ui::closure20((), v))
@@ -2037,7 +2040,8 @@ mod module_eef1bd43 {
                 {
                     let v4: string =
                     Dice_ui::method0(append(append(string("state_core.use_core_database (2) / core_state_heap create_local_resource / database: "),
-                                                   sprintf!("{:?}", &v0_1)),
+                                                   sprintf!("{:?}",
+                                                            v0_1.clone())),
                                             string("")));
                     leptos::logging::log!("{}", v4);
                     {
@@ -2344,7 +2348,7 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn closure34(unitVar: (), v0_1: serde_json::Error) -> std::string::String {
-            format!("{}", &v0_1)
+            format!("{}", v0_1)
         }
         pub fn method61() -> Func1<serde_json::Error, std::string::String> {
             Func1::new(move |v: serde_json::Error| Dice_ui::closure34((), v))
@@ -2534,17 +2538,15 @@ mod module_eef1bd43 {
                         };
                         let v21: leptos::Resource<Option<rexie::Rexie>, Dice_ui::US4> =
                             Dice_ui::method54(v1);
-                        fn v24(v_3: Dice_ui::US4) -> Dice_ui::US9 {
-                            Dice_ui::closure29((), v_3)
-                        }
+                        let v24 = Func1::new(move |v_3: Dice_ui::US4| Dice_ui::closure29((), v_3));
                         let v26: Dice_ui::US9 = defaultValue(
                             Dice_ui::US9::US9_0,
-                            map(Func1::from(v24), leptos::SignalGet::get(&v21)),
+                            map(v24.clone(), leptos::SignalGet::get(&v21)),
                         );
                         let v29: string =
                             Dice_ui::method0(append(append(string("state_core.use_core_database (4) / effect core_state_heap / ##2 / core_state_heap: "),
                                                            sprintf!("{:?}",
-                                                                    &v26)),
+                                                                    v26.clone())),
                                                     string("")));
                         leptos::logging::log!("{}", v29);
                         {
@@ -2620,7 +2622,7 @@ mod module_eef1bd43 {
                                     let v74 = Dice_ui::method58();
                                     let v78: Dice_ui::US9 = defaultValue(
                                         Dice_ui::US9::US9_0,
-                                        map(Func1::from(v24), v73.map(|x| v74(x))),
+                                        map(v24.clone(), v73.map(|x| v74(x))),
                                     );
                                     if let Dice_ui::US9::US9_1(v78_1_0) = &v78 {
                                         let v79: Dice_ui::US4 = match &v78 {
@@ -2700,7 +2702,7 @@ mod module_eef1bd43 {
                                 let v127 = Dice_ui::method58();
                                 let v131: Dice_ui::US9 = defaultValue(
                                     Dice_ui::US9::US9_0,
-                                    map(Func1::from(v24), v126.map(|x| v127(x))),
+                                    map(v24, v126.map(|x| v127(x))),
                                 );
                                 if let Dice_ui::US9::US9_1(v131_1_0) = &v131 {
                                     let v132: Dice_ui::US4 = match &v131 {
@@ -2722,7 +2724,7 @@ mod module_eef1bd43 {
                             let v142: string =
                                 Dice_ui::method0(append(append(string("state_core.use_core_database (5) / effect core_state_heap / ##3 / core_state_heap: "),
                                                                sprintf!("{:?}",
-                                                                        &v139)),
+                                                                        v139.clone())),
                                                         string("")));
                             leptos::logging::log!("{}", v142);
                             if let Dice_ui::US4::US4_1(v139_1_0) = &v139 {
@@ -2808,7 +2810,7 @@ mod module_eef1bd43 {
             v0_1: leptos::Resource<Dice_ui::US2, rexie::Rexie>,
             v1: LrcPtr<Dice_ui::Heap3>,
         ) -> std::pin::Pin<Box<dyn std::future::Future<Output = ()>>> {
-            let v2: string = sprintf!("{:?}", &v1);
+            let v2: string = sprintf!("{:?}", v1.clone());
             let v3: leptos::Resource<Dice_ui::US2, rexie::Rexie> = Dice_ui::method24(v0_1);
             let v8: Dice_ui::US5 = defaultValue(
                 Dice_ui::US5::US5_0,
@@ -2829,7 +2831,7 @@ mod module_eef1bd43 {
                             let v17: string = Dice_ui::method0(append(
                                 append(
                                     string("state_core.set_data () / data_len: "),
-                                    toString(length(sprintf!("{:?}", &v1)) as i64),
+                                    toString(length(sprintf!("{:?}", v1.clone())) as i64),
                                 ),
                                 string(""),
                             ));
@@ -2888,7 +2890,7 @@ mod module_eef1bd43 {
                                                 Dice_ui::US17::US17_0(v46_0_0)
                                                 =>
                                                 panic!("{}",
-                                                       sprintf!("resultm.get / Result value was Error: {}", v46_0_0),),
+                                                       sprintf!("resultm.get / Result value was Error: {}", v46_0_0.clone()),),
                                             }
                                             }
                                         }
@@ -3021,7 +3023,8 @@ mod module_eef1bd43 {
                 });
                 let v43: string =
                     Dice_ui::method0(append(append(string("state_core.use_core_database (10) / effect new_core_state_heap / ##2 / new_core_state_heap: "),
-                                                   sprintf!("{:?}", &v40)),
+                                                   sprintf!("{:?}",
+                                                            v40.clone())),
                                             string("")));
                 leptos::logging::log!("{}", v43);
                 {
@@ -3217,7 +3220,7 @@ mod module_eef1bd43 {
             let v9: leptos_router::Location = Dice_ui::method103(v0_1);
             let v12: leptos::Memo<std::string::String> = Dice_ui::method99(v9.hash);
             let v14: std::string::String = v12();
-            let v15: string = sprintf!("{}{}", &v2, &v14);
+            let v15: string = sprintf!("{}{}", v2, v14.clone());
             let v17: string = Dice_ui::method0(append(
                 append(
                     append(
@@ -3356,7 +3359,7 @@ mod module_eef1bd43 {
             let v25: string = Dice_ui::method0(append(
                 append(
                     string("content.render () / effect 2 / hash_url: "),
-                    toString(format!("{:#?}", &v21)),
+                    toString(format!("{:#?}", v21.clone())),
                 ),
                 string(""),
             ));
@@ -3421,7 +3424,7 @@ mod module_eef1bd43 {
                         let v81: string = Dice_ui::method0(append(
                             append(
                                 string("content.render () / effect 2 / new_tab: "),
-                                toString(format!("{:#?}", &v77)),
+                                toString(format!("{:#?}", v77.clone())),
                             ),
                             string(""),
                         ));
@@ -3627,7 +3630,7 @@ mod module_eef1bd43 {
             let v51: string = Dice_ui::method0(append(
                 append(
                     string("use_transactions.render (2) / url create_memo / result: "),
-                    sprintf!("{:?}", &v48),
+                    sprintf!("{:?}", v48.clone()),
                 ),
                 string(""),
             ));
@@ -3842,7 +3845,7 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn closure69(unitVar: (), v0_1: reqwest_wasm::Error) -> std::string::String {
-            format!("{}", &v0_1)
+            format!("{}", v0_1)
         }
         pub fn method154() -> Func1<reqwest_wasm::Error, std::string::String> {
             Func1::new(move |v: reqwest_wasm::Error| Dice_ui::closure69((), v))
@@ -3967,7 +3970,7 @@ mod module_eef1bd43 {
             let v3: string = Dice_ui::method0(append(
                 append(
                     string("state_core.use_request (2) / json create_local_resource / url: "),
-                    sprintf!("{:?}", &v0_1),
+                    sprintf!("{:?}", v0_1.clone()),
                 ),
                 string(""),
             ));
@@ -4251,7 +4254,7 @@ mod module_eef1bd43 {
                                     Err(v117_1_0) => Dice_ui::closure75((), v117_1_0.clone()),
                                     Ok(v117_0_0) => Dice_ui::closure74((), v117_0_0.clone()),
                                 };
-                                let v121: string = sprintf!("{:?}", &v120);
+                                let v121: string = sprintf!("{:?}", v120.clone());
                                 let v128: string =
                                     Dice_ui::method0(append(append(string("state_core.use_request (4.1) / state_data_resource create_local_resource / x: "),
                                                                    (if length(v121.clone())
@@ -4357,9 +4360,10 @@ mod module_eef1bd43 {
                     let v6: string =
                     Dice_ui::method0(append(append(append(append(string("state_core.use_request (4) / state_data_resource create_local_resource / url : "),
                                                                  sprintf!("{:?}",
-                                                                          &v1)),
+                                                                          v1.clone())),
                                                           string(" / database: ")),
-                                                   sprintf!("{:?}", &v0_1)),
+                                                   sprintf!("{:?}",
+                                                            v0_1.clone())),
                                             string("")));
                     leptos::logging::log!("{}", v6);
                     {
@@ -4544,7 +4548,7 @@ mod module_eef1bd43 {
                             }
                             _ => Dice_ui::US28::US28_0,
                         };
-                        let v52: string = sprintf!("{:?}", &v51);
+                        let v52: string = sprintf!("{:?}", v51.clone());
                         let v59: string =
                                 Dice_ui::method0(append(append(string("state_core.use_request (7) / new_signal_map memo / state_data: "),
                                                                (if length(v52.clone())
@@ -4596,7 +4600,7 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn closure84(unitVar: (), v0_1: rexie::Error) -> std::string::String {
-            format!("{}", &v0_1)
+            format!("{}", v0_1)
         }
         pub fn method181() -> Func1<rexie::Error, std::string::String> {
             Func1::new(move |v: rexie::Error| Dice_ui::closure84((), v))
@@ -4627,7 +4631,7 @@ mod module_eef1bd43 {
                             let v12: string = Dice_ui::method0(append(
                                 append(
                                     string("state_core.set_data () / data_len: "),
-                                    toString(length(sprintf!("{:?}", &v0_1)) as i64),
+                                    toString(length(sprintf!("{:?}", v0_1.clone())) as i64),
                                 ),
                                 string(""),
                             ));
@@ -4750,7 +4754,7 @@ mod module_eef1bd43 {
             let v6: string = Dice_ui::method0(append(
                 append(
                     string("state_core.use_request (8) / set_state_data_action / value_len: "),
-                    toString(length(sprintf!("{:?}", &v2)) as i64),
+                    toString(length(sprintf!("{:?}", v2.clone())) as i64),
                 ),
                 string(""),
             ));
@@ -5036,7 +5040,7 @@ mod module_eef1bd43 {
                             Dice_ui::US37::US37_1(v63_1_0) => v63_1_0.clone(),
                             _ => Dice_ui::US38::US38_1(v65),
                         };
-                        let v70: string = sprintf!("{:?}", &v69);
+                        let v70: string = sprintf!("{:?}", v69.clone());
                         let v77: string = Dice_ui::method0(append(
                             append(
                                 string("state_core.use_request (12) / effect / json: "),
@@ -5269,7 +5273,7 @@ mod module_eef1bd43 {
                         let v85: string = Dice_ui::method0(append(
                             append(
                                 string("state_core.use_request (17) / json Error / value: "),
-                                sprintf!("{:?}", &(v54, v43)),
+                                sprintf!("{:?}", (v54, v43)),
                             ),
                             string(""),
                         ));
@@ -5328,7 +5332,7 @@ mod module_eef1bd43 {
             let v8: string = Dice_ui::method0(append(
                 append(
                     string("state_core.use_request (14) / result memo / urls: "),
-                    sprintf!("{:?}", &v5),
+                    sprintf!("{:?}", v5.clone()),
                 ),
                 string(""),
             ));
@@ -5363,7 +5367,7 @@ mod module_eef1bd43 {
                     Dice_ui::US33::US33_1(v24_1_0) => v24_1_0.clone(),
                     _ => Ok::<Array<Dice_ui::US34>, std::string::String>(v26),
                 };
-                let v31: string = sprintf!("{:?}", &v30);
+                let v31: string = sprintf!("{:?}", v30.clone());
                 let v38: string = Dice_ui::method0(append(
                     append(
                         string("state_core.use_request (16.1) / effect / json: "),
@@ -5385,7 +5389,7 @@ mod module_eef1bd43 {
                             (move || v40())(),
                         ),
                     );
-                    let v46: string = sprintf!("{:?}", &v45);
+                    let v46: string = sprintf!("{:?}", v45.clone());
                     let v53: string = Dice_ui::method0(append(
                         append(
                             string("state_core.use_request (16) / result_memo / state_data: "),
@@ -5433,7 +5437,7 @@ mod module_eef1bd43 {
                                 >,
                             >()),
                         };
-                        let v73: string = sprintf!("{:?}", &v72);
+                        let v73: string = sprintf!("{:?}", v72.clone());
                         let v80: string =
                             Dice_ui::method0(append(append(string("state_core.use_request (18) / result create_memo / json_cache_obj: "),
                                                            (if length(v73.clone())
@@ -5997,13 +6001,13 @@ mod module_eef1bd43 {
                 }
                 _ => Dice_ui::US28::US28_0,
             };
-            let v53: string = sprintf!("{:?}", &v20);
+            let v53: string = sprintf!("{:?}", v20);
             let v58: string = if length(v53.clone()) <= 200_i32 {
                 v53.clone()
             } else {
                 append(substring2(v53, 0_i32, 200_i32), string("..."))
             };
-            let v59: string = sprintf!("{:?}", &v52);
+            let v59: string = sprintf!("{:?}", v52);
             let v64: string = if length(v59.clone()) <= 200_i32 {
                 v59.clone()
             } else {
@@ -6077,7 +6081,7 @@ mod module_eef1bd43 {
                         std::string::String,
                     >,
                 > = fable_library_rust::NativeArray_::array_from(v77);
-                let v80: string = sprintf!("{:?}", &v79);
+                let v80: string = sprintf!("{:?}", v79.clone());
                 let v87: string = Dice_ui::method0(append(
                     append(
                         string("state_core.use_request (20) / result move / result: "),
@@ -7333,7 +7337,7 @@ mod module_eef1bd43 {
             let v23: Vec<Dice_ui::US43> =
                 Dice_ui::method244(v20.iter().map(|x| v17(x.clone())).collect());
             let v25: Array<Dice_ui::US43> = fable_library_rust::NativeArray_::array_from(v23);
-            let v26: string = sprintf!("{:?}", &v25);
+            let v26: string = sprintf!("{:?}", v25.clone());
             let v33: string = Dice_ui::method0(append(
                 append(
                     string("transactions.render (3-1) / txns move / root: "),
@@ -7577,7 +7581,7 @@ mod module_eef1bd43 {
                         std::string::String,
                     >(v180_0_0.clone()),
                 };
-                let v187: string = sprintf!("{:?}", &v186);
+                let v187: string = sprintf!("{:?}", v186.clone());
                 let v192: string = if length(v187.clone()) <= 200_i32 {
                     v187.clone()
                 } else {
@@ -7672,7 +7676,7 @@ mod module_eef1bd43 {
             let v3: string = Dice_ui::method0(append(
                 append(
                     string("dice.render (2) / set_max_action / value: "),
-                    sprintf!("{:?}", &v0_1),
+                    sprintf!("{:?}", v0_1),
                 ),
                 string(""),
             ));
@@ -7745,7 +7749,7 @@ mod module_eef1bd43 {
                         v70.map_err(|x| v69(x));
                     let v76: Result<Dice_ui::US15, std::string::String> =
                         Ok::<Dice_ui::US15, std::string::String>(Dice_ui::US15::US15_1(v72?));
-                    let v77: string = sprintf!("{:?}", &v76);
+                    let v77: string = sprintf!("{:?}", v76.clone());
                     let v84: string = Dice_ui::method0(append(
                         append(
                             string("dice.render (3) / roll_action / result: "),
@@ -7759,7 +7763,7 @@ mod module_eef1bd43 {
                     ));
                     leptos::logging::log!("{}", v84);
                     {
-                        let v86: string = sprintf!("{:?}", &v76);
+                        let v86: string = sprintf!("{:?}", v76.clone());
                         let v93: string = Dice_ui::method0(append(
                             append(
                                 string("dice.render (4) / roll_action / result: "),
@@ -7998,7 +8002,7 @@ mod module_eef1bd43 {
         ) -> leptos::Fragment {
             let v2 = Dice_ui::method308(v0_1, v1);
             let v3: string =
-                string("class=\"inline-block rounded border border-gray-700 bg-gray-700 px-4 py-1 text-sm font-medium text-white hover:bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500\"");
+                string("class=\"inline-block rounded border border-gray-500 bg-gray-500 px-4 py-1 text-sm font-medium text-white hover:bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500\"");
             let v8: string = append(
                 append(
                     string(" on:click=move |_| v2()"),
@@ -8024,7 +8028,7 @@ mod module_eef1bd43 {
                 leptos::view! {
                     <button
                         on:click=move |_| v2()
-                        class="inline-block rounded border border-gray-700 bg-gray-700 px-4 py-1 text-sm font-medium text-white hover:bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500"
+                        class="inline-block rounded border border-gray-500 bg-gray-500 px-4 py-1 text-sm font-medium text-white hover:bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500"
                     >
                         {v10()}
                     </button>
@@ -18412,7 +18416,7 @@ mod module_eef1bd43 {
                 Option<Array<(string, usize, LrcPtr<Dice_ui::Heap5>)>>,
                 std::string::String,
             > = v1();
-            let v6: std::string::String = Dice_ui::method60(format!("{:#?}", &v3));
+            let v6: std::string::String = Dice_ui::method60(format!("{:#?}", v3));
             let v13: string =
                 string(" class=\"[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] [max-height:70vh]\"");
             let v15 = Dice_ui::method304(Dice_ui::method303(Dice_ui::method508(
@@ -20479,7 +20483,7 @@ mod module_eef1bd43 {
                     (if v23.clone() == string("") {
                         string("")
                     } else {
-                        sprintf!("?{}", &v23)
+                        sprintf!("?{}", v23)
                     }),
                 );
                 let v33: string = string(" class=\"hidden\"");
@@ -20646,7 +20650,7 @@ mod module_eef1bd43 {
                     (if v26.clone() == string("") {
                         string("")
                     } else {
-                        sprintf!("?{}", &v26)
+                        sprintf!("?{}", v26)
                     }),
                 );
                 let v34: Option<LrcPtr<Dice_ui::Heap2>> =
@@ -21335,7 +21339,7 @@ mod module_eef1bd43 {
                 let v13: string = Dice_ui::method0(append(
                     append(
                         string("main / mount_to_body / body: "),
-                        sprintf!("{:?}", &v10),
+                        sprintf!("{:?}", v10.clone()),
                     ),
                     string(""),
                 ));
