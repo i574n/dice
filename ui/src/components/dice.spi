@@ -7,8 +7,6 @@ inl render () =
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
     
     inl { accounts txns } = hooks.use_transactions.render global_state
-    
-    inl loading, set_loading = leptos.create_signal false
 
     inl roll_action = leptos.create_action fun (value : heap i32) =>
         inl value_log = value |> sm'.format_debug
@@ -57,12 +55,27 @@ inl render () =
                     |> resultm.map model.near.rpc.rpc_response_unbox
                     |> resultm.map Some
                 | _ => Ok None
+                |> resultm.box
 
             inl result_log = result' |> sm'.format_debug |> sm'.ellipsis 200i32
             leptos.log $'"dice.render (4) / roll_action / result: " + string !result_log + ""'
 
-            result
+            result'
         |> async.future_init 5 1
+    
+    inl transactions = leptos.create_memo fun () =>
+        inl accounts = accounts |> leptos.memo_get
+        inl roll =
+            roll_action
+            |> leptos.action_value
+            |> leptos.signal_get
+            |> optionm'.map resultm.unbox
+            |> optionm'.unbox
+            |> resultm.flatten_option
+        
+        inl roll_log = roll |> sm'.format_debug |> sm'.ellipsis 200i32
+        leptos.log $'"dice.render (5) / transactions memo / roll: " + string !roll_log + ""'
+        accounts
 
     inl on_click () =
         inl max =
@@ -142,7 +155,7 @@ inl render () =
 
         leptos.accordion "History" true None fun () =>
             :>(;[
-                match accounts |> leptos.memo_get with
+                match transactions |> leptos.memo_get with
                 | a ;[] =>
                     leptos.div [
                         $'"class=\\\"flex flex-1 items-center [gap:4px] [padding:5px]\\\""'
