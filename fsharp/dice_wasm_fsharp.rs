@@ -28,7 +28,6 @@ mod module_dc8717e1 {
             use fable_library_rust::List_::tryItem;
             use fable_library_rust::List_::List;
             use fable_library_rust::NativeArray_::Array;
-            use fable_library_rust::Native_::Any;
             use fable_library_rust::Native_::Func0;
             use fable_library_rust::Native_::Func1;
             use fable_library_rust::Native_::Func2;
@@ -41,6 +40,7 @@ mod module_dc8717e1 {
             use fable_library_rust::Seq_::item as item_1;
             use fable_library_rust::Seq_::map;
             use fable_library_rust::Seq_::unfold;
+            use fable_library_rust::String_::printfn;
             use fable_library_rust::String_::sprintf;
             use fable_library_rust::String_::string;
             pub fn sixthPowerSequence() -> LrcPtr<dyn IEnumerable_1<i32>> {
@@ -71,8 +71,8 @@ mod module_dc8717e1 {
                             {
                                 let arg: string = sprintf!(
                                     "accumulateDiceRolls / power: {} / acc: {}",
-                                    &power.get().clone(),
-                                    &acc.get().clone()
+                                    power.get().clone(),
+                                    acc.get().clone()
                                 );
                                 Func1::new({
                                     let arg = arg.clone();
@@ -99,10 +99,10 @@ mod module_dc8717e1 {
                                     {
                                         let arg_1: string =
                                                          sprintf!("accumulateDiceRolls / power: {} / acc: {} / roll: {} / value: {}",
-                                                                  &power.get().clone(),
-                                                                  &acc.get().clone(),
-                                                                  &roll_1,
-                                                                  &value);
+                                                                  power.get().clone(),
+                                                                  acc.get().clone(),
+                                                                  roll_1,
+                                                                  value);
                                         Func1::new({
                                             let arg_1 = arg_1.clone();
                                             move |func_1: Func1<string, ()>| func_1(arg_1.clone())
@@ -128,9 +128,9 @@ mod module_dc8717e1 {
                                     {
                                         let arg_2: string = sprintf!(
                                             "accumulateDiceRolls / power: {} / acc: {} / roll: {}",
-                                            &power.get().clone(),
-                                            &acc.get().clone(),
-                                            &roll_2
+                                            power.get().clone(),
+                                            acc.get().clone(),
+                                            roll_2
                                         );
                                         Func1::new({
                                             let arg_2 = arg_2.clone();
@@ -250,9 +250,9 @@ mod module_dc8717e1 {
                                         {
                                             let arg: string = sprintf!(
                                                 "calculateDiceCount / max: {} / n: {} / p: {}",
-                                                &max_1,
-                                                &n.get().clone(),
-                                                &p.get().clone()
+                                                max_1,
+                                                n.get().clone(),
+                                                p.get().clone()
                                             );
                                             Func1::new({
                                                 let arg = arg.clone();
@@ -355,7 +355,7 @@ mod module_dc8717e1 {
                 let result: i32 = Polyglot::dice_fsharp::rollProgressively(
                     Some({
                         fn clo(a0: string) {
-                            println!("{}", a0);
+                            printfn!("{}", a0);
                         }
                         Func1::new({
                             let clo = clo.clone();
@@ -370,7 +370,7 @@ mod module_dc8717e1 {
                     LrcPtr::new(TraceLevel::Debug),
                     Func0::new({
                         let result = result.clone();
-                        move || sprintf!("main / result: {}", &result)
+                        move || sprintf!("main / result: {}", result)
                     }),
                     Func0::new(move || string("")),
                 );

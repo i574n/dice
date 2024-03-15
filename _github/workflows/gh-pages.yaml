@@ -21,7 +21,7 @@ jobs:
 
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 9
+          dotnet-version: '9.0.100-preview.1.24101.2'
 
       - uses: ATiltedTree/setup-rust@v1
         with:
@@ -35,8 +35,8 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-2024-02-26-${{ hashFiles('**/paket.lock') }}
-          restore-keys: ${{ runner.os }}-nuget-2024-02-26-
+          key: ${{ runner.os }}-nuget-2024-03-15-${{ hashFiles('**/paket.lock') }}
+          restore-keys: ${{ runner.os }}-nuget-2024-03-15-
 
       - uses: actions/cache@v3
         with:
@@ -46,8 +46,8 @@ jobs:
                 ~/.cargo/registry/cache/
                 ~/.cargo/git/db/
                 target/
-            key: ${{ runner.os }}-cargo-2024-02-26-${{ hashFiles('**/Cargo.lock') }}
-            restore-keys: ${{ runner.os }}-cargo-2024-02-26-
+            key: ${{ runner.os }}-cargo-2024-03-15-${{ hashFiles('**/Cargo.lock') }}
+            restore-keys: ${{ runner.os }}-cargo-2024-03-15-
 
       - run: pwsh scripts/init.ps1
 

@@ -8,6 +8,88 @@ inl render () =
     
     inl { accounts txns } = hooks.use_transactions.render global_state
 
+    inl roll_action = leptos.create_action fun (value : heap i32) =>
+        inl value_log = value |> sm'.format_debug
+        leptos.log $'"dice.render (2) / set_max_action / value: " + string !value_log + ""'
+        fun () =>
+            inl url = "https://rpc.mainnet.near.org"
+            
+            inl body =
+                {
+                    jsonrpc = "2.0" |> sm'.to_std_string
+                    id = "dontcare" |> sm'.to_std_string
+                    method = "EXPERIMENTAL_tx_status" |> sm'.to_std_string
+                    params = ;[
+                        "9JgptZpFQGtUvusnoF9ysVqHXD8fXCri8mFxPTMnt3kS" |> sm'.to_std_string
+                        "bowen" |> sm'.to_std_string
+                    ]
+                }
+                |> model.near.rpc.rpc_input_box
+            
+            inl result =
+                url
+                |> networking.new_request_post
+                |> networking.request_json body
+                |> networking.request_send
+                |> async.await
+                |> resultm.map_error' sm'.format'
+                |> resultm.try'
+                |> networking.response_text
+                |> async.await
+                |> resultm.map_error' sm'.format'
+                |> resultm.try'
+                |> Some
+                |> Ok
+                |> resultm.box : _ _ rust.std_string
+
+            inl result_log = result |> sm'.format_debug |> sm'.ellipsis 200i32
+            leptos.log $'"dice.render (3) / roll_action / result: " + string !result_log + ""'
+
+            inl result' =
+                match result |> resultm.unbox with
+                | Ok (Some value) =>
+                    value
+                    |> sm'.from_std_string
+                    |> sm'.deserialize
+                    |> resultm.unbox
+                    |> resultm.map model.near.rpc.rpc_response_unbox
+                    |> resultm.map Some
+                | _ => Ok None
+                |> resultm.box
+
+            inl result_log = result' |> sm'.format_debug |> sm'.ellipsis 200i32
+            leptos.log $'"dice.render (4) / roll_action / result: " + string !result_log + ""'
+
+            result'
+        |> async.future_init 5 1
+    
+    inl transactions = leptos.create_memo fun () =>
+        inl accounts = accounts |> leptos.memo_get
+        inl roll =
+            roll_action
+            |> leptos.action_value
+            |> leptos.signal_get
+            |> optionm'.map resultm.unbox
+            |> optionm'.unbox
+            |> resultm.flatten_option
+        
+        inl roll_log = roll |> sm'.format_debug |> sm'.ellipsis 200i32
+        leptos.log $'"dice.render (5) / transactions memo / roll: " + string !roll_log + ""'
+        accounts
+
+    inl on_click () =
+        inl max =
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_get_untracked
+            |> fun x => heap x.max
+
+        roll_action |> leptos.action_dispatch max
+    
+    inl button_disabled () = rust.move fun () =>
+        inl x = roll_action |> leptos.action_pending |> leptos.signal_get
+        x
+    inl button_disabled = join button_disabled
+
     ;[
         leptos.accordion "Roll" true None fun () =>
             :>(;[
@@ -48,11 +130,23 @@ inl render () =
                         leptos.div [
 
                         ] fun () =>
+                            inl on_click = join on_click
+                            inl button_disabled' () =
+                                button_disabled () |> rust.func0_get
+                            inl button_disabled' = join button_disabled'
                             :>(;[
                                 leptos.button [
-                                    $'"class=\\\"inline-block rounded border border-gray-200 bg-gray-200 px-4 py-1 text-sm font-medium text-white hover:bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500\\\""'
+                                    $'"class=\\\"flex gap-[10px] [align-items:center] inline-block rounded border border-gray-400 hover:bg-gray-400 px-4 py-1 text-sm font-medium text-white bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500\\\""'
+                                    $'"prop:disabled=move || !button_disabled'()"'
+                                    $'"on:click=move |_| !on_click()"'
                                 ] fun () =>
-                                    "Roll" |> leptos.text_fragment
+                                    :>(;[
+                                        "Roll" |> leptos.text_view
+
+                                        if button_disabled () |> rust.func0_get
+                                        then leptos.loading_svg (Some $'"[width:15px] [height:14px]"') |> leptos.element_to_view
+                                        else ;[] |> leptos.views_to_view
+                                    ])
                                 |> leptos.element_to_view
                             ])
                     ])
@@ -61,7 +155,7 @@ inl render () =
 
         leptos.accordion "History" true None fun () =>
             :>(;[
-                match accounts |> leptos.memo_get with
+                match transactions |> leptos.memo_get with
                 | a ;[] =>
                     leptos.div [
                         $'"class=\\\"flex flex-1 items-center [gap:4px] [padding:5px]\\\""'
@@ -90,21 +184,28 @@ inl render () =
                             inl transactions =
                                 a transactions
                                 |> am'.filter_vec function
-                                    | _, _, transaction =>
-                                        a transaction.actions
-                                        |> am'.map_vec fun transaction =>
-                                            {
-                                                action =
-                                                    transaction.action
-                                                    |> sm'.from_std_string
-                                                method =
-                                                    transaction.method
-                                                    |> optionm'.unbox
-                                                    |> optionm.map sm'.from_std_string
-                                            }
-                                        |> am'.filter_vec fun transaction =>
-                                            { action = "FUNCTION_CALL"; method = Some "generate_random_number" } = transaction
-                                        |> fun (x : _ i32 _) => length x > 0
+                                    | account, _, transaction =>
+                                        inl is_call =
+                                            a transaction.actions
+                                            |> am'.map_vec fun transaction =>
+                                                {
+                                                    action =
+                                                        transaction.action
+                                                        |> sm'.from_std_string
+                                                    method =
+                                                        transaction.method
+                                                        |> optionm'.unbox
+                                                        |> optionm.map sm'.from_std_string
+                                                }
+                                            |> am'.filter_vec fun transaction =>
+                                                {
+                                                    action = "FUNCTION_CALL"
+                                                    method = Some "generate_random_number"
+                                                } = transaction
+                                            |> fun (x : _ i32 _) => length x > 0
+                                        inl is_receiver =
+                                            account = (transaction.receiver_account_id |> sm'.from_std_string)
+                                        is_call && is_receiver
                                     | _ => false
                                 |> fun (a x : _ i32 _) => x
 
@@ -120,12 +221,6 @@ inl render () =
 
                                             ] fun () =>
                                                 :>(;[
-                                                    leptos.th [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                    ] fun () =>
-                                                        "Account" |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
                                                     leptos.th [
                                                         $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
                                                     ] fun () =>
@@ -169,18 +264,11 @@ inl render () =
                                         $'"class=\\\"divide-y divide-gray-200 dark:divide-gray-700\\\""'
                                     ] fun () =>
                                         a transactions
-                                        |> am'.map_vec fun account, _index', transaction' =>
+                                        |> am'.map_vec fun _account, _index', transaction' =>
                                             leptos.tr [
                                                 $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
                                             ] fun () =>
                                                 :>(;[
-                                                    leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
-                                                        account
-                                                        |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
                                                     leptos.td [
                                                         $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                     ] fun () =>
@@ -272,7 +360,7 @@ inl render () =
                                 leptos.div [
                                     $'"class=\\\"flex flex-1 [gap:4px] items-center\\\""'
                                 ] fun () => :>(;[
-                                    leptos.loading_svg () |> leptos.element_to_view
+                                    leptos.loading_svg (Some $'"[width:24px] [height:30px]"') |> leptos.element_to_view
                                     $'"Loading..."' |> leptos.text_view
                                 ])
                                 |> leptos.element_to_fragment

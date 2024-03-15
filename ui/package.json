@@ -2,7 +2,7 @@
   "name": "dice_ui",
   "scripts": {
     "outdated-pre": "npm-check-updates --target greatest",
-    "build-css": "tailwindcss -i input.css -o target/tailwind.css"
+    "build-css": "tailwindcss -i app.css -o target/tailwind.css -m"
   },
   "devDependencies": {
     "@types/node": "~20.11",

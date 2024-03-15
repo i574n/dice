@@ -2,7 +2,7 @@ use futures::StreamExt;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcInput {
     pub jsonrpc: String,
     pub id: String,
@@ -10,17 +10,17 @@ pub struct RpcInput {
     pub params: Vec<String>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ErrorCauseInfo {
     pub error_message: Option<String>,
     pub requested_transaction_hash: Option<String>,
 }
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ErrorCause {
     pub name: String,
     pub info: ErrorCauseInfo,
 }
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcError {
     pub name: String,
     pub cause: ErrorCause,
@@ -29,57 +29,25 @@ pub struct RpcError {
     pub data: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RpcResponse {
-    pub jsonrpc: String,
-    pub result: Option<TransactionStatus>,
-    pub error: Option<RpcError>,
-    pub id: Option<String>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TransactionStatus {
-    pub receipts: Vec<Receipt>,
-    pub receipts_outcome: Vec<ReceiptsOutcome>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Receipt {
-    pub predecessor_id: String,
-    pub receipt: ReceiptDetail,
-    pub receipt_id: String,
-    pub receiver_id: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "PascalCase")]
-pub struct ReceiptDetail {
-    pub action: ActionDetail,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ActionDetail {
-    pub actions: Vec<HashMap<String, TransferDetail>>,
-    pub gas_price: String,
-    pub input_data_ids: Vec<String>,
-    pub output_data_receivers: Vec<String>,
-    pub signer_id: String,
-    pub signer_public_key: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TransferDetail {
     pub deposit: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReceiptsOutcome {
-    pub block_hash: String,
-    pub id: String,
-    pub outcome: OutcomeDetail,
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct GasProfile {
+    pub cost: String,
+    pub cost_category: String,
+    pub gas_used: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct Metadata {
+    pub gas_profile: Vec<GasProfile>,
+    pub version: u8,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct OutcomeDetail {
     pub executor_id: String,
     pub gas_burnt: u64,
@@ -89,17 +57,49 @@ pub struct OutcomeDetail {
     pub status: HashMap<String, String>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Metadata {
-    pub gas_profile: Vec<GasProfile>,
-    pub version: u8,
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct ReceiptsOutcome {
+    pub block_hash: String,
+    pub id: String,
+    pub outcome: OutcomeDetail,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct GasProfile {
-    pub cost: String,
-    pub cost_category: String,
-    pub gas_used: String,
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct ActionDetail {
+    pub actions: Vec<HashMap<String, TransferDetail>>,
+    pub gas_price: String,
+    pub input_data_ids: Vec<String>,
+    pub output_data_receivers: Vec<String>,
+    pub signer_id: String,
+    pub signer_public_key: String,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct ReceiptDetail {
+    pub action: ActionDetail,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct Receipt {
+    pub predecessor_id: String,
+    pub receipt: ReceiptDetail,
+    pub receipt_id: String,
+    pub receiver_id: String,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct TransactionStatus {
+    pub receipts: Vec<Receipt>,
+    pub receipts_outcome: Vec<ReceiptsOutcome>,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct RpcResponse {
+    pub jsonrpc: String,
+    pub result: Option<TransactionStatus>,
+    pub error: Option<RpcError>,
+    pub id: Option<String>,
 }
 
 pub async fn fetch_transaction_status(hash: String) -> RpcResponse {

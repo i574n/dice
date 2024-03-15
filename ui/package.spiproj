@@ -6,6 +6,7 @@ modules:
     src/
         model/
             near/
+                rpc
                 nearblocks
         state
         hooks/

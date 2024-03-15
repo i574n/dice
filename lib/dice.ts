@@ -1,11 +1,11 @@
-import { FSharpRef, Record, Union } from "./fable_modules/fable-library-ts.4.13.0/Types.js";
-import { int32, int8, uint8 } from "./fable_modules/fable-library-ts.4.13.0/Int32.js";
-import { uint64_type, int64_type, record_type, string_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "./fable_modules/fable-library-ts.4.13.0/Reflection.js";
-import { op_Multiply, toUInt64, equals, compare, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "./fable_modules/fable-library-ts.4.13.0/BigInt.js";
-import { IComparable, IEquatable } from "./fable_modules/fable-library-ts.4.13.0/Util.js";
-import { interpolate, toText } from "./fable_modules/fable-library-ts.4.13.0/String.js";
-import { value as value_47, Option, map, defaultArg } from "./fable_modules/fable-library-ts.4.13.0/Option.js";
-import { nonSeeded } from "./fable_modules/fable-library-ts.4.13.0/Random.js";
+import { FSharpRef, Record, Union } from "./fable_modules/fable-library-ts.4.14.0/Types.js";
+import { int32, int8, uint8 } from "./fable_modules/fable-library-ts.4.14.0/Int32.js";
+import { uint64_type, int64_type, record_type, string_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "./fable_modules/fable-library-ts.4.14.0/Reflection.js";
+import { op_Multiply, toUInt64, equals, compare, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "./fable_modules/fable-library-ts.4.14.0/BigInt.js";
+import { IComparable, IEquatable } from "./fable_modules/fable-library-ts.4.14.0/Util.js";
+import { interpolate, toText } from "./fable_modules/fable-library-ts.4.14.0/String.js";
+import { value as value_47, Option, map, defaultArg } from "./fable_modules/fable-library-ts.4.14.0/Option.js";
+import { nonSeeded } from "./fable_modules/fable-library-ts.4.14.0/Random.js";
 
 export type UH0_$union = 
     | UH0<0>
