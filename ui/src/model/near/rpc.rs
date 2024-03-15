@@ -18,7 +18,7 @@ pub struct ErrorCauseInfo {
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ErrorCause {
     pub name: String,
-    pub info: ErrorCauseInfo,
+    pub info: Option<ErrorCauseInfo>,
 }
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcError {
