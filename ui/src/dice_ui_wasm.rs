@@ -8692,29 +8692,30 @@ mod module_eef1bd43 {
                         } else {
                             Dice_ui::US54::US54_1(Dice_ui::US53::US53_0)
                         };
-                        let v145: string = sprintf!("{:?}", v144.clone());
-                        let v152: string = Dice_ui::method0(append(
+                        let v150: Result<Dice_ui::US53, std::string::String> = match &v144 {
+                            Dice_ui::US54::US54_1(v144_1_0) => {
+                                Ok::<Dice_ui::US53, std::string::String>(v144_1_0.clone())
+                            }
+                            Dice_ui::US54::US54_0(v144_0_0) => {
+                                Err::<Dice_ui::US53, std::string::String>(v144_0_0.clone())
+                            }
+                        };
+                        let v151: string = sprintf!("{:?}", v150.clone());
+                        let v158: string = Dice_ui::method0(append(
                             append(
                                 string("dice.render (4) / roll_action / result: "),
-                                (if length(v145.clone()) <= 200_i32 {
-                                    v145.clone()
+                                (if length(v151.clone()) <= 200_i32 {
+                                    v151.clone()
                                 } else {
-                                    append(substring2(v145, 0_i32, 200_i32), string("..."))
+                                    append(substring2(v151, 0_i32, 200_i32), string("..."))
                                 }),
                             ),
                             string(""),
                         ));
-                        leptos::logging::log!("{}", v152);
+                        leptos::logging::log!("{}", v158);
                         {
                             let v160: Result<Dice_ui::US53, std::string::String> =
-                                Dice_ui::method324(match &v144 {
-                                    Dice_ui::US54::US54_1(v144_1_0) => {
-                                        Ok::<Dice_ui::US53, std::string::String>(v144_1_0.clone())
-                                    }
-                                    Dice_ui::US54::US54_0(v144_0_0) => {
-                                        Err::<Dice_ui::US53, std::string::String>(v144_0_0.clone())
-                                    }
-                                });
+                                Dice_ui::method324(v150);
                             v160
                         }
                     }

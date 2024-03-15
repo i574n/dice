@@ -28,29 +28,32 @@ mod module_dc8717e1 {
             use fable_library_rust::List_::tryItem;
             use fable_library_rust::List_::List;
             use fable_library_rust::NativeArray_::Array;
-            use fable_library_rust::Native_::Any;
             use fable_library_rust::Native_::Func0;
             use fable_library_rust::Native_::Func1;
             use fable_library_rust::Native_::Func2;
             use fable_library_rust::Native_::LrcPtr;
             use fable_library_rust::Native_::MutCell;
+            use fable_library_rust::Native_::OnceInit;
             use fable_library_rust::Option_::getValue;
             use fable_library_rust::Option_::iterate;
             use fable_library_rust::Seq_::cache;
             use fable_library_rust::Seq_::item as item_1;
             use fable_library_rust::Seq_::map;
             use fable_library_rust::Seq_::unfold;
+            use fable_library_rust::String_::printfn;
             use fable_library_rust::String_::sprintf;
             use fable_library_rust::String_::string;
             pub fn sixthPowerSequence() -> LrcPtr<dyn IEnumerable_1<i32>> {
-                static sixthPowerSequence: MutCell<Option<LrcPtr<dyn IEnumerable_1<i32>>>> =
-                    MutCell::new(None);
-                sixthPowerSequence.get_or_init(|| {
-                    cache(unfold(
-                        Func1::new(move |state: i32| Some(LrcPtr::new((state, state * 6_i32)))),
-                        1_i32,
-                    ))
-                })
+                static sixthPowerSequence: OnceInit<LrcPtr<dyn IEnumerable_1<i32>>> =
+                    OnceInit::new();
+                sixthPowerSequence
+                    .get_or_insert_with(|| {
+                        cache(unfold(
+                            Func1::new(move |state: i32| Some(LrcPtr::new((state, state * 6_i32)))),
+                            1_i32,
+                        ))
+                    })
+                    .clone()
             }
             pub fn accumulateDiceRolls(
                 log: Option<Func1<string, ()>>,
@@ -63,52 +66,55 @@ mod module_dc8717e1 {
                 let power: MutCell<i32> = MutCell::new(power);
                 let acc: MutCell<i32> = MutCell::new(acc);
                 '_accumulateDiceRolls: loop {
-                    break '_accumulateDiceRolls (if power.get() < 0_i32 {
+                    break '_accumulateDiceRolls (if power.get().clone() < 0_i32 {
                         iterate(
                             {
                                 let arg: string = sprintf!(
                                     "accumulateDiceRolls / power: {} / acc: {}",
-                                    &power.get(),
-                                    &acc.get()
+                                    power.get().clone(),
+                                    acc.get().clone()
                                 );
                                 Func1::new({
                                     let arg = arg.clone();
                                     move |func: Func1<string, ()>| func(arg.clone())
                                 })
                             },
-                            log.get(),
+                            log.get().clone(),
                         );
-                        Some(LrcPtr::new((acc.get() + 1_i32, rolls.get())))
+                        Some(LrcPtr::new((
+                            acc.get().clone() + 1_i32,
+                            rolls.get().clone(),
+                        )))
                     } else {
-                        if !isEmpty(rolls.get()) {
-                            if head(rolls.get()) > 1_i32 {
-                                let rest_1: List<i32> = tail(rolls.get());
-                                let roll_1: i32 = head(rolls.get());
+                        if !isEmpty(rolls.get().clone()) {
+                            if head(rolls.get().clone()) > 1_i32 {
+                                let rest_1: List<i32> = tail(rolls.get().clone());
+                                let roll_1: i32 = head(rolls.get().clone());
                                 let value: i32 = (roll_1 - 1_i32)
                                     * item_1(
-                                        power.get(),
+                                        power.get().clone(),
                                         Polyglot::dice_fsharp::sixthPowerSequence(),
                                     );
                                 iterate(
                                     {
                                         let arg_1: string =
                                                          sprintf!("accumulateDiceRolls / power: {} / acc: {} / roll: {} / value: {}",
-                                                                  &power.get(),
-                                                                  &acc.get(),
-                                                                  &roll_1,
-                                                                  &value);
+                                                                  power.get().clone(),
+                                                                  acc.get().clone(),
+                                                                  roll_1,
+                                                                  value);
                                         Func1::new({
                                             let arg_1 = arg_1.clone();
                                             move |func_1: Func1<string, ()>| func_1(arg_1.clone())
                                         })
                                     },
-                                    log.get(),
+                                    log.get().clone(),
                                 );
                                 {
-                                    let log_temp = log.get();
+                                    let log_temp = log.get().clone();
                                     let rolls_temp: List<i32> = rest_1.clone();
-                                    let power_temp: i32 = power.get() - 1_i32;
-                                    let acc_temp: i32 = acc.get() + value;
+                                    let power_temp: i32 = power.get().clone() - 1_i32;
+                                    let acc_temp: i32 = acc.get().clone() + value;
                                     log.set(log_temp);
                                     rolls.set(rolls_temp);
                                     power.set(power_temp);
@@ -116,28 +122,28 @@ mod module_dc8717e1 {
                                     continue '_accumulateDiceRolls;
                                 }
                             } else {
-                                let rest_2: List<i32> = tail(rolls.get());
-                                let roll_2: i32 = head(rolls.get());
+                                let rest_2: List<i32> = tail(rolls.get().clone());
+                                let roll_2: i32 = head(rolls.get().clone());
                                 iterate(
                                     {
                                         let arg_2: string = sprintf!(
                                             "accumulateDiceRolls / power: {} / acc: {} / roll: {}",
-                                            &power.get(),
-                                            &acc.get(),
-                                            &roll_2
+                                            power.get().clone(),
+                                            acc.get().clone(),
+                                            roll_2
                                         );
                                         Func1::new({
                                             let arg_2 = arg_2.clone();
                                             move |func_2: Func1<string, ()>| func_2(arg_2.clone())
                                         })
                                     },
-                                    log.get(),
+                                    log.get().clone(),
                                 );
                                 {
-                                    let log_temp = log.get();
+                                    let log_temp = log.get().clone();
                                     let rolls_temp: List<i32> = rest_2.clone();
-                                    let power_temp: i32 = power.get() - 1_i32;
-                                    let acc_temp: i32 = acc.get();
+                                    let power_temp: i32 = power.get().clone() - 1_i32;
+                                    let acc_temp: i32 = acc.get().clone();
                                     log.set(log_temp);
                                     rolls.set(rolls_temp);
                                     power.set(power_temp);
@@ -205,12 +211,13 @@ mod module_dc8717e1 {
                     let currentIndex = currentIndex.clone();
                     let list = list.clone();
                     move || {
-                        let matchValue: Option<a> = tryItem(currentIndex.get(), list.clone());
+                        let matchValue: Option<a> =
+                            tryItem(currentIndex.get().clone(), list.clone());
                         match &matchValue {
                             None => panic!("{}", string("createSequentialRoller / End of list"),),
                             Some(matchValue_0_0) => {
                                 let item: a = matchValue_0_0.clone();
-                                currentIndex.set(currentIndex.get() + 1_i32);
+                                currentIndex.set(currentIndex.get().clone() + 1_i32);
                                 item
                             }
                         }
@@ -232,9 +239,9 @@ mod module_dc8717e1 {
                             let n: MutCell<i32> = MutCell::new(n);
                             let p: MutCell<i32> = MutCell::new(p);
                             '_loop: loop {
-                                break '_loop (if p.get() < max_1 {
-                                    let n_temp: i32 = n.get() + 1_i32;
-                                    let p_temp: i32 = p.get() * 6_i32;
+                                break '_loop (if p.get().clone() < max_1 {
+                                    let n_temp: i32 = n.get().clone() + 1_i32;
+                                    let p_temp: i32 = p.get().clone() * 6_i32;
                                     n.set(n_temp);
                                     p.set(p_temp);
                                     continue '_loop;
@@ -243,9 +250,9 @@ mod module_dc8717e1 {
                                         {
                                             let arg: string = sprintf!(
                                                 "calculateDiceCount / max: {} / n: {} / p: {}",
-                                                &max_1,
-                                                &n.get(),
-                                                &p.get()
+                                                max_1,
+                                                n.get().clone(),
+                                                p.get().clone()
                                             );
                                             Func1::new({
                                                 let arg = arg.clone();
@@ -254,7 +261,7 @@ mod module_dc8717e1 {
                                         },
                                         log.clone(),
                                     );
-                                    n.get()
+                                    n.get().clone()
                                 });
                             }
                         }
@@ -275,9 +282,9 @@ mod module_dc8717e1 {
                         let rolls: MutCell<List<i32>> = MutCell::new(rolls.clone());
                         let size: MutCell<i32> = MutCell::new(size);
                         '_loop_1: loop {
-                            break '_loop_1 (if size.get() < power + 1_i32 {
-                                let rolls_temp: List<i32> = cons(roll(), rolls.get());
-                                let size_temp: i32 = size.get() + 1_i32;
+                            break '_loop_1 (if size.get().clone() < power + 1_i32 {
+                                let rolls_temp: List<i32> = cons(roll(), rolls.get().clone());
+                                let size_temp: i32 = size.get().clone() + 1_i32;
                                 rolls.set(rolls_temp);
                                 size.set(size_temp);
                                 continue '_loop_1;
@@ -285,7 +292,7 @@ mod module_dc8717e1 {
                                 let matchValue: Option<LrcPtr<(i32, List<i32>)>> =
                                     Polyglot::dice_fsharp::accumulateDiceRolls(
                                         log.clone(),
-                                        rolls.get(),
+                                        rolls.get().clone(),
                                         power,
                                         0_i32,
                                     );
@@ -308,8 +315,9 @@ mod module_dc8717e1 {
                                             size.set(size_temp);
                                             continue '_loop_1;
                                         } else {
-                                            let rolls_temp: List<i32> = cons(roll(), rolls.get());
-                                            let size_temp: i32 = size.get() + 1_i32;
+                                            let rolls_temp: List<i32> =
+                                                cons(roll(), rolls.get().clone());
+                                            let size_temp: i32 = size.get().clone() + 1_i32;
                                             rolls.set(rolls_temp);
                                             size.set(size_temp);
                                             continue '_loop_1;
@@ -329,8 +337,9 @@ mod module_dc8717e1 {
                                         size.set(size_temp);
                                         continue '_loop_1;
                                     } else {
-                                        let rolls_temp: List<i32> = cons(roll(), rolls.get());
-                                        let size_temp: i32 = size.get() + 1_i32;
+                                        let rolls_temp: List<i32> =
+                                            cons(roll(), rolls.get().clone());
+                                        let size_temp: i32 = size.get().clone() + 1_i32;
                                         rolls.set(rolls_temp);
                                         size.set(size_temp);
                                         continue '_loop_1;
@@ -346,7 +355,7 @@ mod module_dc8717e1 {
                 let result: i32 = Polyglot::dice_fsharp::rollProgressively(
                     Some({
                         fn clo(a0: string) {
-                            println!("{}", a0);
+                            printfn!("{}", a0);
                         }
                         Func1::new({
                             let clo = clo.clone();
@@ -361,7 +370,7 @@ mod module_dc8717e1 {
                     LrcPtr::new(TraceLevel::Debug),
                     Func0::new({
                         let result = result.clone();
-                        move || sprintf!("main / result: {}", &result)
+                        move || sprintf!("main / result: {}", result)
                     }),
                     Func0::new(move || string("")),
                 );

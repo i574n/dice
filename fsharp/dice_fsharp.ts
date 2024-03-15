@@ -1,9 +1,9 @@
-import { map, item as item_1, iterate, unfold, cache } from "./fable_modules/fable-library-ts/Seq.js";
-import { int32 } from "./fable_modules/fable-library-ts/Int32.js";
-import { value as value_1, toArray, Option } from "./fable_modules/fable-library-ts/Option.js";
-import { empty, initialize, cons, tryItem, length, tail, head, isEmpty, FSharpList } from "./fable_modules/fable-library-ts/List.js";
-import { nonSeeded } from "./fable_modules/fable-library-ts/Random.js";
-import { printf, toConsole } from "./fable_modules/fable-library-ts/String.js";
+import { map, item as item_1, iterate, unfold, cache } from "./fable_modules/fable-library-ts.4.14.0/Seq.js";
+import { int32 } from "./fable_modules/fable-library-ts.4.14.0/Int32.js";
+import { value as value_1, toArray, Option } from "./fable_modules/fable-library-ts.4.14.0/Option.js";
+import { empty, initialize, cons, tryItem, length, tail, head, isEmpty, FSharpList } from "./fable_modules/fable-library-ts.4.14.0/List.js";
+import { nonSeeded } from "./fable_modules/fable-library-ts.4.14.0/Random.js";
+import { printf, toConsole } from "./fable_modules/fable-library-ts.4.14.0/String.js";
 import { TraceLevel_Debug, trace } from "./lib/fsharp/Common.js";
 
 export const sixthPowerSequence: Iterable<int32> = cache<int32>(unfold<int32, int32>((state: int32): Option<[int32, int32]> => ([state, state * 6] as [int32, int32]), 1));

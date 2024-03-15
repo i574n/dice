@@ -3937,29 +3937,29 @@ and closure127 () (v0 : Heap6) : std_pin_Pin<Box<Dyn<Future<Result<US53, std_str
         | _ ->
             let v142 : US53 = US53_0
             US54_1(v142)
-    let v145 : string = $"%A{v144}"
-    let v146 : int32 = v145.Length
-    let v147 : bool = v146 <= 200
-    let v150 : string =
-        if v147 then
-            v145
-        else
-            let v148 : string = v145.Substring (0, 200)
-            let v149 : string = v148 + "..."
-            v149
-    let v151 : string = "dice.render (4) / roll_action / result: " + string v150 + ""
-    let v152 : string = method0(v151)
-    let v153 : string = @$"leptos::logging::log!(""{{}}"", v152)"
-    Fable.Core.RustInterop.emitRustExpr () v153
-    let v159 : Result<US53, std_string_String> =
+    let v150 : Result<US53, std_string_String> =
         match v144 with
-        | US54_0(v156) -> (* Error *)
-            let v157 : Result<US53, std_string_String> = Error v156
-            v157
-        | US54_1(v154) -> (* Ok *)
-            let v155 : Result<US53, std_string_String> = Ok v154
+        | US54_0(v147) -> (* Error *)
+            let v148 : Result<US53, std_string_String> = Error v147
+            v148
+        | US54_1(v145) -> (* Ok *)
+            let v146 : Result<US53, std_string_String> = Ok v145
+            v146
+    let v151 : string = $"%A{v150}"
+    let v152 : int32 = v151.Length
+    let v153 : bool = v152 <= 200
+    let v156 : string =
+        if v153 then
+            v151
+        else
+            let v154 : string = v151.Substring (0, 200)
+            let v155 : string = v154 + "..."
             v155
-    let v160 : Result<US53, std_string_String> = method324(v159)
+    let v157 : string = "dice.render (4) / roll_action / result: " + string v156 + ""
+    let v158 : string = method0(v157)
+    let v159 : string = @$"leptos::logging::log!(""{{}}"", v158)"
+    Fable.Core.RustInterop.emitRustExpr () v159
+    let v160 : Result<US53, std_string_String> = method324(v150)
     let v161 : string = "v160 }}}}); {{{ //"
     Fable.Core.RustInterop.emitRustExpr () v161
     let v162 : string = "__future_init"

@@ -1,6 +1,7 @@
 from __future__ import annotations
+from collections.abc import Callable
 import sys
-from typing import (Any, Callable, TypeVar)
+from typing import (Any, TypeVar)
 from lib.fsharp.common import (trace, TraceLevel)
 from fable_modules.fable_library.list import (is_empty, head, tail, FSharpList, length, try_item, cons, initialize, empty)
 from fable_modules.fable_library.option import (to_array, value as value_1)
@@ -62,11 +63,11 @@ def roll_within_bounds(log: Callable[[str], None] | None, max: int, rolls: FShar
     match_value: tuple[int, FSharpList[int]] | None = accumulate_dice_rolls(log, rolls, length(rolls) - 1, 0)
     (pattern_matching_result, result_1) = (None, None)
     if match_value is not None:
-        def _arrow1(__unit: None=None, log: Any=log, max: Any=max, rolls: Any=rolls) -> bool:
+        def _arrow2(__unit: None=None, log: Any=log, max: Any=max, rolls: Any=rolls) -> bool:
             result: int = match_value[0] or 0
             return (result <= max) if (result >= 1) else False
 
-        if _arrow1():
+        if _arrow2():
             pattern_matching_result = 0
             result_1 = match_value[0]
 

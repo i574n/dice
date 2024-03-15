@@ -14,7 +14,6 @@ mod module_a51efde0 {
     pub mod Dice {
         use super::*;
         use fable_library_rust::NativeArray_::Array;
-        use fable_library_rust::Native_::Any;
         use fable_library_rust::Native_::Func0;
         use fable_library_rust::Native_::Func1;
         use fable_library_rust::Native_::LrcPtr;
@@ -23,6 +22,7 @@ mod module_a51efde0 {
         use fable_library_rust::Option_::defaultValue;
         use fable_library_rust::Option_::getValue;
         use fable_library_rust::Option_::map;
+        use fable_library_rust::String_::printfn;
         use fable_library_rust::String_::sprintf;
         use fable_library_rust::String_::string;
         #[derive(Clone, Debug)]
@@ -440,10 +440,10 @@ mod module_a51efde0 {
                 break '_method5 ({
                     let v10: string =
                                  sprintf!("create_sequential_roller / roll / current_index: {} / acc: {} / len: {} / last_item: {:?}",
-                                          &v2_1.l0.get().clone(),
-                                          &v3_1.l0.get().clone(),
-                                          &v4_1.l0.get().clone(),
-                                          &v5.l0.get().clone());
+                                          v2_1.l0.get().clone(),
+                                          v3_1.l0.get().clone(),
+                                          v4_1.l0.get().clone(),
+                                          v5.l0.get().clone());
                     match &v0_1.get().clone() {
                         Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v10),
                         _ => (),
@@ -607,9 +607,9 @@ mod module_a51efde0 {
                     } else {
                         let v9: string = sprintf!(
                             "calculate_dice_count / max: {} / n: {} / p: {}",
-                            &v1_1.get().clone(),
-                            &v2_1.get().clone(),
-                            &v3_1.get().clone()
+                            v1_1.get().clone(),
+                            v2_1.get().clone(),
+                            v3_1.get().clone()
                         );
                         match &v0_1.get().clone() {
                             Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v9),
@@ -620,9 +620,9 @@ mod module_a51efde0 {
                 } else {
                     let v12: string = sprintf!(
                         "calculate_dice_count / max: {} / n: {} / p: {}",
-                        &v1_1.get().clone(),
-                        &v2_1.get().clone(),
-                        &v3_1.get().clone()
+                        v1_1.get().clone(),
+                        v2_1.get().clone(),
+                        v3_1.get().clone()
                     );
                     match &v0_1.get().clone() {
                         Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v12),
@@ -1046,9 +1046,9 @@ mod module_a51efde0 {
                     let v5: u64 = v3_1.get().clone() + 1_u64;
                     let v6: string = sprintf!(
                         "accumulate_dice_rolls / power: {} / acc: {} / result: {}",
-                        &v1_1.get().clone(),
-                        &v3_1.get().clone(),
-                        &v5
+                        v1_1.get().clone(),
+                        v3_1.get().clone(),
+                        v5
                     );
                     match &v0_1.get().clone() {
                         Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v6),
@@ -1076,9 +1076,9 @@ mod module_a51efde0 {
                                     };
                                 let v24: string =
                                              sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                                                      &v1_1.get().clone(),
-                                                      &v3_1.get().clone(),
-                                                      &v10, &v23);
+                                                      v1_1.get().clone(),
+                                                      v3_1.get().clone(), v10,
+                                                      v23);
                                 match &v0_1.get().clone() {
                                     Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v24),
                                     _ => (),
@@ -1097,9 +1097,9 @@ mod module_a51efde0 {
                             } else {
                                 let v29: string = sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                                    &v1_1.get().clone(),
-                                    &v3_1.get().clone(),
-                                    &v10
+                                    v1_1.get().clone(),
+                                    v3_1.get().clone(),
+                                    v10
                                 );
                                 match &v0_1.get().clone() {
                                     Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v29),
@@ -1465,11 +1465,11 @@ mod module_a51efde0 {
             let v2_1: i64 = v1_1 + 1_i64;
             let v3_1: string = sprintf!(
                 "accumulate_dice_rolls / power: {} / acc: {} / result: {}",
-                &-1_i8,
-                &v1_1,
-                &v2_1
+                -1_i8,
+                v1_1,
+                v2_1
             );
-            println!("{0}", v3_1,);
+            printfn!("{0}", v3_1);
             Dice::US5::US5_1(v2_1, v0_1)
         }
         pub fn method38(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
@@ -1482,21 +1482,21 @@ mod module_a51efde0 {
                         let v7: i64 = (v3_1 - 1_u8) as i64;
                         let v8: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &0_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v7
+                            0_i8,
+                            v1_1,
+                            v3_1,
+                            v7
                         );
-                        println!("{0}", v8,);
+                        printfn!("{0}", v8);
                         Dice::method39(v4_1.clone(), v1_1 + v7)
                     } else {
                         let v11: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &0_i8,
-                            &v1_1,
-                            &v3_1
+                            0_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v11,);
+                        printfn!("{0}", v11);
                         Dice::method39(v4_1, v1_1)
                     }
                 }
@@ -1512,21 +1512,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 6_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &1_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            1_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method38(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &1_i8,
-                            &v1_1,
-                            &v3_1
+                            1_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method38(v4_1, v1_1)
                     }
                 }
@@ -1542,21 +1542,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 36_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &2_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            2_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method37(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &2_i8,
-                            &v1_1,
-                            &v3_1
+                            2_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method37(v4_1, v1_1)
                     }
                 }
@@ -1572,21 +1572,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 216_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &3_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            3_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method36(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &3_i8,
-                            &v1_1,
-                            &v3_1
+                            3_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method36(v4_1, v1_1)
                     }
                 }
@@ -1602,21 +1602,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 1296_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &4_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            4_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method35(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &4_i8,
-                            &v1_1,
-                            &v3_1
+                            4_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method35(v4_1, v1_1)
                     }
                 }
@@ -1632,21 +1632,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 7776_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &5_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            5_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method34(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &5_i8,
-                            &v1_1,
-                            &v3_1
+                            5_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method34(v4_1, v1_1)
                     }
                 }
@@ -1662,21 +1662,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 46656_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &6_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            6_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method33(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &6_i8,
-                            &v1_1,
-                            &v3_1
+                            6_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method33(v4_1, v1_1)
                     }
                 }
@@ -1692,21 +1692,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 279936_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &7_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            7_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method32(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &7_i8,
-                            &v1_1,
-                            &v3_1
+                            7_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method32(v4_1, v1_1)
                     }
                 }
@@ -1722,21 +1722,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 1679616_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &8_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            8_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method31(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &8_i8,
-                            &v1_1,
-                            &v3_1
+                            8_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method31(v4_1, v1_1)
                     }
                 }
@@ -1752,21 +1752,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 10077696_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &9_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            9_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method30(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &9_i8,
-                            &v1_1,
-                            &v3_1
+                            9_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method30(v4_1, v1_1)
                     }
                 }
@@ -1782,21 +1782,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 60466176_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &10_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            10_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method29(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &10_i8,
-                            &v1_1,
-                            &v3_1
+                            10_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method29(v4_1, v1_1)
                     }
                 }
@@ -1812,21 +1812,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 362797056_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &11_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            11_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method28(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &11_i8,
-                            &v1_1,
-                            &v3_1
+                            11_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method28(v4_1, v1_1)
                     }
                 }
@@ -1842,21 +1842,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 2176782336_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &12_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            12_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method27(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &12_i8,
-                            &v1_1,
-                            &v3_1
+                            12_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method27(v4_1, v1_1)
                     }
                 }
@@ -1872,21 +1872,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 13060694016_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &13_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            13_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method26(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &13_i8,
-                            &v1_1,
-                            &v3_1
+                            13_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method26(v4_1, v1_1)
                     }
                 }
@@ -1902,21 +1902,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 78364164096_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &14_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            14_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method25(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &14_i8,
-                            &v1_1,
-                            &v3_1
+                            14_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method25(v4_1, v1_1)
                     }
                 }
@@ -1932,21 +1932,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 470184984576_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &15_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            15_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method24(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &15_i8,
-                            &v1_1,
-                            &v3_1
+                            15_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method24(v4_1, v1_1)
                     }
                 }
@@ -1962,21 +1962,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 2821109907456_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &16_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            16_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method23(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &16_i8,
-                            &v1_1,
-                            &v3_1
+                            16_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method23(v4_1, v1_1)
                     }
                 }
@@ -1992,21 +1992,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 16926659444736_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &17_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            17_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method22(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &17_i8,
-                            &v1_1,
-                            &v3_1
+                            17_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method22(v4_1, v1_1)
                     }
                 }
@@ -2022,21 +2022,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 101559956668416_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &18_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            18_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method21(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &18_i8,
-                            &v1_1,
-                            &v3_1
+                            18_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method21(v4_1, v1_1)
                     }
                 }
@@ -2052,21 +2052,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 609359740010496_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &19_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            19_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method20(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &19_i8,
-                            &v1_1,
-                            &v3_1
+                            19_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method20(v4_1, v1_1)
                     }
                 }
@@ -2082,21 +2082,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 3656158440062976_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &20_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            20_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method19(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &20_i8,
-                            &v1_1,
-                            &v3_1
+                            20_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method19(v4_1, v1_1)
                     }
                 }
@@ -2112,21 +2112,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 21936950640377856_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &21_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            21_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method18(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &21_i8,
-                            &v1_1,
-                            &v3_1
+                            21_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method18(v4_1, v1_1)
                     }
                 }
@@ -2142,21 +2142,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 131621703842267136_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &22_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            22_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method17(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &22_i8,
-                            &v1_1,
-                            &v3_1
+                            22_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method17(v4_1, v1_1)
                     }
                 }
@@ -2172,21 +2172,21 @@ mod module_a51efde0 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 789730223053602816_i64;
                         let v9: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            &23_i8,
-                            &v1_1,
-                            &v3_1,
-                            &v8
+                            23_i8,
+                            v1_1,
+                            v3_1,
+                            v8
                         );
-                        println!("{0}", v9,);
+                        printfn!("{0}", v9);
                         Dice::method16(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v12: string = sprintf!(
                             "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            &23_i8,
-                            &v1_1,
-                            &v3_1
+                            23_i8,
+                            v1_1,
+                            v3_1
                         );
-                        println!("{0}", v12,);
+                        printfn!("{0}", v12);
                         Dice::method16(v4_1, v1_1)
                     }
                 }
@@ -2850,17 +2850,17 @@ mod module_a51efde0 {
         pub fn closure81(unitVar: (), v0_1: Array<string>) -> i32 {
             let v1_1: string = sprintf!(
                 "calculate_dice_count / max: {} / n: {} / p: {}",
-                &i64::MAX,
-                &24_i8,
-                &4738381338321616896_i64
+                i64::MAX,
+                24_i8,
+                4738381338321616896_i64
             );
-            println!("{0}", v1_1,);
+            printfn!("{0}", v1_1);
             {
                 let v5: string = sprintf!(
                     "result: {}",
-                    &Dice::method14(LrcPtr::new(Dice::UH1::UH1_1), 0_i8)
+                    Dice::method14(LrcPtr::new(Dice::UH1::UH1_1), 0_i8)
                 );
-                println!("{0}", v5,);
+                printfn!("{0}", v5);
                 0_i32
             }
         }
