@@ -62,9 +62,8 @@ inl render () =
 
             result'
         |> async.future_init 5 1
-    
-    inl transactions = leptos.create_memo fun () =>
-        inl accounts = accounts |> leptos.memo_get
+
+    inl roll = leptos.create_memo fun () =>
         inl roll =
             roll_action
             |> leptos.action_value
@@ -72,10 +71,27 @@ inl render () =
             |> optionm'.map resultm.unbox
             |> optionm'.unbox
             |> resultm.flatten_option
-        
+            |> resultm.map optionm'.box
+            |> resultm.box
+
         inl roll_log = roll |> sm'.format_debug |> sm'.ellipsis 200i32
         leptos.log $'"dice.render (5) / transactions memo / roll: " + string !roll_log + ""'
-        accounts
+        roll
+    
+    inl error_message = leptos.create_memo fun () =>
+        inl error_message : _ string =
+            match roll |> leptos.memo_get |> resultm.unbox |> resultm.map optionm'.unbox with
+            | Ok (Some { error }) =>
+                match error |> optionm'.unbox with
+                | Some { cause = { name = cause_name } data name message } =>
+                    Some $'string !name + ": " + string !message + " - " + string !data + " (" + string !cause_name + ")"'
+                | _ => None
+            | _ => None
+            |> optionm'.box
+
+        inl message_log = error_message |> sm'.format_debug |> sm'.ellipsis 200i32
+        leptos.log $'"dice.render (6) / error_message memo / error_message: " + string !message_log + ""'
+        error_message
 
     ;[
         leptos.accordion "Roll" true None fun () =>
@@ -115,29 +131,38 @@ inl render () =
                             ])
                         
                         leptos.div [
-
+                            $'"class=\\\"flex\\\""'
                         ] fun () =>
-                            loading_button.render
-                                "Roll"
-                                fun () =>
-                                    roll_action
-                                    |> leptos.action_pending
-                                    |> leptos.signal_get
-                                fun () =>
-                                    inl max =
-                                        leptos.signal_get_untracked global_state.core_state .data
-                                        |> leptos.signal_get_untracked
-                                        |> fun x => heap x.max
+                            :>(;[
+                                loading_button.render
+                                    "Roll"
+                                    fun () =>
+                                        roll_action
+                                        |> leptos.action_pending
+                                        |> leptos.signal_get
+                                    fun () =>
+                                        inl max =
+                                            leptos.signal_get_untracked global_state.core_state .data
+                                            |> leptos.signal_get_untracked
+                                            |> fun x => heap x.max
 
-                                    roll_action |> leptos.action_dispatch max
-                            |> leptos.element_to_fragment
+                                        roll_action |> leptos.action_dispatch max
+                                |> leptos.element_to_view
+
+                                match error_message |> leptos.memo_get |> optionm'.unbox with
+                                | Some error_message =>
+                                    error_message
+                                    |> error_label.render
+                                    |> leptos.element_to_view
+                                | _ => ;[] |> leptos.views_to_view
+                            ])
                     ])
             ])
         |> leptos.element_to_view
 
         leptos.accordion "History" true None fun () =>
             :>(;[
-                match transactions |> leptos.memo_get with
+                match accounts |> leptos.memo_get with
                 | a ;[] =>
                     "No account selected"
                     |> error_label.render
