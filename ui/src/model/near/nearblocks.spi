@@ -128,9 +128,9 @@ inl txn_unbox (x : txn') : txn =
     inl included_in_block_hash = !\($'"!x.included_in_block_hash"')
     inl block_timestamp = !\($'"!x.block_timestamp"')
     inl block = !\($'"!x.block"') |> block_unbox
-    inl action_unbox = join action_unbox
     inl actions =
-        !\($'"!x.actions.into_iter().map(|x| !action_unbox(x)).collect()"')
+        !\($'"!x.actions"')
+        |> am'.vec_map action_unbox
         |> am'.from_vec
         |> fun (a x : _ i32 _) => join x
     inl actions_agg = !\($'"!x.actions_agg"') |> actions_agg_unbox
@@ -144,9 +144,9 @@ inl txn_unbox (x : txn') : txn =
 
 inl root_unbox (x : root') : root =
     inl x = join x
-    inl txn_unbox = join txn_unbox
     inl txns =
-        !\($'"!x.txns.into_iter().map(|x| !txn_unbox(x)).collect()"')
+        !\($'"!x.txns"')
+        |> am'.vec_map txn_unbox
         |> am'.from_vec
         |> fun (a x : _ i32 _) => join x
     { txns }

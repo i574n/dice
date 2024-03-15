@@ -11,11 +11,9 @@ inl render () =
     inl (settings_visible, set_settings_visible) = leptos.create_signal false
 
     inl settings_button =
-        inl on_click () =
+        inl on_click = rust.move fun () =>
             set_settings_visible
             |> leptos.signal_update not
-        inl on_click = join on_click
-        !\($'"let on_click = !on_click"')
             
         inl class () =
             if settings_visible |> leptos.signal_get
@@ -26,7 +24,7 @@ inl render () =
             (leptos.settings_svg (Some $'"h-5 w-5"') [])
             class
             [
-                $'"on:click=move |_| on_click()"'
+                $'"on:click=move |_| !on_click()"'
                 $'"aria-label=\\\"Settings\\\""'
             ]
         |> leptos.element_to_view
@@ -73,22 +71,8 @@ inl render () =
 
                 match accounts |> leptos.memo_get with
                 | a ;[] =>
-                    leptos.div [
-                        $'"class=\\\"flex flex-1 items-center [gap:4px] [padding:5px]\\\""'
-                    ] fun () => :>(;[
-                        leptos.span [
-                            $'"class=\\\"[height:20px]\\\""'
-                        ] fun () => :>(;[
-                            leptos.x_red_svg () |> leptos.element_to_view
-                        ])
-                        |> leptos.element_to_view
-
-                        leptos.pre [
-                            $'"class=\\\"[overflow-y:auto]\\\""'
-                        ] fun () =>
-                            "No account selected" |> leptos.text_fragment
-                        |> leptos.element_to_view
-                    ])
+                    "No account selected"
+                    |> error_label.render
                     |> leptos.element_to_view
                 | _ =>
                     txns
@@ -116,59 +100,24 @@ inl render () =
                                 |> leptos.element_to_view
 
                             | false =>
-                                leptos.table [
-                                    $'"class=\\\"flex-1 min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700\\\""'
-                                ] fun () =>
-                                    :>(;[
-                                        leptos.thead [
-                                            $'"class=\\\"ltr:text-left rtl:text-right\\\""'
-                                        ] fun () =>
-                                            :>(;[
-                                                transaction.tr_head_render transactions
-                                            ])
-                                        |> leptos.element_to_view
-
-                                        leptos.tbody [
-                                            $'"class=\\\"divide-y divide-gray-200 dark:divide-gray-700\\\""'
-                                        ] fun () =>
-                                            a transactions
-                                            |> am'.map_vec fun account, index', transaction' =>
-                                                transaction.tr_render (account, index', transaction')
-                                                |> leptos.element_to_view
-                                            |> fun (a x : _ i32 _) => x
-                                            |> leptos.view_array_to_fragment
-                                        |> leptos.element_to_view
-                                    ])
+                                a transactions
+                                |> am'.map_vec fun account, index', transaction' =>
+                                    transaction.tr_render (account, index', transaction')
+                                    |> leptos.element_to_view
+                                |> fun (a x : _ i32 _) => x
+                                |> leptos.view_array_to_fragment
+                                |> table.render (
+                                    transaction.tr_head_render transactions
+                                    |> leptos.element_to_fragment
+                                )
                                 |> leptos.element_to_view
                         | Error error =>
-                            leptos.div [
-                                $'"class=\\\"flex flex-1 items-center [gap:4px] [padding:5px]\\\""'
-                            ] fun () => :>(;[
-                                leptos.span [
-                                    $'"class=\\\"[height:20px]\\\""'
-                                ] fun () => :>(;[
-                                    leptos.x_red_svg () |> leptos.element_to_view
-                                ])
-                                |> leptos.element_to_view
-
-                                leptos.pre [
-                                    $'"class=\\\"[overflow-y:auto]\\\""'
-                                ] fun () =>
-                                    error |> sm'.from_std_string |> leptos.text_fragment
-                                |> leptos.element_to_view
-                            ])
+                            error
+                            |> sm'.from_std_string
+                            |> error_label.render
                             |> leptos.element_to_view
                         | _ =>
-                            leptos.div [
-                                $'"class=\\\"grid place-content-center py-[10vh]\\\""'
-                            ] fun () =>
-                                leptos.div [
-                                    $'"class=\\\"flex flex-1 [gap:4px] items-center\\\""'
-                                ] fun () => :>(;[
-                                    leptos.loading_svg (Some $'"[width:24px] [height:30px]"') |> leptos.element_to_view
-                                    $'"Loading..."' |> leptos.text_view
-                                ])
-                                |> leptos.element_to_fragment
+                            loading_panel.render ()
                             |> leptos.element_to_view
             ])
         |> leptos.element_to_view

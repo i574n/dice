@@ -77,19 +77,6 @@ inl render () =
         leptos.log $'"dice.render (5) / transactions memo / roll: " + string !roll_log + ""'
         accounts
 
-    inl on_click () =
-        inl max =
-            leptos.signal_get_untracked global_state.core_state .data
-            |> leptos.signal_get_untracked
-            |> fun x => heap x.max
-
-        roll_action |> leptos.action_dispatch max
-    
-    inl button_disabled () = rust.move fun () =>
-        inl x = roll_action |> leptos.action_pending |> leptos.signal_get
-        x
-    inl button_disabled = join button_disabled
-
     ;[
         leptos.accordion "Roll" true None fun () =>
             :>(;[
@@ -130,25 +117,20 @@ inl render () =
                         leptos.div [
 
                         ] fun () =>
-                            inl on_click = join on_click
-                            inl button_disabled' () =
-                                button_disabled () |> rust.func0_get
-                            inl button_disabled' = join button_disabled'
-                            :>(;[
-                                leptos.button [
-                                    $'"class=\\\"flex gap-[10px] [align-items:center] inline-block rounded border border-gray-400 hover:bg-gray-400 px-4 py-1 text-sm font-medium text-white bg-transparent hover:text-gray-600 focus:outline-none focus:ring active:text-gray-500\\\""'
-                                    $'"prop:disabled=move || !button_disabled'()"'
-                                    $'"on:click=move |_| !on_click()"'
-                                ] fun () =>
-                                    :>(;[
-                                        "Roll" |> leptos.text_view
+                            loading_button.render
+                                "Roll"
+                                fun () =>
+                                    roll_action
+                                    |> leptos.action_pending
+                                    |> leptos.signal_get
+                                fun () =>
+                                    inl max =
+                                        leptos.signal_get_untracked global_state.core_state .data
+                                        |> leptos.signal_get_untracked
+                                        |> fun x => heap x.max
 
-                                        if button_disabled () |> rust.func0_get
-                                        then leptos.loading_svg (Some $'"[width:15px] [height:14px]"') |> leptos.element_to_view
-                                        else ;[] |> leptos.views_to_view
-                                    ])
-                                |> leptos.element_to_view
-                            ])
+                                    roll_action |> leptos.action_dispatch max
+                            |> leptos.element_to_fragment
                     ])
             ])
         |> leptos.element_to_view
@@ -157,22 +139,8 @@ inl render () =
             :>(;[
                 match transactions |> leptos.memo_get with
                 | a ;[] =>
-                    leptos.div [
-                        $'"class=\\\"flex flex-1 items-center [gap:4px] [padding:5px]\\\""'
-                    ] fun () => :>(;[
-                        leptos.span [
-                            $'"class=\\\"[height:20px]\\\""'
-                        ] fun () => :>(;[
-                            leptos.x_red_svg () |> leptos.element_to_view
-                        ])
-                        |> leptos.element_to_view
-
-                        leptos.pre [
-                            $'"class=\\\"[overflow-y:auto]\\\""'
-                        ] fun () =>
-                            "No account selected" |> leptos.text_fragment
-                        |> leptos.element_to_view
-                    ])
+                    "No account selected"
+                    |> error_label.render
                     |> leptos.element_to_view
                 | _ =>
                     txns
@@ -209,161 +177,129 @@ inl render () =
                                     | _ => false
                                 |> fun (a x : _ i32 _) => x
 
-                            leptos.table [
-                                $'"class=\\\"flex-1 min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700\\\""'
-                            ] fun () =>
-                                :>(;[
-                                    leptos.thead [
-                                        $'"class=\\\"ltr:text-left rtl:text-right\\\""'
+                            table.render
+                                (
+                                    leptos.tr [
+
                                     ] fun () =>
                                         :>(;[
-                                            leptos.tr [
-
+                                            leptos.th [
+                                                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
                                             ] fun () =>
-                                                :>(;[
-                                                    leptos.th [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                    ] fun () =>
-                                                        "Block Timestamp" |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
-                                                    leptos.th [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                    ] fun () =>
-                                                        "Predecessor" |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
-                                                    leptos.th [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                    ] fun () =>
-                                                        "Receiver" |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
-                                                    leptos.th [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                    ] fun () =>
-                                                        "Fee" |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
-                                                    leptos.th [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                    ] fun () =>
-                                                        "Result" |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
-                                                    leptos.th [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                    ] fun () =>
-                                                        "Outcome Status" |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-                                                ])
-                                        ])
-                                    |> leptos.element_to_view
-
-                                    leptos.tbody [
-                                        $'"class=\\\"divide-y divide-gray-200 dark:divide-gray-700\\\""'
-                                    ] fun () =>
-                                        a transactions
-                                        |> am'.map_vec fun _account, _index', transaction' =>
-                                            leptos.tr [
-                                                $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
-                                            ] fun () =>
-                                                :>(;[
-                                                    leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
-                                                        transaction'.block_timestamp
-                                                        |> date_time.format_timestamp
-                                                        |> to_string
-                                                        |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
-                                                    leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
-                                                        transaction'.predecessor_account_id
-                                                        |> to_string
-                                                        |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
-                                                    leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
-                                                        transaction'.receiver_account_id
-                                                        |> to_string
-                                                        |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
-                                                    leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
-                                                        transaction'.outcomes_agg.transaction_fee
-                                                        |> sm'.obj_to_string
-                                                        |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
-                                                    leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
-                                                        match transaction'.logs with
-                                                        | ;[] => "" |> leptos.text_fragment
-                                                        | _ =>
-                                                            (a transaction'.logs : _ i32 _)
-                                                            |> am'.map_vec sm'.from_std_string
-                                                            |> fun x =>
-                                                                (x, None)
-                                                                ||> am.foldBack fun x acc =>
-                                                                    inl logs = x |> sm'.split " / result: "
-                                                                    match acc, logs with
-                                                                    | None, ;[ _; result ] => Some result
-                                                                    | _ => acc
-                                                            |> optionm'.default_value "?"
-                                                            |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-
-                                                    leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
-                                                        transaction'.outcomes.status
-                                                        |> sm'.obj_to_string
-                                                        |> leptos.text_fragment
-                                                    |> leptos.element_to_view
-                                                ])
+                                                "Block Timestamp" |> leptos.text_fragment
                                             |> leptos.element_to_view
-                                        |> fun (a x : _ i32 _) => x
-                                        |> leptos.view_array_to_fragment
-                                    |> leptos.element_to_view
-                                ])
-                            |> leptos.element_to_view
-                        | Error error =>
-                            leptos.div [
-                                $'"class=\\\"flex flex-1 items-center [gap:4px] [padding:5px]\\\""'
-                            ] fun () => :>(;[
-                                leptos.span [
-                                    $'"class=\\\"[height:20px]\\\""'
-                                ] fun () => :>(;[
-                                    leptos.x_red_svg () |> leptos.element_to_view
-                                ])
-                                |> leptos.element_to_view
 
-                                leptos.pre [
-                                    $'"class=\\\"[overflow-y:auto]\\\""'
-                                ] fun () =>
-                                    error |> sm'.from_std_string |> leptos.text_fragment
+                                            leptos.th [
+                                                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                                            ] fun () =>
+                                                "Predecessor" |> leptos.text_fragment
+                                            |> leptos.element_to_view
+
+                                            leptos.th [
+                                                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                                            ] fun () =>
+                                                "Receiver" |> leptos.text_fragment
+                                            |> leptos.element_to_view
+
+                                            leptos.th [
+                                                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                                            ] fun () =>
+                                                "Fee" |> leptos.text_fragment
+                                            |> leptos.element_to_view
+
+                                            leptos.th [
+                                                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                                            ] fun () =>
+                                                "Result" |> leptos.text_fragment
+                                            |> leptos.element_to_view
+
+                                            leptos.th [
+                                                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                                            ] fun () =>
+                                                "Outcome Status" |> leptos.text_fragment
+                                            |> leptos.element_to_view
+                                        ])
+                                    |> leptos.element_to_fragment
+                                )
+                                (
+                                    a transactions
+                                    |> am'.map_vec fun _account, _index', transaction' =>
+                                        leptos.tr [
+                                            $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
+                                        ] fun () =>
+                                            :>(;[
+                                                leptos.td [
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                                                ] fun () =>
+                                                    transaction'.block_timestamp
+                                                    |> date_time.format_timestamp
+                                                    |> to_string
+                                                    |> leptos.text_fragment
+                                                |> leptos.element_to_view
+
+                                                leptos.td [
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                                                ] fun () =>
+                                                    transaction'.predecessor_account_id
+                                                    |> to_string
+                                                    |> leptos.text_fragment
+                                                |> leptos.element_to_view
+
+                                                leptos.td [
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                                                ] fun () =>
+                                                    transaction'.receiver_account_id
+                                                    |> to_string
+                                                    |> leptos.text_fragment
+                                                |> leptos.element_to_view
+
+                                                leptos.td [
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                                                ] fun () =>
+                                                    transaction'.outcomes_agg.transaction_fee
+                                                    |> sm'.obj_to_string
+                                                    |> leptos.text_fragment
+                                                |> leptos.element_to_view
+
+                                                leptos.td [
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                                                ] fun () =>
+                                                    match transaction'.logs with
+                                                    | ;[] => "" |> leptos.text_fragment
+                                                    | _ =>
+                                                        (a transaction'.logs : _ i32 _)
+                                                        |> am'.map_vec sm'.from_std_string
+                                                        |> fun x =>
+                                                            (x, None)
+                                                            ||> am.foldBack fun x acc =>
+                                                                inl logs = x |> sm'.split " / result: "
+                                                                match acc, logs with
+                                                                | None, ;[ _; result ] => Some result
+                                                                | _ => acc
+                                                        |> optionm'.default_value "?"
+                                                        |> leptos.text_fragment
+                                                |> leptos.element_to_view
+
+                                                leptos.td [
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                                                ] fun () =>
+                                                    transaction'.outcomes.status
+                                                    |> sm'.obj_to_string
+                                                    |> leptos.text_fragment
+                                                |> leptos.element_to_view
+                                            ])
+                                        |> leptos.element_to_view
+                                    |> fun (a x : _ i32 _) => x
+                                    |> leptos.view_array_to_fragment
+                                )
                                 |> leptos.element_to_view
-                            ])
+                        | Error error =>
+                            error
+                            |> sm'.from_std_string
+                            |> error_label.render
                             |> leptos.element_to_view
                         | _ =>
-                            leptos.div [
-                                $'"class=\\\"grid place-content-center py-[10vh]\\\""'
-                            ] fun () =>
-                                leptos.div [
-                                    $'"class=\\\"flex flex-1 [gap:4px] items-center\\\""'
-                                ] fun () => :>(;[
-                                    leptos.loading_svg (Some $'"[width:24px] [height:30px]"') |> leptos.element_to_view
-                                    $'"Loading..."' |> leptos.text_view
-                                ])
-                                |> leptos.element_to_fragment
+                            loading_panel.render ()
                             |> leptos.element_to_view
             ])
         |> leptos.element_to_view
