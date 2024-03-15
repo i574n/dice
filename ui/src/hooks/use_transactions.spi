@@ -4,7 +4,7 @@ inl render (global_state : state.global_state) =
     print_static "<use_transactions.render>"
     leptos.log $'"use_transactions.render (1)"'
 
-    inl accounts = leptos.create_memo fun () =>
+    inl accounts_requests = leptos.create_memo fun () =>
         inl data =
             leptos.signal_get_untracked global_state.core_state .data
             |> leptos.signal_get_untracked
@@ -21,17 +21,21 @@ inl render (global_state : state.global_state) =
             inl pages : a _ _ = am.init data.transactions_pages id
             inl pages =
                 pages
-                |> am.map fun i =>
+                |> am'.map_vec fun i =>
                     inl page = i + 1
-                    $'"https://api2.nearblocks.io/v1/account/" + !account + "/txns?&order=desc&page=" + string !page + "&per_page=" + string !per_page + ""'
+                    {
+                        url = $'"https://api2.nearblocks.io/v1/account/" + !account + "/txns?&order=desc&page=" + string !page + "&per_page=" + string !per_page + ""'
+                        request_type = networking.Get
+                        body = ""
+                    } : networking.request
             account, pages
         |> fun x =>
             inl x_log = x |> sm'.format_debug
             leptos.log $'"use_transactions.render (2) / url create_memo / result: " + string !x_log + ""'
             x
 
-    inl urls = leptos.create_memo fun () =>
-        accounts
+    inl requests = leptos.create_memo fun () =>
+        accounts_requests
         |> leptos.memo_get
         |> am'.map_vec snd
         |> am'.map_vec fun (a x) => x |> am'.to_vec
@@ -41,7 +45,7 @@ inl render (global_state : state.global_state) =
         |> am'.from_vec
 
     inl urls_accounts = leptos.create_memo fun () =>
-        accounts
+        accounts_requests
         |> leptos.memo_get
         |> am'.map_vec fun account, x => (x |> am.map fun _ => account) |> fun (a x) => x |> am'.to_vec
         |> fun (a x) => x
@@ -49,8 +53,8 @@ inl render (global_state : state.global_state) =
         |> am'.vec_collect
         |> am'.from_vec
 
-    inl root : rust.func0 (a _ (resultm.result' (optionm'.option' model.near.nearblocks.root) rust.std_string)) =
-        state_core.use_requests urls model.near.nearblocks.root_unbox
+    inl root : rust.func0 (a i32 (resultm.result' (optionm'.option' model.near.nearblocks.root) rust.std_string)) =
+        state_core.use_requests requests model.near.nearblocks.root_unbox
 
     inl txns : leptos.memo (resultm.result' (optionm'.option' (array_base (string * unativeint * heap model.near.nearblocks.txn))) rust.std_string) =
         leptos.create_memo fun () =>
@@ -104,4 +108,4 @@ inl render (global_state : state.global_state) =
                 leptos.log $'"transactions.render (3) / txns move / loading: " + string !loading + " / result: " + string !x_log + ""'
                 x
 
-    { accounts txns }
+    { accounts_requests txns }

@@ -6,7 +6,7 @@ inl render () =
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
     
-    inl { accounts txns } = hooks.use_transactions.render global_state
+    inl { accounts_requests txns } = hooks.use_transactions.render global_state
 
     inl (settings_visible, set_settings_visible) = leptos.create_signal false
 
@@ -69,7 +69,7 @@ inl render () =
                     |> leptos.element_to_view
                 else ;[] |> leptos.views_to_view
 
-                match accounts |> leptos.memo_get with
+                match accounts_requests |> leptos.memo_get with
                 | a ;[] =>
                     "No account selected"
                     |> error_label.render

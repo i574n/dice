@@ -6,7 +6,7 @@ inl render () =
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
     
-    inl { accounts txns } = hooks.use_transactions.render global_state
+    inl { accounts_requests txns } = hooks.use_transactions.render global_state
 
     inl roll_action = leptos.create_action fun (value : heap i32) =>
         inl value_log = value |> sm'.format_debug
@@ -162,7 +162,7 @@ inl render () =
 
         leptos.accordion "History" true None fun () =>
             :>(;[
-                match accounts |> leptos.memo_get with
+                match accounts_requests |> leptos.memo_get with
                 | a ;[] =>
                     "No account selected"
                     |> error_label.render

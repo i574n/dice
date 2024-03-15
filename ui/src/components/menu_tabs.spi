@@ -54,7 +54,7 @@ inl render tab =
                     tabs () |> a
                     |> am'.map_vec fun tab' =>
                         leptos.option'
-                            (fun () => (tab |> leptos.signal_get) = tab')
+                            fun () => (tab |> leptos.signal_get) = tab'
                             (tab' |> menu_tab_label)
                         |> leptos.element_to_view
                     |> fun (a x : _ i32 _) => x
@@ -86,7 +86,7 @@ inl render tab =
                             | Settings => leptos.settings_svg class [] |> leptos.element_to_fragment
                             | _ => ;[] |> leptos.view_array_to_fragment
                             (tab' |> menu_tab_label)
-                            (fun () => (tab |> leptos.signal_get) = tab')
+                            fun () => (tab |> leptos.signal_get) = tab'
                         |> leptos.element_to_view
                     |> fun (a x : _ i32 _) => x
                     |> leptos.view_array_to_fragment
