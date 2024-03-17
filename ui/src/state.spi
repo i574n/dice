@@ -5,11 +5,11 @@ union view_type =
     | Details
     | Table
 
-type account = rust.std_string
+type account = sm'.std_string
 
 type state_data =
     heap {
-        accounts : rust.vec (pair bool account)
+        accounts : am'.vec (pair bool account)
         max : i32
         transactions_pages : i32
         transactions_view_type : view_type

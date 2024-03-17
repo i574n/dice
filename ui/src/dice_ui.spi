@@ -36,8 +36,7 @@ inl main (args : array_base string) =
 
 inl main () =
     print_static "<dice_ui>"
-    rust.types ()
-    leptos.types ()
+    lib.types ()
     model.near.rpc.types ()
     model.near.nearblocks.types ()
 

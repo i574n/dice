@@ -33,43 +33,43 @@ nominal rpc_response' = $"crate_model_near_rpc_RpcResponse"
 
 type rpc_input =
     {
-        jsonrpc : rust.std_string
-        id : rust.std_string
-        method : rust.std_string
-        params : array_base rust.std_string
+        jsonrpc : sm'.std_string
+        id : sm'.std_string
+        method : sm'.std_string
+        params : array_base sm'.std_string
     }
 
 type error_cause_info =
     {
-        error_message : optionm'.option' rust.std_string
-        requested_transaction_hash : optionm'.option' rust.std_string
+        error_message : optionm'.option' sm'.std_string
+        requested_transaction_hash : optionm'.option' sm'.std_string
     }
 
 type error_cause =
     {
-        name : rust.std_string
+        name : sm'.std_string
         info : optionm'.option' error_cause_info
     }
 
 type rpc_error =
     {
-        name : rust.std_string
+        name : sm'.std_string
         cause : error_cause
         code : i32
-        message : rust.std_string
-        data : rust.std_string
+        message : sm'.std_string
+        data : sm'.std_string
     }
 
 type transfer_detail =
     {
-        deposit : rust.std_string
+        deposit : sm'.std_string
     }
 
 type gas_profile =
     {
-        cost : rust.std_string
-        cost_category : rust.std_string
-        gas_used : rust.std_string
+        cost : sm'.std_string
+        cost_category : sm'.std_string
+        gas_used : sm'.std_string
     }
 
 type metadata =
@@ -80,29 +80,29 @@ type metadata =
 
 type outcome_detail =
     {
-        executor_id : rust.std_string
+        executor_id : sm'.std_string
         gas_burnt : u64
-        logs : array_base rust.std_string
+        logs : array_base sm'.std_string
         metadata : metadata
-        receipt_ids : array_base rust.std_string
-        status : rust.hash_map rust.std_string rust.std_string
+        receipt_ids : array_base sm'.std_string
+        status : mapm.hash_map sm'.std_string sm'.std_string
     }
 
 type receipts_outcome =
     {
-        block_hash : rust.std_string
-        id : rust.std_string
+        block_hash : sm'.std_string
+        id : sm'.std_string
         outcome : outcome_detail
     }
 
 type action_detail =
     {
-        actions : array_base (rust.hash_map rust.std_string transfer_detail)
-        gas_price : rust.std_string
-        input_data_ids : array_base rust.std_string
-        output_data_receivers : array_base rust.std_string
-        signer_id : rust.std_string
-        signer_public_key : rust.std_string
+        actions : array_base (mapm.hash_map sm'.std_string transfer_detail)
+        gas_price : sm'.std_string
+        input_data_ids : array_base sm'.std_string
+        output_data_receivers : array_base sm'.std_string
+        signer_id : sm'.std_string
+        signer_public_key : sm'.std_string
     }
 
 type receipt_detail =
@@ -112,10 +112,10 @@ type receipt_detail =
 
 type receipt =
     {
-        predecessor_id : rust.std_string
+        predecessor_id : sm'.std_string
         receipt : receipt_detail
-        receipt_id : rust.std_string
-        receiver_id : rust.std_string
+        receipt_id : sm'.std_string
+        receiver_id : sm'.std_string
     }
 
 type transaction_status =
@@ -126,10 +126,10 @@ type transaction_status =
 
 type rpc_response =
     {
-        jsonrpc : rust.std_string
+        jsonrpc : sm'.std_string
         result : optionm'.option' transaction_status
         error : optionm'.option' rpc_error
-        id : optionm'.option' rust.std_string
+        id : optionm'.option' sm'.std_string
     }
 
 inl rpc_input_box ({ jsonrpc id method params } : rpc_input) : rpc_input' =
