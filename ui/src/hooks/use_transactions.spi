@@ -68,7 +68,7 @@ inl render (global_state : state.global_state) =
         rust.func0 (a i32 (
             resultm.result'
                 (optionm'.option' model.near.nearblocks.root)
-                rust.std_string
+                sm'.std_string
             )
         )
         =
@@ -78,7 +78,7 @@ inl render (global_state : state.global_state) =
         leptos.memo (
             resultm.result'
                 (optionm'.option' (array_base account_transaction))
-                rust.std_string
+                sm'.std_string
         )
         =
         leptos.create_memo fun () =>
@@ -136,7 +136,7 @@ inl render (global_state : state.global_state) =
     //     leptos.memo (
     //         resultm.result'
     //             (optionm'.option' (array_base networking.request))
-    //             rust.std_string
+    //             sm'.std_string
     //         )
     //     =
     //     leptos.create_memo fun () =>
@@ -196,7 +196,7 @@ inl render (global_state : state.global_state) =
     //     rust.func0 (a i32 (
     //         resultm.result'
     //             (optionm'.option' model.near.rpc.rpc_response)
-    //             rust.std_string
+    //             sm'.std_string
     //         )
     //     )
     //     =

@@ -1,4 +1,4 @@
-open rust_operators
+open sm'_operators
 
 inl render () =
     print_static "<transactions.render>"

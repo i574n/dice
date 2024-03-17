@@ -40,7 +40,7 @@ inl render () =
                 |> resultm.try'
                 |> Some
                 |> Ok
-                |> resultm.box : _ _ rust.std_string
+                |> resultm.box : _ _ sm'.std_string
 
             inl result_log = result |> sm'.format_debug |> sm'.ellipsis 200i32
             leptos.log $'"dice.render (3) / roll_action / result: " + string !result_log + ""'

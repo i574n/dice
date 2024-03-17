@@ -26,8 +26,8 @@ type block =
 
 type action =
     {
-        action : rust.std_string
-        method : optionm'.option' rust.std_string
+        action : sm'.std_string
+        method : optionm'.option' sm'.std_string
     }
 
 type actions_agg =
@@ -47,18 +47,18 @@ type outcomes_agg =
 
 type txn =
     {
-        receipt_id : rust.std_string
-        predecessor_account_id : rust.std_string
-        receiver_account_id : rust.std_string
-        transaction_hash : rust.std_string
-        included_in_block_hash : rust.std_string
-        block_timestamp : rust.std_string
+        receipt_id : sm'.std_string
+        predecessor_account_id : sm'.std_string
+        receiver_account_id : sm'.std_string
+        transaction_hash : sm'.std_string
+        included_in_block_hash : sm'.std_string
+        block_timestamp : sm'.std_string
         block : block
         actions : array_base action
         actions_agg : actions_agg
         outcomes : outcomes
         outcomes_agg : outcomes_agg
-        logs : array_base rust.std_string
+        logs : array_base sm'.std_string
     }
 
 type root =

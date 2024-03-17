@@ -1,4 +1,5 @@
 open rust_operators
+open sm'_operators
 
 inl render () : _ leptos.div =
     print_static "<content.render>"
