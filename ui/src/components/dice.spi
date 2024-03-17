@@ -177,9 +177,9 @@ inl render () =
                             inl transactions =
                                 a transactions
                                 |> am'.filter_vec function
-                                    | account, _, transaction =>
+                                    | { account txn } =>
                                         inl is_call =
-                                            a transaction.actions
+                                            a txn.actions
                                             |> am'.map_vec fun transaction =>
                                                 {
                                                     action =
@@ -197,7 +197,7 @@ inl render () =
                                                 } = transaction
                                             |> fun (x : _ i32 _) => length x > 0
                                         inl is_receiver =
-                                            account = (transaction.receiver_account_id |> sm'.from_std_string)
+                                            account = (txn.receiver_account_id |> sm'.from_std_string)
                                         is_call && is_receiver
                                     | _ => false
                                 |> fun (a x : _ i32 _) => x
@@ -248,7 +248,7 @@ inl render () =
                                 )
                                 (
                                     a transactions
-                                    |> am'.map_vec fun _account, _index', transaction' =>
+                                    |> am'.map_vec fun { txn } =>
                                         leptos.tr [
                                             $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
                                         ] fun () =>
@@ -256,7 +256,7 @@ inl render () =
                                                 leptos.td [
                                                     $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                 ] fun () =>
-                                                    transaction'.block_timestamp
+                                                    txn.block_timestamp
                                                     |> date_time.format_timestamp
                                                     |> to_string
                                                     |> leptos.text_fragment
@@ -265,7 +265,7 @@ inl render () =
                                                 leptos.td [
                                                     $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                 ] fun () =>
-                                                    transaction'.predecessor_account_id
+                                                    txn.predecessor_account_id
                                                     |> to_string
                                                     |> leptos.text_fragment
                                                 |> leptos.element_to_view
@@ -273,7 +273,7 @@ inl render () =
                                                 leptos.td [
                                                     $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                 ] fun () =>
-                                                    transaction'.receiver_account_id
+                                                    txn.receiver_account_id
                                                     |> to_string
                                                     |> leptos.text_fragment
                                                 |> leptos.element_to_view
@@ -281,7 +281,7 @@ inl render () =
                                                 leptos.td [
                                                     $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                 ] fun () =>
-                                                    transaction'.outcomes_agg.transaction_fee
+                                                    txn.outcomes_agg.transaction_fee
                                                     |> sm'.obj_to_string
                                                     |> leptos.text_fragment
                                                 |> leptos.element_to_view
@@ -289,10 +289,10 @@ inl render () =
                                                 leptos.td [
                                                     $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                 ] fun () =>
-                                                    match transaction'.logs with
+                                                    match txn.logs with
                                                     | ;[] => "" |> leptos.text_fragment
                                                     | _ =>
-                                                        (a transaction'.logs : _ i32 _)
+                                                        (a txn.logs : _ i32 _)
                                                         |> am'.map_vec sm'.from_std_string
                                                         |> fun x =>
                                                             (x, None)
@@ -308,7 +308,7 @@ inl render () =
                                                 leptos.td [
                                                     $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                 ] fun () =>
-                                                    transaction'.outcomes.status
+                                                    txn.outcomes.status
                                                     |> sm'.obj_to_string
                                                     |> leptos.text_fragment
                                                 |> leptos.element_to_view

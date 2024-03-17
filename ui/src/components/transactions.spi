@@ -91,9 +91,9 @@ inl render () =
                                     $'"class=\\\"grid flex-1 py-[10px] px-[12px] [gap:15px] sm:[grid-template-columns:repeat(auto-fill,minmax(500px,1fr))]\\\""'
                                 ] fun () =>
                                     a transactions
-                                    |> am'.map_vec fun account, index', transaction' =>
-                                        !transaction'
-                                        |> transaction.render account (index' |> i64)
+                                    |> am'.map_vec fun { account i txn } =>
+                                        !txn
+                                        |> transaction.render account (i |> i64)
                                         |> leptos.element_to_view
                                     |> fun (a x : _ i32 _) => x
                                     |> leptos.view_array_to_fragment
@@ -101,9 +101,8 @@ inl render () =
 
                             | false =>
                                 a transactions
-                                |> am'.map_vec fun account, index', transaction' =>
-                                    transaction.tr_render (account, index', transaction')
-                                    |> leptos.element_to_view
+                                |> am'.map_vec transaction.tr_render
+                                |> am'.map_vec leptos.element_to_view
                                 |> fun (a x : _ i32 _) => x
                                 |> leptos.view_array_to_fragment
                                 |> table.render (
