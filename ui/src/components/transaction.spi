@@ -1,7 +1,7 @@
 open rust_operators
 open model.near.nearblocks
 
-inl tr_head_render transactions =
+inl tr_head_render (transactions : array_base hooks.use_transactions.account_transaction) =
     leptos.tr [
 
     ] fun () =>
@@ -64,8 +64,8 @@ inl tr_head_render transactions =
                 $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
             ] fun () =>
                 (a transactions : _ i32 _)
-                |> am.exists fun account, _index, (transaction' : heap model.near.nearblocks.txn) =>
-                    (a transaction'.logs : _ i32 _)
+                |> am.exists fun { txn } =>
+                    (a txn.logs : _ i32 _)
                     |> am.exists fun log =>
                         (log |> sm'.from_std_string |> sm.length) > 0i32
                 |> function
@@ -99,7 +99,7 @@ inl tr_head_render transactions =
             |> leptos.element_to_view
         ])
 
-inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
+inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
     leptos.tr [
         $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
     ] fun () =>
@@ -114,7 +114,7 @@ inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
-                transaction'.block_timestamp
+                txn.block_timestamp
                 |> date_time.format_timestamp
                 |> to_string
                 |> leptos.text_fragment
@@ -123,7 +123,7 @@ inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
-                transaction'.predecessor_account_id
+                txn.predecessor_account_id
                 |> to_string
                 |> leptos.text_fragment
             |> leptos.element_to_view
@@ -131,12 +131,12 @@ inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
-                transaction'.receiver_account_id
+                txn.receiver_account_id
                 |> to_string
                 |> leptos.text_fragment
             |> leptos.element_to_view
 
-            a transaction'.actions
+            a txn.actions
             |> am'.map_vec fun { action method } =>
                 :>(;[
                     leptos.td [
@@ -167,7 +167,7 @@ inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
-                transaction'.actions_agg.deposit
+                txn.actions_agg.deposit
                 |> sm'.obj_to_string
                 |> leptos.text_fragment
             |> leptos.element_to_view
@@ -175,7 +175,7 @@ inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
-                transaction'.outcomes_agg.transaction_fee
+                txn.outcomes_agg.transaction_fee
                 |> sm'.obj_to_string
                 |> leptos.text_fragment
             |> leptos.element_to_view
@@ -183,7 +183,7 @@ inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
-                transaction'.block.block_height
+                txn.block.block_height
                 |> sm'.obj_to_string
                 |> leptos.text_fragment
             |> leptos.element_to_view
@@ -191,10 +191,10 @@ inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500 [overflow:auto]\\\""'
             ] fun () =>
-                match transaction'.logs with
+                match txn.logs with
                 | ;[] => "" |> leptos.text_fragment
                 | _ =>
-                    (a transaction'.logs : _ i32 _)
+                    (a txn.logs : _ i32 _)
                     |> am'.map_vec sm'.from_std_string
                     |> sm'.concat "\n"
                     |> sm'.replace "\\n" "\n"
@@ -205,7 +205,7 @@ inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
-                transaction'.outcomes.status
+                txn.outcomes.status
                 |> sm'.obj_to_string
                 |> leptos.text_fragment
             |> leptos.element_to_view
@@ -213,7 +213,7 @@ inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
-                transaction'.transaction_hash
+                txn.transaction_hash
                 |> to_string
                 |> leptos.text_fragment
             |> leptos.element_to_view
@@ -221,7 +221,7 @@ inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
-                    transaction'.included_in_block_hash
+                    txn.included_in_block_hash
                     |> to_string
                     |> leptos.text_fragment
             |> leptos.element_to_view
@@ -229,7 +229,7 @@ inl tr_render account, index', (transaction' : heap model.near.nearblocks.txn) =
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
-                    transaction'.receipt_id
+                    txn.receipt_id
                     |> to_string
                     |> leptos.text_fragment
             |> leptos.element_to_view

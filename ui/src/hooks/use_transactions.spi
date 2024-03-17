@@ -1,5 +1,12 @@
 open rust_operators
 
+type account_transaction =
+    {
+        account : string;
+        i : unativeint;
+        txn : heap model.near.nearblocks.txn
+    }
+
 inl render (global_state : state.global_state) =
     print_static "<use_transactions.render>"
     leptos.log $'"use_transactions.render (1)"'
@@ -47,16 +54,33 @@ inl render (global_state : state.global_state) =
     inl urls_accounts = leptos.create_memo fun () =>
         accounts_requests
         |> leptos.memo_get
-        |> am'.map_vec fun account, x => (x |> am.map fun _ => account) |> fun (a x) => x |> am'.to_vec
+        |> am'.map_vec fun account, x =>
+            x
+            |> am.map fun _ => account
+            |> fun (a x) => x
+            |> am'.to_vec
         |> fun (a x) => x
         |> am'.to_vec
         |> am'.vec_collect
         |> am'.from_vec
 
-    inl root : rust.func0 (a i32 (resultm.result' (optionm'.option' model.near.nearblocks.root) rust.std_string)) =
+    inl root :
+        rust.func0 (a i32 (
+            resultm.result'
+                (optionm'.option' model.near.nearblocks.root)
+                rust.std_string
+            )
+        )
+        =
         state_core.use_requests requests model.near.nearblocks.root_unbox
 
-    inl txns : leptos.memo (resultm.result' (optionm'.option' (array_base (string * unativeint * heap model.near.nearblocks.txn))) rust.std_string) =
+    inl txns :
+        leptos.memo (
+            resultm.result'
+                (optionm'.option' (array_base account_transaction))
+                rust.std_string
+        )
+        =
         leptos.create_memo fun () =>
             inl urls_accounts =
                 urls_accounts
@@ -90,7 +114,7 @@ inl render (global_state : state.global_state) =
                         |> optionm.map fun result =>
                             (a result.txns : _ i32 _)
                             |> am'.enumerate
-                            |> am'.map_vec fun i', x' => account, i', heap x'
+                            |> am'.map_vec fun i', x' => { account i = i'; txn = heap x' }
                             |> fun (a x : _ i32 _) => x
                 |> am'.map_vec (resultm.map optionm'.box)
                 |> am'.map_vec resultm.box
@@ -98,7 +122,7 @@ inl render (global_state : state.global_state) =
                 |> fun (a x) => x
                 |> am'.to_vec
                 |> am'.vec_collect'
-                |> resultm.map (am'.vec_sort_by_key fun _, _, x => x.block_timestamp)
+                |> resultm.map (am'.vec_sort_by_key fun { txn } => txn.block_timestamp)
                 |> resultm.map (am'.vec_reverse >> am'.from_vec)
                 |> resultm.map fun (a x : _ i32 _) => x |> Some
             |> resultm.map optionm'.box
@@ -108,4 +132,76 @@ inl render (global_state : state.global_state) =
                 leptos.log $'"transactions.render (3) / txns move / loading: " + string !loading + " / result: " + string !x_log + ""'
                 x
 
-    { accounts_requests txns }
+    // inl rpc_requests :
+    //     leptos.memo (
+    //         resultm.result'
+    //             (optionm'.option' (array_base networking.request))
+    //             rust.std_string
+    //         )
+    //     =
+    //     leptos.create_memo fun () =>
+    //         inl result =
+    //             txns
+    //             |> leptos.memo_get
+    //             |> resultm.unbox
+    //             |> resultm.map optionm'.unbox
+    //             |> function
+    //                 | Ok (Some txns) =>
+    //                     (a txns : _ i32 _)
+    //                     |> am'.map_vec fun { txn } =>
+    //                         ({
+    //                             url = "https://rpc.mainnet.near.org"
+    //                             request_type = networking.Post
+    //                             body =
+    //                                 {
+    //                                     jsonrpc = "2.0" |> sm'.to_std_string
+    //                                     id = "dontcare" |> sm'.to_std_string
+    //                                     method = "EXPERIMENTAL_tx_status" |> sm'.to_std_string
+    //                                     params = ;[
+    //                                         txn.transaction_hash
+    //                                         "bowen" |> sm'.to_std_string
+    //                                     ]
+    //                                 }
+    //                                 |> model.near.rpc.rpc_input_box
+    //                                 |> sm'.format_debug
+    //                         } : networking.request)
+    //                     |> fun (a x) => x
+    //                     // match error |> optionm'.unbox with
+    //                     // | Some { cause = { name = cause_name } data name message } =>
+    //                     //     Some $'string !name + ": " + string !message + " - " + string !data + " (" + string !cause_name + ")"'
+    //                     // | _ => None
+    //                     |> Some
+    //                     |> Ok
+    //                 | Error error => Error error
+    //                 | _ => Ok None
+    //                 |> resultm.map optionm'.box
+    //                 |> resultm.box
+
+    //         inl result_log = result |> sm'.format_debug |> sm'.ellipsis 200i32
+    //         leptos.log $'"dice.render (3) / roll_action / result: " + string !result_log + ""'
+
+    //         result
+
+    // inl rpc_requests' = leptos.create_memo fun () =>
+    //     rpc_requests
+    //     |> leptos.memo_get
+    //     |> resultm.unbox
+    //     |> resultm.map optionm'.unbox
+    //     |> function
+    //         | Ok (Some x) => x
+    //         | _ => ;[]
+    //     |> a
+
+    // inl rpc_response :
+    //     rust.func0 (a i32 (
+    //         resultm.result'
+    //             (optionm'.option' model.near.rpc.rpc_response)
+    //             rust.std_string
+    //         )
+    //     )
+    //     =
+    //     state_core.use_requests rpc_requests' model.near.rpc.rpc_response_unbox
+    
+    inl rpc_requests = ()
+
+    { accounts_requests txns rpc_requests }
