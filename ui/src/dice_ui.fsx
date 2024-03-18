@@ -10,17 +10,18 @@
 [<Fable.Core.Erase; Fable.Core.Emit("mut $0")>] type Mut<'T> = class end
 [<Fable.Core.Erase; Fable.Core.Emit("&$0")>] type Ref<'T> = class end
 [<Fable.Core.Erase; Fable.Core.Emit("&'static $0")>] type StaticRef<'T> = class end
-[<Fable.Core.Erase; Fable.Core.Emit("js_sys::Function")>] type js_sys_Function = class end
-[<Fable.Core.Erase; Fable.Core.Emit("rexie::Error")>] type rexie_Error = class end
-[<Fable.Core.Erase; Fable.Core.Emit("rexie::Rexie")>] type rexie_Rexie = class end
-[<Fable.Core.Erase; Fable.Core.Emit("rexie::Store")>] type rexie_Store = class end
-[<Fable.Core.Erase; Fable.Core.Emit("rexie::Transaction")>] type rexie_Transaction = class end
+[<Fable.Core.Erase; Fable.Core.Emit("MutCell<$0>")>] type MutCell<'T> = class end
 [<Fable.Core.Erase; Fable.Core.Emit("std::any::Any")>] type std_any_Any = class end
 [<Fable.Core.Erase; Fable.Core.Emit("std::cell::RefCell<$0>")>] type std_cell_RefCell<'T> = class end
 [<Fable.Core.Erase; Fable.Core.Emit("std::pin::Pin<$0>")>] type std_pin_Pin<'T> = class end
 [<Fable.Core.Erase; Fable.Core.Emit("std::rc::Rc<$0>")>] type std_rc_Rc<'T> = class end
 [<Fable.Core.Erase; Fable.Core.Emit("std::rc::Weak<$0>")>] type std_rc_Weak<'T> = class end
 [<Fable.Core.Erase; Fable.Core.Emit("std::sync::Arc<$0>")>] type std_sync_Arc<'T> = class end
+[<Fable.Core.Erase; Fable.Core.Emit("js_sys::Function")>] type js_sys_Function = class end
+[<Fable.Core.Erase; Fable.Core.Emit("rexie::Error")>] type rexie_Error = class end
+[<Fable.Core.Erase; Fable.Core.Emit("rexie::Rexie")>] type rexie_Rexie = class end
+[<Fable.Core.Erase; Fable.Core.Emit("rexie::Store")>] type rexie_Store = class end
+[<Fable.Core.Erase; Fable.Core.Emit("rexie::Transaction")>] type rexie_Transaction = class end
 [<Fable.Core.Erase; Fable.Core.Emit("wasm_bindgen::JsValue")>] type wasm_bindgen_JsValue = class end
 [<Fable.Core.Erase; Fable.Core.Emit("wasm_bindgen::closure::Closure<$0>")>] type wasm_bindgen_closure_Closure<'T> = class end
 [<Fable.Core.Erase; Fable.Core.Emit("web_sys::Document")>] type web_sys_Document = class end
@@ -385,7 +386,7 @@ and method21 (v0 : US3) : US3 =
 and method22 (v0 : rexie_Rexie) : rexie_Rexie =
     v0
 and closure7 () (v0 : US2) : std_pin_Pin<Box<Dyn<Future<rexie_Rexie>>>> =
-    let v1 : string = "let __future_init = Box::pin(async move { //"
+    let v1 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v1
     let v2 : string = "state_core.use_database (2) / database create_local_resource"
     let v3 : string = method0(v2)
@@ -395,7 +396,7 @@ and closure7 () (v0 : US2) : std_pin_Pin<Box<Dyn<Future<rexie_Rexie>>>> =
     let v6 : string = method0(v5)
     let v7 : string = @$"leptos::logging::log!(""{{}}"", v6)"
     Fable.Core.RustInterop.emitRustExpr () v7
-    let v8 : string = "let __future_init = Box::pin(async { //"
+    let v8 : string = "let __result = Box::pin(async { //"
     Fable.Core.RustInterop.emitRustExpr () v8
     let v9 : string = "Box::pin(rexie::Rexie::builder(\"database\").version(1).add_object_store(rexie::ObjectStore::new(\"store\")).build())"
     let v10 : std_pin_Pin<Box<Dyn<Future<Result<rexie_Rexie, rexie_Error>>>>> = Fable.Core.RustInterop.emitRustExpr () v9
@@ -407,7 +408,7 @@ and closure7 () (v0 : US2) : std_pin_Pin<Box<Dyn<Future<rexie_Rexie>>>> =
     let v16 : US3 = method21(v15)
     let v17 : string = "v16 }})"
     Fable.Core.RustInterop.emitRustExpr () v17
-    let v18 : string = "__future_init"
+    let v18 : string = "__result"
     let v19 : std_pin_Pin<Box<Dyn<Future<US3>>>> = Fable.Core.RustInterop.emitRustExpr () v18
     let v20 : string = "v19.await"
     let v21 : US3 = Fable.Core.RustInterop.emitRustExpr () v20
@@ -426,7 +427,7 @@ and closure7 () (v0 : US2) : std_pin_Pin<Box<Dyn<Future<rexie_Rexie>>>> =
     let v32 : rexie_Rexie = method22(v27)
     let v33 : string = "v32 }}}}}); {{{{{ //"
     Fable.Core.RustInterop.emitRustExpr () v33
-    let v34 : string = "__future_init"
+    let v34 : string = "__result"
     let v35 : std_pin_Pin<Box<Dyn<Future<rexie_Rexie>>>> = Fable.Core.RustInterop.emitRustExpr () v34
     v35
 and method24 (v0 : leptos_Resource<US2, rexie_Rexie>) : leptos_Resource<US2, rexie_Rexie> =
@@ -535,7 +536,7 @@ and closure24 () (v0 : Heap3) : US4 =
 and method49 (v0 : US4) : US4 =
     v0
 and closure11 () (v0 : rexie_Rexie option) : std_pin_Pin<Box<Dyn<Future<US4>>>> =
-    let v1 : string = "let __future_init = Box::pin(async { //"
+    let v1 : string = "let __result = Box::pin(async { //"
     Fable.Core.RustInterop.emitRustExpr () v1
     let v2 : string = $"%A{v0}"
     let v3 : string = "state_core.use_core_database (2) / core_state_heap create_local_resource / database: " + v2 + ""
@@ -555,7 +556,7 @@ and closure11 () (v0 : rexie_Rexie option) : std_pin_Pin<Box<Dyn<Future<US4>>>> 
             let v12 : string = method0(v11)
             let v13 : string = @$"leptos::logging::log!(""{{}}"", v12)"
             Fable.Core.RustInterop.emitRustExpr () v13
-            let v14 : string = "let __future_init = Box::pin(async { //"
+            let v14 : string = "let __result = Box::pin(async { //"
             Fable.Core.RustInterop.emitRustExpr () v14
             let v15 : string = "store"
             let v16 : (string []) = [|v15|]
@@ -666,7 +667,7 @@ and closure11 () (v0 : rexie_Rexie option) : std_pin_Pin<Box<Dyn<Future<US4>>>> 
             let v115 : Result<Heap3 option option, std_string_String> = method48(v114)
             let v116 : string = "v115 }}); { //"
             Fable.Core.RustInterop.emitRustExpr () v116
-            let v117 : string = "__future_init"
+            let v117 : string = "__result"
             let v118 : std_pin_Pin<Box<Dyn<Future<Result<Heap3 option option, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v117
             let v119 : string = "v118.await"
             let v120 : Result<Heap3 option option, std_string_String> = Fable.Core.RustInterop.emitRustExpr () v119
@@ -707,7 +708,7 @@ and closure11 () (v0 : rexie_Rexie option) : std_pin_Pin<Box<Dyn<Future<US4>>>> 
     let v153 : US4 = method49(v152)
     let v154 : string = "v153 }}}); {{ //"
     Fable.Core.RustInterop.emitRustExpr () v154
-    let v155 : string = "__future_init"
+    let v155 : string = "__result"
     let v156 : std_pin_Pin<Box<Dyn<Future<US4>>>> = Fable.Core.RustInterop.emitRustExpr () v155
     v156
 and method51 () : web_sys_Window =
@@ -1080,7 +1081,7 @@ and closure41 (v0 : leptos_Resource<US2, rexie_Rexie>) (v1 : Heap3) : std_pin_Pi
     let v6 : (rexie_Rexie -> US5) = closure12()
     let v7 : US5 = US5_0
     let v8 : US5 = v5 |> Option.map v6 |> Option.defaultValue v7
-    let v9 : string = "let __future_init = Box::pin(async move { //"
+    let v9 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v9
     match v8 with
     | US5_0 -> (* None *)
@@ -1102,7 +1103,7 @@ and closure41 (v0 : leptos_Resource<US2, rexie_Rexie>) (v1 : Heap3) : std_pin_Pi
         Fable.Core.RustInterop.emitRustExpr () v18
         let v19 : rexie_Rexie = method77(v10)
         let v20 : Heap3 = method78(v1)
-        let v21 : string = "let __future_init = Box::pin(async { //"
+        let v21 : string = "let __result = Box::pin(async { //"
         Fable.Core.RustInterop.emitRustExpr () v21
         let v22 : string = "v19.transaction(&[\"store\"], rexie::TransactionMode::ReadWrite)?"
         let v23 : rexie_Transaction = Fable.Core.RustInterop.emitRustExpr () v22
@@ -1127,7 +1128,7 @@ and closure41 (v0 : leptos_Resource<US2, rexie_Rexie>) (v1 : Heap3) : std_pin_Pi
         let v38 : Result<unit, rexie_Error> = method79(v37)
         let v39 : string = "v38 }}}}); {{{ //"
         Fable.Core.RustInterop.emitRustExpr () v39
-        let v40 : string = "__future_init"
+        let v40 : string = "__result"
         let v41 : std_pin_Pin<Box<Dyn<Future<Result<unit, rexie_Error>>>>> = Fable.Core.RustInterop.emitRustExpr () v40
         let v42 : string = "v41.await"
         let v43 : Result<unit, rexie_Error> = Fable.Core.RustInterop.emitRustExpr () v42
@@ -1143,7 +1144,7 @@ and closure41 (v0 : leptos_Resource<US2, rexie_Rexie>) (v1 : Heap3) : std_pin_Pi
     method80()
     let v52 : string = "() })"
     Fable.Core.RustInterop.emitRustExpr () v52
-    let v53 : string = "__future_init"
+    let v53 : string = "__result"
     let v54 : std_pin_Pin<Box<Dyn<Future<unit>>>> = Fable.Core.RustInterop.emitRustExpr () v53
     v54
 and method76 (v0 : leptos_Resource<US2, rexie_Rexie>) : (Heap3 -> std_pin_Pin<Box<Dyn<Future<unit>>>>) =
@@ -1886,7 +1887,7 @@ and method170 (v0 : Result<std_string_String, reqwest_Error>) : Result<std_strin
 and method171 (v0 : Result<string option, std_string_String>) : Result<string option, std_string_String> =
     v0
 and closure69 () struct (v0 : string, v1 : US25, v2 : string) : std_pin_Pin<Box<Dyn<Future<Result<string option, std_string_String>>>>> =
-    let v3 : string = "let __future_init = Box::pin(async move { //"
+    let v3 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v3
     let v4 : US25 = method162(v1)
     let v26 : reqwest_RequestBuilder =
@@ -1944,7 +1945,7 @@ and closure69 () struct (v0 : string, v1 : US25, v2 : string) : std_pin_Pin<Box<
     let v53 : Result<string option, std_string_String> = method171(v52)
     let v54 : string = "v53 }}); { //"
     Fable.Core.RustInterop.emitRustExpr () v54
-    let v55 : string = "__future_init"
+    let v55 : string = "__result"
     let v56 : std_pin_Pin<Box<Dyn<Future<Result<string option, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v55
     v56
 and method161 () : (struct (string * US25 * string) -> std_pin_Pin<Box<Dyn<Future<Result<string option, std_string_String>>>>>) =
@@ -1963,7 +1964,7 @@ and closure68 () (v0 : (struct (string * US25 * string) [])) : std_pin_Pin<Box<D
     let v3 : string = method0(v2)
     let v4 : string = @$"leptos::logging::log!(""{{}}"", v3)"
     Fable.Core.RustInterop.emitRustExpr () v4
-    let v5 : string = "let __future_init = Box::pin(async move { //"
+    let v5 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v5
     let v6 : (struct (string * US25 * string) []) = method143(v0)
     let v7 : string = "v6.to_vec()"
@@ -1986,7 +1987,7 @@ and closure68 () (v0 : (struct (string * US25 * string) [])) : std_pin_Pin<Box<D
     let v24 : Result<(string option []), std_string_String> = method175(v23)
     let v25 : string = "v24 }}); { //"
     Fable.Core.RustInterop.emitRustExpr () v25
-    let v26 : string = "__future_init"
+    let v26 : string = "__result"
     let v27 : std_pin_Pin<Box<Dyn<Future<Result<(string option []), std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v26
     v27
 and closure71 (v0 : leptos_Resource<US2, rexie_Rexie>) () : rexie_Rexie option =
@@ -2022,7 +2023,7 @@ and method181 () : string =
     let v0 : string = "database=None"
     v0
 and closure74 (v0 : rexie_Rexie option) struct (v1 : string, v2 : US25, v3 : string) : std_pin_Pin<Box<Dyn<Future<Result<Heap4 option, std_string_String>>>>> =
-    let v4 : string = "let __future_init = Box::pin(async move { //"
+    let v4 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v4
     let v5 : (rexie_Rexie -> US5) = closure12()
     let v6 : US5 = US5_0
@@ -2035,7 +2036,7 @@ and closure74 (v0 : rexie_Rexie option) struct (v1 : string, v2 : US25, v3 : str
             let v11 : string = method0(v10)
             let v12 : string = @$"leptos::logging::log!(""{{}}"", v11)"
             Fable.Core.RustInterop.emitRustExpr () v12
-            let v13 : string = "let __future_init = Box::pin(async { //"
+            let v13 : string = "let __result = Box::pin(async { //"
             Fable.Core.RustInterop.emitRustExpr () v13
             let v14 : string = "store"
             let v15 : (string []) = [|v14|]
@@ -2146,7 +2147,7 @@ and closure74 (v0 : rexie_Rexie option) struct (v1 : string, v2 : US25, v3 : str
             let v114 : Result<Heap4 option, std_string_String> = method180(v113)
             let v115 : string = "v114 }}); { //"
             Fable.Core.RustInterop.emitRustExpr () v115
-            let v116 : string = "__future_init"
+            let v116 : string = "__result"
             let v117 : std_pin_Pin<Box<Dyn<Future<Result<Heap4 option, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v116
             let v118 : string = "v117.await"
             let v119 : Result<Heap4 option, std_string_String> = Fable.Core.RustInterop.emitRustExpr () v118
@@ -2187,7 +2188,7 @@ and closure74 (v0 : rexie_Rexie option) struct (v1 : string, v2 : US25, v3 : str
     let v146 : Result<Heap4 option, std_string_String> = method180(v145)
     let v147 : string = "v146 }}); { //"
     Fable.Core.RustInterop.emitRustExpr () v147
-    let v148 : string = "__future_init"
+    let v148 : string = "__result"
     let v149 : std_pin_Pin<Box<Dyn<Future<Result<Heap4 option, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v148
     v149
 and method178 (v0 : rexie_Rexie option) : (struct (string * US25 * string) -> std_pin_Pin<Box<Dyn<Future<Result<Heap4 option, std_string_String>>>>>) =
@@ -2197,7 +2198,7 @@ and method182 (v0 : Vec<std_pin_Pin<Box<Dyn<Future<Result<Heap4 option, std_stri
 and method183 (v0 : Result<Vec<Heap4 option>, std_string_String>) : Result<Vec<Heap4 option>, std_string_String> =
     v0
 and closure73 () struct (v0 : rexie_Rexie option, v1 : (struct (string * US25 * string) [])) : std_pin_Pin<Box<Dyn<Future<Result<Vec<Heap4 option>, std_string_String>>>>> =
-    let v2 : string = "let __future_init = Box::pin(async move { //"
+    let v2 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v2
     let v3 : string = $"%A{v0}"
     let v4 : string = $"%A{v1}"
@@ -2223,7 +2224,7 @@ and closure73 () struct (v0 : rexie_Rexie option, v1 : (struct (string * US25 * 
     let v23 : Result<Vec<Heap4 option>, std_string_String> = method183(v22)
     let v24 : string = "v23 }}}); {{ //"
     Fable.Core.RustInterop.emitRustExpr () v24
-    let v25 : string = "__future_init"
+    let v25 : string = "__result"
     let v26 : std_pin_Pin<Box<Dyn<Future<Result<Vec<Heap4 option>, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v25
     v26
 and method185 (v0 : leptos_Resource<struct (rexie_Rexie option * (struct (string * US25 * string) [])), Result<Vec<Heap4 option>, std_string_String>>) : leptos_Resource<struct (rexie_Rexie option * (struct (string * US25 * string) [])), Result<Vec<Heap4 option>, std_string_String>> =
@@ -2351,7 +2352,7 @@ and method196 (v0 : Result<unit, rexie_Error>) : Result<unit, rexie_Error> =
 and method197 (v0 : Result<unit, std_string_String>) : Result<unit, std_string_String> =
     v0
 and closure84 (v0 : Heap4, v1 : US5) struct (v2 : string, v3 : US25, v4 : string) : std_pin_Pin<Box<Dyn<Future<Result<unit, std_string_String>>>>> =
-    let v5 : string = "let __future_init = Box::pin(async move { //"
+    let v5 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v5
     let v51 : US32 =
         match v1 with
@@ -2369,7 +2370,7 @@ and closure84 (v0 : Heap4, v1 : US5) struct (v2 : string, v3 : US25, v4 : string
             Fable.Core.RustInterop.emitRustExpr () v15
             let v16 : rexie_Rexie = method77(v6)
             let v17 : Heap4 = method194(v0)
-            let v18 : string = "let __future_init = Box::pin(async { //"
+            let v18 : string = "let __result = Box::pin(async { //"
             Fable.Core.RustInterop.emitRustExpr () v18
             let v19 : string = "v16.transaction(&[\"store\"], rexie::TransactionMode::ReadWrite)?"
             let v20 : rexie_Transaction = Fable.Core.RustInterop.emitRustExpr () v19
@@ -2394,7 +2395,7 @@ and closure84 (v0 : Heap4, v1 : US5) struct (v2 : string, v3 : US25, v4 : string
             let v35 : Result<unit, rexie_Error> = method79(v34)
             let v36 : string = "v35 }}}}); {{{ //"
             Fable.Core.RustInterop.emitRustExpr () v36
-            let v37 : string = "__future_init"
+            let v37 : string = "__result"
             let v38 : std_pin_Pin<Box<Dyn<Future<Result<unit, rexie_Error>>>>> = Fable.Core.RustInterop.emitRustExpr () v37
             let v39 : string = "v38.await"
             let v40 : Result<unit, rexie_Error> = Fable.Core.RustInterop.emitRustExpr () v39
@@ -2422,7 +2423,7 @@ and closure84 (v0 : Heap4, v1 : US5) struct (v2 : string, v3 : US25, v4 : string
     let v57 : Result<unit, std_string_String> = method197(v56)
     let v58 : string = "v57 }}); { //"
     Fable.Core.RustInterop.emitRustExpr () v58
-    let v59 : string = "__future_init"
+    let v59 : string = "__result"
     let v60 : std_pin_Pin<Box<Dyn<Future<Result<unit, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v59
     v60
 and method193 (v0 : Heap4, v1 : US5) : (struct (string * US25 * string) -> std_pin_Pin<Box<Dyn<Future<Result<unit, std_string_String>>>>>) =
@@ -2438,7 +2439,7 @@ and closure83 (v0 : leptos_Memo<(struct (string * US25 * string) [])>, v1 : lept
     let v6 : string = method0(v5)
     let v7 : string = @$"leptos::logging::log!(""{{}}"", v6)"
     Fable.Core.RustInterop.emitRustExpr () v7
-    let v8 : string = "let __future_init = Box::pin(async move { //"
+    let v8 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v8
     let v9 : leptos_Memo<rexie_Rexie option> = method191(v1)
     let v10 : string = $"leptos::SignalGetUntracked::get_untracked(&v9)"
@@ -2467,7 +2468,7 @@ and closure83 (v0 : leptos_Memo<(struct (string * US25 * string) [])>, v1 : lept
     let v33 : Result<Vec<unit>, std_string_String> = method199(v32)
     let v34 : string = "v33 }}); { //"
     Fable.Core.RustInterop.emitRustExpr () v34
-    let v35 : string = "__future_init"
+    let v35 : string = "__result"
     let v36 : std_pin_Pin<Box<Dyn<Future<Result<Vec<unit>, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v35
     v36
 and method190 (v0 : leptos_Memo<(struct (string * US25 * string) [])>, v1 : leptos_Memo<rexie_Rexie option>) : (Heap4 -> std_pin_Pin<Box<Dyn<Future<Result<Vec<unit>, std_string_String>>>>>) =
@@ -3883,7 +3884,7 @@ and closure128 () (v0 : Heap6) : std_pin_Pin<Box<Dyn<Future<Result<US54, std_str
     let v3 : string = method0(v2)
     let v4 : string = @$"leptos::logging::log!(""{{}}"", v3)"
     Fable.Core.RustInterop.emitRustExpr () v4
-    let v5 : string = "let __future_init = Box::pin(async move { //"
+    let v5 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v5
     let v6 : string = method297()
     let v7 : string = method6(v6)
@@ -4054,7 +4055,7 @@ and closure128 () (v0 : Heap6) : std_pin_Pin<Box<Dyn<Future<Result<US54, std_str
     let v161 : Result<US54, std_string_String> = method342(v151)
     let v162 : string = "v161 }}}}); {{{ //"
     Fable.Core.RustInterop.emitRustExpr () v162
-    let v163 : string = "__future_init"
+    let v163 : string = "__result"
     let v164 : std_pin_Pin<Box<Dyn<Future<Result<US54, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v163
     v164
 and method296 () : (Heap6 -> std_pin_Pin<Box<Dyn<Future<Result<US54, std_string_String>>>>>) =
