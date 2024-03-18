@@ -1,4 +1,4 @@
-use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::borsh::{BorshDeserialize, BorshSerialize};
 use near_sdk::store::vec::Vector;
 use near_sdk::{env, log, near_bindgen, PanicOnDefault};
 

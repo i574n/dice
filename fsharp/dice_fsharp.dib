@@ -34,7 +34,7 @@ let sixthPowerSequence = 1 |> Seq.unfold (fun state -> Some (state, state * 6)) 
 sixthPowerSequence
 |> Seq.take 8
 |> Seq.toList
-|> _equal [ 1; 6; 36; 216; 1296; 7776; 46656; 279936 ]
+|> _assert_eq [ 1; 6; 36; 216; 1296; 7776; 46656; 279936 ]
 
 #!markdown
 
@@ -64,21 +64,21 @@ let rec accumulateDiceRolls log rolls power acc =
 //// test
 
 accumulateDiceRolls (Some (printfn "%s")) [ 6; 5; 4; 3; 2 ] 0 1000
-|> _equal (Some (1006, [ 5; 4; 3; 2 ]))
+|> _assert_eq (Some (1006, [ 5; 4; 3; 2 ]))
 
 #!fsharp
 
 //// test
 
 accumulateDiceRolls (Some (printfn "%s")) [ 6; 5; 4; 3; 2 ] 1 1000
-|> _equal (Some (1035, [ 4; 3; 2 ]))
+|> _assert_eq (Some (1035, [ 4; 3; 2 ]))
 
 #!fsharp
 
 //// test
 
 accumulateDiceRolls (Some (printfn "%s")) [ 6; 5; 4; 3; 2 ] 2 1000
-|> _equal (Some (1208, [ 3; 2 ]))
+|> _assert_eq (Some (1208, [ 3; 2 ]))
 
 #!markdown
 
@@ -97,21 +97,21 @@ let rollWithinBounds log max rolls =
 //// test
 
 rollWithinBounds (Some (printfn "%s")) 2000 [ 1; 5; 4; 4; 5 ]
-|> _equal (Some 995)
+|> _assert_eq (Some 995)
 
 #!fsharp
 
 //// test
 
 rollWithinBounds (Some (printfn "%s")) 2000 [ 2; 2; 6; 4; 5 ]
-|> _equal (Some 1715)
+|> _assert_eq (Some 1715)
 
 #!fsharp
 
 //// test
 
 rollWithinBounds (Some (printfn "%s")) 2000 [ 4; 1; 1; 2; 3 ]
-|> _equal None
+|> _assert_eq None
 
 #!markdown
 
@@ -135,14 +135,14 @@ let inline calculateDiceCount log max =
 //// test
 
 calculateDiceCount (Some (printfn "%s")) 36
-|> _equal 2
+|> _assert_eq 2
 
 #!fsharp
 
 //// test
 
 calculateDiceCount (Some (printfn "%s")) 7777
-|> _equal 6
+|> _assert_eq 6
 
 #!markdown
 
@@ -188,7 +188,7 @@ let rotateNumbers max items =
 [ -1 .. 14 ]
 |> rotateNumbers 6
 |> Seq.toList
-|> _equal [ 5; 6; 1; 2; 3; 4; 5; 6; 1; 2; 3; 4; 5; 6; 1; 2 ]
+|> _assert_eq [ 5; 6; 1; 2; 3; 4; 5; 6; 1; 2; 3; 4; 5; 6; 1; 2 ]
 
 #!markdown
 
@@ -229,7 +229,7 @@ let rollProgressively log roll reroll max =
 //// test
 
 rollProgressively None rollDice false 1
-|> _equal 1
+|> _assert_eq 1
 
 #!fsharp
 
@@ -238,7 +238,7 @@ rollProgressively None rollDice false 1
 let sequentialRoll = createSequentialRoller [ 5; 4; 4; 5; 1 ]
 
 rollProgressively (Some (printfn "%s")) sequentialRoll false 2000
-|> _equal 995
+|> _assert_eq 995
 
 #!fsharp
 
@@ -249,7 +249,7 @@ let sequentialRoll = createSequentialRoller [ 5; 4; 4; 5; 2 ]
 fun () -> rollProgressively (Some (printfn "%s")) sequentialRoll false 2000 |> ignore
 |> _throwsC (fun ex _ ->
     printException ex
-    |> _equal "System.Exception: createSequentialRoller / End of list"
+    |> _assert_eq "System.Exception: createSequentialRoller / End of list"
 )
 
 #!fsharp
@@ -296,7 +296,7 @@ rollProgressively (Some (printfn "%s")) rollDice true 2000
         |> List.map (fun _ -> rollProgressively None rollDice (reroll = 1) n)
         |> List.groupBy id
         |> List.length
-        |> __equal false n
+        |> __assert_eq false n
     )
 )
 
