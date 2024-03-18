@@ -2147,7 +2147,7 @@ mod module_eef1bd43 {
             unitVar: (),
             v0_1: Dice_ui::US2,
         ) -> std::pin::Pin<Box<dyn std::future::Future<Output = rexie::Rexie>>> {
-            let __future_init = Box::pin(async move {
+            let __result = Box::pin(async move {
                 //;
                 {
                     let v3: string = Dice_ui::method0(string(
@@ -2157,7 +2157,7 @@ mod module_eef1bd43 {
                     {
                         let v6: string = Dice_ui::method0(string("state_core.build_database ()"));
                         leptos::logging::log!("{}", v6);
-                        let __future_init = Box::pin(async {
+                        let __result = Box::pin(async {
                             //;
                             {
                                 let v9: string =
@@ -2185,7 +2185,7 @@ mod module_eef1bd43 {
                         {
                             let v19: std::pin::Pin<
                                 Box<dyn std::future::Future<Output = Dice_ui::US3>>,
-                            > = __future_init;
+                            > = __result;
                             let v21: Dice_ui::US3 = v19.await;
                             let v27: rexie::Rexie = match &v21 {
                                 Dice_ui::US3::US3_1(v21_1_0) => v21_1_0.clone(),
@@ -2217,7 +2217,7 @@ mod module_eef1bd43 {
                         {
                             {
                                 //;
-                                __future_init
+                                __result
                             }
                         }
                     }
@@ -2381,7 +2381,7 @@ mod module_eef1bd43 {
             unitVar: (),
             v0_1: Option<rexie::Rexie>,
         ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Dice_ui::US4>>> {
-            let __future_init = Box::pin(async {
+            let __result = Box::pin(async {
                 //;
                 {
                     let v4: string =
@@ -2404,7 +2404,7 @@ mod module_eef1bd43 {
                                     "state_core.get_data () / id: core-state-heap",
                                 ));
                                 leptos::logging::log!("{}", v12);
-                                let __future_init = Box::pin(async {
+                                let __result = Box::pin(async {
                                     //;
                                     {
                                         let v17: Array<string> =
@@ -2564,7 +2564,7 @@ mod module_eef1bd43 {
                                                     >,
                                                 >,
                                             >,
-                                        > = __future_init;
+                                        > = __result;
                                         let v120: Result<
                                             Option<Option<LrcPtr<Dice_ui::Heap3>>>,
                                             std::string::String,
@@ -2636,7 +2636,7 @@ mod module_eef1bd43 {
             {
                 {
                     //;
-                    __future_init
+                    __result
                 }
             }
         }
@@ -3165,7 +3165,7 @@ mod module_eef1bd43 {
                     leptos::SignalGet::get(&v3),
                 ),
             );
-            let __future_init = Box::pin(async move {
+            let __result = Box::pin(async move {
                 //;
                 match &v8 {
                     Dice_ui::US5::US5_1(v8_1_0) => {
@@ -3185,7 +3185,7 @@ mod module_eef1bd43 {
                             {
                                 let v19: rexie::Rexie = Dice_ui::method77(v8_1_0.clone());
                                 let v20: LrcPtr<Dice_ui::Heap3> = Dice_ui::method78(v1.clone());
-                                let __future_init = Box::pin(async {
+                                let __result = Box::pin(async {
                                     //;
                                     {
                                         let v23: rexie::Transaction = v19.transaction(
@@ -3223,7 +3223,7 @@ mod module_eef1bd43 {
                                                             Output = Result<(), rexie::Error>,
                                                         >,
                                                     >,
-                                                > = __future_init;
+                                                > = __result;
                                                 let v43: Result<(), rexie::Error> = v41.await;
                                                 let v46: Dice_ui::US17 = match &v43 {
                                                     Err(v43_1_0) => {
@@ -3255,7 +3255,7 @@ mod module_eef1bd43 {
                 Dice_ui::method80();
                 ()
             });
-            __future_init
+            __result
         }
         pub fn method76(
             v0_1: leptos::Resource<Dice_ui::US2, rexie::Rexie>,
@@ -4316,7 +4316,7 @@ mod module_eef1bd43 {
             Box<dyn std::future::Future<Output = Result<Option<string>, std::string::String>>>,
         > {
             let v2: string = _arg.2.clone();
-            let __future_init = Box::pin(async move {
+            let __result = Box::pin(async move {
                 //;
                 {
                     let v4: Dice_ui::US25 = Dice_ui::method162(_arg.1.clone());
@@ -4379,7 +4379,7 @@ mod module_eef1bd43 {
             });
             {
                 //;
-                __future_init
+                __result
             }
         }
         pub fn method161() -> Func1<
@@ -4440,7 +4440,7 @@ mod module_eef1bd43 {
                 string(""),
             ));
             leptos::logging::log!("{}", v3);
-            let __future_init = Box::pin(async move {
+            let __result = Box::pin(async move {
                 //;
                 {
                     let v6: Array<(string, Dice_ui::US25, string)> = Dice_ui::method143(v0_1);
@@ -4476,7 +4476,7 @@ mod module_eef1bd43 {
             });
             {
                 //;
-                __future_init
+                __result
             }
         }
         pub fn closure71(
@@ -4547,7 +4547,7 @@ mod module_eef1bd43 {
                 >,
             >,
         > {
-            let __future_init = Box::pin(async move {
+            let __result = Box::pin(async move {
                 //;
                 {
                     let v7: Dice_ui::US5 = defaultValue(
@@ -4570,7 +4570,7 @@ mod module_eef1bd43 {
                             string(""),
                         ));
                         leptos::logging::log!("{}", v11);
-                        let __future_init = Box::pin(async {
+                        let __result = Box::pin(async {
                             //;
                             {
                                 let v16: Array<string> =
@@ -4716,7 +4716,7 @@ mod module_eef1bd43 {
                                             >,
                                         >,
                                     >,
-                                > = __future_init;
+                                > = __result;
                                 let v119: Result<
                                     Option<LrcPtr<Dice_ui::Heap4>>,
                                     std::string::String,
@@ -4767,7 +4767,7 @@ mod module_eef1bd43 {
             });
             {
                 //;
-                __future_init
+                __result
             }
         }
         pub fn method178(
@@ -4827,7 +4827,7 @@ mod module_eef1bd43 {
         > {
             let v1: Array<(string, Dice_ui::US25, string)> = _arg.1.clone();
             let v0_1: Option<rexie::Rexie> = _arg.0.clone();
-            let __future_init = Box::pin(async move {
+            let __result = Box::pin(async move {
                 //;
                 {
                     let v6: string =
@@ -4882,7 +4882,7 @@ mod module_eef1bd43 {
             {
                 {
                     //;
-                    __future_init
+                    __result
                 }
             }
         }
@@ -5093,7 +5093,7 @@ mod module_eef1bd43 {
         ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Result<(), std::string::String>>>>
         {
             let v4: string = _arg.2.clone();
-            let __future_init = Box::pin(async move {
+            let __result = Box::pin(async move {
                 //;
                 {
                     let v51: Dice_ui::US32 = if let Dice_ui::US5::US5_1(v1_1_0) = &v1 {
@@ -5124,7 +5124,7 @@ mod module_eef1bd43 {
                                     _ => unreachable!(),
                                 });
                                 let v17: LrcPtr<Dice_ui::Heap4> = Dice_ui::method194(v0_1);
-                                let __future_init = Box::pin(async {
+                                let __result = Box::pin(async {
                                     //;
                                     {
                                         let v20: rexie::Transaction = v16.transaction(
@@ -5162,7 +5162,7 @@ mod module_eef1bd43 {
                                                             Output = Result<(), rexie::Error>,
                                                         >,
                                                     >,
-                                                > = __future_init;
+                                                > = __result;
                                                 let v40: Result<(), rexie::Error> = v38.await;
                                                 let v41 = Dice_ui::method195();
                                                 let v42: Result<(), rexie::Error> =
@@ -5194,7 +5194,7 @@ mod module_eef1bd43 {
             });
             {
                 //;
-                __future_init
+                __result
             }
         }
         pub fn method193(
@@ -5243,7 +5243,7 @@ mod module_eef1bd43 {
                 string(""),
             ));
             leptos::logging::log!("{}", v6);
-            let __future_init = Box::pin(async move {
+            let __result = Box::pin(async move {
                 //;
                 {
                     let v9: leptos::Memo<Option<rexie::Rexie>> = Dice_ui::method191(v1);
@@ -5279,7 +5279,7 @@ mod module_eef1bd43 {
             });
             {
                 //;
-                __future_init
+                __result
             }
         }
         pub fn method190(
@@ -8819,7 +8819,7 @@ mod module_eef1bd43 {
                 string(""),
             ));
             leptos::logging::log!("{}", v3);
-            let __future_init = Box::pin(async move {
+            let __result = Box::pin(async move {
                 //;
                 {
                     let v7: string = Dice_ui::method6(Dice_ui::method297());
@@ -9049,7 +9049,7 @@ mod module_eef1bd43 {
                 {
                     {
                         //;
-                        __future_init
+                        __result
                     }
                 }
             }
