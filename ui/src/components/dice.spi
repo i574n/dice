@@ -61,7 +61,7 @@ inl render () =
             leptos.log $'"dice.render (4) / roll_action / result: " + string !result_log + ""'
 
             result'
-        |> async.future_init 5 1
+        |> async.future_init (4, 3) 1
 
     inl roll = leptos.create_memo fun () =>
         inl roll =
