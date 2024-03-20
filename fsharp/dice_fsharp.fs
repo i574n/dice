@@ -1,8 +1,12 @@
 #if !INTERACTIVE
-namespace Polyglot
+namespace Dice
 #endif
 
-module dice_fsharp =
+module DiceFSharp =
+
+#if !INTERACTIVE
+    open Polyglot
+#endif
 
     open Common
 

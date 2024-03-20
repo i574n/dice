@@ -11,9 +11,9 @@
 use fable_library_rust::NativeArray_::array_from;
 use fable_library_rust::String_::fromString;
 mod module_dc8717e1 {
-    pub mod Polyglot {
+    pub mod Dice {
         use super::*;
-        pub mod dice_fsharp {
+        pub mod DiceFSharp {
             use super::*;
             use crate::Polyglot::Common;
             use crate::Polyglot::Common::TraceLevel;
@@ -93,7 +93,7 @@ mod module_dc8717e1 {
                                 let value: i32 = (roll_1 - 1_i32)
                                     * item_1(
                                         power.get().clone(),
-                                        Polyglot::dice_fsharp::sixthPowerSequence(),
+                                        Dice::DiceFSharp::sixthPowerSequence(),
                                     );
                                 iterate(
                                     {
@@ -163,7 +163,7 @@ mod module_dc8717e1 {
                 rolls: List<i32>,
             ) -> Option<i32> {
                 let matchValue: Option<LrcPtr<(i32, List<i32>)>> =
-                    Polyglot::dice_fsharp::accumulateDiceRolls(
+                    Dice::DiceFSharp::accumulateDiceRolls(
                         log,
                         rolls.clone(),
                         length(rolls) - 1_i32,
@@ -200,7 +200,7 @@ mod module_dc8717e1 {
                 map(
                     Func1::new({
                         let max = max.clone();
-                        move |n: i32| Polyglot::dice_fsharp::rotateNumber(max, n)
+                        move |n: i32| Dice::DiceFSharp::rotateNumber(max, n)
                     }),
                     items,
                 )
@@ -290,7 +290,7 @@ mod module_dc8717e1 {
                                 continue '_loop_1;
                             } else {
                                 let matchValue: Option<LrcPtr<(i32, List<i32>)>> =
-                                    Polyglot::dice_fsharp::accumulateDiceRolls(
+                                    Dice::DiceFSharp::accumulateDiceRolls(
                                         log.clone(),
                                         rolls.get().clone(),
                                         power,
@@ -352,7 +352,7 @@ mod module_dc8717e1 {
                 loop_1(empty::<i32>(), 0_i32)
             }
             pub fn main(args: Array<string>) -> i32 {
-                let result: i32 = Polyglot::dice_fsharp::rollProgressively(
+                let result: i32 = Dice::DiceFSharp::rollProgressively(
                     Some({
                         fn clo(a0: string) {
                             printfn!("{}", a0);
@@ -362,7 +362,7 @@ mod module_dc8717e1 {
                             move |arg: string| clo(arg)
                         })
                     }),
-                    Func0::new(move || Polyglot::dice_fsharp::rollDice()),
+                    Func0::new(move || Dice::DiceFSharp::rollDice()),
                     true,
                     i32::MAX / 10_i32,
                 );
@@ -383,11 +383,13 @@ pub use module_dc8717e1::*;
 #[path = "../../polyglot/lib/fsharp/Common.rs"]
 mod module_8cb3e09e;
 pub use module_8cb3e09e::*;
+pub mod Dice {
+    pub use crate::module_dc8717e1::Dice::*;
+}
 pub mod Polyglot {
     pub use crate::module_8cb3e09e::Polyglot::*;
-    pub use crate::module_dc8717e1::Polyglot::*;
 }
 pub fn main() {
     let args = std::env::args().skip(1).map(fromString).collect();
-    Polyglot::dice_fsharp::main(array_from(args));
+    Dice::DiceFSharp::main(array_from(args));
 }
