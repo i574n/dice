@@ -4,7 +4,7 @@
 
 #!markdown
 
-# dice_fsharp (Polyglot)
+# DiceFSharp (Dice)
 
 #!fsharp
 
@@ -16,6 +16,10 @@
 #!import ../../polyglot/lib/fsharp/Common.fs
 
 #!fsharp
+
+#if !INTERACTIVE
+open Polyglot
+#endif
 
 open Common
 

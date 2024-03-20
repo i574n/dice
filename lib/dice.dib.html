@@ -7531,7 +7531,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="dice-(Polyglot)">dice (Polyglot)<a class="anchor-link" href="#dice-(Polyglot)">¶</a></h1>
+<h1 id="dice-(Dice)">dice (Dice)<a class="anchor-link" href="#dice-(Dice)">¶</a></h1>
 </div>
 </div>
 </div>
@@ -8701,6 +8701,8 @@ and method5 (v0 : (int32 []), v1 : (int32 []), v2 : int32) : bool =
             false
     else
         true
+and method6 (v0 : bool) : bool =
+    v0
 and method0 () : unit =
     let v0 : string = $"create_sequential_roller ()"
     System.Console.WriteLine v0
@@ -8733,10 +8735,15 @@ and method0 () : unit =
         else
             let v21 : int32 = 0
             method5(v9, v16, v21)
-    let v24 : string = $"__expect / actual: %A{v9} / expected: %A{v16}"
-    let v25 : bool = v23 = false
-    if v25 then
-        failwith&lt;unit&gt; v24
+    let v25 : bool =
+        if v23 then
+            true
+        else
+            method6(v23)
+    let v26 : string = $"__expect / actual: %A{v9} / expected: %A{v16}"
+    let v27 : bool = v25 = false
+    if v27 then
+        failwith&lt;unit&gt; v26
 method0()
 
 create_sequential_roller ()
@@ -8983,15 +8990,22 @@ and method1 (v0 : UH0, v1 : int8) : int32 =
             let v33 : UH0 = UH0_0(v32, v0)
             let v34 : int8 = v1 + 1y
             method1(v33, v34)
+and method4 (v0 : bool) : bool =
+    v0
 and method0 () : unit =
     let v0 : UH0 = UH0_1
     let v1 : int8 = 0y
     let v2 : int32 = method1(v0, v1)
     let v3 : bool = v2 = 1
-    let v4 : string = $"__expect / actual: %A{v2} / expected: %A{1}"
-    let v5 : bool = v3 = false
-    if v5 then
-        failwith&lt;unit&gt; v4
+    let v5 : bool =
+        if v3 then
+            true
+        else
+            method4(v3)
+    let v6 : string = $"__expect / actual: %A{v2} / expected: %A{1}"
+    let v7 : bool = v5 = false
+    if v7 then
+        failwith&lt;unit&gt; v6
 method0()
 
 </pre>
@@ -9287,6 +9301,8 @@ and method1 (v0 : Mut0, v1 : Mut1, v2 : Mut1, v3 : Mut1, v4 : Mut2, v5 : UH1, v6
             let v23 : UH1 = UH1_0(v22, v5)
             let v24 : int8 = v6 + 1y
             method1(v0, v1, v2, v3, v4, v23, v24)
+and method10 (v0 : bool) : bool =
+    v0
 and method0 () : unit =
     let v0 : string = $"create_sequential_roller ()"
     System.Console.WriteLine v0
@@ -9304,10 +9320,15 @@ and method0 () : unit =
     let v11 : int8 = 0y
     let v12 : int32 = method1(v3, v4, v5, v6, v8, v10, v11)
     let v13 : bool = v12 = 995
-    let v14 : string = $"__expect / actual: %A{v12} / expected: %A{995}"
-    let v15 : bool = v13 = false
-    if v15 then
-        failwith&lt;unit&gt; v14
+    let v15 : bool =
+        if v13 then
+            true
+        else
+            method10(v13)
+    let v16 : string = $"__expect / actual: %A{v12} / expected: %A{995}"
+    let v17 : bool = v15 = false
+    if v17 then
+        failwith&lt;unit&gt; v16
 method0()
 
 create_sequential_roller ()
@@ -9616,6 +9637,8 @@ and method1 (v0 : Mut0, v1 : Mut1, v2 : Mut1, v3 : Mut1, v4 : Mut2, v5 : UH1, v6
             let v23 : UH1 = UH1_0(v22, v5)
             let v24 : int8 = v6 + 1y
             method1(v0, v1, v2, v3, v4, v23, v24)
+and method10 (v0 : bool) : bool =
+    v0
 and method0 () : unit =
     let v0 : string = $"create_sequential_roller ()"
     System.Console.WriteLine v0
@@ -9633,10 +9656,15 @@ and method0 () : unit =
     let v11 : int8 = 0y
     let v12 : int32 = method1(v3, v4, v5, v6, v8, v10, v11)
     let v13 : bool = v12 = 1678
-    let v14 : string = $"__expect / actual: %A{v12} / expected: %A{1678}"
-    let v15 : bool = v13 = false
-    if v15 then
-        failwith&lt;unit&gt; v14
+    let v15 : bool =
+        if v13 then
+            true
+        else
+            method10(v13)
+    let v16 : string = $"__expect / actual: %A{v12} / expected: %A{1678}"
+    let v17 : bool = v15 = false
+    if v17 then
+        failwith&lt;unit&gt; v16
 method0()
 
 create_sequential_roller ()
@@ -9693,7 +9721,7 @@ accumulate_dice_rolls / power: -1 / acc: 1677 / result: 1678
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 265)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>265</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 746)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>746</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1339)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1339</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1332)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1332</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1321)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1321</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1336)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1336</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 278)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>278</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 726)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>726</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1287)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1287</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1370)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1370</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
+<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 273)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>273</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 715)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>715</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1303)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1303</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1293)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1293</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1376)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1376</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1399)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1399</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 283)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>283</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 755)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>755</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1282)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1282</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1321)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1321</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
 .dni-code-hint {
     font-style: italic;
     overflow: hidden;
@@ -10007,7 +10035,7 @@ method0()
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 973)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>973</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 1036)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1036</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1007)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1007</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1005)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1005</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1009)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1009</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1011)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1011</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 986)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>986</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 997)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>997</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 976)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>976</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1000)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1000</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
+<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 1015)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1015</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 949)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>949</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1034)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1034</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 996)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>996</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 981)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>981</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 948)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>948</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 1063)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1063</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 1039)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1039</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 967)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>967</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1008)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1008</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
 .dni-code-hint {
     font-style: italic;
     overflow: hidden;
@@ -10411,7 +10439,9 @@ and method12 (v0 : UH3, v1 : int32) : int32 =
         method12(v4, v5)
     | UH3_1 -&gt; (* Nil *)
         v1
-and method15 (v0 : int8, v1 : int8) : UH1 =
+and method13 (v0 : bool) : bool =
+    v0
+and method16 (v0 : int8, v1 : int8) : UH1 =
     let v2 : bool = v1 &lt; v0
     if v2 then
         let mutable result = None
@@ -10432,11 +10462,11 @@ and method15 (v0 : int8, v1 : int8) : UH1 =
         |&gt; fun x -&gt; result &lt;- Some x
         let v8 : uint8 = result |&gt; Option.get
         let v9 : int8 = v1 + 1y
-        let v10 : UH1 = method15(v0, v9)
+        let v10 : UH1 = method16(v0, v9)
         UH1_0(v8, v10)
     else
         UH1_1
-and method16 (v0 : int32, v1 : int8, v2 : UH1) : int32 =
+and method17 (v0 : int32, v1 : int8, v2 : UH1) : int32 =
     let v3 : int8 = v1 + 1y
     let v4 : bool = v1 &lt; v3
     if v4 then
@@ -10458,7 +10488,7 @@ and method16 (v0 : int32, v1 : int8, v2 : UH1) : int32 =
         |&gt; fun x -&gt; result &lt;- Some x
         let v10 : uint8 = result |&gt; Option.get
         let v11 : UH1 = UH1_0(v10, v2)
-        method14(v0, v1, v11, v3)
+        method15(v0, v1, v11, v3)
     else
         let v13 : int32 = 0
         let v14 : US0 = method8(v1, v2, v13)
@@ -10469,13 +10499,13 @@ and method16 (v0 : int32, v1 : int8, v2 : UH1) : int32 =
                 v15
             else
                 let v18 : int8 = 0y
-                let v19 : UH1 = method15(v1, v18)
-                method16(v0, v1, v19)
+                let v19 : UH1 = method16(v1, v18)
+                method17(v0, v1, v19)
         | _ -&gt;
             let v22 : int8 = 0y
-            let v23 : UH1 = method15(v1, v22)
-            method16(v0, v1, v23)
-and method14 (v0 : int32, v1 : int8, v2 : UH1, v3 : int8) : int32 =
+            let v23 : UH1 = method16(v1, v22)
+            method17(v0, v1, v23)
+and method15 (v0 : int32, v1 : int8, v2 : UH1, v3 : int8) : int32 =
     let v4 : int8 = v1 + 1y
     let v5 : bool = v3 &lt; v4
     if v5 then
@@ -10498,7 +10528,7 @@ and method14 (v0 : int32, v1 : int8, v2 : UH1, v3 : int8) : int32 =
         let v11 : uint8 = result |&gt; Option.get
         let v12 : UH1 = UH1_0(v11, v2)
         let v13 : int8 = v3 + 1y
-        method14(v0, v1, v12, v13)
+        method15(v0, v1, v12, v13)
     else
         let v15 : int32 = 0
         let v16 : US0 = method8(v1, v2, v15)
@@ -10509,16 +10539,16 @@ and method14 (v0 : int32, v1 : int8, v2 : UH1, v3 : int8) : int32 =
                 v17
             else
                 let v20 : int8 = 0y
-                let v21 : UH1 = method15(v1, v20)
-                method16(v0, v1, v21)
+                let v21 : UH1 = method16(v1, v20)
+                method17(v0, v1, v21)
         | _ -&gt;
             let v24 : int8 = 0y
-            let v25 : UH1 = method15(v1, v24)
-            method16(v0, v1, v25)
-and method13 (v0 : int32, v1 : UH0, v2 : UH0) : UH0 =
+            let v25 : UH1 = method16(v1, v24)
+            method17(v0, v1, v25)
+and method14 (v0 : int32, v1 : UH0, v2 : UH0) : UH0 =
     match v1 with
     | UH0_0(v3, v4) -&gt; (* Cons *)
-        let v5 : UH0 = method13(v0, v4, v2)
+        let v5 : UH0 = method14(v0, v4, v2)
         let v6 : bool = v0 = 1
         let v10 : int8 =
             if v6 then
@@ -10530,7 +10560,7 @@ and method13 (v0 : int32, v1 : UH0, v2 : UH0) : UH0 =
         let v11 : int8 = v10 - 1y
         let v12 : UH1 = UH1_1
         let v13 : int8 = 0y
-        let v14 : int32 = method14(v0, v11, v12, v13)
+        let v14 : int32 = method15(v0, v11, v12, v13)
         UH0_0(v14, v5)
     | UH0_1 -&gt; (* Nil *)
         v2
@@ -10545,22 +10575,32 @@ and method3 (v0 : UH0) : unit =
         let v8 : int32 = 0
         let v9 : int32 = method12(v7, v8)
         let v10 : bool = v9 = v1
-        let v11 : string = $"__expect / actual: %A{v9} / expected: %A{v1}"
-        let v12 : bool = v10 = false
-        if v12 then
-            failwith&lt;unit&gt; v11
-        let v13 : UH0 = method4()
-        let v14 : UH0 = UH0_1
-        let v15 : UH0 = method13(v1, v13, v14)
-        let v16 : UH3 = UH3_1
-        let v17 : UH3 = method10(v15, v16)
-        let v18 : int32 = 0
-        let v19 : int32 = method12(v17, v18)
-        let v20 : bool = v19 = v1
-        let v21 : string = $"__expect / actual: %A{v19} / expected: %A{v1}"
-        let v22 : bool = v20 = false
-        if v22 then
-            failwith&lt;unit&gt; v21
+        let v12 : bool =
+            if v10 then
+                true
+            else
+                method13(v10)
+        let v13 : string = $"__expect / actual: %A{v9} / expected: %A{v1}"
+        let v14 : bool = v12 = false
+        if v14 then
+            failwith&lt;unit&gt; v13
+        let v15 : UH0 = method4()
+        let v16 : UH0 = UH0_1
+        let v17 : UH0 = method14(v1, v15, v16)
+        let v18 : UH3 = UH3_1
+        let v19 : UH3 = method10(v17, v18)
+        let v20 : int32 = 0
+        let v21 : int32 = method12(v19, v20)
+        let v22 : bool = v21 = v1
+        let v24 : bool =
+            if v22 then
+                true
+            else
+                method13(v22)
+        let v25 : string = $"__expect / actual: %A{v21} / expected: %A{v1}"
+        let v26 : bool = v24 = false
+        if v26 then
+            failwith&lt;unit&gt; v25
         method3(v2)
     | UH0_1 -&gt; (* Nil *)
         ()

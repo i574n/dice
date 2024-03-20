@@ -45,7 +45,6 @@ jobs:
                 ~/.cargo/registry/index/
                 ~/.cargo/registry/cache/
                 ~/.cargo/git/db/
-                target/
             key: ${{ runner.os }}-cargo-2024-03-15-${{ hashFiles('**/Cargo.lock') }}
             restore-keys: ${{ runner.os }}-cargo-2024-03-15-
 

@@ -1,5 +1,5 @@
 <?php
-namespace Polyglot\dice_fsharp;
+namespace Dice\DiceFSharp;
 
 require_once(__FABLE_LIBRARY__.'/List.php');
 require_once(__FABLE_LIBRARY__.'/Option.php');

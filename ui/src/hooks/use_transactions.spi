@@ -132,76 +132,77 @@ inl render (global_state : state.global_state) =
                 leptos.log $'"transactions.render (3) / txns move / loading: " + string !loading + " / result: " + string !x_log + ""'
                 x
 
-    // inl rpc_requests :
-    //     leptos.memo (
-    //         resultm.result'
-    //             (optionm'.option' (array_base networking.request))
-    //             sm'.std_string
-    //         )
-    //     =
-    //     leptos.create_memo fun () =>
-    //         inl result =
-    //             txns
-    //             |> leptos.memo_get
-    //             |> resultm.unbox
-    //             |> resultm.map optionm'.unbox
-    //             |> function
-    //                 | Ok (Some txns) =>
-    //                     (a txns : _ i32 _)
-    //                     |> am'.map_vec fun { txn } =>
-    //                         ({
-    //                             url = "https://rpc.mainnet.near.org"
-    //                             request_type = networking.Post
-    //                             body =
-    //                                 {
-    //                                     jsonrpc = "2.0" |> sm'.to_std_string
-    //                                     id = "dontcare" |> sm'.to_std_string
-    //                                     method = "EXPERIMENTAL_tx_status" |> sm'.to_std_string
-    //                                     params = ;[
-    //                                         txn.transaction_hash
-    //                                         "bowen" |> sm'.to_std_string
-    //                                     ]
-    //                                 }
-    //                                 |> model.near.rpc.rpc_input_box
-    //                                 |> sm'.format_debug
-    //                         } : networking.request)
-    //                     |> fun (a x) => x
-    //                     // match error |> optionm'.unbox with
-    //                     // | Some { cause = { name = cause_name } data name message } =>
-    //                     //     Some $'string !name + ": " + string !message + " - " + string !data + " (" + string !cause_name + ")"'
-    //                     // | _ => None
-    //                     |> Some
-    //                     |> Ok
-    //                 | Error error => Error error
-    //                 | _ => Ok None
-    //                 |> resultm.map optionm'.box
-    //                 |> resultm.box
+    inl rpc_requests :
+        leptos.memo (
+            resultm.result'
+                (optionm'.option' (array_base networking.request))
+                sm'.std_string
+            )
+        =
+        leptos.create_memo fun () =>
+            inl result =
+                txns
+                |> leptos.memo_get
+                |> resultm.unbox
+                |> resultm.map optionm'.unbox
+                |> function
+                    | Ok (Some txns) =>
+                        (a txns : _ i32 _)
+                        |> am'.map_vec fun { txn } =>
+                            ({
+                                url = "https://rpc.mainnet.near.org"
+                                request_type = networking.Post
+                                body =
+                                    {
+                                        jsonrpc = "2.0" |> sm'.to_std_string
+                                        id = "dontcare" |> sm'.to_std_string
+                                        method = "EXPERIMENTAL_tx_status" |> sm'.to_std_string
+                                        params = ;[
+                                            txn.transaction_hash
+                                            "bowen" |> sm'.to_std_string
+                                        ]
+                                    }
+                                    |> model.near.rpc.rpc_input_box
+                                    |> sm'.format_debug
+                            } : networking.request)
+                        |> fun (a x) => x
+                        // match error |> optionm'.unbox with
+                        // | Some { cause = { name = cause_name } data name message } =>
+                        //     Some $'string !name + ": " + string !message + " - " + string !data + " (" + string !cause_name + ")"'
+                        // | _ => None
+                        |> Some
+                        |> Ok
+                    | Error error => Error error
+                    | _ => Ok None
+                    |> resultm.map optionm'.box
+                    |> resultm.box
 
-    //         inl result_log = result |> sm'.format_debug |> sm'.ellipsis 200i32
-    //         leptos.log $'"dice.render (3) / roll_action / result: " + string !result_log + ""'
+            inl result_log = result |> sm'.format_debug |> sm'.ellipsis 200i32
+            leptos.log $'"dice.render (3) / roll_action / result: " + string !result_log + ""'
 
-    //         result
+            result
 
-    // inl rpc_requests' = leptos.create_memo fun () =>
-    //     rpc_requests
-    //     |> leptos.memo_get
-    //     |> resultm.unbox
-    //     |> resultm.map optionm'.unbox
-    //     |> function
-    //         | Ok (Some x) => x
-    //         | _ => ;[]
-    //     |> a
+    inl rpc_requests' = leptos.create_memo fun () =>
+        rpc_requests
+        |> leptos.memo_get
+        |> resultm.unbox
+        |> resultm.map optionm'.unbox
+        |> function
+            | Ok (Some x) => x
+            | _ => ;[]
+        |> a
+        |> fun x => x : _ i32 _
 
-    // inl rpc_response :
-    //     rust.func0 (a i32 (
-    //         resultm.result'
-    //             (optionm'.option' model.near.rpc.rpc_response)
-    //             sm'.std_string
-    //         )
-    //     )
-    //     =
-    //     state_core.use_requests rpc_requests' model.near.rpc.rpc_response_unbox
+    inl rpc_response :
+        rust.func0 (a i32 (
+            resultm.result'
+                (optionm'.option' model.near.rpc.rpc_response)
+                sm'.std_string
+            )
+        )
+        =
+        state_core.use_requests rpc_requests' model.near.rpc.rpc_response_unbox
     
-    inl rpc_requests = ()
+    // inl rpc_requests = ()
 
     { accounts_requests txns rpc_requests }
