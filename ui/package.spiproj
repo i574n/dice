@@ -16,11 +16,11 @@ modules:
             loading_button
             loading_panel
             table
-            settings
+            settings_view
             transaction
-            transactions
-            lists
-            dice
+            transactions_view
+            lists_view
+            dice_view
             menu_tabs
             content
             home

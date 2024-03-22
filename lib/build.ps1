@@ -13,9 +13,9 @@ if (!$fast) {
 
 { . ../../polyglot/apps/parser/dist/DibParser$(GetExecutableSuffix) dice.dib spi } | Invoke-Block
 
-{ . ../../polyglot/apps/spiral/dist/Supervisor$(GetExecutableSuffix) --build-file dice.spi dice.fsx --timeout 20000 } | Invoke-Block
+{ . ../../polyglot/apps/spiral/dist/Supervisor$(GetExecutableSuffix) --build-file dice.spi dice.fsx --timeout 60000 } | Invoke-Block
 
-{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) dice.fsx $($fast ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) --packages Fable.Core --modules lib/fsharp/Common.fs } | Invoke-Block
+{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) dice.fsx $($fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) --packages Fable.Core --modules lib/fsharp/Common.fs } | Invoke-Block
 
 $targetDir = "../../polyglot/target/polyglot/builder/dice"
 
