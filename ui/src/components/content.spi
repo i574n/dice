@@ -85,10 +85,10 @@ inl render () : _ leptos.div =
                 ] fun () =>
                     open menu_tabs
                     match tab |> leptos.signal_get with
-                    | Dice _ => dice.render () |> Some
-                    | Lists => lists.render () |> Some
-                    | Transactions => transactions.render () |> Some
-                    | Settings => settings.render () |> Some
+                    | Dice _ => dice_view.render () |> Some
+                    | Lists => lists_view.render () |> Some
+                    | Transactions => transactions_view.render () |> Some
+                    | Settings => settings_view.render () |> Some
                     | _ => None
                     |> function
                         | Some fragment =>

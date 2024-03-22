@@ -6,14 +6,13 @@ inl render () =
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
     
-    inl { accounts_requests txns } = hooks.use_transactions.render global_state
+    inl { accounts_txns_requests txns } = hooks.use_transactions.render global_state
 
     inl roll_action = leptos.create_action fun (value : heap i32) =>
         inl value_log = value |> sm'.format_debug
         leptos.log $'"dice.render (2) / set_max_action / value: " + string !value_log + ""'
         fun () =>
             inl url = "https://rpc.mainnet.near.org"
-            
             inl body =
                 {
                     jsonrpc = "2.0" |> sm'.to_std_string
@@ -26,7 +25,7 @@ inl render () =
                 }
                 |> model.near.rpc.rpc_input_box
             
-            inl result =
+            inl result : _ _ sm'.std_string =
                 url
                 |> networking.new_request_post
                 |> networking.request_json body
@@ -40,58 +39,69 @@ inl render () =
                 |> resultm.try'
                 |> Some
                 |> Ok
-                |> resultm.box : _ _ sm'.std_string
-
-            inl result_log = result |> sm'.format_debug |> sm'.ellipsis 200i32
-            leptos.log $'"dice.render (3) / roll_action / result: " + string !result_log + ""'
-
-            inl result' =
-                match result |> resultm.unbox with
-                | Ok (Some value) =>
-                    value
-                    |> sm'.from_std_string
-                    |> sm'.deserialize
-                    |> resultm.unbox
-                    |> resultm.map model.near.rpc.rpc_response_unbox
-                    |> resultm.map Some
-                | _ => Ok None
                 |> resultm.box
+                |> leptos.log_format fun log => $'"dice_view.render (x) / roll_action create_action / result1 / result: " + string !log + ""'
 
-            inl result_log = result' |> sm'.format_debug |> sm'.ellipsis 200i32
-            leptos.log $'"dice.render (4) / roll_action / result: " + string !result_log + ""'
-
-            result'
+            match result |> resultm.unbox with
+            | Ok (Some value) =>
+                value
+                |> sm'.from_std_string
+                |> sm'.deserialize
+                |> resultm.unbox
+                |> resultm.map model.near.rpc.rpc_response_unbox
+                |> resultm.map Some
+            | _ => Ok None
+            |> resultm.box
+            |> leptos.log_format fun log => $'"dice_view.render (x) / roll_action create_action / result2 / result: " + string !log + ""'
         |> async.future_init (4, 3) 1
 
     inl roll = leptos.create_memo fun () =>
-        inl roll =
-            roll_action
-            |> leptos.action_value
-            |> leptos.signal_get
-            |> optionm'.map resultm.unbox
-            |> optionm'.unbox
-            |> resultm.flatten_option
-            |> resultm.map optionm'.box
-            |> resultm.box
-
-        inl roll_log = roll |> sm'.format_debug |> sm'.ellipsis 200i32
-        leptos.log $'"dice.render (5) / transactions memo / roll: " + string !roll_log + ""'
-        roll
+        roll_action
+        |> leptos.action_value
+        |> leptos.signal_get
+        |> optionm'.map resultm.unbox
+        |> optionm'.unbox
+        |> resultm.flatten_option
+        |> resultm.map optionm'.box
+        |> resultm.box
+        |> leptos.log_format fun log => $'"dice_view.render (x) / roll create_memo / result: " + string !log + ""'
     
     inl error_message = leptos.create_memo fun () =>
-        inl error_message : _ string =
-            match roll |> leptos.memo_get |> resultm.unbox |> resultm.map optionm'.unbox with
-            | Ok (Some { error }) =>
-                match error |> optionm'.unbox with
-                | Some { cause = { name = cause_name } data name message } =>
-                    Some $'string !name + ": " + string !message + " - " + string !data + " (" + string !cause_name + ")"'
-                | _ => None
+        match roll |> leptos.memo_get |> resultm.unbox |> resultm.map optionm'.unbox with
+        | Ok (Some { error }) =>
+            match error |> optionm'.unbox with
+            | Some { cause = { name = cause_name } data name message } =>
+                Some $'string !name + ": " + string !message + " - " + string !data + " (" + string !cause_name + ")"'
             | _ => None
-            |> optionm'.box
+        | _ => None
+        |> optionm'.box
+        |> leptos.log_format fun log => $'"dice_view.render (x) / error_message create_memo / result: " + string !log + ""'
 
-        inl message_log = error_message |> sm'.format_debug |> sm'.ellipsis 200i32
-        leptos.log $'"dice.render (6) / error_message memo / error_message: " + string !message_log + ""'
-        error_message
+    inl accounts =
+        leptos.create_memo fun () =>
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_get
+            |> fun data =>
+                data.accounts
+                |> am'.from_vec
+                |> fun x => x : _ i32 _
+                |> am'.map_vec from_pair
+                |> am'.filter_vec fst
+                |> am'.map_vec snd
+                |> am'.mapi_vec fun (i : i32) account =>
+                    new_pair
+                        i
+                        (leptos.create_signal account)
+    
+    inl accounts_data =
+        leptos.create_memo fun () =>
+            accounts
+            |> leptos.memo_get
+            |> am'.map_vec from_pair
+            |> am'.map_vec fun i, x =>
+                i, x |> fst
+            |> fun (a x) => x
+            |> am'.to_vec
 
     ;[
         leptos.accordion "Roll" true None fun () =>
@@ -100,6 +110,48 @@ inl render () =
                     $'"class=\\\"p-[10px] flex [flex-direction:column] gap-[8px]\\\""'
                 ] fun () =>
                     :>(;[
+                leptos.accordion "Account" true None fun () =>
+                    leptos.for
+                        accounts_data
+                        fun pair =>
+                            inl i, _ = pair
+                            i
+                        fun pair =>
+                            inl i, account = pair
+                            leptos.div [
+                                $'"class=\\\"pl-[10px] py-[7px] gap-[7px] pr-[4px] [display:flex] [align-items:center]\\\""'
+                            ] fun () =>
+                                inl i = join i
+                                :>(;[
+                                    leptos.text_input (Some "flex-1") [
+                                                $'"disabled=true"'
+                                    ]
+                                        fun () =>
+                                            account |> leptos.signal_get
+
+                                        fun value =>
+                                            inl data =
+                                                leptos.signal_get_untracked global_state.core_state .data
+                                                |> leptos.signal_get_untracked
+                                                |> fun data => !data
+
+                                            leptos.signal_get_untracked global_state.core_state .data
+                                            |> leptos.signal_set (heap { data with
+                                                accounts =
+                                                    data.accounts
+                                                    |> am'.vec_mapi fun i' pair =>
+                                                        if i' = i |> fun x => join not x
+                                                        then pair
+                                                        else
+                                                            inl enabled', _ = pair |> from_pair
+                                                            new_pair enabled' value
+                                            })
+                                    |> leptos.element_to_view
+                                ])
+                            |> leptos.element_to_fragment
+                    |> leptos.view_to_fragment
+                |> leptos.element_to_view
+
                         leptos.div [
                             $'"class=\\\"flex [flex-direction:column] [align-items:flex-start]\\\""'
                         ] fun () =>
@@ -129,6 +181,7 @@ inl render () =
                                         })
                                 |> leptos.element_to_view
                             ])
+                        |> leptos.element_to_view
                         
                         leptos.div [
                             $'"class=\\\"flex\\\""'
@@ -156,13 +209,14 @@ inl render () =
                                     |> leptos.element_to_view
                                 | _ => ;[] |> leptos.views_to_view
                             ])
-                    ])
+                |> leptos.element_to_view
+            ])
             ])
         |> leptos.element_to_view
 
         leptos.accordion "History" true None fun () =>
             :>(;[
-                match accounts_requests |> leptos.memo_get with
+                match accounts_txns_requests |> leptos.memo_get with
                 | a ;[] =>
                     "No account selected"
                     |> error_label.render
