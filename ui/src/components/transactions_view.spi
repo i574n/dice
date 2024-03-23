@@ -30,8 +30,12 @@ inl render () =
         |> leptos.element_to_view
 
     ;[
-        leptos.accordion "Transactions" true (Some settings_button) fun () =>
-            :>(;[
+        leptos.accordion
+            fun props => { props with
+                title = "Transactions"
+                right_element = Some settings_button
+            }
+            fun () => :>(;[
                 if settings_visible |> leptos.signal_get
                 then
                     leptos.div [
@@ -122,8 +126,9 @@ inl render () =
         |> leptos.element_to_view
 
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
-            leptos.accordion "Debug" true None fun () =>
-                :>(;[
+            leptos.accordion
+                fun props => { props with title = "Debug" }
+                fun () => :>(;[
                     leptos.grid_pair
                         { padding = None; cols = None; class = "" }
                         fun () => "Transactions" |> leptos.text_fragment
