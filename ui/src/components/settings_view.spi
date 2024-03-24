@@ -1,5 +1,6 @@
 open rust_operators
 open sm'_operators
+open leptos
 
 inl global_state_log_render () : _ leptos.pre =
     leptos.log $'"settings.global_state_log_render ()"'
@@ -16,7 +17,7 @@ inl global_state_log_render () : _ leptos.pre =
         | Ok json => json |> sm'.from_std_string
         | Error error => $'"Error: " + string !error + ""'
 
-    global_state_json |> leptos.memo_get |> leptos.text_block_pre ""
+    global_state_json |> leptos.memo_get |> ui.text_block_pre.render ""
 
 inl render () =
     print_static "<settings.render>"
@@ -69,9 +70,9 @@ inl render () =
         inl on_click = join on_click
         !\($'"let on_click = !on_click"')
 
-        leptos.icon_button
-            (leptos.cross_svg (Some "h-5 w-5") [])
-            fun () => ##" pr-[7px] pl-[5px]"
+        ui.icon_button.render
+            (svg.cross.render (Some "h-5 w-5") [])
+            fun () => " pr-[7px] pl-[5px]" |> sm'.to_std_string
             [
                 $'"on:click=move |_| on_click()"'
                 $'"aria-label=\\\"Delete\\\""'
@@ -101,18 +102,19 @@ inl render () =
         inl on_click = join on_click
         !\($'"let on_click = !on_click"')
 
-        leptos.icon_button
-            (leptos.plus_svg (Some "h-5 w-5") [])
-            fun () => ##" bg-gray-100"
+        ui.icon_button.render
+            (svg.plus.render (Some "h-5 w-5") [])
+            fun () => " bg-gray-300" |> sm'.to_std_string
             [
                 $'"on:click=move |_| on_click()"'
                 $'"aria-label=\\\"Add\\\""'
             ]
 
     ;[
-        leptos.accordion
+        ui.accordion.render
             fun props => { props with
                 title = "Accounts"
+                summary_class = fun () => "py-[7px]"
                 right_element = add_button () |> leptos.element_to_view |> Some
             }
             fun () =>
@@ -124,11 +126,11 @@ inl render () =
                     fun pair =>
                         inl (_, i), account = pair
                         leptos.div [
-                            $'"class=\\\"pl-[10px] py-[7px] gap-[7px] pr-[4px] [display:flex] [align-items:center]\\\""'
+                            $'"class=\\\"px-[10px] py-[7px] gap-[7px] [display:flex] [align-items:center]\\\""'
                         ] fun () =>
                             inl i = join i
                             :>(;[
-                                leptos.toggle
+                                ui.toggle.render
                                     $'"account-" + string !i + ""'
                                     fun () =>
                                         account
@@ -154,7 +156,7 @@ inl render () =
                                         })
                                 |> leptos.element_to_view
 
-                                leptos.text_input (Some "flex-1") [
+                                ui.text_input.render (Some "flex-1") [
                                 ]
                                     fun () =>
                                         account |> leptos.signal_get |> from_pair |> snd
@@ -186,14 +188,19 @@ inl render () =
                 |> leptos.view_to_fragment
         |> leptos.element_to_view
 
-        leptos.accordion
-            fun props => { props with title = "View" }
+        ui.accordion.render
+            fun props => { props with
+                title = "View"
+                summary_class = fun () => "py-[7px]"
+            }
             fun () => :>(;[
-                leptos.grid_pair
-                    { padding = None; cols = None; class = $'"items-center"' }
+                ui.grid_pair.render
+                    fun props => { props with
+                        class = fun () => "items-center"
+                    }
                     fun () => "Dark Mode" |> leptos.text_fragment
                     fun () =>
-                        leptos.toggle
+                        ui.toggle.render
                             "dark-mode"
                             fun () =>
                                 leptos.signal_get_untracked global_state.core_state .dark_mode
@@ -203,11 +210,13 @@ inl render () =
                                 |> leptos.signal_update not
                             |> leptos.element_to_fragment
 
-                leptos.grid_pair
-                    { padding = None; cols = None; class = $'"items-center"' }
+                ui.grid_pair.render
+                    fun props => { props with
+                        class = fun () => "items-center"
+                    }
                     fun () => "Debug" |> leptos.text_fragment
                     fun () =>
-                        leptos.toggle
+                        ui.toggle.render
                             "debug"
                             fun () =>
                                 leptos.signal_get_untracked global_state.core_state .debug
@@ -220,11 +229,14 @@ inl render () =
         |> leptos.element_to_view
 
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
-            leptos.accordion
-                fun props => { props with title = "Debug" }
+            ui.accordion.render
+                fun props => { props with
+                    title = "Debug"
+                    summary_class = fun () => "py-[7px]"
+                }
                 fun () =>
-                    leptos.grid_pair
-                        { padding = None; cols = None; class = "" }
+                    ui.grid_pair.render
+                        id
                         fun () => "Global State" |> leptos.text_fragment
                         fun () => global_state_log_render () |> leptos.element_to_fragment
                     |> leptos.element_to_fragment

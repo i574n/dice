@@ -1,3 +1,5 @@
+open leptos
+
 union dice =
     | Dice'
 
@@ -77,13 +79,13 @@ inl render tab =
                     |> am'.map_vec fun tab' =>
                         inl id = tab' |> menu_tab_id
                         inl class = Some $'"h-5 w-5"'
-                        leptos.tab_link
+                        ui.tab_link.render
                             $'!url + "#/" + !id + ""'
                             match tab' with
-                            | Dice _ => leptos.dice_svg class [] |> leptos.element_to_fragment
-                            | Lists => leptos.lists_svg class [] |> leptos.element_to_fragment
-                            | Transactions => leptos.transactions_svg class [] |> leptos.element_to_fragment
-                            | Settings => leptos.settings_svg class [] |> leptos.element_to_fragment
+                            | Dice _ => svg.dice.render class [] |> leptos.element_to_fragment
+                            | Lists => svg.lists.render class [] |> leptos.element_to_fragment
+                            | Transactions => svg.transactions.render class [] |> leptos.element_to_fragment
+                            | Settings => svg.settings.render class [] |> leptos.element_to_fragment
                             | _ => ;[] |> leptos.view_array_to_fragment
                             (tab' |> menu_tab_label)
                             fun () => (tab |> leptos.signal_get) = tab'

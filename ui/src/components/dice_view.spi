@@ -1,12 +1,13 @@
 open rust_operators
+open leptos
 
 inl render () =
     print_static "<dice.render>"
     leptos.log $'"dice.render (1)"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
-    
-    inl { accounts_txns_requests txns } = hooks.use_transactions.render global_state
+
+    inl { accounts_txns_requests txns rpc_responses } = hooks.use_transactions.render global_state
 
     inl roll_action = leptos.create_action fun (value : heap i32) =>
         inl value_log = value |> sm'.format_debug
@@ -24,7 +25,7 @@ inl render () =
                     ]
                 }
                 |> model.near.rpc.rpc_input_box
-            
+
             inl result : _ _ sm'.std_string =
                 url
                 |> networking.new_request_post
@@ -65,17 +66,22 @@ inl render () =
         |> resultm.map optionm'.box
         |> resultm.box
         |> leptos.log_format fun log => $'"dice_view.render (x) / roll create_memo / result: " + string !log + ""'
-    
+
     inl error_message = leptos.create_memo fun () =>
         match roll |> leptos.memo_get |> resultm.unbox |> resultm.map optionm'.unbox with
-        | Ok (Some { error }) =>
-            match error |> optionm'.unbox with
-            | Some { cause = { name = cause_name } data name message } =>
-                Some $'string !name + ": " + string !message + " - " + string !data + " (" + string !cause_name + ")"'
-            | _ => None
+        | Ok (Some { error }) => error |> model.near.rpc.format_error
         | _ => None
         |> optionm'.box
         |> leptos.log_format fun log => $'"dice_view.render (x) / error_message create_memo / result: " + string !log + ""'
+
+    inl account =
+        leptos.create_memo fun () =>
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_get
+            |> fun data =>
+                data.account
+                |> optionm'.unbox
+                |> optionm.map sm'.from_std_string
 
     inl accounts =
         leptos.create_memo fun () =>
@@ -92,7 +98,7 @@ inl render () =
                     new_pair
                         i
                         (leptos.create_signal account)
-    
+
     inl accounts_data =
         leptos.create_memo fun () =>
             accounts
@@ -104,59 +110,38 @@ inl render () =
             |> am'.to_vec
 
     ;[
-        leptos.accordion
-            fun props => { props with title = "Roll" }
+        ui.accordion.render
+            fun props => { props with
+                title = "Roll"
+                summary_class = fun () => "py-[7px]"
+            }
             fun () => :>(;[
                 leptos.div [
-                    $'"class=\\\"p-[10px] flex [flex-direction:column] gap-[8px]\\\""'
+                    $'"class=\\\"flex flex-col p-[10px] gap-[8px]\\\""'
                 ] fun () =>
                     :>(;[
-                        leptos.accordion
-                            fun props => { props with
-                                title = "Account"
-                                details_class = Some "[align-self:flex-start]"
-                                open' = false
-                            }
-                            fun () =>
-                                leptos.for
-                                    accounts_data
-                                    fun pair =>
-                                        inl i, _ = pair
-                                        i
-                                    fun pair =>
-                                        inl i, account = pair
-                                        leptos.div [
-                                            $'"class=\\\"pl-[10px] py-[7px] gap-[7px] pr-[4px] [display:flex] [align-items:center]\\\""'
-                                        ] fun () =>
-                                            inl i = join i
-                                            :>(;[
-                                                leptos.text_input (Some "flex-1") [
-                                                    $'"disabled=true"'
-                                                ]
-                                                    fun () =>
-                                                        account |> leptos.signal_get
+                        leptos.div [
+                            $'"class=\\\"flex [flex-direction:column] [align-items:flex-start]\\\""'
+                        ] fun () =>
+                            :>(;[
+                                "Account" |> leptos.text_view
 
-                                                    fun value =>
-                                                        inl data =
-                                                            leptos.signal_get_untracked global_state.core_state .data
-                                                            |> leptos.signal_get_untracked
-                                                            |> fun data => !data
+                                ui.dropdown.render fun props => { props with
+                                    data = accounts_data |> Some |> optionm'.box
+                                    item = account |> Some |> optionm'.box
+                                    select = fun (i, value) =>
+                                        inl data =
+                                            leptos.signal_get_untracked global_state.core_state .data
+                                            |> leptos.signal_get_untracked
+                                            |> fun data => !data
 
-                                                        leptos.signal_get_untracked global_state.core_state .data
-                                                        |> leptos.signal_set (heap { data with
-                                                            accounts =
-                                                                data.accounts
-                                                                |> am'.vec_mapi fun i' pair =>
-                                                                    if i' = i |> fun x => join not x
-                                                                    then pair
-                                                                    else
-                                                                        inl enabled', _ = pair |> from_pair
-                                                                        new_pair enabled' value
-                                                        })
-                                                |> leptos.element_to_view
-                                            ])
-                                        |> leptos.element_to_fragment
-                                |> leptos.view_to_fragment
+                                        leptos.signal_get_untracked global_state.core_state .data
+                                        |> leptos.signal_set (heap { data with
+                                            account = value |> sm'.to_std_string |> Some |> optionm'.box
+                                        })
+                                }
+                                |> leptos.element_to_view
+                            ])
                         |> leptos.element_to_view
 
                         leptos.div [
@@ -165,8 +150,8 @@ inl render () =
                             :>(;[
                                 "Max" |> leptos.text_view
 
-                                leptos.text_input None [
-                                
+                                ui.text_input.render None [
+
                                 ]
                                     fun () =>
                                         leptos.signal_get_untracked global_state.core_state .data
@@ -189,12 +174,12 @@ inl render () =
                                 |> leptos.element_to_view
                             ])
                         |> leptos.element_to_view
-                        
+
                         leptos.div [
                             $'"class=\\\"flex\\\""'
                         ] fun () =>
                             :>(;[
-                                loading_button.render
+                                ui.loading_button.render
                                     "Roll"
                                     fun () =>
                                         roll_action
@@ -212,7 +197,7 @@ inl render () =
                                 match error_message |> leptos.memo_get |> optionm'.unbox with
                                 | Some error_message =>
                                     error_message
-                                    |> error_label.render
+                                    |> ui.error_label.render
                                     |> leptos.element_to_view
                                 | _ => ;[] |> leptos.views_to_view
                             ])
@@ -221,13 +206,16 @@ inl render () =
             ])
         |> leptos.element_to_view
 
-        leptos.accordion
-            fun props => { props with title = "History" }
+        ui.accordion.render
+            fun props => { props with
+                title = "History"
+                summary_class = fun () => "py-[7px]"
+            }
             fun () => :>(;[
                 match accounts_txns_requests |> leptos.memo_get with
                 | a ;[] =>
                     "No account selected"
-                    |> error_label.render
+                    |> ui.error_label.render
                     |> leptos.element_to_view
                 | _ =>
                     txns
@@ -264,7 +252,7 @@ inl render () =
                                     | _ => false
                                 |> fun (a x : _ i32 _) => x
 
-                            table.render
+                            ui.table.render
                                 (
                                     leptos.tr [
 
@@ -303,14 +291,22 @@ inl render () =
                                             leptos.th [
                                                 $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
                                             ] fun () =>
-                                                "Outcome Status" |> leptos.text_fragment
+                                                "Status" |> leptos.text_fragment
                                             |> leptos.element_to_view
                                         ])
                                     |> leptos.element_to_fragment
                                 )
                                 (
+                                    inl rpc_responses =
+                                        rpc_responses
+                                        |> leptos.memo_get
                                     a transactions
-                                    |> am'.map_vec fun { txn } =>
+                                    |> am'.map_vec fun { txn i } =>
+                                        inl rpc_response = index rpc_responses (i |> i32)
+
+
+
+
                                         leptos.tr [
                                             $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
                                         ] fun () =>
@@ -370,8 +366,28 @@ inl render () =
                                                 leptos.td [
                                                     $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                 ] fun () =>
-                                                    txn.outcomes.status
-                                                    |> sm'.obj_to_string
+                                                    if txn.outcomes.status
+                                                    then "Ok"
+                                                    else "Outcome Error"
+                                                    |> fun s =>
+                                                        inl rpc_response_log =
+                                                            rpc_response
+                                                            |> resultm.unbox
+                                                            |> resultm.map optionm'.unbox
+                                                            |> function
+                                                                | Ok (Some { error }) =>
+                                                                    error
+                                                                    |> model.near.rpc.format_error
+                                                                    |> optionm'.default_with sm'.format_ellipsis'
+                                                                | Error error =>
+                                                                    error
+                                                                    |> sm'.from_std_string
+                                                                | rpc_response =>
+                                                                    inl rpc_response_log =
+                                                                        rpc_response
+                                                                        |> sm'.format_ellipsis'
+                                                                    $'$"RPC Response: {!rpc_response_log}"'
+                                                        $'$"{!s} / {!rpc_response_log}"'
                                                     |> leptos.text_fragment
                                                 |> leptos.element_to_view
                                             ])
@@ -383,10 +399,10 @@ inl render () =
                         | Error error =>
                             error
                             |> sm'.from_std_string
-                            |> error_label.render
+                            |> ui.error_label.render
                             |> leptos.element_to_view
                         | _ =>
-                            loading_panel.render ()
+                            ui.loading_panel.render ()
                             |> leptos.element_to_view
             ])
         |> leptos.element_to_view

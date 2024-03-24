@@ -1,4 +1,6 @@
+open rust_operators
 open sm'_operators
+open leptos
 
 inl render () =
     print_static "<transactions.render>"
@@ -14,15 +16,16 @@ inl render () =
         inl on_click = rust.move fun () =>
             set_settings_visible
             |> leptos.signal_update not
-            
-        inl class () =
-            if settings_visible |> leptos.signal_get
-            then ##""
-            else ##"bg-gray-100"
 
-        leptos.icon_button
-            (leptos.settings_svg (Some $'"h-5 w-5"') [])
-            class
+        ui.icon_button.render
+            (svg.settings.render (Some $'"h-5 w-5"') [])
+            fun () =>
+                inl class =
+                    if settings_visible |> leptos.signal_get
+                    then ##""
+                    else ##"bg-gray-300"
+                inl class = join class
+                !\($'"!class.to_owned() + \\\" hover:bg-gray-200\\\""')
             [
                 $'"on:click=move |_| !on_click()"'
                 $'"aria-label=\\\"Settings\\\""'
@@ -30,9 +33,10 @@ inl render () =
         |> leptos.element_to_view
 
     ;[
-        leptos.accordion
+        ui.accordion.render
             fun props => { props with
                 title = "Transactions"
+                summary_class = fun () => "py-[7px]"
                 right_element = Some settings_button
             }
             fun () => :>(;[
@@ -42,15 +46,17 @@ inl render () =
                         $'"class=\\\"px-[12px] py-[10px]\\\""'
                     ] fun () =>
                         :>(;[
-                            leptos.divider fun () =>
+                            ui.divider.render fun () =>
                                 "Settings" |> leptos.text_fragment
                             |> leptos.element_to_view
 
-                            leptos.grid_pair
-                                { padding = None; cols = None; class = $'"items-center"' }
+                            ui.grid_pair.render
+                                fun props => { props with
+                                    class = fun () => "items-center"
+                                }
                                 fun () => "Table View" |> leptos.text_fragment
                                 fun () =>
-                                    leptos.toggle
+                                    ui.toggle.render
                                         "table-view"
                                         fun () =>
                                             leptos.signal_get_untracked global_state.core_state .data
@@ -76,7 +82,7 @@ inl render () =
                 match accounts_txns_requests |> leptos.memo_get with
                 | a ;[] =>
                     "No account selected"
-                    |> error_label.render
+                    |> ui.error_label.render
                     |> leptos.element_to_view
                 | _ =>
                     txns
@@ -109,7 +115,7 @@ inl render () =
                                 |> am'.map_vec leptos.element_to_view
                                 |> fun (a x : _ i32 _) => x
                                 |> leptos.view_array_to_fragment
-                                |> table.render (
+                                |> ui.table.render (
                                     transaction.tr_head_render transactions
                                     |> leptos.element_to_fragment
                                 )
@@ -117,27 +123,30 @@ inl render () =
                         | Error error =>
                             error
                             |> sm'.from_std_string
-                            |> error_label.render
+                            |> ui.error_label.render
                             |> leptos.element_to_view
                         | _ =>
-                            loading_panel.render ()
+                            ui.loading_panel.render ()
                             |> leptos.element_to_view
             ])
         |> leptos.element_to_view
 
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
-            leptos.accordion
-                fun props => { props with title = "Debug" }
+            ui.accordion.render
+                fun props => { props with
+                    title = "Debug"
+                    summary_class = fun () => "py-[7px]"
+                }
                 fun () => :>(;[
-                    leptos.grid_pair
-                        { padding = None; cols = None; class = "" }
+                    ui.grid_pair.render
+                        id
                         fun () => "Transactions" |> leptos.text_fragment
                         fun () =>
                             txns
                             |> leptos.memo_get
                             |> sm'.format_pretty'
                             |> sm'.from_std_string
-                            |> leptos.text_block_pre "[max-height:70vh]"
+                            |> ui.text_block_pre.render "[max-height:70vh]"
                             |> leptos.element_to_fragment
                 ])
             |> leptos.element_to_view

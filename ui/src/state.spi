@@ -10,6 +10,7 @@ type account = sm'.std_string
 type state_data =
     heap {
         accounts : am'.vec (pair bool account)
+        account : optionm'.option' account
         max : i32
         transactions_pages : i32
         transactions_view_type : view_type
