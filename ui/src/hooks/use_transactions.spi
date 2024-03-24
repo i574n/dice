@@ -1,4 +1,5 @@
 open rust_operators
+open leptos
 
 type account_transaction =
     {
@@ -23,7 +24,7 @@ inl render (global_state : state.global_state) =
         |> am'.map_vec snd
         |> fun x => x : _ i32 _
         |> am'.map_vec sm'.from_std_string
-        |> leptos.log_format fun log => $'"use_transactions.render (x) / accounts create_memo / result: " + string !log + ""'
+        |> leptos.log_format fun log => $'"use_transactions.render (2) / accounts create_memo / result: " + string !log + ""'
 
     inl accounts_metadata_requests = leptos.create_memo fun () =>
         accounts
@@ -35,9 +36,10 @@ inl render (global_state : state.global_state) =
                     request_type = networking.Get
                     body = ""
                     json = false
+                    auto_refresh = true
                 }
             account, request
-        |> leptos.log_format fun log => $'"use_transactions.render (x) / accounts_metadata create_memo / result: " + string !log + ""'
+        |> leptos.log_format fun log => $'"use_transactions.render (3) / accounts_metadata create_memo / result: " + string !log + ""'
 
     inl accounts_txns_requests = leptos.create_memo fun () =>
         inl data =
@@ -57,9 +59,10 @@ inl render (global_state : state.global_state) =
                         request_type = networking.Get
                         body = ""
                         json = false
+                        auto_refresh = true
                     } : networking.request
             account, requests
-        |> leptos.log_format fun log => $'"use_transactions.render (x) / accounts_requests create_memo / result: " + string !log + ""'
+        |> leptos.log_format fun log => $'"use_transactions.render (4) / accounts_requests create_memo / result: " + string !log + ""'
 
     inl txns_requests = leptos.create_memo fun () =>
         accounts_txns_requests
@@ -70,7 +73,7 @@ inl render (global_state : state.global_state) =
         |> am'.to_vec
         |> am'.vec_collect id
         |> am'.from_vec
-        |> leptos.log_format fun log => $'"use_transactions.render (x) / txns_requests create_memo / result: " + string !log + ""'
+        |> leptos.log_format fun log => $'"use_transactions.render (5) / txns_requests create_memo / result: " + string !log + ""'
 
     inl txns_accounts = leptos.create_memo fun () =>
         accounts_txns_requests
@@ -84,10 +87,10 @@ inl render (global_state : state.global_state) =
         |> am'.to_vec
         |> am'.vec_collect id
         |> am'.from_vec
-        |> leptos.log_format fun log => $'"use_transactions.render (x) / urls_accounts create_memo / result: " + string !log + ""'
+        |> leptos.log_format fun log => $'"use_transactions.render (6) / urls_accounts create_memo / result: " + string !log + ""'
 
     inl root :
-        rust.func0 (a i32 (
+        leptos.memo (a i32 (
             resultm.result'
                 (optionm'.option' model.near.nearblocks.root)
                 sm'.std_string
@@ -95,7 +98,7 @@ inl render (global_state : state.global_state) =
         )
         =
         state_core.use_requests txns_requests model.near.nearblocks.root_unbox
-        |> leptos.log_format fun log => $'"use_transactions.render (x) / root func0 / result: " + string !log + ""'
+        |> leptos.log_format fun log => $'"use_transactions.render (7) / root func0 / result: " + string !log + ""'
 
     inl txns :
         leptos.memo (
@@ -107,12 +110,12 @@ inl render (global_state : state.global_state) =
         leptos.create_memo fun () =>
             inl root =
                 root
-                |> rust.func0_get
+                |> leptos.memo_get
                 |> am'.map_vec resultm.unbox
                 |> am'.map_vec (resultm.map optionm'.unbox)
 
-            inl root_log = root |> sm'.format_debug |> sm'.ellipsis 200i32
-            leptos.log $'"transactions.render (3-1) / txns move / root: " + string !root_log + ""'
+            inl root_log = root |> sm'.format_ellipsis'
+            leptos.log $'"transactions.render (8) / txns move / root: " + string !root_log + ""'
 
             inl loading =
                 root
@@ -148,7 +151,7 @@ inl render (global_state : state.global_state) =
                 |> resultm.map fun (a x : _ i32 _) => x |> Some
             |> resultm.map optionm'.box
             |> resultm.box
-            |> leptos.log_format fun log => $'"use_transactions.render (x) / txns create_memo / result: " + string !log + " / loading: " + string !loading + ""'
+            |> leptos.log_format fun log => $'"use_transactions.render (9) / txns create_memo / result: " + string !log + " / loading: " + string !loading + ""'
 
     inl rpc_requests :
         leptos.memo (
@@ -186,6 +189,7 @@ inl render (global_state : state.global_state) =
                                 request_type = networking.Post
                                 body
                                 json = true
+                                auto_refresh = false
                             } : networking.request)
                     |> am'.vec_collect_into
                     |> resultm.try'
@@ -197,7 +201,7 @@ inl render (global_state : state.global_state) =
                 | _ => Ok None
                 |> resultm.map optionm'.box
                 |> resultm.box
-            |> leptos.log_format fun log => $'"use_transactions.render (x) / rpc_requests create_memo / result: " + string !log + ""'
+            |> leptos.log_format fun log => $'"use_transactions.render (10) / rpc_requests create_memo / result: " + string !log + ""'
 
     inl rpc_requests' = leptos.create_memo fun () =>
         rpc_requests
@@ -209,10 +213,10 @@ inl render (global_state : state.global_state) =
             | _ => ;[]
         |> a
         |> fun x => x : _ i32 _
-        |> leptos.log_format fun log => $'"use_transactions.render (x) / rpc_requests\' create_memo / result: " + string !log + ""'
+        |> leptos.log_format fun log => $'"use_transactions.render (11) / rpc_requests\' create_memo / result: " + string !log + ""'
 
-    inl rpc_response :
-        rust.func0 (a i32 (
+    inl rpc_responses :
+        leptos.memo (a i32 (
             resultm.result'
                 (optionm'.option' model.near.rpc.rpc_response)
                 sm'.std_string
@@ -220,6 +224,6 @@ inl render (global_state : state.global_state) =
         )
         =
         state_core.use_requests rpc_requests' model.near.rpc.rpc_response_unbox
-        |> leptos.log_format fun log => $'"use_transactions.render (x) / rpc_response func0 / result: " + string !log + ""'
+        |> leptos.log_format fun log => $'"use_transactions.render (12) / rpc_response func0 / result: " + string !log + ""'
     
-    { accounts_txns_requests txns rpc_requests }
+    { accounts_txns_requests txns rpc_requests rpc_responses }

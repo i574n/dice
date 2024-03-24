@@ -1,4 +1,5 @@
 open rust_operators
+open leptos
 
 inl main (args : array_base string) =
     leptos.log $'"main / args: " + string !args + ""'

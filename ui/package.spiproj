@@ -12,10 +12,6 @@ modules:
         hooks/
             use_transactions
         components/
-            error_label
-            loading_button
-            loading_panel
-            table
             settings_view
             transaction
             transactions_view

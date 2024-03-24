@@ -1,4 +1,5 @@
 open rust_operators
+open leptos
 
 inl render { router } =
     inl router : i32 = router

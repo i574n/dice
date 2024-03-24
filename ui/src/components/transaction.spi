@@ -1,4 +1,5 @@
 open rust_operators
+open leptos
 open model.near.nearblocks
 
 inl tr_head_render (transactions : array_base hooks.use_transactions.account_transaction) =
@@ -198,7 +199,7 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                     |> am'.map_vec sm'.from_std_string
                     |> sm'.concat "\n"
                     |> sm'.replace "\\n" "\n"
-                    |> leptos.text_block_pre "[max-height:20vh] [width:100vw] [max-width:100vw]"
+                    |> ui.text_block_pre.render "[max-height:20vh] [width:100vw] [max-width:100vw]"
                     |> leptos.element_to_fragment
             |> leptos.element_to_view
 
@@ -243,23 +244,29 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
     leptos.div [
         $'"class=\\\"flex flex-1 flex-col overflow-x-auto\\\""'
     ] fun () => :>(;[
-        leptos.divider fun () =>
+        ui.divider.render fun () =>
             $'"Transaction " + string (!index + 1L) + ""' |> leptos.text_fragment
         |> leptos.element_to_view
 
         leptos.div [
             $'"class=\\\"grid flex-1 divide-y-[1px] divide-gray-500/[.10]\\\""'
         ] fun () => :>(;[
-            leptos.grid_pair
-                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => ""
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Account" |> leptos.text_fragment
                 fun () =>
                     account
                     |> leptos.text_fragment
             |> leptos.element_to_view
 
-            leptos.grid_pair
-                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => ""
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Block Timestamp" |> leptos.text_fragment
                 fun () =>
                     transaction.block_timestamp
@@ -268,8 +275,11 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     |> leptos.text_fragment
             |> leptos.element_to_view
 
-            leptos.grid_pair
-                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => ""
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Predecessor" |> leptos.text_fragment
                 fun () =>
                     transaction.predecessor_account_id
@@ -277,8 +287,11 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     |> leptos.text_fragment
             |> leptos.element_to_view
 
-            leptos.grid_pair
-                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => ""
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Receiver" |> leptos.text_fragment
                 fun () =>
                     transaction.receiver_account_id
@@ -286,14 +299,21 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     |> leptos.text_fragment
             |> leptos.element_to_view
 
-            leptos.grid_pair
-                { padding = Some "sm:pr-[10px]"; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => "sm:pr-[10px]"
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Actions" |> leptos.text_fragment
                 fun () =>
                     a transaction.actions
                     |> am'.map_vec fun { action method } =>
-                        leptos.grid_pair
-                            { padding = Some "items-center"; cols = Some ""; class = "" }
+                        ui.grid_pair.render
+                            fun props => { props with
+                                padding_class = fun () => "items-center"
+                                cols_class = fun () => ""
+                                class = fun () => ""
+                            }
                             fun () =>
                                 match action |> sm'.from_std_string with
                                 | "FUNCTION_CALL" => "Function Call:"
@@ -305,8 +325,11 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                                 leptos.div [
                                     $'"class=\\\"flex flex-1 flex-col\\\""'
                                 ] fun () => :>(;[
-                                    leptos.grid_pair
-                                        { padding = Some ""; cols = None; class = "" }
+                                    ui.grid_pair.render
+                                        fun props => { props with
+                                            padding_class = fun () => ""
+                                            class = fun () => ""
+                                        }
                                         fun () => "Method" |> leptos.text_fragment
                                         fun () =>
                                             match method |> optionm'.unbox with
@@ -322,8 +345,11 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     |> fun (a x : _ i32 _) => :>x
             |> leptos.element_to_view
 
-            leptos.grid_pair
-                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => ""
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Deposit" |> leptos.text_fragment
                 fun () =>
                     transaction.actions_agg.deposit
@@ -331,8 +357,11 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     |> leptos.text_fragment
             |> leptos.element_to_view
 
-            leptos.grid_pair
-                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => ""
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Outcome Status" |> leptos.text_fragment
                 fun () =>
                     transaction.outcomes.status
@@ -340,8 +369,11 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     |> leptos.text_fragment
             |> leptos.element_to_view
 
-            leptos.grid_pair
-                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => ""
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Fee" |> leptos.text_fragment
                 fun () =>
                     transaction.outcomes_agg.transaction_fee
@@ -349,8 +381,11 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     |> leptos.text_fragment
             |> leptos.element_to_view
 
-            leptos.grid_pair
-                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => ""
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Block Height" |> leptos.text_fragment
                 fun () =>
                     transaction.block.block_height
@@ -358,8 +393,11 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     |> leptos.text_fragment
             |> leptos.element_to_view
 
-            leptos.grid_pair
-                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => ""
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Hash" |> leptos.text_fragment
                 fun () =>
                     transaction.transaction_hash
@@ -367,8 +405,11 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     |> leptos.text_fragment
             |> leptos.element_to_view
 
-            leptos.grid_pair
-                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => ""
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Block Hash" |> leptos.text_fragment
                 fun () =>
                     transaction.included_in_block_hash
@@ -376,8 +417,11 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     |> leptos.text_fragment
             |> leptos.element_to_view
 
-            leptos.grid_pair
-                { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+            ui.grid_pair.render
+                fun props => { props with
+                    padding_class = fun () => ""
+                    class = fun () => "items-center py-[4px]"
+                }
                 fun () => "Receipt ID" |> leptos.text_fragment
                 fun () =>
                     transaction.receipt_id
@@ -388,15 +432,18 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
             match transaction.logs with
             | ;[] => ;[] |> leptos.views_to_view
             | _ =>
-                leptos.grid_pair
-                    { padding = Some ""; cols = None; class = "items-center py-[4px]" }
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => ""
+                        class = fun () => "items-center py-[4px]"
+                    }
                     fun () => "Logs" |> leptos.text_fragment
                     fun () =>
                         (a transaction.logs : _ i32 _)
                         |> am'.map_vec sm'.from_std_string
                         |> sm'.concat "\n"
                         |> sm'.replace "\\n" "\n"
-                        |> leptos.text_block_pre "[max-height:20vh]"
+                        |> ui.text_block_pre.render "[max-height:20vh]"
                         |> leptos.element_to_fragment
                 |> leptos.element_to_view
         ])

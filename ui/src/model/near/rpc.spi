@@ -132,6 +132,13 @@ type rpc_response =
         id : optionm'.option' sm'.std_string
     }
 
+inl format_error (error : _ rpc_error) =
+    match error |> optionm'.unbox with
+    | Some { cause = { name = cause_name } data name message } =>
+        ($'string !name + ": " + string !message + " - " + string !data + " (" + string !cause_name + ")"' : string)
+        |> Some
+    | _ => None
+
 inl rpc_input_box ({ jsonrpc id method params } : rpc_input) : rpc_input' =
     inl params = params |> am'.to_vec
     !\($'"crate::model::near::rpc::RpcInput { jsonrpc: !jsonrpc, id: !id, method: !method, params: !params }"')

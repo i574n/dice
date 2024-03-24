@@ -1,4 +1,5 @@
 open rust_operators
+open leptos
 
 inl render () =
     print_static "<app.render>"
@@ -23,6 +24,7 @@ inl render () =
                                             new_pair true ("luckier.near" |> sm'.to_std_string)
                                         ]
                                         |> am'.to_vec
+                                    account = None |> optionm'.box
                                     max = 1
                                     transactions_pages = 1
                                     transactions_view_type = state.Details
