@@ -199,7 +199,7 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                     |> am'.map_vec sm'.from_std_string
                     |> sm'.concat "\n"
                     |> sm'.replace "\\n" "\n"
-                    |> ui.text_block_pre.render "[max-height:20vh] [width:100vw] [max-width:100vw]"
+                    |> ui.text_block_pre.render fun () => "[max-height:20vh] [width:100vw] [max-width:100vw]"
                     |> leptos.element_to_fragment
             |> leptos.element_to_view
 
@@ -443,7 +443,7 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                         |> am'.map_vec sm'.from_std_string
                         |> sm'.concat "\n"
                         |> sm'.replace "\\n" "\n"
-                        |> ui.text_block_pre.render "[max-height:20vh]"
+                        |> ui.text_block_pre.render fun () => "[max-height:20vh]"
                         |> leptos.element_to_fragment
                 |> leptos.element_to_view
         ])

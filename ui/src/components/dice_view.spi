@@ -150,9 +150,10 @@ inl render () =
                             :>(;[
                                 "Max" |> leptos.text_view
 
-                                ui.text_input.render None [
-
-                                ]
+                                ui.text_input.render
+                                    fun () => ""
+                                    [
+                                    ]
                                     fun () =>
                                         leptos.signal_get_untracked global_state.core_state .data
                                         |> leptos.signal_get_untracked

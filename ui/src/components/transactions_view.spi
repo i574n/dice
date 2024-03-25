@@ -57,7 +57,7 @@ inl render () =
                                 fun () => "Table View" |> leptos.text_fragment
                                 fun () =>
                                     ui.toggle.render
-                                        "table-view"
+                                        fun () => "table-view"
                                         fun () =>
                                             leptos.signal_get_untracked global_state.core_state .data
                                             |> leptos.signal_get
@@ -146,7 +146,7 @@ inl render () =
                             |> leptos.memo_get
                             |> sm'.format_pretty'
                             |> sm'.from_std_string
-                            |> ui.text_block_pre.render "[max-height:70vh]"
+                            |> ui.text_block_pre.render fun () => "[max-height:70vh]"
                             |> leptos.element_to_fragment
                 ])
             |> leptos.element_to_view
