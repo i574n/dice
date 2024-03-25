@@ -3,12 +3,12 @@ open sm'_operators
 open leptos
 
 inl global_state_log_render () : _ leptos.pre =
-    leptos.log $'"settings.global_state_log_render ()"'
+    leptos.log $'"settings_view.global_state_log_render ()"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
     inl global_state_json = leptos.create_memo fun () =>
-        leptos.log $'"settings.global_state_log_render () / global_state_json memo"'
+        leptos.log $'"settings_view.global_state_log_render () / global_state_json memo"'
 
         inl global_state = join global_state
         inl json : resultm.result' sm'.std_string sm'.std_string =
@@ -20,8 +20,8 @@ inl global_state_log_render () : _ leptos.pre =
     global_state_json |> leptos.signal_get |> ui.text_block_pre.render fun () => ""
 
 inl render () =
-    print_static "<settings.render>"
-    leptos.log $'"settings.render ()"'
+    print_static "<settings_view.render>"
+    leptos.log $'"settings_view.render ()"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
     

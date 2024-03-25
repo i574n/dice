@@ -2,8 +2,8 @@ open rust_operators
 open leptos
 
 inl render () =
-    print_static "<dice.render>"
-    leptos.log $'"dice.render (1)"'
+    print_static "<dice_view.render>"
+    leptos.log $'"dice_view.render (1)"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
@@ -11,7 +11,7 @@ inl render () =
 
     inl roll_action = leptos.create_action fun (value : heap i32) =>
         inl value_log = value |> sm'.format_debug
-        leptos.log $'"dice.render (2) / set_max_action / value: " + string !value_log + ""'
+        leptos.log $'"dice_view.render (2) / set_max_action / value: " + string !value_log + ""'
         fun () =>
             inl url = "https://rpc.mainnet.near.org"
             inl body =

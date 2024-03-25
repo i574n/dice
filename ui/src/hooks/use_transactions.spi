@@ -38,8 +38,22 @@ inl render (global_state : state.global_state) =
                     json = false
                     auto_refresh = true
                 }
-            account, request
+            request
+        |> am'.from_vec
+        |> fun x => x : _ i32 _
         |> leptos.log_format fun log => $'"use_transactions.render (3) / accounts_metadata create_memo / result: " + string !log + ""'
+
+    // inl root' :
+    //     leptos.memo (am'.vec (
+    //         resultm.result'
+    //             (optionm'.option' model.near.nearblocks.root)
+    //             sm'.std_string
+    //         )
+    //     )
+    //     =
+    //     state_core.use_requests accounts_metadata_requests model.near.nearblocks.root_unbox
+    //     |> leptos.log_format fun log => $'"use_transactions.render (3.1) / root func0 / result: " + string !log + ""'
+
 
     inl accounts_txns_requests = leptos.create_memo fun () =>
         inl data =

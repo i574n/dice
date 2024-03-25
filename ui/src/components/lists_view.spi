@@ -2,8 +2,8 @@ open rust_operators
 open leptos
 
 inl render () =
-    print_static "<lists.render>"
-    leptos.log $'"lists.render ()"'
+    print_static "<lists_view.render>"
+    leptos.log $'"lists_view.render ()"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
