@@ -68,7 +68,7 @@ inl render () =
         |> leptos.log_format fun log => $'"dice_view.render (x) / roll create_memo / result: " + string !log + ""'
 
     inl error_message = leptos.create_memo fun () =>
-        match roll |> leptos.memo_get |> resultm.unbox |> resultm.map optionm'.unbox with
+        match roll |> leptos.signal_get |> resultm.unbox |> resultm.map optionm'.unbox with
         | Ok (Some { error }) => error |> model.near.rpc.format_error
         | _ => None
         |> optionm'.box
@@ -102,7 +102,7 @@ inl render () =
     inl accounts_data =
         leptos.create_memo fun () =>
             accounts
-            |> leptos.memo_get
+            |> leptos.signal_get
             |> am'.map_vec from_pair
             |> am'.map_vec fun i, x =>
                 i, x |> fst
@@ -112,7 +112,7 @@ inl render () =
     ;[
         ui.accordion.render
             fun props => { props with
-                title = "Roll"
+                title = fun () => "Roll"
                 summary_class = fun () => "py-[7px]"
             }
             fun () => :>(;[
@@ -195,7 +195,7 @@ inl render () =
                                         roll_action |> leptos.action_dispatch max
                                 |> leptos.element_to_view
 
-                                match error_message |> leptos.memo_get |> optionm'.unbox with
+                                match error_message |> leptos.signal_get |> optionm'.unbox with
                                 | Some error_message =>
                                     error_message
                                     |> ui.error_label.render
@@ -209,18 +209,18 @@ inl render () =
 
         ui.accordion.render
             fun props => { props with
-                title = "History"
+                title = fun () => "History"
                 summary_class = fun () => "py-[7px]"
             }
             fun () => :>(;[
-                match accounts_txns_requests |> leptos.memo_get with
+                match accounts_txns_requests |> leptos.signal_get with
                 | a ;[] =>
                     "No account selected"
                     |> ui.error_label.render
                     |> leptos.element_to_view
                 | _ =>
                     txns
-                    |> leptos.memo_get
+                    |> leptos.signal_get
                     |> resultm.unbox
                     |> resultm.map optionm'.unbox
                     |> function
@@ -300,7 +300,7 @@ inl render () =
                                 (
                                     inl rpc_responses =
                                         rpc_responses
-                                        |> leptos.memo_get
+                                        |> leptos.signal_get
                                     a transactions
                                     |> am'.map_vec fun { txn i } =>
                                         inl rpc_response = index rpc_responses (i |> i32)
@@ -371,24 +371,41 @@ inl render () =
                                                     then "Ok"
                                                     else "Outcome Error"
                                                     |> fun s =>
-                                                        inl rpc_response_log =
-                                                            rpc_response
-                                                            |> resultm.unbox
-                                                            |> resultm.map optionm'.unbox
-                                                            |> function
-                                                                | Ok (Some { error }) =>
+                                                        rpc_response
+                                                        |> resultm.unbox
+                                                        |> resultm.map optionm'.unbox
+                                                        |> function
+                                                            | Ok (Some ({ error } as rpc_response)) =>
+                                                                match error |> optionm'.unbox with
+                                                                | Some _ =>
                                                                     error
                                                                     |> model.near.rpc.format_error
                                                                     |> optionm'.default_with sm'.format_ellipsis'
-                                                                | Error error =>
-                                                                    error
-                                                                    |> sm'.from_std_string
-                                                                | rpc_response =>
-                                                                    inl rpc_response_log =
-                                                                        rpc_response
-                                                                        |> sm'.format_ellipsis'
+                                                                    |> Error
+                                                                | None =>
+                                                                    rpc_response
+                                                                    |> sm'.format_ellipsis'
+                                                                    |> Ok
+                                                            | Error error =>
+                                                                error
+                                                                |> sm'.from_std_string
+                                                                |> Error
+                                                            | rpc_response =>
+                                                                rpc_response
+                                                                |> sm'.format_ellipsis'
+                                                                |> fun rpc_response_log =>
                                                                     $'$"RPC Response: {!rpc_response_log}"'
-                                                        $'$"{!s} / {!rpc_response_log}"'
+                                                                |> Error
+                                                            |> function
+                                                                | Ok rpc_response =>
+                                                                    rpc_response
+                                                                    |> sm'.format_ellipsis'
+                                                                    |> fun rpc_response_log =>
+                                                                        $'$"RPC Response: {!rpc_response_log}"'
+                                                                | Error error =>
+                                                                    $'$"Error: {!error}"'
+                                                        |> fun (rpc_response_log : string) =>
+                                                            $'$"{!s} / {!rpc_response_log}"'
                                                     |> leptos.text_fragment
                                                 |> leptos.element_to_view
                                             ])

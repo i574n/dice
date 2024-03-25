@@ -17,7 +17,7 @@ inl global_state_log_render () : _ leptos.pre =
         | Ok json => json |> sm'.from_std_string
         | Error error => $'"Error: " + string !error + ""'
 
-    global_state_json |> leptos.memo_get |> ui.text_block_pre.render fun () => ""
+    global_state_json |> leptos.signal_get |> ui.text_block_pre.render fun () => ""
 
 inl render () =
     print_static "<settings.render>"
@@ -42,14 +42,14 @@ inl render () =
         leptos.create_memo fun () =>
             inl edit_count = edit_count |> leptos.signal_get
             accounts
-            |> leptos.memo_get
+            |> leptos.signal_get
             |> am'.vec_map from_pair
             |> am'.vec_map fun i, x =>
                 (edit_count, i), x |> fst
     
     inl accounts_count =
         leptos.create_memo fun () =>
-            accounts_data |> leptos.memo_get |> am'.from_vec |> length : i32
+            accounts_data |> leptos.signal_get |> am'.from_vec |> length : i32
 
     inl delete_button index guid =
         inl on_click () =
@@ -57,7 +57,7 @@ inl render () =
                 leptos.signal_get_untracked global_state.core_state .data
                 |> leptos.signal_update fun data =>
                     inl data = !data
-                    inl accounts = accounts |> leptos.memo_get
+                    inl accounts = accounts |> leptos.signal_get
                     heap { data with
                         accounts =
                             accounts
@@ -70,7 +70,7 @@ inl render () =
         inl on_click = join on_click
 
         ui.icon_button.render
-            (svg.cross.render (Some "h-5 w-5") [])
+            (svg.cross.render (fun () => "h-5 w-5") [])
             fun () => " pr-[7px] pl-[5px]" |> sm'.to_std_string
             [
                 $'"on:click=move |_| !on_click()"'
@@ -83,7 +83,7 @@ inl render () =
                 leptos.signal_get_untracked global_state.core_state .data
                 |> leptos.signal_update fun data =>
                     inl data = !data
-                    inl accounts = accounts |> leptos.memo_get
+                    inl accounts = accounts |> leptos.signal_get
                     inl accounts_count = accounts |> am'.from_vec |> length
                     heap { data with
                         accounts =
@@ -101,7 +101,7 @@ inl render () =
         inl on_click = join on_click
 
         ui.icon_button.render
-            (svg.plus.render (Some "h-5 w-5") [])
+            (svg.plus.render (fun () => "h-5 w-5") [])
             fun () => " bg-gray-300" |> sm'.to_std_string
             [
                 $'"on:click=move |_| !on_click()"'
@@ -111,7 +111,7 @@ inl render () =
     ;[
         ui.accordion.render
             fun props => { props with
-                title = "Accounts"
+                title = fun () => "Accounts"
                 summary_class = fun () => "py-[7px]"
                 right_element = add_button () |> leptos.element_to_view |> Some
             }
@@ -180,7 +180,7 @@ inl render () =
                                         })
                                 |> leptos.element_to_view
 
-                                if (accounts_count |> leptos.memo_get) = 1i32
+                                if (accounts_count |> leptos.signal_get) = 1i32
                                 then ;[] |> leptos.views_to_view
                                 else delete_button i guid |> leptos.element_to_view
                             ])
@@ -190,7 +190,7 @@ inl render () =
 
         ui.accordion.render
             fun props => { props with
-                title = "View"
+                title = fun () => "View"
                 summary_class = fun () => "py-[7px]"
             }
             fun () => :>(;[
@@ -231,7 +231,7 @@ inl render () =
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
             ui.accordion.render
                 fun props => { props with
-                    title = "Debug"
+                    title = fun () => "Debug"
                     summary_class = fun () => "py-[7px]"
                 }
                 fun () =>
