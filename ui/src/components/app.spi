@@ -48,10 +48,11 @@ inl render () =
 
     leptos.router fun () =>
         leptos.routes fun () =>
+            inl home_render = join home.render
             :>(;[
-                route' "" fun () => home.render { router = 1 }
-                route' "/" fun () => home.render { router = 2 }
-                route' "/*" fun () => home.render { router = 3 }
-                route' "*" fun () => home.render { router = 4 }
+                route' "" fun () => home_render { router = 1 }
+                route' "/" fun () => home_render { router = 2 }
+                route' "/*" fun () => home_render { router = 3 }
+                route' "*" fun () => home_render { router = 4 }
             ])
         |> leptos.view_to_fragment

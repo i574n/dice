@@ -137,8 +137,9 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                 |> leptos.text_fragment
             |> leptos.element_to_view
 
-            a txn.actions
-            |> am'.map_vec fun { action method } =>
+            txn.actions
+            |> am'.to_vec
+            |> am'.vec_map fun { action method } =>
                 :>(;[
                     leptos.td [
                         $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
@@ -161,7 +162,9 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                         |> leptos.text_fragment
                     |> leptos.element_to_view
                 ])
-            |> am'.map_vec leptos.fragment_to_view
+            |> am'.vec_map leptos.fragment_to_view
+            |> am'.from_vec
+            |> fun x => x : _ i32 _
             |> fun (a x : _ i32 leptos.view) => :>x
             |> leptos.fragment_to_view
 
@@ -195,8 +198,11 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                 match txn.logs with
                 | ;[] => "" |> leptos.text_fragment
                 | _ =>
-                    (a txn.logs : _ i32 _)
-                    |> am'.map_vec sm'.from_std_string
+                    txn.logs
+                    |> am'.to_vec
+                    |> am'.vec_map sm'.from_std_string
+                    |> am'.from_vec
+                    |> fun x => x : _ i32 _
                     |> sm'.concat "\n"
                     |> sm'.replace "\\n" "\n"
                     |> ui.text_block_pre.render fun () => "[max-height:20vh] [width:100vw] [max-width:100vw]"
@@ -250,202 +256,210 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
 
         leptos.div [
             $'"class=\\\"grid flex-1 divide-y-[1px] divide-gray-500/[.10]\\\""'
-        ] fun () => :>(;[
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => ""
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Account" |> leptos.text_fragment
-                fun () =>
-                    account
-                    |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => ""
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Block Timestamp" |> leptos.text_fragment
-                fun () =>
-                    transaction.block_timestamp
-                    |> date_time.format_timestamp
-                    |> to_string
-                    |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => ""
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Predecessor" |> leptos.text_fragment
-                fun () =>
-                    transaction.predecessor_account_id
-                    |> to_string
-                    |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => ""
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Receiver" |> leptos.text_fragment
-                fun () =>
-                    transaction.receiver_account_id
-                    |> to_string
-                    |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => "sm:pr-[10px]"
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Actions" |> leptos.text_fragment
-                fun () =>
-                    a transaction.actions
-                    |> am'.map_vec fun { action method } =>
-                        ui.grid_pair.render
-                            fun props => { props with
-                                padding_class = fun () => "items-center"
-                                cols_class = fun () => ""
-                                class = fun () => ""
-                            }
-                            fun () =>
-                                match action |> sm'.from_std_string with
-                                | "FUNCTION_CALL" => "Function Call:"
-                                | "DEPLOY_CONTRACT" => "Contract Deploy:"
-                                | "TRANSFER" => "Transfer:"
-                                | action => action
-                                |> leptos.text_fragment
-                            fun () =>
-                                leptos.div [
-                                    $'"class=\\\"flex flex-1 flex-col\\\""'
-                                ] fun () => :>(;[
-                                    ui.grid_pair.render
-                                        fun props => { props with
-                                            padding_class = fun () => ""
-                                            class = fun () => ""
-                                        }
-                                        fun () => "Method" |> leptos.text_fragment
-                                        fun () =>
-                                            match method |> optionm'.unbox with
-                                            | Some method =>
-                                                method
-                                                |> to_string
-                                                |> leptos.text_fragment
-                                            | None =>
-                                                "None" |> leptos.text_fragment
-                                    |> leptos.element_to_view
-                                ])
-                                |> leptos.element_to_fragment
-                    |> fun (a x : _ i32 _) => :>x
-            |> leptos.element_to_view
-
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => ""
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Deposit" |> leptos.text_fragment
-                fun () =>
-                    transaction.actions_agg.deposit
-                    |> sm'.obj_to_string
-                    |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => ""
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Outcome Status" |> leptos.text_fragment
-                fun () =>
-                    transaction.outcomes.status
-                    |> sm'.obj_to_string
-                    |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => ""
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Fee" |> leptos.text_fragment
-                fun () =>
-                    transaction.outcomes_agg.transaction_fee
-                    |> sm'.obj_to_string
-                    |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => ""
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Block Height" |> leptos.text_fragment
-                fun () =>
-                    transaction.block.block_height
-                    |> sm'.obj_to_string
-                    |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => ""
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Hash" |> leptos.text_fragment
-                fun () =>
-                    transaction.transaction_hash
-                    |> to_string
-                    |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => ""
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Block Hash" |> leptos.text_fragment
-                fun () =>
-                    transaction.included_in_block_hash
-                    |> to_string
-                    |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            ui.grid_pair.render
-                fun props => { props with
-                    padding_class = fun () => ""
-                    class = fun () => "items-center py-[4px]"
-                }
-                fun () => "Receipt ID" |> leptos.text_fragment
-                fun () =>
-                    transaction.receipt_id
-                    |> to_string
-                    |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            match transaction.logs with
-            | ;[] => ;[] |> leptos.views_to_view
-            | _ =>
+        ] fun () =>
+            :>(;[
                 ui.grid_pair.render
                     fun props => { props with
                         padding_class = fun () => ""
                         class = fun () => "items-center py-[4px]"
                     }
-                    fun () => "Logs" |> leptos.text_fragment
+                    fun () => "Account" |> leptos.text_fragment
                     fun () =>
-                        (a transaction.logs : _ i32 _)
-                        |> am'.map_vec sm'.from_std_string
-                        |> sm'.concat "\n"
-                        |> sm'.replace "\\n" "\n"
-                        |> ui.text_block_pre.render fun () => "[max-height:20vh]"
-                        |> leptos.element_to_fragment
+                        account
+                        |> leptos.text_fragment
                 |> leptos.element_to_view
-        ])
+
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => ""
+                        class = fun () => "items-center py-[4px]"
+                    }
+                    fun () => "Block Timestamp" |> leptos.text_fragment
+                    fun () =>
+                        transaction.block_timestamp
+                        |> date_time.format_timestamp
+                        |> to_string
+                        |> leptos.text_fragment
+                |> leptos.element_to_view
+
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => ""
+                        class = fun () => "items-center py-[4px]"
+                    }
+                    fun () => "Predecessor" |> leptos.text_fragment
+                    fun () =>
+                        transaction.predecessor_account_id
+                        |> to_string
+                        |> leptos.text_fragment
+                |> leptos.element_to_view
+
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => ""
+                        class = fun () => "items-center py-[4px]"
+                    }
+                    fun () => "Receiver" |> leptos.text_fragment
+                    fun () =>
+                        transaction.receiver_account_id
+                        |> to_string
+                        |> leptos.text_fragment
+                |> leptos.element_to_view
+
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => "sm:pr-[10px]"
+                        class = fun () => "items-center py-[4px]"
+                    }
+                    fun () => "Actions" |> leptos.text_fragment
+                    fun () =>
+                        transaction.actions
+                        |> am'.to_vec
+                        |> am'.vec_map fun { action method } =>
+                            ui.grid_pair.render
+                                fun props => { props with
+                                    padding_class = fun () => "items-center"
+                                    cols_class = fun () => ""
+                                    class = fun () => ""
+                                }
+                                fun () =>
+                                    match action |> sm'.from_std_string with
+                                    | "FUNCTION_CALL" => "Function Call:"
+                                    | "DEPLOY_CONTRACT" => "Contract Deploy:"
+                                    | "TRANSFER" => "Transfer:"
+                                    | action => action
+                                    |> leptos.text_fragment
+                                fun () =>
+                                    leptos.div [
+                                        $'"class=\\\"flex flex-1 flex-col\\\""'
+                                    ] fun () => :>(;[
+                                        ui.grid_pair.render
+                                            fun props => { props with
+                                                padding_class = fun () => ""
+                                                class = fun () => ""
+                                            }
+                                            fun () => "Method" |> leptos.text_fragment
+                                            fun () =>
+                                                match method |> optionm'.unbox with
+                                                | Some method =>
+                                                    method
+                                                    |> to_string
+                                                    |> leptos.text_fragment
+                                                | None =>
+                                                    "None" |> leptos.text_fragment
+                                        |> leptos.element_to_view
+                                    ])
+                                    |> leptos.element_to_fragment
+                            |> leptos.element_to_view
+                        |> fun x => x |> am'.from_vec : _ i32 _
+                        |> fun (a x) => x
+                        |> leptos.view_array_to_fragment
+                |> leptos.element_to_view
+
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => ""
+                        class = fun () => "items-center py-[4px]"
+                    }
+                    fun () => "Deposit" |> leptos.text_fragment
+                    fun () =>
+                        transaction.actions_agg.deposit
+                        |> sm'.obj_to_string
+                        |> leptos.text_fragment
+                |> leptos.element_to_view
+
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => ""
+                        class = fun () => "items-center py-[4px]"
+                    }
+                    fun () => "Outcome Status" |> leptos.text_fragment
+                    fun () =>
+                        transaction.outcomes.status
+                        |> sm'.obj_to_string
+                        |> leptos.text_fragment
+                |> leptos.element_to_view
+
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => ""
+                        class = fun () => "items-center py-[4px]"
+                    }
+                    fun () => "Fee" |> leptos.text_fragment
+                    fun () =>
+                        transaction.outcomes_agg.transaction_fee
+                        |> sm'.obj_to_string
+                        |> leptos.text_fragment
+                |> leptos.element_to_view
+
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => ""
+                        class = fun () => "items-center py-[4px]"
+                    }
+                    fun () => "Block Height" |> leptos.text_fragment
+                    fun () =>
+                        transaction.block.block_height
+                        |> sm'.obj_to_string
+                        |> leptos.text_fragment
+                |> leptos.element_to_view
+
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => ""
+                        class = fun () => "items-center py-[4px]"
+                    }
+                    fun () => "Hash" |> leptos.text_fragment
+                    fun () =>
+                        transaction.transaction_hash
+                        |> to_string
+                        |> leptos.text_fragment
+                |> leptos.element_to_view
+
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => ""
+                        class = fun () => "items-center py-[4px]"
+                    }
+                    fun () => "Block Hash" |> leptos.text_fragment
+                    fun () =>
+                        transaction.included_in_block_hash
+                        |> to_string
+                        |> leptos.text_fragment
+                |> leptos.element_to_view
+
+                ui.grid_pair.render
+                    fun props => { props with
+                        padding_class = fun () => ""
+                        class = fun () => "items-center py-[4px]"
+                    }
+                    fun () => "Receipt ID" |> leptos.text_fragment
+                    fun () =>
+                        transaction.receipt_id
+                        |> to_string
+                        |> leptos.text_fragment
+                |> leptos.element_to_view
+
+                match transaction.logs with
+                | ;[] => ;[] |> leptos.views_to_view
+                | _ =>
+                    ui.grid_pair.render
+                        fun props => { props with
+                            padding_class = fun () => ""
+                            class = fun () => "items-center py-[4px]"
+                        }
+                        fun () => "Logs" |> leptos.text_fragment
+                        fun () =>
+                            transaction.logs
+                            |> am'.to_vec
+                            |> am'.vec_map sm'.from_std_string
+                            |> am'.from_vec
+                            |> fun x => x : _ i32 _
+                            |> sm'.concat "\n"
+                            |> sm'.replace "\\n" "\n"
+                            |> ui.text_block_pre.render fun () => "[max-height:20vh]"
+                            |> leptos.element_to_fragment
+                    |> leptos.element_to_view
+            ])
         |> leptos.element_to_view
     ])

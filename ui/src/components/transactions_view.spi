@@ -79,8 +79,8 @@ inl render () =
                     |> leptos.element_to_view
                 else ;[] |> leptos.views_to_view
 
-                match accounts_txns_requests |> leptos.signal_get with
-                | a ;[] =>
+                match accounts_txns_requests |> leptos.signal_get |> am'.from_vec with
+                | (a ;[] : _ i32 _) =>
                     "No account selected"
                     |> ui.error_label.render
                     |> leptos.element_to_view
@@ -100,19 +100,23 @@ inl render () =
                                 leptos.div [
                                     $'"class=\\\"grid flex-1 py-[10px] px-[12px] [gap:15px] sm:[grid-template-columns:repeat(auto-fill,minmax(500px,1fr))]\\\""'
                                 ] fun () =>
-                                    a transactions
-                                    |> am'.map_vec fun { account i txn } =>
+                                    transactions
+                                    |> am'.to_vec
+                                    |> am'.vec_map fun { account i txn } =>
                                         !txn
                                         |> transaction.render account (i |> i64)
                                         |> leptos.element_to_view
+                                    |> am'.from_vec
                                     |> fun (a x : _ i32 _) => x
                                     |> leptos.view_array_to_fragment
                                 |> leptos.element_to_view
 
                             | false =>
-                                a transactions
-                                |> am'.map_vec transaction.tr_render
-                                |> am'.map_vec leptos.element_to_view
+                                transactions
+                                |> am'.to_vec
+                                |> am'.vec_map transaction.tr_render
+                                |> am'.vec_map leptos.element_to_view
+                                |> am'.from_vec
                                 |> fun (a x : _ i32 _) => x
                                 |> leptos.view_array_to_fragment
                                 |> ui.table.render (

@@ -53,15 +53,16 @@ inl render tab =
                     $'"id=\\\"Tab\\\""'
                     $'"class=\\\"w-full rounded-md border-gray-200\\\""'
                 ] fun () =>
-                    tabs () |> a
-                    |> am'.map_vec fun tab' =>
+                    tabs ()
+                    |> am'.to_vec
+                    |> am'.vec_map fun tab' =>
                         leptos.option'
                             fun () => (tab |> leptos.signal_get) = tab'
                             (tab' |> menu_tab_label)
                         |> leptos.element_to_view
+                    |> am'.from_vec
                     |> fun (a x : _ i32 _) => x
                     |> leptos.view_array_to_fragment
-                    |> (~:>)
                 |> leptos.element_to_view
             ])
 
@@ -75,8 +76,9 @@ inl render tab =
                     $'"class=\\\"-mb-px flex [flex-flow:wrap] [flex-grow:1] [flex-shrink:0] gap-[3px] [overflow-wrap:anywhere]\\\""'
                     $'"aria-label=\\\"Tabs\\\""'
                 ] fun () =>
-                    tabs () |> a
-                    |> am'.map_vec fun tab' =>
+                    tabs ()
+                    |> am'.to_vec
+                    |> am'.vec_map fun tab' =>
                         inl id = tab' |> menu_tab_id
                         inl class = fun () => "h-5 w-5"
                         ui.tab_link.render
@@ -92,9 +94,9 @@ inl render tab =
                             (tab' |> menu_tab_label)
                             fun () => (tab |> leptos.signal_get) = tab'
                         |> leptos.element_to_view
+                    |> am'.from_vec
                     |> fun (a x : _ i32 _) => x
                     |> leptos.view_array_to_fragment
-                    |> (~:>)
                 |> leptos.element_to_fragment
             |> leptos.element_to_fragment
     ])
