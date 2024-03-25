@@ -89,12 +89,10 @@ inl render () =
             |> leptos.signal_get
             |> fun data =>
                 data.accounts
-                |> am'.from_vec
-                |> fun x => x : _ i32 _
-                |> am'.map_vec from_pair
-                |> am'.filter_vec fst
-                |> am'.map_vec snd
-                |> am'.mapi_vec fun (i : i32) account =>
+                |> am'.vec_map from_pair
+                |> am'.vec_filter fst
+                |> am'.vec_map snd
+                |> am'.vec_mapi fun (i : i32) account =>
                     new_pair
                         i
                         (leptos.create_signal account)
@@ -103,11 +101,9 @@ inl render () =
         leptos.create_memo fun () =>
             accounts
             |> leptos.signal_get
-            |> am'.map_vec from_pair
-            |> am'.map_vec fun i, x =>
+            |> am'.vec_map from_pair
+            |> am'.vec_map fun i, x =>
                 i, x |> fst
-            |> fun (a x) => x
-            |> am'.to_vec
 
     ;[
         ui.accordion.render
@@ -213,8 +209,8 @@ inl render () =
                 summary_class = fun () => "py-[7px]"
             }
             fun () => :>(;[
-                match accounts_txns_requests |> leptos.signal_get with
-                | a ;[] =>
+                match accounts_txns_requests |> leptos.signal_get |> am'.from_vec with
+                | (a ;[] : _ i32 _) =>
                     "No account selected"
                     |> ui.error_label.render
                     |> leptos.element_to_view
@@ -226,12 +222,14 @@ inl render () =
                     |> function
                         | Ok (Some transactions) =>
                             inl transactions =
-                                a transactions
-                                |> am'.filter_vec function
+                                transactions
+                                |> am'.to_vec
+                                |> am'.vec_filter function
                                     | { account txn } =>
                                         inl is_call =
-                                            a txn.actions
-                                            |> am'.map_vec fun transaction =>
+                                            txn.actions
+                                            |> am'.to_vec
+                                            |> am'.vec_map fun transaction =>
                                                 {
                                                     action =
                                                         transaction.action
@@ -241,17 +239,17 @@ inl render () =
                                                         |> optionm'.unbox
                                                         |> optionm.map sm'.from_std_string
                                                 }
-                                            |> am'.filter_vec fun transaction =>
+                                            |> am'.vec_filter fun transaction =>
                                                 {
                                                     action = "FUNCTION_CALL"
                                                     method = Some "generate_random_number"
                                                 } = transaction
+                                            |> am'.from_vec
                                             |> fun (x : _ i32 _) => length x > 0
                                         inl is_receiver =
                                             account = (txn.receiver_account_id |> sm'.from_std_string)
                                         is_call && is_receiver
                                     | _ => false
-                                |> fun (a x : _ i32 _) => x
 
                             ui.table.render
                                 (
@@ -301,12 +299,9 @@ inl render () =
                                     inl rpc_responses =
                                         rpc_responses
                                         |> leptos.signal_get
-                                    a transactions
-                                    |> am'.map_vec fun { txn i } =>
+                                    transactions
+                                    |> am'.vec_map fun { txn i } =>
                                         inl rpc_response = index rpc_responses (i |> i32)
-
-
-
 
                                         leptos.tr [
                                             $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
@@ -351,15 +346,15 @@ inl render () =
                                                     match txn.logs with
                                                     | ;[] => "" |> leptos.text_fragment
                                                     | _ =>
-                                                        (a txn.logs : _ i32 _)
-                                                        |> am'.map_vec sm'.from_std_string
-                                                        |> fun x =>
-                                                            (x, None)
-                                                            ||> am.foldBack fun x acc =>
-                                                                inl logs = x |> sm'.split " / result: "
-                                                                match acc, logs with
-                                                                | None, ;[ _; result ] => Some result
-                                                                | _ => acc
+                                                        ((a txn.logs : _ i32 _), None)
+                                                        ||> am.foldBack fun x acc =>
+                                                            inl logs =
+                                                                x 
+                                                                |> sm'.from_std_string 
+                                                                |> sm'.split " / result: "
+                                                            match acc, logs with
+                                                            | None, ;[ _; result ] => Some result
+                                                            | _ => acc
                                                         |> optionm'.default_value "?"
                                                         |> leptos.text_fragment
                                                 |> leptos.element_to_view
@@ -410,6 +405,7 @@ inl render () =
                                                 |> leptos.element_to_view
                                             ])
                                         |> leptos.element_to_view
+                                    |> am'.from_vec
                                     |> fun (a x : _ i32 _) => x
                                     |> leptos.view_array_to_fragment
                                 )

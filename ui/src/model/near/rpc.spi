@@ -243,7 +243,7 @@ inl gas_profile_unbox (x : gas_profile') : gas_profile =
 
 inl metadata_unbox (x : metadata') : metadata =
     inl x = join x
-    inl gas_profile = !\($'"!x.gas_profile"') |> am'.from_vec |> am'.map_vec gas_profile_unbox |> fun (a x : _ i32 _) => x
+    inl gas_profile = !\($'"!x.gas_profile"') |> am'.vec_map gas_profile_unbox |> am'.from_vec |> fun (a x : _ i32 _) => x
     inl version = !\($'"!x.version"')
     { gas_profile; version }
 
@@ -266,7 +266,7 @@ inl receipts_outcome_unbox (x : receipts_outcome') : receipts_outcome =
 
 inl action_detail_unbox (x : action_detail') : action_detail =
     inl x = join x
-    inl actions = !\($'"!x.actions"') |> am'.from_vec |> am'.map_vec (mapm.map transfer_detail_unbox) |> fun (a x : _ i32 _) => x
+    inl actions = !\($'"!x.actions"') |> am'.vec_map (mapm.map transfer_detail_unbox) |> am'.from_vec |> fun (a x : _ i32 _) => x
     inl gas_price = !\($'"!x.gas_price"')
     inl input_data_ids = !\($'"!x.input_data_ids"') |> am'.from_vec |> fun (a x : _ i32 _) => x
     inl output_data_receivers = !\($'"!x.output_data_receivers"') |> am'.from_vec |> fun (a x : _ i32 _) => x
@@ -289,8 +289,8 @@ inl receipt_unbox (x : receipt') : receipt =
 
 inl transaction_status_unbox (x : transaction_status') : transaction_status =
     inl x = join x
-    inl receipts = !\($'"!x.receipts"') |> am'.from_vec |> am'.map_vec receipt_unbox |> fun (a x : _ i32 _) => x
-    inl receipts_outcome = !\($'"!x.receipts_outcome"') |> am'.from_vec |> am'.map_vec receipts_outcome_unbox |> fun (a x : _ i32 _) => x
+    inl receipts = !\($'"!x.receipts"') |> am'.vec_map receipt_unbox |> am'.from_vec |> fun (a x : _ i32 _) => x
+    inl receipts_outcome = !\($'"!x.receipts_outcome"') |> am'.vec_map receipts_outcome_unbox |> am'.from_vec |> fun (a x : _ i32 _) => x
     { receipts; receipts_outcome }
 
 inl rpc_response_unbox (x : rpc_response') : rpc_response =
