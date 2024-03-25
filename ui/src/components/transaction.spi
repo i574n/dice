@@ -2,7 +2,48 @@ open rust_operators
 open leptos
 open model.near.nearblocks
 
+inl action_render action method =
+    ui.grid_pair.render
+        fun props => { props with
+            class = fun () => ""
+            cols_class = fun () => ""
+            dd_class = fun () => ""
+            padding_class = fun () => "items-center"
+        }
+        fun () =>
+            match action |> sm'.from_std_string with
+            | "FUNCTION_CALL" => "Function Call:"
+            | "DEPLOY_CONTRACT" => "Contract Deploy:"
+            | "TRANSFER" => "Transfer:"
+            | action => action
+            |> leptos.text_fragment
+        fun () =>
+            leptos.div [
+                $'"class=\\\"flex flex-1 flex-col\\\""'
+            ] fun () => :>(;[
+                ui.grid_pair.render
+                    fun props => { props with
+                        class = fun () => ""
+                        dd_class = fun () => ""
+                        padding_class = fun () => ""
+                    }
+                    fun () => "Method" |> leptos.text_fragment
+                    fun () =>
+                        match method |> optionm'.unbox with
+                        | Some method =>
+                            method
+                            |> to_string
+                            |> leptos.text_fragment
+                        | None =>
+                            "None" |> leptos.text_fragment
+                |> leptos.element_to_view
+            ])
+            |> leptos.element_to_fragment
+
 inl tr_head_render (transactions : array_base hooks.use_transactions.account_transaction) =
+    print_static "<transaction.tr_head_render>"
+    leptos.log $'"transaction.tr_head_render (1)"'
+
     leptos.tr [
 
     ] fun () =>
@@ -35,12 +76,6 @@ inl tr_head_render (transactions : array_base hooks.use_transactions.account_tra
                 $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
             ] fun () =>
                 "Action" |> leptos.text_fragment
-            |> leptos.element_to_view
-
-            leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-            ] fun () =>
-                "Action Method" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
@@ -101,6 +136,9 @@ inl tr_head_render (transactions : array_base hooks.use_transactions.account_tra
         ])
 
 inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
+    print_static "<transaction.tr_render>"
+    leptos.log $'"transaction.tr_render (1)"'
+
     leptos.tr [
         $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
     ] fun () =>
@@ -137,36 +175,19 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                 |> leptos.text_fragment
             |> leptos.element_to_view
 
-            txn.actions
-            |> am'.to_vec
-            |> am'.vec_map fun { action method } =>
-                :>(;[
-                    leptos.td [
-                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                    ] fun () =>
-                        match action |> sm'.from_std_string with
-                        | "FUNCTION_CALL" => "Function Call"
-                        | "DEPLOY_CONTRACT" => "Contract Deploy"
-                        | "TRANSFER" => "Transfer"
-                        | action => action
-                        |> leptos.text_fragment
+            leptos.td [
+                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+            ] fun () =>
+                txn.actions
+                |> am'.to_vec
+                |> am'.vec_map fun { action method } =>
+                    action_render action method
                     |> leptos.element_to_view
-
-                    leptos.td [
-                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                    ] fun () =>
-                        method
-                        |> optionm'.unbox
-                        |> optionm.map to_string
-                        |> optionm'.default_value "None"
-                        |> leptos.text_fragment
-                    |> leptos.element_to_view
-                ])
-            |> am'.vec_map leptos.fragment_to_view
-            |> am'.from_vec
-            |> fun x => x : _ i32 _
-            |> fun (a x : _ i32 leptos.view) => :>x
-            |> leptos.fragment_to_view
+                |> am'.from_vec
+                |> fun x => x : _ i32 _
+                |> fun (a x) => x
+                |> leptos.view_array_to_fragment
+            |> leptos.element_to_view
 
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
@@ -244,6 +265,7 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
 
 inl render account (index : i64) (transaction : txn) : _ leptos.div =
     print_static "<transaction.render>"
+    leptos.log $'"transaction.render (1)"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
@@ -310,49 +332,17 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     fun props => { props with
                         padding_class = fun () => "sm:pr-[10px]"
                         class = fun () => "items-center py-[4px]"
+                        dd_class = fun () => "[flex-direction:column]"
                     }
                     fun () => "Actions" |> leptos.text_fragment
                     fun () =>
                         transaction.actions
                         |> am'.to_vec
                         |> am'.vec_map fun { action method } =>
-                            ui.grid_pair.render
-                                fun props => { props with
-                                    padding_class = fun () => "items-center"
-                                    cols_class = fun () => ""
-                                    class = fun () => ""
-                                }
-                                fun () =>
-                                    match action |> sm'.from_std_string with
-                                    | "FUNCTION_CALL" => "Function Call:"
-                                    | "DEPLOY_CONTRACT" => "Contract Deploy:"
-                                    | "TRANSFER" => "Transfer:"
-                                    | action => action
-                                    |> leptos.text_fragment
-                                fun () =>
-                                    leptos.div [
-                                        $'"class=\\\"flex flex-1 flex-col\\\""'
-                                    ] fun () => :>(;[
-                                        ui.grid_pair.render
-                                            fun props => { props with
-                                                padding_class = fun () => ""
-                                                class = fun () => ""
-                                            }
-                                            fun () => "Method" |> leptos.text_fragment
-                                            fun () =>
-                                                match method |> optionm'.unbox with
-                                                | Some method =>
-                                                    method
-                                                    |> to_string
-                                                    |> leptos.text_fragment
-                                                | None =>
-                                                    "None" |> leptos.text_fragment
-                                        |> leptos.element_to_view
-                                    ])
-                                    |> leptos.element_to_fragment
+                            action_render action method
                             |> leptos.element_to_view
-                        |> fun x => x |> am'.from_vec : _ i32 _
-                        |> fun (a x) => x
+                        |> am'.from_vec
+                        |> fun ((a x) : _ i32 _) => x
                         |> leptos.view_array_to_fragment
                 |> leptos.element_to_view
 

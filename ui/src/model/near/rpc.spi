@@ -9,6 +9,7 @@ inl types () =
     global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::GasProfile\")>] type crate_model_near_rpc_GasProfile = class end"
     global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::Metadata\")>] type crate_model_near_rpc_Metadata = class end"
     global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::OutcomeDetail\")>] type crate_model_near_rpc_OutcomeDetail = class end"
+    global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::Proof\")>] type crate_model_near_rpc_Proof = class end"
     global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ReceiptsOutcome\")>] type crate_model_near_rpc_ReceiptsOutcome = class end"
     global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ActionDetail\")>] type crate_model_near_rpc_ActionDetail = class end"
     global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ReceiptDetail\")>] type crate_model_near_rpc_ReceiptDetail = class end"
@@ -24,6 +25,7 @@ nominal transfer_detail' = $"crate_model_near_rpc_TransferDetail"
 nominal gas_profile' = $"crate_model_near_rpc_GasProfile"
 nominal metadata' = $"crate_model_near_rpc_Metadata"
 nominal outcome_detail' = $"crate_model_near_rpc_OutcomeDetail"
+nominal proof' = $"crate_model_near_rpc_Proof"
 nominal receipts_outcome' = $"crate_model_near_rpc_ReceiptsOutcome"
 nominal action_detail' = $"crate_model_near_rpc_ActionDetail"
 nominal receipt_detail' = $"crate_model_near_rpc_ReceiptDetail"
@@ -63,6 +65,9 @@ type rpc_error =
 type transfer_detail =
     {
         deposit : sm'.std_string
+        args : optionm'.option' sm'.std_string
+        gas : optionm'.option' f64
+        method_name : optionm'.option' sm'.std_string
     }
 
 type gas_profile =
@@ -86,6 +91,13 @@ type outcome_detail =
         metadata : metadata
         receipt_ids : array_base sm'.std_string
         status : mapm.hash_map sm'.std_string sm'.std_string
+        tokens_burnt : optionm'.option' sm'.std_string
+    }
+
+type proof =
+    {
+        direction : sm'.std_string
+        hash : sm'.std_string
     }
 
 type receipts_outcome =
@@ -93,6 +105,7 @@ type receipts_outcome =
         block_hash : sm'.std_string
         id : sm'.std_string
         outcome : outcome_detail
+        proof : optionm'.option' (array_base proof)
     }
 
 type action_detail =
@@ -122,6 +135,12 @@ type transaction_status =
     {
         receipts : array_base receipt
         receipts_outcome : array_base receipts_outcome
+    }
+
+type result =
+    {
+        final_execution_status : sm'.std_string
+        receipts : array_base receipt
     }
 
 type rpc_response =
@@ -154,8 +173,8 @@ inl rpc_error_box ({ name cause code message data } : rpc_error) : rpc_error' =
     inl cause = cause |> error_cause_box
     !\($'"crate::model::near::rpc::RpcError { name: !name, cause: !cause, code: !code, message: !message, data: !data }"')
 
-inl transfer_detail_box ({ deposit } : transfer_detail) : transfer_detail' =
-    !\($'"crate::model::near::rpc::TransferDetail { deposit: !deposit }"')
+inl transfer_detail_box ({ deposit args gas method_name } : transfer_detail) : transfer_detail' =
+    !\($'"crate::model::near::rpc::TransferDetail { deposit: !deposit, args: !args, gas: !gas, method_name: !method_name }"')
 
 inl gas_profile_box ({ cost cost_category gas_used } : gas_profile) : gas_profile' =
     !\($'"crate::model::near::rpc::GasProfile { cost: !cost, cost_category: !cost_category, gas_used: !gas_used }"')
@@ -164,14 +183,18 @@ inl metadata_box ({ gas_profile version } : metadata) : metadata' =
     inl gas_profile = gas_profile |> am'.to_vec
     !\($'"crate::model::near::rpc::Metadata { gas_profile: !gas_profile, version: !version }"')
 
-inl outcome_detail_box ({ executor_id gas_burnt logs metadata receipt_ids status } : outcome_detail) : outcome_detail' =
+inl outcome_detail_box ({ executor_id gas_burnt logs metadata receipt_ids status tokens_burnt } : outcome_detail) : outcome_detail' =
     inl logs = logs |> am'.to_vec
     inl receipt_ids = receipt_ids |> am'.to_vec
-    !\($'"crate::model::near::rpc::OutcomeDetail { executor_id: !executor_id, gas_burnt: !gas_burnt, logs: !logs, metadata: !metadata, receipt_ids: !receipt_ids, status: !status }"')
+    !\($'"crate::model::near::rpc::OutcomeDetail { executor_id: !executor_id, gas_burnt: !gas_burnt, logs: !logs, metadata: !metadata, receipt_ids: !receipt_ids, status: !status, tokens_burnt: !tokens_burnt }"')
 
-inl receipts_outcome_box ({ block_hash id outcome } : receipts_outcome) : receipts_outcome' =
+inl proof_box ({ direction hash } : proof) : proof' =
+    !\($'"crate::model::near::rpc::Proof { direction: !direction, hash: !hash }"')
+
+inl receipts_outcome_box ({ block_hash id outcome proof } : receipts_outcome) : receipts_outcome' =
     inl outcome = outcome |> outcome_detail_box
-    !\($'"crate::model::near::rpc::ReceiptsOutcome { block_hash: !block_hash, id: !id, outcome: !outcome }"')
+    inl proof = proof |> optionm'.map (am'.to_vec >> am'.vec_map proof_box)
+    !\($'"crate::model::near::rpc::ReceiptsOutcome { block_hash: !block_hash, id: !id, outcome: !outcome, proof: !proof }"')
 
 inl action_detail_box ({ actions gas_price input_data_ids output_data_receivers signer_id signer_public_key } : action_detail) : action_detail' =
     inl actions = actions |> am'.to_vec
@@ -232,7 +255,10 @@ inl rpc_error_unbox (x : rpc_error') : rpc_error =
 inl transfer_detail_unbox (x : transfer_detail') : transfer_detail =
     inl x = join x
     inl deposit = !\($'"!x.deposit"')
-    { deposit }
+    inl args = !\($'"!x.args"')
+    inl gas = !\($'"!x.gas"')
+    inl method_name = !\($'"!x.method_name"')
+    { deposit args gas method_name }
 
 inl gas_profile_unbox (x : gas_profile') : gas_profile =
     inl x = join x
@@ -255,14 +281,22 @@ inl outcome_detail_unbox (x : outcome_detail') : outcome_detail =
     inl metadata = !\($'"!x.metadata"') |> metadata_unbox
     inl receipt_ids = !\($'"!x.receipt_ids"') |> am'.from_vec |> fun (a x : _ i32 _) => x
     inl status = !\($'"!x.status"')
-    { executor_id; gas_burnt; logs; metadata; receipt_ids; status }
+    inl tokens_burnt = !\($'"!x.tokens_burnt"')
+    { executor_id gas_burnt logs metadata receipt_ids status tokens_burnt }
+
+inl proof_unbox (x : proof') : proof =
+    inl x = join x
+    inl direction = !\($'"!x.direction"')
+    inl hash = !\($'"!x.hash"')
+    { direction hash }
 
 inl receipts_outcome_unbox (x : receipts_outcome') : receipts_outcome =
     inl x = join x
     inl block_hash = !\($'"!x.block_hash"')
     inl id = !\($'"!x.id"')
     inl outcome = !\($'"!x.outcome"') |> outcome_detail_unbox
-    { block_hash; id; outcome }
+    inl proof = !\($'"!x.proof"') |> optionm'.map (am'.vec_map proof_unbox >> am'.from_vec >> fun (a x : _ i32 _) => x)
+    { block_hash id outcome proof }
 
 inl action_detail_unbox (x : action_detail') : action_detail =
     inl x = join x

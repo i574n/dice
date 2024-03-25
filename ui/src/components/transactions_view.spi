@@ -3,8 +3,8 @@ open sm'_operators
 open leptos
 
 inl render () =
-    print_static "<transactions.render>"
-    leptos.log $'"transactions.render (1)"'
+    print_static "<transactions_view.render>"
+    leptos.log $'"transactions_view.render (1)"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
     

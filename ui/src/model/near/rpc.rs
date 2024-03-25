@@ -32,6 +32,9 @@ pub struct RpcError {
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TransferDetail {
     pub deposit: String,
+    pub args: Option<String>,
+    pub gas: Option<f64>,
+    pub method_name: Option<String>,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -55,6 +58,13 @@ pub struct OutcomeDetail {
     pub metadata: Metadata,
     pub receipt_ids: Vec<String>,
     pub status: HashMap<String, String>,
+    pub tokens_burnt: Option<String>,
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct Proof {
+    pub direction: String,
+    pub hash: String,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -62,6 +72,7 @@ pub struct ReceiptsOutcome {
     pub block_hash: String,
     pub id: String,
     pub outcome: OutcomeDetail,
+    pub proof: Option<Vec<Proof>>,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
