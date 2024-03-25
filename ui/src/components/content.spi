@@ -17,7 +17,8 @@ inl render () : _ leptos.div =
     leptos.create_effect fun () =>
         inl loaded = loaded |> leptos.signal_get
 
-        inl hash = location |> leptos.location_hash |> leptos.memo_get
+        inl hash = location |> leptos.location_hash |> leptos.signal_get
+        let url = url |> leptos.signal_get
         inl new_url_hash : string = $'$"{!url}{!hash}"'
         leptos.log $'"content.render () / effect 1 / new_url_hash: " + !new_url_hash + " / loaded: " + string !loaded + ""'
 
@@ -40,7 +41,7 @@ inl render () : _ leptos.div =
             |> leptos.signal_set (new_url_hash |> sm'.to_std_string)
 
     leptos.create_effect fun () =>
-        inl hash = location |> leptos.location_hash |> leptos.memo_get
+        inl hash = location |> leptos.location_hash |> leptos.signal_get
         inl hash = hash |> sm'.strip_prefix '#' |> optionm'.unwrap_or #""
         inl hash_url = hash |> leptos.url_try_from |> resultm.unbox
 

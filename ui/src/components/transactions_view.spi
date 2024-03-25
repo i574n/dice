@@ -18,7 +18,7 @@ inl render () =
             |> leptos.signal_update not
 
         ui.icon_button.render
-            (svg.settings.render (Some $'"h-5 w-5"') [])
+            (svg.settings.render (fun () => "h-5 w-5") [])
             fun () =>
                 inl class =
                     if settings_visible |> leptos.signal_get
@@ -35,7 +35,7 @@ inl render () =
     ;[
         ui.accordion.render
             fun props => { props with
-                title = "Transactions"
+                title = fun () => "Transactions"
                 summary_class = fun () => "py-[7px]"
                 right_element = Some settings_button
             }
@@ -79,14 +79,14 @@ inl render () =
                     |> leptos.element_to_view
                 else ;[] |> leptos.views_to_view
 
-                match accounts_txns_requests |> leptos.memo_get with
+                match accounts_txns_requests |> leptos.signal_get with
                 | a ;[] =>
                     "No account selected"
                     |> ui.error_label.render
                     |> leptos.element_to_view
                 | _ =>
                     txns
-                    |> leptos.memo_get
+                    |> leptos.signal_get
                     |> resultm.unbox
                     |> resultm.map optionm'.unbox
                     |> function
@@ -134,7 +134,7 @@ inl render () =
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
             ui.accordion.render
                 fun props => { props with
-                    title = "Debug"
+                    title = fun () => "Debug"
                     summary_class = fun () => "py-[7px]"
                 }
                 fun () => :>(;[
@@ -143,7 +143,7 @@ inl render () =
                         fun () => "Transactions" |> leptos.text_fragment
                         fun () =>
                             txns
-                            |> leptos.memo_get
+                            |> leptos.signal_get
                             |> sm'.format_pretty'
                             |> sm'.from_std_string
                             |> ui.text_block_pre.render fun () => "[max-height:70vh]"

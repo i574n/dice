@@ -78,9 +78,11 @@ inl render tab =
                     tabs () |> a
                     |> am'.map_vec fun tab' =>
                         inl id = tab' |> menu_tab_id
-                        inl class = Some $'"h-5 w-5"'
+                        inl class = fun () => "h-5 w-5"
                         ui.tab_link.render
-                            $'!url + "#/" + !id + ""'
+                            fun () =>
+                                inl url = url |> leptos.signal_get
+                                $'!url + "#/" + !id + ""'
                             match tab' with
                             | Dice _ => svg.dice.render class [] |> leptos.element_to_fragment
                             | Lists => svg.lists.render class [] |> leptos.element_to_fragment

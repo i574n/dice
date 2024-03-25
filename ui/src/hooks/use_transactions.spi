@@ -28,7 +28,7 @@ inl render (global_state : state.global_state) =
 
     inl accounts_metadata_requests = leptos.create_memo fun () =>
         accounts
-        |> leptos.memo_get
+        |> leptos.signal_get
         |> am'.map_vec fun account =>
             inl request : networking.request =
                 {
@@ -47,7 +47,7 @@ inl render (global_state : state.global_state) =
             |> leptos.signal_get_untracked
 
         accounts
-        |> leptos.memo_get
+        |> leptos.signal_get
         |> am'.map_vec fun account =>
             inl per_page = 25i32
             inl requests =
@@ -66,7 +66,7 @@ inl render (global_state : state.global_state) =
 
     inl txns_requests = leptos.create_memo fun () =>
         accounts_txns_requests
-        |> leptos.memo_get
+        |> leptos.signal_get
         |> am'.map_vec snd
         |> am'.map_vec fun (a x) => x |> am'.to_vec
         |> fun (a x) => x
@@ -77,7 +77,7 @@ inl render (global_state : state.global_state) =
 
     inl txns_accounts = leptos.create_memo fun () =>
         accounts_txns_requests
-        |> leptos.memo_get
+        |> leptos.signal_get
         |> am'.map_vec fun account, x =>
             x
             |> am.map fun _ => account
@@ -110,7 +110,7 @@ inl render (global_state : state.global_state) =
         leptos.create_memo fun () =>
             inl root =
                 root
-                |> leptos.memo_get
+                |> leptos.signal_get
                 |> am'.map_vec resultm.unbox
                 |> am'.map_vec (resultm.map optionm'.unbox)
 
@@ -127,7 +127,7 @@ inl render (global_state : state.global_state) =
             if loading
             then Ok None
             else
-                inl urls_accounts = txns_accounts |> leptos.memo_get
+                inl urls_accounts = txns_accounts |> leptos.signal_get
 
                 root
                 |> am'.mapi_vec fun i x =>
@@ -162,7 +162,7 @@ inl render (global_state : state.global_state) =
         =
         leptos.create_memo fun () =>
             txns
-            |> leptos.memo_get
+            |> leptos.signal_get
             |> resultm.unbox
             |> resultm.map optionm'.unbox
             |> function
@@ -205,7 +205,7 @@ inl render (global_state : state.global_state) =
 
     inl rpc_requests' = leptos.create_memo fun () =>
         rpc_requests
-        |> leptos.memo_get
+        |> leptos.signal_get
         |> resultm.unbox
         |> resultm.map optionm'.unbox
         |> function
