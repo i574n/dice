@@ -17,7 +17,7 @@ inl global_state_log_render () : _ leptos.pre =
         | Ok json => json |> sm'.from_std_string
         | Error error => $'"Error: " + string !error + ""'
 
-    global_state_json |> leptos.memo_get |> ui.text_block_pre.render ""
+    global_state_json |> leptos.memo_get |> ui.text_block_pre.render fun () => ""
 
 inl render () =
     print_static "<settings.render>"
@@ -68,13 +68,12 @@ inl render () =
                 set_edit_count |> leptos.signal_update ((+) 1)
             |> leptos.batch
         inl on_click = join on_click
-        !\($'"let on_click = !on_click"')
 
         ui.icon_button.render
             (svg.cross.render (Some "h-5 w-5") [])
             fun () => " pr-[7px] pl-[5px]" |> sm'.to_std_string
             [
-                $'"on:click=move |_| on_click()"'
+                $'"on:click=move |_| !on_click()"'
                 $'"aria-label=\\\"Delete\\\""'
             ]
 
@@ -100,13 +99,12 @@ inl render () =
                 set_edit_count |> leptos.signal_update ((+) 1)
             |> leptos.batch
         inl on_click = join on_click
-        !\($'"let on_click = !on_click"')
 
         ui.icon_button.render
             (svg.plus.render (Some "h-5 w-5") [])
             fun () => " bg-gray-300" |> sm'.to_std_string
             [
-                $'"on:click=move |_| on_click()"'
+                $'"on:click=move |_| !on_click()"'
                 $'"aria-label=\\\"Add\\\""'
             ]
 
@@ -131,7 +129,7 @@ inl render () =
                             inl i = join i
                             :>(;[
                                 ui.toggle.render
-                                    $'"account-" + string !i + ""'
+                                    fun () => $'"account-" + string !i + ""'
                                     fun () =>
                                         account
                                         |> leptos.signal_get
@@ -156,8 +154,10 @@ inl render () =
                                         })
                                 |> leptos.element_to_view
 
-                                ui.text_input.render (Some "flex-1") [
-                                ]
+                                ui.text_input.render
+                                    fun () => "flex-1"
+                                    [
+                                    ]
                                     fun () =>
                                         account |> leptos.signal_get |> from_pair |> snd
 
@@ -201,7 +201,7 @@ inl render () =
                     fun () => "Dark Mode" |> leptos.text_fragment
                     fun () =>
                         ui.toggle.render
-                            "dark-mode"
+                            fun () => "dark-mode"
                             fun () =>
                                 leptos.signal_get_untracked global_state.core_state .dark_mode
                                 |> leptos.signal_get
@@ -217,7 +217,7 @@ inl render () =
                     fun () => "Debug" |> leptos.text_fragment
                     fun () =>
                         ui.toggle.render
-                            "debug"
+                            fun () => "debug"
                             fun () =>
                                 leptos.signal_get_untracked global_state.core_state .debug
                                 |> leptos.signal_get
