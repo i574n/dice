@@ -104,3 +104,7 @@ As we move forward, the experiences garnered from this phase of development will
 In conclusion, the development of the UI component, while challenging, has been an invaluable crucible for innovation and learning. It has pushed the boundaries of our technical expertise, challenged our preconceptions, and ultimately led to a more sophisticated, resilient application architecture. As we continue to iterate and evolve our approach, we remain committed to delivering a user interface that is not only performant and feature-rich but also a joy to use.
 
 This assessment, while highlighting the hurdles we've faced, also stands as a testament to the progress we've made and the unwavering dedication of our team to excellence. We look forward to sharing our continued journey with the community on GitHub and beyond.
+
+---
+
+[![Star History Chart](https://api.star-history.com/svg?repos=i574n/dice&type=Timeline)](https://star-history.com/#i574n/dice&Timeline)
