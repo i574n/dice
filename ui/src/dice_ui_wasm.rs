@@ -31817,6 +31817,12 @@ pub use module_eef1bd43::*;
 #[path = "../../../polyglot/lib/fsharp/CommonWasm.rs"]
 mod module_8cb3e09e;
 pub use module_8cb3e09e::*;
+#[path = "../../../polyglot/lib/spiral/common.rs"]
+mod module_e7e93d99;
+pub use module_e7e93d99::*;
+#[path = "../../../polyglot/lib/spiral/date_time_wasm.rs"]
+mod module_d18105aa;
+pub use module_d18105aa::*;
 pub mod Polyglot {
     // pub use crate::module_8cb3e09e::Polyglot::*;
 }

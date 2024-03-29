@@ -51,7 +51,7 @@ inl render () =
         leptos.create_memo fun () =>
             accounts_data |> leptos.signal_get |> am'.from_vec |> length : i32
 
-    inl delete_button index guid =
+    inl delete_button index =
         inl on_click () =
             rust.move fun () =>
                 leptos.signal_get_untracked global_state.core_state .data
@@ -182,7 +182,7 @@ inl render () =
 
                                 if (accounts_count |> leptos.signal_get) = 1i32
                                 then ;[] |> leptos.views_to_view
-                                else delete_button i guid |> leptos.element_to_view
+                                else delete_button i |> leptos.element_to_view
                             ])
                         |> leptos.element_to_fragment
                 |> leptos.view_to_fragment

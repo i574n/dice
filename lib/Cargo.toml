@@ -12,7 +12,7 @@ rand = { version = "~0.8", optional = true }
 
 [features]
 wasm = ["fable_library_rust"]
-default = ["fable_library_rust/default", "dep:rand"]
+default = ["fable_library_rust/default", "fable_library_rust/datetime", "dep:rand"]
 
 [[bin]]
 name = "dice"

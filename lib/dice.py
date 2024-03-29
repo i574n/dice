@@ -10,7 +10,7 @@ from fable_modules.fable_library.string_ import (to_text, interpolate)
 from fable_modules.fable_library.types import (Array, Union, Record, int64, FSharpRef, uint8, uint64, int8)
 from fable_modules.fable_library.util import randint
 
-def _expr2() -> TypeInfo:
+def _expr19() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -25,9 +25,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr2
+UH0_reflection = _expr19
 
-def _expr3() -> TypeInfo:
+def _expr20() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[("Item1", uint8_type), ("Item2", UH1_reflection())], []])
 
 
@@ -42,9 +42,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr3
+UH1_reflection = _expr20
 
-def _expr4() -> TypeInfo:
+def _expr21() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[], [("f1_0", lambda_type(string_type, unit_type))]])
 
 
@@ -60,9 +60,9 @@ class US0(Union):
         return ["US0_0", "US0_1"]
 
 
-US0_reflection = _expr4
+US0_reflection = _expr21
 
-def _expr5() -> TypeInfo:
+def _expr22() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", UH0_reflection())], [("f1_0", lambda_type(unit_type, UH0_reflection()))]])
 
 
@@ -78,9 +78,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr5
+US1_reflection = _expr22
 
-def _expr6() -> TypeInfo:
+def _expr23() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", US1_reflection())])
 
 
@@ -88,9 +88,9 @@ def _expr6() -> TypeInfo:
 class Mut0(Record):
     l0: US1
 
-Mut0_reflection = _expr6
+Mut0_reflection = _expr23
 
-def _expr7() -> TypeInfo:
+def _expr24() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", int64_type)])
 
 
@@ -98,9 +98,9 @@ def _expr7() -> TypeInfo:
 class Mut1(Record):
     l0: int64
 
-Mut1_reflection = _expr7
+Mut1_reflection = _expr24
 
-def _expr8() -> TypeInfo:
+def _expr25() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[], [("f1_0", uint8_type)]])
 
 
@@ -116,9 +116,9 @@ class US2(Union):
         return ["US2_0", "US2_1"]
 
 
-US2_reflection = _expr8
+US2_reflection = _expr25
 
-def _expr9() -> TypeInfo:
+def _expr26() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", US2_reflection())])
 
 
@@ -126,9 +126,9 @@ def _expr9() -> TypeInfo:
 class Mut2(Record):
     l0: US2
 
-Mut2_reflection = _expr9
+Mut2_reflection = _expr26
 
-def _expr10() -> TypeInfo:
+def _expr27() -> TypeInfo:
     return union_type("Dice.US3", [], US3, lambda: [[], [("f1_0", uint64_type), ("f1_1", UH1_reflection())]])
 
 
@@ -144,9 +144,9 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr10
+US3_reflection = _expr27
 
-def _expr11() -> TypeInfo:
+def _expr28() -> TypeInfo:
     return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
 
 
@@ -161,9 +161,9 @@ class UH2(Union):
         return ["UH2_0", "UH2_1"]
 
 
-UH2_reflection = _expr11
+UH2_reflection = _expr28
 
-def _expr12() -> TypeInfo:
+def _expr29() -> TypeInfo:
     return union_type("Dice.US4", [], US4, lambda: [[], [("f1_0", uint64_type)]])
 
 
@@ -179,9 +179,9 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr12
+US4_reflection = _expr29
 
-def _expr13() -> TypeInfo:
+def _expr30() -> TypeInfo:
     return union_type("Dice.US5", [], US5, lambda: [[], [("f1_0", int64_type), ("f1_1", UH1_reflection())]])
 
 
@@ -197,7 +197,7 @@ class US5(Union):
         return ["US5_0", "US5_1"]
 
 
-US5_reflection = _expr13
+US5_reflection = _expr30
 
 def UH0__get_IsUH0_0(this: UH0, unit_arg: None) -> bool:
     if this.tag == 0:
@@ -384,10 +384,10 @@ def closure1(v0_1: int64, v1_1: UH0) -> UH0:
 
 
 def closure0(unit_var: None, v0_1: int64) -> Callable[[UH0], UH0]:
-    def _arrow14(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
+    def _arrow31(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
         return closure1(v0_1, v)
 
-    return _arrow14
+    return _arrow31
 
 
 def closure4(unit_var: None, v0_1: Callable[[str], None]) -> US0:
@@ -453,10 +453,10 @@ def closure8(v0_1: UH0, v1_1: Mut0, unit_var: None) -> UH0:
 
 def method4(v0_1: UH0, v1_1: Callable[[], UH0]) -> Callable[[], UH0]:
     v3_1: Mut0 = Mut0(US1(1, v1_1))
-    def _arrow15(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
+    def _arrow32(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
         return closure8(v0_1, v3_1, None)
 
-    return _arrow15
+    return _arrow32
 
 
 def method6(v0_1_mut: int64, v1_1_mut: UH0) -> US2:
@@ -533,10 +533,10 @@ def closure5(v0_1: US0, v1_1: UH1) -> Callable[[], uint8]:
     v12: Mut1 = Mut1(int64(1))
     v13: Mut1 = Mut1(int64(-1))
     v15: Mut2 = Mut2(US2(0))
-    def _arrow16(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
+    def _arrow33(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
         return closure9(v0_1, v10, v11, v12, v13, v15, None)
 
-    return _arrow16
+    return _arrow33
 
 
 def closure3(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
@@ -544,10 +544,10 @@ def closure3(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callabl
         return closure4(None, v)
 
     v3_1: US0 = default_arg(map(v1_1, v0_1), US0(0))
-    def _arrow17(v_1: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
+    def _arrow34(v_1: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
         return closure5(v3_1, v_1)
 
-    return _arrow17
+    return _arrow34
 
 
 def method7(v0_1_mut: US0, v1_1_mut: uint64, v2_1_mut: int8, v3_1_mut: uint64) -> int8:
@@ -1203,17 +1203,17 @@ def closure13(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool, v3_1: uint64) ->
 
 
 def closure12(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool) -> Callable[[uint64], uint64]:
-    def _arrow18(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
+    def _arrow35(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
         return closure13(v0_1, v1_1, v2_1, v)
 
-    return _arrow18
+    return _arrow35
 
 
 def closure11(v0_1: US0, v1_1: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
-    def _arrow19(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
+    def _arrow36(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
         return closure12(v0_1, v1_1, v)
 
-    return _arrow19
+    return _arrow36
 
 
 def closure10(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
@@ -1221,10 +1221,10 @@ def closure10(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callab
         return closure4(None, v)
 
     v3_1: US0 = default_arg(map(v1_1, v0_1), US0(0))
-    def _arrow20(v_1: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
+    def _arrow37(v_1: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
         return closure11(v3_1, v_1)
 
-    return _arrow20
+    return _arrow37
 
 
 def method13(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
@@ -1263,17 +1263,17 @@ def closure80(v0_1: Callable[[str], None] | None, v1_1: uint64, v2_1: UH1) -> ui
 
 
 def closure79(v0_1: Callable[[str], None] | None, v1_1: uint64) -> Callable[[UH1], uint64 | None]:
-    def _arrow21(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
+    def _arrow38(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
         return closure80(v0_1, v1_1, v)
 
-    return _arrow21
+    return _arrow38
 
 
 def closure78(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
-    def _arrow22(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
+    def _arrow39(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
         return closure79(v0_1, v)
 
-    return _arrow22
+    return _arrow39
 
 
 def method39(v0_1: UH1, v1_1: int64) -> US5:
@@ -1752,11 +1752,11 @@ def method14(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
             continue
 
         else: 
-            v13: US5 = method15(v0_1, int64(0))
-            if v13.tag == 1:
-                v14: int64 = v13.fields[0]
-                if v14 <= int64(9223372036854775807):
-                    return v14
+            v15: US5 = method15(v0_1, int64(0))
+            if v15.tag == 1:
+                v16: int64 = v15.fields[0]
+                if v16 <= int64(9223372036854775807):
+                    return v16
 
                 else: 
                     result_1: uint8 | None = None
@@ -1764,139 +1764,139 @@ def method14(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
                     value_1: int = randint(1, 7) or 0
                     x_1 = int(value_1+0x100 if value_1 < 0 else value_1) & 0xFF
                     result_1 = x_1
-                    v22: uint8 = value_47(result_1)
+                    v26: uint8 = value_47(result_1)
                     result_2: uint8 | None = None
                     x_2: uint8
                     value_2: int = randint(1, 7) or 0
                     x_2 = int(value_2+0x100 if value_2 < 0 else value_2) & 0xFF
                     result_2 = x_2
-                    v26: uint8 = value_47(result_2)
+                    v32: uint8 = value_47(result_2)
                     result_3: uint8 | None = None
                     x_3: uint8
                     value_3: int = randint(1, 7) or 0
                     x_3 = int(value_3+0x100 if value_3 < 0 else value_3) & 0xFF
                     result_3 = x_3
-                    v30: uint8 = value_47(result_3)
+                    v38: uint8 = value_47(result_3)
                     result_4: uint8 | None = None
                     x_4: uint8
                     value_4: int = randint(1, 7) or 0
                     x_4 = int(value_4+0x100 if value_4 < 0 else value_4) & 0xFF
                     result_4 = x_4
-                    v34: uint8 = value_47(result_4)
+                    v44: uint8 = value_47(result_4)
                     result_5: uint8 | None = None
                     x_5: uint8
                     value_5: int = randint(1, 7) or 0
                     x_5 = int(value_5+0x100 if value_5 < 0 else value_5) & 0xFF
                     result_5 = x_5
-                    v38: uint8 = value_47(result_5)
+                    v50: uint8 = value_47(result_5)
                     result_6: uint8 | None = None
                     x_6: uint8
                     value_6: int = randint(1, 7) or 0
                     x_6 = int(value_6+0x100 if value_6 < 0 else value_6) & 0xFF
                     result_6 = x_6
-                    v42: uint8 = value_47(result_6)
+                    v56: uint8 = value_47(result_6)
                     result_7: uint8 | None = None
                     x_7: uint8
                     value_7: int = randint(1, 7) or 0
                     x_7 = int(value_7+0x100 if value_7 < 0 else value_7) & 0xFF
                     result_7 = x_7
-                    v46: uint8 = value_47(result_7)
+                    v62: uint8 = value_47(result_7)
                     result_8: uint8 | None = None
                     x_8: uint8
                     value_8: int = randint(1, 7) or 0
                     x_8 = int(value_8+0x100 if value_8 < 0 else value_8) & 0xFF
                     result_8 = x_8
-                    v50: uint8 = value_47(result_8)
+                    v68: uint8 = value_47(result_8)
                     result_9: uint8 | None = None
                     x_9: uint8
                     value_9: int = randint(1, 7) or 0
                     x_9 = int(value_9+0x100 if value_9 < 0 else value_9) & 0xFF
                     result_9 = x_9
-                    v54: uint8 = value_47(result_9)
+                    v74: uint8 = value_47(result_9)
                     result_10: uint8 | None = None
                     x_10: uint8
                     value_10: int = randint(1, 7) or 0
                     x_10 = int(value_10+0x100 if value_10 < 0 else value_10) & 0xFF
                     result_10 = x_10
-                    v58: uint8 = value_47(result_10)
+                    v80: uint8 = value_47(result_10)
                     result_11: uint8 | None = None
                     x_11: uint8
                     value_11: int = randint(1, 7) or 0
                     x_11 = int(value_11+0x100 if value_11 < 0 else value_11) & 0xFF
                     result_11 = x_11
-                    v62: uint8 = value_47(result_11)
+                    v86: uint8 = value_47(result_11)
                     result_12: uint8 | None = None
                     x_12: uint8
                     value_12: int = randint(1, 7) or 0
                     x_12 = int(value_12+0x100 if value_12 < 0 else value_12) & 0xFF
                     result_12 = x_12
-                    v66: uint8 = value_47(result_12)
+                    v92: uint8 = value_47(result_12)
                     result_13: uint8 | None = None
                     x_13: uint8
                     value_13: int = randint(1, 7) or 0
                     x_13 = int(value_13+0x100 if value_13 < 0 else value_13) & 0xFF
                     result_13 = x_13
-                    v70: uint8 = value_47(result_13)
+                    v98: uint8 = value_47(result_13)
                     result_14: uint8 | None = None
                     x_14: uint8
                     value_14: int = randint(1, 7) or 0
                     x_14 = int(value_14+0x100 if value_14 < 0 else value_14) & 0xFF
                     result_14 = x_14
-                    v74: uint8 = value_47(result_14)
+                    v104: uint8 = value_47(result_14)
                     result_15: uint8 | None = None
                     x_15: uint8
                     value_15: int = randint(1, 7) or 0
                     x_15 = int(value_15+0x100 if value_15 < 0 else value_15) & 0xFF
                     result_15 = x_15
-                    v78: uint8 = value_47(result_15)
+                    v110: uint8 = value_47(result_15)
                     result_16: uint8 | None = None
                     x_16: uint8
                     value_16: int = randint(1, 7) or 0
                     x_16 = int(value_16+0x100 if value_16 < 0 else value_16) & 0xFF
                     result_16 = x_16
-                    v82: uint8 = value_47(result_16)
+                    v116: uint8 = value_47(result_16)
                     result_17: uint8 | None = None
                     x_17: uint8
                     value_17: int = randint(1, 7) or 0
                     x_17 = int(value_17+0x100 if value_17 < 0 else value_17) & 0xFF
                     result_17 = x_17
-                    v86: uint8 = value_47(result_17)
+                    v122: uint8 = value_47(result_17)
                     result_18: uint8 | None = None
                     x_18: uint8
                     value_18: int = randint(1, 7) or 0
                     x_18 = int(value_18+0x100 if value_18 < 0 else value_18) & 0xFF
                     result_18 = x_18
-                    v90: uint8 = value_47(result_18)
+                    v128: uint8 = value_47(result_18)
                     result_19: uint8 | None = None
                     x_19: uint8
                     value_19: int = randint(1, 7) or 0
                     x_19 = int(value_19+0x100 if value_19 < 0 else value_19) & 0xFF
                     result_19 = x_19
-                    v94: uint8 = value_47(result_19)
+                    v134: uint8 = value_47(result_19)
                     result_20: uint8 | None = None
                     x_20: uint8
                     value_20: int = randint(1, 7) or 0
                     x_20 = int(value_20+0x100 if value_20 < 0 else value_20) & 0xFF
                     result_20 = x_20
-                    v98: uint8 = value_47(result_20)
+                    v140: uint8 = value_47(result_20)
                     result_21: uint8 | None = None
                     x_21: uint8
                     value_21: int = randint(1, 7) or 0
                     x_21 = int(value_21+0x100 if value_21 < 0 else value_21) & 0xFF
                     result_21 = x_21
-                    v102: uint8 = value_47(result_21)
+                    v146: uint8 = value_47(result_21)
                     result_22: uint8 | None = None
                     x_22: uint8
                     value_22: int = randint(1, 7) or 0
                     x_22 = int(value_22+0x100 if value_22 < 0 else value_22) & 0xFF
                     result_22 = x_22
-                    v106: uint8 = value_47(result_22)
+                    v152: uint8 = value_47(result_22)
                     result_23: uint8 | None = None
                     x_23: uint8
                     value_23: int = randint(1, 7) or 0
                     x_23 = int(value_23+0x100 if value_23 < 0 else value_23) & 0xFF
                     result_23 = x_23
-                    v0_1_mut = UH1(0, v22, UH1(0, v26, UH1(0, v30, UH1(0, v34, UH1(0, v38, UH1(0, v42, UH1(0, v46, UH1(0, v50, UH1(0, v54, UH1(0, v58, UH1(0, v62, UH1(0, v66, UH1(0, v70, UH1(0, v74, UH1(0, v78, UH1(0, v82, UH1(0, v86, UH1(0, v90, UH1(0, v94, UH1(0, v98, UH1(0, v102, UH1(0, v106, UH1(0, value_47(result_23), UH1(1))))))))))))))))))))))))
+                    v0_1_mut = UH1(0, v26, UH1(0, v32, UH1(0, v38, UH1(0, v44, UH1(0, v50, UH1(0, v56, UH1(0, v62, UH1(0, v68, UH1(0, v74, UH1(0, v80, UH1(0, v86, UH1(0, v92, UH1(0, v98, UH1(0, v104, UH1(0, v110, UH1(0, v116, UH1(0, v122, UH1(0, v128, UH1(0, v134, UH1(0, v140, UH1(0, v146, UH1(0, v152, UH1(0, value_47(result_23), UH1(1))))))))))))))))))))))))
                     v1_1_mut = int8(23)
                     continue
 
@@ -1907,139 +1907,139 @@ def method14(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
                 value_24: int = randint(1, 7) or 0
                 x_24 = int(value_24+0x100 if value_24 < 0 else value_24) & 0xFF
                 result_24 = x_24
-                v143: uint8 = value_47(result_24)
+                v193: uint8 = value_47(result_24)
                 result_25: uint8 | None = None
                 x_25: uint8
                 value_25: int = randint(1, 7) or 0
                 x_25 = int(value_25+0x100 if value_25 < 0 else value_25) & 0xFF
                 result_25 = x_25
-                v147: uint8 = value_47(result_25)
+                v199: uint8 = value_47(result_25)
                 result_26: uint8 | None = None
                 x_26: uint8
                 value_26: int = randint(1, 7) or 0
                 x_26 = int(value_26+0x100 if value_26 < 0 else value_26) & 0xFF
                 result_26 = x_26
-                v151: uint8 = value_47(result_26)
+                v205: uint8 = value_47(result_26)
                 result_27: uint8 | None = None
                 x_27: uint8
                 value_27: int = randint(1, 7) or 0
                 x_27 = int(value_27+0x100 if value_27 < 0 else value_27) & 0xFF
                 result_27 = x_27
-                v155: uint8 = value_47(result_27)
+                v211: uint8 = value_47(result_27)
                 result_28: uint8 | None = None
                 x_28: uint8
                 value_28: int = randint(1, 7) or 0
                 x_28 = int(value_28+0x100 if value_28 < 0 else value_28) & 0xFF
                 result_28 = x_28
-                v159: uint8 = value_47(result_28)
+                v217: uint8 = value_47(result_28)
                 result_29: uint8 | None = None
                 x_29: uint8
                 value_29: int = randint(1, 7) or 0
                 x_29 = int(value_29+0x100 if value_29 < 0 else value_29) & 0xFF
                 result_29 = x_29
-                v163: uint8 = value_47(result_29)
+                v223: uint8 = value_47(result_29)
                 result_30: uint8 | None = None
                 x_30: uint8
                 value_30: int = randint(1, 7) or 0
                 x_30 = int(value_30+0x100 if value_30 < 0 else value_30) & 0xFF
                 result_30 = x_30
-                v167: uint8 = value_47(result_30)
+                v229: uint8 = value_47(result_30)
                 result_31: uint8 | None = None
                 x_31: uint8
                 value_31: int = randint(1, 7) or 0
                 x_31 = int(value_31+0x100 if value_31 < 0 else value_31) & 0xFF
                 result_31 = x_31
-                v171: uint8 = value_47(result_31)
+                v235: uint8 = value_47(result_31)
                 result_32: uint8 | None = None
                 x_32: uint8
                 value_32: int = randint(1, 7) or 0
                 x_32 = int(value_32+0x100 if value_32 < 0 else value_32) & 0xFF
                 result_32 = x_32
-                v175: uint8 = value_47(result_32)
+                v241: uint8 = value_47(result_32)
                 result_33: uint8 | None = None
                 x_33: uint8
                 value_33: int = randint(1, 7) or 0
                 x_33 = int(value_33+0x100 if value_33 < 0 else value_33) & 0xFF
                 result_33 = x_33
-                v179: uint8 = value_47(result_33)
+                v247: uint8 = value_47(result_33)
                 result_34: uint8 | None = None
                 x_34: uint8
                 value_34: int = randint(1, 7) or 0
                 x_34 = int(value_34+0x100 if value_34 < 0 else value_34) & 0xFF
                 result_34 = x_34
-                v183: uint8 = value_47(result_34)
+                v253: uint8 = value_47(result_34)
                 result_35: uint8 | None = None
                 x_35: uint8
                 value_35: int = randint(1, 7) or 0
                 x_35 = int(value_35+0x100 if value_35 < 0 else value_35) & 0xFF
                 result_35 = x_35
-                v187: uint8 = value_47(result_35)
+                v259: uint8 = value_47(result_35)
                 result_36: uint8 | None = None
                 x_36: uint8
                 value_36: int = randint(1, 7) or 0
                 x_36 = int(value_36+0x100 if value_36 < 0 else value_36) & 0xFF
                 result_36 = x_36
-                v191: uint8 = value_47(result_36)
+                v265: uint8 = value_47(result_36)
                 result_37: uint8 | None = None
                 x_37: uint8
                 value_37: int = randint(1, 7) or 0
                 x_37 = int(value_37+0x100 if value_37 < 0 else value_37) & 0xFF
                 result_37 = x_37
-                v195: uint8 = value_47(result_37)
+                v271: uint8 = value_47(result_37)
                 result_38: uint8 | None = None
                 x_38: uint8
                 value_38: int = randint(1, 7) or 0
                 x_38 = int(value_38+0x100 if value_38 < 0 else value_38) & 0xFF
                 result_38 = x_38
-                v199: uint8 = value_47(result_38)
+                v277: uint8 = value_47(result_38)
                 result_39: uint8 | None = None
                 x_39: uint8
                 value_39: int = randint(1, 7) or 0
                 x_39 = int(value_39+0x100 if value_39 < 0 else value_39) & 0xFF
                 result_39 = x_39
-                v203: uint8 = value_47(result_39)
+                v283: uint8 = value_47(result_39)
                 result_40: uint8 | None = None
                 x_40: uint8
                 value_40: int = randint(1, 7) or 0
                 x_40 = int(value_40+0x100 if value_40 < 0 else value_40) & 0xFF
                 result_40 = x_40
-                v207: uint8 = value_47(result_40)
+                v289: uint8 = value_47(result_40)
                 result_41: uint8 | None = None
                 x_41: uint8
                 value_41: int = randint(1, 7) or 0
                 x_41 = int(value_41+0x100 if value_41 < 0 else value_41) & 0xFF
                 result_41 = x_41
-                v211: uint8 = value_47(result_41)
+                v295: uint8 = value_47(result_41)
                 result_42: uint8 | None = None
                 x_42: uint8
                 value_42: int = randint(1, 7) or 0
                 x_42 = int(value_42+0x100 if value_42 < 0 else value_42) & 0xFF
                 result_42 = x_42
-                v215: uint8 = value_47(result_42)
+                v301: uint8 = value_47(result_42)
                 result_43: uint8 | None = None
                 x_43: uint8
                 value_43: int = randint(1, 7) or 0
                 x_43 = int(value_43+0x100 if value_43 < 0 else value_43) & 0xFF
                 result_43 = x_43
-                v219: uint8 = value_47(result_43)
+                v307: uint8 = value_47(result_43)
                 result_44: uint8 | None = None
                 x_44: uint8
                 value_44: int = randint(1, 7) or 0
                 x_44 = int(value_44+0x100 if value_44 < 0 else value_44) & 0xFF
                 result_44 = x_44
-                v223: uint8 = value_47(result_44)
+                v313: uint8 = value_47(result_44)
                 result_45: uint8 | None = None
                 x_45: uint8
                 value_45: int = randint(1, 7) or 0
                 x_45 = int(value_45+0x100 if value_45 < 0 else value_45) & 0xFF
                 result_45 = x_45
-                v227: uint8 = value_47(result_45)
+                v319: uint8 = value_47(result_45)
                 result_46: uint8 | None = None
                 x_46: uint8
                 value_46: int = randint(1, 7) or 0
                 x_46 = int(value_46+0x100 if value_46 < 0 else value_46) & 0xFF
                 result_46 = x_46
-                v0_1_mut = UH1(0, v143, UH1(0, v147, UH1(0, v151, UH1(0, v155, UH1(0, v159, UH1(0, v163, UH1(0, v167, UH1(0, v171, UH1(0, v175, UH1(0, v179, UH1(0, v183, UH1(0, v187, UH1(0, v191, UH1(0, v195, UH1(0, v199, UH1(0, v203, UH1(0, v207, UH1(0, v211, UH1(0, v215, UH1(0, v219, UH1(0, v223, UH1(0, v227, UH1(0, value_47(result_46), UH1(1))))))))))))))))))))))))
+                v0_1_mut = UH1(0, v193, UH1(0, v199, UH1(0, v205, UH1(0, v211, UH1(0, v217, UH1(0, v223, UH1(0, v229, UH1(0, v235, UH1(0, v241, UH1(0, v247, UH1(0, v253, UH1(0, v259, UH1(0, v265, UH1(0, v271, UH1(0, v277, UH1(0, v283, UH1(0, v289, UH1(0, v295, UH1(0, v301, UH1(0, v307, UH1(0, v313, UH1(0, v319, UH1(0, value_47(result_46), UH1(1))))))))))))))))))))))))
                 v1_1_mut = int8(23)
                 continue
 
@@ -2053,51 +2053,51 @@ def closure81(unit_var: None, v0_1: Array[str]) -> int:
     return 0
 
 
-def _arrow23(v: int64) -> Callable[[UH0], UH0]:
+def _arrow40(v: int64) -> Callable[[UH0], UH0]:
     return closure0(None, v)
 
 
-v0: Callable[[int64, UH0], UH0] = _arrow23
+v0: Callable[[int64, UH0], UH0] = _arrow40
 
 def rotate_numbers(x: int64) -> Callable[[UH0], UH0]:
     return v0(x)
 
 
-def _arrow24(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
+def _arrow41(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return closure3(None, v)
 
 
-v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow24
+v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow41
 
 def create_sequential_roller(x: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return v1(x)
 
 
-def _arrow25(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
+def _arrow42(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return closure10(None, v)
 
 
-v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow25
+v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow42
 
 def roll_progressively(x: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return v2(x)
 
 
-def _arrow26(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
+def _arrow43(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return closure78(None, v)
 
 
-v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow26
+v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow43
 
 def roll_within_bounds(x: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return v3(x)
 
 
-def _arrow27(v: Array[str]) -> int:
+def _arrow44(v: Array[str]) -> int:
     return closure81(None, v)
 
 
-v4: Callable[[Array[str]], int] = _arrow27
+v4: Callable[[Array[str]], int] = _arrow44
 
 def main(args: Array[str]) -> int:
     return v4(args)
