@@ -8,10 +8,10 @@ workspace = "../"
 crate-type = ["cdylib"]
 
 [dependencies]
-borsh = "~1.3"
+borsh = "~1.4"
 dice_lib = { path = "../lib", default-features = false, features = ["wasm"] }
 fable_library_rust = { path = "../../polyglot/lib/rust/fable/fable_modules/fable-library-rust", default-features = false }
-near-sdk = "~5.0.0-alpha.2"
+near-sdk = "~5.1"
 
 [features]
 wasm = []

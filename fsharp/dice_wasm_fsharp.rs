@@ -383,6 +383,12 @@ pub use module_dc8717e1::*;
 #[path = "../../polyglot/lib/fsharp/CommonWasm.rs"]
 mod module_8cb3e09e;
 pub use module_8cb3e09e::*;
+#[path = "../../polyglot/lib/spiral/common.rs"]
+mod module_e7e93d99;
+pub use module_e7e93d99::*;
+#[path = "../../polyglot/lib/spiral/date_time.rs"]
+mod module_d18105aa;
+pub use module_d18105aa::*;
 pub mod Dice {
     pub use crate::module_dc8717e1::Dice::*;
 }

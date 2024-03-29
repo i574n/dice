@@ -1050,781 +1050,1157 @@ and method14 (v0 : UH1, v1 : int8) : int64 =
     let v2 : bool = v1 < 24y
     if v2 then
         let mutable result = None
-        #if FABLE_COMPILER_RUST
-        #if !WASM
+        #if FABLE_COMPILER_RUST && !WASM
         let v3 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
         let v4 : uint8 = Fable.Core.RustInterop.emitRustExpr () v3
         v4
-        #else
+        #endif
+        #if FABLE_COMPILER_RUST && WASM
         let v5 : string = "1"
         let v6 : uint8 = Fable.Core.RustInterop.emitRustExpr () v5
         v6
         #endif
-        #else
+        #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
         let v7 : uint8 = System.Random().Next (1, 7) |> uint8
         v7
         #endif
+        #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+        let v8 : uint8 = System.Random().Next (1, 7) |> uint8
+        v8
+        #endif
+        #if !FABLE_COMPILER_RUST && WASM
+        let v9 : uint8 = System.Random().Next (1, 7) |> uint8
+        v9
+        #endif
         |> fun x -> result <- Some x
-        let v8 : uint8 = result |> Option.get
-        let v9 : UH1 = UH1_0(v8, v0)
-        let v10 : int8 = v1 + 1y
-        method14(v9, v10)
+        let v10 : uint8 = result |> Option.get
+        let v11 : UH1 = UH1_0(v10, v0)
+        let v12 : int8 = v1 + 1y
+        method14(v11, v12)
     else
-        let v12 : int64 = 0L
-        let v13 : US5 = method15(v0, v12)
-        match v13 with
-        | US5_1(v14, v15) -> (* Some *)
-            let v16 : bool = v14 <= 9223372036854775807L
-            if v16 then
-                v14
+        let v14 : int64 = 0L
+        let v15 : US5 = method15(v0, v14)
+        match v15 with
+        | US5_1(v16, v17) -> (* Some *)
+            let v18 : bool = v16 <= 9223372036854775807L
+            if v18 then
+                v16
             else
                 let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v17 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
-                let v18 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
-                v18
-                #else
-                let v19 : string = "1"
+                #if FABLE_COMPILER_RUST && !WASM
+                let v19 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
                 let v20 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v20
                 #endif
-                #else
-                let v21 : uint8 = System.Random().Next (1, 7) |> uint8
-                v21
+                #if FABLE_COMPILER_RUST && WASM
+                let v21 : string = "1"
+                let v22 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v22
                 #endif
-                |> fun x -> result <- Some x
-                let v22 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v23 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v23 : uint8 = System.Random().Next (1, 7) |> uint8
                 v23
-                #else
-                let v24 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v24 : uint8 = System.Random().Next (1, 7) |> uint8
                 v24
                 #endif
-                #else
+                #if !FABLE_COMPILER_RUST && WASM
                 let v25 : uint8 = System.Random().Next (1, 7) |> uint8
                 v25
                 #endif
                 |> fun x -> result <- Some x
                 let v26 : uint8 = result |> Option.get
                 let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v27 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && !WASM
+                let v27 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v27
-                #else
-                let v28 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v28 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
                 v28
                 #endif
-                #else
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
                 let v29 : uint8 = System.Random().Next (1, 7) |> uint8
                 v29
                 #endif
-                |> fun x -> result <- Some x
-                let v30 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v31 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
-                v31
-                #else
-                let v32 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
-                v32
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v30 : uint8 = System.Random().Next (1, 7) |> uint8
+                v30
                 #endif
-                #else
-                let v33 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if !FABLE_COMPILER_RUST && WASM
+                let v31 : uint8 = System.Random().Next (1, 7) |> uint8
+                v31
+                #endif
+                |> fun x -> result <- Some x
+                let v32 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v33 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v33
                 #endif
-                |> fun x -> result <- Some x
-                let v34 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v35 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && WASM
+                let v34 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v34
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v35 : uint8 = System.Random().Next (1, 7) |> uint8
                 v35
-                #else
-                let v36 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v36 : uint8 = System.Random().Next (1, 7) |> uint8
                 v36
                 #endif
-                #else
+                #if !FABLE_COMPILER_RUST && WASM
                 let v37 : uint8 = System.Random().Next (1, 7) |> uint8
                 v37
                 #endif
                 |> fun x -> result <- Some x
                 let v38 : uint8 = result |> Option.get
                 let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v39 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && !WASM
+                let v39 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v39
-                #else
-                let v40 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v40 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
                 v40
                 #endif
-                #else
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
                 let v41 : uint8 = System.Random().Next (1, 7) |> uint8
                 v41
                 #endif
-                |> fun x -> result <- Some x
-                let v42 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v43 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
-                v43
-                #else
-                let v44 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
-                v44
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v42 : uint8 = System.Random().Next (1, 7) |> uint8
+                v42
                 #endif
-                #else
-                let v45 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if !FABLE_COMPILER_RUST && WASM
+                let v43 : uint8 = System.Random().Next (1, 7) |> uint8
+                v43
+                #endif
+                |> fun x -> result <- Some x
+                let v44 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v45 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v45
                 #endif
-                |> fun x -> result <- Some x
-                let v46 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v47 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && WASM
+                let v46 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v46
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v47 : uint8 = System.Random().Next (1, 7) |> uint8
                 v47
-                #else
-                let v48 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v48 : uint8 = System.Random().Next (1, 7) |> uint8
                 v48
                 #endif
-                #else
+                #if !FABLE_COMPILER_RUST && WASM
                 let v49 : uint8 = System.Random().Next (1, 7) |> uint8
                 v49
                 #endif
                 |> fun x -> result <- Some x
                 let v50 : uint8 = result |> Option.get
                 let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v51 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && !WASM
+                let v51 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v51
-                #else
-                let v52 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v52 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
                 v52
                 #endif
-                #else
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
                 let v53 : uint8 = System.Random().Next (1, 7) |> uint8
                 v53
                 #endif
-                |> fun x -> result <- Some x
-                let v54 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v55 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
-                v55
-                #else
-                let v56 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
-                v56
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v54 : uint8 = System.Random().Next (1, 7) |> uint8
+                v54
                 #endif
-                #else
-                let v57 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if !FABLE_COMPILER_RUST && WASM
+                let v55 : uint8 = System.Random().Next (1, 7) |> uint8
+                v55
+                #endif
+                |> fun x -> result <- Some x
+                let v56 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v57 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v57
                 #endif
-                |> fun x -> result <- Some x
-                let v58 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v59 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && WASM
+                let v58 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v58
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v59 : uint8 = System.Random().Next (1, 7) |> uint8
                 v59
-                #else
-                let v60 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v60 : uint8 = System.Random().Next (1, 7) |> uint8
                 v60
                 #endif
-                #else
+                #if !FABLE_COMPILER_RUST && WASM
                 let v61 : uint8 = System.Random().Next (1, 7) |> uint8
                 v61
                 #endif
                 |> fun x -> result <- Some x
                 let v62 : uint8 = result |> Option.get
                 let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v63 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && !WASM
+                let v63 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v63
-                #else
-                let v64 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v64 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
                 v64
                 #endif
-                #else
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
                 let v65 : uint8 = System.Random().Next (1, 7) |> uint8
                 v65
                 #endif
-                |> fun x -> result <- Some x
-                let v66 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v67 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
-                v67
-                #else
-                let v68 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
-                v68
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v66 : uint8 = System.Random().Next (1, 7) |> uint8
+                v66
                 #endif
-                #else
-                let v69 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if !FABLE_COMPILER_RUST && WASM
+                let v67 : uint8 = System.Random().Next (1, 7) |> uint8
+                v67
+                #endif
+                |> fun x -> result <- Some x
+                let v68 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v69 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v69
                 #endif
-                |> fun x -> result <- Some x
-                let v70 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v71 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && WASM
+                let v70 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v70
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v71 : uint8 = System.Random().Next (1, 7) |> uint8
                 v71
-                #else
-                let v72 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v72 : uint8 = System.Random().Next (1, 7) |> uint8
                 v72
                 #endif
-                #else
+                #if !FABLE_COMPILER_RUST && WASM
                 let v73 : uint8 = System.Random().Next (1, 7) |> uint8
                 v73
                 #endif
                 |> fun x -> result <- Some x
                 let v74 : uint8 = result |> Option.get
                 let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v75 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && !WASM
+                let v75 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v75
-                #else
-                let v76 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v76 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
                 v76
                 #endif
-                #else
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
                 let v77 : uint8 = System.Random().Next (1, 7) |> uint8
                 v77
                 #endif
-                |> fun x -> result <- Some x
-                let v78 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v79 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
-                v79
-                #else
-                let v80 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
-                v80
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v78 : uint8 = System.Random().Next (1, 7) |> uint8
+                v78
                 #endif
-                #else
-                let v81 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if !FABLE_COMPILER_RUST && WASM
+                let v79 : uint8 = System.Random().Next (1, 7) |> uint8
+                v79
+                #endif
+                |> fun x -> result <- Some x
+                let v80 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v81 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v81
                 #endif
-                |> fun x -> result <- Some x
-                let v82 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v83 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && WASM
+                let v82 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v82
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v83 : uint8 = System.Random().Next (1, 7) |> uint8
                 v83
-                #else
-                let v84 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v84 : uint8 = System.Random().Next (1, 7) |> uint8
                 v84
                 #endif
-                #else
+                #if !FABLE_COMPILER_RUST && WASM
                 let v85 : uint8 = System.Random().Next (1, 7) |> uint8
                 v85
                 #endif
                 |> fun x -> result <- Some x
                 let v86 : uint8 = result |> Option.get
                 let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v87 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && !WASM
+                let v87 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v87
-                #else
-                let v88 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v88 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
                 v88
                 #endif
-                #else
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
                 let v89 : uint8 = System.Random().Next (1, 7) |> uint8
                 v89
                 #endif
-                |> fun x -> result <- Some x
-                let v90 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v91 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
-                v91
-                #else
-                let v92 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
-                v92
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v90 : uint8 = System.Random().Next (1, 7) |> uint8
+                v90
                 #endif
-                #else
-                let v93 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if !FABLE_COMPILER_RUST && WASM
+                let v91 : uint8 = System.Random().Next (1, 7) |> uint8
+                v91
+                #endif
+                |> fun x -> result <- Some x
+                let v92 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v93 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v93
                 #endif
-                |> fun x -> result <- Some x
-                let v94 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v95 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && WASM
+                let v94 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v94
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v95 : uint8 = System.Random().Next (1, 7) |> uint8
                 v95
-                #else
-                let v96 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v96 : uint8 = System.Random().Next (1, 7) |> uint8
                 v96
                 #endif
-                #else
+                #if !FABLE_COMPILER_RUST && WASM
                 let v97 : uint8 = System.Random().Next (1, 7) |> uint8
                 v97
                 #endif
                 |> fun x -> result <- Some x
                 let v98 : uint8 = result |> Option.get
                 let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v99 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && !WASM
+                let v99 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v99
-                #else
-                let v100 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v100 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
                 v100
                 #endif
-                #else
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
                 let v101 : uint8 = System.Random().Next (1, 7) |> uint8
                 v101
                 #endif
-                |> fun x -> result <- Some x
-                let v102 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v103 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
-                v103
-                #else
-                let v104 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
-                v104
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v102 : uint8 = System.Random().Next (1, 7) |> uint8
+                v102
                 #endif
-                #else
-                let v105 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if !FABLE_COMPILER_RUST && WASM
+                let v103 : uint8 = System.Random().Next (1, 7) |> uint8
+                v103
+                #endif
+                |> fun x -> result <- Some x
+                let v104 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v105 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
                 v105
                 #endif
-                |> fun x -> result <- Some x
-                let v106 : uint8 = result |> Option.get
-                let mutable result = None
-                #if FABLE_COMPILER_RUST
-                #if !WASM
-                let v107 : uint8 = Fable.Core.RustInterop.emitRustExpr () v17
+                #if FABLE_COMPILER_RUST && WASM
+                let v106 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v106
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v107 : uint8 = System.Random().Next (1, 7) |> uint8
                 v107
-                #else
-                let v108 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v108 : uint8 = System.Random().Next (1, 7) |> uint8
                 v108
                 #endif
-                #else
+                #if !FABLE_COMPILER_RUST && WASM
                 let v109 : uint8 = System.Random().Next (1, 7) |> uint8
                 v109
                 #endif
                 |> fun x -> result <- Some x
                 let v110 : uint8 = result |> Option.get
-                let v111 : UH1 = UH1_1
-                let v112 : UH1 = UH1_0(v110, v111)
-                let v113 : UH1 = UH1_0(v106, v112)
-                let v114 : UH1 = UH1_0(v102, v113)
-                let v115 : UH1 = UH1_0(v98, v114)
-                let v116 : UH1 = UH1_0(v94, v115)
-                let v117 : UH1 = UH1_0(v90, v116)
-                let v118 : UH1 = UH1_0(v86, v117)
-                let v119 : UH1 = UH1_0(v82, v118)
-                let v120 : UH1 = UH1_0(v78, v119)
-                let v121 : UH1 = UH1_0(v74, v120)
-                let v122 : UH1 = UH1_0(v70, v121)
-                let v123 : UH1 = UH1_0(v66, v122)
-                let v124 : UH1 = UH1_0(v62, v123)
-                let v125 : UH1 = UH1_0(v58, v124)
-                let v126 : UH1 = UH1_0(v54, v125)
-                let v127 : UH1 = UH1_0(v50, v126)
-                let v128 : UH1 = UH1_0(v46, v127)
-                let v129 : UH1 = UH1_0(v42, v128)
-                let v130 : UH1 = UH1_0(v38, v129)
-                let v131 : UH1 = UH1_0(v34, v130)
-                let v132 : UH1 = UH1_0(v30, v131)
-                let v133 : UH1 = UH1_0(v26, v132)
-                let v134 : UH1 = UH1_0(v22, v133)
-                let v135 : int8 = 23y
-                method14(v134, v135)
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v111 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                v111
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v112 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v112
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v113 : uint8 = System.Random().Next (1, 7) |> uint8
+                v113
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v114 : uint8 = System.Random().Next (1, 7) |> uint8
+                v114
+                #endif
+                #if !FABLE_COMPILER_RUST && WASM
+                let v115 : uint8 = System.Random().Next (1, 7) |> uint8
+                v115
+                #endif
+                |> fun x -> result <- Some x
+                let v116 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v117 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                v117
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v118 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v118
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v119 : uint8 = System.Random().Next (1, 7) |> uint8
+                v119
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v120 : uint8 = System.Random().Next (1, 7) |> uint8
+                v120
+                #endif
+                #if !FABLE_COMPILER_RUST && WASM
+                let v121 : uint8 = System.Random().Next (1, 7) |> uint8
+                v121
+                #endif
+                |> fun x -> result <- Some x
+                let v122 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v123 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                v123
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v124 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v124
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v125 : uint8 = System.Random().Next (1, 7) |> uint8
+                v125
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v126 : uint8 = System.Random().Next (1, 7) |> uint8
+                v126
+                #endif
+                #if !FABLE_COMPILER_RUST && WASM
+                let v127 : uint8 = System.Random().Next (1, 7) |> uint8
+                v127
+                #endif
+                |> fun x -> result <- Some x
+                let v128 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v129 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                v129
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v130 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v130
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v131 : uint8 = System.Random().Next (1, 7) |> uint8
+                v131
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v132 : uint8 = System.Random().Next (1, 7) |> uint8
+                v132
+                #endif
+                #if !FABLE_COMPILER_RUST && WASM
+                let v133 : uint8 = System.Random().Next (1, 7) |> uint8
+                v133
+                #endif
+                |> fun x -> result <- Some x
+                let v134 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v135 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                v135
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v136 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v136
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v137 : uint8 = System.Random().Next (1, 7) |> uint8
+                v137
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v138 : uint8 = System.Random().Next (1, 7) |> uint8
+                v138
+                #endif
+                #if !FABLE_COMPILER_RUST && WASM
+                let v139 : uint8 = System.Random().Next (1, 7) |> uint8
+                v139
+                #endif
+                |> fun x -> result <- Some x
+                let v140 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v141 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                v141
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v142 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v142
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v143 : uint8 = System.Random().Next (1, 7) |> uint8
+                v143
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v144 : uint8 = System.Random().Next (1, 7) |> uint8
+                v144
+                #endif
+                #if !FABLE_COMPILER_RUST && WASM
+                let v145 : uint8 = System.Random().Next (1, 7) |> uint8
+                v145
+                #endif
+                |> fun x -> result <- Some x
+                let v146 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v147 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                v147
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v148 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v148
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v149 : uint8 = System.Random().Next (1, 7) |> uint8
+                v149
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v150 : uint8 = System.Random().Next (1, 7) |> uint8
+                v150
+                #endif
+                #if !FABLE_COMPILER_RUST && WASM
+                let v151 : uint8 = System.Random().Next (1, 7) |> uint8
+                v151
+                #endif
+                |> fun x -> result <- Some x
+                let v152 : uint8 = result |> Option.get
+                let mutable result = None
+                #if FABLE_COMPILER_RUST && !WASM
+                let v153 : uint8 = Fable.Core.RustInterop.emitRustExpr () v19
+                v153
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v154 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                v154
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v155 : uint8 = System.Random().Next (1, 7) |> uint8
+                v155
+                #endif
+                #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+                let v156 : uint8 = System.Random().Next (1, 7) |> uint8
+                v156
+                #endif
+                #if !FABLE_COMPILER_RUST && WASM
+                let v157 : uint8 = System.Random().Next (1, 7) |> uint8
+                v157
+                #endif
+                |> fun x -> result <- Some x
+                let v158 : uint8 = result |> Option.get
+                let v159 : UH1 = UH1_1
+                let v160 : UH1 = UH1_0(v158, v159)
+                let v161 : UH1 = UH1_0(v152, v160)
+                let v162 : UH1 = UH1_0(v146, v161)
+                let v163 : UH1 = UH1_0(v140, v162)
+                let v164 : UH1 = UH1_0(v134, v163)
+                let v165 : UH1 = UH1_0(v128, v164)
+                let v166 : UH1 = UH1_0(v122, v165)
+                let v167 : UH1 = UH1_0(v116, v166)
+                let v168 : UH1 = UH1_0(v110, v167)
+                let v169 : UH1 = UH1_0(v104, v168)
+                let v170 : UH1 = UH1_0(v98, v169)
+                let v171 : UH1 = UH1_0(v92, v170)
+                let v172 : UH1 = UH1_0(v86, v171)
+                let v173 : UH1 = UH1_0(v80, v172)
+                let v174 : UH1 = UH1_0(v74, v173)
+                let v175 : UH1 = UH1_0(v68, v174)
+                let v176 : UH1 = UH1_0(v62, v175)
+                let v177 : UH1 = UH1_0(v56, v176)
+                let v178 : UH1 = UH1_0(v50, v177)
+                let v179 : UH1 = UH1_0(v44, v178)
+                let v180 : UH1 = UH1_0(v38, v179)
+                let v181 : UH1 = UH1_0(v32, v180)
+                let v182 : UH1 = UH1_0(v26, v181)
+                let v183 : int8 = 23y
+                method14(v182, v183)
         | _ ->
             let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v138 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
-            let v139 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v139
-            #else
-            let v140 : string = "1"
-            let v141 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v141
+            #if FABLE_COMPILER_RUST && !WASM
+            let v186 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
+            let v187 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v187
             #endif
-            #else
-            let v142 : uint8 = System.Random().Next (1, 7) |> uint8
-            v142
-            #endif
-            |> fun x -> result <- Some x
-            let v143 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v144 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v144
-            #else
-            let v145 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v145
-            #endif
-            #else
-            let v146 : uint8 = System.Random().Next (1, 7) |> uint8
-            v146
-            #endif
-            |> fun x -> result <- Some x
-            let v147 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v148 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v148
-            #else
-            let v149 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v149
-            #endif
-            #else
-            let v150 : uint8 = System.Random().Next (1, 7) |> uint8
-            v150
-            #endif
-            |> fun x -> result <- Some x
-            let v151 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v152 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v152
-            #else
-            let v153 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v153
-            #endif
-            #else
-            let v154 : uint8 = System.Random().Next (1, 7) |> uint8
-            v154
-            #endif
-            |> fun x -> result <- Some x
-            let v155 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v156 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v156
-            #else
-            let v157 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v157
-            #endif
-            #else
-            let v158 : uint8 = System.Random().Next (1, 7) |> uint8
-            v158
-            #endif
-            |> fun x -> result <- Some x
-            let v159 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v160 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v160
-            #else
-            let v161 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v161
-            #endif
-            #else
-            let v162 : uint8 = System.Random().Next (1, 7) |> uint8
-            v162
-            #endif
-            |> fun x -> result <- Some x
-            let v163 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v164 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v164
-            #else
-            let v165 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v165
-            #endif
-            #else
-            let v166 : uint8 = System.Random().Next (1, 7) |> uint8
-            v166
-            #endif
-            |> fun x -> result <- Some x
-            let v167 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v168 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v168
-            #else
-            let v169 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v169
-            #endif
-            #else
-            let v170 : uint8 = System.Random().Next (1, 7) |> uint8
-            v170
-            #endif
-            |> fun x -> result <- Some x
-            let v171 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v172 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v172
-            #else
-            let v173 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v173
-            #endif
-            #else
-            let v174 : uint8 = System.Random().Next (1, 7) |> uint8
-            v174
-            #endif
-            |> fun x -> result <- Some x
-            let v175 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v176 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v176
-            #else
-            let v177 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v177
-            #endif
-            #else
-            let v178 : uint8 = System.Random().Next (1, 7) |> uint8
-            v178
-            #endif
-            |> fun x -> result <- Some x
-            let v179 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v180 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v180
-            #else
-            let v181 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v181
-            #endif
-            #else
-            let v182 : uint8 = System.Random().Next (1, 7) |> uint8
-            v182
-            #endif
-            |> fun x -> result <- Some x
-            let v183 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v184 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v184
-            #else
-            let v185 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v185
-            #endif
-            #else
-            let v186 : uint8 = System.Random().Next (1, 7) |> uint8
-            v186
-            #endif
-            |> fun x -> result <- Some x
-            let v187 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v188 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v188
-            #else
-            let v189 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
+            #if FABLE_COMPILER_RUST && WASM
+            let v188 : string = "1"
+            let v189 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
             v189
             #endif
-            #else
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
             let v190 : uint8 = System.Random().Next (1, 7) |> uint8
             v190
             #endif
-            |> fun x -> result <- Some x
-            let v191 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v192 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v192
-            #else
-            let v193 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v193
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v191 : uint8 = System.Random().Next (1, 7) |> uint8
+            v191
             #endif
-            #else
-            let v194 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if !FABLE_COMPILER_RUST && WASM
+            let v192 : uint8 = System.Random().Next (1, 7) |> uint8
+            v192
+            #endif
+            |> fun x -> result <- Some x
+            let v193 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v194 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
             v194
             #endif
-            |> fun x -> result <- Some x
-            let v195 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v196 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
+            #if FABLE_COMPILER_RUST && WASM
+            let v195 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v195
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v196 : uint8 = System.Random().Next (1, 7) |> uint8
             v196
-            #else
-            let v197 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v197 : uint8 = System.Random().Next (1, 7) |> uint8
             v197
             #endif
-            #else
+            #if !FABLE_COMPILER_RUST && WASM
             let v198 : uint8 = System.Random().Next (1, 7) |> uint8
             v198
             #endif
             |> fun x -> result <- Some x
             let v199 : uint8 = result |> Option.get
             let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v200 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
+            #if FABLE_COMPILER_RUST && !WASM
+            let v200 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
             v200
-            #else
-            let v201 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v201 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
             v201
             #endif
-            #else
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
             let v202 : uint8 = System.Random().Next (1, 7) |> uint8
             v202
             #endif
-            |> fun x -> result <- Some x
-            let v203 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v204 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v204
-            #else
-            let v205 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v205
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v203 : uint8 = System.Random().Next (1, 7) |> uint8
+            v203
             #endif
-            #else
-            let v206 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if !FABLE_COMPILER_RUST && WASM
+            let v204 : uint8 = System.Random().Next (1, 7) |> uint8
+            v204
+            #endif
+            |> fun x -> result <- Some x
+            let v205 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v206 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
             v206
             #endif
-            |> fun x -> result <- Some x
-            let v207 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v208 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
+            #if FABLE_COMPILER_RUST && WASM
+            let v207 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v207
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v208 : uint8 = System.Random().Next (1, 7) |> uint8
             v208
-            #else
-            let v209 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v209 : uint8 = System.Random().Next (1, 7) |> uint8
             v209
             #endif
-            #else
+            #if !FABLE_COMPILER_RUST && WASM
             let v210 : uint8 = System.Random().Next (1, 7) |> uint8
             v210
             #endif
             |> fun x -> result <- Some x
             let v211 : uint8 = result |> Option.get
             let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v212 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
+            #if FABLE_COMPILER_RUST && !WASM
+            let v212 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
             v212
-            #else
-            let v213 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v213 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
             v213
             #endif
-            #else
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
             let v214 : uint8 = System.Random().Next (1, 7) |> uint8
             v214
             #endif
-            |> fun x -> result <- Some x
-            let v215 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v216 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v216
-            #else
-            let v217 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v217
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v215 : uint8 = System.Random().Next (1, 7) |> uint8
+            v215
             #endif
-            #else
-            let v218 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if !FABLE_COMPILER_RUST && WASM
+            let v216 : uint8 = System.Random().Next (1, 7) |> uint8
+            v216
+            #endif
+            |> fun x -> result <- Some x
+            let v217 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v218 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
             v218
             #endif
-            |> fun x -> result <- Some x
-            let v219 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v220 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
+            #if FABLE_COMPILER_RUST && WASM
+            let v219 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v219
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v220 : uint8 = System.Random().Next (1, 7) |> uint8
             v220
-            #else
-            let v221 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v221 : uint8 = System.Random().Next (1, 7) |> uint8
             v221
             #endif
-            #else
+            #if !FABLE_COMPILER_RUST && WASM
             let v222 : uint8 = System.Random().Next (1, 7) |> uint8
             v222
             #endif
             |> fun x -> result <- Some x
             let v223 : uint8 = result |> Option.get
             let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v224 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
+            #if FABLE_COMPILER_RUST && !WASM
+            let v224 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
             v224
-            #else
-            let v225 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v225 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
             v225
             #endif
-            #else
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
             let v226 : uint8 = System.Random().Next (1, 7) |> uint8
             v226
             #endif
-            |> fun x -> result <- Some x
-            let v227 : uint8 = result |> Option.get
-            let mutable result = None
-            #if FABLE_COMPILER_RUST
-            #if !WASM
-            let v228 : uint8 = Fable.Core.RustInterop.emitRustExpr () v138
-            v228
-            #else
-            let v229 : uint8 = Fable.Core.RustInterop.emitRustExpr () v140
-            v229
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v227 : uint8 = System.Random().Next (1, 7) |> uint8
+            v227
             #endif
-            #else
-            let v230 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if !FABLE_COMPILER_RUST && WASM
+            let v228 : uint8 = System.Random().Next (1, 7) |> uint8
+            v228
+            #endif
+            |> fun x -> result <- Some x
+            let v229 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v230 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
             v230
             #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v231 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v231
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v232 : uint8 = System.Random().Next (1, 7) |> uint8
+            v232
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v233 : uint8 = System.Random().Next (1, 7) |> uint8
+            v233
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v234 : uint8 = System.Random().Next (1, 7) |> uint8
+            v234
+            #endif
             |> fun x -> result <- Some x
-            let v231 : uint8 = result |> Option.get
-            let v232 : UH1 = UH1_1
-            let v233 : UH1 = UH1_0(v231, v232)
-            let v234 : UH1 = UH1_0(v227, v233)
-            let v235 : UH1 = UH1_0(v223, v234)
-            let v236 : UH1 = UH1_0(v219, v235)
-            let v237 : UH1 = UH1_0(v215, v236)
-            let v238 : UH1 = UH1_0(v211, v237)
-            let v239 : UH1 = UH1_0(v207, v238)
-            let v240 : UH1 = UH1_0(v203, v239)
-            let v241 : UH1 = UH1_0(v199, v240)
-            let v242 : UH1 = UH1_0(v195, v241)
-            let v243 : UH1 = UH1_0(v191, v242)
-            let v244 : UH1 = UH1_0(v187, v243)
-            let v245 : UH1 = UH1_0(v183, v244)
-            let v246 : UH1 = UH1_0(v179, v245)
-            let v247 : UH1 = UH1_0(v175, v246)
-            let v248 : UH1 = UH1_0(v171, v247)
-            let v249 : UH1 = UH1_0(v167, v248)
-            let v250 : UH1 = UH1_0(v163, v249)
-            let v251 : UH1 = UH1_0(v159, v250)
-            let v252 : UH1 = UH1_0(v155, v251)
-            let v253 : UH1 = UH1_0(v151, v252)
-            let v254 : UH1 = UH1_0(v147, v253)
-            let v255 : UH1 = UH1_0(v143, v254)
-            let v256 : int8 = 23y
-            method14(v255, v256)
+            let v235 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v236 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v236
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v237 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v237
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v238 : uint8 = System.Random().Next (1, 7) |> uint8
+            v238
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v239 : uint8 = System.Random().Next (1, 7) |> uint8
+            v239
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v240 : uint8 = System.Random().Next (1, 7) |> uint8
+            v240
+            #endif
+            |> fun x -> result <- Some x
+            let v241 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v242 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v242
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v243 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v243
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v244 : uint8 = System.Random().Next (1, 7) |> uint8
+            v244
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v245 : uint8 = System.Random().Next (1, 7) |> uint8
+            v245
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v246 : uint8 = System.Random().Next (1, 7) |> uint8
+            v246
+            #endif
+            |> fun x -> result <- Some x
+            let v247 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v248 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v248
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v249 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v249
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v250 : uint8 = System.Random().Next (1, 7) |> uint8
+            v250
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v251 : uint8 = System.Random().Next (1, 7) |> uint8
+            v251
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v252 : uint8 = System.Random().Next (1, 7) |> uint8
+            v252
+            #endif
+            |> fun x -> result <- Some x
+            let v253 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v254 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v254
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v255 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v255
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v256 : uint8 = System.Random().Next (1, 7) |> uint8
+            v256
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v257 : uint8 = System.Random().Next (1, 7) |> uint8
+            v257
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v258 : uint8 = System.Random().Next (1, 7) |> uint8
+            v258
+            #endif
+            |> fun x -> result <- Some x
+            let v259 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v260 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v260
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v261 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v261
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v262 : uint8 = System.Random().Next (1, 7) |> uint8
+            v262
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v263 : uint8 = System.Random().Next (1, 7) |> uint8
+            v263
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v264 : uint8 = System.Random().Next (1, 7) |> uint8
+            v264
+            #endif
+            |> fun x -> result <- Some x
+            let v265 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v266 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v266
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v267 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v267
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v268 : uint8 = System.Random().Next (1, 7) |> uint8
+            v268
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v269 : uint8 = System.Random().Next (1, 7) |> uint8
+            v269
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v270 : uint8 = System.Random().Next (1, 7) |> uint8
+            v270
+            #endif
+            |> fun x -> result <- Some x
+            let v271 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v272 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v272
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v273 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v273
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v274 : uint8 = System.Random().Next (1, 7) |> uint8
+            v274
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v275 : uint8 = System.Random().Next (1, 7) |> uint8
+            v275
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v276 : uint8 = System.Random().Next (1, 7) |> uint8
+            v276
+            #endif
+            |> fun x -> result <- Some x
+            let v277 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v278 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v278
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v279 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v279
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v280 : uint8 = System.Random().Next (1, 7) |> uint8
+            v280
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v281 : uint8 = System.Random().Next (1, 7) |> uint8
+            v281
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v282 : uint8 = System.Random().Next (1, 7) |> uint8
+            v282
+            #endif
+            |> fun x -> result <- Some x
+            let v283 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v284 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v284
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v285 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v285
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v286 : uint8 = System.Random().Next (1, 7) |> uint8
+            v286
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v287 : uint8 = System.Random().Next (1, 7) |> uint8
+            v287
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v288 : uint8 = System.Random().Next (1, 7) |> uint8
+            v288
+            #endif
+            |> fun x -> result <- Some x
+            let v289 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v290 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v290
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v291 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v291
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v292 : uint8 = System.Random().Next (1, 7) |> uint8
+            v292
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v293 : uint8 = System.Random().Next (1, 7) |> uint8
+            v293
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v294 : uint8 = System.Random().Next (1, 7) |> uint8
+            v294
+            #endif
+            |> fun x -> result <- Some x
+            let v295 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v296 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v296
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v297 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v297
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v298 : uint8 = System.Random().Next (1, 7) |> uint8
+            v298
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v299 : uint8 = System.Random().Next (1, 7) |> uint8
+            v299
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v300 : uint8 = System.Random().Next (1, 7) |> uint8
+            v300
+            #endif
+            |> fun x -> result <- Some x
+            let v301 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v302 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v302
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v303 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v303
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v304 : uint8 = System.Random().Next (1, 7) |> uint8
+            v304
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v305 : uint8 = System.Random().Next (1, 7) |> uint8
+            v305
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v306 : uint8 = System.Random().Next (1, 7) |> uint8
+            v306
+            #endif
+            |> fun x -> result <- Some x
+            let v307 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v308 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v308
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v309 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v309
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v310 : uint8 = System.Random().Next (1, 7) |> uint8
+            v310
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v311 : uint8 = System.Random().Next (1, 7) |> uint8
+            v311
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v312 : uint8 = System.Random().Next (1, 7) |> uint8
+            v312
+            #endif
+            |> fun x -> result <- Some x
+            let v313 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v314 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v314
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v315 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v315
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v316 : uint8 = System.Random().Next (1, 7) |> uint8
+            v316
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v317 : uint8 = System.Random().Next (1, 7) |> uint8
+            v317
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v318 : uint8 = System.Random().Next (1, 7) |> uint8
+            v318
+            #endif
+            |> fun x -> result <- Some x
+            let v319 : uint8 = result |> Option.get
+            let mutable result = None
+            #if FABLE_COMPILER_RUST && !WASM
+            let v320 : uint8 = Fable.Core.RustInterop.emitRustExpr () v186
+            v320
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v321 : uint8 = Fable.Core.RustInterop.emitRustExpr () v188
+            v321
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v322 : uint8 = System.Random().Next (1, 7) |> uint8
+            v322
+            #endif
+            #if FABLE_COMPILER && !FABLE_COMPILER_RUST && !WASM
+            let v323 : uint8 = System.Random().Next (1, 7) |> uint8
+            v323
+            #endif
+            #if !FABLE_COMPILER_RUST && WASM
+            let v324 : uint8 = System.Random().Next (1, 7) |> uint8
+            v324
+            #endif
+            |> fun x -> result <- Some x
+            let v325 : uint8 = result |> Option.get
+            let v326 : UH1 = UH1_1
+            let v327 : UH1 = UH1_0(v325, v326)
+            let v328 : UH1 = UH1_0(v319, v327)
+            let v329 : UH1 = UH1_0(v313, v328)
+            let v330 : UH1 = UH1_0(v307, v329)
+            let v331 : UH1 = UH1_0(v301, v330)
+            let v332 : UH1 = UH1_0(v295, v331)
+            let v333 : UH1 = UH1_0(v289, v332)
+            let v334 : UH1 = UH1_0(v283, v333)
+            let v335 : UH1 = UH1_0(v277, v334)
+            let v336 : UH1 = UH1_0(v271, v335)
+            let v337 : UH1 = UH1_0(v265, v336)
+            let v338 : UH1 = UH1_0(v259, v337)
+            let v339 : UH1 = UH1_0(v253, v338)
+            let v340 : UH1 = UH1_0(v247, v339)
+            let v341 : UH1 = UH1_0(v241, v340)
+            let v342 : UH1 = UH1_0(v235, v341)
+            let v343 : UH1 = UH1_0(v229, v342)
+            let v344 : UH1 = UH1_0(v223, v343)
+            let v345 : UH1 = UH1_0(v217, v344)
+            let v346 : UH1 = UH1_0(v211, v345)
+            let v347 : UH1 = UH1_0(v205, v346)
+            let v348 : UH1 = UH1_0(v199, v347)
+            let v349 : UH1 = UH1_0(v193, v348)
+            let v350 : int8 = 23y
+            method14(v349, v350)
 and closure81 () (v0 : (string [])) : int32 =
     let v1 : string = $"calculate_dice_count / max: {9223372036854775807L} / n: {24y} / p: {4738381338321616896L}"
     System.Console.WriteLine v1

@@ -2213,14 +2213,14 @@ mod module_a51efde0 {
                         continue '_method14;
                     }
                 } else {
-                    let v13: Dice::US5 = Dice::method15(v0_1.get().clone(), 0_i64);
-                    if let Dice::US5::US5_1(v13_1_0, v13_1_1) = &v13 {
-                        let v14: i64 = match &v13 {
+                    let v15: Dice::US5 = Dice::method15(v0_1.get().clone(), 0_i64);
+                    if let Dice::US5::US5_1(v15_1_0, v15_1_1) = &v15 {
+                        let v16: i64 = match &v15 {
                             Dice::US5::US5_1(x, _) => x.clone(),
                             _ => unreachable!(),
                         };
-                        if v14 <= i64::MAX {
-                            v14
+                        if v16 <= i64::MAX {
+                            v16
                         } else {
                             let result_1: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                             {
@@ -2228,7 +2228,7 @@ mod module_a51efde0 {
                                 result_1.set(Some(x_1))
                             }
                             {
-                                let v22: u8 = getValue(result_1.get().clone());
+                                let v26: u8 = getValue(result_1.get().clone());
                                 let result_2: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                 {
                                     let x_2: u8 =
@@ -2236,7 +2236,7 @@ mod module_a51efde0 {
                                     result_2.set(Some(x_2))
                                 }
                                 {
-                                    let v26: u8 = getValue(result_2.get().clone());
+                                    let v32: u8 = getValue(result_2.get().clone());
                                     let result_3: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                     {
                                         let x_3: u8 =
@@ -2244,7 +2244,7 @@ mod module_a51efde0 {
                                         result_3.set(Some(x_3))
                                     }
                                     {
-                                        let v30: u8 = getValue(result_3.get().clone());
+                                        let v38: u8 = getValue(result_3.get().clone());
                                         let result_4: MutCell<Option<u8>> =
                                             MutCell::new(None::<u8>);
                                         {
@@ -2253,7 +2253,7 @@ mod module_a51efde0 {
                                             result_4.set(Some(x_4))
                                         }
                                         {
-                                            let v34: u8 = getValue(result_4.get().clone());
+                                            let v44: u8 = getValue(result_4.get().clone());
                                             let result_5: MutCell<Option<u8>> =
                                                 MutCell::new(None::<u8>);
                                             {
@@ -2264,7 +2264,7 @@ mod module_a51efde0 {
                                                 result_5.set(Some(x_5))
                                             }
                                             {
-                                                let v38: u8 = getValue(result_5.get().clone());
+                                                let v50: u8 = getValue(result_5.get().clone());
                                                 let result_6: MutCell<Option<u8>> =
                                                     MutCell::new(None::<u8>);
                                                 {
@@ -2275,7 +2275,7 @@ mod module_a51efde0 {
                                                     result_6.set(Some(x_6))
                                                 }
                                                 {
-                                                    let v42: u8 = getValue(result_6.get().clone());
+                                                    let v56: u8 = getValue(result_6.get().clone());
                                                     let result_7: MutCell<Option<u8>> =
                                                         MutCell::new(None::<u8>);
                                                     {
@@ -2286,7 +2286,7 @@ mod module_a51efde0 {
                                                         result_7.set(Some(x_7))
                                                     }
                                                     {
-                                                        let v46: u8 =
+                                                        let v62: u8 =
                                                             getValue(result_7.get().clone());
                                                         let result_8: MutCell<Option<u8>> =
                                                             MutCell::new(None::<u8>);
@@ -2298,7 +2298,7 @@ mod module_a51efde0 {
                                                             result_8.set(Some(x_8))
                                                         }
                                                         {
-                                                            let v50: u8 =
+                                                            let v68: u8 =
                                                                 getValue(result_8.get().clone());
                                                             let result_9: MutCell<Option<u8>> =
                                                                 MutCell::new(None::<u8>);
@@ -2310,7 +2310,7 @@ mod module_a51efde0 {
                                                                 result_9.set(Some(x_9))
                                                             }
                                                             {
-                                                                let v54: u8 = getValue(
+                                                                let v74: u8 = getValue(
                                                                     result_9.get().clone(),
                                                                 );
                                                                 let result_10: MutCell<Option<u8>> =
@@ -2324,7 +2324,7 @@ mod module_a51efde0 {
                                                                     result_10.set(Some(x_10))
                                                                 }
                                                                 {
-                                                                    let v58: u8 = getValue(
+                                                                    let v80: u8 = getValue(
                                                                         result_10.get().clone(),
                                                                     );
                                                                     let result_11: MutCell<
@@ -2337,7 +2337,7 @@ mod module_a51efde0 {
                                                                         result_11.set(Some(x_11))
                                                                     }
                                                                     {
-                                                                        let v62: u8 = getValue(
+                                                                        let v86: u8 = getValue(
                                                                             result_11.get().clone(),
                                                                         );
                                                                         let result_12: MutCell<
@@ -2353,7 +2353,7 @@ mod module_a51efde0 {
                                                                                 .set(Some(x_12))
                                                                         }
                                                                         {
-                                                                            let v66: u8 = getValue(
+                                                                            let v92: u8 = getValue(
                                                                                 result_12
                                                                                     .get()
                                                                                     .clone(),
@@ -2371,7 +2371,7 @@ mod module_a51efde0 {
                                                                                     .set(Some(x_13))
                                                                             }
                                                                             {
-                                                                                let v70: u8 =
+                                                                                let v98: u8 =
                                                                                     getValue(
                                                                                         result_13
                                                                                             .get()
@@ -2390,7 +2390,7 @@ mod module_a51efde0 {
                                                                                     )
                                                                                 }
                                                                                 {
-                                                                                    let v74:
+                                                                                    let v104:
                                                                                                      u8 =
                                                                                                  getValue(result_14.get().clone());
                                                                                     let result_15:
@@ -2403,7 +2403,7 @@ mod module_a51efde0 {
                                                                                         result_15.set(Some(x_15))
                                                                                     }
                                                                                     {
-                                                                                        let v78:
+                                                                                        let v110:
                                                                                                          u8 =
                                                                                                      getValue(result_15.get().clone());
                                                                                         let result_16:
@@ -2416,7 +2416,7 @@ mod module_a51efde0 {
                                                                                             result_16.set(Some(x_16))
                                                                                         }
                                                                                         {
-                                                                                            let v82:
+                                                                                            let v116:
                                                                                                              u8 =
                                                                                                          getValue(result_16.get().clone());
                                                                                             let result_17:
@@ -2429,7 +2429,7 @@ mod module_a51efde0 {
                                                                                                 result_17.set(Some(x_17))
                                                                                             }
                                                                                             {
-                                                                                                let v86:
+                                                                                                let v122:
                                                                                                                  u8 =
                                                                                                              getValue(result_17.get().clone());
                                                                                                 let result_18:
@@ -2442,7 +2442,7 @@ mod module_a51efde0 {
                                                                                                     result_18.set(Some(x_18))
                                                                                                 }
                                                                                                 {
-                                                                                                    let v90:
+                                                                                                    let v128:
                                                                                                                      u8 =
                                                                                                                  getValue(result_18.get().clone());
                                                                                                     let result_19:
@@ -2455,7 +2455,7 @@ mod module_a51efde0 {
                                                                                                         result_19.set(Some(x_19))
                                                                                                     }
                                                                                                     {
-                                                                                                        let v94:
+                                                                                                        let v134:
                                                                                                                          u8 =
                                                                                                                      getValue(result_19.get().clone());
                                                                                                         let result_20:
@@ -2468,7 +2468,7 @@ mod module_a51efde0 {
                                                                                                             result_20.set(Some(x_20))
                                                                                                         }
                                                                                                         {
-                                                                                                            let v98:
+                                                                                                            let v140:
                                                                                                                              u8 =
                                                                                                                          getValue(result_20.get().clone());
                                                                                                             let result_21:
@@ -2481,7 +2481,7 @@ mod module_a51efde0 {
                                                                                                                 result_21.set(Some(x_21))
                                                                                                             }
                                                                                                             {
-                                                                                                                let v102:
+                                                                                                                let v146:
                                                                                                                                  u8 =
                                                                                                                              getValue(result_21.get().clone());
                                                                                                                 let result_22:
@@ -2494,7 +2494,7 @@ mod module_a51efde0 {
                                                                                                                     result_22.set(Some(x_22))
                                                                                                                 }
                                                                                                                 {
-                                                                                                                    let v106:
+                                                                                                                    let v152:
                                                                                                                                      u8 =
                                                                                                                                  getValue(result_22.get().clone());
                                                                                                                     let result_23:
@@ -2509,28 +2509,28 @@ mod module_a51efde0 {
                                                                                                                     {
                                                                                                                         let v0_1_temp:
                                                                                                                                          LrcPtr<Dice::UH1> =
-                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v22,
-                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v26,
-                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_0(v30,
-                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_0(v34,
-                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_0(v38,
-                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_0(v42,
-                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_0(v46,
-                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_0(v50,
-                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_0(v54,
-                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_0(v58,
-                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_0(v62,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_0(v66,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0(v70,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_0(v74,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_0(v78,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_0(v82,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v86,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v90,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_0(v94,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_0(v98,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_0(v102,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_0(v106,
+                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v26,
+                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v32,
+                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_0(v38,
+                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_0(v44,
+                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_0(v50,
+                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_0(v56,
+                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_0(v62,
+                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_0(v68,
+                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_0(v74,
+                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_0(v80,
+                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_0(v86,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_0(v92,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0(v98,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_0(v104,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_0(v110,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_0(v116,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v122,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v128,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_0(v134,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_0(v140,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_0(v146,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_0(v152,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_0(getValue(result_23.get().clone()),
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1)))))))))))))))))))))))))))))))))))))))))))))));
                                                                                                                         let v1_1_temp:
@@ -2571,14 +2571,14 @@ mod module_a51efde0 {
                             result_24.set(Some(x_24))
                         }
                         {
-                            let v143: u8 = getValue(result_24.get().clone());
+                            let v193: u8 = getValue(result_24.get().clone());
                             let result_25: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                             {
                                 let x_25: u8 = rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
                                 result_25.set(Some(x_25))
                             }
                             {
-                                let v147: u8 = getValue(result_25.get().clone());
+                                let v199: u8 = getValue(result_25.get().clone());
                                 let result_26: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                 {
                                     let x_26: u8 =
@@ -2586,7 +2586,7 @@ mod module_a51efde0 {
                                     result_26.set(Some(x_26))
                                 }
                                 {
-                                    let v151: u8 = getValue(result_26.get().clone());
+                                    let v205: u8 = getValue(result_26.get().clone());
                                     let result_27: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                     {
                                         let x_27: u8 =
@@ -2594,7 +2594,7 @@ mod module_a51efde0 {
                                         result_27.set(Some(x_27))
                                     }
                                     {
-                                        let v155: u8 = getValue(result_27.get().clone());
+                                        let v211: u8 = getValue(result_27.get().clone());
                                         let result_28: MutCell<Option<u8>> =
                                             MutCell::new(None::<u8>);
                                         {
@@ -2603,7 +2603,7 @@ mod module_a51efde0 {
                                             result_28.set(Some(x_28))
                                         }
                                         {
-                                            let v159: u8 = getValue(result_28.get().clone());
+                                            let v217: u8 = getValue(result_28.get().clone());
                                             let result_29: MutCell<Option<u8>> =
                                                 MutCell::new(None::<u8>);
                                             {
@@ -2614,7 +2614,7 @@ mod module_a51efde0 {
                                                 result_29.set(Some(x_29))
                                             }
                                             {
-                                                let v163: u8 = getValue(result_29.get().clone());
+                                                let v223: u8 = getValue(result_29.get().clone());
                                                 let result_30: MutCell<Option<u8>> =
                                                     MutCell::new(None::<u8>);
                                                 {
@@ -2625,7 +2625,7 @@ mod module_a51efde0 {
                                                     result_30.set(Some(x_30))
                                                 }
                                                 {
-                                                    let v167: u8 =
+                                                    let v229: u8 =
                                                         getValue(result_30.get().clone());
                                                     let result_31: MutCell<Option<u8>> =
                                                         MutCell::new(None::<u8>);
@@ -2637,7 +2637,7 @@ mod module_a51efde0 {
                                                         result_31.set(Some(x_31))
                                                     }
                                                     {
-                                                        let v171: u8 =
+                                                        let v235: u8 =
                                                             getValue(result_31.get().clone());
                                                         let result_32: MutCell<Option<u8>> =
                                                             MutCell::new(None::<u8>);
@@ -2649,7 +2649,7 @@ mod module_a51efde0 {
                                                             result_32.set(Some(x_32))
                                                         }
                                                         {
-                                                            let v175: u8 =
+                                                            let v241: u8 =
                                                                 getValue(result_32.get().clone());
                                                             let result_33: MutCell<Option<u8>> =
                                                                 MutCell::new(None::<u8>);
@@ -2661,7 +2661,7 @@ mod module_a51efde0 {
                                                                 result_33.set(Some(x_33))
                                                             }
                                                             {
-                                                                let v179: u8 = getValue(
+                                                                let v247: u8 = getValue(
                                                                     result_33.get().clone(),
                                                                 );
                                                                 let result_34: MutCell<Option<u8>> =
@@ -2675,7 +2675,7 @@ mod module_a51efde0 {
                                                                     result_34.set(Some(x_34))
                                                                 }
                                                                 {
-                                                                    let v183: u8 = getValue(
+                                                                    let v253: u8 = getValue(
                                                                         result_34.get().clone(),
                                                                     );
                                                                     let result_35: MutCell<
@@ -2688,7 +2688,7 @@ mod module_a51efde0 {
                                                                         result_35.set(Some(x_35))
                                                                     }
                                                                     {
-                                                                        let v187: u8 = getValue(
+                                                                        let v259: u8 = getValue(
                                                                             result_35.get().clone(),
                                                                         );
                                                                         let result_36: MutCell<
@@ -2704,7 +2704,7 @@ mod module_a51efde0 {
                                                                                 .set(Some(x_36))
                                                                         }
                                                                         {
-                                                                            let v191: u8 = getValue(
+                                                                            let v265: u8 = getValue(
                                                                                 result_36
                                                                                     .get()
                                                                                     .clone(),
@@ -2722,7 +2722,7 @@ mod module_a51efde0 {
                                                                                     .set(Some(x_37))
                                                                             }
                                                                             {
-                                                                                let v195: u8 =
+                                                                                let v271: u8 =
                                                                                     getValue(
                                                                                         result_37
                                                                                             .get()
@@ -2741,7 +2741,7 @@ mod module_a51efde0 {
                                                                                     )
                                                                                 }
                                                                                 {
-                                                                                    let v199:
+                                                                                    let v277:
                                                                                                      u8 =
                                                                                                  getValue(result_38.get().clone());
                                                                                     let result_39:
@@ -2754,7 +2754,7 @@ mod module_a51efde0 {
                                                                                         result_39.set(Some(x_39))
                                                                                     }
                                                                                     {
-                                                                                        let v203:
+                                                                                        let v283:
                                                                                                          u8 =
                                                                                                      getValue(result_39.get().clone());
                                                                                         let result_40:
@@ -2767,7 +2767,7 @@ mod module_a51efde0 {
                                                                                             result_40.set(Some(x_40))
                                                                                         }
                                                                                         {
-                                                                                            let v207:
+                                                                                            let v289:
                                                                                                              u8 =
                                                                                                          getValue(result_40.get().clone());
                                                                                             let result_41:
@@ -2780,7 +2780,7 @@ mod module_a51efde0 {
                                                                                                 result_41.set(Some(x_41))
                                                                                             }
                                                                                             {
-                                                                                                let v211:
+                                                                                                let v295:
                                                                                                                  u8 =
                                                                                                              getValue(result_41.get().clone());
                                                                                                 let result_42:
@@ -2793,7 +2793,7 @@ mod module_a51efde0 {
                                                                                                     result_42.set(Some(x_42))
                                                                                                 }
                                                                                                 {
-                                                                                                    let v215:
+                                                                                                    let v301:
                                                                                                                      u8 =
                                                                                                                  getValue(result_42.get().clone());
                                                                                                     let result_43:
@@ -2806,7 +2806,7 @@ mod module_a51efde0 {
                                                                                                         result_43.set(Some(x_43))
                                                                                                     }
                                                                                                     {
-                                                                                                        let v219:
+                                                                                                        let v307:
                                                                                                                          u8 =
                                                                                                                      getValue(result_43.get().clone());
                                                                                                         let result_44:
@@ -2819,7 +2819,7 @@ mod module_a51efde0 {
                                                                                                             result_44.set(Some(x_44))
                                                                                                         }
                                                                                                         {
-                                                                                                            let v223:
+                                                                                                            let v313:
                                                                                                                              u8 =
                                                                                                                          getValue(result_44.get().clone());
                                                                                                             let result_45:
@@ -2832,7 +2832,7 @@ mod module_a51efde0 {
                                                                                                                 result_45.set(Some(x_45))
                                                                                                             }
                                                                                                             {
-                                                                                                                let v227:
+                                                                                                                let v319:
                                                                                                                                  u8 =
                                                                                                                              getValue(result_45.get().clone());
                                                                                                                 let result_46:
@@ -2847,28 +2847,28 @@ mod module_a51efde0 {
                                                                                                                 {
                                                                                                                     let v0_1_temp:
                                                                                                                                      LrcPtr<Dice::UH1> =
-                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0(v143,
-                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_0(v147,
-                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_0(v151,
-                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_0(v155,
-                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v159,
-                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v163,
-                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_0(v167,
-                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_0(v171,
-                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_0(v175,
-                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_0(v179,
-                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_0(v183,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_0(v187,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_0(v191,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_0(v195,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_0(v199,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_0(v203,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0(v207,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_0(v211,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_0(v215,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_0(v219,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v223,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v227,
+                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0(v193,
+                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_0(v199,
+                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_0(v205,
+                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_0(v211,
+                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v217,
+                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v223,
+                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_0(v229,
+                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_0(v235,
+                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_0(v241,
+                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_0(v247,
+                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_0(v253,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_0(v259,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_0(v265,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_0(v271,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_0(v277,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_0(v283,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0(v289,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_0(v295,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_0(v301,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_0(v307,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v313,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v319,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_0(getValue(result_46.get().clone()),
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1)))))))))))))))))))))))))))))))))))))))))))))));
                                                                                                                     let v1_1_temp:
@@ -2991,6 +2991,12 @@ pub use module_a51efde0::*;
 #[path = "../../polyglot/lib/fsharp/Common.rs"]
 mod module_8cb3e09e;
 pub use module_8cb3e09e::*;
+#[path = "../../polyglot/lib/spiral/common.rs"]
+mod module_e7e93d99;
+pub use module_e7e93d99::*;
+#[path = "../../polyglot/lib/spiral/date_time.rs"]
+mod module_d18105aa;
+pub use module_d18105aa::*;
 pub mod Polyglot {
     pub use crate::module_8cb3e09e::Polyglot::*;
 }

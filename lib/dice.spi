@@ -75,7 +75,7 @@ inl calculate_dice_count (log : option (string -> ())) max =
 
 inl roll_dice () : u8 =
     run_target function
-        | Fsharp => fun () => $"System.Random().Next (1, 7) |> uint8"
+        | Fsharp _ => fun () => $"System.Random().Next (1, 7) |> uint8"
         | Rust (Native) => fun () => rust.emit_expr () "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
         | Rust (Wasm) => fun () => rust.emit_expr () "1"
 

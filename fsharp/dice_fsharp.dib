@@ -13,6 +13,8 @@
 
 #!fsharp
 
+#!import ../../polyglot/lib/spiral/common.fsx
+#!import ../../polyglot/lib/spiral/date_time.fsx
 #!import ../../polyglot/lib/fsharp/Common.fs
 
 #!fsharp
@@ -252,7 +254,7 @@ let sequentialRoll = createSequentialRoller [ 5; 4; 4; 5; 2 ]
 
 fun () -> rollProgressively (Some (printfn "%s")) sequentialRoll false 2000 |> ignore
 |> _throwsC (fun ex _ ->
-    printException ex
+    formatException ex
     |> _assertEqual "System.Exception: createSequentialRoller / End of list"
 )
 
