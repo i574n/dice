@@ -224,6 +224,7 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                     |> am'.vec_map sm'.from_std_string
                     |> am'.from_vec
                     |> fun x => x : _ i32 _
+                    |> seq.of_array
                     |> sm'.concat "\n"
                     |> sm'.replace "\\n" "\n"
                     |> ui.text_block_pre.render fun () => "[max-height:20vh] [width:100vw] [max-width:100vw]"
@@ -445,6 +446,7 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                             |> am'.vec_map sm'.from_std_string
                             |> am'.from_vec
                             |> fun x => x : _ i32 _
+                            |> seq.of_array
                             |> sm'.concat "\n"
                             |> sm'.replace "\\n" "\n"
                             |> ui.text_block_pre.render fun () => "[max-height:20vh]"

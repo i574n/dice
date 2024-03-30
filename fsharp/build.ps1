@@ -13,7 +13,7 @@ if (!$fast) {
 
 { . ../../polyglot/apps/parser/dist/DibParser$(GetExecutableSuffix) dice_fsharp.dib fs } | Invoke-Block
 
-{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) dice_fsharp.fs $($fast ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) --packages Fable.Core --modules lib/spiral/common.fsx lib/spiral/date_time.fsx lib/fsharp/Common.fs } | Invoke-Block
+{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) dice_fsharp.fs $($fast ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) --packages Fable.Core --modules lib/spiral/common.fsx lib/spiral/sm.fsx lib/spiral/date_time.fsx lib/spiral/file_system.fsx lib/spiral/lib.fsx lib/fsharp/Common.fs } | Invoke-Block
 
 $targetDir = "../../polyglot/target/polyglot/builder/dice_fsharp"
 
@@ -27,7 +27,10 @@ if (!$fast) {
 
 Copy-Item $targetDir/rs/lib/fsharp/Common.rs ../../polyglot/lib/fsharp/Common.rs -Force
 Copy-Item $targetDir/rs/lib/spiral/common.rs ../../polyglot/lib/spiral/common.rs -Force
+Copy-Item $targetDir/rs/lib/spiral/sm.rs ../../polyglot/lib/spiral/sm.rs -Force
 Copy-Item $targetDir/rs/lib/spiral/date_time.rs ../../polyglot/lib/spiral/date_time.rs -Force
+Copy-Item $targetDir/rs/lib/spiral/file_system.rs ../../polyglot/lib/spiral/file_system.rs -Force
+Copy-Item $targetDir/rs/lib/spiral/lib.rs ../../polyglot/lib/spiral/lib.rs -Force
 if (!$fast) {
     Copy-Item $targetDir/ts/lib/fsharp/Common.ts ../../polyglot/lib/fsharp/Common.ts -Force
     Copy-Item $targetDir/py/lib/fsharp/common.py ../../polyglot/lib/fsharp/common.py -Force

@@ -13,7 +13,7 @@ $ErrorActionPreference = "Stop"
     -replace "and Heap2 =", "and  Heap2 =" `
 | Set-Content src/dice_ui.fsx
 
-{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) src/dice_ui.fsx $($fast ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) $($fast ? @("--persist-only") : @()) --packages Fable.Core --modules lib/spiral/common.fsx lib/spiral/date_time.fsx lib/fsharp/Common.fs } | Invoke-Block
+{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) src/dice_ui.fsx $($fast ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) $($fast ? @("--persist-only") : @()) --packages Fable.Core --modules lib/spiral/common.fsx lib/spiral/sm.fsx lib/spiral/date_time.fsx lib/spiral/file_system.fsx lib/spiral/lib.fsx lib/fsharp/Common.fs } | Invoke-Block
 
 $targetDir = "../../polyglot/target/polyglot/builder/dice_ui"
 

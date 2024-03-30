@@ -6,6 +6,7 @@ module DiceFSharp =
 
 #if !INTERACTIVE
     open Polyglot
+    open Lib
 #endif
 
     open Common
