@@ -125,7 +125,7 @@ inl render (global_state : state.global_state) =
                 |> am'.vec_map resultm.unbox
                 |> am'.vec_map (resultm.map optionm'.unbox)
 
-            inl root_log = root |> sm'.format_ellipsis'
+            inl root_log = root |> sm'.format_ellipsis
             leptos.log $'"transactions.render (8) / txns move / root: " + string !root_log + ""'
 
             inl loading =

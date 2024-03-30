@@ -23,7 +23,7 @@ inl render () =
                 inl class =
                     if settings_visible |> leptos.signal_get
                     then ##""
-                    else ##"bg-gray-300"
+                    else ##"bg-gray-300 hover:bg-gray-200"
                 inl class = join class
                 !\($'"!class.to_owned() + \\\" hover:bg-gray-200\\\""')
             [
