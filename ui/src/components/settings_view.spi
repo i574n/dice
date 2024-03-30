@@ -102,7 +102,7 @@ inl render () =
 
         ui.icon_button.render
             (svg.plus.render (fun () => "h-5 w-5") [])
-            fun () => " bg-gray-300" |> sm'.to_std_string
+            fun () => " bg-gray-300 hover:bg-gray-200" |> sm'.to_std_string
             [
                 $'"on:click=move |_| !on_click()"'
                 $'"aria-label=\\\"Add\\\""'
@@ -116,76 +116,80 @@ inl render () =
                 right_element = add_button () |> leptos.element_to_view |> Some
             }
             fun () =>
-                leptos.for
-                    accounts_data
-                    fun pair =>
-                        inl i, _ = pair
-                        i
-                    fun pair =>
-                        inl (_, i), account = pair
-                        leptos.div [
-                            $'"class=\\\"px-[10px] py-[7px] gap-[7px] [display:flex] [align-items:center]\\\""'
-                        ] fun () =>
-                            inl i = join i
-                            :>(;[
-                                ui.toggle.render
-                                    fun () => $'"account-" + string !i + ""'
-                                    fun () =>
-                                        account
-                                        |> leptos.signal_get
-                                        |> from_pair
-                                        |> fst
-                                    fun _ =>
-                                        inl data =
+                leptos.div [
+                    $'"class=\\\"flex flex-1 flex-col p-[8px] gap-[8px]\\\""'
+                ] fun () =>
+                    leptos.for
+                        accounts_data
+                        fun pair =>
+                            inl i, _ = pair
+                            i
+                        fun pair =>
+                            inl (_, i), account = pair
+                            leptos.div [
+                                $'"class=\\\"flex gap-[8px] [align-items:center]\\\""'
+                            ] fun () =>
+                                inl i = join i
+                                :>(;[
+                                    ui.toggle.render
+                                        fun () => $'"account-" + string !i + ""'
+                                        fun () =>
+                                            account
+                                            |> leptos.signal_get
+                                            |> from_pair
+                                            |> fst
+                                        fun _ =>
+                                            inl data =
+                                                leptos.signal_get_untracked global_state.core_state .data
+                                                |> leptos.signal_get_untracked
+                                                |> fun data => !data
+
                                             leptos.signal_get_untracked global_state.core_state .data
-                                            |> leptos.signal_get_untracked
-                                            |> fun data => !data
+                                            |> leptos.signal_set (heap { data with
+                                                accounts =
+                                                    data.accounts
+                                                    |> am'.vec_mapi fun i' pair =>
+                                                        if i' = i |> fun x => join not x
+                                                        then pair
+                                                        else
+                                                            inl enabled', account' = pair |> from_pair
+                                                            new_pair (not enabled') account'
+                                            })
+                                    |> leptos.element_to_view
 
-                                        leptos.signal_get_untracked global_state.core_state .data
-                                        |> leptos.signal_set (heap { data with
-                                            accounts =
-                                                data.accounts
-                                                |> am'.vec_mapi fun i' pair =>
-                                                    if i' = i |> fun x => join not x
-                                                    then pair
-                                                    else
-                                                        inl enabled', account' = pair |> from_pair
-                                                        new_pair (not enabled') account'
-                                        })
-                                |> leptos.element_to_view
+                                    ui.text_input.render
+                                        fun () => "flex-1"
+                                        [
+                                        ]
+                                        fun () =>
+                                            account |> leptos.signal_get |> from_pair |> snd
 
-                                ui.text_input.render
-                                    fun () => "flex-1"
-                                    [
-                                    ]
-                                    fun () =>
-                                        account |> leptos.signal_get |> from_pair |> snd
+                                        fun value =>
+                                            inl data =
+                                                leptos.signal_get_untracked global_state.core_state .data
+                                                |> leptos.signal_get_untracked
+                                                |> fun data => !data
 
-                                    fun value =>
-                                        inl data =
                                             leptos.signal_get_untracked global_state.core_state .data
-                                            |> leptos.signal_get_untracked
-                                            |> fun data => !data
+                                            |> leptos.signal_set (heap { data with
+                                                accounts =
+                                                    data.accounts
+                                                    |> am'.vec_mapi fun i' pair =>
+                                                        if i' = i |> fun x => join not x
+                                                        then pair
+                                                        else
+                                                            inl enabled', _ = pair |> from_pair
+                                                            new_pair enabled' value
+                                            })
+                                    |> leptos.element_to_view
 
-                                        leptos.signal_get_untracked global_state.core_state .data
-                                        |> leptos.signal_set (heap { data with
-                                            accounts =
-                                                data.accounts
-                                                |> am'.vec_mapi fun i' pair =>
-                                                    if i' = i |> fun x => join not x
-                                                    then pair
-                                                    else
-                                                        inl enabled', _ = pair |> from_pair
-                                                        new_pair enabled' value
-                                        })
-                                |> leptos.element_to_view
-
-                                if (accounts_count |> leptos.signal_get) = 1i32
-                                then ;[] |> leptos.views_to_view
-                                else delete_button i |> leptos.element_to_view
-                            ])
-                        |> leptos.element_to_fragment
-                |> leptos.view_to_fragment
+                                    if (accounts_count |> leptos.signal_get) = 1i32
+                                    then ;[] |> leptos.views_to_view
+                                    else delete_button i |> leptos.element_to_view
+                                ])
+                            |> leptos.element_to_fragment
+                    |> leptos.view_to_fragment
+                |> leptos.element_to_fragment
         |> leptos.element_to_view
 
         ui.accordion.render
@@ -193,39 +197,44 @@ inl render () =
                 title = fun () => "View"
                 summary_class = fun () => "py-[7px]"
             }
-            fun () => :>(;[
-                ui.grid_pair.render
-                    fun props => { props with
-                        class = fun () => "items-center"
-                    }
-                    fun () => "Dark Mode" |> leptos.text_fragment
-                    fun () =>
-                        ui.toggle.render
-                            fun () => "dark-mode"
+            fun () =>
+                leptos.div [
+                    $'"class=\\\"flex flex-1 flex-col p-[11px] gap-[11px]\\\""'
+                ] fun () =>
+                    :>(;[
+                        ui.grid_pair.render
+                            fun props => { props with
+                                class = fun () => "items-center p-0"
+                            }
+                            fun () => "Dark Mode" |> leptos.text_fragment
                             fun () =>
-                                leptos.signal_get_untracked global_state.core_state .dark_mode
-                                |> leptos.signal_get
-                            fun _ =>
-                                leptos.signal_get_untracked global_state.core_state .dark_mode
-                                |> leptos.signal_update not
-                            |> leptos.element_to_fragment
+                                ui.toggle.render
+                                    fun () => "dark-mode"
+                                    fun () =>
+                                        leptos.signal_get_untracked global_state.core_state .dark_mode
+                                        |> leptos.signal_get
+                                    fun _ =>
+                                        leptos.signal_get_untracked global_state.core_state .dark_mode
+                                        |> leptos.signal_update not
+                                    |> leptos.element_to_fragment
 
-                ui.grid_pair.render
-                    fun props => { props with
-                        class = fun () => "items-center"
-                    }
-                    fun () => "Debug" |> leptos.text_fragment
-                    fun () =>
-                        ui.toggle.render
-                            fun () => "debug"
+                        ui.grid_pair.render
+                            fun props => { props with
+                                class = fun () => "items-center p-0"
+                            }
+                            fun () => "Debug" |> leptos.text_fragment
                             fun () =>
-                                leptos.signal_get_untracked global_state.core_state .debug
-                                |> leptos.signal_get
-                            fun _ =>
-                                leptos.signal_get_untracked global_state.core_state .debug
-                                |> leptos.signal_update not
-                            |> leptos.element_to_fragment
-            ])
+                                ui.toggle.render
+                                    fun () => "debug"
+                                    fun () =>
+                                        leptos.signal_get_untracked global_state.core_state .debug
+                                        |> leptos.signal_get
+                                    fun _ =>
+                                        leptos.signal_get_untracked global_state.core_state .debug
+                                        |> leptos.signal_update not
+                                    |> leptos.element_to_fragment
+                    ])
+                |> leptos.element_to_fragment
         |> leptos.element_to_view
 
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
