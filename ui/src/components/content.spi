@@ -62,7 +62,8 @@ inl render () : _ leptos.div =
                             inl id = tab' |> menu_tabs.menu_tab_id
                             if hash_url
                                 |> leptos.url_pathname
-                                |> sm'.starts_with ($'"/" + !id + ""' |> sm'.to_std_string)
+                                |> sm'.from_std_string
+                                |> sm'.starts_with $'"/" + !id + ""'
                             then Some tab'
                             else None
                     None
