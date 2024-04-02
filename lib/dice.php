@@ -85,6 +85,22 @@ abstract class UH1 implements FSharpUnion {
 
 #1
 class UH1_UH1_0 extends UH1 implements IComparable {
+    function __construct() {
+    }
+    static function get_FSharpCase() {
+        return 'UH1_0';
+    }
+    function get_Tag() {
+        return 0;
+    }
+    function CompareTo($other) {
+        $_cmp__5 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
+        return $_cmp__5;
+    }
+}
+
+#1
+class UH1_UH1_1 extends UH1 implements IComparable {
     public $Item1;
     public $Item2;
     function __construct($Item1, $Item2) {
@@ -92,7 +108,7 @@ class UH1_UH1_0 extends UH1 implements IComparable {
         $this->Item2 = $Item2;
     }
     static function get_FSharpCase() {
-        return 'UH1_0';
+        return 'UH1_1';
     }
     static function get_Item1_Type() {
         return 'UInt8';
@@ -101,38 +117,22 @@ class UH1_UH1_0 extends UH1 implements IComparable {
         return '\\Dice\\UH1';
     }
     function get_Tag() {
-        return 0;
-    }
-    function CompareTo($other) {
-        $_cmp__5 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        if ($_cmp__5 != 0) {
-            return $_cmp__5;
-        }        
-        $_cmp__6 = $this->Item1 > $other->Item1 ? 1 : ($this->Item1 < $other->Item1 ? -1 : 0);
-        if ($_cmp__6 != 0) {
-            return $_cmp__6;
-        }        
-        $_cmp__7 = $this->Item2->CompareTo($other->Item2);
-        if ($_cmp__7 != 0) {
-            return $_cmp__7;
-        }        
-        return 0;
-    }
-}
-
-#1
-class UH1_UH1_1 extends UH1 implements IComparable {
-    function __construct() {
-    }
-    static function get_FSharpCase() {
-        return 'UH1_1';
-    }
-    function get_Tag() {
         return 1;
     }
     function CompareTo($other) {
-        $_cmp__8 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        return $_cmp__8;
+        $_cmp__6 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
+        if ($_cmp__6 != 0) {
+            return $_cmp__6;
+        }        
+        $_cmp__7 = $this->Item1 > $other->Item1 ? 1 : ($this->Item1 < $other->Item1 ? -1 : 0);
+        if ($_cmp__7 != 0) {
+            return $_cmp__7;
+        }        
+        $_cmp__8 = $this->Item2->CompareTo($other->Item2);
+        if ($_cmp__8 != 0) {
+            return $_cmp__8;
+        }        
+        return 0;
     }
 }
 
@@ -145,45 +145,45 @@ abstract class US0 implements FSharpUnion {
 
 #2
 class US0_US0_0 extends US0 implements IComparable {
-    function __construct() {
+    public $f0_0;
+    function __construct($f0_0) {
+        $this->f0_0 = $f0_0;
     }
     static function get_FSharpCase() {
         return 'US0_0';
+    }
+    static function get_f0_0_Type() {
+        return '??? \'LambdaType (String, Unit)\'';
     }
     function get_Tag() {
         return 0;
     }
     function CompareTo($other) {
         $_cmp__9 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        return $_cmp__9;
+        if ($_cmp__9 != 0) {
+            return $_cmp__9;
+        }        
+        $_cmp__10 = $this->f0_0->CompareTo($other->f0_0);
+        if ($_cmp__10 != 0) {
+            return $_cmp__10;
+        }        
+        return 0;
     }
 }
 
 #2
 class US0_US0_1 extends US0 implements IComparable {
-    public $f1_0;
-    function __construct($f1_0) {
-        $this->f1_0 = $f1_0;
+    function __construct() {
     }
     static function get_FSharpCase() {
         return 'US0_1';
-    }
-    static function get_f1_0_Type() {
-        return '??? \'LambdaType (String, Unit)\'';
     }
     function get_Tag() {
         return 1;
     }
     function CompareTo($other) {
-        $_cmp__10 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        if ($_cmp__10 != 0) {
-            return $_cmp__10;
-        }        
-        $_cmp__11 = $this->f1_0->CompareTo($other->f1_0);
-        if ($_cmp__11 != 0) {
-            return $_cmp__11;
-        }        
-        return 0;
+        $_cmp__11 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
+        return $_cmp__11;
     }
 }
 
@@ -204,7 +204,13 @@ class US1_US1_0 extends US1 implements IComparable {
         return 'US1_0';
     }
     static function get_f0_0_Type() {
-        return '\\Dice\\UH0';
+        return '??? \'LambdaType
+  (Unit,
+   DeclaredType
+     ({ FullName = "Dice.UH0"
+        Path =
+         SourcePath "C:/home/git/polyglot/target/polyglot/builder/dice/dice.fs" },
+      []))\'';
     }
     function get_Tag() {
         return 0;
@@ -232,13 +238,7 @@ class US1_US1_1 extends US1 implements IComparable {
         return 'US1_1';
     }
     static function get_f1_0_Type() {
-        return '??? \'LambdaType
-  (Unit,
-   DeclaredType
-     ({ FullName = "Dice.UH0"
-        Path =
-         SourcePath "C:/home/git/polyglot/target/polyglot/builder/dice/dice.fs" },
-      []))\'';
+        return '\\Dice\\UH0';
     }
     function get_Tag() {
         return 1;
@@ -301,45 +301,45 @@ abstract class US2 implements FSharpUnion {
 
 #6
 class US2_US2_0 extends US2 implements IComparable {
-    function __construct() {
+    public $f0_0;
+    function __construct($f0_0) {
+        $this->f0_0 = $f0_0;
     }
     static function get_FSharpCase() {
         return 'US2_0';
+    }
+    static function get_f0_0_Type() {
+        return 'UInt8';
     }
     function get_Tag() {
         return 0;
     }
     function CompareTo($other) {
         $_cmp__18 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        return $_cmp__18;
+        if ($_cmp__18 != 0) {
+            return $_cmp__18;
+        }        
+        $_cmp__19 = $this->f0_0 > $other->f0_0 ? 1 : ($this->f0_0 < $other->f0_0 ? -1 : 0);
+        if ($_cmp__19 != 0) {
+            return $_cmp__19;
+        }        
+        return 0;
     }
 }
 
 #6
 class US2_US2_1 extends US2 implements IComparable {
-    public $f1_0;
-    function __construct($f1_0) {
-        $this->f1_0 = $f1_0;
+    function __construct() {
     }
     static function get_FSharpCase() {
         return 'US2_1';
-    }
-    static function get_f1_0_Type() {
-        return 'UInt8';
     }
     function get_Tag() {
         return 1;
     }
     function CompareTo($other) {
-        $_cmp__19 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        if ($_cmp__19 != 0) {
-            return $_cmp__19;
-        }        
-        $_cmp__20 = $this->f1_0 > $other->f1_0 ? 1 : ($this->f1_0 < $other->f1_0 ? -1 : 0);
-        if ($_cmp__20 != 0) {
-            return $_cmp__20;
-        }        
-        return 0;
+        $_cmp__20 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
+        return $_cmp__20;
     }
 }
 
@@ -370,54 +370,54 @@ abstract class US3 implements FSharpUnion {
 
 #8
 class US3_US3_0 extends US3 implements IComparable {
-    function __construct() {
+    public $f0_0;
+    public $f0_1;
+    function __construct($f0_0, $f0_1) {
+        $this->f0_0 = $f0_0;
+        $this->f0_1 = $f0_1;
     }
     static function get_FSharpCase() {
         return 'US3_0';
+    }
+    static function get_f0_0_Type() {
+        return 'UInt64';
+    }
+    static function get_f0_1_Type() {
+        return '\\Dice\\UH1';
     }
     function get_Tag() {
         return 0;
     }
     function CompareTo($other) {
         $_cmp__22 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        return $_cmp__22;
+        if ($_cmp__22 != 0) {
+            return $_cmp__22;
+        }        
+        $_cmp__23 = $this->f0_0 > $other->f0_0 ? 1 : ($this->f0_0 < $other->f0_0 ? -1 : 0);
+        if ($_cmp__23 != 0) {
+            return $_cmp__23;
+        }        
+        $_cmp__24 = $this->f0_1->CompareTo($other->f0_1);
+        if ($_cmp__24 != 0) {
+            return $_cmp__24;
+        }        
+        return 0;
     }
 }
 
 #8
 class US3_US3_1 extends US3 implements IComparable {
-    public $f1_0;
-    public $f1_1;
-    function __construct($f1_0, $f1_1) {
-        $this->f1_0 = $f1_0;
-        $this->f1_1 = $f1_1;
+    function __construct() {
     }
     static function get_FSharpCase() {
         return 'US3_1';
-    }
-    static function get_f1_0_Type() {
-        return 'UInt64';
-    }
-    static function get_f1_1_Type() {
-        return '\\Dice\\UH1';
     }
     function get_Tag() {
         return 1;
     }
     function CompareTo($other) {
-        $_cmp__23 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        if ($_cmp__23 != 0) {
-            return $_cmp__23;
-        }        
-        $_cmp__24 = $this->f1_0 > $other->f1_0 ? 1 : ($this->f1_0 < $other->f1_0 ? -1 : 0);
-        if ($_cmp__24 != 0) {
-            return $_cmp__24;
-        }        
-        $_cmp__25 = $this->f1_1->CompareTo($other->f1_1);
-        if ($_cmp__25 != 0) {
-            return $_cmp__25;
-        }        
-        return 0;
+        $_cmp__25 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
+        return $_cmp__25;
     }
 }
 
@@ -496,45 +496,45 @@ abstract class US4 implements FSharpUnion {
 
 #10
 class US4_US4_0 extends US4 implements IComparable {
-    function __construct() {
+    public $f0_0;
+    function __construct($f0_0) {
+        $this->f0_0 = $f0_0;
     }
     static function get_FSharpCase() {
         return 'US4_0';
+    }
+    static function get_f0_0_Type() {
+        return 'UInt64';
     }
     function get_Tag() {
         return 0;
     }
     function CompareTo($other) {
         $_cmp__30 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        return $_cmp__30;
+        if ($_cmp__30 != 0) {
+            return $_cmp__30;
+        }        
+        $_cmp__31 = $this->f0_0 > $other->f0_0 ? 1 : ($this->f0_0 < $other->f0_0 ? -1 : 0);
+        if ($_cmp__31 != 0) {
+            return $_cmp__31;
+        }        
+        return 0;
     }
 }
 
 #10
 class US4_US4_1 extends US4 implements IComparable {
-    public $f1_0;
-    function __construct($f1_0) {
-        $this->f1_0 = $f1_0;
+    function __construct() {
     }
     static function get_FSharpCase() {
         return 'US4_1';
-    }
-    static function get_f1_0_Type() {
-        return 'UInt64';
     }
     function get_Tag() {
         return 1;
     }
     function CompareTo($other) {
-        $_cmp__31 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        if ($_cmp__31 != 0) {
-            return $_cmp__31;
-        }        
-        $_cmp__32 = $this->f1_0 > $other->f1_0 ? 1 : ($this->f1_0 < $other->f1_0 ? -1 : 0);
-        if ($_cmp__32 != 0) {
-            return $_cmp__32;
-        }        
-        return 0;
+        $_cmp__32 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
+        return $_cmp__32;
     }
 }
 
@@ -547,54 +547,54 @@ abstract class US5 implements FSharpUnion {
 
 #11
 class US5_US5_0 extends US5 implements IComparable {
-    function __construct() {
+    public $f0_0;
+    public $f0_1;
+    function __construct($f0_0, $f0_1) {
+        $this->f0_0 = $f0_0;
+        $this->f0_1 = $f0_1;
     }
     static function get_FSharpCase() {
         return 'US5_0';
+    }
+    static function get_f0_0_Type() {
+        return 'Int64';
+    }
+    static function get_f0_1_Type() {
+        return '\\Dice\\UH1';
     }
     function get_Tag() {
         return 0;
     }
     function CompareTo($other) {
         $_cmp__33 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        return $_cmp__33;
+        if ($_cmp__33 != 0) {
+            return $_cmp__33;
+        }        
+        $_cmp__34 = $this->f0_0 > $other->f0_0 ? 1 : ($this->f0_0 < $other->f0_0 ? -1 : 0);
+        if ($_cmp__34 != 0) {
+            return $_cmp__34;
+        }        
+        $_cmp__35 = $this->f0_1->CompareTo($other->f0_1);
+        if ($_cmp__35 != 0) {
+            return $_cmp__35;
+        }        
+        return 0;
     }
 }
 
 #11
 class US5_US5_1 extends US5 implements IComparable {
-    public $f1_0;
-    public $f1_1;
-    function __construct($f1_0, $f1_1) {
-        $this->f1_0 = $f1_0;
-        $this->f1_1 = $f1_1;
+    function __construct() {
     }
     static function get_FSharpCase() {
         return 'US5_1';
-    }
-    static function get_f1_0_Type() {
-        return 'Int64';
-    }
-    static function get_f1_1_Type() {
-        return '\\Dice\\UH1';
     }
     function get_Tag() {
         return 1;
     }
     function CompareTo($other) {
-        $_cmp__34 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
-        if ($_cmp__34 != 0) {
-            return $_cmp__34;
-        }        
-        $_cmp__35 = $this->f1_0 > $other->f1_0 ? 1 : ($this->f1_0 < $other->f1_0 ? -1 : 0);
-        if ($_cmp__35 != 0) {
-            return $_cmp__35;
-        }        
-        $_cmp__36 = $this->f1_1->CompareTo($other->f1_1);
-        if ($_cmp__36 != 0) {
-            return $_cmp__36;
-        }        
-        return 0;
+        $_cmp__36 = $this->get_Tag() > $other->get_Tag() ? 1 : ($this->get_Tag() < $other->get_Tag() ? -1 : 0);
+        return $_cmp__36;
     }
 }
 
@@ -792,17 +792,17 @@ function closure0($unitVar, $v0_1) {
 
 #34
 function closure4($unitVar, $v0_1) {
-    return new US0_US0_1($v0_1);
+    return new US0_US0_0($v0_1);
 }
 
 #35
 function method1($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
+        case 0:
             return $v1_1;
         default:
-            return method1($v0_1->Item2, new UH1_UH1_0($v0_1->Item1, $v1_1));
+            return method1($v0_1->Item2, new UH1_UH1_1($v0_1->Item1, $v1_1));
     }
 }
 
@@ -810,10 +810,10 @@ function method1($v0_1, $v1_1) {
 function method2($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
+        case 0:
             return $v1_1;
         default:
-            return new UH1_UH1_0($v0_1->Item1, method2($v0_1->Item2, $v1_1));
+            return new UH1_UH1_1($v0_1->Item1, method2($v0_1->Item2, $v1_1));
     }
 }
 
@@ -826,7 +826,7 @@ function closure6($v0_1, $unitVar) {
 function method3($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
+        case 0:
             return $v1_1;
         default:
             $v4_1 = method3($v0_1->Item2, $v1_1);
@@ -845,8 +845,8 @@ function closure8($v0_1, $v1_1, $unitVar) {
     $v2_1 = $v1_1->l0;
     switch ($v2_1->get_Tag())
     {
-        case 1:
-            $v5 = $v2_1->f1_0(NULL);
+        case 0:
+            $v5 = $v2_1->f0_0(NULL);
             switch ($v5->get_Tag())
             {
                 case 1:
@@ -856,16 +856,16 @@ function closure8($v0_1, $v1_1, $unitVar) {
                     $v12 = new UH0_UH0_0($v5->Item1, $method4($v0_1, $v5->Item2));
                     break;
             }
-            $v1_1->l0 = new US1_US1_0($v12);
+            $v1_1->l0 = new US1_US1_1($v12);
             return $v12;
         default:
-            return $v2_1->f0_0;
+            return $v2_1->f1_0;
     }
 }
 
 #41
 function method4($v0_1, $v1_1) {
-    $v3_1 = new Mut0(new US1_US1_1($v1_1));
+    $v3_1 = new Mut0(new US1_US1_0($v1_1));
     return function ($arg10_0040) use ($closure8, $v0_1, $v3_1) {     return closure8($v0_1, $v3_1, NULL);
  };
 }
@@ -875,10 +875,10 @@ function method6($v0_1, $v1_1) {
     switch ($v1_1->get_Tag())
     {
         case 1:
-            return new US2_US2_0();
+            return new US2_US2_1();
         default:
             if (\BigInt\compare($v0_1, NULL) <= 0) {
-                return new US2_US2_1($v1_1->Item1);
+                return new US2_US2_0($v1_1->Item1);
             } else {
                 return method6(\BigInt\toInt64(\BigInt\op_Subtraction($v0_1, NULL)), $v1_1->Item2(NULL));
             }
@@ -890,8 +890,8 @@ function method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
     $v10 = \String\toText(\String\interpolate('create_sequential_roller / roll / current_index: %P() / acc: %P() / len: %P() / last_item: %A%P()', [ $v2_1->l0, $v3_1->l0, $v4_1->l0, $v5->l0 ]));
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            $v0_1->f1_0($v10);
+        case 0:
+            $v0_1->f0_0($v10);
             break;
         default:
             break;
@@ -900,17 +900,17 @@ function method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
     $v14 = method6($v2_1->l0, $v12);
     switch ($v14->get_Tag())
     {
-        case 1:
-            $v15 = $v14->f1_0;
+        case 0:
+            $v15 = $v14->f0_0;
             $v17 = \BigInt\toInt64(\BigInt\op_Addition($v2_1->l0, NULL));
             $v2_1->l0 = $v17;
-            $v5->l0 = new US2_US2_1($v15);
+            $v5->l0 = new US2_US2_0($v15);
             return $v15;
         default:
             switch ($v0_1->get_Tag())
             {
-                case 1:
-                    $v0_1->f1_0('create_sequential_roller / roll / None');
+                case 0:
+                    $v0_1->f0_0('create_sequential_roller / roll / None');
                     break;
                 default:
                     break;
@@ -928,7 +928,7 @@ function method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
             $v3_1->l0 = $v29;
             $v31 = \BigInt\toInt64(\BigInt\op_Subtraction($v3_1->l0, NULL));
             $v2_1->l0 = $v31;
-            $v5->l0 = new US2_US2_0();
+            $v5->l0 = new US2_US2_1();
             return method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5);
     }
 }
@@ -942,19 +942,19 @@ function closure9($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5, $unitVar) {
 function closure5($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            $v0_1->f1_0('create_sequential_roller ()');
+        case 0:
+            $v0_1->f0_0('create_sequential_roller ()');
             break;
         default:
             break;
     }
-    $v8 = method3(method2($v1_1, method1($v1_1, new UH1_UH1_1())), new UH0_UH0_1());
+    $v8 = method3(method2($v1_1, method1($v1_1, new UH1_UH1_0())), new UH0_UH0_1());
     $v10 = method4($v8, function ($arg10_0040) use ($closure7, $v8) {     return closure7($v8, NULL);
  });
     $v11 = new Mut1(NULL);
     $v12 = new Mut1(NULL);
     $v13 = new Mut1(NULL);
-    $v15 = new Mut2(new US2_US2_0());
+    $v15 = new Mut2(new US2_US2_1());
     return function ($arg10_0040_1) use ($closure9, $v0_1, $v10, $v11, $v12, $v13, $v15) {     return closure9($v0_1, $v10, $v11, $v12, $v13, $v15, NULL);
  };
 }
@@ -962,7 +962,7 @@ function closure5($v0_1, $v1_1) {
 #46
 function closure3($unitVar, $v0_1) {
     $v3_1 = \Option\defaultArg(\Option\map(function ($v) use ($closure4) {     return closure4(NULL, $v);
- }, $v0_1), new US0_US0_0());
+ }, $v0_1), new US0_US0_1());
     return function ($v_1) use ($closure5, $v3_1) {     return closure5($v3_1, $v_1);
  };
 }
@@ -977,8 +977,8 @@ function method7($v0_1, $v1_1, $v2_1, $v3_1) {
             $v9 = NULL;
             switch ($v0_1->get_Tag())
             {
-                case 1:
-                    $v0_1->f1_0($v9);
+                case 0:
+                    $v0_1->f0_0($v9);
                     break;
                 default:
                     break;
@@ -989,8 +989,8 @@ function method7($v0_1, $v1_1, $v2_1, $v3_1) {
         $v12 = NULL;
         switch ($v0_1->get_Tag())
         {
-            case 1:
-                $v0_1->f1_0($v12);
+            case 0:
+                $v0_1->f0_0($v12);
                 break;
             default:
                 break;
@@ -1388,10 +1388,10 @@ function method10($v0_1, $v1_1) {
     switch ($v1_1->get_Tag())
     {
         case 1:
-            return new US4_US4_0();
+            return new US4_US4_1();
         default:
             if ($v0_1 <= 0) {
-                return new US4_US4_1($v1_1->Item1);
+                return new US4_US4_0($v1_1->Item1);
             } else {
                 return method10($v0_1 - 1, $v1_1->Item2(NULL));
             }
@@ -1405,18 +1405,18 @@ function method9($v0_1, $v1_1, $v2_1, $v3_1) {
         $v6 = NULL;
         switch ($v0_1->get_Tag())
         {
-            case 1:
-                $v0_1->f1_0($v6);
+            case 0:
+                $v0_1->f0_0($v6);
                 break;
             default:
                 break;
         }
-        return new US3_US3_1($v5, $v2_1);
+        return new US3_US3_0($v5, $v2_1);
     } else {
         switch ($v2_1->get_Tag())
         {
-            case 1:
-                return new US3_US3_0();
+            case 0:
+                return new US3_US3_1();
             default:
                 $v11 = $v2_1->Item2;
                 $v10 = $v2_1->Item1;
@@ -1425,8 +1425,8 @@ function method9($v0_1, $v1_1, $v2_1, $v3_1) {
  }));
                     switch ($v16->get_Tag())
                     {
-                        case 1:
-                            $v20 = $v16->f1_0;
+                        case 0:
+                            $v20 = $v16->f0_0;
                             break;
                         default:
                             throw new \Exception('Option does not have a value.');
@@ -1436,8 +1436,8 @@ function method9($v0_1, $v1_1, $v2_1, $v3_1) {
                     $v24 = NULL;
                     switch ($v0_1->get_Tag())
                     {
-                        case 1:
-                            $v0_1->f1_0($v24);
+                        case 0:
+                            $v0_1->f0_0($v24);
                             break;
                         default:
                             break;
@@ -1447,8 +1447,8 @@ function method9($v0_1, $v1_1, $v2_1, $v3_1) {
                     $v29 = NULL;
                     switch ($v0_1->get_Tag())
                     {
-                        case 1:
-                            $v0_1->f1_0($v29);
+                        case 0:
+                            $v0_1->f0_0($v29);
                             break;
                         default:
                             break;
@@ -1462,9 +1462,9 @@ function method9($v0_1, $v1_1, $v2_1, $v3_1) {
 #114
 function method11($v0_1, $v1_1, $v2_1) {
     if ($v2_1 < $v0_1) {
-        return new UH1_UH1_0($v1_1(NULL), method11($v0_1, $v1_1, ($v2_1 + 1)));
+        return new UH1_UH1_1($v1_1(NULL), method11($v0_1, $v1_1, ($v2_1 + 1)));
     } else {
-        return new UH1_UH1_1();
+        return new UH1_UH1_0();
     }
 }
 
@@ -1472,25 +1472,25 @@ function method11($v0_1, $v1_1, $v2_1) {
 function method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
     $v6 = $v4_1 + 1;
     if ($v4_1 < $v6) {
-        return $method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_0($v1_1(NULL), $v5), $v6);
+        return $method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6);
     } else {
         $v12 = method9($v0_1, $v4_1, $v5, NULL);
-        if ($v12->get_Tag() == 1) {
-            $v13 = $v12->f1_0;
+        if ($v12->get_Tag() == 0) {
+            $v13 = $v12->f0_0;
             if (\BigInt\compare($v13, $v3_1) <= 0) {
                 return $v13;
             } else {
                 if ($v2_1) {
                     return method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method11($v4_1, $v1_1, 0));
                 } else {
-                    return $method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_0($v1_1(NULL), $v5), $v6);
+                    return $method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6);
                 }
             }
         } else {
             if ($v2_1) {
                 return method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method11($v4_1, $v1_1, 0));
             } else {
-                return $method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_0($v1_1(NULL), $v5), $v6);
+                return $method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6);
             }
         }
     }
@@ -1499,25 +1499,25 @@ function method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
 #116
 function method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5, $v6) {
     if ($v6 < $v4_1 + 1) {
-        return method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_0($v1_1(NULL), $v5), $v6 + 1);
+        return method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6 + 1);
     } else {
         $v14 = method9($v0_1, $v4_1, $v5, NULL);
-        if ($v14->get_Tag() == 1) {
-            $v15 = $v14->f1_0;
+        if ($v14->get_Tag() == 0) {
+            $v15 = $v14->f0_0;
             if (\BigInt\compare($v15, $v3_1) <= 0) {
                 return $v15;
             } else {
                 if ($v2_1) {
                     return method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method11($v4_1, $v1_1, 0));
                 } else {
-                    return method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_0($v1_1(NULL), $v5), $v6 + 1);
+                    return method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6 + 1);
                 }
             }
         } else {
             if ($v2_1) {
                 return method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method11($v4_1, $v1_1, 0));
             } else {
-                return method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_0($v1_1(NULL), $v5), $v6 + 1);
+                return method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6 + 1);
             }
         }
     }
@@ -1525,7 +1525,7 @@ function method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5, $v6) {
 
 #117
 function closure13($v0_1, $v1_1, $v2_1, $v3_1) {
-    return method8($v0_1, $v1_1, $v2_1, $v3_1, (\BigInt\equals($v3_1, NULL) ? 1 : method7($v0_1, $v3_1, 0, NULL)) - 1, new UH1_UH1_1(), 0);
+    return method8($v0_1, $v1_1, $v2_1, $v3_1, (\BigInt\equals($v3_1, NULL) ? 1 : method7($v0_1, $v3_1, 0, NULL)) - 1, new UH1_UH1_0(), 0);
 }
 
 #118
@@ -1543,7 +1543,7 @@ function closure11($v0_1, $v1_1) {
 #120
 function closure10($unitVar, $v0_1) {
     $v3_1 = \Option\defaultArg(\Option\map(function ($v) use ($closure4) {     return closure4(NULL, $v);
- }, $v0_1), new US0_US0_0());
+ }, $v0_1), new US0_US0_1());
     return function ($v_1) use ($closure11, $v3_1) {     return closure11($v3_1, $v_1);
  };
 }
@@ -1552,7 +1552,7 @@ function closure10($unitVar, $v0_1) {
 function method13($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
+        case 0:
             return $v1_1;
         default:
             return method13($v0_1->Item2, $v1_1 + 1);
@@ -1562,21 +1562,21 @@ function method13($v0_1, $v1_1) {
 #122
 function closure80($v0_1, $v1_1, $v2_1) {
     $v10 = method9(\Option\defaultArg(\Option\map(function ($v) use ($closure4) {     return closure4(NULL, $v);
- }, $v0_1), new US0_US0_0()), method13($v2_1, 0) - 1, $v2_1, NULL);
-    if ($v10->get_Tag() == 1) {
-        $v11 = $v10->f1_0;
+ }, $v0_1), new US0_US0_1()), method13($v2_1, 0) - 1, $v2_1, NULL);
+    if ($v10->get_Tag() == 0) {
+        $v11 = $v10->f0_0;
         if (\BigInt\compare($v11, NULL) >= 0 ? \BigInt\compare($v11, $v1_1) <= 0 : false) {
-            $v20 = new US4_US4_1($v11);
+            $v20 = new US4_US4_0($v11);
         } else {
-            $v20 = new US4_US4_0();
+            $v20 = new US4_US4_1();
         }
     } else {
-        $v20 = new US4_US4_0();
+        $v20 = new US4_US4_1();
     }
     switch ($v20->get_Tag())
     {
-        case 1:
-            return $v20->f1_0;
+        case 0:
+            return $v20->f0_0;
         default:
             return NULL;
     }
@@ -1599,15 +1599,15 @@ function method39($v0_1, $v1_1) {
     $v2_1 = \BigInt\toInt64(\BigInt\op_Addition($v1_1, NULL));
     $v3_1 = NULL;
     $console->log;
-    return new US5_US5_1($v2_1, $v0_1);
+    return new US5_US5_0($v2_1, $v0_1);
 }
 
 #126
 function method38($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1628,8 +1628,8 @@ function method38($v0_1, $v1_1) {
 function method37($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1650,8 +1650,8 @@ function method37($v0_1, $v1_1) {
 function method36($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1672,8 +1672,8 @@ function method36($v0_1, $v1_1) {
 function method35($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1694,8 +1694,8 @@ function method35($v0_1, $v1_1) {
 function method34($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1716,8 +1716,8 @@ function method34($v0_1, $v1_1) {
 function method33($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1738,8 +1738,8 @@ function method33($v0_1, $v1_1) {
 function method32($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1760,8 +1760,8 @@ function method32($v0_1, $v1_1) {
 function method31($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1782,8 +1782,8 @@ function method31($v0_1, $v1_1) {
 function method30($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1804,8 +1804,8 @@ function method30($v0_1, $v1_1) {
 function method29($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1826,8 +1826,8 @@ function method29($v0_1, $v1_1) {
 function method28($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1848,8 +1848,8 @@ function method28($v0_1, $v1_1) {
 function method27($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1870,8 +1870,8 @@ function method27($v0_1, $v1_1) {
 function method26($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1892,8 +1892,8 @@ function method26($v0_1, $v1_1) {
 function method25($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1914,8 +1914,8 @@ function method25($v0_1, $v1_1) {
 function method24($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1936,8 +1936,8 @@ function method24($v0_1, $v1_1) {
 function method23($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1958,8 +1958,8 @@ function method23($v0_1, $v1_1) {
 function method22($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -1980,8 +1980,8 @@ function method22($v0_1, $v1_1) {
 function method21($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -2002,8 +2002,8 @@ function method21($v0_1, $v1_1) {
 function method20($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -2024,8 +2024,8 @@ function method20($v0_1, $v1_1) {
 function method19($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -2046,8 +2046,8 @@ function method19($v0_1, $v1_1) {
 function method18($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -2068,8 +2068,8 @@ function method18($v0_1, $v1_1) {
 function method17($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -2090,8 +2090,8 @@ function method17($v0_1, $v1_1) {
 function method16($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -2112,8 +2112,8 @@ function method16($v0_1, $v1_1) {
 function method15($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
-        case 1:
-            return new US5_US5_0();
+        case 0:
+            return new US5_US5_1();
         default:
             $v4_1 = $v0_1->Item2;
             $v3_1 = $v0_1->Item1;
@@ -2133,250 +2133,250 @@ function method15($v0_1, $v1_1) {
 #150
 function method14($v0_1, $v1_1) {
     if ($v1_1 < 24) {
-        $result = NULL;
+        $_v3 = NULL;
         $value = \Random\nonSeeded()->Next2;
         $x = $value & 0xFF;
-        $result = $x;
-        return method14(new UH1_UH1_0(\Option\value($result), $v0_1), $v1_1 + 1);
+        $_v3 = $x;
+        return method14(new UH1_UH1_1(\Option\value($_v3), $v0_1), $v1_1 + 1);
     } else {
-        $v15 = method15($v0_1, NULL);
-        if ($v15->get_Tag() == 1) {
-            $v16 = $v15->f1_0;
-            if (\BigInt\compare($v16, NULL) <= 0) {
-                return $v16;
+        $v16 = method15($v0_1, NULL);
+        if ($v16->get_Tag() == 0) {
+            $v17 = $v16->f0_0;
+            if (\BigInt\compare($v17, NULL) <= 0) {
+                return $v17;
             } else {
-                $result_1 = NULL;
+                $_v20 = NULL;
                 $value_1 = \Random\nonSeeded()->Next2;
                 $x_1 = $value_1 & 0xFF;
-                $result_1 = $x_1;
-                $v26 = \Option\value($result_1);
-                $result_2 = NULL;
+                $_v20 = $x_1;
+                $v28 = \Option\value($_v20);
+                $_v29 = NULL;
                 $value_2 = \Random\nonSeeded()->Next2;
                 $x_2 = $value_2 & 0xFF;
-                $result_2 = $x_2;
-                $v32 = \Option\value($result_2);
-                $result_3 = NULL;
+                $_v29 = $x_2;
+                $v35 = \Option\value($_v29);
+                $_v36 = NULL;
                 $value_3 = \Random\nonSeeded()->Next2;
                 $x_3 = $value_3 & 0xFF;
-                $result_3 = $x_3;
-                $v38 = \Option\value($result_3);
-                $result_4 = NULL;
+                $_v36 = $x_3;
+                $v42 = \Option\value($_v36);
+                $_v43 = NULL;
                 $value_4 = \Random\nonSeeded()->Next2;
                 $x_4 = $value_4 & 0xFF;
-                $result_4 = $x_4;
-                $v44 = \Option\value($result_4);
-                $result_5 = NULL;
+                $_v43 = $x_4;
+                $v49 = \Option\value($_v43);
+                $_v50 = NULL;
                 $value_5 = \Random\nonSeeded()->Next2;
                 $x_5 = $value_5 & 0xFF;
-                $result_5 = $x_5;
-                $v50 = \Option\value($result_5);
-                $result_6 = NULL;
+                $_v50 = $x_5;
+                $v56 = \Option\value($_v50);
+                $_v57 = NULL;
                 $value_6 = \Random\nonSeeded()->Next2;
                 $x_6 = $value_6 & 0xFF;
-                $result_6 = $x_6;
-                $v56 = \Option\value($result_6);
-                $result_7 = NULL;
+                $_v57 = $x_6;
+                $v63 = \Option\value($_v57);
+                $_v64 = NULL;
                 $value_7 = \Random\nonSeeded()->Next2;
                 $x_7 = $value_7 & 0xFF;
-                $result_7 = $x_7;
-                $v62 = \Option\value($result_7);
-                $result_8 = NULL;
+                $_v64 = $x_7;
+                $v70 = \Option\value($_v64);
+                $_v71 = NULL;
                 $value_8 = \Random\nonSeeded()->Next2;
                 $x_8 = $value_8 & 0xFF;
-                $result_8 = $x_8;
-                $v68 = \Option\value($result_8);
-                $result_9 = NULL;
+                $_v71 = $x_8;
+                $v77 = \Option\value($_v71);
+                $_v78 = NULL;
                 $value_9 = \Random\nonSeeded()->Next2;
                 $x_9 = $value_9 & 0xFF;
-                $result_9 = $x_9;
-                $v74 = \Option\value($result_9);
-                $result_10 = NULL;
+                $_v78 = $x_9;
+                $v84 = \Option\value($_v78);
+                $_v85 = NULL;
                 $value_10 = \Random\nonSeeded()->Next2;
                 $x_10 = $value_10 & 0xFF;
-                $result_10 = $x_10;
-                $v80 = \Option\value($result_10);
-                $result_11 = NULL;
+                $_v85 = $x_10;
+                $v91 = \Option\value($_v85);
+                $_v92 = NULL;
                 $value_11 = \Random\nonSeeded()->Next2;
                 $x_11 = $value_11 & 0xFF;
-                $result_11 = $x_11;
-                $v86 = \Option\value($result_11);
-                $result_12 = NULL;
+                $_v92 = $x_11;
+                $v98 = \Option\value($_v92);
+                $_v99 = NULL;
                 $value_12 = \Random\nonSeeded()->Next2;
                 $x_12 = $value_12 & 0xFF;
-                $result_12 = $x_12;
-                $v92 = \Option\value($result_12);
-                $result_13 = NULL;
+                $_v99 = $x_12;
+                $v105 = \Option\value($_v99);
+                $_v106 = NULL;
                 $value_13 = \Random\nonSeeded()->Next2;
                 $x_13 = $value_13 & 0xFF;
-                $result_13 = $x_13;
-                $v98 = \Option\value($result_13);
-                $result_14 = NULL;
+                $_v106 = $x_13;
+                $v112 = \Option\value($_v106);
+                $_v113 = NULL;
                 $value_14 = \Random\nonSeeded()->Next2;
                 $x_14 = $value_14 & 0xFF;
-                $result_14 = $x_14;
-                $v104 = \Option\value($result_14);
-                $result_15 = NULL;
+                $_v113 = $x_14;
+                $v119 = \Option\value($_v113);
+                $_v120 = NULL;
                 $value_15 = \Random\nonSeeded()->Next2;
                 $x_15 = $value_15 & 0xFF;
-                $result_15 = $x_15;
-                $v110 = \Option\value($result_15);
-                $result_16 = NULL;
+                $_v120 = $x_15;
+                $v126 = \Option\value($_v120);
+                $_v127 = NULL;
                 $value_16 = \Random\nonSeeded()->Next2;
                 $x_16 = $value_16 & 0xFF;
-                $result_16 = $x_16;
-                $v116 = \Option\value($result_16);
-                $result_17 = NULL;
+                $_v127 = $x_16;
+                $v133 = \Option\value($_v127);
+                $_v134 = NULL;
                 $value_17 = \Random\nonSeeded()->Next2;
                 $x_17 = $value_17 & 0xFF;
-                $result_17 = $x_17;
-                $v122 = \Option\value($result_17);
-                $result_18 = NULL;
+                $_v134 = $x_17;
+                $v140 = \Option\value($_v134);
+                $_v141 = NULL;
                 $value_18 = \Random\nonSeeded()->Next2;
                 $x_18 = $value_18 & 0xFF;
-                $result_18 = $x_18;
-                $v128 = \Option\value($result_18);
-                $result_19 = NULL;
+                $_v141 = $x_18;
+                $v147 = \Option\value($_v141);
+                $_v148 = NULL;
                 $value_19 = \Random\nonSeeded()->Next2;
                 $x_19 = $value_19 & 0xFF;
-                $result_19 = $x_19;
-                $v134 = \Option\value($result_19);
-                $result_20 = NULL;
+                $_v148 = $x_19;
+                $v154 = \Option\value($_v148);
+                $_v155 = NULL;
                 $value_20 = \Random\nonSeeded()->Next2;
                 $x_20 = $value_20 & 0xFF;
-                $result_20 = $x_20;
-                $v140 = \Option\value($result_20);
-                $result_21 = NULL;
+                $_v155 = $x_20;
+                $v161 = \Option\value($_v155);
+                $_v162 = NULL;
                 $value_21 = \Random\nonSeeded()->Next2;
                 $x_21 = $value_21 & 0xFF;
-                $result_21 = $x_21;
-                $v146 = \Option\value($result_21);
-                $result_22 = NULL;
+                $_v162 = $x_21;
+                $v168 = \Option\value($_v162);
+                $_v169 = NULL;
                 $value_22 = \Random\nonSeeded()->Next2;
                 $x_22 = $value_22 & 0xFF;
-                $result_22 = $x_22;
-                $v152 = \Option\value($result_22);
-                $result_23 = NULL;
+                $_v169 = $x_22;
+                $v175 = \Option\value($_v169);
+                $_v176 = NULL;
                 $value_23 = \Random\nonSeeded()->Next2;
                 $x_23 = $value_23 & 0xFF;
-                $result_23 = $x_23;
-                return method14(new UH1_UH1_0($v26, new UH1_UH1_0($v32, new UH1_UH1_0($v38, new UH1_UH1_0($v44, new UH1_UH1_0($v50, new UH1_UH1_0($v56, new UH1_UH1_0($v62, new UH1_UH1_0($v68, new UH1_UH1_0($v74, new UH1_UH1_0($v80, new UH1_UH1_0($v86, new UH1_UH1_0($v92, new UH1_UH1_0($v98, new UH1_UH1_0($v104, new UH1_UH1_0($v110, new UH1_UH1_0($v116, new UH1_UH1_0($v122, new UH1_UH1_0($v128, new UH1_UH1_0($v134, new UH1_UH1_0($v140, new UH1_UH1_0($v146, new UH1_UH1_0($v152, new UH1_UH1_0(\Option\value($result_23), new UH1_UH1_1()))))))))))))))))))))))), 23);
+                $_v176 = $x_23;
+                return method14(new UH1_UH1_1($v28, new UH1_UH1_1($v35, new UH1_UH1_1($v42, new UH1_UH1_1($v49, new UH1_UH1_1($v56, new UH1_UH1_1($v63, new UH1_UH1_1($v70, new UH1_UH1_1($v77, new UH1_UH1_1($v84, new UH1_UH1_1($v91, new UH1_UH1_1($v98, new UH1_UH1_1($v105, new UH1_UH1_1($v112, new UH1_UH1_1($v119, new UH1_UH1_1($v126, new UH1_UH1_1($v133, new UH1_UH1_1($v140, new UH1_UH1_1($v147, new UH1_UH1_1($v154, new UH1_UH1_1($v161, new UH1_UH1_1($v168, new UH1_UH1_1($v175, new UH1_UH1_1(\Option\value($_v176), new UH1_UH1_0()))))))))))))))))))))))), 23);
             }
         } else {
-            $result_24 = NULL;
+            $_v210 = NULL;
             $value_24 = \Random\nonSeeded()->Next2;
             $x_24 = $value_24 & 0xFF;
-            $result_24 = $x_24;
-            $v193 = \Option\value($result_24);
-            $result_25 = NULL;
+            $_v210 = $x_24;
+            $v218 = \Option\value($_v210);
+            $_v219 = NULL;
             $value_25 = \Random\nonSeeded()->Next2;
             $x_25 = $value_25 & 0xFF;
-            $result_25 = $x_25;
-            $v199 = \Option\value($result_25);
-            $result_26 = NULL;
+            $_v219 = $x_25;
+            $v225 = \Option\value($_v219);
+            $_v226 = NULL;
             $value_26 = \Random\nonSeeded()->Next2;
             $x_26 = $value_26 & 0xFF;
-            $result_26 = $x_26;
-            $v205 = \Option\value($result_26);
-            $result_27 = NULL;
+            $_v226 = $x_26;
+            $v232 = \Option\value($_v226);
+            $_v233 = NULL;
             $value_27 = \Random\nonSeeded()->Next2;
             $x_27 = $value_27 & 0xFF;
-            $result_27 = $x_27;
-            $v211 = \Option\value($result_27);
-            $result_28 = NULL;
+            $_v233 = $x_27;
+            $v239 = \Option\value($_v233);
+            $_v240 = NULL;
             $value_28 = \Random\nonSeeded()->Next2;
             $x_28 = $value_28 & 0xFF;
-            $result_28 = $x_28;
-            $v217 = \Option\value($result_28);
-            $result_29 = NULL;
+            $_v240 = $x_28;
+            $v246 = \Option\value($_v240);
+            $_v247 = NULL;
             $value_29 = \Random\nonSeeded()->Next2;
             $x_29 = $value_29 & 0xFF;
-            $result_29 = $x_29;
-            $v223 = \Option\value($result_29);
-            $result_30 = NULL;
+            $_v247 = $x_29;
+            $v253 = \Option\value($_v247);
+            $_v254 = NULL;
             $value_30 = \Random\nonSeeded()->Next2;
             $x_30 = $value_30 & 0xFF;
-            $result_30 = $x_30;
-            $v229 = \Option\value($result_30);
-            $result_31 = NULL;
+            $_v254 = $x_30;
+            $v260 = \Option\value($_v254);
+            $_v261 = NULL;
             $value_31 = \Random\nonSeeded()->Next2;
             $x_31 = $value_31 & 0xFF;
-            $result_31 = $x_31;
-            $v235 = \Option\value($result_31);
-            $result_32 = NULL;
+            $_v261 = $x_31;
+            $v267 = \Option\value($_v261);
+            $_v268 = NULL;
             $value_32 = \Random\nonSeeded()->Next2;
             $x_32 = $value_32 & 0xFF;
-            $result_32 = $x_32;
-            $v241 = \Option\value($result_32);
-            $result_33 = NULL;
+            $_v268 = $x_32;
+            $v274 = \Option\value($_v268);
+            $_v275 = NULL;
             $value_33 = \Random\nonSeeded()->Next2;
             $x_33 = $value_33 & 0xFF;
-            $result_33 = $x_33;
-            $v247 = \Option\value($result_33);
-            $result_34 = NULL;
+            $_v275 = $x_33;
+            $v281 = \Option\value($_v275);
+            $_v282 = NULL;
             $value_34 = \Random\nonSeeded()->Next2;
             $x_34 = $value_34 & 0xFF;
-            $result_34 = $x_34;
-            $v253 = \Option\value($result_34);
-            $result_35 = NULL;
+            $_v282 = $x_34;
+            $v288 = \Option\value($_v282);
+            $_v289 = NULL;
             $value_35 = \Random\nonSeeded()->Next2;
             $x_35 = $value_35 & 0xFF;
-            $result_35 = $x_35;
-            $v259 = \Option\value($result_35);
-            $result_36 = NULL;
+            $_v289 = $x_35;
+            $v295 = \Option\value($_v289);
+            $_v296 = NULL;
             $value_36 = \Random\nonSeeded()->Next2;
             $x_36 = $value_36 & 0xFF;
-            $result_36 = $x_36;
-            $v265 = \Option\value($result_36);
-            $result_37 = NULL;
+            $_v296 = $x_36;
+            $v302 = \Option\value($_v296);
+            $_v303 = NULL;
             $value_37 = \Random\nonSeeded()->Next2;
             $x_37 = $value_37 & 0xFF;
-            $result_37 = $x_37;
-            $v271 = \Option\value($result_37);
-            $result_38 = NULL;
+            $_v303 = $x_37;
+            $v309 = \Option\value($_v303);
+            $_v310 = NULL;
             $value_38 = \Random\nonSeeded()->Next2;
             $x_38 = $value_38 & 0xFF;
-            $result_38 = $x_38;
-            $v277 = \Option\value($result_38);
-            $result_39 = NULL;
+            $_v310 = $x_38;
+            $v316 = \Option\value($_v310);
+            $_v317 = NULL;
             $value_39 = \Random\nonSeeded()->Next2;
             $x_39 = $value_39 & 0xFF;
-            $result_39 = $x_39;
-            $v283 = \Option\value($result_39);
-            $result_40 = NULL;
+            $_v317 = $x_39;
+            $v323 = \Option\value($_v317);
+            $_v324 = NULL;
             $value_40 = \Random\nonSeeded()->Next2;
             $x_40 = $value_40 & 0xFF;
-            $result_40 = $x_40;
-            $v289 = \Option\value($result_40);
-            $result_41 = NULL;
+            $_v324 = $x_40;
+            $v330 = \Option\value($_v324);
+            $_v331 = NULL;
             $value_41 = \Random\nonSeeded()->Next2;
             $x_41 = $value_41 & 0xFF;
-            $result_41 = $x_41;
-            $v295 = \Option\value($result_41);
-            $result_42 = NULL;
+            $_v331 = $x_41;
+            $v337 = \Option\value($_v331);
+            $_v338 = NULL;
             $value_42 = \Random\nonSeeded()->Next2;
             $x_42 = $value_42 & 0xFF;
-            $result_42 = $x_42;
-            $v301 = \Option\value($result_42);
-            $result_43 = NULL;
+            $_v338 = $x_42;
+            $v344 = \Option\value($_v338);
+            $_v345 = NULL;
             $value_43 = \Random\nonSeeded()->Next2;
             $x_43 = $value_43 & 0xFF;
-            $result_43 = $x_43;
-            $v307 = \Option\value($result_43);
-            $result_44 = NULL;
+            $_v345 = $x_43;
+            $v351 = \Option\value($_v345);
+            $_v352 = NULL;
             $value_44 = \Random\nonSeeded()->Next2;
             $x_44 = $value_44 & 0xFF;
-            $result_44 = $x_44;
-            $v313 = \Option\value($result_44);
-            $result_45 = NULL;
+            $_v352 = $x_44;
+            $v358 = \Option\value($_v352);
+            $_v359 = NULL;
             $value_45 = \Random\nonSeeded()->Next2;
             $x_45 = $value_45 & 0xFF;
-            $result_45 = $x_45;
-            $v319 = \Option\value($result_45);
-            $result_46 = NULL;
+            $_v359 = $x_45;
+            $v365 = \Option\value($_v359);
+            $_v366 = NULL;
             $value_46 = \Random\nonSeeded()->Next2;
             $x_46 = $value_46 & 0xFF;
-            $result_46 = $x_46;
-            return method14(new UH1_UH1_0($v193, new UH1_UH1_0($v199, new UH1_UH1_0($v205, new UH1_UH1_0($v211, new UH1_UH1_0($v217, new UH1_UH1_0($v223, new UH1_UH1_0($v229, new UH1_UH1_0($v235, new UH1_UH1_0($v241, new UH1_UH1_0($v247, new UH1_UH1_0($v253, new UH1_UH1_0($v259, new UH1_UH1_0($v265, new UH1_UH1_0($v271, new UH1_UH1_0($v277, new UH1_UH1_0($v283, new UH1_UH1_0($v289, new UH1_UH1_0($v295, new UH1_UH1_0($v301, new UH1_UH1_0($v307, new UH1_UH1_0($v313, new UH1_UH1_0($v319, new UH1_UH1_0(\Option\value($result_46), new UH1_UH1_1()))))))))))))))))))))))), 23);
+            $_v366 = $x_46;
+            return method14(new UH1_UH1_1($v218, new UH1_UH1_1($v225, new UH1_UH1_1($v232, new UH1_UH1_1($v239, new UH1_UH1_1($v246, new UH1_UH1_1($v253, new UH1_UH1_1($v260, new UH1_UH1_1($v267, new UH1_UH1_1($v274, new UH1_UH1_1($v281, new UH1_UH1_1($v288, new UH1_UH1_1($v295, new UH1_UH1_1($v302, new UH1_UH1_1($v309, new UH1_UH1_1($v316, new UH1_UH1_1($v323, new UH1_UH1_1($v330, new UH1_UH1_1($v337, new UH1_UH1_1($v344, new UH1_UH1_1($v351, new UH1_UH1_1($v358, new UH1_UH1_1($v365, new UH1_UH1_1(\Option\value($_v366), new UH1_UH1_0()))))))))))))))))))))))), 23);
         }
     }
 }

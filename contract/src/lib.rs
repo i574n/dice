@@ -10,26 +10,26 @@ impl Util {
     ) -> dice_lib::Dice::UH1 {
         match s.as_ref() {
             dice_lib::Dice::UH0::UH0_0(n, f) => {
-                dice_lib::Dice::UH1::UH1_0(*n, Self::stream_u8_to_list(f()).into())
+                dice_lib::Dice::UH1::UH1_1(*n, Self::stream_u8_to_list(f()).into())
             }
-            dice_lib::Dice::UH0::UH0_1 => dice_lib::Dice::UH1::UH1_1,
+            dice_lib::Dice::UH0::UH0_1 => dice_lib::Dice::UH1::UH1_0,
         }
     }
 
     fn list_u8_to_vec(s: fable_library_rust::Native_::LrcPtr<dice_lib::Dice::UH1>) -> Vec<u8> {
         match s.as_ref() {
-            dice_lib::Dice::UH1::UH1_0(n, f) => {
+            dice_lib::Dice::UH1::UH1_1(n, f) => {
                 let mut v = Self::list_u8_to_vec(f.clone());
                 v.insert(0, *n);
                 v
             }
-            dice_lib::Dice::UH1::UH1_1 => vec![],
+            dice_lib::Dice::UH1::UH1_0 => vec![],
         }
     }
 
     fn vec_u8_to_list(v: Vec<u8>) -> dice_lib::Dice::UH1 {
-        v.iter().rev().fold(dice_lib::Dice::UH1::UH1_1, |acc, x| {
-            dice_lib::Dice::UH1::UH1_0(*x, acc.into())
+        v.iter().rev().fold(dice_lib::Dice::UH1::UH1_0, |acc, x| {
+            dice_lib::Dice::UH1::UH1_1(*x, acc.into())
         })
     }
 

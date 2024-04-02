@@ -50,10 +50,10 @@ if (!$fast) {
     Remove-Item $targetDir/trunk -Recurse -Force -ErrorAction Ignore
     Remove-Item ./dist -Recurse -Force -ErrorAction Ignore
 
-    { pnpm install --frozen-lockfile } | Invoke-Block
+    { bun install --frozen-lockfile } | Invoke-Block
 }
 
-{ pnpm build-css } | Invoke-Block
+{ bun build-css } | Invoke-Block
 
 Write-Output "trunk:"
 
@@ -80,8 +80,8 @@ Copy-Item dist/popup.html dist/index.html -Force
 Copy-Item public/manifest.json dist/manifest.json -Force
 
 if (!$fast) {
-    { pnpm install --frozen-lockfile } | Invoke-Block -Location e2e
-    { pnpm test:e2e } | Invoke-Block -Location e2e
+    { bun install --frozen-lockfile } | Invoke-Block -Location e2e
+    { bun test:e2e } | Invoke-Block -Location e2e
 }
 
 if ($env:CI) {

@@ -129,8 +129,8 @@
 [<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Txn")>] type crate_model_near_nearblocks_Txn = class end
 [<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Root")>] type crate_model_near_nearblocks_Root = class end
 type [<Struct>] US0 =
-    | US0_0
-    | US0_1 of f1_0 : web_sys_HtmlElement
+    | US0_0 of f0_0 : web_sys_HtmlElement
+    | US0_1
 and [<Struct>] US1 =
     | US1_0
     | US1_1
@@ -141,57 +141,57 @@ and [<Struct>] US2 =
     | US2_0
     | US2_1
 and [<Struct>] US3 =
-    | US3_0 of f0_0 : rexie_Error
-    | US3_1 of f1_0 : rexie_Rexie
+    | US3_0 of f0_0 : rexie_Rexie
+    | US3_1 of f1_0 : rexie_Error
 and Heap3 = {l0 : bool; l1 : Heap0; l2 : bool; l3 : std_string_String}
 and [<Struct>] US4 =
-    | US4_0
-    | US4_1 of f1_0 : Heap3
+    | US4_0 of f0_0 : Heap3
+    | US4_1
 and [<Struct>] US5 =
-    | US5_0
-    | US5_1 of f1_0 : rexie_Rexie
+    | US5_0 of f0_0 : rexie_Rexie
+    | US5_1
 and [<Struct>] US6 =
-    | US6_0
-    | US6_1 of f1_0 : Heap3 option
+    | US6_0 of f0_0 : Heap3 option
+    | US6_1
 and [<Struct>] US7 =
-    | US7_0
-    | US7_1 of f1_0 : serde_json_Value
+    | US7_0 of f0_0 : serde_json_Value
+    | US7_1
 and [<Struct>] US8 =
-    | US8_0 of f0_0 : std_string_String
-    | US8_1 of f1_0 : Heap3 option option
+    | US8_0 of f0_0 : Heap3 option option
+    | US8_1 of f1_0 : std_string_String
 and [<Struct>] US9 =
-    | US9_0
-    | US9_1 of f1_0 : US4
+    | US9_0 of f0_0 : US4
+    | US9_1
 and [<Struct>] US10 =
-    | US10_0 of f0_0 : wasm_bindgen_JsValue
-    | US10_1 of f1_0 : web_sys_Storage option
+    | US10_0 of f0_0 : web_sys_Storage option
+    | US10_1 of f1_0 : wasm_bindgen_JsValue
 and [<Struct>] US12 =
-    | US12_0
-    | US12_1 of f1_0 : web_sys_Storage
+    | US12_0 of f0_0 : web_sys_Storage
+    | US12_1
 and [<Struct>] US11 =
-    | US11_0 of f0_0 : wasm_bindgen_JsValue
-    | US11_1 of f1_0 : US12
+    | US11_0 of f0_0 : US12
+    | US11_1 of f1_0 : wasm_bindgen_JsValue
 and [<Struct>] US13 =
-    | US13_0 of f0_0 : wasm_bindgen_JsValue
-    | US13_1 of f1_0 : std_string_String option
+    | US13_0 of f0_0 : std_string_String option
+    | US13_1 of f1_0 : wasm_bindgen_JsValue
 and [<Struct>] US15 =
-    | US15_0
-    | US15_1 of f1_0 : std_string_String
+    | US15_0 of f0_0 : std_string_String
+    | US15_1
 and [<Struct>] US14 =
-    | US14_0 of f0_0 : wasm_bindgen_JsValue
-    | US14_1 of f1_0 : US15
+    | US14_0 of f0_0 : US15
+    | US14_1 of f1_0 : wasm_bindgen_JsValue
 and [<Struct>] US16 =
-    | US16_0
-    | US16_1 of f1_0 : US15
+    | US16_0 of f0_0 : US15
+    | US16_1
 and [<Struct>] US17 =
-    | US17_0 of f0_0 : rexie_Error
-    | US17_1
+    | US17_0
+    | US17_1 of f1_0 : rexie_Error
 and [<Struct>] US18 =
-    | US18_0
-    | US18_1 of f1_0 : leptos_RwSignal<bool>
+    | US18_0 of f0_0 : leptos_RwSignal<bool>
+    | US18_1
 and [<Struct>] US19 =
-    | US19_0
-    | US19_1 of f1_0 : bool
+    | US19_0 of f0_0 : bool
+    | US19_1
 and [<Struct>] US21 =
     | US21_0
 and [<Struct>] US20 =
@@ -201,15 +201,15 @@ and [<Struct>] US20 =
     | US20_3
     | US20_4
 and [<Struct>] US22 =
-    | US22_0 of f0_0 : std_string_String
-    | US22_1 of f1_0 : leptos_router_Url
+    | US22_0 of f0_0 : leptos_router_Url
+    | US22_1 of f1_0 : std_string_String
 and [<Struct>] US23 =
-    | US23_0
-    | US23_1 of f1_0 : US20
+    | US23_0 of f0_0 : US20
+    | US23_1
 and Mut0 = {mutable l0 : int32; mutable l1 : US23}
 and [<Struct>] US24 =
-    | US24_0
-    | US24_1 of f1_0 : leptos_Fragment
+    | US24_0 of f0_0 : leptos_Fragment
+    | US24_1
 and [<Struct>] US25 =
     | US25_0
     | US25_1
@@ -218,146 +218,146 @@ and Mut2 = {mutable l0 : int32; mutable l1 : Vec<struct (bool * string * bool * 
 and Mut3 = {mutable l0 : int32; mutable l1 : Vec<string>}
 and Heap4 = {l0 : std_string_String}
 and [<Struct>] US26 =
-    | US26_0 of f0_0 : std_string_String
-    | US26_1 of f1_0 : Heap4 option
+    | US26_0 of f0_0 : Heap4 option
+    | US26_1 of f1_0 : std_string_String
 and [<Struct>] US27 =
-    | US27_0
-    | US27_1 of f1_0 : Heap4
+    | US27_0 of f0_0 : Heap4
+    | US27_1
 and [<Struct>] US28 =
-    | US28_0
-    | US28_1 of f1_0 : Result<(Heap4 option []), std_string_String>
+    | US28_0 of f0_0 : Result<(Heap4 option []), std_string_String>
+    | US28_1
 and [<Struct>] US30 =
-    | US30_0 of f0_0 : std_string_String
-    | US30_1 of f1_0 : (US27 [])
+    | US30_0 of f0_0 : (US27 [])
+    | US30_1 of f1_0 : std_string_String
 and [<Struct>] US29 =
-    | US29_0
-    | US29_1 of f1_0 : US30
+    | US29_0 of f0_0 : US30
+    | US29_1
 and [<Struct>] US31 =
-    | US31_0 of f0_0 : std_string_String
-    | US31_1 of f1_0 : (Heap4 option [])
+    | US31_0 of f0_0 : (Heap4 option [])
+    | US31_1 of f1_0 : std_string_String
 and [<Struct>] US34 =
-    | US34_0
-    | US34_1 of f1_0 : string
+    | US34_0 of f0_0 : string
+    | US34_1
 and [<Struct>] US33 =
-    | US33_0 of f0_0 : std_string_String
-    | US33_1 of f1_0 : US34
+    | US33_0 of f0_0 : US34
+    | US33_1 of f1_0 : std_string_String
 and [<Struct>] US32 =
-    | US32_0
-    | US32_1 of f1_0 : US33
+    | US32_0 of f0_0 : US33
+    | US32_1
 and [<Struct>] US35 =
-    | US35_0
-    | US35_1 of f1_0 : US27
+    | US35_0 of f0_0 : US27
+    | US35_1
 and [<Struct>] US36 =
-    | US36_0 of f0_0 : std_string_String
-    | US36_1 of f1_0 : string option
+    | US36_0 of f0_0 : string option
+    | US36_1 of f1_0 : std_string_String
 and [<Struct>] US37 =
-    | US37_0 of f0_0 : std_string_String
-    | US37_1
+    | US37_0
+    | US37_1 of f1_0 : std_string_String
 and [<Struct>] US38 =
-    | US38_0
-    | US38_1 of f1_0 : Result<(string option []), std_string_String>
+    | US38_0 of f0_0 : Result<(string option []), std_string_String>
+    | US38_1
 and [<Struct>] US40 =
-    | US40_0 of f0_0 : std_string_String
-    | US40_1 of f1_0 : (string option [])
+    | US40_0 of f0_0 : (string option [])
+    | US40_1 of f1_0 : std_string_String
 and [<Struct>] US39 =
-    | US39_0
-    | US39_1 of f1_0 : US40
+    | US39_0 of f0_0 : US40
+    | US39_1
 and [<Struct>] US42 =
-    | US42_0 of f0_0 : std_string_String
-    | US42_1 of f1_0 : (US34 [])
+    | US42_0 of f0_0 : (US34 [])
+    | US42_1 of f1_0 : std_string_String
 and [<Struct>] US41 =
-    | US41_0
-    | US41_1 of f1_0 : US42
+    | US41_0 of f0_0 : US42
+    | US41_1
 and [<Struct>] US43 =
-    | US43_0
-    | US43_1 of f1_0 : US34
+    | US43_0 of f0_0 : US34
+    | US43_1
 and [<Struct>] US44 =
-    | US44_0
-    | US44_1 of f1_0 : Result<Vec<Heap4 option>, std_string_String>
+    | US44_0 of f0_0 : Result<Vec<Heap4 option>, std_string_String>
+    | US44_1
 and [<Struct>] US45 =
-    | US45_0 of f0_0 : std_string_String
-    | US45_1 of f1_0 : Vec<Heap4 option>
+    | US45_0 of f0_0 : Vec<Heap4 option>
+    | US45_1 of f1_0 : std_string_String
 and Heap5 = {l0 : (struct (std_string_String * std_string_String option) []); l1 : float; l2 : uint32; l3 : std_string_String; l4 : std_string_String; l5 : (std_string_String []); l6 : bool; l7 : float; l8 : std_string_String; l9 : std_string_String; l10 : std_string_String; l11 : std_string_String}
 and [<Struct>] US46 =
-    | US46_0 of f0_0 : std_string_String
-    | US46_1 of f1_0 : (struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) []) option
+    | US46_0 of f0_0 : (struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) []) option
+    | US46_1 of f1_0 : std_string_String
 and [<Struct>] US48 =
-    | US48_0
-    | US48_1 of f1_0 : (struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) [])
+    | US48_0 of f0_0 : (struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) [])
+    | US48_1
 and [<Struct>] US47 =
-    | US47_0 of f0_0 : std_string_String
-    | US47_1 of f1_0 : US48
+    | US47_0 of f0_0 : US48
+    | US47_1 of f1_0 : std_string_String
 and [<Struct>] US50 =
-    | US50_0
-    | US50_1 of f1_0 : (struct (string * unativeint * Heap5) [])
+    | US50_0 of f0_0 : (struct (string * unativeint * Heap5) [])
+    | US50_1
 and [<Struct>] US49 =
-    | US49_0 of f0_0 : std_string_String
-    | US49_1 of f1_0 : US50
+    | US49_0 of f0_0 : US50
+    | US49_1 of f1_0 : std_string_String
 and [<Struct>] US52 =
-    | US52_0
-    | US52_1 of f1_0 : Vec<struct (string * unativeint * Heap5)>
+    | US52_0 of f0_0 : Vec<struct (string * unativeint * Heap5)>
+    | US52_1
 and [<Struct>] US51 =
-    | US51_0 of f0_0 : std_string_String
-    | US51_1 of f1_0 : US52
+    | US51_0 of f0_0 : US52
+    | US51_1 of f1_0 : std_string_String
 and [<Struct>] US53 =
-    | US53_0 of f0_0 : std_string_String
-    | US53_1 of f1_0 : Vec<struct (string * unativeint * Heap5)> option
+    | US53_0 of f0_0 : Vec<struct (string * unativeint * Heap5)> option
+    | US53_1 of f1_0 : std_string_String
 and [<Struct>] US54 =
-    | US54_0 of f0_0 : std_string_String
-    | US54_1 of f1_0 : Vec<struct (string * unativeint * Heap5)>
+    | US54_0 of f0_0 : Vec<struct (string * unativeint * Heap5)>
+    | US54_1 of f1_0 : std_string_String
 and Mut4 = {mutable l0 : int32; mutable l1 : US54}
 and [<Struct>] US55 =
-    | US55_0 of f0_0 : std_string_String
-    | US55_1 of f1_0 : (struct (string * unativeint * Heap5) [])
+    | US55_0 of f0_0 : (struct (string * unativeint * Heap5) [])
+    | US55_1 of f1_0 : std_string_String
 and [<Struct>] US56 =
-    | US56_0 of f0_0 : std_string_String
-    | US56_1 of f1_0 : (struct (string * unativeint * Heap5) []) option
+    | US56_0 of f0_0 : (struct (string * unativeint * Heap5) []) option
+    | US56_1 of f1_0 : std_string_String
 and [<Struct>] US58 =
-    | US58_0
-    | US58_1 of f1_0 : (struct (bool * string * bool * US25 * string) [])
+    | US58_0 of f0_0 : (struct (bool * string * bool * US25 * string) [])
+    | US58_1
 and [<Struct>] US57 =
-    | US57_0 of f0_0 : std_string_String
-    | US57_1 of f1_0 : US58
+    | US57_0 of f0_0 : US58
+    | US57_1 of f1_0 : std_string_String
 and [<Struct>] US59 =
-    | US59_0 of f0_0 : std_string_String
-    | US59_1 of f1_0 : (struct (bool * string * bool * US25 * string) []) option
+    | US59_0 of f0_0 : (struct (bool * string * bool * US25 * string) []) option
+    | US59_1 of f1_0 : std_string_String
 and Heap6 = {l0 : int32}
 and [<Struct>] US60 =
-    | US60_0
-    | US60_1 of f1_0 : struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * f1_1 : std_string_String option * f1_2 : std_string_String * f1_3 : struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option
+    | US60_0 of f0_0 : struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * f0_1 : std_string_String option * f0_2 : std_string_String * f0_3 : struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option
+    | US60_1
 and [<Struct>] US61 =
-    | US61_0 of f0_0 : std_string_String
-    | US61_1 of f1_0 : US15
+    | US61_0 of f0_0 : US15
+    | US61_1 of f1_0 : std_string_String
 and [<Struct>] US62 =
-    | US62_0 of f0_0 : std_string_String
-    | US62_1 of f1_0 : US60
+    | US62_0 of f0_0 : US60
+    | US62_1 of f1_0 : std_string_String
 and [<Struct>] US63 =
-    | US63_0 of f0_0 : std_string_String
-    | US63_1 of f1_0 : crate_model_near_rpc_RpcResponse
+    | US63_0 of f0_0 : crate_model_near_rpc_RpcResponse
+    | US63_1 of f1_0 : std_string_String
 and [<Struct>] US64 =
-    | US64_0 of f0_0 : std_string_String
-    | US64_1 of f1_0 : struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * f1_1 : std_string_String option * f1_2 : std_string_String * f1_3 : struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option
+    | US64_0 of f0_0 : struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * f0_1 : std_string_String option * f0_2 : std_string_String * f0_3 : struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option
+    | US64_1 of f1_0 : std_string_String
 and [<Struct>] US65 =
-    | US65_0
-    | US65_1 of f1_0 : US62
+    | US65_0 of f0_0 : US62
+    | US65_1
 and [<Struct>] US66 =
-    | US66_0 of f0_0 : std_string_String
-    | US66_1 of f1_0 : struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option
+    | US66_0 of f0_0 : struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option
+    | US66_1 of f1_0 : std_string_String
 and [<Struct>] US67 =
-    | US67_0
-    | US67_1 of f1_0 : struct (std_string_String option * std_string_String option) option * f1_1 : std_string_String * f1_2 : int32 * f1_3 : std_string_String * f1_4 : std_string_String * f1_5 : std_string_String
+    | US67_0 of f0_0 : struct (std_string_String option * std_string_String option) option * f0_1 : std_string_String * f0_2 : int32 * f0_3 : std_string_String * f0_4 : std_string_String * f0_5 : std_string_String
+    | US67_1
 and [<Struct>] US68 =
-    | US68_0
-    | US68_1 of f1_0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>>
+    | US68_0 of f0_0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>>
+    | US68_1
 and [<Struct>] US69 =
-    | US69_0
-    | US69_1 of f1_0 : (struct (int32 * leptos_ReadSignal<std_string_String>) [])
+    | US69_0 of f0_0 : (struct (int32 * leptos_ReadSignal<std_string_String>) [])
+    | US69_1
 and [<Struct>] US70 =
-    | US70_0
-    | US70_1 of f1_0 : leptos_Memo<US34>
+    | US70_0 of f0_0 : leptos_Memo<US34>
+    | US70_1
 and [<Struct>] US71 =
-    | US71_0
-    | US71_1 of f1_0 : chrono_DateTime<chrono_Utc>
+    | US71_0 of f0_0 : chrono_DateTime<chrono_Utc>
+    | US71_1
 and [<Struct>] US72 =
     | US72_0 of f0_0 : string
     | US72_1 of f1_0 : string
@@ -368,7 +368,7 @@ and [<Struct>] US73 =
 let rec method0 (v0 : string) : string =
     v0
 and closure1 () (v0 : web_sys_HtmlElement) : US0 =
-    US0_1(v0)
+    US0_0(v0)
 and method1 () : string =
     let v0 : string = ""
     v0
@@ -400,15 +400,15 @@ and method13 (v0 : Heap1) : Heap1 =
 and method14 (v0 : std_collections_HashMap<std_string_String, leptos_RwSignal<bool>>) : std_collections_HashMap<std_string_String, leptos_RwSignal<bool>> =
     v0
 and closure6 () () : US2 =
-    US2_0
+    US2_1
 and method18 () : (unit -> US2) =
     closure6()
 and method20 (v0 : (unit -> US2)) : (unit -> US2) =
     v0
 and closure7 () (v0 : rexie_Rexie) : US3 =
-    US3_1(v0)
-and closure8 () (v0 : rexie_Error) : US3 =
     US3_0(v0)
+and closure8 () (v0 : rexie_Error) : US3 =
+    US3_1(v0)
 and method23 (v0 : US3) : US3 =
     v0
 and method22 () : std_pin_Pin<Box<Dyn<Future<US3>>>> =
@@ -447,10 +447,10 @@ and method21 () : std_pin_Pin<Box<Dyn<Future<rexie_Rexie>>>> =
     let v9 : US3 = Fable.Core.RustInterop.emitRustExpr () v8
     let v15 : rexie_Rexie =
         match v9 with
-        | US3_0(v11) -> (* Error *)
+        | US3_1(v11) -> (* Error *)
             let v12 : string = $"resultm.get / Result value was Error: {v11}"
             failwith<rexie_Rexie> v12
-        | US3_1(v10) -> (* Ok *)
+        | US3_0(v10) -> (* Ok *)
             v10
     let v16 : string = $"%A{v15}"
     let v17 : string = "state_core.use_database (3) / database create_local_resource / result: " + string v16 + ""
@@ -505,7 +505,7 @@ and method26 (v0 : leptos_Resource<US2, rexie_Rexie>) : (unit -> rexie_Rexie opt
 and method29 (v0 : (unit -> rexie_Rexie option)) : (unit -> rexie_Rexie option) =
     v0
 and closure10 () (v0 : rexie_Rexie) : US5 =
-    US5_1(v0)
+    US5_0(v0)
 and method32 (v0 : (string [])) : (string []) =
     v0
 and method33 (v0 : (string [])) : (string []) =
@@ -567,7 +567,7 @@ and method47 () : (serde_wasm_bindgen_Error -> std_string_String) =
 and method48 (v0 : Result<serde_json_Value option, serde_wasm_bindgen_Error>) : Result<serde_json_Value option, serde_wasm_bindgen_Error> =
     v0
 and closure16 () (v0 : serde_json_Value) : US7 =
-    US7_1(v0)
+    US7_0(v0)
 and method49 (v0 : serde_json_Value) : serde_json_Value =
     v0
 and closure17 () (v0 : serde_json_Error) : std_string_String =
@@ -650,13 +650,13 @@ and method31 (v0 : rexie_Rexie) : std_pin_Pin<Box<Dyn<Future<Result<Heap3 option
     let v54 : string = "v53?"
     let v55 : serde_json_Value option = Fable.Core.RustInterop.emitRustExpr () v54
     let v56 : (serde_json_Value -> US7) = closure16()
-    let v57 : US7 = US7_0
+    let v57 : US7 = US7_1
     let v58 : US7 = v55 |> Option.map v56 |> Option.defaultValue v57
     let v93 : US6 =
         match v58 with
-        | US7_0 -> (* None *)
-            US6_0
-        | US7_1(v59) -> (* Some *)
+        | US7_1 -> (* None *)
+            US6_1
+        | US7_0(v59) -> (* Some *)
             let v60 : serde_json_Value = method49(v59)
             let v61 : string = "serde_json::from_value(v60)"
             let v62 : Result<Vec<uint8>, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr () v61
@@ -689,13 +689,13 @@ and method31 (v0 : rexie_Rexie) : std_pin_Pin<Box<Dyn<Future<Result<Heap3 option
             let v87 : Result<Heap3 option, std_string_String> = Fable.Core.RustInterop.emitRustExpr () v86
             let v88 : string = "v87?"
             let v89 : Heap3 option = Fable.Core.RustInterop.emitRustExpr () v88
-            US6_1(v89)
+            US6_0(v89)
     let v98 : Heap3 option option =
         match v93 with
-        | US6_0 -> (* None *)
+        | US6_1 -> (* None *)
             let v96 : Heap3 option option = None
             v96
-        | US6_1(v94) -> (* Some *)
+        | US6_0(v94) -> (* Some *)
             let v95 : Heap3 option option = Some v94
             v95
     let v99 : Result<Heap3 option option, std_string_String> = Ok v98
@@ -708,13 +708,13 @@ and method31 (v0 : rexie_Rexie) : std_pin_Pin<Box<Dyn<Future<Result<Heap3 option
     let v104 : std_pin_Pin<Box<Dyn<Future<Result<Heap3 option option, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v103
     v104
 and closure19 () (v0 : Heap3 option option) : US8 =
-    US8_1(v0)
-and closure20 () (v0 : std_string_String) : US8 =
     US8_0(v0)
+and closure20 () (v0 : std_string_String) : US8 =
+    US8_1(v0)
 and closure21 () (v0 : Heap3 option) : US6 =
-    US6_1(v0)
+    US6_0(v0)
 and closure22 () (v0 : Heap3) : US4 =
-    US4_1(v0)
+    US4_0(v0)
 and method57 (v0 : US4) : US4 =
     v0
 and method30 (v0 : rexie_Rexie option) : std_pin_Pin<Box<Dyn<Future<US4>>>> =
@@ -726,13 +726,13 @@ and method30 (v0 : rexie_Rexie option) : std_pin_Pin<Box<Dyn<Future<US4>>>> =
     let v5 : string = @$"leptos::logging::log!(""{{}}"", v4)"
     Fable.Core.RustInterop.emitRustExpr () v5
     let v6 : (rexie_Rexie -> US5) = closure10()
-    let v7 : US5 = US5_0
+    let v7 : US5 = US5_1
     let v8 : US5 = v0 |> Option.map v6 |> Option.defaultValue v7
     let v33 : US6 =
         match v8 with
-        | US5_0 -> (* None *)
-            US6_0
-        | US5_1(v9) -> (* Some *)
+        | US5_1 -> (* None *)
+            US6_1
+        | US5_0(v9) -> (* Some *)
             let v10 : string = "core-state-heap"
             let v11 : string = "state_core.get_data () / id: " + v10 + ""
             let v12 : string = method0(v11)
@@ -745,36 +745,36 @@ and method30 (v0 : rexie_Rexie option) : std_pin_Pin<Box<Dyn<Future<US4>>>> =
             let v18 : (std_string_String -> US8) = closure20()
             let v19 : US8 = match v16 with Ok x -> v17 x | Error x -> v18 x
             match v19 with
-            | US8_0(v24) -> (* Error *)
+            | US8_1(v24) -> (* Error *)
                 let v25 : string = "state_core.use_core_database (3) / error: " + string v24 + ""
                 let v26 : string = method0(v25)
                 let v27 : string = @$"leptos::logging::log!(""{{}}"", v26)"
                 Fable.Core.RustInterop.emitRustExpr () v27
-                US6_0
-            | US8_1(v20) -> (* Ok *)
+                US6_1
+            | US8_0(v20) -> (* Ok *)
                 let v21 : (Heap3 option -> US6) = closure21()
-                let v22 : US6 = US6_0
+                let v22 : US6 = US6_1
                 let v23 : US6 = v20 |> Option.map v21 |> Option.defaultValue v22
                 v23
     let v41 : US9 =
         match v33 with
-        | US6_0 -> (* None *)
-            US9_0
-        | US6_1(v34) -> (* Some *)
+        | US6_1 -> (* None *)
+            US9_1
+        | US6_0(v34) -> (* Some *)
             let v35 : (Heap3 -> US4) = closure22()
-            let v36 : US4 = US4_0
+            let v36 : US4 = US4_1
             let v37 : US4 = v34 |> Option.map v35 |> Option.defaultValue v36
-            US9_1(v37)
+            US9_0(v37)
     let v48 : US4 =
         match v41 with
-        | US9_1(v42) -> (* Some *)
+        | US9_0(v42) -> (* Some *)
             match v42 with
-            | US4_1(v43) -> (* Some *)
-                US4_1(v43)
+            | US4_0(v43) -> (* Some *)
+                US4_0(v43)
             | _ ->
-                US4_0
+                US4_1
         | _ ->
-            US4_0
+            US4_1
     let v49 : US4 = method57(v48)
     let v50 : string = "v49 }}})"
     Fable.Core.RustInterop.emitRustExpr () v50
@@ -814,25 +814,25 @@ and method61 (v0 : web_sys_Window) : Result<web_sys_Storage option, wasm_bindgen
     let v3 : Result<web_sys_Storage option, wasm_bindgen_JsValue> = Fable.Core.RustInterop.emitRustExpr () v2
     v3
 and closure24 () (v0 : web_sys_Storage option) : US10 =
-    US10_1(v0)
-and closure25 () (v0 : wasm_bindgen_JsValue) : US10 =
     US10_0(v0)
+and closure25 () (v0 : wasm_bindgen_JsValue) : US10 =
+    US10_1(v0)
 and closure26 () (v0 : web_sys_Storage) : US12 =
-    US12_1(v0)
+    US12_0(v0)
 and method63 (v0 : leptos_Resource<rexie_Rexie option, US4>) : leptos_Resource<rexie_Rexie option, US4> =
     v0
 and closure27 () (v0 : US4) : US9 =
-    US9_1(v0)
+    US9_0(v0)
 and method64 (v0 : web_sys_Storage) : web_sys_Storage =
     v0
 and closure28 () (v0 : std_string_String option) : US13 =
-    US13_1(v0)
-and closure29 () (v0 : wasm_bindgen_JsValue) : US13 =
     US13_0(v0)
+and closure29 () (v0 : wasm_bindgen_JsValue) : US13 =
+    US13_1(v0)
 and method65 (v0 : std_string_String option) : std_string_String option =
     v0
 and closure30 () (v0 : std_string_String) : US15 =
-    US15_1(v0)
+    US15_0(v0)
 and method66 (v0 : std_string_String option) : std_string_String option =
     v0
 and method68 (v0 : std_string_String) : std_string_String =
@@ -864,7 +864,7 @@ and closure31 () (v0 : std_string_String) : US4 =
     let v14 : string = "v13.ok()"
     let v15 : Heap3 option = Fable.Core.RustInterop.emitRustExpr () v14
     let v16 : (Heap3 -> US4) = closure22()
-    let v17 : US4 = US4_0
+    let v17 : US4 = US4_1
     let v18 : US4 = v15 |> Option.map v16 |> Option.defaultValue v17
     v18
 and method67 () : (std_string_String -> US4) =
@@ -964,22 +964,22 @@ and closure23 (v0 : Heap2, v1 : leptos_Resource<rexie_Rexie option, US4>) () : u
     let v9 : US10 = match v6 with Ok x -> v7 x | Error x -> v8 x
     let v18 : US11 =
         match v9 with
-        | US10_0(v15) -> (* Error *)
-            US11_0(v15)
-        | US10_1(v10) -> (* Ok *)
+        | US10_1(v15) -> (* Error *)
+            US11_1(v15)
+        | US10_0(v10) -> (* Ok *)
             let v11 : (web_sys_Storage -> US12) = closure26()
-            let v12 : US12 = US12_0
+            let v12 : US12 = US12_1
             let v13 : US12 = v10 |> Option.map v11 |> Option.defaultValue v12
-            US11_1(v13)
+            US11_0(v13)
     match v18 with
-    | US11_1(v19) -> (* Ok *)
+    | US11_0(v19) -> (* Ok *)
         match v19 with
-        | US12_1(v20) -> (* Some *)
+        | US12_0(v20) -> (* Some *)
             let v21 : leptos_Resource<rexie_Rexie option, US4> = method63(v1)
             let v22 : string = $"leptos::SignalGet::get(&v21)"
             let v23 : US4 option = Fable.Core.RustInterop.emitRustExpr () v22
             let v24 : (US4 -> US9) = closure27()
-            let v25 : US9 = US9_0
+            let v25 : US9 = US9_1
             let v26 : US9 = v23 |> Option.map v24 |> Option.defaultValue v25
             let v27 : string = $"%A{v26}"
             let v28 : string = "state_core.use_core_database (5) / effect core_state_heap / ##2 / core_state_heap: " + v27 + ""
@@ -988,10 +988,10 @@ and closure23 (v0 : Heap2, v1 : leptos_Resource<rexie_Rexie option, US4>) () : u
             Fable.Core.RustInterop.emitRustExpr () v30
             let v139 : US4 =
                 match v26 with
-                | US9_1(v31) -> (* Some *)
+                | US9_0(v31) -> (* Some *)
                     match v31 with
-                    | US4_1(v32) -> (* Some *)
-                        US4_1(v32)
+                    | US4_0(v32) -> (* Some *)
+                        US4_0(v32)
                     | _ ->
                         let v34 : web_sys_Storage = method64(v20)
                         let v35 : string = method43()
@@ -1004,55 +1004,55 @@ and closure23 (v0 : Heap2, v1 : leptos_Resource<rexie_Rexie option, US4>) () : u
                         let v42 : US13 = match v39 with Ok x -> v40 x | Error x -> v41 x
                         let v54 : US14 =
                             match v42 with
-                            | US13_0(v51) -> (* Error *)
-                                US14_0(v51)
-                            | US13_1(v43) -> (* Ok *)
+                            | US13_1(v51) -> (* Error *)
+                                US14_1(v51)
+                            | US13_0(v43) -> (* Ok *)
                                 let v44 : std_string_String option = method65(v43)
                                 let v45 : string = "serde_json::from_value(v44.into()).unwrap()"
                                 let v46 : std_string_String option = Fable.Core.RustInterop.emitRustExpr () v45
                                 let v47 : (std_string_String -> US15) = closure30()
-                                let v48 : US15 = US15_0
+                                let v48 : US15 = US15_1
                                 let v49 : US15 = v46 |> Option.map v47 |> Option.defaultValue v48
-                                US14_1(v49)
+                                US14_0(v49)
                         let v60 : US16 =
                             match v54 with
-                            | US14_0(v57) -> (* Error *)
-                                US16_0
-                            | US14_1(v55) -> (* Ok *)
-                                US16_1(v55)
+                            | US14_1(v57) -> (* Error *)
+                                US16_1
+                            | US14_0(v55) -> (* Ok *)
+                                US16_0(v55)
                         let v67 : US15 =
                             match v60 with
-                            | US16_1(v61) -> (* Some *)
+                            | US16_0(v61) -> (* Some *)
                                 match v61 with
-                                | US15_1(v62) -> (* Some *)
-                                    US15_1(v62)
+                                | US15_0(v62) -> (* Some *)
+                                    US15_0(v62)
                                 | _ ->
-                                    US15_0
+                                    US15_1
                             | _ ->
-                                US15_0
+                                US15_1
                         let v72 : std_string_String option =
                             match v67 with
-                            | US15_0 -> (* None *)
+                            | US15_1 -> (* None *)
                                 let v70 : std_string_String option = None
                                 v70
-                            | US15_1(v68) -> (* Some *)
+                            | US15_0(v68) -> (* Some *)
                                 let v69 : std_string_String option = Some v68
                                 v69
                         let v73 : std_string_String option = method66(v72)
                         let v74 : (std_string_String -> US4) = method67()
                         let v75 : string = "v73.map(|x| v74(x))"
                         let v76 : US4 option = Fable.Core.RustInterop.emitRustExpr () v75
-                        let v77 : US9 = US9_0
+                        let v77 : US9 = US9_1
                         let v78 : US9 = v76 |> Option.map v24 |> Option.defaultValue v77
                         match v78 with
-                        | US9_1(v79) -> (* Some *)
+                        | US9_0(v79) -> (* Some *)
                             match v79 with
-                            | US4_1(v80) -> (* Some *)
-                                US4_1(v80)
+                            | US4_0(v80) -> (* Some *)
+                                US4_0(v80)
                             | _ ->
-                                US4_0
+                                US4_1
                         | _ ->
-                            US4_0
+                            US4_1
                 | _ ->
                     let v87 : web_sys_Storage = method64(v20)
                     let v88 : string = method43()
@@ -1065,62 +1065,62 @@ and closure23 (v0 : Heap2, v1 : leptos_Resource<rexie_Rexie option, US4>) () : u
                     let v95 : US13 = match v92 with Ok x -> v93 x | Error x -> v94 x
                     let v107 : US14 =
                         match v95 with
-                        | US13_0(v104) -> (* Error *)
-                            US14_0(v104)
-                        | US13_1(v96) -> (* Ok *)
+                        | US13_1(v104) -> (* Error *)
+                            US14_1(v104)
+                        | US13_0(v96) -> (* Ok *)
                             let v97 : std_string_String option = method65(v96)
                             let v98 : string = "serde_json::from_value(v97.into()).unwrap()"
                             let v99 : std_string_String option = Fable.Core.RustInterop.emitRustExpr () v98
                             let v100 : (std_string_String -> US15) = closure30()
-                            let v101 : US15 = US15_0
+                            let v101 : US15 = US15_1
                             let v102 : US15 = v99 |> Option.map v100 |> Option.defaultValue v101
-                            US14_1(v102)
+                            US14_0(v102)
                     let v113 : US16 =
                         match v107 with
-                        | US14_0(v110) -> (* Error *)
-                            US16_0
-                        | US14_1(v108) -> (* Ok *)
-                            US16_1(v108)
+                        | US14_1(v110) -> (* Error *)
+                            US16_1
+                        | US14_0(v108) -> (* Ok *)
+                            US16_0(v108)
                     let v120 : US15 =
                         match v113 with
-                        | US16_1(v114) -> (* Some *)
+                        | US16_0(v114) -> (* Some *)
                             match v114 with
-                            | US15_1(v115) -> (* Some *)
-                                US15_1(v115)
+                            | US15_0(v115) -> (* Some *)
+                                US15_0(v115)
                             | _ ->
-                                US15_0
+                                US15_1
                         | _ ->
-                            US15_0
+                            US15_1
                     let v125 : std_string_String option =
                         match v120 with
-                        | US15_0 -> (* None *)
+                        | US15_1 -> (* None *)
                             let v123 : std_string_String option = None
                             v123
-                        | US15_1(v121) -> (* Some *)
+                        | US15_0(v121) -> (* Some *)
                             let v122 : std_string_String option = Some v121
                             v122
                     let v126 : std_string_String option = method66(v125)
                     let v127 : (std_string_String -> US4) = method67()
                     let v128 : string = "v126.map(|x| v127(x))"
                     let v129 : US4 option = Fable.Core.RustInterop.emitRustExpr () v128
-                    let v130 : US9 = US9_0
+                    let v130 : US9 = US9_1
                     let v131 : US9 = v129 |> Option.map v24 |> Option.defaultValue v130
                     match v131 with
-                    | US9_1(v132) -> (* Some *)
+                    | US9_0(v132) -> (* Some *)
                         match v132 with
-                        | US4_1(v133) -> (* Some *)
-                            US4_1(v133)
+                        | US4_0(v133) -> (* Some *)
+                            US4_0(v133)
                         | _ ->
-                            US4_0
+                            US4_1
                     | _ ->
-                        US4_0
+                        US4_1
             let v140 : string = $"%A{v139}"
             let v141 : string = "state_core.use_core_database (6) / effect core_state_heap / ##3 / core_state_heap: " + v140 + ""
             let v142 : string = method0(v141)
             let v143 : string = @$"leptos::logging::log!(""{{}}"", v142)"
             Fable.Core.RustInterop.emitRustExpr () v143
             match v139 with
-            | US4_1(v144) -> (* Some *)
+            | US4_0(v144) -> (* Some *)
                 let v145 : (unit -> unit) = method72(v0, v144)
                 let v146 : string = "Func0::new(move || v145())"
                 let v147 : Func0<unit> = Fable.Core.RustInterop.emitRustExpr () v146
@@ -1191,22 +1191,22 @@ and method88 (v0 : rexie_Rexie, v1 : Heap3) : std_pin_Pin<Box<Dyn<Future<Result<
     let v24 : std_pin_Pin<Box<Dyn<Future<Result<unit, rexie_Error>>>>> = Fable.Core.RustInterop.emitRustExpr () v23
     v24
 and closure40 () () : US17 =
-    US17_1
+    US17_0
 and closure41 () (v0 : rexie_Error) : US17 =
-    US17_0(v0)
+    US17_1(v0)
 and method91 () : unit =
     ()
 and method86 (v0 : Heap3, v1 : string, v2 : US5) : std_pin_Pin<Box<Dyn<Future<unit>>>> =
     let v3 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v3
     match v2 with
-    | US5_0 -> (* None *)
+    | US5_1 -> (* None *)
         let v22 : string = "state_core.use_core_database (13) / set_core_state_heap_action / database=None"
         let v23 : string = method0(v22)
         let v24 : string = @$"leptos::logging::log!(""{{}}"", v23)"
         Fable.Core.RustInterop.emitRustExpr () v24
         ()
-    | US5_1(v4) -> (* Some *)
+    | US5_0(v4) -> (* Some *)
         let v5 : string = "state_core.use_core_database (12) / set_core_state_heap_action / value: " + string v1 + ""
         let v6 : string = method0(v5)
         let v7 : string = @$"leptos::logging::log!(""{{}}"", v6)"
@@ -1225,10 +1225,10 @@ and method86 (v0 : Heap3, v1 : string, v2 : US5) : std_pin_Pin<Box<Dyn<Future<un
         let v18 : (rexie_Error -> US17) = closure41()
         let v19 : US17 = match v16 with Ok x -> v17 x | Error x -> v18 x
         match v19 with
-        | US17_0(v20) -> (* Error *)
+        | US17_1(v20) -> (* Error *)
             let v21 : string = $"resultm.get / Result value was Error: {v20}"
             failwith<unit> v21
-        | US17_1 -> (* Ok *)
+        | US17_0 -> (* Ok *)
             ()
     method91()
     let v25 : string = "() })"
@@ -1242,7 +1242,7 @@ and closure39 (v0 : leptos_Resource<US2, rexie_Rexie>) (v1 : Heap3) : std_pin_Pi
     let v4 : string = $"leptos::SignalGet::get(&v3)"
     let v5 : rexie_Rexie option = Fable.Core.RustInterop.emitRustExpr () v4
     let v6 : (rexie_Rexie -> US5) = closure10()
-    let v7 : US5 = US5_0
+    let v7 : US5 = US5_1
     let v8 : US5 = v5 |> Option.map v6 |> Option.defaultValue v7
     method86(v1, v2, v8)
 and method85 (v0 : leptos_Resource<US2, rexie_Rexie>) : (Heap3 -> std_pin_Pin<Box<Dyn<Future<unit>>>>) =
@@ -1263,7 +1263,7 @@ and method98 () : string =
 and method99 (v0 : std_string_String) : std_string_String =
     v0
 and closure43 () (v0 : leptos_RwSignal<bool>) : US18 =
-    US18_1(v0)
+    US18_0(v0)
 and closure44 () (v0 : bool) : bool =
     let v1 : string = "state_core.use_core_database (17) / effect new_core_state_heap / set_loaded |> signal_update true"
     let v2 : string = method0(v1)
@@ -1340,22 +1340,22 @@ and closure42 (v0 : Heap2, v1 : leptos_Memo<std_collections_HashMap<std_string_S
     let v55 : string = "std::collections::HashMap::get(&v47, &v54).map(|x| x).cloned()"
     let v56 : leptos_RwSignal<bool> option = Fable.Core.RustInterop.emitRustExpr () v55
     let v57 : (leptos_RwSignal<bool> -> US18) = closure43()
-    let v58 : US18 = US18_0
+    let v58 : US18 = US18_1
     let v59 : US18 = v56 |> Option.map v57 |> Option.defaultValue v58
     let v67 : US19 =
         match v59 with
-        | US18_0 -> (* None *)
-            US19_0
-        | US18_1(v60) -> (* Some *)
+        | US18_1 -> (* None *)
+            US19_1
+        | US18_0(v60) -> (* Some *)
             let v61 : leptos_RwSignal<bool> = method94(v60)
             let v62 : string = $"leptos::SignalGet::get(&v61)"
             let v63 : bool = Fable.Core.RustInterop.emitRustExpr () v62
-            US19_1(v63)
+            US19_0(v63)
     let v70 : bool =
         match v67 with
-        | US19_0 -> (* None *)
+        | US19_1 -> (* None *)
             false
-        | US19_1(v68) -> (* Some *)
+        | US19_0(v68) -> (* Some *)
             v68
     let v71 : string = "state_core.use_core_database (16) / effect new_core_state_heap / ##3 / dark_mode_loading: " + string v70 + ""
     let v72 : string = method0(v71)
@@ -1382,17 +1382,17 @@ and closure42 (v0 : Heap2, v1 : leptos_Memo<std_collections_HashMap<std_string_S
             let v86 : US10 = match v83 with Ok x -> v84 x | Error x -> v85 x
             let v95 : US11 =
                 match v86 with
-                | US10_0(v92) -> (* Error *)
-                    US11_0(v92)
-                | US10_1(v87) -> (* Ok *)
+                | US10_1(v92) -> (* Error *)
+                    US11_1(v92)
+                | US10_0(v87) -> (* Ok *)
                     let v88 : (web_sys_Storage -> US12) = closure26()
-                    let v89 : US12 = US12_0
+                    let v89 : US12 = US12_1
                     let v90 : US12 = v87 |> Option.map v88 |> Option.defaultValue v89
-                    US11_1(v90)
+                    US11_0(v90)
             match v95 with
-            | US11_1(v96) -> (* Ok *)
+            | US11_0(v96) -> (* Ok *)
                 match v96 with
-                | US12_1(v97) -> (* Some *)
+                | US12_0(v97) -> (* Some *)
                     let v98 : Heap3 = method102(v40)
                     let v99 : leptos_Action<Heap3, unit> = method103(v4)
                     let v100 : string = "leptos::Action::dispatch(&v99, v98.clone())"
@@ -1558,9 +1558,9 @@ and method123 (v0 : std_string_String) : std_string_String =
 and method124 (v0 : Ref<Str>) : Ref<Str> =
     v0
 and closure50 () (v0 : leptos_router_Url) : US22 =
-    US22_1(v0)
-and closure51 () (v0 : std_string_String) : US22 =
     US22_0(v0)
+and closure51 () (v0 : std_string_String) : US22 =
+    US22_1(v0)
 and method125 (v0 : (US20 [])) : (US20 []) =
     v0
 and method126 (v0 : int32, v1 : Mut0) : bool =
@@ -1601,22 +1601,22 @@ and closure49 (v0 : leptos_router_Location, v1 : leptos_WriteSignal<US20>) () : 
     let v26 : string = @$"leptos::logging::log!(""{{}}"", v25)"
     Fable.Core.RustInterop.emitRustExpr () v26
     match v21 with
-    | US22_0(v81) -> (* Error *)
+    | US22_1(v81) -> (* Error *)
         let v82 : string = "content.render () / effect 2 / hash_url error: " + string v81 + ""
         let v83 : string = method0(v82)
         let v84 : string = @$"leptos::logging::log!(""{{}}"", v83)"
         Fable.Core.RustInterop.emitRustExpr () v84
         ()
-    | US22_1(v27) -> (* Ok *)
+    | US22_0(v27) -> (* Ok *)
         let v28 : US21 = US21_0
         let v29 : US20 = US20_1(v28)
         let v30 : US20 = US20_2
-        let v31 : US20 = US20_4
-        let v32 : US20 = US20_3
+        let v31 : US20 = US20_3
+        let v32 : US20 = US20_4
         let v33 : (US20 []) = [|v29; v30; v31; v32|]
         let v34 : (US20 []) = method125(v33)
         let v35 : int32 = v34.Length
-        let v36 : US23 = US23_0
+        let v36 : US23 = US23_1
         let v37 : Mut0 = {l0 = 0; l1 = v36} : Mut0
         while method126(v35, v37) do
             let v39 : int32 = v37.l0
@@ -1624,7 +1624,7 @@ and closure49 (v0 : leptos_router_Location, v1 : leptos_WriteSignal<US20>) () : 
             let v41 : US20 = v34.[int v39]
             let v66 : US23 =
                 match v40 with
-                | US23_0 -> (* None *)
+                | US23_1 -> (* None *)
                     let v53 : string =
                         match v41 with
                         | US20_0 -> (* Blank *)
@@ -1635,10 +1635,10 @@ and closure49 (v0 : leptos_router_Location, v1 : leptos_WriteSignal<US20>) () : 
                         | US20_2 -> (* Lists *)
                             let v46 : string = "lists"
                             v46
-                        | US20_3 -> (* Settings *)
+                        | US20_4 -> (* Settings *)
                             let v48 : string = "settings"
                             v48
-                        | US20_4 -> (* Transactions *)
+                        | US20_3 -> (* Transactions *)
                             let v47 : string = "transactions"
                             v47
                     let v54 : leptos_router_Url = method127(v27)
@@ -1650,11 +1650,11 @@ and closure49 (v0 : leptos_router_Location, v1 : leptos_WriteSignal<US20>) () : 
                     let v60 : string = "/" + v53 + ""
                     let v61 : bool = v59.StartsWith v60
                     if v61 then
-                        US23_1(v41)
+                        US23_0(v41)
                     else
-                        US23_0
-                | US23_1(v42) -> (* Some *)
-                    US23_1(v42)
+                        US23_1
+                | US23_0(v42) -> (* Some *)
+                    US23_0(v42)
             let v67 : int32 = v39 + 1
             v37.l0 <- v67
             v37.l1 <- v66
@@ -1663,9 +1663,9 @@ and closure49 (v0 : leptos_router_Location, v1 : leptos_WriteSignal<US20>) () : 
         let v69 : US20 = v34.[int 0]
         let v72 : US20 =
             match v68 with
-            | US23_0 -> (* None *)
+            | US23_1 -> (* None *)
                 v69
-            | US23_1(v70) -> (* Some *)
+            | US23_0(v70) -> (* Some *)
                 v70
         let v73 : string = @$"format!(""{{:#?}}"", $0)"
         let v74 : std_string_String = Fable.Core.RustInterop.emitRustExpr v72 v73
@@ -2110,13 +2110,13 @@ and method181 (v0 : string, v1 : rexie_Rexie) : std_pin_Pin<Box<Dyn<Future<Resul
     let v55 : string = "v54?"
     let v56 : serde_json_Value option = Fable.Core.RustInterop.emitRustExpr () v55
     let v57 : (serde_json_Value -> US7) = closure16()
-    let v58 : US7 = US7_0
+    let v58 : US7 = US7_1
     let v59 : US7 = v56 |> Option.map v57 |> Option.defaultValue v58
     let v94 : US27 =
         match v59 with
-        | US7_0 -> (* None *)
-            US27_0
-        | US7_1(v60) -> (* Some *)
+        | US7_1 -> (* None *)
+            US27_1
+        | US7_0(v60) -> (* Some *)
             let v61 : serde_json_Value = method49(v60)
             let v62 : string = "serde_json::from_value(v61)"
             let v63 : Result<Vec<uint8>, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr () v62
@@ -2149,13 +2149,13 @@ and method181 (v0 : string, v1 : rexie_Rexie) : std_pin_Pin<Box<Dyn<Future<Resul
             let v88 : Result<Heap4, std_string_String> = Fable.Core.RustInterop.emitRustExpr () v87
             let v89 : string = "v88?"
             let v90 : Heap4 = Fable.Core.RustInterop.emitRustExpr () v89
-            US27_1(v90)
+            US27_0(v90)
     let v99 : Heap4 option =
         match v94 with
-        | US27_0 -> (* None *)
+        | US27_1 -> (* None *)
             let v97 : Heap4 option = None
             v97
-        | US27_1(v95) -> (* Some *)
+        | US27_0(v95) -> (* Some *)
             let v96 : Heap4 option = Some v95
             v96
     let v100 : Result<Heap4 option, std_string_String> = Ok v99
@@ -2168,9 +2168,9 @@ and method181 (v0 : string, v1 : rexie_Rexie) : std_pin_Pin<Box<Dyn<Future<Resul
     let v105 : std_pin_Pin<Box<Dyn<Future<Result<Heap4 option, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v104
     v105
 and closure73 () (v0 : Heap4 option) : US26 =
-    US26_1(v0)
-and closure74 () (v0 : std_string_String) : US26 =
     US26_0(v0)
+and closure74 () (v0 : std_string_String) : US26 =
+    US26_1(v0)
 and method184 () : string =
     let v0 : string = "database=None"
     v0
@@ -2178,11 +2178,11 @@ and method180 (v0 : rexie_Rexie option, v1 : bool, v2 : string, v3 : bool, v4 : 
     let v6 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v6
     let v7 : (rexie_Rexie -> US5) = closure10()
-    let v8 : US5 = US5_0
+    let v8 : US5 = US5_1
     let v9 : US5 = v0 |> Option.map v7 |> Option.defaultValue v8
     let v28 : US26 =
         match v9 with
-        | US5_1(v10) -> (* Some *)
+        | US5_0(v10) -> (* Some *)
             let v11 : string = "url[" + v5 + "](" + $"%A{v2}" + ")"
             let v12 : string = "state_core.get_data () / id: " + v11 + ""
             let v13 : string = method0(v12)
@@ -2202,13 +2202,13 @@ and method180 (v0 : rexie_Rexie option, v1 : bool, v2 : string, v3 : bool, v4 : 
             let v24 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v23
             let v25 : string = "String::from(v24)"
             let v26 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v25
-            US26_0(v26)
+            US26_1(v26)
     let v34 : Result<Heap4 option, std_string_String> =
         match v28 with
-        | US26_0(v31) -> (* Error *)
+        | US26_1(v31) -> (* Error *)
             let v32 : Result<Heap4 option, std_string_String> = Error v31
             v32
-        | US26_1(v29) -> (* Ok *)
+        | US26_0(v29) -> (* Ok *)
             let v30 : Result<Heap4 option, std_string_String> = Ok v29
             v30
     let v35 : Result<Heap4 option, std_string_String> = method183(v34)
@@ -2354,18 +2354,18 @@ and closure75 (v0 : leptos_Resource<struct (rexie_Rexie option * (struct (bool *
     let v8 : US10 = match v5 with Ok x -> v6 x | Error x -> v7 x
     let v17 : US11 =
         match v8 with
-        | US10_0(v14) -> (* Error *)
-            US11_0(v14)
-        | US10_1(v9) -> (* Ok *)
+        | US10_1(v14) -> (* Error *)
+            US11_1(v14)
+        | US10_0(v9) -> (* Ok *)
             let v10 : (web_sys_Storage -> US12) = closure26()
-            let v11 : US12 = US12_0
+            let v11 : US12 = US12_1
             let v12 : US12 = v9 |> Option.map v10 |> Option.defaultValue v11
-            US11_1(v12)
+            US11_0(v12)
     let v30 : Result<(Heap4 option []), std_string_String> option =
         match v17 with
-        | US11_1(v18) -> (* Ok *)
+        | US11_0(v18) -> (* Ok *)
             match v18 with
-            | US12_1(v19) -> (* Some *)
+            | US12_0(v19) -> (* Some *)
                 let v20 : leptos_Resource<struct (rexie_Rexie option * (struct (bool * string * bool * US25 * string) [])), Result<Vec<Heap4 option>, std_string_String>> = method189(v0)
                 let v21 : string = $"leptos::SignalGet::get(&v20)"
                 let v22 : Result<Vec<Heap4 option>, std_string_String> option = Fable.Core.RustInterop.emitRustExpr () v21
@@ -2412,18 +2412,18 @@ and method195 (v0 : leptos_Memo<(struct (bool * string * bool * US25 * string) [
 and method198 (v0 : (unit -> struct ((struct (bool * string * bool * US25 * string) []) * Result<(Heap4 option []), std_string_String> option))) : (unit -> struct ((struct (bool * string * bool * US25 * string) []) * Result<(Heap4 option []), std_string_String> option)) =
     v0
 and closure79 () (v0 : Result<(Heap4 option []), std_string_String>) : US28 =
-    US28_1(v0)
+    US28_0(v0)
 and closure80 () (v0 : (Heap4 option [])) : US31 =
-    US31_1(v0)
-and closure81 () (v0 : std_string_String) : US31 =
     US31_0(v0)
+and closure81 () (v0 : std_string_String) : US31 =
+    US31_1(v0)
 and method200 (v0 : (Heap4 option [])) : (Heap4 option []) =
     v0
 and closure83 () (v0 : Heap4) : US27 =
-    US27_1(v0)
+    US27_0(v0)
 and closure82 () (v0 : Heap4 option) : US27 =
     let v1 : (Heap4 -> US27) = closure83()
-    let v2 : US27 = US27_0
+    let v2 : US27 = US27_1
     let v3 : US27 = v0 |> Option.map v1 |> Option.defaultValue v2
     v3
 and method201 () : (Heap4 option -> US27) =
@@ -2433,7 +2433,7 @@ and method202 (v0 : Vec<Heap4 option>) : Vec<Heap4 option> =
 and method203 (v0 : Vec<US27>) : Vec<US27> =
     v0
 and closure86 () (v0 : US27) : US35 =
-    US35_1(v0)
+    US35_0(v0)
 and method206 (v0 : US25) : US25 =
     v0
 and method207 (v0 : string) : string =
@@ -2468,40 +2468,40 @@ and method205 (v0 : US29, v1 : int32, v2 : bool, v3 : bool, v4 : string, v5 : US
     Fable.Core.RustInterop.emitRustExpr () v7
     let v38 : US32 =
         match v0 with
-        | US29_0 -> (* None *)
-            US32_0
-        | US29_1(v8) -> (* Some *)
+        | US29_1 -> (* None *)
+            US32_1
+        | US29_0(v8) -> (* Some *)
             let v34 : US33 =
                 match v8 with
-                | US30_0(v31) -> (* Error *)
-                    US33_0(v31)
-                | US30_1(v9) -> (* Ok *)
+                | US30_1(v31) -> (* Error *)
+                    US33_1(v31)
+                | US30_0(v9) -> (* Ok *)
                     let v10 : US27 option = v9 |> Array.tryItem v1
                     let v11 : (US27 -> US35) = closure86()
-                    let v12 : US35 = US35_0
+                    let v12 : US35 = US35_1
                     let v13 : US35 = v10 |> Option.map v11 |> Option.defaultValue v12
                     let v20 : US27 =
                         match v13 with
-                        | US35_1(v14) -> (* Some *)
+                        | US35_0(v14) -> (* Some *)
                             match v14 with
-                            | US27_1(v15) -> (* Some *)
-                                US27_1(v15)
+                            | US27_0(v15) -> (* Some *)
+                                US27_0(v15)
                             | _ ->
-                                US27_0
+                                US27_1
                         | _ ->
-                            US27_0
+                            US27_1
                     let v29 : US34 =
                         match v20 with
-                        | US27_0 -> (* None *)
-                            US34_0
-                        | US27_1(v21) -> (* Some *)
+                        | US27_1 -> (* None *)
+                            US34_1
+                        | US27_0(v21) -> (* Some *)
                             let v22 : std_string_String = v21.l0
                             let v23 : std_string_String = method69(v22)
                             let v24 : string = "fable_library_rust::String_::fromString(v23)"
                             let v25 : string = Fable.Core.RustInterop.emitRustExpr () v24
-                            US34_1(v25)
-                    US33_1(v29)
-            US32_1(v34)
+                            US34_0(v25)
+                    US33_0(v29)
+            US32_0(v34)
     let v39 : string = $"%A{struct (v2, v3, v5)}"
     let v40 : int64 = System.Convert.ToInt64 v39.Length
     let v41 : bool = v40 <= 400L
@@ -2591,20 +2591,20 @@ and method205 (v0 : US29, v1 : int32, v2 : bool, v3 : bool, v4 : string, v5 : US
             true
         else
             match v0 with
-            | US29_1(v111) -> (* Some *)
+            | US29_0(v111) -> (* Some *)
                 match v111 with
-                | US30_1(v112) -> (* Ok *)
+                | US30_0(v112) -> (* Ok *)
                     let v113 : uint64 = System.Convert.ToUInt64 v112.Length
                     let v114 : bool = v113 = 0UL
                     if v114 then
                         false
                     else
                         match v38 with
-                        | US32_1(v115) -> (* Some *)
+                        | US32_0(v115) -> (* Some *)
                             match v115 with
-                            | US33_1(v116) -> (* Ok *)
+                            | US33_0(v116) -> (* Ok *)
                                 match v116 with
-                                | US34_0 -> (* None *)
+                                | US34_1 -> (* None *)
                                     true
                                 | _ ->
                                     false
@@ -2614,11 +2614,11 @@ and method205 (v0 : US29, v1 : int32, v2 : bool, v3 : bool, v4 : string, v5 : US
                             false
                 | _ ->
                     match v38 with
-                    | US32_1(v121) -> (* Some *)
+                    | US32_0(v121) -> (* Some *)
                         match v121 with
-                        | US33_1(v122) -> (* Ok *)
+                        | US33_0(v122) -> (* Ok *)
                             match v122 with
-                            | US34_0 -> (* None *)
+                            | US34_1 -> (* None *)
                                 true
                             | _ ->
                                 false
@@ -2628,11 +2628,11 @@ and method205 (v0 : US29, v1 : int32, v2 : bool, v3 : bool, v4 : string, v5 : US
                         false
             | _ ->
                 match v38 with
-                | US32_1(v127) -> (* Some *)
+                | US32_0(v127) -> (* Some *)
                     match v127 with
-                    | US33_1(v128) -> (* Ok *)
+                    | US33_0(v128) -> (* Ok *)
                         match v128 with
-                        | US34_0 -> (* None *)
+                        | US34_1 -> (* None *)
                             true
                         | _ ->
                             false
@@ -2648,7 +2648,7 @@ and method205 (v0 : US29, v1 : int32, v2 : bool, v3 : bool, v4 : string, v5 : US
     let v221 : US36 =
         if v137 then
             let v138 : string option = None
-            US36_1(v138)
+            US36_0(v138)
         else
             let v140 : US25 = method206(v5)
             let v162 : reqwest_RequestBuilder =
@@ -2738,13 +2738,13 @@ and method205 (v0 : US29, v1 : int32, v2 : bool, v3 : bool, v4 : string, v5 : US
             let v217 : string = "fable_library_rust::String_::fromString(v216)"
             let v218 : string = Fable.Core.RustInterop.emitRustExpr () v217
             let v219 : string option = Some v218
-            US36_1(v219)
+            US36_0(v219)
     let v227 : Result<string option, std_string_String> =
         match v221 with
-        | US36_0(v224) -> (* Error *)
+        | US36_1(v224) -> (* Error *)
             let v225 : Result<string option, std_string_String> = Error v224
             v225
-        | US36_1(v222) -> (* Ok *)
+        | US36_0(v222) -> (* Ok *)
             let v223 : Result<string option, std_string_String> = Ok v222
             v223
     let v228 : Result<string option, std_string_String> = method217(v227)
@@ -2773,21 +2773,21 @@ and method199 (v0 : Result<(Heap4 option []), std_string_String> option, v1 : (s
     let v2 : string = "let __result = Box::pin(async move { //"
     Fable.Core.RustInterop.emitRustExpr () v2
     let v3 : (Result<(Heap4 option []), std_string_String> -> US28) = closure79()
-    let v4 : US28 = US28_0
+    let v4 : US28 = US28_1
     let v5 : US28 = v0 |> Option.map v3 |> Option.defaultValue v4
     let v29 : US29 =
         match v5 with
-        | US28_0 -> (* None *)
-            US29_0
-        | US28_1(v6) -> (* Some *)
+        | US28_1 -> (* None *)
+            US29_1
+        | US28_0(v6) -> (* Some *)
             let v7 : ((Heap4 option []) -> US31) = closure80()
             let v8 : (std_string_String -> US31) = closure81()
             let v9 : US31 = match v6 with Ok x -> v7 x | Error x -> v8 x
             let v25 : US30 =
                 match v9 with
-                | US31_0(v22) -> (* Error *)
-                    US30_0(v22)
-                | US31_1(v10) -> (* Ok *)
+                | US31_1(v22) -> (* Error *)
+                    US30_1(v22)
+                | US31_0(v10) -> (* Ok *)
                     let v11 : (Heap4 option []) = method200(v10)
                     let v12 : string = "v11.to_vec()"
                     let v13 : Vec<Heap4 option> = Fable.Core.RustInterop.emitRustExpr () v12
@@ -2798,8 +2798,8 @@ and method199 (v0 : Result<(Heap4 option []), std_string_String> option, v1 : (s
                     let v18 : Vec<US27> = method203(v17)
                     let v19 : string = "fable_library_rust::NativeArray_::array_from(v18)"
                     let v20 : (US27 []) = Fable.Core.RustInterop.emitRustExpr () v19
-                    US30_1(v20)
-            US29_1(v25)
+                    US30_0(v20)
+            US29_0(v25)
     let v30 : string = $"%A{v29}"
     let v31 : int64 = System.Convert.ToInt64 v30.Length
     let v32 : bool = v31 <= 400L
@@ -2962,7 +2962,7 @@ and method228 (v0 : Heap4, v1 : US5, v2 : bool, v3 : string, v4 : bool, v5 : US2
     Fable.Core.RustInterop.emitRustExpr () v7
     let v32 : US37 =
         match v1 with
-        | US5_1(v8) -> (* Some *)
+        | US5_0(v8) -> (* Some *)
             let v9 : string = "state_core.use_requests (11) / set_state_data_action / database=Some(_) / url: " + v6 + ""
             let v10 : string = method0(v9)
             let v11 : string = @$"leptos::logging::log!(""{{}}"", v10)"
@@ -2984,19 +2984,19 @@ and method228 (v0 : Heap4, v1 : US5, v2 : bool, v3 : string, v4 : bool, v5 : US2
             let v25 : Result<unit, std_string_String> = Fable.Core.RustInterop.emitRustExpr () v24
             let v26 : string = "v25?"
             Fable.Core.RustInterop.emitRustExpr () v26
-            US37_1
+            US37_0
         | _ ->
             let v28 : string = "state_core.use_requests (12) / set_state_data_action / database,request=None"
             let v29 : string = method0(v28)
             let v30 : string = @$"leptos::logging::log!(""{{}}"", v29)"
             Fable.Core.RustInterop.emitRustExpr () v30
-            US37_1
+            US37_0
     let v37 : Result<unit, std_string_String> =
         match v32 with
-        | US37_0(v34) -> (* Error *)
+        | US37_1(v34) -> (* Error *)
             let v35 : Result<unit, std_string_String> = Error v34
             v35
-        | US37_1 -> (* Ok *)
+        | US37_0 -> (* Ok *)
             let v33 : Result<unit, std_string_String> = Ok ()
             v33
     let v38 : Result<unit, std_string_String> = method233(v37)
@@ -3022,7 +3022,7 @@ and method224 (v0 : leptos_Memo<(struct (bool * string * bool * US25 * string) [
     let v5 : string = $"leptos::SignalGetUntracked::get_untracked(&v4)"
     let v6 : rexie_Rexie option = Fable.Core.RustInterop.emitRustExpr () v5
     let v7 : (rexie_Rexie -> US5) = closure10()
-    let v8 : US5 = US5_0
+    let v8 : US5 = US5_1
     let v9 : US5 = v6 |> Option.map v7 |> Option.defaultValue v8
     let v10 : leptos_Memo<(struct (bool * string * bool * US25 * string) [])> = method226(v0)
     let v11 : string = $"leptos::SignalGetUntracked::get_untracked(&v10)"
@@ -3063,18 +3063,18 @@ and method223 (v0 : leptos_Memo<(struct (bool * string * bool * US25 * string) [
 and method237 (v0 : leptos_Resource<struct ((struct (bool * string * bool * US25 * string) []) * Result<(Heap4 option []), std_string_String> option), Result<(string option []), std_string_String>>) : leptos_Resource<struct ((struct (bool * string * bool * US25 * string) []) * Result<(Heap4 option []), std_string_String> option), Result<(string option []), std_string_String>> =
     v0
 and closure92 () (v0 : Result<(string option []), std_string_String>) : US38 =
-    US38_1(v0)
+    US38_0(v0)
 and closure93 () (v0 : (string option [])) : US40 =
-    US40_1(v0)
-and closure94 () (v0 : std_string_String) : US40 =
     US40_0(v0)
+and closure94 () (v0 : std_string_String) : US40 =
+    US40_1(v0)
 and method238 (v0 : (string option [])) : (string option []) =
     v0
 and closure96 () (v0 : string) : US34 =
-    US34_1(v0)
+    US34_0(v0)
 and closure95 () (v0 : string option) : US34 =
     let v1 : (string -> US34) = closure96()
-    let v2 : US34 = US34_0
+    let v2 : US34 = US34_1
     let v3 : US34 = v0 |> Option.map v1 |> Option.defaultValue v2
     v3
 and method239 () : (string option -> US34) =
@@ -3093,7 +3093,7 @@ and method246 (v0 : leptos_Action<Heap4, Result<Vec<unit>, std_string_String>>) 
     v0
 and closure97 (v0 : leptos_Action<Heap4, Result<Vec<unit>, std_string_String>>) (v1 : US34) : unit =
     match v1 with
-    | US34_1(v2) -> (* Some *)
+    | US34_0(v2) -> (* Some *)
         let v3 : string = method35(v2)
         let v4 : string = method6(v3)
         let v5 : string = $"fable_library_rust::String_::LrcStr::as_str(&v4)"
@@ -3113,7 +3113,7 @@ and method244 (v0 : leptos_Action<Heap4, Result<Vec<unit>, std_string_String>>) 
 and method247 (v0 : Vec<US34>) : Vec<US34> =
     v0
 and closure100 () (v0 : US34) : US43 =
-    US43_1(v0)
+    US43_0(v0)
 and method249 (v0 : Result<crate_model_near_nearblocks_Root, serde_json_Error>) : Result<crate_model_near_nearblocks_Root, serde_json_Error> =
     v0
 and closure101 () (v0 : crate_model_near_nearblocks_Root) : crate_model_near_nearblocks_Root option =
@@ -3126,40 +3126,40 @@ and method251 (v0 : Result<crate_model_near_nearblocks_Root, std_string_String>)
 and closure99 (v0 : US29, v1 : US42, v2 : int32) struct (v3 : bool, v4 : string, v5 : bool, v6 : US25, v7 : string) : Result<crate_model_near_nearblocks_Root option, std_string_String> =
     let v38 : US32 =
         match v0 with
-        | US29_0 -> (* None *)
-            US32_0
-        | US29_1(v8) -> (* Some *)
+        | US29_1 -> (* None *)
+            US32_1
+        | US29_0(v8) -> (* Some *)
             let v34 : US33 =
                 match v8 with
-                | US30_0(v31) -> (* Error *)
-                    US33_0(v31)
-                | US30_1(v9) -> (* Ok *)
+                | US30_1(v31) -> (* Error *)
+                    US33_1(v31)
+                | US30_0(v9) -> (* Ok *)
                     let v10 : US27 option = v9 |> Array.tryItem v2
                     let v11 : (US27 -> US35) = closure86()
-                    let v12 : US35 = US35_0
+                    let v12 : US35 = US35_1
                     let v13 : US35 = v10 |> Option.map v11 |> Option.defaultValue v12
                     let v20 : US27 =
                         match v13 with
-                        | US35_1(v14) -> (* Some *)
+                        | US35_0(v14) -> (* Some *)
                             match v14 with
-                            | US27_1(v15) -> (* Some *)
-                                US27_1(v15)
+                            | US27_0(v15) -> (* Some *)
+                                US27_0(v15)
                             | _ ->
-                                US27_0
+                                US27_1
                         | _ ->
-                            US27_0
+                            US27_1
                     let v29 : US34 =
                         match v20 with
-                        | US27_0 -> (* None *)
-                            US34_0
-                        | US27_1(v21) -> (* Some *)
+                        | US27_1 -> (* None *)
+                            US34_1
+                        | US27_0(v21) -> (* Some *)
                             let v22 : std_string_String = v21.l0
                             let v23 : std_string_String = method69(v22)
                             let v24 : string = "fable_library_rust::String_::fromString(v23)"
                             let v25 : string = Fable.Core.RustInterop.emitRustExpr () v24
-                            US34_1(v25)
-                    US33_1(v29)
-            US32_1(v34)
+                            US34_0(v25)
+                    US33_0(v29)
+            US32_0(v34)
     let v39 : string = $"%A{struct (v3, v4, v5, v6, v7)}"
     let v40 : int64 = System.Convert.ToInt64 v39.Length
     let v41 : bool = v40 <= 400L
@@ -3254,24 +3254,24 @@ and closure99 (v0 : US29, v1 : US42, v2 : int32) struct (v3 : bool, v4 : string,
     Fable.Core.RustInterop.emitRustExpr () v116
     let v132 : US34 =
         match v1 with
-        | US42_0(v129) -> (* Error *)
-            US34_0
-        | US42_1(v117) -> (* Ok *)
+        | US42_1(v129) -> (* Error *)
+            US34_1
+        | US42_0(v117) -> (* Ok *)
             let v118 : US34 option = v117 |> Array.tryItem v2
             let v119 : (US34 -> US43) = closure100()
-            let v120 : US43 = US43_0
+            let v120 : US43 = US43_1
             let v121 : US43 = v118 |> Option.map v119 |> Option.defaultValue v120
             match v121 with
-            | US43_1(v122) -> (* Some *)
+            | US43_0(v122) -> (* Some *)
                 match v122 with
-                | US34_1(v123) -> (* Some *)
-                    US34_1(v123)
+                | US34_0(v123) -> (* Some *)
+                    US34_0(v123)
                 | _ ->
-                    US34_0
+                    US34_1
             | _ ->
-                US34_0
+                US34_1
     match v132 with
-    | US34_1(v133) -> (* Some *)
+    | US34_0(v133) -> (* Some *)
         let v134 : string = method6(v133)
         let v135 : string = $"fable_library_rust::String_::LrcStr::as_str(&v134)"
         let v136 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v135
@@ -3288,11 +3288,11 @@ and closure99 (v0 : US29, v1 : US42, v2 : int32) struct (v3 : bool, v4 : string,
         v146
     | _ ->
         match v38 with
-        | US32_1(v147) -> (* Some *)
+        | US32_0(v147) -> (* Some *)
             match v147 with
-            | US33_1(v148) -> (* Ok *)
+            | US33_0(v148) -> (* Ok *)
                 match v148 with
-                | US34_1(v149) -> (* Some *)
+                | US34_0(v149) -> (* Some *)
                     let v150 : string = method6(v149)
                     let v151 : string = $"fable_library_rust::String_::LrcStr::as_str(&v150)"
                     let v152 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v151
@@ -3353,21 +3353,21 @@ and closure91 (v0 : leptos_Memo<(struct (bool * string * bool * US25 * string) [
     let v12 : string = $"v11()"
     let v13 : Result<(Heap4 option []), std_string_String> option = Fable.Core.RustInterop.emitRustExpr () v12
     let v14 : (Result<(Heap4 option []), std_string_String> -> US28) = closure79()
-    let v15 : US28 = US28_0
+    let v15 : US28 = US28_1
     let v16 : US28 = v13 |> Option.map v14 |> Option.defaultValue v15
     let v40 : US29 =
         match v16 with
-        | US28_0 -> (* None *)
-            US29_0
-        | US28_1(v17) -> (* Some *)
+        | US28_1 -> (* None *)
+            US29_1
+        | US28_0(v17) -> (* Some *)
             let v18 : ((Heap4 option []) -> US31) = closure80()
             let v19 : (std_string_String -> US31) = closure81()
             let v20 : US31 = match v17 with Ok x -> v18 x | Error x -> v19 x
             let v36 : US30 =
                 match v20 with
-                | US31_0(v33) -> (* Error *)
-                    US30_0(v33)
-                | US31_1(v21) -> (* Ok *)
+                | US31_1(v33) -> (* Error *)
+                    US30_1(v33)
+                | US31_0(v21) -> (* Ok *)
                     let v22 : (Heap4 option []) = method200(v21)
                     let v23 : string = "v22.to_vec()"
                     let v24 : Vec<Heap4 option> = Fable.Core.RustInterop.emitRustExpr () v23
@@ -3378,8 +3378,8 @@ and closure91 (v0 : leptos_Memo<(struct (bool * string * bool * US25 * string) [
                     let v29 : Vec<US27> = method203(v28)
                     let v30 : string = "fable_library_rust::NativeArray_::array_from(v29)"
                     let v31 : (US27 []) = Fable.Core.RustInterop.emitRustExpr () v30
-                    US30_1(v31)
-            US29_1(v36)
+                    US30_0(v31)
+            US29_0(v36)
     let v41 : string = $"%A{v40}"
     let v42 : int64 = System.Convert.ToInt64 v41.Length
     let v43 : bool = v42 <= 400L
@@ -3416,27 +3416,27 @@ and closure91 (v0 : leptos_Memo<(struct (bool * string * bool * US25 * string) [
     let v69 : string = $"leptos::SignalGet::get(&v68)"
     let v70 : Result<(string option []), std_string_String> option = Fable.Core.RustInterop.emitRustExpr () v69
     let v71 : (Result<(string option []), std_string_String> -> US38) = closure92()
-    let v72 : US38 = US38_0
+    let v72 : US38 = US38_1
     let v73 : US38 = v70 |> Option.map v71 |> Option.defaultValue v72
     let v81 : US39 =
         match v73 with
-        | US38_0 -> (* None *)
-            US39_0
-        | US38_1(v74) -> (* Some *)
+        | US38_1 -> (* None *)
+            US39_1
+        | US38_0(v74) -> (* Some *)
             let v75 : ((string option []) -> US40) = closure93()
             let v76 : (std_string_String -> US40) = closure94()
             let v77 : US40 = match v74 with Ok x -> v75 x | Error x -> v76 x
-            US39_1(v77)
+            US39_0(v77)
     let v102 : US41 =
         match v81 with
-        | US39_0 -> (* None *)
-            US41_0
-        | US39_1(v82) -> (* Some *)
+        | US39_1 -> (* None *)
+            US41_1
+        | US39_0(v82) -> (* Some *)
             let v98 : US42 =
                 match v82 with
-                | US40_0(v95) -> (* Error *)
-                    US42_0(v95)
-                | US40_1(v83) -> (* Ok *)
+                | US40_1(v95) -> (* Error *)
+                    US42_1(v95)
+                | US40_0(v83) -> (* Ok *)
                     let v84 : (string option []) = method238(v83)
                     let v85 : string = "v84.to_vec()"
                     let v86 : Vec<string option> = Fable.Core.RustInterop.emitRustExpr () v85
@@ -3447,20 +3447,20 @@ and closure91 (v0 : leptos_Memo<(struct (bool * string * bool * US25 * string) [
                     let v91 : Vec<US34> = method241(v90)
                     let v92 : string = "fable_library_rust::NativeArray_::array_from(v91)"
                     let v93 : (US34 []) = Fable.Core.RustInterop.emitRustExpr () v92
-                    US42_1(v93)
-            US41_1(v98)
+                    US42_0(v93)
+            US41_0(v98)
     let v103 : (US34 []) = [||]
     let v104 : (US34 []) = method242(v103)
     let v108 : US42 =
         match v102 with
-        | US41_0 -> (* None *)
-            US42_1(v104)
-        | US41_1(v105) -> (* Some *)
+        | US41_1 -> (* None *)
+            US42_0(v104)
+        | US41_0(v105) -> (* Some *)
             v105
     match v108 with
-    | US42_0(v117) -> (* Error *)
+    | US42_1(v117) -> (* Error *)
         ()
-    | US42_1(v109) -> (* Ok *)
+    | US42_0(v109) -> (* Ok *)
         let v110 : (US34 []) = method243(v109)
         let v111 : string = "v110.to_vec()"
         let v112 : Vec<US34> = Fable.Core.RustInterop.emitRustExpr () v111
@@ -3503,11 +3503,11 @@ and method255 (v0 : leptos_Signal<bool>) : leptos_Signal<bool> =
 and method256 (v0 : leptos_Resource<struct (rexie_Rexie option * (struct (bool * string * bool * US25 * string) [])), Result<Vec<Heap4 option>, std_string_String>>) : leptos_Resource<struct (rexie_Rexie option * (struct (bool * string * bool * US25 * string) [])), Result<Vec<Heap4 option>, std_string_String>> =
     v0
 and closure103 () (v0 : Result<Vec<Heap4 option>, std_string_String>) : US44 =
-    US44_1(v0)
+    US44_0(v0)
 and closure104 () (v0 : Vec<Heap4 option>) : US45 =
-    US45_1(v0)
-and closure105 () (v0 : std_string_String) : US45 =
     US45_0(v0)
+and closure105 () (v0 : std_string_String) : US45 =
+    US45_1(v0)
 and method257 (v0 : leptos_Memo<(Result<crate_model_near_nearblocks_Root option, std_string_String> [])>) : leptos_Memo<(Result<crate_model_near_nearblocks_Root option, std_string_String> [])> =
     v0
 and method258 (v0 : (Result<crate_model_near_nearblocks_Root option, std_string_String> [])) : (Result<crate_model_near_nearblocks_Root option, std_string_String> []) =
@@ -3660,27 +3660,27 @@ and closure102 (v0 : leptos_Resource<US2, rexie_Rexie>, v1 : leptos_Resource<str
     let v16 : string = $"leptos::SignalGet::get(&v15)"
     let v17 : rexie_Rexie option = Fable.Core.RustInterop.emitRustExpr () v16
     let v18 : (rexie_Rexie -> US5) = closure10()
-    let v19 : US5 = US5_0
+    let v19 : US5 = US5_1
     let v20 : US5 = v17 |> Option.map v18 |> Option.defaultValue v19
     let v21 : leptos_Resource<struct (rexie_Rexie option * (struct (bool * string * bool * US25 * string) [])), Result<Vec<Heap4 option>, std_string_String>> = method189(v1)
     let v22 : string = $"leptos::SignalGet::get(&v21)"
     let v23 : Result<Vec<Heap4 option>, std_string_String> option = Fable.Core.RustInterop.emitRustExpr () v22
     let v24 : (Result<Vec<Heap4 option>, std_string_String> -> US44) = closure103()
-    let v25 : US44 = US44_0
+    let v25 : US44 = US44_1
     let v26 : US44 = v23 |> Option.map v24 |> Option.defaultValue v25
     let v47 : US29 =
         match v26 with
-        | US44_0 -> (* None *)
-            US29_0
-        | US44_1(v27) -> (* Some *)
+        | US44_1 -> (* None *)
+            US29_1
+        | US44_0(v27) -> (* Some *)
             let v28 : (Vec<Heap4 option> -> US45) = closure104()
             let v29 : (std_string_String -> US45) = closure105()
             let v30 : US45 = match v27 with Ok x -> v28 x | Error x -> v29 x
             let v43 : US30 =
                 match v30 with
-                | US45_0(v40) -> (* Error *)
-                    US30_0(v40)
-                | US45_1(v31) -> (* Ok *)
+                | US45_1(v40) -> (* Error *)
+                    US30_1(v40)
+                | US45_0(v31) -> (* Ok *)
                     let v32 : (Heap4 option -> US27) = method201()
                     let v33 : Vec<Heap4 option> = method202(v31)
                     let v34 : string = "v33.iter().map(|x| v32(x.clone())).collect()"
@@ -3688,8 +3688,8 @@ and closure102 (v0 : leptos_Resource<US2, rexie_Rexie>, v1 : leptos_Resource<str
                     let v36 : Vec<US27> = method203(v35)
                     let v37 : string = "fable_library_rust::NativeArray_::array_from(v36)"
                     let v38 : (US27 []) = Fable.Core.RustInterop.emitRustExpr () v37
-                    US30_1(v38)
-            US29_1(v43)
+                    US30_0(v38)
+            US29_0(v43)
     let v48 : string = $"%A{v20}"
     let v49 : int64 = System.Convert.ToInt64 v48.Length
     let v50 : bool = v49 <= 400L
@@ -3785,9 +3785,9 @@ and method284 (v0 : leptos_Memo<(Result<(struct ((struct (std_string_String * st
 and method285 (v0 : (Result<(struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) []) option, std_string_String> [])) : (Result<(struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) []) option, std_string_String> []) =
     v0
 and closure113 () (v0 : (struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) []) option) : US46 =
-    US46_1(v0)
-and closure114 () (v0 : std_string_String) : US46 =
     US46_0(v0)
+and closure114 () (v0 : std_string_String) : US46 =
+    US46_1(v0)
 and closure112 () (v0 : Result<(struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) []) option, std_string_String>) : US46 =
     let v1 : ((struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) []) option -> US46) = closure113()
     let v2 : (std_string_String -> US46) = closure114()
@@ -3798,25 +3798,25 @@ and method286 () : (Result<(struct ((struct (std_string_String * std_string_Stri
 and method287 (v0 : Vec<Result<(struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) []) option, std_string_String>>) : Vec<Result<(struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) []) option, std_string_String>> =
     v0
 and closure116 () (v0 : (struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) [])) : US48 =
-    US48_1(v0)
+    US48_0(v0)
 and closure115 () (v0 : US46) : US47 =
     match v0 with
-    | US46_0(v6) -> (* Error *)
-        US47_0(v6)
-    | US46_1(v1) -> (* Ok *)
+    | US46_1(v6) -> (* Error *)
+        US47_1(v6)
+    | US46_0(v1) -> (* Ok *)
         let v2 : ((struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) []) -> US48) = closure116()
-        let v3 : US48 = US48_0
+        let v3 : US48 = US48_1
         let v4 : US48 = v1 |> Option.map v2 |> Option.defaultValue v3
-        US47_1(v4)
+        US47_0(v4)
 and method288 () : (US46 -> US47) =
     closure115()
 and method289 (v0 : Vec<US46>) : Vec<US46> =
     v0
 and closure117 () (v0 : US47) : bool =
     match v0 with
-    | US47_1(v1) -> (* Ok *)
+    | US47_0(v1) -> (* Ok *)
         match v1 with
-        | US48_0 -> (* None *)
+        | US48_1 -> (* None *)
             true
         | _ ->
             false
@@ -3855,14 +3855,14 @@ and method301 (v0 : Vec<struct (unativeint * (struct (std_string_String * std_st
 and closure119 (v0 : (string []), v1 : int32) (v2 : US47) : US51 =
     let v3 : string = v0.[int v1]
     match v2 with
-    | US47_0(v30) -> (* Error *)
-        US51_0(v30)
-    | US47_1(v4) -> (* Ok *)
+    | US47_1(v30) -> (* Error *)
+        US51_1(v30)
+    | US47_0(v4) -> (* Ok *)
         let v28 : US52 =
             match v4 with
-            | US48_0 -> (* None *)
-                US52_0
-            | US48_1(v5) -> (* Some *)
+            | US48_1 -> (* None *)
+                US52_1
+            | US48_0(v5) -> (* Some *)
                 let v6 : (struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String) []) = method295(v5)
                 let v7 : string = "v6.to_vec()"
                 let v8 : Vec<struct ((struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String)> = Fable.Core.RustInterop.emitRustExpr () v7
@@ -3882,8 +3882,8 @@ and closure119 (v0 : (string []), v1 : int32) (v2 : US47) : US51 =
                 let v22 : Vec<struct (unativeint * (struct (std_string_String * std_string_String option) []) * float * uint32 * std_string_String * std_string_String * (std_string_String []) * bool * float * std_string_String * std_string_String * std_string_String * std_string_String)> = method301(v20)
                 let v23 : string = "v22.iter().map(|x| v21(x.clone())).collect()"
                 let v24 : Vec<struct (string * unativeint * Heap5)> = Fable.Core.RustInterop.emitRustExpr () v23
-                US52_1(v24)
-        US51_1(v28)
+                US52_0(v24)
+        US51_0(v28)
 and closure118 (v0 : (string [])) (v1 : int32) : (US47 -> US51) =
     closure119(v0, v1)
 and method294 (v0 : (string [])) : (int32 -> (US47 -> US51)) =
@@ -3892,28 +3892,28 @@ and method302 (v0 : Vec<US47>) : Vec<US47> =
     v0
 and closure122 () (v0 : US51) : US53 =
     match v0 with
-    | US51_0(v8) -> (* Error *)
-        US53_0(v8)
-    | US51_1(v1) -> (* Ok *)
+    | US51_1(v8) -> (* Error *)
+        US53_1(v8)
+    | US51_0(v1) -> (* Ok *)
         let v6 : Vec<struct (string * unativeint * Heap5)> option =
             match v1 with
-            | US52_0 -> (* None *)
+            | US52_1 -> (* None *)
                 let v4 : Vec<struct (string * unativeint * Heap5)> option = None
                 v4
-            | US52_1(v2) -> (* Some *)
+            | US52_0(v2) -> (* Some *)
                 let v3 : Vec<struct (string * unativeint * Heap5)> option = Some v2
                 v3
-        US53_1(v6)
+        US53_0(v6)
 and method303 () : (US51 -> US53) =
     closure122()
 and method304 (v0 : Vec<US51>) : Vec<US51> =
     v0
 and closure123 () (v0 : US53) : Result<Vec<struct (string * unativeint * Heap5)> option, std_string_String> =
     match v0 with
-    | US53_0(v3) -> (* Error *)
+    | US53_1(v3) -> (* Error *)
         let v4 : Result<Vec<struct (string * unativeint * Heap5)> option, std_string_String> = Error v3
         v4
-    | US53_1(v1) -> (* Ok *)
+    | US53_0(v1) -> (* Ok *)
         let v2 : Result<Vec<struct (string * unativeint * Heap5)> option, std_string_String> = Ok v1
         v2
 and method305 () : (US53 -> Result<Vec<struct (string * unativeint * Heap5)> option, std_string_String>) =
@@ -3931,11 +3931,11 @@ and method310 (v0 : int32, v1 : Mut4) : bool =
     let v3 : bool = v2 < v0
     v3
 and closure124 () (v0 : Vec<struct (string * unativeint * Heap5)> option) : US53 =
-    US53_1(v0)
-and closure125 () (v0 : std_string_String) : US53 =
     US53_0(v0)
+and closure125 () (v0 : std_string_String) : US53 =
+    US53_1(v0)
 and closure126 () (v0 : Vec<struct (string * unativeint * Heap5)>) : US52 =
-    US52_1(v0)
+    US52_0(v0)
 and method311 (v0 : Vec<struct (string * unativeint * Heap5)>) : Vec<struct (string * unativeint * Heap5)> =
     v0
 and method312 (v0 : Vec<struct (string * unativeint * Heap5)>) : Vec<struct (string * unativeint * Heap5)> =
@@ -4013,8 +4013,8 @@ and closure111 (v0 : leptos_Memo<(string [])>, v1 : leptos_Memo<(Result<(struct 
     let v55 : bool = v50 = v54
     let v154 : US49 =
         if v55 then
-            let v56 : US50 = US50_0
-            US49_1(v56)
+            let v56 : US50 = US50_1
+            US49_0(v56)
         else
             let v58 : leptos_Memo<(string [])> = method293(v0)
             let v59 : string = $"v58()"
@@ -4040,7 +4040,7 @@ and closure111 (v0 : leptos_Memo<(string [])>, v1 : leptos_Memo<(Result<(struct 
             let v79 : string = "fable_library_rust::NativeArray_::array_from(v78)"
             let v80 : (Result<Vec<struct (string * unativeint * Heap5)> option, std_string_String> []) = Fable.Core.RustInterop.emitRustExpr () v79
             let v81 : int32 = v80.Length
-            let v82 : US54 = US54_1(v77)
+            let v82 : US54 = US54_0(v77)
             let v83 : Mut4 = {l0 = 0; l1 = v82} : Mut4
             while method310(v81, v83) do
                 let v85 : int32 = v83.l0
@@ -4051,22 +4051,22 @@ and closure111 (v0 : leptos_Memo<(string [])>, v1 : leptos_Memo<(Result<(struct 
                 let v90 : US53 = match v87 with Ok x -> v88 x | Error x -> v89 x
                 let v99 : US51 =
                     match v90 with
-                    | US53_0(v96) -> (* Error *)
-                        US51_0(v96)
-                    | US53_1(v91) -> (* Ok *)
+                    | US53_1(v96) -> (* Error *)
+                        US51_1(v96)
+                    | US53_0(v91) -> (* Ok *)
                         let v92 : (Vec<struct (string * unativeint * Heap5)> -> US52) = closure126()
-                        let v93 : US52 = US52_0
+                        let v93 : US52 = US52_1
                         let v94 : US52 = v91 |> Option.map v92 |> Option.defaultValue v93
-                        US51_1(v94)
+                        US51_0(v94)
                 let v118 : US54 =
                     match v86 with
-                    | US54_1(v100) -> (* Ok *)
+                    | US54_0(v100) -> (* Ok *)
                         match v99 with
-                        | US51_0(v111) -> (* Error *)
-                            US54_0(v111)
-                        | US51_1(v101) -> (* Ok *)
+                        | US51_1(v111) -> (* Error *)
+                            US54_1(v111)
+                        | US51_0(v101) -> (* Ok *)
                             match v101 with
-                            | US52_1(v102) -> (* Some *)
+                            | US52_0(v102) -> (* Some *)
                                 let v103 : Vec<struct (string * unativeint * Heap5)> = method311(v102)
                                 let v104 : Vec<struct (string * unativeint * Heap5)> = method312(v100)
                                 let v105 : string = "let mut v104 = v104"
@@ -4075,13 +4075,13 @@ and closure111 (v0 : leptos_Memo<(string [])>, v1 : leptos_Memo<(Result<(struct 
                                 Fable.Core.RustInterop.emitRustExpr () v106
                                 let v107 : string = "v104"
                                 let v108 : Vec<struct (string * unativeint * Heap5)> = Fable.Core.RustInterop.emitRustExpr () v107
-                                US54_1(v108)
+                                US54_0(v108)
                             | _ ->
                                 v86
                     | _ ->
                         match v99 with
-                        | US51_0(v115) -> (* Error *)
-                            US54_0(v115)
+                        | US51_1(v115) -> (* Error *)
+                            US54_1(v115)
                         | _ ->
                             v86
                 let v119 : int32 = v85 + 1
@@ -4091,9 +4091,9 @@ and closure111 (v0 : leptos_Memo<(string [])>, v1 : leptos_Memo<(Result<(struct 
             let v120 : US54 = v83.l1
             let v132 : US54 =
                 match v120 with
-                | US54_0(v129) -> (* Error *)
-                    US54_0(v129)
-                | US54_1(v121) -> (* Ok *)
+                | US54_1(v129) -> (* Error *)
+                    US54_1(v129)
+                | US54_0(v121) -> (* Ok *)
                     let v122 : Vec<struct (string * unativeint * Heap5)> = method313(v121)
                     let v123 : (struct (string * unativeint * Heap5) -> std_string_String) = method314()
                     let v124 : string = "let mut v122 = v122"
@@ -4102,12 +4102,12 @@ and closure111 (v0 : leptos_Memo<(string [])>, v1 : leptos_Memo<(Result<(struct 
                     Fable.Core.RustInterop.emitRustExpr () v125
                     let v126 : string = "v122"
                     let v127 : Vec<struct (string * unativeint * Heap5)> = Fable.Core.RustInterop.emitRustExpr () v126
-                    US54_1(v127)
+                    US54_0(v127)
             let v146 : US55 =
                 match v132 with
-                | US54_0(v143) -> (* Error *)
-                    US55_0(v143)
-                | US54_1(v133) -> (* Ok *)
+                | US54_1(v143) -> (* Error *)
+                    US55_1(v143)
+                | US54_0(v133) -> (* Ok *)
                     let v134 : Vec<struct (string * unativeint * Heap5)> = method315(v133)
                     let v135 : string = "let mut v134 = v134"
                     Fable.Core.RustInterop.emitRustExpr () v135
@@ -4118,33 +4118,33 @@ and closure111 (v0 : leptos_Memo<(string [])>, v1 : leptos_Memo<(Result<(struct 
                     let v139 : Vec<struct (string * unativeint * Heap5)> = method316(v138)
                     let v140 : string = "fable_library_rust::NativeArray_::array_from(v139)"
                     let v141 : (struct (string * unativeint * Heap5) []) = Fable.Core.RustInterop.emitRustExpr () v140
-                    US55_1(v141)
+                    US55_0(v141)
             match v146 with
-            | US55_0(v150) -> (* Error *)
-                US49_0(v150)
-            | US55_1(v147) -> (* Ok *)
-                let v148 : US50 = US50_1(v147)
-                US49_1(v148)
+            | US55_1(v150) -> (* Error *)
+                US49_1(v150)
+            | US55_0(v147) -> (* Ok *)
+                let v148 : US50 = US50_0(v147)
+                US49_0(v148)
     let v165 : US56 =
         match v154 with
-        | US49_0(v162) -> (* Error *)
-            US56_0(v162)
-        | US49_1(v155) -> (* Ok *)
+        | US49_1(v162) -> (* Error *)
+            US56_1(v162)
+        | US49_0(v155) -> (* Ok *)
             let v160 : (struct (string * unativeint * Heap5) []) option =
                 match v155 with
-                | US50_0 -> (* None *)
+                | US50_1 -> (* None *)
                     let v158 : (struct (string * unativeint * Heap5) []) option = None
                     v158
-                | US50_1(v156) -> (* Some *)
+                | US50_0(v156) -> (* Some *)
                     let v157 : (struct (string * unativeint * Heap5) []) option = Some v156
                     v157
-            US56_1(v160)
+            US56_0(v160)
     let v171 : Result<(struct (string * unativeint * Heap5) []) option, std_string_String> =
         match v165 with
-        | US56_0(v168) -> (* Error *)
+        | US56_1(v168) -> (* Error *)
             let v169 : Result<(struct (string * unativeint * Heap5) []) option, std_string_String> = Error v168
             v169
-        | US56_1(v166) -> (* Ok *)
+        | US56_0(v166) -> (* Ok *)
             let v167 : Result<(struct (string * unativeint * Heap5) []) option, std_string_String> = Ok v166
             v167
     let v172 : string = $"%A{v171}"
@@ -4167,11 +4167,11 @@ and method283 (v0 : leptos_Memo<(string [])>, v1 : leptos_Memo<(Result<(struct (
 and method318 (v0 : leptos_Memo<Result<(struct (string * unativeint * Heap5) []) option, std_string_String>>) : leptos_Memo<Result<(struct (string * unativeint * Heap5) []) option, std_string_String>> =
     v0
 and closure129 () (v0 : (struct (string * unativeint * Heap5) []) option) : US56 =
-    US56_1(v0)
-and closure130 () (v0 : std_string_String) : US56 =
     US56_0(v0)
+and closure130 () (v0 : std_string_String) : US56 =
+    US56_1(v0)
 and closure131 () (v0 : (struct (string * unativeint * Heap5) [])) : US50 =
-    US50_1(v0)
+    US50_0(v0)
 and method320 () : string =
     let v0 : string = "2.0"
     v0
@@ -4269,20 +4269,20 @@ and closure128 (v0 : leptos_Memo<Result<(struct (string * unativeint * Heap5) []
     let v6 : US56 = match v3 with Ok x -> v4 x | Error x -> v5 x
     let v15 : US49 =
         match v6 with
-        | US56_0(v12) -> (* Error *)
-            US49_0(v12)
-        | US56_1(v7) -> (* Ok *)
+        | US56_1(v12) -> (* Error *)
+            US49_1(v12)
+        | US56_0(v7) -> (* Ok *)
             let v8 : ((struct (string * unativeint * Heap5) []) -> US50) = closure131()
-            let v9 : US50 = US50_0
+            let v9 : US50 = US50_1
             let v10 : US50 = v7 |> Option.map v8 |> Option.defaultValue v9
-            US49_1(v10)
+            US49_0(v10)
     let v40 : US57 =
         match v15 with
-        | US49_0(v37) -> (* Error *)
-            US57_0(v37)
-        | US49_1(v16) -> (* Ok *)
+        | US49_1(v37) -> (* Error *)
+            US57_1(v37)
+        | US49_0(v16) -> (* Ok *)
             match v16 with
-            | US50_1(v17) -> (* Some *)
+            | US50_0(v17) -> (* Some *)
                 let v18 : (struct (string * unativeint * Heap5) []) = method308(v17)
                 let v19 : string = "v18.to_vec()"
                 let v20 : Vec<struct (string * unativeint * Heap5)> = Fable.Core.RustInterop.emitRustExpr () v19
@@ -4297,31 +4297,31 @@ and closure128 (v0 : leptos_Memo<Result<(struct (string * unativeint * Heap5) []
                 let v29 : Vec<struct (bool * string * bool * US25 * string)> = method147(v28)
                 let v30 : string = "fable_library_rust::NativeArray_::array_from(v29)"
                 let v31 : (struct (bool * string * bool * US25 * string) []) = Fable.Core.RustInterop.emitRustExpr () v30
-                let v32 : US58 = US58_1(v31)
-                US57_1(v32)
+                let v32 : US58 = US58_0(v31)
+                US57_0(v32)
             | _ ->
-                let v34 : US58 = US58_0
-                US57_1(v34)
+                let v34 : US58 = US58_1
+                US57_0(v34)
     let v51 : US59 =
         match v40 with
-        | US57_0(v48) -> (* Error *)
-            US59_0(v48)
-        | US57_1(v41) -> (* Ok *)
+        | US57_1(v48) -> (* Error *)
+            US59_1(v48)
+        | US57_0(v41) -> (* Ok *)
             let v46 : (struct (bool * string * bool * US25 * string) []) option =
                 match v41 with
-                | US58_0 -> (* None *)
+                | US58_1 -> (* None *)
                     let v44 : (struct (bool * string * bool * US25 * string) []) option = None
                     v44
-                | US58_1(v42) -> (* Some *)
+                | US58_0(v42) -> (* Some *)
                     let v43 : (struct (bool * string * bool * US25 * string) []) option = Some v42
                     v43
-            US59_1(v46)
+            US59_0(v46)
     let v57 : Result<(struct (bool * string * bool * US25 * string) []) option, std_string_String> =
         match v51 with
-        | US59_0(v54) -> (* Error *)
+        | US59_1(v54) -> (* Error *)
             let v55 : Result<(struct (bool * string * bool * US25 * string) []) option, std_string_String> = Error v54
             v55
-        | US59_1(v52) -> (* Ok *)
+        | US59_0(v52) -> (* Ok *)
             let v53 : Result<(struct (bool * string * bool * US25 * string) []) option, std_string_String> = Ok v52
             v53
     let v58 : string = $"%A{v57}"
@@ -4344,11 +4344,11 @@ and method317 (v0 : leptos_Memo<Result<(struct (string * unativeint * Heap5) [])
 and method334 (v0 : leptos_Memo<Result<(struct (bool * string * bool * US25 * string) []) option, std_string_String>>) : leptos_Memo<Result<(struct (bool * string * bool * US25 * string) []) option, std_string_String>> =
     v0
 and closure136 () (v0 : (struct (bool * string * bool * US25 * string) []) option) : US59 =
-    US59_1(v0)
-and closure137 () (v0 : std_string_String) : US59 =
     US59_0(v0)
+and closure137 () (v0 : std_string_String) : US59 =
+    US59_1(v0)
 and closure138 () (v0 : (struct (bool * string * bool * US25 * string) [])) : US58 =
-    US58_1(v0)
+    US58_0(v0)
 and closure135 (v0 : leptos_Memo<Result<(struct (bool * string * bool * US25 * string) []) option, std_string_String>>) () : (struct (bool * string * bool * US25 * string) []) =
     let v1 : leptos_Memo<Result<(struct (bool * string * bool * US25 * string) []) option, std_string_String>> = method334(v0)
     let v2 : string = $"v1()"
@@ -4358,18 +4358,18 @@ and closure135 (v0 : leptos_Memo<Result<(struct (bool * string * bool * US25 * s
     let v6 : US59 = match v3 with Ok x -> v4 x | Error x -> v5 x
     let v15 : US57 =
         match v6 with
-        | US59_0(v12) -> (* Error *)
-            US57_0(v12)
-        | US59_1(v7) -> (* Ok *)
+        | US59_1(v12) -> (* Error *)
+            US57_1(v12)
+        | US59_0(v7) -> (* Ok *)
             let v8 : ((struct (bool * string * bool * US25 * string) []) -> US58) = closure138()
-            let v9 : US58 = US58_0
+            let v9 : US58 = US58_1
             let v10 : US58 = v7 |> Option.map v8 |> Option.defaultValue v9
-            US57_1(v10)
+            US57_0(v10)
     let v23 : (struct (bool * string * bool * US25 * string) []) =
         match v15 with
-        | US57_1(v16) -> (* Ok *)
+        | US57_0(v16) -> (* Ok *)
             match v16 with
-            | US58_1(v17) -> (* Some *)
+            | US58_0(v17) -> (* Some *)
                 v17
             | _ ->
                 let v18 : (struct (bool * string * bool * US25 * string) []) = [||]
@@ -4406,40 +4406,40 @@ and method339 (v0 : Result<crate_model_near_rpc_RpcResponse, std_string_String>)
 and closure141 (v0 : US29, v1 : US42, v2 : int32) struct (v3 : bool, v4 : string, v5 : bool, v6 : US25, v7 : string) : Result<crate_model_near_rpc_RpcResponse option, std_string_String> =
     let v38 : US32 =
         match v0 with
-        | US29_0 -> (* None *)
-            US32_0
-        | US29_1(v8) -> (* Some *)
+        | US29_1 -> (* None *)
+            US32_1
+        | US29_0(v8) -> (* Some *)
             let v34 : US33 =
                 match v8 with
-                | US30_0(v31) -> (* Error *)
-                    US33_0(v31)
-                | US30_1(v9) -> (* Ok *)
+                | US30_1(v31) -> (* Error *)
+                    US33_1(v31)
+                | US30_0(v9) -> (* Ok *)
                     let v10 : US27 option = v9 |> Array.tryItem v2
                     let v11 : (US27 -> US35) = closure86()
-                    let v12 : US35 = US35_0
+                    let v12 : US35 = US35_1
                     let v13 : US35 = v10 |> Option.map v11 |> Option.defaultValue v12
                     let v20 : US27 =
                         match v13 with
-                        | US35_1(v14) -> (* Some *)
+                        | US35_0(v14) -> (* Some *)
                             match v14 with
-                            | US27_1(v15) -> (* Some *)
-                                US27_1(v15)
+                            | US27_0(v15) -> (* Some *)
+                                US27_0(v15)
                             | _ ->
-                                US27_0
+                                US27_1
                         | _ ->
-                            US27_0
+                            US27_1
                     let v29 : US34 =
                         match v20 with
-                        | US27_0 -> (* None *)
-                            US34_0
-                        | US27_1(v21) -> (* Some *)
+                        | US27_1 -> (* None *)
+                            US34_1
+                        | US27_0(v21) -> (* Some *)
                             let v22 : std_string_String = v21.l0
                             let v23 : std_string_String = method69(v22)
                             let v24 : string = "fable_library_rust::String_::fromString(v23)"
                             let v25 : string = Fable.Core.RustInterop.emitRustExpr () v24
-                            US34_1(v25)
-                    US33_1(v29)
-            US32_1(v34)
+                            US34_0(v25)
+                    US33_0(v29)
+            US32_0(v34)
     let v39 : string = $"%A{struct (v3, v4, v5, v6, v7)}"
     let v40 : int64 = System.Convert.ToInt64 v39.Length
     let v41 : bool = v40 <= 400L
@@ -4534,24 +4534,24 @@ and closure141 (v0 : US29, v1 : US42, v2 : int32) struct (v3 : bool, v4 : string
     Fable.Core.RustInterop.emitRustExpr () v116
     let v132 : US34 =
         match v1 with
-        | US42_0(v129) -> (* Error *)
-            US34_0
-        | US42_1(v117) -> (* Ok *)
+        | US42_1(v129) -> (* Error *)
+            US34_1
+        | US42_0(v117) -> (* Ok *)
             let v118 : US34 option = v117 |> Array.tryItem v2
             let v119 : (US34 -> US43) = closure100()
-            let v120 : US43 = US43_0
+            let v120 : US43 = US43_1
             let v121 : US43 = v118 |> Option.map v119 |> Option.defaultValue v120
             match v121 with
-            | US43_1(v122) -> (* Some *)
+            | US43_0(v122) -> (* Some *)
                 match v122 with
-                | US34_1(v123) -> (* Some *)
-                    US34_1(v123)
+                | US34_0(v123) -> (* Some *)
+                    US34_0(v123)
                 | _ ->
-                    US34_0
+                    US34_1
             | _ ->
-                US34_0
+                US34_1
     match v132 with
-    | US34_1(v133) -> (* Some *)
+    | US34_0(v133) -> (* Some *)
         let v134 : string = method6(v133)
         let v135 : string = $"fable_library_rust::String_::LrcStr::as_str(&v134)"
         let v136 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v135
@@ -4568,11 +4568,11 @@ and closure141 (v0 : US29, v1 : US42, v2 : int32) struct (v3 : bool, v4 : string
         v146
     | _ ->
         match v38 with
-        | US32_1(v147) -> (* Some *)
+        | US32_0(v147) -> (* Some *)
             match v147 with
-            | US33_1(v148) -> (* Ok *)
+            | US33_0(v148) -> (* Ok *)
                 match v148 with
-                | US34_1(v149) -> (* Some *)
+                | US34_0(v149) -> (* Some *)
                     let v150 : string = method6(v149)
                     let v151 : string = $"fable_library_rust::String_::LrcStr::as_str(&v150)"
                     let v152 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v151
@@ -4633,21 +4633,21 @@ and closure139 (v0 : leptos_Memo<(struct (bool * string * bool * US25 * string) 
     let v12 : string = $"v11()"
     let v13 : Result<(Heap4 option []), std_string_String> option = Fable.Core.RustInterop.emitRustExpr () v12
     let v14 : (Result<(Heap4 option []), std_string_String> -> US28) = closure79()
-    let v15 : US28 = US28_0
+    let v15 : US28 = US28_1
     let v16 : US28 = v13 |> Option.map v14 |> Option.defaultValue v15
     let v40 : US29 =
         match v16 with
-        | US28_0 -> (* None *)
-            US29_0
-        | US28_1(v17) -> (* Some *)
+        | US28_1 -> (* None *)
+            US29_1
+        | US28_0(v17) -> (* Some *)
             let v18 : ((Heap4 option []) -> US31) = closure80()
             let v19 : (std_string_String -> US31) = closure81()
             let v20 : US31 = match v17 with Ok x -> v18 x | Error x -> v19 x
             let v36 : US30 =
                 match v20 with
-                | US31_0(v33) -> (* Error *)
-                    US30_0(v33)
-                | US31_1(v21) -> (* Ok *)
+                | US31_1(v33) -> (* Error *)
+                    US30_1(v33)
+                | US31_0(v21) -> (* Ok *)
                     let v22 : (Heap4 option []) = method200(v21)
                     let v23 : string = "v22.to_vec()"
                     let v24 : Vec<Heap4 option> = Fable.Core.RustInterop.emitRustExpr () v23
@@ -4658,8 +4658,8 @@ and closure139 (v0 : leptos_Memo<(struct (bool * string * bool * US25 * string) 
                     let v29 : Vec<US27> = method203(v28)
                     let v30 : string = "fable_library_rust::NativeArray_::array_from(v29)"
                     let v31 : (US27 []) = Fable.Core.RustInterop.emitRustExpr () v30
-                    US30_1(v31)
-            US29_1(v36)
+                    US30_0(v31)
+            US29_0(v36)
     let v41 : string = $"%A{v40}"
     let v42 : int64 = System.Convert.ToInt64 v41.Length
     let v43 : bool = v42 <= 400L
@@ -4696,27 +4696,27 @@ and closure139 (v0 : leptos_Memo<(struct (bool * string * bool * US25 * string) 
     let v69 : string = $"leptos::SignalGet::get(&v68)"
     let v70 : Result<(string option []), std_string_String> option = Fable.Core.RustInterop.emitRustExpr () v69
     let v71 : (Result<(string option []), std_string_String> -> US38) = closure92()
-    let v72 : US38 = US38_0
+    let v72 : US38 = US38_1
     let v73 : US38 = v70 |> Option.map v71 |> Option.defaultValue v72
     let v81 : US39 =
         match v73 with
-        | US38_0 -> (* None *)
-            US39_0
-        | US38_1(v74) -> (* Some *)
+        | US38_1 -> (* None *)
+            US39_1
+        | US38_0(v74) -> (* Some *)
             let v75 : ((string option []) -> US40) = closure93()
             let v76 : (std_string_String -> US40) = closure94()
             let v77 : US40 = match v74 with Ok x -> v75 x | Error x -> v76 x
-            US39_1(v77)
+            US39_0(v77)
     let v102 : US41 =
         match v81 with
-        | US39_0 -> (* None *)
-            US41_0
-        | US39_1(v82) -> (* Some *)
+        | US39_1 -> (* None *)
+            US41_1
+        | US39_0(v82) -> (* Some *)
             let v98 : US42 =
                 match v82 with
-                | US40_0(v95) -> (* Error *)
-                    US42_0(v95)
-                | US40_1(v83) -> (* Ok *)
+                | US40_1(v95) -> (* Error *)
+                    US42_1(v95)
+                | US40_0(v83) -> (* Ok *)
                     let v84 : (string option []) = method238(v83)
                     let v85 : string = "v84.to_vec()"
                     let v86 : Vec<string option> = Fable.Core.RustInterop.emitRustExpr () v85
@@ -4727,20 +4727,20 @@ and closure139 (v0 : leptos_Memo<(struct (bool * string * bool * US25 * string) 
                     let v91 : Vec<US34> = method241(v90)
                     let v92 : string = "fable_library_rust::NativeArray_::array_from(v91)"
                     let v93 : (US34 []) = Fable.Core.RustInterop.emitRustExpr () v92
-                    US42_1(v93)
-            US41_1(v98)
+                    US42_0(v93)
+            US41_0(v98)
     let v103 : (US34 []) = [||]
     let v104 : (US34 []) = method242(v103)
     let v108 : US42 =
         match v102 with
-        | US41_0 -> (* None *)
-            US42_1(v104)
-        | US41_1(v105) -> (* Some *)
+        | US41_1 -> (* None *)
+            US42_0(v104)
+        | US41_0(v105) -> (* Some *)
             v105
     match v108 with
-    | US42_0(v117) -> (* Error *)
+    | US42_1(v117) -> (* Error *)
         ()
-    | US42_1(v109) -> (* Ok *)
+    | US42_0(v109) -> (* Ok *)
         let v110 : (US34 []) = method243(v109)
         let v111 : string = "v110.to_vec()"
         let v112 : Vec<US34> = Fable.Core.RustInterop.emitRustExpr () v111
@@ -5100,27 +5100,27 @@ and closure143 (v0 : leptos_Resource<US2, rexie_Rexie>, v1 : leptos_Resource<str
     let v16 : string = $"leptos::SignalGet::get(&v15)"
     let v17 : rexie_Rexie option = Fable.Core.RustInterop.emitRustExpr () v16
     let v18 : (rexie_Rexie -> US5) = closure10()
-    let v19 : US5 = US5_0
+    let v19 : US5 = US5_1
     let v20 : US5 = v17 |> Option.map v18 |> Option.defaultValue v19
     let v21 : leptos_Resource<struct (rexie_Rexie option * (struct (bool * string * bool * US25 * string) [])), Result<Vec<Heap4 option>, std_string_String>> = method189(v1)
     let v22 : string = $"leptos::SignalGet::get(&v21)"
     let v23 : Result<Vec<Heap4 option>, std_string_String> option = Fable.Core.RustInterop.emitRustExpr () v22
     let v24 : (Result<Vec<Heap4 option>, std_string_String> -> US44) = closure103()
-    let v25 : US44 = US44_0
+    let v25 : US44 = US44_1
     let v26 : US44 = v23 |> Option.map v24 |> Option.defaultValue v25
     let v47 : US29 =
         match v26 with
-        | US44_0 -> (* None *)
-            US29_0
-        | US44_1(v27) -> (* Some *)
+        | US44_1 -> (* None *)
+            US29_1
+        | US44_0(v27) -> (* Some *)
             let v28 : (Vec<Heap4 option> -> US45) = closure104()
             let v29 : (std_string_String -> US45) = closure105()
             let v30 : US45 = match v27 with Ok x -> v28 x | Error x -> v29 x
             let v43 : US30 =
                 match v30 with
-                | US45_0(v40) -> (* Error *)
-                    US30_0(v40)
-                | US45_1(v31) -> (* Ok *)
+                | US45_1(v40) -> (* Error *)
+                    US30_1(v40)
+                | US45_0(v31) -> (* Ok *)
                     let v32 : (Heap4 option -> US27) = method201()
                     let v33 : Vec<Heap4 option> = method202(v31)
                     let v34 : string = "v33.iter().map(|x| v32(x.clone())).collect()"
@@ -5128,8 +5128,8 @@ and closure143 (v0 : leptos_Resource<US2, rexie_Rexie>, v1 : leptos_Resource<str
                     let v36 : Vec<US27> = method203(v35)
                     let v37 : string = "fable_library_rust::NativeArray_::array_from(v36)"
                     let v38 : (US27 []) = Fable.Core.RustInterop.emitRustExpr () v37
-                    US30_1(v38)
-            US29_1(v43)
+                    US30_0(v38)
+            US29_0(v43)
     let v48 : string = $"%A{v20}"
     let v49 : int64 = System.Convert.ToInt64 v48.Length
     let v50 : bool = v49 <= 400L
@@ -5227,13 +5227,13 @@ and method393 () : string =
     let v0 : string = "https://rpc.mainnet.near.org"
     v0
 and closure158 () (v0 : US15) : US61 =
-    US61_1(v0)
-and closure159 () (v0 : std_string_String) : US61 =
     US61_0(v0)
+and closure159 () (v0 : std_string_String) : US61 =
+    US61_1(v0)
 and closure160 () (v0 : crate_model_near_rpc_RpcResponse) : US63 =
-    US63_1(v0)
-and closure161 () (v0 : std_string_String) : US63 =
     US63_0(v0)
+and closure161 () (v0 : std_string_String) : US63 =
+    US63_1(v0)
 and method394 (v0 : Result<US60, std_string_String>) : Result<US60, std_string_String> =
     v0
 and method391 () : std_pin_Pin<Box<Dyn<Future<Result<US60, std_string_String>>>>> =
@@ -5309,7 +5309,7 @@ and method391 () : std_pin_Pin<Box<Dyn<Future<Result<US60, std_string_String>>>>
     let v68 : Result<std_string_String, std_string_String> = Fable.Core.RustInterop.emitRustExpr () v67
     let v69 : string = "v68?"
     let v70 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v69
-    let v71 : US15 = US15_1(v70)
+    let v71 : US15 = US15_0(v70)
     let v72 : Result<US15, std_string_String> = Ok v71
     let v73 : string = $"%A{v72}"
     let v74 : string = "dice_view.render (x) / roll_action create_action / result1 / result: " + string v73 + ""
@@ -5330,9 +5330,9 @@ and method391 () : std_pin_Pin<Box<Dyn<Future<Result<US60, std_string_String>>>>
     let v84 : US61 = match v72 with Ok x -> v82 x | Error x -> v83 x
     let v140 : US62 =
         match v84 with
-        | US61_1(v85) -> (* Ok *)
+        | US61_0(v85) -> (* Ok *)
             match v85 with
-            | US15_1(v86) -> (* Some *)
+            | US15_0(v86) -> (* Some *)
                 let v87 : std_string_String = method69(v86)
                 let v88 : string = "fable_library_rust::String_::fromString(v87)"
                 let v89 : string = Fable.Core.RustInterop.emitRustExpr () v88
@@ -5350,9 +5350,9 @@ and method391 () : std_pin_Pin<Box<Dyn<Future<Result<US60, std_string_String>>>>
                 let v101 : US63 = match v98 with Ok x -> v99 x | Error x -> v100 x
                 let v124 : US64 =
                     match v101 with
-                    | US63_0(v121) -> (* Error *)
-                        US64_0(v121)
-                    | US63_1(v102) -> (* Ok *)
+                    | US63_1(v121) -> (* Error *)
+                        US64_1(v121)
+                    | US63_0(v102) -> (* Ok *)
                         let v103 : crate_model_near_rpc_RpcResponse = method348(v102)
                         let v104 : string = "v103.jsonrpc"
                         let v105 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v104
@@ -5370,25 +5370,25 @@ and method391 () : std_pin_Pin<Box<Dyn<Future<Result<US60, std_string_String>>>>
                         let v117 : struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option = Fable.Core.RustInterop.emitRustExpr () v116
                         let v118 : string = "v103.id"
                         let v119 : std_string_String option = Fable.Core.RustInterop.emitRustExpr () v118
-                        US64_1(v117, v119, v105, v111)
+                        US64_0(v117, v119, v105, v111)
                 match v124 with
-                | US64_0(v131) -> (* Error *)
-                    US62_0(v131)
-                | US64_1(v125, v126, v127, v128) -> (* Ok *)
-                    let v129 : US60 = US60_1(v125, v126, v127, v128)
-                    US62_1(v129)
+                | US64_1(v131) -> (* Error *)
+                    US62_1(v131)
+                | US64_0(v125, v126, v127, v128) -> (* Ok *)
+                    let v129 : US60 = US60_0(v125, v126, v127, v128)
+                    US62_0(v129)
             | _ ->
-                let v135 : US60 = US60_0
-                US62_1(v135)
+                let v135 : US60 = US60_1
+                US62_0(v135)
         | _ ->
-            let v138 : US60 = US60_0
-            US62_1(v138)
+            let v138 : US60 = US60_1
+            US62_0(v138)
     let v146 : Result<US60, std_string_String> =
         match v140 with
-        | US62_0(v143) -> (* Error *)
+        | US62_1(v143) -> (* Error *)
             let v144 : Result<US60, std_string_String> = Error v143
             v144
-        | US62_1(v141) -> (* Ok *)
+        | US62_0(v141) -> (* Ok *)
             let v142 : Result<US60, std_string_String> = Ok v141
             v142
     let v147 : string = $"%A{v146}"
@@ -5429,9 +5429,9 @@ and method397 (v0 : leptos_RwSignal<Result<US60, std_string_String> option>) : l
 and method398 (v0 : Result<US60, std_string_String> option) : Result<US60, std_string_String> option =
     v0
 and closure164 () (v0 : US60) : US62 =
-    US62_1(v0)
-and closure165 () (v0 : std_string_String) : US62 =
     US62_0(v0)
+and closure165 () (v0 : std_string_String) : US62 =
+    US62_1(v0)
 and closure163 () (v0 : Result<US60, std_string_String>) : US62 =
     let v1 : (US60 -> US62) = closure164()
     let v2 : (std_string_String -> US62) = closure165()
@@ -5440,7 +5440,7 @@ and closure163 () (v0 : Result<US60, std_string_String>) : US62 =
 and method399 () : (Result<US60, std_string_String> -> US62) =
     closure163()
 and closure166 () (v0 : US62) : US65 =
-    US65_1(v0)
+    US65_0(v0)
 and closure162 (v0 : leptos_Action<Heap6, Result<US60, std_string_String>>) () : Result<struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option, std_string_String> =
     let v1 : leptos_Action<Heap6, Result<US60, std_string_String>> = method396(v0)
     let v2 : string = "leptos::Action::value(&v1)"
@@ -5453,45 +5453,45 @@ and closure162 (v0 : leptos_Action<Heap6, Result<US60, std_string_String>>) () :
     let v9 : string = "v7.map(|x| v8(x))"
     let v10 : US62 option = Fable.Core.RustInterop.emitRustExpr () v9
     let v11 : (US62 -> US65) = closure166()
-    let v12 : US65 = US65_0
+    let v12 : US65 = US65_1
     let v13 : US65 = v10 |> Option.map v11 |> Option.defaultValue v12
     let v31 : US62 =
         match v13 with
-        | US65_1(v14) -> (* Some *)
+        | US65_0(v14) -> (* Some *)
             match v14 with
-            | US62_0(v15) -> (* Error *)
-                US62_0(v15)
-            | US62_1(v17) -> (* Ok *)
+            | US62_1(v15) -> (* Error *)
+                US62_1(v15)
+            | US62_0(v17) -> (* Ok *)
                 match v17 with
-                | US60_1(v18, v19, v20, v21) -> (* Some *)
-                    let v22 : US60 = US60_1(v18, v19, v20, v21)
-                    US62_1(v22)
+                | US60_0(v18, v19, v20, v21) -> (* Some *)
+                    let v22 : US60 = US60_0(v18, v19, v20, v21)
+                    US62_0(v22)
                 | _ ->
-                    let v24 : US60 = US60_0
-                    US62_1(v24)
+                    let v24 : US60 = US60_1
+                    US62_0(v24)
         | _ ->
-            let v29 : US60 = US60_0
-            US62_1(v29)
+            let v29 : US60 = US60_1
+            US62_0(v29)
     let v45 : US66 =
         match v31 with
-        | US62_0(v42) -> (* Error *)
-            US66_0(v42)
-        | US62_1(v32) -> (* Ok *)
+        | US62_1(v42) -> (* Error *)
+            US66_1(v42)
+        | US62_0(v32) -> (* Ok *)
             let v40 : struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option =
                 match v32 with
-                | US60_0 -> (* None *)
+                | US60_1 -> (* None *)
                     let v38 : struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option = None
                     v38
-                | US60_1(v33, v34, v35, v36) -> (* Some *)
+                | US60_0(v33, v34, v35, v36) -> (* Some *)
                     let v37 : struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option = Some struct (v33, v34, v35, v36)
                     v37
-            US66_1(v40)
+            US66_0(v40)
     let v51 : Result<struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option, std_string_String> =
         match v45 with
-        | US66_0(v48) -> (* Error *)
+        | US66_1(v48) -> (* Error *)
             let v49 : Result<struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option, std_string_String> = Error v48
             v49
-        | US66_1(v46) -> (* Ok *)
+        | US66_0(v46) -> (* Ok *)
             let v47 : Result<struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option, std_string_String> = Ok v46
             v47
     let v52 : string = $"%A{v51}"
@@ -5514,13 +5514,13 @@ and method395 (v0 : leptos_Action<Heap6, Result<US60, std_string_String>>) : (un
 and method401 (v0 : leptos_Memo<Result<struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option, std_string_String>>) : leptos_Memo<Result<struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option, std_string_String>> =
     v0
 and closure168 () (v0 : struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option) : US66 =
-    US66_1(v0)
-and closure169 () (v0 : std_string_String) : US66 =
     US66_0(v0)
+and closure169 () (v0 : std_string_String) : US66 =
+    US66_1(v0)
 and closure170 () struct (v0 : struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option, v1 : std_string_String option, v2 : std_string_String, v3 : struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) : US60 =
-    US60_1(v0, v1, v2, v3)
+    US60_0(v0, v1, v2, v3)
 and closure171 () struct (v0 : struct (std_string_String option * std_string_String option) option, v1 : std_string_String, v2 : int32, v3 : std_string_String, v4 : std_string_String, v5 : std_string_String) : US67 =
-    US67_1(v0, v1, v2, v3, v4, v5)
+    US67_0(v0, v1, v2, v3, v4, v5)
 and closure167 (v0 : leptos_Memo<Result<struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option, std_string_String>>) () : string option =
     let v1 : leptos_Memo<Result<struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) option, std_string_String>> = method401(v0)
     let v2 : string = $"v1()"
@@ -5530,37 +5530,37 @@ and closure167 (v0 : leptos_Memo<Result<struct (struct (struct (std_string_Strin
     let v6 : US66 = match v3 with Ok x -> v4 x | Error x -> v5 x
     let v15 : US62 =
         match v6 with
-        | US66_0(v12) -> (* Error *)
-            US62_0(v12)
-        | US66_1(v7) -> (* Ok *)
+        | US66_1(v12) -> (* Error *)
+            US62_1(v12)
+        | US66_0(v7) -> (* Ok *)
             let v8 : (struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) -> US60) = closure170()
-            let v9 : US60 = US60_0
+            let v9 : US60 = US60_1
             let v10 : US60 = v7 |> Option.map v8 |> Option.defaultValue v9
-            US62_1(v10)
+            US62_0(v10)
     let v37 : US34 =
         match v15 with
-        | US62_1(v16) -> (* Ok *)
+        | US62_0(v16) -> (* Ok *)
             match v16 with
-            | US60_1(v17, v18, v19, v20) -> (* Some *)
+            | US60_0(v17, v18, v19, v20) -> (* Some *)
                 let v21 : (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) -> US67) = closure171()
-                let v22 : US67 = US67_0
+                let v22 : US67 = US67_1
                 let v23 : US67 = v17 |> Option.map v21 |> Option.defaultValue v22
                 match v23 with
-                | US67_1(v24, v25, v26, v27, v28, v29) -> (* Some *)
+                | US67_0(v24, v25, v26, v27, v28, v29) -> (* Some *)
                     let v30 : string = string v29 + ": " + string v28 + " - " + string v27 + " (" + string v25 + ")"
-                    US34_1(v30)
+                    US34_0(v30)
                 | _ ->
-                    US34_0
+                    US34_1
             | _ ->
-                US34_0
+                US34_1
         | _ ->
-            US34_0
+            US34_1
     let v42 : string option =
         match v37 with
-        | US34_0 -> (* None *)
+        | US34_1 -> (* None *)
             let v40 : string option = None
             v40
-        | US34_1(v38) -> (* Some *)
+        | US34_0(v38) -> (* Some *)
             let v39 : string option = Some v38
             v39
     let v43 : string = $"%A{v42}"
@@ -5591,16 +5591,16 @@ and closure172 (v0 : Heap2) () : US34 =
     let v8 : Heap0 = Fable.Core.RustInterop.emitRustExpr () v7
     let v9 : std_string_String option = v8.l0
     let v10 : (std_string_String -> US15) = closure30()
-    let v11 : US15 = US15_0
+    let v11 : US15 = US15_1
     let v12 : US15 = v9 |> Option.map v10 |> Option.defaultValue v11
     match v12 with
-    | US15_0 -> (* None *)
-        US34_0
-    | US15_1(v13) -> (* Some *)
+    | US15_1 -> (* None *)
+        US34_1
+    | US15_0(v13) -> (* Some *)
         let v14 : std_string_String = method69(v13)
         let v15 : string = "fable_library_rust::String_::fromString(v14)"
         let v16 : string = Fable.Core.RustInterop.emitRustExpr () v15
-        US34_1(v16)
+        US34_0(v16)
 and method402 (v0 : Heap2) : (unit -> US34) =
     closure172(v0)
 and method405 (v0 : std_string_String) : std_string_String =
@@ -5688,7 +5688,7 @@ and method419 () : string =
     let v0 : string = "Account"
     v0
 and closure184 () (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>>) : US68 =
-    US68_1(v0)
+    US68_0(v0)
 and method422 (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>>) : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>> =
     v0
 and method423 (v0 : Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>) : Vec<struct (int32 * leptos_ReadSignal<std_string_String>)> =
@@ -5943,7 +5943,7 @@ and closure194 (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_strin
 and method451 (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>> option, v1 : leptos_Memo<US34> option, v2 : Heap2, v3 : int32, v4 : std_string_String) : (unit -> unit) =
     closure194(v0, v1, v2, v3, v4)
 and closure196 () (v0 : leptos_Memo<US34>) : US70 =
-    US70_1(v0)
+    US70_0(v0)
 and method455 (v0 : leptos_Memo<US34>) : leptos_Memo<US34> =
     v0
 and closure197 () () : string =
@@ -6021,30 +6021,30 @@ and closure195 (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_strin
     let v5 : string = "fable_library_rust::String_::fromString(v4)"
     let v6 : string = Fable.Core.RustInterop.emitRustExpr () v5
     let v7 : (leptos_Memo<US34> -> US70) = closure196()
-    let v8 : US70 = US70_0
+    let v8 : US70 = US70_1
     let v9 : US70 = v1 |> Option.map v7 |> Option.defaultValue v8
     let v17 : US43 =
         match v9 with
-        | US70_0 -> (* None *)
-            US43_0
-        | US70_1(v10) -> (* Some *)
+        | US70_1 -> (* None *)
+            US43_1
+        | US70_0(v10) -> (* Some *)
             let v11 : leptos_Memo<US34> = method455(v10)
             let v12 : string = $"v11()"
             let v13 : US34 = Fable.Core.RustInterop.emitRustExpr () v12
-            US43_1(v13)
+            US43_0(v13)
     let v24 : US34 =
         match v17 with
-        | US43_1(v18) -> (* Some *)
+        | US43_0(v18) -> (* Some *)
             match v18 with
-            | US34_1(v19) -> (* Some *)
-                US34_1(v19)
+            | US34_0(v19) -> (* Some *)
+                US34_0(v19)
             | _ ->
-                US34_0
+                US34_1
         | _ ->
-            US34_0
+            US34_1
     let v65 : leptos_View =
         match v24 with
-        | US34_1(v25) -> (* Some *)
+        | US34_0(v25) -> (* Some *)
             let v26 : bool = v6 = v25
             if v26 then
                 let v27 : (unit -> string) = method456()
@@ -6170,27 +6170,27 @@ and method448 (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string
     closure193(v0, v1, v2)
 and closure183 (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>> option, v1 : leptos_Memo<US34> option, v2 : Heap2) () : leptos_Fragment =
     let v3 : (leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>> -> US68) = closure184()
-    let v4 : US68 = US68_0
+    let v4 : US68 = US68_1
     let v5 : US68 = v0 |> Option.map v3 |> Option.defaultValue v4
     let v16 : US69 =
         match v5 with
-        | US68_0 -> (* None *)
-            US69_0
-        | US68_1(v6) -> (* Some *)
+        | US68_1 -> (* None *)
+            US69_1
+        | US68_0(v6) -> (* Some *)
             let v7 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>> = method422(v6)
             let v8 : string = $"v7()"
             let v9 : Vec<struct (int32 * leptos_ReadSignal<std_string_String>)> = Fable.Core.RustInterop.emitRustExpr () v8
             let v10 : Vec<struct (int32 * leptos_ReadSignal<std_string_String>)> = method423(v9)
             let v11 : string = "fable_library_rust::NativeArray_::array_from(v10)"
             let v12 : (struct (int32 * leptos_ReadSignal<std_string_String>) []) = Fable.Core.RustInterop.emitRustExpr () v11
-            US69_1(v12)
+            US69_0(v12)
     let v17 : (struct (int32 * leptos_ReadSignal<std_string_String>) []) = [||]
     let v18 : (struct (int32 * leptos_ReadSignal<std_string_String>) []) = method424(v17)
     let v21 : (struct (int32 * leptos_ReadSignal<std_string_String>) []) =
         match v16 with
-        | US69_0 -> (* None *)
+        | US69_1 -> (* None *)
             v18
-        | US69_1(v19) -> (* Some *)
+        | US69_0(v19) -> (* Some *)
             v19
     let v22 : uint64 = System.Convert.ToUInt64 v21.Length
     let v23 : bool = v22 = 0UL
@@ -6218,10 +6218,10 @@ and closure183 (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_strin
         let v44 : leptos_Fragment = Fable.Core.RustInterop.emitRustExpr () v43
         v44
     else
-        let v45 : US68 = US68_0
+        let v45 : US68 = US68_1
         let v46 : US68 = v0 |> Option.map v3 |> Option.defaultValue v45
         match v46 with
-        | US68_0 -> (* None *)
+        | US68_1 -> (* None *)
             let v71 : (leptos_View []) = [||]
             let v72 : (leptos_View []) = method413(v71)
             let v73 : (leptos_View []) = method429(v72)
@@ -6230,7 +6230,7 @@ and closure183 (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_strin
             let v76 : string = "leptos::Fragment::new(v75)"
             let v77 : leptos_Fragment = Fable.Core.RustInterop.emitRustExpr () v76
             v77
-        | US68_1(v47) -> (* Some *)
+        | US68_0(v47) -> (* Some *)
             let v48 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>> = method446(v47)
             let v49 : (struct (int32 * leptos_ReadSignal<std_string_String>) -> int32) = method447()
             let v50 : (struct (int32 * leptos_ReadSignal<std_string_String>) -> leptos_Fragment) = method448(v0, v1, v2)
@@ -6333,32 +6333,32 @@ and method473 (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string
     closure208(v0, v1, v2)
 and closure211 (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>> option, v1 : leptos_Memo<US34> option, v2 : Heap2) () : string =
     let v3 : (leptos_Memo<US34> -> US70) = closure196()
-    let v4 : US70 = US70_0
+    let v4 : US70 = US70_1
     let v5 : US70 = v1 |> Option.map v3 |> Option.defaultValue v4
     let v13 : US43 =
         match v5 with
-        | US70_0 -> (* None *)
-            US43_0
-        | US70_1(v6) -> (* Some *)
+        | US70_1 -> (* None *)
+            US43_1
+        | US70_0(v6) -> (* Some *)
             let v7 : leptos_Memo<US34> = method455(v6)
             let v8 : string = $"v7()"
             let v9 : US34 = Fable.Core.RustInterop.emitRustExpr () v8
-            US43_1(v9)
+            US43_0(v9)
     let v20 : US34 =
         match v13 with
-        | US43_1(v14) -> (* Some *)
+        | US43_0(v14) -> (* Some *)
             match v14 with
-            | US34_1(v15) -> (* Some *)
-                US34_1(v15)
+            | US34_0(v15) -> (* Some *)
+                US34_0(v15)
             | _ ->
-                US34_0
+                US34_1
         | _ ->
-            US34_0
+            US34_1
     match v20 with
-    | US34_0 -> (* None *)
+    | US34_1 -> (* None *)
         let v22 : string = "Select..."
         v22
-    | US34_1(v21) -> (* Some *)
+    | US34_0(v21) -> (* Some *)
         v21
 and method476 (v0 : leptos_Memo<Vec<struct (int32 * leptos_ReadSignal<std_string_String>)>> option, v1 : leptos_Memo<US34> option, v2 : Heap2) : (unit -> string) =
     closure211(v0, v1, v2)
@@ -7313,11 +7313,11 @@ and closure221 (v0 : Heap2, v1 : leptos_Action<Heap6, Result<US60, std_string_St
     let v29 : string = $"v28()"
     let v30 : string option = Fable.Core.RustInterop.emitRustExpr () v29
     let v31 : (string -> US34) = closure96()
-    let v32 : US34 = US34_0
+    let v32 : US34 = US34_1
     let v33 : US34 = v30 |> Option.map v31 |> Option.defaultValue v32
     let v54 : leptos_View =
         match v33 with
-        | US34_1(v34) -> (* Some *)
+        | US34_0(v34) -> (* Some *)
             let v35 : string = "class=\"flex flex-1 items-center [gap:4px] [padding:5px]\""
             let v36 : (unit -> leptos_Fragment) = method515(v34)
             let v37 : string = " " + v35 + v14 + ""
@@ -7688,17 +7688,17 @@ and closure248 () struct (v0 : std_string_String, v1 : std_string_String option)
     let v3 : string = "fable_library_rust::String_::fromString(v2)"
     let v4 : string = Fable.Core.RustInterop.emitRustExpr () v3
     let v5 : (std_string_String -> US15) = closure30()
-    let v6 : US15 = US15_0
+    let v6 : US15 = US15_1
     let v7 : US15 = v1 |> Option.map v5 |> Option.defaultValue v6
     let v15 : US34 =
         match v7 with
-        | US15_0 -> (* None *)
-            US34_0
-        | US15_1(v8) -> (* Some *)
+        | US15_1 -> (* None *)
+            US34_1
+        | US15_0(v8) -> (* Some *)
             let v9 : std_string_String = method69(v8)
             let v10 : string = "fable_library_rust::String_::fromString(v9)"
             let v11 : string = Fable.Core.RustInterop.emitRustExpr () v10
-            US34_1(v11)
+            US34_0(v11)
     struct (v4, v15)
 and method537 () : (struct (std_string_String * std_string_String option) -> struct (string * US34)) =
     closure248()
@@ -7708,7 +7708,7 @@ and closure249 () struct (v0 : string, v1 : US34) : bool =
     let v5 : bool = "FUNCTION_CALL" = v0
     if v5 then
         match v1 with
-        | US34_1(v8) -> (* Some *)
+        | US34_0(v8) -> (* Some *)
             let v9 : bool = "generate_random_number" = v8
             v9
         | _ ->
@@ -7996,7 +7996,7 @@ and method562 (v0 : std_string_String) : std_string_String =
 and method563 (v0 : int64) : int64 =
     v0
 and closure260 () (v0 : chrono_DateTime<chrono_Utc>) : US71 =
-    US71_1(v0)
+    US71_0(v0)
 and method564 (v0 : chrono_DateTime<chrono_Utc>) : chrono_DateTime<chrono_Utc> =
     v0
 and method565 (v0 : chrono_DateTime<chrono_Local>) : chrono_DateTime<chrono_Local> =
@@ -8010,13 +8010,13 @@ and closure259 (v0 : Heap5) () : leptos_Fragment =
     let v6 : string = "chrono::DateTime::from_timestamp_micros(v5 / 1000i64)"
     let v7 : chrono_DateTime<chrono_Utc> option = Fable.Core.RustInterop.emitRustExpr () v6
     let v8 : (chrono_DateTime<chrono_Utc> -> US71) = closure260()
-    let v9 : US71 = US71_0
+    let v9 : US71 = US71_1
     let v10 : US71 = v7 |> Option.map v8 |> Option.defaultValue v9
     let v29 : US34 =
         match v10 with
-        | US71_0 -> (* None *)
-            US34_0
-        | US71_1(v11) -> (* Some *)
+        | US71_1 -> (* None *)
+            US34_1
+        | US71_0(v11) -> (* Some *)
             let v12 : chrono_DateTime<chrono_Utc> = method564(v11)
             let v13 : string = "v12.naive_utc()"
             let v14 : chrono_NaiveDateTime = Fable.Core.RustInterop.emitRustExpr () v13
@@ -8031,20 +8031,20 @@ and closure259 (v0 : Heap5) () : leptos_Fragment =
             let v23 : std_string_String = method69(v22)
             let v24 : string = "fable_library_rust::String_::fromString(v23)"
             let v25 : string = Fable.Core.RustInterop.emitRustExpr () v24
-            US34_1(v25)
+            US34_0(v25)
     let v35 : US72 =
         match v29 with
-        | US34_0 -> (* None *)
+        | US34_1 -> (* None *)
             let v32 : string = "resultm.from_option / Option does not have a value."
-            US72_0(v32)
-        | US34_1(v30) -> (* Some *)
-            US72_1(v30)
+            US72_1(v32)
+        | US34_0(v30) -> (* Some *)
+            US72_0(v30)
     let v40 : string =
         match v35 with
-        | US72_0(v37) -> (* Error *)
+        | US72_1(v37) -> (* Error *)
             let v38 : string = "Error: " + v37 + ""
             v38
-        | US72_1(v36) -> (* Ok *)
+        | US72_0(v36) -> (* Ok *)
             v36
     let v41 : string = method460(v40)
     let v42 : string = method35(v41)
@@ -8179,7 +8179,7 @@ and closure264 (v0 : Heap5) () : leptos_Fragment =
         v21
     else
         let v22 : int32 = v1.Length
-        let v23 : US34 = US34_0
+        let v23 : US34 = US34_1
         let v24 : Mut5 = {l0 = 0; l1 = v23} : Mut5
         while method572(v22, v24) do
             let v26 : int32 = v24.l0
@@ -8195,13 +8195,13 @@ and closure264 (v0 : Heap5) () : leptos_Fragment =
             let v36 : (string []) = v34.Split v35
             let v43 : US34 =
                 match v30 with
-                | US34_0 -> (* None *)
+                | US34_1 -> (* None *)
                     let v37 : uint64 = System.Convert.ToUInt64 v36.Length
                     let v38 : bool = v37 = 2UL
                     if v38 then
                         let v39 : string = v36.[int 0]
                         let v40 : string = v36.[int 1]
-                        US34_1(v40)
+                        US34_0(v40)
                     else
                         v30
                 | _ ->
@@ -8213,10 +8213,10 @@ and closure264 (v0 : Heap5) () : leptos_Fragment =
         let v45 : US34 = v24.l1
         let v49 : string =
             match v45 with
-            | US34_0 -> (* None *)
+            | US34_1 -> (* None *)
                 let v47 : string = "?"
                 v47
-            | US34_1(v46) -> (* Some *)
+            | US34_0(v46) -> (* Some *)
                 v46
         let v50 : string = method460(v49)
         let v51 : string = method35(v50)
@@ -8253,28 +8253,28 @@ and closure265 (v0 : Heap5, v1 : Result<struct (struct (struct (std_string_Strin
     let v8 : US66 = match v1 with Ok x -> v6 x | Error x -> v7 x
     let v17 : US62 =
         match v8 with
-        | US66_0(v14) -> (* Error *)
-            US62_0(v14)
-        | US66_1(v9) -> (* Ok *)
+        | US66_1(v14) -> (* Error *)
+            US62_1(v14)
+        | US66_0(v9) -> (* Ok *)
             let v10 : (struct (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) option * std_string_String option * std_string_String * struct ((struct (std_string_String * (std_collections_HashMap<std_string_String, struct (std_string_String option * std_string_String * float option * std_string_String option)> []) * std_string_String * (std_string_String []) * (std_string_String []) * std_string_String * std_string_String * std_string_String * std_string_String) []) * (struct (std_string_String * std_string_String * std_string_String * uint64 * (std_string_String []) * (struct (std_string_String * std_string_String * std_string_String) []) * uint8 * (std_string_String []) * std_collections_HashMap<std_string_String, std_string_String> * std_string_String option * (struct (std_string_String * std_string_String) []) option) [])) option) -> US60) = closure170()
-            let v11 : US60 = US60_0
+            let v11 : US60 = US60_1
             let v12 : US60 = v9 |> Option.map v10 |> Option.defaultValue v11
-            US62_1(v12)
+            US62_0(v12)
     let v132 : US72 =
         match v17 with
-        | US62_0(v126) -> (* Error *)
+        | US62_1(v126) -> (* Error *)
             let v127 : std_string_String = method69(v126)
             let v128 : string = "fable_library_rust::String_::fromString(v127)"
             let v129 : string = Fable.Core.RustInterop.emitRustExpr () v128
-            US72_0(v129)
-        | US62_1(v18) -> (* Ok *)
+            US72_1(v129)
+        | US62_0(v18) -> (* Ok *)
             match v18 with
-            | US60_1(v19, v20, v21, v22) -> (* Some *)
+            | US60_0(v19, v20, v21, v22) -> (* Some *)
                 let v23 : (struct (struct (std_string_String option * std_string_String option) option * std_string_String * int32 * std_string_String * std_string_String * std_string_String) -> US67) = closure171()
-                let v24 : US67 = US67_0
+                let v24 : US67 = US67_1
                 let v25 : US67 = v19 |> Option.map v23 |> Option.defaultValue v24
                 match v25 with
-                | US67_0 -> (* None *)
+                | US67_1 -> (* None *)
                     let v72 : string = $"%A{struct (v19, v20, v21, v22)}"
                     let v73 : int64 = System.Convert.ToInt64 v72.Length
                     let v74 : bool = v73 <= 400L
@@ -8303,20 +8303,20 @@ and closure265 (v0 : Heap5, v1 : Result<struct (struct (struct (std_string_Strin
                             let v93 : string = ""
                             let v94 : string = v92 |> String.concat v93
                             v94
-                    US72_1(v95)
-                | US67_1(v26, v27, v28, v29, v30, v31) -> (* Some *)
-                    let v32 : US67 = US67_0
+                    US72_0(v95)
+                | US67_0(v26, v27, v28, v29, v30, v31) -> (* Some *)
+                    let v32 : US67 = US67_1
                     let v33 : US67 = v19 |> Option.map v23 |> Option.defaultValue v32
                     let v43 : US34 =
                         match v33 with
-                        | US67_1(v34, v35, v36, v37, v38, v39) -> (* Some *)
+                        | US67_0(v34, v35, v36, v37, v38, v39) -> (* Some *)
                             let v40 : string = string v39 + ": " + string v38 + " - " + string v37 + " (" + string v35 + ")"
-                            US34_1(v40)
+                            US34_0(v40)
                         | _ ->
-                            US34_0
+                            US34_1
                     let v70 : string =
                         match v43 with
-                        | US34_0 -> (* None *)
+                        | US34_1 -> (* None *)
                             let v45 : string = $"%A{()}"
                             let v46 : int64 = System.Convert.ToInt64 v45.Length
                             let v47 : bool = v46 <= 400L
@@ -8344,9 +8344,9 @@ and closure265 (v0 : Heap5, v1 : Result<struct (struct (struct (std_string_Strin
                                 let v66 : string = ""
                                 let v67 : string = v65 |> String.concat v66
                                 v67
-                        | US34_1(v44) -> (* Some *)
+                        | US34_0(v44) -> (* Some *)
                             v44
-                    US72_0(v70)
+                    US72_1(v70)
             | _ ->
                 let v99 : string = $"%A{v17}"
                 let v100 : int64 = System.Convert.ToInt64 v99.Length
@@ -8377,13 +8377,13 @@ and closure265 (v0 : Heap5, v1 : Result<struct (struct (struct (std_string_Strin
                         let v121 : string = v119 |> String.concat v120
                         v121
                 let v123 : string = $"RPC Response: {v122}"
-                US72_0(v123)
+                US72_1(v123)
     let v162 : string =
         match v132 with
-        | US72_0(v159) -> (* Error *)
+        | US72_1(v159) -> (* Error *)
             let v160 : string = $"Error: {v159}"
             v160
-        | US72_1(v133) -> (* Ok *)
+        | US72_0(v133) -> (* Ok *)
             let v134 : string = $"%A{v133}"
             let v135 : int64 = System.Convert.ToInt64 v134.Length
             let v136 : bool = v135 <= 400L
@@ -8713,15 +8713,15 @@ and closure244 (v0 : leptos_Memo<(Result<struct (struct (struct (std_string_Stri
             let v30 : US56 = match v27 with Ok x -> v28 x | Error x -> v29 x
             let v39 : US49 =
                 match v30 with
-                | US56_0(v36) -> (* Error *)
-                    US49_0(v36)
-                | US56_1(v31) -> (* Ok *)
+                | US56_1(v36) -> (* Error *)
+                    US49_1(v36)
+                | US56_0(v31) -> (* Ok *)
                     let v32 : ((struct (string * unativeint * Heap5) []) -> US50) = closure131()
-                    let v33 : US50 = US50_0
+                    let v33 : US50 = US50_1
                     let v34 : US50 = v31 |> Option.map v32 |> Option.defaultValue v33
-                    US49_1(v34)
+                    US49_0(v34)
             match v39 with
-            | US49_0(v111) -> (* Error *)
+            | US49_1(v111) -> (* Error *)
                 let v112 : std_string_String = method69(v111)
                 let v113 : string = "fable_library_rust::String_::fromString(v112)"
                 let v114 : string = Fable.Core.RustInterop.emitRustExpr () v113
@@ -8740,9 +8740,9 @@ and closure244 (v0 : leptos_Memo<(Result<struct (struct (struct (std_string_Stri
                 let v127 : string = "leptos::IntoView::into_view(v126)"
                 let v128 : leptos_View = Fable.Core.RustInterop.emitRustExpr () v127
                 v128
-            | US49_1(v40) -> (* Ok *)
+            | US49_0(v40) -> (* Ok *)
                 match v40 with
-                | US50_1(v41) -> (* Some *)
+                | US50_0(v41) -> (* Some *)
                     let v42 : (struct (string * unativeint * Heap5) []) = method308(v41)
                     let v43 : string = "v42.to_vec()"
                     let v44 : Vec<struct (string * unativeint * Heap5)> = Fable.Core.RustInterop.emitRustExpr () v43
@@ -10783,9 +10783,9 @@ and method724 () : (unit -> leptos_Fragment) =
 and method728 (v0 : Heap2) : Heap2 =
     v0
 and closure366 () (v0 : std_string_String) : US73 =
-    US73_1(v0)
-and closure367 () (v0 : std_string_String) : US73 =
     US73_0(v0)
+and closure367 () (v0 : std_string_String) : US73 =
+    US73_1(v0)
 and closure365 (v0 : Heap2) () : string =
     let v1 : string = "settings_view.global_state_log_render () / global_state_json memo"
     let v2 : string = method0(v1)
@@ -10798,10 +10798,10 @@ and closure365 (v0 : Heap2) () : string =
     let v8 : (std_string_String -> US73) = closure367()
     let v9 : US73 = match v6 with Ok x -> v7 x | Error x -> v8 x
     match v9 with
-    | US73_0(v14) -> (* Error *)
+    | US73_1(v14) -> (* Error *)
         let v15 : string = "Error: " + string v14 + ""
         v15
-    | US73_1(v10) -> (* Ok *)
+    | US73_0(v10) -> (* Ok *)
         let v11 : std_string_String = method69(v10)
         let v12 : string = "fable_library_rust::String_::fromString(v11)"
         let v13 : string = Fable.Core.RustInterop.emitRustExpr () v12
@@ -11723,13 +11723,13 @@ and closure411 (v0 : (struct (std_string_String * std_string_String option) []),
     let v16 : string = "chrono::DateTime::from_timestamp_micros(v15 / 1000i64)"
     let v17 : chrono_DateTime<chrono_Utc> option = Fable.Core.RustInterop.emitRustExpr () v16
     let v18 : (chrono_DateTime<chrono_Utc> -> US71) = closure260()
-    let v19 : US71 = US71_0
+    let v19 : US71 = US71_1
     let v20 : US71 = v17 |> Option.map v18 |> Option.defaultValue v19
     let v39 : US34 =
         match v20 with
-        | US71_0 -> (* None *)
-            US34_0
-        | US71_1(v21) -> (* Some *)
+        | US71_1 -> (* None *)
+            US34_1
+        | US71_0(v21) -> (* Some *)
             let v22 : chrono_DateTime<chrono_Utc> = method564(v21)
             let v23 : string = "v22.naive_utc()"
             let v24 : chrono_NaiveDateTime = Fable.Core.RustInterop.emitRustExpr () v23
@@ -11744,20 +11744,20 @@ and closure411 (v0 : (struct (std_string_String * std_string_String option) []),
             let v33 : std_string_String = method69(v32)
             let v34 : string = "fable_library_rust::String_::fromString(v33)"
             let v35 : string = Fable.Core.RustInterop.emitRustExpr () v34
-            US34_1(v35)
+            US34_0(v35)
     let v45 : US72 =
         match v39 with
-        | US34_0 -> (* None *)
+        | US34_1 -> (* None *)
             let v42 : string = "resultm.from_option / Option does not have a value."
-            US72_0(v42)
-        | US34_1(v40) -> (* Some *)
-            US72_1(v40)
+            US72_1(v42)
+        | US34_0(v40) -> (* Some *)
+            US72_0(v40)
     let v50 : string =
         match v45 with
-        | US72_0(v47) -> (* Error *)
+        | US72_1(v47) -> (* Error *)
             let v48 : string = "Error: " + v47 + ""
             v48
-        | US72_1(v46) -> (* Ok *)
+        | US72_0(v46) -> (* Ok *)
             v46
     let v51 : string = method460(v50)
     let v52 : string = method35(v51)
@@ -12157,10 +12157,10 @@ and method822 () : string =
     v0
 and closure437 (v0 : std_string_String option) () : leptos_Fragment =
     let v1 : (std_string_String -> US15) = closure30()
-    let v2 : US15 = US15_0
+    let v2 : US15 = US15_1
     let v3 : US15 = v0 |> Option.map v1 |> Option.defaultValue v2
     match v3 with
-    | US15_0 -> (* None *)
+    | US15_1 -> (* None *)
         let v26 : string = method822()
         let v27 : string = method35(v26)
         let v28 : string = method6(v27)
@@ -12180,7 +12180,7 @@ and closure437 (v0 : std_string_String option) () : leptos_Fragment =
         let v42 : string = "leptos::Fragment::new(v41)"
         let v43 : leptos_Fragment = Fable.Core.RustInterop.emitRustExpr () v42
         v43
-    | US15_1(v4) -> (* Some *)
+    | US15_0(v4) -> (* Some *)
         let v5 : std_string_String = method69(v4)
         let v6 : string = "fable_library_rust::String_::fromString(v5)"
         let v7 : string = Fable.Core.RustInterop.emitRustExpr () v6
@@ -13664,13 +13664,13 @@ and closure488 (v0 : Heap5) () : leptos_Fragment =
     let v6 : string = "chrono::DateTime::from_timestamp_micros(v5 / 1000i64)"
     let v7 : chrono_DateTime<chrono_Utc> option = Fable.Core.RustInterop.emitRustExpr () v6
     let v8 : (chrono_DateTime<chrono_Utc> -> US71) = closure260()
-    let v9 : US71 = US71_0
+    let v9 : US71 = US71_1
     let v10 : US71 = v7 |> Option.map v8 |> Option.defaultValue v9
     let v29 : US34 =
         match v10 with
-        | US71_0 -> (* None *)
-            US34_0
-        | US71_1(v11) -> (* Some *)
+        | US71_1 -> (* None *)
+            US34_1
+        | US71_0(v11) -> (* Some *)
             let v12 : chrono_DateTime<chrono_Utc> = method564(v11)
             let v13 : string = "v12.naive_utc()"
             let v14 : chrono_NaiveDateTime = Fable.Core.RustInterop.emitRustExpr () v13
@@ -13685,20 +13685,20 @@ and closure488 (v0 : Heap5) () : leptos_Fragment =
             let v23 : std_string_String = method69(v22)
             let v24 : string = "fable_library_rust::String_::fromString(v23)"
             let v25 : string = Fable.Core.RustInterop.emitRustExpr () v24
-            US34_1(v25)
+            US34_0(v25)
     let v35 : US72 =
         match v29 with
-        | US34_0 -> (* None *)
+        | US34_1 -> (* None *)
             let v32 : string = "resultm.from_option / Option does not have a value."
-            US72_0(v32)
-        | US34_1(v30) -> (* Some *)
-            US72_1(v30)
+            US72_1(v32)
+        | US34_0(v30) -> (* Some *)
+            US72_0(v30)
     let v40 : string =
         match v35 with
-        | US72_0(v37) -> (* Error *)
+        | US72_1(v37) -> (* Error *)
             let v38 : string = "Error: " + v37 + ""
             v38
-        | US72_1(v36) -> (* Ok *)
+        | US72_0(v36) -> (* Ok *)
             v36
     let v41 : string = method460(v40)
     let v42 : string = method35(v41)
@@ -14826,15 +14826,15 @@ and closure382 (v0 : Heap2, v1 : leptos_Memo<Result<(struct (string * unativeint
             let v55 : US56 = match v52 with Ok x -> v53 x | Error x -> v54 x
             let v64 : US49 =
                 match v55 with
-                | US56_0(v61) -> (* Error *)
-                    US49_0(v61)
-                | US56_1(v56) -> (* Ok *)
+                | US56_1(v61) -> (* Error *)
+                    US49_1(v61)
+                | US56_0(v56) -> (* Ok *)
                     let v57 : ((struct (string * unativeint * Heap5) []) -> US50) = closure131()
-                    let v58 : US50 = US50_0
+                    let v58 : US50 = US50_1
                     let v59 : US50 = v56 |> Option.map v57 |> Option.defaultValue v58
-                    US49_1(v59)
+                    US49_0(v59)
             match v64 with
-            | US49_0(v162) -> (* Error *)
+            | US49_1(v162) -> (* Error *)
                 let v163 : std_string_String = method69(v162)
                 let v164 : string = "fable_library_rust::String_::fromString(v163)"
                 let v165 : string = Fable.Core.RustInterop.emitRustExpr () v164
@@ -14853,9 +14853,9 @@ and closure382 (v0 : Heap2, v1 : leptos_Memo<Result<(struct (string * unativeint
                 let v178 : string = "leptos::IntoView::into_view(v177)"
                 let v179 : leptos_View = Fable.Core.RustInterop.emitRustExpr () v178
                 v179
-            | US49_1(v65) -> (* Ok *)
+            | US49_0(v65) -> (* Ok *)
                 match v65 with
-                | US50_1(v66) -> (* Some *)
+                | US50_0(v66) -> (* Some *)
                     let v67 : leptos_RwSignal<Heap1> = v0.l0
                     let v68 : leptos_RwSignal<Heap1> = method73(v67)
                     let v69 : string = $"leptos::SignalGetUntracked::get_untracked(&v68)"
@@ -15606,7 +15606,7 @@ and closure54 (v0 : leptos_ReadSignal<US20>) () : leptos_Fragment =
             let v175 : Vec<leptos_View> = Fable.Core.RustInterop.emitRustExpr () v174
             let v176 : string = "leptos::Fragment::new(v175)"
             let v177 : leptos_Fragment = Fable.Core.RustInterop.emitRustExpr () v176
-            US24_1(v177)
+            US24_0(v177)
         | US20_2 -> (* Lists *)
             let v179 : string = "lists_view.render ()"
             let v180 : string = method0(v179)
@@ -15634,8 +15634,8 @@ and closure54 (v0 : leptos_ReadSignal<US20>) () : leptos_Fragment =
             let v201 : Vec<leptos_View> = Fable.Core.RustInterop.emitRustExpr () v200
             let v202 : string = "leptos::Fragment::new(v201)"
             let v203 : leptos_Fragment = Fable.Core.RustInterop.emitRustExpr () v202
-            US24_1(v203)
-        | US20_3 -> (* Settings *)
+            US24_0(v203)
+        | US20_4 -> (* Settings *)
             let v422 : string = "settings_view.render ()"
             let v423 : string = method0(v422)
             let v424 : string = @$"leptos::logging::log!(""{{}}"", v423)"
@@ -15784,8 +15784,8 @@ and closure54 (v0 : leptos_ReadSignal<US20>) () : leptos_Fragment =
             let v563 : Vec<leptos_View> = Fable.Core.RustInterop.emitRustExpr () v562
             let v564 : string = "leptos::Fragment::new(v563)"
             let v565 : leptos_Fragment = Fable.Core.RustInterop.emitRustExpr () v564
-            US24_1(v565)
-        | US20_4 -> (* Transactions *)
+            US24_0(v565)
+        | US20_3 -> (* Transactions *)
             let v205 : string = "transactions_view.render (1)"
             let v206 : string = method0(v205)
             let v207 : string = @$"leptos::logging::log!(""{{}}"", v206)"
@@ -16021,12 +16021,12 @@ and closure54 (v0 : leptos_ReadSignal<US20>) () : leptos_Fragment =
             let v418 : Vec<leptos_View> = Fable.Core.RustInterop.emitRustExpr () v417
             let v419 : string = "leptos::Fragment::new(v418)"
             let v420 : leptos_Fragment = Fable.Core.RustInterop.emitRustExpr () v419
-            US24_1(v420)
+            US24_0(v420)
         | _ ->
-            US24_0
+            US24_1
     let v594 : leptos_View =
         match v571 with
-        | US24_0 -> (* None *)
+        | US24_1 -> (* None *)
             let v587 : (leptos_View []) = [||]
             let v588 : (leptos_View []) = method413(v587)
             let v589 : (leptos_View []) = method414(v588)
@@ -16034,7 +16034,7 @@ and closure54 (v0 : leptos_ReadSignal<US20>) () : leptos_Fragment =
             let v591 : string = "leptos::CollectView::collect_view(v590.to_vec())"
             let v592 : leptos_View = Fable.Core.RustInterop.emitRustExpr () v591
             v592
-        | US24_1(v572) -> (* Some *)
+        | US24_0(v572) -> (* Some *)
             let v573 : string = "class=\"flex flex-1 flex-col [overflow-y:auto]\""
             let v574 : (unit -> leptos_Fragment) = method952(v572)
             let v575 : string = ""
@@ -16104,9 +16104,9 @@ and closure541 (v0 : leptos_ReadSignal<US20>, v1 : US20) () : bool =
             false
     | US20_2, US20_2 -> (* Lists *)
         true
-    | US20_3, US20_3 -> (* Settings *)
+    | US20_4, US20_4 -> (* Settings *)
         true
-    | US20_4, US20_4 -> (* Transactions *)
+    | US20_3, US20_3 -> (* Transactions *)
         true
     | _ ->
         false
@@ -16148,10 +16148,10 @@ and closure540 (v0 : leptos_ReadSignal<US20>) (v1 : US20) : leptos_View =
         | US20_2 -> (* Lists *)
             let v5 : string = "Lists"
             v5
-        | US20_3 -> (* Settings *)
+        | US20_4 -> (* Settings *)
             let v7 : string = "Settings"
             v7
-        | US20_4 -> (* Transactions *)
+        | US20_3 -> (* Transactions *)
             let v6 : string = "Transactions"
             v6
     let v13 : (unit -> bool) = method961(v0, v1)
@@ -16178,8 +16178,8 @@ and closure539 (v0 : leptos_ReadSignal<US20>) () : leptos_Fragment =
     let v1 : US21 = US21_0
     let v2 : US20 = US20_1(v1)
     let v3 : US20 = US20_2
-    let v4 : US20 = US20_4
-    let v5 : US20 = US20_3
+    let v4 : US20 = US20_3
+    let v5 : US20 = US20_4
     let v6 : (US20 []) = [|v2; v3; v4; v5|]
     let v7 : (US20 []) = method125(v6)
     let v8 : (US20 []) = method959(v7)
@@ -16543,9 +16543,9 @@ and closure553 (v0 : leptos_ReadSignal<US20>, v1 : US20) () : bool =
             false
     | US20_2, US20_2 -> (* Lists *)
         true
-    | US20_3, US20_3 -> (* Settings *)
+    | US20_4, US20_4 -> (* Settings *)
         true
-    | US20_4, US20_4 -> (* Transactions *)
+    | US20_3, US20_3 -> (* Transactions *)
         true
     | _ ->
         false
@@ -16567,9 +16567,9 @@ and closure554 (v0 : leptos_ReadSignal<US20>, v1 : US20) () : StaticRef<Str> =
                 false
         | US20_2, US20_2 -> (* Lists *)
             true
-        | US20_3, US20_3 -> (* Settings *)
+        | US20_4, US20_4 -> (* Settings *)
             true
-        | US20_4, US20_4 -> (* Transactions *)
+        | US20_3, US20_3 -> (* Transactions *)
             true
         | _ ->
             false
@@ -16626,10 +16626,10 @@ and closure546 (v0 : leptos_ReadSignal<US20>, v1 : leptos_Memo<string>) (v2 : US
         | US20_2 -> (* Lists *)
             let v6 : string = "lists"
             v6
-        | US20_3 -> (* Settings *)
+        | US20_4 -> (* Settings *)
             let v8 : string = "settings"
             v8
-        | US20_4 -> (* Transactions *)
+        | US20_3 -> (* Transactions *)
             let v7 : string = "transactions"
             v7
     let v157 : leptos_Fragment =
@@ -16704,7 +16704,7 @@ and closure546 (v0 : leptos_ReadSignal<US20>, v1 : leptos_Memo<string>) (v2 : US
             let v79 : string = "leptos::Fragment::new(v78)"
             let v80 : leptos_Fragment = Fable.Core.RustInterop.emitRustExpr () v79
             v80
-        | US20_3 -> (* Settings *)
+        | US20_4 -> (* Settings *)
             let v115 : (unit -> string) = method975()
             let v116 : string = "xmlns=\"http://www.w3.org/2000/svg\""
             let v117 : string = "fill=\"none\""
@@ -16738,7 +16738,7 @@ and closure546 (v0 : leptos_ReadSignal<US20>, v1 : leptos_Memo<string>) (v2 : US
             let v145 : string = "leptos::Fragment::new(v144)"
             let v146 : leptos_Fragment = Fable.Core.RustInterop.emitRustExpr () v145
             v146
-        | US20_4 -> (* Transactions *)
+        | US20_3 -> (* Transactions *)
             let v81 : (unit -> string) = method976()
             let v82 : string = "xmlns=\"http://www.w3.org/2000/svg\""
             let v83 : string = "fill=\"none\""
@@ -16794,10 +16794,10 @@ and closure546 (v0 : leptos_ReadSignal<US20>, v1 : leptos_Memo<string>) (v2 : US
         | US20_2 -> (* Lists *)
             let v161 : string = "Lists"
             v161
-        | US20_3 -> (* Settings *)
+        | US20_4 -> (* Settings *)
             let v163 : string = "Settings"
             v163
-        | US20_4 -> (* Transactions *)
+        | US20_3 -> (* Transactions *)
             let v162 : string = "Transactions"
             v162
     let v169 : (unit -> std_string_String) = method978(v1, v13)
@@ -16828,8 +16828,8 @@ and closure545 (v0 : leptos_ReadSignal<US20>, v1 : leptos_Memo<string>) () : lep
     let v2 : US21 = US21_0
     let v3 : US20 = US20_1(v2)
     let v4 : US20 = US20_2
-    let v5 : US20 = US20_4
-    let v6 : US20 = US20_3
+    let v5 : US20 = US20_3
+    let v6 : US20 = US20_4
     let v7 : (US20 []) = [|v3; v4; v5; v6|]
     let v8 : (US20 []) = method125(v7)
     let v9 : (US20 []) = method959(v8)
@@ -17411,7 +17411,7 @@ and closure0 () (v0 : (string [])) : int32 =
     let v6 : string = "leptos::document().body()"
     let v7 : web_sys_HtmlElement option = Fable.Core.RustInterop.emitRustExpr () v6
     let v8 : (web_sys_HtmlElement -> US0) = closure1()
-    let v9 : US0 = US0_0
+    let v9 : US0 = US0_1
     let v10 : US0 = v7 |> Option.map v8 |> Option.defaultValue v9
     let v11 : string = $"%A{v10}"
     let v12 : string = "main / mount_to_body / body: " + string v11 + ""
@@ -17419,7 +17419,7 @@ and closure0 () (v0 : (string [])) : int32 =
     let v14 : string = @$"leptos::logging::log!(""{{}}"", v13)"
     Fable.Core.RustInterop.emitRustExpr () v14
     match v10 with
-    | US0_1(v15) -> (* Some *)
+    | US0_0(v15) -> (* Some *)
         let v16 : string = method1()
         let v17 : string = $"fable_library_rust::String_::LrcStr::as_str(&v16)"
         let v18 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v17

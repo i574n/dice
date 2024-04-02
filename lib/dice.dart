@@ -27,17 +27,17 @@ class UH1 implements types.Union, Comparable<UH1> {
     int compareTo(UH1 other) => tag.compareTo(other.tag);
 }
 
-class UH1_UH1_0 extends UH1 {
+class UH1_UH1_1 extends UH1 {
     final int Item1;
     final UH1 Item2;
-    const UH1_UH1_0(this.Item1, this.Item2): super(0);
+    const UH1_UH1_1(this.Item1, this.Item2): super(1);
     @override
-    bool operator ==(Object other) => (other is UH1_UH1_0) && ((other.Item1 == Item1) && (other.Item2 == Item2));
+    bool operator ==(Object other) => (other is UH1_UH1_1) && ((other.Item1 == Item1) && (other.Item2 == Item2));
     @override
     int get hashCode => util.combineHashCodes([tag.hashCode, Item1.hashCode, Item2.hashCode]);
     @override
     int compareTo(UH1 other) {
-        if (other is UH1_UH1_0) {
+        if (other is UH1_UH1_1) {
             late int $r;
             if (($r = Item1.compareTo(other.Item1)) == 0) {
                 $r = Item2.compareTo(other.Item2);
@@ -54,9 +54,9 @@ class US0 implements types.Union {
     const US0(this.tag);
 }
 
-class US0_US0_1 extends US0 {
-    final void Function(String) f1_0;
-    const US0_US0_1(this.f1_0): super(1);
+class US0_US0_0 extends US0 {
+    final void Function(String) f0_0;
+    const US0_US0_0(this.f0_0): super(0);
 }
 
 abstract class US1 implements types.Union {
@@ -65,12 +65,12 @@ abstract class US1 implements types.Union {
 }
 
 class US1_US1_0 extends US1 {
-    final UH0 f0_0;
+    final UH0 Function() f0_0;
     const US1_US1_0(this.f0_0): super(0);
 }
 
 class US1_US1_1 extends US1 {
-    final UH0 Function() f1_0;
+    final UH0 f1_0;
     const US1_US1_1(this.f1_0): super(1);
 }
 
@@ -101,17 +101,17 @@ class US2 implements types.Union, Comparable<US2> {
     int compareTo(US2 other) => tag.compareTo(other.tag);
 }
 
-class US2_US2_1 extends US2 {
-    final int f1_0;
-    const US2_US2_1(this.f1_0): super(1);
+class US2_US2_0 extends US2 {
+    final int f0_0;
+    const US2_US2_0(this.f0_0): super(0);
     @override
-    bool operator ==(Object other) => (other is US2_US2_1) && (other.f1_0 == f1_0);
+    bool operator ==(Object other) => (other is US2_US2_0) && (other.f0_0 == f0_0);
     @override
-    int get hashCode => util.combineHashCodes([tag.hashCode, f1_0.hashCode]);
+    int get hashCode => util.combineHashCodes([tag.hashCode, f0_0.hashCode]);
     @override
     int compareTo(US2 other) {
-        if (other is US2_US2_1) {
-            return f1_0.compareTo(other.f1_0);
+        if (other is US2_US2_0) {
+            return f0_0.compareTo(other.f0_0);
         } else {
             return tag.compareTo(other.tag);
         }
@@ -140,20 +140,20 @@ class US3 implements types.Union, Comparable<US3> {
     int compareTo(US3 other) => tag.compareTo(other.tag);
 }
 
-class US3_US3_1 extends US3 {
-    final int f1_0;
-    final UH1 f1_1;
-    const US3_US3_1(this.f1_0, this.f1_1): super(1);
+class US3_US3_0 extends US3 {
+    final int f0_0;
+    final UH1 f0_1;
+    const US3_US3_0(this.f0_0, this.f0_1): super(0);
     @override
-    bool operator ==(Object other) => (other is US3_US3_1) && ((other.f1_0 == f1_0) && (other.f1_1 == f1_1));
+    bool operator ==(Object other) => (other is US3_US3_0) && ((other.f0_0 == f0_0) && (other.f0_1 == f0_1));
     @override
-    int get hashCode => util.combineHashCodes([tag.hashCode, f1_0.hashCode, f1_1.hashCode]);
+    int get hashCode => util.combineHashCodes([tag.hashCode, f0_0.hashCode, f0_1.hashCode]);
     @override
     int compareTo(US3 other) {
-        if (other is US3_US3_1) {
+        if (other is US3_US3_0) {
             late int $r;
-            if (($r = f1_0.compareTo(other.f1_0)) == 0) {
-                $r = f1_1.compareTo(other.f1_1);
+            if (($r = f0_0.compareTo(other.f0_0)) == 0) {
+                $r = f0_1.compareTo(other.f0_1);
             }
             return $r;
         } else {
@@ -184,17 +184,17 @@ class US4 implements types.Union, Comparable<US4> {
     int compareTo(US4 other) => tag.compareTo(other.tag);
 }
 
-class US4_US4_1 extends US4 {
-    final int f1_0;
-    const US4_US4_1(this.f1_0): super(1);
+class US4_US4_0 extends US4 {
+    final int f0_0;
+    const US4_US4_0(this.f0_0): super(0);
     @override
-    bool operator ==(Object other) => (other is US4_US4_1) && (other.f1_0 == f1_0);
+    bool operator ==(Object other) => (other is US4_US4_0) && (other.f0_0 == f0_0);
     @override
-    int get hashCode => util.combineHashCodes([tag.hashCode, f1_0.hashCode]);
+    int get hashCode => util.combineHashCodes([tag.hashCode, f0_0.hashCode]);
     @override
     int compareTo(US4 other) {
-        if (other is US4_US4_1) {
-            return f1_0.compareTo(other.f1_0);
+        if (other is US4_US4_0) {
+            return f0_0.compareTo(other.f0_0);
         } else {
             return tag.compareTo(other.tag);
         }
@@ -212,20 +212,20 @@ class US5 implements types.Union, Comparable<US5> {
     int compareTo(US5 other) => tag.compareTo(other.tag);
 }
 
-class US5_US5_1 extends US5 {
-    final int f1_0;
-    final UH1 f1_1;
-    const US5_US5_1(this.f1_0, this.f1_1): super(1);
+class US5_US5_0 extends US5 {
+    final int f0_0;
+    final UH1 f0_1;
+    const US5_US5_0(this.f0_0, this.f0_1): super(0);
     @override
-    bool operator ==(Object other) => (other is US5_US5_1) && ((other.f1_0 == f1_0) && (other.f1_1 == f1_1));
+    bool operator ==(Object other) => (other is US5_US5_0) && ((other.f0_0 == f0_0) && (other.f0_1 == f0_1));
     @override
-    int get hashCode => util.combineHashCodes([tag.hashCode, f1_0.hashCode, f1_1.hashCode]);
+    int get hashCode => util.combineHashCodes([tag.hashCode, f0_0.hashCode, f0_1.hashCode]);
     @override
     int compareTo(US5 other) {
-        if (other is US5_US5_1) {
+        if (other is US5_US5_0) {
             late int $r;
-            if (($r = f1_0.compareTo(other.f1_0)) == 0) {
-                $r = f1_1.compareTo(other.f1_1);
+            if (($r = f0_0.compareTo(other.f0_0)) == 0) {
+                $r = f0_1.compareTo(other.f0_1);
             }
             return $r;
         } else {
@@ -395,40 +395,40 @@ UH0 closure1(int v0_1, UH0 v1_1) => method0(v0_1, v1_1, const UH0(/* UH0_1 */ 1)
 
 UH0 Function(UH0) closure0(void unitVar, int v0_1) => (UH0 v) => closure1(v0_1, v);
 
-US0 closure4(void unitVar, void Function(String) v0_1) => US0_US0_1(v0_1);
+US0 closure4(void unitVar, void Function(String) v0_1) => US0_US0_0(v0_1);
 
 UH1 method1(UH1 v0_1_mut, UH1 v1_1_mut) {
     method1:
     while (true) {
         final UH1 v0_1 = v0_1_mut;
         final UH1 v1_1 = v1_1_mut;
-        if (v0_1.tag == /* UH1_1 */ 1) {
+        if (v0_1.tag == /* UH1_0 */ 0) {
             return v1_1;
         } else {
-            final v0_1_1 = v0_1 as UH1_UH1_0;
+            final v0_1_1 = v0_1 as UH1_UH1_1;
             v0_1_mut = v0_1_1.Item2;
-            v1_1_mut = UH1_UH1_0(v0_1_1.Item1, v1_1);
+            v1_1_mut = UH1_UH1_1(v0_1_1.Item1, v1_1);
             continue method1;
         }
     }
 }
 
 UH1 method2(UH1 v0_1, UH1 v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
+    if (v0_1.tag == /* UH1_0 */ 0) {
         return v1_1;
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
-        return UH1_UH1_0(v0_1_1.Item1, method2(v0_1_1.Item2, v1_1));
+        final v0_1_1 = v0_1 as UH1_UH1_1;
+        return UH1_UH1_1(v0_1_1.Item1, method2(v0_1_1.Item2, v1_1));
     }
 }
 
 UH0 closure6(UH0 v0_1, void unitVar) => v0_1;
 
 UH0 method3(UH1 v0_1, UH0 v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
+    if (v0_1.tag == /* UH1_0 */ 0) {
         return v1_1;
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH0 v4_1 = method3(v0_1_1.Item2, v1_1);
         return UH0_UH0_0(v0_1_1.Item1, () => closure6(v4_1, util.ignore()));
     }
@@ -438,9 +438,9 @@ UH0 closure7(UH0 v0_1, void unitVar) => v0_1;
 
 UH0 closure8(UH0 v0_1, Mut0 v1_1, void unitVar) {
     final US1 v2_1 = v1_1.l0;
-    if (v2_1.tag == /* US1_1 */ 1) {
-        final v2_1_1 = v2_1 as US1_US1_1;
-        final UH0 v5 = v2_1_1.f1_0();
+    if (v2_1.tag == /* US1_0 */ 0) {
+        final v2_1_1 = v2_1 as US1_US1_0;
+        final UH0 v5 = v2_1_1.f0_0();
         late final UH0 v12;
         if (v5.tag == /* UH0_1 */ 1) {
             v12 = const UH0(/* UH0_1 */ 1);
@@ -448,16 +448,16 @@ UH0 closure8(UH0 v0_1, Mut0 v1_1, void unitVar) {
             final v5_1 = v5 as UH0_UH0_0;
             v12 = UH0_UH0_0(v5_1.Item1, method4(v0_1, v5_1.Item2));
         }
-        v1_1.l0 = US1_US1_0(v12);
+        v1_1.l0 = US1_US1_1(v12);
         return v12;
     } else {
-        final v2_1_2 = v2_1 as US1_US1_0;
-        return v2_1_2.f0_0;
+        final v2_1_2 = v2_1 as US1_US1_1;
+        return v2_1_2.f1_0;
     }
 }
 
 UH0 Function() method4(UH0 v0_1, UH0 Function() v1_1) {
-    final v3_1 = Mut0(US1_US1_1(v1_1));
+    final v3_1 = Mut0(US1_US1_0(v1_1));
     return () => closure8(v0_1, v3_1, util.ignore());
 }
 
@@ -467,10 +467,10 @@ US2 method6(int v0_1_mut, UH0 v1_1_mut) {
         final v0_1 = v0_1_mut;
         final UH0 v1_1 = v1_1_mut;
         if (v1_1.tag == /* UH0_1 */ 1) {
-            return const US2(/* US2_0 */ 0);
+            return const US2(/* US2_1 */ 1);
         } else if (v0_1 <= 0) {
             final v1_1_1 = v1_1 as UH0_UH0_0;
-            return US2_US2_1(v1_1_1.Item1);
+            return US2_US2_0(v1_1_1.Item1);
         } else {
             v0_1_mut = v0_1 - 1;
             final v1_1_2 = v1_1 as UH0_UH0_0;
@@ -490,23 +490,23 @@ int method5(US0 v0_1_mut, UH0 Function() v1_1_mut, Mut1 v2_1_mut, Mut1 v3_1_mut,
         final v4_1 = v4_1_mut;
         final v5 = v5_mut;
         final v10 = string.toText(string.interpolate('create_sequential_roller / roll / current_index: %P() / acc: %P() / len: %P() / last_item: %A%P()', [v2_1.l0, v3_1.l0, v4_1.l0, v5.l0]));
-        if (v0_1.tag == /* US0_1 */ 1) {
-            final v0_1_1 = v0_1 as US0_US0_1;
-            v0_1_1.f1_0(v10);
+        if (v0_1.tag == /* US0_0 */ 0) {
+            final v0_1_1 = v0_1 as US0_US0_0;
+            v0_1_1.f0_0(v10);
         }
         final UH0 v12 = v1_1();
         final US2 v14 = method6(v2_1.l0, v12);
-        if (v14.tag == /* US2_1 */ 1) {
-            final v14_1 = v14 as US2_US2_1;
-            final v15 = v14_1.f1_0;
+        if (v14.tag == /* US2_0 */ 0) {
+            final v14_1 = v14 as US2_US2_0;
+            final v15 = v14_1.f0_0;
             final v17 = v2_1.l0 + 1;
             v2_1.l0 = v17;
-            v5.l0 = US2_US2_1(v15);
+            v5.l0 = US2_US2_0(v15);
             return v15;
         } else {
-            if (v0_1.tag == /* US0_1 */ 1) {
-                final v0_1_2 = v0_1 as US0_US0_1;
-                v0_1_2.f1_0('create_sequential_roller / roll / None');
+            if (v0_1.tag == /* US0_0 */ 0) {
+                final v0_1_2 = v0_1 as US0_US0_0;
+                v0_1_2.f0_0('create_sequential_roller / roll / None');
             }
             if (v4_1.l0 == (-1)) {
                 final v23 = v2_1.l0;
@@ -516,7 +516,7 @@ int method5(US0 v0_1_mut, UH0 Function() v1_1_mut, Mut1 v2_1_mut, Mut1 v3_1_mut,
             v3_1.l0 = v29;
             final v31 = v3_1.l0 - 1;
             v2_1.l0 = v31;
-            v5.l0 = const US2(/* US2_0 */ 0);
+            v5.l0 = const US2(/* US2_1 */ 1);
             v0_1_mut = v0_1;
             v1_1_mut = v1_1;
             v2_1_mut = v2_1;
@@ -531,21 +531,21 @@ int method5(US0 v0_1_mut, UH0 Function() v1_1_mut, Mut1 v2_1_mut, Mut1 v3_1_mut,
 int closure9(US0 v0_1, UH0 Function() v1_1, Mut1 v2_1, Mut1 v3_1, Mut1 v4_1, Mut2 v5, void unitVar) => method5(v0_1, v1_1, v2_1, v3_1, v4_1, v5);
 
 int Function() closure5(US0 v0_1, UH1 v1_1) {
-    if (v0_1.tag == /* US0_1 */ 1) {
-        final v0_1_1 = v0_1 as US0_US0_1;
-        v0_1_1.f1_0('create_sequential_roller ()');
+    if (v0_1.tag == /* US0_0 */ 0) {
+        final v0_1_1 = v0_1 as US0_US0_0;
+        v0_1_1.f0_0('create_sequential_roller ()');
     }
-    final UH0 v8 = method3(method2(v1_1, method1(v1_1, const UH1(/* UH1_1 */ 1))), const UH0(/* UH0_1 */ 1));
+    final UH0 v8 = method3(method2(v1_1, method1(v1_1, const UH1(/* UH1_0 */ 0))), const UH0(/* UH0_1 */ 1));
     final v10 = method4(v8, () => closure7(v8, util.ignore()));
     final v11 = Mut1(0);
     final v12 = Mut1(1);
     final v13 = Mut1(-1);
-    final v15 = Mut2(const US2(/* US2_0 */ 0));
+    final v15 = Mut2(const US2(/* US2_1 */ 1));
     return () => closure9(v0_1, v10, v11, v12, v13, v15, util.ignore());
 }
 
 int Function() Function(UH1) closure3(void unitVar, types.Some<void Function(String)>? v0_1) {
-    final US0 v3_1 = option_47.defaultValue(const US0(/* US0_0 */ 0), option_47.map<void Function(String), US0>((void Function(String) v) => closure4(util.ignore(), v), v0_1));
+    final US0 v3_1 = option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>((void Function(String) v) => closure4(util.ignore(), v), v0_1));
     return (UH1 v_1) => closure5(v3_1, v_1);
 }
 
@@ -566,17 +566,17 @@ int method7(US0 v0_1_mut, int v1_1_mut, int v2_1_mut, int v3_1_mut) {
                 continue method7;
             } else {
                 final v9 = 'calculate_dice_count / max: $v1_1 / n: $v2_1 / p: $v3_1';
-                if (v0_1.tag == /* US0_1 */ 1) {
-                    final v0_1_1 = v0_1 as US0_US0_1;
-                    v0_1_1.f1_0(v9);
+                if (v0_1.tag == /* US0_0 */ 0) {
+                    final v0_1_1 = v0_1 as US0_US0_0;
+                    v0_1_1.f0_0(v9);
                 }
                 return v2_1;
             }
         } else {
             final v12 = 'calculate_dice_count / max: $v1_1 / n: $v2_1 / p: $v3_1';
-            if (v0_1.tag == /* US0_1 */ 1) {
-                final v0_1_2 = v0_1 as US0_US0_1;
-                v0_1_2.f1_0(v12);
+            if (v0_1.tag == /* US0_0 */ 0) {
+                final v0_1_2 = v0_1 as US0_US0_0;
+                v0_1_2.f0_0(v12);
             }
             return v2_1;
         }
@@ -717,10 +717,10 @@ US4 method10(int v0_1_mut, UH2 v1_1_mut) {
         final v0_1 = v0_1_mut;
         final UH2 v1_1 = v1_1_mut;
         if (v1_1.tag == /* UH2_1 */ 1) {
-            return const US4(/* US4_0 */ 0);
+            return const US4(/* US4_1 */ 1);
         } else if (v0_1 <= 0) {
             final v1_1_1 = v1_1 as UH2_UH2_0;
-            return US4_US4_1(v1_1_1.Item1);
+            return US4_US4_0(v1_1_1.Item1);
         } else {
             v0_1_mut = v0_1 - 1;
             final v1_1_2 = v1_1 as UH2_UH2_0;
@@ -740,32 +740,32 @@ US3 method9(US0 v0_1_mut, int v1_1_mut, UH1 v2_1_mut, int v3_1_mut) {
         if (v1_1 < 0) {
             final v5 = v3_1 + 1;
             final v6 = 'accumulate_dice_rolls / power: $v1_1 / acc: $v3_1 / result: $v5';
-            if (v0_1.tag == /* US0_1 */ 1) {
-                final v0_1_1 = v0_1 as US0_US0_1;
-                v0_1_1.f1_0(v6);
+            if (v0_1.tag == /* US0_0 */ 0) {
+                final v0_1_1 = v0_1 as US0_US0_0;
+                v0_1_1.f0_0(v6);
             }
-            return US3_US3_1(v5, v2_1);
-        } else if (v2_1.tag == /* UH1_1 */ 1) {
-            return const US3(/* US3_0 */ 0);
+            return US3_US3_0(v5, v2_1);
+        } else if (v2_1.tag == /* UH1_0 */ 0) {
+            return const US3(/* US3_1 */ 1);
         } else {
-            final v2_1_1 = v2_1 as UH1_UH1_0;
+            final v2_1_1 = v2_1 as UH1_UH1_1;
             final UH1 v11 = v2_1_1.Item2;
             final v10 = v2_1_1.Item1;
             if (v10 > 1) {
                 final US4 v16 = method10(v1_1, UH2_UH2_0(1, () => closure14(util.ignore(), util.ignore())));
                 final tmp_combine = v10 - 1;
                 late final int tmp_capture;
-                if (v16.tag == /* US4_1 */ 1) {
-                    final v16_1 = v16 as US4_US4_1;
-                    tmp_capture = v16_1.f1_0;
+                if (v16.tag == /* US4_0 */ 0) {
+                    final v16_1 = v16 as US4_US4_0;
+                    tmp_capture = v16_1.f0_0;
                 } else {
                     tmp_capture = throw Exception('Option does not have a value.');
                 }
                 final v23 = tmp_combine * tmp_capture;
                 final v24 = 'accumulate_dice_rolls / power: $v1_1 / acc: $v3_1 / roll: $v10 / value: $v23';
-                if (v0_1.tag == /* US0_1 */ 1) {
-                    final v0_1_2 = v0_1 as US0_US0_1;
-                    v0_1_2.f1_0(v24);
+                if (v0_1.tag == /* US0_0 */ 0) {
+                    final v0_1_2 = v0_1 as US0_US0_0;
+                    v0_1_2.f0_0(v24);
                 }
                 v0_1_mut = v0_1;
                 v1_1_mut = v1_1 - 1;
@@ -774,9 +774,9 @@ US3 method9(US0 v0_1_mut, int v1_1_mut, UH1 v2_1_mut, int v3_1_mut) {
                 continue method9;
             } else {
                 final v29 = 'accumulate_dice_rolls / power: $v1_1 / acc: $v3_1 / roll: $v10';
-                if (v0_1.tag == /* US0_1 */ 1) {
-                    final v0_1_3 = v0_1 as US0_US0_1;
-                    v0_1_3.f1_0(v29);
+                if (v0_1.tag == /* US0_0 */ 0) {
+                    final v0_1_3 = v0_1 as US0_US0_0;
+                    v0_1_3.f0_0(v29);
                 }
                 v0_1_mut = v0_1;
                 v1_1_mut = v1_1 - 1;
@@ -790,9 +790,9 @@ US3 method9(US0 v0_1_mut, int v1_1_mut, UH1 v2_1_mut, int v3_1_mut) {
 
 UH1 method11(int v0_1, int Function() v1_1, int v2_1) {
     if (v2_1 < v0_1) {
-        return UH1_UH1_0(v1_1(), method11(v0_1, v1_1, v2_1 + 1));
+        return UH1_UH1_1(v1_1(), method11(v0_1, v1_1, v2_1 + 1));
     } else {
-        return const UH1(/* UH1_1 */ 1);
+        return const UH1(/* UH1_0 */ 0);
     }
 }
 
@@ -807,12 +807,12 @@ int method12(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut,
         final UH1 v5 = v5_mut;
         final v6 = v4_1 + 1;
         if (v4_1 < v6) {
-            return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_0(v1_1(), v5), v6);
+            return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
         } else {
             final US3 v12 = method9(v0_1, v4_1, v5, 0);
-            if (v12.tag == /* US3_1 */ 1) {
-                final v12_1 = v12 as US3_US3_1;
-                final v13 = v12_1.f1_0;
+            if (v12.tag == /* US3_0 */ 0) {
+                final v12_1 = v12 as US3_US3_0;
+                final v13 = v12_1.f0_0;
                 if (v13 <= v3_1) {
                     return v13;
                 } else if (v2_1) {
@@ -824,7 +824,7 @@ int method12(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut,
                     v5_mut = method11(v4_1, v1_1, 0);
                     continue method12;
                 } else {
-                    return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_0(v1_1(), v5), v6);
+                    return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
                 }
             } else if (v2_1) {
                 v0_1_mut = v0_1;
@@ -835,7 +835,7 @@ int method12(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut,
                 v5_mut = method11(v4_1, v1_1, 0);
                 continue method12;
             } else {
-                return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_0(v1_1(), v5), v6);
+                return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
             }
         }
     }
@@ -857,14 +857,14 @@ int method8(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut, 
             v2_1_mut = v2_1;
             v3_1_mut = v3_1;
             v4_1_mut = v4_1;
-            v5_mut = UH1_UH1_0(v1_1(), v5);
+            v5_mut = UH1_UH1_1(v1_1(), v5);
             v6_mut = v6 + 1;
             continue method8;
         } else {
             final US3 v14 = method9(v0_1, v4_1, v5, 0);
-            if (v14.tag == /* US3_1 */ 1) {
-                final v14_1 = v14 as US3_US3_1;
-                final v15 = v14_1.f1_0;
+            if (v14.tag == /* US3_0 */ 0) {
+                final v14_1 = v14 as US3_US3_0;
+                final v15 = v14_1.f0_0;
                 if (v15 <= v3_1) {
                     return v15;
                 } else if (v2_1) {
@@ -875,7 +875,7 @@ int method8(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut, 
                     v2_1_mut = v2_1;
                     v3_1_mut = v3_1;
                     v4_1_mut = v4_1;
-                    v5_mut = UH1_UH1_0(v1_1(), v5);
+                    v5_mut = UH1_UH1_1(v1_1(), v5);
                     v6_mut = v6 + 1;
                     continue method8;
                 }
@@ -887,7 +887,7 @@ int method8(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut, 
                 v2_1_mut = v2_1;
                 v3_1_mut = v3_1;
                 v4_1_mut = v4_1;
-                v5_mut = UH1_UH1_0(v1_1(), v5);
+                v5_mut = UH1_UH1_1(v1_1(), v5);
                 v6_mut = v6 + 1;
                 continue method8;
             }
@@ -895,14 +895,14 @@ int method8(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut, 
     }
 }
 
-int closure13(US0 v0_1, int Function() v1_1, bool v2_1, int v3_1) => method8(v0_1, v1_1, v2_1, v3_1, ((v3_1 == 1) ? 1 : method7(v0_1, v3_1, 0, 1)) - 1, const UH1(/* UH1_1 */ 1), 0);
+int closure13(US0 v0_1, int Function() v1_1, bool v2_1, int v3_1) => method8(v0_1, v1_1, v2_1, v3_1, ((v3_1 == 1) ? 1 : method7(v0_1, v3_1, 0, 1)) - 1, const UH1(/* UH1_0 */ 0), 0);
 
 int Function(int) closure12(US0 v0_1, int Function() v1_1, bool v2_1) => (int v) => closure13(v0_1, v1_1, v2_1, v);
 
 int Function(int) Function(bool) closure11(US0 v0_1, int Function() v1_1) => (bool v) => closure12(v0_1, v1_1, v);
 
 int Function(int) Function(bool) Function(int Function()) closure10(void unitVar, types.Some<void Function(String)>? v0_1) {
-    final US0 v3_1 = option_47.defaultValue(const US0(/* US0_0 */ 0), option_47.map<void Function(String), US0>((void Function(String) v) => closure4(util.ignore(), v), v0_1));
+    final US0 v3_1 = option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>((void Function(String) v) => closure4(util.ignore(), v), v0_1));
     return (int Function() v_1) => closure11(v3_1, v_1);
 }
 
@@ -911,10 +911,10 @@ int method13(UH1 v0_1_mut, int v1_1_mut) {
     while (true) {
         final UH1 v0_1 = v0_1_mut;
         final v1_1 = v1_1_mut;
-        if (v0_1.tag == /* UH1_1 */ 1) {
+        if (v0_1.tag == /* UH1_0 */ 0) {
             return v1_1;
         } else {
-            final v0_1_1 = v0_1 as UH1_UH1_0;
+            final v0_1_1 = v0_1 as UH1_UH1_1;
             v0_1_mut = v0_1_1.Item2;
             v1_1_mut = v1_1 + 1;
             continue method13;
@@ -923,18 +923,18 @@ int method13(UH1 v0_1_mut, int v1_1_mut) {
 }
 
 types.Some<int>? closure80(types.Some<void Function(String)>? v0_1, int v1_1, UH1 v2_1) {
-    final US3 v10 = method9(option_47.defaultValue(const US0(/* US0_0 */ 0), option_47.map<void Function(String), US0>((void Function(String) v) => closure4(util.ignore(), v), v0_1)), method13(v2_1, 0) - 1, v2_1, 0);
+    final US3 v10 = method9(option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>((void Function(String) v) => closure4(util.ignore(), v), v0_1)), method13(v2_1, 0) - 1, v2_1, 0);
     late final US4 v20;
-    if (v10.tag == /* US3_1 */ 1) {
-        final v10_1 = v10 as US3_US3_1;
-        final v11 = v10_1.f1_0;
-        v20 = ((v11 >= 1) && (v11 <= v1_1)) ? US4_US4_1(v11) : const US4(/* US4_0 */ 0);
+    if (v10.tag == /* US3_0 */ 0) {
+        final v10_1 = v10 as US3_US3_0;
+        final v11 = v10_1.f0_0;
+        v20 = ((v11 >= 1) && (v11 <= v1_1)) ? US4_US4_0(v11) : const US4(/* US4_1 */ 1);
     } else {
-        v20 = const US4(/* US4_0 */ 0);
+        v20 = const US4(/* US4_1 */ 1);
     }
-    if (v20.tag == /* US4_1 */ 1) {
-        final v20_1 = v20 as US4_US4_1;
-        return types.Some(v20_1.f1_0);
+    if (v20.tag == /* US4_0 */ 0) {
+        final v20_1 = v20 as US4_US4_0;
+        return types.Some(v20_1.f0_0);
     } else {
         return null;
     }
@@ -948,14 +948,14 @@ US5 method39(UH1 v0_1, int v1_1) {
     final v2_1 = v1_1 + 1;
     final v3_1 = 'accumulate_dice_rolls / power: ${-1} / acc: $v1_1 / result: $v2_1';
     console.log(v3_1);
-    return US5_US5_1(v2_1, v0_1);
+    return US5_US5_0(v2_1, v0_1);
 }
 
 US5 method38(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -972,10 +972,10 @@ US5 method38(UH1 v0_1, int v1_1) {
 }
 
 US5 method37(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -992,10 +992,10 @@ US5 method37(UH1 v0_1, int v1_1) {
 }
 
 US5 method36(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1012,10 +1012,10 @@ US5 method36(UH1 v0_1, int v1_1) {
 }
 
 US5 method35(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1032,10 +1032,10 @@ US5 method35(UH1 v0_1, int v1_1) {
 }
 
 US5 method34(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1052,10 +1052,10 @@ US5 method34(UH1 v0_1, int v1_1) {
 }
 
 US5 method33(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1072,10 +1072,10 @@ US5 method33(UH1 v0_1, int v1_1) {
 }
 
 US5 method32(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1092,10 +1092,10 @@ US5 method32(UH1 v0_1, int v1_1) {
 }
 
 US5 method31(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1112,10 +1112,10 @@ US5 method31(UH1 v0_1, int v1_1) {
 }
 
 US5 method30(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1132,10 +1132,10 @@ US5 method30(UH1 v0_1, int v1_1) {
 }
 
 US5 method29(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1152,10 +1152,10 @@ US5 method29(UH1 v0_1, int v1_1) {
 }
 
 US5 method28(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1172,10 +1172,10 @@ US5 method28(UH1 v0_1, int v1_1) {
 }
 
 US5 method27(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1192,10 +1192,10 @@ US5 method27(UH1 v0_1, int v1_1) {
 }
 
 US5 method26(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1212,10 +1212,10 @@ US5 method26(UH1 v0_1, int v1_1) {
 }
 
 US5 method25(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1232,10 +1232,10 @@ US5 method25(UH1 v0_1, int v1_1) {
 }
 
 US5 method24(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1252,10 +1252,10 @@ US5 method24(UH1 v0_1, int v1_1) {
 }
 
 US5 method23(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1272,10 +1272,10 @@ US5 method23(UH1 v0_1, int v1_1) {
 }
 
 US5 method22(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1292,10 +1292,10 @@ US5 method22(UH1 v0_1, int v1_1) {
 }
 
 US5 method21(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1312,10 +1312,10 @@ US5 method21(UH1 v0_1, int v1_1) {
 }
 
 US5 method20(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1332,10 +1332,10 @@ US5 method20(UH1 v0_1, int v1_1) {
 }
 
 US5 method19(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1352,10 +1352,10 @@ US5 method19(UH1 v0_1, int v1_1) {
 }
 
 US5 method18(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1372,10 +1372,10 @@ US5 method18(UH1 v0_1, int v1_1) {
 }
 
 US5 method17(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1392,10 +1392,10 @@ US5 method17(UH1 v0_1, int v1_1) {
 }
 
 US5 method16(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1412,10 +1412,10 @@ US5 method16(UH1 v0_1, int v1_1) {
 }
 
 US5 method15(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_1 */ 1) {
-        return const US5(/* US5_0 */ 0);
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
     } else {
-        final v0_1_1 = v0_1 as UH1_UH1_0;
+        final v0_1_1 = v0_1 as UH1_UH1_1;
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
@@ -1437,208 +1437,208 @@ int method14(UH1 v0_1_mut, int v1_1_mut) {
         final UH1 v0_1 = v0_1_mut;
         final v1_1 = v1_1_mut;
         if (v1_1 < 24) {
-            types.Some<int>? result;
+            types.Some<int>? _v3;
             final x = random.nonSeeded().Next2(1, 7);
-            result = types.Some(x);
-            v0_1_mut = UH1_UH1_0(types.value(result), v0_1);
+            _v3 = types.Some(x);
+            v0_1_mut = UH1_UH1_1(types.value(_v3), v0_1);
             v1_1_mut = v1_1 + 1;
             continue method14;
         } else {
-            final US5 v15 = method15(v0_1, 0);
-            if (v15.tag == /* US5_1 */ 1) {
-                final v15_1 = v15 as US5_US5_1;
-                final v16 = v15_1.f1_0;
-                if (v16 <= 9223372036854775807) {
-                    return v16;
+            final US5 v16 = method15(v0_1, 0);
+            if (v16.tag == /* US5_0 */ 0) {
+                final v16_1 = v16 as US5_US5_0;
+                final v17 = v16_1.f0_0;
+                if (v17 <= 9223372036854775807) {
+                    return v17;
                 } else {
-                    types.Some<int>? result_1;
+                    types.Some<int>? _v20;
                     final x_1 = random.nonSeeded().Next2(1, 7);
-                    result_1 = types.Some(x_1);
-                    final v26 = types.value(result_1);
-                    types.Some<int>? result_2;
+                    _v20 = types.Some(x_1);
+                    final v28 = types.value(_v20);
+                    types.Some<int>? _v29;
                     final x_2 = random.nonSeeded().Next2(1, 7);
-                    result_2 = types.Some(x_2);
-                    final v32 = types.value(result_2);
-                    types.Some<int>? result_3;
+                    _v29 = types.Some(x_2);
+                    final v35 = types.value(_v29);
+                    types.Some<int>? _v36;
                     final x_3 = random.nonSeeded().Next2(1, 7);
-                    result_3 = types.Some(x_3);
-                    final v38 = types.value(result_3);
-                    types.Some<int>? result_4;
+                    _v36 = types.Some(x_3);
+                    final v42 = types.value(_v36);
+                    types.Some<int>? _v43;
                     final x_4 = random.nonSeeded().Next2(1, 7);
-                    result_4 = types.Some(x_4);
-                    final v44 = types.value(result_4);
-                    types.Some<int>? result_5;
+                    _v43 = types.Some(x_4);
+                    final v49 = types.value(_v43);
+                    types.Some<int>? _v50;
                     final x_5 = random.nonSeeded().Next2(1, 7);
-                    result_5 = types.Some(x_5);
-                    final v50 = types.value(result_5);
-                    types.Some<int>? result_6;
+                    _v50 = types.Some(x_5);
+                    final v56 = types.value(_v50);
+                    types.Some<int>? _v57;
                     final x_6 = random.nonSeeded().Next2(1, 7);
-                    result_6 = types.Some(x_6);
-                    final v56 = types.value(result_6);
-                    types.Some<int>? result_7;
+                    _v57 = types.Some(x_6);
+                    final v63 = types.value(_v57);
+                    types.Some<int>? _v64;
                     final x_7 = random.nonSeeded().Next2(1, 7);
-                    result_7 = types.Some(x_7);
-                    final v62 = types.value(result_7);
-                    types.Some<int>? result_8;
+                    _v64 = types.Some(x_7);
+                    final v70 = types.value(_v64);
+                    types.Some<int>? _v71;
                     final x_8 = random.nonSeeded().Next2(1, 7);
-                    result_8 = types.Some(x_8);
-                    final v68 = types.value(result_8);
-                    types.Some<int>? result_9;
+                    _v71 = types.Some(x_8);
+                    final v77 = types.value(_v71);
+                    types.Some<int>? _v78;
                     final x_9 = random.nonSeeded().Next2(1, 7);
-                    result_9 = types.Some(x_9);
-                    final v74 = types.value(result_9);
-                    types.Some<int>? result_10;
+                    _v78 = types.Some(x_9);
+                    final v84 = types.value(_v78);
+                    types.Some<int>? _v85;
                     final x_10 = random.nonSeeded().Next2(1, 7);
-                    result_10 = types.Some(x_10);
-                    final v80 = types.value(result_10);
-                    types.Some<int>? result_11;
+                    _v85 = types.Some(x_10);
+                    final v91 = types.value(_v85);
+                    types.Some<int>? _v92;
                     final x_11 = random.nonSeeded().Next2(1, 7);
-                    result_11 = types.Some(x_11);
-                    final v86 = types.value(result_11);
-                    types.Some<int>? result_12;
+                    _v92 = types.Some(x_11);
+                    final v98 = types.value(_v92);
+                    types.Some<int>? _v99;
                     final x_12 = random.nonSeeded().Next2(1, 7);
-                    result_12 = types.Some(x_12);
-                    final v92 = types.value(result_12);
-                    types.Some<int>? result_13;
+                    _v99 = types.Some(x_12);
+                    final v105 = types.value(_v99);
+                    types.Some<int>? _v106;
                     final x_13 = random.nonSeeded().Next2(1, 7);
-                    result_13 = types.Some(x_13);
-                    final v98 = types.value(result_13);
-                    types.Some<int>? result_14;
+                    _v106 = types.Some(x_13);
+                    final v112 = types.value(_v106);
+                    types.Some<int>? _v113;
                     final x_14 = random.nonSeeded().Next2(1, 7);
-                    result_14 = types.Some(x_14);
-                    final v104 = types.value(result_14);
-                    types.Some<int>? result_15;
+                    _v113 = types.Some(x_14);
+                    final v119 = types.value(_v113);
+                    types.Some<int>? _v120;
                     final x_15 = random.nonSeeded().Next2(1, 7);
-                    result_15 = types.Some(x_15);
-                    final v110 = types.value(result_15);
-                    types.Some<int>? result_16;
+                    _v120 = types.Some(x_15);
+                    final v126 = types.value(_v120);
+                    types.Some<int>? _v127;
                     final x_16 = random.nonSeeded().Next2(1, 7);
-                    result_16 = types.Some(x_16);
-                    final v116 = types.value(result_16);
-                    types.Some<int>? result_17;
+                    _v127 = types.Some(x_16);
+                    final v133 = types.value(_v127);
+                    types.Some<int>? _v134;
                     final x_17 = random.nonSeeded().Next2(1, 7);
-                    result_17 = types.Some(x_17);
-                    final v122 = types.value(result_17);
-                    types.Some<int>? result_18;
+                    _v134 = types.Some(x_17);
+                    final v140 = types.value(_v134);
+                    types.Some<int>? _v141;
                     final x_18 = random.nonSeeded().Next2(1, 7);
-                    result_18 = types.Some(x_18);
-                    final v128 = types.value(result_18);
-                    types.Some<int>? result_19;
+                    _v141 = types.Some(x_18);
+                    final v147 = types.value(_v141);
+                    types.Some<int>? _v148;
                     final x_19 = random.nonSeeded().Next2(1, 7);
-                    result_19 = types.Some(x_19);
-                    final v134 = types.value(result_19);
-                    types.Some<int>? result_20;
+                    _v148 = types.Some(x_19);
+                    final v154 = types.value(_v148);
+                    types.Some<int>? _v155;
                     final x_20 = random.nonSeeded().Next2(1, 7);
-                    result_20 = types.Some(x_20);
-                    final v140 = types.value(result_20);
-                    types.Some<int>? result_21;
+                    _v155 = types.Some(x_20);
+                    final v161 = types.value(_v155);
+                    types.Some<int>? _v162;
                     final x_21 = random.nonSeeded().Next2(1, 7);
-                    result_21 = types.Some(x_21);
-                    final v146 = types.value(result_21);
-                    types.Some<int>? result_22;
+                    _v162 = types.Some(x_21);
+                    final v168 = types.value(_v162);
+                    types.Some<int>? _v169;
                     final x_22 = random.nonSeeded().Next2(1, 7);
-                    result_22 = types.Some(x_22);
-                    final v152 = types.value(result_22);
-                    types.Some<int>? result_23;
+                    _v169 = types.Some(x_22);
+                    final v175 = types.value(_v169);
+                    types.Some<int>? _v176;
                     final x_23 = random.nonSeeded().Next2(1, 7);
-                    result_23 = types.Some(x_23);
-                    v0_1_mut = UH1_UH1_0(v26, UH1_UH1_0(v32, UH1_UH1_0(v38, UH1_UH1_0(v44, UH1_UH1_0(v50, UH1_UH1_0(v56, UH1_UH1_0(v62, UH1_UH1_0(v68, UH1_UH1_0(v74, UH1_UH1_0(v80, UH1_UH1_0(v86, UH1_UH1_0(v92, UH1_UH1_0(v98, UH1_UH1_0(v104, UH1_UH1_0(v110, UH1_UH1_0(v116, UH1_UH1_0(v122, UH1_UH1_0(v128, UH1_UH1_0(v134, UH1_UH1_0(v140, UH1_UH1_0(v146, UH1_UH1_0(v152, UH1_UH1_0(types.value(result_23), const UH1(/* UH1_1 */ 1))))))))))))))))))))))));
+                    _v176 = types.Some(x_23);
+                    v0_1_mut = UH1_UH1_1(v28, UH1_UH1_1(v35, UH1_UH1_1(v42, UH1_UH1_1(v49, UH1_UH1_1(v56, UH1_UH1_1(v63, UH1_UH1_1(v70, UH1_UH1_1(v77, UH1_UH1_1(v84, UH1_UH1_1(v91, UH1_UH1_1(v98, UH1_UH1_1(v105, UH1_UH1_1(v112, UH1_UH1_1(v119, UH1_UH1_1(v126, UH1_UH1_1(v133, UH1_UH1_1(v140, UH1_UH1_1(v147, UH1_UH1_1(v154, UH1_UH1_1(v161, UH1_UH1_1(v168, UH1_UH1_1(v175, UH1_UH1_1(types.value(_v176), const UH1(/* UH1_0 */ 0))))))))))))))))))))))));
                     v1_1_mut = 23;
                     continue method14;
                 }
             } else {
-                types.Some<int>? result_24;
+                types.Some<int>? _v210;
                 final x_24 = random.nonSeeded().Next2(1, 7);
-                result_24 = types.Some(x_24);
-                final v193 = types.value(result_24);
-                types.Some<int>? result_25;
+                _v210 = types.Some(x_24);
+                final v218 = types.value(_v210);
+                types.Some<int>? _v219;
                 final x_25 = random.nonSeeded().Next2(1, 7);
-                result_25 = types.Some(x_25);
-                final v199 = types.value(result_25);
-                types.Some<int>? result_26;
+                _v219 = types.Some(x_25);
+                final v225 = types.value(_v219);
+                types.Some<int>? _v226;
                 final x_26 = random.nonSeeded().Next2(1, 7);
-                result_26 = types.Some(x_26);
-                final v205 = types.value(result_26);
-                types.Some<int>? result_27;
+                _v226 = types.Some(x_26);
+                final v232 = types.value(_v226);
+                types.Some<int>? _v233;
                 final x_27 = random.nonSeeded().Next2(1, 7);
-                result_27 = types.Some(x_27);
-                final v211 = types.value(result_27);
-                types.Some<int>? result_28;
+                _v233 = types.Some(x_27);
+                final v239 = types.value(_v233);
+                types.Some<int>? _v240;
                 final x_28 = random.nonSeeded().Next2(1, 7);
-                result_28 = types.Some(x_28);
-                final v217 = types.value(result_28);
-                types.Some<int>? result_29;
+                _v240 = types.Some(x_28);
+                final v246 = types.value(_v240);
+                types.Some<int>? _v247;
                 final x_29 = random.nonSeeded().Next2(1, 7);
-                result_29 = types.Some(x_29);
-                final v223 = types.value(result_29);
-                types.Some<int>? result_30;
+                _v247 = types.Some(x_29);
+                final v253 = types.value(_v247);
+                types.Some<int>? _v254;
                 final x_30 = random.nonSeeded().Next2(1, 7);
-                result_30 = types.Some(x_30);
-                final v229 = types.value(result_30);
-                types.Some<int>? result_31;
+                _v254 = types.Some(x_30);
+                final v260 = types.value(_v254);
+                types.Some<int>? _v261;
                 final x_31 = random.nonSeeded().Next2(1, 7);
-                result_31 = types.Some(x_31);
-                final v235 = types.value(result_31);
-                types.Some<int>? result_32;
+                _v261 = types.Some(x_31);
+                final v267 = types.value(_v261);
+                types.Some<int>? _v268;
                 final x_32 = random.nonSeeded().Next2(1, 7);
-                result_32 = types.Some(x_32);
-                final v241 = types.value(result_32);
-                types.Some<int>? result_33;
+                _v268 = types.Some(x_32);
+                final v274 = types.value(_v268);
+                types.Some<int>? _v275;
                 final x_33 = random.nonSeeded().Next2(1, 7);
-                result_33 = types.Some(x_33);
-                final v247 = types.value(result_33);
-                types.Some<int>? result_34;
+                _v275 = types.Some(x_33);
+                final v281 = types.value(_v275);
+                types.Some<int>? _v282;
                 final x_34 = random.nonSeeded().Next2(1, 7);
-                result_34 = types.Some(x_34);
-                final v253 = types.value(result_34);
-                types.Some<int>? result_35;
+                _v282 = types.Some(x_34);
+                final v288 = types.value(_v282);
+                types.Some<int>? _v289;
                 final x_35 = random.nonSeeded().Next2(1, 7);
-                result_35 = types.Some(x_35);
-                final v259 = types.value(result_35);
-                types.Some<int>? result_36;
+                _v289 = types.Some(x_35);
+                final v295 = types.value(_v289);
+                types.Some<int>? _v296;
                 final x_36 = random.nonSeeded().Next2(1, 7);
-                result_36 = types.Some(x_36);
-                final v265 = types.value(result_36);
-                types.Some<int>? result_37;
+                _v296 = types.Some(x_36);
+                final v302 = types.value(_v296);
+                types.Some<int>? _v303;
                 final x_37 = random.nonSeeded().Next2(1, 7);
-                result_37 = types.Some(x_37);
-                final v271 = types.value(result_37);
-                types.Some<int>? result_38;
+                _v303 = types.Some(x_37);
+                final v309 = types.value(_v303);
+                types.Some<int>? _v310;
                 final x_38 = random.nonSeeded().Next2(1, 7);
-                result_38 = types.Some(x_38);
-                final v277 = types.value(result_38);
-                types.Some<int>? result_39;
+                _v310 = types.Some(x_38);
+                final v316 = types.value(_v310);
+                types.Some<int>? _v317;
                 final x_39 = random.nonSeeded().Next2(1, 7);
-                result_39 = types.Some(x_39);
-                final v283 = types.value(result_39);
-                types.Some<int>? result_40;
+                _v317 = types.Some(x_39);
+                final v323 = types.value(_v317);
+                types.Some<int>? _v324;
                 final x_40 = random.nonSeeded().Next2(1, 7);
-                result_40 = types.Some(x_40);
-                final v289 = types.value(result_40);
-                types.Some<int>? result_41;
+                _v324 = types.Some(x_40);
+                final v330 = types.value(_v324);
+                types.Some<int>? _v331;
                 final x_41 = random.nonSeeded().Next2(1, 7);
-                result_41 = types.Some(x_41);
-                final v295 = types.value(result_41);
-                types.Some<int>? result_42;
+                _v331 = types.Some(x_41);
+                final v337 = types.value(_v331);
+                types.Some<int>? _v338;
                 final x_42 = random.nonSeeded().Next2(1, 7);
-                result_42 = types.Some(x_42);
-                final v301 = types.value(result_42);
-                types.Some<int>? result_43;
+                _v338 = types.Some(x_42);
+                final v344 = types.value(_v338);
+                types.Some<int>? _v345;
                 final x_43 = random.nonSeeded().Next2(1, 7);
-                result_43 = types.Some(x_43);
-                final v307 = types.value(result_43);
-                types.Some<int>? result_44;
+                _v345 = types.Some(x_43);
+                final v351 = types.value(_v345);
+                types.Some<int>? _v352;
                 final x_44 = random.nonSeeded().Next2(1, 7);
-                result_44 = types.Some(x_44);
-                final v313 = types.value(result_44);
-                types.Some<int>? result_45;
+                _v352 = types.Some(x_44);
+                final v358 = types.value(_v352);
+                types.Some<int>? _v359;
                 final x_45 = random.nonSeeded().Next2(1, 7);
-                result_45 = types.Some(x_45);
-                final v319 = types.value(result_45);
-                types.Some<int>? result_46;
+                _v359 = types.Some(x_45);
+                final v365 = types.value(_v359);
+                types.Some<int>? _v366;
                 final x_46 = random.nonSeeded().Next2(1, 7);
-                result_46 = types.Some(x_46);
-                v0_1_mut = UH1_UH1_0(v193, UH1_UH1_0(v199, UH1_UH1_0(v205, UH1_UH1_0(v211, UH1_UH1_0(v217, UH1_UH1_0(v223, UH1_UH1_0(v229, UH1_UH1_0(v235, UH1_UH1_0(v241, UH1_UH1_0(v247, UH1_UH1_0(v253, UH1_UH1_0(v259, UH1_UH1_0(v265, UH1_UH1_0(v271, UH1_UH1_0(v277, UH1_UH1_0(v283, UH1_UH1_0(v289, UH1_UH1_0(v295, UH1_UH1_0(v301, UH1_UH1_0(v307, UH1_UH1_0(v313, UH1_UH1_0(v319, UH1_UH1_0(types.value(result_46), const UH1(/* UH1_1 */ 1))))))))))))))))))))))));
+                _v366 = types.Some(x_46);
+                v0_1_mut = UH1_UH1_1(v218, UH1_UH1_1(v225, UH1_UH1_1(v232, UH1_UH1_1(v239, UH1_UH1_1(v246, UH1_UH1_1(v253, UH1_UH1_1(v260, UH1_UH1_1(v267, UH1_UH1_1(v274, UH1_UH1_1(v281, UH1_UH1_1(v288, UH1_UH1_1(v295, UH1_UH1_1(v302, UH1_UH1_1(v309, UH1_UH1_1(v316, UH1_UH1_1(v323, UH1_UH1_1(v330, UH1_UH1_1(v337, UH1_UH1_1(v344, UH1_UH1_1(v351, UH1_UH1_1(v358, UH1_UH1_1(v365, UH1_UH1_1(types.value(_v366), const UH1(/* UH1_0 */ 0))))))))))))))))))))))));
                 v1_1_mut = 23;
                 continue method14;
             }
@@ -1649,7 +1649,7 @@ int method14(UH1 v0_1_mut, int v1_1_mut) {
 int closure81(void unitVar, List<String> v0_1) {
     final v1_1 = 'calculate_dice_count / max: ${9223372036854775807} / n: ${24} / p: ${4738381338321616896}';
     console.log(v1_1);
-    final v5 = 'result: ${method14(const UH1(/* UH1_1 */ 1), 0)}';
+    final v5 = 'result: ${method14(const UH1(/* UH1_0 */ 0), 0)}';
     console.log(v5);
     return 0;
 }

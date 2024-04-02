@@ -53,19 +53,19 @@ mod module_a51efde0 {
         }
         #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
         pub enum UH1 {
-            UH1_0(u8, LrcPtr<Dice::UH1>),
-            UH1_1,
+            UH1_0,
+            UH1_1(u8, LrcPtr<Dice::UH1>),
         }
         impl Dice::UH1 {
             pub fn get_IsUH1_0(this_: LrcPtr<Dice::UH1>, unitArg: ()) -> bool {
-                if let Dice::UH1::UH1_0(this__0_0, this__0_1) = this_.as_ref() {
+                if let Dice::UH1::UH1_0 = this_.as_ref() {
                     true
                 } else {
                     false
                 }
             }
             pub fn get_IsUH1_1(this_: LrcPtr<Dice::UH1>, unitArg: ()) -> bool {
-                if let Dice::UH1::UH1_1 = this_.as_ref() {
+                if let Dice::UH1::UH1_1(this__1_0, this__1_1) = this_.as_ref() {
                     true
                 } else {
                     false
@@ -79,8 +79,8 @@ mod module_a51efde0 {
         }
         #[derive(Clone, Debug)]
         pub enum US0 {
-            US0_0,
-            US0_1(Func1<string, ()>),
+            US0_0(Func1<string, ()>),
+            US0_1,
         }
         impl Dice::US0 {
             pub fn get_IsUS0_0(this_: &MutCell<Dice::US0>, unitArg: ()) -> bool {
@@ -105,8 +105,8 @@ mod module_a51efde0 {
         }
         #[derive(Clone, Debug)]
         pub enum US1 {
-            US1_0(LrcPtr<Dice::UH0>),
-            US1_1(Func0<LrcPtr<Dice::UH0>>),
+            US1_0(Func0<LrcPtr<Dice::UH0>>),
+            US1_1(LrcPtr<Dice::UH0>),
         }
         impl Dice::US1 {
             pub fn get_IsUS1_0(this_: &MutCell<Dice::US1>, unitArg: ()) -> bool {
@@ -149,8 +149,8 @@ mod module_a51efde0 {
         }
         #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
         pub enum US2 {
-            US2_0,
-            US2_1(u8),
+            US2_0(u8),
+            US2_1,
         }
         impl Dice::US2 {
             pub fn get_IsUS2_0(this_: &MutCell<Dice::US2>, unitArg: ()) -> bool {
@@ -184,8 +184,8 @@ mod module_a51efde0 {
         }
         #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
         pub enum US3 {
-            US3_0,
-            US3_1(u64, LrcPtr<Dice::UH1>),
+            US3_0(u64, LrcPtr<Dice::UH1>),
+            US3_1,
         }
         impl Dice::US3 {
             pub fn get_IsUS3_0(this_: &MutCell<Dice::US3>, unitArg: ()) -> bool {
@@ -236,8 +236,8 @@ mod module_a51efde0 {
         }
         #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
         pub enum US4 {
-            US4_0,
-            US4_1(u64),
+            US4_0(u64),
+            US4_1,
         }
         impl Dice::US4 {
             pub fn get_IsUS4_0(this_: &MutCell<Dice::US4>, unitArg: ()) -> bool {
@@ -262,8 +262,8 @@ mod module_a51efde0 {
         }
         #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
         pub enum US5 {
-            US5_0,
-            US5_1(i64, LrcPtr<Dice::UH1>),
+            US5_0(i64, LrcPtr<Dice::UH1>),
+            US5_1,
         }
         impl Dice::US5 {
             pub fn get_IsUS5_0(this_: &MutCell<Dice::US5>, unitArg: ()) -> bool {
@@ -318,18 +318,26 @@ mod module_a51efde0 {
             })
         }
         pub fn closure4(unitVar: (), v0_1: Func1<string, ()>) -> Dice::US0 {
-            Dice::US0::US0_1(v0_1)
+            Dice::US0::US0_0(v0_1)
         }
         pub fn method1(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH1>) -> LrcPtr<Dice::UH1> {
             let v0_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v0_1.clone());
             let v1_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v1_1.clone());
             '_method1: loop {
                 break '_method1 (match v0_1.get().clone().as_ref() {
-                    Dice::UH1::UH1_1 => v1_1.get().clone(),
-                    Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                        let v0_1_temp: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                        let v1_1_temp: LrcPtr<Dice::UH1> =
-                            LrcPtr::new(Dice::UH1::UH1_0(v0_1_0_0.clone(), v1_1.get().clone()));
+                    Dice::UH1::UH1_0 => v1_1.get().clone(),
+                    Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                        let v0_1_temp: LrcPtr<Dice::UH1> = match v0_1.get().clone().as_ref() {
+                            Dice::UH1::UH1_1(_, x) => x.clone(),
+                            _ => unreachable!(),
+                        };
+                        let v1_1_temp: LrcPtr<Dice::UH1> = LrcPtr::new(Dice::UH1::UH1_1(
+                            match v0_1.get().clone().as_ref() {
+                                Dice::UH1::UH1_1(x, _) => x.clone(),
+                                _ => unreachable!(),
+                            },
+                            v1_1.get().clone(),
+                        ));
                         v0_1.set(v0_1_temp);
                         v1_1.set(v1_1_temp);
                         continue '_method1;
@@ -339,10 +347,19 @@ mod module_a51efde0 {
         }
         pub fn method2(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH1>) -> LrcPtr<Dice::UH1> {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => v1_1.clone(),
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => LrcPtr::new(Dice::UH1::UH1_0(
-                    v0_1_0_0.clone(),
-                    Dice::method2(v0_1_0_1.clone(), v1_1.clone()),
+                Dice::UH1::UH1_0 => v1_1.clone(),
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => LrcPtr::new(Dice::UH1::UH1_1(
+                    match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    },
+                    Dice::method2(
+                        match v0_1.as_ref() {
+                            Dice::UH1::UH1_1(_, x) => x.clone(),
+                            _ => unreachable!(),
+                        },
+                        v1_1.clone(),
+                    ),
                 )),
             }
         }
@@ -351,11 +368,20 @@ mod module_a51efde0 {
         }
         pub fn method3(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH0>) -> LrcPtr<Dice::UH0> {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => v1_1.clone(),
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH0> = Dice::method3(v0_1_0_1.clone(), v1_1.clone());
+                Dice::UH1::UH1_0 => v1_1.clone(),
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH0> = Dice::method3(
+                        match v0_1.as_ref() {
+                            Dice::UH1::UH1_1(_, x) => x.clone(),
+                            _ => unreachable!(),
+                        },
+                        v1_1.clone(),
+                    );
                     LrcPtr::new(Dice::UH0::UH0_0(
-                        v0_1_0_0.clone(),
+                        match v0_1.as_ref() {
+                            Dice::UH1::UH1_1(x, _) => x.clone(),
+                            _ => unreachable!(),
+                        },
                         Func0::new({
                             let v4_1 = v4_1.clone();
                             move || Dice::closure6(v4_1.clone(), ())
@@ -374,8 +400,8 @@ mod module_a51efde0 {
         ) -> LrcPtr<Dice::UH0> {
             let v2_1: Dice::US1 = v1_1.l0.get().clone();
             match &v2_1 {
-                Dice::US1::US1_1(v2_1_1_0) => {
-                    let v5: LrcPtr<Dice::UH0> = (v2_1_1_0)();
+                Dice::US1::US1_0(v2_1_0_0) => {
+                    let v5: LrcPtr<Dice::UH0> = (v2_1_0_0)();
                     let v12: LrcPtr<Dice::UH0> = match v5.as_ref() {
                         Dice::UH0::UH0_1 => LrcPtr::new(Dice::UH0::UH0_1),
                         Dice::UH0::UH0_0(v5_0_0, v5_0_1) => LrcPtr::new(Dice::UH0::UH0_0(
@@ -383,10 +409,10 @@ mod module_a51efde0 {
                             Dice::method4(v0_1, v5_0_1.clone()),
                         )),
                     };
-                    v1_1.l0.set(Dice::US1::US1_0(v12.clone()));
+                    v1_1.l0.set(Dice::US1::US1_1(v12.clone()));
                     v12
                 }
-                Dice::US1::US1_0(v2_1_0_0) => v2_1_0_0.clone(),
+                Dice::US1::US1_1(v2_1_1_0) => v2_1_1_0.clone(),
             }
         }
         pub fn method4(
@@ -394,7 +420,7 @@ mod module_a51efde0 {
             v1_1: Func0<LrcPtr<Dice::UH0>>,
         ) -> Func0<LrcPtr<Dice::UH0>> {
             let v3_1: LrcPtr<Dice::Mut0> = LrcPtr::new(Dice::Mut0 {
-                l0: MutCell::new(Dice::US1::US1_1(v1_1)),
+                l0: MutCell::new(Dice::US1::US1_0(v1_1)),
             });
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -407,10 +433,10 @@ mod module_a51efde0 {
             let v1_1: MutCell<LrcPtr<Dice::UH0>> = MutCell::new(v1_1.clone());
             '_method6: loop {
                 break '_method6 (match v1_1.get().clone().as_ref() {
-                    Dice::UH0::UH0_1 => Dice::US2::US2_0,
+                    Dice::UH0::UH0_1 => Dice::US2::US2_1,
                     Dice::UH0::UH0_0(v1_1_0_0, v1_1_0_1) => {
                         if v0_1.get().clone() <= 0_i64 {
-                            Dice::US2::US2_1(v1_1_0_0.clone())
+                            Dice::US2::US2_0(v1_1_0_0.clone())
                         } else {
                             let v0_1_temp: i64 = v0_1.get().clone() - 1_i64;
                             let v1_1_temp: LrcPtr<Dice::UH0> = (v1_1_0_1)();
@@ -445,25 +471,34 @@ mod module_a51efde0 {
                                           v4_1.l0.get().clone(),
                                           v5.l0.get().clone());
                     match &v0_1.get().clone() {
-                        Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v10),
+                        Dice::US0::US0_0(v0_1_0_0) => (match &v0_1.get().clone() {
+                            Dice::US0::US0_0(x) => x.clone(),
+                            _ => unreachable!(),
+                        })(v10),
                         _ => (),
                     }
                     {
                         let v12: LrcPtr<Dice::UH0> = v1_1();
                         let v14: Dice::US2 = Dice::method6(v2_1.l0.get().clone(), v12);
                         match &v14 {
-                            Dice::US2::US2_1(v14_1_0) => {
-                                let v15: u8 = v14_1_0.clone();
+                            Dice::US2::US2_0(v14_0_0) => {
+                                let v15: u8 = match &v14 {
+                                    Dice::US2::US2_0(x) => x.clone(),
+                                    _ => unreachable!(),
+                                };
                                 let v17: i64 = v2_1.l0.get().clone() + 1_i64;
                                 v2_1.l0.set(v17);
-                                v5.l0.set(Dice::US2::US2_1(v15));
+                                v5.l0.set(Dice::US2::US2_0(v15));
                                 v15
                             }
                             _ => {
                                 match &v0_1.get().clone() {
-                                    Dice::US0::US0_1(v0_1_1_0) => {
-                                        (v0_1_1_0)(string("create_sequential_roller / roll / None"))
-                                    }
+                                    Dice::US0::US0_0(v0_1_0_0) => (match &v0_1.get().clone() {
+                                        Dice::US0::US0_0(x) => x.clone(),
+                                        _ => unreachable!(),
+                                    })(
+                                        string("create_sequential_roller / roll / None"),
+                                    ),
                                     _ => (),
                                 }
                                 if v4_1.l0.get().clone() == -1_i64 {
@@ -482,7 +517,7 @@ mod module_a51efde0 {
                                     {
                                         let v31: i64 = v3_1.l0.get().clone() - 1_i64;
                                         v2_1.l0.set(v31);
-                                        v5.l0.set(Dice::US2::US2_0);
+                                        v5.l0.set(Dice::US2::US2_1);
                                         {
                                             let v0_1_temp: Dice::US0 = v0_1.get().clone();
                                             let v1_1_temp = v1_1.get().clone();
@@ -519,14 +554,19 @@ mod module_a51efde0 {
         }
         pub fn closure5(v0_1: Dice::US0, v1_1: LrcPtr<Dice::UH1>) -> Func0<u8> {
             match &v0_1 {
-                Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(string("create_sequential_roller ()")),
+                Dice::US0::US0_0(v0_1_0_0) => {
+                    (match &v0_1 {
+                        Dice::US0::US0_0(x) => x.clone(),
+                        _ => unreachable!(),
+                    })(string("create_sequential_roller ()"))
+                }
                 _ => (),
             }
             {
                 let v8: LrcPtr<Dice::UH0> = Dice::method3(
                     Dice::method2(
                         v1_1.clone(),
-                        Dice::method1(v1_1, LrcPtr::new(Dice::UH1::UH1_1)),
+                        Dice::method1(v1_1, LrcPtr::new(Dice::UH1::UH1_0)),
                     ),
                     LrcPtr::new(Dice::UH0::UH0_1),
                 );
@@ -547,7 +587,7 @@ mod module_a51efde0 {
                     l0: MutCell::new(-1_i64),
                 });
                 let v15: LrcPtr<Dice::Mut2> = LrcPtr::new(Dice::Mut2 {
-                    l0: MutCell::new(Dice::US2::US2_0),
+                    l0: MutCell::new(Dice::US2::US2_1),
                 });
                 Func0::new({
                     let v0_1 = v0_1.clone();
@@ -575,7 +615,7 @@ mod module_a51efde0 {
             v0_1: Option<Func1<string, ()>>,
         ) -> Func1<LrcPtr<Dice::UH1>, Func0<u8>> {
             let v3_1: Dice::US0 = defaultValue(
-                Dice::US0::US0_0,
+                Dice::US0::US0_1,
                 map(
                     Func1::new(move |v: Func1<string, ()>| Dice::closure4((), v)),
                     v0_1,
@@ -612,7 +652,10 @@ mod module_a51efde0 {
                             v3_1.get().clone()
                         );
                         match &v0_1.get().clone() {
-                            Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v9),
+                            Dice::US0::US0_0(v0_1_0_0) => (match &v0_1.get().clone() {
+                                Dice::US0::US0_0(x) => x.clone(),
+                                _ => unreachable!(),
+                            })(v9),
                             _ => (),
                         }
                         v2_1.get().clone()
@@ -625,7 +668,10 @@ mod module_a51efde0 {
                         v3_1.get().clone()
                     );
                     match &v0_1.get().clone() {
-                        Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v12),
+                        Dice::US0::US0_0(v0_1_0_0) => (match &v0_1.get().clone() {
+                            Dice::US0::US0_0(x) => x.clone(),
+                            _ => unreachable!(),
+                        })(v12),
                         _ => (),
                     }
                     v2_1.get().clone()
@@ -1021,10 +1067,10 @@ mod module_a51efde0 {
             let v1_1: MutCell<LrcPtr<Dice::UH2>> = MutCell::new(v1_1.clone());
             '_method10: loop {
                 break '_method10 (match v1_1.get().clone().as_ref() {
-                    Dice::UH2::UH2_1 => Dice::US4::US4_0,
+                    Dice::UH2::UH2_1 => Dice::US4::US4_1,
                     Dice::UH2::UH2_0(v1_1_0_0, v1_1_0_1) => {
                         if v0_1.get().clone() <= 0_i8 {
-                            Dice::US4::US4_1(v1_1_0_0.clone())
+                            Dice::US4::US4_0(v1_1_0_0.clone())
                         } else {
                             let v0_1_temp: i8 = v0_1.get().clone() - 1_i8;
                             let v1_1_temp: LrcPtr<Dice::UH2> = (v1_1_0_1)();
@@ -1051,16 +1097,25 @@ mod module_a51efde0 {
                         v5
                     );
                     match &v0_1.get().clone() {
-                        Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v6),
+                        Dice::US0::US0_0(v0_1_0_0) => (match &v0_1.get().clone() {
+                            Dice::US0::US0_0(x) => x.clone(),
+                            _ => unreachable!(),
+                        })(v6),
                         _ => (),
                     }
-                    Dice::US3::US3_1(v5, v2_1.get().clone())
+                    Dice::US3::US3_0(v5, v2_1.get().clone())
                 } else {
                     match v2_1.get().clone().as_ref() {
-                        Dice::UH1::UH1_1 => Dice::US3::US3_0,
-                        Dice::UH1::UH1_0(v2_1_0_0, v2_1_0_1) => {
-                            let v11: LrcPtr<Dice::UH1> = v2_1_0_1.clone();
-                            let v10: u8 = v2_1_0_0.clone();
+                        Dice::UH1::UH1_0 => Dice::US3::US3_1,
+                        Dice::UH1::UH1_1(v2_1_1_0, v2_1_1_1) => {
+                            let v11: LrcPtr<Dice::UH1> = match v2_1.get().clone().as_ref() {
+                                Dice::UH1::UH1_1(_, x) => x.clone(),
+                                _ => unreachable!(),
+                            };
+                            let v10: u8 = match v2_1.get().clone().as_ref() {
+                                Dice::UH1::UH1_1(x, _) => x.clone(),
+                                _ => unreachable!(),
+                            };
                             if v10 > 1_u8 {
                                 let v16: Dice::US4 = Dice::method10(
                                     v1_1.get().clone(),
@@ -1071,7 +1126,10 @@ mod module_a51efde0 {
                                 );
                                 let v23: u64 = (v10 - 1_u8) as u64
                                     * match &v16 {
-                                        Dice::US4::US4_1(v16_1_0) => v16_1_0.clone(),
+                                        Dice::US4::US4_0(v16_0_0) => match &v16 {
+                                            Dice::US4::US4_0(x) => x.clone(),
+                                            _ => unreachable!(),
+                                        },
                                         _ => panic!("{}", string("Option does not have a value."),),
                                     };
                                 let v24: string =
@@ -1080,7 +1138,12 @@ mod module_a51efde0 {
                                                       v3_1.get().clone(), v10,
                                                       v23);
                                 match &v0_1.get().clone() {
-                                    Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v24),
+                                    Dice::US0::US0_0(v0_1_0_0) => {
+                                        (match &v0_1.get().clone() {
+                                            Dice::US0::US0_0(x) => x.clone(),
+                                            _ => unreachable!(),
+                                        })(v24)
+                                    }
                                     _ => (),
                                 }
                                 {
@@ -1102,7 +1165,12 @@ mod module_a51efde0 {
                                     v10
                                 );
                                 match &v0_1.get().clone() {
-                                    Dice::US0::US0_1(v0_1_1_0) => (v0_1_1_0)(v29),
+                                    Dice::US0::US0_0(v0_1_0_0) => {
+                                        (match &v0_1.get().clone() {
+                                            Dice::US0::US0_0(x) => x.clone(),
+                                            _ => unreachable!(),
+                                        })(v29)
+                                    }
                                     _ => (),
                                 }
                                 {
@@ -1124,12 +1192,12 @@ mod module_a51efde0 {
         }
         pub fn method11(v0_1: i8, v1_1: Func0<u8>, v2_1: i8) -> LrcPtr<Dice::UH1> {
             if v2_1 < v0_1 {
-                LrcPtr::new(Dice::UH1::UH1_0(
+                LrcPtr::new(Dice::UH1::UH1_1(
                     v1_1(),
                     Dice::method11(v0_1, v1_1, v2_1 + 1_i8),
                 ))
             } else {
-                LrcPtr::new(Dice::UH1::UH1_1)
+                LrcPtr::new(Dice::UH1::UH1_0)
             }
         }
         pub fn method12(
@@ -1156,7 +1224,7 @@ mod module_a51efde0 {
                             v2_1.get().clone(),
                             v3_1.get().clone(),
                             v4_1.get().clone(),
-                            LrcPtr::new(Dice::UH1::UH1_0(v1_1(), v5.get().clone())),
+                            LrcPtr::new(Dice::UH1::UH1_1(v1_1(), v5.get().clone())),
                             v6,
                         )
                     } else {
@@ -1166,9 +1234,9 @@ mod module_a51efde0 {
                             v5.get().clone(),
                             0_u64,
                         );
-                        if let Dice::US3::US3_1(v12_1_0, v12_1_1) = &v12 {
+                        if let Dice::US3::US3_0(v12_0_0, v12_0_1) = &v12 {
                             let v13: u64 = match &v12 {
-                                Dice::US3::US3_1(x, _) => x.clone(),
+                                Dice::US3::US3_0(x, _) => x.clone(),
                                 _ => unreachable!(),
                             };
                             if v13 <= v3_1.get().clone() {
@@ -1199,7 +1267,7 @@ mod module_a51efde0 {
                                         v2_1.get().clone(),
                                         v3_1.get().clone(),
                                         v4_1.get().clone(),
-                                        LrcPtr::new(Dice::UH1::UH1_0(v1_1(), v5.get().clone())),
+                                        LrcPtr::new(Dice::UH1::UH1_1(v1_1(), v5.get().clone())),
                                         v6,
                                     )
                                 }
@@ -1227,7 +1295,7 @@ mod module_a51efde0 {
                                     v2_1.get().clone(),
                                     v3_1.get().clone(),
                                     v4_1.get().clone(),
-                                    LrcPtr::new(Dice::UH1::UH1_0(v1_1(), v5.get().clone())),
+                                    LrcPtr::new(Dice::UH1::UH1_1(v1_1(), v5.get().clone())),
                                     v6,
                                 )
                             }
@@ -1260,7 +1328,7 @@ mod module_a51efde0 {
                     let v3_1_temp: u64 = v3_1.get().clone();
                     let v4_1_temp: i8 = v4_1.get().clone();
                     let v5_temp: LrcPtr<Dice::UH1> =
-                        LrcPtr::new(Dice::UH1::UH1_0(v1_1(), v5.get().clone()));
+                        LrcPtr::new(Dice::UH1::UH1_1(v1_1(), v5.get().clone()));
                     let v6_temp: i8 = v6.get().clone() + 1_i8;
                     v0_1.set(v0_1_temp);
                     v1_1.set(v1_1_temp);
@@ -1277,9 +1345,9 @@ mod module_a51efde0 {
                         v5.get().clone(),
                         0_u64,
                     );
-                    if let Dice::US3::US3_1(v14_1_0, v14_1_1) = &v14 {
+                    if let Dice::US3::US3_0(v14_0_0, v14_0_1) = &v14 {
                         let v15: u64 = match &v14 {
-                            Dice::US3::US3_1(x, _) => x.clone(),
+                            Dice::US3::US3_0(x, _) => x.clone(),
                             _ => unreachable!(),
                         };
                         if v15 <= v3_1.get().clone() {
@@ -1301,7 +1369,7 @@ mod module_a51efde0 {
                                 let v3_1_temp: u64 = v3_1.get().clone();
                                 let v4_1_temp: i8 = v4_1.get().clone();
                                 let v5_temp: LrcPtr<Dice::UH1> =
-                                    LrcPtr::new(Dice::UH1::UH1_0(v1_1(), v5.get().clone()));
+                                    LrcPtr::new(Dice::UH1::UH1_1(v1_1(), v5.get().clone()));
                                 let v6_temp: i8 = v6.get().clone() + 1_i8;
                                 v0_1.set(v0_1_temp);
                                 v1_1.set(v1_1_temp);
@@ -1330,7 +1398,7 @@ mod module_a51efde0 {
                             let v3_1_temp: u64 = v3_1.get().clone();
                             let v4_1_temp: i8 = v4_1.get().clone();
                             let v5_temp: LrcPtr<Dice::UH1> =
-                                LrcPtr::new(Dice::UH1::UH1_0(v1_1(), v5.get().clone()));
+                                LrcPtr::new(Dice::UH1::UH1_1(v1_1(), v5.get().clone()));
                             let v6_temp: i8 = v6.get().clone() + 1_i8;
                             v0_1.set(v0_1_temp);
                             v1_1.set(v1_1_temp);
@@ -1356,7 +1424,7 @@ mod module_a51efde0 {
                 } else {
                     Dice::method7(v0_1, v3_1, 0_i8, 1_u64)
                 }) - 1_i8,
-                LrcPtr::new(Dice::UH1::UH1_1),
+                LrcPtr::new(Dice::UH1::UH1_0),
                 0_i8,
             )
         }
@@ -1380,7 +1448,7 @@ mod module_a51efde0 {
             v0_1: Option<Func1<string, ()>>,
         ) -> Func1<Func0<u8>, Func1<bool, Func1<u64, u64>>> {
             let v3_1: Dice::US0 = defaultValue(
-                Dice::US0::US0_0,
+                Dice::US0::US0_1,
                 map(
                     Func1::new(move |v: Func1<string, ()>| Dice::closure4((), v)),
                     v0_1,
@@ -1396,9 +1464,12 @@ mod module_a51efde0 {
             let v1_1: MutCell<i8> = MutCell::new(v1_1);
             '_method13: loop {
                 break '_method13 (match v0_1.get().clone().as_ref() {
-                    Dice::UH1::UH1_1 => v1_1.get().clone(),
-                    Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                        let v0_1_temp: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
+                    Dice::UH1::UH1_0 => v1_1.get().clone(),
+                    Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                        let v0_1_temp: LrcPtr<Dice::UH1> = match v0_1.get().clone().as_ref() {
+                            Dice::UH1::UH1_1(_, x) => x.clone(),
+                            _ => unreachable!(),
+                        };
                         let v1_1_temp: i8 = v1_1.get().clone() + 1_i8;
                         v0_1.set(v0_1_temp);
                         v1_1.set(v1_1_temp);
@@ -1414,7 +1485,7 @@ mod module_a51efde0 {
         ) -> Option<u64> {
             let v10: Dice::US3 = Dice::method9(
                 defaultValue(
-                    Dice::US0::US0_0,
+                    Dice::US0::US0_1,
                     map(
                         Func1::new(move |v: Func1<string, ()>| Dice::closure4((), v)),
                         v0_1,
@@ -1424,21 +1495,24 @@ mod module_a51efde0 {
                 v2_1,
                 0_u64,
             );
-            let v20: Dice::US4 = if let Dice::US3::US3_1(v10_1_0, v10_1_1) = &v10 {
+            let v20: Dice::US4 = if let Dice::US3::US3_0(v10_0_0, v10_0_1) = &v10 {
                 let v11: u64 = match &v10 {
-                    Dice::US3::US3_1(x, _) => x.clone(),
+                    Dice::US3::US3_0(x, _) => x.clone(),
                     _ => unreachable!(),
                 };
                 if if v11 >= 1_u64 { v11 <= v1_1 } else { false } {
-                    Dice::US4::US4_1(v11)
+                    Dice::US4::US4_0(v11)
                 } else {
-                    Dice::US4::US4_0
+                    Dice::US4::US4_1
                 }
             } else {
-                Dice::US4::US4_0
+                Dice::US4::US4_1
             };
             match &v20 {
-                Dice::US4::US4_1(v20_1_0) => Some(v20_1_0.clone()),
+                Dice::US4::US4_0(v20_0_0) => Some(match &v20 {
+                    Dice::US4::US4_0(x) => x.clone(),
+                    _ => unreachable!(),
+                }),
                 _ => None::<u64>,
             }
         }
@@ -1470,14 +1544,20 @@ mod module_a51efde0 {
                 v2_1
             );
             printfn!("{0}", v3_1);
-            Dice::US5::US5_1(v2_1, v0_1)
+            Dice::US5::US5_0(v2_1, v0_1)
         }
         pub fn method38(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v7: i64 = (v3_1 - 1_u8) as i64;
                         let v8: string = sprintf!(
@@ -1504,10 +1584,16 @@ mod module_a51efde0 {
         }
         pub fn method37(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 6_i64;
                         let v9: string = sprintf!(
@@ -1534,10 +1620,16 @@ mod module_a51efde0 {
         }
         pub fn method36(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 36_i64;
                         let v9: string = sprintf!(
@@ -1564,10 +1656,16 @@ mod module_a51efde0 {
         }
         pub fn method35(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 216_i64;
                         let v9: string = sprintf!(
@@ -1594,10 +1692,16 @@ mod module_a51efde0 {
         }
         pub fn method34(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 1296_i64;
                         let v9: string = sprintf!(
@@ -1624,10 +1728,16 @@ mod module_a51efde0 {
         }
         pub fn method33(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 7776_i64;
                         let v9: string = sprintf!(
@@ -1654,10 +1764,16 @@ mod module_a51efde0 {
         }
         pub fn method32(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 46656_i64;
                         let v9: string = sprintf!(
@@ -1684,10 +1800,16 @@ mod module_a51efde0 {
         }
         pub fn method31(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 279936_i64;
                         let v9: string = sprintf!(
@@ -1714,10 +1836,16 @@ mod module_a51efde0 {
         }
         pub fn method30(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 1679616_i64;
                         let v9: string = sprintf!(
@@ -1744,10 +1872,16 @@ mod module_a51efde0 {
         }
         pub fn method29(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 10077696_i64;
                         let v9: string = sprintf!(
@@ -1774,10 +1908,16 @@ mod module_a51efde0 {
         }
         pub fn method28(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 60466176_i64;
                         let v9: string = sprintf!(
@@ -1804,10 +1944,16 @@ mod module_a51efde0 {
         }
         pub fn method27(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 362797056_i64;
                         let v9: string = sprintf!(
@@ -1834,10 +1980,16 @@ mod module_a51efde0 {
         }
         pub fn method26(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 2176782336_i64;
                         let v9: string = sprintf!(
@@ -1864,10 +2016,16 @@ mod module_a51efde0 {
         }
         pub fn method25(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 13060694016_i64;
                         let v9: string = sprintf!(
@@ -1894,10 +2052,16 @@ mod module_a51efde0 {
         }
         pub fn method24(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 78364164096_i64;
                         let v9: string = sprintf!(
@@ -1924,10 +2088,16 @@ mod module_a51efde0 {
         }
         pub fn method23(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 470184984576_i64;
                         let v9: string = sprintf!(
@@ -1954,10 +2124,16 @@ mod module_a51efde0 {
         }
         pub fn method22(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 2821109907456_i64;
                         let v9: string = sprintf!(
@@ -1984,10 +2160,16 @@ mod module_a51efde0 {
         }
         pub fn method21(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 16926659444736_i64;
                         let v9: string = sprintf!(
@@ -2014,10 +2196,16 @@ mod module_a51efde0 {
         }
         pub fn method20(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 101559956668416_i64;
                         let v9: string = sprintf!(
@@ -2044,10 +2232,16 @@ mod module_a51efde0 {
         }
         pub fn method19(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 609359740010496_i64;
                         let v9: string = sprintf!(
@@ -2074,10 +2268,16 @@ mod module_a51efde0 {
         }
         pub fn method18(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 3656158440062976_i64;
                         let v9: string = sprintf!(
@@ -2104,10 +2304,16 @@ mod module_a51efde0 {
         }
         pub fn method17(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 21936950640377856_i64;
                         let v9: string = sprintf!(
@@ -2134,10 +2340,16 @@ mod module_a51efde0 {
         }
         pub fn method16(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 131621703842267136_i64;
                         let v9: string = sprintf!(
@@ -2164,10 +2376,16 @@ mod module_a51efde0 {
         }
         pub fn method15(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_1 => Dice::US5::US5_0,
-                Dice::UH1::UH1_0(v0_1_0_0, v0_1_0_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = v0_1_0_1.clone();
-                    let v3_1: u8 = v0_1_0_0.clone();
+                Dice::UH1::UH1_0 => Dice::US5::US5_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 789730223053602816_i64;
                         let v9: string = sprintf!(
@@ -2197,14 +2415,14 @@ mod module_a51efde0 {
             let v1_1: MutCell<i8> = MutCell::new(v1_1);
             '_method14: loop {
                 break '_method14 (if v1_1.get().clone() < 24_i8 {
-                    let result: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                    let _v3: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                     {
                         let x: u8 = rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                        result.set(Some(x))
+                        _v3.set(Some(x))
                     }
                     {
-                        let v0_1_temp: LrcPtr<Dice::UH1> = LrcPtr::new(Dice::UH1::UH1_0(
-                            getValue(result.get().clone()),
+                        let v0_1_temp: LrcPtr<Dice::UH1> = LrcPtr::new(Dice::UH1::UH1_1(
+                            getValue(_v3.get().clone()),
                             v0_1.get().clone(),
                         ));
                         let v1_1_temp: i8 = v1_1.get().clone() + 1_i8;
@@ -2213,107 +2431,104 @@ mod module_a51efde0 {
                         continue '_method14;
                     }
                 } else {
-                    let v15: Dice::US5 = Dice::method15(v0_1.get().clone(), 0_i64);
-                    if let Dice::US5::US5_1(v15_1_0, v15_1_1) = &v15 {
-                        let v16: i64 = match &v15 {
-                            Dice::US5::US5_1(x, _) => x.clone(),
+                    let v16: Dice::US5 = Dice::method15(v0_1.get().clone(), 0_i64);
+                    if let Dice::US5::US5_0(v16_0_0, v16_0_1) = &v16 {
+                        let v17: i64 = match &v16 {
+                            Dice::US5::US5_0(x, _) => x.clone(),
                             _ => unreachable!(),
                         };
-                        if v16 <= i64::MAX {
-                            v16
+                        if v17 <= i64::MAX {
+                            v17
                         } else {
-                            let result_1: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                            let _v20: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                             {
                                 let x_1: u8 = rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                result_1.set(Some(x_1))
+                                _v20.set(Some(x_1))
                             }
                             {
-                                let v26: u8 = getValue(result_1.get().clone());
-                                let result_2: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                                let v28: u8 = getValue(_v20.get().clone());
+                                let _v29: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                 {
                                     let x_2: u8 =
                                         rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                    result_2.set(Some(x_2))
+                                    _v29.set(Some(x_2))
                                 }
                                 {
-                                    let v32: u8 = getValue(result_2.get().clone());
-                                    let result_3: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                                    let v35: u8 = getValue(_v29.get().clone());
+                                    let _v36: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                     {
                                         let x_3: u8 =
                                             rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                        result_3.set(Some(x_3))
+                                        _v36.set(Some(x_3))
                                     }
                                     {
-                                        let v38: u8 = getValue(result_3.get().clone());
-                                        let result_4: MutCell<Option<u8>> =
-                                            MutCell::new(None::<u8>);
+                                        let v42: u8 = getValue(_v36.get().clone());
+                                        let _v43: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                         {
                                             let x_4: u8 =
                                                 rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                            result_4.set(Some(x_4))
+                                            _v43.set(Some(x_4))
                                         }
                                         {
-                                            let v44: u8 = getValue(result_4.get().clone());
-                                            let result_5: MutCell<Option<u8>> =
+                                            let v49: u8 = getValue(_v43.get().clone());
+                                            let _v50: MutCell<Option<u8>> =
                                                 MutCell::new(None::<u8>);
                                             {
                                                 let x_5: u8 = rand::Rng::gen_range(
                                                     &mut rand::thread_rng(),
                                                     1..7,
                                                 );
-                                                result_5.set(Some(x_5))
+                                                _v50.set(Some(x_5))
                                             }
                                             {
-                                                let v50: u8 = getValue(result_5.get().clone());
-                                                let result_6: MutCell<Option<u8>> =
+                                                let v56: u8 = getValue(_v50.get().clone());
+                                                let _v57: MutCell<Option<u8>> =
                                                     MutCell::new(None::<u8>);
                                                 {
                                                     let x_6: u8 = rand::Rng::gen_range(
                                                         &mut rand::thread_rng(),
                                                         1..7,
                                                     );
-                                                    result_6.set(Some(x_6))
+                                                    _v57.set(Some(x_6))
                                                 }
                                                 {
-                                                    let v56: u8 = getValue(result_6.get().clone());
-                                                    let result_7: MutCell<Option<u8>> =
+                                                    let v63: u8 = getValue(_v57.get().clone());
+                                                    let _v64: MutCell<Option<u8>> =
                                                         MutCell::new(None::<u8>);
                                                     {
                                                         let x_7: u8 = rand::Rng::gen_range(
                                                             &mut rand::thread_rng(),
                                                             1..7,
                                                         );
-                                                        result_7.set(Some(x_7))
+                                                        _v64.set(Some(x_7))
                                                     }
                                                     {
-                                                        let v62: u8 =
-                                                            getValue(result_7.get().clone());
-                                                        let result_8: MutCell<Option<u8>> =
+                                                        let v70: u8 = getValue(_v64.get().clone());
+                                                        let _v71: MutCell<Option<u8>> =
                                                             MutCell::new(None::<u8>);
                                                         {
                                                             let x_8: u8 = rand::Rng::gen_range(
                                                                 &mut rand::thread_rng(),
                                                                 1..7,
                                                             );
-                                                            result_8.set(Some(x_8))
+                                                            _v71.set(Some(x_8))
                                                         }
                                                         {
-                                                            let v68: u8 =
-                                                                getValue(result_8.get().clone());
-                                                            let result_9: MutCell<Option<u8>> =
+                                                            let v77: u8 =
+                                                                getValue(_v71.get().clone());
+                                                            let _v78: MutCell<Option<u8>> =
                                                                 MutCell::new(None::<u8>);
                                                             {
                                                                 let x_9: u8 = rand::Rng::gen_range(
                                                                     &mut rand::thread_rng(),
                                                                     1..7,
                                                                 );
-                                                                result_9.set(Some(x_9))
+                                                                _v78.set(Some(x_9))
                                                             }
                                                             {
-                                                                let v74: u8 = getValue(
-                                                                    result_9.get().clone(),
-                                                                );
-                                                                let result_10: MutCell<Option<u8>> =
+                                                                let v84: u8 =
+                                                                    getValue(_v78.get().clone());
+                                                                let _v85: MutCell<Option<u8>> =
                                                                     MutCell::new(None::<u8>);
                                                                 {
                                                                     let x_10: u8 =
@@ -2321,26 +2536,25 @@ mod module_a51efde0 {
                                                                             &mut rand::thread_rng(),
                                                                             1..7,
                                                                         );
-                                                                    result_10.set(Some(x_10))
+                                                                    _v85.set(Some(x_10))
                                                                 }
                                                                 {
-                                                                    let v80: u8 = getValue(
-                                                                        result_10.get().clone(),
+                                                                    let v91: u8 = getValue(
+                                                                        _v85.get().clone(),
                                                                     );
-                                                                    let result_11: MutCell<
-                                                                        Option<u8>,
-                                                                    > = MutCell::new(None::<u8>);
+                                                                    let _v92: MutCell<Option<u8>> =
+                                                                        MutCell::new(None::<u8>);
                                                                     {
                                                                         let x_11:
                                                                                          u8 =
                                                                                      rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                        result_11.set(Some(x_11))
+                                                                        _v92.set(Some(x_11))
                                                                     }
                                                                     {
-                                                                        let v86: u8 = getValue(
-                                                                            result_11.get().clone(),
+                                                                        let v98: u8 = getValue(
+                                                                            _v92.get().clone(),
                                                                         );
-                                                                        let result_12: MutCell<
+                                                                        let _v99: MutCell<
                                                                             Option<u8>,
                                                                         > = MutCell::new(
                                                                             None::<u8>,
@@ -2349,16 +2563,13 @@ mod module_a51efde0 {
                                                                             let x_12:
                                                                                              u8 =
                                                                                          rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                            result_12
-                                                                                .set(Some(x_12))
+                                                                            _v99.set(Some(x_12))
                                                                         }
                                                                         {
-                                                                            let v92: u8 = getValue(
-                                                                                result_12
-                                                                                    .get()
-                                                                                    .clone(),
+                                                                            let v105: u8 = getValue(
+                                                                                _v99.get().clone(),
                                                                             );
-                                                                            let result_13: MutCell<
+                                                                            let _v106: MutCell<
                                                                                 Option<u8>,
                                                                             > = MutCell::new(
                                                                                 None::<u8>,
@@ -2367,172 +2578,174 @@ mod module_a51efde0 {
                                                                                 let x_13:
                                                                                                  u8 =
                                                                                              rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                result_13
+                                                                                _v106
                                                                                     .set(Some(x_13))
                                                                             }
                                                                             {
-                                                                                let v98: u8 =
+                                                                                let v112: u8 =
                                                                                     getValue(
-                                                                                        result_13
+                                                                                        _v106
                                                                                             .get()
                                                                                             .clone(
                                                                                             ),
                                                                                     );
-                                                                                let result_14:
-                                                                                                 MutCell<Option<u8>> =
-                                                                                             MutCell::new(None::<u8>);
+                                                                                let _v113: MutCell<
+                                                                                    Option<u8>,
+                                                                                > = MutCell::new(
+                                                                                    None::<u8>,
+                                                                                );
                                                                                 {
                                                                                     let x_14:
                                                                                                      u8 =
                                                                                                  rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                    result_14.set(
-                                                                                        Some(x_14),
-                                                                                    )
+                                                                                    _v113.set(Some(
+                                                                                        x_14,
+                                                                                    ))
                                                                                 }
                                                                                 {
-                                                                                    let v104:
+                                                                                    let v119:
                                                                                                      u8 =
-                                                                                                 getValue(result_14.get().clone());
-                                                                                    let result_15:
+                                                                                                 getValue(_v113.get().clone());
+                                                                                    let _v120:
                                                                                                      MutCell<Option<u8>> =
                                                                                                  MutCell::new(None::<u8>);
                                                                                     {
                                                                                         let x_15:
                                                                                                          u8 =
                                                                                                      rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                        result_15.set(Some(x_15))
+                                                                                        _v120.set(Some(x_15))
                                                                                     }
                                                                                     {
-                                                                                        let v110:
+                                                                                        let v126:
                                                                                                          u8 =
-                                                                                                     getValue(result_15.get().clone());
-                                                                                        let result_16:
+                                                                                                     getValue(_v120.get().clone());
+                                                                                        let _v127:
                                                                                                          MutCell<Option<u8>> =
                                                                                                      MutCell::new(None::<u8>);
                                                                                         {
                                                                                             let x_16:
                                                                                                              u8 =
                                                                                                          rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                            result_16.set(Some(x_16))
+                                                                                            _v127.set(Some(x_16))
                                                                                         }
                                                                                         {
-                                                                                            let v116:
+                                                                                            let v133:
                                                                                                              u8 =
-                                                                                                         getValue(result_16.get().clone());
-                                                                                            let result_17:
+                                                                                                         getValue(_v127.get().clone());
+                                                                                            let _v134:
                                                                                                              MutCell<Option<u8>> =
                                                                                                          MutCell::new(None::<u8>);
                                                                                             {
                                                                                                 let x_17:
                                                                                                                  u8 =
                                                                                                              rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                result_17.set(Some(x_17))
+                                                                                                _v134.set(Some(x_17))
                                                                                             }
                                                                                             {
-                                                                                                let v122:
+                                                                                                let v140:
                                                                                                                  u8 =
-                                                                                                             getValue(result_17.get().clone());
-                                                                                                let result_18:
+                                                                                                             getValue(_v134.get().clone());
+                                                                                                let _v141:
                                                                                                                  MutCell<Option<u8>> =
                                                                                                              MutCell::new(None::<u8>);
                                                                                                 {
                                                                                                     let x_18:
                                                                                                                      u8 =
                                                                                                                  rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                    result_18.set(Some(x_18))
+                                                                                                    _v141.set(Some(x_18))
                                                                                                 }
                                                                                                 {
-                                                                                                    let v128:
+                                                                                                    let v147:
                                                                                                                      u8 =
-                                                                                                                 getValue(result_18.get().clone());
-                                                                                                    let result_19:
+                                                                                                                 getValue(_v141.get().clone());
+                                                                                                    let _v148:
                                                                                                                      MutCell<Option<u8>> =
                                                                                                                  MutCell::new(None::<u8>);
                                                                                                     {
                                                                                                         let x_19:
                                                                                                                          u8 =
                                                                                                                      rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                        result_19.set(Some(x_19))
+                                                                                                        _v148.set(Some(x_19))
                                                                                                     }
                                                                                                     {
-                                                                                                        let v134:
+                                                                                                        let v154:
                                                                                                                          u8 =
-                                                                                                                     getValue(result_19.get().clone());
-                                                                                                        let result_20:
+                                                                                                                     getValue(_v148.get().clone());
+                                                                                                        let _v155:
                                                                                                                          MutCell<Option<u8>> =
                                                                                                                      MutCell::new(None::<u8>);
                                                                                                         {
                                                                                                             let x_20:
                                                                                                                              u8 =
                                                                                                                          rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                            result_20.set(Some(x_20))
+                                                                                                            _v155.set(Some(x_20))
                                                                                                         }
                                                                                                         {
-                                                                                                            let v140:
+                                                                                                            let v161:
                                                                                                                              u8 =
-                                                                                                                         getValue(result_20.get().clone());
-                                                                                                            let result_21:
+                                                                                                                         getValue(_v155.get().clone());
+                                                                                                            let _v162:
                                                                                                                              MutCell<Option<u8>> =
                                                                                                                          MutCell::new(None::<u8>);
                                                                                                             {
                                                                                                                 let x_21:
                                                                                                                                  u8 =
                                                                                                                              rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                                result_21.set(Some(x_21))
+                                                                                                                _v162.set(Some(x_21))
                                                                                                             }
                                                                                                             {
-                                                                                                                let v146:
+                                                                                                                let v168:
                                                                                                                                  u8 =
-                                                                                                                             getValue(result_21.get().clone());
-                                                                                                                let result_22:
+                                                                                                                             getValue(_v162.get().clone());
+                                                                                                                let _v169:
                                                                                                                                  MutCell<Option<u8>> =
                                                                                                                              MutCell::new(None::<u8>);
                                                                                                                 {
                                                                                                                     let x_22:
                                                                                                                                      u8 =
                                                                                                                                  rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                                    result_22.set(Some(x_22))
+                                                                                                                    _v169.set(Some(x_22))
                                                                                                                 }
                                                                                                                 {
-                                                                                                                    let v152:
+                                                                                                                    let v175:
                                                                                                                                      u8 =
-                                                                                                                                 getValue(result_22.get().clone());
-                                                                                                                    let result_23:
+                                                                                                                                 getValue(_v169.get().clone());
+                                                                                                                    let _v176:
                                                                                                                                      MutCell<Option<u8>> =
                                                                                                                                  MutCell::new(None::<u8>);
                                                                                                                     {
                                                                                                                         let x_23:
                                                                                                                                          u8 =
                                                                                                                                      rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                                        result_23.set(Some(x_23))
+                                                                                                                        _v176.set(Some(x_23))
                                                                                                                     }
                                                                                                                     {
                                                                                                                         let v0_1_temp:
                                                                                                                                          LrcPtr<Dice::UH1> =
-                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v26,
-                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v32,
-                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_0(v38,
-                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_0(v44,
-                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_0(v50,
-                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_0(v56,
-                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_0(v62,
-                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_0(v68,
-                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_0(v74,
-                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_0(v80,
-                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_0(v86,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_0(v92,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0(v98,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_0(v104,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_0(v110,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_0(v116,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v122,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v128,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_0(v134,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_0(v140,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_0(v146,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_0(v152,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_0(getValue(result_23.get().clone()),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1)))))))))))))))))))))))))))))))))))))))))))))));
+                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v28,
+                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v35,
+                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(v42,
+                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(v49,
+                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(v56,
+                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(v63,
+                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(v70,
+                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(v77,
+                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(v84,
+                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(v91,
+                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(v98,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(v105,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(v112,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(v119,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(v126,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(v133,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v140,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v147,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(v154,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(v161,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(v168,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(v175,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(getValue(_v176.get().clone()),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_0)))))))))))))))))))))))))))))))))))))))))))))));
                                                                                                                         let v1_1_temp:
                                                                                                                                          i8 =
                                                                                                                                      23_i8;
@@ -2565,106 +2778,103 @@ mod module_a51efde0 {
                             }
                         }
                     } else {
-                        let result_24: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                        let _v210: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                         {
                             let x_24: u8 = rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                            result_24.set(Some(x_24))
+                            _v210.set(Some(x_24))
                         }
                         {
-                            let v193: u8 = getValue(result_24.get().clone());
-                            let result_25: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                            let v218: u8 = getValue(_v210.get().clone());
+                            let _v219: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                             {
                                 let x_25: u8 = rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                result_25.set(Some(x_25))
+                                _v219.set(Some(x_25))
                             }
                             {
-                                let v199: u8 = getValue(result_25.get().clone());
-                                let result_26: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                                let v225: u8 = getValue(_v219.get().clone());
+                                let _v226: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                 {
                                     let x_26: u8 =
                                         rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                    result_26.set(Some(x_26))
+                                    _v226.set(Some(x_26))
                                 }
                                 {
-                                    let v205: u8 = getValue(result_26.get().clone());
-                                    let result_27: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                                    let v232: u8 = getValue(_v226.get().clone());
+                                    let _v233: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                     {
                                         let x_27: u8 =
                                             rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                        result_27.set(Some(x_27))
+                                        _v233.set(Some(x_27))
                                     }
                                     {
-                                        let v211: u8 = getValue(result_27.get().clone());
-                                        let result_28: MutCell<Option<u8>> =
-                                            MutCell::new(None::<u8>);
+                                        let v239: u8 = getValue(_v233.get().clone());
+                                        let _v240: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                         {
                                             let x_28: u8 =
                                                 rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                            result_28.set(Some(x_28))
+                                            _v240.set(Some(x_28))
                                         }
                                         {
-                                            let v217: u8 = getValue(result_28.get().clone());
-                                            let result_29: MutCell<Option<u8>> =
+                                            let v246: u8 = getValue(_v240.get().clone());
+                                            let _v247: MutCell<Option<u8>> =
                                                 MutCell::new(None::<u8>);
                                             {
                                                 let x_29: u8 = rand::Rng::gen_range(
                                                     &mut rand::thread_rng(),
                                                     1..7,
                                                 );
-                                                result_29.set(Some(x_29))
+                                                _v247.set(Some(x_29))
                                             }
                                             {
-                                                let v223: u8 = getValue(result_29.get().clone());
-                                                let result_30: MutCell<Option<u8>> =
+                                                let v253: u8 = getValue(_v247.get().clone());
+                                                let _v254: MutCell<Option<u8>> =
                                                     MutCell::new(None::<u8>);
                                                 {
                                                     let x_30: u8 = rand::Rng::gen_range(
                                                         &mut rand::thread_rng(),
                                                         1..7,
                                                     );
-                                                    result_30.set(Some(x_30))
+                                                    _v254.set(Some(x_30))
                                                 }
                                                 {
-                                                    let v229: u8 =
-                                                        getValue(result_30.get().clone());
-                                                    let result_31: MutCell<Option<u8>> =
+                                                    let v260: u8 = getValue(_v254.get().clone());
+                                                    let _v261: MutCell<Option<u8>> =
                                                         MutCell::new(None::<u8>);
                                                     {
                                                         let x_31: u8 = rand::Rng::gen_range(
                                                             &mut rand::thread_rng(),
                                                             1..7,
                                                         );
-                                                        result_31.set(Some(x_31))
+                                                        _v261.set(Some(x_31))
                                                     }
                                                     {
-                                                        let v235: u8 =
-                                                            getValue(result_31.get().clone());
-                                                        let result_32: MutCell<Option<u8>> =
+                                                        let v267: u8 =
+                                                            getValue(_v261.get().clone());
+                                                        let _v268: MutCell<Option<u8>> =
                                                             MutCell::new(None::<u8>);
                                                         {
                                                             let x_32: u8 = rand::Rng::gen_range(
                                                                 &mut rand::thread_rng(),
                                                                 1..7,
                                                             );
-                                                            result_32.set(Some(x_32))
+                                                            _v268.set(Some(x_32))
                                                         }
                                                         {
-                                                            let v241: u8 =
-                                                                getValue(result_32.get().clone());
-                                                            let result_33: MutCell<Option<u8>> =
+                                                            let v274: u8 =
+                                                                getValue(_v268.get().clone());
+                                                            let _v275: MutCell<Option<u8>> =
                                                                 MutCell::new(None::<u8>);
                                                             {
                                                                 let x_33: u8 = rand::Rng::gen_range(
                                                                     &mut rand::thread_rng(),
                                                                     1..7,
                                                                 );
-                                                                result_33.set(Some(x_33))
+                                                                _v275.set(Some(x_33))
                                                             }
                                                             {
-                                                                let v247: u8 = getValue(
-                                                                    result_33.get().clone(),
-                                                                );
-                                                                let result_34: MutCell<Option<u8>> =
+                                                                let v281: u8 =
+                                                                    getValue(_v275.get().clone());
+                                                                let _v282: MutCell<Option<u8>> =
                                                                     MutCell::new(None::<u8>);
                                                                 {
                                                                     let x_34: u8 =
@@ -2672,26 +2882,25 @@ mod module_a51efde0 {
                                                                             &mut rand::thread_rng(),
                                                                             1..7,
                                                                         );
-                                                                    result_34.set(Some(x_34))
+                                                                    _v282.set(Some(x_34))
                                                                 }
                                                                 {
-                                                                    let v253: u8 = getValue(
-                                                                        result_34.get().clone(),
+                                                                    let v288: u8 = getValue(
+                                                                        _v282.get().clone(),
                                                                     );
-                                                                    let result_35: MutCell<
-                                                                        Option<u8>,
-                                                                    > = MutCell::new(None::<u8>);
+                                                                    let _v289: MutCell<Option<u8>> =
+                                                                        MutCell::new(None::<u8>);
                                                                     {
                                                                         let x_35:
                                                                                          u8 =
                                                                                      rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                        result_35.set(Some(x_35))
+                                                                        _v289.set(Some(x_35))
                                                                     }
                                                                     {
-                                                                        let v259: u8 = getValue(
-                                                                            result_35.get().clone(),
+                                                                        let v295: u8 = getValue(
+                                                                            _v289.get().clone(),
                                                                         );
-                                                                        let result_36: MutCell<
+                                                                        let _v296: MutCell<
                                                                             Option<u8>,
                                                                         > = MutCell::new(
                                                                             None::<u8>,
@@ -2700,16 +2909,13 @@ mod module_a51efde0 {
                                                                             let x_36:
                                                                                              u8 =
                                                                                          rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                            result_36
-                                                                                .set(Some(x_36))
+                                                                            _v296.set(Some(x_36))
                                                                         }
                                                                         {
-                                                                            let v265: u8 = getValue(
-                                                                                result_36
-                                                                                    .get()
-                                                                                    .clone(),
+                                                                            let v302: u8 = getValue(
+                                                                                _v296.get().clone(),
                                                                             );
-                                                                            let result_37: MutCell<
+                                                                            let _v303: MutCell<
                                                                                 Option<u8>,
                                                                             > = MutCell::new(
                                                                                 None::<u8>,
@@ -2718,159 +2924,161 @@ mod module_a51efde0 {
                                                                                 let x_37:
                                                                                                  u8 =
                                                                                              rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                result_37
+                                                                                _v303
                                                                                     .set(Some(x_37))
                                                                             }
                                                                             {
-                                                                                let v271: u8 =
+                                                                                let v309: u8 =
                                                                                     getValue(
-                                                                                        result_37
+                                                                                        _v303
                                                                                             .get()
                                                                                             .clone(
                                                                                             ),
                                                                                     );
-                                                                                let result_38:
-                                                                                                 MutCell<Option<u8>> =
-                                                                                             MutCell::new(None::<u8>);
+                                                                                let _v310: MutCell<
+                                                                                    Option<u8>,
+                                                                                > = MutCell::new(
+                                                                                    None::<u8>,
+                                                                                );
                                                                                 {
                                                                                     let x_38:
                                                                                                      u8 =
                                                                                                  rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                    result_38.set(
-                                                                                        Some(x_38),
-                                                                                    )
+                                                                                    _v310.set(Some(
+                                                                                        x_38,
+                                                                                    ))
                                                                                 }
                                                                                 {
-                                                                                    let v277:
+                                                                                    let v316:
                                                                                                      u8 =
-                                                                                                 getValue(result_38.get().clone());
-                                                                                    let result_39:
+                                                                                                 getValue(_v310.get().clone());
+                                                                                    let _v317:
                                                                                                      MutCell<Option<u8>> =
                                                                                                  MutCell::new(None::<u8>);
                                                                                     {
                                                                                         let x_39:
                                                                                                          u8 =
                                                                                                      rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                        result_39.set(Some(x_39))
+                                                                                        _v317.set(Some(x_39))
                                                                                     }
                                                                                     {
-                                                                                        let v283:
+                                                                                        let v323:
                                                                                                          u8 =
-                                                                                                     getValue(result_39.get().clone());
-                                                                                        let result_40:
+                                                                                                     getValue(_v317.get().clone());
+                                                                                        let _v324:
                                                                                                          MutCell<Option<u8>> =
                                                                                                      MutCell::new(None::<u8>);
                                                                                         {
                                                                                             let x_40:
                                                                                                              u8 =
                                                                                                          rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                            result_40.set(Some(x_40))
+                                                                                            _v324.set(Some(x_40))
                                                                                         }
                                                                                         {
-                                                                                            let v289:
+                                                                                            let v330:
                                                                                                              u8 =
-                                                                                                         getValue(result_40.get().clone());
-                                                                                            let result_41:
+                                                                                                         getValue(_v324.get().clone());
+                                                                                            let _v331:
                                                                                                              MutCell<Option<u8>> =
                                                                                                          MutCell::new(None::<u8>);
                                                                                             {
                                                                                                 let x_41:
                                                                                                                  u8 =
                                                                                                              rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                result_41.set(Some(x_41))
+                                                                                                _v331.set(Some(x_41))
                                                                                             }
                                                                                             {
-                                                                                                let v295:
+                                                                                                let v337:
                                                                                                                  u8 =
-                                                                                                             getValue(result_41.get().clone());
-                                                                                                let result_42:
+                                                                                                             getValue(_v331.get().clone());
+                                                                                                let _v338:
                                                                                                                  MutCell<Option<u8>> =
                                                                                                              MutCell::new(None::<u8>);
                                                                                                 {
                                                                                                     let x_42:
                                                                                                                      u8 =
                                                                                                                  rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                    result_42.set(Some(x_42))
+                                                                                                    _v338.set(Some(x_42))
                                                                                                 }
                                                                                                 {
-                                                                                                    let v301:
+                                                                                                    let v344:
                                                                                                                      u8 =
-                                                                                                                 getValue(result_42.get().clone());
-                                                                                                    let result_43:
+                                                                                                                 getValue(_v338.get().clone());
+                                                                                                    let _v345:
                                                                                                                      MutCell<Option<u8>> =
                                                                                                                  MutCell::new(None::<u8>);
                                                                                                     {
                                                                                                         let x_43:
                                                                                                                          u8 =
                                                                                                                      rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                        result_43.set(Some(x_43))
+                                                                                                        _v345.set(Some(x_43))
                                                                                                     }
                                                                                                     {
-                                                                                                        let v307:
+                                                                                                        let v351:
                                                                                                                          u8 =
-                                                                                                                     getValue(result_43.get().clone());
-                                                                                                        let result_44:
+                                                                                                                     getValue(_v345.get().clone());
+                                                                                                        let _v352:
                                                                                                                          MutCell<Option<u8>> =
                                                                                                                      MutCell::new(None::<u8>);
                                                                                                         {
                                                                                                             let x_44:
                                                                                                                              u8 =
                                                                                                                          rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                            result_44.set(Some(x_44))
+                                                                                                            _v352.set(Some(x_44))
                                                                                                         }
                                                                                                         {
-                                                                                                            let v313:
+                                                                                                            let v358:
                                                                                                                              u8 =
-                                                                                                                         getValue(result_44.get().clone());
-                                                                                                            let result_45:
+                                                                                                                         getValue(_v352.get().clone());
+                                                                                                            let _v359:
                                                                                                                              MutCell<Option<u8>> =
                                                                                                                          MutCell::new(None::<u8>);
                                                                                                             {
                                                                                                                 let x_45:
                                                                                                                                  u8 =
                                                                                                                              rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                                result_45.set(Some(x_45))
+                                                                                                                _v359.set(Some(x_45))
                                                                                                             }
                                                                                                             {
-                                                                                                                let v319:
+                                                                                                                let v365:
                                                                                                                                  u8 =
-                                                                                                                             getValue(result_45.get().clone());
-                                                                                                                let result_46:
+                                                                                                                             getValue(_v359.get().clone());
+                                                                                                                let _v366:
                                                                                                                                  MutCell<Option<u8>> =
                                                                                                                              MutCell::new(None::<u8>);
                                                                                                                 {
                                                                                                                     let x_46:
                                                                                                                                      u8 =
                                                                                                                                  rand::Rng::gen_range(&mut rand::thread_rng(), 1..7);
-                                                                                                                    result_46.set(Some(x_46))
+                                                                                                                    _v366.set(Some(x_46))
                                                                                                                 }
                                                                                                                 {
                                                                                                                     let v0_1_temp:
                                                                                                                                      LrcPtr<Dice::UH1> =
-                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0(v193,
-                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_0(v199,
-                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_0(v205,
-                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_0(v211,
-                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v217,
-                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v223,
-                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_0(v229,
-                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_0(v235,
-                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_0(v241,
-                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_0(v247,
-                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_0(v253,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_0(v259,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_0(v265,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_0(v271,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_0(v277,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_0(v283,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0(v289,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_0(v295,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_0(v301,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_0(v307,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0(v313,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_0(v319,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_0(getValue(result_46.get().clone()),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1)))))))))))))))))))))))))))))))))))))))))))))));
+                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(v218,
+                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(v225,
+                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(v232,
+                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(v239,
+                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v246,
+                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v253,
+                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(v260,
+                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(v267,
+                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(v274,
+                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(v281,
+                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(v288,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(v295,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(v302,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(v309,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(v316,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(v323,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(v330,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(v337,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(v344,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(v351,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v358,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v365,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(getValue(_v366.get().clone()),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_0)))))))))))))))))))))))))))))))))))))))))))))));
                                                                                                                     let v1_1_temp:
                                                                                                                                      i8 =
                                                                                                                                  23_i8;
@@ -2916,7 +3124,7 @@ mod module_a51efde0 {
             {
                 let v5: string = sprintf!(
                     "result: {}",
-                    Dice::method14(LrcPtr::new(Dice::UH1::UH1_1), 0_i8)
+                    Dice::method14(LrcPtr::new(Dice::UH1::UH1_0), 0_i8)
                 );
                 printfn!("{0}", v5);
                 0_i32

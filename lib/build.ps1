@@ -23,7 +23,9 @@ $targetDir = "../../polyglot/target/polyglot/builder/dice"
 
 if (!$fast) {
     { dotnet fable $targetDir/dice.fsproj --optimize --lang ts --extension .ts --outDir $targetDir/ts } | Invoke-Block
+
     { dotnet fable $targetDir/dice.fsproj --optimize --lang py --extension .py --outDir $targetDir/py } | Invoke-Block
+
     { dotnet fable $targetDir/dice.fsproj --optimize --lang php --extension .php --outDir $targetDir/php } | Invoke-Block -OnError Continue
     { dotnet fable $targetDir/dice.fsproj --optimize --lang dart --extension .dart --outDir $targetDir/dart } | Invoke-Block -OnError Continue
 }
