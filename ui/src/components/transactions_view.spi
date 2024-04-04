@@ -13,9 +13,10 @@ inl render () =
     inl (settings_visible, set_settings_visible) = leptos.create_signal false
 
     inl settings_button =
-        inl on_click = rust.move fun () =>
+        inl on_click () =
             set_settings_visible
             |> leptos.signal_update not
+        !\\(on_click, $'"let !on_click = $0"')
 
         ui.icon_button.render
             (svg.settings.render (fun () => "h-5 w-5") [])

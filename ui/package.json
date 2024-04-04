@@ -5,8 +5,8 @@
     "build-css": "tailwindcss -i app.css -o target/tailwind.css -m"
   },
   "devDependencies": {
-    "@types/node": "~20.11",
-    "npm-check-updates": "~16.14",
+    "@types/node": "~20.12",
+    "npm-check-updates": "~17.0.0-5",
     "tailwindcss": "~3.4",
     "nightwind": "~1.1",
     "@tailwindcss/typography": "~0.5"

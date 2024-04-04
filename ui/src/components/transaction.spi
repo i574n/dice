@@ -100,9 +100,9 @@ inl tr_head_render (transactions : array_base hooks.use_transactions.account_tra
                 $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
             ] fun () =>
                 (a transactions : _ i32 _)
-                |> am.exists fun { txn } =>
+                |> am.exists' fun { txn } =>
                     (a txn.logs : _ i32 _)
-                    |> am.exists fun log =>
+                    |> am.exists' fun log =>
                         (log |> sm'.from_std_string |> sm.length) > 0i32
                 |> function
                     | false => ""

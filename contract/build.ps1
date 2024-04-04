@@ -7,7 +7,7 @@ $ErrorActionPreference = "Stop"
 . ../../polyglot/scripts/core.ps1
 
 
-{ cargo build --release --target wasm32-unknown-unknown --features wasm } | Invoke-Block
+{ cargo build --release --target wasm32-unknown-unknown --features contract } | Invoke-Block
 New-Item dist -ItemType Directory -Force | Out-Null
 Copy-Item ../target/wasm32-unknown-unknown/release/dice_contract.wasm dist/dice.wasm -Force
 

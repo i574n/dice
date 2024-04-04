@@ -6,6 +6,6 @@
   },
   "devDependencies": {
     "@playwright/test": "1.42.1",
-    "npm-check-updates": "~16.14"
+    "npm-check-updates": "~17.0.0-5"
   }
 }

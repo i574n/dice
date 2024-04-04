@@ -17,13 +17,12 @@ $ErrorActionPreference = "Stop"
 
 $targetDir = "../../polyglot/target/polyglot/builder/dice_ui"
 
-{ dotnet fable $targetDir/dice_ui.fsproj --optimize --lang rs --extension .rs --outDir $targetDir/rs --define WASM } | Invoke-Block
+{ dotnet fable $targetDir/dice_ui.fsproj --optimize --lang rs --extension .rs --outDir $targetDir/target/rs --define WASM } | Invoke-Block
 
-Copy-Item $targetDir/rs/lib/fsharp/Common.rs ../../polyglot/lib/fsharp/CommonWasm.rs -Force
-
-(Get-Content $targetDir/rs/dice_ui.rs) `
-    -replace "../../../../lib/fsharp", "../../../polyglot/lib/fsharp" `
-    -replace "../../../../lib/spiral", "../../../polyglot/lib/spiral" `
+(Get-Content $targetDir/target/rs/dice_ui.rs) `
+    -replace "../../../../lib", "../../../polyglot/lib" `
+    -replace ".fsx`"]", ".rs`"]" `
+    -replace ".rs`"]", "_wasm.rs`"]" `
     -replace "pub use crate::module_", "// pub use crate::module_" `
     -replace "pub struct Heap0 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub struct Heap0 {" `
     -replace "pub struct Heap1 {", "#[derive(serde::Serialize)] pub struct Heap1 {" `
@@ -33,10 +32,8 @@ Copy-Item $targetDir/rs/lib/fsharp/Common.rs ../../polyglot/lib/fsharp/CommonWas
     -replace "pub struct Heap5 {", "#[derive(PartialEq)] pub struct Heap5 {" `
     -replace "pub enum US1 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub enum US1 {" `
     -replace " US1_0,", "#[default] US1_0," `
-    -replace "/Common.rs", "/CommonWasm.rs" `
-    -replace ".fsx`"]", ".rs`"]" `
-    -replace "date_time.rs`"]", "date_time_wasm.rs`"]" `
 | Set-Content src/dice_ui_wasm.rs
+
 # -replace "pub struct Heap0 {", "#[derive(serde::Serialize)] pub struct Heap0 {" `
 # -replace "pub struct Heap1 {", "#[derive(serde::Serialize, serde::Deserialize)] pub struct Heap1 {" `
 # -replace "pub struct Heap2 {", "#[derive(serde::Serialize)] pub struct Heap2 {" `
@@ -50,10 +47,10 @@ if (!$fast) {
     Remove-Item $targetDir/trunk -Recurse -Force -ErrorAction Ignore
     Remove-Item ./dist -Recurse -Force -ErrorAction Ignore
 
-    { pnpm install --frozen-lockfile } | Invoke-Block
+    { ~/.bun/bin/bun install --frozen-lockfile } | Invoke-Block
 }
 
-{ pnpm build-css } | Invoke-Block
+{ ~/.bun/bin/bun build-css } | Invoke-Block
 
 Write-Output "trunk:"
 
@@ -80,8 +77,8 @@ Copy-Item dist/popup.html dist/index.html -Force
 Copy-Item public/manifest.json dist/manifest.json -Force
 
 if (!$fast) {
-    { pnpm install --frozen-lockfile } | Invoke-Block -Location e2e
-    { pnpm test:e2e } | Invoke-Block -Location e2e
+    { ~/.bun/bin/bun install --frozen-lockfile } | Invoke-Block -Location e2e
+    { ~/.bun/bin/bun test:e2e } | Invoke-Block -Location e2e
 }
 
 if ($env:CI) {

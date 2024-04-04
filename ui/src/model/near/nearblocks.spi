@@ -94,58 +94,51 @@ inl root_box ({ txns } : root) : root' =
     !\($'"crate::model::near::nearblocks::Root { txns: !txns }"')
 
 inl block_unbox (x : block') : block =
-    inl x = join x
-    inl block_height = !\($'"!x.block_height"')
+    inl block_height = !\\(x, $'"$0.block_height"')
     { block_height }
 
 inl action_unbox (x : action') : action =
-    inl x = join x
-    inl action = !\($'"!x.action"')
-    inl method = !\($'"!x.method"')
+    inl action = !\\(x, $'"$0.action"')
+    inl method = !\\(x, $'"$0.method"')
     { action; method }
 
 inl actions_agg_unbox (x : actions_agg') : actions_agg =
-    inl x = join x
-    inl deposit = !\($'"!x.deposit"')
+    inl deposit = !\\(x, $'"$0.deposit"')
     { deposit }
 
 inl outcomes_unbox (x : outcomes') : outcomes =
-    inl x = join x
-    inl status = !\($'"!x.status"')
+    inl status = !\\(x, $'"$0.status"')
     { status }
 
 inl outcomes_agg_unbox (x : outcomes_agg') : outcomes_agg =
-    inl x = join x
-    inl transaction_fee = !\($'"!x.transaction_fee"')
+    inl transaction_fee = !\\(x, $'"$0.transaction_fee"')
     { transaction_fee }
 
 inl txn_unbox (x : txn') : txn =
-    inl x = join x
-    inl receipt_id = !\($'"!x.receipt_id"')
-    inl predecessor_account_id = !\($'"!x.predecessor_account_id"')
-    inl receiver_account_id = !\($'"!x.receiver_account_id"')
-    inl transaction_hash = !\($'"!x.transaction_hash"')
-    inl included_in_block_hash = !\($'"!x.included_in_block_hash"')
-    inl block_timestamp = !\($'"!x.block_timestamp"')
-    inl block = !\($'"!x.block"') |> block_unbox
+    inl receipt_id = !\\(x, $'"$0.receipt_id"')
+    inl predecessor_account_id = !\\(x, $'"$0.predecessor_account_id"')
+    inl receiver_account_id = !\\(x, $'"$0.receiver_account_id"')
+    inl transaction_hash = !\\(x, $'"$0.transaction_hash"')
+    inl included_in_block_hash = !\\(x, $'"$0.included_in_block_hash"')
+    inl block_timestamp = !\\(x, $'"$0.block_timestamp"')
+    inl block = !\\(x, $'"$0.block"') |> block_unbox
     inl actions =
-        !\($'"!x.actions"')
+        !\\(x, $'"$0.actions"')
         |> am'.vec_map action_unbox
         |> am'.from_vec
         |> fun (a x : _ i32 _) => join x
-    inl actions_agg = !\($'"!x.actions_agg"') |> actions_agg_unbox
-    inl outcomes = !\($'"!x.outcomes"') |> outcomes_unbox
-    inl outcomes_agg = !\($'"!x.outcomes_agg"') |> outcomes_agg_unbox
+    inl actions_agg = !\\(x, $'"$0.actions_agg"') |> actions_agg_unbox
+    inl outcomes = !\\(x, $'"$0.outcomes"') |> outcomes_unbox
+    inl outcomes_agg = !\\(x, $'"$0.outcomes_agg"') |> outcomes_agg_unbox
     inl logs =
-        !\($'"!x.logs"')
+        !\\(x, $'"$0.logs"')
         |> am'.from_vec
         |> fun (a x : _ i32 _) => join x
     { receipt_id; predecessor_account_id; receiver_account_id; transaction_hash; included_in_block_hash; block_timestamp; block; actions; actions_agg; outcomes; outcomes_agg; logs }
 
 inl root_unbox (x : root') : root =
-    inl x = join x
     inl txns =
-        !\($'"!x.txns"')
+        !\\(x, $'"$0.txns"')
         |> am'.vec_map txn_unbox
         |> am'.from_vec
         |> fun (a x : _ i32 _) => join x

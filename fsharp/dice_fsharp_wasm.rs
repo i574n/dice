@@ -380,22 +380,22 @@ mod module_dc8717e1 {
     }
 }
 pub use module_dc8717e1::*;
-#[path = "../../polyglot/lib/fsharp/CommonWasm.rs"]
+#[path = "../../polyglot/lib/fsharp/Common_wasm.rs"]
 mod module_8cb3e09e;
 pub use module_8cb3e09e::*;
-#[path = "../../polyglot/lib/spiral/common.rs"]
+#[path = "../../polyglot/lib/spiral/common_wasm.rs"]
 mod module_e7e93d99;
 pub use module_e7e93d99::*;
-#[path = "../../polyglot/lib/spiral/date_time.rs"]
+#[path = "../../polyglot/lib/spiral/date_time_wasm.rs"]
 mod module_d18105aa;
 pub use module_d18105aa::*;
-#[path = "../../polyglot/lib/spiral/file_system.rs"]
+#[path = "../../polyglot/lib/spiral/file_system_wasm.rs"]
 mod module_c5eb79e8;
 pub use module_c5eb79e8::*;
-#[path = "../../polyglot/lib/spiral/lib.rs"]
+#[path = "../../polyglot/lib/spiral/lib_wasm.rs"]
 mod module_8d8b0653;
 pub use module_8d8b0653::*;
-#[path = "../../polyglot/lib/spiral/sm.rs"]
+#[path = "../../polyglot/lib/spiral/sm_wasm.rs"]
 mod module_2aeb754a;
 pub use module_2aeb754a::*;
 pub mod Dice {

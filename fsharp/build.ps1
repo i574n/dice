@@ -5,6 +5,7 @@ param(
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
 . ../../polyglot/scripts/core.ps1
+. ../../polyglot/lib/spiral/lib.ps1
 
 
 if (!$fast) {
@@ -17,49 +18,56 @@ if (!$fast) {
 
 $targetDir = "../../polyglot/target/polyglot/builder/dice_fsharp"
 
-{ dotnet fable $targetDir/dice_fsharp.fsproj --optimize --lang rs --extension .rs --outDir $targetDir/rs } | Invoke-Block
-if (!$fast) {
-    { dotnet fable $targetDir/dice_fsharp.fsproj --optimize --lang ts --extension .ts --outDir $targetDir/ts } | Invoke-Block
-    { dotnet fable $targetDir/dice_fsharp.fsproj --optimize --lang py --extension .py --outDir $targetDir/py } | Invoke-Block
-    { dotnet fable $targetDir/dice_fsharp.fsproj --optimize --lang php --extension .php --outDir $targetDir/php } | Invoke-Block -OnError Continue
-    { dotnet fable $targetDir/dice_fsharp.fsproj --optimize --lang dart --extension .dart --outDir $targetDir/dart } | Invoke-Block -OnError Continue
+function Build {
+    param (
+        [Parameter(Mandatory)]
+        [string] $Language,
+        [string] $Runtime
+    )
+    dotnet fable $targetDir/dice_fsharp.fsproj --optimize --lang $Language --extension ".$Language" --outDir $targetDir/target/$Language $($Runtime ? @("--define", $Runtime) : @())
 }
 
-Copy-Item $targetDir/rs/lib/fsharp/Common.rs ../../polyglot/lib/fsharp/Common.rs -Force
-Copy-Item $targetDir/rs/lib/spiral/common.rs ../../polyglot/lib/spiral/common.rs -Force
-Copy-Item $targetDir/rs/lib/spiral/sm.rs ../../polyglot/lib/spiral/sm.rs -Force
-Copy-Item $targetDir/rs/lib/spiral/date_time.rs ../../polyglot/lib/spiral/date_time.rs -Force
-Copy-Item $targetDir/rs/lib/spiral/file_system.rs ../../polyglot/lib/spiral/file_system.rs -Force
-Copy-Item $targetDir/rs/lib/spiral/lib.rs ../../polyglot/lib/spiral/lib.rs -Force
+{ Build "rs" } | Invoke-Block
 if (!$fast) {
-    Copy-Item $targetDir/ts/lib/fsharp/Common.ts ../../polyglot/lib/fsharp/Common.ts -Force
-    Copy-Item $targetDir/py/lib/fsharp/common.py ../../polyglot/lib/fsharp/common.py -Force
-    Copy-Item $targetDir/php/lib/fsharp/Common.php ../../polyglot/lib/fsharp/Common.php -Force
-    Copy-Item $targetDir/dart/lib/fsharp/Common.dart ../../polyglot/lib/fsharp/Common.dart -Force
+    
+    { Build "ts" } | Invoke-Block
+    { Build "py" } | Invoke-Block
+    { Build "php" } | Invoke-Block -OnError Continue
+    { Build "dart" } | Invoke-Block -OnError Continue
 }
 
-(Get-Content $targetDir/rs/dice_fsharp.rs) `
-    -replace "../../../../lib/fsharp", "../../polyglot/lib/fsharp" `
-    -replace "../../../../lib/spiral", "../../polyglot/lib/spiral" `
+(Get-Content $targetDir/target/rs/dice_fsharp.rs) `
+    -replace "../../../../lib", "../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     | Set-Content dice_fsharp.rs
 if (!$fast) {
-    Copy-Item $targetDir/ts/dice_fsharp.ts dice_fsharp.ts -Force
-    Copy-Item $targetDir/py/dice_fsharp.py dice_fsharp.py -Force
-    Copy-Item $targetDir/php/dice_fsharp.php dice_fsharp.php -Force
-    Copy-Item $targetDir/dart/dice_fsharp.dart dice_fsharp.dart -Force
+    Copy-Item $targetDir/target/ts/dice_fsharp.ts dice_fsharp.ts -Force
+    Copy-Item $targetDir/target/py/dice_fsharp.py dice_fsharp.py -Force
+    Copy-Item $targetDir/target/php/dice_fsharp.php dice_fsharp.php -Force
+    Copy-Item $targetDir/target/dart/dice_fsharp.dart dice_fsharp.dart -Force
 }
 
-{ dotnet fable $targetDir/dice_fsharp.fsproj --optimize --lang rs --extension .rs --outDir $targetDir/rs --define WASM } | Invoke-Block
+{ Build "rs" "WASM" } | Invoke-Block
+if (!$fast) {
+    
+    { Build "ts" "WASM" } | Invoke-Block
+    { Build "py" "WASM" } | Invoke-Block
+    { Build "php" "WASM" } | Invoke-Block -OnError Continue
+    { Build "dart" "WASM" } | Invoke-Block -OnError Continue
+}
+CopyTarget $targetDir ../../polyglot "rs" "wasm"
+if (!$fast) {
+    CopyTarget $targetDir ../../polyglot "ts" "wasm"
+    CopyTarget $targetDir ../../polyglot "py" "wasm"
+    CopyTarget $targetDir ../../polyglot "php" "wasm"
+    CopyTarget $targetDir ../../polyglot "dart" "wasm"
+}
 
-Copy-Item $targetDir/rs/lib/fsharp/Common.rs ../../polyglot/lib/fsharp/CommonWasm.rs -Force
-
-(Get-Content $targetDir/rs/dice_fsharp.rs) `
-    -replace "../../../../lib/fsharp", "../../polyglot/lib/fsharp" `
-    -replace "../../../../lib/spiral", "../../polyglot/lib/spiral" `
-    -replace "/Common.rs", "/CommonWasm.rs" `
+(Get-Content $targetDir/target/rs/dice_fsharp.rs) `
+    -replace "../../../../lib", "../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
-    | Set-Content dice_wasm_fsharp.rs
+    -replace ".rs`"]", "_wasm.rs`"]" `
+    | Set-Content dice_fsharp_wasm.rs
 
 cargo fmt --
 

@@ -162,7 +162,7 @@ calculateDiceCount (Some (printfn "%s")) 7777
 
 #if FABLE_COMPILER_RUST
 let rollDice () : int =
-#if !WASM
+#if !WASM && !CONTRACT
     Fable.Core.RustInterop.emitRustExpr () "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
 #else
     1
@@ -258,7 +258,7 @@ let sequentialRoll = createSequentialRoller [ 5; 4; 4; 5; 2 ]
 
 fun () -> rollProgressively (Some (printfn "%s")) sequentialRoll false 2000 |> ignore
 |> _throwsC (fun ex _ ->
-    Sm.format_exception ex
+    SpiralSm.format_exception ex
     |> _assertEqual "System.Exception: createSequentialRoller / End of list"
 )
 

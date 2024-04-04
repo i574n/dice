@@ -53,7 +53,7 @@ inl render () =
 
     inl delete_button index =
         inl on_click () =
-            rust.move fun () =>
+            fun () =>
                 leptos.signal_get_untracked global_state.core_state .data
                 |> leptos.signal_update fun data =>
                     inl data = !data
@@ -67,7 +67,7 @@ inl render () =
                 
                 set_edit_count |> leptos.signal_update ((+) 1)
             |> leptos.batch
-        inl on_click = join on_click
+        !\\(on_click, $'"let !on_click = $0"')
 
         ui.icon_button.render
             (svg.cross.render (fun () => "h-5 w-5") [])
@@ -79,7 +79,7 @@ inl render () =
 
     inl add_button () =
         inl on_click () =
-            rust.move fun () =>
+            fun () =>
                 leptos.signal_get_untracked global_state.core_state .data
                 |> leptos.signal_update fun data =>
                     inl data = !data
@@ -98,7 +98,7 @@ inl render () =
 
                 set_edit_count |> leptos.signal_update ((+) 1)
             |> leptos.batch
-        inl on_click = join on_click
+        !\\(on_click, $'"let !on_click = $0"')
 
         ui.icon_button.render
             (svg.plus.render (fun () => "h-5 w-5") [])
