@@ -5,6 +5,7 @@ param(
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
 . ../../polyglot/scripts/core.ps1
+. ../../polyglot/lib/spiral/lib.ps1
 
 
 if (!$fast) {
@@ -19,53 +20,60 @@ if (!$fast) {
 
 $targetDir = "../../polyglot/target/polyglot/builder/dice"
 
-{ dotnet fable $targetDir/dice.fsproj --optimize --lang rs --extension .rs --outDir $targetDir/rs } | Invoke-Block
-
-if (!$fast) {
-    { dotnet fable $targetDir/dice.fsproj --optimize --lang ts --extension .ts --outDir $targetDir/ts } | Invoke-Block
-
-    { dotnet fable $targetDir/dice.fsproj --optimize --lang py --extension .py --outDir $targetDir/py } | Invoke-Block
-
-    { dotnet fable $targetDir/dice.fsproj --optimize --lang php --extension .php --outDir $targetDir/php } | Invoke-Block -OnError Continue
-    { dotnet fable $targetDir/dice.fsproj --optimize --lang dart --extension .dart --outDir $targetDir/dart } | Invoke-Block -OnError Continue
+function Build {
+    param (
+        [Parameter(Mandatory)]
+        [string] $Language,
+        [string] $Runtime
+    )
+    dotnet fable $targetDir/dice.fsproj --optimize --lang $Language --extension ".$Language" --outDir $targetDir/target/$Language $($Runtime ? @("--define", $Runtime) : @())
 }
 
-Copy-Item $targetDir/rs/lib/fsharp/Common.rs ../../polyglot/lib/fsharp/Common.rs -Force
-Copy-Item $targetDir/rs/lib/spiral/common.rs ../../polyglot/lib/spiral/common.rs -Force
-Copy-Item $targetDir/rs/lib/spiral/sm.rs ../../polyglot/lib/spiral/sm.rs -Force
-Copy-Item $targetDir/rs/lib/spiral/date_time.rs ../../polyglot/lib/spiral/date_time.rs -Force
-Copy-Item $targetDir/rs/lib/spiral/file_system.rs ../../polyglot/lib/spiral/file_system.rs -Force
-Copy-Item $targetDir/rs/lib/spiral/lib.rs ../../polyglot/lib/spiral/lib.rs -Force
+{ Build "rs" } | Invoke-Block
 if (!$fast) {
-    Copy-Item $targetDir/ts/lib/fsharp/Common.ts ../../polyglot/lib/fsharp/Common.ts -Force
-    Copy-Item $targetDir/py/lib/fsharp/common.py ../../polyglot/lib/fsharp/common.py -Force
-    Copy-Item $targetDir/php/lib/fsharp/Common.php ../../polyglot/lib/fsharp/Common.php -Force
-    Copy-Item $targetDir/dart/lib/fsharp/Common.dart ../../polyglot/lib/fsharp/Common.dart -Force
+    { Build "ts" } | Invoke-Block
+    { Build "py" } | Invoke-Block
+    { Build "php" } | Invoke-Block -OnError Continue
+    { Build "dart" } | Invoke-Block -OnError Continue
 }
-
-(Get-Content $targetDir/rs/dice.rs) `
-    -replace "../../../lib/fsharp", "../polyglot/lib/fsharp" `
-    -replace "../../../lib/spiral", "../polyglot/lib/spiral" `
+CopyTarget $targetDir ../../polyglot "rs"
+if (!$fast) {
+    CopyTarget $targetDir ../../polyglot "ts"
+    CopyTarget $targetDir ../../polyglot "py"
+    CopyTarget $targetDir ../../polyglot "php"
+    CopyTarget $targetDir ../../polyglot "dart"
+}
+(Get-Content $targetDir/target/rs/dice.rs) `
+    -replace "../../../../lib", "../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     | Set-Content dice.rs
 if (!$fast) {
-    Copy-Item $targetDir/ts/dice.ts dice.ts -Force
-    Copy-Item $targetDir/py/dice.py dice.py -Force
-    Copy-Item $targetDir/php/dice.php dice.php -Force
-    Copy-Item $targetDir/dart/dice.dart dice.dart -Force
+    Copy-Item $targetDir/target/ts/dice.ts dice.ts -Force
+    Copy-Item $targetDir/target/py/dice.py dice.py -Force
+    Copy-Item $targetDir/target/php/dice.php dice.php -Force
+    Copy-Item $targetDir/target/dart/dice.dart dice.dart -Force
 }
 
-{ dotnet fable $targetDir/dice.fsproj --optimize --lang rs --extension .rs --outDir $targetDir/rs --define WASM } | Invoke-Block
-
-Copy-Item $targetDir/rs/lib/fsharp/Common.rs ../../polyglot/lib/fsharp/CommonWasm.rs -Force
-
-(Get-Content $targetDir/rs/dice.rs) `
-    -replace "../../../lib/fsharp", "../polyglot/lib/fsharp" `
-    -replace "../../../lib/spiral", "../polyglot/lib/spiral" `
-    -replace "/Common.rs", "/CommonWasm.rs" `
+{ Build "rs" "CONTRACT" } | Invoke-Block
+if (!$fast) {
+    
+    { Build "ts" "CONTRACT" } | Invoke-Block
+    { Build "py" "CONTRACT" } | Invoke-Block
+    { Build "php" "CONTRACT" } | Invoke-Block -OnError Continue
+    { Build "dart" "CONTRACT" } | Invoke-Block -OnError Continue
+}
+CopyTarget $targetDir ../../polyglot "rs" "contract"
+if (!$fast) {
+    CopyTarget $targetDir ../../polyglot "ts" "contract"
+    CopyTarget $targetDir ../../polyglot "py" "contract"
+    CopyTarget $targetDir ../../polyglot "php" "contract"
+    CopyTarget $targetDir ../../polyglot "dart" "contract"
+}
+(Get-Content $targetDir/target/rs/dice.rs) `
+    -replace "../../../../lib", "../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
-    -replace "date_time.rs`"]", "date_time_wasm.rs`"]" `
-    | Set-Content dice_wasm.rs
+    -replace ".rs`"]", "_contract.rs`"]" `
+    | Set-Content dice_contract.rs
 
 cargo fmt --
 

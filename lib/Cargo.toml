@@ -11,7 +11,7 @@ rand = { version = "~0.8", optional = true }
 [dev-dependencies]
 
 [features]
-wasm = ["fable_library_rust"]
+contract = ["fable_library_rust"]
 default = ["fable_library_rust/default", "fable_library_rust/datetime", "dep:rand"]
 
 [[bin]]
@@ -19,4 +19,4 @@ name = "dice"
 path = "dice.rs"
 
 [lib]
-path = "dice_wasm.rs"
+path = "dice_contract.rs"

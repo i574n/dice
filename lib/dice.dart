@@ -397,8 +397,10 @@ UH0 Function(UH0) closure0(void unitVar, int v0_1) => (UH0 v) => closure1(v0_1, 
 
 US0 closure4(void unitVar, void Function(String) v0_1) => US0_US0_0(v0_1);
 
-UH1 method1(UH1 v0_1_mut, UH1 v1_1_mut) {
-    method1:
+US0 Function(void Function(String)) method1() => (void Function(String) v) => closure4(util.ignore(), v);
+
+UH1 method2(UH1 v0_1_mut, UH1 v1_1_mut) {
+    method2:
     while (true) {
         final UH1 v0_1 = v0_1_mut;
         final UH1 v1_1 = v1_1_mut;
@@ -408,28 +410,28 @@ UH1 method1(UH1 v0_1_mut, UH1 v1_1_mut) {
             final v0_1_1 = v0_1 as UH1_UH1_1;
             v0_1_mut = v0_1_1.Item2;
             v1_1_mut = UH1_UH1_1(v0_1_1.Item1, v1_1);
-            continue method1;
+            continue method2;
         }
     }
 }
 
-UH1 method2(UH1 v0_1, UH1 v1_1) {
+UH1 method3(UH1 v0_1, UH1 v1_1) {
     if (v0_1.tag == /* UH1_0 */ 0) {
         return v1_1;
     } else {
         final v0_1_1 = v0_1 as UH1_UH1_1;
-        return UH1_UH1_1(v0_1_1.Item1, method2(v0_1_1.Item2, v1_1));
+        return UH1_UH1_1(v0_1_1.Item1, method3(v0_1_1.Item2, v1_1));
     }
 }
 
 UH0 closure6(UH0 v0_1, void unitVar) => v0_1;
 
-UH0 method3(UH1 v0_1, UH0 v1_1) {
+UH0 method4(UH1 v0_1, UH0 v1_1) {
     if (v0_1.tag == /* UH1_0 */ 0) {
         return v1_1;
     } else {
         final v0_1_1 = v0_1 as UH1_UH1_1;
-        final UH0 v4_1 = method3(v0_1_1.Item2, v1_1);
+        final UH0 v4_1 = method4(v0_1_1.Item2, v1_1);
         return UH0_UH0_0(v0_1_1.Item1, () => closure6(v4_1, util.ignore()));
     }
 }
@@ -446,7 +448,7 @@ UH0 closure8(UH0 v0_1, Mut0 v1_1, void unitVar) {
             v12 = const UH0(/* UH0_1 */ 1);
         } else {
             final v5_1 = v5 as UH0_UH0_0;
-            v12 = UH0_UH0_0(v5_1.Item1, method4(v0_1, v5_1.Item2));
+            v12 = UH0_UH0_0(v5_1.Item1, method5(v0_1, v5_1.Item2));
         }
         v1_1.l0 = US1_US1_1(v12);
         return v12;
@@ -456,13 +458,13 @@ UH0 closure8(UH0 v0_1, Mut0 v1_1, void unitVar) {
     }
 }
 
-UH0 Function() method4(UH0 v0_1, UH0 Function() v1_1) {
+UH0 Function() method5(UH0 v0_1, UH0 Function() v1_1) {
     final v3_1 = Mut0(US1_US1_0(v1_1));
     return () => closure8(v0_1, v3_1, util.ignore());
 }
 
-US2 method6(int v0_1_mut, UH0 v1_1_mut) {
-    method6:
+US2 method7(int v0_1_mut, UH0 v1_1_mut) {
+    method7:
     while (true) {
         final v0_1 = v0_1_mut;
         final UH0 v1_1 = v1_1_mut;
@@ -475,13 +477,13 @@ US2 method6(int v0_1_mut, UH0 v1_1_mut) {
             v0_1_mut = v0_1 - 1;
             final v1_1_2 = v1_1 as UH0_UH0_0;
             v1_1_mut = v1_1_2.Item2();
-            continue method6;
+            continue method7;
         }
     }
 }
 
-int method5(US0 v0_1_mut, UH0 Function() v1_1_mut, Mut1 v2_1_mut, Mut1 v3_1_mut, Mut1 v4_1_mut, Mut2 v5_mut) {
-    method5:
+int method6(US0 v0_1_mut, UH0 Function() v1_1_mut, Mut1 v2_1_mut, Mut1 v3_1_mut, Mut1 v4_1_mut, Mut2 v5_mut) {
+    method6:
     while (true) {
         final US0 v0_1 = v0_1_mut;
         final v1_1 = v1_1_mut;
@@ -495,7 +497,7 @@ int method5(US0 v0_1_mut, UH0 Function() v1_1_mut, Mut1 v2_1_mut, Mut1 v3_1_mut,
             v0_1_1.f0_0(v10);
         }
         final UH0 v12 = v1_1();
-        final US2 v14 = method6(v2_1.l0, v12);
+        final US2 v14 = method7(v2_1.l0, v12);
         if (v14.tag == /* US2_0 */ 0) {
             final v14_1 = v14 as US2_US2_0;
             final v15 = v14_1.f0_0;
@@ -523,20 +525,20 @@ int method5(US0 v0_1_mut, UH0 Function() v1_1_mut, Mut1 v2_1_mut, Mut1 v3_1_mut,
             v3_1_mut = v3_1;
             v4_1_mut = v4_1;
             v5_mut = v5;
-            continue method5;
+            continue method6;
         }
     }
 }
 
-int closure9(US0 v0_1, UH0 Function() v1_1, Mut1 v2_1, Mut1 v3_1, Mut1 v4_1, Mut2 v5, void unitVar) => method5(v0_1, v1_1, v2_1, v3_1, v4_1, v5);
+int closure9(US0 v0_1, UH0 Function() v1_1, Mut1 v2_1, Mut1 v3_1, Mut1 v4_1, Mut2 v5, void unitVar) => method6(v0_1, v1_1, v2_1, v3_1, v4_1, v5);
 
 int Function() closure5(US0 v0_1, UH1 v1_1) {
     if (v0_1.tag == /* US0_0 */ 0) {
         final v0_1_1 = v0_1 as US0_US0_0;
         v0_1_1.f0_0('create_sequential_roller ()');
     }
-    final UH0 v8 = method3(method2(v1_1, method1(v1_1, const UH1(/* UH1_0 */ 0))), const UH0(/* UH0_1 */ 1));
-    final v10 = method4(v8, () => closure7(v8, util.ignore()));
+    final UH0 v8 = method4(method3(v1_1, method2(v1_1, const UH1(/* UH1_0 */ 0))), const UH0(/* UH0_1 */ 1));
+    final v10 = method5(v8, () => closure7(v8, util.ignore()));
     final v11 = Mut1(0);
     final v12 = Mut1(1);
     final v13 = Mut1(-1);
@@ -545,12 +547,12 @@ int Function() closure5(US0 v0_1, UH1 v1_1) {
 }
 
 int Function() Function(UH1) closure3(void unitVar, types.Some<void Function(String)>? v0_1) {
-    final US0 v3_1 = option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>((void Function(String) v) => closure4(util.ignore(), v), v0_1));
-    return (UH1 v_1) => closure5(v3_1, v_1);
+    final US0 v3_1 = option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>(method1(), v0_1));
+    return (UH1 v) => closure5(v3_1, v);
 }
 
-int method7(US0 v0_1_mut, int v1_1_mut, int v2_1_mut, int v3_1_mut) {
-    method7:
+int method8(US0 v0_1_mut, int v1_1_mut, int v2_1_mut, int v3_1_mut) {
+    method8:
     while (true) {
         final US0 v0_1 = v0_1_mut;
         final v1_1 = v1_1_mut;
@@ -563,7 +565,7 @@ int method7(US0 v0_1_mut, int v1_1_mut, int v2_1_mut, int v3_1_mut) {
                 v1_1_mut = v1_1;
                 v2_1_mut = v2_1 + 1;
                 v3_1_mut = v5;
-                continue method7;
+                continue method8;
             } else {
                 final v9 = 'calculate_dice_count / max: $v1_1 / n: $v2_1 / p: $v3_1';
                 if (v0_1.tag == /* US0_0 */ 0) {
@@ -711,8 +713,8 @@ UH2 closure15(void unitVar, void unitVar_1) => UH2_UH2_0(36, () => closure16(uti
 
 UH2 closure14(void unitVar, void unitVar_1) => UH2_UH2_0(6, () => closure15(util.ignore(), util.ignore()));
 
-US4 method10(int v0_1_mut, UH2 v1_1_mut) {
-    method10:
+US4 method11(int v0_1_mut, UH2 v1_1_mut) {
+    method11:
     while (true) {
         final v0_1 = v0_1_mut;
         final UH2 v1_1 = v1_1_mut;
@@ -725,13 +727,13 @@ US4 method10(int v0_1_mut, UH2 v1_1_mut) {
             v0_1_mut = v0_1 - 1;
             final v1_1_2 = v1_1 as UH2_UH2_0;
             v1_1_mut = v1_1_2.Item2();
-            continue method10;
+            continue method11;
         }
     }
 }
 
-US3 method9(US0 v0_1_mut, int v1_1_mut, UH1 v2_1_mut, int v3_1_mut) {
-    method9:
+US3 method10(US0 v0_1_mut, int v1_1_mut, UH1 v2_1_mut, int v3_1_mut) {
+    method10:
     while (true) {
         final US0 v0_1 = v0_1_mut;
         final v1_1 = v1_1_mut;
@@ -752,7 +754,7 @@ US3 method9(US0 v0_1_mut, int v1_1_mut, UH1 v2_1_mut, int v3_1_mut) {
             final UH1 v11 = v2_1_1.Item2;
             final v10 = v2_1_1.Item1;
             if (v10 > 1) {
-                final US4 v16 = method10(v1_1, UH2_UH2_0(1, () => closure14(util.ignore(), util.ignore())));
+                final US4 v16 = method11(v1_1, UH2_UH2_0(1, () => closure14(util.ignore(), util.ignore())));
                 final tmp_combine = v10 - 1;
                 late final int tmp_capture;
                 if (v16.tag == /* US4_0 */ 0) {
@@ -771,7 +773,7 @@ US3 method9(US0 v0_1_mut, int v1_1_mut, UH1 v2_1_mut, int v3_1_mut) {
                 v1_1_mut = v1_1 - 1;
                 v2_1_mut = v11;
                 v3_1_mut = v3_1 + v23;
-                continue method9;
+                continue method10;
             } else {
                 final v29 = 'accumulate_dice_rolls / power: $v1_1 / acc: $v3_1 / roll: $v10';
                 if (v0_1.tag == /* US0_0 */ 0) {
@@ -782,22 +784,22 @@ US3 method9(US0 v0_1_mut, int v1_1_mut, UH1 v2_1_mut, int v3_1_mut) {
                 v1_1_mut = v1_1 - 1;
                 v2_1_mut = v11;
                 v3_1_mut = v3_1;
-                continue method9;
+                continue method10;
             }
         }
     }
 }
 
-UH1 method11(int v0_1, int Function() v1_1, int v2_1) {
+UH1 method12(int v0_1, int Function() v1_1, int v2_1) {
     if (v2_1 < v0_1) {
-        return UH1_UH1_1(v1_1(), method11(v0_1, v1_1, v2_1 + 1));
+        return UH1_UH1_1(v1_1(), method12(v0_1, v1_1, v2_1 + 1));
     } else {
         return const UH1(/* UH1_0 */ 0);
     }
 }
 
-int method12(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut, int v4_1_mut, UH1 v5_mut) {
-    method12:
+int method13(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut, int v4_1_mut, UH1 v5_mut) {
+    method13:
     while (true) {
         final US0 v0_1 = v0_1_mut;
         final v1_1 = v1_1_mut;
@@ -807,9 +809,9 @@ int method12(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut,
         final UH1 v5 = v5_mut;
         final v6 = v4_1 + 1;
         if (v4_1 < v6) {
-            return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
+            return method9(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
         } else {
-            final US3 v12 = method9(v0_1, v4_1, v5, 0);
+            final US3 v12 = method10(v0_1, v4_1, v5, 0);
             if (v12.tag == /* US3_0 */ 0) {
                 final v12_1 = v12 as US3_US3_0;
                 final v13 = v12_1.f0_0;
@@ -821,10 +823,10 @@ int method12(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut,
                     v2_1_mut = v2_1;
                     v3_1_mut = v3_1;
                     v4_1_mut = v4_1;
-                    v5_mut = method11(v4_1, v1_1, 0);
-                    continue method12;
+                    v5_mut = method12(v4_1, v1_1, 0);
+                    continue method13;
                 } else {
-                    return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
+                    return method9(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
                 }
             } else if (v2_1) {
                 v0_1_mut = v0_1;
@@ -832,17 +834,17 @@ int method12(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut,
                 v2_1_mut = v2_1;
                 v3_1_mut = v3_1;
                 v4_1_mut = v4_1;
-                v5_mut = method11(v4_1, v1_1, 0);
-                continue method12;
+                v5_mut = method12(v4_1, v1_1, 0);
+                continue method13;
             } else {
-                return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
+                return method9(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
             }
         }
     }
 }
 
-int method8(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut, int v4_1_mut, UH1 v5_mut, int v6_mut) {
-    method8:
+int method9(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut, int v4_1_mut, UH1 v5_mut, int v6_mut) {
+    method9:
     while (true) {
         final US0 v0_1 = v0_1_mut;
         final v1_1 = v1_1_mut;
@@ -859,16 +861,16 @@ int method8(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut, 
             v4_1_mut = v4_1;
             v5_mut = UH1_UH1_1(v1_1(), v5);
             v6_mut = v6 + 1;
-            continue method8;
+            continue method9;
         } else {
-            final US3 v14 = method9(v0_1, v4_1, v5, 0);
+            final US3 v14 = method10(v0_1, v4_1, v5, 0);
             if (v14.tag == /* US3_0 */ 0) {
                 final v14_1 = v14 as US3_US3_0;
                 final v15 = v14_1.f0_0;
                 if (v15 <= v3_1) {
                     return v15;
                 } else if (v2_1) {
-                    return method12(v0_1, v1_1, v2_1, v3_1, v4_1, method11(v4_1, v1_1, 0));
+                    return method13(v0_1, v1_1, v2_1, v3_1, v4_1, method12(v4_1, v1_1, 0));
                 } else {
                     v0_1_mut = v0_1;
                     v1_1_mut = v1_1;
@@ -877,10 +879,10 @@ int method8(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut, 
                     v4_1_mut = v4_1;
                     v5_mut = UH1_UH1_1(v1_1(), v5);
                     v6_mut = v6 + 1;
-                    continue method8;
+                    continue method9;
                 }
             } else if (v2_1) {
-                return method12(v0_1, v1_1, v2_1, v3_1, v4_1, method11(v4_1, v1_1, 0));
+                return method13(v0_1, v1_1, v2_1, v3_1, v4_1, method12(v4_1, v1_1, 0));
             } else {
                 v0_1_mut = v0_1;
                 v1_1_mut = v1_1;
@@ -889,25 +891,25 @@ int method8(US0 v0_1_mut, int Function() v1_1_mut, bool v2_1_mut, int v3_1_mut, 
                 v4_1_mut = v4_1;
                 v5_mut = UH1_UH1_1(v1_1(), v5);
                 v6_mut = v6 + 1;
-                continue method8;
+                continue method9;
             }
         }
     }
 }
 
-int closure13(US0 v0_1, int Function() v1_1, bool v2_1, int v3_1) => method8(v0_1, v1_1, v2_1, v3_1, ((v3_1 == 1) ? 1 : method7(v0_1, v3_1, 0, 1)) - 1, const UH1(/* UH1_0 */ 0), 0);
+int closure13(US0 v0_1, int Function() v1_1, bool v2_1, int v3_1) => method9(v0_1, v1_1, v2_1, v3_1, ((v3_1 == 1) ? 1 : method8(v0_1, v3_1, 0, 1)) - 1, const UH1(/* UH1_0 */ 0), 0);
 
 int Function(int) closure12(US0 v0_1, int Function() v1_1, bool v2_1) => (int v) => closure13(v0_1, v1_1, v2_1, v);
 
 int Function(int) Function(bool) closure11(US0 v0_1, int Function() v1_1) => (bool v) => closure12(v0_1, v1_1, v);
 
 int Function(int) Function(bool) Function(int Function()) closure10(void unitVar, types.Some<void Function(String)>? v0_1) {
-    final US0 v3_1 = option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>((void Function(String) v) => closure4(util.ignore(), v), v0_1));
-    return (int Function() v_1) => closure11(v3_1, v_1);
+    final US0 v3_1 = option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>(method1(), v0_1));
+    return (int Function() v) => closure11(v3_1, v);
 }
 
-int method13(UH1 v0_1_mut, int v1_1_mut) {
-    method13:
+int method14(UH1 v0_1_mut, int v1_1_mut) {
+    method14:
     while (true) {
         final UH1 v0_1 = v0_1_mut;
         final v1_1 = v1_1_mut;
@@ -917,13 +919,13 @@ int method13(UH1 v0_1_mut, int v1_1_mut) {
             final v0_1_1 = v0_1 as UH1_UH1_1;
             v0_1_mut = v0_1_1.Item2;
             v1_1_mut = v1_1 + 1;
-            continue method13;
+            continue method14;
         }
     }
 }
 
 types.Some<int>? closure80(types.Some<void Function(String)>? v0_1, int v1_1, UH1 v2_1) {
-    final US3 v10 = method9(option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>((void Function(String) v) => closure4(util.ignore(), v), v0_1)), method13(v2_1, 0) - 1, v2_1, 0);
+    final US3 v10 = method10(option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>(method1(), v0_1)), method14(v2_1, 0) - 1, v2_1, 0);
     late final US4 v20;
     if (v10.tag == /* US3_0 */ 0) {
         final v10_1 = v10 as US3_US3_0;
@@ -944,14 +946,14 @@ types.Some<int>? Function(UH1) closure79(types.Some<void Function(String)>? v0_1
 
 types.Some<int>? Function(UH1) Function(int) closure78(void unitVar, types.Some<void Function(String)>? v0_1) => (int v) => closure79(v0_1, v);
 
-US5 method39(UH1 v0_1, int v1_1) {
+US5 method40(UH1 v0_1, int v1_1) {
     final v2_1 = v1_1 + 1;
     final v3_1 = 'accumulate_dice_rolls / power: ${-1} / acc: $v1_1 / result: $v2_1';
     console.log(v3_1);
     return US5_US5_0(v2_1, v0_1);
 }
 
-US5 method38(UH1 v0_1, int v1_1) {
+US5 method39(UH1 v0_1, int v1_1) {
     if (v0_1.tag == /* UH1_0 */ 0) {
         return const US5(/* US5_1 */ 1);
     } else {
@@ -962,10 +964,30 @@ US5 method38(UH1 v0_1, int v1_1) {
             final v7 = v3_1 - 1;
             final v8 = 'accumulate_dice_rolls / power: ${0} / acc: $v1_1 / roll: $v3_1 / value: $v7';
             console.log(v8);
-            return method39(v4_1, v1_1 + v7);
+            return method40(v4_1, v1_1 + v7);
         } else {
             final v11 = 'accumulate_dice_rolls / power: ${0} / acc: $v1_1 / roll: $v3_1';
             console.log(v11);
+            return method40(v4_1, v1_1);
+        }
+    }
+}
+
+US5 method38(UH1 v0_1, int v1_1) {
+    if (v0_1.tag == /* UH1_0 */ 0) {
+        return const US5(/* US5_1 */ 1);
+    } else {
+        final v0_1_1 = v0_1 as UH1_UH1_1;
+        final UH1 v4_1 = v0_1_1.Item2;
+        final v3_1 = v0_1_1.Item1;
+        if (v3_1 > 1) {
+            final v8 = (v3_1 - 1) * 6;
+            final v9 = 'accumulate_dice_rolls / power: ${1} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            console.log(v9);
+            return method39(v4_1, v1_1 + v8);
+        } else {
+            final v12 = 'accumulate_dice_rolls / power: ${1} / acc: $v1_1 / roll: $v3_1';
+            console.log(v12);
             return method39(v4_1, v1_1);
         }
     }
@@ -979,12 +1001,12 @@ US5 method37(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 6;
-            final v9 = 'accumulate_dice_rolls / power: ${1} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 36;
+            final v9 = 'accumulate_dice_rolls / power: ${2} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method38(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${1} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${2} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method38(v4_1, v1_1);
         }
@@ -999,12 +1021,12 @@ US5 method36(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 36;
-            final v9 = 'accumulate_dice_rolls / power: ${2} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 216;
+            final v9 = 'accumulate_dice_rolls / power: ${3} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method37(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${2} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${3} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method37(v4_1, v1_1);
         }
@@ -1019,12 +1041,12 @@ US5 method35(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 216;
-            final v9 = 'accumulate_dice_rolls / power: ${3} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 1296;
+            final v9 = 'accumulate_dice_rolls / power: ${4} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method36(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${3} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${4} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method36(v4_1, v1_1);
         }
@@ -1039,12 +1061,12 @@ US5 method34(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 1296;
-            final v9 = 'accumulate_dice_rolls / power: ${4} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 7776;
+            final v9 = 'accumulate_dice_rolls / power: ${5} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method35(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${4} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${5} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method35(v4_1, v1_1);
         }
@@ -1059,12 +1081,12 @@ US5 method33(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 7776;
-            final v9 = 'accumulate_dice_rolls / power: ${5} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 46656;
+            final v9 = 'accumulate_dice_rolls / power: ${6} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method34(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${5} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${6} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method34(v4_1, v1_1);
         }
@@ -1079,12 +1101,12 @@ US5 method32(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 46656;
-            final v9 = 'accumulate_dice_rolls / power: ${6} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 279936;
+            final v9 = 'accumulate_dice_rolls / power: ${7} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method33(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${6} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${7} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method33(v4_1, v1_1);
         }
@@ -1099,12 +1121,12 @@ US5 method31(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 279936;
-            final v9 = 'accumulate_dice_rolls / power: ${7} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 1679616;
+            final v9 = 'accumulate_dice_rolls / power: ${8} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method32(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${7} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${8} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method32(v4_1, v1_1);
         }
@@ -1119,12 +1141,12 @@ US5 method30(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 1679616;
-            final v9 = 'accumulate_dice_rolls / power: ${8} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 10077696;
+            final v9 = 'accumulate_dice_rolls / power: ${9} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method31(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${8} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${9} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method31(v4_1, v1_1);
         }
@@ -1139,12 +1161,12 @@ US5 method29(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 10077696;
-            final v9 = 'accumulate_dice_rolls / power: ${9} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 60466176;
+            final v9 = 'accumulate_dice_rolls / power: ${10} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method30(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${9} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${10} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method30(v4_1, v1_1);
         }
@@ -1159,12 +1181,12 @@ US5 method28(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 60466176;
-            final v9 = 'accumulate_dice_rolls / power: ${10} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 362797056;
+            final v9 = 'accumulate_dice_rolls / power: ${11} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method29(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${10} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${11} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method29(v4_1, v1_1);
         }
@@ -1179,12 +1201,12 @@ US5 method27(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 362797056;
-            final v9 = 'accumulate_dice_rolls / power: ${11} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 2176782336;
+            final v9 = 'accumulate_dice_rolls / power: ${12} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method28(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${11} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${12} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method28(v4_1, v1_1);
         }
@@ -1199,12 +1221,12 @@ US5 method26(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 2176782336;
-            final v9 = 'accumulate_dice_rolls / power: ${12} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 13060694016;
+            final v9 = 'accumulate_dice_rolls / power: ${13} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method27(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${12} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${13} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method27(v4_1, v1_1);
         }
@@ -1219,12 +1241,12 @@ US5 method25(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 13060694016;
-            final v9 = 'accumulate_dice_rolls / power: ${13} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 78364164096;
+            final v9 = 'accumulate_dice_rolls / power: ${14} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method26(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${13} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${14} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method26(v4_1, v1_1);
         }
@@ -1239,12 +1261,12 @@ US5 method24(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 78364164096;
-            final v9 = 'accumulate_dice_rolls / power: ${14} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 470184984576;
+            final v9 = 'accumulate_dice_rolls / power: ${15} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method25(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${14} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${15} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method25(v4_1, v1_1);
         }
@@ -1259,12 +1281,12 @@ US5 method23(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 470184984576;
-            final v9 = 'accumulate_dice_rolls / power: ${15} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 2821109907456;
+            final v9 = 'accumulate_dice_rolls / power: ${16} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method24(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${15} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${16} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method24(v4_1, v1_1);
         }
@@ -1279,12 +1301,12 @@ US5 method22(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 2821109907456;
-            final v9 = 'accumulate_dice_rolls / power: ${16} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 16926659444736;
+            final v9 = 'accumulate_dice_rolls / power: ${17} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method23(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${16} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${17} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method23(v4_1, v1_1);
         }
@@ -1299,12 +1321,12 @@ US5 method21(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 16926659444736;
-            final v9 = 'accumulate_dice_rolls / power: ${17} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 101559956668416;
+            final v9 = 'accumulate_dice_rolls / power: ${18} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method22(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${17} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${18} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method22(v4_1, v1_1);
         }
@@ -1319,12 +1341,12 @@ US5 method20(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 101559956668416;
-            final v9 = 'accumulate_dice_rolls / power: ${18} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 609359740010496;
+            final v9 = 'accumulate_dice_rolls / power: ${19} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method21(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${18} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${19} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method21(v4_1, v1_1);
         }
@@ -1339,12 +1361,12 @@ US5 method19(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 609359740010496;
-            final v9 = 'accumulate_dice_rolls / power: ${19} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 3656158440062976;
+            final v9 = 'accumulate_dice_rolls / power: ${20} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method20(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${19} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${20} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method20(v4_1, v1_1);
         }
@@ -1359,12 +1381,12 @@ US5 method18(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 3656158440062976;
-            final v9 = 'accumulate_dice_rolls / power: ${20} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 21936950640377856;
+            final v9 = 'accumulate_dice_rolls / power: ${21} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method19(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${20} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${21} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method19(v4_1, v1_1);
         }
@@ -1379,12 +1401,12 @@ US5 method17(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 21936950640377856;
-            final v9 = 'accumulate_dice_rolls / power: ${21} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 131621703842267136;
+            final v9 = 'accumulate_dice_rolls / power: ${22} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method18(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${21} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${22} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method18(v4_1, v1_1);
         }
@@ -1399,40 +1421,20 @@ US5 method16(UH1 v0_1, int v1_1) {
         final UH1 v4_1 = v0_1_1.Item2;
         final v3_1 = v0_1_1.Item1;
         if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 131621703842267136;
-            final v9 = 'accumulate_dice_rolls / power: ${22} / acc: $v1_1 / roll: $v3_1 / value: $v8';
+            final v8 = (v3_1 - 1) * 789730223053602816;
+            final v9 = 'accumulate_dice_rolls / power: ${23} / acc: $v1_1 / roll: $v3_1 / value: $v8';
             console.log(v9);
             return method17(v4_1, v1_1 + v8);
         } else {
-            final v12 = 'accumulate_dice_rolls / power: ${22} / acc: $v1_1 / roll: $v3_1';
+            final v12 = 'accumulate_dice_rolls / power: ${23} / acc: $v1_1 / roll: $v3_1';
             console.log(v12);
             return method17(v4_1, v1_1);
         }
     }
 }
 
-US5 method15(UH1 v0_1, int v1_1) {
-    if (v0_1.tag == /* UH1_0 */ 0) {
-        return const US5(/* US5_1 */ 1);
-    } else {
-        final v0_1_1 = v0_1 as UH1_UH1_1;
-        final UH1 v4_1 = v0_1_1.Item2;
-        final v3_1 = v0_1_1.Item1;
-        if (v3_1 > 1) {
-            final v8 = (v3_1 - 1) * 789730223053602816;
-            final v9 = 'accumulate_dice_rolls / power: ${23} / acc: $v1_1 / roll: $v3_1 / value: $v8';
-            console.log(v9);
-            return method16(v4_1, v1_1 + v8);
-        } else {
-            final v12 = 'accumulate_dice_rolls / power: ${23} / acc: $v1_1 / roll: $v3_1';
-            console.log(v12);
-            return method16(v4_1, v1_1);
-        }
-    }
-}
-
-int method14(UH1 v0_1_mut, int v1_1_mut) {
-    method14:
+int method15(UH1 v0_1_mut, int v1_1_mut) {
+    method15:
     while (true) {
         final UH1 v0_1 = v0_1_mut;
         final v1_1 = v1_1_mut;
@@ -1442,205 +1444,205 @@ int method14(UH1 v0_1_mut, int v1_1_mut) {
             _v3 = types.Some(x);
             v0_1_mut = UH1_UH1_1(types.value(_v3), v0_1);
             v1_1_mut = v1_1 + 1;
-            continue method14;
+            continue method15;
         } else {
-            final US5 v16 = method15(v0_1, 0);
-            if (v16.tag == /* US5_0 */ 0) {
-                final v16_1 = v16 as US5_US5_0;
-                final v17 = v16_1.f0_0;
-                if (v17 <= 9223372036854775807) {
-                    return v17;
+            final US5 v17 = method16(v0_1, 0);
+            if (v17.tag == /* US5_0 */ 0) {
+                final v17_1 = v17 as US5_US5_0;
+                final v18 = v17_1.f0_0;
+                if (v18 <= 9223372036854775807) {
+                    return v18;
                 } else {
-                    types.Some<int>? _v20;
+                    types.Some<int>? _v21;
                     final x_1 = random.nonSeeded().Next2(1, 7);
-                    _v20 = types.Some(x_1);
-                    final v28 = types.value(_v20);
-                    types.Some<int>? _v29;
+                    _v21 = types.Some(x_1);
+                    final v30 = types.value(_v21);
+                    types.Some<int>? _v31;
                     final x_2 = random.nonSeeded().Next2(1, 7);
-                    _v29 = types.Some(x_2);
-                    final v35 = types.value(_v29);
-                    types.Some<int>? _v36;
+                    _v31 = types.Some(x_2);
+                    final v38 = types.value(_v31);
+                    types.Some<int>? _v39;
                     final x_3 = random.nonSeeded().Next2(1, 7);
-                    _v36 = types.Some(x_3);
-                    final v42 = types.value(_v36);
-                    types.Some<int>? _v43;
+                    _v39 = types.Some(x_3);
+                    final v46 = types.value(_v39);
+                    types.Some<int>? _v47;
                     final x_4 = random.nonSeeded().Next2(1, 7);
-                    _v43 = types.Some(x_4);
-                    final v49 = types.value(_v43);
-                    types.Some<int>? _v50;
+                    _v47 = types.Some(x_4);
+                    final v54 = types.value(_v47);
+                    types.Some<int>? _v55;
                     final x_5 = random.nonSeeded().Next2(1, 7);
-                    _v50 = types.Some(x_5);
-                    final v56 = types.value(_v50);
-                    types.Some<int>? _v57;
+                    _v55 = types.Some(x_5);
+                    final v62 = types.value(_v55);
+                    types.Some<int>? _v63;
                     final x_6 = random.nonSeeded().Next2(1, 7);
-                    _v57 = types.Some(x_6);
-                    final v63 = types.value(_v57);
-                    types.Some<int>? _v64;
-                    final x_7 = random.nonSeeded().Next2(1, 7);
-                    _v64 = types.Some(x_7);
-                    final v70 = types.value(_v64);
+                    _v63 = types.Some(x_6);
+                    final v70 = types.value(_v63);
                     types.Some<int>? _v71;
+                    final x_7 = random.nonSeeded().Next2(1, 7);
+                    _v71 = types.Some(x_7);
+                    final v78 = types.value(_v71);
+                    types.Some<int>? _v79;
                     final x_8 = random.nonSeeded().Next2(1, 7);
-                    _v71 = types.Some(x_8);
-                    final v77 = types.value(_v71);
-                    types.Some<int>? _v78;
+                    _v79 = types.Some(x_8);
+                    final v86 = types.value(_v79);
+                    types.Some<int>? _v87;
                     final x_9 = random.nonSeeded().Next2(1, 7);
-                    _v78 = types.Some(x_9);
-                    final v84 = types.value(_v78);
-                    types.Some<int>? _v85;
+                    _v87 = types.Some(x_9);
+                    final v94 = types.value(_v87);
+                    types.Some<int>? _v95;
                     final x_10 = random.nonSeeded().Next2(1, 7);
-                    _v85 = types.Some(x_10);
-                    final v91 = types.value(_v85);
-                    types.Some<int>? _v92;
+                    _v95 = types.Some(x_10);
+                    final v102 = types.value(_v95);
+                    types.Some<int>? _v103;
                     final x_11 = random.nonSeeded().Next2(1, 7);
-                    _v92 = types.Some(x_11);
-                    final v98 = types.value(_v92);
-                    types.Some<int>? _v99;
+                    _v103 = types.Some(x_11);
+                    final v110 = types.value(_v103);
+                    types.Some<int>? _v111;
                     final x_12 = random.nonSeeded().Next2(1, 7);
-                    _v99 = types.Some(x_12);
-                    final v105 = types.value(_v99);
-                    types.Some<int>? _v106;
+                    _v111 = types.Some(x_12);
+                    final v118 = types.value(_v111);
+                    types.Some<int>? _v119;
                     final x_13 = random.nonSeeded().Next2(1, 7);
-                    _v106 = types.Some(x_13);
-                    final v112 = types.value(_v106);
-                    types.Some<int>? _v113;
-                    final x_14 = random.nonSeeded().Next2(1, 7);
-                    _v113 = types.Some(x_14);
-                    final v119 = types.value(_v113);
-                    types.Some<int>? _v120;
-                    final x_15 = random.nonSeeded().Next2(1, 7);
-                    _v120 = types.Some(x_15);
-                    final v126 = types.value(_v120);
+                    _v119 = types.Some(x_13);
+                    final v126 = types.value(_v119);
                     types.Some<int>? _v127;
+                    final x_14 = random.nonSeeded().Next2(1, 7);
+                    _v127 = types.Some(x_14);
+                    final v134 = types.value(_v127);
+                    types.Some<int>? _v135;
+                    final x_15 = random.nonSeeded().Next2(1, 7);
+                    _v135 = types.Some(x_15);
+                    final v142 = types.value(_v135);
+                    types.Some<int>? _v143;
                     final x_16 = random.nonSeeded().Next2(1, 7);
-                    _v127 = types.Some(x_16);
-                    final v133 = types.value(_v127);
-                    types.Some<int>? _v134;
+                    _v143 = types.Some(x_16);
+                    final v150 = types.value(_v143);
+                    types.Some<int>? _v151;
                     final x_17 = random.nonSeeded().Next2(1, 7);
-                    _v134 = types.Some(x_17);
-                    final v140 = types.value(_v134);
-                    types.Some<int>? _v141;
+                    _v151 = types.Some(x_17);
+                    final v158 = types.value(_v151);
+                    types.Some<int>? _v159;
                     final x_18 = random.nonSeeded().Next2(1, 7);
-                    _v141 = types.Some(x_18);
-                    final v147 = types.value(_v141);
-                    types.Some<int>? _v148;
+                    _v159 = types.Some(x_18);
+                    final v166 = types.value(_v159);
+                    types.Some<int>? _v167;
                     final x_19 = random.nonSeeded().Next2(1, 7);
-                    _v148 = types.Some(x_19);
-                    final v154 = types.value(_v148);
-                    types.Some<int>? _v155;
+                    _v167 = types.Some(x_19);
+                    final v174 = types.value(_v167);
+                    types.Some<int>? _v175;
                     final x_20 = random.nonSeeded().Next2(1, 7);
-                    _v155 = types.Some(x_20);
-                    final v161 = types.value(_v155);
-                    types.Some<int>? _v162;
+                    _v175 = types.Some(x_20);
+                    final v182 = types.value(_v175);
+                    types.Some<int>? _v183;
                     final x_21 = random.nonSeeded().Next2(1, 7);
-                    _v162 = types.Some(x_21);
-                    final v168 = types.value(_v162);
-                    types.Some<int>? _v169;
+                    _v183 = types.Some(x_21);
+                    final v190 = types.value(_v183);
+                    types.Some<int>? _v191;
                     final x_22 = random.nonSeeded().Next2(1, 7);
-                    _v169 = types.Some(x_22);
-                    final v175 = types.value(_v169);
-                    types.Some<int>? _v176;
+                    _v191 = types.Some(x_22);
+                    final v198 = types.value(_v191);
+                    types.Some<int>? _v199;
                     final x_23 = random.nonSeeded().Next2(1, 7);
-                    _v176 = types.Some(x_23);
-                    v0_1_mut = UH1_UH1_1(v28, UH1_UH1_1(v35, UH1_UH1_1(v42, UH1_UH1_1(v49, UH1_UH1_1(v56, UH1_UH1_1(v63, UH1_UH1_1(v70, UH1_UH1_1(v77, UH1_UH1_1(v84, UH1_UH1_1(v91, UH1_UH1_1(v98, UH1_UH1_1(v105, UH1_UH1_1(v112, UH1_UH1_1(v119, UH1_UH1_1(v126, UH1_UH1_1(v133, UH1_UH1_1(v140, UH1_UH1_1(v147, UH1_UH1_1(v154, UH1_UH1_1(v161, UH1_UH1_1(v168, UH1_UH1_1(v175, UH1_UH1_1(types.value(_v176), const UH1(/* UH1_0 */ 0))))))))))))))))))))))));
+                    _v199 = types.Some(x_23);
+                    v0_1_mut = UH1_UH1_1(v30, UH1_UH1_1(v38, UH1_UH1_1(v46, UH1_UH1_1(v54, UH1_UH1_1(v62, UH1_UH1_1(v70, UH1_UH1_1(v78, UH1_UH1_1(v86, UH1_UH1_1(v94, UH1_UH1_1(v102, UH1_UH1_1(v110, UH1_UH1_1(v118, UH1_UH1_1(v126, UH1_UH1_1(v134, UH1_UH1_1(v142, UH1_UH1_1(v150, UH1_UH1_1(v158, UH1_UH1_1(v166, UH1_UH1_1(v174, UH1_UH1_1(v182, UH1_UH1_1(v190, UH1_UH1_1(v198, UH1_UH1_1(types.value(_v199), const UH1(/* UH1_0 */ 0))))))))))))))))))))))));
                     v1_1_mut = 23;
-                    continue method14;
+                    continue method15;
                 }
             } else {
-                types.Some<int>? _v210;
+                types.Some<int>? _v234;
                 final x_24 = random.nonSeeded().Next2(1, 7);
-                _v210 = types.Some(x_24);
-                final v218 = types.value(_v210);
-                types.Some<int>? _v219;
+                _v234 = types.Some(x_24);
+                final v243 = types.value(_v234);
+                types.Some<int>? _v244;
                 final x_25 = random.nonSeeded().Next2(1, 7);
-                _v219 = types.Some(x_25);
-                final v225 = types.value(_v219);
-                types.Some<int>? _v226;
+                _v244 = types.Some(x_25);
+                final v251 = types.value(_v244);
+                types.Some<int>? _v252;
                 final x_26 = random.nonSeeded().Next2(1, 7);
-                _v226 = types.Some(x_26);
-                final v232 = types.value(_v226);
-                types.Some<int>? _v233;
+                _v252 = types.Some(x_26);
+                final v259 = types.value(_v252);
+                types.Some<int>? _v260;
                 final x_27 = random.nonSeeded().Next2(1, 7);
-                _v233 = types.Some(x_27);
-                final v239 = types.value(_v233);
-                types.Some<int>? _v240;
-                final x_28 = random.nonSeeded().Next2(1, 7);
-                _v240 = types.Some(x_28);
-                final v246 = types.value(_v240);
-                types.Some<int>? _v247;
-                final x_29 = random.nonSeeded().Next2(1, 7);
-                _v247 = types.Some(x_29);
-                final v253 = types.value(_v247);
-                types.Some<int>? _v254;
-                final x_30 = random.nonSeeded().Next2(1, 7);
-                _v254 = types.Some(x_30);
-                final v260 = types.value(_v254);
-                types.Some<int>? _v261;
-                final x_31 = random.nonSeeded().Next2(1, 7);
-                _v261 = types.Some(x_31);
-                final v267 = types.value(_v261);
+                _v260 = types.Some(x_27);
+                final v267 = types.value(_v260);
                 types.Some<int>? _v268;
+                final x_28 = random.nonSeeded().Next2(1, 7);
+                _v268 = types.Some(x_28);
+                final v275 = types.value(_v268);
+                types.Some<int>? _v276;
+                final x_29 = random.nonSeeded().Next2(1, 7);
+                _v276 = types.Some(x_29);
+                final v283 = types.value(_v276);
+                types.Some<int>? _v284;
+                final x_30 = random.nonSeeded().Next2(1, 7);
+                _v284 = types.Some(x_30);
+                final v291 = types.value(_v284);
+                types.Some<int>? _v292;
+                final x_31 = random.nonSeeded().Next2(1, 7);
+                _v292 = types.Some(x_31);
+                final v299 = types.value(_v292);
+                types.Some<int>? _v300;
                 final x_32 = random.nonSeeded().Next2(1, 7);
-                _v268 = types.Some(x_32);
-                final v274 = types.value(_v268);
-                types.Some<int>? _v275;
+                _v300 = types.Some(x_32);
+                final v307 = types.value(_v300);
+                types.Some<int>? _v308;
                 final x_33 = random.nonSeeded().Next2(1, 7);
-                _v275 = types.Some(x_33);
-                final v281 = types.value(_v275);
-                types.Some<int>? _v282;
+                _v308 = types.Some(x_33);
+                final v315 = types.value(_v308);
+                types.Some<int>? _v316;
                 final x_34 = random.nonSeeded().Next2(1, 7);
-                _v282 = types.Some(x_34);
-                final v288 = types.value(_v282);
-                types.Some<int>? _v289;
-                final x_35 = random.nonSeeded().Next2(1, 7);
-                _v289 = types.Some(x_35);
-                final v295 = types.value(_v289);
-                types.Some<int>? _v296;
-                final x_36 = random.nonSeeded().Next2(1, 7);
-                _v296 = types.Some(x_36);
-                final v302 = types.value(_v296);
-                types.Some<int>? _v303;
-                final x_37 = random.nonSeeded().Next2(1, 7);
-                _v303 = types.Some(x_37);
-                final v309 = types.value(_v303);
-                types.Some<int>? _v310;
-                final x_38 = random.nonSeeded().Next2(1, 7);
-                _v310 = types.Some(x_38);
-                final v316 = types.value(_v310);
-                types.Some<int>? _v317;
-                final x_39 = random.nonSeeded().Next2(1, 7);
-                _v317 = types.Some(x_39);
-                final v323 = types.value(_v317);
+                _v316 = types.Some(x_34);
+                final v323 = types.value(_v316);
                 types.Some<int>? _v324;
+                final x_35 = random.nonSeeded().Next2(1, 7);
+                _v324 = types.Some(x_35);
+                final v331 = types.value(_v324);
+                types.Some<int>? _v332;
+                final x_36 = random.nonSeeded().Next2(1, 7);
+                _v332 = types.Some(x_36);
+                final v339 = types.value(_v332);
+                types.Some<int>? _v340;
+                final x_37 = random.nonSeeded().Next2(1, 7);
+                _v340 = types.Some(x_37);
+                final v347 = types.value(_v340);
+                types.Some<int>? _v348;
+                final x_38 = random.nonSeeded().Next2(1, 7);
+                _v348 = types.Some(x_38);
+                final v355 = types.value(_v348);
+                types.Some<int>? _v356;
+                final x_39 = random.nonSeeded().Next2(1, 7);
+                _v356 = types.Some(x_39);
+                final v363 = types.value(_v356);
+                types.Some<int>? _v364;
                 final x_40 = random.nonSeeded().Next2(1, 7);
-                _v324 = types.Some(x_40);
-                final v330 = types.value(_v324);
-                types.Some<int>? _v331;
+                _v364 = types.Some(x_40);
+                final v371 = types.value(_v364);
+                types.Some<int>? _v372;
                 final x_41 = random.nonSeeded().Next2(1, 7);
-                _v331 = types.Some(x_41);
-                final v337 = types.value(_v331);
-                types.Some<int>? _v338;
+                _v372 = types.Some(x_41);
+                final v379 = types.value(_v372);
+                types.Some<int>? _v380;
                 final x_42 = random.nonSeeded().Next2(1, 7);
-                _v338 = types.Some(x_42);
-                final v344 = types.value(_v338);
-                types.Some<int>? _v345;
+                _v380 = types.Some(x_42);
+                final v387 = types.value(_v380);
+                types.Some<int>? _v388;
                 final x_43 = random.nonSeeded().Next2(1, 7);
-                _v345 = types.Some(x_43);
-                final v351 = types.value(_v345);
-                types.Some<int>? _v352;
+                _v388 = types.Some(x_43);
+                final v395 = types.value(_v388);
+                types.Some<int>? _v396;
                 final x_44 = random.nonSeeded().Next2(1, 7);
-                _v352 = types.Some(x_44);
-                final v358 = types.value(_v352);
-                types.Some<int>? _v359;
+                _v396 = types.Some(x_44);
+                final v403 = types.value(_v396);
+                types.Some<int>? _v404;
                 final x_45 = random.nonSeeded().Next2(1, 7);
-                _v359 = types.Some(x_45);
-                final v365 = types.value(_v359);
-                types.Some<int>? _v366;
+                _v404 = types.Some(x_45);
+                final v411 = types.value(_v404);
+                types.Some<int>? _v412;
                 final x_46 = random.nonSeeded().Next2(1, 7);
-                _v366 = types.Some(x_46);
-                v0_1_mut = UH1_UH1_1(v218, UH1_UH1_1(v225, UH1_UH1_1(v232, UH1_UH1_1(v239, UH1_UH1_1(v246, UH1_UH1_1(v253, UH1_UH1_1(v260, UH1_UH1_1(v267, UH1_UH1_1(v274, UH1_UH1_1(v281, UH1_UH1_1(v288, UH1_UH1_1(v295, UH1_UH1_1(v302, UH1_UH1_1(v309, UH1_UH1_1(v316, UH1_UH1_1(v323, UH1_UH1_1(v330, UH1_UH1_1(v337, UH1_UH1_1(v344, UH1_UH1_1(v351, UH1_UH1_1(v358, UH1_UH1_1(v365, UH1_UH1_1(types.value(_v366), const UH1(/* UH1_0 */ 0))))))))))))))))))))))));
+                _v412 = types.Some(x_46);
+                v0_1_mut = UH1_UH1_1(v243, UH1_UH1_1(v251, UH1_UH1_1(v259, UH1_UH1_1(v267, UH1_UH1_1(v275, UH1_UH1_1(v283, UH1_UH1_1(v291, UH1_UH1_1(v299, UH1_UH1_1(v307, UH1_UH1_1(v315, UH1_UH1_1(v323, UH1_UH1_1(v331, UH1_UH1_1(v339, UH1_UH1_1(v347, UH1_UH1_1(v355, UH1_UH1_1(v363, UH1_UH1_1(v371, UH1_UH1_1(v379, UH1_UH1_1(v387, UH1_UH1_1(v395, UH1_UH1_1(v403, UH1_UH1_1(v411, UH1_UH1_1(types.value(_v412), const UH1(/* UH1_0 */ 0))))))))))))))))))))))));
                 v1_1_mut = 23;
-                continue method14;
+                continue method15;
             }
         }
     }
@@ -1649,7 +1651,7 @@ int method14(UH1 v0_1_mut, int v1_1_mut) {
 int closure81(void unitVar, List<String> v0_1) {
     final v1_1 = 'calculate_dice_count / max: ${9223372036854775807} / n: ${24} / p: ${4738381338321616896}';
     console.log(v1_1);
-    final v5 = 'result: ${method14(const UH1(/* UH1_0 */ 0), 0)}';
+    final v5 = 'result: ${method15(const UH1(/* UH1_0 */ 0), 0)}';
     console.log(v5);
     return 0;
 }

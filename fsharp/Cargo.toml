@@ -17,4 +17,4 @@ name = "dice_fsharp"
 path = "dice_fsharp.rs"
 
 [lib]
-path = "dice_wasm_fsharp.rs"
+path = "dice_fsharp_wasm.rs"

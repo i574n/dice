@@ -796,14 +796,9 @@ function closure4($unitVar, $v0_1) {
 }
 
 #35
-function method1($v0_1, $v1_1) {
-    switch ($v0_1->get_Tag())
-    {
-        case 0:
-            return $v1_1;
-        default:
-            return method1($v0_1->Item2, new UH1_UH1_1($v0_1->Item1, $v1_1));
-    }
+function method1($unitVar) {
+    return function ($v) use ($closure4) {     return closure4(NULL, $v);
+ };
 }
 
 #36
@@ -813,34 +808,45 @@ function method2($v0_1, $v1_1) {
         case 0:
             return $v1_1;
         default:
-            return new UH1_UH1_1($v0_1->Item1, method2($v0_1->Item2, $v1_1));
+            return method2($v0_1->Item2, new UH1_UH1_1($v0_1->Item1, $v1_1));
     }
 }
 
 #37
-function closure6($v0_1, $unitVar) {
-    return $v0_1;
-}
-
-#38
 function method3($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
         case 0:
             return $v1_1;
         default:
-            $v4_1 = method3($v0_1->Item2, $v1_1);
+            return new UH1_UH1_1($v0_1->Item1, method3($v0_1->Item2, $v1_1));
+    }
+}
+
+#38
+function closure6($v0_1, $unitVar) {
+    return $v0_1;
+}
+
+#39
+function method4($v0_1, $v1_1) {
+    switch ($v0_1->get_Tag())
+    {
+        case 0:
+            return $v1_1;
+        default:
+            $v4_1 = method4($v0_1->Item2, $v1_1);
             return new UH0_UH0_0($v0_1->Item1, function ($arg10_0040) use ($closure6, $v4_1) {             return closure6($v4_1, NULL);
  });
     }
 }
 
-#39
+#40
 function closure7($v0_1, $unitVar) {
     return $v0_1;
 }
 
-#40
+#41
 function closure8($v0_1, $v1_1, $unitVar) {
     $v2_1 = $v1_1->l0;
     switch ($v2_1->get_Tag())
@@ -853,7 +859,7 @@ function closure8($v0_1, $v1_1, $unitVar) {
                     $v12 = new UH0_UH0_1();
                     break;
                 default:
-                    $v12 = new UH0_UH0_0($v5->Item1, $method4($v0_1, $v5->Item2));
+                    $v12 = new UH0_UH0_0($v5->Item1, $method5($v0_1, $v5->Item2));
                     break;
             }
             $v1_1->l0 = new US1_US1_1($v12);
@@ -863,15 +869,15 @@ function closure8($v0_1, $v1_1, $unitVar) {
     }
 }
 
-#41
-function method4($v0_1, $v1_1) {
+#42
+function method5($v0_1, $v1_1) {
     $v3_1 = new Mut0(new US1_US1_0($v1_1));
     return function ($arg10_0040) use ($closure8, $v0_1, $v3_1) {     return closure8($v0_1, $v3_1, NULL);
  };
 }
 
-#42
-function method6($v0_1, $v1_1) {
+#43
+function method7($v0_1, $v1_1) {
     switch ($v1_1->get_Tag())
     {
         case 1:
@@ -880,13 +886,13 @@ function method6($v0_1, $v1_1) {
             if (\BigInt\compare($v0_1, NULL) <= 0) {
                 return new US2_US2_0($v1_1->Item1);
             } else {
-                return method6(\BigInt\toInt64(\BigInt\op_Subtraction($v0_1, NULL)), $v1_1->Item2(NULL));
+                return method7(\BigInt\toInt64(\BigInt\op_Subtraction($v0_1, NULL)), $v1_1->Item2(NULL));
             }
     }
 }
 
-#43
-function method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
+#44
+function method6($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
     $v10 = \String\toText(\String\interpolate('create_sequential_roller / roll / current_index: %P() / acc: %P() / len: %P() / last_item: %A%P()', [ $v2_1->l0, $v3_1->l0, $v4_1->l0, $v5->l0 ]));
     switch ($v0_1->get_Tag())
     {
@@ -897,7 +903,7 @@ function method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
             break;
     }
     $v12 = $v1_1(NULL);
-    $v14 = method6($v2_1->l0, $v12);
+    $v14 = method7($v2_1->l0, $v12);
     switch ($v14->get_Tag())
     {
         case 0:
@@ -929,16 +935,16 @@ function method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
             $v31 = \BigInt\toInt64(\BigInt\op_Subtraction($v3_1->l0, NULL));
             $v2_1->l0 = $v31;
             $v5->l0 = new US2_US2_1();
-            return method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5);
+            return method6($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5);
     }
 }
 
-#44
+#45
 function closure9($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5, $unitVar) {
-    return method5($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5);
+    return method6($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5);
 }
 
-#45
+#46
 function closure5($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -948,8 +954,8 @@ function closure5($v0_1, $v1_1) {
         default:
             break;
     }
-    $v8 = method3(method2($v1_1, method1($v1_1, new UH1_UH1_0())), new UH0_UH0_1());
-    $v10 = method4($v8, function ($arg10_0040) use ($closure7, $v8) {     return closure7($v8, NULL);
+    $v8 = method4(method3($v1_1, method2($v1_1, new UH1_UH1_0())), new UH0_UH0_1());
+    $v10 = method5($v8, function ($arg10_0040) use ($closure7, $v8) {     return closure7($v8, NULL);
  });
     $v11 = new Mut1(NULL);
     $v12 = new Mut1(NULL);
@@ -959,20 +965,19 @@ function closure5($v0_1, $v1_1) {
  };
 }
 
-#46
+#47
 function closure3($unitVar, $v0_1) {
-    $v3_1 = \Option\defaultArg(\Option\map(function ($v) use ($closure4) {     return closure4(NULL, $v);
- }, $v0_1), new US0_US0_1());
-    return function ($v_1) use ($closure5, $v3_1) {     return closure5($v3_1, $v_1);
+    $v3_1 = \Option\defaultArg(\Option\map(method1(NULL), $v0_1), new US0_US0_1());
+    return function ($v) use ($closure5, $v3_1) {     return closure5($v3_1, $v);
  };
 }
 
-#47
-function method7($v0_1, $v1_1, $v2_1, $v3_1) {
+#48
+function method8($v0_1, $v1_1, $v2_1, $v3_1) {
     if (\BigInt\compare($v3_1, $v1_1) < 0) {
         $v5 = \BigInt\toUInt64(\BigInt\op_Multiply($v3_1, NULL));
         if (\BigInt\compare($v5, $v3_1) > 0) {
-            return method7($v0_1, $v1_1, $v2_1 + 1, $v5);
+            return method8($v0_1, $v1_1, $v2_1 + 1, $v5);
         } else {
             $v9 = NULL;
             switch ($v0_1->get_Tag())
@@ -999,392 +1004,392 @@ function method7($v0_1, $v1_1, $v2_1, $v3_1) {
     }
 }
 
-#48
+#49
 function closure77($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure77) {     return closure77(NULL, NULL);
  });
 }
 
-#49
+#50
 function closure76($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure77) {     return closure77(NULL, NULL);
  });
 }
 
-#50
+#51
 function closure75($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure76) {     return closure76(NULL, NULL);
  });
 }
 
-#51
+#52
 function closure74($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure75) {     return closure75(NULL, NULL);
  });
 }
 
-#52
+#53
 function closure73($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure74) {     return closure74(NULL, NULL);
  });
 }
 
-#53
+#54
 function closure72($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure73) {     return closure73(NULL, NULL);
  });
 }
 
-#54
+#55
 function closure71($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure72) {     return closure72(NULL, NULL);
  });
 }
 
-#55
+#56
 function closure70($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure71) {     return closure71(NULL, NULL);
  });
 }
 
-#56
+#57
 function closure69($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure70) {     return closure70(NULL, NULL);
  });
 }
 
-#57
+#58
 function closure68($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure69) {     return closure69(NULL, NULL);
  });
 }
 
-#58
+#59
 function closure67($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure68) {     return closure68(NULL, NULL);
  });
 }
 
-#59
+#60
 function closure66($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure67) {     return closure67(NULL, NULL);
  });
 }
 
-#60
+#61
 function closure65($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure66) {     return closure66(NULL, NULL);
  });
 }
 
-#61
+#62
 function closure64($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure65) {     return closure65(NULL, NULL);
  });
 }
 
-#62
+#63
 function closure63($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure64) {     return closure64(NULL, NULL);
  });
 }
 
-#63
+#64
 function closure62($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure63) {     return closure63(NULL, NULL);
  });
 }
 
-#64
+#65
 function closure61($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure62) {     return closure62(NULL, NULL);
  });
 }
 
-#65
+#66
 function closure60($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure61) {     return closure61(NULL, NULL);
  });
 }
 
-#66
+#67
 function closure59($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure60) {     return closure60(NULL, NULL);
  });
 }
 
-#67
+#68
 function closure58($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure59) {     return closure59(NULL, NULL);
  });
 }
 
-#68
+#69
 function closure57($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure58) {     return closure58(NULL, NULL);
  });
 }
 
-#69
+#70
 function closure56($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure57) {     return closure57(NULL, NULL);
  });
 }
 
-#70
+#71
 function closure55($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure56) {     return closure56(NULL, NULL);
  });
 }
 
-#71
+#72
 function closure54($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure55) {     return closure55(NULL, NULL);
  });
 }
 
-#72
+#73
 function closure53($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure54) {     return closure54(NULL, NULL);
  });
 }
 
-#73
+#74
 function closure52($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure53) {     return closure53(NULL, NULL);
  });
 }
 
-#74
+#75
 function closure51($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure52) {     return closure52(NULL, NULL);
  });
 }
 
-#75
+#76
 function closure50($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure51) {     return closure51(NULL, NULL);
  });
 }
 
-#76
+#77
 function closure49($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure50) {     return closure50(NULL, NULL);
  });
 }
 
-#77
+#78
 function closure48($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure49) {     return closure49(NULL, NULL);
  });
 }
 
-#78
+#79
 function closure47($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure48) {     return closure48(NULL, NULL);
  });
 }
 
-#79
+#80
 function closure46($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure47) {     return closure47(NULL, NULL);
  });
 }
 
-#80
+#81
 function closure45($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure46) {     return closure46(NULL, NULL);
  });
 }
 
-#81
+#82
 function closure44($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure45) {     return closure45(NULL, NULL);
  });
 }
 
-#82
+#83
 function closure43($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure44) {     return closure44(NULL, NULL);
  });
 }
 
-#83
+#84
 function closure42($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure43) {     return closure43(NULL, NULL);
  });
 }
 
-#84
+#85
 function closure41($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure42) {     return closure42(NULL, NULL);
  });
 }
 
-#85
+#86
 function closure40($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure41) {     return closure41(NULL, NULL);
  });
 }
 
-#86
+#87
 function closure39($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure40) {     return closure40(NULL, NULL);
  });
 }
 
-#87
+#88
 function closure38($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure39) {     return closure39(NULL, NULL);
  });
 }
 
-#88
+#89
 function closure37($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure38) {     return closure38(NULL, NULL);
  });
 }
 
-#89
+#90
 function closure36($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure37) {     return closure37(NULL, NULL);
  });
 }
 
-#90
+#91
 function closure35($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure36) {     return closure36(NULL, NULL);
  });
 }
 
-#91
+#92
 function closure34($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure35) {     return closure35(NULL, NULL);
  });
 }
 
-#92
+#93
 function closure33($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure34) {     return closure34(NULL, NULL);
  });
 }
 
-#93
+#94
 function closure32($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure33) {     return closure33(NULL, NULL);
  });
 }
 
-#94
+#95
 function closure31($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure32) {     return closure32(NULL, NULL);
  });
 }
 
-#95
+#96
 function closure30($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure31) {     return closure31(NULL, NULL);
  });
 }
 
-#96
+#97
 function closure29($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure30) {     return closure30(NULL, NULL);
  });
 }
 
-#97
+#98
 function closure28($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure29) {     return closure29(NULL, NULL);
  });
 }
 
-#98
+#99
 function closure27($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure28) {     return closure28(NULL, NULL);
  });
 }
 
-#99
+#100
 function closure26($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure27) {     return closure27(NULL, NULL);
  });
 }
 
-#100
+#101
 function closure25($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure26) {     return closure26(NULL, NULL);
  });
 }
 
-#101
+#102
 function closure24($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure25) {     return closure25(NULL, NULL);
  });
 }
 
-#102
+#103
 function closure23($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure24) {     return closure24(NULL, NULL);
  });
 }
 
-#103
+#104
 function closure22($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure23) {     return closure23(NULL, NULL);
  });
 }
 
-#104
+#105
 function closure21($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure22) {     return closure22(NULL, NULL);
  });
 }
 
-#105
+#106
 function closure20($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure21) {     return closure21(NULL, NULL);
  });
 }
 
-#106
+#107
 function closure19($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure20) {     return closure20(NULL, NULL);
  });
 }
 
-#107
+#108
 function closure18($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure19) {     return closure19(NULL, NULL);
  });
 }
 
-#108
+#109
 function closure17($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure18) {     return closure18(NULL, NULL);
  });
 }
 
-#109
+#110
 function closure16($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure17) {     return closure17(NULL, NULL);
  });
 }
 
-#110
+#111
 function closure15($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure16) {     return closure16(NULL, NULL);
  });
 }
 
-#111
+#112
 function closure14($unitVar, $unitVar_1) {
     return new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure15) {     return closure15(NULL, NULL);
  });
 }
 
-#112
-function method10($v0_1, $v1_1) {
+#113
+function method11($v0_1, $v1_1) {
     switch ($v1_1->get_Tag())
     {
         case 1:
@@ -1393,13 +1398,13 @@ function method10($v0_1, $v1_1) {
             if ($v0_1 <= 0) {
                 return new US4_US4_0($v1_1->Item1);
             } else {
-                return method10($v0_1 - 1, $v1_1->Item2(NULL));
+                return method11($v0_1 - 1, $v1_1->Item2(NULL));
             }
     }
 }
 
-#113
-function method9($v0_1, $v1_1, $v2_1, $v3_1) {
+#114
+function method10($v0_1, $v1_1, $v2_1, $v3_1) {
     if ($v1_1 < 0) {
         $v5 = \BigInt\toUInt64(\BigInt\op_Addition($v3_1, NULL));
         $v6 = NULL;
@@ -1421,7 +1426,7 @@ function method9($v0_1, $v1_1, $v2_1, $v3_1) {
                 $v11 = $v2_1->Item2;
                 $v10 = $v2_1->Item1;
                 if ($v10 > 1) {
-                    $v16 = method10($v1_1, new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure14) {                     return closure14(NULL, NULL);
+                    $v16 = method11($v1_1, new UH2_UH2_0(NULL, function ($arg10_0040) use ($closure14) {                     return closure14(NULL, NULL);
  }));
                     switch ($v16->get_Tag())
                     {
@@ -1442,7 +1447,7 @@ function method9($v0_1, $v1_1, $v2_1, $v3_1) {
                         default:
                             break;
                     }
-                    return method9($v0_1, $v1_1 - 1, $v11, \BigInt\toUInt64(\BigInt\op_Addition($v3_1, $v23)));
+                    return method10($v0_1, $v1_1 - 1, $v11, \BigInt\toUInt64(\BigInt\op_Addition($v3_1, $v23)));
                 } else {
                     $v29 = NULL;
                     switch ($v0_1->get_Tag())
@@ -1453,116 +1458,114 @@ function method9($v0_1, $v1_1, $v2_1, $v3_1) {
                         default:
                             break;
                     }
-                    return method9($v0_1, $v1_1 - 1, $v11, $v3_1);
+                    return method10($v0_1, $v1_1 - 1, $v11, $v3_1);
                 }
         }
     }
 }
 
-#114
-function method11($v0_1, $v1_1, $v2_1) {
+#115
+function method12($v0_1, $v1_1, $v2_1) {
     if ($v2_1 < $v0_1) {
-        return new UH1_UH1_1($v1_1(NULL), method11($v0_1, $v1_1, ($v2_1 + 1)));
+        return new UH1_UH1_1($v1_1(NULL), method12($v0_1, $v1_1, ($v2_1 + 1)));
     } else {
         return new UH1_UH1_0();
     }
 }
 
-#115
-function method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
+#116
+function method13($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5) {
     $v6 = $v4_1 + 1;
     if ($v4_1 < $v6) {
-        return $method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6);
+        return $method9($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6);
     } else {
-        $v12 = method9($v0_1, $v4_1, $v5, NULL);
+        $v12 = method10($v0_1, $v4_1, $v5, NULL);
         if ($v12->get_Tag() == 0) {
             $v13 = $v12->f0_0;
             if (\BigInt\compare($v13, $v3_1) <= 0) {
                 return $v13;
             } else {
                 if ($v2_1) {
-                    return method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method11($v4_1, $v1_1, 0));
+                    return method13($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method12($v4_1, $v1_1, 0));
                 } else {
-                    return $method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6);
+                    return $method9($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6);
                 }
             }
         } else {
             if ($v2_1) {
-                return method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method11($v4_1, $v1_1, 0));
+                return method13($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method12($v4_1, $v1_1, 0));
             } else {
-                return $method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6);
-            }
-        }
-    }
-}
-
-#116
-function method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5, $v6) {
-    if ($v6 < $v4_1 + 1) {
-        return method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6 + 1);
-    } else {
-        $v14 = method9($v0_1, $v4_1, $v5, NULL);
-        if ($v14->get_Tag() == 0) {
-            $v15 = $v14->f0_0;
-            if (\BigInt\compare($v15, $v3_1) <= 0) {
-                return $v15;
-            } else {
-                if ($v2_1) {
-                    return method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method11($v4_1, $v1_1, 0));
-                } else {
-                    return method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6 + 1);
-                }
-            }
-        } else {
-            if ($v2_1) {
-                return method12($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method11($v4_1, $v1_1, 0));
-            } else {
-                return method8($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6 + 1);
+                return $method9($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6);
             }
         }
     }
 }
 
 #117
-function closure13($v0_1, $v1_1, $v2_1, $v3_1) {
-    return method8($v0_1, $v1_1, $v2_1, $v3_1, (\BigInt\equals($v3_1, NULL) ? 1 : method7($v0_1, $v3_1, 0, NULL)) - 1, new UH1_UH1_0(), 0);
+function method9($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, $v5, $v6) {
+    if ($v6 < $v4_1 + 1) {
+        return method9($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6 + 1);
+    } else {
+        $v14 = method10($v0_1, $v4_1, $v5, NULL);
+        if ($v14->get_Tag() == 0) {
+            $v15 = $v14->f0_0;
+            if (\BigInt\compare($v15, $v3_1) <= 0) {
+                return $v15;
+            } else {
+                if ($v2_1) {
+                    return method13($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method12($v4_1, $v1_1, 0));
+                } else {
+                    return method9($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6 + 1);
+                }
+            }
+        } else {
+            if ($v2_1) {
+                return method13($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, method12($v4_1, $v1_1, 0));
+            } else {
+                return method9($v0_1, $v1_1, $v2_1, $v3_1, $v4_1, new UH1_UH1_1($v1_1(NULL), $v5), $v6 + 1);
+            }
+        }
+    }
 }
 
 #118
+function closure13($v0_1, $v1_1, $v2_1, $v3_1) {
+    return method9($v0_1, $v1_1, $v2_1, $v3_1, (\BigInt\equals($v3_1, NULL) ? 1 : method8($v0_1, $v3_1, 0, NULL)) - 1, new UH1_UH1_0(), 0);
+}
+
+#119
 function closure12($v0_1, $v1_1, $v2_1) {
     return function ($v) use ($closure13, $v0_1, $v1_1, $v2_1) {     return closure13($v0_1, $v1_1, $v2_1, $v);
  };
 }
 
-#119
+#120
 function closure11($v0_1, $v1_1) {
     return function ($v) use ($closure12, $v0_1, $v1_1) {     return closure12($v0_1, $v1_1, $v);
  };
 }
 
-#120
+#121
 function closure10($unitVar, $v0_1) {
-    $v3_1 = \Option\defaultArg(\Option\map(function ($v) use ($closure4) {     return closure4(NULL, $v);
- }, $v0_1), new US0_US0_1());
-    return function ($v_1) use ($closure11, $v3_1) {     return closure11($v3_1, $v_1);
+    $v3_1 = \Option\defaultArg(\Option\map(method1(NULL), $v0_1), new US0_US0_1());
+    return function ($v) use ($closure11, $v3_1) {     return closure11($v3_1, $v);
  };
 }
 
-#121
-function method13($v0_1, $v1_1) {
+#122
+function method14($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
         case 0:
             return $v1_1;
         default:
-            return method13($v0_1->Item2, $v1_1 + 1);
+            return method14($v0_1->Item2, $v1_1 + 1);
     }
 }
 
-#122
+#123
 function closure80($v0_1, $v1_1, $v2_1) {
-    $v10 = method9(\Option\defaultArg(\Option\map(function ($v) use ($closure4) {     return closure4(NULL, $v);
- }, $v0_1), new US0_US0_1()), method13($v2_1, 0) - 1, $v2_1, NULL);
+    $v10 = method10(\Option\defaultArg(\Option\map(method1(NULL), $v0_1), new US0_US0_1()), method14($v2_1, 0) - 1, $v2_1, NULL);
     if ($v10->get_Tag() == 0) {
         $v11 = $v10->f0_0;
         if (\BigInt\compare($v11, NULL) >= 0 ? \BigInt\compare($v11, $v1_1) <= 0 : false) {
@@ -1582,28 +1585,28 @@ function closure80($v0_1, $v1_1, $v2_1) {
     }
 }
 
-#123
+#124
 function closure79($v0_1, $v1_1) {
     return function ($v) use ($closure80, $v0_1, $v1_1) {     return closure80($v0_1, $v1_1, $v);
  };
 }
 
-#124
+#125
 function closure78($unitVar, $v0_1) {
     return function ($v) use ($closure79, $v0_1) {     return closure79($v0_1, $v);
  };
 }
 
-#125
-function method39($v0_1, $v1_1) {
+#126
+function method40($v0_1, $v1_1) {
     $v2_1 = \BigInt\toInt64(\BigInt\op_Addition($v1_1, NULL));
     $v3_1 = NULL;
     $console->log;
     return new US5_US5_0($v2_1, $v0_1);
 }
 
-#126
-function method38($v0_1, $v1_1) {
+#127
+function method39($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
         case 0:
@@ -1615,16 +1618,38 @@ function method38($v0_1, $v1_1) {
                 $v7 = \BigInt\toInt64(\BigInt\fromUInt8($v3_1 - 1));
                 $v8 = NULL;
                 $console->log;
-                return method39($v4_1, \BigInt\toInt64(\BigInt\op_Addition($v1_1, $v7)));
+                return method40($v4_1, \BigInt\toInt64(\BigInt\op_Addition($v1_1, $v7)));
             } else {
                 $v11 = NULL;
+                $console->log;
+                return method40($v4_1, $v1_1);
+            }
+    }
+}
+
+#128
+function method38($v0_1, $v1_1) {
+    switch ($v0_1->get_Tag())
+    {
+        case 0:
+            return new US5_US5_1();
+        default:
+            $v4_1 = $v0_1->Item2;
+            $v3_1 = $v0_1->Item1;
+            if ($v3_1 > 1) {
+                $v8 = \BigInt\toInt64(\BigInt\op_Multiply(\BigInt\toInt64(\BigInt\fromUInt8($v3_1 - 1)), NULL));
+                $v9 = NULL;
+                $console->log;
+                return method39($v4_1, \BigInt\toInt64(\BigInt\op_Addition($v1_1, $v8)));
+            } else {
+                $v12 = NULL;
                 $console->log;
                 return method39($v4_1, $v1_1);
             }
     }
 }
 
-#127
+#129
 function method37($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1646,7 +1671,7 @@ function method37($v0_1, $v1_1) {
     }
 }
 
-#128
+#130
 function method36($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1668,7 +1693,7 @@ function method36($v0_1, $v1_1) {
     }
 }
 
-#129
+#131
 function method35($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1690,7 +1715,7 @@ function method35($v0_1, $v1_1) {
     }
 }
 
-#130
+#132
 function method34($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1712,7 +1737,7 @@ function method34($v0_1, $v1_1) {
     }
 }
 
-#131
+#133
 function method33($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1734,7 +1759,7 @@ function method33($v0_1, $v1_1) {
     }
 }
 
-#132
+#134
 function method32($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1756,7 +1781,7 @@ function method32($v0_1, $v1_1) {
     }
 }
 
-#133
+#135
 function method31($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1778,7 +1803,7 @@ function method31($v0_1, $v1_1) {
     }
 }
 
-#134
+#136
 function method30($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1800,7 +1825,7 @@ function method30($v0_1, $v1_1) {
     }
 }
 
-#135
+#137
 function method29($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1822,7 +1847,7 @@ function method29($v0_1, $v1_1) {
     }
 }
 
-#136
+#138
 function method28($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1844,7 +1869,7 @@ function method28($v0_1, $v1_1) {
     }
 }
 
-#137
+#139
 function method27($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1866,7 +1891,7 @@ function method27($v0_1, $v1_1) {
     }
 }
 
-#138
+#140
 function method26($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1888,7 +1913,7 @@ function method26($v0_1, $v1_1) {
     }
 }
 
-#139
+#141
 function method25($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1910,7 +1935,7 @@ function method25($v0_1, $v1_1) {
     }
 }
 
-#140
+#142
 function method24($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1932,7 +1957,7 @@ function method24($v0_1, $v1_1) {
     }
 }
 
-#141
+#143
 function method23($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1954,7 +1979,7 @@ function method23($v0_1, $v1_1) {
     }
 }
 
-#142
+#144
 function method22($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1976,7 +2001,7 @@ function method22($v0_1, $v1_1) {
     }
 }
 
-#143
+#145
 function method21($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -1998,7 +2023,7 @@ function method21($v0_1, $v1_1) {
     }
 }
 
-#144
+#146
 function method20($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -2020,7 +2045,7 @@ function method20($v0_1, $v1_1) {
     }
 }
 
-#145
+#147
 function method19($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -2042,7 +2067,7 @@ function method19($v0_1, $v1_1) {
     }
 }
 
-#146
+#148
 function method18($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -2064,7 +2089,7 @@ function method18($v0_1, $v1_1) {
     }
 }
 
-#147
+#149
 function method17($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -2086,7 +2111,7 @@ function method17($v0_1, $v1_1) {
     }
 }
 
-#148
+#150
 function method16($v0_1, $v1_1) {
     switch ($v0_1->get_Tag())
     {
@@ -2108,280 +2133,258 @@ function method16($v0_1, $v1_1) {
     }
 }
 
-#149
+#151
 function method15($v0_1, $v1_1) {
-    switch ($v0_1->get_Tag())
-    {
-        case 0:
-            return new US5_US5_1();
-        default:
-            $v4_1 = $v0_1->Item2;
-            $v3_1 = $v0_1->Item1;
-            if ($v3_1 > 1) {
-                $v8 = \BigInt\toInt64(\BigInt\op_Multiply(\BigInt\toInt64(\BigInt\fromUInt8($v3_1 - 1)), NULL));
-                $v9 = NULL;
-                $console->log;
-                return method16($v4_1, \BigInt\toInt64(\BigInt\op_Addition($v1_1, $v8)));
-            } else {
-                $v12 = NULL;
-                $console->log;
-                return method16($v4_1, $v1_1);
-            }
-    }
-}
-
-#150
-function method14($v0_1, $v1_1) {
     if ($v1_1 < 24) {
         $_v3 = NULL;
         $value = \Random\nonSeeded()->Next2;
         $x = $value & 0xFF;
         $_v3 = $x;
-        return method14(new UH1_UH1_1(\Option\value($_v3), $v0_1), $v1_1 + 1);
+        return method15(new UH1_UH1_1(\Option\value($_v3), $v0_1), $v1_1 + 1);
     } else {
-        $v16 = method15($v0_1, NULL);
-        if ($v16->get_Tag() == 0) {
-            $v17 = $v16->f0_0;
-            if (\BigInt\compare($v17, NULL) <= 0) {
-                return $v17;
+        $v17 = method16($v0_1, NULL);
+        if ($v17->get_Tag() == 0) {
+            $v18 = $v17->f0_0;
+            if (\BigInt\compare($v18, NULL) <= 0) {
+                return $v18;
             } else {
-                $_v20 = NULL;
+                $_v21 = NULL;
                 $value_1 = \Random\nonSeeded()->Next2;
                 $x_1 = $value_1 & 0xFF;
-                $_v20 = $x_1;
-                $v28 = \Option\value($_v20);
-                $_v29 = NULL;
+                $_v21 = $x_1;
+                $v30 = \Option\value($_v21);
+                $_v31 = NULL;
                 $value_2 = \Random\nonSeeded()->Next2;
                 $x_2 = $value_2 & 0xFF;
-                $_v29 = $x_2;
-                $v35 = \Option\value($_v29);
-                $_v36 = NULL;
+                $_v31 = $x_2;
+                $v38 = \Option\value($_v31);
+                $_v39 = NULL;
                 $value_3 = \Random\nonSeeded()->Next2;
                 $x_3 = $value_3 & 0xFF;
-                $_v36 = $x_3;
-                $v42 = \Option\value($_v36);
-                $_v43 = NULL;
+                $_v39 = $x_3;
+                $v46 = \Option\value($_v39);
+                $_v47 = NULL;
                 $value_4 = \Random\nonSeeded()->Next2;
                 $x_4 = $value_4 & 0xFF;
-                $_v43 = $x_4;
-                $v49 = \Option\value($_v43);
-                $_v50 = NULL;
+                $_v47 = $x_4;
+                $v54 = \Option\value($_v47);
+                $_v55 = NULL;
                 $value_5 = \Random\nonSeeded()->Next2;
                 $x_5 = $value_5 & 0xFF;
-                $_v50 = $x_5;
-                $v56 = \Option\value($_v50);
-                $_v57 = NULL;
+                $_v55 = $x_5;
+                $v62 = \Option\value($_v55);
+                $_v63 = NULL;
                 $value_6 = \Random\nonSeeded()->Next2;
                 $x_6 = $value_6 & 0xFF;
-                $_v57 = $x_6;
-                $v63 = \Option\value($_v57);
-                $_v64 = NULL;
+                $_v63 = $x_6;
+                $v70 = \Option\value($_v63);
+                $_v71 = NULL;
                 $value_7 = \Random\nonSeeded()->Next2;
                 $x_7 = $value_7 & 0xFF;
-                $_v64 = $x_7;
-                $v70 = \Option\value($_v64);
-                $_v71 = NULL;
+                $_v71 = $x_7;
+                $v78 = \Option\value($_v71);
+                $_v79 = NULL;
                 $value_8 = \Random\nonSeeded()->Next2;
                 $x_8 = $value_8 & 0xFF;
-                $_v71 = $x_8;
-                $v77 = \Option\value($_v71);
-                $_v78 = NULL;
+                $_v79 = $x_8;
+                $v86 = \Option\value($_v79);
+                $_v87 = NULL;
                 $value_9 = \Random\nonSeeded()->Next2;
                 $x_9 = $value_9 & 0xFF;
-                $_v78 = $x_9;
-                $v84 = \Option\value($_v78);
-                $_v85 = NULL;
+                $_v87 = $x_9;
+                $v94 = \Option\value($_v87);
+                $_v95 = NULL;
                 $value_10 = \Random\nonSeeded()->Next2;
                 $x_10 = $value_10 & 0xFF;
-                $_v85 = $x_10;
-                $v91 = \Option\value($_v85);
-                $_v92 = NULL;
+                $_v95 = $x_10;
+                $v102 = \Option\value($_v95);
+                $_v103 = NULL;
                 $value_11 = \Random\nonSeeded()->Next2;
                 $x_11 = $value_11 & 0xFF;
-                $_v92 = $x_11;
-                $v98 = \Option\value($_v92);
-                $_v99 = NULL;
+                $_v103 = $x_11;
+                $v110 = \Option\value($_v103);
+                $_v111 = NULL;
                 $value_12 = \Random\nonSeeded()->Next2;
                 $x_12 = $value_12 & 0xFF;
-                $_v99 = $x_12;
-                $v105 = \Option\value($_v99);
-                $_v106 = NULL;
+                $_v111 = $x_12;
+                $v118 = \Option\value($_v111);
+                $_v119 = NULL;
                 $value_13 = \Random\nonSeeded()->Next2;
                 $x_13 = $value_13 & 0xFF;
-                $_v106 = $x_13;
-                $v112 = \Option\value($_v106);
-                $_v113 = NULL;
+                $_v119 = $x_13;
+                $v126 = \Option\value($_v119);
+                $_v127 = NULL;
                 $value_14 = \Random\nonSeeded()->Next2;
                 $x_14 = $value_14 & 0xFF;
-                $_v113 = $x_14;
-                $v119 = \Option\value($_v113);
-                $_v120 = NULL;
+                $_v127 = $x_14;
+                $v134 = \Option\value($_v127);
+                $_v135 = NULL;
                 $value_15 = \Random\nonSeeded()->Next2;
                 $x_15 = $value_15 & 0xFF;
-                $_v120 = $x_15;
-                $v126 = \Option\value($_v120);
-                $_v127 = NULL;
+                $_v135 = $x_15;
+                $v142 = \Option\value($_v135);
+                $_v143 = NULL;
                 $value_16 = \Random\nonSeeded()->Next2;
                 $x_16 = $value_16 & 0xFF;
-                $_v127 = $x_16;
-                $v133 = \Option\value($_v127);
-                $_v134 = NULL;
+                $_v143 = $x_16;
+                $v150 = \Option\value($_v143);
+                $_v151 = NULL;
                 $value_17 = \Random\nonSeeded()->Next2;
                 $x_17 = $value_17 & 0xFF;
-                $_v134 = $x_17;
-                $v140 = \Option\value($_v134);
-                $_v141 = NULL;
+                $_v151 = $x_17;
+                $v158 = \Option\value($_v151);
+                $_v159 = NULL;
                 $value_18 = \Random\nonSeeded()->Next2;
                 $x_18 = $value_18 & 0xFF;
-                $_v141 = $x_18;
-                $v147 = \Option\value($_v141);
-                $_v148 = NULL;
+                $_v159 = $x_18;
+                $v166 = \Option\value($_v159);
+                $_v167 = NULL;
                 $value_19 = \Random\nonSeeded()->Next2;
                 $x_19 = $value_19 & 0xFF;
-                $_v148 = $x_19;
-                $v154 = \Option\value($_v148);
-                $_v155 = NULL;
+                $_v167 = $x_19;
+                $v174 = \Option\value($_v167);
+                $_v175 = NULL;
                 $value_20 = \Random\nonSeeded()->Next2;
                 $x_20 = $value_20 & 0xFF;
-                $_v155 = $x_20;
-                $v161 = \Option\value($_v155);
-                $_v162 = NULL;
+                $_v175 = $x_20;
+                $v182 = \Option\value($_v175);
+                $_v183 = NULL;
                 $value_21 = \Random\nonSeeded()->Next2;
                 $x_21 = $value_21 & 0xFF;
-                $_v162 = $x_21;
-                $v168 = \Option\value($_v162);
-                $_v169 = NULL;
+                $_v183 = $x_21;
+                $v190 = \Option\value($_v183);
+                $_v191 = NULL;
                 $value_22 = \Random\nonSeeded()->Next2;
                 $x_22 = $value_22 & 0xFF;
-                $_v169 = $x_22;
-                $v175 = \Option\value($_v169);
-                $_v176 = NULL;
+                $_v191 = $x_22;
+                $v198 = \Option\value($_v191);
+                $_v199 = NULL;
                 $value_23 = \Random\nonSeeded()->Next2;
                 $x_23 = $value_23 & 0xFF;
-                $_v176 = $x_23;
-                return method14(new UH1_UH1_1($v28, new UH1_UH1_1($v35, new UH1_UH1_1($v42, new UH1_UH1_1($v49, new UH1_UH1_1($v56, new UH1_UH1_1($v63, new UH1_UH1_1($v70, new UH1_UH1_1($v77, new UH1_UH1_1($v84, new UH1_UH1_1($v91, new UH1_UH1_1($v98, new UH1_UH1_1($v105, new UH1_UH1_1($v112, new UH1_UH1_1($v119, new UH1_UH1_1($v126, new UH1_UH1_1($v133, new UH1_UH1_1($v140, new UH1_UH1_1($v147, new UH1_UH1_1($v154, new UH1_UH1_1($v161, new UH1_UH1_1($v168, new UH1_UH1_1($v175, new UH1_UH1_1(\Option\value($_v176), new UH1_UH1_0()))))))))))))))))))))))), 23);
+                $_v199 = $x_23;
+                return method15(new UH1_UH1_1($v30, new UH1_UH1_1($v38, new UH1_UH1_1($v46, new UH1_UH1_1($v54, new UH1_UH1_1($v62, new UH1_UH1_1($v70, new UH1_UH1_1($v78, new UH1_UH1_1($v86, new UH1_UH1_1($v94, new UH1_UH1_1($v102, new UH1_UH1_1($v110, new UH1_UH1_1($v118, new UH1_UH1_1($v126, new UH1_UH1_1($v134, new UH1_UH1_1($v142, new UH1_UH1_1($v150, new UH1_UH1_1($v158, new UH1_UH1_1($v166, new UH1_UH1_1($v174, new UH1_UH1_1($v182, new UH1_UH1_1($v190, new UH1_UH1_1($v198, new UH1_UH1_1(\Option\value($_v199), new UH1_UH1_0()))))))))))))))))))))))), 23);
             }
         } else {
-            $_v210 = NULL;
+            $_v234 = NULL;
             $value_24 = \Random\nonSeeded()->Next2;
             $x_24 = $value_24 & 0xFF;
-            $_v210 = $x_24;
-            $v218 = \Option\value($_v210);
-            $_v219 = NULL;
+            $_v234 = $x_24;
+            $v243 = \Option\value($_v234);
+            $_v244 = NULL;
             $value_25 = \Random\nonSeeded()->Next2;
             $x_25 = $value_25 & 0xFF;
-            $_v219 = $x_25;
-            $v225 = \Option\value($_v219);
-            $_v226 = NULL;
+            $_v244 = $x_25;
+            $v251 = \Option\value($_v244);
+            $_v252 = NULL;
             $value_26 = \Random\nonSeeded()->Next2;
             $x_26 = $value_26 & 0xFF;
-            $_v226 = $x_26;
-            $v232 = \Option\value($_v226);
-            $_v233 = NULL;
+            $_v252 = $x_26;
+            $v259 = \Option\value($_v252);
+            $_v260 = NULL;
             $value_27 = \Random\nonSeeded()->Next2;
             $x_27 = $value_27 & 0xFF;
-            $_v233 = $x_27;
-            $v239 = \Option\value($_v233);
-            $_v240 = NULL;
+            $_v260 = $x_27;
+            $v267 = \Option\value($_v260);
+            $_v268 = NULL;
             $value_28 = \Random\nonSeeded()->Next2;
             $x_28 = $value_28 & 0xFF;
-            $_v240 = $x_28;
-            $v246 = \Option\value($_v240);
-            $_v247 = NULL;
+            $_v268 = $x_28;
+            $v275 = \Option\value($_v268);
+            $_v276 = NULL;
             $value_29 = \Random\nonSeeded()->Next2;
             $x_29 = $value_29 & 0xFF;
-            $_v247 = $x_29;
-            $v253 = \Option\value($_v247);
-            $_v254 = NULL;
+            $_v276 = $x_29;
+            $v283 = \Option\value($_v276);
+            $_v284 = NULL;
             $value_30 = \Random\nonSeeded()->Next2;
             $x_30 = $value_30 & 0xFF;
-            $_v254 = $x_30;
-            $v260 = \Option\value($_v254);
-            $_v261 = NULL;
+            $_v284 = $x_30;
+            $v291 = \Option\value($_v284);
+            $_v292 = NULL;
             $value_31 = \Random\nonSeeded()->Next2;
             $x_31 = $value_31 & 0xFF;
-            $_v261 = $x_31;
-            $v267 = \Option\value($_v261);
-            $_v268 = NULL;
+            $_v292 = $x_31;
+            $v299 = \Option\value($_v292);
+            $_v300 = NULL;
             $value_32 = \Random\nonSeeded()->Next2;
             $x_32 = $value_32 & 0xFF;
-            $_v268 = $x_32;
-            $v274 = \Option\value($_v268);
-            $_v275 = NULL;
+            $_v300 = $x_32;
+            $v307 = \Option\value($_v300);
+            $_v308 = NULL;
             $value_33 = \Random\nonSeeded()->Next2;
             $x_33 = $value_33 & 0xFF;
-            $_v275 = $x_33;
-            $v281 = \Option\value($_v275);
-            $_v282 = NULL;
+            $_v308 = $x_33;
+            $v315 = \Option\value($_v308);
+            $_v316 = NULL;
             $value_34 = \Random\nonSeeded()->Next2;
             $x_34 = $value_34 & 0xFF;
-            $_v282 = $x_34;
-            $v288 = \Option\value($_v282);
-            $_v289 = NULL;
+            $_v316 = $x_34;
+            $v323 = \Option\value($_v316);
+            $_v324 = NULL;
             $value_35 = \Random\nonSeeded()->Next2;
             $x_35 = $value_35 & 0xFF;
-            $_v289 = $x_35;
-            $v295 = \Option\value($_v289);
-            $_v296 = NULL;
+            $_v324 = $x_35;
+            $v331 = \Option\value($_v324);
+            $_v332 = NULL;
             $value_36 = \Random\nonSeeded()->Next2;
             $x_36 = $value_36 & 0xFF;
-            $_v296 = $x_36;
-            $v302 = \Option\value($_v296);
-            $_v303 = NULL;
+            $_v332 = $x_36;
+            $v339 = \Option\value($_v332);
+            $_v340 = NULL;
             $value_37 = \Random\nonSeeded()->Next2;
             $x_37 = $value_37 & 0xFF;
-            $_v303 = $x_37;
-            $v309 = \Option\value($_v303);
-            $_v310 = NULL;
+            $_v340 = $x_37;
+            $v347 = \Option\value($_v340);
+            $_v348 = NULL;
             $value_38 = \Random\nonSeeded()->Next2;
             $x_38 = $value_38 & 0xFF;
-            $_v310 = $x_38;
-            $v316 = \Option\value($_v310);
-            $_v317 = NULL;
+            $_v348 = $x_38;
+            $v355 = \Option\value($_v348);
+            $_v356 = NULL;
             $value_39 = \Random\nonSeeded()->Next2;
             $x_39 = $value_39 & 0xFF;
-            $_v317 = $x_39;
-            $v323 = \Option\value($_v317);
-            $_v324 = NULL;
+            $_v356 = $x_39;
+            $v363 = \Option\value($_v356);
+            $_v364 = NULL;
             $value_40 = \Random\nonSeeded()->Next2;
             $x_40 = $value_40 & 0xFF;
-            $_v324 = $x_40;
-            $v330 = \Option\value($_v324);
-            $_v331 = NULL;
+            $_v364 = $x_40;
+            $v371 = \Option\value($_v364);
+            $_v372 = NULL;
             $value_41 = \Random\nonSeeded()->Next2;
             $x_41 = $value_41 & 0xFF;
-            $_v331 = $x_41;
-            $v337 = \Option\value($_v331);
-            $_v338 = NULL;
+            $_v372 = $x_41;
+            $v379 = \Option\value($_v372);
+            $_v380 = NULL;
             $value_42 = \Random\nonSeeded()->Next2;
             $x_42 = $value_42 & 0xFF;
-            $_v338 = $x_42;
-            $v344 = \Option\value($_v338);
-            $_v345 = NULL;
+            $_v380 = $x_42;
+            $v387 = \Option\value($_v380);
+            $_v388 = NULL;
             $value_43 = \Random\nonSeeded()->Next2;
             $x_43 = $value_43 & 0xFF;
-            $_v345 = $x_43;
-            $v351 = \Option\value($_v345);
-            $_v352 = NULL;
+            $_v388 = $x_43;
+            $v395 = \Option\value($_v388);
+            $_v396 = NULL;
             $value_44 = \Random\nonSeeded()->Next2;
             $x_44 = $value_44 & 0xFF;
-            $_v352 = $x_44;
-            $v358 = \Option\value($_v352);
-            $_v359 = NULL;
+            $_v396 = $x_44;
+            $v403 = \Option\value($_v396);
+            $_v404 = NULL;
             $value_45 = \Random\nonSeeded()->Next2;
             $x_45 = $value_45 & 0xFF;
-            $_v359 = $x_45;
-            $v365 = \Option\value($_v359);
-            $_v366 = NULL;
+            $_v404 = $x_45;
+            $v411 = \Option\value($_v404);
+            $_v412 = NULL;
             $value_46 = \Random\nonSeeded()->Next2;
             $x_46 = $value_46 & 0xFF;
-            $_v366 = $x_46;
-            return method14(new UH1_UH1_1($v218, new UH1_UH1_1($v225, new UH1_UH1_1($v232, new UH1_UH1_1($v239, new UH1_UH1_1($v246, new UH1_UH1_1($v253, new UH1_UH1_1($v260, new UH1_UH1_1($v267, new UH1_UH1_1($v274, new UH1_UH1_1($v281, new UH1_UH1_1($v288, new UH1_UH1_1($v295, new UH1_UH1_1($v302, new UH1_UH1_1($v309, new UH1_UH1_1($v316, new UH1_UH1_1($v323, new UH1_UH1_1($v330, new UH1_UH1_1($v337, new UH1_UH1_1($v344, new UH1_UH1_1($v351, new UH1_UH1_1($v358, new UH1_UH1_1($v365, new UH1_UH1_1(\Option\value($_v366), new UH1_UH1_0()))))))))))))))))))))))), 23);
+            $_v412 = $x_46;
+            return method15(new UH1_UH1_1($v243, new UH1_UH1_1($v251, new UH1_UH1_1($v259, new UH1_UH1_1($v267, new UH1_UH1_1($v275, new UH1_UH1_1($v283, new UH1_UH1_1($v291, new UH1_UH1_1($v299, new UH1_UH1_1($v307, new UH1_UH1_1($v315, new UH1_UH1_1($v323, new UH1_UH1_1($v331, new UH1_UH1_1($v339, new UH1_UH1_1($v347, new UH1_UH1_1($v355, new UH1_UH1_1($v363, new UH1_UH1_1($v371, new UH1_UH1_1($v379, new UH1_UH1_1($v387, new UH1_UH1_1($v395, new UH1_UH1_1($v403, new UH1_UH1_1($v411, new UH1_UH1_1(\Option\value($_v412), new UH1_UH1_0()))))))))))))))))))))))), 23);
         }
     }
 }
 
-#151
+#152
 function closure81($unitVar, $v0_1) {
     $v1_1 = NULL;
     $console->log;
@@ -2390,47 +2393,47 @@ function closure81($unitVar, $v0_1) {
     return 0;
 }
 
-#152
+#153
 $GLOBALS['v0'] = function ($v) use ($closure0) { return closure0(NULL, $v);
  };
 
-#153
+#154
 function rotate_numbers($x) {
     return $GLOBALS['v0']($x);
 }
 
-#154
+#155
 $GLOBALS['v1'] = function ($v) use ($closure3) { return closure3(NULL, $v);
  };
 
-#155
+#156
 function create_sequential_roller($x) {
     return $GLOBALS['v1']($x);
 }
 
-#156
+#157
 $GLOBALS['v2'] = function ($v) use ($closure10) { return closure10(NULL, $v);
  };
 
-#157
+#158
 function roll_progressively($x) {
     return $GLOBALS['v2']($x);
 }
 
-#158
+#159
 $GLOBALS['v3'] = function ($v) use ($closure78) { return closure78(NULL, $v);
  };
 
-#159
+#160
 function roll_within_bounds($x) {
     return $GLOBALS['v3']($x);
 }
 
-#160
+#161
 $GLOBALS['v4'] = function ($v) use ($closure81) { return closure81(NULL, $v);
  };
 
-#161
+#162
 function main($args) {
     return $GLOBALS['v4']($args);
 }

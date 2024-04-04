@@ -173,8 +173,8 @@ calculate_dice_count (Some console.write_line) 7777i32
 inl roll_dice () : u8 =
     run_target function
         | Fsharp _ => fun () => $"System.Random().Next (1, 7) |> uint8"
-        | Rust (Native) => fun () => rust.emit_expr () "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
-        | Rust (Wasm) => fun () => rust.emit_expr () "1"
+        | Rust (Contract) => fun () => rust.emit_expr () "1"
+        | Rust (Wasm | Native) => fun () => rust.emit_expr () "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
 
 #!markdown
 

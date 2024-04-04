@@ -221,116 +221,101 @@ inl rpc_response_box ({ jsonrpc result error id } : rpc_response) : rpc_response
     !\($'"crate::model::near::rpc::RpcResponse { jsonrpc: !jsonrpc, result: !result, error: !error, id: !id }"')
     
 inl rpc_input_unbox (x : rpc_input') : rpc_input =
-    inl x = join x
-    inl jsonrpc = !\($'"!x.jsonrpc"')
-    inl id = !\($'"!x.id"')
-    inl method = !\($'"!x.method"')
+    inl jsonrpc = !\\(x, $'"$0.jsonrpc"')
+    inl id = !\\(x, $'"$0.id"')
+    inl method = !\\(x, $'"$0.method"')
     inl params =
-        !\($'"!x.params"')
+        !\\(x, $'"$0.params"')
         |> am'.from_vec
         |> fun (a x : _ i32 _) => join x
     { jsonrpc; id; method; params }
 
 inl error_cause_info_unbox (x : error_cause_info') : error_cause_info =
-    inl x = join x
-    inl error_message = !\($'"!x.error_message"')
-    inl requested_transaction_hash = !\($'"!x.requested_transaction_hash"')
+    inl error_message = !\\(x, $'"$0.error_message"')
+    inl requested_transaction_hash = !\\(x, $'"$0.requested_transaction_hash"')
     { error_message; requested_transaction_hash }
 
 inl error_cause_unbox (x : error_cause') : error_cause =
-    inl x = join x
-    inl name = !\($'"!x.name"')
-    inl info = !\($'"!x.info"') |> optionm'.map error_cause_info_unbox
+    inl name = !\\(x, $'"$0.name"')
+    inl info = !\\(x, $'"$0.info"') |> optionm'.map error_cause_info_unbox
     { name; info }
 
 inl rpc_error_unbox (x : rpc_error') : rpc_error =
-    inl x = join x
-    inl name = !\($'"!x.name"')
-    inl cause = !\($'"!x.cause"') |> error_cause_unbox
-    inl code = !\($'"!x.code"')
-    inl message = !\($'"!x.message"')
-    inl data = !\($'"!x.data"')
+    inl name = !\\(x, $'"$0.name"')
+    inl cause = !\\(x, $'"$0.cause"') |> error_cause_unbox
+    inl code = !\\(x, $'"$0.code"')
+    inl message = !\\(x, $'"$0.message"')
+    inl data = !\\(x, $'"$0.data"')
     { name; cause; code; message; data }
 
 inl transfer_detail_unbox (x : transfer_detail') : transfer_detail =
-    inl x = join x
-    inl deposit = !\($'"!x.deposit"')
-    inl args = !\($'"!x.args"')
-    inl gas = !\($'"!x.gas"')
-    inl method_name = !\($'"!x.method_name"')
+    inl deposit = !\\(x, $'"$0.deposit"')
+    inl args = !\\(x, $'"$0.args"')
+    inl gas = !\\(x, $'"$0.gas"')
+    inl method_name = !\\(x, $'"$0.method_name"')
     { deposit args gas method_name }
 
 inl gas_profile_unbox (x : gas_profile') : gas_profile =
-    inl x = join x
-    inl cost = !\($'"!x.cost"')
-    inl cost_category = !\($'"!x.cost_category"')
-    inl gas_used = !\($'"!x.gas_used"')
+    inl cost = !\\(x, $'"$0.cost"')
+    inl cost_category = !\\(x, $'"$0.cost_category"')
+    inl gas_used = !\\(x, $'"$0.gas_used"')
     { cost; cost_category; gas_used }
 
 inl metadata_unbox (x : metadata') : metadata =
-    inl x = join x
-    inl gas_profile = !\($'"!x.gas_profile"') |> am'.vec_map gas_profile_unbox |> am'.from_vec |> fun (a x : _ i32 _) => x
-    inl version = !\($'"!x.version"')
+    inl gas_profile = !\\(x, $'"$0.gas_profile"') |> am'.vec_map gas_profile_unbox |> am'.from_vec |> fun (a x : _ i32 _) => x
+    inl version = !\\(x, $'"$0.version"')
     { gas_profile; version }
 
 inl outcome_detail_unbox (x : outcome_detail') : outcome_detail =
-    inl x = join x
-    inl executor_id = !\($'"!x.executor_id"')
-    inl gas_burnt = !\($'"!x.gas_burnt"')
-    inl logs = !\($'"!x.logs"') |> am'.from_vec |> fun (a x : _ i32 _) => x
-    inl metadata = !\($'"!x.metadata"') |> metadata_unbox
-    inl receipt_ids = !\($'"!x.receipt_ids"') |> am'.from_vec |> fun (a x : _ i32 _) => x
-    inl status = !\($'"!x.status"')
-    inl tokens_burnt = !\($'"!x.tokens_burnt"')
+    inl executor_id = !\\(x, $'"$0.executor_id"')
+    inl gas_burnt = !\\(x, $'"$0.gas_burnt"')
+    inl logs = !\\(x, $'"$0.logs"') |> am'.from_vec |> fun (a x : _ i32 _) => x
+    inl metadata = !\\(x, $'"$0.metadata"') |> metadata_unbox
+    inl receipt_ids = !\\(x, $'"$0.receipt_ids"') |> am'.from_vec |> fun (a x : _ i32 _) => x
+    inl status = !\\(x, $'"$0.status"')
+    inl tokens_burnt = !\\(x, $'"$0.tokens_burnt"')
     { executor_id gas_burnt logs metadata receipt_ids status tokens_burnt }
 
 inl proof_unbox (x : proof') : proof =
-    inl x = join x
-    inl direction = !\($'"!x.direction"')
-    inl hash = !\($'"!x.hash"')
+    inl direction = !\\(x, $'"$0.direction"')
+    inl hash = !\\(x, $'"$0.hash"')
     { direction hash }
 
 inl receipts_outcome_unbox (x : receipts_outcome') : receipts_outcome =
-    inl x = join x
-    inl block_hash = !\($'"!x.block_hash"')
-    inl id = !\($'"!x.id"')
-    inl outcome = !\($'"!x.outcome"') |> outcome_detail_unbox
-    inl proof = !\($'"!x.proof"') |> optionm'.map (am'.vec_map proof_unbox >> am'.from_vec >> fun (a x : _ i32 _) => x)
+    inl block_hash = !\\(x, $'"$0.block_hash"')
+    inl id = !\\(x, $'"$0.id"')
+    inl outcome = !\\(x, $'"$0.outcome"') |> outcome_detail_unbox
+    inl proof = !\\(x, $'"$0.proof"') |> optionm'.map (am'.vec_map proof_unbox >> am'.from_vec >> fun (a x : _ i32 _) => x)
     { block_hash id outcome proof }
 
 inl action_detail_unbox (x : action_detail') : action_detail =
-    inl x = join x
-    inl actions = !\($'"!x.actions"') |> am'.vec_map (mapm.map transfer_detail_unbox) |> am'.from_vec |> fun (a x : _ i32 _) => x
-    inl gas_price = !\($'"!x.gas_price"')
-    inl input_data_ids = !\($'"!x.input_data_ids"') |> am'.from_vec |> fun (a x : _ i32 _) => x
-    inl output_data_receivers = !\($'"!x.output_data_receivers"') |> am'.from_vec |> fun (a x : _ i32 _) => x
-    inl signer_id = !\($'"!x.signer_id"')
-    inl signer_public_key = !\($'"!x.signer_public_key"')
+    inl actions = !\\(x, $'"$0.actions"') |> am'.vec_map (mapm.map transfer_detail_unbox) |> am'.from_vec |> fun (a x : _ i32 _) => x
+    inl gas_price = !\\(x, $'"$0.gas_price"')
+    inl input_data_ids = !\\(x, $'"$0.input_data_ids"') |> am'.from_vec |> fun (a x : _ i32 _) => x
+    inl output_data_receivers = !\\(x, $'"$0.output_data_receivers"') |> am'.from_vec |> fun (a x : _ i32 _) => x
+    inl signer_id = !\\(x, $'"$0.signer_id"')
+    inl signer_public_key = !\\(x, $'"$0.signer_public_key"')
     { actions; gas_price; input_data_ids; output_data_receivers; signer_id; signer_public_key }
 
 inl receipt_detail_unbox (x : receipt_detail') : receipt_detail =
-    inl x = join x
-    inl action = !\($'"!x.action"') |> action_detail_unbox
+    inl action = !\\(x, $'"$0.action"') |> action_detail_unbox
     { action }
 
 inl receipt_unbox (x : receipt') : receipt =
-    inl x = join x
-    inl predecessor_id = !\($'"!x.predecessor_id"')
-    inl receipt = !\($'"!x.receipt"') |> receipt_detail_unbox
-    inl receipt_id = !\($'"!x.receipt_id"')
-    inl receiver_id = !\($'"!x.receiver_id"')
+    inl predecessor_id = !\\(x, $'"$0.predecessor_id"')
+    inl receipt = !\\(x, $'"$0.receipt"') |> receipt_detail_unbox
+    inl receipt_id = !\\(x, $'"$0.receipt_id"')
+    inl receiver_id = !\\(x, $'"$0.receiver_id"')
     { predecessor_id; receipt; receipt_id; receiver_id }
 
 inl transaction_status_unbox (x : transaction_status') : transaction_status =
-    inl x = join x
-    inl receipts = !\($'"!x.receipts"') |> am'.vec_map receipt_unbox |> am'.from_vec |> fun (a x : _ i32 _) => x
-    inl receipts_outcome = !\($'"!x.receipts_outcome"') |> am'.vec_map receipts_outcome_unbox |> am'.from_vec |> fun (a x : _ i32 _) => x
+    inl receipts = !\\(x, $'"$0.receipts"') |> am'.vec_map receipt_unbox |> am'.from_vec |> fun (a x : _ i32 _) => x
+    inl receipts_outcome = !\\(x, $'"$0.receipts_outcome"') |> am'.vec_map receipts_outcome_unbox |> am'.from_vec |> fun (a x : _ i32 _) => x
     { receipts; receipts_outcome }
 
 inl rpc_response_unbox (x : rpc_response') : rpc_response =
-    inl x = join x
-    inl jsonrpc = !\($'"!x.jsonrpc"')
-    inl result = !\($'"!x.result"') |> optionm'.map transaction_status_unbox
-    inl error = !\($'"!x.error"') |> optionm'.map rpc_error_unbox
-    inl id = !\($'"!x.id"')
+    inl jsonrpc = !\\(x, $'"$0.jsonrpc"')
+    inl result = !\\(x, $'"$0.result"') |> optionm'.map transaction_status_unbox
+    inl error = !\\(x, $'"$0.error"') |> optionm'.map rpc_error_unbox
+    inl id = !\\(x, $'"$0.id"')
     { jsonrpc; result; error; id }

@@ -59,7 +59,7 @@ module DiceFSharp =
 
 #if FABLE_COMPILER_RUST
     let rollDice () : int =
-#if !WASM
+#if !WASM && !CONTRACT
         Fable.Core.RustInterop.emitRustExpr () "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
 #else
         1

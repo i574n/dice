@@ -503,8 +503,12 @@ export function closure4(unitVar: void, v0_1: ((arg0: string) => void)): US0_$un
     return US0_US0_0(v0_1);
 }
 
-export function method1(v0_1_mut: UH1_$union, v1_1_mut: UH1_$union): UH1_$union {
-    method1:
+export function method1(): ((arg0: ((arg0: string) => void)) => US0_$union) {
+    return (v: ((arg0: string) => void)): US0_$union => closure4(void 0, v);
+}
+
+export function method2(v0_1_mut: UH1_$union, v1_1_mut: UH1_$union): UH1_$union {
+    method2:
     while (true) {
         const v0_1: UH1_$union = v0_1_mut, v1_1: UH1_$union = v1_1_mut;
         if (v0_1.tag === /* UH1_0 */ 0) {
@@ -513,18 +517,18 @@ export function method1(v0_1_mut: UH1_$union, v1_1_mut: UH1_$union): UH1_$union 
         else {
             v0_1_mut = v0_1.fields[1];
             v1_1_mut = UH1_UH1_1(v0_1.fields[0], v1_1);
-            continue method1;
+            continue method2;
         }
         break;
     }
 }
 
-export function method2(v0_1: UH1_$union, v1_1: UH1_$union): UH1_$union {
+export function method3(v0_1: UH1_$union, v1_1: UH1_$union): UH1_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return v1_1;
     }
     else {
-        return UH1_UH1_1(v0_1.fields[0], method2(v0_1.fields[1], v1_1));
+        return UH1_UH1_1(v0_1.fields[0], method3(v0_1.fields[1], v1_1));
     }
 }
 
@@ -532,13 +536,13 @@ export function closure6(v0_1: UH0_$union, unitVar: void): UH0_$union {
     return v0_1;
 }
 
-export function method3(v0_1: UH1_$union, v1_1: UH0_$union): UH0_$union {
+export function method4(v0_1: UH1_$union, v1_1: UH0_$union): UH0_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return v1_1;
     }
     else {
         const v2_1: uint8 = v0_1.fields[0];
-        const v4_1: UH0_$union = method3(v0_1.fields[1], v1_1);
+        const v4_1: UH0_$union = method4(v0_1.fields[1], v1_1);
         return UH0_UH0_0(v2_1, (): UH0_$union => closure6(v4_1, void 0));
     }
 }
@@ -551,7 +555,7 @@ export function closure8(v0_1: UH0_$union, v1_1: Mut0, unitVar: void): UH0_$unio
     const v2_1: US1_$union = v1_1.l0;
     if (v2_1.tag === /* US1_0 */ 0) {
         const v5: UH0_$union = v2_1.fields[0]();
-        const v12: UH0_$union = (v5.tag === /* UH0_1 */ 1) ? UH0_UH0_1() : UH0_UH0_0(v5.fields[0], method4(v0_1, v5.fields[1]));
+        const v12: UH0_$union = (v5.tag === /* UH0_1 */ 1) ? UH0_UH0_1() : UH0_UH0_0(v5.fields[0], method5(v0_1, v5.fields[1]));
         v1_1.l0 = US1_US1_1(v12);
         return v12;
     }
@@ -560,13 +564,13 @@ export function closure8(v0_1: UH0_$union, v1_1: Mut0, unitVar: void): UH0_$unio
     }
 }
 
-export function method4(v0_1: UH0_$union, v1_1: (() => UH0_$union)): (() => UH0_$union) {
+export function method5(v0_1: UH0_$union, v1_1: (() => UH0_$union)): (() => UH0_$union) {
     const v3_1: Mut0 = new Mut0(US1_US1_0(v1_1));
     return (): UH0_$union => closure8(v0_1, v3_1, void 0);
 }
 
-export function method6(v0_1_mut: int64, v1_1_mut: UH0_$union): US2_$union {
-    method6:
+export function method7(v0_1_mut: int64, v1_1_mut: UH0_$union): US2_$union {
+    method7:
     while (true) {
         const v0_1: int64 = v0_1_mut, v1_1: UH0_$union = v1_1_mut;
         if (v1_1.tag === /* UH0_1 */ 1) {
@@ -581,15 +585,15 @@ export function method6(v0_1_mut: int64, v1_1_mut: UH0_$union): US2_$union {
             else {
                 v0_1_mut = toInt64(op_Subtraction(v0_1, 1n));
                 v1_1_mut = v3_1();
-                continue method6;
+                continue method7;
             }
         }
         break;
     }
 }
 
-export function method5(v0_1_mut: US0_$union, v1_1_mut: (() => UH0_$union), v2_1_mut: Mut1, v3_1_mut: Mut1, v4_1_mut: Mut1, v5_mut: Mut2): uint8 {
-    method5:
+export function method6(v0_1_mut: US0_$union, v1_1_mut: (() => UH0_$union), v2_1_mut: Mut1, v3_1_mut: Mut1, v4_1_mut: Mut1, v5_mut: Mut2): uint8 {
+    method6:
     while (true) {
         const v0_1: US0_$union = v0_1_mut, v1_1: (() => UH0_$union) = v1_1_mut, v2_1: Mut1 = v2_1_mut, v3_1: Mut1 = v3_1_mut, v4_1: Mut1 = v4_1_mut, v5: Mut2 = v5_mut;
         const v10: string = toText(interpolate("create_sequential_roller / roll / current_index: %P() / acc: %P() / len: %P() / last_item: %A%P()", [v2_1.l0, v3_1.l0, v4_1.l0, v5.l0]));
@@ -597,7 +601,7 @@ export function method5(v0_1_mut: US0_$union, v1_1_mut: (() => UH0_$union), v2_1
             v0_1.fields[0](v10);
         }
         const v12: UH0_$union = v1_1();
-        const v14: US2_$union = method6(v2_1.l0, v12);
+        const v14: US2_$union = method7(v2_1.l0, v12);
         if (v14.tag === /* US2_0 */ 0) {
             const v15: uint8 = v14.fields[0];
             const v17: int64 = toInt64(op_Addition(v2_1.l0, 1n));
@@ -624,22 +628,22 @@ export function method5(v0_1_mut: US0_$union, v1_1_mut: (() => UH0_$union), v2_1
             v3_1_mut = v3_1;
             v4_1_mut = v4_1;
             v5_mut = v5;
-            continue method5;
+            continue method6;
         }
         break;
     }
 }
 
 export function closure9(v0_1: US0_$union, v1_1: (() => UH0_$union), v2_1: Mut1, v3_1: Mut1, v4_1: Mut1, v5: Mut2, unitVar: void): uint8 {
-    return method5(v0_1, v1_1, v2_1, v3_1, v4_1, v5);
+    return method6(v0_1, v1_1, v2_1, v3_1, v4_1, v5);
 }
 
 export function closure5(v0_1: US0_$union, v1_1: UH1_$union): (() => uint8) {
     if (v0_1.tag === /* US0_0 */ 0) {
         v0_1.fields[0]("create_sequential_roller ()");
     }
-    const v8: UH0_$union = method3(method2(v1_1, method1(v1_1, UH1_UH1_0())), UH0_UH0_1());
-    const v10: (() => UH0_$union) = method4(v8, (): UH0_$union => closure7(v8, void 0));
+    const v8: UH0_$union = method4(method3(v1_1, method2(v1_1, UH1_UH1_0())), UH0_UH0_1());
+    const v10: (() => UH0_$union) = method5(v8, (): UH0_$union => closure7(v8, void 0));
     const v11: Mut1 = new Mut1(0n);
     const v12: Mut1 = new Mut1(1n);
     const v13: Mut1 = new Mut1(-1n);
@@ -648,12 +652,12 @@ export function closure5(v0_1: US0_$union, v1_1: UH1_$union): (() => uint8) {
 }
 
 export function closure3(unitVar: void, v0_1: Option<((arg0: string) => void)>): ((arg0: UH1_$union) => (() => uint8)) {
-    const v3_1: US0_$union = defaultArg(map<((arg0: string) => void), US0_$union>((v: ((arg0: string) => void)): US0_$union => closure4(void 0, v), v0_1), US0_US0_1());
-    return (v_1: UH1_$union): (() => uint8) => closure5(v3_1, v_1);
+    const v3_1: US0_$union = defaultArg(map<((arg0: string) => void), US0_$union>(method1(), v0_1), US0_US0_1());
+    return (v: UH1_$union): (() => uint8) => closure5(v3_1, v);
 }
 
-export function method7(v0_1_mut: US0_$union, v1_1_mut: uint64, v2_1_mut: int8, v3_1_mut: uint64): int8 {
-    method7:
+export function method8(v0_1_mut: US0_$union, v1_1_mut: uint64, v2_1_mut: int8, v3_1_mut: uint64): int8 {
+    method8:
     while (true) {
         const v0_1: US0_$union = v0_1_mut, v1_1: uint64 = v1_1_mut, v2_1: int8 = v2_1_mut, v3_1: uint64 = v3_1_mut;
         if (compare(v3_1, v1_1) < 0) {
@@ -663,7 +667,7 @@ export function method7(v0_1_mut: US0_$union, v1_1_mut: uint64, v2_1_mut: int8, 
                 v1_1_mut = v1_1;
                 v2_1_mut = (v2_1 + 1);
                 v3_1_mut = v5;
-                continue method7;
+                continue method8;
             }
             else {
                 const v9 = `calculate_dice_count / max: ${v1_1} / n: ${v2_1} / p: ${v3_1}`;
@@ -940,8 +944,8 @@ export function closure14(unitVar: void, unitVar_1: void): UH2_$union {
     return UH2_UH2_0(6n, (): UH2_$union => closure15(void 0, void 0));
 }
 
-export function method10(v0_1_mut: int8, v1_1_mut: UH2_$union): US4_$union {
-    method10:
+export function method11(v0_1_mut: int8, v1_1_mut: UH2_$union): US4_$union {
+    method11:
     while (true) {
         const v0_1: int8 = v0_1_mut, v1_1: UH2_$union = v1_1_mut;
         if (v1_1.tag === /* UH2_1 */ 1) {
@@ -953,14 +957,14 @@ export function method10(v0_1_mut: int8, v1_1_mut: UH2_$union): US4_$union {
         else {
             v0_1_mut = (v0_1 - 1);
             v1_1_mut = v1_1.fields[1]();
-            continue method10;
+            continue method11;
         }
         break;
     }
 }
 
-export function method9(v0_1_mut: US0_$union, v1_1_mut: int8, v2_1_mut: UH1_$union, v3_1_mut: uint64): US3_$union {
-    method9:
+export function method10(v0_1_mut: US0_$union, v1_1_mut: int8, v2_1_mut: UH1_$union, v3_1_mut: uint64): US3_$union {
+    method10:
     while (true) {
         const v0_1: US0_$union = v0_1_mut, v1_1: int8 = v1_1_mut, v2_1: UH1_$union = v2_1_mut, v3_1: uint64 = v3_1_mut;
         if (v1_1 < 0) {
@@ -978,7 +982,7 @@ export function method9(v0_1_mut: US0_$union, v1_1_mut: int8, v2_1_mut: UH1_$uni
             const v11: UH1_$union = v2_1.fields[1];
             const v10: uint8 = v2_1.fields[0];
             if (v10 > 1) {
-                const v16: US4_$union = method10(v1_1, UH2_UH2_0(1n, (): UH2_$union => closure14(void 0, void 0)));
+                const v16: US4_$union = method11(v1_1, UH2_UH2_0(1n, (): UH2_$union => closure14(void 0, void 0)));
                 let v20: uint64;
                 if (v16.tag === /* US4_0 */ 0) {
                     v20 = v16.fields[0];
@@ -995,7 +999,7 @@ export function method9(v0_1_mut: US0_$union, v1_1_mut: int8, v2_1_mut: UH1_$uni
                 v1_1_mut = (v1_1 - 1);
                 v2_1_mut = v11;
                 v3_1_mut = toUInt64(op_Addition(v3_1, v23));
-                continue method9;
+                continue method10;
             }
             else {
                 const v29 = `accumulate_dice_rolls / power: ${v1_1} / acc: ${v3_1} / roll: ${v10}`;
@@ -1006,32 +1010,32 @@ export function method9(v0_1_mut: US0_$union, v1_1_mut: int8, v2_1_mut: UH1_$uni
                 v1_1_mut = (v1_1 - 1);
                 v2_1_mut = v11;
                 v3_1_mut = v3_1;
-                continue method9;
+                continue method10;
             }
         }
         break;
     }
 }
 
-export function method11(v0_1: int8, v1_1: (() => uint8), v2_1: int8): UH1_$union {
+export function method12(v0_1: int8, v1_1: (() => uint8), v2_1: int8): UH1_$union {
     if (v2_1 < v0_1) {
-        return UH1_UH1_1(v1_1(), method11(v0_1, v1_1, v2_1 + 1));
+        return UH1_UH1_1(v1_1(), method12(v0_1, v1_1, v2_1 + 1));
     }
     else {
         return UH1_UH1_0();
     }
 }
 
-export function method12(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut: boolean, v3_1_mut: uint64, v4_1_mut: int8, v5_mut: UH1_$union): uint64 {
-    method12:
+export function method13(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut: boolean, v3_1_mut: uint64, v4_1_mut: int8, v5_mut: UH1_$union): uint64 {
+    method13:
     while (true) {
         const v0_1: US0_$union = v0_1_mut, v1_1: (() => uint8) = v1_1_mut, v2_1: boolean = v2_1_mut, v3_1: uint64 = v3_1_mut, v4_1: int8 = v4_1_mut, v5: UH1_$union = v5_mut;
         const v6: int8 = (v4_1 + 1) | 0;
         if (v4_1 < v6) {
-            return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
+            return method9(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
         }
         else {
-            const v12: US3_$union = method9(v0_1, v4_1, v5, 0n);
+            const v12: US3_$union = method10(v0_1, v4_1, v5, 0n);
             if (v12.tag === /* US3_0 */ 0) {
                 const v14: UH1_$union = v12.fields[1];
                 const v13: uint64 = v12.fields[0];
@@ -1044,11 +1048,11 @@ export function method12(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut
                     v2_1_mut = v2_1;
                     v3_1_mut = v3_1;
                     v4_1_mut = v4_1;
-                    v5_mut = method11(v4_1, v1_1, 0);
-                    continue method12;
+                    v5_mut = method12(v4_1, v1_1, 0);
+                    continue method13;
                 }
                 else {
-                    return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
+                    return method9(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
                 }
             }
             else if (v2_1) {
@@ -1057,19 +1061,19 @@ export function method12(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut
                 v2_1_mut = v2_1;
                 v3_1_mut = v3_1;
                 v4_1_mut = v4_1;
-                v5_mut = method11(v4_1, v1_1, 0);
-                continue method12;
+                v5_mut = method12(v4_1, v1_1, 0);
+                continue method13;
             }
             else {
-                return method8(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
+                return method9(v0_1, v1_1, v2_1, v3_1, v4_1, UH1_UH1_1(v1_1(), v5), v6);
             }
         }
         break;
     }
 }
 
-export function method8(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut: boolean, v3_1_mut: uint64, v4_1_mut: int8, v5_mut: UH1_$union, v6_mut: int8): uint64 {
-    method8:
+export function method9(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut: boolean, v3_1_mut: uint64, v4_1_mut: int8, v5_mut: UH1_$union, v6_mut: int8): uint64 {
+    method9:
     while (true) {
         const v0_1: US0_$union = v0_1_mut, v1_1: (() => uint8) = v1_1_mut, v2_1: boolean = v2_1_mut, v3_1: uint64 = v3_1_mut, v4_1: int8 = v4_1_mut, v5: UH1_$union = v5_mut, v6: int8 = v6_mut;
         if (v6 < (v4_1 + 1)) {
@@ -1080,10 +1084,10 @@ export function method8(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut:
             v4_1_mut = v4_1;
             v5_mut = UH1_UH1_1(v1_1(), v5);
             v6_mut = (v6 + 1);
-            continue method8;
+            continue method9;
         }
         else {
-            const v14: US3_$union = method9(v0_1, v4_1, v5, 0n);
+            const v14: US3_$union = method10(v0_1, v4_1, v5, 0n);
             if (v14.tag === /* US3_0 */ 0) {
                 const v16: UH1_$union = v14.fields[1];
                 const v15: uint64 = v14.fields[0];
@@ -1091,7 +1095,7 @@ export function method8(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut:
                     return v15;
                 }
                 else if (v2_1) {
-                    return method12(v0_1, v1_1, v2_1, v3_1, v4_1, method11(v4_1, v1_1, 0));
+                    return method13(v0_1, v1_1, v2_1, v3_1, v4_1, method12(v4_1, v1_1, 0));
                 }
                 else {
                     v0_1_mut = v0_1;
@@ -1101,11 +1105,11 @@ export function method8(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut:
                     v4_1_mut = v4_1;
                     v5_mut = UH1_UH1_1(v1_1(), v5);
                     v6_mut = (v6 + 1);
-                    continue method8;
+                    continue method9;
                 }
             }
             else if (v2_1) {
-                return method12(v0_1, v1_1, v2_1, v3_1, v4_1, method11(v4_1, v1_1, 0));
+                return method13(v0_1, v1_1, v2_1, v3_1, v4_1, method12(v4_1, v1_1, 0));
             }
             else {
                 v0_1_mut = v0_1;
@@ -1115,7 +1119,7 @@ export function method8(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut:
                 v4_1_mut = v4_1;
                 v5_mut = UH1_UH1_1(v1_1(), v5);
                 v6_mut = (v6 + 1);
-                continue method8;
+                continue method9;
             }
         }
         break;
@@ -1123,7 +1127,7 @@ export function method8(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut:
 }
 
 export function closure13(v0_1: US0_$union, v1_1: (() => uint8), v2_1: boolean, v3_1: uint64): uint64 {
-    return method8(v0_1, v1_1, v2_1, v3_1, (equals(v3_1, 1n) ? 1 : method7(v0_1, v3_1, 0, 1n)) - 1, UH1_UH1_0(), 0);
+    return method9(v0_1, v1_1, v2_1, v3_1, (equals(v3_1, 1n) ? 1 : method8(v0_1, v3_1, 0, 1n)) - 1, UH1_UH1_0(), 0);
 }
 
 export function closure12(v0_1: US0_$union, v1_1: (() => uint8), v2_1: boolean): ((arg0: uint64) => uint64) {
@@ -1135,12 +1139,12 @@ export function closure11(v0_1: US0_$union, v1_1: (() => uint8)): ((arg0: boolea
 }
 
 export function closure10(unitVar: void, v0_1: Option<((arg0: string) => void)>): ((arg0: (() => uint8)) => ((arg0: boolean) => ((arg0: uint64) => uint64))) {
-    const v3_1: US0_$union = defaultArg(map<((arg0: string) => void), US0_$union>((v: ((arg0: string) => void)): US0_$union => closure4(void 0, v), v0_1), US0_US0_1());
-    return (v_1: (() => uint8)): ((arg0: boolean) => ((arg0: uint64) => uint64)) => closure11(v3_1, v_1);
+    const v3_1: US0_$union = defaultArg(map<((arg0: string) => void), US0_$union>(method1(), v0_1), US0_US0_1());
+    return (v: (() => uint8)): ((arg0: boolean) => ((arg0: uint64) => uint64)) => closure11(v3_1, v);
 }
 
-export function method13(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
-    method13:
+export function method14(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
+    method14:
     while (true) {
         const v0_1: UH1_$union = v0_1_mut, v1_1: int8 = v1_1_mut;
         if (v0_1.tag === /* UH1_0 */ 0) {
@@ -1150,14 +1154,14 @@ export function method13(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
             const v2_1: uint8 = v0_1.fields[0];
             v0_1_mut = v0_1.fields[1];
             v1_1_mut = (v1_1 + 1);
-            continue method13;
+            continue method14;
         }
         break;
     }
 }
 
 export function closure80(v0_1: Option<((arg0: string) => void)>, v1_1: uint64, v2_1: UH1_$union): Option<uint64> {
-    const v10: US3_$union = method9(defaultArg(map<((arg0: string) => void), US0_$union>((v: ((arg0: string) => void)): US0_$union => closure4(void 0, v), v0_1), US0_US0_1()), method13(v2_1, 0) - 1, v2_1, 0n);
+    const v10: US3_$union = method10(defaultArg(map<((arg0: string) => void), US0_$union>(method1(), v0_1), US0_US0_1()), method14(v2_1, 0) - 1, v2_1, 0n);
     let v20: US4_$union;
     if (v10.tag === /* US3_0 */ 0) {
         const v12: UH1_$union = v10.fields[1];
@@ -1183,14 +1187,14 @@ export function closure78(unitVar: void, v0_1: Option<((arg0: string) => void)>)
     return (v: uint64): ((arg0: UH1_$union) => Option<uint64>) => closure79(v0_1, v);
 }
 
-export function method39(v0_1: UH1_$union, v1_1: int64): US5_$union {
+export function method40(v0_1: UH1_$union, v1_1: int64): US5_$union {
     const v2_1: int64 = toInt64(op_Addition(v1_1, 1n));
     const v3_1 = `accumulate_dice_rolls / power: ${-1} / acc: ${v1_1} / result: ${v2_1}`;
     console.log(v3_1);
     return US5_US5_0(v2_1, v0_1);
 }
 
-export function method38(v0_1: UH1_$union, v1_1: int64): US5_$union {
+export function method39(v0_1: UH1_$union, v1_1: int64): US5_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US5_US5_1();
     }
@@ -1201,11 +1205,32 @@ export function method38(v0_1: UH1_$union, v1_1: int64): US5_$union {
             const v7: int64 = toInt64(fromUInt8(v3_1 - 1));
             const v8 = `accumulate_dice_rolls / power: ${0} / acc: ${v1_1} / roll: ${v3_1} / value: ${v7}`;
             console.log(v8);
-            return method39(v4_1, toInt64(op_Addition(v1_1, v7)));
+            return method40(v4_1, toInt64(op_Addition(v1_1, v7)));
         }
         else {
             const v11 = `accumulate_dice_rolls / power: ${0} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v11);
+            return method40(v4_1, v1_1);
+        }
+    }
+}
+
+export function method38(v0_1: UH1_$union, v1_1: int64): US5_$union {
+    if (v0_1.tag === /* UH1_0 */ 0) {
+        return US5_US5_1();
+    }
+    else {
+        const v4_1: UH1_$union = v0_1.fields[1];
+        const v3_1: uint8 = v0_1.fields[0];
+        if (v3_1 > 1) {
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 6n));
+            const v9 = `accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(v9);
+            return method39(v4_1, toInt64(op_Addition(v1_1, v8)));
+        }
+        else {
+            const v12 = `accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(v12);
             return method39(v4_1, v1_1);
         }
     }
@@ -1219,13 +1244,13 @@ export function method37(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 6n));
-            const v9 = `accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 36n));
+            const v9 = `accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method38(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method38(v4_1, v1_1);
         }
@@ -1240,13 +1265,13 @@ export function method36(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 36n));
-            const v9 = `accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 216n));
+            const v9 = `accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method37(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method37(v4_1, v1_1);
         }
@@ -1261,13 +1286,13 @@ export function method35(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 216n));
-            const v9 = `accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 1296n));
+            const v9 = `accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method36(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method36(v4_1, v1_1);
         }
@@ -1282,13 +1307,13 @@ export function method34(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 1296n));
-            const v9 = `accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 7776n));
+            const v9 = `accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method35(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method35(v4_1, v1_1);
         }
@@ -1303,13 +1328,13 @@ export function method33(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 7776n));
-            const v9 = `accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 46656n));
+            const v9 = `accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method34(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method34(v4_1, v1_1);
         }
@@ -1324,13 +1349,13 @@ export function method32(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 46656n));
-            const v9 = `accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 279936n));
+            const v9 = `accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method33(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method33(v4_1, v1_1);
         }
@@ -1345,13 +1370,13 @@ export function method31(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 279936n));
-            const v9 = `accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 1679616n));
+            const v9 = `accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method32(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method32(v4_1, v1_1);
         }
@@ -1366,13 +1391,13 @@ export function method30(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 1679616n));
-            const v9 = `accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 10077696n));
+            const v9 = `accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method31(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method31(v4_1, v1_1);
         }
@@ -1387,13 +1412,13 @@ export function method29(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 10077696n));
-            const v9 = `accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 60466176n));
+            const v9 = `accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method30(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method30(v4_1, v1_1);
         }
@@ -1408,13 +1433,13 @@ export function method28(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 60466176n));
-            const v9 = `accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 362797056n));
+            const v9 = `accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method29(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method29(v4_1, v1_1);
         }
@@ -1429,13 +1454,13 @@ export function method27(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 362797056n));
-            const v9 = `accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 2176782336n));
+            const v9 = `accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method28(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method28(v4_1, v1_1);
         }
@@ -1450,13 +1475,13 @@ export function method26(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 2176782336n));
-            const v9 = `accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 13060694016n));
+            const v9 = `accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method27(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method27(v4_1, v1_1);
         }
@@ -1471,13 +1496,13 @@ export function method25(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 13060694016n));
-            const v9 = `accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 78364164096n));
+            const v9 = `accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method26(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method26(v4_1, v1_1);
         }
@@ -1492,13 +1517,13 @@ export function method24(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 78364164096n));
-            const v9 = `accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 470184984576n));
+            const v9 = `accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method25(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method25(v4_1, v1_1);
         }
@@ -1513,13 +1538,13 @@ export function method23(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 470184984576n));
-            const v9 = `accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 2821109907456n));
+            const v9 = `accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method24(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method24(v4_1, v1_1);
         }
@@ -1534,13 +1559,13 @@ export function method22(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 2821109907456n));
-            const v9 = `accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 16926659444736n));
+            const v9 = `accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method23(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method23(v4_1, v1_1);
         }
@@ -1555,13 +1580,13 @@ export function method21(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 16926659444736n));
-            const v9 = `accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 101559956668416n));
+            const v9 = `accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method22(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method22(v4_1, v1_1);
         }
@@ -1576,13 +1601,13 @@ export function method20(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 101559956668416n));
-            const v9 = `accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 609359740010496n));
+            const v9 = `accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method21(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method21(v4_1, v1_1);
         }
@@ -1597,13 +1622,13 @@ export function method19(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 609359740010496n));
-            const v9 = `accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 3656158440062976n));
+            const v9 = `accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method20(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method20(v4_1, v1_1);
         }
@@ -1618,13 +1643,13 @@ export function method18(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 3656158440062976n));
-            const v9 = `accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 21936950640377856n));
+            const v9 = `accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method19(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method19(v4_1, v1_1);
         }
@@ -1639,13 +1664,13 @@ export function method17(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 21936950640377856n));
-            const v9 = `accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 131621703842267136n));
+            const v9 = `accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method18(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method18(v4_1, v1_1);
         }
@@ -1660,42 +1685,21 @@ export function method16(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v4_1: UH1_$union = v0_1.fields[1];
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 131621703842267136n));
-            const v9 = `accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 789730223053602816n));
+            const v9 = `accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
             console.log(v9);
             return method17(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1}`;
+            const v12 = `accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1}`;
             console.log(v12);
             return method17(v4_1, v1_1);
         }
     }
 }
 
-export function method15(v0_1: UH1_$union, v1_1: int64): US5_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
-        return US5_US5_1();
-    }
-    else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
-        if (v3_1 > 1) {
-            const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 789730223053602816n));
-            const v9 = `accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
-            return method16(v4_1, toInt64(op_Addition(v1_1, v8)));
-        }
-        else {
-            const v12 = `accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
-            return method16(v4_1, v1_1);
-        }
-    }
-}
-
-export function method14(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
-    method14:
+export function method15(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
+    method15:
     while (true) {
         const v0_1: UH1_$union = v0_1_mut, v1_1: int8 = v1_1_mut;
         if (v1_1 < 24) {
@@ -1706,300 +1710,300 @@ export function method14(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
             _v3 = x;
             v0_1_mut = UH1_UH1_1(value_47(_v3), v0_1);
             v1_1_mut = (v1_1 + 1);
-            continue method14;
+            continue method15;
         }
         else {
-            const v16: US5_$union = method15(v0_1, 0n);
-            if (v16.tag === /* US5_0 */ 0) {
-                const v18: UH1_$union = v16.fields[1];
-                const v17: int64 = v16.fields[0];
-                if (compare(v17, 9223372036854775807n) <= 0) {
-                    return v17;
+            const v17: US5_$union = method16(v0_1, 0n);
+            if (v17.tag === /* US5_0 */ 0) {
+                const v19: UH1_$union = v17.fields[1];
+                const v18: int64 = v17.fields[0];
+                if (compare(v18, 9223372036854775807n) <= 0) {
+                    return v18;
                 }
                 else {
-                    let _v20: Option<uint8> = void 0;
+                    let _v21: Option<uint8> = void 0;
                     let x_1: uint8;
                     const value_1: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_1 = (value_1 & 0xFF);
-                    _v20 = x_1;
-                    const v28: uint8 = value_47(_v20);
-                    let _v29: Option<uint8> = void 0;
+                    _v21 = x_1;
+                    const v30: uint8 = value_47(_v21);
+                    let _v31: Option<uint8> = void 0;
                     let x_2: uint8;
                     const value_2: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_2 = (value_2 & 0xFF);
-                    _v29 = x_2;
-                    const v35: uint8 = value_47(_v29);
-                    let _v36: Option<uint8> = void 0;
+                    _v31 = x_2;
+                    const v38: uint8 = value_47(_v31);
+                    let _v39: Option<uint8> = void 0;
                     let x_3: uint8;
                     const value_3: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_3 = (value_3 & 0xFF);
-                    _v36 = x_3;
-                    const v42: uint8 = value_47(_v36);
-                    let _v43: Option<uint8> = void 0;
+                    _v39 = x_3;
+                    const v46: uint8 = value_47(_v39);
+                    let _v47: Option<uint8> = void 0;
                     let x_4: uint8;
                     const value_4: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_4 = (value_4 & 0xFF);
-                    _v43 = x_4;
-                    const v49: uint8 = value_47(_v43);
-                    let _v50: Option<uint8> = void 0;
+                    _v47 = x_4;
+                    const v54: uint8 = value_47(_v47);
+                    let _v55: Option<uint8> = void 0;
                     let x_5: uint8;
                     const value_5: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_5 = (value_5 & 0xFF);
-                    _v50 = x_5;
-                    const v56: uint8 = value_47(_v50);
-                    let _v57: Option<uint8> = void 0;
+                    _v55 = x_5;
+                    const v62: uint8 = value_47(_v55);
+                    let _v63: Option<uint8> = void 0;
                     let x_6: uint8;
                     const value_6: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_6 = (value_6 & 0xFF);
-                    _v57 = x_6;
-                    const v63: uint8 = value_47(_v57);
-                    let _v64: Option<uint8> = void 0;
+                    _v63 = x_6;
+                    const v70: uint8 = value_47(_v63);
+                    let _v71: Option<uint8> = void 0;
                     let x_7: uint8;
                     const value_7: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_7 = (value_7 & 0xFF);
-                    _v64 = x_7;
-                    const v70: uint8 = value_47(_v64);
-                    let _v71: Option<uint8> = void 0;
+                    _v71 = x_7;
+                    const v78: uint8 = value_47(_v71);
+                    let _v79: Option<uint8> = void 0;
                     let x_8: uint8;
                     const value_8: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_8 = (value_8 & 0xFF);
-                    _v71 = x_8;
-                    const v77: uint8 = value_47(_v71);
-                    let _v78: Option<uint8> = void 0;
+                    _v79 = x_8;
+                    const v86: uint8 = value_47(_v79);
+                    let _v87: Option<uint8> = void 0;
                     let x_9: uint8;
                     const value_9: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_9 = (value_9 & 0xFF);
-                    _v78 = x_9;
-                    const v84: uint8 = value_47(_v78);
-                    let _v85: Option<uint8> = void 0;
+                    _v87 = x_9;
+                    const v94: uint8 = value_47(_v87);
+                    let _v95: Option<uint8> = void 0;
                     let x_10: uint8;
                     const value_10: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_10 = (value_10 & 0xFF);
-                    _v85 = x_10;
-                    const v91: uint8 = value_47(_v85);
-                    let _v92: Option<uint8> = void 0;
+                    _v95 = x_10;
+                    const v102: uint8 = value_47(_v95);
+                    let _v103: Option<uint8> = void 0;
                     let x_11: uint8;
                     const value_11: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_11 = (value_11 & 0xFF);
-                    _v92 = x_11;
-                    const v98: uint8 = value_47(_v92);
-                    let _v99: Option<uint8> = void 0;
+                    _v103 = x_11;
+                    const v110: uint8 = value_47(_v103);
+                    let _v111: Option<uint8> = void 0;
                     let x_12: uint8;
                     const value_12: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_12 = (value_12 & 0xFF);
-                    _v99 = x_12;
-                    const v105: uint8 = value_47(_v99);
-                    let _v106: Option<uint8> = void 0;
+                    _v111 = x_12;
+                    const v118: uint8 = value_47(_v111);
+                    let _v119: Option<uint8> = void 0;
                     let x_13: uint8;
                     const value_13: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_13 = (value_13 & 0xFF);
-                    _v106 = x_13;
-                    const v112: uint8 = value_47(_v106);
-                    let _v113: Option<uint8> = void 0;
+                    _v119 = x_13;
+                    const v126: uint8 = value_47(_v119);
+                    let _v127: Option<uint8> = void 0;
                     let x_14: uint8;
                     const value_14: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_14 = (value_14 & 0xFF);
-                    _v113 = x_14;
-                    const v119: uint8 = value_47(_v113);
-                    let _v120: Option<uint8> = void 0;
+                    _v127 = x_14;
+                    const v134: uint8 = value_47(_v127);
+                    let _v135: Option<uint8> = void 0;
                     let x_15: uint8;
                     const value_15: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_15 = (value_15 & 0xFF);
-                    _v120 = x_15;
-                    const v126: uint8 = value_47(_v120);
-                    let _v127: Option<uint8> = void 0;
+                    _v135 = x_15;
+                    const v142: uint8 = value_47(_v135);
+                    let _v143: Option<uint8> = void 0;
                     let x_16: uint8;
                     const value_16: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_16 = (value_16 & 0xFF);
-                    _v127 = x_16;
-                    const v133: uint8 = value_47(_v127);
-                    let _v134: Option<uint8> = void 0;
+                    _v143 = x_16;
+                    const v150: uint8 = value_47(_v143);
+                    let _v151: Option<uint8> = void 0;
                     let x_17: uint8;
                     const value_17: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_17 = (value_17 & 0xFF);
-                    _v134 = x_17;
-                    const v140: uint8 = value_47(_v134);
-                    let _v141: Option<uint8> = void 0;
+                    _v151 = x_17;
+                    const v158: uint8 = value_47(_v151);
+                    let _v159: Option<uint8> = void 0;
                     let x_18: uint8;
                     const value_18: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_18 = (value_18 & 0xFF);
-                    _v141 = x_18;
-                    const v147: uint8 = value_47(_v141);
-                    let _v148: Option<uint8> = void 0;
+                    _v159 = x_18;
+                    const v166: uint8 = value_47(_v159);
+                    let _v167: Option<uint8> = void 0;
                     let x_19: uint8;
                     const value_19: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_19 = (value_19 & 0xFF);
-                    _v148 = x_19;
-                    const v154: uint8 = value_47(_v148);
-                    let _v155: Option<uint8> = void 0;
+                    _v167 = x_19;
+                    const v174: uint8 = value_47(_v167);
+                    let _v175: Option<uint8> = void 0;
                     let x_20: uint8;
                     const value_20: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_20 = (value_20 & 0xFF);
-                    _v155 = x_20;
-                    const v161: uint8 = value_47(_v155);
-                    let _v162: Option<uint8> = void 0;
+                    _v175 = x_20;
+                    const v182: uint8 = value_47(_v175);
+                    let _v183: Option<uint8> = void 0;
                     let x_21: uint8;
                     const value_21: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_21 = (value_21 & 0xFF);
-                    _v162 = x_21;
-                    const v168: uint8 = value_47(_v162);
-                    let _v169: Option<uint8> = void 0;
+                    _v183 = x_21;
+                    const v190: uint8 = value_47(_v183);
+                    let _v191: Option<uint8> = void 0;
                     let x_22: uint8;
                     const value_22: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_22 = (value_22 & 0xFF);
-                    _v169 = x_22;
-                    const v175: uint8 = value_47(_v169);
-                    let _v176: Option<uint8> = void 0;
+                    _v191 = x_22;
+                    const v198: uint8 = value_47(_v191);
+                    let _v199: Option<uint8> = void 0;
                     let x_23: uint8;
                     const value_23: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_23 = (value_23 & 0xFF);
-                    _v176 = x_23;
-                    v0_1_mut = UH1_UH1_1(v28, UH1_UH1_1(v35, UH1_UH1_1(v42, UH1_UH1_1(v49, UH1_UH1_1(v56, UH1_UH1_1(v63, UH1_UH1_1(v70, UH1_UH1_1(v77, UH1_UH1_1(v84, UH1_UH1_1(v91, UH1_UH1_1(v98, UH1_UH1_1(v105, UH1_UH1_1(v112, UH1_UH1_1(v119, UH1_UH1_1(v126, UH1_UH1_1(v133, UH1_UH1_1(v140, UH1_UH1_1(v147, UH1_UH1_1(v154, UH1_UH1_1(v161, UH1_UH1_1(v168, UH1_UH1_1(v175, UH1_UH1_1(value_47(_v176), UH1_UH1_0())))))))))))))))))))))));
+                    _v199 = x_23;
+                    v0_1_mut = UH1_UH1_1(v30, UH1_UH1_1(v38, UH1_UH1_1(v46, UH1_UH1_1(v54, UH1_UH1_1(v62, UH1_UH1_1(v70, UH1_UH1_1(v78, UH1_UH1_1(v86, UH1_UH1_1(v94, UH1_UH1_1(v102, UH1_UH1_1(v110, UH1_UH1_1(v118, UH1_UH1_1(v126, UH1_UH1_1(v134, UH1_UH1_1(v142, UH1_UH1_1(v150, UH1_UH1_1(v158, UH1_UH1_1(v166, UH1_UH1_1(v174, UH1_UH1_1(v182, UH1_UH1_1(v190, UH1_UH1_1(v198, UH1_UH1_1(value_47(_v199), UH1_UH1_0())))))))))))))))))))))));
                     v1_1_mut = 23;
-                    continue method14;
+                    continue method15;
                 }
             }
             else {
-                let _v210: Option<uint8> = void 0;
+                let _v234: Option<uint8> = void 0;
                 let x_24: uint8;
                 const value_24: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_24 = (value_24 & 0xFF);
-                _v210 = x_24;
-                const v218: uint8 = value_47(_v210);
-                let _v219: Option<uint8> = void 0;
+                _v234 = x_24;
+                const v243: uint8 = value_47(_v234);
+                let _v244: Option<uint8> = void 0;
                 let x_25: uint8;
                 const value_25: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_25 = (value_25 & 0xFF);
-                _v219 = x_25;
-                const v225: uint8 = value_47(_v219);
-                let _v226: Option<uint8> = void 0;
+                _v244 = x_25;
+                const v251: uint8 = value_47(_v244);
+                let _v252: Option<uint8> = void 0;
                 let x_26: uint8;
                 const value_26: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_26 = (value_26 & 0xFF);
-                _v226 = x_26;
-                const v232: uint8 = value_47(_v226);
-                let _v233: Option<uint8> = void 0;
+                _v252 = x_26;
+                const v259: uint8 = value_47(_v252);
+                let _v260: Option<uint8> = void 0;
                 let x_27: uint8;
                 const value_27: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_27 = (value_27 & 0xFF);
-                _v233 = x_27;
-                const v239: uint8 = value_47(_v233);
-                let _v240: Option<uint8> = void 0;
+                _v260 = x_27;
+                const v267: uint8 = value_47(_v260);
+                let _v268: Option<uint8> = void 0;
                 let x_28: uint8;
                 const value_28: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_28 = (value_28 & 0xFF);
-                _v240 = x_28;
-                const v246: uint8 = value_47(_v240);
-                let _v247: Option<uint8> = void 0;
+                _v268 = x_28;
+                const v275: uint8 = value_47(_v268);
+                let _v276: Option<uint8> = void 0;
                 let x_29: uint8;
                 const value_29: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_29 = (value_29 & 0xFF);
-                _v247 = x_29;
-                const v253: uint8 = value_47(_v247);
-                let _v254: Option<uint8> = void 0;
+                _v276 = x_29;
+                const v283: uint8 = value_47(_v276);
+                let _v284: Option<uint8> = void 0;
                 let x_30: uint8;
                 const value_30: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_30 = (value_30 & 0xFF);
-                _v254 = x_30;
-                const v260: uint8 = value_47(_v254);
-                let _v261: Option<uint8> = void 0;
+                _v284 = x_30;
+                const v291: uint8 = value_47(_v284);
+                let _v292: Option<uint8> = void 0;
                 let x_31: uint8;
                 const value_31: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_31 = (value_31 & 0xFF);
-                _v261 = x_31;
-                const v267: uint8 = value_47(_v261);
-                let _v268: Option<uint8> = void 0;
+                _v292 = x_31;
+                const v299: uint8 = value_47(_v292);
+                let _v300: Option<uint8> = void 0;
                 let x_32: uint8;
                 const value_32: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_32 = (value_32 & 0xFF);
-                _v268 = x_32;
-                const v274: uint8 = value_47(_v268);
-                let _v275: Option<uint8> = void 0;
+                _v300 = x_32;
+                const v307: uint8 = value_47(_v300);
+                let _v308: Option<uint8> = void 0;
                 let x_33: uint8;
                 const value_33: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_33 = (value_33 & 0xFF);
-                _v275 = x_33;
-                const v281: uint8 = value_47(_v275);
-                let _v282: Option<uint8> = void 0;
+                _v308 = x_33;
+                const v315: uint8 = value_47(_v308);
+                let _v316: Option<uint8> = void 0;
                 let x_34: uint8;
                 const value_34: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_34 = (value_34 & 0xFF);
-                _v282 = x_34;
-                const v288: uint8 = value_47(_v282);
-                let _v289: Option<uint8> = void 0;
+                _v316 = x_34;
+                const v323: uint8 = value_47(_v316);
+                let _v324: Option<uint8> = void 0;
                 let x_35: uint8;
                 const value_35: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_35 = (value_35 & 0xFF);
-                _v289 = x_35;
-                const v295: uint8 = value_47(_v289);
-                let _v296: Option<uint8> = void 0;
+                _v324 = x_35;
+                const v331: uint8 = value_47(_v324);
+                let _v332: Option<uint8> = void 0;
                 let x_36: uint8;
                 const value_36: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_36 = (value_36 & 0xFF);
-                _v296 = x_36;
-                const v302: uint8 = value_47(_v296);
-                let _v303: Option<uint8> = void 0;
+                _v332 = x_36;
+                const v339: uint8 = value_47(_v332);
+                let _v340: Option<uint8> = void 0;
                 let x_37: uint8;
                 const value_37: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_37 = (value_37 & 0xFF);
-                _v303 = x_37;
-                const v309: uint8 = value_47(_v303);
-                let _v310: Option<uint8> = void 0;
+                _v340 = x_37;
+                const v347: uint8 = value_47(_v340);
+                let _v348: Option<uint8> = void 0;
                 let x_38: uint8;
                 const value_38: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_38 = (value_38 & 0xFF);
-                _v310 = x_38;
-                const v316: uint8 = value_47(_v310);
-                let _v317: Option<uint8> = void 0;
+                _v348 = x_38;
+                const v355: uint8 = value_47(_v348);
+                let _v356: Option<uint8> = void 0;
                 let x_39: uint8;
                 const value_39: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_39 = (value_39 & 0xFF);
-                _v317 = x_39;
-                const v323: uint8 = value_47(_v317);
-                let _v324: Option<uint8> = void 0;
+                _v356 = x_39;
+                const v363: uint8 = value_47(_v356);
+                let _v364: Option<uint8> = void 0;
                 let x_40: uint8;
                 const value_40: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_40 = (value_40 & 0xFF);
-                _v324 = x_40;
-                const v330: uint8 = value_47(_v324);
-                let _v331: Option<uint8> = void 0;
+                _v364 = x_40;
+                const v371: uint8 = value_47(_v364);
+                let _v372: Option<uint8> = void 0;
                 let x_41: uint8;
                 const value_41: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_41 = (value_41 & 0xFF);
-                _v331 = x_41;
-                const v337: uint8 = value_47(_v331);
-                let _v338: Option<uint8> = void 0;
+                _v372 = x_41;
+                const v379: uint8 = value_47(_v372);
+                let _v380: Option<uint8> = void 0;
                 let x_42: uint8;
                 const value_42: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_42 = (value_42 & 0xFF);
-                _v338 = x_42;
-                const v344: uint8 = value_47(_v338);
-                let _v345: Option<uint8> = void 0;
+                _v380 = x_42;
+                const v387: uint8 = value_47(_v380);
+                let _v388: Option<uint8> = void 0;
                 let x_43: uint8;
                 const value_43: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_43 = (value_43 & 0xFF);
-                _v345 = x_43;
-                const v351: uint8 = value_47(_v345);
-                let _v352: Option<uint8> = void 0;
+                _v388 = x_43;
+                const v395: uint8 = value_47(_v388);
+                let _v396: Option<uint8> = void 0;
                 let x_44: uint8;
                 const value_44: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_44 = (value_44 & 0xFF);
-                _v352 = x_44;
-                const v358: uint8 = value_47(_v352);
-                let _v359: Option<uint8> = void 0;
+                _v396 = x_44;
+                const v403: uint8 = value_47(_v396);
+                let _v404: Option<uint8> = void 0;
                 let x_45: uint8;
                 const value_45: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_45 = (value_45 & 0xFF);
-                _v359 = x_45;
-                const v365: uint8 = value_47(_v359);
-                let _v366: Option<uint8> = void 0;
+                _v404 = x_45;
+                const v411: uint8 = value_47(_v404);
+                let _v412: Option<uint8> = void 0;
                 let x_46: uint8;
                 const value_46: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_46 = (value_46 & 0xFF);
-                _v366 = x_46;
-                v0_1_mut = UH1_UH1_1(v218, UH1_UH1_1(v225, UH1_UH1_1(v232, UH1_UH1_1(v239, UH1_UH1_1(v246, UH1_UH1_1(v253, UH1_UH1_1(v260, UH1_UH1_1(v267, UH1_UH1_1(v274, UH1_UH1_1(v281, UH1_UH1_1(v288, UH1_UH1_1(v295, UH1_UH1_1(v302, UH1_UH1_1(v309, UH1_UH1_1(v316, UH1_UH1_1(v323, UH1_UH1_1(v330, UH1_UH1_1(v337, UH1_UH1_1(v344, UH1_UH1_1(v351, UH1_UH1_1(v358, UH1_UH1_1(v365, UH1_UH1_1(value_47(_v366), UH1_UH1_0())))))))))))))))))))))));
+                _v412 = x_46;
+                v0_1_mut = UH1_UH1_1(v243, UH1_UH1_1(v251, UH1_UH1_1(v259, UH1_UH1_1(v267, UH1_UH1_1(v275, UH1_UH1_1(v283, UH1_UH1_1(v291, UH1_UH1_1(v299, UH1_UH1_1(v307, UH1_UH1_1(v315, UH1_UH1_1(v323, UH1_UH1_1(v331, UH1_UH1_1(v339, UH1_UH1_1(v347, UH1_UH1_1(v355, UH1_UH1_1(v363, UH1_UH1_1(v371, UH1_UH1_1(v379, UH1_UH1_1(v387, UH1_UH1_1(v395, UH1_UH1_1(v403, UH1_UH1_1(v411, UH1_UH1_1(value_47(_v412), UH1_UH1_0())))))))))))))))))))))));
                 v1_1_mut = 23;
-                continue method14;
+                continue method15;
             }
         }
         break;
@@ -2009,7 +2013,7 @@ export function method14(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
 export function closure81(unitVar: void, v0_1: string[]): int32 {
     const v1_1 = `calculate_dice_count / max: ${9223372036854775807n} / n: ${24} / p: ${4738381338321616896n}`;
     console.log(v1_1);
-    const v5 = `result: ${method14(UH1_UH1_0(), 0)}`;
+    const v5 = `result: ${method15(UH1_UH1_0(), 0)}`;
     console.log(v5);
     return 0;
 }
