@@ -30,15 +30,15 @@ function Build {
 }
 
 { Build "rs" } | Invoke-Block
+{ Build "ts" } | Invoke-Block
 if (!$fast) {
-    { Build "ts" } | Invoke-Block
     { Build "py" } | Invoke-Block
     { Build "php" } | Invoke-Block -OnError Continue
     { Build "dart" } | Invoke-Block -OnError Continue
 }
 CopyTarget $targetDir ../../polyglot "rs"
+CopyTarget $targetDir ../../polyglot "ts"
 if (!$fast) {
-    CopyTarget $targetDir ../../polyglot "ts"
     CopyTarget $targetDir ../../polyglot "py"
     CopyTarget $targetDir ../../polyglot "php"
     CopyTarget $targetDir ../../polyglot "dart"
@@ -55,16 +55,16 @@ if (!$fast) {
 }
 
 { Build "rs" "CONTRACT" } | Invoke-Block
+{ Build "ts" "CONTRACT" } | Invoke-Block
 if (!$fast) {
     
-    { Build "ts" "CONTRACT" } | Invoke-Block
     { Build "py" "CONTRACT" } | Invoke-Block
     { Build "php" "CONTRACT" } | Invoke-Block -OnError Continue
     { Build "dart" "CONTRACT" } | Invoke-Block -OnError Continue
 }
 CopyTarget $targetDir ../../polyglot "rs" "contract"
+CopyTarget $targetDir ../../polyglot "ts" "contract"
 if (!$fast) {
-    CopyTarget $targetDir ../../polyglot "ts" "contract"
     CopyTarget $targetDir ../../polyglot "py" "contract"
     CopyTarget $targetDir ../../polyglot "php" "contract"
     CopyTarget $targetDir ../../polyglot "dart" "contract"
