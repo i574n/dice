@@ -1,5 +1,6 @@
 param(
     $fast,
+    $SkipNotebook,
     $ScriptDir = $PSScriptRoot
 )
 Set-Location $ScriptDir
@@ -8,7 +9,7 @@ $ErrorActionPreference = "Stop"
 . ../../polyglot/lib/spiral/lib.ps1
 
 
-if (!$fast) {
+if (!$fast -and !$SkipNotebook) {
     { . ../../polyglot/apps/spiral/dist/Supervisor$(GetExecutableSuffix) --execute-command "pwsh -c `"../../polyglot/scripts/invoke-dib.ps1 dice.dib`"" } | Invoke-Block -Retries 5
 }
 
