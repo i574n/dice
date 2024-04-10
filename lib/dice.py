@@ -9,7 +9,7 @@ from fable_modules.fable_library.reflection import (TypeInfo, uint8_type, unit_t
 from fable_modules.fable_library.string_ import (to_text, interpolate)
 from fable_modules.fable_library.types import (Array, Union, Record, int64, FSharpRef, uint8, uint64, int8)
 
-def _expr92() -> TypeInfo:
+def _expr108() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -24,9 +24,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr92
+UH0_reflection = _expr108
 
-def _expr93() -> TypeInfo:
+def _expr109() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[], [("Item1", uint8_type), ("Item2", UH1_reflection())]])
 
 
@@ -41,9 +41,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr93
+UH1_reflection = _expr109
 
-def _expr94() -> TypeInfo:
+def _expr110() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[("f0_0", lambda_type(string_type, unit_type))], []])
 
 
@@ -59,9 +59,9 @@ class US0(Union):
         return ["US0_0", "US0_1"]
 
 
-US0_reflection = _expr94
+US0_reflection = _expr110
 
-def _expr95() -> TypeInfo:
+def _expr111() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", lambda_type(unit_type, UH0_reflection()))], [("f1_0", UH0_reflection())]])
 
 
@@ -77,9 +77,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr95
+US1_reflection = _expr111
 
-def _expr96() -> TypeInfo:
+def _expr112() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", US1_reflection())])
 
 
@@ -87,9 +87,9 @@ def _expr96() -> TypeInfo:
 class Mut0(Record):
     l0: US1
 
-Mut0_reflection = _expr96
+Mut0_reflection = _expr112
 
-def _expr97() -> TypeInfo:
+def _expr113() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", int64_type)])
 
 
@@ -97,9 +97,9 @@ def _expr97() -> TypeInfo:
 class Mut1(Record):
     l0: int64
 
-Mut1_reflection = _expr97
+Mut1_reflection = _expr113
 
-def _expr98() -> TypeInfo:
+def _expr114() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[("f0_0", uint8_type)], []])
 
 
@@ -115,9 +115,9 @@ class US2(Union):
         return ["US2_0", "US2_1"]
 
 
-US2_reflection = _expr98
+US2_reflection = _expr114
 
-def _expr99() -> TypeInfo:
+def _expr115() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", US2_reflection())])
 
 
@@ -125,9 +125,9 @@ def _expr99() -> TypeInfo:
 class Mut2(Record):
     l0: US2
 
-Mut2_reflection = _expr99
+Mut2_reflection = _expr115
 
-def _expr100() -> TypeInfo:
+def _expr116() -> TypeInfo:
     return union_type("Dice.US3", [], US3, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -143,9 +143,9 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr100
+US3_reflection = _expr116
 
-def _expr101() -> TypeInfo:
+def _expr117() -> TypeInfo:
     return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
 
 
@@ -160,9 +160,9 @@ class UH2(Union):
         return ["UH2_0", "UH2_1"]
 
 
-UH2_reflection = _expr101
+UH2_reflection = _expr117
 
-def _expr102() -> TypeInfo:
+def _expr118() -> TypeInfo:
     return union_type("Dice.US4", [], US4, lambda: [[("f0_0", uint64_type)], []])
 
 
@@ -178,9 +178,9 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr102
+US4_reflection = _expr118
 
-def _expr103() -> TypeInfo:
+def _expr119() -> TypeInfo:
     return union_type("Dice.US5", [], US5, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -196,7 +196,7 @@ class US5(Union):
         return ["US5_0", "US5_1"]
 
 
-US5_reflection = _expr103
+US5_reflection = _expr119
 
 def UH0__get_IsUH0_0(this: UH0, unit_arg: None) -> bool:
     if this.tag == 0:
@@ -383,10 +383,10 @@ def closure1(v0_1: int64, v1_1: UH0) -> UH0:
 
 
 def closure0(unit_var: None, v0_1: int64) -> Callable[[UH0], UH0]:
-    def _arrow104(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
+    def _arrow120(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
         return closure1(v0_1, v)
 
-    return _arrow104
+    return _arrow120
 
 
 def closure4(unit_var: None, v0_1: Callable[[str], None]) -> US0:
@@ -394,10 +394,10 @@ def closure4(unit_var: None, v0_1: Callable[[str], None]) -> US0:
 
 
 def method1(__unit: None=None) -> Callable[[Callable[[str], None]], US0]:
-    def _arrow105(v: Callable[[str], None]) -> US0:
+    def _arrow121(v: Callable[[str], None]) -> US0:
         return closure4(None, v)
 
-    return _arrow105
+    return _arrow121
 
 
 def method2(v0_1_mut: UH1, v1_1_mut: UH1) -> UH1:
@@ -459,10 +459,10 @@ def closure8(v0_1: UH0, v1_1: Mut0, unit_var: None) -> UH0:
 
 def method5(v0_1: UH0, v1_1: Callable[[], UH0]) -> Callable[[], UH0]:
     v3_1: Mut0 = Mut0(US1(0, v1_1))
-    def _arrow106(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
+    def _arrow122(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
         return closure8(v0_1, v3_1, None)
 
-    return _arrow106
+    return _arrow122
 
 
 def method7(v0_1_mut: int64, v1_1_mut: UH0) -> US2:
@@ -539,18 +539,18 @@ def closure5(v0_1: US0, v1_1: UH1) -> Callable[[], uint8]:
     v12: Mut1 = Mut1(int64(1))
     v13: Mut1 = Mut1(int64(-1))
     v15: Mut2 = Mut2(US2(1))
-    def _arrow107(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
+    def _arrow123(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
         return closure9(v0_1, v10, v11, v12, v13, v15, None)
 
-    return _arrow107
+    return _arrow123
 
 
 def closure3(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     v3_1: US0 = default_arg(map(method1(), v0_1), US0(1))
-    def _arrow108(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
+    def _arrow124(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
         return closure5(v3_1, v)
 
-    return _arrow108
+    return _arrow124
 
 
 def method8(v0_1_mut: US0, v1_1_mut: uint64, v2_1_mut: int8, v3_1_mut: uint64) -> int8:
@@ -1206,25 +1206,25 @@ def closure13(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool, v3_1: uint64) ->
 
 
 def closure12(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool) -> Callable[[uint64], uint64]:
-    def _arrow109(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
+    def _arrow125(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
         return closure13(v0_1, v1_1, v2_1, v)
 
-    return _arrow109
+    return _arrow125
 
 
 def closure11(v0_1: US0, v1_1: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
-    def _arrow110(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
+    def _arrow126(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
         return closure12(v0_1, v1_1, v)
 
-    return _arrow110
+    return _arrow126
 
 
 def closure10(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     v3_1: US0 = default_arg(map(method1(), v0_1), US0(1))
-    def _arrow111(v: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
+    def _arrow127(v: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
         return closure11(v3_1, v)
 
-    return _arrow111
+    return _arrow127
 
 
 def method14(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
@@ -1260,17 +1260,17 @@ def closure80(v0_1: Callable[[str], None] | None, v1_1: uint64, v2_1: UH1) -> ui
 
 
 def closure79(v0_1: Callable[[str], None] | None, v1_1: uint64) -> Callable[[UH1], uint64 | None]:
-    def _arrow112(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
+    def _arrow128(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
         return closure80(v0_1, v1_1, v)
 
-    return _arrow112
+    return _arrow128
 
 
 def closure78(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
-    def _arrow113(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
+    def _arrow129(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
         return closure79(v0_1, v)
 
-    return _arrow113
+    return _arrow129
 
 
 def method40(v0_1: UH1, v1_1: int64) -> US5:
@@ -1909,51 +1909,51 @@ def closure81(unit_var: None, v0_1: Array[str]) -> int:
     return 0
 
 
-def _arrow114(v: int64) -> Callable[[UH0], UH0]:
+def _arrow130(v: int64) -> Callable[[UH0], UH0]:
     return closure0(None, v)
 
 
-v0: Callable[[int64, UH0], UH0] = _arrow114
+v0: Callable[[int64, UH0], UH0] = _arrow130
 
 def rotate_numbers(x: int64) -> Callable[[UH0], UH0]:
     return v0(x)
 
 
-def _arrow115(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
+def _arrow131(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return closure3(None, v)
 
 
-v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow115
+v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow131
 
 def create_sequential_roller(x: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return v1(x)
 
 
-def _arrow116(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
+def _arrow132(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return closure10(None, v)
 
 
-v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow116
+v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow132
 
 def roll_progressively(x: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return v2(x)
 
 
-def _arrow117(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
+def _arrow133(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return closure78(None, v)
 
 
-v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow117
+v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow133
 
 def roll_within_bounds(x: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return v3(x)
 
 
-def _arrow118(v: Array[str]) -> int:
+def _arrow134(v: Array[str]) -> int:
     return closure81(None, v)
 
 
-v4: Callable[[Array[str]], int] = _arrow118
+v4: Callable[[Array[str]], int] = _arrow134
 
 def main(args: Array[str]) -> int:
     return v4(args)

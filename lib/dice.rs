@@ -3204,6 +3204,9 @@ pub use module_8d8b0653::*;
 #[path = "../../polyglot/lib/spiral/sm.rs"]
 mod module_2aeb754a;
 pub use module_2aeb754a::*;
+#[path = "../../polyglot/lib/spiral/trace.rs"]
+mod module_e61b6515;
+pub use module_e61b6515::*;
 pub mod Polyglot {
     pub use crate::module_8cb3e09e::Polyglot::*;
 }

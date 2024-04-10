@@ -398,6 +398,9 @@ pub use module_8d8b0653::*;
 #[path = "../../polyglot/lib/spiral/sm_wasm.rs"]
 mod module_2aeb754a;
 pub use module_2aeb754a::*;
+#[path = "../../polyglot/lib/spiral/trace_wasm.rs"]
+mod module_e61b6515;
+pub use module_e61b6515::*;
 pub mod Dice {
     pub use crate::module_dc8717e1::Dice::*;
 }

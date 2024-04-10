@@ -11,6 +11,14 @@ pub use lib::Lib;
 pub use lib::Lib::*;
 
 #[allow(non_snake_case)]
+#[allow(unused_variables)]
+#[allow(unreachable_code)]
+#[allow(non_upper_case_globals)]
+#[path = "../../../polyglot/lib/spiral/trace.rs"]
+pub mod _Trace;
+pub use _Trace::Trace;
+
+#[allow(non_snake_case)]
 #[allow(unused_imports)]
 #[allow(unused_variables)]
 #[allow(unreachable_code)]

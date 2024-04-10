@@ -15,7 +15,7 @@ if (!$fast -and !$SkipNotebook) {
 
 { . ../../polyglot/apps/parser/dist/DibParser$(GetExecutableSuffix) dice_fsharp.dib fs } | Invoke-Block
 
-{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) dice_fsharp.fs $($fast ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) --packages Fable.Core --modules lib/spiral/common.fsx lib/spiral/sm.fsx lib/spiral/date_time.fsx lib/spiral/file_system.fsx lib/spiral/lib.fsx lib/fsharp/Common.fs } | Invoke-Block
+{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) dice_fsharp.fs $($fast ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) --packages Fable.Core --modules lib/spiral/common.fsx lib/spiral/sm.fsx lib/spiral/date_time.fsx lib/spiral/file_system.fsx lib/spiral/trace.fsx lib/spiral/lib.fsx lib/fsharp/Common.fs } | Invoke-Block
 
 $targetDir = "../../polyglot/target/polyglot/builder/dice_fsharp"
 

@@ -1,5 +1,5 @@
 // ignore_for_file: camel_case_types, constant_identifier_names, non_constant_identifier_names, unnecessary_this
-import './fable_modules/fable_library/Option.dart' as option_47;
+import './fable_modules/fable_library/Option.dart' as option_2;
 import './fable_modules/fable_library/String.dart' as string;
 import './fable_modules/fable_library/Types.dart' as types;
 import './fable_modules/fable_library/Util.dart' as util;
@@ -546,7 +546,7 @@ int Function() closure5(US0 v0_1, UH1 v1_1) {
 }
 
 int Function() Function(UH1) closure3(void unitVar, types.Some<void Function(String)>? v0_1) {
-    final US0 v3_1 = option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>(method1(), v0_1));
+    final US0 v3_1 = option_2.defaultValue(const US0(/* US0_1 */ 1), option_2.map<void Function(String), US0>(method1(), v0_1));
     return (UH1 v) => closure5(v3_1, v);
 }
 
@@ -903,7 +903,7 @@ int Function(int) closure12(US0 v0_1, int Function() v1_1, bool v2_1) => (int v)
 int Function(int) Function(bool) closure11(US0 v0_1, int Function() v1_1) => (bool v) => closure12(v0_1, v1_1, v);
 
 int Function(int) Function(bool) Function(int Function()) closure10(void unitVar, types.Some<void Function(String)>? v0_1) {
-    final US0 v3_1 = option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>(method1(), v0_1));
+    final US0 v3_1 = option_2.defaultValue(const US0(/* US0_1 */ 1), option_2.map<void Function(String), US0>(method1(), v0_1));
     return (int Function() v) => closure11(v3_1, v);
 }
 
@@ -924,7 +924,7 @@ int method14(UH1 v0_1_mut, int v1_1_mut) {
 }
 
 types.Some<int>? closure80(types.Some<void Function(String)>? v0_1, int v1_1, UH1 v2_1) {
-    final US3 v10 = method10(option_47.defaultValue(const US0(/* US0_1 */ 1), option_47.map<void Function(String), US0>(method1(), v0_1)), method14(v2_1, 0) - 1, v2_1, 0);
+    final US3 v10 = method10(option_2.defaultValue(const US0(/* US0_1 */ 1), option_2.map<void Function(String), US0>(method1(), v0_1)), method14(v2_1, 0) - 1, v2_1, 0);
     late final US4 v20;
     if (v10.tag == /* US3_0 */ 0) {
         final v10_1 = v10 as US3_US3_0;

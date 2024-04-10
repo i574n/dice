@@ -1079,7 +1079,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
         Unchecked.defaultof<uint8>
         #endif
         |> fun x -> _v3 <- Some x
-        let v11 : uint8 = _v3 |> Option.get
+        let v11 : uint8 = _v3.Value
         let v12 : UH1 = UH1_1(v11, v0)
         let v13 : int8 = v1 + 1y
         method15(v12, v13)
@@ -1120,7 +1120,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v20 <- Some x
-                let v28 : uint8 = _v20 |> Option.get
+                let v28 : uint8 = _v20.Value
                 let v29 : uint8 option = None
                 let mutable _v29 = v29
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1147,7 +1147,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v29 <- Some x
-                let v35 : uint8 = _v29 |> Option.get
+                let v35 : uint8 = _v29.Value
                 let v36 : uint8 option = None
                 let mutable _v36 = v36
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1174,7 +1174,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v36 <- Some x
-                let v42 : uint8 = _v36 |> Option.get
+                let v42 : uint8 = _v36.Value
                 let v43 : uint8 option = None
                 let mutable _v43 = v43
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1201,7 +1201,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v43 <- Some x
-                let v49 : uint8 = _v43 |> Option.get
+                let v49 : uint8 = _v43.Value
                 let v50 : uint8 option = None
                 let mutable _v50 = v50
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1228,7 +1228,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v50 <- Some x
-                let v56 : uint8 = _v50 |> Option.get
+                let v56 : uint8 = _v50.Value
                 let v57 : uint8 option = None
                 let mutable _v57 = v57
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1255,7 +1255,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v57 <- Some x
-                let v63 : uint8 = _v57 |> Option.get
+                let v63 : uint8 = _v57.Value
                 let v64 : uint8 option = None
                 let mutable _v64 = v64
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1282,7 +1282,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v64 <- Some x
-                let v70 : uint8 = _v64 |> Option.get
+                let v70 : uint8 = _v64.Value
                 let v71 : uint8 option = None
                 let mutable _v71 = v71
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1309,7 +1309,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v71 <- Some x
-                let v77 : uint8 = _v71 |> Option.get
+                let v77 : uint8 = _v71.Value
                 let v78 : uint8 option = None
                 let mutable _v78 = v78
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1336,7 +1336,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v78 <- Some x
-                let v84 : uint8 = _v78 |> Option.get
+                let v84 : uint8 = _v78.Value
                 let v85 : uint8 option = None
                 let mutable _v85 = v85
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1363,7 +1363,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v85 <- Some x
-                let v91 : uint8 = _v85 |> Option.get
+                let v91 : uint8 = _v85.Value
                 let v92 : uint8 option = None
                 let mutable _v92 = v92
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1390,7 +1390,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v92 <- Some x
-                let v98 : uint8 = _v92 |> Option.get
+                let v98 : uint8 = _v92.Value
                 let v99 : uint8 option = None
                 let mutable _v99 = v99
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1417,7 +1417,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v99 <- Some x
-                let v105 : uint8 = _v99 |> Option.get
+                let v105 : uint8 = _v99.Value
                 let v106 : uint8 option = None
                 let mutable _v106 = v106
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1444,7 +1444,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v106 <- Some x
-                let v112 : uint8 = _v106 |> Option.get
+                let v112 : uint8 = _v106.Value
                 let v113 : uint8 option = None
                 let mutable _v113 = v113
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1471,7 +1471,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v113 <- Some x
-                let v119 : uint8 = _v113 |> Option.get
+                let v119 : uint8 = _v113.Value
                 let v120 : uint8 option = None
                 let mutable _v120 = v120
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1498,7 +1498,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v120 <- Some x
-                let v126 : uint8 = _v120 |> Option.get
+                let v126 : uint8 = _v120.Value
                 let v127 : uint8 option = None
                 let mutable _v127 = v127
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1525,7 +1525,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v127 <- Some x
-                let v133 : uint8 = _v127 |> Option.get
+                let v133 : uint8 = _v127.Value
                 let v134 : uint8 option = None
                 let mutable _v134 = v134
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1552,7 +1552,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v134 <- Some x
-                let v140 : uint8 = _v134 |> Option.get
+                let v140 : uint8 = _v134.Value
                 let v141 : uint8 option = None
                 let mutable _v141 = v141
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1579,7 +1579,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v141 <- Some x
-                let v147 : uint8 = _v141 |> Option.get
+                let v147 : uint8 = _v141.Value
                 let v148 : uint8 option = None
                 let mutable _v148 = v148
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1606,7 +1606,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v148 <- Some x
-                let v154 : uint8 = _v148 |> Option.get
+                let v154 : uint8 = _v148.Value
                 let v155 : uint8 option = None
                 let mutable _v155 = v155
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1633,7 +1633,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v155 <- Some x
-                let v161 : uint8 = _v155 |> Option.get
+                let v161 : uint8 = _v155.Value
                 let v162 : uint8 option = None
                 let mutable _v162 = v162
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1660,7 +1660,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v162 <- Some x
-                let v168 : uint8 = _v162 |> Option.get
+                let v168 : uint8 = _v162.Value
                 let v169 : uint8 option = None
                 let mutable _v169 = v169
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1687,7 +1687,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v169 <- Some x
-                let v175 : uint8 = _v169 |> Option.get
+                let v175 : uint8 = _v169.Value
                 let v176 : uint8 option = None
                 let mutable _v176 = v176
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1714,7 +1714,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 Unchecked.defaultof<uint8>
                 #endif
                 |> fun x -> _v176 <- Some x
-                let v182 : uint8 = _v176 |> Option.get
+                let v182 : uint8 = _v176.Value
                 let v183 : UH1 = UH1_0
                 let v184 : UH1 = UH1_1(v182, v183)
                 let v185 : UH1 = UH1_1(v175, v184)
@@ -1770,7 +1770,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v210 <- Some x
-            let v218 : uint8 = _v210 |> Option.get
+            let v218 : uint8 = _v210.Value
             let v219 : uint8 option = None
             let mutable _v219 = v219
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1797,7 +1797,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v219 <- Some x
-            let v225 : uint8 = _v219 |> Option.get
+            let v225 : uint8 = _v219.Value
             let v226 : uint8 option = None
             let mutable _v226 = v226
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1824,7 +1824,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v226 <- Some x
-            let v232 : uint8 = _v226 |> Option.get
+            let v232 : uint8 = _v226.Value
             let v233 : uint8 option = None
             let mutable _v233 = v233
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1851,7 +1851,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v233 <- Some x
-            let v239 : uint8 = _v233 |> Option.get
+            let v239 : uint8 = _v233.Value
             let v240 : uint8 option = None
             let mutable _v240 = v240
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1878,7 +1878,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v240 <- Some x
-            let v246 : uint8 = _v240 |> Option.get
+            let v246 : uint8 = _v240.Value
             let v247 : uint8 option = None
             let mutable _v247 = v247
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1905,7 +1905,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v247 <- Some x
-            let v253 : uint8 = _v247 |> Option.get
+            let v253 : uint8 = _v247.Value
             let v254 : uint8 option = None
             let mutable _v254 = v254
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1932,7 +1932,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v254 <- Some x
-            let v260 : uint8 = _v254 |> Option.get
+            let v260 : uint8 = _v254.Value
             let v261 : uint8 option = None
             let mutable _v261 = v261
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1959,7 +1959,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v261 <- Some x
-            let v267 : uint8 = _v261 |> Option.get
+            let v267 : uint8 = _v261.Value
             let v268 : uint8 option = None
             let mutable _v268 = v268
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -1986,7 +1986,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v268 <- Some x
-            let v274 : uint8 = _v268 |> Option.get
+            let v274 : uint8 = _v268.Value
             let v275 : uint8 option = None
             let mutable _v275 = v275
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2013,7 +2013,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v275 <- Some x
-            let v281 : uint8 = _v275 |> Option.get
+            let v281 : uint8 = _v275.Value
             let v282 : uint8 option = None
             let mutable _v282 = v282
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2040,7 +2040,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v282 <- Some x
-            let v288 : uint8 = _v282 |> Option.get
+            let v288 : uint8 = _v282.Value
             let v289 : uint8 option = None
             let mutable _v289 = v289
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2067,7 +2067,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v289 <- Some x
-            let v295 : uint8 = _v289 |> Option.get
+            let v295 : uint8 = _v289.Value
             let v296 : uint8 option = None
             let mutable _v296 = v296
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2094,7 +2094,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v296 <- Some x
-            let v302 : uint8 = _v296 |> Option.get
+            let v302 : uint8 = _v296.Value
             let v303 : uint8 option = None
             let mutable _v303 = v303
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2121,7 +2121,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v303 <- Some x
-            let v309 : uint8 = _v303 |> Option.get
+            let v309 : uint8 = _v303.Value
             let v310 : uint8 option = None
             let mutable _v310 = v310
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2148,7 +2148,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v310 <- Some x
-            let v316 : uint8 = _v310 |> Option.get
+            let v316 : uint8 = _v310.Value
             let v317 : uint8 option = None
             let mutable _v317 = v317
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2175,7 +2175,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v317 <- Some x
-            let v323 : uint8 = _v317 |> Option.get
+            let v323 : uint8 = _v317.Value
             let v324 : uint8 option = None
             let mutable _v324 = v324
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2202,7 +2202,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v324 <- Some x
-            let v330 : uint8 = _v324 |> Option.get
+            let v330 : uint8 = _v324.Value
             let v331 : uint8 option = None
             let mutable _v331 = v331
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2229,7 +2229,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v331 <- Some x
-            let v337 : uint8 = _v331 |> Option.get
+            let v337 : uint8 = _v331.Value
             let v338 : uint8 option = None
             let mutable _v338 = v338
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2256,7 +2256,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v338 <- Some x
-            let v344 : uint8 = _v338 |> Option.get
+            let v344 : uint8 = _v338.Value
             let v345 : uint8 option = None
             let mutable _v345 = v345
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2283,7 +2283,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v345 <- Some x
-            let v351 : uint8 = _v345 |> Option.get
+            let v351 : uint8 = _v345.Value
             let v352 : uint8 option = None
             let mutable _v352 = v352
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2310,7 +2310,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v352 <- Some x
-            let v358 : uint8 = _v352 |> Option.get
+            let v358 : uint8 = _v352.Value
             let v359 : uint8 option = None
             let mutable _v359 = v359
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2337,7 +2337,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v359 <- Some x
-            let v365 : uint8 = _v359 |> Option.get
+            let v365 : uint8 = _v359.Value
             let v366 : uint8 option = None
             let mutable _v366 = v366
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
@@ -2364,7 +2364,7 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             Unchecked.defaultof<uint8>
             #endif
             |> fun x -> _v366 <- Some x
-            let v372 : uint8 = _v366 |> Option.get
+            let v372 : uint8 = _v366.Value
             let v373 : UH1 = UH1_0
             let v374 : UH1 = UH1_1(v372, v373)
             let v375 : UH1 = UH1_1(v365, v374)
