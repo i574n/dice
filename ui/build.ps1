@@ -5,21 +5,24 @@ param(
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
 . ../../polyglot/scripts/core.ps1
+. ../../polyglot/lib/spiral/lib.ps1
 
 
-{ . ../../polyglot/apps/spiral/dist/Supervisor$(GetExecutableSuffix) --build-file src/dice_ui.spi src/dice_ui.fsx --timeout 20000 } | Invoke-Block
+$projectName = "dice_ui"
 
-(Get-Content src/dice_ui.fsx) `
+{ . ../../polyglot/apps/spiral/dist/Supervisor$(GetExecutableSuffix) --build-file "src/$projectName.spi" "src/$projectName.fsx" --timeout 20000 } | Invoke-Block
+
+(Get-Content "src/$projectName.fsx") `
     -replace "and Heap2 =", "and  Heap2 =" `
-| Set-Content src/dice_ui.fsx
+| Set-Content "src/$projectName.fsx"
 
-{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) src/dice_ui.fsx $($fast ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) $($fast ? @("--persist-only") : @()) --packages Fable.Core --modules lib/spiral/common.fsx lib/spiral/sm.fsx lib/spiral/date_time.fsx lib/spiral/file_system.fsx lib/spiral/lib.fsx lib/fsharp/Common.fs } | Invoke-Block
+{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) "src/$projectName.fsx" $($fast ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) $($fast ? @("--persist-only") : @()) --packages Fable.Core --modules lib/spiral/common.fsx lib/spiral/sm.fsx lib/spiral/date_time.fsx lib/spiral/file_system.fsx lib/spiral/trace.fsx lib/spiral/lib.fsx lib/fsharp/Common.fs } | Invoke-Block
 
-$targetDir = "../../polyglot/target/polyglot/builder/dice_ui"
+$targetDir = GetTargetDir $projectName
 
-{ dotnet fable $targetDir/dice_ui.fsproj --optimize --lang rs --extension .rs --outDir $targetDir/target/rs --define WASM } | Invoke-Block
+{ BuildFable $targetDir $projectName "rs" "WASM" } | Invoke-Block
 
-(Get-Content $targetDir/target/rs/dice_ui.rs) `
+(Get-Content "$targetDir/target/rs/$projectName.rs") `
     -replace "../../../../lib", "../../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     -replace ".rs`"]", "_wasm.rs`"]" `
@@ -32,7 +35,7 @@ $targetDir = "../../polyglot/target/polyglot/builder/dice_ui"
     -replace "pub struct Heap5 {", "#[derive(PartialEq)] pub struct Heap5 {" `
     -replace "pub enum US1 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub enum US1 {" `
     -replace " US1_0,", "#[default] US1_0," `
-| Set-Content src/dice_ui_wasm.rs
+| Set-Content "src/$($projectName)_wasm.rs"
 
 # -replace "pub struct Heap0 {", "#[derive(serde::Serialize)] pub struct Heap0 {" `
 # -replace "pub struct Heap1 {", "#[derive(serde::Serialize, serde::Deserialize)] pub struct Heap1 {" `
@@ -41,7 +44,7 @@ $targetDir = "../../polyglot/target/polyglot/builder/dice_ui"
 # -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap4 {" `
 
 cargo fmt --
-leptosfmt ./src/dice_ui_wasm.rs
+leptosfmt "./src/$($projectName)_wasm.rs"
 
 if (!$fast) {
     Remove-Item $targetDir/trunk -Recurse -Force -ErrorAction Ignore
