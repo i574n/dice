@@ -188,7 +188,7 @@ mod module_dc8717e1 {
                 }
             }
             pub fn rollDice() -> i32 {
-                1_i32
+                rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)
             }
             pub fn rotateNumber(max: i32, n: i32) -> i32 {
                 (n - 1_i32 + max) % max + 1_i32
@@ -380,25 +380,34 @@ mod module_dc8717e1 {
     }
 }
 pub use module_dc8717e1::*;
-#[path = "../../polyglot/lib/fsharp/Common_wasm.rs"]
+#[path = "../../../polyglot/lib/fsharp/Common.rs"]
 mod module_8cb3e09e;
 pub use module_8cb3e09e::*;
-#[path = "../../polyglot/lib/spiral/common_wasm.rs"]
+#[path = "../../../polyglot/lib/spiral/async_.rs"]
+mod module_62d8b4ed;
+pub use module_62d8b4ed::*;
+#[path = "../../../polyglot/lib/spiral/common.rs"]
 mod module_e7e93d99;
 pub use module_e7e93d99::*;
-#[path = "../../polyglot/lib/spiral/date_time_wasm.rs"]
+#[path = "../../../polyglot/lib/spiral/crypto.rs"]
+mod module_981523f7;
+pub use module_981523f7::*;
+#[path = "../../../polyglot/lib/spiral/date_time.rs"]
 mod module_d18105aa;
 pub use module_d18105aa::*;
-#[path = "../../polyglot/lib/spiral/file_system_wasm.rs"]
+#[path = "../../../polyglot/lib/spiral/file_system.rs"]
 mod module_c5eb79e8;
 pub use module_c5eb79e8::*;
-#[path = "../../polyglot/lib/spiral/lib_wasm.rs"]
+#[path = "../../../polyglot/lib/spiral/lib.rs"]
 mod module_8d8b0653;
 pub use module_8d8b0653::*;
-#[path = "../../polyglot/lib/spiral/sm_wasm.rs"]
+#[path = "../../../polyglot/lib/spiral/runtime.rs"]
+mod module_3a43928;
+pub use module_3a43928::*;
+#[path = "../../../polyglot/lib/spiral/sm.rs"]
 mod module_2aeb754a;
 pub use module_2aeb754a::*;
-#[path = "../../polyglot/lib/spiral/trace_wasm.rs"]
+#[path = "../../../polyglot/lib/spiral/trace.rs"]
 mod module_e61b6515;
 pub use module_e61b6515::*;
 pub mod Dice {

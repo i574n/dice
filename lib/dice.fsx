@@ -1076,225 +1076,205 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
         v10 
         #endif
         #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-        Unchecked.defaultof<uint8>
+        let v11 : uint8 = Unchecked.defaultof<uint8>
+        v11 
         #endif
         |> fun x -> _v3 <- Some x
-        let v11 : uint8 = _v3.Value
-        let v12 : UH1 = UH1_1(v11, v0)
-        let v13 : int8 = v1 + 1y
-        method15(v12, v13)
+        let v12 : uint8 = _v3.Value
+        let v13 : UH1 = UH1_1(v12, v0)
+        let v14 : int8 = v1 + 1y
+        method15(v13, v14)
     else
-        let v15 : int64 = 0L
-        let v16 : US5 = method16(v0, v15)
-        match v16 with
-        | US5_0(v17, v18) -> (* Some *)
-            let v19 : bool = v17 <= 9223372036854775807L
-            if v19 then
-                v17
+        let v16 : int64 = 0L
+        let v17 : US5 = method16(v0, v16)
+        match v17 with
+        | US5_0(v18, v19) -> (* Some *)
+            let v20 : bool = v18 <= 9223372036854775807L
+            if v20 then
+                v18
             else
-                let v20 : uint8 option = None
-                let mutable _v20 = v20
+                let v21 : uint8 option = None
+                let mutable _v21 = v21
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v21 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
-                let v22 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v22 
-                #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v23 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                let v22 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
+                let v23 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v23 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v24 : string = "1"
-                let v25 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
-                v25 
+                #if FABLE_COMPILER_RUST && WASM
+                let v24 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v24 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v26 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v25 : string = "1"
+                let v26 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
                 v26 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
                 let v27 : uint8 = System.Random().Next (1, 7) |> uint8
                 v27 
                 #endif
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v28 : uint8 = System.Random().Next (1, 7) |> uint8
+                v28 
+                #endif
                 #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                let v29 : uint8 = Unchecked.defaultof<uint8>
+                v29 
                 #endif
-                |> fun x -> _v20 <- Some x
-                let v28 : uint8 = _v20.Value
-                let v29 : uint8 option = None
-                let mutable _v29 = v29
+                |> fun x -> _v21 <- Some x
+                let v30 : uint8 = _v21.Value
+                let v31 : uint8 option = None
+                let mutable _v31 = v31
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v30 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v30 
-                #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v31 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v31 
-                #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v32 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                let v32 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v32 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v33 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && WASM
+                let v33 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v33 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v34 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v34 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
                 v34 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v35 : uint8 = System.Random().Next (1, 7) |> uint8
+                v35 
                 #endif
-                |> fun x -> _v29 <- Some x
-                let v35 : uint8 = _v29.Value
-                let v36 : uint8 option = None
-                let mutable _v36 = v36
-                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v37 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v36 : uint8 = System.Random().Next (1, 7) |> uint8
+                v36 
+                #endif
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v37 : uint8 = Unchecked.defaultof<uint8>
                 v37 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v38 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v38 
-                #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v39 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
-                v39 
-                #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v40 : uint8 = System.Random().Next (1, 7) |> uint8
+                |> fun x -> _v31 <- Some x
+                let v38 : uint8 = _v31.Value
+                let v39 : uint8 option = None
+                let mutable _v39 = v39
+                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+                let v40 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v40 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v41 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && WASM
+                let v41 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v41 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v42 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v42 
                 #endif
-                |> fun x -> _v36 <- Some x
-                let v42 : uint8 = _v36.Value
-                let v43 : uint8 option = None
-                let mutable _v43 = v43
-                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v44 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v43 : uint8 = System.Random().Next (1, 7) |> uint8
+                v43 
+                #endif
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v44 : uint8 = System.Random().Next (1, 7) |> uint8
                 v44 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v45 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v45 : uint8 = Unchecked.defaultof<uint8>
                 v45 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v46 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
-                v46 
-                #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v47 : uint8 = System.Random().Next (1, 7) |> uint8
-                v47 
-                #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v48 : uint8 = System.Random().Next (1, 7) |> uint8
+                |> fun x -> _v39 <- Some x
+                let v46 : uint8 = _v39.Value
+                let v47 : uint8 option = None
+                let mutable _v47 = v47
+                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+                let v48 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v48 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_RUST && WASM
+                let v49 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v49 
                 #endif
-                |> fun x -> _v43 <- Some x
-                let v49 : uint8 = _v43.Value
-                let v50 : uint8 option = None
-                let mutable _v50 = v50
-                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v51 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v50 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v50 
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v51 : uint8 = System.Random().Next (1, 7) |> uint8
                 v51 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v52 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v52 : uint8 = System.Random().Next (1, 7) |> uint8
                 v52 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v53 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v53 : uint8 = Unchecked.defaultof<uint8>
                 v53 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v54 : uint8 = System.Random().Next (1, 7) |> uint8
-                v54 
-                #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v55 : uint8 = System.Random().Next (1, 7) |> uint8
-                v55 
-                #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
-                #endif
-                |> fun x -> _v50 <- Some x
-                let v56 : uint8 = _v50.Value
-                let v57 : uint8 option = None
-                let mutable _v57 = v57
+                |> fun x -> _v47 <- Some x
+                let v54 : uint8 = _v47.Value
+                let v55 : uint8 option = None
+                let mutable _v55 = v55
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v58 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                let v56 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v56 
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v57 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v57 
+                #endif
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v58 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
                 v58 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v59 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v59 : uint8 = System.Random().Next (1, 7) |> uint8
                 v59 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v60 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v60 : uint8 = System.Random().Next (1, 7) |> uint8
                 v60 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v61 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v61 : uint8 = Unchecked.defaultof<uint8>
                 v61 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v62 : uint8 = System.Random().Next (1, 7) |> uint8
-                v62 
-                #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
-                #endif
-                |> fun x -> _v57 <- Some x
-                let v63 : uint8 = _v57.Value
-                let v64 : uint8 option = None
-                let mutable _v64 = v64
+                |> fun x -> _v55 <- Some x
+                let v62 : uint8 = _v55.Value
+                let v63 : uint8 option = None
+                let mutable _v63 = v63
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v65 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v65 
+                let v64 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v64 
                 #endif
                 #if FABLE_COMPILER_RUST && WASM
-                let v66 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v66 
+                let v65 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v65 
                 #endif
                 #if FABLE_COMPILER_RUST && CONTRACT
-                let v67 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
-                v67 
+                let v66 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v66 
                 #endif
                 #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v67 : uint8 = System.Random().Next (1, 7) |> uint8
+                v67 
+                #endif
+                #if FABLE_COMPILER_TYPESCRIPT
                 let v68 : uint8 = System.Random().Next (1, 7) |> uint8
                 v68 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v69 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v69 : uint8 = Unchecked.defaultof<uint8>
                 v69 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
-                #endif
-                |> fun x -> _v64 <- Some x
-                let v70 : uint8 = _v64.Value
+                |> fun x -> _v63 <- Some x
+                let v70 : uint8 = _v63.Value
                 let v71 : uint8 option = None
                 let mutable _v71 = v71
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v72 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                let v72 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v72 
                 #endif
                 #if FABLE_COMPILER_RUST && WASM
-                let v73 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                let v73 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v73 
                 #endif
                 #if FABLE_COMPILER_RUST && CONTRACT
-                let v74 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                let v74 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
                 v74 
                 #endif
                 #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
@@ -1306,211 +1286,191 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v76 
                 #endif
                 #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                let v77 : uint8 = Unchecked.defaultof<uint8>
+                v77 
                 #endif
                 |> fun x -> _v71 <- Some x
-                let v77 : uint8 = _v71.Value
-                let v78 : uint8 option = None
-                let mutable _v78 = v78
+                let v78 : uint8 = _v71.Value
+                let v79 : uint8 option = None
+                let mutable _v79 = v79
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v79 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v79 
-                #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v80 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                let v80 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v80 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v81 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                #if FABLE_COMPILER_RUST && WASM
+                let v81 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v81 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v82 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v82 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
                 v82 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
                 let v83 : uint8 = System.Random().Next (1, 7) |> uint8
                 v83 
                 #endif
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v84 : uint8 = System.Random().Next (1, 7) |> uint8
+                v84 
+                #endif
                 #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                let v85 : uint8 = Unchecked.defaultof<uint8>
+                v85 
                 #endif
-                |> fun x -> _v78 <- Some x
-                let v84 : uint8 = _v78.Value
-                let v85 : uint8 option = None
-                let mutable _v85 = v85
+                |> fun x -> _v79 <- Some x
+                let v86 : uint8 = _v79.Value
+                let v87 : uint8 option = None
+                let mutable _v87 = v87
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v86 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v86 
-                #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v87 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v87 
-                #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v88 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                let v88 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v88 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v89 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && WASM
+                let v89 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v89 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v90 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v90 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
                 v90 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v91 : uint8 = System.Random().Next (1, 7) |> uint8
+                v91 
                 #endif
-                |> fun x -> _v85 <- Some x
-                let v91 : uint8 = _v85.Value
-                let v92 : uint8 option = None
-                let mutable _v92 = v92
-                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v93 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v92 : uint8 = System.Random().Next (1, 7) |> uint8
+                v92 
+                #endif
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v93 : uint8 = Unchecked.defaultof<uint8>
                 v93 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v94 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v94 
-                #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v95 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
-                v95 
-                #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v96 : uint8 = System.Random().Next (1, 7) |> uint8
+                |> fun x -> _v87 <- Some x
+                let v94 : uint8 = _v87.Value
+                let v95 : uint8 option = None
+                let mutable _v95 = v95
+                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+                let v96 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v96 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v97 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && WASM
+                let v97 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v97 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v98 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v98 
                 #endif
-                |> fun x -> _v92 <- Some x
-                let v98 : uint8 = _v92.Value
-                let v99 : uint8 option = None
-                let mutable _v99 = v99
-                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v100 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v99 : uint8 = System.Random().Next (1, 7) |> uint8
+                v99 
+                #endif
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v100 : uint8 = System.Random().Next (1, 7) |> uint8
                 v100 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v101 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v101 : uint8 = Unchecked.defaultof<uint8>
                 v101 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v102 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
-                v102 
-                #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v103 : uint8 = System.Random().Next (1, 7) |> uint8
-                v103 
-                #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v104 : uint8 = System.Random().Next (1, 7) |> uint8
+                |> fun x -> _v95 <- Some x
+                let v102 : uint8 = _v95.Value
+                let v103 : uint8 option = None
+                let mutable _v103 = v103
+                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+                let v104 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v104 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_RUST && WASM
+                let v105 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v105 
                 #endif
-                |> fun x -> _v99 <- Some x
-                let v105 : uint8 = _v99.Value
-                let v106 : uint8 option = None
-                let mutable _v106 = v106
-                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v107 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v106 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v106 
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v107 : uint8 = System.Random().Next (1, 7) |> uint8
                 v107 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v108 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v108 : uint8 = System.Random().Next (1, 7) |> uint8
                 v108 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v109 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v109 : uint8 = Unchecked.defaultof<uint8>
                 v109 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v110 : uint8 = System.Random().Next (1, 7) |> uint8
-                v110 
-                #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v111 : uint8 = System.Random().Next (1, 7) |> uint8
-                v111 
-                #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
-                #endif
-                |> fun x -> _v106 <- Some x
-                let v112 : uint8 = _v106.Value
-                let v113 : uint8 option = None
-                let mutable _v113 = v113
+                |> fun x -> _v103 <- Some x
+                let v110 : uint8 = _v103.Value
+                let v111 : uint8 option = None
+                let mutable _v111 = v111
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v114 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                let v112 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v112 
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v113 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v113 
+                #endif
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v114 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
                 v114 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v115 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v115 : uint8 = System.Random().Next (1, 7) |> uint8
                 v115 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v116 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v116 : uint8 = System.Random().Next (1, 7) |> uint8
                 v116 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v117 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v117 : uint8 = Unchecked.defaultof<uint8>
                 v117 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v118 : uint8 = System.Random().Next (1, 7) |> uint8
-                v118 
-                #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
-                #endif
-                |> fun x -> _v113 <- Some x
-                let v119 : uint8 = _v113.Value
-                let v120 : uint8 option = None
-                let mutable _v120 = v120
+                |> fun x -> _v111 <- Some x
+                let v118 : uint8 = _v111.Value
+                let v119 : uint8 option = None
+                let mutable _v119 = v119
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v121 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v121 
+                let v120 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v120 
                 #endif
                 #if FABLE_COMPILER_RUST && WASM
-                let v122 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v122 
+                let v121 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v121 
                 #endif
                 #if FABLE_COMPILER_RUST && CONTRACT
-                let v123 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
-                v123 
+                let v122 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v122 
                 #endif
                 #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v123 : uint8 = System.Random().Next (1, 7) |> uint8
+                v123 
+                #endif
+                #if FABLE_COMPILER_TYPESCRIPT
                 let v124 : uint8 = System.Random().Next (1, 7) |> uint8
                 v124 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v125 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v125 : uint8 = Unchecked.defaultof<uint8>
                 v125 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
-                #endif
-                |> fun x -> _v120 <- Some x
-                let v126 : uint8 = _v120.Value
+                |> fun x -> _v119 <- Some x
+                let v126 : uint8 = _v119.Value
                 let v127 : uint8 option = None
                 let mutable _v127 = v127
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v128 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                let v128 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v128 
                 #endif
                 #if FABLE_COMPILER_RUST && WASM
-                let v129 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                let v129 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v129 
                 #endif
                 #if FABLE_COMPILER_RUST && CONTRACT
-                let v130 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                let v130 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
                 v130 
                 #endif
                 #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
@@ -1522,456 +1482,416 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v132 
                 #endif
                 #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                let v133 : uint8 = Unchecked.defaultof<uint8>
+                v133 
                 #endif
                 |> fun x -> _v127 <- Some x
-                let v133 : uint8 = _v127.Value
-                let v134 : uint8 option = None
-                let mutable _v134 = v134
+                let v134 : uint8 = _v127.Value
+                let v135 : uint8 option = None
+                let mutable _v135 = v135
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v135 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v135 
-                #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v136 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                let v136 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v136 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v137 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                #if FABLE_COMPILER_RUST && WASM
+                let v137 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v137 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v138 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v138 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
                 v138 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
                 let v139 : uint8 = System.Random().Next (1, 7) |> uint8
                 v139 
                 #endif
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v140 : uint8 = System.Random().Next (1, 7) |> uint8
+                v140 
+                #endif
                 #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                let v141 : uint8 = Unchecked.defaultof<uint8>
+                v141 
                 #endif
-                |> fun x -> _v134 <- Some x
-                let v140 : uint8 = _v134.Value
-                let v141 : uint8 option = None
-                let mutable _v141 = v141
+                |> fun x -> _v135 <- Some x
+                let v142 : uint8 = _v135.Value
+                let v143 : uint8 option = None
+                let mutable _v143 = v143
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v142 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v142 
-                #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v143 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v143 
-                #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v144 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                let v144 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v144 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v145 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && WASM
+                let v145 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v145 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v146 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v146 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
                 v146 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v147 : uint8 = System.Random().Next (1, 7) |> uint8
+                v147 
                 #endif
-                |> fun x -> _v141 <- Some x
-                let v147 : uint8 = _v141.Value
-                let v148 : uint8 option = None
-                let mutable _v148 = v148
-                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v149 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v148 : uint8 = System.Random().Next (1, 7) |> uint8
+                v148 
+                #endif
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v149 : uint8 = Unchecked.defaultof<uint8>
                 v149 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v150 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v150 
-                #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v151 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
-                v151 
-                #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v152 : uint8 = System.Random().Next (1, 7) |> uint8
+                |> fun x -> _v143 <- Some x
+                let v150 : uint8 = _v143.Value
+                let v151 : uint8 option = None
+                let mutable _v151 = v151
+                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+                let v152 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v152 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v153 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_RUST && WASM
+                let v153 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v153 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v154 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v154 
                 #endif
-                |> fun x -> _v148 <- Some x
-                let v154 : uint8 = _v148.Value
-                let v155 : uint8 option = None
-                let mutable _v155 = v155
-                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v156 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v155 : uint8 = System.Random().Next (1, 7) |> uint8
+                v155 
+                #endif
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v156 : uint8 = System.Random().Next (1, 7) |> uint8
                 v156 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v157 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v157 : uint8 = Unchecked.defaultof<uint8>
                 v157 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v158 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
-                v158 
-                #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v159 : uint8 = System.Random().Next (1, 7) |> uint8
-                v159 
-                #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v160 : uint8 = System.Random().Next (1, 7) |> uint8
+                |> fun x -> _v151 <- Some x
+                let v158 : uint8 = _v151.Value
+                let v159 : uint8 option = None
+                let mutable _v159 = v159
+                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+                let v160 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
                 v160 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_RUST && WASM
+                let v161 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v161 
                 #endif
-                |> fun x -> _v155 <- Some x
-                let v161 : uint8 = _v155.Value
-                let v162 : uint8 option = None
-                let mutable _v162 = v162
-                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v163 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v162 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v162 
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v163 : uint8 = System.Random().Next (1, 7) |> uint8
                 v163 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v164 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v164 : uint8 = System.Random().Next (1, 7) |> uint8
                 v164 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v165 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v165 : uint8 = Unchecked.defaultof<uint8>
                 v165 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v166 : uint8 = System.Random().Next (1, 7) |> uint8
-                v166 
-                #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v167 : uint8 = System.Random().Next (1, 7) |> uint8
-                v167 
-                #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
-                #endif
-                |> fun x -> _v162 <- Some x
-                let v168 : uint8 = _v162.Value
-                let v169 : uint8 option = None
-                let mutable _v169 = v169
+                |> fun x -> _v159 <- Some x
+                let v166 : uint8 = _v159.Value
+                let v167 : uint8 option = None
+                let mutable _v167 = v167
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v170 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                let v168 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v168 
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v169 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v169 
+                #endif
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v170 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
                 v170 
                 #endif
-                #if FABLE_COMPILER_RUST && WASM
-                let v171 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v171 : uint8 = System.Random().Next (1, 7) |> uint8
                 v171 
                 #endif
-                #if FABLE_COMPILER_RUST && CONTRACT
-                let v172 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v172 : uint8 = System.Random().Next (1, 7) |> uint8
                 v172 
                 #endif
-                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-                let v173 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v173 : uint8 = Unchecked.defaultof<uint8>
                 v173 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v174 : uint8 = System.Random().Next (1, 7) |> uint8
-                v174 
-                #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
-                #endif
-                |> fun x -> _v169 <- Some x
-                let v175 : uint8 = _v169.Value
-                let v176 : uint8 option = None
-                let mutable _v176 = v176
+                |> fun x -> _v167 <- Some x
+                let v174 : uint8 = _v167.Value
+                let v175 : uint8 option = None
+                let mutable _v175 = v175
                 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-                let v177 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v177 
+                let v176 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v176 
                 #endif
                 #if FABLE_COMPILER_RUST && WASM
-                let v178 : uint8 = Fable.Core.RustInterop.emitRustExpr () v21
-                v178 
+                let v177 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v177 
                 #endif
                 #if FABLE_COMPILER_RUST && CONTRACT
-                let v179 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
-                v179 
+                let v178 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v178 
                 #endif
                 #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v179 : uint8 = System.Random().Next (1, 7) |> uint8
+                v179 
+                #endif
+                #if FABLE_COMPILER_TYPESCRIPT
                 let v180 : uint8 = System.Random().Next (1, 7) |> uint8
                 v180 
                 #endif
-                #if FABLE_COMPILER_TYPESCRIPT
-                let v181 : uint8 = System.Random().Next (1, 7) |> uint8
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v181 : uint8 = Unchecked.defaultof<uint8>
                 v181 
                 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                Unchecked.defaultof<uint8>
+                |> fun x -> _v175 <- Some x
+                let v182 : uint8 = _v175.Value
+                let v183 : uint8 option = None
+                let mutable _v183 = v183
+                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+                let v184 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v184 
                 #endif
-                |> fun x -> _v176 <- Some x
-                let v182 : uint8 = _v176.Value
-                let v183 : UH1 = UH1_0
-                let v184 : UH1 = UH1_1(v182, v183)
-                let v185 : UH1 = UH1_1(v175, v184)
-                let v186 : UH1 = UH1_1(v168, v185)
-                let v187 : UH1 = UH1_1(v161, v186)
-                let v188 : UH1 = UH1_1(v154, v187)
-                let v189 : UH1 = UH1_1(v147, v188)
-                let v190 : UH1 = UH1_1(v140, v189)
-                let v191 : UH1 = UH1_1(v133, v190)
-                let v192 : UH1 = UH1_1(v126, v191)
-                let v193 : UH1 = UH1_1(v119, v192)
-                let v194 : UH1 = UH1_1(v112, v193)
-                let v195 : UH1 = UH1_1(v105, v194)
-                let v196 : UH1 = UH1_1(v98, v195)
-                let v197 : UH1 = UH1_1(v91, v196)
-                let v198 : UH1 = UH1_1(v84, v197)
-                let v199 : UH1 = UH1_1(v77, v198)
-                let v200 : UH1 = UH1_1(v70, v199)
-                let v201 : UH1 = UH1_1(v63, v200)
-                let v202 : UH1 = UH1_1(v56, v201)
-                let v203 : UH1 = UH1_1(v49, v202)
-                let v204 : UH1 = UH1_1(v42, v203)
-                let v205 : UH1 = UH1_1(v35, v204)
-                let v206 : UH1 = UH1_1(v28, v205)
-                let v207 : int8 = 23y
-                method15(v206, v207)
+                #if FABLE_COMPILER_RUST && WASM
+                let v185 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v185 
+                #endif
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v186 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v186 
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v187 : uint8 = System.Random().Next (1, 7) |> uint8
+                v187 
+                #endif
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v188 : uint8 = System.Random().Next (1, 7) |> uint8
+                v188 
+                #endif
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v189 : uint8 = Unchecked.defaultof<uint8>
+                v189 
+                #endif
+                |> fun x -> _v183 <- Some x
+                let v190 : uint8 = _v183.Value
+                let v191 : uint8 option = None
+                let mutable _v191 = v191
+                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+                let v192 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v192 
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v193 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v193 
+                #endif
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v194 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v194 
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v195 : uint8 = System.Random().Next (1, 7) |> uint8
+                v195 
+                #endif
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v196 : uint8 = System.Random().Next (1, 7) |> uint8
+                v196 
+                #endif
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v197 : uint8 = Unchecked.defaultof<uint8>
+                v197 
+                #endif
+                |> fun x -> _v191 <- Some x
+                let v198 : uint8 = _v191.Value
+                let v199 : uint8 option = None
+                let mutable _v199 = v199
+                #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+                let v200 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v200 
+                #endif
+                #if FABLE_COMPILER_RUST && WASM
+                let v201 : uint8 = Fable.Core.RustInterop.emitRustExpr () v22
+                v201 
+                #endif
+                #if FABLE_COMPILER_RUST && CONTRACT
+                let v202 : uint8 = Fable.Core.RustInterop.emitRustExpr () v25
+                v202 
+                #endif
+                #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+                let v203 : uint8 = System.Random().Next (1, 7) |> uint8
+                v203 
+                #endif
+                #if FABLE_COMPILER_TYPESCRIPT
+                let v204 : uint8 = System.Random().Next (1, 7) |> uint8
+                v204 
+                #endif
+                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+                let v205 : uint8 = Unchecked.defaultof<uint8>
+                v205 
+                #endif
+                |> fun x -> _v199 <- Some x
+                let v206 : uint8 = _v199.Value
+                let v207 : UH1 = UH1_0
+                let v208 : UH1 = UH1_1(v206, v207)
+                let v209 : UH1 = UH1_1(v198, v208)
+                let v210 : UH1 = UH1_1(v190, v209)
+                let v211 : UH1 = UH1_1(v182, v210)
+                let v212 : UH1 = UH1_1(v174, v211)
+                let v213 : UH1 = UH1_1(v166, v212)
+                let v214 : UH1 = UH1_1(v158, v213)
+                let v215 : UH1 = UH1_1(v150, v214)
+                let v216 : UH1 = UH1_1(v142, v215)
+                let v217 : UH1 = UH1_1(v134, v216)
+                let v218 : UH1 = UH1_1(v126, v217)
+                let v219 : UH1 = UH1_1(v118, v218)
+                let v220 : UH1 = UH1_1(v110, v219)
+                let v221 : UH1 = UH1_1(v102, v220)
+                let v222 : UH1 = UH1_1(v94, v221)
+                let v223 : UH1 = UH1_1(v86, v222)
+                let v224 : UH1 = UH1_1(v78, v223)
+                let v225 : UH1 = UH1_1(v70, v224)
+                let v226 : UH1 = UH1_1(v62, v225)
+                let v227 : UH1 = UH1_1(v54, v226)
+                let v228 : UH1 = UH1_1(v46, v227)
+                let v229 : UH1 = UH1_1(v38, v228)
+                let v230 : UH1 = UH1_1(v30, v229)
+                let v231 : int8 = 23y
+                method15(v230, v231)
         | _ ->
-            let v210 : uint8 option = None
-            let mutable _v210 = v210
+            let v234 : uint8 option = None
+            let mutable _v234 = v234
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v211 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
-            let v212 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v212 
-            #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v213 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v213 
-            #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v214 : string = "1"
-            let v215 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
-            v215 
-            #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v216 : uint8 = System.Random().Next (1, 7) |> uint8
-            v216 
-            #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v217 : uint8 = System.Random().Next (1, 7) |> uint8
-            v217 
-            #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
-            #endif
-            |> fun x -> _v210 <- Some x
-            let v218 : uint8 = _v210.Value
-            let v219 : uint8 option = None
-            let mutable _v219 = v219
-            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v220 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v220 
-            #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v221 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v221 
-            #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v222 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
-            v222 
-            #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v223 : uint8 = System.Random().Next (1, 7) |> uint8
-            v223 
-            #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v224 : uint8 = System.Random().Next (1, 7) |> uint8
-            v224 
-            #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
-            #endif
-            |> fun x -> _v219 <- Some x
-            let v225 : uint8 = _v219.Value
-            let v226 : uint8 option = None
-            let mutable _v226 = v226
-            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v227 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v227 
-            #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v228 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v228 
-            #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v229 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
-            v229 
-            #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v230 : uint8 = System.Random().Next (1, 7) |> uint8
-            v230 
-            #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v231 : uint8 = System.Random().Next (1, 7) |> uint8
-            v231 
-            #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
-            #endif
-            |> fun x -> _v226 <- Some x
-            let v232 : uint8 = _v226.Value
-            let v233 : uint8 option = None
-            let mutable _v233 = v233
-            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v234 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v234 
-            #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v235 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v235 
-            #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v236 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            let v235 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
+            let v236 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v236 
             #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v237 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_RUST && WASM
+            let v237 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v237 
             #endif
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v238 : string = "1"
+            let v239 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v239 
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v240 : uint8 = System.Random().Next (1, 7) |> uint8
+            v240 
+            #endif
             #if FABLE_COMPILER_TYPESCRIPT
-            let v238 : uint8 = System.Random().Next (1, 7) |> uint8
-            v238 
-            #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
-            #endif
-            |> fun x -> _v233 <- Some x
-            let v239 : uint8 = _v233.Value
-            let v240 : uint8 option = None
-            let mutable _v240 = v240
-            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v241 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            let v241 : uint8 = System.Random().Next (1, 7) |> uint8
             v241 
             #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v242 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v242 : uint8 = Unchecked.defaultof<uint8>
             v242 
             #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v243 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
-            v243 
-            #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v244 : uint8 = System.Random().Next (1, 7) |> uint8
-            v244 
-            #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v245 : uint8 = System.Random().Next (1, 7) |> uint8
+            |> fun x -> _v234 <- Some x
+            let v243 : uint8 = _v234.Value
+            let v244 : uint8 option = None
+            let mutable _v244 = v244
+            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v245 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v245 
             #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_RUST && WASM
+            let v246 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v246 
             #endif
-            |> fun x -> _v240 <- Some x
-            let v246 : uint8 = _v240.Value
-            let v247 : uint8 option = None
-            let mutable _v247 = v247
-            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v248 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v247 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v247 
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v248 : uint8 = System.Random().Next (1, 7) |> uint8
             v248 
             #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v249 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v249 : uint8 = System.Random().Next (1, 7) |> uint8
             v249 
             #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v250 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v250 : uint8 = Unchecked.defaultof<uint8>
             v250 
             #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v251 : uint8 = System.Random().Next (1, 7) |> uint8
-            v251 
-            #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v252 : uint8 = System.Random().Next (1, 7) |> uint8
-            v252 
-            #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
-            #endif
-            |> fun x -> _v247 <- Some x
-            let v253 : uint8 = _v247.Value
-            let v254 : uint8 option = None
-            let mutable _v254 = v254
+            |> fun x -> _v244 <- Some x
+            let v251 : uint8 = _v244.Value
+            let v252 : uint8 option = None
+            let mutable _v252 = v252
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v255 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            let v253 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v253 
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v254 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v254 
+            #endif
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v255 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
             v255 
             #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v256 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v256 : uint8 = System.Random().Next (1, 7) |> uint8
             v256 
             #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v257 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v257 : uint8 = System.Random().Next (1, 7) |> uint8
             v257 
             #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v258 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v258 : uint8 = Unchecked.defaultof<uint8>
             v258 
             #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v259 : uint8 = System.Random().Next (1, 7) |> uint8
-            v259 
-            #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
-            #endif
-            |> fun x -> _v254 <- Some x
-            let v260 : uint8 = _v254.Value
-            let v261 : uint8 option = None
-            let mutable _v261 = v261
+            |> fun x -> _v252 <- Some x
+            let v259 : uint8 = _v252.Value
+            let v260 : uint8 option = None
+            let mutable _v260 = v260
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v262 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v262 
+            let v261 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v261 
             #endif
             #if FABLE_COMPILER_RUST && WASM
-            let v263 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v263 
+            let v262 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v262 
             #endif
             #if FABLE_COMPILER_RUST && CONTRACT
-            let v264 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
-            v264 
+            let v263 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v263 
             #endif
             #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v264 : uint8 = System.Random().Next (1, 7) |> uint8
+            v264 
+            #endif
+            #if FABLE_COMPILER_TYPESCRIPT
             let v265 : uint8 = System.Random().Next (1, 7) |> uint8
             v265 
             #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v266 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v266 : uint8 = Unchecked.defaultof<uint8>
             v266 
             #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
-            #endif
-            |> fun x -> _v261 <- Some x
-            let v267 : uint8 = _v261.Value
+            |> fun x -> _v260 <- Some x
+            let v267 : uint8 = _v260.Value
             let v268 : uint8 option = None
             let mutable _v268 = v268
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v269 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            let v269 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v269 
             #endif
             #if FABLE_COMPILER_RUST && WASM
-            let v270 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            let v270 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v270 
             #endif
             #if FABLE_COMPILER_RUST && CONTRACT
-            let v271 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            let v271 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
             v271 
             #endif
             #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
@@ -1983,211 +1903,191 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v273 
             #endif
             #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            let v274 : uint8 = Unchecked.defaultof<uint8>
+            v274 
             #endif
             |> fun x -> _v268 <- Some x
-            let v274 : uint8 = _v268.Value
-            let v275 : uint8 option = None
-            let mutable _v275 = v275
+            let v275 : uint8 = _v268.Value
+            let v276 : uint8 option = None
+            let mutable _v276 = v276
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v276 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v276 
-            #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v277 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            let v277 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v277 
             #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v278 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            #if FABLE_COMPILER_RUST && WASM
+            let v278 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v278 
             #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v279 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v279 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
             v279 
             #endif
-            #if FABLE_COMPILER_TYPESCRIPT
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
             let v280 : uint8 = System.Random().Next (1, 7) |> uint8
             v280 
             #endif
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v281 : uint8 = System.Random().Next (1, 7) |> uint8
+            v281 
+            #endif
             #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            let v282 : uint8 = Unchecked.defaultof<uint8>
+            v282 
             #endif
-            |> fun x -> _v275 <- Some x
-            let v281 : uint8 = _v275.Value
-            let v282 : uint8 option = None
-            let mutable _v282 = v282
+            |> fun x -> _v276 <- Some x
+            let v283 : uint8 = _v276.Value
+            let v284 : uint8 option = None
+            let mutable _v284 = v284
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v283 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v283 
-            #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v284 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v284 
-            #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v285 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            let v285 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v285 
             #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v286 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_RUST && WASM
+            let v286 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v286 
             #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v287 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v287 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
             v287 
             #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v288 : uint8 = System.Random().Next (1, 7) |> uint8
+            v288 
             #endif
-            |> fun x -> _v282 <- Some x
-            let v288 : uint8 = _v282.Value
-            let v289 : uint8 option = None
-            let mutable _v289 = v289
-            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v290 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v289 : uint8 = System.Random().Next (1, 7) |> uint8
+            v289 
+            #endif
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v290 : uint8 = Unchecked.defaultof<uint8>
             v290 
             #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v291 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v291 
-            #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v292 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
-            v292 
-            #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v293 : uint8 = System.Random().Next (1, 7) |> uint8
+            |> fun x -> _v284 <- Some x
+            let v291 : uint8 = _v284.Value
+            let v292 : uint8 option = None
+            let mutable _v292 = v292
+            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v293 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v293 
             #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v294 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_RUST && WASM
+            let v294 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v294 
             #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v295 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v295 
             #endif
-            |> fun x -> _v289 <- Some x
-            let v295 : uint8 = _v289.Value
-            let v296 : uint8 option = None
-            let mutable _v296 = v296
-            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v297 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v296 : uint8 = System.Random().Next (1, 7) |> uint8
+            v296 
+            #endif
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v297 : uint8 = System.Random().Next (1, 7) |> uint8
             v297 
             #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v298 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v298 : uint8 = Unchecked.defaultof<uint8>
             v298 
             #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v299 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
-            v299 
-            #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v300 : uint8 = System.Random().Next (1, 7) |> uint8
-            v300 
-            #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v301 : uint8 = System.Random().Next (1, 7) |> uint8
+            |> fun x -> _v292 <- Some x
+            let v299 : uint8 = _v292.Value
+            let v300 : uint8 option = None
+            let mutable _v300 = v300
+            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v301 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v301 
             #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_RUST && WASM
+            let v302 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v302 
             #endif
-            |> fun x -> _v296 <- Some x
-            let v302 : uint8 = _v296.Value
-            let v303 : uint8 option = None
-            let mutable _v303 = v303
-            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v304 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v303 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v303 
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v304 : uint8 = System.Random().Next (1, 7) |> uint8
             v304 
             #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v305 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v305 : uint8 = System.Random().Next (1, 7) |> uint8
             v305 
             #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v306 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v306 : uint8 = Unchecked.defaultof<uint8>
             v306 
             #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v307 : uint8 = System.Random().Next (1, 7) |> uint8
-            v307 
-            #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v308 : uint8 = System.Random().Next (1, 7) |> uint8
-            v308 
-            #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
-            #endif
-            |> fun x -> _v303 <- Some x
-            let v309 : uint8 = _v303.Value
-            let v310 : uint8 option = None
-            let mutable _v310 = v310
+            |> fun x -> _v300 <- Some x
+            let v307 : uint8 = _v300.Value
+            let v308 : uint8 option = None
+            let mutable _v308 = v308
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v311 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            let v309 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v309 
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v310 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v310 
+            #endif
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v311 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
             v311 
             #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v312 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v312 : uint8 = System.Random().Next (1, 7) |> uint8
             v312 
             #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v313 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v313 : uint8 = System.Random().Next (1, 7) |> uint8
             v313 
             #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v314 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v314 : uint8 = Unchecked.defaultof<uint8>
             v314 
             #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v315 : uint8 = System.Random().Next (1, 7) |> uint8
-            v315 
-            #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
-            #endif
-            |> fun x -> _v310 <- Some x
-            let v316 : uint8 = _v310.Value
-            let v317 : uint8 option = None
-            let mutable _v317 = v317
+            |> fun x -> _v308 <- Some x
+            let v315 : uint8 = _v308.Value
+            let v316 : uint8 option = None
+            let mutable _v316 = v316
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v318 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v318 
+            let v317 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v317 
             #endif
             #if FABLE_COMPILER_RUST && WASM
-            let v319 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v319 
+            let v318 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v318 
             #endif
             #if FABLE_COMPILER_RUST && CONTRACT
-            let v320 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
-            v320 
+            let v319 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v319 
             #endif
             #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v320 : uint8 = System.Random().Next (1, 7) |> uint8
+            v320 
+            #endif
+            #if FABLE_COMPILER_TYPESCRIPT
             let v321 : uint8 = System.Random().Next (1, 7) |> uint8
             v321 
             #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v322 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v322 : uint8 = Unchecked.defaultof<uint8>
             v322 
             #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
-            #endif
-            |> fun x -> _v317 <- Some x
-            let v323 : uint8 = _v317.Value
+            |> fun x -> _v316 <- Some x
+            let v323 : uint8 = _v316.Value
             let v324 : uint8 option = None
             let mutable _v324 = v324
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v325 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            let v325 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v325 
             #endif
             #if FABLE_COMPILER_RUST && WASM
-            let v326 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            let v326 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v326 
             #endif
             #if FABLE_COMPILER_RUST && CONTRACT
-            let v327 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            let v327 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
             v327 
             #endif
             #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
@@ -2199,198 +2099,345 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v329 
             #endif
             #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            let v330 : uint8 = Unchecked.defaultof<uint8>
+            v330 
             #endif
             |> fun x -> _v324 <- Some x
-            let v330 : uint8 = _v324.Value
-            let v331 : uint8 option = None
-            let mutable _v331 = v331
+            let v331 : uint8 = _v324.Value
+            let v332 : uint8 option = None
+            let mutable _v332 = v332
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v332 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v332 
-            #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v333 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            let v333 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v333 
             #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v334 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            #if FABLE_COMPILER_RUST && WASM
+            let v334 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v334 
             #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v335 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v335 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
             v335 
             #endif
-            #if FABLE_COMPILER_TYPESCRIPT
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
             let v336 : uint8 = System.Random().Next (1, 7) |> uint8
             v336 
             #endif
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v337 : uint8 = System.Random().Next (1, 7) |> uint8
+            v337 
+            #endif
             #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            let v338 : uint8 = Unchecked.defaultof<uint8>
+            v338 
             #endif
-            |> fun x -> _v331 <- Some x
-            let v337 : uint8 = _v331.Value
-            let v338 : uint8 option = None
-            let mutable _v338 = v338
+            |> fun x -> _v332 <- Some x
+            let v339 : uint8 = _v332.Value
+            let v340 : uint8 option = None
+            let mutable _v340 = v340
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v339 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v339 
-            #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v340 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v340 
-            #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v341 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            let v341 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v341 
             #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v342 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_RUST && WASM
+            let v342 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v342 
             #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v343 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v343 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
             v343 
             #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v344 : uint8 = System.Random().Next (1, 7) |> uint8
+            v344 
             #endif
-            |> fun x -> _v338 <- Some x
-            let v344 : uint8 = _v338.Value
-            let v345 : uint8 option = None
-            let mutable _v345 = v345
-            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v346 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v345 : uint8 = System.Random().Next (1, 7) |> uint8
+            v345 
+            #endif
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v346 : uint8 = Unchecked.defaultof<uint8>
             v346 
             #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v347 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v347 
-            #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v348 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
-            v348 
-            #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v349 : uint8 = System.Random().Next (1, 7) |> uint8
+            |> fun x -> _v340 <- Some x
+            let v347 : uint8 = _v340.Value
+            let v348 : uint8 option = None
+            let mutable _v348 = v348
+            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v349 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v349 
             #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v350 : uint8 = System.Random().Next (1, 7) |> uint8
+            #if FABLE_COMPILER_RUST && WASM
+            let v350 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v350 
             #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v351 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v351 
             #endif
-            |> fun x -> _v345 <- Some x
-            let v351 : uint8 = _v345.Value
-            let v352 : uint8 option = None
-            let mutable _v352 = v352
-            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v353 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v352 : uint8 = System.Random().Next (1, 7) |> uint8
+            v352 
+            #endif
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v353 : uint8 = System.Random().Next (1, 7) |> uint8
             v353 
             #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v354 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v354 : uint8 = Unchecked.defaultof<uint8>
             v354 
             #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v355 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
-            v355 
-            #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v356 : uint8 = System.Random().Next (1, 7) |> uint8
-            v356 
-            #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v357 : uint8 = System.Random().Next (1, 7) |> uint8
+            |> fun x -> _v348 <- Some x
+            let v355 : uint8 = _v348.Value
+            let v356 : uint8 option = None
+            let mutable _v356 = v356
+            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v357 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
             v357 
             #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_RUST && WASM
+            let v358 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v358 
             #endif
-            |> fun x -> _v352 <- Some x
-            let v358 : uint8 = _v352.Value
-            let v359 : uint8 option = None
-            let mutable _v359 = v359
-            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v360 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v359 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v359 
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v360 : uint8 = System.Random().Next (1, 7) |> uint8
             v360 
             #endif
-            #if FABLE_COMPILER_RUST && WASM
-            let v361 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v361 : uint8 = System.Random().Next (1, 7) |> uint8
             v361 
             #endif
-            #if FABLE_COMPILER_RUST && CONTRACT
-            let v362 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v362 : uint8 = Unchecked.defaultof<uint8>
             v362 
             #endif
-            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v363 : uint8 = System.Random().Next (1, 7) |> uint8
-            v363 
-            #endif
-            #if FABLE_COMPILER_TYPESCRIPT
-            let v364 : uint8 = System.Random().Next (1, 7) |> uint8
-            v364 
-            #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
-            #endif
-            |> fun x -> _v359 <- Some x
-            let v365 : uint8 = _v359.Value
-            let v366 : uint8 option = None
-            let mutable _v366 = v366
+            |> fun x -> _v356 <- Some x
+            let v363 : uint8 = _v356.Value
+            let v364 : uint8 option = None
+            let mutable _v364 = v364
             #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v367 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v367 
+            let v365 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v365 
             #endif
             #if FABLE_COMPILER_RUST && WASM
-            let v368 : uint8 = Fable.Core.RustInterop.emitRustExpr () v211
-            v368 
+            let v366 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v366 
             #endif
             #if FABLE_COMPILER_RUST && CONTRACT
-            let v369 : uint8 = Fable.Core.RustInterop.emitRustExpr () v214
-            v369 
+            let v367 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v367 
             #endif
             #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
-            let v370 : uint8 = System.Random().Next (1, 7) |> uint8
-            v370 
+            let v368 : uint8 = System.Random().Next (1, 7) |> uint8
+            v368 
             #endif
             #if FABLE_COMPILER_TYPESCRIPT
-            let v371 : uint8 = System.Random().Next (1, 7) |> uint8
-            v371 
+            let v369 : uint8 = System.Random().Next (1, 7) |> uint8
+            v369 
             #endif
             #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            Unchecked.defaultof<uint8>
+            let v370 : uint8 = Unchecked.defaultof<uint8>
+            v370 
             #endif
-            |> fun x -> _v366 <- Some x
-            let v372 : uint8 = _v366.Value
-            let v373 : UH1 = UH1_0
-            let v374 : UH1 = UH1_1(v372, v373)
-            let v375 : UH1 = UH1_1(v365, v374)
-            let v376 : UH1 = UH1_1(v358, v375)
-            let v377 : UH1 = UH1_1(v351, v376)
-            let v378 : UH1 = UH1_1(v344, v377)
-            let v379 : UH1 = UH1_1(v337, v378)
-            let v380 : UH1 = UH1_1(v330, v379)
-            let v381 : UH1 = UH1_1(v323, v380)
-            let v382 : UH1 = UH1_1(v316, v381)
-            let v383 : UH1 = UH1_1(v309, v382)
-            let v384 : UH1 = UH1_1(v302, v383)
-            let v385 : UH1 = UH1_1(v295, v384)
-            let v386 : UH1 = UH1_1(v288, v385)
-            let v387 : UH1 = UH1_1(v281, v386)
-            let v388 : UH1 = UH1_1(v274, v387)
-            let v389 : UH1 = UH1_1(v267, v388)
-            let v390 : UH1 = UH1_1(v260, v389)
-            let v391 : UH1 = UH1_1(v253, v390)
-            let v392 : UH1 = UH1_1(v246, v391)
-            let v393 : UH1 = UH1_1(v239, v392)
-            let v394 : UH1 = UH1_1(v232, v393)
-            let v395 : UH1 = UH1_1(v225, v394)
-            let v396 : UH1 = UH1_1(v218, v395)
-            let v397 : int8 = 23y
-            method15(v396, v397)
+            |> fun x -> _v364 <- Some x
+            let v371 : uint8 = _v364.Value
+            let v372 : uint8 option = None
+            let mutable _v372 = v372
+            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v373 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v373 
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v374 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v374 
+            #endif
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v375 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v375 
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v376 : uint8 = System.Random().Next (1, 7) |> uint8
+            v376 
+            #endif
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v377 : uint8 = System.Random().Next (1, 7) |> uint8
+            v377 
+            #endif
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v378 : uint8 = Unchecked.defaultof<uint8>
+            v378 
+            #endif
+            |> fun x -> _v372 <- Some x
+            let v379 : uint8 = _v372.Value
+            let v380 : uint8 option = None
+            let mutable _v380 = v380
+            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v381 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v381 
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v382 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v382 
+            #endif
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v383 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v383 
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v384 : uint8 = System.Random().Next (1, 7) |> uint8
+            v384 
+            #endif
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v385 : uint8 = System.Random().Next (1, 7) |> uint8
+            v385 
+            #endif
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v386 : uint8 = Unchecked.defaultof<uint8>
+            v386 
+            #endif
+            |> fun x -> _v380 <- Some x
+            let v387 : uint8 = _v380.Value
+            let v388 : uint8 option = None
+            let mutable _v388 = v388
+            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v389 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v389 
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v390 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v390 
+            #endif
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v391 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v391 
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v392 : uint8 = System.Random().Next (1, 7) |> uint8
+            v392 
+            #endif
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v393 : uint8 = System.Random().Next (1, 7) |> uint8
+            v393 
+            #endif
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v394 : uint8 = Unchecked.defaultof<uint8>
+            v394 
+            #endif
+            |> fun x -> _v388 <- Some x
+            let v395 : uint8 = _v388.Value
+            let v396 : uint8 option = None
+            let mutable _v396 = v396
+            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v397 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v397 
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v398 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v398 
+            #endif
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v399 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v399 
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v400 : uint8 = System.Random().Next (1, 7) |> uint8
+            v400 
+            #endif
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v401 : uint8 = System.Random().Next (1, 7) |> uint8
+            v401 
+            #endif
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v402 : uint8 = Unchecked.defaultof<uint8>
+            v402 
+            #endif
+            |> fun x -> _v396 <- Some x
+            let v403 : uint8 = _v396.Value
+            let v404 : uint8 option = None
+            let mutable _v404 = v404
+            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v405 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v405 
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v406 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v406 
+            #endif
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v407 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v407 
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v408 : uint8 = System.Random().Next (1, 7) |> uint8
+            v408 
+            #endif
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v409 : uint8 = System.Random().Next (1, 7) |> uint8
+            v409 
+            #endif
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v410 : uint8 = Unchecked.defaultof<uint8>
+            v410 
+            #endif
+            |> fun x -> _v404 <- Some x
+            let v411 : uint8 = _v404.Value
+            let v412 : uint8 option = None
+            let mutable _v412 = v412
+            #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v413 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v413 
+            #endif
+            #if FABLE_COMPILER_RUST && WASM
+            let v414 : uint8 = Fable.Core.RustInterop.emitRustExpr () v235
+            v414 
+            #endif
+            #if FABLE_COMPILER_RUST && CONTRACT
+            let v415 : uint8 = Fable.Core.RustInterop.emitRustExpr () v238
+            v415 
+            #endif
+            #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+            let v416 : uint8 = System.Random().Next (1, 7) |> uint8
+            v416 
+            #endif
+            #if FABLE_COMPILER_TYPESCRIPT
+            let v417 : uint8 = System.Random().Next (1, 7) |> uint8
+            v417 
+            #endif
+            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
+            let v418 : uint8 = Unchecked.defaultof<uint8>
+            v418 
+            #endif
+            |> fun x -> _v412 <- Some x
+            let v419 : uint8 = _v412.Value
+            let v420 : UH1 = UH1_0
+            let v421 : UH1 = UH1_1(v419, v420)
+            let v422 : UH1 = UH1_1(v411, v421)
+            let v423 : UH1 = UH1_1(v403, v422)
+            let v424 : UH1 = UH1_1(v395, v423)
+            let v425 : UH1 = UH1_1(v387, v424)
+            let v426 : UH1 = UH1_1(v379, v425)
+            let v427 : UH1 = UH1_1(v371, v426)
+            let v428 : UH1 = UH1_1(v363, v427)
+            let v429 : UH1 = UH1_1(v355, v428)
+            let v430 : UH1 = UH1_1(v347, v429)
+            let v431 : UH1 = UH1_1(v339, v430)
+            let v432 : UH1 = UH1_1(v331, v431)
+            let v433 : UH1 = UH1_1(v323, v432)
+            let v434 : UH1 = UH1_1(v315, v433)
+            let v435 : UH1 = UH1_1(v307, v434)
+            let v436 : UH1 = UH1_1(v299, v435)
+            let v437 : UH1 = UH1_1(v291, v436)
+            let v438 : UH1 = UH1_1(v283, v437)
+            let v439 : UH1 = UH1_1(v275, v438)
+            let v440 : UH1 = UH1_1(v267, v439)
+            let v441 : UH1 = UH1_1(v259, v440)
+            let v442 : UH1 = UH1_1(v251, v441)
+            let v443 : UH1 = UH1_1(v243, v442)
+            let v444 : int8 = 23y
+            method15(v443, v444)
 and closure81 () (v0 : (string [])) : int32 =
     let v1 : string = $"calculate_dice_count / max: {9223372036854775807L} / n: {24y} / p: {4738381338321616896L}"
     System.Console.WriteLine v1
