@@ -5,19 +5,21 @@ param(
 )
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
-. ../../polyglot/scripts/core.ps1
-. ../../polyglot/lib/spiral/lib.ps1
+. ../../../polyglot/scripts/core.ps1
+. ../../../polyglot/lib/spiral/lib.ps1
 
 
 $projectName = "dice_fsharp"
 
 if (!$fast -and !$SkipNotebook) {
-    { . ../../polyglot/apps/spiral/dist/Supervisor$(GetExecutableSuffix) --execute-command "pwsh -c `"../../polyglot/scripts/invoke-dib.ps1 $projectName.dib`"" } | Invoke-Block -Retries 5
+    { . ../../../polyglot/apps/spiral/dist/Supervisor$(GetExecutableSuffix) --execute-command "pwsh -c `"../../../polyglot/scripts/invoke-dib.ps1 $projectName.dib`"" } | Invoke-Block -Retries 5
 }
 
-{ . ../../polyglot/apps/parser/dist/DibParser$(GetExecutableSuffix) "$projectName.dib" fs } | Invoke-Block
+{ . ../../../polyglot/apps/parser/dist/DibParser$(GetExecutableSuffix) "$projectName.dib" fs } | Invoke-Block
 
-{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) "$projectName.fs" $($fast ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) --packages Fable.Core --modules lib/spiral/common.fsx lib/spiral/sm.fsx lib/spiral/date_time.fsx lib/spiral/file_system.fsx lib/spiral/trace.fsx lib/spiral/lib.fsx lib/fsharp/Common.fs } | Invoke-Block
+$runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
+$builderArgs = @("$projectName.fs", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
+{ . ../../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) @builderArgs } | Invoke-Block
 
 $targetDir = GetTargetDir $projectName
 
@@ -31,7 +33,7 @@ if (!$fast) {
 }
 
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
-    -replace "../../../../lib", "../../polyglot/lib" `
+    -replace "../../../../lib", "../../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     | Set-Content "$projectName.rs"
 if (!$fast) {
@@ -51,7 +53,7 @@ if (!$fast) {
 }
 
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
-    -replace "../../../../lib", "../../polyglot/lib" `
+    -replace "../../../../lib", "../../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     -replace ".rs`"]", "_wasm.rs`"]" `
     | Set-Content "$($projectName)_wasm.rs"

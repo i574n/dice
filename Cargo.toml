@@ -18,7 +18,6 @@ lib-package = "dice_ui"
 output-name = "ui"
 
 [dependencies]
-curve25519-dalek = "=4.1.2"
 
 [dev-dependencies]
 
@@ -28,7 +27,7 @@ path = "lib/dice_contract.rs"
 [build-dependencies]
 dice_contract = { path = "./contract" }
 dice_contract_tests = { path = "./contract/tests" }
-dice_fsharp = { path = "./fsharp" }
+dice_fsharp = { path = "./lib/fsharp" }
 dice_lib = { path = "./lib" }
 dice_ui = { path = "./ui" }
 

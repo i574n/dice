@@ -9,7 +9,7 @@ from fable_modules.fable_library.reflection import (TypeInfo, uint8_type, unit_t
 from fable_modules.fable_library.string_ import (to_text, interpolate)
 from fable_modules.fable_library.types import (Array, Union, Record, int64, FSharpRef, uint8, uint64, int8)
 
-def _expr108() -> TypeInfo:
+def _expr136() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -24,9 +24,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr108
+UH0_reflection = _expr136
 
-def _expr109() -> TypeInfo:
+def _expr137() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[], [("Item1", uint8_type), ("Item2", UH1_reflection())]])
 
 
@@ -41,9 +41,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr109
+UH1_reflection = _expr137
 
-def _expr110() -> TypeInfo:
+def _expr138() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[("f0_0", lambda_type(string_type, unit_type))], []])
 
 
@@ -59,9 +59,9 @@ class US0(Union):
         return ["US0_0", "US0_1"]
 
 
-US0_reflection = _expr110
+US0_reflection = _expr138
 
-def _expr111() -> TypeInfo:
+def _expr139() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", lambda_type(unit_type, UH0_reflection()))], [("f1_0", UH0_reflection())]])
 
 
@@ -77,9 +77,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr111
+US1_reflection = _expr139
 
-def _expr112() -> TypeInfo:
+def _expr140() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", US1_reflection())])
 
 
@@ -87,9 +87,9 @@ def _expr112() -> TypeInfo:
 class Mut0(Record):
     l0: US1
 
-Mut0_reflection = _expr112
+Mut0_reflection = _expr140
 
-def _expr113() -> TypeInfo:
+def _expr141() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", int64_type)])
 
 
@@ -97,9 +97,9 @@ def _expr113() -> TypeInfo:
 class Mut1(Record):
     l0: int64
 
-Mut1_reflection = _expr113
+Mut1_reflection = _expr141
 
-def _expr114() -> TypeInfo:
+def _expr142() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[("f0_0", uint8_type)], []])
 
 
@@ -115,9 +115,9 @@ class US2(Union):
         return ["US2_0", "US2_1"]
 
 
-US2_reflection = _expr114
+US2_reflection = _expr142
 
-def _expr115() -> TypeInfo:
+def _expr143() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", US2_reflection())])
 
 
@@ -125,9 +125,9 @@ def _expr115() -> TypeInfo:
 class Mut2(Record):
     l0: US2
 
-Mut2_reflection = _expr115
+Mut2_reflection = _expr143
 
-def _expr116() -> TypeInfo:
+def _expr144() -> TypeInfo:
     return union_type("Dice.US3", [], US3, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -143,9 +143,9 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr116
+US3_reflection = _expr144
 
-def _expr117() -> TypeInfo:
+def _expr145() -> TypeInfo:
     return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
 
 
@@ -160,9 +160,9 @@ class UH2(Union):
         return ["UH2_0", "UH2_1"]
 
 
-UH2_reflection = _expr117
+UH2_reflection = _expr145
 
-def _expr118() -> TypeInfo:
+def _expr146() -> TypeInfo:
     return union_type("Dice.US4", [], US4, lambda: [[("f0_0", uint64_type)], []])
 
 
@@ -178,9 +178,9 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr118
+US4_reflection = _expr146
 
-def _expr119() -> TypeInfo:
+def _expr147() -> TypeInfo:
     return union_type("Dice.US5", [], US5, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -196,7 +196,7 @@ class US5(Union):
         return ["US5_0", "US5_1"]
 
 
-US5_reflection = _expr119
+US5_reflection = _expr147
 
 def UH0__get_IsUH0_0(this: UH0, unit_arg: None) -> bool:
     if this.tag == 0:
@@ -383,10 +383,10 @@ def closure1(v0_1: int64, v1_1: UH0) -> UH0:
 
 
 def closure0(unit_var: None, v0_1: int64) -> Callable[[UH0], UH0]:
-    def _arrow120(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
+    def _arrow148(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
         return closure1(v0_1, v)
 
-    return _arrow120
+    return _arrow148
 
 
 def closure4(unit_var: None, v0_1: Callable[[str], None]) -> US0:
@@ -394,10 +394,10 @@ def closure4(unit_var: None, v0_1: Callable[[str], None]) -> US0:
 
 
 def method1(__unit: None=None) -> Callable[[Callable[[str], None]], US0]:
-    def _arrow121(v: Callable[[str], None]) -> US0:
+    def _arrow149(v: Callable[[str], None]) -> US0:
         return closure4(None, v)
 
-    return _arrow121
+    return _arrow149
 
 
 def method2(v0_1_mut: UH1, v1_1_mut: UH1) -> UH1:
@@ -459,10 +459,10 @@ def closure8(v0_1: UH0, v1_1: Mut0, unit_var: None) -> UH0:
 
 def method5(v0_1: UH0, v1_1: Callable[[], UH0]) -> Callable[[], UH0]:
     v3_1: Mut0 = Mut0(US1(0, v1_1))
-    def _arrow122(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
+    def _arrow150(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
         return closure8(v0_1, v3_1, None)
 
-    return _arrow122
+    return _arrow150
 
 
 def method7(v0_1_mut: int64, v1_1_mut: UH0) -> US2:
@@ -539,18 +539,18 @@ def closure5(v0_1: US0, v1_1: UH1) -> Callable[[], uint8]:
     v12: Mut1 = Mut1(int64(1))
     v13: Mut1 = Mut1(int64(-1))
     v15: Mut2 = Mut2(US2(1))
-    def _arrow123(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
+    def _arrow151(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
         return closure9(v0_1, v10, v11, v12, v13, v15, None)
 
-    return _arrow123
+    return _arrow151
 
 
 def closure3(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     v3_1: US0 = default_arg(map(method1(), v0_1), US0(1))
-    def _arrow124(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
+    def _arrow152(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
         return closure5(v3_1, v)
 
-    return _arrow124
+    return _arrow152
 
 
 def method8(v0_1_mut: US0, v1_1_mut: uint64, v2_1_mut: int8, v3_1_mut: uint64) -> int8:
@@ -1206,25 +1206,25 @@ def closure13(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool, v3_1: uint64) ->
 
 
 def closure12(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool) -> Callable[[uint64], uint64]:
-    def _arrow125(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
+    def _arrow153(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
         return closure13(v0_1, v1_1, v2_1, v)
 
-    return _arrow125
+    return _arrow153
 
 
 def closure11(v0_1: US0, v1_1: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
-    def _arrow126(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
+    def _arrow154(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
         return closure12(v0_1, v1_1, v)
 
-    return _arrow126
+    return _arrow154
 
 
 def closure10(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     v3_1: US0 = default_arg(map(method1(), v0_1), US0(1))
-    def _arrow127(v: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
+    def _arrow155(v: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
         return closure11(v3_1, v)
 
-    return _arrow127
+    return _arrow155
 
 
 def method14(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
@@ -1260,17 +1260,17 @@ def closure80(v0_1: Callable[[str], None] | None, v1_1: uint64, v2_1: UH1) -> ui
 
 
 def closure79(v0_1: Callable[[str], None] | None, v1_1: uint64) -> Callable[[UH1], uint64 | None]:
-    def _arrow128(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
+    def _arrow156(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
         return closure80(v0_1, v1_1, v)
 
-    return _arrow128
+    return _arrow156
 
 
 def closure78(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
-    def _arrow129(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
+    def _arrow157(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
         return closure79(v0_1, v)
 
-    return _arrow129
+    return _arrow157
 
 
 def method40(v0_1: UH1, v1_1: int64) -> US5:
@@ -1746,156 +1746,156 @@ def method15(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
             continue
 
         else: 
-            v16: US5 = method16(v0_1, int64(0))
-            if v16.tag == 0:
-                v17: int64 = v16.fields[0]
-                if v17 <= int64(9223372036854775807):
-                    return v17
+            v17: US5 = method16(v0_1, int64(0))
+            if v17.tag == 0:
+                v18: int64 = v17.fields[0]
+                if v18 <= int64(9223372036854775807):
+                    return v18
 
                 else: 
-                    _v20: uint8 | None = None
-                    _v20 = uint8(0)
-                    v28: uint8 = value(_v20)
-                    _v29: uint8 | None = None
-                    _v29 = uint8(0)
-                    v35: uint8 = value(_v29)
-                    _v36: uint8 | None = None
-                    _v36 = uint8(0)
-                    v42: uint8 = value(_v36)
-                    _v43: uint8 | None = None
-                    _v43 = uint8(0)
-                    v49: uint8 = value(_v43)
-                    _v50: uint8 | None = None
-                    _v50 = uint8(0)
-                    v56: uint8 = value(_v50)
-                    _v57: uint8 | None = None
-                    _v57 = uint8(0)
-                    v63: uint8 = value(_v57)
-                    _v64: uint8 | None = None
-                    _v64 = uint8(0)
-                    v70: uint8 = value(_v64)
+                    _v21: uint8 | None = None
+                    _v21 = uint8(0)
+                    v30: uint8 = value(_v21)
+                    _v31: uint8 | None = None
+                    _v31 = uint8(0)
+                    v38: uint8 = value(_v31)
+                    _v39: uint8 | None = None
+                    _v39 = uint8(0)
+                    v46: uint8 = value(_v39)
+                    _v47: uint8 | None = None
+                    _v47 = uint8(0)
+                    v54: uint8 = value(_v47)
+                    _v55: uint8 | None = None
+                    _v55 = uint8(0)
+                    v62: uint8 = value(_v55)
+                    _v63: uint8 | None = None
+                    _v63 = uint8(0)
+                    v70: uint8 = value(_v63)
                     _v71: uint8 | None = None
                     _v71 = uint8(0)
-                    v77: uint8 = value(_v71)
-                    _v78: uint8 | None = None
-                    _v78 = uint8(0)
-                    v84: uint8 = value(_v78)
-                    _v85: uint8 | None = None
-                    _v85 = uint8(0)
-                    v91: uint8 = value(_v85)
-                    _v92: uint8 | None = None
-                    _v92 = uint8(0)
-                    v98: uint8 = value(_v92)
-                    _v99: uint8 | None = None
-                    _v99 = uint8(0)
-                    v105: uint8 = value(_v99)
-                    _v106: uint8 | None = None
-                    _v106 = uint8(0)
-                    v112: uint8 = value(_v106)
-                    _v113: uint8 | None = None
-                    _v113 = uint8(0)
-                    v119: uint8 = value(_v113)
-                    _v120: uint8 | None = None
-                    _v120 = uint8(0)
-                    v126: uint8 = value(_v120)
+                    v78: uint8 = value(_v71)
+                    _v79: uint8 | None = None
+                    _v79 = uint8(0)
+                    v86: uint8 = value(_v79)
+                    _v87: uint8 | None = None
+                    _v87 = uint8(0)
+                    v94: uint8 = value(_v87)
+                    _v95: uint8 | None = None
+                    _v95 = uint8(0)
+                    v102: uint8 = value(_v95)
+                    _v103: uint8 | None = None
+                    _v103 = uint8(0)
+                    v110: uint8 = value(_v103)
+                    _v111: uint8 | None = None
+                    _v111 = uint8(0)
+                    v118: uint8 = value(_v111)
+                    _v119: uint8 | None = None
+                    _v119 = uint8(0)
+                    v126: uint8 = value(_v119)
                     _v127: uint8 | None = None
                     _v127 = uint8(0)
-                    v133: uint8 = value(_v127)
-                    _v134: uint8 | None = None
-                    _v134 = uint8(0)
-                    v140: uint8 = value(_v134)
-                    _v141: uint8 | None = None
-                    _v141 = uint8(0)
-                    v147: uint8 = value(_v141)
-                    _v148: uint8 | None = None
-                    _v148 = uint8(0)
-                    v154: uint8 = value(_v148)
-                    _v155: uint8 | None = None
-                    _v155 = uint8(0)
-                    v161: uint8 = value(_v155)
-                    _v162: uint8 | None = None
-                    _v162 = uint8(0)
-                    v168: uint8 = value(_v162)
-                    _v169: uint8 | None = None
-                    _v169 = uint8(0)
-                    v175: uint8 = value(_v169)
-                    _v176: uint8 | None = None
-                    _v176 = uint8(0)
-                    v0_1_mut = UH1(1, v28, UH1(1, v35, UH1(1, v42, UH1(1, v49, UH1(1, v56, UH1(1, v63, UH1(1, v70, UH1(1, v77, UH1(1, v84, UH1(1, v91, UH1(1, v98, UH1(1, v105, UH1(1, v112, UH1(1, v119, UH1(1, v126, UH1(1, v133, UH1(1, v140, UH1(1, v147, UH1(1, v154, UH1(1, v161, UH1(1, v168, UH1(1, v175, UH1(1, value(_v176), UH1(0))))))))))))))))))))))))
+                    v134: uint8 = value(_v127)
+                    _v135: uint8 | None = None
+                    _v135 = uint8(0)
+                    v142: uint8 = value(_v135)
+                    _v143: uint8 | None = None
+                    _v143 = uint8(0)
+                    v150: uint8 = value(_v143)
+                    _v151: uint8 | None = None
+                    _v151 = uint8(0)
+                    v158: uint8 = value(_v151)
+                    _v159: uint8 | None = None
+                    _v159 = uint8(0)
+                    v166: uint8 = value(_v159)
+                    _v167: uint8 | None = None
+                    _v167 = uint8(0)
+                    v174: uint8 = value(_v167)
+                    _v175: uint8 | None = None
+                    _v175 = uint8(0)
+                    v182: uint8 = value(_v175)
+                    _v183: uint8 | None = None
+                    _v183 = uint8(0)
+                    v190: uint8 = value(_v183)
+                    _v191: uint8 | None = None
+                    _v191 = uint8(0)
+                    v198: uint8 = value(_v191)
+                    _v199: uint8 | None = None
+                    _v199 = uint8(0)
+                    v0_1_mut = UH1(1, v30, UH1(1, v38, UH1(1, v46, UH1(1, v54, UH1(1, v62, UH1(1, v70, UH1(1, v78, UH1(1, v86, UH1(1, v94, UH1(1, v102, UH1(1, v110, UH1(1, v118, UH1(1, v126, UH1(1, v134, UH1(1, v142, UH1(1, v150, UH1(1, v158, UH1(1, v166, UH1(1, v174, UH1(1, v182, UH1(1, v190, UH1(1, v198, UH1(1, value(_v199), UH1(0))))))))))))))))))))))))
                     v1_1_mut = int8(23)
                     continue
 
 
             else: 
-                _v210: uint8 | None = None
-                _v210 = uint8(0)
-                v218: uint8 = value(_v210)
-                _v219: uint8 | None = None
-                _v219 = uint8(0)
-                v225: uint8 = value(_v219)
-                _v226: uint8 | None = None
-                _v226 = uint8(0)
-                v232: uint8 = value(_v226)
-                _v233: uint8 | None = None
-                _v233 = uint8(0)
-                v239: uint8 = value(_v233)
-                _v240: uint8 | None = None
-                _v240 = uint8(0)
-                v246: uint8 = value(_v240)
-                _v247: uint8 | None = None
-                _v247 = uint8(0)
-                v253: uint8 = value(_v247)
-                _v254: uint8 | None = None
-                _v254 = uint8(0)
-                v260: uint8 = value(_v254)
-                _v261: uint8 | None = None
-                _v261 = uint8(0)
-                v267: uint8 = value(_v261)
+                _v234: uint8 | None = None
+                _v234 = uint8(0)
+                v243: uint8 = value(_v234)
+                _v244: uint8 | None = None
+                _v244 = uint8(0)
+                v251: uint8 = value(_v244)
+                _v252: uint8 | None = None
+                _v252 = uint8(0)
+                v259: uint8 = value(_v252)
+                _v260: uint8 | None = None
+                _v260 = uint8(0)
+                v267: uint8 = value(_v260)
                 _v268: uint8 | None = None
                 _v268 = uint8(0)
-                v274: uint8 = value(_v268)
-                _v275: uint8 | None = None
-                _v275 = uint8(0)
-                v281: uint8 = value(_v275)
-                _v282: uint8 | None = None
-                _v282 = uint8(0)
-                v288: uint8 = value(_v282)
-                _v289: uint8 | None = None
-                _v289 = uint8(0)
-                v295: uint8 = value(_v289)
-                _v296: uint8 | None = None
-                _v296 = uint8(0)
-                v302: uint8 = value(_v296)
-                _v303: uint8 | None = None
-                _v303 = uint8(0)
-                v309: uint8 = value(_v303)
-                _v310: uint8 | None = None
-                _v310 = uint8(0)
-                v316: uint8 = value(_v310)
-                _v317: uint8 | None = None
-                _v317 = uint8(0)
-                v323: uint8 = value(_v317)
+                v275: uint8 = value(_v268)
+                _v276: uint8 | None = None
+                _v276 = uint8(0)
+                v283: uint8 = value(_v276)
+                _v284: uint8 | None = None
+                _v284 = uint8(0)
+                v291: uint8 = value(_v284)
+                _v292: uint8 | None = None
+                _v292 = uint8(0)
+                v299: uint8 = value(_v292)
+                _v300: uint8 | None = None
+                _v300 = uint8(0)
+                v307: uint8 = value(_v300)
+                _v308: uint8 | None = None
+                _v308 = uint8(0)
+                v315: uint8 = value(_v308)
+                _v316: uint8 | None = None
+                _v316 = uint8(0)
+                v323: uint8 = value(_v316)
                 _v324: uint8 | None = None
                 _v324 = uint8(0)
-                v330: uint8 = value(_v324)
-                _v331: uint8 | None = None
-                _v331 = uint8(0)
-                v337: uint8 = value(_v331)
-                _v338: uint8 | None = None
-                _v338 = uint8(0)
-                v344: uint8 = value(_v338)
-                _v345: uint8 | None = None
-                _v345 = uint8(0)
-                v351: uint8 = value(_v345)
-                _v352: uint8 | None = None
-                _v352 = uint8(0)
-                v358: uint8 = value(_v352)
-                _v359: uint8 | None = None
-                _v359 = uint8(0)
-                v365: uint8 = value(_v359)
-                _v366: uint8 | None = None
-                _v366 = uint8(0)
-                v0_1_mut = UH1(1, v218, UH1(1, v225, UH1(1, v232, UH1(1, v239, UH1(1, v246, UH1(1, v253, UH1(1, v260, UH1(1, v267, UH1(1, v274, UH1(1, v281, UH1(1, v288, UH1(1, v295, UH1(1, v302, UH1(1, v309, UH1(1, v316, UH1(1, v323, UH1(1, v330, UH1(1, v337, UH1(1, v344, UH1(1, v351, UH1(1, v358, UH1(1, v365, UH1(1, value(_v366), UH1(0))))))))))))))))))))))))
+                v331: uint8 = value(_v324)
+                _v332: uint8 | None = None
+                _v332 = uint8(0)
+                v339: uint8 = value(_v332)
+                _v340: uint8 | None = None
+                _v340 = uint8(0)
+                v347: uint8 = value(_v340)
+                _v348: uint8 | None = None
+                _v348 = uint8(0)
+                v355: uint8 = value(_v348)
+                _v356: uint8 | None = None
+                _v356 = uint8(0)
+                v363: uint8 = value(_v356)
+                _v364: uint8 | None = None
+                _v364 = uint8(0)
+                v371: uint8 = value(_v364)
+                _v372: uint8 | None = None
+                _v372 = uint8(0)
+                v379: uint8 = value(_v372)
+                _v380: uint8 | None = None
+                _v380 = uint8(0)
+                v387: uint8 = value(_v380)
+                _v388: uint8 | None = None
+                _v388 = uint8(0)
+                v395: uint8 = value(_v388)
+                _v396: uint8 | None = None
+                _v396 = uint8(0)
+                v403: uint8 = value(_v396)
+                _v404: uint8 | None = None
+                _v404 = uint8(0)
+                v411: uint8 = value(_v404)
+                _v412: uint8 | None = None
+                _v412 = uint8(0)
+                v0_1_mut = UH1(1, v243, UH1(1, v251, UH1(1, v259, UH1(1, v267, UH1(1, v275, UH1(1, v283, UH1(1, v291, UH1(1, v299, UH1(1, v307, UH1(1, v315, UH1(1, v323, UH1(1, v331, UH1(1, v339, UH1(1, v347, UH1(1, v355, UH1(1, v363, UH1(1, v371, UH1(1, v379, UH1(1, v387, UH1(1, v395, UH1(1, v403, UH1(1, v411, UH1(1, value(_v412), UH1(0))))))))))))))))))))))))
                 v1_1_mut = int8(23)
                 continue
 
@@ -1909,51 +1909,51 @@ def closure81(unit_var: None, v0_1: Array[str]) -> int:
     return 0
 
 
-def _arrow130(v: int64) -> Callable[[UH0], UH0]:
+def _arrow158(v: int64) -> Callable[[UH0], UH0]:
     return closure0(None, v)
 
 
-v0: Callable[[int64, UH0], UH0] = _arrow130
+v0: Callable[[int64, UH0], UH0] = _arrow158
 
 def rotate_numbers(x: int64) -> Callable[[UH0], UH0]:
     return v0(x)
 
 
-def _arrow131(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
+def _arrow159(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return closure3(None, v)
 
 
-v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow131
+v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow159
 
 def create_sequential_roller(x: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return v1(x)
 
 
-def _arrow132(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
+def _arrow160(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return closure10(None, v)
 
 
-v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow132
+v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow160
 
 def roll_progressively(x: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return v2(x)
 
 
-def _arrow133(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
+def _arrow161(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return closure78(None, v)
 
 
-v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow133
+v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow161
 
 def roll_within_bounds(x: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return v3(x)
 
 
-def _arrow134(v: Array[str]) -> int:
+def _arrow162(v: Array[str]) -> int:
     return closure81(None, v)
 
 
-v4: Callable[[Array[str]], int] = _arrow134
+v4: Callable[[Array[str]], int] = _arrow162
 
 def main(args: Array[str]) -> int:
     return v4(args)

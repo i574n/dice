@@ -16,7 +16,9 @@ $projectName = "dice_ui"
     -replace "and Heap2 =", "and  Heap2 =" `
 | Set-Content "src/$projectName.fsx"
 
-{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) "src/$projectName.fsx" $($fast ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()) $($fast ? @("--persist-only") : @()) --packages Fable.Core --modules lib/spiral/common.fsx lib/spiral/sm.fsx lib/spiral/date_time.fsx lib/spiral/file_system.fsx lib/spiral/trace.fsx lib/spiral/lib.fsx lib/fsharp/Common.fs } | Invoke-Block
+$runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
+$builderArgs = @("src/$projectName.fsx", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
+{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) @builderArgs } | Invoke-Block
 
 $targetDir = GetTargetDir $projectName
 

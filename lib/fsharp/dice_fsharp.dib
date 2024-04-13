@@ -8,18 +8,12 @@
 
 #!fsharp
 
-#!import ../../polyglot/lib/fsharp/Notebooks.dib
-#!import ../../polyglot/lib/fsharp/Testing.dib
+#!import ../../../polyglot/lib/fsharp/Notebooks.dib
+#!import ../../../polyglot/lib/fsharp/Testing.dib
 
 #!fsharp
 
-#!import ../../polyglot/lib/spiral/common.fsx
-#!import ../../polyglot/lib/spiral/sm.fsx
-#!import ../../polyglot/lib/spiral/date_time.fsx
-#!import ../../polyglot/lib/spiral/file_system.fsx
-#!import ../../polyglot/lib/spiral/trace.fsx
-#!import ../../polyglot/lib/spiral/lib.fsx
-#!import ../../polyglot/lib/fsharp/Common.fs
+#!import ../../../polyglot/lib/fsharp/Common.fs
 
 #!fsharp
 

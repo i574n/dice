@@ -20,6 +20,6 @@ if (!$fast) {
 { pwsh "$ScriptDir/../ui/build.ps1" -fast $($fast ?? '') } | Invoke-Block
 
 
-{ . "$ScriptDir/../fsharp/build.ps1" } | Invoke-Block
+{ . "$ScriptDir/../lib/fsharp/build.ps1" } | Invoke-Block
 
 { . "$ScriptDir/../scripts/outdated.ps1" } | Invoke-Block
