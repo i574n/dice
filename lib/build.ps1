@@ -12,7 +12,7 @@ $ErrorActionPreference = "Stop"
 $projectName = "dice"
 
 if (!$fast -and !$SkipNotebook) {
-    { . ../../polyglot/apps/spiral/dist/Supervisor$(GetExecutableSuffix) --execute-command "pwsh -c `"../../polyglot/scripts/invoke-dib.ps1 $projectName.dib`"" } | Invoke-Block -Retries 5
+    { . apps/spiral/dist/Supervisor$(GetExecutableSuffix) --execute-command "pwsh -c `"scripts/invoke-dib.ps1 ../$projectName/lib/$projectName.dib`"" } | Invoke-Block -Retries 5 -Location ../../polyglot
 }
 
 { . ../../polyglot/apps/parser/dist/DibParser$(GetExecutableSuffix) "$projectName.dib" spi } | Invoke-Block
