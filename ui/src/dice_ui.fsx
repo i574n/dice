@@ -50,9 +50,11 @@
 [<Fable.Core.Erase; Fable.Core.Emit("std::collections::HashMap<$0, $1>")>] type std_collections_HashMap<'K, 'V> = class end
 [<Fable.Core.Erase; Fable.Core.Emit("std::future::Future<Output = $0>")>] type Future<'T> = class end
 [<Fable.Core.Erase; Fable.Core.Emit("futures::future::TryJoinAll<$0>")>] type TryJoinAll<'T> = class end
+#if FABLE_COMPILER // networking.types
 [<Fable.Core.Erase; Fable.Core.Emit("reqwest_wasm::Error")>] type reqwest_Error = class end
 [<Fable.Core.Erase; Fable.Core.Emit("reqwest_wasm::RequestBuilder")>] type reqwest_RequestBuilder = class end
 [<Fable.Core.Erase; Fable.Core.Emit("reqwest_wasm::Response")>] type reqwest_Response = class end
+#endif // networking.types
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::Action<$0, $1>")>] type leptos_Action<'T, 'U> = class end
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::For")>] type leptos_For = class end
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::Show")>] type leptos_Show = class end
@@ -6841,7 +6843,7 @@ and closure259 (v0 : Heap5) () : leptos_Fragment =
     let v39 : string =
         match v34 with
         | US72_1(v36) -> (* Error *)
-            let v37 : string = "Error: " + v36 + ""
+            let v37 : string = "sm'.to_string result / Error: " + v36 + ""
             v37
         | US72_0(v35) -> (* Ok *)
             v35
@@ -10069,7 +10071,7 @@ and closure411 (v0 : (struct (std_string_String * std_string_String option) []),
     let v49 : string =
         match v44 with
         | US72_1(v46) -> (* Error *)
-            let v47 : string = "Error: " + v46 + ""
+            let v47 : string = "sm'.to_string result / Error: " + v46 + ""
             v47
         | US72_0(v45) -> (* Ok *)
             v45
@@ -11785,7 +11787,7 @@ and closure488 (v0 : Heap5) () : leptos_Fragment =
     let v39 : string =
         match v34 with
         | US72_1(v36) -> (* Error *)
-            let v37 : string = "Error: " + v36 + ""
+            let v37 : string = "sm'.to_string result / Error: " + v36 + ""
             v37
         | US72_0(v35) -> (* Ok *)
             v35

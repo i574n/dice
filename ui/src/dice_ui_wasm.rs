@@ -13364,9 +13364,10 @@ mod module_eef1bd43 {
             };
             let v40: string = Dice_ui::method19(match &v34 {
                 Dice_ui::US72::US72_0(v34_0_0) => v34_0_0.clone(),
-                Dice_ui::US72::US72_1(v34_1_0) => {
-                    append(append(string("Error: "), v34_1_0.clone()), string(""))
-                }
+                Dice_ui::US72::US72_1(v34_1_0) => append(
+                    append(string("sm\'.to_string result / Error: "), v34_1_0.clone()),
+                    string(""),
+                ),
             });
             let v42: &str = fable_library_rust::String_::LrcStr::as_str(&v40);
             let v44: std::string::String = String::from(v42);
@@ -19155,9 +19156,10 @@ mod module_eef1bd43 {
             };
             let v50: string = Dice_ui::method19(match &v44 {
                 Dice_ui::US72::US72_0(v44_0_0) => v44_0_0.clone(),
-                Dice_ui::US72::US72_1(v44_1_0) => {
-                    append(append(string("Error: "), v44_1_0.clone()), string(""))
-                }
+                Dice_ui::US72::US72_1(v44_1_0) => append(
+                    append(string("sm\'.to_string result / Error: "), v44_1_0.clone()),
+                    string(""),
+                ),
             });
             let v52: &str = fable_library_rust::String_::LrcStr::as_str(&v50);
             let v54: std::string::String = String::from(v52);
@@ -22499,9 +22501,10 @@ mod module_eef1bd43 {
             };
             let v40: string = Dice_ui::method19(match &v34 {
                 Dice_ui::US72::US72_0(v34_0_0) => v34_0_0.clone(),
-                Dice_ui::US72::US72_1(v34_1_0) => {
-                    append(append(string("Error: "), v34_1_0.clone()), string(""))
-                }
+                Dice_ui::US72::US72_1(v34_1_0) => append(
+                    append(string("sm\'.to_string result / Error: "), v34_1_0.clone()),
+                    string(""),
+                ),
             });
             let v42: &str = fable_library_rust::String_::LrcStr::as_str(&v40);
             let v44: std::string::String = String::from(v42);
@@ -28037,12 +28040,18 @@ pub use module_c5eb79e8::*;
 #[path = "../../../polyglot/lib/spiral/lib_wasm.rs"]
 mod module_8d8b0653;
 pub use module_8d8b0653::*;
+#[path = "../../../polyglot/lib/spiral/networking_wasm.rs"]
+mod module_2612ff6a;
+pub use module_2612ff6a::*;
 #[path = "../../../polyglot/lib/spiral/runtime_wasm.rs"]
 mod module_3a43928;
 pub use module_3a43928::*;
 #[path = "../../../polyglot/lib/spiral/sm_wasm.rs"]
 mod module_2aeb754a;
 pub use module_2aeb754a::*;
+#[path = "../../../polyglot/lib/spiral/threading_wasm.rs"]
+mod module_444ab8da;
+pub use module_444ab8da::*;
 #[path = "../../../polyglot/lib/spiral/trace_wasm.rs"]
 mod module_e61b6515;
 pub use module_e61b6515::*;

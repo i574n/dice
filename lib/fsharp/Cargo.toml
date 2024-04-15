@@ -6,6 +6,7 @@ workspace = "../../"
 
 [dependencies]
 fable_library_rust = { path = "../../../polyglot/lib/rust/fable/fable_modules/fable-library-rust", optional = true, default-features = false }
+inline_colorization = "~0.1"
 rand = { version = "~0.9.0-alpha.1", optional = true }
 
 [features]
