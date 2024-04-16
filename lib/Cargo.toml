@@ -12,7 +12,12 @@ inline_colorization = "~0.1"
 [dev-dependencies]
 
 [features]
-default = ["fable_library_rust/default", "fable_library_rust/datetime", "dep:rand"]
+default = [
+    "fable_library_rust/default",
+    "fable_library_rust/datetime",
+    "fable_library_rust/static_do_bindings",
+    "dep:rand",
+]
 contract = ["fable_library_rust"]
 
 [[bin]]

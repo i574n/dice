@@ -54,7 +54,7 @@ inl render () =
             | _ => Ok None
             |> resultm.box
             |> leptos.log_format fun log => $'"dice_view.render (x) / roll_action create_action / result2 / result: " + string !log + ""'
-        |> async.future_init (4, 3) 1
+        |> async.future_init (2, 1) 1
 
     inl roll = leptos.create_memo fun () =>
         roll_action
