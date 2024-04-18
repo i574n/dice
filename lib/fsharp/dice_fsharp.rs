@@ -33,7 +33,6 @@ mod module_dc8717e1 {
             use fable_library_rust::Native_::Func2;
             use fable_library_rust::Native_::LrcPtr;
             use fable_library_rust::Native_::MutCell;
-            use fable_library_rust::Native_::OnceInit;
             use fable_library_rust::Option_::getValue;
             use fable_library_rust::Option_::iterate;
             use fable_library_rust::Seq_::cache;
@@ -44,16 +43,10 @@ mod module_dc8717e1 {
             use fable_library_rust::String_::sprintf;
             use fable_library_rust::String_::string;
             pub fn sixthPowerSequence() -> LrcPtr<dyn IEnumerable_1<i32>> {
-                static sixthPowerSequence: OnceInit<LrcPtr<dyn IEnumerable_1<i32>>> =
-                    OnceInit::new();
-                sixthPowerSequence
-                    .get_or_insert_with(|| {
-                        cache(unfold(
-                            Func1::new(move |state: i32| Some(LrcPtr::new((state, state * 6_i32)))),
-                            1_i32,
-                        ))
-                    })
-                    .clone()
+                cache(unfold(
+                    Func1::new(move |state: i32| Some(LrcPtr::new((state, state * 6_i32)))),
+                    1_i32,
+                ))
             }
             pub fn accumulateDiceRolls(
                 log: Option<Func1<string, ()>>,

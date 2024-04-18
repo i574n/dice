@@ -1089,6 +1089,7 @@ name = "dice"
 version = "0.0.1"
 dependencies = [
  "dice_contract",
+ "dice_contract_lib",
  "dice_contract_tests",
  "dice_fsharp",
  "dice_lib",
@@ -1100,9 +1101,17 @@ name = "dice_contract"
 version = "0.0.1"
 dependencies = [
  "borsh 1.4.0",
- "dice_lib",
+ "dice_contract_lib",
  "fable_library_rust",
  "near-sdk",
+]
+
+[[package]]
+name = "dice_contract_lib"
+version = "0.0.1"
+dependencies = [
+ "fable_library_rust",
+ "inline_colorization",
 ]
 
 [[package]]
@@ -1328,6 +1337,7 @@ name = "fable_library_rust"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "futures",
  "getrandom 0.2.14",
  "num-bigint 0.4.4",
  "num-integer",
@@ -1479,6 +1489,7 @@ dependencies = [
  "futures-core",
  "futures-task",
  "futures-util",
+ "num_cpus",
 ]
 
 [[package]]

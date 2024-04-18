@@ -35,6 +35,7 @@ if (!$fast) {
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
     -replace "../../../../lib", "../../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
+    | FixRust `
     | Set-Content "$projectName.rs"
 if (!$fast) {
     Copy-Item "$targetDir/target/ts/$projectName.ts" "$projectName.ts" -Force
@@ -42,21 +43,6 @@ if (!$fast) {
     Copy-Item "$targetDir/target/php/$projectName.php" "$projectName.php" -Force
     Copy-Item "$targetDir/target/dart/$projectName.dart" "$projectName.dart" -Force
 }
-
-{ BuildFable $targetDir $projectName "rs" "WASM" } | Invoke-Block
-if (!$fast) {
-    
-    { BuildFable $targetDir $projectName "ts" "WASM" } | Invoke-Block
-    { BuildFable $targetDir $projectName "py" "WASM" } | Invoke-Block
-    { BuildFable $targetDir $projectName "php" "WASM" } | Invoke-Block -OnError Continue
-    { BuildFable $targetDir $projectName "dart" "WASM" } | Invoke-Block -OnError Continue
-}
-
-(Get-Content "$targetDir/target/rs/$projectName.rs") `
-    -replace "../../../../lib", "../../../polyglot/lib" `
-    -replace ".fsx`"]", ".rs`"]" `
-    -replace ".rs`"]", "_wasm.rs`"]" `
-    | Set-Content "$($projectName)_wasm.rs"
 
 cargo fmt --
 
