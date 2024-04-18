@@ -13,7 +13,8 @@ module DiceFSharp =
 
     /// ## sixthPowerSequence
 
-    let sixthPowerSequence = 1 |> Seq.unfold (fun state -> Some (state, state * 6)) |> Seq.cache
+    let sixthPowerSequence () =
+        1 |> Seq.unfold (fun state -> Some (state, state * 6)) |> Seq.cache
 
     /// ## accumulateDiceRolls
 
@@ -24,7 +25,7 @@ module DiceFSharp =
             Some (acc + 1, rolls)
         | [] -> None
         | roll :: rest when roll > 1 ->
-            let coeff = sixthPowerSequence |> Seq.item power
+            let coeff = sixthPowerSequence () |> Seq.item power
             let value = (roll - 1) * coeff
             log |> Option.iter ((|>) $"accumulateDiceRolls / \
                 power: {power} / acc: {acc} / roll: {roll} / value: {value}"

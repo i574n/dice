@@ -7,7 +7,7 @@ import './fable_modules/fable_library/Seq.dart' as seq;
 import './fable_modules/fable_library/String.dart' as string;
 import './fable_modules/fable_library/Types.dart' as types;
 
-final sixthPowerSequence = seq.cache<int>(seq.unfold<int, int>((int state) => types.Some(types.Tuple2(state, state * 6)), 1));
+Iterable<int> sixthPowerSequence() => seq.cache<int>(seq.unfold<int, int>((int state) => types.Some(types.Tuple2(state, state * 6)), 1));
 
 types.Some<types.Tuple2<int, list_2.FSharpList<int>>>? accumulateDiceRolls(types.Some<void Function(String)>? log_mut, list_2.FSharpList<int> rolls_mut, int power_mut, int acc_mut) {
     accumulateDiceRolls:
@@ -24,7 +24,7 @@ types.Some<types.Tuple2<int, list_2.FSharpList<int>>>? accumulateDiceRolls(types
             return types.Some(types.Tuple2(acc + 1, rolls));
         } else if (!(list_2.isEmpty(rolls))) {
             if (list_2.head(rolls) > 1) {
-                final value = (list_2.head(rolls) - 1) * seq.item<int>(power, sixthPowerSequence);
+                final value = (list_2.head(rolls) - 1) * seq.item<int>(power, sixthPowerSequence());
                 final arg_1 = 'accumulateDiceRolls / power: $power / acc: $acc / roll: ${list_2.head(rolls)} / value: $value';
                 option_3.iterate<void Function(String)>((void Function(String) func_1) {
                     func_1(arg_1);

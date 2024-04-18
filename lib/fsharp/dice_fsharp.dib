@@ -30,13 +30,14 @@ open Common
 
 #!fsharp
 
-let sixthPowerSequence = 1 |> Seq.unfold (fun state -> Some (state, state * 6)) |> Seq.cache
+let sixthPowerSequence () =
+    1 |> Seq.unfold (fun state -> Some (state, state * 6)) |> Seq.cache
 
 #!fsharp
 
 //// test
 
-sixthPowerSequence
+sixthPowerSequence ()
 |> Seq.take 8
 |> Seq.toList
 |> _assertEqual [ 1; 6; 36; 216; 1296; 7776; 46656; 279936 ]
@@ -54,7 +55,7 @@ let rec accumulateDiceRolls log rolls power acc =
         Some (acc + 1, rolls)
     | [] -> None
     | roll :: rest when roll > 1 ->
-        let coeff = sixthPowerSequence |> Seq.item power
+        let coeff = sixthPowerSequence () |> Seq.item power
         let value = (roll - 1) * coeff
         log |> Option.iter ((|>) $"accumulateDiceRolls / \
             power: {power} / acc: {acc} / roll: {roll} / value: {value}"

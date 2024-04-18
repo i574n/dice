@@ -9,8 +9,10 @@ require_once(__FABLE_LIBRARY__.'/String.php');
 require_once(__ROOT__.'/../../../../../lib/fsharp/Common.fs.php');
 
 #0
-$GLOBALS['sixthPowerSequence'] = \Seq\cache(\Seq\unfold(function ($state) { return [ $state, $state * 6 ];
+function sixthPowerSequence($unitVar) {
+    return \Seq\cache(\Seq\unfold(function ($state) {     return [ $state, $state * 6 ];
  }, 1));
+}
 
 #1
 function accumulateDiceRolls($log, $rolls, $power, $acc) {
@@ -24,7 +26,7 @@ function accumulateDiceRolls($log, $rolls, $power, $acc) {
             if (\FSharpList\head($rolls) > 1) {
                 $rest_1 = \FSharpList\tail($rolls);
                 $roll_1 = \FSharpList\head($rolls);
-                $value = ($roll_1 - 1) * \Seq\item($power, $GLOBALS['sixthPowerSequence']);
+                $value = ($roll_1 - 1) * \Seq\item($power, sixthPowerSequence(NULL));
                 \Seq\iterate((function ($arg_1) {                 return function ($func_1) use ($arg_1) {                 return $func_1($arg_1);
  };
  })(NULL), \Option\toArray($log));

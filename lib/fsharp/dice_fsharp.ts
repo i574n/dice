@@ -6,7 +6,12 @@ import { nonSeeded } from "./fable_modules/fable-library-ts.4.14.0/Random.js";
 import { printf, toConsole } from "./fable_modules/fable-library-ts.4.14.0/String.js";
 import { TraceLevel_Debug, trace } from "./lib/fsharp/Common.js";
 
-export const sixthPowerSequence: Iterable<int32> = cache<int32>(unfold<int32, int32>((state: int32): Option<[int32, int32]> => ([state, state * 6] as [int32, int32]), 1));
+/**
+ * ## sixthPowerSequence
+ */
+export function sixthPowerSequence(): Iterable<int32> {
+    return cache<int32>(unfold<int32, int32>((state: int32): Option<[int32, int32]> => ([state, state * 6] as [int32, int32]), 1));
+}
 
 /**
  * ## accumulateDiceRolls
@@ -24,7 +29,7 @@ export function accumulateDiceRolls(log_mut: Option<((arg0: string) => void)>, r
         }
         else if (!isEmpty(rolls)) {
             if (head(rolls) > 1) {
-                const value: int32 = ((head(rolls) - 1) * item_1<int32>(power, sixthPowerSequence)) | 0;
+                const value: int32 = ((head(rolls) - 1) * item_1<int32>(power, sixthPowerSequence())) | 0;
                 iterate<((arg0: string) => void)>((arg_1 = (`accumulateDiceRolls / power: ${power} / acc: ${acc} / roll: ${head(rolls)} / value: ${value}`), (func_1: ((arg0: string) => void)): void => {
                     func_1(arg_1);
                 }), toArray<((arg0: string) => void)>(log));

@@ -35,6 +35,7 @@ if (!$fast) {
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
     -replace "../../../../lib", "../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
+    | FixRust `
     | Set-Content "$projectName.rs"
 if (!$fast) {
     Copy-Item "$targetDir/target/ts/$projectName.ts" "$projectName.ts" -Force
@@ -55,6 +56,7 @@ if (!$fast) {
     -replace "../../../../lib", "../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     -replace ".rs`"]", "_contract.rs`"]" `
+    | FixRust `
     | Set-Content "$($projectName)_contract.rs"
 
 cargo fmt --

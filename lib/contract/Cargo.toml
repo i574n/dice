@@ -1,0 +1,14 @@
+[package]
+name = "dice_contract_lib"
+version = "0.0.1"
+edition = "2021"
+workspace = "../../"
+
+[dependencies]
+fable_library_rust = { path = "../../../polyglot/lib/rust/fable/fable_modules/fable-library-rust", default-features = false }
+inline_colorization = "~0.1"
+
+[dev-dependencies]
+
+[lib]
+path = "../dice_contract.rs"

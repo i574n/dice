@@ -12,11 +12,12 @@ from fable_modules.fable_library.util import (IEnumerable_1, randint)
 
 __A = TypeVar("__A")
 
-def generator(state: int) -> tuple[int, int] | None:
-    return (state, state * 6)
+def sixth_power_sequence(__unit: None=None) -> IEnumerable_1[int]:
+    def generator(state: int) -> tuple[int, int] | None:
+        return (state, state * 6)
 
+    return cache(unfold(generator, 1))
 
-sixth_power_sequence: IEnumerable_1[int] = cache(unfold(generator, 1))
 
 def accumulate_dice_rolls(log_mut: Callable[[str], None] | None, rolls_mut: FSharpList[int], power_mut: int, acc_mut: int) -> tuple[int, FSharpList[int]] | None:
     while True:
@@ -30,7 +31,7 @@ def accumulate_dice_rolls(log_mut: Callable[[str], None] | None, rolls_mut: FSha
 
         elif not is_empty(rolls):
             if head(rolls) > 1:
-                value: int = ((head(rolls) - 1) * item_1(power, sixth_power_sequence)) or 0
+                value: int = ((head(rolls) - 1) * item_1(power, sixth_power_sequence())) or 0
                 def action_1(func_1: Callable[[str], None], log: Any=log, rolls: Any=rolls, power: Any=power, acc: Any=acc) -> None:
                     func_1(((((((("accumulateDiceRolls / power: " + str(power)) + " / acc: ") + str(acc)) + " / roll: ") + str(head(rolls))) + " / value: ") + str(value)) + "")
 

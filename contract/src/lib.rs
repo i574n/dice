@@ -6,36 +6,36 @@ pub struct Util {}
 
 impl Util {
     fn stream_u8_to_list(
-        s: fable_library_rust::Native_::LrcPtr<dice_lib::Dice::UH0>,
-    ) -> dice_lib::Dice::UH1 {
+        s: fable_library_rust::Native_::LrcPtr<dice_contract_lib::Dice::UH0>,
+    ) -> dice_contract_lib::Dice::UH1 {
         match s.as_ref() {
-            dice_lib::Dice::UH0::UH0_0(n, f) => {
-                dice_lib::Dice::UH1::UH1_1(*n, Self::stream_u8_to_list(f()).into())
+            dice_contract_lib::Dice::UH0::UH0_0(n, f) => {
+                dice_contract_lib::Dice::UH1::UH1_1(*n, Self::stream_u8_to_list(f()).into())
             }
-            dice_lib::Dice::UH0::UH0_1 => dice_lib::Dice::UH1::UH1_0,
+            dice_contract_lib::Dice::UH0::UH0_1 => dice_contract_lib::Dice::UH1::UH1_0,
         }
     }
 
-    fn list_u8_to_vec(s: fable_library_rust::Native_::LrcPtr<dice_lib::Dice::UH1>) -> Vec<u8> {
+    fn list_u8_to_vec(s: fable_library_rust::Native_::LrcPtr<dice_contract_lib::Dice::UH1>) -> Vec<u8> {
         match s.as_ref() {
-            dice_lib::Dice::UH1::UH1_1(n, f) => {
+            dice_contract_lib::Dice::UH1::UH1_1(n, f) => {
                 let mut v = Self::list_u8_to_vec(f.clone());
                 v.insert(0, *n);
                 v
             }
-            dice_lib::Dice::UH1::UH1_0 => vec![],
+            dice_contract_lib::Dice::UH1::UH1_0 => vec![],
         }
     }
 
-    fn vec_u8_to_list(v: Vec<u8>) -> dice_lib::Dice::UH1 {
-        v.iter().rev().fold(dice_lib::Dice::UH1::UH1_0, |acc, x| {
-            dice_lib::Dice::UH1::UH1_1(*x, acc.into())
+    fn vec_u8_to_list(v: Vec<u8>) -> dice_contract_lib::Dice::UH1 {
+        v.iter().rev().fold(dice_contract_lib::Dice::UH1::UH1_0, |acc, x| {
+            dice_contract_lib::Dice::UH1::UH1_1(*x, acc.into())
         })
     }
 
-    fn vec_u8_to_stream(v: Vec<u8>) -> dice_lib::Dice::UH0 {
-        v.iter().rev().fold(dice_lib::Dice::UH0::UH0_1, |acc, x| {
-            dice_lib::Dice::UH0::UH0_0(
+    fn vec_u8_to_stream(v: Vec<u8>) -> dice_contract_lib::Dice::UH0 {
+        v.iter().rev().fold(dice_contract_lib::Dice::UH0::UH0_1, |acc, x| {
+            dice_contract_lib::Dice::UH0::UH0_0(
                 *x,
                 fable_library_rust::Native_::Func0::new(move || acc.clone().into()),
             )
@@ -125,7 +125,7 @@ impl State {
         self.contribute_seed(hash_u8.clone());
 
         let hash_stream = Util::vec_u8_to_stream(hash_u8.clone());
-        let rolls_list = Util::stream_u8_to_list(dice_lib::Dice::rotate_numbers(6)(hash_stream.into()));
+        let rolls_list = Util::stream_u8_to_list(dice_contract_lib::Dice::rotate_numbers(6)(hash_stream.into()));
 
         {
             let rolls_list_log = Util::list_u8_to_vec(rolls_list.clone().into());
@@ -135,9 +135,9 @@ impl State {
 
         let logger = Self::get_logger();
         let sequential_roll =
-            dice_lib::Dice::create_sequential_roller(Some(logger.clone()))(rolls_list.into());
+            dice_contract_lib::Dice::create_sequential_roller(Some(logger.clone()))(rolls_list.into());
         let result =
-            dice_lib::Dice::roll_progressively(Some(logger.clone()))(sequential_roll)(true)(max);
+            dice_contract_lib::Dice::roll_progressively(Some(logger.clone()))(sequential_roll)(true)(max);
         logger("".into());
         result as u64
     }
@@ -148,7 +148,7 @@ impl State {
         ));
         let rolls = Util::vec_u8_to_list(rolls);
         let logger = Self::get_logger();
-        let result = dice_lib::Dice::roll_within_bounds(Some(logger.clone()))(max)(rolls.into());
+        let result = dice_contract_lib::Dice::roll_within_bounds(Some(logger.clone()))(max)(rolls.into());
         logger("".into());
         result
     }

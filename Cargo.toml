@@ -29,6 +29,7 @@ dice_contract = { path = "./contract" }
 dice_contract_tests = { path = "./contract/tests" }
 dice_fsharp = { path = "./lib/fsharp" }
 dice_lib = { path = "./lib" }
+dice_contract_lib = { path = "./lib/contract" }
 dice_ui = { path = "./ui" }
 
 [profile.release]
