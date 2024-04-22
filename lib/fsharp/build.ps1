@@ -12,20 +12,20 @@ $ErrorActionPreference = "Stop"
 $projectName = "dice_fsharp"
 
 if (!$fast -and !$SkipNotebook) {
-    { . ../../../polyglot/apps/spiral/dist/Supervisor$(GetExecutableSuffix) --execute-command "pwsh -c `"../../../polyglot/scripts/invoke-dib.ps1 $projectName.dib`"" } | Invoke-Block -Retries 5
+    { . ../../../polyglot/apps/spiral/dist/Supervisor$(_exe) --execute-command "pwsh -c `"../../../polyglot/scripts/invoke-dib.ps1 $projectName.dib`"" } | Invoke-Block -Retries 5
 }
 
-{ . ../../../polyglot/apps/parser/dist/DibParser$(GetExecutableSuffix) "$projectName.dib" fs } | Invoke-Block
+{ . ../../../polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" fs } | Invoke-Block
 
 $runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
 $builderArgs = @("$projectName.fs", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
-{ . ../../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) @builderArgs } | Invoke-Block
+{ . ../../../polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
 
 $targetDir = GetTargetDir $projectName
 
 { BuildFable $targetDir $projectName "rs" } | Invoke-Block
 if (!$fast) {
-    
+
     { BuildFable $targetDir $projectName "ts" } | Invoke-Block
     { BuildFable $targetDir $projectName "py" } | Invoke-Block
     { BuildFable $targetDir $projectName "php" } | Invoke-Block -OnError Continue

@@ -10,7 +10,7 @@ $ErrorActionPreference = "Stop"
 
 $projectName = "dice_ui"
 
-{ . ../../polyglot/apps/spiral/dist/Supervisor$(GetExecutableSuffix) --build-file "src/$projectName.spi" "src/$projectName.fsx" --timeout 20000 } | Invoke-Block
+{ . ../../polyglot/apps/spiral/dist/Supervisor$(_exe) --build-file "src/$projectName.spi" "src/$projectName.fsx" --timeout 20000 } | Invoke-Block
 
 (Get-Content "src/$projectName.fsx") `
     -replace "and Heap2 =", "and  Heap2 =" `
@@ -18,7 +18,7 @@ $projectName = "dice_ui"
 
 $runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
 $builderArgs = @("src/$projectName.fsx", "--persist-only", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
-{ . ../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) @builderArgs } | Invoke-Block
+{ . ../../polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
 
 $targetDir = GetTargetDir $projectName
 
