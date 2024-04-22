@@ -12,12 +12,10 @@ module DiceFSharp =
     open Common
 
     /// ## sixthPowerSequence
-
     let sixthPowerSequence () =
         1 |> Seq.unfold (fun state -> Some (state, state * 6)) |> Seq.cache
 
     /// ## accumulateDiceRolls
-
     let rec accumulateDiceRolls log rolls power acc =
         match rolls with
         | _ when power < 0 ->
@@ -36,7 +34,6 @@ module DiceFSharp =
             accumulateDiceRolls log rest (power - 1) acc
 
     /// ## rollWithinBounds
-
     let rollWithinBounds log max rolls =
         let power = List.length rolls - 1
         match accumulateDiceRolls log rolls power 0 with
@@ -44,7 +41,6 @@ module DiceFSharp =
         | _ -> None
 
     /// ## calculateDiceCount
-
     let inline calculateDiceCount log max =
         let rec loop n p =
             if p < max
@@ -57,7 +53,6 @@ module DiceFSharp =
         else loop 0 1
 
     /// ## rollDice
-
 #if FABLE_COMPILER_RUST
     let rollDice () : int =
 #if !WASM && !CONTRACT
@@ -72,17 +67,14 @@ module DiceFSharp =
 #endif
 
     /// ## rotateNumber
-
     let rotateNumber max n =
         (n - 1 + max) % max + 1
 
     /// ## rotateNumbers
-
     let rotateNumbers max items =
         items |> Seq.map (rotateNumber max)
 
     /// ## createSequentialRoller
-
     let createSequentialRoller list =
         let mutable currentIndex = 0
         fun () ->
@@ -94,7 +86,6 @@ module DiceFSharp =
                 failwith "createSequentialRoller / End of list"
 
     /// ## rollProgressively
-
     let rollProgressively log roll reroll max =
         let power = (calculateDiceCount log max) - 1
         let rec loop rolls size =
@@ -108,8 +99,7 @@ module DiceFSharp =
         loop [] 0
 
     /// ## main
-
     let main args =
         let result = rollProgressively (Some (printfn "%s")) rollDice true (System.Int32.MaxValue / 10)
-        trace Debug (fun () -> $"main / result: {result}") getLocals
+        trace Debug (fun () -> $"main / result: {result}") _locals
         0

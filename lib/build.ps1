@@ -60,6 +60,7 @@ if (!$fast) {
     | Set-Content "$($projectName)_contract.rs"
 
 cargo fmt --
+{ cargo fmt -- } | Invoke-Block -Location contract
 
 if (!$fast) {
     { cargo run --release } | Invoke-Block
