@@ -7,19 +7,19 @@ $ErrorActionPreference = "Stop"
 . ../../polyglot/scripts/core.ps1
 
 
-{ pwsh "$ScriptDir/../lib/build.ps1" -fast $($fast ?? '') } | Invoke-Block
+{ . ../lib/build.ps1 -fast $($fast ?? '') } | Invoke-Block -Location $ScriptDir
 
 if (!$fast) {
-    { dotnet run --configuration Release --project "$ScriptDir/../temp/dice.fsproj" } | Invoke-Block
+    { dotnet run --configuration Release --project ../temp/dice.fsproj } | Invoke-Block -Location $ScriptDir
 }
 
-{ pwsh "$ScriptDir/../contract/build.ps1" -fast 1 } | Invoke-Block
+{ . ../contract/build.ps1 -fast 1 } | Invoke-Block -Location $ScriptDir
 
-{ pwsh "$ScriptDir/../contract/tests/build.ps1" } | Invoke-Block -Retries 3
+{ . ../contract/tests/build.ps1} | Invoke-Block -Retries 3 -Location $ScriptDir
 
-{ pwsh "$ScriptDir/../ui/build.ps1" -fast $($fast ?? '') } | Invoke-Block
+{ . ../ui/build.ps1 -fast $($fast ?? '') } | Invoke-Block -Location $ScriptDir
 
 
-{ . "$ScriptDir/../lib/fsharp/build.ps1" } | Invoke-Block
+{ . ../lib/fsharp/build.ps1 } | Invoke-Block -Location $ScriptDir
 
-{ . "$ScriptDir/../scripts/outdated.ps1" } | Invoke-Block
+{ . ../scripts/outdated.ps1 } | Invoke-Block -Location $ScriptDir
