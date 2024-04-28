@@ -29,8 +29,6 @@ $targetDir = GetTargetDir $projectName
 { BuildFable $targetDir $projectName "ts" } | Invoke-Block
 if (!$fast) {
     { BuildFable $targetDir $projectName "py" } | Invoke-Block
-    { BuildFable $targetDir $projectName "php" } | Invoke-Block -OnError Continue
-    { BuildFable $targetDir $projectName "dart" } | Invoke-Block -OnError Continue
 }
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
     -replace "../../../../lib", "../../polyglot/lib" `
@@ -40,8 +38,6 @@ if (!$fast) {
 if (!$fast) {
     Copy-Item "$targetDir/target/ts/$projectName.ts" "$projectName.ts" -Force
     Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
-    Copy-Item "$targetDir/target/php/$projectName.php" "$projectName.php" -Force
-    Copy-Item "$targetDir/target/dart/$projectName.dart" "$projectName.dart" -Force
 }
 
 { BuildFable $targetDir $projectName "rs" "CONTRACT" } | Invoke-Block
@@ -49,8 +45,6 @@ if (!$fast) {
 if (!$fast) {
 
     { BuildFable $targetDir $projectName "py" "CONTRACT" } | Invoke-Block
-    { BuildFable $targetDir $projectName "php" "CONTRACT" } | Invoke-Block -OnError Continue
-    { BuildFable $targetDir $projectName "dart" "CONTRACT" } | Invoke-Block -OnError Continue
 }
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
     -replace "../../../../lib", "../../polyglot/lib" `

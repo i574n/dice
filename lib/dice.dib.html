@@ -9052,8 +9052,8 @@ and method1 (v0 : UH0, v1 : int8) : int32 =
         let v11 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v11
 #endif
-        #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-        let v12 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+        #if FABLE_COMPILER_PYTHON
+        let v12 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v12
 #endif
         |&gt; fun x -&gt; _v3 &lt;- Some x
@@ -9094,8 +9094,8 @@ and method1 (v0 : UH0, v1 : int8) : int32 =
                 let v30 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v30
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v31 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v31 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v31
 #endif
                 |&gt; fun x -&gt; _v22 &lt;- Some x
@@ -9128,8 +9128,8 @@ and method1 (v0 : UH0, v1 : int8) : int32 =
             let v45 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v45
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v46 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v46 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v46
 #endif
             |&gt; fun x -&gt; _v37 &lt;- Some x
@@ -9877,7 +9877,7 @@ accumulate_dice_rolls / power: -1 / acc: 1677 / result: 1678
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 271)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>271</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 689)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>689</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1363)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1363</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1386)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1386</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1251)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1251</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1334)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1334</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 281)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>281</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 689)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>689</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1384)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1384</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1352)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1352</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
+<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 274)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>274</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 728)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>728</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1346)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1346</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1346)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1346</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1328)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1328</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1343)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1343</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 272)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>272</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 708)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>708</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1321)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1321</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1334)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1334</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
 .dni-code-hint {
     font-style: italic;
     overflow: hidden;
@@ -10018,8 +10018,8 @@ and method4 (v0 : UH1, v1 : int8) : int32 =
         let v11 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v11
 #endif
-        #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-        let v12 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+        #if FABLE_COMPILER_PYTHON
+        let v12 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v12
 #endif
         |&gt; fun x -&gt; _v3 &lt;- Some x
@@ -10060,8 +10060,8 @@ and method4 (v0 : UH1, v1 : int8) : int32 =
                 let v30 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v30
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v31 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v31 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v31
 #endif
                 |&gt; fun x -&gt; _v22 &lt;- Some x
@@ -10094,8 +10094,8 @@ and method4 (v0 : UH1, v1 : int8) : int32 =
             let v45 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v45
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v46 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v46 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v46
 #endif
             |&gt; fun x -&gt; _v37 &lt;- Some x
@@ -10230,7 +10230,7 @@ method0()
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 984)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>984</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 1016)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1016</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 991)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>991</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1076)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1076</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 975)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>975</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 993)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>993</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 993)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>993</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 996)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>996</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 991)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>991</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 985)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>985</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
+<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 977)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>977</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 990)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>990</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1003)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1003</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1027)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1027</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1012)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1012</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 982)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>982</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 1060)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1060</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 954)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>954</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1026)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1026</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 969)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>969</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
 .dni-code-hint {
     font-style: italic;
     overflow: hidden;
@@ -10532,8 +10532,8 @@ and method7 (v0 : int32, v1 : int8, v2 : UH1, v3 : int8) : int32 =
         let v14 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v14
 #endif
-        #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-        let v15 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+        #if FABLE_COMPILER_PYTHON
+        let v15 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v15
 #endif
         |&gt; fun x -&gt; _v6 &lt;- Some x
@@ -10574,8 +10574,8 @@ and method7 (v0 : int32, v1 : int8, v2 : UH1, v3 : int8) : int32 =
                 let v33 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v33
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v34 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v34 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v34
 #endif
                 |&gt; fun x -&gt; _v25 &lt;- Some x
@@ -10608,8 +10608,8 @@ and method7 (v0 : int32, v1 : int8, v2 : UH1, v3 : int8) : int32 =
             let v48 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v48
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v49 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v49 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v49
 #endif
             |&gt; fun x -&gt; _v40 &lt;- Some x
@@ -10702,8 +10702,8 @@ and method16 (v0 : int8, v1 : int8) : UH1 =
         let v11 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v11
 #endif
-        #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-        let v12 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+        #if FABLE_COMPILER_PYTHON
+        let v12 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v12
 #endif
         |&gt; fun x -&gt; _v3 &lt;- Some x
@@ -10741,8 +10741,8 @@ and method17 (v0 : int32, v1 : int8, v2 : UH1) : int32 =
         let v13 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v13
 #endif
-        #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-        let v14 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+        #if FABLE_COMPILER_PYTHON
+        let v14 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v14
 #endif
         |&gt; fun x -&gt; _v5 &lt;- Some x
@@ -10793,8 +10793,8 @@ and method15 (v0 : int32, v1 : int8, v2 : UH1, v3 : int8) : int32 =
         let v14 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v14
 #endif
-        #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-        let v15 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+        #if FABLE_COMPILER_PYTHON
+        let v15 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v15
 #endif
         |&gt; fun x -&gt; _v6 &lt;- Some x
@@ -12239,8 +12239,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
         let v11 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v11
 #endif
-        #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-        let v12 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+        #if FABLE_COMPILER_PYTHON
+        let v12 : uint8 = System.Random().Next (1, 7) |&gt; uint8
         v12
 #endif
         |&gt; fun x -&gt; _v3 &lt;- Some x
@@ -12281,8 +12281,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v30 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v30
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v31 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v31 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v31
 #endif
                 |&gt; fun x -&gt; _v22 &lt;- Some x
@@ -12309,8 +12309,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v39 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v39
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v40 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v40 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v40
 #endif
                 |&gt; fun x -&gt; _v33 &lt;- Some x
@@ -12337,8 +12337,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v48 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v48
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v49 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v49 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v49
 #endif
                 |&gt; fun x -&gt; _v42 &lt;- Some x
@@ -12365,8 +12365,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v57 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v57
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v58 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v58 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v58
 #endif
                 |&gt; fun x -&gt; _v51 &lt;- Some x
@@ -12393,8 +12393,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v66 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v66
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v67 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v67 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v67
 #endif
                 |&gt; fun x -&gt; _v60 &lt;- Some x
@@ -12421,8 +12421,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v75 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v75
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v76 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v76 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v76
 #endif
                 |&gt; fun x -&gt; _v69 &lt;- Some x
@@ -12449,8 +12449,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v84 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v84
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v85 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v85 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v85
 #endif
                 |&gt; fun x -&gt; _v78 &lt;- Some x
@@ -12477,8 +12477,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v93 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v93
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v94 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v94 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v94
 #endif
                 |&gt; fun x -&gt; _v87 &lt;- Some x
@@ -12505,8 +12505,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v102 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v102
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v103 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v103 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v103
 #endif
                 |&gt; fun x -&gt; _v96 &lt;- Some x
@@ -12533,8 +12533,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v111 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v111
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v112 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v112 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v112
 #endif
                 |&gt; fun x -&gt; _v105 &lt;- Some x
@@ -12561,8 +12561,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v120 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v120
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v121 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v121 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v121
 #endif
                 |&gt; fun x -&gt; _v114 &lt;- Some x
@@ -12589,8 +12589,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v129 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v129
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v130 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v130 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v130
 #endif
                 |&gt; fun x -&gt; _v123 &lt;- Some x
@@ -12617,8 +12617,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v138 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v138
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v139 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v139 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v139
 #endif
                 |&gt; fun x -&gt; _v132 &lt;- Some x
@@ -12645,8 +12645,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v147 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v147
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v148 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v148 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v148
 #endif
                 |&gt; fun x -&gt; _v141 &lt;- Some x
@@ -12673,8 +12673,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v156 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v156
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v157 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v157 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v157
 #endif
                 |&gt; fun x -&gt; _v150 &lt;- Some x
@@ -12701,8 +12701,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v165 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v165
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v166 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v166 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v166
 #endif
                 |&gt; fun x -&gt; _v159 &lt;- Some x
@@ -12729,8 +12729,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v174 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v174
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v175 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v175 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v175
 #endif
                 |&gt; fun x -&gt; _v168 &lt;- Some x
@@ -12757,8 +12757,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v183 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v183
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v184 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v184 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v184
 #endif
                 |&gt; fun x -&gt; _v177 &lt;- Some x
@@ -12785,8 +12785,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v192 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v192
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v193 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v193 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v193
 #endif
                 |&gt; fun x -&gt; _v186 &lt;- Some x
@@ -12813,8 +12813,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v201 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v201
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v202 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v202 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v202
 #endif
                 |&gt; fun x -&gt; _v195 &lt;- Some x
@@ -12841,8 +12841,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v210 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v210
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v211 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v211 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v211
 #endif
                 |&gt; fun x -&gt; _v204 &lt;- Some x
@@ -12869,8 +12869,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v219 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v219
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v220 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v220 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v220
 #endif
                 |&gt; fun x -&gt; _v213 &lt;- Some x
@@ -12897,8 +12897,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v228 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v228
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v229 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+                #if FABLE_COMPILER_PYTHON
+                let v229 : uint8 = System.Random().Next (1, 7) |&gt; uint8
                 v229
 #endif
                 |&gt; fun x -&gt; _v222 &lt;- Some x
@@ -12954,8 +12954,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v266 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v266
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v267 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v267 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v267
 #endif
             |&gt; fun x -&gt; _v258 &lt;- Some x
@@ -12982,8 +12982,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v275 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v275
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v276 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v276 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v276
 #endif
             |&gt; fun x -&gt; _v269 &lt;- Some x
@@ -13010,8 +13010,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v284 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v284
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v285 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v285 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v285
 #endif
             |&gt; fun x -&gt; _v278 &lt;- Some x
@@ -13038,8 +13038,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v293 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v293
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v294 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v294 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v294
 #endif
             |&gt; fun x -&gt; _v287 &lt;- Some x
@@ -13066,8 +13066,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v302 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v302
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v303 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v303 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v303
 #endif
             |&gt; fun x -&gt; _v296 &lt;- Some x
@@ -13094,8 +13094,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v311 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v311
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v312 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v312 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v312
 #endif
             |&gt; fun x -&gt; _v305 &lt;- Some x
@@ -13122,8 +13122,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v320 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v320
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v321 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v321 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v321
 #endif
             |&gt; fun x -&gt; _v314 &lt;- Some x
@@ -13150,8 +13150,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v329 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v329
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v330 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v330 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v330
 #endif
             |&gt; fun x -&gt; _v323 &lt;- Some x
@@ -13178,8 +13178,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v338 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v338
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v339 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v339 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v339
 #endif
             |&gt; fun x -&gt; _v332 &lt;- Some x
@@ -13206,8 +13206,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v347 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v347
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v348 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v348 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v348
 #endif
             |&gt; fun x -&gt; _v341 &lt;- Some x
@@ -13234,8 +13234,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v356 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v356
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v357 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v357 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v357
 #endif
             |&gt; fun x -&gt; _v350 &lt;- Some x
@@ -13262,8 +13262,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v365 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v365
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v366 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v366 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v366
 #endif
             |&gt; fun x -&gt; _v359 &lt;- Some x
@@ -13290,8 +13290,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v374 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v374
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v375 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v375 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v375
 #endif
             |&gt; fun x -&gt; _v368 &lt;- Some x
@@ -13318,8 +13318,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v383 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v383
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v384 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v384 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v384
 #endif
             |&gt; fun x -&gt; _v377 &lt;- Some x
@@ -13346,8 +13346,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v392 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v392
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v393 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v393 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v393
 #endif
             |&gt; fun x -&gt; _v386 &lt;- Some x
@@ -13374,8 +13374,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v401 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v401
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v402 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v402 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v402
 #endif
             |&gt; fun x -&gt; _v395 &lt;- Some x
@@ -13402,8 +13402,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v410 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v410
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v411 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v411 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v411
 #endif
             |&gt; fun x -&gt; _v404 &lt;- Some x
@@ -13430,8 +13430,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v419 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v419
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v420 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v420 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v420
 #endif
             |&gt; fun x -&gt; _v413 &lt;- Some x
@@ -13458,8 +13458,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v428 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v428
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v429 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v429 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v429
 #endif
             |&gt; fun x -&gt; _v422 &lt;- Some x
@@ -13486,8 +13486,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v437 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v437
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v438 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v438 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v438
 #endif
             |&gt; fun x -&gt; _v431 &lt;- Some x
@@ -13514,8 +13514,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v446 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v446
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v447 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v447 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v447
 #endif
             |&gt; fun x -&gt; _v440 &lt;- Some x
@@ -13542,8 +13542,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v455 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v455
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v456 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v456 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v456
 #endif
             |&gt; fun x -&gt; _v449 &lt;- Some x
@@ -13570,8 +13570,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v464 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v464
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v465 : uint8 = Unchecked.defaultof&lt;uint8&gt;
+            #if FABLE_COMPILER_PYTHON
+            let v465 : uint8 = System.Random().Next (1, 7) |&gt; uint8
             v465
 #endif
             |&gt; fun x -&gt; _v458 &lt;- Some x

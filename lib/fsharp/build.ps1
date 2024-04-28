@@ -28,8 +28,6 @@ if (!$fast) {
 
     { BuildFable $targetDir $projectName "ts" } | Invoke-Block
     { BuildFable $targetDir $projectName "py" } | Invoke-Block
-    { BuildFable $targetDir $projectName "php" } | Invoke-Block -OnError Continue
-    { BuildFable $targetDir $projectName "dart" } | Invoke-Block -OnError Continue
 }
 
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
@@ -40,8 +38,6 @@ if (!$fast) {
 if (!$fast) {
     Copy-Item "$targetDir/target/ts/$projectName.ts" "$projectName.ts" -Force
     Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
-    Copy-Item "$targetDir/target/php/$projectName.php" "$projectName.php" -Force
-    Copy-Item "$targetDir/target/dart/$projectName.dart" "$projectName.dart" -Force
 }
 
 cargo fmt --

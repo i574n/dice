@@ -1075,8 +1075,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
         let v11 : uint8 = System.Random().Next (1, 7) |> uint8
         v11
 #endif
-        #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-        let v12 : uint8 = Unchecked.defaultof<uint8>
+        #if FABLE_COMPILER_PYTHON
+        let v12 : uint8 = System.Random().Next (1, 7) |> uint8
         v12
 #endif
         |> fun x -> _v3 <- Some x
@@ -1117,8 +1117,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v30 : uint8 = System.Random().Next (1, 7) |> uint8
                 v30
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v31 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v31 : uint8 = System.Random().Next (1, 7) |> uint8
                 v31
 #endif
                 |> fun x -> _v22 <- Some x
@@ -1145,8 +1145,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v39 : uint8 = System.Random().Next (1, 7) |> uint8
                 v39
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v40 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v40 : uint8 = System.Random().Next (1, 7) |> uint8
                 v40
 #endif
                 |> fun x -> _v33 <- Some x
@@ -1173,8 +1173,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v48 : uint8 = System.Random().Next (1, 7) |> uint8
                 v48
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v49 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v49 : uint8 = System.Random().Next (1, 7) |> uint8
                 v49
 #endif
                 |> fun x -> _v42 <- Some x
@@ -1201,8 +1201,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v57 : uint8 = System.Random().Next (1, 7) |> uint8
                 v57
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v58 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v58 : uint8 = System.Random().Next (1, 7) |> uint8
                 v58
 #endif
                 |> fun x -> _v51 <- Some x
@@ -1229,8 +1229,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v66 : uint8 = System.Random().Next (1, 7) |> uint8
                 v66
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v67 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v67 : uint8 = System.Random().Next (1, 7) |> uint8
                 v67
 #endif
                 |> fun x -> _v60 <- Some x
@@ -1257,8 +1257,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v75 : uint8 = System.Random().Next (1, 7) |> uint8
                 v75
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v76 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v76 : uint8 = System.Random().Next (1, 7) |> uint8
                 v76
 #endif
                 |> fun x -> _v69 <- Some x
@@ -1285,8 +1285,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v84 : uint8 = System.Random().Next (1, 7) |> uint8
                 v84
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v85 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v85 : uint8 = System.Random().Next (1, 7) |> uint8
                 v85
 #endif
                 |> fun x -> _v78 <- Some x
@@ -1313,8 +1313,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v93 : uint8 = System.Random().Next (1, 7) |> uint8
                 v93
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v94 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v94 : uint8 = System.Random().Next (1, 7) |> uint8
                 v94
 #endif
                 |> fun x -> _v87 <- Some x
@@ -1341,8 +1341,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v102 : uint8 = System.Random().Next (1, 7) |> uint8
                 v102
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v103 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v103 : uint8 = System.Random().Next (1, 7) |> uint8
                 v103
 #endif
                 |> fun x -> _v96 <- Some x
@@ -1369,8 +1369,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v111 : uint8 = System.Random().Next (1, 7) |> uint8
                 v111
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v112 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v112 : uint8 = System.Random().Next (1, 7) |> uint8
                 v112
 #endif
                 |> fun x -> _v105 <- Some x
@@ -1397,8 +1397,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v120 : uint8 = System.Random().Next (1, 7) |> uint8
                 v120
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v121 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v121 : uint8 = System.Random().Next (1, 7) |> uint8
                 v121
 #endif
                 |> fun x -> _v114 <- Some x
@@ -1425,8 +1425,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v129 : uint8 = System.Random().Next (1, 7) |> uint8
                 v129
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v130 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v130 : uint8 = System.Random().Next (1, 7) |> uint8
                 v130
 #endif
                 |> fun x -> _v123 <- Some x
@@ -1453,8 +1453,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v138 : uint8 = System.Random().Next (1, 7) |> uint8
                 v138
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v139 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v139 : uint8 = System.Random().Next (1, 7) |> uint8
                 v139
 #endif
                 |> fun x -> _v132 <- Some x
@@ -1481,8 +1481,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v147 : uint8 = System.Random().Next (1, 7) |> uint8
                 v147
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v148 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v148 : uint8 = System.Random().Next (1, 7) |> uint8
                 v148
 #endif
                 |> fun x -> _v141 <- Some x
@@ -1509,8 +1509,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v156 : uint8 = System.Random().Next (1, 7) |> uint8
                 v156
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v157 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v157 : uint8 = System.Random().Next (1, 7) |> uint8
                 v157
 #endif
                 |> fun x -> _v150 <- Some x
@@ -1537,8 +1537,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v165 : uint8 = System.Random().Next (1, 7) |> uint8
                 v165
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v166 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v166 : uint8 = System.Random().Next (1, 7) |> uint8
                 v166
 #endif
                 |> fun x -> _v159 <- Some x
@@ -1565,8 +1565,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v174 : uint8 = System.Random().Next (1, 7) |> uint8
                 v174
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v175 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v175 : uint8 = System.Random().Next (1, 7) |> uint8
                 v175
 #endif
                 |> fun x -> _v168 <- Some x
@@ -1593,8 +1593,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v183 : uint8 = System.Random().Next (1, 7) |> uint8
                 v183
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v184 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v184 : uint8 = System.Random().Next (1, 7) |> uint8
                 v184
 #endif
                 |> fun x -> _v177 <- Some x
@@ -1621,8 +1621,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v192 : uint8 = System.Random().Next (1, 7) |> uint8
                 v192
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v193 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v193 : uint8 = System.Random().Next (1, 7) |> uint8
                 v193
 #endif
                 |> fun x -> _v186 <- Some x
@@ -1649,8 +1649,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v201 : uint8 = System.Random().Next (1, 7) |> uint8
                 v201
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v202 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v202 : uint8 = System.Random().Next (1, 7) |> uint8
                 v202
 #endif
                 |> fun x -> _v195 <- Some x
@@ -1677,8 +1677,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v210 : uint8 = System.Random().Next (1, 7) |> uint8
                 v210
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v211 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v211 : uint8 = System.Random().Next (1, 7) |> uint8
                 v211
 #endif
                 |> fun x -> _v204 <- Some x
@@ -1705,8 +1705,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v219 : uint8 = System.Random().Next (1, 7) |> uint8
                 v219
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v220 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v220 : uint8 = System.Random().Next (1, 7) |> uint8
                 v220
 #endif
                 |> fun x -> _v213 <- Some x
@@ -1733,8 +1733,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v228 : uint8 = System.Random().Next (1, 7) |> uint8
                 v228
 #endif
-                #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-                let v229 : uint8 = Unchecked.defaultof<uint8>
+                #if FABLE_COMPILER_PYTHON
+                let v229 : uint8 = System.Random().Next (1, 7) |> uint8
                 v229
 #endif
                 |> fun x -> _v222 <- Some x
@@ -1790,8 +1790,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v266 : uint8 = System.Random().Next (1, 7) |> uint8
             v266
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v267 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v267 : uint8 = System.Random().Next (1, 7) |> uint8
             v267
 #endif
             |> fun x -> _v258 <- Some x
@@ -1818,8 +1818,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v275 : uint8 = System.Random().Next (1, 7) |> uint8
             v275
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v276 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v276 : uint8 = System.Random().Next (1, 7) |> uint8
             v276
 #endif
             |> fun x -> _v269 <- Some x
@@ -1846,8 +1846,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v284 : uint8 = System.Random().Next (1, 7) |> uint8
             v284
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v285 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v285 : uint8 = System.Random().Next (1, 7) |> uint8
             v285
 #endif
             |> fun x -> _v278 <- Some x
@@ -1874,8 +1874,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v293 : uint8 = System.Random().Next (1, 7) |> uint8
             v293
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v294 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v294 : uint8 = System.Random().Next (1, 7) |> uint8
             v294
 #endif
             |> fun x -> _v287 <- Some x
@@ -1902,8 +1902,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v302 : uint8 = System.Random().Next (1, 7) |> uint8
             v302
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v303 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v303 : uint8 = System.Random().Next (1, 7) |> uint8
             v303
 #endif
             |> fun x -> _v296 <- Some x
@@ -1930,8 +1930,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v311 : uint8 = System.Random().Next (1, 7) |> uint8
             v311
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v312 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v312 : uint8 = System.Random().Next (1, 7) |> uint8
             v312
 #endif
             |> fun x -> _v305 <- Some x
@@ -1958,8 +1958,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v320 : uint8 = System.Random().Next (1, 7) |> uint8
             v320
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v321 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v321 : uint8 = System.Random().Next (1, 7) |> uint8
             v321
 #endif
             |> fun x -> _v314 <- Some x
@@ -1986,8 +1986,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v329 : uint8 = System.Random().Next (1, 7) |> uint8
             v329
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v330 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v330 : uint8 = System.Random().Next (1, 7) |> uint8
             v330
 #endif
             |> fun x -> _v323 <- Some x
@@ -2014,8 +2014,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v338 : uint8 = System.Random().Next (1, 7) |> uint8
             v338
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v339 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v339 : uint8 = System.Random().Next (1, 7) |> uint8
             v339
 #endif
             |> fun x -> _v332 <- Some x
@@ -2042,8 +2042,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v347 : uint8 = System.Random().Next (1, 7) |> uint8
             v347
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v348 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v348 : uint8 = System.Random().Next (1, 7) |> uint8
             v348
 #endif
             |> fun x -> _v341 <- Some x
@@ -2070,8 +2070,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v356 : uint8 = System.Random().Next (1, 7) |> uint8
             v356
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v357 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v357 : uint8 = System.Random().Next (1, 7) |> uint8
             v357
 #endif
             |> fun x -> _v350 <- Some x
@@ -2098,8 +2098,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v365 : uint8 = System.Random().Next (1, 7) |> uint8
             v365
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v366 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v366 : uint8 = System.Random().Next (1, 7) |> uint8
             v366
 #endif
             |> fun x -> _v359 <- Some x
@@ -2126,8 +2126,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v374 : uint8 = System.Random().Next (1, 7) |> uint8
             v374
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v375 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v375 : uint8 = System.Random().Next (1, 7) |> uint8
             v375
 #endif
             |> fun x -> _v368 <- Some x
@@ -2154,8 +2154,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v383 : uint8 = System.Random().Next (1, 7) |> uint8
             v383
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v384 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v384 : uint8 = System.Random().Next (1, 7) |> uint8
             v384
 #endif
             |> fun x -> _v377 <- Some x
@@ -2182,8 +2182,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v392 : uint8 = System.Random().Next (1, 7) |> uint8
             v392
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v393 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v393 : uint8 = System.Random().Next (1, 7) |> uint8
             v393
 #endif
             |> fun x -> _v386 <- Some x
@@ -2210,8 +2210,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v401 : uint8 = System.Random().Next (1, 7) |> uint8
             v401
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v402 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v402 : uint8 = System.Random().Next (1, 7) |> uint8
             v402
 #endif
             |> fun x -> _v395 <- Some x
@@ -2238,8 +2238,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v410 : uint8 = System.Random().Next (1, 7) |> uint8
             v410
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v411 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v411 : uint8 = System.Random().Next (1, 7) |> uint8
             v411
 #endif
             |> fun x -> _v404 <- Some x
@@ -2266,8 +2266,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v419 : uint8 = System.Random().Next (1, 7) |> uint8
             v419
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v420 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v420 : uint8 = System.Random().Next (1, 7) |> uint8
             v420
 #endif
             |> fun x -> _v413 <- Some x
@@ -2294,8 +2294,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v428 : uint8 = System.Random().Next (1, 7) |> uint8
             v428
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v429 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v429 : uint8 = System.Random().Next (1, 7) |> uint8
             v429
 #endif
             |> fun x -> _v422 <- Some x
@@ -2322,8 +2322,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v437 : uint8 = System.Random().Next (1, 7) |> uint8
             v437
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v438 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v438 : uint8 = System.Random().Next (1, 7) |> uint8
             v438
 #endif
             |> fun x -> _v431 <- Some x
@@ -2350,8 +2350,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v446 : uint8 = System.Random().Next (1, 7) |> uint8
             v446
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v447 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v447 : uint8 = System.Random().Next (1, 7) |> uint8
             v447
 #endif
             |> fun x -> _v440 <- Some x
@@ -2378,8 +2378,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v455 : uint8 = System.Random().Next (1, 7) |> uint8
             v455
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v456 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v456 : uint8 = System.Random().Next (1, 7) |> uint8
             v456
 #endif
             |> fun x -> _v449 <- Some x
@@ -2406,8 +2406,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v464 : uint8 = System.Random().Next (1, 7) |> uint8
             v464
 #endif
-            #if FABLE_COMPILER_PYTHON || FABLE_COMPILER_PHP || FABLE_COMPILER_DART
-            let v465 : uint8 = Unchecked.defaultof<uint8>
+            #if FABLE_COMPILER_PYTHON
+            let v465 : uint8 = System.Random().Next (1, 7) |> uint8
             v465
 #endif
             |> fun x -> _v458 <- Some x
