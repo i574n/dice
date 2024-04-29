@@ -36,7 +36,9 @@ if (!$fast) {
     | FixRust `
     | Set-Content "$projectName.rs"
 if (!$fast) {
-    Copy-Item "$targetDir/target/ts/$projectName.ts" "$projectName.ts" -Force
+    (Get-Content "$targetDir/target/ts/$projectName.ts") `
+        | FixTypeScript `
+        | Set-Content "$projectName.ts"
     Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
 }
 

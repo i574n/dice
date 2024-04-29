@@ -852,30 +852,36 @@ and method20 (v0 : rexie_Rexie) : rexie_Rexie =
 and closure12 () (v0 : rexie_Error) : std_string_String =
     let v1 : std_string_String option = None
     let v2 : bool = true in let mutable _v1 = v1
-    #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
     let v3 : string = @$"format!(""{{}}"", $0)"
     let v4 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v3
     v4
 #endif
-    #if FABLE_COMPILER_RUST && WASM
+    
+#if FABLE_COMPILER_RUST && WASM
     let v5 : string = @$"format!(""{{}}"", $0)"
     let v6 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v5
     v6
 #endif
-    #if FABLE_COMPILER_RUST && CONTRACT
+    
+#if FABLE_COMPILER_RUST && CONTRACT
     let v7 : string = @$"format!(""{{}}"", $0)"
     let v8 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v7
     v8
 #endif
-    #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+    
+#if !FABLE_COMPILER && !WASM && !CONTRACT
     let v9 : std_string_String = null |> unbox<std_string_String>
     v9
 #endif
-    #if FABLE_COMPILER_TYPESCRIPT
+    
+#if FABLE_COMPILER_TYPESCRIPT
     let v10 : std_string_String = null |> unbox<std_string_String>
     v10
 #endif
-    #if FABLE_COMPILER_PYTHON
+    
+#if FABLE_COMPILER_PYTHON
     let v11 : std_string_String = null |> unbox<std_string_String>
     v11
 #endif
@@ -890,30 +896,36 @@ and method22 () : string =
 and closure13 () (v0 : rexie_Error) : std_string_String =
     let v1 : std_string_String option = None
     let v2 : bool = true in let mutable _v1 = v1
-    #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
     let v3 : string = @$"format!(""{{}}"", $0)"
     let v4 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v3
     v4
 #endif
-    #if FABLE_COMPILER_RUST && WASM
+    
+#if FABLE_COMPILER_RUST && WASM
     let v5 : string = @$"format!(""{{}}"", $0)"
     let v6 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v5
     v6
 #endif
-    #if FABLE_COMPILER_RUST && CONTRACT
+    
+#if FABLE_COMPILER_RUST && CONTRACT
     let v7 : string = @$"format!(""{{}}"", $0)"
     let v8 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v7
     v8
 #endif
-    #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+    
+#if !FABLE_COMPILER && !WASM && !CONTRACT
     let v9 : std_string_String = null |> unbox<std_string_String>
     v9
 #endif
-    #if FABLE_COMPILER_TYPESCRIPT
+    
+#if FABLE_COMPILER_TYPESCRIPT
     let v10 : std_string_String = null |> unbox<std_string_String>
     v10
 #endif
-    #if FABLE_COMPILER_PYTHON
+    
+#if FABLE_COMPILER_PYTHON
     let v11 : std_string_String = null |> unbox<std_string_String>
     v11
 #endif
@@ -928,30 +940,36 @@ and method24 () : string =
 and closure14 () (v0 : rexie_Error) : std_string_String =
     let v1 : std_string_String option = None
     let v2 : bool = true in let mutable _v1 = v1
-    #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
     let v3 : string = @$"format!(""{{}}"", $0)"
     let v4 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v3
     v4
 #endif
-    #if FABLE_COMPILER_RUST && WASM
+    
+#if FABLE_COMPILER_RUST && WASM
     let v5 : string = @$"format!(""{{}}"", $0)"
     let v6 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v5
     v6
 #endif
-    #if FABLE_COMPILER_RUST && CONTRACT
+    
+#if FABLE_COMPILER_RUST && CONTRACT
     let v7 : string = @$"format!(""{{}}"", $0)"
     let v8 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v7
     v8
 #endif
-    #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+    
+#if !FABLE_COMPILER && !WASM && !CONTRACT
     let v9 : std_string_String = null |> unbox<std_string_String>
     v9
 #endif
-    #if FABLE_COMPILER_TYPESCRIPT
+    
+#if FABLE_COMPILER_TYPESCRIPT
     let v10 : std_string_String = null |> unbox<std_string_String>
     v10
 #endif
-    #if FABLE_COMPILER_PYTHON
+    
+#if FABLE_COMPILER_PYTHON
     let v11 : std_string_String = null |> unbox<std_string_String>
     v11
 #endif
@@ -965,30 +983,36 @@ and method26 (v0 : wasm_bindgen_JsValue) : wasm_bindgen_JsValue =
 and closure15 () (v0 : serde_wasm_bindgen_Error) : std_string_String =
     let v1 : std_string_String option = None
     let v2 : bool = true in let mutable _v1 = v1
-    #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
     let v3 : string = @$"format!(""{{}}"", $0)"
     let v4 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v3
     v4
 #endif
-    #if FABLE_COMPILER_RUST && WASM
+    
+#if FABLE_COMPILER_RUST && WASM
     let v5 : string = @$"format!(""{{}}"", $0)"
     let v6 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v5
     v6
 #endif
-    #if FABLE_COMPILER_RUST && CONTRACT
+    
+#if FABLE_COMPILER_RUST && CONTRACT
     let v7 : string = @$"format!(""{{}}"", $0)"
     let v8 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v7
     v8
 #endif
-    #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+    
+#if !FABLE_COMPILER && !WASM && !CONTRACT
     let v9 : std_string_String = null |> unbox<std_string_String>
     v9
 #endif
-    #if FABLE_COMPILER_TYPESCRIPT
+    
+#if FABLE_COMPILER_TYPESCRIPT
     let v10 : std_string_String = null |> unbox<std_string_String>
     v10
 #endif
-    #if FABLE_COMPILER_PYTHON
+    
+#if FABLE_COMPILER_PYTHON
     let v11 : std_string_String = null |> unbox<std_string_String>
     v11
 #endif
@@ -1006,30 +1030,36 @@ and method29 (v0 : serde_json_Value) : serde_json_Value =
 and closure17 () (v0 : serde_json_Error) : std_string_String =
     let v1 : std_string_String option = None
     let v2 : bool = true in let mutable _v1 = v1
-    #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
     let v3 : string = @$"format!(""{{}}"", $0)"
     let v4 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v3
     v4
 #endif
-    #if FABLE_COMPILER_RUST && WASM
+    
+#if FABLE_COMPILER_RUST && WASM
     let v5 : string = @$"format!(""{{}}"", $0)"
     let v6 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v5
     v6
 #endif
-    #if FABLE_COMPILER_RUST && CONTRACT
+    
+#if FABLE_COMPILER_RUST && CONTRACT
     let v7 : string = @$"format!(""{{}}"", $0)"
     let v8 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v7
     v8
 #endif
-    #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+    
+#if !FABLE_COMPILER && !WASM && !CONTRACT
     let v9 : std_string_String = null |> unbox<std_string_String>
     v9
 #endif
-    #if FABLE_COMPILER_TYPESCRIPT
+    
+#if FABLE_COMPILER_TYPESCRIPT
     let v10 : std_string_String = null |> unbox<std_string_String>
     v10
 #endif
-    #if FABLE_COMPILER_PYTHON
+    
+#if FABLE_COMPILER_PYTHON
     let v11 : std_string_String = null |> unbox<std_string_String>
     v11
 #endif
@@ -1041,30 +1071,36 @@ and method30 () : (serde_json_Error -> std_string_String) =
 and closure18 () (v0 : borsh_io_Error) : std_string_String =
     let v1 : std_string_String option = None
     let v2 : bool = true in let mutable _v1 = v1
-    #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
     let v3 : string = @$"format!(""{{}}"", $0)"
     let v4 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v3
     v4
 #endif
-    #if FABLE_COMPILER_RUST && WASM
+    
+#if FABLE_COMPILER_RUST && WASM
     let v5 : string = @$"format!(""{{}}"", $0)"
     let v6 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v5
     v6
 #endif
-    #if FABLE_COMPILER_RUST && CONTRACT
+    
+#if FABLE_COMPILER_RUST && CONTRACT
     let v7 : string = @$"format!(""{{}}"", $0)"
     let v8 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v7
     v8
 #endif
-    #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+    
+#if !FABLE_COMPILER && !WASM && !CONTRACT
     let v9 : std_string_String = null |> unbox<std_string_String>
     v9
 #endif
-    #if FABLE_COMPILER_TYPESCRIPT
+    
+#if FABLE_COMPILER_TYPESCRIPT
     let v10 : std_string_String = null |> unbox<std_string_String>
     v10
 #endif
-    #if FABLE_COMPILER_PYTHON
+    
+#if FABLE_COMPILER_PYTHON
     let v11 : std_string_String = null |> unbox<std_string_String>
     v11
 #endif
@@ -1314,30 +1350,36 @@ and method45 (v0 : string) : string =
 and closure32 () (v0 : serde_json_Error) : std_string_String =
     let v1 : std_string_String option = None
     let v2 : bool = true in let mutable _v1 = v1
-    #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
     let v3 : string = @$"format!(""{{}}"", $0)"
     let v4 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v3
     v4
 #endif
-    #if FABLE_COMPILER_RUST && WASM
+    
+#if FABLE_COMPILER_RUST && WASM
     let v5 : string = @$"format!(""{{}}"", $0)"
     let v6 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v5
     v6
 #endif
-    #if FABLE_COMPILER_RUST && CONTRACT
+    
+#if FABLE_COMPILER_RUST && CONTRACT
     let v7 : string = @$"format!(""{{}}"", $0)"
     let v8 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v7
     v8
 #endif
-    #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+    
+#if !FABLE_COMPILER && !WASM && !CONTRACT
     let v9 : std_string_String = null |> unbox<std_string_String>
     v9
 #endif
-    #if FABLE_COMPILER_TYPESCRIPT
+    
+#if FABLE_COMPILER_TYPESCRIPT
     let v10 : std_string_String = null |> unbox<std_string_String>
     v10
 #endif
-    #if FABLE_COMPILER_PYTHON
+    
+#if FABLE_COMPILER_PYTHON
     let v11 : std_string_String = null |> unbox<std_string_String>
     v11
 #endif
@@ -2632,30 +2674,36 @@ and method103 (v0 : reqwest_RequestBuilder) : reqwest_RequestBuilder =
 and closure87 () (v0 : reqwest_Error) : std_string_String =
     let v1 : std_string_String option = None
     let v2 : bool = true in let mutable _v1 = v1
-    #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
     let v3 : string = @$"format!(""{{}}"", $0)"
     let v4 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v3
     v4
 #endif
-    #if FABLE_COMPILER_RUST && WASM
+    
+#if FABLE_COMPILER_RUST && WASM
     let v5 : string = @$"format!(""{{}}"", $0)"
     let v6 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v5
     v6
 #endif
-    #if FABLE_COMPILER_RUST && CONTRACT
+    
+#if FABLE_COMPILER_RUST && CONTRACT
     let v7 : string = @$"format!(""{{}}"", $0)"
     let v8 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v7
     v8
 #endif
-    #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+    
+#if !FABLE_COMPILER && !WASM && !CONTRACT
     let v9 : std_string_String = null |> unbox<std_string_String>
     v9
 #endif
-    #if FABLE_COMPILER_TYPESCRIPT
+    
+#if FABLE_COMPILER_TYPESCRIPT
     let v10 : std_string_String = null |> unbox<std_string_String>
     v10
 #endif
-    #if FABLE_COMPILER_PYTHON
+    
+#if FABLE_COMPILER_PYTHON
     let v11 : std_string_String = null |> unbox<std_string_String>
     v11
 #endif
@@ -3130,30 +3178,36 @@ and method112 (v0 : string, v1 : Heap4, v2 : rexie_Rexie) : std_pin_Pin<Box<Dyn<
 and closure90 () (v0 : rexie_Error) : std_string_String =
     let v1 : std_string_String option = None
     let v2 : bool = true in let mutable _v1 = v1
-    #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
     let v3 : string = @$"format!(""{{}}"", $0)"
     let v4 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v3
     v4
 #endif
-    #if FABLE_COMPILER_RUST && WASM
+    
+#if FABLE_COMPILER_RUST && WASM
     let v5 : string = @$"format!(""{{}}"", $0)"
     let v6 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v5
     v6
 #endif
-    #if FABLE_COMPILER_RUST && CONTRACT
+    
+#if FABLE_COMPILER_RUST && CONTRACT
     let v7 : string = @$"format!(""{{}}"", $0)"
     let v8 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v7
     v8
 #endif
-    #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+    
+#if !FABLE_COMPILER && !WASM && !CONTRACT
     let v9 : std_string_String = null |> unbox<std_string_String>
     v9
 #endif
-    #if FABLE_COMPILER_TYPESCRIPT
+    
+#if FABLE_COMPILER_TYPESCRIPT
     let v10 : std_string_String = null |> unbox<std_string_String>
     v10
 #endif
-    #if FABLE_COMPILER_PYTHON
+    
+#if FABLE_COMPILER_PYTHON
     let v11 : std_string_String = null |> unbox<std_string_String>
     v11
 #endif
@@ -4194,30 +4248,36 @@ and method146 () : string =
 and closure133 () (v0 : serde_json_Error) : std_string_String =
     let v1 : std_string_String option = None
     let v2 : bool = true in let mutable _v1 = v1
-    #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
     let v3 : string = @$"format!(""{{}}"", $0)"
     let v4 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v3
     v4
 #endif
-    #if FABLE_COMPILER_RUST && WASM
+    
+#if FABLE_COMPILER_RUST && WASM
     let v5 : string = @$"format!(""{{}}"", $0)"
     let v6 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v5
     v6
 #endif
-    #if FABLE_COMPILER_RUST && CONTRACT
+    
+#if FABLE_COMPILER_RUST && CONTRACT
     let v7 : string = @$"format!(""{{}}"", $0)"
     let v8 : std_string_String = Fable.Core.RustInterop.emitRustExpr v0 v7
     v8
 #endif
-    #if !FABLE_COMPILER && !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !WASM && !CONTRACT
+    
+#if !FABLE_COMPILER && !WASM && !CONTRACT
     let v9 : std_string_String = null |> unbox<std_string_String>
     v9
 #endif
-    #if FABLE_COMPILER_TYPESCRIPT
+    
+#if FABLE_COMPILER_TYPESCRIPT
     let v10 : std_string_String = null |> unbox<std_string_String>
     v10
 #endif
-    #if FABLE_COMPILER_PYTHON
+    
+#if FABLE_COMPILER_PYTHON
     let v11 : std_string_String = null |> unbox<std_string_String>
     v11
 #endif

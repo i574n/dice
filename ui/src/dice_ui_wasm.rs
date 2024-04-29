@@ -17457,17 +17457,21 @@ mod module_eef1bd43 {
                     move |arg: ()| clo()
                 })
             };
-            let v5 = Func0::new(move || Dice_ui::closure334((), ()));
+            fn v5() -> string {
+                Dice_ui::closure334((), ())
+            }
             let v6 = {
-                let clo_1 = v5.clone();
+                let clo_1 = Func0::from(v5);
                 Func1::new({
                     let clo_1 = clo_1.clone();
                     move |arg_1: ()| clo_1()
                 })
             };
-            let v8 = Func0::new(move || Dice_ui::closure335((), ()));
+            fn v8() -> string {
+                Dice_ui::closure335((), ())
+            }
             let v9 = {
-                let clo_2 = v8.clone();
+                let clo_2 = Func0::from(v8);
                 Func1::new({
                     let clo_2 = clo_2.clone();
                     move |arg_2: ()| clo_2()
@@ -17507,14 +17511,14 @@ mod module_eef1bd43 {
                 })
             };
             let v27 = {
-                let clo_4 = v5;
+                let clo_4 = Func0::from(v5);
                 Func1::new({
                     let clo_4 = clo_4.clone();
                     move |arg_4: ()| clo_4()
                 })
             };
             let v29 = {
-                let clo_5 = v8;
+                let clo_5 = Func0::from(v8);
                 Func1::new({
                     let clo_5 = clo_5.clone();
                     move |arg_5: ()| clo_5()
@@ -21331,9 +21335,11 @@ mod module_eef1bd43 {
                     move |arg_1: ()| clo_1()
                 })
             };
-            let v20 = Func0::new(move || Dice_ui::closure335((), ()));
+            fn v20() -> string {
+                Dice_ui::closure335((), ())
+            }
             let v21 = {
-                let clo_2 = v20.clone();
+                let clo_2 = Func0::from(v20);
                 Func1::new({
                     let clo_2 = clo_2.clone();
                     move |arg_2: ()| clo_2()
@@ -21381,7 +21387,7 @@ mod module_eef1bd43 {
                 })
             };
             let v44 = {
-                let clo_5 = v20.clone();
+                let clo_5 = Func0::from(v20);
                 Func1::new({
                     let clo_5 = clo_5.clone();
                     move |arg_5: ()| clo_5()
@@ -21442,7 +21448,7 @@ mod module_eef1bd43 {
                 })
             };
             let v65 = {
-                let clo_8 = v20.clone();
+                let clo_8 = Func0::from(v20);
                 Func1::new({
                     let clo_8 = clo_8.clone();
                     move |arg_8: ()| clo_8()
@@ -21503,7 +21509,7 @@ mod module_eef1bd43 {
                 })
             };
             let v86 = {
-                let clo_11 = v20.clone();
+                let clo_11 = Func0::from(v20);
                 Func1::new({
                     let clo_11 = clo_11.clone();
                     move |arg_11: ()| clo_11()
@@ -21564,7 +21570,7 @@ mod module_eef1bd43 {
                 })
             };
             let v107 = {
-                let clo_14 = v20.clone();
+                let clo_14 = Func0::from(v20);
                 Func1::new({
                     let clo_14 = clo_14.clone();
                     move |arg_14: ()| clo_14()
@@ -21625,7 +21631,7 @@ mod module_eef1bd43 {
                 })
             };
             let v128 = {
-                let clo_17 = v20.clone();
+                let clo_17 = Func0::from(v20);
                 Func1::new({
                     let clo_17 = clo_17.clone();
                     move |arg_17: ()| clo_17()
@@ -21686,7 +21692,7 @@ mod module_eef1bd43 {
                 })
             };
             let v149 = {
-                let clo_20 = v20.clone();
+                let clo_20 = Func0::from(v20);
                 Func1::new({
                     let clo_20 = clo_20.clone();
                     move |arg_20: ()| clo_20()
@@ -21747,7 +21753,7 @@ mod module_eef1bd43 {
                 })
             };
             let v170 = {
-                let clo_23 = v20.clone();
+                let clo_23 = Func0::from(v20);
                 Func1::new({
                     let clo_23 = clo_23.clone();
                     move |arg_23: ()| clo_23()
@@ -21808,7 +21814,7 @@ mod module_eef1bd43 {
                 })
             };
             let v191 = {
-                let clo_26 = v20.clone();
+                let clo_26 = Func0::from(v20);
                 Func1::new({
                     let clo_26 = clo_26.clone();
                     move |arg_26: ()| clo_26()
@@ -21869,7 +21875,7 @@ mod module_eef1bd43 {
                 })
             };
             let v212 = {
-                let clo_29 = v20.clone();
+                let clo_29 = Func0::from(v20);
                 Func1::new({
                     let clo_29 = clo_29.clone();
                     move |arg_29: ()| clo_29()
@@ -21930,7 +21936,7 @@ mod module_eef1bd43 {
                 })
             };
             let v233 = {
-                let clo_32 = v20.clone();
+                let clo_32 = Func0::from(v20);
                 Func1::new({
                     let clo_32 = clo_32.clone();
                     move |arg_32: ()| clo_32()
@@ -21991,7 +21997,7 @@ mod module_eef1bd43 {
                 })
             };
             let v254 = {
-                let clo_35 = v20.clone();
+                let clo_35 = Func0::from(v20);
                 Func1::new({
                     let clo_35 = clo_35.clone();
                     move |arg_35: ()| clo_35()
@@ -22068,7 +22074,7 @@ mod module_eef1bd43 {
                         })
                     };
                     let v281 = {
-                        let clo_38 = v20;
+                        let clo_38 = Func0::from(v20);
                         Func1::new({
                             let clo_38 = clo_38.clone();
                             move |arg_38: ()| clo_38()

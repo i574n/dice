@@ -1,11 +1,11 @@
-import { FSharpRef, Record, Union } from "./fable_modules/fable-library-ts.4.14.0/Types.js";
-import { int32, int8, uint8 } from "./fable_modules/fable-library-ts.4.14.0/Int32.js";
-import { uint64_type, int64_type, record_type, string_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "./fable_modules/fable-library-ts.4.14.0/Reflection.js";
-import { op_Multiply, toUInt64, equals, compare, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "./fable_modules/fable-library-ts.4.14.0/BigInt.js";
-import { IComparable, IEquatable } from "./fable_modules/fable-library-ts.4.14.0/Util.js";
-import { interpolate, toText } from "./fable_modules/fable-library-ts.4.14.0/String.js";
-import { value as value_47, Option, map, defaultArg } from "./fable_modules/fable-library-ts.4.14.0/Option.js";
-import { nonSeeded } from "./fable_modules/fable-library-ts.4.14.0/Random.js";
+import { FSharpRef, Record, Union } from "../../polyglot/deps/Fable/src/fable-library-ts/Types.js";
+import { int32, int8, uint8 } from "../../polyglot/deps/Fable/src/fable-library-ts/Int32.js";
+import { uint64_type, int64_type, record_type, string_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "../../polyglot/deps/Fable/src/fable-library-ts/Reflection.js";
+import { op_Multiply, toUInt64, equals, compare, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "../../polyglot/deps/Fable/src/fable-library-ts/BigInt.js";
+import { IComparable, IEquatable } from "../../polyglot/deps/Fable/src/fable-library-ts/Util.js";
+import { interpolate, toText } from "../../polyglot/deps/Fable/src/fable-library-ts/String.js";
+import { value as value_47, Option, map, defaultArg } from "../../polyglot/deps/Fable/src/fable-library-ts/Option.js";
+import { nonSeeded } from "../../polyglot/deps/Fable/src/fable-library-ts/Random.js";
 
 export type UH0_$union = 
     | UH0<0>
@@ -487,7 +487,7 @@ export function method0(v0_1: int64, v1_1: UH0_$union, v2_1: UH0_$union): UH0_$u
         const v3_1: uint8 = v1_1.fields[0];
         const v6: UH0_$union = method0(v0_1, v1_1.fields[1](), v2_1);
         const v11: int64 = toInt64(op_Addition(toInt64(op_Modulus(toInt64(op_Addition(toInt64(op_Subtraction(toInt64(fromUInt8(v3_1)), 1n)), v0_1)), v0_1)), 1n));
-        return UH0_UH0_0(toUInt8(v11) & 0xFF, (): UH0_$union => closure2(v6, void 0));
+        return UH0_UH0_0(toUInt8(v11) & 0xFF, (): UH0_$union => closure2(v6, undefined));
     }
 }
 
@@ -504,7 +504,7 @@ export function closure4(unitVar: void, v0_1: ((arg0: string) => void)): US0_$un
 }
 
 export function method1(): ((arg0: ((arg0: string) => void)) => US0_$union) {
-    return (v: ((arg0: string) => void)): US0_$union => closure4(void 0, v);
+    return (v: ((arg0: string) => void)): US0_$union => closure4(undefined, v);
 }
 
 export function method2(v0_1_mut: UH1_$union, v1_1_mut: UH1_$union): UH1_$union {
@@ -543,7 +543,7 @@ export function method4(v0_1: UH1_$union, v1_1: UH0_$union): UH0_$union {
     else {
         const v2_1: uint8 = v0_1.fields[0];
         const v4_1: UH0_$union = method4(v0_1.fields[1], v1_1);
-        return UH0_UH0_0(v2_1, (): UH0_$union => closure6(v4_1, void 0));
+        return UH0_UH0_0(v2_1, (): UH0_$union => closure6(v4_1, undefined));
     }
 }
 
@@ -566,7 +566,7 @@ export function closure8(v0_1: UH0_$union, v1_1: Mut0, unitVar: void): UH0_$unio
 
 export function method5(v0_1: UH0_$union, v1_1: (() => UH0_$union)): (() => UH0_$union) {
     const v3_1: Mut0 = new Mut0(US1_US1_0(v1_1));
-    return (): UH0_$union => closure8(v0_1, v3_1, void 0);
+    return (): UH0_$union => closure8(v0_1, v3_1, undefined);
 }
 
 export function method7(v0_1_mut: int64, v1_1_mut: UH0_$union): US2_$union {
@@ -643,12 +643,12 @@ export function closure5(v0_1: US0_$union, v1_1: UH1_$union): (() => uint8) {
         v0_1.fields[0]("create_sequential_roller ()");
     }
     const v8: UH0_$union = method4(method3(v1_1, method2(v1_1, UH1_UH1_0())), UH0_UH0_1());
-    const v10: (() => UH0_$union) = method5(v8, (): UH0_$union => closure7(v8, void 0));
+    const v10: (() => UH0_$union) = method5(v8, (): UH0_$union => closure7(v8, undefined));
     const v11: Mut1 = new Mut1(0n);
     const v12: Mut1 = new Mut1(1n);
     const v13: Mut1 = new Mut1(-1n);
     const v15: Mut2 = new Mut2(US2_US2_1());
-    return (): uint8 => closure9(v0_1, v10, v11, v12, v13, v15, void 0);
+    return (): uint8 => closure9(v0_1, v10, v11, v12, v13, v15, undefined);
 }
 
 export function closure3(unitVar: void, v0_1: Option<((arg0: string) => void)>): ((arg0: UH1_$union) => (() => uint8)) {
@@ -689,259 +689,259 @@ export function method8(v0_1_mut: US0_$union, v1_1_mut: uint64, v2_1_mut: int8, 
 }
 
 export function closure77(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(0n, (): UH2_$union => closure77(void 0, void 0));
+    return UH2_UH2_0(0n, (): UH2_$union => closure77(undefined, undefined));
 }
 
 export function closure76(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(9223372036854775808n, (): UH2_$union => closure77(void 0, void 0));
+    return UH2_UH2_0(9223372036854775808n, (): UH2_$union => closure77(undefined, undefined));
 }
 
 export function closure75(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(4611686018427387904n, (): UH2_$union => closure76(void 0, void 0));
+    return UH2_UH2_0(4611686018427387904n, (): UH2_$union => closure76(undefined, undefined));
 }
 
 export function closure74(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(6917529027641081856n, (): UH2_$union => closure75(void 0, void 0));
+    return UH2_UH2_0(6917529027641081856n, (): UH2_$union => closure75(undefined, undefined));
 }
 
 export function closure73(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(1152921504606846976n, (): UH2_$union => closure74(void 0, void 0));
+    return UH2_UH2_0(1152921504606846976n, (): UH2_$union => closure74(undefined, undefined));
 }
 
 export function closure72(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(15564440312192434176n, (): UH2_$union => closure73(void 0, void 0));
+    return UH2_UH2_0(15564440312192434176n, (): UH2_$union => closure73(undefined, undefined));
 }
 
 export function closure71(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(11817445422220181504n, (): UH2_$union => closure72(void 0, void 0));
+    return UH2_UH2_0(11817445422220181504n, (): UH2_$union => closure72(undefined, undefined));
 }
 
 export function closure70(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(5044031582654955520n, (): UH2_$union => closure71(void 0, void 0));
+    return UH2_UH2_0(5044031582654955520n, (): UH2_$union => closure71(undefined, undefined));
 }
 
 export function closure69(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(6989586621679009792n, (): UH2_$union => closure70(void 0, void 0));
+    return UH2_UH2_0(6989586621679009792n, (): UH2_$union => closure70(undefined, undefined));
 }
 
 export function closure68(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(16537217831704461312n, (): UH2_$union => closure69(void 0, void 0));
+    return UH2_UH2_0(16537217831704461312n, (): UH2_$union => closure69(undefined, undefined));
 }
 
 export function closure67(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(11979575008805519360n, (): UH2_$union => closure68(void 0, void 0));
+    return UH2_UH2_0(11979575008805519360n, (): UH2_$union => closure68(undefined, undefined));
 }
 
 export function closure66(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(14294425217273954304n, (): UH2_$union => closure67(void 0, void 0));
+    return UH2_UH2_0(14294425217273954304n, (): UH2_$union => closure67(undefined, undefined));
 }
 
 export function closure65(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(2382404202878992384n, (): UH2_$union => closure66(void 0, void 0));
+    return UH2_UH2_0(2382404202878992384n, (): UH2_$union => closure66(undefined, undefined));
 }
 
 export function closure64(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(6545982058383015936n, (): UH2_$union => closure65(void 0, void 0));
+    return UH2_UH2_0(6545982058383015936n, (): UH2_$union => closure65(undefined, undefined));
 }
 
 export function closure63(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(10314369046585278464n, (): UH2_$union => closure64(void 0, void 0));
+    return UH2_UH2_0(10314369046585278464n, (): UH2_$union => closure64(undefined, undefined));
 }
 
 export function closure62(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(4793518853382471680n, (): UH2_$union => closure63(void 0, void 0));
+    return UH2_UH2_0(4793518853382471680n, (): UH2_$union => closure63(undefined, undefined));
 }
 
 export function closure61(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(3873377154515337216n, (): UH2_$union => closure62(void 0, void 0));
+    return UH2_UH2_0(3873377154515337216n, (): UH2_$union => closure62(undefined, undefined));
 }
 
 export function closure60(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(645562859085889536n, (): UH2_$union => closure61(void 0, void 0));
+    return UH2_UH2_0(645562859085889536n, (): UH2_$union => closure61(undefined, undefined));
 }
 
 export function closure59(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(107593809847648256n, (): UH2_$union => closure60(void 0, void 0));
+    return UH2_UH2_0(107593809847648256n, (): UH2_$union => closure60(undefined, undefined));
 }
 
 export function closure58(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(3092389647259533312n, (): UH2_$union => closure59(void 0, void 0));
+    return UH2_UH2_0(3092389647259533312n, (): UH2_$union => closure59(undefined, undefined));
 }
 
 export function closure57(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(9738770311398031360n, (): UH2_$union => closure58(void 0, void 0));
+    return UH2_UH2_0(9738770311398031360n, (): UH2_$union => closure58(undefined, undefined));
 }
 
 export function closure56(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(16995415113324298240n, (): UH2_$union => closure57(void 0, void 0));
+    return UH2_UH2_0(16995415113324298240n, (): UH2_$union => closure57(undefined, undefined));
 }
 
 export function closure55(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(8981483876790566912n, (): UH2_$union => closure56(void 0, void 0));
+    return UH2_UH2_0(8981483876790566912n, (): UH2_$union => closure56(undefined, undefined));
 }
 
 export function closure54(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(13794743361938128896n, (): UH2_$union => closure55(void 0, void 0));
+    return UH2_UH2_0(13794743361938128896n, (): UH2_$union => closure55(undefined, undefined));
 }
 
 export function closure53(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(2299123893656354816n, (): UH2_$union => closure54(void 0, void 0));
+    return UH2_UH2_0(2299123893656354816n, (): UH2_$union => closure54(undefined, undefined));
 }
 
 export function closure52(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(3457644661227651072n, (): UH2_$union => closure53(void 0, void 0));
+    return UH2_UH2_0(3457644661227651072n, (): UH2_$union => closure53(undefined, undefined));
 }
 
 export function closure51(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(576274110204608512n, (): UH2_$union => closure52(void 0, void 0));
+    return UH2_UH2_0(576274110204608512n, (): UH2_$union => closure52(undefined, undefined));
 }
 
 export function closure50(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(6244960376270618624n, (): UH2_$union => closure51(void 0, void 0));
+    return UH2_UH2_0(6244960376270618624n, (): UH2_$union => closure51(undefined, undefined));
 }
 
 export function closure49(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(13338656111851470848n, (): UH2_$union => closure50(void 0, void 0));
+    return UH2_UH2_0(13338656111851470848n, (): UH2_$union => closure50(undefined, undefined));
 }
 
 export function closure48(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(14520938734448279552n, (): UH2_$union => closure49(void 0, void 0));
+    return UH2_UH2_0(14520938734448279552n, (): UH2_$union => closure49(undefined, undefined));
 }
 
 export function closure47(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(14717985838214414336n, (): UH2_$union => closure48(void 0, void 0));
+    return UH2_UH2_0(14717985838214414336n, (): UH2_$union => closure48(undefined, undefined));
 }
 
 export function closure46(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(5527454985320660992n, (): UH2_$union => closure47(void 0, void 0));
+    return UH2_UH2_0(5527454985320660992n, (): UH2_$union => closure47(undefined, undefined));
 }
 
 export function closure45(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(16293529225644736512n, (): UH2_$union => closure46(void 0, void 0));
+    return UH2_UH2_0(16293529225644736512n, (): UH2_$union => closure46(undefined, undefined));
 }
 
 export function closure44(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(11938960241128898560n, (): UH2_$union => closure45(void 0, void 0));
+    return UH2_UH2_0(11938960241128898560n, (): UH2_$union => closure45(undefined, undefined));
 }
 
 export function closure43(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(8138741398091333632n, (): UH2_$union => closure44(void 0, void 0));
+    return UH2_UH2_0(8138741398091333632n, (): UH2_$union => closure44(undefined, undefined));
 }
 
 export function closure42(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(7505371590918406144n, (): UH2_$union => closure43(void 0, void 0));
+    return UH2_UH2_0(7505371590918406144n, (): UH2_$union => closure43(undefined, undefined));
 }
 
 export function closure41(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(16623181993244360704n, (): UH2_$union => closure42(void 0, void 0));
+    return UH2_UH2_0(16623181993244360704n, (): UH2_$union => closure42(undefined, undefined));
 }
 
 export function closure40(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(8919445023443910656n, (): UH2_$union => closure41(void 0, void 0));
+    return UH2_UH2_0(8919445023443910656n, (): UH2_$union => closure41(undefined, undefined));
 }
 
 export function closure39(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(4561031516192243712n, (): UH2_$union => closure40(void 0, void 0));
+    return UH2_UH2_0(4561031516192243712n, (): UH2_$union => closure40(undefined, undefined));
 }
 
 export function closure38(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(9983543956220149760n, (): UH2_$union => closure39(void 0, void 0));
+    return UH2_UH2_0(9983543956220149760n, (): UH2_$union => closure39(undefined, undefined));
 }
 
 export function closure37(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(4738381338321616896n, (): UH2_$union => closure38(void 0, void 0));
+    return UH2_UH2_0(4738381338321616896n, (): UH2_$union => closure38(undefined, undefined));
 }
 
 export function closure36(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(789730223053602816n, (): UH2_$union => closure37(void 0, void 0));
+    return UH2_UH2_0(789730223053602816n, (): UH2_$union => closure37(undefined, undefined));
 }
 
 export function closure35(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(131621703842267136n, (): UH2_$union => closure36(void 0, void 0));
+    return UH2_UH2_0(131621703842267136n, (): UH2_$union => closure36(undefined, undefined));
 }
 
 export function closure34(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(21936950640377856n, (): UH2_$union => closure35(void 0, void 0));
+    return UH2_UH2_0(21936950640377856n, (): UH2_$union => closure35(undefined, undefined));
 }
 
 export function closure33(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(3656158440062976n, (): UH2_$union => closure34(void 0, void 0));
+    return UH2_UH2_0(3656158440062976n, (): UH2_$union => closure34(undefined, undefined));
 }
 
 export function closure32(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(609359740010496n, (): UH2_$union => closure33(void 0, void 0));
+    return UH2_UH2_0(609359740010496n, (): UH2_$union => closure33(undefined, undefined));
 }
 
 export function closure31(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(101559956668416n, (): UH2_$union => closure32(void 0, void 0));
+    return UH2_UH2_0(101559956668416n, (): UH2_$union => closure32(undefined, undefined));
 }
 
 export function closure30(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(16926659444736n, (): UH2_$union => closure31(void 0, void 0));
+    return UH2_UH2_0(16926659444736n, (): UH2_$union => closure31(undefined, undefined));
 }
 
 export function closure29(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(2821109907456n, (): UH2_$union => closure30(void 0, void 0));
+    return UH2_UH2_0(2821109907456n, (): UH2_$union => closure30(undefined, undefined));
 }
 
 export function closure28(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(470184984576n, (): UH2_$union => closure29(void 0, void 0));
+    return UH2_UH2_0(470184984576n, (): UH2_$union => closure29(undefined, undefined));
 }
 
 export function closure27(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(78364164096n, (): UH2_$union => closure28(void 0, void 0));
+    return UH2_UH2_0(78364164096n, (): UH2_$union => closure28(undefined, undefined));
 }
 
 export function closure26(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(13060694016n, (): UH2_$union => closure27(void 0, void 0));
+    return UH2_UH2_0(13060694016n, (): UH2_$union => closure27(undefined, undefined));
 }
 
 export function closure25(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(2176782336n, (): UH2_$union => closure26(void 0, void 0));
+    return UH2_UH2_0(2176782336n, (): UH2_$union => closure26(undefined, undefined));
 }
 
 export function closure24(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(362797056n, (): UH2_$union => closure25(void 0, void 0));
+    return UH2_UH2_0(362797056n, (): UH2_$union => closure25(undefined, undefined));
 }
 
 export function closure23(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(60466176n, (): UH2_$union => closure24(void 0, void 0));
+    return UH2_UH2_0(60466176n, (): UH2_$union => closure24(undefined, undefined));
 }
 
 export function closure22(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(10077696n, (): UH2_$union => closure23(void 0, void 0));
+    return UH2_UH2_0(10077696n, (): UH2_$union => closure23(undefined, undefined));
 }
 
 export function closure21(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(1679616n, (): UH2_$union => closure22(void 0, void 0));
+    return UH2_UH2_0(1679616n, (): UH2_$union => closure22(undefined, undefined));
 }
 
 export function closure20(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(279936n, (): UH2_$union => closure21(void 0, void 0));
+    return UH2_UH2_0(279936n, (): UH2_$union => closure21(undefined, undefined));
 }
 
 export function closure19(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(46656n, (): UH2_$union => closure20(void 0, void 0));
+    return UH2_UH2_0(46656n, (): UH2_$union => closure20(undefined, undefined));
 }
 
 export function closure18(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(7776n, (): UH2_$union => closure19(void 0, void 0));
+    return UH2_UH2_0(7776n, (): UH2_$union => closure19(undefined, undefined));
 }
 
 export function closure17(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(1296n, (): UH2_$union => closure18(void 0, void 0));
+    return UH2_UH2_0(1296n, (): UH2_$union => closure18(undefined, undefined));
 }
 
 export function closure16(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(216n, (): UH2_$union => closure17(void 0, void 0));
+    return UH2_UH2_0(216n, (): UH2_$union => closure17(undefined, undefined));
 }
 
 export function closure15(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(36n, (): UH2_$union => closure16(void 0, void 0));
+    return UH2_UH2_0(36n, (): UH2_$union => closure16(undefined, undefined));
 }
 
 export function closure14(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(6n, (): UH2_$union => closure15(void 0, void 0));
+    return UH2_UH2_0(6n, (): UH2_$union => closure15(undefined, undefined));
 }
 
 export function method11(v0_1_mut: int8, v1_1_mut: UH2_$union): US4_$union {
@@ -982,7 +982,7 @@ export function method10(v0_1_mut: US0_$union, v1_1_mut: int8, v2_1_mut: UH1_$un
             const v11: UH1_$union = v2_1.fields[1];
             const v10: uint8 = v2_1.fields[0];
             if (v10 > 1) {
-                const v16: US4_$union = method11(v1_1, UH2_UH2_0(1n, (): UH2_$union => closure14(void 0, void 0)));
+                const v16: US4_$union = method11(v1_1, UH2_UH2_0(1n, (): UH2_$union => closure14(undefined, undefined)));
                 let v20: uint64;
                 if (v16.tag === /* US4_0 */ 0) {
                     v20 = v16.fields[0];
@@ -1175,7 +1175,7 @@ export function closure80(v0_1: Option<((arg0: string) => void)>, v1_1: uint64, 
         return v20.fields[0];
     }
     else {
-        return void 0;
+        return undefined;
     }
 }
 
@@ -1703,7 +1703,7 @@ export function method15(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
     while (true) {
         const v0_1: UH1_$union = v0_1_mut, v1_1: int8 = v1_1_mut;
         if (v1_1 < 24) {
-            let _v3: Option<uint8> = void 0;
+            let _v3: Option<uint8> = undefined;
             let x: uint8;
             const value: int32 = nonSeeded().Next2(1, 7) | 0;
             x = (value & 0xFF);
@@ -1721,139 +1721,139 @@ export function method15(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
                     return v19;
                 }
                 else {
-                    let _v22: Option<uint8> = void 0;
+                    let _v22: Option<uint8> = undefined;
                     let x_1: uint8;
                     const value_1: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_1 = (value_1 & 0xFF);
                     _v22 = x_1;
                     const v32: uint8 = value_47(_v22);
-                    let _v33: Option<uint8> = void 0;
+                    let _v33: Option<uint8> = undefined;
                     let x_2: uint8;
                     const value_2: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_2 = (value_2 & 0xFF);
                     _v33 = x_2;
                     const v41: uint8 = value_47(_v33);
-                    let _v42: Option<uint8> = void 0;
+                    let _v42: Option<uint8> = undefined;
                     let x_3: uint8;
                     const value_3: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_3 = (value_3 & 0xFF);
                     _v42 = x_3;
                     const v50: uint8 = value_47(_v42);
-                    let _v51: Option<uint8> = void 0;
+                    let _v51: Option<uint8> = undefined;
                     let x_4: uint8;
                     const value_4: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_4 = (value_4 & 0xFF);
                     _v51 = x_4;
                     const v59: uint8 = value_47(_v51);
-                    let _v60: Option<uint8> = void 0;
+                    let _v60: Option<uint8> = undefined;
                     let x_5: uint8;
                     const value_5: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_5 = (value_5 & 0xFF);
                     _v60 = x_5;
                     const v68: uint8 = value_47(_v60);
-                    let _v69: Option<uint8> = void 0;
+                    let _v69: Option<uint8> = undefined;
                     let x_6: uint8;
                     const value_6: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_6 = (value_6 & 0xFF);
                     _v69 = x_6;
                     const v77: uint8 = value_47(_v69);
-                    let _v78: Option<uint8> = void 0;
+                    let _v78: Option<uint8> = undefined;
                     let x_7: uint8;
                     const value_7: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_7 = (value_7 & 0xFF);
                     _v78 = x_7;
                     const v86: uint8 = value_47(_v78);
-                    let _v87: Option<uint8> = void 0;
+                    let _v87: Option<uint8> = undefined;
                     let x_8: uint8;
                     const value_8: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_8 = (value_8 & 0xFF);
                     _v87 = x_8;
                     const v95: uint8 = value_47(_v87);
-                    let _v96: Option<uint8> = void 0;
+                    let _v96: Option<uint8> = undefined;
                     let x_9: uint8;
                     const value_9: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_9 = (value_9 & 0xFF);
                     _v96 = x_9;
                     const v104: uint8 = value_47(_v96);
-                    let _v105: Option<uint8> = void 0;
+                    let _v105: Option<uint8> = undefined;
                     let x_10: uint8;
                     const value_10: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_10 = (value_10 & 0xFF);
                     _v105 = x_10;
                     const v113: uint8 = value_47(_v105);
-                    let _v114: Option<uint8> = void 0;
+                    let _v114: Option<uint8> = undefined;
                     let x_11: uint8;
                     const value_11: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_11 = (value_11 & 0xFF);
                     _v114 = x_11;
                     const v122: uint8 = value_47(_v114);
-                    let _v123: Option<uint8> = void 0;
+                    let _v123: Option<uint8> = undefined;
                     let x_12: uint8;
                     const value_12: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_12 = (value_12 & 0xFF);
                     _v123 = x_12;
                     const v131: uint8 = value_47(_v123);
-                    let _v132: Option<uint8> = void 0;
+                    let _v132: Option<uint8> = undefined;
                     let x_13: uint8;
                     const value_13: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_13 = (value_13 & 0xFF);
                     _v132 = x_13;
                     const v140: uint8 = value_47(_v132);
-                    let _v141: Option<uint8> = void 0;
+                    let _v141: Option<uint8> = undefined;
                     let x_14: uint8;
                     const value_14: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_14 = (value_14 & 0xFF);
                     _v141 = x_14;
                     const v149: uint8 = value_47(_v141);
-                    let _v150: Option<uint8> = void 0;
+                    let _v150: Option<uint8> = undefined;
                     let x_15: uint8;
                     const value_15: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_15 = (value_15 & 0xFF);
                     _v150 = x_15;
                     const v158: uint8 = value_47(_v150);
-                    let _v159: Option<uint8> = void 0;
+                    let _v159: Option<uint8> = undefined;
                     let x_16: uint8;
                     const value_16: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_16 = (value_16 & 0xFF);
                     _v159 = x_16;
                     const v167: uint8 = value_47(_v159);
-                    let _v168: Option<uint8> = void 0;
+                    let _v168: Option<uint8> = undefined;
                     let x_17: uint8;
                     const value_17: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_17 = (value_17 & 0xFF);
                     _v168 = x_17;
                     const v176: uint8 = value_47(_v168);
-                    let _v177: Option<uint8> = void 0;
+                    let _v177: Option<uint8> = undefined;
                     let x_18: uint8;
                     const value_18: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_18 = (value_18 & 0xFF);
                     _v177 = x_18;
                     const v185: uint8 = value_47(_v177);
-                    let _v186: Option<uint8> = void 0;
+                    let _v186: Option<uint8> = undefined;
                     let x_19: uint8;
                     const value_19: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_19 = (value_19 & 0xFF);
                     _v186 = x_19;
                     const v194: uint8 = value_47(_v186);
-                    let _v195: Option<uint8> = void 0;
+                    let _v195: Option<uint8> = undefined;
                     let x_20: uint8;
                     const value_20: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_20 = (value_20 & 0xFF);
                     _v195 = x_20;
                     const v203: uint8 = value_47(_v195);
-                    let _v204: Option<uint8> = void 0;
+                    let _v204: Option<uint8> = undefined;
                     let x_21: uint8;
                     const value_21: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_21 = (value_21 & 0xFF);
                     _v204 = x_21;
                     const v212: uint8 = value_47(_v204);
-                    let _v213: Option<uint8> = void 0;
+                    let _v213: Option<uint8> = undefined;
                     let x_22: uint8;
                     const value_22: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_22 = (value_22 & 0xFF);
                     _v213 = x_22;
                     const v221: uint8 = value_47(_v213);
-                    let _v222: Option<uint8> = void 0;
+                    let _v222: Option<uint8> = undefined;
                     let x_23: uint8;
                     const value_23: int32 = nonSeeded().Next2(1, 7) | 0;
                     x_23 = (value_23 & 0xFF);
@@ -1864,139 +1864,139 @@ export function method15(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
                 }
             }
             else {
-                let _v258: Option<uint8> = void 0;
+                let _v258: Option<uint8> = undefined;
                 let x_24: uint8;
                 const value_24: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_24 = (value_24 & 0xFF);
                 _v258 = x_24;
                 const v268: uint8 = value_47(_v258);
-                let _v269: Option<uint8> = void 0;
+                let _v269: Option<uint8> = undefined;
                 let x_25: uint8;
                 const value_25: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_25 = (value_25 & 0xFF);
                 _v269 = x_25;
                 const v277: uint8 = value_47(_v269);
-                let _v278: Option<uint8> = void 0;
+                let _v278: Option<uint8> = undefined;
                 let x_26: uint8;
                 const value_26: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_26 = (value_26 & 0xFF);
                 _v278 = x_26;
                 const v286: uint8 = value_47(_v278);
-                let _v287: Option<uint8> = void 0;
+                let _v287: Option<uint8> = undefined;
                 let x_27: uint8;
                 const value_27: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_27 = (value_27 & 0xFF);
                 _v287 = x_27;
                 const v295: uint8 = value_47(_v287);
-                let _v296: Option<uint8> = void 0;
+                let _v296: Option<uint8> = undefined;
                 let x_28: uint8;
                 const value_28: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_28 = (value_28 & 0xFF);
                 _v296 = x_28;
                 const v304: uint8 = value_47(_v296);
-                let _v305: Option<uint8> = void 0;
+                let _v305: Option<uint8> = undefined;
                 let x_29: uint8;
                 const value_29: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_29 = (value_29 & 0xFF);
                 _v305 = x_29;
                 const v313: uint8 = value_47(_v305);
-                let _v314: Option<uint8> = void 0;
+                let _v314: Option<uint8> = undefined;
                 let x_30: uint8;
                 const value_30: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_30 = (value_30 & 0xFF);
                 _v314 = x_30;
                 const v322: uint8 = value_47(_v314);
-                let _v323: Option<uint8> = void 0;
+                let _v323: Option<uint8> = undefined;
                 let x_31: uint8;
                 const value_31: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_31 = (value_31 & 0xFF);
                 _v323 = x_31;
                 const v331: uint8 = value_47(_v323);
-                let _v332: Option<uint8> = void 0;
+                let _v332: Option<uint8> = undefined;
                 let x_32: uint8;
                 const value_32: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_32 = (value_32 & 0xFF);
                 _v332 = x_32;
                 const v340: uint8 = value_47(_v332);
-                let _v341: Option<uint8> = void 0;
+                let _v341: Option<uint8> = undefined;
                 let x_33: uint8;
                 const value_33: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_33 = (value_33 & 0xFF);
                 _v341 = x_33;
                 const v349: uint8 = value_47(_v341);
-                let _v350: Option<uint8> = void 0;
+                let _v350: Option<uint8> = undefined;
                 let x_34: uint8;
                 const value_34: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_34 = (value_34 & 0xFF);
                 _v350 = x_34;
                 const v358: uint8 = value_47(_v350);
-                let _v359: Option<uint8> = void 0;
+                let _v359: Option<uint8> = undefined;
                 let x_35: uint8;
                 const value_35: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_35 = (value_35 & 0xFF);
                 _v359 = x_35;
                 const v367: uint8 = value_47(_v359);
-                let _v368: Option<uint8> = void 0;
+                let _v368: Option<uint8> = undefined;
                 let x_36: uint8;
                 const value_36: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_36 = (value_36 & 0xFF);
                 _v368 = x_36;
                 const v376: uint8 = value_47(_v368);
-                let _v377: Option<uint8> = void 0;
+                let _v377: Option<uint8> = undefined;
                 let x_37: uint8;
                 const value_37: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_37 = (value_37 & 0xFF);
                 _v377 = x_37;
                 const v385: uint8 = value_47(_v377);
-                let _v386: Option<uint8> = void 0;
+                let _v386: Option<uint8> = undefined;
                 let x_38: uint8;
                 const value_38: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_38 = (value_38 & 0xFF);
                 _v386 = x_38;
                 const v394: uint8 = value_47(_v386);
-                let _v395: Option<uint8> = void 0;
+                let _v395: Option<uint8> = undefined;
                 let x_39: uint8;
                 const value_39: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_39 = (value_39 & 0xFF);
                 _v395 = x_39;
                 const v403: uint8 = value_47(_v395);
-                let _v404: Option<uint8> = void 0;
+                let _v404: Option<uint8> = undefined;
                 let x_40: uint8;
                 const value_40: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_40 = (value_40 & 0xFF);
                 _v404 = x_40;
                 const v412: uint8 = value_47(_v404);
-                let _v413: Option<uint8> = void 0;
+                let _v413: Option<uint8> = undefined;
                 let x_41: uint8;
                 const value_41: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_41 = (value_41 & 0xFF);
                 _v413 = x_41;
                 const v421: uint8 = value_47(_v413);
-                let _v422: Option<uint8> = void 0;
+                let _v422: Option<uint8> = undefined;
                 let x_42: uint8;
                 const value_42: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_42 = (value_42 & 0xFF);
                 _v422 = x_42;
                 const v430: uint8 = value_47(_v422);
-                let _v431: Option<uint8> = void 0;
+                let _v431: Option<uint8> = undefined;
                 let x_43: uint8;
                 const value_43: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_43 = (value_43 & 0xFF);
                 _v431 = x_43;
                 const v439: uint8 = value_47(_v431);
-                let _v440: Option<uint8> = void 0;
+                let _v440: Option<uint8> = undefined;
                 let x_44: uint8;
                 const value_44: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_44 = (value_44 & 0xFF);
                 _v440 = x_44;
                 const v448: uint8 = value_47(_v440);
-                let _v449: Option<uint8> = void 0;
+                let _v449: Option<uint8> = undefined;
                 let x_45: uint8;
                 const value_45: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_45 = (value_45 & 0xFF);
                 _v449 = x_45;
                 const v457: uint8 = value_47(_v449);
-                let _v458: Option<uint8> = void 0;
+                let _v458: Option<uint8> = undefined;
                 let x_46: uint8;
                 const value_46: int32 = nonSeeded().Next2(1, 7) | 0;
                 x_46 = (value_46 & 0xFF);
@@ -2018,31 +2018,31 @@ export function closure81(unitVar: void, v0_1: string[]): int32 {
     return 0;
 }
 
-export const v0 = (v: int64): ((arg0: UH0_$union) => UH0_$union) => closure0(void 0, v);
+export const v0 = (v: int64): ((arg0: UH0_$union) => UH0_$union) => closure0(undefined, v);
 
 export function rotate_numbers(x: int64): ((arg0: UH0_$union) => UH0_$union) {
     return v0(x);
 }
 
-export const v1 = (v: Option<((arg0: string) => void)>): ((arg0: UH1_$union) => (() => uint8)) => closure3(void 0, v);
+export const v1 = (v: Option<((arg0: string) => void)>): ((arg0: UH1_$union) => (() => uint8)) => closure3(undefined, v);
 
 export function create_sequential_roller(x: Option<((arg0: string) => void)>): ((arg0: UH1_$union) => (() => uint8)) {
     return v1(x);
 }
 
-export const v2 = (v: Option<((arg0: string) => void)>): ((arg0: (() => uint8)) => ((arg0: boolean) => ((arg0: uint64) => uint64))) => closure10(void 0, v);
+export const v2 = (v: Option<((arg0: string) => void)>): ((arg0: (() => uint8)) => ((arg0: boolean) => ((arg0: uint64) => uint64))) => closure10(undefined, v);
 
 export function roll_progressively(x: Option<((arg0: string) => void)>): ((arg0: (() => uint8)) => ((arg0: boolean) => ((arg0: uint64) => uint64))) {
     return v2(x);
 }
 
-export const v3 = (v: Option<((arg0: string) => void)>): ((arg0: uint64) => ((arg0: UH1_$union) => Option<uint64>)) => closure78(void 0, v);
+export const v3 = (v: Option<((arg0: string) => void)>): ((arg0: uint64) => ((arg0: UH1_$union) => Option<uint64>)) => closure78(undefined, v);
 
 export function roll_within_bounds(x: Option<((arg0: string) => void)>): ((arg0: uint64) => ((arg0: UH1_$union) => Option<uint64>)) {
     return v3(x);
 }
 
-export const v4 = (v: string[]): int32 => closure81(void 0, v);
+export const v4 = (v: string[]): int32 => closure81(undefined, v);
 
 (v4)(typeof process === 'object' ? process.argv.slice(2) : []);
 

@@ -15,7 +15,7 @@ mod module_dc8717e1 {
         use super::*;
         pub mod DiceFSharp {
             use super::*;
-            use crate::Polyglot::Common;
+            use crate::Polyglot::Common::trace;
             use crate::Polyglot::Common::TraceLevel;
             use fable_library_rust::Interfaces_::System::Collections::Generic::IEnumerable_1;
             use fable_library_rust::List_::cons;
@@ -42,12 +42,16 @@ mod module_dc8717e1 {
             use fable_library_rust::String_::printfn;
             use fable_library_rust::String_::sprintf;
             use fable_library_rust::String_::string;
+            ///
+            /// ## sixthPowerSequence
             pub fn sixthPowerSequence() -> LrcPtr<dyn IEnumerable_1<i32>> {
                 cache(unfold(
                     Func1::new(move |state: i32| Some(LrcPtr::new((state, state * 6_i32)))),
                     1_i32,
                 ))
             }
+            ///
+            /// ## accumulateDiceRolls
             pub fn accumulateDiceRolls(
                 log: Option<Func1<string, ()>>,
                 rolls: List<i32>,
@@ -150,6 +154,8 @@ mod module_dc8717e1 {
                     });
                 }
             }
+            ///
+            /// ## rollWithinBounds
             pub fn rollWithinBounds(
                 log: Option<Func1<string, ()>>,
                 max: i32,
@@ -180,12 +186,18 @@ mod module_dc8717e1 {
                     None::<i32>
                 }
             }
+            ///
+            /// ## rollDice
             pub fn rollDice() -> i32 {
                 rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)
             }
+            ///
+            /// ## rotateNumber
             pub fn rotateNumber(max: i32, n: i32) -> i32 {
                 (n - 1_i32 + max) % max + 1_i32
             }
+            ///
+            /// ## rotateNumbers
             pub fn rotateNumbers(
                 max: i32,
                 items: LrcPtr<dyn IEnumerable_1<i32>>,
@@ -198,6 +210,8 @@ mod module_dc8717e1 {
                     items,
                 )
             }
+            ///
+            /// ## createSequentialRoller
             pub fn createSequentialRoller<a: Clone + 'static>(list: List<a>) -> Func0<a> {
                 let currentIndex: LrcPtr<MutCell<i32>> = LrcPtr::new(MutCell::new(0_i32));
                 Func0::new({
@@ -217,6 +231,8 @@ mod module_dc8717e1 {
                     }
                 })
             }
+            ///
+            /// ## rollProgressively
             pub fn rollProgressively(
                 log: Option<Func1<string, ()>>,
                 roll: Func0<i32>,
@@ -344,6 +360,8 @@ mod module_dc8717e1 {
                 });
                 loop_1(empty::<i32>(), 0_i32)
             }
+            ///
+            /// ## main
             pub fn main(args: Array<string>) -> i32 {
                 let result: i32 = Dice::DiceFSharp::rollProgressively(
                     Some({
@@ -359,7 +377,7 @@ mod module_dc8717e1 {
                     true,
                     i32::MAX / 10_i32,
                 );
-                Common::trace(
+                trace(
                     LrcPtr::new(TraceLevel::Debug),
                     Func0::new({
                         let result = result.clone();

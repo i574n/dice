@@ -35,17 +35,16 @@ if (!$fast) {
     -replace ".fsx`"]", ".rs`"]" `
     | FixRust `
     | Set-Content "$projectName.rs"
+
+(Get-Content "$targetDir/target/ts/$projectName.ts") `
+    | FixTypeScript `
+    | Set-Content "$projectName.ts"
+
 if (!$fast) {
-    Copy-Item "$targetDir/target/ts/$projectName.ts" "$projectName.ts" -Force
     Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
 }
 
 { BuildFable $targetDir $projectName "rs" "CONTRACT" } | Invoke-Block
-{ BuildFable $targetDir $projectName "ts" "CONTRACT" } | Invoke-Block
-if (!$fast) {
-
-    { BuildFable $targetDir $projectName "py" "CONTRACT" } | Invoke-Block
-}
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
     -replace "../../../../lib", "../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
