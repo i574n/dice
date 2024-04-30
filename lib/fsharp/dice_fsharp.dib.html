@@ -7635,7 +7635,8 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>[ 1, 6, 36, 216, 1296, 7776, 46656, 279936 ]
+<pre>[1; 6; 36; 216; 1296; 7776; 46656; 279936]
+
 </pre>
 </div>
 </div>
@@ -7707,9 +7708,8 @@ a.anchor-link {
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>accumulateDiceRolls / power: 0 / acc: 1000 / roll: 6 / value: 5
 accumulateDiceRolls / power: -1 / acc: 1005
-FSharpOption&lt;Tuple&lt;Int32,FSharpList&lt;Int32&gt;&gt;&gt;
-      Value:       - 1006
-      - [ 5, 4, 3, 2 ]
+Some (1006, [5; 4; 3; 2])
+
 </pre>
 </div>
 </div>
@@ -7742,9 +7742,8 @@ FSharpOption&lt;Tuple&lt;Int32,FSharpList&lt;Int32&gt;&gt;&gt;
 <pre>accumulateDiceRolls / power: 1 / acc: 1000 / roll: 6 / value: 30
 accumulateDiceRolls / power: 0 / acc: 1030 / roll: 5 / value: 4
 accumulateDiceRolls / power: -1 / acc: 1034
-FSharpOption&lt;Tuple&lt;Int32,FSharpList&lt;Int32&gt;&gt;&gt;
-      Value:       - 1035
-      - [ 4, 3, 2 ]
+Some (1035, [4; 3; 2])
+
 </pre>
 </div>
 </div>
@@ -7778,9 +7777,8 @@ FSharpOption&lt;Tuple&lt;Int32,FSharpList&lt;Int32&gt;&gt;&gt;
 accumulateDiceRolls / power: 1 / acc: 1180 / roll: 5 / value: 24
 accumulateDiceRolls / power: 0 / acc: 1204 / roll: 4 / value: 3
 accumulateDiceRolls / power: -1 / acc: 1207
-FSharpOption&lt;Tuple&lt;Int32,FSharpList&lt;Int32&gt;&gt;&gt;
-      Value:       - 1208
-      - [ 3, 2 ]
+Some (1208, [3; 2])
+
 </pre>
 </div>
 </div>
@@ -7845,8 +7843,8 @@ accumulateDiceRolls / power: 2 / acc: 864 / roll: 4 / value: 108
 accumulateDiceRolls / power: 1 / acc: 972 / roll: 4 / value: 18
 accumulateDiceRolls / power: 0 / acc: 990 / roll: 5 / value: 4
 accumulateDiceRolls / power: -1 / acc: 994
-FSharpOption&lt;Int32&gt;
-      Value: 995
+Some 995
+
 </pre>
 </div>
 </div>
@@ -7882,8 +7880,8 @@ accumulateDiceRolls / power: 2 / acc: 1512 / roll: 6 / value: 180
 accumulateDiceRolls / power: 1 / acc: 1692 / roll: 4 / value: 18
 accumulateDiceRolls / power: 0 / acc: 1710 / roll: 5 / value: 4
 accumulateDiceRolls / power: -1 / acc: 1714
-FSharpOption&lt;Int32&gt;
-      Value: 1715
+Some 1715
+
 </pre>
 </div>
 </div>
@@ -7920,6 +7918,7 @@ accumulateDiceRolls / power: 1 / acc: 3888 / roll: 2 / value: 6
 accumulateDiceRolls / power: 0 / acc: 3894 / roll: 3 / value: 2
 accumulateDiceRolls / power: -1 / acc: 3896
 &lt;null&gt;
+
 </pre>
 </div>
 </div>
@@ -7985,6 +7984,7 @@ accumulateDiceRolls / power: -1 / acc: 3896
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>calculateDiceCount / max: 36 / n: 2 / p: 36
 2
+
 </pre>
 </div>
 </div>
@@ -8016,6 +8016,7 @@ accumulateDiceRolls / power: -1 / acc: 3896
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>calculateDiceCount / max: 7777 / n: 6 / p: 46656
 6
+
 </pre>
 </div>
 </div>
@@ -8135,7 +8136,8 @@ accumulateDiceRolls / power: -1 / acc: 3896
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>[ 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2 ]
+<pre>[5; 6; 1; 2; 3; 4; 5; 6; 1; 2; 3; 4; 5; 6; 1; 2]
+
 </pre>
 </div>
 </div>
@@ -8234,6 +8236,7 @@ accumulateDiceRolls / power: -1 / acc: 3896
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>1
+
 </pre>
 </div>
 </div>
@@ -8273,6 +8276,7 @@ accumulateDiceRolls / power: 1 / acc: 972 / roll: 4 / value: 18
 accumulateDiceRolls / power: 0 / acc: 990 / roll: 5 / value: 4
 accumulateDiceRolls / power: -1 / acc: 994
 995
+
 </pre>
 </div>
 </div>
@@ -8307,7 +8311,8 @@ accumulateDiceRolls / power: -1 / acc: 994
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>FSI_0042+it@5-11
+<pre>&lt;fun:it@5-13&gt;
+
 calculateDiceCount / max: 2000 / n: 5 / p: 7776
 accumulateDiceRolls / power: 4 / acc: 0 / roll: 2 / value: 1296
 accumulateDiceRolls / power: 3 / acc: 1296 / roll: 5 / value: 864
@@ -8315,7 +8320,8 @@ accumulateDiceRolls / power: 2 / acc: 2160 / roll: 4 / value: 108
 accumulateDiceRolls / power: 1 / acc: 2268 / roll: 4 / value: 18
 accumulateDiceRolls / power: 0 / acc: 2286 / roll: 5 / value: 4
 accumulateDiceRolls / power: -1 / acc: 2290
-System.Exception: createSequentialRoller / End of list
+"System.Exception: createSequentialRoller / End of list"
+
 </pre>
 </div>
 </div>

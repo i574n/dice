@@ -1054,6 +1054,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
         let v3 : uint8 option = None
         let v4 : bool = true in let mutable _v3 = v3
         
+#if FABLE_COMPILER || WASM || CONTRACT
+        
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
         let v5 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
         let v6 : uint8 = Fable.Core.RustInterop.emitRustExpr () v5
@@ -1071,17 +1073,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
         v9
 #endif
         
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
         let v10 : uint8 = System.Random().Next (1, 7) |> uint8
         v10
 #endif
         
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
         let v11 : uint8 = System.Random().Next (1, 7) |> uint8
         v11
 #endif
         
-#if FABLE_COMPILER_PYTHON
+#else
         let v12 : uint8 = System.Random().Next (1, 7) |> uint8
         v12
 #endif
@@ -1102,6 +1104,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v22 : uint8 option = None
                 let v23 : bool = true in let mutable _v22 = v22
                 
+#if FABLE_COMPILER || WASM || CONTRACT
+                
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v24 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
                 let v25 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1119,17 +1123,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v28
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v29 : uint8 = System.Random().Next (1, 7) |> uint8
                 v29
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v30 : uint8 = System.Random().Next (1, 7) |> uint8
                 v30
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v31 : uint8 = System.Random().Next (1, 7) |> uint8
                 v31
 #endif
@@ -1137,6 +1141,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v32 : uint8 = _v22.Value
                 let v33 : uint8 option = None
                 let v34 : bool = true in let mutable _v33 = v33
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v35 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1153,17 +1159,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v37
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v38 : uint8 = System.Random().Next (1, 7) |> uint8
                 v38
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v39 : uint8 = System.Random().Next (1, 7) |> uint8
                 v39
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v40 : uint8 = System.Random().Next (1, 7) |> uint8
                 v40
 #endif
@@ -1171,6 +1177,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v41 : uint8 = _v33.Value
                 let v42 : uint8 option = None
                 let v43 : bool = true in let mutable _v42 = v42
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v44 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1187,17 +1195,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v46
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v47 : uint8 = System.Random().Next (1, 7) |> uint8
                 v47
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v48 : uint8 = System.Random().Next (1, 7) |> uint8
                 v48
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v49 : uint8 = System.Random().Next (1, 7) |> uint8
                 v49
 #endif
@@ -1205,6 +1213,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v50 : uint8 = _v42.Value
                 let v51 : uint8 option = None
                 let v52 : bool = true in let mutable _v51 = v51
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v53 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1221,17 +1231,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v55
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v56 : uint8 = System.Random().Next (1, 7) |> uint8
                 v56
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v57 : uint8 = System.Random().Next (1, 7) |> uint8
                 v57
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v58 : uint8 = System.Random().Next (1, 7) |> uint8
                 v58
 #endif
@@ -1239,6 +1249,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v59 : uint8 = _v51.Value
                 let v60 : uint8 option = None
                 let v61 : bool = true in let mutable _v60 = v60
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v62 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1255,17 +1267,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v64
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v65 : uint8 = System.Random().Next (1, 7) |> uint8
                 v65
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v66 : uint8 = System.Random().Next (1, 7) |> uint8
                 v66
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v67 : uint8 = System.Random().Next (1, 7) |> uint8
                 v67
 #endif
@@ -1273,6 +1285,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v68 : uint8 = _v60.Value
                 let v69 : uint8 option = None
                 let v70 : bool = true in let mutable _v69 = v69
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v71 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1289,17 +1303,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v73
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v74 : uint8 = System.Random().Next (1, 7) |> uint8
                 v74
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v75 : uint8 = System.Random().Next (1, 7) |> uint8
                 v75
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v76 : uint8 = System.Random().Next (1, 7) |> uint8
                 v76
 #endif
@@ -1307,6 +1321,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v77 : uint8 = _v69.Value
                 let v78 : uint8 option = None
                 let v79 : bool = true in let mutable _v78 = v78
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v80 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1323,17 +1339,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v82
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v83 : uint8 = System.Random().Next (1, 7) |> uint8
                 v83
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v84 : uint8 = System.Random().Next (1, 7) |> uint8
                 v84
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v85 : uint8 = System.Random().Next (1, 7) |> uint8
                 v85
 #endif
@@ -1341,6 +1357,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v86 : uint8 = _v78.Value
                 let v87 : uint8 option = None
                 let v88 : bool = true in let mutable _v87 = v87
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v89 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1357,17 +1375,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v91
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v92 : uint8 = System.Random().Next (1, 7) |> uint8
                 v92
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v93 : uint8 = System.Random().Next (1, 7) |> uint8
                 v93
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v94 : uint8 = System.Random().Next (1, 7) |> uint8
                 v94
 #endif
@@ -1375,6 +1393,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v95 : uint8 = _v87.Value
                 let v96 : uint8 option = None
                 let v97 : bool = true in let mutable _v96 = v96
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v98 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1391,17 +1411,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v100
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v101 : uint8 = System.Random().Next (1, 7) |> uint8
                 v101
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v102 : uint8 = System.Random().Next (1, 7) |> uint8
                 v102
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v103 : uint8 = System.Random().Next (1, 7) |> uint8
                 v103
 #endif
@@ -1409,6 +1429,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v104 : uint8 = _v96.Value
                 let v105 : uint8 option = None
                 let v106 : bool = true in let mutable _v105 = v105
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v107 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1425,17 +1447,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v109
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v110 : uint8 = System.Random().Next (1, 7) |> uint8
                 v110
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v111 : uint8 = System.Random().Next (1, 7) |> uint8
                 v111
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v112 : uint8 = System.Random().Next (1, 7) |> uint8
                 v112
 #endif
@@ -1443,6 +1465,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v113 : uint8 = _v105.Value
                 let v114 : uint8 option = None
                 let v115 : bool = true in let mutable _v114 = v114
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v116 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1459,17 +1483,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v118
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v119 : uint8 = System.Random().Next (1, 7) |> uint8
                 v119
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v120 : uint8 = System.Random().Next (1, 7) |> uint8
                 v120
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v121 : uint8 = System.Random().Next (1, 7) |> uint8
                 v121
 #endif
@@ -1477,6 +1501,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v122 : uint8 = _v114.Value
                 let v123 : uint8 option = None
                 let v124 : bool = true in let mutable _v123 = v123
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v125 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1493,17 +1519,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v127
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v128 : uint8 = System.Random().Next (1, 7) |> uint8
                 v128
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v129 : uint8 = System.Random().Next (1, 7) |> uint8
                 v129
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v130 : uint8 = System.Random().Next (1, 7) |> uint8
                 v130
 #endif
@@ -1511,6 +1537,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v131 : uint8 = _v123.Value
                 let v132 : uint8 option = None
                 let v133 : bool = true in let mutable _v132 = v132
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v134 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1527,17 +1555,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v136
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v137 : uint8 = System.Random().Next (1, 7) |> uint8
                 v137
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v138 : uint8 = System.Random().Next (1, 7) |> uint8
                 v138
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v139 : uint8 = System.Random().Next (1, 7) |> uint8
                 v139
 #endif
@@ -1545,6 +1573,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v140 : uint8 = _v132.Value
                 let v141 : uint8 option = None
                 let v142 : bool = true in let mutable _v141 = v141
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v143 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1561,17 +1591,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v145
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v146 : uint8 = System.Random().Next (1, 7) |> uint8
                 v146
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v147 : uint8 = System.Random().Next (1, 7) |> uint8
                 v147
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v148 : uint8 = System.Random().Next (1, 7) |> uint8
                 v148
 #endif
@@ -1579,6 +1609,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v149 : uint8 = _v141.Value
                 let v150 : uint8 option = None
                 let v151 : bool = true in let mutable _v150 = v150
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v152 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1595,17 +1627,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v154
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v155 : uint8 = System.Random().Next (1, 7) |> uint8
                 v155
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v156 : uint8 = System.Random().Next (1, 7) |> uint8
                 v156
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v157 : uint8 = System.Random().Next (1, 7) |> uint8
                 v157
 #endif
@@ -1613,6 +1645,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v158 : uint8 = _v150.Value
                 let v159 : uint8 option = None
                 let v160 : bool = true in let mutable _v159 = v159
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v161 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1629,17 +1663,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v163
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v164 : uint8 = System.Random().Next (1, 7) |> uint8
                 v164
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v165 : uint8 = System.Random().Next (1, 7) |> uint8
                 v165
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v166 : uint8 = System.Random().Next (1, 7) |> uint8
                 v166
 #endif
@@ -1647,6 +1681,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v167 : uint8 = _v159.Value
                 let v168 : uint8 option = None
                 let v169 : bool = true in let mutable _v168 = v168
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v170 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1663,17 +1699,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v172
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v173 : uint8 = System.Random().Next (1, 7) |> uint8
                 v173
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v174 : uint8 = System.Random().Next (1, 7) |> uint8
                 v174
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v175 : uint8 = System.Random().Next (1, 7) |> uint8
                 v175
 #endif
@@ -1681,6 +1717,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v176 : uint8 = _v168.Value
                 let v177 : uint8 option = None
                 let v178 : bool = true in let mutable _v177 = v177
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v179 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1697,17 +1735,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v181
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v182 : uint8 = System.Random().Next (1, 7) |> uint8
                 v182
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v183 : uint8 = System.Random().Next (1, 7) |> uint8
                 v183
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v184 : uint8 = System.Random().Next (1, 7) |> uint8
                 v184
 #endif
@@ -1715,6 +1753,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v185 : uint8 = _v177.Value
                 let v186 : uint8 option = None
                 let v187 : bool = true in let mutable _v186 = v186
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v188 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1731,17 +1771,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v190
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v191 : uint8 = System.Random().Next (1, 7) |> uint8
                 v191
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v192 : uint8 = System.Random().Next (1, 7) |> uint8
                 v192
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v193 : uint8 = System.Random().Next (1, 7) |> uint8
                 v193
 #endif
@@ -1749,6 +1789,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v194 : uint8 = _v186.Value
                 let v195 : uint8 option = None
                 let v196 : bool = true in let mutable _v195 = v195
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v197 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1765,17 +1807,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v199
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v200 : uint8 = System.Random().Next (1, 7) |> uint8
                 v200
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v201 : uint8 = System.Random().Next (1, 7) |> uint8
                 v201
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v202 : uint8 = System.Random().Next (1, 7) |> uint8
                 v202
 #endif
@@ -1783,6 +1825,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v203 : uint8 = _v195.Value
                 let v204 : uint8 option = None
                 let v205 : bool = true in let mutable _v204 = v204
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v206 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1799,17 +1843,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v208
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v209 : uint8 = System.Random().Next (1, 7) |> uint8
                 v209
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v210 : uint8 = System.Random().Next (1, 7) |> uint8
                 v210
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v211 : uint8 = System.Random().Next (1, 7) |> uint8
                 v211
 #endif
@@ -1817,6 +1861,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v212 : uint8 = _v204.Value
                 let v213 : uint8 option = None
                 let v214 : bool = true in let mutable _v213 = v213
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v215 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1833,17 +1879,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v217
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v218 : uint8 = System.Random().Next (1, 7) |> uint8
                 v218
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v219 : uint8 = System.Random().Next (1, 7) |> uint8
                 v219
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v220 : uint8 = System.Random().Next (1, 7) |> uint8
                 v220
 #endif
@@ -1851,6 +1897,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 let v221 : uint8 = _v213.Value
                 let v222 : uint8 option = None
                 let v223 : bool = true in let mutable _v222 = v222
+                
+#if FABLE_COMPILER || WASM || CONTRACT
                 
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
                 let v224 : uint8 = Fable.Core.RustInterop.emitRustExpr () v24
@@ -1867,17 +1915,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
                 v226
 #endif
                 
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
                 let v227 : uint8 = System.Random().Next (1, 7) |> uint8
                 v227
 #endif
                 
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
                 let v228 : uint8 = System.Random().Next (1, 7) |> uint8
                 v228
 #endif
                 
-#if FABLE_COMPILER_PYTHON
+#else
                 let v229 : uint8 = System.Random().Next (1, 7) |> uint8
                 v229
 #endif
@@ -1913,6 +1961,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v258 : uint8 option = None
             let v259 : bool = true in let mutable _v258 = v258
             
+#if FABLE_COMPILER || WASM || CONTRACT
+            
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v260 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
             let v261 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -1930,17 +1980,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v264
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v265 : uint8 = System.Random().Next (1, 7) |> uint8
             v265
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v266 : uint8 = System.Random().Next (1, 7) |> uint8
             v266
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v267 : uint8 = System.Random().Next (1, 7) |> uint8
             v267
 #endif
@@ -1948,6 +1998,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v268 : uint8 = _v258.Value
             let v269 : uint8 option = None
             let v270 : bool = true in let mutable _v269 = v269
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v271 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -1964,17 +2016,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v273
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v274 : uint8 = System.Random().Next (1, 7) |> uint8
             v274
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v275 : uint8 = System.Random().Next (1, 7) |> uint8
             v275
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v276 : uint8 = System.Random().Next (1, 7) |> uint8
             v276
 #endif
@@ -1982,6 +2034,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v277 : uint8 = _v269.Value
             let v278 : uint8 option = None
             let v279 : bool = true in let mutable _v278 = v278
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v280 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -1998,17 +2052,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v282
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v283 : uint8 = System.Random().Next (1, 7) |> uint8
             v283
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v284 : uint8 = System.Random().Next (1, 7) |> uint8
             v284
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v285 : uint8 = System.Random().Next (1, 7) |> uint8
             v285
 #endif
@@ -2016,6 +2070,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v286 : uint8 = _v278.Value
             let v287 : uint8 option = None
             let v288 : bool = true in let mutable _v287 = v287
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v289 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2032,17 +2088,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v291
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v292 : uint8 = System.Random().Next (1, 7) |> uint8
             v292
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v293 : uint8 = System.Random().Next (1, 7) |> uint8
             v293
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v294 : uint8 = System.Random().Next (1, 7) |> uint8
             v294
 #endif
@@ -2050,6 +2106,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v295 : uint8 = _v287.Value
             let v296 : uint8 option = None
             let v297 : bool = true in let mutable _v296 = v296
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v298 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2066,17 +2124,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v300
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v301 : uint8 = System.Random().Next (1, 7) |> uint8
             v301
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v302 : uint8 = System.Random().Next (1, 7) |> uint8
             v302
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v303 : uint8 = System.Random().Next (1, 7) |> uint8
             v303
 #endif
@@ -2084,6 +2142,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v304 : uint8 = _v296.Value
             let v305 : uint8 option = None
             let v306 : bool = true in let mutable _v305 = v305
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v307 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2100,17 +2160,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v309
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v310 : uint8 = System.Random().Next (1, 7) |> uint8
             v310
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v311 : uint8 = System.Random().Next (1, 7) |> uint8
             v311
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v312 : uint8 = System.Random().Next (1, 7) |> uint8
             v312
 #endif
@@ -2118,6 +2178,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v313 : uint8 = _v305.Value
             let v314 : uint8 option = None
             let v315 : bool = true in let mutable _v314 = v314
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v316 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2134,17 +2196,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v318
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v319 : uint8 = System.Random().Next (1, 7) |> uint8
             v319
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v320 : uint8 = System.Random().Next (1, 7) |> uint8
             v320
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v321 : uint8 = System.Random().Next (1, 7) |> uint8
             v321
 #endif
@@ -2152,6 +2214,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v322 : uint8 = _v314.Value
             let v323 : uint8 option = None
             let v324 : bool = true in let mutable _v323 = v323
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v325 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2168,17 +2232,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v327
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v328 : uint8 = System.Random().Next (1, 7) |> uint8
             v328
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v329 : uint8 = System.Random().Next (1, 7) |> uint8
             v329
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v330 : uint8 = System.Random().Next (1, 7) |> uint8
             v330
 #endif
@@ -2186,6 +2250,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v331 : uint8 = _v323.Value
             let v332 : uint8 option = None
             let v333 : bool = true in let mutable _v332 = v332
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v334 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2202,17 +2268,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v336
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v337 : uint8 = System.Random().Next (1, 7) |> uint8
             v337
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v338 : uint8 = System.Random().Next (1, 7) |> uint8
             v338
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v339 : uint8 = System.Random().Next (1, 7) |> uint8
             v339
 #endif
@@ -2220,6 +2286,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v340 : uint8 = _v332.Value
             let v341 : uint8 option = None
             let v342 : bool = true in let mutable _v341 = v341
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v343 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2236,17 +2304,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v345
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v346 : uint8 = System.Random().Next (1, 7) |> uint8
             v346
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v347 : uint8 = System.Random().Next (1, 7) |> uint8
             v347
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v348 : uint8 = System.Random().Next (1, 7) |> uint8
             v348
 #endif
@@ -2254,6 +2322,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v349 : uint8 = _v341.Value
             let v350 : uint8 option = None
             let v351 : bool = true in let mutable _v350 = v350
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v352 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2270,17 +2340,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v354
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v355 : uint8 = System.Random().Next (1, 7) |> uint8
             v355
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v356 : uint8 = System.Random().Next (1, 7) |> uint8
             v356
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v357 : uint8 = System.Random().Next (1, 7) |> uint8
             v357
 #endif
@@ -2288,6 +2358,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v358 : uint8 = _v350.Value
             let v359 : uint8 option = None
             let v360 : bool = true in let mutable _v359 = v359
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v361 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2304,17 +2376,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v363
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v364 : uint8 = System.Random().Next (1, 7) |> uint8
             v364
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v365 : uint8 = System.Random().Next (1, 7) |> uint8
             v365
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v366 : uint8 = System.Random().Next (1, 7) |> uint8
             v366
 #endif
@@ -2322,6 +2394,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v367 : uint8 = _v359.Value
             let v368 : uint8 option = None
             let v369 : bool = true in let mutable _v368 = v368
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v370 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2338,17 +2412,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v372
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v373 : uint8 = System.Random().Next (1, 7) |> uint8
             v373
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v374 : uint8 = System.Random().Next (1, 7) |> uint8
             v374
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v375 : uint8 = System.Random().Next (1, 7) |> uint8
             v375
 #endif
@@ -2356,6 +2430,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v376 : uint8 = _v368.Value
             let v377 : uint8 option = None
             let v378 : bool = true in let mutable _v377 = v377
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v379 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2372,17 +2448,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v381
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v382 : uint8 = System.Random().Next (1, 7) |> uint8
             v382
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v383 : uint8 = System.Random().Next (1, 7) |> uint8
             v383
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v384 : uint8 = System.Random().Next (1, 7) |> uint8
             v384
 #endif
@@ -2390,6 +2466,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v385 : uint8 = _v377.Value
             let v386 : uint8 option = None
             let v387 : bool = true in let mutable _v386 = v386
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v388 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2406,17 +2484,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v390
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v391 : uint8 = System.Random().Next (1, 7) |> uint8
             v391
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v392 : uint8 = System.Random().Next (1, 7) |> uint8
             v392
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v393 : uint8 = System.Random().Next (1, 7) |> uint8
             v393
 #endif
@@ -2424,6 +2502,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v394 : uint8 = _v386.Value
             let v395 : uint8 option = None
             let v396 : bool = true in let mutable _v395 = v395
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v397 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2440,17 +2520,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v399
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v400 : uint8 = System.Random().Next (1, 7) |> uint8
             v400
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v401 : uint8 = System.Random().Next (1, 7) |> uint8
             v401
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v402 : uint8 = System.Random().Next (1, 7) |> uint8
             v402
 #endif
@@ -2458,6 +2538,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v403 : uint8 = _v395.Value
             let v404 : uint8 option = None
             let v405 : bool = true in let mutable _v404 = v404
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v406 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2474,17 +2556,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v408
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v409 : uint8 = System.Random().Next (1, 7) |> uint8
             v409
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v410 : uint8 = System.Random().Next (1, 7) |> uint8
             v410
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v411 : uint8 = System.Random().Next (1, 7) |> uint8
             v411
 #endif
@@ -2492,6 +2574,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v412 : uint8 = _v404.Value
             let v413 : uint8 option = None
             let v414 : bool = true in let mutable _v413 = v413
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v415 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2508,17 +2592,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v417
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v418 : uint8 = System.Random().Next (1, 7) |> uint8
             v418
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v419 : uint8 = System.Random().Next (1, 7) |> uint8
             v419
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v420 : uint8 = System.Random().Next (1, 7) |> uint8
             v420
 #endif
@@ -2526,6 +2610,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v421 : uint8 = _v413.Value
             let v422 : uint8 option = None
             let v423 : bool = true in let mutable _v422 = v422
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v424 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2542,17 +2628,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v426
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v427 : uint8 = System.Random().Next (1, 7) |> uint8
             v427
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v428 : uint8 = System.Random().Next (1, 7) |> uint8
             v428
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v429 : uint8 = System.Random().Next (1, 7) |> uint8
             v429
 #endif
@@ -2560,6 +2646,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v430 : uint8 = _v422.Value
             let v431 : uint8 option = None
             let v432 : bool = true in let mutable _v431 = v431
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v433 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2576,17 +2664,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v435
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v436 : uint8 = System.Random().Next (1, 7) |> uint8
             v436
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v437 : uint8 = System.Random().Next (1, 7) |> uint8
             v437
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v438 : uint8 = System.Random().Next (1, 7) |> uint8
             v438
 #endif
@@ -2594,6 +2682,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v439 : uint8 = _v431.Value
             let v440 : uint8 option = None
             let v441 : bool = true in let mutable _v440 = v440
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v442 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2610,17 +2700,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v444
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v445 : uint8 = System.Random().Next (1, 7) |> uint8
             v445
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v446 : uint8 = System.Random().Next (1, 7) |> uint8
             v446
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v447 : uint8 = System.Random().Next (1, 7) |> uint8
             v447
 #endif
@@ -2628,6 +2718,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v448 : uint8 = _v440.Value
             let v449 : uint8 option = None
             let v450 : bool = true in let mutable _v449 = v449
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v451 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2644,17 +2736,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v453
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v454 : uint8 = System.Random().Next (1, 7) |> uint8
             v454
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v455 : uint8 = System.Random().Next (1, 7) |> uint8
             v455
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v456 : uint8 = System.Random().Next (1, 7) |> uint8
             v456
 #endif
@@ -2662,6 +2754,8 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             let v457 : uint8 = _v449.Value
             let v458 : uint8 option = None
             let v459 : bool = true in let mutable _v458 = v458
+            
+#if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
             let v460 : uint8 = Fable.Core.RustInterop.emitRustExpr () v260
@@ -2678,17 +2772,17 @@ and method15 (v0 : UH1, v1 : int8) : int64 =
             v462
 #endif
             
-#if !FABLE_COMPILER && !WASM && !CONTRACT
+#if FABLE_COMPILER_TYPESCRIPT
             let v463 : uint8 = System.Random().Next (1, 7) |> uint8
             v463
 #endif
             
-#if FABLE_COMPILER_TYPESCRIPT
+#if FABLE_COMPILER_PYTHON
             let v464 : uint8 = System.Random().Next (1, 7) |> uint8
             v464
 #endif
             
-#if FABLE_COMPILER_PYTHON
+#else
             let v465 : uint8 = System.Random().Next (1, 7) |> uint8
             v465
 #endif
