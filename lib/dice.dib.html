@@ -7635,17 +7635,16 @@ a.anchor-link {
     | UH0_0
     | UH0_1 of int32 * UH0
 let rec method0 () : unit =
-    let v0 : UH0 = UH0_0
-    let v1 : UH0 = UH0_1(279936, v0)
-    let v2 : UH0 = UH0_1(46656, v1)
-    let v3 : UH0 = UH0_1(7776, v2)
-    let v4 : UH0 = UH0_1(1296, v3)
-    let v5 : UH0 = UH0_1(216, v4)
-    let v6 : UH0 = UH0_1(36, v5)
-    let v7 : UH0 = UH0_1(6, v6)
-    let v8 : UH0 = UH0_1(1, v7)
-    let v9 : string = $"%A{v8}"
-    System.Console.WriteLine v9
+    let v63 : string = "assert_eq"
+    let v64 : UH0 = UH0_0
+    let v65 : UH0 = UH0_1(279936, v64)
+    let v66 : UH0 = UH0_1(46656, v65)
+    let v67 : UH0 = UH0_1(7776, v66)
+    let v68 : UH0 = UH0_1(1296, v67)
+    let v69 : UH0 = UH0_1(216, v68)
+    let v70 : UH0 = UH0_1(36, v69)
+    let v71 : UH0 = UH0_1(6, v70)
+    let v72 : UH0 = UH0_1(1, v71)
     let v73 : UH0 = UH0_0
     let v74 : UH0 = UH0_1(279936, v73)
     let v75 : UH0 = UH0_1(46656, v74)
@@ -7655,20 +7654,20 @@ let rec method0 () : unit =
     let v79 : UH0 = UH0_1(36, v78)
     let v80 : UH0 = UH0_1(6, v79)
     let v81 : UH0 = UH0_1(1, v80)
-    let v82 : UH0 = UH0_0
-    let v83 : UH0 = UH0_1(279936, v82)
-    let v84 : UH0 = UH0_1(46656, v83)
-    let v85 : UH0 = UH0_1(7776, v84)
-    let v86 : UH0 = UH0_1(1296, v85)
-    let v87 : UH0 = UH0_1(216, v86)
-    let v88 : UH0 = UH0_1(36, v87)
-    let v89 : UH0 = UH0_1(6, v88)
-    let v90 : UH0 = UH0_1(1, v89)
-    let v91 : string = $"__expect / actual: %A{v81} / expected: %A{v90}"
+    let v82 : string = $"{v63} / actual: %A{v72} / expected: %A{v81}"
+    System.Console.WriteLine v82
     ()
 method0()
 
-UH0_1
+assert_eq / actual: UH0_1
+  (1,
+   UH0_1
+     (6,
+      UH0_1
+        (36,
+         UH0_1
+           (216,
+            UH0_1 (1296, UH0_1 (7776, UH0_1 (46656, UH0_1 (279936, UH0_0)))))))) / expected: UH0_1
   (1,
    UH0_1
      (6,
@@ -7784,33 +7783,27 @@ let rec method0 () : unit =
     System.Console.WriteLine v0
     let v1 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1005} / result: {1006}"
     System.Console.WriteLine v1
-    let v2 : UH0 = UH0_0
-    let v3 : UH0 = UH0_1(2uy, v2)
-    let v4 : UH0 = UH0_1(3uy, v3)
-    let v5 : UH0 = UH0_1(4uy, v4)
-    let v6 : UH0 = UH0_1(5uy, v5)
-    let v7 : US0 = US0_0(1006, v6)
-    let v8 : string = $"%A{v7}"
-    System.Console.WriteLine v8
+    let v35 : string = "assert_eq"
+    let v36 : UH0 = UH0_0
+    let v37 : UH0 = UH0_1(2uy, v36)
+    let v38 : UH0 = UH0_1(3uy, v37)
+    let v39 : UH0 = UH0_1(4uy, v38)
+    let v40 : UH0 = UH0_1(5uy, v39)
+    let v41 : US0 = US0_0(1006, v40)
     let v42 : UH0 = UH0_0
     let v43 : UH0 = UH0_1(2uy, v42)
     let v44 : UH0 = UH0_1(3uy, v43)
     let v45 : UH0 = UH0_1(4uy, v44)
     let v46 : UH0 = UH0_1(5uy, v45)
     let v47 : US0 = US0_0(1006, v46)
-    let v48 : UH0 = UH0_0
-    let v49 : UH0 = UH0_1(2uy, v48)
-    let v50 : UH0 = UH0_1(3uy, v49)
-    let v51 : UH0 = UH0_1(4uy, v50)
-    let v52 : UH0 = UH0_1(5uy, v51)
-    let v53 : US0 = US0_0(1006, v52)
-    let v54 : string = $"__expect / actual: %A{v47} / expected: %A{v53}"
+    let v48 : string = $"{v35} / actual: %A{v41} / expected: %A{v47}"
+    System.Console.WriteLine v48
     ()
 method0()
 
 accumulate_dice_rolls / power: 0 / acc: 1000 / roll: 6 / value: 5
 accumulate_dice_rolls / power: -1 / acc: 1005 / result: 1006
-US0_0 (1006, UH0_1 (5uy, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0)))))
+assert_eq / actual: US0_0 (1006, UH0_1 (5uy, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0))))) / expected: US0_0 (1006, UH0_1 (5uy, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0)))))
 </pre>
 </div>
 </div>
@@ -7853,31 +7846,26 @@ let rec method0 () : unit =
     System.Console.WriteLine v1
     let v2 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1034} / result: {1035}"
     System.Console.WriteLine v2
-    let v3 : UH0 = UH0_0
-    let v4 : UH0 = UH0_1(2uy, v3)
-    let v5 : UH0 = UH0_1(3uy, v4)
-    let v6 : UH0 = UH0_1(4uy, v5)
-    let v7 : US0 = US0_0(1035, v6)
-    let v8 : string = $"%A{v7}"
-    System.Console.WriteLine v8
+    let v28 : string = "assert_eq"
+    let v29 : UH0 = UH0_0
+    let v30 : UH0 = UH0_1(2uy, v29)
+    let v31 : UH0 = UH0_1(3uy, v30)
+    let v32 : UH0 = UH0_1(4uy, v31)
+    let v33 : US0 = US0_0(1035, v32)
     let v34 : UH0 = UH0_0
     let v35 : UH0 = UH0_1(2uy, v34)
     let v36 : UH0 = UH0_1(3uy, v35)
     let v37 : UH0 = UH0_1(4uy, v36)
     let v38 : US0 = US0_0(1035, v37)
-    let v39 : UH0 = UH0_0
-    let v40 : UH0 = UH0_1(2uy, v39)
-    let v41 : UH0 = UH0_1(3uy, v40)
-    let v42 : UH0 = UH0_1(4uy, v41)
-    let v43 : US0 = US0_0(1035, v42)
-    let v44 : string = $"__expect / actual: %A{v38} / expected: %A{v43}"
+    let v39 : string = $"{v28} / actual: %A{v33} / expected: %A{v38}"
+    System.Console.WriteLine v39
     ()
 method0()
 
 accumulate_dice_rolls / power: 1 / acc: 1000 / roll: 6 / value: 30
 accumulate_dice_rolls / power: 0 / acc: 1030 / roll: 5 / value: 4
 accumulate_dice_rolls / power: -1 / acc: 1034 / result: 1035
-US0_0 (1035, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0))))
+assert_eq / actual: US0_0 (1035, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0)))) / expected: US0_0 (1035, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0))))
 </pre>
 </div>
 </div>
@@ -7922,21 +7910,17 @@ let rec method0 () : unit =
     System.Console.WriteLine v2
     let v3 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1207} / result: {1208}"
     System.Console.WriteLine v3
-    let v4 : UH0 = UH0_0
-    let v5 : UH0 = UH0_1(2uy, v4)
-    let v6 : UH0 = UH0_1(3uy, v5)
-    let v7 : US0 = US0_0(1208, v6)
-    let v8 : string = $"%A{v7}"
-    System.Console.WriteLine v8
+    let v22 : string = "assert_eq"
+    let v23 : UH0 = UH0_0
+    let v24 : UH0 = UH0_1(2uy, v23)
+    let v25 : UH0 = UH0_1(3uy, v24)
+    let v26 : US0 = US0_0(1208, v25)
     let v27 : UH0 = UH0_0
     let v28 : UH0 = UH0_1(2uy, v27)
     let v29 : UH0 = UH0_1(3uy, v28)
     let v30 : US0 = US0_0(1208, v29)
-    let v31 : UH0 = UH0_0
-    let v32 : UH0 = UH0_1(2uy, v31)
-    let v33 : UH0 = UH0_1(3uy, v32)
-    let v34 : US0 = US0_0(1208, v33)
-    let v35 : string = $"__expect / actual: %A{v30} / expected: %A{v34}"
+    let v31 : string = $"{v22} / actual: %A{v26} / expected: %A{v30}"
+    System.Console.WriteLine v31
     ()
 method0()
 
@@ -7944,7 +7928,7 @@ accumulate_dice_rolls / power: 2 / acc: 1000 / roll: 6 / value: 180
 accumulate_dice_rolls / power: 1 / acc: 1180 / roll: 5 / value: 24
 accumulate_dice_rolls / power: 0 / acc: 1204 / roll: 4 / value: 3
 accumulate_dice_rolls / power: -1 / acc: 1207 / result: 1208
-US0_0 (1208, UH0_1 (3uy, UH0_1 (2uy, UH0_0)))
+assert_eq / actual: US0_0 (1208, UH0_1 (3uy, UH0_1 (2uy, UH0_0))) / expected: US0_0 (1208, UH0_1 (3uy, UH0_1 (2uy, UH0_0)))
 </pre>
 </div>
 </div>
@@ -8033,12 +8017,11 @@ let rec method0 () : unit =
     System.Console.WriteLine v4
     let v5 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {994} / result: {995}"
     System.Console.WriteLine v5
-    let v6 : US0 = US0_0(995)
-    let v7 : string = $"%A{v6}"
-    System.Console.WriteLine v7
+    let v9 : string = "assert_eq"
+    let v10 : US0 = US0_0(995)
     let v11 : US0 = US0_0(995)
-    let v12 : US0 = US0_0(995)
-    let v13 : string = $"__expect / actual: %A{v11} / expected: %A{v12}"
+    let v12 : string = $"{v9} / actual: %A{v10} / expected: %A{v11}"
+    System.Console.WriteLine v12
     ()
 method0()
 
@@ -8048,7 +8031,7 @@ accumulate_dice_rolls / power: 2 / acc: 864 / roll: 4 / value: 108
 accumulate_dice_rolls / power: 1 / acc: 972 / roll: 4 / value: 18
 accumulate_dice_rolls / power: 0 / acc: 990 / roll: 5 / value: 4
 accumulate_dice_rolls / power: -1 / acc: 994 / result: 995
-US0_0 995
+assert_eq / actual: US0_0 995 / expected: US0_0 995
 </pre>
 </div>
 </div>
@@ -8094,12 +8077,11 @@ let rec method0 () : unit =
     System.Console.WriteLine v4
     let v5 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {1714} / result: {1715}"
     System.Console.WriteLine v5
-    let v6 : US0 = US0_0(1715)
-    let v7 : string = $"%A{v6}"
-    System.Console.WriteLine v7
+    let v9 : string = "assert_eq"
+    let v10 : US0 = US0_0(1715)
     let v11 : US0 = US0_0(1715)
-    let v12 : US0 = US0_0(1715)
-    let v13 : string = $"__expect / actual: %A{v11} / expected: %A{v12}"
+    let v12 : string = $"{v9} / actual: %A{v10} / expected: %A{v11}"
+    System.Console.WriteLine v12
     ()
 method0()
 
@@ -8109,7 +8091,7 @@ accumulate_dice_rolls / power: 2 / acc: 1512 / roll: 6 / value: 180
 accumulate_dice_rolls / power: 1 / acc: 1692 / roll: 4 / value: 18
 accumulate_dice_rolls / power: 0 / acc: 1710 / roll: 5 / value: 4
 accumulate_dice_rolls / power: -1 / acc: 1714 / result: 1715
-US0_0 1715
+assert_eq / actual: US0_0 1715 / expected: US0_0 1715
 </pre>
 </div>
 </div>
@@ -8155,12 +8137,11 @@ let rec method0 () : unit =
     System.Console.WriteLine v4
     let v5 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {3896} / result: {3897}"
     System.Console.WriteLine v5
-    let v6 : US0 = US0_1
-    let v7 : string = $"%A{v6}"
-    System.Console.WriteLine v7
+    let v9 : string = "assert_eq"
+    let v10 : US0 = US0_1
     let v11 : US0 = US0_1
-    let v12 : US0 = US0_1
-    let v13 : string = $"__expect / actual: %A{v11} / expected: %A{v12}"
+    let v12 : string = $"{v9} / actual: %A{v10} / expected: %A{v11}"
+    System.Console.WriteLine v12
     ()
 method0()
 
@@ -8170,7 +8151,7 @@ accumulate_dice_rolls / power: 2 / acc: 3888 / roll: 1
 accumulate_dice_rolls / power: 1 / acc: 3888 / roll: 2 / value: 6
 accumulate_dice_rolls / power: 0 / acc: 3894 / roll: 3 / value: 2
 accumulate_dice_rolls / power: -1 / acc: 3896 / result: 3897
-US0_1
+assert_eq / actual: US0_1 / expected: US0_1
 </pre>
 </div>
 </div>
@@ -8264,14 +8245,14 @@ US0_1
 <pre>let rec method0 () : unit =
     let v0 : string = $"calculate_dice_count / max: {36} / n: {2} / p: {36}"
     System.Console.WriteLine v0
-    let v1 : string = $"%A{2}"
-    System.Console.WriteLine v1
-    let v2 : string = $"__expect / actual: %A{2} / expected: %A{2}"
+    let v1 : string = "assert_eq"
+    let v2 : string = $"{v1} / actual: %A{2} / expected: %A{2}"
+    System.Console.WriteLine v2
     ()
 method0()
 
 calculate_dice_count / max: 36 / n: 2 / p: 36
-2
+assert_eq / actual: 2 / expected: 2
 </pre>
 </div>
 </div>
@@ -8304,14 +8285,14 @@ calculate_dice_count / max: 36 / n: 2 / p: 36
 <pre>let rec method0 () : unit =
     let v0 : string = $"calculate_dice_count / max: {7777} / n: {6} / p: {46656}"
     System.Console.WriteLine v0
-    let v1 : string = $"%A{6}"
-    System.Console.WriteLine v1
-    let v2 : string = $"__expect / actual: %A{6} / expected: %A{6}"
+    let v1 : string = "assert_eq"
+    let v2 : string = $"{v1} / actual: %A{6} / expected: %A{6}"
+    System.Console.WriteLine v2
     ()
 method0()
 
 calculate_dice_count / max: 7777 / n: 6 / p: 46656
-6
+assert_eq / actual: 6 / expected: 6
 </pre>
 </div>
 </div>
@@ -8471,25 +8452,24 @@ calculate_dice_count / max: 7777 / n: 6 / p: 46656
     | UH0_0
     | UH0_1 of int32 * UH0
 let rec method0 () : unit =
-    let v0 : UH0 = UH0_0
-    let v1 : UH0 = UH0_1(2, v0)
-    let v2 : UH0 = UH0_1(1, v1)
-    let v3 : UH0 = UH0_1(6, v2)
-    let v4 : UH0 = UH0_1(5, v3)
-    let v5 : UH0 = UH0_1(4, v4)
-    let v6 : UH0 = UH0_1(3, v5)
-    let v7 : UH0 = UH0_1(2, v6)
-    let v8 : UH0 = UH0_1(1, v7)
-    let v9 : UH0 = UH0_1(6, v8)
-    let v10 : UH0 = UH0_1(5, v9)
-    let v11 : UH0 = UH0_1(4, v10)
-    let v12 : UH0 = UH0_1(3, v11)
-    let v13 : UH0 = UH0_1(2, v12)
-    let v14 : UH0 = UH0_1(1, v13)
-    let v15 : UH0 = UH0_1(6, v14)
-    let v16 : UH0 = UH0_1(5, v15)
-    let v17 : string = $"%A{v16}"
-    System.Console.WriteLine v17
+    let v187 : string = "assert_eq"
+    let v188 : UH0 = UH0_0
+    let v189 : UH0 = UH0_1(2, v188)
+    let v190 : UH0 = UH0_1(1, v189)
+    let v191 : UH0 = UH0_1(6, v190)
+    let v192 : UH0 = UH0_1(5, v191)
+    let v193 : UH0 = UH0_1(4, v192)
+    let v194 : UH0 = UH0_1(3, v193)
+    let v195 : UH0 = UH0_1(2, v194)
+    let v196 : UH0 = UH0_1(1, v195)
+    let v197 : UH0 = UH0_1(6, v196)
+    let v198 : UH0 = UH0_1(5, v197)
+    let v199 : UH0 = UH0_1(4, v198)
+    let v200 : UH0 = UH0_1(3, v199)
+    let v201 : UH0 = UH0_1(2, v200)
+    let v202 : UH0 = UH0_1(1, v201)
+    let v203 : UH0 = UH0_1(6, v202)
+    let v204 : UH0 = UH0_1(5, v203)
     let v205 : UH0 = UH0_0
     let v206 : UH0 = UH0_1(2, v205)
     let v207 : UH0 = UH0_1(1, v206)
@@ -8507,28 +8487,37 @@ let rec method0 () : unit =
     let v219 : UH0 = UH0_1(1, v218)
     let v220 : UH0 = UH0_1(6, v219)
     let v221 : UH0 = UH0_1(5, v220)
-    let v222 : UH0 = UH0_0
-    let v223 : UH0 = UH0_1(2, v222)
-    let v224 : UH0 = UH0_1(1, v223)
-    let v225 : UH0 = UH0_1(6, v224)
-    let v226 : UH0 = UH0_1(5, v225)
-    let v227 : UH0 = UH0_1(4, v226)
-    let v228 : UH0 = UH0_1(3, v227)
-    let v229 : UH0 = UH0_1(2, v228)
-    let v230 : UH0 = UH0_1(1, v229)
-    let v231 : UH0 = UH0_1(6, v230)
-    let v232 : UH0 = UH0_1(5, v231)
-    let v233 : UH0 = UH0_1(4, v232)
-    let v234 : UH0 = UH0_1(3, v233)
-    let v235 : UH0 = UH0_1(2, v234)
-    let v236 : UH0 = UH0_1(1, v235)
-    let v237 : UH0 = UH0_1(6, v236)
-    let v238 : UH0 = UH0_1(5, v237)
-    let v239 : string = $"__expect / actual: %A{v221} / expected: %A{v238}"
+    let v222 : string = $"{v187} / actual: %A{v204} / expected: %A{v221}"
+    System.Console.WriteLine v222
     ()
 method0()
 
-UH0_1
+assert_eq / actual: UH0_1
+  (5,
+   UH0_1
+     (6,
+      UH0_1
+        (1,
+         UH0_1
+           (2,
+            UH0_1
+              (3,
+               UH0_1
+                 (4,
+                  UH0_1
+                    (5,
+                     UH0_1
+                       (6,
+                        UH0_1
+                          (1,
+                           UH0_1
+                             (2,
+                              UH0_1
+                                (3,
+                                 UH0_1
+                                   (4,
+                                    UH0_1
+                                      (5, UH0_1 (6, UH0_1 (1, UH0_1 (2, UH0_0)))))))))))))))) / expected: UH0_1
   (5,
    UH0_1
      (6,
@@ -8829,25 +8818,25 @@ and method0 () : unit =
         v10.l0 &lt;- v14
         ()
     let v15 : (int32 []) = [|1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1; 4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2|]
-    let v16 : string = $"%A{v9}"
-    System.Console.WriteLine v16
-    let v17 : int32 = v9.Length
-    let v18 : int32 = v15.Length
-    let v19 : bool = v17 = v18
-    let v20 : bool = v19 &lt;&gt; true
-    let v23 : bool =
-        if v20 then
+    let v16 : int32 = v9.Length
+    let v17 : int32 = v15.Length
+    let v18 : bool = v16 = v17
+    let v19 : bool = v18 &lt;&gt; true
+    let v22 : bool =
+        if v19 then
             false
         else
-            let v21 : int32 = 0
-            method4(v9, v15, v21)
-    let v25 : bool =
-        if v23 then
+            let v20 : int32 = 0
+            method4(v9, v15, v20)
+    let v24 : bool =
+        if v22 then
             true
         else
-            method5(v23)
-    let v26 : string = $"__expect / actual: %A{v9} / expected: %A{v15}"
-    let v27 : bool = v25 = false
+            method5(v22)
+    let v25 : string = "assert_eq"
+    let v26 : string = $"{v25} / actual: %A{v9} / expected: %A{v15}"
+    System.Console.WriteLine v26
+    let v27 : bool = v24 = false
     if v27 then
         failwith&lt;unit&gt; v26
 method0()
@@ -8921,7 +8910,8 @@ create_sequential_roller / roll / current_index: 3 / acc: 2 / len: 8 / last_item
 create_sequential_roller / roll / current_index: 4 / acc: 2 / len: 8 / last_item: US1_0 4
 create_sequential_roller / roll / current_index: 5 / acc: 2 / len: 8 / last_item: US1_0 4
 create_sequential_roller / roll / current_index: 6 / acc: 2 / len: 8 / last_item: US1_0 3
-[|1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
+assert_eq / actual: [|1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
+  4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2|] / expected: [|1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
   4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2|]
 </pre>
 </div>
@@ -9167,21 +9157,21 @@ and method0 () : unit =
     let v0 : UH0 = UH0_0
     let v1 : int8 = 0y
     let v2 : int32 = method1(v0, v1)
-    let v3 : string = $"%A{v2}"
-    System.Console.WriteLine v3
-    let v4 : bool = v2 = 1
-    let v6 : bool =
-        if v4 then
+    let v3 : bool = v2 = 1
+    let v5 : bool =
+        if v3 then
             true
         else
-            method4(v4)
-    let v7 : string = $"__expect / actual: %A{v2} / expected: %A{1}"
-    let v8 : bool = v6 = false
+            method4(v3)
+    let v6 : string = "assert_eq"
+    let v7 : string = $"{v6} / actual: %A{v2} / expected: %A{1}"
+    System.Console.WriteLine v7
+    let v8 : bool = v5 = false
     if v8 then
         failwith&lt;unit&gt; v7
 method0()
 
-1
+assert_eq / actual: 1 / expected: 1
 </pre>
 </div>
 </div>
@@ -9493,16 +9483,16 @@ and method0 () : unit =
     let v10 : UH1 = UH1_0
     let v11 : int8 = 0y
     let v12 : int32 = method1(v3, v4, v5, v6, v8, v10, v11)
-    let v13 : string = $"%A{v12}"
-    System.Console.WriteLine v13
-    let v14 : bool = v12 = 995
-    let v16 : bool =
-        if v14 then
+    let v13 : bool = v12 = 995
+    let v15 : bool =
+        if v13 then
             true
         else
-            method10(v14)
-    let v17 : string = $"__expect / actual: %A{v12} / expected: %A{995}"
-    let v18 : bool = v16 = false
+            method10(v13)
+    let v16 : string = "assert_eq"
+    let v17 : string = $"{v16} / actual: %A{v12} / expected: %A{995}"
+    System.Console.WriteLine v17
+    let v18 : bool = v15 = false
     if v18 then
         failwith&lt;unit&gt; v17
 method0()
@@ -9520,7 +9510,7 @@ accumulate_dice_rolls / power: 2 / acc: 864 / roll: 4 / value: 108
 accumulate_dice_rolls / power: 1 / acc: 972 / roll: 4 / value: 18
 accumulate_dice_rolls / power: 0 / acc: 990 / roll: 5 / value: 4
 accumulate_dice_rolls / power: -1 / acc: 994 / result: 995
-995
+assert_eq / actual: 995 / expected: 995
 </pre>
 </div>
 </div>
@@ -9832,16 +9822,16 @@ and method0 () : unit =
     let v10 : UH1 = UH1_0
     let v11 : int8 = 0y
     let v12 : int32 = method1(v3, v4, v5, v6, v8, v10, v11)
-    let v13 : string = $"%A{v12}"
-    System.Console.WriteLine v13
-    let v14 : bool = v12 = 1678
-    let v16 : bool =
-        if v14 then
+    let v13 : bool = v12 = 1678
+    let v15 : bool =
+        if v13 then
             true
         else
-            method10(v14)
-    let v17 : string = $"__expect / actual: %A{v12} / expected: %A{1678}"
-    let v18 : bool = v16 = false
+            method10(v13)
+    let v16 : string = "assert_eq"
+    let v17 : string = $"{v16} / actual: %A{v12} / expected: %A{1678}"
+    System.Console.WriteLine v17
+    let v18 : bool = v15 = false
     if v18 then
         failwith&lt;unit&gt; v17
 method0()
@@ -9866,7 +9856,7 @@ accumulate_dice_rolls / power: 2 / acc: 1512 / roll: 5 / value: 144
 accumulate_dice_rolls / power: 1 / acc: 1656 / roll: 4 / value: 18
 accumulate_dice_rolls / power: 0 / acc: 1674 / roll: 4 / value: 3
 accumulate_dice_rolls / power: -1 / acc: 1677 / result: 1678
-1678
+assert_eq / actual: 1678 / expected: 1678
 </pre>
 </div>
 </div>
@@ -9901,7 +9891,7 @@ accumulate_dice_rolls / power: -1 / acc: 1677 / result: 1678
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 283)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>283</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 766)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>766</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1335)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1335</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1273)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1273</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1322)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1322</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1372)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1372</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 288)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>288</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 722)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>722</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1305)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1305</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1334)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1334</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
+<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 279)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>279</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 728)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>728</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1381)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1381</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1323)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1323</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1328)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1328</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1345)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1345</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 272)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>272</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 727)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>727</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1293)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1293</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1324)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1324</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
 .dni-code-hint {
     font-style: italic;
     overflow: hidden;
@@ -10278,7 +10268,7 @@ method0()
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 1018)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1018</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 1037)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1037</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 987)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>987</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 997)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>997</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1014)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1014</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1023)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1023</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 976)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>976</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 976)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>976</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 930)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>930</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1042)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1042</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
+<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 1045)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1045</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 1046)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1046</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 995)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>995</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 959)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>959</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 948)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>948</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 985)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>985</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 1018)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1018</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 999)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>999</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1003)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1003</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1002)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1002</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
 .dni-code-hint {
     font-style: italic;
     overflow: hidden;
@@ -10943,16 +10933,16 @@ and method3 (v0 : UH0) : unit =
         let v7 : UH3 = method10(v5, v6)
         let v8 : int32 = 0
         let v9 : int32 = method12(v7, v8)
-        let v10 : string = $"%A{v9}"
-        System.Console.WriteLine v10
-        let v11 : bool = v9 = v1
-        let v13 : bool =
-            if v11 then
+        let v10 : bool = v9 = v1
+        let v12 : bool =
+            if v10 then
                 true
             else
-                method13(v11)
-        let v14 : string = $"__expect / actual: %A{v9} / expected: %A{v1}"
-        let v15 : bool = v13 = false
+                method13(v10)
+        let v13 : string = "assert_eq"
+        let v14 : string = $"{v13} / actual: %A{v9} / expected: %A{v1}"
+        System.Console.WriteLine v14
+        let v15 : bool = v12 = false
         if v15 then
             failwith&lt;unit&gt; v14
         let v16 : UH0 = method4()
@@ -10962,18 +10952,17 @@ and method3 (v0 : UH0) : unit =
         let v20 : UH3 = method10(v18, v19)
         let v21 : int32 = 0
         let v22 : int32 = method12(v20, v21)
-        let v23 : string = $"%A{v22}"
-        System.Console.WriteLine v23
-        let v24 : bool = v22 = v1
-        let v26 : bool =
-            if v24 then
+        let v23 : bool = v22 = v1
+        let v25 : bool =
+            if v23 then
                 true
             else
-                method13(v24)
-        let v27 : string = $"__expect / actual: %A{v22} / expected: %A{v1}"
-        let v28 : bool = v26 = false
-        if v28 then
-            failwith&lt;unit&gt; v27
+                method13(v23)
+        let v26 : string = $"{v13} / actual: %A{v22} / expected: %A{v1}"
+        System.Console.WriteLine v26
+        let v27 : bool = v25 = false
+        if v27 then
+            failwith&lt;unit&gt; v26
         method3(v2)
     | UH0_0 -&gt; (* Nil *)
         ()
@@ -10982,206 +10971,206 @@ and method0 () : unit =
     method3(v0)
 method0()
 
-1
-1
-2
-2
-3
-3
-4
-4
-5
-5
-6
-6
-7
-7
-8
-8
-9
-9
-10
-10
-11
-11
-12
-12
-13
-13
-14
-14
-15
-15
-16
-16
-17
-17
-18
-18
-19
-19
-20
-20
-21
-21
-22
-22
-23
-23
-24
-24
-25
-25
-26
-26
-27
-27
-28
-28
-29
-29
-30
-30
-31
-31
-32
-32
-33
-33
-34
-34
-35
-35
-36
-36
-37
-37
-38
-38
-39
-39
-40
-40
-41
-41
-42
-42
-43
-43
-44
-44
-45
-45
-46
-46
-47
-47
-48
-48
-49
-49
-50
-50
-51
-51
-52
-52
-53
-53
-54
-54
-55
-55
-56
-56
-57
-57
-58
-58
-59
-59
-60
-60
-61
-61
-62
-62
-63
-63
-64
-64
-65
-65
-66
-66
-67
-67
-68
-68
-69
-69
-70
-70
-71
-71
-72
-72
-73
-73
-74
-74
-75
-75
-76
-76
-77
-77
-78
-78
-79
-79
-80
-80
-81
-81
-82
-82
-83
-83
-84
-84
-85
-85
-86
-86
-87
-87
-88
-88
-89
-89
-90
-90
-91
-91
-92
-92
-93
-93
-94
-94
-95
-95
-96
-96
-97
-97
-98
-98
-99
-99
-100
-100
+assert_eq / actual: 1 / expected: 1
+assert_eq / actual: 1 / expected: 1
+assert_eq / actual: 2 / expected: 2
+assert_eq / actual: 2 / expected: 2
+assert_eq / actual: 3 / expected: 3
+assert_eq / actual: 3 / expected: 3
+assert_eq / actual: 4 / expected: 4
+assert_eq / actual: 4 / expected: 4
+assert_eq / actual: 5 / expected: 5
+assert_eq / actual: 5 / expected: 5
+assert_eq / actual: 6 / expected: 6
+assert_eq / actual: 6 / expected: 6
+assert_eq / actual: 7 / expected: 7
+assert_eq / actual: 7 / expected: 7
+assert_eq / actual: 8 / expected: 8
+assert_eq / actual: 8 / expected: 8
+assert_eq / actual: 9 / expected: 9
+assert_eq / actual: 9 / expected: 9
+assert_eq / actual: 10 / expected: 10
+assert_eq / actual: 10 / expected: 10
+assert_eq / actual: 11 / expected: 11
+assert_eq / actual: 11 / expected: 11
+assert_eq / actual: 12 / expected: 12
+assert_eq / actual: 12 / expected: 12
+assert_eq / actual: 13 / expected: 13
+assert_eq / actual: 13 / expected: 13
+assert_eq / actual: 14 / expected: 14
+assert_eq / actual: 14 / expected: 14
+assert_eq / actual: 15 / expected: 15
+assert_eq / actual: 15 / expected: 15
+assert_eq / actual: 16 / expected: 16
+assert_eq / actual: 16 / expected: 16
+assert_eq / actual: 17 / expected: 17
+assert_eq / actual: 17 / expected: 17
+assert_eq / actual: 18 / expected: 18
+assert_eq / actual: 18 / expected: 18
+assert_eq / actual: 19 / expected: 19
+assert_eq / actual: 19 / expected: 19
+assert_eq / actual: 20 / expected: 20
+assert_eq / actual: 20 / expected: 20
+assert_eq / actual: 21 / expected: 21
+assert_eq / actual: 21 / expected: 21
+assert_eq / actual: 22 / expected: 22
+assert_eq / actual: 22 / expected: 22
+assert_eq / actual: 23 / expected: 23
+assert_eq / actual: 23 / expected: 23
+assert_eq / actual: 24 / expected: 24
+assert_eq / actual: 24 / expected: 24
+assert_eq / actual: 25 / expected: 25
+assert_eq / actual: 25 / expected: 25
+assert_eq / actual: 26 / expected: 26
+assert_eq / actual: 26 / expected: 26
+assert_eq / actual: 27 / expected: 27
+assert_eq / actual: 27 / expected: 27
+assert_eq / actual: 28 / expected: 28
+assert_eq / actual: 28 / expected: 28
+assert_eq / actual: 29 / expected: 29
+assert_eq / actual: 29 / expected: 29
+assert_eq / actual: 30 / expected: 30
+assert_eq / actual: 30 / expected: 30
+assert_eq / actual: 31 / expected: 31
+assert_eq / actual: 31 / expected: 31
+assert_eq / actual: 32 / expected: 32
+assert_eq / actual: 32 / expected: 32
+assert_eq / actual: 33 / expected: 33
+assert_eq / actual: 33 / expected: 33
+assert_eq / actual: 34 / expected: 34
+assert_eq / actual: 34 / expected: 34
+assert_eq / actual: 35 / expected: 35
+assert_eq / actual: 35 / expected: 35
+assert_eq / actual: 36 / expected: 36
+assert_eq / actual: 36 / expected: 36
+assert_eq / actual: 37 / expected: 37
+assert_eq / actual: 37 / expected: 37
+assert_eq / actual: 38 / expected: 38
+assert_eq / actual: 38 / expected: 38
+assert_eq / actual: 39 / expected: 39
+assert_eq / actual: 39 / expected: 39
+assert_eq / actual: 40 / expected: 40
+assert_eq / actual: 40 / expected: 40
+assert_eq / actual: 41 / expected: 41
+assert_eq / actual: 41 / expected: 41
+assert_eq / actual: 42 / expected: 42
+assert_eq / actual: 42 / expected: 42
+assert_eq / actual: 43 / expected: 43
+assert_eq / actual: 43 / expected: 43
+assert_eq / actual: 44 / expected: 44
+assert_eq / actual: 44 / expected: 44
+assert_eq / actual: 45 / expected: 45
+assert_eq / actual: 45 / expected: 45
+assert_eq / actual: 46 / expected: 46
+assert_eq / actual: 46 / expected: 46
+assert_eq / actual: 47 / expected: 47
+assert_eq / actual: 47 / expected: 47
+assert_eq / actual: 48 / expected: 48
+assert_eq / actual: 48 / expected: 48
+assert_eq / actual: 49 / expected: 49
+assert_eq / actual: 49 / expected: 49
+assert_eq / actual: 50 / expected: 50
+assert_eq / actual: 50 / expected: 50
+assert_eq / actual: 51 / expected: 51
+assert_eq / actual: 51 / expected: 51
+assert_eq / actual: 52 / expected: 52
+assert_eq / actual: 52 / expected: 52
+assert_eq / actual: 53 / expected: 53
+assert_eq / actual: 53 / expected: 53
+assert_eq / actual: 54 / expected: 54
+assert_eq / actual: 54 / expected: 54
+assert_eq / actual: 55 / expected: 55
+assert_eq / actual: 55 / expected: 55
+assert_eq / actual: 56 / expected: 56
+assert_eq / actual: 56 / expected: 56
+assert_eq / actual: 57 / expected: 57
+assert_eq / actual: 57 / expected: 57
+assert_eq / actual: 58 / expected: 58
+assert_eq / actual: 58 / expected: 58
+assert_eq / actual: 59 / expected: 59
+assert_eq / actual: 59 / expected: 59
+assert_eq / actual: 60 / expected: 60
+assert_eq / actual: 60 / expected: 60
+assert_eq / actual: 61 / expected: 61
+assert_eq / actual: 61 / expected: 61
+assert_eq / actual: 62 / expected: 62
+assert_eq / actual: 62 / expected: 62
+assert_eq / actual: 63 / expected: 63
+assert_eq / actual: 63 / expected: 63
+assert_eq / actual: 64 / expected: 64
+assert_eq / actual: 64 / expected: 64
+assert_eq / actual: 65 / expected: 65
+assert_eq / actual: 65 / expected: 65
+assert_eq / actual: 66 / expected: 66
+assert_eq / actual: 66 / expected: 66
+assert_eq / actual: 67 / expected: 67
+assert_eq / actual: 67 / expected: 67
+assert_eq / actual: 68 / expected: 68
+assert_eq / actual: 68 / expected: 68
+assert_eq / actual: 69 / expected: 69
+assert_eq / actual: 69 / expected: 69
+assert_eq / actual: 70 / expected: 70
+assert_eq / actual: 70 / expected: 70
+assert_eq / actual: 71 / expected: 71
+assert_eq / actual: 71 / expected: 71
+assert_eq / actual: 72 / expected: 72
+assert_eq / actual: 72 / expected: 72
+assert_eq / actual: 73 / expected: 73
+assert_eq / actual: 73 / expected: 73
+assert_eq / actual: 74 / expected: 74
+assert_eq / actual: 74 / expected: 74
+assert_eq / actual: 75 / expected: 75
+assert_eq / actual: 75 / expected: 75
+assert_eq / actual: 76 / expected: 76
+assert_eq / actual: 76 / expected: 76
+assert_eq / actual: 77 / expected: 77
+assert_eq / actual: 77 / expected: 77
+assert_eq / actual: 78 / expected: 78
+assert_eq / actual: 78 / expected: 78
+assert_eq / actual: 79 / expected: 79
+assert_eq / actual: 79 / expected: 79
+assert_eq / actual: 80 / expected: 80
+assert_eq / actual: 80 / expected: 80
+assert_eq / actual: 81 / expected: 81
+assert_eq / actual: 81 / expected: 81
+assert_eq / actual: 82 / expected: 82
+assert_eq / actual: 82 / expected: 82
+assert_eq / actual: 83 / expected: 83
+assert_eq / actual: 83 / expected: 83
+assert_eq / actual: 84 / expected: 84
+assert_eq / actual: 84 / expected: 84
+assert_eq / actual: 85 / expected: 85
+assert_eq / actual: 85 / expected: 85
+assert_eq / actual: 86 / expected: 86
+assert_eq / actual: 86 / expected: 86
+assert_eq / actual: 87 / expected: 87
+assert_eq / actual: 87 / expected: 87
+assert_eq / actual: 88 / expected: 88
+assert_eq / actual: 88 / expected: 88
+assert_eq / actual: 89 / expected: 89
+assert_eq / actual: 89 / expected: 89
+assert_eq / actual: 90 / expected: 90
+assert_eq / actual: 90 / expected: 90
+assert_eq / actual: 91 / expected: 91
+assert_eq / actual: 91 / expected: 91
+assert_eq / actual: 92 / expected: 92
+assert_eq / actual: 92 / expected: 92
+assert_eq / actual: 93 / expected: 93
+assert_eq / actual: 93 / expected: 93
+assert_eq / actual: 94 / expected: 94
+assert_eq / actual: 94 / expected: 94
+assert_eq / actual: 95 / expected: 95
+assert_eq / actual: 95 / expected: 95
+assert_eq / actual: 96 / expected: 96
+assert_eq / actual: 96 / expected: 96
+assert_eq / actual: 97 / expected: 97
+assert_eq / actual: 97 / expected: 97
+assert_eq / actual: 98 / expected: 98
+assert_eq / actual: 98 / expected: 98
+assert_eq / actual: 99 / expected: 99
+assert_eq / actual: 99 / expected: 99
+assert_eq / actual: 100 / expected: 100
+assert_eq / actual: 100 / expected: 100
 </pre>
 </div>
 </div>

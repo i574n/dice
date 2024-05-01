@@ -263,6 +263,10 @@ type std_sync_Mutex<'T> = class end
 #endif
 type std_sync_MutexGuard<'T> = class end
 #if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("std::sync::PoisonError<$0>")>]
+#endif
+type std_sync_PoisonError<'T> = class end
+#if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::Action<$0, $1>")>]
 #endif
 type leptos_Action<'T, 'U> = class end

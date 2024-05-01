@@ -29,11 +29,10 @@ function CheckJson {
 }
 
 
-{ dotnet paket outdated --include-prereleases } | Invoke-Block
-
 CheckToml "../Cargo.toml" `-w
 
 CheckToml "../lib/Cargo.toml"
+CheckToml "../lib/contract/Cargo.toml"
 CheckToml "../lib/fsharp/Cargo.toml"
 CheckToml "../contract/Cargo.toml"
 CheckToml "../contract/tests/Cargo.toml"
