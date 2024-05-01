@@ -8337,14 +8337,14 @@ accumulateDiceRolls / power: -1 / acc: 2290
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
 
-<span class="p">[</span> <span class="mi">1</span> <span class="o">..</span> <span class="mi">100</span> <span class="p">]</span>
-<span class="o">|&gt;</span> <span class="n">List</span><span class="o">.</span><span class="n">iter</span> <span class="p">(</span><span class="n">fun</span> <span class="n">n</span> <span class="o">-&gt;</span>
-    <span class="p">[</span> <span class="mi">0</span> <span class="o">..</span> <span class="mi">1</span> <span class="p">]</span>
-    <span class="o">|&gt;</span> <span class="n">List</span><span class="o">.</span><span class="n">iter</span> <span class="p">(</span><span class="n">fun</span> <span class="n">reroll</span> <span class="o">-&gt;</span>
-        <span class="p">[</span> <span class="mi">1</span> <span class="o">..</span> <span class="mi">3500</span> <span class="p">]</span>
-        <span class="o">|&gt;</span> <span class="n">List</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">rollProgressively</span> <span class="kc">None</span> <span class="n">rollDice</span> <span class="p">(</span><span class="n">reroll</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="n">n</span><span class="p">)</span>
-        <span class="o">|&gt;</span> <span class="n">List</span><span class="o">.</span><span class="n">groupBy</span> <span class="nb">id</span>
-        <span class="o">|&gt;</span> <span class="n">List</span><span class="o">.</span><span class="n">length</span>
+<span class="p">[</span><span class="o">|</span> <span class="mi">1</span> <span class="o">..</span> <span class="mi">100</span> <span class="o">|</span><span class="p">]</span>
+<span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">iter</span> <span class="p">(</span><span class="n">fun</span> <span class="n">n</span> <span class="o">-&gt;</span>
+    <span class="p">[</span><span class="o">|</span> <span class="mi">0</span> <span class="o">..</span> <span class="mi">1</span> <span class="o">|</span><span class="p">]</span>
+    <span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">iter</span> <span class="p">(</span><span class="n">fun</span> <span class="n">reroll</span> <span class="o">-&gt;</span>
+        <span class="p">[</span><span class="o">|</span> <span class="mi">1</span> <span class="o">..</span> <span class="mi">3500</span> <span class="o">|</span><span class="p">]</span>
+        <span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">rollProgressively</span> <span class="kc">None</span> <span class="n">rollDice</span> <span class="p">(</span><span class="n">reroll</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="n">n</span><span class="p">)</span>
+        <span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">groupBy</span> <span class="nb">id</span>
+        <span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">length</span>
         <span class="o">|&gt;</span> <span class="n">__assertEqual</span> <span class="n">false</span> <span class="n">n</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -8360,11 +8360,269 @@ accumulateDiceRolls / power: -1 / acc: 2290
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="main">main<a class="anchor-link" href="#main">¶</a></h2>
+<h2 id="FsCheck-(test)">FsCheck (test)<a class="anchor-link" href="#FsCheck-(test)">¶</a></h2>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=38">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#r @"../../../../../../../.nuget/packages/fscheck/3.0.0-rc3/lib/netstandard2.0/FsCheck.dll"</span>
+<span class="c1">#r @"../../../../../../../.nuget/packages/expecto.fscheck/10.2.1-fscheck3/lib/net6.0/Expecto.FsCheck3.dll"</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=39">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+
+<span class="nb">type</span> <span class="n">ValorDado</span> <span class="o">=</span>
+    <span class="o">|</span> <span class="n">Um</span>
+    <span class="o">|</span> <span class="n">Dois</span>
+    <span class="o">|</span> <span class="n">Tres</span>
+    <span class="o">|</span> <span class="n">Quatro</span>
+    <span class="o">|</span> <span class="n">Cinco</span>
+    <span class="o">|</span> <span class="n">Seis</span>
+
+<span class="nb">type</span> <span class="n">Aspecto</span> <span class="o">=</span>
+    <span class="o">|</span> <span class="n">Passado</span> <span class="n">of</span> <span class="n">string</span>
+    <span class="o">|</span> <span class="n">Presente</span> <span class="n">of</span> <span class="n">string</span>
+    <span class="o">|</span> <span class="n">Futuro</span> <span class="n">of</span> <span class="n">string</span>
+    <span class="o">|</span> <span class="n">Desafios</span> <span class="n">of</span> <span class="n">string</span>
+    <span class="o">|</span> <span class="n">Recursos</span> <span class="n">of</span> <span class="n">string</span>
+    <span class="o">|</span> <span class="n">ResultadoProjetado</span> <span class="n">of</span> <span class="n">string</span>
+    <span class="o">|</span> <span class="n">InfluenciaExterna</span> <span class="n">of</span> <span class="n">string</span>
+
+<span class="nb">type</span> <span class="n">Contexto</span> <span class="o">=</span>
+    <span class="o">|</span> <span class="n">Amor</span> <span class="n">of</span> <span class="n">string</span>
+    <span class="o">|</span> <span class="n">Trabalho</span> <span class="n">of</span> <span class="n">string</span>
+    <span class="o">|</span> <span class="n">Saude</span> <span class="n">of</span> <span class="n">string</span>
+    <span class="o">|</span> <span class="n">Dinheiro</span> <span class="n">of</span> <span class="n">string</span>
+
+<span class="nb">type</span> <span class="n">Universo</span> <span class="o">=</span>
+    <span class="o">|</span> <span class="n">Real</span> <span class="n">of</span> <span class="n">string</span>
+    <span class="o">|</span> <span class="n">Virtual</span> <span class="n">of</span> <span class="n">string</span>
+    <span class="o">|</span> <span class="n">Espiritual</span> <span class="n">of</span> <span class="n">string</span>
+
+<span class="nb">type</span> <span class="n">Caracteristica</span> <span class="o">=</span>
+    <span class="o">|</span> <span class="n">Aspecto</span> <span class="n">of</span> <span class="n">Aspecto</span>
+    <span class="o">|</span> <span class="n">Contexto</span> <span class="n">of</span> <span class="n">Contexto</span>
+    <span class="o">|</span> <span class="n">Universo</span> <span class="n">of</span> <span class="n">Universo</span>
+    <span class="o">|</span> <span class="n">DadoRolado</span> <span class="n">of</span> <span class="n">ValorDado</span>
+
+<span class="nb">type</span> <span class="n">Interacao</span> <span class="o">=</span>
+    <span class="o">|</span> <span class="n">Conflito</span>
+    <span class="o">|</span> <span class="n">Parceria</span>
+    <span class="o">|</span> <span class="n">Crescimento</span>
+    <span class="o">|</span> <span class="n">Estagnacao</span>
+    <span class="o">|</span> <span class="n">Separacao</span>
+    <span class="o">|</span> <span class="n">Harmonia</span>
+    <span class="o">|</span> <span class="n">Desafio</span>
+    <span class="o">|</span> <span class="n">Colaboracao</span>
+    <span class="o">|</span> <span class="n">Progresso</span>
+    <span class="o">|</span> <span class="n">Mudanca</span>
+    <span class="o">|</span> <span class="n">Sucesso</span>
+
+<span class="nb">type</span> <span class="n">Interpretacao</span> <span class="o">=</span>
+    <span class="o">|</span> <span class="n">Interpretacao</span> <span class="n">of</span> <span class="n">Caracteristica</span> <span class="o">*</span> <span class="n">Interacao</span> <span class="o">*</span> <span class="n">Caracteristica</span>
+
+<span class="nb">type</span> <span class="n">SistemaDivinacao</span> <span class="o">=</span>
+    <span class="o">|</span> <span class="n">SistemaDivinacao</span> <span class="n">of</span> <span class="n">Interpretacao</span> <span class="nb">list</span> <span class="o">*</span> <span class="n">Caracteristica</span>
+
+<span class="n">let</span> <span class="n">config</span> <span class="o">=</span> <span class="p">{</span> <span class="n">Expecto</span><span class="o">.</span><span class="n">FsCheckConfig</span><span class="o">.</span><span class="n">defaultConfig</span> <span class="k">with</span> <span class="n">maxTest</span> <span class="o">=</span> <span class="mi">10000</span> <span class="p">}</span>
+
+<span class="n">let</span> <span class="n">shuffleList</span> <span class="n">xs</span> <span class="n">seed</span> <span class="o">=</span>
+    <span class="n">let</span> <span class="n">rnd</span> <span class="o">=</span> <span class="n">Random</span> <span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">xs</span>
+    <span class="o">|&gt;</span> <span class="n">List</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">rnd</span><span class="o">.</span><span class="n">Next</span><span class="p">(),</span> <span class="n">x</span><span class="p">)</span>
+    <span class="o">|&gt;</span> <span class="n">List</span><span class="o">.</span><span class="n">sortBy</span> <span class="n">fst</span>
+    <span class="o">|&gt;</span> <span class="n">List</span><span class="o">.</span><span class="n">map</span> <span class="n">snd</span>
+
+
+
+
+<span class="nb">type</span> <span class="n">Complexity</span> <span class="o">=</span> <span class="n">Simple</span> <span class="o">|</span> <span class="n">Moderate</span> <span class="o">|</span> <span class="n">Complex</span>
+<span class="nb">type</span> <span class="n">Duration</span> <span class="o">=</span> <span class="n">Short</span> <span class="o">|</span> <span class="n">Medium</span> <span class="o">|</span> <span class="n">Long</span>
+
+<span class="nb">type</span> <span class="n">Dice</span> <span class="o">=</span> <span class="n">D1</span> <span class="n">of</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">D2</span> <span class="n">of</span> <span class="nb">int</span>
+
+<span class="nb">type</span> <span class="n">Task</span> <span class="o">=</span>
+    <span class="o">|</span> <span class="n">Task</span> <span class="n">of</span> <span class="n">Complexity</span> <span class="o">*</span> <span class="n">Duration</span> <span class="o">*</span> <span class="n">Task</span>
+    <span class="o">|</span> <span class="n">NoTask</span>
+
+<span class="n">let</span> <span class="n">durationOfFocus</span> <span class="p">(</span><span class="n">d1</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="p">(</span><span class="n">d2</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">=</span>
+    <span class="k">match</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="k">with</span>
+    <span class="o">|</span> <span class="nb">sum</span> <span class="n">when</span> <span class="nb">sum</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="o">-&gt;</span> <span class="n">Short</span>
+    <span class="o">|</span> <span class="nb">sum</span> <span class="n">when</span> <span class="nb">sum</span> <span class="o">&lt;=</span> <span class="mi">8</span> <span class="o">-&gt;</span> <span class="n">Medium</span>
+    <span class="o">|</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">Long</span>
+
+<span class="n">let</span> <span class="n">complexityOfTask</span> <span class="p">(</span><span class="n">d1</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="p">(</span><span class="n">d2</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">=</span>
+    <span class="k">match</span> <span class="n">d1</span> <span class="o">*</span> <span class="n">d2</span> <span class="k">with</span>
+    <span class="o">|</span> <span class="n">product</span> <span class="n">when</span> <span class="n">product</span> <span class="o">&lt;=</span> <span class="mi">12</span> <span class="o">-&gt;</span> <span class="n">Simple</span>
+    <span class="o">|</span> <span class="n">product</span> <span class="n">when</span> <span class="n">product</span> <span class="o">&lt;=</span> <span class="mi">24</span> <span class="o">-&gt;</span> <span class="n">Moderate</span>
+    <span class="o">|</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">Complex</span>
+
+<span class="n">let</span> <span class="n">rec</span> <span class="n">generateTaskList</span> <span class="n">d1</span> <span class="n">d2</span> <span class="n">previousTask</span> <span class="o">=</span>
+    <span class="k">match</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span> <span class="k">with</span>
+    <span class="o">|</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span> <span class="n">when</span> <span class="n">d1</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">d2</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">-&gt;</span>
+        <span class="n">let</span> <span class="n">complexity</span> <span class="o">=</span> <span class="n">complexityOfTask</span> <span class="n">d1</span> <span class="n">d2</span>
+        <span class="n">let</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">durationOfFocus</span> <span class="n">d1</span> <span class="n">d2</span>
+        <span class="n">let</span> <span class="n">newTask</span> <span class="o">=</span> <span class="n">Task</span> <span class="p">(</span><span class="n">complexity</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">previousTask</span><span class="p">)</span>
+        <span class="n">generateTaskList</span> <span class="p">(</span><span class="n">d1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">d2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">newTask</span>
+    <span class="o">|</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">previousTask</span>
+
+
+
+
+
+<span class="n">let</span> <span class="n">properties</span> <span class="o">=</span>
+    <span class="n">Expecto</span><span class="o">.</span><span class="n">Tests</span><span class="o">.</span><span class="n">testList</span> <span class="s2">"FsCheck samples"</span> <span class="p">[</span>
+        <span class="n">let</span> <span class="n">sistemaDivinacao</span> <span class="p">(</span><span class="n">interpretacoes</span><span class="p">:</span> <span class="n">Interpretacao</span> <span class="nb">list</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">:</span> <span class="n">Caracteristica</span><span class="p">)</span> <span class="o">=</span>
+            <span class="n">let</span> <span class="n">interpretacoes</span> <span class="o">=</span> <span class="n">interpretacoes</span> <span class="o">|&gt;</span> <span class="n">List</span><span class="o">.</span><span class="n">sort</span>
+            <span class="n">SistemaDivinacao</span> <span class="p">(</span><span class="n">interpretacoes</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">)</span>
+
+        <span class="n">Expecto</span><span class="o">.</span><span class="n">ExpectoFsCheck</span><span class="o">.</span><span class="n">testPropertyWithConfig</span> <span class="n">config</span> <span class="s2">"SistemaDivinacao is consistent"</span> <span class="o">&lt;|</span>
+            <span class="n">fun</span> <span class="p">(</span><span class="n">interpretacoes</span><span class="p">:</span> <span class="n">Interpretacao</span> <span class="nb">list</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">:</span> <span class="n">Caracteristica</span><span class="p">)</span> <span class="o">-&gt;</span>
+                <span class="n">sistemaDivinacao</span> <span class="p">(</span><span class="n">interpretacoes</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">)</span>
+                    <span class="o">=</span> <span class="n">sistemaDivinacao</span> <span class="p">(</span><span class="n">interpretacoes</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">)</span>
+
+        <span class="n">Expecto</span><span class="o">.</span><span class="n">ExpectoFsCheck</span><span class="o">.</span><span class="n">testPropertyWithConfig</span> <span class="n">config</span> <span class="s2">"SistemaDivinacao is variant under permutation"</span> <span class="o">&lt;|</span>
+            <span class="n">fun</span> <span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Interpretacao</span> <span class="nb">list</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">:</span> <span class="n">Caracteristica</span><span class="p">)</span> <span class="o">-&gt;</span>
+                <span class="n">let</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>
+                <span class="n">let</span> <span class="n">shuffledInput</span> <span class="o">=</span> <span class="n">shuffleList</span> <span class="nb">input</span> <span class="n">seed</span>
+                <span class="n">sistemaDivinacao</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">)</span> <span class="o">=</span> <span class="n">sistemaDivinacao</span> <span class="p">(</span><span class="n">shuffledInput</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">)</span>
+
+        <span class="n">Expecto</span><span class="o">.</span><span class="n">ExpectoFsCheck</span><span class="o">.</span><span class="n">testPropertyWithConfig</span> <span class="n">config</span> <span class="s2">"SistemaDivinacao can handle lists of any size"</span> <span class="o">&lt;|</span>
+            <span class="n">fun</span> <span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Interpretacao</span> <span class="nb">list</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">:</span> <span class="n">Caracteristica</span><span class="p">)</span> <span class="o">-&gt;</span>
+                <span class="n">let</span> <span class="n">sistema</span> <span class="o">=</span> <span class="n">sistemaDivinacao</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">)</span>
+                <span class="n">sistema</span> <span class="o">&lt;&gt;</span> <span class="n">Unchecked</span><span class="o">.</span><span class="n">defaultof</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span>
+
+        <span class="n">Expecto</span><span class="o">.</span><span class="n">ExpectoFsCheck</span><span class="o">.</span><span class="n">testPropertyWithConfig</span> <span class="n">config</span> <span class="s2">"SistemaDivinacao is invariant under data transformations"</span> <span class="o">&lt;|</span>
+            <span class="n">fun</span> <span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Interpretacao</span> <span class="nb">list</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">:</span> <span class="n">Caracteristica</span><span class="p">,</span> <span class="n">newInterpretation</span><span class="p">:</span> <span class="n">Interpretacao</span><span class="p">)</span> <span class="o">-&gt;</span>
+                <span class="n">let</span> <span class="n">containsNewInterpretation</span> <span class="o">=</span> <span class="nb">input</span> <span class="o">|&gt;</span> <span class="n">List</span><span class="o">.</span><span class="n">contains</span> <span class="n">newInterpretation</span>
+                <span class="n">let</span> <span class="n">modifiedInput</span> <span class="o">=</span>
+                    <span class="k">if</span> <span class="n">containsNewInterpretation</span>
+                    <span class="n">then</span> <span class="nb">input</span>
+                    <span class="k">else</span> <span class="n">newInterpretation</span> <span class="p">::</span> <span class="nb">input</span>
+                <span class="k">if</span> <span class="n">containsNewInterpretation</span>
+                <span class="n">then</span> <span class="n">sistemaDivinacao</span> <span class="p">(</span><span class="n">List</span><span class="o">.</span><span class="n">sort</span> <span class="nb">input</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">)</span>
+                        <span class="o">=</span> <span class="n">sistemaDivinacao</span> <span class="p">(</span><span class="n">List</span><span class="o">.</span><span class="n">sort</span> <span class="n">modifiedInput</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">)</span>
+                <span class="k">else</span> <span class="n">sistemaDivinacao</span> <span class="p">(</span><span class="n">List</span><span class="o">.</span><span class="n">sort</span> <span class="nb">input</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">)</span>
+                        <span class="o">&lt;&gt;</span> <span class="n">sistemaDivinacao</span> <span class="p">(</span><span class="n">List</span><span class="o">.</span><span class="n">sort</span> <span class="n">modifiedInput</span><span class="p">,</span> <span class="n">caracteristica</span><span class="p">)</span>
+
+
+
+
+
+
+        <span class="n">let</span> <span class="n">focusDurationProperty</span> <span class="o">=</span>
+            <span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Prop</span><span class="o">.</span><span class="n">forAll</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Arb</span><span class="o">.</span><span class="n">fromGen</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Gen</span><span class="o">.</span><span class="n">map2</span> <span class="p">(</span><span class="n">fun</span> <span class="n">d1</span> <span class="n">d2</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">))</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Gen</span><span class="o">.</span><span class="n">choose</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Gen</span><span class="o">.</span><span class="n">choose</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))))</span> <span class="o">&lt;|</span> <span class="n">fun</span> <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span> <span class="o">-&gt;</span>
+                <span class="n">let</span> <span class="n">expected</span> <span class="o">=</span>
+                    <span class="k">match</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span> <span class="k">with</span>
+                    <span class="o">|</span> <span class="nb">sum</span> <span class="n">when</span> <span class="nb">sum</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="o">-&gt;</span> <span class="n">Short</span>
+                    <span class="o">|</span> <span class="nb">sum</span> <span class="n">when</span> <span class="nb">sum</span> <span class="o">&lt;=</span> <span class="mi">8</span> <span class="o">-&gt;</span> <span class="n">Medium</span>
+                    <span class="o">|</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">Long</span>
+                <span class="n">let</span> <span class="n">actual</span> <span class="o">=</span> <span class="n">durationOfFocus</span> <span class="n">d1</span> <span class="n">d2</span>
+                <span class="n">expected</span> <span class="o">=</span> <span class="n">actual</span>
+
+        <span class="n">let</span> <span class="n">taskComplexityProperty</span> <span class="o">=</span>
+            <span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Prop</span><span class="o">.</span><span class="n">forAll</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Arb</span><span class="o">.</span><span class="n">fromGen</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Gen</span><span class="o">.</span><span class="n">map2</span> <span class="p">(</span><span class="n">fun</span> <span class="n">d1</span> <span class="n">d2</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">))</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Gen</span><span class="o">.</span><span class="n">choose</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Gen</span><span class="o">.</span><span class="n">choose</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))))</span> <span class="o">&lt;|</span> <span class="n">fun</span> <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span> <span class="o">-&gt;</span>
+                <span class="n">let</span> <span class="n">expected</span> <span class="o">=</span>
+                    <span class="k">match</span> <span class="n">d1</span> <span class="o">*</span> <span class="n">d2</span> <span class="k">with</span>
+                    <span class="o">|</span> <span class="n">product</span> <span class="n">when</span> <span class="n">product</span> <span class="o">&lt;=</span> <span class="mi">12</span> <span class="o">-&gt;</span> <span class="n">Simple</span>
+                    <span class="o">|</span> <span class="n">product</span> <span class="n">when</span> <span class="n">product</span> <span class="o">&lt;=</span> <span class="mi">24</span> <span class="o">-&gt;</span> <span class="n">Moderate</span>
+                    <span class="o">|</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">Complex</span>
+                <span class="n">let</span> <span class="n">actual</span> <span class="o">=</span> <span class="n">complexityOfTask</span> <span class="n">d1</span> <span class="n">d2</span>
+                <span class="n">expected</span> <span class="o">=</span> <span class="n">actual</span>
+
+        <span class="n">let</span> <span class="n">taskListLengthProperty</span> <span class="o">=</span>
+            <span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Prop</span><span class="o">.</span><span class="n">forAll</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Arb</span><span class="o">.</span><span class="n">fromGen</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Gen</span><span class="o">.</span><span class="n">map2</span> <span class="p">(</span><span class="n">fun</span> <span class="n">d1</span> <span class="n">d2</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">))</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Gen</span><span class="o">.</span><span class="n">choose</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="p">(</span><span class="n">FsCheck</span><span class="o">.</span><span class="n">FSharp</span><span class="o">.</span><span class="n">Gen</span><span class="o">.</span><span class="n">choose</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))))</span> <span class="o">&lt;|</span> <span class="n">fun</span> <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span> <span class="o">-&gt;</span>
+                <span class="n">let</span> <span class="n">taskList</span> <span class="o">=</span> <span class="n">generateTaskList</span> <span class="n">d1</span> <span class="n">d2</span> <span class="n">NoTask</span>
+                <span class="n">let</span> <span class="n">rec</span> <span class="n">taskListLength</span> <span class="n">taskList</span> <span class="o">=</span>
+                    <span class="k">match</span> <span class="n">taskList</span> <span class="k">with</span>
+                    <span class="o">|</span> <span class="n">Task</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">nextTask</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">taskListLength</span> <span class="n">nextTask</span>
+                    <span class="o">|</span> <span class="n">NoTask</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+                <span class="n">let</span> <span class="n">actual</span> <span class="o">=</span> <span class="n">taskListLength</span> <span class="n">taskList</span>
+                <span class="n">let</span> <span class="n">expected</span> <span class="o">=</span> <span class="nb">min</span> <span class="n">d1</span> <span class="n">d2</span>
+                <span class="n">expected</span> <span class="o">=</span> <span class="n">actual</span>
+
+
+        <span class="n">Expecto</span><span class="o">.</span><span class="n">ExpectoFsCheck</span><span class="o">.</span><span class="n">testProperty</span> <span class="s2">"Duration of focus should be calculated correctly"</span> <span class="n">focusDurationProperty</span>
+        <span class="n">Expecto</span><span class="o">.</span><span class="n">ExpectoFsCheck</span><span class="o">.</span><span class="n">testProperty</span> <span class="s2">"Task complexity should be calculated correctly"</span> <span class="n">taskComplexityProperty</span>
+        <span class="n">Expecto</span><span class="o">.</span><span class="n">ExpectoFsCheck</span><span class="o">.</span><span class="n">testProperty</span> <span class="s2">"Task list should have the correct length"</span> <span class="n">taskListLengthProperty</span>
+
+
+
+    <span class="p">]</span>
+
+<span class="n">let</span> <span class="n">dice1</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">let</span> <span class="n">dice2</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">let</span> <span class="n">taskList</span> <span class="o">=</span> <span class="n">generateTaskList</span> <span class="n">dice1</span> <span class="n">dice2</span> <span class="n">NoTask</span>
+
+<span class="n">let</span> <span class="n">rec</span> <span class="n">printTaskList</span> <span class="n">taskList</span> <span class="o">=</span>
+    <span class="k">match</span> <span class="n">taskList</span> <span class="k">with</span>
+    <span class="o">|</span> <span class="n">Task</span> <span class="p">(</span><span class="n">complexity</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">nextTask</span><span class="p">)</span> <span class="o">-&gt;</span>
+        <span class="n">printfn</span> <span class="s2">"Complexidade: %A, Duração: %A"</span> <span class="n">complexity</span> <span class="n">duration</span>
+        <span class="n">printTaskList</span> <span class="n">nextTask</span>
+    <span class="o">|</span> <span class="n">NoTask</span> <span class="o">-&gt;</span> <span class="p">()</span>
+
+<span class="n">printTaskList</span> <span class="n">taskList</span>
+
+<span class="n">Expecto</span><span class="o">.</span><span class="n">Tests</span><span class="o">.</span><span class="n">runTestsWithCLIArgs</span> <span class="p">[]</span> <span class="p">[</span><span class="o">||</span><span class="p">]</span> <span class="n">properties</span>
+<span class="o">|&gt;</span> <span class="n">_assertEqual</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Complexidade: Simple, Duração: Short
+Complexidade: Simple, Duração: Short
+Complexidade: Simple, Duração: Medium
+Complexidade: Moderate, Duração: Medium
+Complexidade: Complex, Duração: Long
+Complexidade: Complex, Duração: Long
+<span class="ansi-white-fg">[</span><span class="ansi-white-fg">10:43:36 </span><span class="ansi-white-fg">INF</span><span class="ansi-white-fg">] </span><span class="ansi-white-fg">EXPECTO? Running tests...</span><span class="ansi-white-fg"> </span><span class="ansi-white-fg">&lt;</span><span class="ansi-white-fg">Expecto</span><span class="ansi-white-fg">&gt;</span><span class="ansi-white-fg">
+</span><span class="ansi-white-fg">[</span><span class="ansi-white-fg">10:43:46 </span><span class="ansi-white-fg">INF</span><span class="ansi-white-fg">] </span><span class="ansi-white-fg">EXPECTO! </span><span class="ansi-cyan-fg">7</span><span class="ansi-white-fg"> tests run in </span><span class="ansi-green-fg">00:00:09.1243852</span><span class="ansi-white-fg"> for </span><span class="ansi-cyan-fg">FsCheck samples</span><span class="ansi-white-fg"> – </span><span class="ansi-cyan-fg">7</span><span class="ansi-white-fg"> passed, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> ignored, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> failed, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> errored. </span><span class="ansi-cyan-fg">Success!</span><span class="ansi-white-fg"> </span><span class="ansi-white-fg">&lt;</span><span class="ansi-white-fg">Expecto</span><span class="ansi-white-fg">&gt;</span><span class="ansi-white-fg">
+</span>0
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=40">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="main">main<a class="anchor-link" href="#main">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=41">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

@@ -12,7 +12,7 @@ $ErrorActionPreference = "Stop"
 $projectName = "dice_fsharp"
 
 if (!$fast -and !$SkipNotebook) {
-    { . ../../../polyglot/apps/spiral/dist/Supervisor$(_exe) --execute-command "pwsh -c `"../../../polyglot/scripts/invoke-dib.ps1 $projectName.dib`"" } | Invoke-Block -Retries 5
+    { . ../../apps/spiral/dist/Supervisor$(_exe) --execute-command "pwsh -c `"../../scripts/invoke-dib.ps1 ../../../dice/lib/fsharp/$projectName.dib`"" } | Invoke-Block -Retries 5 -Location ../../../polyglot/lib/fsharp
 }
 
 { . ../../../polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" fs } | Invoke-Block

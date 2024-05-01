@@ -329,7 +329,7 @@ let run () =
 
     rollN max n even 0
 
-run ()
+// run ()
 
 #!fsharp
 
@@ -349,6 +349,10 @@ let run () =
 
 // run ()
 
+#!markdown
+
+## FsCheck (test)
+
 #!fsharp
 
 #r @"../../../../../../../.nuget/packages/fscheck/3.0.0-rc3/lib/netstandard2.0/FsCheck.dll"
@@ -356,11 +360,7 @@ let run () =
 
 #!fsharp
 
-open FsCheck
-open FsCheck.FSharp
-open Expecto
-open System
-open Microsoft.FSharp.Collections
+//// test
 
 type ValorDado =
     | Um
@@ -415,7 +415,7 @@ type Interpretacao =
 type SistemaDivinacao =
     | SistemaDivinacao of Interpretacao list * Caracteristica
 
-let config = { FsCheckConfig.defaultConfig with maxTest = 10000 }
+let config = { Expecto.FsCheckConfig.defaultConfig with maxTest = 10000 }
 
 let shuffleList xs seed =
     let rnd = Random (seed)
@@ -423,9 +423,6 @@ let shuffleList xs seed =
     |> List.map (fun x -> rnd.Next(), x)
     |> List.sortBy fst
     |> List.map snd
-
-
-
 
 
 
@@ -464,53 +461,29 @@ let rec generateTaskList d1 d2 previousTask =
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let properties =
-    testList "FsCheck samples" [
+    Expecto.Tests.testList "FsCheck samples" [
         let sistemaDivinacao (interpretacoes: Interpretacao list, caracteristica: Caracteristica) =
             let interpretacoes = interpretacoes |> List.sort
             SistemaDivinacao (interpretacoes, caracteristica)
 
-        testPropertyWithConfig config "SistemaDivinacao is consistent" <|
+        Expecto.ExpectoFsCheck.testPropertyWithConfig config "SistemaDivinacao is consistent" <|
             fun (interpretacoes: Interpretacao list, caracteristica: Caracteristica) ->
                 sistemaDivinacao (interpretacoes, caracteristica)
                     = sistemaDivinacao (interpretacoes, caracteristica)
 
-        testPropertyWithConfig config "SistemaDivinacao is variant under permutation" <|
+        Expecto.ExpectoFsCheck.testPropertyWithConfig config "SistemaDivinacao is variant under permutation" <|
             fun (input: Interpretacao list, caracteristica: Caracteristica) ->
                 let seed = 42
                 let shuffledInput = shuffleList input seed
                 sistemaDivinacao (input, caracteristica) = sistemaDivinacao (shuffledInput, caracteristica)
 
-        testPropertyWithConfig config "SistemaDivinacao can handle lists of any size" <|
+        Expecto.ExpectoFsCheck.testPropertyWithConfig config "SistemaDivinacao can handle lists of any size" <|
             fun (input: Interpretacao list, caracteristica: Caracteristica) ->
                 let sistema = sistemaDivinacao (input, caracteristica)
                 sistema <> Unchecked.defaultof<_>
 
-        testPropertyWithConfig config "SistemaDivinacao is invariant under data transformations" <|
+        Expecto.ExpectoFsCheck.testPropertyWithConfig config "SistemaDivinacao is invariant under data transformations" <|
             fun (input: Interpretacao list, caracteristica: Caracteristica, newInterpretation: Interpretacao) ->
                 let containsNewInterpretation = input |> List.contains newInterpretation
                 let modifiedInput =
@@ -528,10 +501,8 @@ let properties =
 
 
 
-
-
         let focusDurationProperty =
-            Prop.forAll (Arb.fromGen (Gen.map2 (fun d1 d2 -> (d1, d2)) (Gen.choose (1, 6)) (Gen.choose (1, 6)))) <| fun (d1, d2) ->
+            FsCheck.FSharp.Prop.forAll (FsCheck.FSharp.Arb.fromGen (FsCheck.FSharp.Gen.map2 (fun d1 d2 -> (d1, d2)) (FsCheck.FSharp.Gen.choose (1, 6)) (FsCheck.FSharp.Gen.choose (1, 6)))) <| fun (d1, d2) ->
                 let expected =
                     match d1 + d2 with
                     | sum when sum <= 4 -> Short
@@ -541,7 +512,7 @@ let properties =
                 expected = actual
 
         let taskComplexityProperty =
-            Prop.forAll (Arb.fromGen (Gen.map2 (fun d1 d2 -> (d1, d2)) (Gen.choose (1, 6)) (Gen.choose (1, 6)))) <| fun (d1, d2) ->
+            FsCheck.FSharp.Prop.forAll (FsCheck.FSharp.Arb.fromGen (FsCheck.FSharp.Gen.map2 (fun d1 d2 -> (d1, d2)) (FsCheck.FSharp.Gen.choose (1, 6)) (FsCheck.FSharp.Gen.choose (1, 6)))) <| fun (d1, d2) ->
                 let expected =
                     match d1 * d2 with
                     | product when product <= 12 -> Simple
@@ -551,7 +522,7 @@ let properties =
                 expected = actual
 
         let taskListLengthProperty =
-            Prop.forAll (Arb.fromGen (Gen.map2 (fun d1 d2 -> (d1, d2)) (Gen.choose (1, 6)) (Gen.choose (1, 6)))) <| fun (d1, d2) ->
+            FsCheck.FSharp.Prop.forAll (FsCheck.FSharp.Arb.fromGen (FsCheck.FSharp.Gen.map2 (fun d1 d2 -> (d1, d2)) (FsCheck.FSharp.Gen.choose (1, 6)) (FsCheck.FSharp.Gen.choose (1, 6)))) <| fun (d1, d2) ->
                 let taskList = generateTaskList d1 d2 NoTask
                 let rec taskListLength taskList =
                     match taskList with
@@ -562,9 +533,9 @@ let properties =
                 expected = actual
 
 
-        testProperty "Duration of focus should be calculated correctly" focusDurationProperty
-        testProperty "Task complexity should be calculated correctly" taskComplexityProperty
-        testProperty "Task list should have the correct length" taskListLengthProperty
+        Expecto.ExpectoFsCheck.testProperty "Duration of focus should be calculated correctly" focusDurationProperty
+        Expecto.ExpectoFsCheck.testProperty "Task complexity should be calculated correctly" taskComplexityProperty
+        Expecto.ExpectoFsCheck.testProperty "Task list should have the correct length" taskListLengthProperty
 
 
 
@@ -584,7 +555,8 @@ let rec printTaskList taskList =
 
 printTaskList taskList
 
-runTestsWithCLIArgs [] [||] properties |> ignore
+Expecto.Tests.runTestsWithCLIArgs [] [||] properties
+|> _assertEqual 0
 
 #!markdown
 

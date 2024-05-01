@@ -7,14 +7,14 @@ $ErrorActionPreference = "Stop"
 . ../../polyglot/scripts/core.ps1
 
 
-{ . ../lib/build.ps1 -fast $($fast ?? '') } | Invoke-Block -Location $ScriptDir
+{ pwsh ../lib/build.ps1 -fast $($fast ?? '') } | Invoke-Block
 
-{ . ../contract/build.ps1 -fast 1 } | Invoke-Block -Location $ScriptDir
+{ pwsh ../contract/build.ps1 -fast 1 } | Invoke-Block
 
-{ . ../contract/tests/build.ps1 } | Invoke-Block -Retries 3 -Location $ScriptDir
+{ pwsh ../contract/tests/build.ps1 } | Invoke-Block -Retries 3
 
-{ . ../ui/build.ps1 -fast $($fast ?? '') } | Invoke-Block -Location $ScriptDir
+{ pwsh ../ui/build.ps1 -fast $($fast ?? '') } | Invoke-Block
 
-{ . ../lib/fsharp/build.ps1 } | Invoke-Block -Location $ScriptDir
+{ pwsh ../lib/fsharp/build.ps1 } | Invoke-Block
 
-{ . ../scripts/outdated.ps1 } | Invoke-Block -Location $ScriptDir
+{ pwsh ../scripts/outdated.ps1 } | Invoke-Block
