@@ -311,6 +311,8 @@ inl render () =
                                                     $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                 ] fun () =>
                                                     txn.block_timestamp
+                                                    |> sm'.from_std_string
+                                                    |> i64
                                                     |> date_time.format_timestamp
                                                     |> to_string
                                                     |> leptos.text_fragment
@@ -349,8 +351,8 @@ inl render () =
                                                         ((a txn.logs : _ i32 _), None)
                                                         ||> am.foldBack fun x acc =>
                                                             inl logs =
-                                                                x 
-                                                                |> sm'.from_std_string 
+                                                                x
+                                                                |> sm'.from_std_string
                                                                 |> sm'.split " / result: "
                                                             match acc, logs with
                                                             | None, ;[ _; result ] => Some result

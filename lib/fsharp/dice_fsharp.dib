@@ -274,34 +274,34 @@ rollProgressively (Some (printfn "%s")) rollDice true 2000
 
 //// ignore
 
-[ 1 .. 10000 ]
-|> List.map (fun _ -> rollProgressively None rollDice false 10)
-|> List.groupBy id
-|> List.map (fun (k, v) -> k, v.Length)
-|> List.sortBy fst
+[| 1 .. 10000 |]
+|> Array.Parallel.map (fun _ -> rollProgressively None rollDice false 10)
+|> Array.Parallel.groupBy id
+|> Array.Parallel.map (fun (k, v) -> k, v.Length)
+|> Array.Parallel.sortBy fst
 
 #!fsharp
 
 //// ignore
 
-[ 1 .. 10000 ]
-|> List.map (fun _ -> rollProgressively None rollDice true 10)
-|> List.groupBy id
-|> List.map (fun (k, v) -> k, v.Length)
-|> List.sortBy fst
+[| 1 .. 10000 |]
+|> Array.Parallel.map (fun _ -> rollProgressively None rollDice true 10)
+|> Array.Parallel.groupBy id
+|> Array.Parallel.map (fun (k, v) -> k, v.Length)
+|> Array.Parallel.sortBy fst
 
 #!fsharp
 
 //// test
 
-[ 1 .. 100 ]
-|> List.iter (fun n ->
-    [ 0 .. 1 ]
-    |> List.iter (fun reroll ->
-        [ 1 .. 3500 ]
-        |> List.map (fun _ -> rollProgressively None rollDice (reroll = 1) n)
-        |> List.groupBy id
-        |> List.length
+[| 1 .. 100 |]
+|> Array.Parallel.iter (fun n ->
+    [| 0 .. 1 |]
+    |> Array.Parallel.iter (fun reroll ->
+        [| 1 .. 3500 |]
+        |> Array.Parallel.map (fun _ -> rollProgressively None rollDice (reroll = 1) n)
+        |> Array.Parallel.groupBy id
+        |> Array.length
         |> __assertEqual false n
     )
 )
@@ -310,24 +310,24 @@ rollProgressively (Some (printfn "%s")) rollDice true 2000
 
 //// ignore
 
-let run () =
-    let inline rollMax fn max n =
-        [ 1 .. n ]
-        |> List.map (fun _ -> fn max)
-        |> List.groupBy id
-        |> List.map (fun (_, v) -> v.Length)
+let inline rollMax fn max n =
+    [| 1 .. n |]
+    |> Array.Parallel.map (fun _ -> fn max)
+    |> Array.Parallel.groupBy id
+    |> Array.Parallel.map (fun (_, v) -> v.Length)
 
+let rec rollN max n even current =
+    let roll = rollMax (rollProgressively None rollDice true) max n
+    if roll |> Array.Parallel.forall ((=) even)
+    then current
+    else rollN max n even (current + 1)
+
+let run () =
     let max = 10
     let n = 30
     let even = (n / max) |> int
 
-    let rec rollN current =
-        let roll = rollMax (rollProgressively None rollDice true) max n
-        if roll |> List.forall ((=) even)
-        then current
-        else rollN (current + 1)
-
-    rollN 0
+    rollN max n even 0
 
 // run ()
 
@@ -335,14 +335,228 @@ let run () =
 
 //// ignore
 
-// [ 1 .. 100 ]
-// |> List.map (fun i ->
-//     let roll = rollN 0
-//     printfn $"i: {i} / roll: {roll}"
-//     roll
-// )
-// |> List.map float
-// |> List.average
+let run () =
+    let max = 10
+    let n = 30
+    let even = (n / max) |> int
+    [| 1 .. 100 |]
+    |> Array.Parallel.map (fun i ->
+        let roll = rollN max n even 0
+        printfn $"i: {i} / roll: {roll}"
+        float roll
+    )
+    |> Array.Parallel.average
+
+// run ()
+
+#!markdown
+
+## FsCheck (test)
+
+#!fsharp
+
+#r @"../../../../../../../.nuget/packages/fscheck/3.0.0-rc3/lib/netstandard2.0/FsCheck.dll"
+#r @"../../../../../../../.nuget/packages/expecto.fscheck/10.2.1-fscheck3/lib/net6.0/Expecto.FsCheck3.dll"
+
+#!fsharp
+
+//// test
+
+type ValorDado =
+    | Um
+    | Dois
+    | Tres
+    | Quatro
+    | Cinco
+    | Seis
+
+type Aspecto =
+    | Passado of string
+    | Presente of string
+    | Futuro of string
+    | Desafios of string
+    | Recursos of string
+    | ResultadoProjetado of string
+    | InfluenciaExterna of string
+
+type Contexto =
+    | Amor of string
+    | Trabalho of string
+    | Saude of string
+    | Dinheiro of string
+
+type Universo =
+    | Real of string
+    | Virtual of string
+    | Espiritual of string
+
+type Caracteristica =
+    | Aspecto of Aspecto
+    | Contexto of Contexto
+    | Universo of Universo
+    | DadoRolado of ValorDado
+
+type Interacao =
+    | Conflito
+    | Parceria
+    | Crescimento
+    | Estagnacao
+    | Separacao
+    | Harmonia
+    | Desafio
+    | Colaboracao
+    | Progresso
+    | Mudanca
+    | Sucesso
+
+type Interpretacao =
+    | Interpretacao of Caracteristica * Interacao * Caracteristica
+
+type SistemaDivinacao =
+    | SistemaDivinacao of Interpretacao list * Caracteristica
+
+let config = { Expecto.FsCheckConfig.defaultConfig with maxTest = 10000 }
+
+let shuffleList xs seed =
+    let rnd = Random (seed)
+    xs
+    |> List.map (fun x -> rnd.Next(), x)
+    |> List.sortBy fst
+    |> List.map snd
+
+
+
+
+type Complexity = Simple | Moderate | Complex
+type Duration = Short | Medium | Long
+
+type Dice = D1 of int | D2 of int
+
+type Task =
+    | Task of Complexity * Duration * Task
+    | NoTask
+
+let durationOfFocus (d1: int) (d2: int) =
+    match d1 + d2 with
+    | sum when sum <= 4 -> Short
+    | sum when sum <= 8 -> Medium
+    | _ -> Long
+
+let complexityOfTask (d1: int) (d2: int) =
+    match d1 * d2 with
+    | product when product <= 12 -> Simple
+    | product when product <= 24 -> Moderate
+    | _ -> Complex
+
+let rec generateTaskList d1 d2 previousTask =
+    match d1, d2 with
+    | d1, d2 when d1 > 0 && d2 > 0 ->
+        let complexity = complexityOfTask d1 d2
+        let duration = durationOfFocus d1 d2
+        let newTask = Task (complexity, duration, previousTask)
+        generateTaskList (d1 - 1) (d2 - 1) newTask
+    | _, _ -> previousTask
+
+
+
+
+
+let properties =
+    Expecto.Tests.testList "FsCheck samples" [
+        let sistemaDivinacao (interpretacoes: Interpretacao list, caracteristica: Caracteristica) =
+            let interpretacoes = interpretacoes |> List.sort
+            SistemaDivinacao (interpretacoes, caracteristica)
+
+        Expecto.ExpectoFsCheck.testPropertyWithConfig config "SistemaDivinacao is consistent" <|
+            fun (interpretacoes: Interpretacao list, caracteristica: Caracteristica) ->
+                sistemaDivinacao (interpretacoes, caracteristica)
+                    = sistemaDivinacao (interpretacoes, caracteristica)
+
+        Expecto.ExpectoFsCheck.testPropertyWithConfig config "SistemaDivinacao is variant under permutation" <|
+            fun (input: Interpretacao list, caracteristica: Caracteristica) ->
+                let seed = 42
+                let shuffledInput = shuffleList input seed
+                sistemaDivinacao (input, caracteristica) = sistemaDivinacao (shuffledInput, caracteristica)
+
+        Expecto.ExpectoFsCheck.testPropertyWithConfig config "SistemaDivinacao can handle lists of any size" <|
+            fun (input: Interpretacao list, caracteristica: Caracteristica) ->
+                let sistema = sistemaDivinacao (input, caracteristica)
+                sistema <> Unchecked.defaultof<_>
+
+        Expecto.ExpectoFsCheck.testPropertyWithConfig config "SistemaDivinacao is invariant under data transformations" <|
+            fun (input: Interpretacao list, caracteristica: Caracteristica, newInterpretation: Interpretacao) ->
+                let containsNewInterpretation = input |> List.contains newInterpretation
+                let modifiedInput =
+                    if containsNewInterpretation
+                    then input
+                    else newInterpretation :: input
+                if containsNewInterpretation
+                then sistemaDivinacao (List.sort input, caracteristica)
+                        = sistemaDivinacao (List.sort modifiedInput, caracteristica)
+                else sistemaDivinacao (List.sort input, caracteristica)
+                        <> sistemaDivinacao (List.sort modifiedInput, caracteristica)
+
+
+
+
+
+
+        let focusDurationProperty =
+            FsCheck.FSharp.Prop.forAll (FsCheck.FSharp.Arb.fromGen (FsCheck.FSharp.Gen.map2 (fun d1 d2 -> (d1, d2)) (FsCheck.FSharp.Gen.choose (1, 6)) (FsCheck.FSharp.Gen.choose (1, 6)))) <| fun (d1, d2) ->
+                let expected =
+                    match d1 + d2 with
+                    | sum when sum <= 4 -> Short
+                    | sum when sum <= 8 -> Medium
+                    | _ -> Long
+                let actual = durationOfFocus d1 d2
+                expected = actual
+
+        let taskComplexityProperty =
+            FsCheck.FSharp.Prop.forAll (FsCheck.FSharp.Arb.fromGen (FsCheck.FSharp.Gen.map2 (fun d1 d2 -> (d1, d2)) (FsCheck.FSharp.Gen.choose (1, 6)) (FsCheck.FSharp.Gen.choose (1, 6)))) <| fun (d1, d2) ->
+                let expected =
+                    match d1 * d2 with
+                    | product when product <= 12 -> Simple
+                    | product when product <= 24 -> Moderate
+                    | _ -> Complex
+                let actual = complexityOfTask d1 d2
+                expected = actual
+
+        let taskListLengthProperty =
+            FsCheck.FSharp.Prop.forAll (FsCheck.FSharp.Arb.fromGen (FsCheck.FSharp.Gen.map2 (fun d1 d2 -> (d1, d2)) (FsCheck.FSharp.Gen.choose (1, 6)) (FsCheck.FSharp.Gen.choose (1, 6)))) <| fun (d1, d2) ->
+                let taskList = generateTaskList d1 d2 NoTask
+                let rec taskListLength taskList =
+                    match taskList with
+                    | Task (_, _, nextTask) -> 1 + taskListLength nextTask
+                    | NoTask -> 0
+                let actual = taskListLength taskList
+                let expected = min d1 d2
+                expected = actual
+
+
+        Expecto.ExpectoFsCheck.testProperty "Duration of focus should be calculated correctly" focusDurationProperty
+        Expecto.ExpectoFsCheck.testProperty "Task complexity should be calculated correctly" taskComplexityProperty
+        Expecto.ExpectoFsCheck.testProperty "Task list should have the correct length" taskListLengthProperty
+
+
+
+    ]
+
+let dice1 = 6
+let dice2 = 6
+
+let taskList = generateTaskList dice1 dice2 NoTask
+
+let rec printTaskList taskList =
+    match taskList with
+    | Task (complexity, duration, nextTask) ->
+        printfn "Complexidade: %A, Duração: %A" complexity duration
+        printTaskList nextTask
+    | NoTask -> ()
+
+printTaskList taskList
+
+Expecto.Tests.runTestsWithCLIArgs [] [||] properties
+|> _assertEqual 0
 
 #!markdown
 
@@ -352,5 +566,5 @@ let run () =
 
 let main args =
     let result = rollProgressively (Some (printfn "%s")) rollDice true (System.Int32.MaxValue / 10)
-    trace Debug (fun () -> $"main / result: {result}") getLocals
+    trace Debug (fun () -> $"main / result: {result}") _locals
     0

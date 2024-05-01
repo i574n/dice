@@ -12,14 +12,12 @@ rsync -av `
     --exclude '.elixir_ls' `
     --exclude '.git' `
     --exclude '.history' `
-    --exclude '.paket' `
     --exclude '.vscode' `
     --exclude 'bin' `
     --exclude 'deps' `
     --exclude 'fable_modules' `
     --exclude 'node_modules' `
     --exclude 'obj' `
-    --exclude 'paket-files' `
     --exclude 'pkg' `
     --exclude 'target' `
 `
@@ -32,7 +30,6 @@ rsync -av `
     --include '*.css' `
     --include '*.csproj' `
     --include '*.dependencies' `
-    --include '*.dart' `
     --include '*.dib' `
     --include '*.editorconfig' `
     --include '*.exs' `
@@ -50,7 +47,6 @@ rsync -av `
     --include '*.md' `
     --include '*.nix' `
     --include '*.out' `
-    --include '*.php' `
     --include '*.ps1' `
     --include '*.py' `
     --include '*.references' `
@@ -78,4 +74,4 @@ Get-ChildItem -Path ../dist -Recurse -Force | Where-Object { $_.Name.StartsWith(
     Rename-Item -Path $_.FullName -NewName "_$($_.Name.Substring(1))"
 }
 
-{ . ../../polyglot/apps/dir-tree-html/dist/DirTreeHtml$(GetExecutableSuffix) --dir ../dist --html ../dist/index.html } | Invoke-Block
+{ . ../../polyglot/apps/dir-tree-html/dist/DirTreeHtml$(_exe) --dir ../dist --html ../dist/index.html } | Invoke-Block

@@ -4,12 +4,13 @@ from dataclasses import dataclass
 import sys
 from typing import Any
 from fable_modules.fable_library.long import (op_addition, op_modulus, op_subtraction, from_integer, to_int, op_multiply)
-from fable_modules.fable_library.option import (default_arg, map, value)
+from fable_modules.fable_library.option import (default_arg, map, value as value_47)
 from fable_modules.fable_library.reflection import (TypeInfo, uint8_type, unit_type, lambda_type, union_type, string_type, record_type, int64_type, uint64_type)
 from fable_modules.fable_library.string_ import (to_text, interpolate)
 from fable_modules.fable_library.types import (Array, Union, Record, int64, FSharpRef, uint8, uint64, int8)
+from fable_modules.fable_library.util import randint
 
-def _expr171() -> TypeInfo:
+def _expr226() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -24,9 +25,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr171
+UH0_reflection = _expr226
 
-def _expr172() -> TypeInfo:
+def _expr227() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[], [("Item1", uint8_type), ("Item2", UH1_reflection())]])
 
 
@@ -41,9 +42,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr172
+UH1_reflection = _expr227
 
-def _expr173() -> TypeInfo:
+def _expr228() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[("f0_0", lambda_type(string_type, unit_type))], []])
 
 
@@ -59,9 +60,9 @@ class US0(Union):
         return ["US0_0", "US0_1"]
 
 
-US0_reflection = _expr173
+US0_reflection = _expr228
 
-def _expr174() -> TypeInfo:
+def _expr229() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", lambda_type(unit_type, UH0_reflection()))], [("f1_0", UH0_reflection())]])
 
 
@@ -77,9 +78,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr174
+US1_reflection = _expr229
 
-def _expr175() -> TypeInfo:
+def _expr230() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", US1_reflection())])
 
 
@@ -87,9 +88,9 @@ def _expr175() -> TypeInfo:
 class Mut0(Record):
     l0: US1
 
-Mut0_reflection = _expr175
+Mut0_reflection = _expr230
 
-def _expr176() -> TypeInfo:
+def _expr231() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", int64_type)])
 
 
@@ -97,9 +98,9 @@ def _expr176() -> TypeInfo:
 class Mut1(Record):
     l0: int64
 
-Mut1_reflection = _expr176
+Mut1_reflection = _expr231
 
-def _expr177() -> TypeInfo:
+def _expr232() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[("f0_0", uint8_type)], []])
 
 
@@ -115,9 +116,9 @@ class US2(Union):
         return ["US2_0", "US2_1"]
 
 
-US2_reflection = _expr177
+US2_reflection = _expr232
 
-def _expr178() -> TypeInfo:
+def _expr233() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", US2_reflection())])
 
 
@@ -125,9 +126,9 @@ def _expr178() -> TypeInfo:
 class Mut2(Record):
     l0: US2
 
-Mut2_reflection = _expr178
+Mut2_reflection = _expr233
 
-def _expr179() -> TypeInfo:
+def _expr234() -> TypeInfo:
     return union_type("Dice.US3", [], US3, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -143,9 +144,9 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr179
+US3_reflection = _expr234
 
-def _expr180() -> TypeInfo:
+def _expr235() -> TypeInfo:
     return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
 
 
@@ -160,9 +161,9 @@ class UH2(Union):
         return ["UH2_0", "UH2_1"]
 
 
-UH2_reflection = _expr180
+UH2_reflection = _expr235
 
-def _expr181() -> TypeInfo:
+def _expr236() -> TypeInfo:
     return union_type("Dice.US4", [], US4, lambda: [[("f0_0", uint64_type)], []])
 
 
@@ -178,9 +179,9 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr181
+US4_reflection = _expr236
 
-def _expr182() -> TypeInfo:
+def _expr237() -> TypeInfo:
     return union_type("Dice.US5", [], US5, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -196,7 +197,7 @@ class US5(Union):
         return ["US5_0", "US5_1"]
 
 
-US5_reflection = _expr182
+US5_reflection = _expr237
 
 def UH0__get_IsUH0_0(this: UH0, unit_arg: None) -> bool:
     if this.tag == 0:
@@ -383,10 +384,10 @@ def closure1(v0_1: int64, v1_1: UH0) -> UH0:
 
 
 def closure0(unit_var: None, v0_1: int64) -> Callable[[UH0], UH0]:
-    def _arrow183(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
+    def _arrow238(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
         return closure1(v0_1, v)
 
-    return _arrow183
+    return _arrow238
 
 
 def closure4(unit_var: None, v0_1: Callable[[str], None]) -> US0:
@@ -394,10 +395,10 @@ def closure4(unit_var: None, v0_1: Callable[[str], None]) -> US0:
 
 
 def method1(__unit: None=None) -> Callable[[Callable[[str], None]], US0]:
-    def _arrow184(v: Callable[[str], None]) -> US0:
+    def _arrow239(v: Callable[[str], None]) -> US0:
         return closure4(None, v)
 
-    return _arrow184
+    return _arrow239
 
 
 def method2(v0_1_mut: UH1, v1_1_mut: UH1) -> UH1:
@@ -459,10 +460,10 @@ def closure8(v0_1: UH0, v1_1: Mut0, unit_var: None) -> UH0:
 
 def method5(v0_1: UH0, v1_1: Callable[[], UH0]) -> Callable[[], UH0]:
     v3_1: Mut0 = Mut0(US1(0, v1_1))
-    def _arrow185(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
+    def _arrow240(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
         return closure8(v0_1, v3_1, None)
 
-    return _arrow185
+    return _arrow240
 
 
 def method7(v0_1_mut: int64, v1_1_mut: UH0) -> US2:
@@ -539,18 +540,18 @@ def closure5(v0_1: US0, v1_1: UH1) -> Callable[[], uint8]:
     v12: Mut1 = Mut1(int64(1))
     v13: Mut1 = Mut1(int64(-1))
     v15: Mut2 = Mut2(US2(1))
-    def _arrow186(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
+    def _arrow241(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
         return closure9(v0_1, v10, v11, v12, v13, v15, None)
 
-    return _arrow186
+    return _arrow241
 
 
 def closure3(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     v3_1: US0 = default_arg(map(method1(), v0_1), US0(1))
-    def _arrow187(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
+    def _arrow242(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
         return closure5(v3_1, v)
 
-    return _arrow187
+    return _arrow242
 
 
 def method8(v0_1_mut: US0, v1_1_mut: uint64, v2_1_mut: int8, v3_1_mut: uint64) -> int8:
@@ -1206,25 +1207,25 @@ def closure13(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool, v3_1: uint64) ->
 
 
 def closure12(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool) -> Callable[[uint64], uint64]:
-    def _arrow188(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
+    def _arrow243(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
         return closure13(v0_1, v1_1, v2_1, v)
 
-    return _arrow188
+    return _arrow243
 
 
 def closure11(v0_1: US0, v1_1: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
-    def _arrow189(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
+    def _arrow244(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
         return closure12(v0_1, v1_1, v)
 
-    return _arrow189
+    return _arrow244
 
 
 def closure10(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     v3_1: US0 = default_arg(map(method1(), v0_1), US0(1))
-    def _arrow190(v: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
+    def _arrow245(v: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
         return closure11(v3_1, v)
 
-    return _arrow190
+    return _arrow245
 
 
 def method14(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
@@ -1260,17 +1261,17 @@ def closure80(v0_1: Callable[[str], None] | None, v1_1: uint64, v2_1: UH1) -> ui
 
 
 def closure79(v0_1: Callable[[str], None] | None, v1_1: uint64) -> Callable[[UH1], uint64 | None]:
-    def _arrow191(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
+    def _arrow246(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
         return closure80(v0_1, v1_1, v)
 
-    return _arrow191
+    return _arrow246
 
 
 def closure78(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
-    def _arrow192(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
+    def _arrow247(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
         return closure79(v0_1, v)
 
-    return _arrow192
+    return _arrow247
 
 
 def method40(v0_1: UH1, v1_1: int64) -> US5:
@@ -1740,8 +1741,11 @@ def method15(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v1_1 < int8(24):
             _v3: uint8 | None = None
-            _v3 = uint8(0)
-            v0_1_mut = UH1(1, value(_v3), v0_1)
+            x: uint8
+            value: int = randint(1, 7) or 0
+            x = int(value+0x100 if value < 0 else value) & 0xFF
+            _v3 = x
+            v0_1_mut = UH1(1, value_47(_v3), v0_1)
             v1_1_mut = v1_1 + int8(1)
             continue
 
@@ -1754,148 +1758,286 @@ def method15(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
 
                 else: 
                     _v22: uint8 | None = None
-                    _v22 = uint8(0)
-                    v32: uint8 = value(_v22)
+                    x_1: uint8
+                    value_1: int = randint(1, 7) or 0
+                    x_1 = int(value_1+0x100 if value_1 < 0 else value_1) & 0xFF
+                    _v22 = x_1
+                    v32: uint8 = value_47(_v22)
                     _v33: uint8 | None = None
-                    _v33 = uint8(0)
-                    v41: uint8 = value(_v33)
+                    x_2: uint8
+                    value_2: int = randint(1, 7) or 0
+                    x_2 = int(value_2+0x100 if value_2 < 0 else value_2) & 0xFF
+                    _v33 = x_2
+                    v41: uint8 = value_47(_v33)
                     _v42: uint8 | None = None
-                    _v42 = uint8(0)
-                    v50: uint8 = value(_v42)
+                    x_3: uint8
+                    value_3: int = randint(1, 7) or 0
+                    x_3 = int(value_3+0x100 if value_3 < 0 else value_3) & 0xFF
+                    _v42 = x_3
+                    v50: uint8 = value_47(_v42)
                     _v51: uint8 | None = None
-                    _v51 = uint8(0)
-                    v59: uint8 = value(_v51)
+                    x_4: uint8
+                    value_4: int = randint(1, 7) or 0
+                    x_4 = int(value_4+0x100 if value_4 < 0 else value_4) & 0xFF
+                    _v51 = x_4
+                    v59: uint8 = value_47(_v51)
                     _v60: uint8 | None = None
-                    _v60 = uint8(0)
-                    v68: uint8 = value(_v60)
+                    x_5: uint8
+                    value_5: int = randint(1, 7) or 0
+                    x_5 = int(value_5+0x100 if value_5 < 0 else value_5) & 0xFF
+                    _v60 = x_5
+                    v68: uint8 = value_47(_v60)
                     _v69: uint8 | None = None
-                    _v69 = uint8(0)
-                    v77: uint8 = value(_v69)
+                    x_6: uint8
+                    value_6: int = randint(1, 7) or 0
+                    x_6 = int(value_6+0x100 if value_6 < 0 else value_6) & 0xFF
+                    _v69 = x_6
+                    v77: uint8 = value_47(_v69)
                     _v78: uint8 | None = None
-                    _v78 = uint8(0)
-                    v86: uint8 = value(_v78)
+                    x_7: uint8
+                    value_7: int = randint(1, 7) or 0
+                    x_7 = int(value_7+0x100 if value_7 < 0 else value_7) & 0xFF
+                    _v78 = x_7
+                    v86: uint8 = value_47(_v78)
                     _v87: uint8 | None = None
-                    _v87 = uint8(0)
-                    v95: uint8 = value(_v87)
+                    x_8: uint8
+                    value_8: int = randint(1, 7) or 0
+                    x_8 = int(value_8+0x100 if value_8 < 0 else value_8) & 0xFF
+                    _v87 = x_8
+                    v95: uint8 = value_47(_v87)
                     _v96: uint8 | None = None
-                    _v96 = uint8(0)
-                    v104: uint8 = value(_v96)
+                    x_9: uint8
+                    value_9: int = randint(1, 7) or 0
+                    x_9 = int(value_9+0x100 if value_9 < 0 else value_9) & 0xFF
+                    _v96 = x_9
+                    v104: uint8 = value_47(_v96)
                     _v105: uint8 | None = None
-                    _v105 = uint8(0)
-                    v113: uint8 = value(_v105)
+                    x_10: uint8
+                    value_10: int = randint(1, 7) or 0
+                    x_10 = int(value_10+0x100 if value_10 < 0 else value_10) & 0xFF
+                    _v105 = x_10
+                    v113: uint8 = value_47(_v105)
                     _v114: uint8 | None = None
-                    _v114 = uint8(0)
-                    v122: uint8 = value(_v114)
+                    x_11: uint8
+                    value_11: int = randint(1, 7) or 0
+                    x_11 = int(value_11+0x100 if value_11 < 0 else value_11) & 0xFF
+                    _v114 = x_11
+                    v122: uint8 = value_47(_v114)
                     _v123: uint8 | None = None
-                    _v123 = uint8(0)
-                    v131: uint8 = value(_v123)
+                    x_12: uint8
+                    value_12: int = randint(1, 7) or 0
+                    x_12 = int(value_12+0x100 if value_12 < 0 else value_12) & 0xFF
+                    _v123 = x_12
+                    v131: uint8 = value_47(_v123)
                     _v132: uint8 | None = None
-                    _v132 = uint8(0)
-                    v140: uint8 = value(_v132)
+                    x_13: uint8
+                    value_13: int = randint(1, 7) or 0
+                    x_13 = int(value_13+0x100 if value_13 < 0 else value_13) & 0xFF
+                    _v132 = x_13
+                    v140: uint8 = value_47(_v132)
                     _v141: uint8 | None = None
-                    _v141 = uint8(0)
-                    v149: uint8 = value(_v141)
+                    x_14: uint8
+                    value_14: int = randint(1, 7) or 0
+                    x_14 = int(value_14+0x100 if value_14 < 0 else value_14) & 0xFF
+                    _v141 = x_14
+                    v149: uint8 = value_47(_v141)
                     _v150: uint8 | None = None
-                    _v150 = uint8(0)
-                    v158: uint8 = value(_v150)
+                    x_15: uint8
+                    value_15: int = randint(1, 7) or 0
+                    x_15 = int(value_15+0x100 if value_15 < 0 else value_15) & 0xFF
+                    _v150 = x_15
+                    v158: uint8 = value_47(_v150)
                     _v159: uint8 | None = None
-                    _v159 = uint8(0)
-                    v167: uint8 = value(_v159)
+                    x_16: uint8
+                    value_16: int = randint(1, 7) or 0
+                    x_16 = int(value_16+0x100 if value_16 < 0 else value_16) & 0xFF
+                    _v159 = x_16
+                    v167: uint8 = value_47(_v159)
                     _v168: uint8 | None = None
-                    _v168 = uint8(0)
-                    v176: uint8 = value(_v168)
+                    x_17: uint8
+                    value_17: int = randint(1, 7) or 0
+                    x_17 = int(value_17+0x100 if value_17 < 0 else value_17) & 0xFF
+                    _v168 = x_17
+                    v176: uint8 = value_47(_v168)
                     _v177: uint8 | None = None
-                    _v177 = uint8(0)
-                    v185: uint8 = value(_v177)
+                    x_18: uint8
+                    value_18: int = randint(1, 7) or 0
+                    x_18 = int(value_18+0x100 if value_18 < 0 else value_18) & 0xFF
+                    _v177 = x_18
+                    v185: uint8 = value_47(_v177)
                     _v186: uint8 | None = None
-                    _v186 = uint8(0)
-                    v194: uint8 = value(_v186)
+                    x_19: uint8
+                    value_19: int = randint(1, 7) or 0
+                    x_19 = int(value_19+0x100 if value_19 < 0 else value_19) & 0xFF
+                    _v186 = x_19
+                    v194: uint8 = value_47(_v186)
                     _v195: uint8 | None = None
-                    _v195 = uint8(0)
-                    v203: uint8 = value(_v195)
+                    x_20: uint8
+                    value_20: int = randint(1, 7) or 0
+                    x_20 = int(value_20+0x100 if value_20 < 0 else value_20) & 0xFF
+                    _v195 = x_20
+                    v203: uint8 = value_47(_v195)
                     _v204: uint8 | None = None
-                    _v204 = uint8(0)
-                    v212: uint8 = value(_v204)
+                    x_21: uint8
+                    value_21: int = randint(1, 7) or 0
+                    x_21 = int(value_21+0x100 if value_21 < 0 else value_21) & 0xFF
+                    _v204 = x_21
+                    v212: uint8 = value_47(_v204)
                     _v213: uint8 | None = None
-                    _v213 = uint8(0)
-                    v221: uint8 = value(_v213)
+                    x_22: uint8
+                    value_22: int = randint(1, 7) or 0
+                    x_22 = int(value_22+0x100 if value_22 < 0 else value_22) & 0xFF
+                    _v213 = x_22
+                    v221: uint8 = value_47(_v213)
                     _v222: uint8 | None = None
-                    _v222 = uint8(0)
-                    v0_1_mut = UH1(1, v32, UH1(1, v41, UH1(1, v50, UH1(1, v59, UH1(1, v68, UH1(1, v77, UH1(1, v86, UH1(1, v95, UH1(1, v104, UH1(1, v113, UH1(1, v122, UH1(1, v131, UH1(1, v140, UH1(1, v149, UH1(1, v158, UH1(1, v167, UH1(1, v176, UH1(1, v185, UH1(1, v194, UH1(1, v203, UH1(1, v212, UH1(1, v221, UH1(1, value(_v222), UH1(0))))))))))))))))))))))))
+                    x_23: uint8
+                    value_23: int = randint(1, 7) or 0
+                    x_23 = int(value_23+0x100 if value_23 < 0 else value_23) & 0xFF
+                    _v222 = x_23
+                    v0_1_mut = UH1(1, v32, UH1(1, v41, UH1(1, v50, UH1(1, v59, UH1(1, v68, UH1(1, v77, UH1(1, v86, UH1(1, v95, UH1(1, v104, UH1(1, v113, UH1(1, v122, UH1(1, v131, UH1(1, v140, UH1(1, v149, UH1(1, v158, UH1(1, v167, UH1(1, v176, UH1(1, v185, UH1(1, v194, UH1(1, v203, UH1(1, v212, UH1(1, v221, UH1(1, value_47(_v222), UH1(0))))))))))))))))))))))))
                     v1_1_mut = int8(23)
                     continue
 
 
             else: 
                 _v258: uint8 | None = None
-                _v258 = uint8(0)
-                v268: uint8 = value(_v258)
+                x_24: uint8
+                value_24: int = randint(1, 7) or 0
+                x_24 = int(value_24+0x100 if value_24 < 0 else value_24) & 0xFF
+                _v258 = x_24
+                v268: uint8 = value_47(_v258)
                 _v269: uint8 | None = None
-                _v269 = uint8(0)
-                v277: uint8 = value(_v269)
+                x_25: uint8
+                value_25: int = randint(1, 7) or 0
+                x_25 = int(value_25+0x100 if value_25 < 0 else value_25) & 0xFF
+                _v269 = x_25
+                v277: uint8 = value_47(_v269)
                 _v278: uint8 | None = None
-                _v278 = uint8(0)
-                v286: uint8 = value(_v278)
+                x_26: uint8
+                value_26: int = randint(1, 7) or 0
+                x_26 = int(value_26+0x100 if value_26 < 0 else value_26) & 0xFF
+                _v278 = x_26
+                v286: uint8 = value_47(_v278)
                 _v287: uint8 | None = None
-                _v287 = uint8(0)
-                v295: uint8 = value(_v287)
+                x_27: uint8
+                value_27: int = randint(1, 7) or 0
+                x_27 = int(value_27+0x100 if value_27 < 0 else value_27) & 0xFF
+                _v287 = x_27
+                v295: uint8 = value_47(_v287)
                 _v296: uint8 | None = None
-                _v296 = uint8(0)
-                v304: uint8 = value(_v296)
+                x_28: uint8
+                value_28: int = randint(1, 7) or 0
+                x_28 = int(value_28+0x100 if value_28 < 0 else value_28) & 0xFF
+                _v296 = x_28
+                v304: uint8 = value_47(_v296)
                 _v305: uint8 | None = None
-                _v305 = uint8(0)
-                v313: uint8 = value(_v305)
+                x_29: uint8
+                value_29: int = randint(1, 7) or 0
+                x_29 = int(value_29+0x100 if value_29 < 0 else value_29) & 0xFF
+                _v305 = x_29
+                v313: uint8 = value_47(_v305)
                 _v314: uint8 | None = None
-                _v314 = uint8(0)
-                v322: uint8 = value(_v314)
+                x_30: uint8
+                value_30: int = randint(1, 7) or 0
+                x_30 = int(value_30+0x100 if value_30 < 0 else value_30) & 0xFF
+                _v314 = x_30
+                v322: uint8 = value_47(_v314)
                 _v323: uint8 | None = None
-                _v323 = uint8(0)
-                v331: uint8 = value(_v323)
+                x_31: uint8
+                value_31: int = randint(1, 7) or 0
+                x_31 = int(value_31+0x100 if value_31 < 0 else value_31) & 0xFF
+                _v323 = x_31
+                v331: uint8 = value_47(_v323)
                 _v332: uint8 | None = None
-                _v332 = uint8(0)
-                v340: uint8 = value(_v332)
+                x_32: uint8
+                value_32: int = randint(1, 7) or 0
+                x_32 = int(value_32+0x100 if value_32 < 0 else value_32) & 0xFF
+                _v332 = x_32
+                v340: uint8 = value_47(_v332)
                 _v341: uint8 | None = None
-                _v341 = uint8(0)
-                v349: uint8 = value(_v341)
+                x_33: uint8
+                value_33: int = randint(1, 7) or 0
+                x_33 = int(value_33+0x100 if value_33 < 0 else value_33) & 0xFF
+                _v341 = x_33
+                v349: uint8 = value_47(_v341)
                 _v350: uint8 | None = None
-                _v350 = uint8(0)
-                v358: uint8 = value(_v350)
+                x_34: uint8
+                value_34: int = randint(1, 7) or 0
+                x_34 = int(value_34+0x100 if value_34 < 0 else value_34) & 0xFF
+                _v350 = x_34
+                v358: uint8 = value_47(_v350)
                 _v359: uint8 | None = None
-                _v359 = uint8(0)
-                v367: uint8 = value(_v359)
+                x_35: uint8
+                value_35: int = randint(1, 7) or 0
+                x_35 = int(value_35+0x100 if value_35 < 0 else value_35) & 0xFF
+                _v359 = x_35
+                v367: uint8 = value_47(_v359)
                 _v368: uint8 | None = None
-                _v368 = uint8(0)
-                v376: uint8 = value(_v368)
+                x_36: uint8
+                value_36: int = randint(1, 7) or 0
+                x_36 = int(value_36+0x100 if value_36 < 0 else value_36) & 0xFF
+                _v368 = x_36
+                v376: uint8 = value_47(_v368)
                 _v377: uint8 | None = None
-                _v377 = uint8(0)
-                v385: uint8 = value(_v377)
+                x_37: uint8
+                value_37: int = randint(1, 7) or 0
+                x_37 = int(value_37+0x100 if value_37 < 0 else value_37) & 0xFF
+                _v377 = x_37
+                v385: uint8 = value_47(_v377)
                 _v386: uint8 | None = None
-                _v386 = uint8(0)
-                v394: uint8 = value(_v386)
+                x_38: uint8
+                value_38: int = randint(1, 7) or 0
+                x_38 = int(value_38+0x100 if value_38 < 0 else value_38) & 0xFF
+                _v386 = x_38
+                v394: uint8 = value_47(_v386)
                 _v395: uint8 | None = None
-                _v395 = uint8(0)
-                v403: uint8 = value(_v395)
+                x_39: uint8
+                value_39: int = randint(1, 7) or 0
+                x_39 = int(value_39+0x100 if value_39 < 0 else value_39) & 0xFF
+                _v395 = x_39
+                v403: uint8 = value_47(_v395)
                 _v404: uint8 | None = None
-                _v404 = uint8(0)
-                v412: uint8 = value(_v404)
+                x_40: uint8
+                value_40: int = randint(1, 7) or 0
+                x_40 = int(value_40+0x100 if value_40 < 0 else value_40) & 0xFF
+                _v404 = x_40
+                v412: uint8 = value_47(_v404)
                 _v413: uint8 | None = None
-                _v413 = uint8(0)
-                v421: uint8 = value(_v413)
+                x_41: uint8
+                value_41: int = randint(1, 7) or 0
+                x_41 = int(value_41+0x100 if value_41 < 0 else value_41) & 0xFF
+                _v413 = x_41
+                v421: uint8 = value_47(_v413)
                 _v422: uint8 | None = None
-                _v422 = uint8(0)
-                v430: uint8 = value(_v422)
+                x_42: uint8
+                value_42: int = randint(1, 7) or 0
+                x_42 = int(value_42+0x100 if value_42 < 0 else value_42) & 0xFF
+                _v422 = x_42
+                v430: uint8 = value_47(_v422)
                 _v431: uint8 | None = None
-                _v431 = uint8(0)
-                v439: uint8 = value(_v431)
+                x_43: uint8
+                value_43: int = randint(1, 7) or 0
+                x_43 = int(value_43+0x100 if value_43 < 0 else value_43) & 0xFF
+                _v431 = x_43
+                v439: uint8 = value_47(_v431)
                 _v440: uint8 | None = None
-                _v440 = uint8(0)
-                v448: uint8 = value(_v440)
+                x_44: uint8
+                value_44: int = randint(1, 7) or 0
+                x_44 = int(value_44+0x100 if value_44 < 0 else value_44) & 0xFF
+                _v440 = x_44
+                v448: uint8 = value_47(_v440)
                 _v449: uint8 | None = None
-                _v449 = uint8(0)
-                v457: uint8 = value(_v449)
+                x_45: uint8
+                value_45: int = randint(1, 7) or 0
+                x_45 = int(value_45+0x100 if value_45 < 0 else value_45) & 0xFF
+                _v449 = x_45
+                v457: uint8 = value_47(_v449)
                 _v458: uint8 | None = None
-                _v458 = uint8(0)
-                v0_1_mut = UH1(1, v268, UH1(1, v277, UH1(1, v286, UH1(1, v295, UH1(1, v304, UH1(1, v313, UH1(1, v322, UH1(1, v331, UH1(1, v340, UH1(1, v349, UH1(1, v358, UH1(1, v367, UH1(1, v376, UH1(1, v385, UH1(1, v394, UH1(1, v403, UH1(1, v412, UH1(1, v421, UH1(1, v430, UH1(1, v439, UH1(1, v448, UH1(1, v457, UH1(1, value(_v458), UH1(0))))))))))))))))))))))))
+                x_46: uint8
+                value_46: int = randint(1, 7) or 0
+                x_46 = int(value_46+0x100 if value_46 < 0 else value_46) & 0xFF
+                _v458 = x_46
+                v0_1_mut = UH1(1, v268, UH1(1, v277, UH1(1, v286, UH1(1, v295, UH1(1, v304, UH1(1, v313, UH1(1, v322, UH1(1, v331, UH1(1, v340, UH1(1, v349, UH1(1, v358, UH1(1, v367, UH1(1, v376, UH1(1, v385, UH1(1, v394, UH1(1, v403, UH1(1, v412, UH1(1, v421, UH1(1, v430, UH1(1, v439, UH1(1, v448, UH1(1, v457, UH1(1, value_47(_v458), UH1(0))))))))))))))))))))))))
                 v1_1_mut = int8(23)
                 continue
 
@@ -1909,51 +2051,51 @@ def closure81(unit_var: None, v0_1: Array[str]) -> int:
     return 0
 
 
-def _arrow193(v: int64) -> Callable[[UH0], UH0]:
+def _arrow248(v: int64) -> Callable[[UH0], UH0]:
     return closure0(None, v)
 
 
-v0: Callable[[int64, UH0], UH0] = _arrow193
+v0: Callable[[int64, UH0], UH0] = _arrow248
 
 def rotate_numbers(x: int64) -> Callable[[UH0], UH0]:
     return v0(x)
 
 
-def _arrow194(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
+def _arrow249(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return closure3(None, v)
 
 
-v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow194
+v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow249
 
 def create_sequential_roller(x: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return v1(x)
 
 
-def _arrow195(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
+def _arrow250(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return closure10(None, v)
 
 
-v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow195
+v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow250
 
 def roll_progressively(x: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return v2(x)
 
 
-def _arrow196(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
+def _arrow251(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return closure78(None, v)
 
 
-v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow196
+v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow251
 
 def roll_within_bounds(x: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return v3(x)
 
 
-def _arrow197(v: Array[str]) -> int:
+def _arrow252(v: Array[str]) -> int:
     return closure81(None, v)
 
 
-v4: Callable[[Array[str]], int] = _arrow197
+v4: Callable[[Array[str]], int] = _arrow252
 
 def main(args: Array[str]) -> int:
     return v4(args)

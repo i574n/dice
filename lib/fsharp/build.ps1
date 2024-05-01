@@ -12,24 +12,22 @@ $ErrorActionPreference = "Stop"
 $projectName = "dice_fsharp"
 
 if (!$fast -and !$SkipNotebook) {
-    { . ../../../polyglot/apps/spiral/dist/Supervisor$(GetExecutableSuffix) --execute-command "pwsh -c `"../../../polyglot/scripts/invoke-dib.ps1 $projectName.dib`"" } | Invoke-Block -Retries 5
+    { . ../../apps/spiral/dist/Supervisor$(_exe) --execute-command "pwsh -c `"../../scripts/invoke-dib.ps1 ../../../dice/lib/fsharp/$projectName.dib`"" } | Invoke-Block -Retries 5 -Location ../../../polyglot/lib/fsharp
 }
 
-{ . ../../../polyglot/apps/parser/dist/DibParser$(GetExecutableSuffix) "$projectName.dib" fs } | Invoke-Block
+{ . ../../../polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" fs } | Invoke-Block
 
 $runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
 $builderArgs = @("$projectName.fs", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
-{ . ../../../polyglot/apps/builder/dist/Builder$(GetExecutableSuffix) @builderArgs } | Invoke-Block
+{ . ../../../polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
 
 $targetDir = GetTargetDir $projectName
 
 { BuildFable $targetDir $projectName "rs" } | Invoke-Block
 if (!$fast) {
-    
+
     { BuildFable $targetDir $projectName "ts" } | Invoke-Block
     { BuildFable $targetDir $projectName "py" } | Invoke-Block
-    { BuildFable $targetDir $projectName "php" } | Invoke-Block -OnError Continue
-    { BuildFable $targetDir $projectName "dart" } | Invoke-Block -OnError Continue
 }
 
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
@@ -38,10 +36,10 @@ if (!$fast) {
     | FixRust `
     | Set-Content "$projectName.rs"
 if (!$fast) {
-    Copy-Item "$targetDir/target/ts/$projectName.ts" "$projectName.ts" -Force
+    (Get-Content "$targetDir/target/ts/$projectName.ts") `
+        | FixTypeScript `
+        | Set-Content "$projectName.ts"
     Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
-    Copy-Item "$targetDir/target/php/$projectName.php" "$projectName.php" -Force
-    Copy-Item "$targetDir/target/dart/$projectName.dart" "$projectName.dart" -Force
 }
 
 cargo fmt --

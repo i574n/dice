@@ -12,6 +12,4 @@ obj/
 target/
 dist_extension/
 tmp/
-paket-files/
-.paket/
 .history/

@@ -1,12 +1,10 @@
 // // # dice (Dice)
 
 // // ## sixth_power_sequence
-
 inl sixth_power_sequence () =
     stream.iterate ((*) 6) 1
 
 // // ## accumulate_dice_rolls
-
 inl accumulate_dice_rolls
     (log : option (string -> ()))
     (rolls : list u8)
@@ -38,7 +36,6 @@ inl accumulate_dice_rolls
     loop acc power rolls
 
 // // ## roll_within_bounds
-
 inl roll_within_bounds (log : option (string -> ())) max rolls =
     inl power = listm.length rolls - 1
     match accumulate_dice_rolls log rolls power 0 with
@@ -46,7 +43,6 @@ inl roll_within_bounds (log : option (string -> ())) max rolls =
     | _ => None
 
 // // ## calculate_dice_count
-
 inl calculate_dice_count (log : option (string -> ())) max =
     inl rec body n p =
         inl return () =
@@ -72,7 +68,6 @@ inl calculate_dice_count (log : option (string -> ())) max =
     else loop 0 1
 
 // // ## roll_dice
-
 inl roll_dice () : u8 =
     run_target function
         | Rust (Contract) => fun () => rust.emit_expr () "1"
@@ -80,17 +75,14 @@ inl roll_dice () : u8 =
         | _ => fun () => $"System.Random().Next (1, 7) |> uint8"
 
 // // ## rotate_number
-
 inl rotate_number forall t {number}. (max : i64) (n : t) : t =
     (conv n - 1 + max) % max + 1 |> conv
 
 // // ## rotate_numbers
-
 inl rotate_numbers max items =
     items |> stream.map (rotate_number max)
 
 // // ## create_sequential_roller
-
 inl create_sequential_roller (log : option (string -> ())) list =
     log |> optionm'.iter ((|>) $"$\"create_sequential_roller ()\"")
     inl s = list |> listm.rev |> listm.append list |> stream.from_list |> stream.memoize
@@ -125,7 +117,6 @@ inl create_sequential_roller (log : option (string -> ())) list =
     loop
 
 // // ## roll_progressively
-
 inl roll_progressively (log : option (string -> ())) roll reroll max =
     inl power = (calculate_dice_count log max) - 1
     let rec loop rolls size =
@@ -138,7 +129,6 @@ inl roll_progressively (log : option (string -> ())) roll reroll max =
     loop [] 0
 
 // // ## main
-
 inl main (_args : array_base string) =
     inl result = roll_progressively (Some console.write_line) roll_dice true (limit.max : i64)
     console.write_line ($"$\"result: {!result}\"" : string)

@@ -154,6 +154,8 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
                 txn.block_timestamp
+                |> sm'.from_std_string
+                |> i64
                 |> date_time.format_timestamp
                 |> to_string
                 |> leptos.text_fragment
@@ -300,6 +302,8 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     fun () => "Block Timestamp" |> leptos.text_fragment
                     fun () =>
                         transaction.block_timestamp
+                        |> sm'.from_std_string
+                        |> i64
                         |> date_time.format_timestamp
                         |> to_string
                         |> leptos.text_fragment
