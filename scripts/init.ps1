@@ -12,7 +12,7 @@ if (!$fast) {
     Set-Location polyglot
     git pull
     Set-Location $ScriptDir
-    . ../../polyglot/scripts/init.ps1
+    pwsh ../../polyglot/scripts/init.ps1
 }
 
 . ../../polyglot/scripts/core.ps1
