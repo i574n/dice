@@ -8,7 +8,7 @@
 
 #!spiral
 
-// // test
+//// test
 
 open testing
 
@@ -23,7 +23,7 @@ inl sixth_power_sequence () =
 
 #!spiral
 
-// // test
+//// test
 
 sixth_power_sequence ()
 |> stream.take_while (fun _ i => i <= 7i32)
@@ -68,21 +68,21 @@ inl accumulate_dice_rolls
 
 #!spiral
 
-// // test
+//// test
 
 accumulate_dice_rolls (Some console.write_line) [ 6; 5; 4; 3; 2 ] 0 1000i32
 |> _assert_eq (Some (1006, [ 5; 4; 3; 2 ]))
 
 #!spiral
 
-// // test
+//// test
 
 accumulate_dice_rolls (Some console.write_line) [ 6; 5; 4; 3; 2 ] 1 1000i32
 |> _assert_eq (Some (1035, [ 4; 3; 2 ]))
 
 #!spiral
 
-// // test
+//// test
 
 accumulate_dice_rolls (Some console.write_line) [ 6; 5; 4; 3; 2 ] 2 1000i32
 |> _assert_eq (Some (1208, [ 3; 2 ]))
@@ -101,21 +101,21 @@ inl roll_within_bounds (log : option (string -> ())) max rolls =
 
 #!spiral
 
-// // test
+//// test
 
 roll_within_bounds (Some console.write_line) 2000i32 [ 1; 5; 4; 4; 5 ]
 |> _assert_eq (Some 995)
 
 #!spiral
 
-// // test
+//// test
 
 roll_within_bounds (Some console.write_line) 2000i32 [ 2; 2; 6; 4; 5 ]
 |> _assert_eq (Some 1715)
 
 #!spiral
 
-// // test
+//// test
 
 roll_within_bounds (Some console.write_line) 2000i32 [ 4; 1; 1; 2; 3 ]
 |> _assert_eq None
@@ -152,14 +152,14 @@ inl calculate_dice_count (log : option (string -> ())) max =
 
 #!spiral
 
-// // test
+//// test
 
 calculate_dice_count (Some console.write_line) 36i32
 |> _assert_eq 2i32
 
 #!spiral
 
-// // test
+//// test
 
 calculate_dice_count (Some console.write_line) 7777i32
 |> _assert_eq 6i32
@@ -196,7 +196,7 @@ inl rotate_numbers max items =
 
 #!spiral
 
-// // test
+//// test
 
 listm'.init_series -1 14 1i32
 |> stream.from_list
@@ -245,7 +245,7 @@ inl create_sequential_roller (log : option (string -> ())) list =
 
 #!spiral
 
-// // test
+//// test
 
 inl sequential_roll = create_sequential_roller (Some console.write_line) [ 1i32; 2; 3; 4 ]
 
@@ -272,14 +272,14 @@ inl roll_progressively (log : option (string -> ())) roll reroll max =
 
 #!spiral
 
-// // test
+//// test
 
 roll_progressively None roll_dice false 1
 |> _assert_eq 1i32
 
 #!spiral
 
-// // test
+//// test
 
 inl sequential_roll = create_sequential_roller (Some console.write_line) [ 5; 4; 4; 5; 1 ]
 
@@ -288,7 +288,7 @@ roll_progressively (Some console.write_line) sequential_roll false 2000i32
 
 #!spiral
 
-// // test
+//// test
 
 inl sequential_roll = create_sequential_roller (Some console.write_line) [ 5; 4; 4; 5; 2 ]
 
@@ -297,7 +297,7 @@ roll_progressively (Some console.write_line) sequential_roll false 2000i32
 
 #!spiral
 
-// // test
+//// test
 
 join dyn listm'.init_series 1i32 10000 1
 |> listm.map (fun _ => roll_progressively None roll_dice false 10i32)
@@ -309,8 +309,8 @@ join dyn listm'.init_series 1i32 10000 1
 
 #!spiral
 
-// // test
-// // print_code=false
+//// test
+//// print_code=false
 
 join dyn listm'.init_series 1i32 10000 1
 |> listm.map (fun _ => roll_progressively None roll_dice true 10i32)
@@ -322,8 +322,8 @@ join dyn listm'.init_series 1i32 10000 1
 
 #!spiral
 
-// // test
-// // timeout=60000
+//// test
+//// timeout=60000
 
 join dyn listm'.init_series 1i32 100 1
 |> listm.iter fun n =>
