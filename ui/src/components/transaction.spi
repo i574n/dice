@@ -182,7 +182,7 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
             ] fun () =>
                 txn.actions
                 |> am'.to_vec
-                |> am'.vec_map fun { action method } =>
+                |> am'.vec_map' fun { action method } =>
                     action_render action method
                     |> leptos.element_to_view
                 |> am'.from_vec
@@ -223,7 +223,7 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                 | _ =>
                     txn.logs
                     |> am'.to_vec
-                    |> am'.vec_map sm'.from_std_string
+                    |> am'.vec_map' sm'.from_std_string
                     |> am'.from_vec
                     |> fun x => x : _ i32 _
                     |> seq.of_array
@@ -343,7 +343,7 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                     fun () =>
                         transaction.actions
                         |> am'.to_vec
-                        |> am'.vec_map fun { action method } =>
+                        |> am'.vec_map' fun { action method } =>
                             action_render action method
                             |> leptos.element_to_view
                         |> am'.from_vec
@@ -447,7 +447,7 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                         fun () =>
                             transaction.logs
                             |> am'.to_vec
-                            |> am'.vec_map sm'.from_std_string
+                            |> am'.vec_map' sm'.from_std_string
                             |> am'.from_vec
                             |> fun x => x : _ i32 _
                             |> seq.of_array

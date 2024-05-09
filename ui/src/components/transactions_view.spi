@@ -7,7 +7,7 @@ inl render () =
     leptos.log $'"transactions_view.render (1)"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
-    
+
     inl { accounts_txns_requests txns } = hooks.use_transactions.render global_state
 
     inl (settings_visible, set_settings_visible) = leptos.create_signal false
@@ -103,7 +103,7 @@ inl render () =
                                 ] fun () =>
                                     transactions
                                     |> am'.to_vec
-                                    |> am'.vec_map fun { account i txn } =>
+                                    |> am'.vec_map' fun { account i txn } =>
                                         !txn
                                         |> transaction.render account (i |> i64)
                                         |> leptos.element_to_view
@@ -115,8 +115,8 @@ inl render () =
                             | false =>
                                 transactions
                                 |> am'.to_vec
-                                |> am'.vec_map transaction.tr_render
-                                |> am'.vec_map leptos.element_to_view
+                                |> am'.vec_map' transaction.tr_render
+                                |> am'.vec_map' leptos.element_to_view
                                 |> am'.from_vec
                                 |> fun (a x : _ i32 _) => x
                                 |> leptos.view_array_to_fragment

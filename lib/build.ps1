@@ -52,11 +52,11 @@ if (!$fast) {
     | FixRust `
     | Set-Content "$($projectName)_contract.rs"
 
-cargo fmt --
-{ cargo fmt -- } | Invoke-Block -Location contract
+cargo +nightly fmt --
+{ cargo +nightly fmt -- } | Invoke-Block -Location contract
 
 if (!$fast) {
-    { cargo run --release } | Invoke-Block
+    { cargo +nightly run --release } | Invoke-Block
 }
 
 if ($env:CI) {

@@ -87,6 +87,7 @@ inl txn_box ({ receipt_id predecessor_account_id receiver_account_id transaction
     inl actions_agg = actions_agg |> actions_agg_box
     inl outcomes = outcomes |> outcomes_box
     inl outcomes_agg = outcomes_agg |> outcomes_agg_box
+    inl logs = logs |> am'.to_vec |> optionm'.some'
     !\($'"crate::model::near::nearblocks::Txn { receipt_id: !receipt_id, predecessor_account_id: !predecessor_account_id, receiver_account_id: !receiver_account_id, transaction_hash: !transaction_hash, included_in_block_hash: !included_in_block_hash, block_timestamp: !block_timestamp, block: !block, actions: !actions, actions_agg: !actions_agg, outcomes: !outcomes, outcomes_agg: !outcomes_agg, logs: !logs }"')
 
 inl root_box ({ txns } : root) : root' =
@@ -124,7 +125,7 @@ inl txn_unbox (x : txn') : txn =
     inl block = !\\(x, $'"$0.block"') |> block_unbox
     inl actions =
         !\\(x, $'"$0.actions"')
-        |> am'.vec_map action_unbox
+        |> am'.vec_map' action_unbox
         |> am'.from_vec
         |> fun (a x : _ i32 _) => join x
     inl actions_agg = !\\(x, $'"$0.actions_agg"') |> actions_agg_unbox
@@ -132,14 +133,14 @@ inl txn_unbox (x : txn') : txn =
     inl outcomes_agg = !\\(x, $'"$0.outcomes_agg"') |> outcomes_agg_unbox
     inl logs =
         !\\(x, $'"$0.logs"')
-        |> am'.from_vec
-        |> fun (a x : _ i32 _) => join x
+        |> optionm'.map (am'.from_vec >> fun (a x : _ i32 _) => x)
+        |> optionm'.default_value' ;[]
     { receipt_id; predecessor_account_id; receiver_account_id; transaction_hash; included_in_block_hash; block_timestamp; block; actions; actions_agg; outcomes; outcomes_agg; logs }
 
 inl root_unbox (x : root') : root =
     inl txns =
         !\\(x, $'"$0.txns"')
-        |> am'.vec_map txn_unbox
+        |> am'.vec_map' txn_unbox
         |> am'.from_vec
         |> fun (a x : _ i32 _) => join x
     { txns }

@@ -60,7 +60,7 @@ inl render () =
         roll_action
         |> leptos.action_value
         |> leptos.signal_get
-        |> optionm'.map resultm.unbox
+        |> optionm'.map'' resultm.unbox
         |> optionm'.unbox
         |> resultm.flatten_option
         |> resultm.map optionm'.box
@@ -89,9 +89,9 @@ inl render () =
             |> leptos.signal_get
             |> fun data =>
                 data.accounts
-                |> am'.vec_map from_pair
+                |> am'.vec_map' from_pair
                 |> am'.vec_filter fst
-                |> am'.vec_map snd
+                |> am'.vec_map' snd
                 |> am'.vec_mapi fun (i : i32) account =>
                     new_pair
                         i
@@ -101,8 +101,8 @@ inl render () =
         leptos.create_memo fun () =>
             accounts
             |> leptos.signal_get
-            |> am'.vec_map from_pair
-            |> am'.vec_map fun i, x =>
+            |> am'.vec_map' from_pair
+            |> am'.vec_map' fun i, x =>
                 i, x |> fst
 
     ;[
@@ -229,7 +229,7 @@ inl render () =
                                         inl is_call =
                                             txn.actions
                                             |> am'.to_vec
-                                            |> am'.vec_map fun transaction =>
+                                            |> am'.vec_map' fun transaction =>
                                                 {
                                                     action =
                                                         transaction.action
@@ -300,7 +300,7 @@ inl render () =
                                         rpc_responses
                                         |> leptos.signal_get
                                     transactions
-                                    |> am'.vec_map fun { txn i } =>
+                                    |> am'.vec_map' fun { txn i } =>
                                         inl rpc_response = index rpc_responses (i |> i32)
 
                                         leptos.tr [

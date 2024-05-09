@@ -42,10 +42,10 @@ if (!$fast) {
     Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
 }
 
-cargo fmt --
+cargo +nightly fmt --
 
 if (!$fast) {
-    { cargo run --release } | Invoke-Block
+    { cargo +nightly run --release } | Invoke-Block
 }
 
 if ($env:CI) {

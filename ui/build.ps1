@@ -37,6 +37,7 @@ $targetDir = GetTargetDir $projectName
     -replace "pub struct Heap5 {", "#[derive(PartialEq)] pub struct Heap5 {" `
     -replace "pub enum US1 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub enum US1 {" `
     -replace " US1_0,", "#[default] US1_0," `
+    | FixRust `
 | Set-Content "src/$($projectName)_wasm.rs"
 
 # -replace "pub struct Heap0 {", "#[derive(serde::Serialize)] pub struct Heap0 {" `
@@ -45,8 +46,8 @@ $targetDir = GetTargetDir $projectName
 # -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap3 {" `
 # -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap4 {" `
 
-cargo fmt --
-leptosfmt "./src/$($projectName)_wasm.rs"
+cargo +nightly fmt --
+leptosfmt (Resolve-Path "./src/$($projectName)_wasm.rs").Path
 
 if (!$fast) {
     Remove-Item $targetDir/trunk -Recurse -Force -ErrorAction Ignore
@@ -59,8 +60,8 @@ if (!$fast) {
 
 Write-Output "trunk:"
 
-{ trunk build $($fast ? $() : '--release') --dist="$targetDir/trunk" --public-url="./" --no-sri --no-minification } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.92" }
-# { cargo leptos build --release } | Invoke-Block
+{ trunk build $($fast ? $() : '--release') --dist="$targetDir/trunk" --public-url="./" --no-sri } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.92" }
+# { cargo +nightly leptos build --release } | Invoke-Block
 
 $path = "$targetDir/trunk/index.html"
 $html = Get-Content $path -Raw
@@ -73,7 +74,7 @@ $jsFile = ($html | Select-String -Pattern "import init, \* as bindings from '\./
 | Set-Content "$targetDir/trunk/$jsFile"
 
 Write-Output "rna:"
-{ rna build --bundle --minify --assetNames "[name]" $path --output dist } | Invoke-Block
+{ rna build --bundle --minify --assetNames "[name]" $path --output dist --target es2022 } | Invoke-Block
 
 $path = "dist/index.html"
 

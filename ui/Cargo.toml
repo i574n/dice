@@ -15,7 +15,7 @@ path = "src/main.rs"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-fable_library_rust = { path = "../../polyglot/lib/rust/fable/fable_modules/fable-library-rust", default-features = false, features = ["static_do_bindings", "datetime", "guid"] }
+fable_library_rust = { path = "../../polyglot/lib/rust/fable/fable_modules/fable-library-rust", default-features = false, features = ["static_do_bindings", "datetime", "guid", "threaded"] }
 base64 = "~0.22"
 borsh = { version = "~1.5", features = ["derive", "rc"] }
 chrono = "~0.4"

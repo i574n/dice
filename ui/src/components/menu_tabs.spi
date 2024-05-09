@@ -55,7 +55,7 @@ inl render tab =
                 ] fun () =>
                     tabs ()
                     |> am'.to_vec
-                    |> am'.vec_map fun tab' =>
+                    |> am'.vec_map' fun tab' =>
                         leptos.option'
                             fun () => (tab |> leptos.signal_get) = tab'
                             (tab' |> menu_tab_label)
@@ -78,7 +78,7 @@ inl render tab =
                 ] fun () =>
                     tabs ()
                     |> am'.to_vec
-                    |> am'.vec_map fun tab' =>
+                    |> am'.vec_map' fun tab' =>
                         inl id = tab' |> menu_tab_id
                         inl class = fun () => "h-5 w-5"
                         ui.tab_link.render
