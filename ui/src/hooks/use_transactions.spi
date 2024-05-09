@@ -20,19 +20,19 @@ inl render (global_state : state.global_state) =
             |> leptos.signal_get_untracked
 
         data.accounts
-        |> am'.vec_map from_pair
+        |> am'.vec_map' from_pair
         |> am'.vec_filter fst
-        |> am'.vec_map snd
-        |> am'.vec_map sm'.from_std_string
+        |> am'.vec_map' snd
+        |> am'.vec_map' sm'.from_std_string
         |> leptos.log_format fun log => $'"use_transactions.render (2) / accounts create_memo / result: " + string !log + ""'
 
     inl accounts_metadata_requests = leptos.create_memo fun () =>
         accounts
         |> leptos.signal_get
-        |> am'.vec_map fun account =>
+        |> am'.vec_map' fun account =>
             inl request : networking.request =
                 {
-                    url = $'"https://api2.nearblocks.io/v1/account/" + !account + ""'
+                    url = $'"https://api3.nearblocks.io/v1/account/" + !account + ""'
                     request_type = networking.Get
                     body = ""
                     json = false
@@ -62,16 +62,16 @@ inl render (global_state : state.global_state) =
 
         accounts
         |> leptos.signal_get
-        |> am'.vec_map fun account =>
+        |> am'.vec_map' fun account =>
             inl per_page = 25i32
             inl requests =
                 am.init data.transactions_pages id
                 |> fun (a x) => x
                 |> am'.to_vec
-                |> am'.vec_map fun i =>
+                |> am'.vec_map' fun i =>
                     inl page = i + 1
                     {
-                        url = $'"https://api2.nearblocks.io/v1/account/" + !account + "/txns?&order=desc&page=" + string !page + "&per_page=" + string !per_page + ""'
+                        url = $'"https://api3.nearblocks.io/v1/account/" + !account + "/txns?&order=desc&page=" + string !page + "&per_page=" + string !per_page + ""'
                         request_type = networking.Get
                         body = ""
                         json = false
@@ -83,7 +83,7 @@ inl render (global_state : state.global_state) =
     inl txns_requests = leptos.create_memo fun () =>
         accounts_txns_requests
         |> leptos.signal_get
-        |> am'.vec_map snd
+        |> am'.vec_map' snd
         |> am'.vec_collect id
         |> am'.from_vec
         |> leptos.log_format fun log => $'"use_transactions.render (5) / txns_requests create_memo / result: " + string !log + ""'
@@ -91,9 +91,9 @@ inl render (global_state : state.global_state) =
     inl txns_accounts = leptos.create_memo fun () =>
         accounts_txns_requests
         |> leptos.signal_get
-        |> am'.vec_map fun account, x =>
+        |> am'.vec_map' fun account, x =>
             x
-            |> am'.vec_map fun _ => account
+            |> am'.vec_map' fun _ => account
         |> am'.vec_collect id
         |> am'.from_vec
         |> leptos.log_format fun log => $'"use_transactions.render (6) / urls_accounts create_memo / result: " + string !log + ""'
@@ -122,8 +122,8 @@ inl render (global_state : state.global_state) =
                 |> leptos.signal_get
                 |> fun (a x) => x
                 |> am'.to_vec
-                |> am'.vec_map resultm.unbox
-                |> am'.vec_map (resultm.map optionm'.unbox)
+                |> am'.vec_map' resultm.unbox
+                |> am'.vec_map' (resultm.map optionm'.unbox)
 
             inl root_log = root |> sm'.format_ellipsis
             leptos.log $'"transactions.render (8) / txns move / root: " + string !root_log + ""'
@@ -149,12 +149,12 @@ inl render (global_state : state.global_state) =
                         result
                         |> optionm.map fun result =>
                             (a result.txns : _ i32 _)
-                            |> stream.enumerate
-                            |> fun (a x) => x
+                            |> am'.enumerate
+                            |> fun (a x : _ i32 _) => x
                             |> am'.to_vec
-                            |> am'.vec_map fun i', x' => { account i = i'; txn = heap x' }
-                |> am'.vec_map (resultm.map optionm'.box)
-                |> am'.vec_map resultm.box
+                            |> am'.vec_map' fun i', x' => { account i = unativeint i; txn = heap x' }
+                |> am'.vec_map' (resultm.map optionm'.box)
+                |> am'.vec_map' resultm.box
                 |> am'.vec_collect_option
                 |> resultm.map (am'.vec_sort_by_key fun { txn } => txn.block_timestamp)
                 |> resultm.map (am'.vec_reverse >> am'.from_vec)
@@ -179,7 +179,7 @@ inl render (global_state : state.global_state) =
                 | Ok (Some txns) =>
                     txns
                     |> am'.to_vec
-                    |> am'.vec_map fun { txn } =>
+                    |> am'.vec_map' fun { txn } =>
                         {
                             jsonrpc = "2.0" |> sm'.to_std_string
                             id = "dontcare" |> sm'.to_std_string
@@ -192,8 +192,8 @@ inl render (global_state : state.global_state) =
                         |> model.near.rpc.rpc_input_box
                         |> sm'.serialize
                         |> resultm.map_error' sm'.format'
-                        |> resultm.map' sm'.from_std_string
-                        |> resultm.map' fun body =>
+                        |> resultm.map'' sm'.from_std_string
+                        |> resultm.map'' fun body =>
                             ({
                                 url = "https://rpc.mainnet.near.org"
                                 request_type = networking.Post
@@ -235,5 +235,5 @@ inl render (global_state : state.global_state) =
         =
         state_core.use_requests rpc_requests' model.near.rpc.rpc_response_unbox
         |> leptos.log_format fun log => $'"use_transactions.render (12) / rpc_response func0 / result: " + string !log + ""'
-    
+
     { accounts_txns_requests txns rpc_requests rpc_responses }

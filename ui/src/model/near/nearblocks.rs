@@ -39,7 +39,7 @@ pub struct Txn {
     pub actions_agg: ActionsAgg,
     pub outcomes: Outcomes,
     pub outcomes_agg: OutcomesAgg,
-    pub logs: Vec<String>,
+    pub logs: Option<Vec<String>>,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]

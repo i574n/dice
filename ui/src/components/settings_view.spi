@@ -24,7 +24,7 @@ inl render () =
     leptos.log $'"settings_view.render ()"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
-    
+
     inl accounts =
         leptos.create_memo fun () =>
             leptos.signal_get_untracked global_state.core_state .data
@@ -35,7 +35,7 @@ inl render () =
                     new_pair
                         i
                         (leptos.create_signal account)
-    
+
     inl edit_count, set_edit_count = leptos.create_signal 0i32
 
     inl accounts_data =
@@ -43,10 +43,10 @@ inl render () =
             inl edit_count = edit_count |> leptos.signal_get
             accounts
             |> leptos.signal_get
-            |> am'.vec_map from_pair
-            |> am'.vec_map fun i, x =>
+            |> am'.vec_map' from_pair
+            |> am'.vec_map' fun i, x =>
                 (edit_count, i), x |> fst
-    
+
     inl accounts_count =
         leptos.create_memo fun () =>
             accounts_data |> leptos.signal_get |> am'.from_vec |> length : i32
@@ -62,9 +62,9 @@ inl render () =
                         accounts =
                             accounts
                             |> am'.vec_retain (from_pair >> fun i, _ => i = index |> join fun x => x |> not)
-                            |> am'.vec_map (from_pair >> snd >> fst >> leptos.signal_get)
+                            |> am'.vec_map' (from_pair >> snd >> fst >> leptos.signal_get)
                     }
-                
+
                 set_edit_count |> leptos.signal_update ((+) 1)
             |> leptos.batch
         !\\(on_click, $'"let !on_click = $0"')
@@ -93,7 +93,7 @@ inl render () =
                                     accounts_count
                                     (new_pair false ("" |> sm'.to_std_string) |> leptos.create_signal)
                             )
-                            |> am'.vec_map (from_pair >> snd >> fst >> leptos.signal_get)
+                            |> am'.vec_map' (from_pair >> snd >> fst >> leptos.signal_get)
                     }
 
                 set_edit_count |> leptos.signal_update ((+) 1)
