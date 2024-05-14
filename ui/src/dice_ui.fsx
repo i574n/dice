@@ -147,6 +147,10 @@ type Vec<'T> = class end
 #endif
 type std_collections_HashMap<'K, 'V> = class end
 #if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("std::collections::BTreeMap<$0, $1>")>]
+#endif
+type std_collections_BTreeMap<'K, 'V> = class end
+#if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("str")>]
 #endif
 type Str = class end
@@ -158,6 +162,10 @@ type base64_DecodeError = class end
 [<Fable.Core.Erase; Fable.Core.Emit("borsh::io::Error")>]
 #endif
 type borsh_io_Error = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("encoding_rs::Encoding")>]
+#endif
+type encoding_rs_Encoding = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("js_sys::JsString")>]
 #endif
@@ -270,6 +278,10 @@ type reqwest_RequestBuilder = class end
 [<Fable.Core.Erase; Fable.Core.Emit("reqwest_wasm::Response")>]
 #endif
 type reqwest_Response = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("std::env::VarError")>]
+#endif
+type std_env_VarError = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("std::thread::JoinHandle<$0>")>]
 #endif
