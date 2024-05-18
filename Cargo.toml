@@ -1,15 +1,27 @@
 cargo-features = ["profile-rustflags"]
 
-[package]
-name = "dice"
-version = "0.0.1"
-edition = "2021"
-
 [workspace]
+resolver = "2"
+members = [
+    "contract",
+    "contract/tests",
+    "lib/fsharp",
+    "lib",
+    "lib/contract",
+    "ui"
+]
 
 [workspace.package]
-repository = "https://github.com/i574n/dice"
+version = "0.0.1"
+edition = "2021"
 license-file = "../polyglot/LICENSE"
+repository = "https://github.com/i574n/dice"
+
+[workspace.dependencies]
+fable_library_rust = { path = "../polyglot/lib/rust/fable/fable_modules/fable-library-rust", default-features = false, features = [] }
+inline_colorization = "~0.1"
+chrono = "~0.4"
+regex = "~1.10"
 
 [[workspace.metadata.leptos]]
 name = "dice_ui"
@@ -17,20 +29,8 @@ bin-package = "dice_ui"
 lib-package = "dice_ui"
 output-name = "ui"
 
-[dependencies]
-
-[dev-dependencies]
-
-[lib]
-path = "lib/dice_contract.rs"
-
-[build-dependencies]
-dice_contract = { path = "./contract" }
-dice_contract_tests = { path = "./contract/tests" }
-dice_fsharp = { path = "./lib/fsharp" }
-dice_lib = { path = "./lib" }
-dice_contract_lib = { path = "./lib/contract" }
-dice_ui = { path = "./ui" }
+[profile.dev]
+incremental = true
 
 [profile.release]
 codegen-units = 1

@@ -5,7 +5,7 @@
     "outdated-pre": "npm-check-updates --target greatest"
   },
   "devDependencies": {
-    "@playwright/test": "1.42.1",
+    "@playwright/test": "1.44.0",
     "npm-check-updates": "~17.0.0-5"
   }
 }

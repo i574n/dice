@@ -1,12 +1,13 @@
 [package]
 name = "dice_contract_lib"
-version = "0.0.1"
-edition = "2021"
-workspace = "../../"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+repository.workspace = true
 
 [dependencies]
-fable_library_rust = { path = "../../../polyglot/lib/rust/fable/fable_modules/fable-library-rust", default-features = false }
-inline_colorization = "~0.1"
+fable_library_rust = { workspace = true }
+inline_colorization = { workspace = true }
 
 [dev-dependencies]
 

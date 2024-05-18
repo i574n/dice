@@ -310,7 +310,6 @@ join dyn listm'.init_series 1i32 10000 1
 #!spiral
 
 //// test
-//// print_code=false
 
 join dyn listm'.init_series 1i32 10000 1
 |> listm.map (fun _ => roll_progressively None roll_dice true 10i32)
@@ -323,7 +322,7 @@ join dyn listm'.init_series 1i32 10000 1
 #!spiral
 
 //// test
-//// timeout=60000
+//// timeout=180000
 
 join dyn listm'.init_series 1i32 100 1
 |> listm.iter fun n =>

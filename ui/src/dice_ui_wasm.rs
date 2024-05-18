@@ -2617,7 +2617,7 @@ mod module_eef1bd43 {
                     let v12: Vec<std::string::String> = v9
                         .into_iter()
                         .map(|x| Func1::new(move |v: string| Dice_ui::closure9((), v))(x.clone()))
-                        .collect();
+                        .collect::<Vec<_>>();
                     let v13: rexie::Rexie = Dice_ui::method14(v1);
                     let v15: Result<rexie::Transaction, rexie::Error> =
                         v13.transaction(&v12, rexie::TransactionMode::ReadOnly);
@@ -4078,11 +4078,13 @@ mod module_eef1bd43 {
                         Dice_ui::closure46((), tupledArg.0.clone(), tupledArg.1.clone())
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v11 = Dice_ui::method50();
             let v12: Vec<(bool, std::string::String)> = Dice_ui::method51(v10);
-            let v14: Vec<(bool, std::string::String)> =
-                v12.into_iter().filter(|x| v11(x.clone().clone())).collect();
+            let v14: Vec<(bool, std::string::String)> = v12
+                .into_iter()
+                .filter(|x| v11(x.clone().clone()))
+                .collect::<Vec<_>>();
             let v17: Vec<std::string::String> = v14
                 .into_iter()
                 .map(|x| {
@@ -4090,13 +4092,13 @@ mod module_eef1bd43 {
                         Dice_ui::closure48((), arg10_0040_1)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v20: Vec<string> = v17
                 .into_iter()
                 .map(|x| {
                     Func1::new(move |v: std::string::String| Dice_ui::closure49((), v))(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v22: string = append(
                 append(
                     string("use_transactions.render (2) / accounts create_memo / result: "),
@@ -4133,7 +4135,7 @@ mod module_eef1bd43 {
             let v5: Vec<(bool, string, bool, Dice_ui::US25, string)> = v2
                 .into_iter()
                 .map(|x| Func1::new(move |v: string| Dice_ui::closure51((), v))(x.clone()))
-                .collect();
+                .collect::<Vec<_>>();
             let v7: Array<(bool, string, bool, Dice_ui::US25, string)> =
                 fable_library_rust::NativeArray_::array_from(v5);
             let v9: string = append(
@@ -4210,7 +4212,7 @@ mod module_eef1bd43 {
                                 move |v: i32| Dice_ui::closure54(v1.clone(), v)
                             })(x.clone())
                         })
-                        .collect(),
+                        .collect::<Vec<_>>(),
                 )
             }
         }
@@ -4232,7 +4234,7 @@ mod module_eef1bd43 {
                         move |v: string| Dice_ui::closure53(v7.clone(), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v14: string = append(
                 append(
                     string(
@@ -4285,7 +4287,7 @@ mod module_eef1bd43 {
                         )| Dice_ui::closure56((), arg10_0040),
                     )(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v8: Vec<(bool, string, bool, Dice_ui::US25, string)> =
                 new_empty::<(bool, string, bool, Dice_ui::US25, string)>().to_vec();
             let v10: Array<Vec<(bool, string, bool, Dice_ui::US25, string)>> =
@@ -4355,7 +4357,7 @@ mod module_eef1bd43 {
                         }
                     })(x.clone())
                 })
-                .collect()
+                .collect::<Vec<_>>()
         }
         pub fn method56(v0_1: i32, v1: LrcPtr<Dice_ui::Mut3>) -> bool {
             v1.l0.get().clone() < v0_1
@@ -4381,7 +4383,7 @@ mod module_eef1bd43 {
                         )| Dice_ui::closure58((), arg10_0040),
                     )(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v8: Vec<string> = new_empty::<string>().to_vec();
             let v10: Array<Vec<string>> = fable_library_rust::NativeArray_::array_from(v5);
             let v11: i32 = count(v10.clone());
@@ -4470,7 +4472,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure62((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v24: Array<(std::string::String, Option<std::string::String>)> =
                 Dice_ui::method59(fable_library_rust::NativeArray_::array_from(v21));
             let v26: crate::model::near::nearblocks::ActionsAgg = v0_1.clone().actions_agg;
@@ -4579,7 +4581,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure61((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             Dice_ui::method60(fable_library_rust::NativeArray_::array_from(v5))
         }
         pub fn closure63(
@@ -4648,7 +4650,7 @@ mod module_eef1bd43 {
                     let v12: Vec<std::string::String> = v9
                         .into_iter()
                         .map(|x| Func1::new(move |v: string| Dice_ui::closure9((), v))(x.clone()))
-                        .collect();
+                        .collect::<Vec<_>>();
                     let v13: rexie::Rexie = Dice_ui::method14(v1);
                     let v15: Result<rexie::Transaction, rexie::Error> =
                         v13.transaction(&v12, rexie::TransactionMode::ReadOnly);
@@ -4943,7 +4945,7 @@ mod module_eef1bd43 {
                                     }
                                 })(x.clone())
                             })
-                            .collect(),
+                            .collect::<Vec<_>>(),
                     );
                     let v17: futures::future::TryJoinAll<
                         std::pin::Pin<
@@ -5661,7 +5663,7 @@ mod module_eef1bd43 {
                                                     x.clone()
                                                 )
                                             })
-                                            .collect();
+                                            .collect::<Vec<_>>();
                                         Dice_ui::US30::US30_0(
                                             fable_library_rust::NativeArray_::array_from(v24),
                                         )
@@ -5698,7 +5700,7 @@ mod module_eef1bd43 {
                             v45.iter()
                                 .enumerate()
                                 .map(|(i, x)| v44(i.try_into().unwrap())(x.clone()))
-                                .collect(),
+                                .collect::<Vec<_>>(),
                         );
                         let v50: futures::future::TryJoinAll<
                             std::pin::Pin<
@@ -5985,7 +5987,7 @@ mod module_eef1bd43 {
                                         }
                                     })(x.clone())
                                 })
-                                .collect(),
+                                .collect::<Vec<_>>(),
                         );
                         let v26: futures::future::TryJoinAll<
                             std::pin::Pin<
@@ -6406,7 +6408,7 @@ mod module_eef1bd43 {
                                             Dice_ui::closure73((), v_2)
                                         })(x.clone())
                                     })
-                                    .collect();
+                                    .collect::<Vec<_>>();
                                 Dice_ui::US30::US30_0(fable_library_rust::NativeArray_::array_from(
                                     v27,
                                 ))
@@ -6477,7 +6479,7 @@ mod module_eef1bd43 {
                                                 Dice_ui::closure83((), v_5)
                                             })(x.clone())
                                         })
-                                        .collect();
+                                        .collect::<Vec<_>>();
                                     Dice_ui::US42::US42_0(
                                         fable_library_rust::NativeArray_::array_from(v67),
                                     )
@@ -6509,7 +6511,7 @@ mod module_eef1bd43 {
                                         }
                                     })(x.clone())
                                 })
-                                .collect();
+                                .collect::<Vec<_>>();
                             ()
                         }
                         _ => (),
@@ -6528,7 +6530,7 @@ mod module_eef1bd43 {
                             .iter()
                             .enumerate()
                             .map(|(i, x)| v93(i.try_into().unwrap())(x.clone()))
-                            .collect();
+                            .collect::<Vec<_>>();
                         let v98: Array<
                             Result<
                                 Option<crate::model::near::nearblocks::Root>,
@@ -6893,7 +6895,7 @@ mod module_eef1bd43 {
                                                 },
                                             )(x.clone())
                                         })
-                                        .collect();
+                                        .collect::<Vec<_>>();
                                     Dice_ui::US30::US30_0(
                                         fable_library_rust::NativeArray_::array_from(v35),
                                     )
@@ -6957,7 +6959,7 @@ mod module_eef1bd43 {
                                 }
                             })(x.clone())
                         })
-                        .collect();
+                        .collect::<Vec<_>>();
                     let v64: Array<
                         Result<
                             Option<
@@ -7410,7 +7412,7 @@ mod module_eef1bd43 {
                                         std::string::String,
                                     ),
                                 )>,
-                            > = v11.collect();
+                            > = v11.collect::<Vec<_>>();
                             let v16: Vec<(
                                 usize,
                                 Array<(std::string::String, Option<std::string::String>)>,
@@ -7457,7 +7459,7 @@ mod module_eef1bd43 {
                                         },
                                     )(x.clone())
                                 })
-                                .collect();
+                                .collect::<Vec<_>>();
                             let v18: Array<(
                                 usize,
                                 Array<(std::string::String, Option<std::string::String>)>,
@@ -7516,7 +7518,7 @@ mod module_eef1bd43 {
                                             }
                                         })(x.clone())
                                     })
-                                    .collect(),
+                                    .collect::<Vec<_>>(),
                             )
                         }
                         _ => Dice_ui::US52::US52_1,
@@ -7710,13 +7712,13 @@ mod module_eef1bd43 {
                         >| Dice_ui::closure94((), v),
                     )(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v11: Vec<Dice_ui::US47> = v8
                 .into_iter()
                 .map(|x| {
                     Func1::new(move |v_1: Dice_ui::US46| Dice_ui::closure97((), v_1))(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v15: string = append(
                 append(
                     string("transactions.render (8) / txns move / root: "),
@@ -7728,8 +7730,10 @@ mod module_eef1bd43 {
             leptos::logging::log!("{}", v15);
             let v18 = Dice_ui::method100();
             let v19: Vec<Dice_ui::US47> = Dice_ui::method101(v11.clone());
-            let v21: Vec<Dice_ui::US47> =
-                v19.into_iter().filter(|x| v18(x.clone().clone())).collect();
+            let v21: Vec<Dice_ui::US47> = v19
+                .into_iter()
+                .filter(|x| v18(x.clone().clone()))
+                .collect::<Vec<_>>();
             let v28: bool = count(fable_library_rust::NativeArray_::array_from(v21))
                 == count(fable_library_rust::NativeArray_::array_from(v11.clone()));
             let v129: Dice_ui::US49 = if v28 {
@@ -7741,7 +7745,7 @@ mod module_eef1bd43 {
                     .iter()
                     .enumerate()
                     .map(|(i, x)| v33(i.try_into().unwrap())(x.clone()))
-                    .collect();
+                    .collect::<Vec<_>>();
                 let v39: Vec<Dice_ui::US53> = v36
                     .into_iter()
                     .map(|x| {
@@ -7749,7 +7753,7 @@ mod module_eef1bd43 {
                             x.clone(),
                         )
                     })
-                    .collect();
+                    .collect::<Vec<_>>();
                 let v42: Vec<
                     Result<
                         Option<Vec<(string, usize, LrcPtr<Dice_ui::Heap5>)>>,
@@ -7762,7 +7766,7 @@ mod module_eef1bd43 {
                             x.clone(),
                         )
                     })
-                    .collect();
+                    .collect::<Vec<_>>();
                 let v45: Vec<(string, usize, LrcPtr<Dice_ui::Heap5>)> =
                     new_empty::<(string, usize, LrcPtr<Dice_ui::Heap5>)>().to_vec();
                 let v47: Array<
@@ -8083,7 +8087,7 @@ mod module_eef1bd43 {
                                     },
                                 )(x.clone())
                             })
-                            .collect();
+                            .collect::<Vec<_>>();
                         let v26: Result<
                             Vec<(bool, string, bool, Dice_ui::US25, string)>,
                             std::string::String,
@@ -8314,7 +8318,7 @@ mod module_eef1bd43 {
                         >| Dice_ui::closure120((), v),
                     )(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v13: Array<
                 std::collections::HashMap<
                     std::string::String,
@@ -8369,7 +8373,7 @@ mod module_eef1bd43 {
                         x.clone(),
                     )
                 })
-                .collect();
+                .collect::<Vec<_>>();
             fable_library_rust::NativeArray_::array_from(v3)
         }
         pub fn closure122(
@@ -8412,7 +8416,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure123((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v23: Array<(
                 std::string::String,
                 std::string::String,
@@ -8513,7 +8517,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure119((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v7: Array<(
                 std::string::String,
                 Array<
@@ -8559,7 +8563,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure122((), v_1)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             (v7, fable_library_rust::NativeArray_::array_from(v12))
         }
         pub fn closure127(
@@ -9061,7 +9065,7 @@ mod module_eef1bd43 {
                                             Dice_ui::closure73((), v_2)
                                         })(x.clone())
                                     })
-                                    .collect();
+                                    .collect::<Vec<_>>();
                                 Dice_ui::US30::US30_0(fable_library_rust::NativeArray_::array_from(
                                     v27,
                                 ))
@@ -9132,7 +9136,7 @@ mod module_eef1bd43 {
                                                 Dice_ui::closure83((), v_5)
                                             })(x.clone())
                                         })
-                                        .collect();
+                                        .collect::<Vec<_>>();
                                     Dice_ui::US42::US42_0(
                                         fable_library_rust::NativeArray_::array_from(v67),
                                     )
@@ -9164,7 +9168,7 @@ mod module_eef1bd43 {
                                         }
                                     })(x.clone())
                                 })
-                                .collect();
+                                .collect::<Vec<_>>();
                             ()
                         }
                         _ => (),
@@ -9183,7 +9187,7 @@ mod module_eef1bd43 {
                             .iter()
                             .enumerate()
                             .map(|(i, x)| v93(i.try_into().unwrap())(x.clone()))
-                            .collect();
+                            .collect::<Vec<_>>();
                         let v98: Array<
                             Result<
                                 Option<crate::model::near::rpc::RpcResponse>,
@@ -10050,7 +10054,7 @@ mod module_eef1bd43 {
                                                 },
                                             )(x.clone())
                                         })
-                                        .collect();
+                                        .collect::<Vec<_>>();
                                     Dice_ui::US30::US30_0(
                                         fable_library_rust::NativeArray_::array_from(v35),
                                     )
@@ -10156,7 +10160,7 @@ mod module_eef1bd43 {
                                 }
                             })(x.clone())
                         })
-                        .collect();
+                        .collect::<Vec<_>>();
                     let v64: Array<
                         Result<
                             Option<(
@@ -11654,11 +11658,13 @@ mod module_eef1bd43 {
                         Dice_ui::closure46((), tupledArg.0.clone(), tupledArg.1.clone())
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v11 = Dice_ui::method50();
             let v12: Vec<(bool, std::string::String)> = Dice_ui::method51(v10);
-            let v14: Vec<(bool, std::string::String)> =
-                v12.into_iter().filter(|x| v11(x.clone().clone())).collect();
+            let v14: Vec<(bool, std::string::String)> = v12
+                .into_iter()
+                .filter(|x| v11(x.clone().clone()))
+                .collect::<Vec<_>>();
             let v17: Vec<std::string::String> = v14
                 .into_iter()
                 .map(|x| {
@@ -11666,13 +11672,13 @@ mod module_eef1bd43 {
                         Dice_ui::closure48((), arg10_0040_1)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v18 = Dice_ui::method123();
             let v19: Vec<std::string::String> = Dice_ui::method124(v17);
             v19.iter()
                 .enumerate()
                 .map(|(i, x)| v18(i.try_into().unwrap())(x.clone()))
-                .collect()
+                .collect::<Vec<_>>()
         }
         pub fn closure152(
             unitVar: (),
@@ -11751,7 +11757,7 @@ mod module_eef1bd43 {
                         },
                     )(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             v5.into_iter()
                 .map(|x| {
                     Func1::new(
@@ -11762,7 +11768,7 @@ mod module_eef1bd43 {
                         )| Dice_ui::closure153((), arg10_0040_1),
                     )(x.clone())
                 })
-                .collect()
+                .collect::<Vec<_>>()
         }
         pub fn method125(v0_1: Array<leptos::View>) -> Array<leptos::View> {
             v0_1
@@ -11828,7 +11834,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure164((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v22: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v20);
             let v24: Vec<leptos::View> = v22.to_vec();
             leptos::Fragment::new(v24)
@@ -12243,7 +12249,7 @@ mod module_eef1bd43 {
                             Dice_ui::closure173((), v)
                         })(x.clone())
                     })
-                    .collect();
+                    .collect::<Vec<_>>();
                 let v32: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v30);
                 let v34: Vec<leptos::View> = v32.to_vec();
                 leptos::Fragment::new(v34)
@@ -12653,7 +12659,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure164((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v22: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v20);
             let v24: Vec<leptos::View> = v22.to_vec();
             leptos::Fragment::new(v24)
@@ -13491,7 +13497,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure204((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v66: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v64);
             let v68: Vec<leptos::View> = v66.to_vec();
             leptos::Fragment::new(v68)
@@ -13890,7 +13896,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure207((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v23: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v21);
             let v25: Vec<leptos::View> = v23.to_vec();
             leptos::Fragment::new(v25)
@@ -14287,11 +14293,13 @@ mod module_eef1bd43 {
                         },
                     )(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v9 = Dice_ui::method178();
             let v10: Vec<(string, Dice_ui::US34)> = Dice_ui::method179(v8);
-            let v12: Vec<(string, Dice_ui::US34)> =
-                v10.into_iter().filter(|x| v9(x.clone().clone())).collect();
+            let v12: Vec<(string, Dice_ui::US34)> = v10
+                .into_iter()
+                .filter(|x| v9(x.clone().clone()))
+                .collect::<Vec<_>>();
             if count(fable_library_rust::NativeArray_::array_from(v12)) > 0_i32 {
                 _arg.0.clone() == fable_library_rust::String_::fromString(v2.l10.clone())
             } else {
@@ -15837,8 +15845,10 @@ mod module_eef1bd43 {
                                 let v43 = Dice_ui::method177();
                                 let v44: Vec<(string, usize, LrcPtr<Dice_ui::Heap5>)> =
                                     Dice_ui::method180(v42);
-                                let v46: Vec<(string, usize, LrcPtr<Dice_ui::Heap5>)> =
-                                    v44.into_iter().filter(|x| v43(x.clone().clone())).collect();
+                                let v46: Vec<(string, usize, LrcPtr<Dice_ui::Heap5>)> = v44
+                                    .into_iter()
+                                    .filter(|x| v43(x.clone().clone()))
+                                    .collect::<Vec<_>>();
                                 let v49 =
                                     Dice_ui::method136(Dice_ui::method135(Dice_ui::method181()));
                                 let v53: string = string("leptos::view! { <tr >{v49()}</tr> }");
@@ -15928,7 +15938,7 @@ mod module_eef1bd43 {
                                             }
                                         })(x.clone())
                                     })
-                                    .collect();
+                                    .collect::<Vec<_>>();
                                 let v69: Array<leptos::View> =
                                     fable_library_rust::NativeArray_::array_from(v67);
                                 let v71: Vec<leptos::View> = v69.to_vec();
@@ -16402,7 +16412,7 @@ mod module_eef1bd43 {
             v9.iter()
                 .enumerate()
                 .map(|(i, x)| v8(i.try_into().unwrap())(x.clone()))
-                .collect()
+                .collect::<Vec<_>>()
         }
         pub fn closure255(
             unitVar: (),
@@ -16491,7 +16501,7 @@ mod module_eef1bd43 {
                         },
                     )(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             v8.into_iter()
                 .map(|x| {
                     Func1::new({
@@ -16503,7 +16513,7 @@ mod module_eef1bd43 {
                         )| Dice_ui::closure256(v3, arg10_0040_1)
                     })(x.clone())
                 })
-                .collect()
+                .collect::<Vec<_>>()
         }
         pub fn closure257(
             v0_1: leptos::Memo<
@@ -16651,7 +16661,7 @@ mod module_eef1bd43 {
                             },
                         )(x.clone())
                     })
-                    .collect(),
+                    .collect::<Vec<_>>(),
                 l2: v1.l2,
                 l3: v1.l3,
                 l4: v1.l4.clone(),
@@ -16753,7 +16763,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure164((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v22: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v20);
             let v24: Vec<leptos::View> = v22.to_vec();
             leptos::Fragment::new(v24)
@@ -16884,7 +16894,7 @@ mod module_eef1bd43 {
                     .iter()
                     .enumerate()
                     .map(|(i, x)| v17(i.try_into().unwrap())(x.clone()))
-                    .collect(),
+                    .collect::<Vec<_>>(),
                 l2: v8.l2,
                 l3: v8.l3,
                 l4: v8.l4.clone(),
@@ -16959,7 +16969,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure164((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v22: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v20);
             let v24: Vec<leptos::View> = v22.to_vec();
             leptos::Fragment::new(v24)
@@ -17013,7 +17023,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure164((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v22: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v20);
             let v24: Vec<leptos::View> = v22.to_vec();
             leptos::Fragment::new(v24)
@@ -17093,7 +17103,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure281((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v43: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v41);
             let v45: Vec<leptos::View> = v43.to_vec();
             leptos::Fragment::new(v45)
@@ -17319,7 +17329,7 @@ mod module_eef1bd43 {
                     .iter()
                     .enumerate()
                     .map(|(i, x)| v17(i.try_into().unwrap())(x.clone()))
-                    .collect(),
+                    .collect::<Vec<_>>(),
                 l2: v8.l2,
                 l3: v8.l3,
                 l4: v8.l4.clone(),
@@ -17456,7 +17466,7 @@ mod module_eef1bd43 {
                             },
                         )(x.clone())
                     })
-                    .collect(),
+                    .collect::<Vec<_>>(),
                 l2: v2.l2,
                 l3: v2.l3,
                 l4: v2.l4.clone(),
@@ -17560,7 +17570,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure164((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v22: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v20);
             let v24: Vec<leptos::View> = v22.to_vec();
             leptos::Fragment::new(v24)
@@ -18987,7 +18997,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure325((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v48: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v46);
             let v50: Vec<leptos::View> = v48.to_vec();
             leptos::Fragment::new(v50)
@@ -21317,7 +21327,7 @@ mod module_eef1bd43 {
                         },
                     )(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v18: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v16);
             let v20: Vec<leptos::View> = v18.to_vec();
             leptos::Fragment::new(v20)
@@ -22545,7 +22555,7 @@ mod module_eef1bd43 {
                 .map(|x| {
                     Func1::new(move |v: std::string::String| Dice_ui::closure49((), v))(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v20: LrcPtr<dyn IEnumerable_1<string>> =
                 ofArray(fable_library_rust::NativeArray_::array_from(v16));
             let v27: string = replace(
@@ -23724,7 +23734,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure371((), arg10_0040)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v7: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v5);
             let v9: Vec<leptos::View> = v7.to_vec();
             leptos::Fragment::new(v9)
@@ -23915,7 +23925,7 @@ mod module_eef1bd43 {
                         },
                     )(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v8: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v6);
             let v10: Vec<leptos::View> = v8.to_vec();
             leptos::Fragment::new(v10)
@@ -23992,7 +24002,7 @@ mod module_eef1bd43 {
                             x.clone(),
                         )
                     })
-                    .collect();
+                    .collect::<Vec<_>>();
                 let v26: LrcPtr<dyn IEnumerable_1<string>> =
                     ofArray(fable_library_rust::NativeArray_::array_from(v22));
                 let v33: string = replace(
@@ -25129,7 +25139,7 @@ mod module_eef1bd43 {
                                                 },
                                             )(x.clone())
                                         })
-                                        .collect();
+                                        .collect::<Vec<_>>();
                                     let v91: Vec<leptos::View> = v88
                                         .into_iter()
                                         .map(|x| {
@@ -25141,7 +25151,7 @@ mod module_eef1bd43 {
                                                 },
                                             )(x.clone())
                                         })
-                                        .collect();
+                                        .collect::<Vec<_>>();
                                     let v93: Array<leptos::View> =
                                         fable_library_rust::NativeArray_::array_from(v91);
                                     let v95: Vec<leptos::View> = v93.to_vec();
@@ -25655,7 +25665,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure325((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v30: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v28);
             let v32: Vec<leptos::View> = v30.to_vec();
             leptos::Fragment::new(v32)
@@ -27138,7 +27148,7 @@ mod module_eef1bd43 {
                         move |v: Dice_ui::US20| Dice_ui::closure512(v0_1.clone(), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v13: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v11);
             let v15: Vec<leptos::View> = v13.to_vec();
             leptos::Fragment::new(v15)
@@ -27491,7 +27501,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure164((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v22: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v20);
             let v24: Vec<leptos::View> = v22.to_vec();
             leptos::Fragment::new(v24)
@@ -27904,7 +27914,7 @@ mod module_eef1bd43 {
                         move |v: Dice_ui::US20| Dice_ui::closure518(v0_1.clone(), v1.clone(), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v14: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v12);
             let v16: Vec<leptos::View> = v14.to_vec();
             leptos::Fragment::new(v16)
@@ -28068,7 +28078,7 @@ mod module_eef1bd43 {
                         Dice_ui::closure207((), v)
                     })(x.clone())
                 })
-                .collect();
+                .collect::<Vec<_>>();
             let v38: Array<leptos::View> = fable_library_rust::NativeArray_::array_from(v36);
             let v40: Vec<leptos::View> = v38.to_vec();
             leptos::Fragment::new(v40)

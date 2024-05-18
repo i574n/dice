@@ -16,7 +16,7 @@ function CheckToml {
     )
     $toml = [IO.Path]::GetFullPath("$ScriptDir/$toml")
     Write-Output "`nCheckToml / toml: $toml"
-    { cargo +nightly outdated -m $toml --exclude tokio @_args } | Invoke-Block
+    { cargo +nightly outdated -m $toml --exclude tokio @_args } | Invoke-Block -OnError Continue
 }
 
 function CheckJson {
@@ -25,7 +25,7 @@ function CheckJson {
     )
     $json = [IO.Path]::GetFullPath("$ScriptDir/$json").Replace("\", "/")
     Write-Output "`nCheckJson / json: $json"
-    { ~/.bun/bin/bun --cwd $json outdated-pre } | Invoke-Block
+    { ~/.bun/bin/bun --cwd $json outdated-pre } | Invoke-Block -OnError Continue
 }
 
 
