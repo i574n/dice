@@ -1,17 +1,15 @@
 [package]
 name = "dice_contract"
-version = "0.0.1"
-edition = "2021"
-workspace = "../"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+repository.workspace = true
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-fable_library_rust = { path = "../../polyglot/lib/rust/fable/fable_modules/fable-library-rust", default-features = false }
+fable_library_rust = { workspace = true }
 dice_contract_lib = { path = "../lib/contract" }
 borsh = "~1.5"
 near-sdk = "~5.1"
-
-[features]
-contract = []
