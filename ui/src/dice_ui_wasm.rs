@@ -2421,39 +2421,41 @@ mod module_eef1bd43 {
                                 Err(v11_1_0) => Dice_ui::closure7((), v11_1_0.clone()),
                                 Ok(v11_0_0) => Dice_ui::closure6((), v11_0_0.clone()),
                             });
+                            let v22: string = string("v15 }}); { //");
                             v15
                         }
                     });
                     {
                         //;
                         {
-                            let v19: std::pin::Pin<
+                            let v24: std::pin::Pin<
                                 Box<dyn std::future::Future<Output = Dice_ui::US3>>,
                             > = __result;
-                            let v21: Dice_ui::US3 = v19.await;
-                            let v27: rexie::Rexie = match &v21 {
-                                Dice_ui::US3::US3_0(v21_0_0) => v21_0_0.clone(),
-                                Dice_ui::US3::US3_1(v21_1_0) => panic!(
+                            let v26: Dice_ui::US3 = v24.await;
+                            let v32: rexie::Rexie = match &v26 {
+                                Dice_ui::US3::US3_0(v26_0_0) => v26_0_0.clone(),
+                                Dice_ui::US3::US3_1(v26_1_0) => panic!(
                                     "{}",
                                     sprintf!(
                                         "resultm.get / Result value was Error: {}",
-                                        v21_1_0.clone()
+                                        v26_1_0.clone()
                                     ),
                                 ),
                             };
-                            let v29: string =
+                            let v34: string =
                             append(append(string("state_core.use_database (3) / database create_local_resource / result: "),
-                                          sprintf!("{:?}", v27.clone())),
+                                          sprintf!("{:?}", v32.clone())),
                                    string(""));
-                            let v34: string = if length(v29.clone()) <= 200_i32 {
-                                v29.clone()
+                            let v39: string = if length(v34.clone()) <= 200_i32 {
+                                v34.clone()
                             } else {
-                                append(getSlice(v29, Some(0_i32), Some(199_i32)), string("..."))
+                                append(getSlice(v34, Some(0_i32), Some(199_i32)), string("..."))
                             };
-                            let v36: bool = true;
-                            leptos::logging::log!("{}", v34);
-                            let v37: rexie::Rexie = Dice_ui::method8(v27);
-                            v37
+                            let v41: bool = true;
+                            leptos::logging::log!("{}", v39);
+                            let v42: rexie::Rexie = Dice_ui::method8(v32);
+                            let v50: string = string("v42 }}}}); {{{ //");
+                            v42
                         }
                     }
                 }
@@ -2482,6 +2484,7 @@ mod module_eef1bd43 {
                         let v5: std::pin::Pin<Box<dyn std::future::Future<Output = rexie::Rexie>>> =
                             Dice_ui::method9(Dice_ui::method6());
                         let v7: rexie::Rexie = v5.await;
+                        let v14: string = string("v7 }}); { //");
                         v7
                     }
                 },
@@ -2720,6 +2723,7 @@ mod module_eef1bd43 {
                             }),
                             _ => None::<Option<LrcPtr<Dice_ui::Heap3>>>,
                         }));
+                        let v106: string = string("v97 }}}); {{ //");
                         v97
                     }
                 }
@@ -2896,6 +2900,7 @@ mod module_eef1bd43 {
                             } else {
                                 Dice_ui::US4::US4_1
                             });
+                        let v64: string = string("v55 }}}); {{ //");
                         v55
                     }
                 }
@@ -2928,6 +2933,7 @@ mod module_eef1bd43 {
                         let v6: std::pin::Pin<Box<dyn std::future::Future<Output = Dice_ui::US4>>> =
                             Dice_ui::method27(Dice_ui::method11(x));
                         let v8: Dice_ui::US4 = v6.await;
+                        let v15: string = string("v8 }}); { //");
                         v8
                     }
                 },
@@ -3589,31 +3595,32 @@ mod module_eef1bd43 {
                                     v23.done().await?;
                                     let v42: Result<(), rexie::Error> =
                                         Dice_ui::method36(Ok::<(), rexie::Error>(()));
+                                    let v49: string = string("v42 }}); { //");
                                     v42
                                 }
                             });
                             {
                                 //;
                                 {
-                                    let v46: std::pin::Pin<
+                                    let v51: std::pin::Pin<
                                         Box<
                                             dyn std::future::Future<
                                                 Output = Result<(), rexie::Error>,
                                             >,
                                         >,
                                     > = __result;
-                                    let v48: Result<(), rexie::Error> = v46.await;
-                                    let v51: Dice_ui::US17 = match &v48 {
-                                        Err(v48_1_0) => Dice_ui::closure32((), v48_1_0.clone()),
+                                    let v53: Result<(), rexie::Error> = v51.await;
+                                    let v56: Dice_ui::US17 = match &v53 {
+                                        Err(v53_1_0) => Dice_ui::closure32((), v53_1_0.clone()),
                                         _ => Dice_ui::closure31((), ()),
                                     };
-                                    match &v51 {
+                                    match &v56 {
                                         Dice_ui::US17::US17_0 => (),
-                                        Dice_ui::US17::US17_1(v51_1_0) => panic!(
+                                        Dice_ui::US17::US17_1(v56_1_0) => panic!(
                                             "{}",
                                             sprintf!(
                                                 "resultm.get / Result value was Error: {}",
-                                                match &v51 {
+                                                match &v56 {
                                                     Dice_ui::US17::US17_1(x) => x.clone(),
                                                     _ => unreachable!(),
                                                 }
@@ -3624,15 +3631,21 @@ mod module_eef1bd43 {
                             }
                         }
                         _ => {
-                            let v56: bool = true;
+                            let v61: bool = true;
                             leptos::logging::log!("{}", string("state_core.use_core_database (13) / set_core_state_heap_action / database=None"));
                             ()
                         }
                     }
                     Dice_ui::method37();
-                    ()
+                    {
+                        let v68: string = string("() }}); { //");
+                        ()
+                    }
                 });
-                __result
+                {
+                    //;
+                    __result
+                }
             }
         }
         pub fn method38(v0_1: std::string::String) -> std::string::String {
@@ -4749,6 +4762,7 @@ mod module_eef1bd43 {
                                 }),
                                 _ => None::<LrcPtr<Dice_ui::Heap4>>,
                             }));
+                        let v106: string = string("v97 }}}); {{ //");
                         v97
                     }
                 }
@@ -4857,6 +4871,7 @@ mod module_eef1bd43 {
                                     )
                                 }
                             });
+                        let v43: string = string("v34 }}}); {{ //");
                         v34
                     }
                 }
@@ -4975,6 +4990,7 @@ mod module_eef1bd43 {
                     leptos::logging::log!("{}", v29);
                     let v32: Result<Vec<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String> =
                         Dice_ui::method70(v22);
+                    let v39: string = string("v32 }}); { //");
                     v32
                 }
             });
@@ -5040,6 +5056,7 @@ mod module_eef1bd43 {
                         ));
                         let v10: Result<Vec<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String> =
                             v8.await;
+                        let v17: string = string("v10 }}); { //");
                         v10
                     }
                 },
@@ -5520,6 +5537,7 @@ mod module_eef1bd43 {
                                 Err::<Option<string>, std::string::String>(v149_1_0.clone())
                             }
                         });
+                    let v163: string = string("v156 }}); { //");
                     v156
                 }
             });
@@ -5717,6 +5735,7 @@ mod module_eef1bd43 {
                             Dice_ui::method88(Ok::<Array<Option<string>>, std::string::String>(
                                 fable_library_rust::NativeArray_::array_from(v54),
                             ));
+                        let v67: string = string("v58 }}}); {{ //");
                         v58
                     }
                 }
@@ -5785,6 +5804,7 @@ mod module_eef1bd43 {
                             patternInput.0.clone(),
                         ));
                         let v10: Result<Array<Option<string>>, std::string::String> = v8.await;
+                        let v17: string = string("v10 }}); { //");
                         v10
                     }
                 },
@@ -5822,7 +5842,7 @@ mod module_eef1bd43 {
             let __result = Box::pin(async move {
                 //;
                 {
-                    let v55: Dice_ui::US37 = if let Dice_ui::US5::US5_0(v1_0_0) = &v1 {
+                    let v60: Dice_ui::US37 = if let Dice_ui::US5::US5_0(v1_0_0) = &v1 {
                         let v9: string =
                             append(append(string("state_core.use_requests (11) / set_state_data_action / database=Some(_) / url: "),
                                           v6.clone()), string(""));
@@ -5868,37 +5888,39 @@ mod module_eef1bd43 {
                                 v20.done().await?;
                                 let v39: Result<(), rexie::Error> =
                                     Dice_ui::method36(Ok::<(), rexie::Error>(()));
+                                let v46: string = string("v39 }}); { //");
                                 v39
                             }
                         });
                         {
                             //;
                             {
-                                let v43: std::pin::Pin<
+                                let v48: std::pin::Pin<
                                     Box<dyn std::future::Future<Output = Result<(), rexie::Error>>>,
                                 > = __result;
-                                let v45: Result<(), rexie::Error> = v43.await;
-                                let v46 = Dice_ui::method91();
-                                let v48: Result<(), std::string::String> = v45.map_err(|x| v46(x));
-                                v48?;
+                                let v50: Result<(), rexie::Error> = v48.await;
+                                let v51 = Dice_ui::method91();
+                                let v53: Result<(), std::string::String> = v50.map_err(|x| v51(x));
+                                v53?;
                                 Dice_ui::US37::US37_0
                             }
                         }
                     } else {
-                        let v53: bool = true;
+                        let v58: bool = true;
                         leptos::logging::log!("{}", string("state_core.use_requests (12) / set_state_data_action / database,request=None"));
                         Dice_ui::US37::US37_0
                     };
-                    let v61: Result<(), std::string::String> = Dice_ui::method92(match &v55 {
+                    let v66: Result<(), std::string::String> = Dice_ui::method92(match &v60 {
                         Dice_ui::US37::US37_0 => Ok::<(), std::string::String>(()),
-                        Dice_ui::US37::US37_1(v55_1_0) => {
-                            Err::<(), std::string::String>(match &v55 {
+                        Dice_ui::US37::US37_1(v60_1_0) => {
+                            Err::<(), std::string::String>(match &v60 {
                                 Dice_ui::US37::US37_1(x) => x.clone(),
                                 _ => unreachable!(),
                             })
                         }
                     });
-                    v61
+                    let v73: string = string("v66 }}); { //");
+                    v66
                 }
             });
             {
@@ -6001,6 +6023,7 @@ mod module_eef1bd43 {
                         let v28: Result<Vec<()>, std::string::String> = v26.await;
                         let v32: Result<Vec<()>, std::string::String> =
                             Dice_ui::method94(Ok::<Vec<()>, std::string::String>(v28?));
+                        let v41: string = string("v32 }}}); {{ //");
                         v32
                     }
                 }
@@ -10673,6 +10696,7 @@ mod module_eef1bd43 {
                     let v142: bool = true;
                     leptos::logging::log!("{}", v140);
                     let v143: Result<Dice_ui::US60, std::string::String> = Dice_ui::method122(v133);
+                    let v150: string = string("v143 }}); { //");
                     v143
                 }
             });

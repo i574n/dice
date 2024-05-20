@@ -149,7 +149,7 @@ inl render (global_state : state.global_state) =
                         result
                         |> optionm.map fun result =>
                             (a result.txns : _ i32 _)
-                            |> am'.enumerate
+                            |> iter.enumerate
                             |> fun (a x : _ i32 _) => x
                             |> am'.to_vec
                             |> am'.vec_map' fun i', x' => { account i = unativeint i; txn = heap x' }
