@@ -21,7 +21,6 @@ mod module_a51efde0 {
         use fable_library_rust::Native_::MutCell;
         use fable_library_rust::Native_::OnceInit;
         use fable_library_rust::Option_::defaultValue;
-        use fable_library_rust::Option_::getValue;
         use fable_library_rust::String_::printfn;
         use fable_library_rust::String_::sprintf;
         use fable_library_rust::String_::string;
@@ -1564,13 +1563,15 @@ mod module_a51efde0 {
         }
         pub fn method39(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
             let v2_1: i64 = v1_1 + 1_i64;
-            let v3_1: string = sprintf!(
-                "accumulate_dice_rolls / power: {} / acc: {} / result: {}",
-                -1_i8,
-                v1_1,
-                v2_1
-            );
-            printfn!("{0}", v3_1);
+            {
+                let value: string = sprintf!(
+                    "accumulate_dice_rolls / power: {} / acc: {} / result: {}",
+                    -1_i8,
+                    v1_1,
+                    v2_1
+                );
+                printfn!("{0}", value)
+            }
             Dice::US5::US5_0(v2_1, v0_1)
         }
         pub fn method38(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
@@ -1587,23 +1588,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v7: i64 = (v3_1 - 1_u8) as i64;
-                        let v8: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            0_i8,
-                            v1_1,
-                            v3_1,
-                            v7
-                        );
-                        printfn!("{0}", v8);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         0_i8, v1_1, v3_1, v7);
+                            printfn!("{0}", value)
+                        }
                         Dice::method39(v4_1.clone(), v1_1 + v7)
                     } else {
-                        let v11: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            0_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v11);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                0_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method39(v4_1, v1_1)
                     }
                 }
@@ -1623,23 +1624,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 6_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            1_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         1_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method38(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            1_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                1_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method38(v4_1, v1_1)
                     }
                 }
@@ -1659,23 +1660,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 36_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            2_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         2_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method37(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            2_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                2_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method37(v4_1, v1_1)
                     }
                 }
@@ -1695,23 +1696,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 216_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            3_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         3_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method36(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            3_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                3_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method36(v4_1, v1_1)
                     }
                 }
@@ -1731,23 +1732,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 1296_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            4_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         4_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method35(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            4_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                4_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method35(v4_1, v1_1)
                     }
                 }
@@ -1767,23 +1768,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 7776_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            5_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         5_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method34(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            5_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                5_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method34(v4_1, v1_1)
                     }
                 }
@@ -1803,23 +1804,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 46656_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            6_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         6_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method33(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            6_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                6_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method33(v4_1, v1_1)
                     }
                 }
@@ -1839,23 +1840,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 279936_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            7_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         7_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method32(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            7_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                7_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method32(v4_1, v1_1)
                     }
                 }
@@ -1875,23 +1876,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 1679616_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            8_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         8_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method31(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            8_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                8_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method31(v4_1, v1_1)
                     }
                 }
@@ -1911,23 +1912,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 10077696_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            9_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         9_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method30(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            9_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                9_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method30(v4_1, v1_1)
                     }
                 }
@@ -1947,23 +1948,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 60466176_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            10_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         10_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method29(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            10_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                10_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method29(v4_1, v1_1)
                     }
                 }
@@ -1983,23 +1984,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 362797056_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            11_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         11_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method28(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            11_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                11_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method28(v4_1, v1_1)
                     }
                 }
@@ -2019,23 +2020,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 2176782336_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            12_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         12_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method27(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            12_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                12_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method27(v4_1, v1_1)
                     }
                 }
@@ -2055,23 +2056,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 13060694016_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            13_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         13_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method26(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            13_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                13_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method26(v4_1, v1_1)
                     }
                 }
@@ -2091,23 +2092,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 78364164096_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            14_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         14_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method25(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            14_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                14_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method25(v4_1, v1_1)
                     }
                 }
@@ -2127,23 +2128,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 470184984576_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            15_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         15_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method24(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            15_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                15_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method24(v4_1, v1_1)
                     }
                 }
@@ -2163,23 +2164,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 2821109907456_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            16_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         16_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method23(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            16_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                16_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method23(v4_1, v1_1)
                     }
                 }
@@ -2199,23 +2200,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 16926659444736_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            17_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         17_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method22(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            17_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                17_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method22(v4_1, v1_1)
                     }
                 }
@@ -2235,23 +2236,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 101559956668416_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            18_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         18_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method21(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            18_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                18_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method21(v4_1, v1_1)
                     }
                 }
@@ -2271,23 +2272,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 609359740010496_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            19_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         19_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method20(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            19_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                19_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method20(v4_1, v1_1)
                     }
                 }
@@ -2307,23 +2308,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 3656158440062976_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            20_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         20_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method19(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            20_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                20_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method19(v4_1, v1_1)
                     }
                 }
@@ -2343,23 +2344,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 21936950640377856_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            21_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         21_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method18(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            21_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                21_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method18(v4_1, v1_1)
                     }
                 }
@@ -2379,23 +2380,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 131621703842267136_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            22_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         22_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method17(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            22_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                22_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method17(v4_1, v1_1)
                     }
                 }
@@ -2415,23 +2416,23 @@ mod module_a51efde0 {
                     };
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 789730223053602816_i64;
-                        let v9: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
-                            23_i8,
-                            v1_1,
-                            v3_1,
-                            v8
-                        );
-                        printfn!("{0}", v9);
+                        {
+                            let value: string =
+                                sprintf!("accumulate_dice_rolls / power: {} / acc: {} / roll: {} / value: {}",
+                                         23_i8, v1_1, v3_1, v8);
+                            printfn!("{0}", value)
+                        }
                         Dice::method16(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v12: string = sprintf!(
-                            "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
-                            23_i8,
-                            v1_1,
-                            v3_1
-                        );
-                        printfn!("{0}", v12);
+                        {
+                            let value_1: string = sprintf!(
+                                "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
+                                23_i8,
+                                v1_1,
+                                v3_1
+                            );
+                            printfn!("{0}", value_1)
+                        }
                         Dice::method16(v4_1, v1_1)
                     }
                 }
@@ -2449,7 +2450,10 @@ mod module_a51efde0 {
                     }
                     {
                         let v0_1_temp: LrcPtr<Dice::UH1> = LrcPtr::new(Dice::UH1::UH1_1(
-                            getValue(_v3.get().clone()),
+                            match &_v3.get().clone() {
+                                None => panic!("{}", string("base.run_target / _v3=None"),),
+                                Some(_v3_0_0) => _v3_0_0.clone(),
+                            },
                             v0_1.get().clone(),
                         ));
                         let v1_1_temp: i8 = v1_1.get().clone() + 1_i8;
@@ -2458,291 +2462,472 @@ mod module_a51efde0 {
                         continue '_method14;
                     }
                 } else {
-                    let v17: Dice::US5 = Dice::method15(v0_1.get().clone(), 0_i64);
-                    if let Dice::US5::US5_0(v17_0_0, v17_0_1) = &v17 {
-                        let v18: i64 = match &v17 {
+                    let v18: Dice::US5 = Dice::method15(v0_1.get().clone(), 0_i64);
+                    if let Dice::US5::US5_0(v18_0_0, v18_0_1) = &v18 {
+                        let v19: i64 = match &v18 {
                             Dice::US5::US5_0(x, _) => x.clone(),
                             _ => unreachable!(),
                         };
-                        if v18 <= i64::MAX {
-                            v18
+                        if v19 <= i64::MAX {
+                            v19
                         } else {
-                            let _v21: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                            let _v22: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                             {
-                                let x_1: u8 = 1;
-                                _v21.set(Some(x_1))
+                                let x_2: u8 = 1;
+                                _v22.set(Some(x_2))
                             }
                             {
-                                let v30: u8 = getValue(_v21.get().clone());
-                                let _v31: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                                let v32: u8 = match &_v22.get().clone() {
+                                    None => panic!("{}", string("base.run_target / _v22=None"),),
+                                    Some(_v22_0_0) => _v22_0_0.clone(),
+                                };
+                                let _v33: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                 {
-                                    let x_2: u8 = 1;
-                                    _v31.set(Some(x_2))
+                                    let x_4: u8 = 1;
+                                    _v33.set(Some(x_4))
                                 }
                                 {
-                                    let v38: u8 = getValue(_v31.get().clone());
-                                    let _v39: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                                    let v43: u8 = match &_v33.get().clone() {
+                                        None => {
+                                            panic!("{}", string("base.run_target / _v33=None"),)
+                                        }
+                                        Some(_v33_0_0) => _v33_0_0.clone(),
+                                    };
+                                    let _v44: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                     {
-                                        let x_3: u8 = 1;
-                                        _v39.set(Some(x_3))
+                                        let x_6: u8 = 1;
+                                        _v44.set(Some(x_6))
                                     }
                                     {
-                                        let v46: u8 = getValue(_v39.get().clone());
-                                        let _v47: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                                        let v54: u8 = match &_v44.get().clone() {
+                                            None => {
+                                                panic!("{}", string("base.run_target / _v44=None"),)
+                                            }
+                                            Some(_v44_0_0) => _v44_0_0.clone(),
+                                        };
+                                        let _v55: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                         {
-                                            let x_4: u8 = 1;
-                                            _v47.set(Some(x_4))
+                                            let x_8: u8 = 1;
+                                            _v55.set(Some(x_8))
                                         }
                                         {
-                                            let v54: u8 = getValue(_v47.get().clone());
-                                            let _v55: MutCell<Option<u8>> =
+                                            let v65: u8 = match &_v55.get().clone() {
+                                                None => panic!(
+                                                    "{}",
+                                                    string("base.run_target / _v55=None"),
+                                                ),
+                                                Some(_v55_0_0) => _v55_0_0.clone(),
+                                            };
+                                            let _v66: MutCell<Option<u8>> =
                                                 MutCell::new(None::<u8>);
                                             {
-                                                let x_5: u8 = 1;
-                                                _v55.set(Some(x_5))
+                                                let x_10: u8 = 1;
+                                                _v66.set(Some(x_10))
                                             }
                                             {
-                                                let v62: u8 = getValue(_v55.get().clone());
-                                                let _v63: MutCell<Option<u8>> =
+                                                let v76: u8 = match &_v66.get().clone() {
+                                                    None => panic!(
+                                                        "{}",
+                                                        string("base.run_target / _v66=None"),
+                                                    ),
+                                                    Some(_v66_0_0) => _v66_0_0.clone(),
+                                                };
+                                                let _v77: MutCell<Option<u8>> =
                                                     MutCell::new(None::<u8>);
                                                 {
-                                                    let x_6: u8 = 1;
-                                                    _v63.set(Some(x_6))
+                                                    let x_12: u8 = 1;
+                                                    _v77.set(Some(x_12))
                                                 }
                                                 {
-                                                    let v70: u8 = getValue(_v63.get().clone());
-                                                    let _v71: MutCell<Option<u8>> =
+                                                    let v87: u8 = match &_v77.get().clone() {
+                                                        None => panic!(
+                                                            "{}",
+                                                            string("base.run_target / _v77=None"),
+                                                        ),
+                                                        Some(_v77_0_0) => _v77_0_0.clone(),
+                                                    };
+                                                    let _v88: MutCell<Option<u8>> =
                                                         MutCell::new(None::<u8>);
                                                     {
-                                                        let x_7: u8 = 1;
-                                                        _v71.set(Some(x_7))
+                                                        let x_14: u8 = 1;
+                                                        _v88.set(Some(x_14))
                                                     }
                                                     {
-                                                        let v78: u8 = getValue(_v71.get().clone());
-                                                        let _v79: MutCell<Option<u8>> =
+                                                        let v98: u8 = match &_v88.get().clone() {
+                                                            None => panic!(
+                                                                "{}",
+                                                                string(
+                                                                    "base.run_target / _v88=None"
+                                                                ),
+                                                            ),
+                                                            Some(_v88_0_0) => _v88_0_0.clone(),
+                                                        };
+                                                        let _v99: MutCell<Option<u8>> =
                                                             MutCell::new(None::<u8>);
                                                         {
-                                                            let x_8: u8 = 1;
-                                                            _v79.set(Some(x_8))
+                                                            let x_16: u8 = 1;
+                                                            _v99.set(Some(x_16))
                                                         }
                                                         {
-                                                            let v86: u8 =
-                                                                getValue(_v79.get().clone());
-                                                            let _v87: MutCell<Option<u8>> =
+                                                            let v109:
+                                                                             u8 =
+                                                                         match &_v99.get().clone()
+                                                                             {
+                                                                             None
+                                                                             =>
+                                                                             panic!("{}",
+                                                                                    string("base.run_target / _v99=None"),),
+                                                                             Some(_v99_0_0)
+                                                                             =>
+                                                                             _v99_0_0.clone(),
+                                                                         };
+                                                            let _v110: MutCell<Option<u8>> =
                                                                 MutCell::new(None::<u8>);
                                                             {
-                                                                let x_9: u8 = 1;
-                                                                _v87.set(Some(x_9))
+                                                                let x_18: u8 = 1;
+                                                                _v110.set(Some(x_18))
                                                             }
                                                             {
-                                                                let v94: u8 =
-                                                                    getValue(_v87.get().clone());
-                                                                let _v95: MutCell<Option<u8>> =
+                                                                let v120:
+                                                                                 u8 =
+                                                                             match &_v110.get().clone()
+                                                                                 {
+                                                                                 None
+                                                                                 =>
+                                                                                 panic!("{}",
+                                                                                        string("base.run_target / _v110=None"),),
+                                                                                 Some(_v110_0_0)
+                                                                                 =>
+                                                                                 _v110_0_0.clone(),
+                                                                             };
+                                                                let _v121: MutCell<Option<u8>> =
                                                                     MutCell::new(None::<u8>);
                                                                 {
-                                                                    let x_10: u8 = 1;
-                                                                    _v95.set(Some(x_10))
+                                                                    let x_20: u8 = 1;
+                                                                    _v121.set(Some(x_20))
                                                                 }
                                                                 {
-                                                                    let v102: u8 = getValue(
-                                                                        _v95.get().clone(),
-                                                                    );
-                                                                    let _v103: MutCell<Option<u8>> =
+                                                                    let v131:
+                                                                                     u8 =
+                                                                                 match &_v121.get().clone()
+                                                                                     {
+                                                                                     None
+                                                                                     =>
+                                                                                     panic!("{}",
+                                                                                            string("base.run_target / _v121=None"),),
+                                                                                     Some(_v121_0_0)
+                                                                                     =>
+                                                                                     _v121_0_0.clone(),
+                                                                                 };
+                                                                    let _v132: MutCell<Option<u8>> =
                                                                         MutCell::new(None::<u8>);
                                                                     {
-                                                                        let x_11: u8 = 1;
-                                                                        _v103.set(Some(x_11))
+                                                                        let x_22: u8 = 1;
+                                                                        _v132.set(Some(x_22))
                                                                     }
                                                                     {
-                                                                        let v110: u8 = getValue(
-                                                                            _v103.get().clone(),
-                                                                        );
-                                                                        let _v111: MutCell<
+                                                                        let v142:
+                                                                                         u8 =
+                                                                                     match &_v132.get().clone()
+                                                                                         {
+                                                                                         None
+                                                                                         =>
+                                                                                         panic!("{}",
+                                                                                                string("base.run_target / _v132=None"),),
+                                                                                         Some(_v132_0_0)
+                                                                                         =>
+                                                                                         _v132_0_0.clone(),
+                                                                                     };
+                                                                        let _v143: MutCell<
                                                                             Option<u8>,
                                                                         > = MutCell::new(
                                                                             None::<u8>,
                                                                         );
                                                                         {
-                                                                            let x_12: u8 = 1;
-                                                                            _v111.set(Some(x_12))
+                                                                            let x_24: u8 = 1;
+                                                                            _v143.set(Some(x_24))
                                                                         }
                                                                         {
-                                                                            let v118: u8 = getValue(
-                                                                                _v111.get().clone(),
-                                                                            );
-                                                                            let _v119: MutCell<
+                                                                            let v153:
+                                                                                             u8 =
+                                                                                         match &_v143.get().clone()
+                                                                                             {
+                                                                                             None
+                                                                                             =>
+                                                                                             panic!("{}",
+                                                                                                    string("base.run_target / _v143=None"),),
+                                                                                             Some(_v143_0_0)
+                                                                                             =>
+                                                                                             _v143_0_0.clone(),
+                                                                                         };
+                                                                            let _v154: MutCell<
                                                                                 Option<u8>,
                                                                             > = MutCell::new(
                                                                                 None::<u8>,
                                                                             );
                                                                             {
-                                                                                let x_13: u8 = 1;
-                                                                                _v119
-                                                                                    .set(Some(x_13))
+                                                                                let x_26: u8 = 1;
+                                                                                _v154
+                                                                                    .set(Some(x_26))
                                                                             }
                                                                             {
-                                                                                let v126: u8 =
-                                                                                    getValue(
-                                                                                        _v119
-                                                                                            .get()
-                                                                                            .clone(
-                                                                                            ),
-                                                                                    );
-                                                                                let _v127: MutCell<
+                                                                                let v164:
+                                                                                                 u8 =
+                                                                                             match &_v154.get().clone()
+                                                                                                 {
+                                                                                                 None
+                                                                                                 =>
+                                                                                                 panic!("{}",
+                                                                                                        string("base.run_target / _v154=None"),),
+                                                                                                 Some(_v154_0_0)
+                                                                                                 =>
+                                                                                                 _v154_0_0.clone(),
+                                                                                             };
+                                                                                let _v165: MutCell<
                                                                                     Option<u8>,
                                                                                 > = MutCell::new(
                                                                                     None::<u8>,
                                                                                 );
                                                                                 {
-                                                                                    let x_14: u8 =
+                                                                                    let x_28: u8 =
                                                                                         1;
-                                                                                    _v127.set(Some(
-                                                                                        x_14,
+                                                                                    _v165.set(Some(
+                                                                                        x_28,
                                                                                     ))
                                                                                 }
                                                                                 {
-                                                                                    let v134:
+                                                                                    let v175:
                                                                                                      u8 =
-                                                                                                 getValue(_v127.get().clone());
-                                                                                    let _v135:
+                                                                                                 match &_v165.get().clone()
+                                                                                                     {
+                                                                                                     None
+                                                                                                     =>
+                                                                                                     panic!("{}",
+                                                                                                            string("base.run_target / _v165=None"),),
+                                                                                                     Some(_v165_0_0)
+                                                                                                     =>
+                                                                                                     _v165_0_0.clone(),
+                                                                                                 };
+                                                                                    let _v176:
                                                                                                      MutCell<Option<u8>> =
                                                                                                  MutCell::new(None::<u8>);
                                                                                     {
-                                                                                        let x_15:
+                                                                                        let x_30:
                                                                                                          u8 =
                                                                                                      1;
-                                                                                        _v135.set(Some(x_15))
+                                                                                        _v176.set(Some(x_30))
                                                                                     }
                                                                                     {
-                                                                                        let v142:
+                                                                                        let v186:
                                                                                                          u8 =
-                                                                                                     getValue(_v135.get().clone());
-                                                                                        let _v143:
+                                                                                                     match &_v176.get().clone()
+                                                                                                         {
+                                                                                                         None
+                                                                                                         =>
+                                                                                                         panic!("{}",
+                                                                                                                string("base.run_target / _v176=None"),),
+                                                                                                         Some(_v176_0_0)
+                                                                                                         =>
+                                                                                                         _v176_0_0.clone(),
+                                                                                                     };
+                                                                                        let _v187:
                                                                                                          MutCell<Option<u8>> =
                                                                                                      MutCell::new(None::<u8>);
                                                                                         {
-                                                                                            let x_16:
+                                                                                            let x_32:
                                                                                                              u8 =
                                                                                                          1;
-                                                                                            _v143.set(Some(x_16))
+                                                                                            _v187.set(Some(x_32))
                                                                                         }
                                                                                         {
-                                                                                            let v150:
+                                                                                            let v197:
                                                                                                              u8 =
-                                                                                                         getValue(_v143.get().clone());
-                                                                                            let _v151:
+                                                                                                         match &_v187.get().clone()
+                                                                                                             {
+                                                                                                             None
+                                                                                                             =>
+                                                                                                             panic!("{}",
+                                                                                                                    string("base.run_target / _v187=None"),),
+                                                                                                             Some(_v187_0_0)
+                                                                                                             =>
+                                                                                                             _v187_0_0.clone(),
+                                                                                                         };
+                                                                                            let _v198:
                                                                                                              MutCell<Option<u8>> =
                                                                                                          MutCell::new(None::<u8>);
                                                                                             {
-                                                                                                let x_17:
+                                                                                                let x_34:
                                                                                                                  u8 =
                                                                                                              1;
-                                                                                                _v151.set(Some(x_17))
+                                                                                                _v198.set(Some(x_34))
                                                                                             }
                                                                                             {
-                                                                                                let v158:
+                                                                                                let v208:
                                                                                                                  u8 =
-                                                                                                             getValue(_v151.get().clone());
-                                                                                                let _v159:
+                                                                                                             match &_v198.get().clone()
+                                                                                                                 {
+                                                                                                                 None
+                                                                                                                 =>
+                                                                                                                 panic!("{}",
+                                                                                                                        string("base.run_target / _v198=None"),),
+                                                                                                                 Some(_v198_0_0)
+                                                                                                                 =>
+                                                                                                                 _v198_0_0.clone(),
+                                                                                                             };
+                                                                                                let _v209:
                                                                                                                  MutCell<Option<u8>> =
                                                                                                              MutCell::new(None::<u8>);
                                                                                                 {
-                                                                                                    let x_18:
+                                                                                                    let x_36:
                                                                                                                      u8 =
                                                                                                                  1;
-                                                                                                    _v159.set(Some(x_18))
+                                                                                                    _v209.set(Some(x_36))
                                                                                                 }
                                                                                                 {
-                                                                                                    let v166:
+                                                                                                    let v219:
                                                                                                                      u8 =
-                                                                                                                 getValue(_v159.get().clone());
-                                                                                                    let _v167:
+                                                                                                                 match &_v209.get().clone()
+                                                                                                                     {
+                                                                                                                     None
+                                                                                                                     =>
+                                                                                                                     panic!("{}",
+                                                                                                                            string("base.run_target / _v209=None"),),
+                                                                                                                     Some(_v209_0_0)
+                                                                                                                     =>
+                                                                                                                     _v209_0_0.clone(),
+                                                                                                                 };
+                                                                                                    let _v220:
                                                                                                                      MutCell<Option<u8>> =
                                                                                                                  MutCell::new(None::<u8>);
                                                                                                     {
-                                                                                                        let x_19:
+                                                                                                        let x_38:
                                                                                                                          u8 =
                                                                                                                      1;
-                                                                                                        _v167.set(Some(x_19))
+                                                                                                        _v220.set(Some(x_38))
                                                                                                     }
                                                                                                     {
-                                                                                                        let v174:
+                                                                                                        let v230:
                                                                                                                          u8 =
-                                                                                                                     getValue(_v167.get().clone());
-                                                                                                        let _v175:
+                                                                                                                     match &_v220.get().clone()
+                                                                                                                         {
+                                                                                                                         None
+                                                                                                                         =>
+                                                                                                                         panic!("{}",
+                                                                                                                                string("base.run_target / _v220=None"),),
+                                                                                                                         Some(_v220_0_0)
+                                                                                                                         =>
+                                                                                                                         _v220_0_0.clone(),
+                                                                                                                     };
+                                                                                                        let _v231:
                                                                                                                          MutCell<Option<u8>> =
                                                                                                                      MutCell::new(None::<u8>);
                                                                                                         {
-                                                                                                            let x_20:
+                                                                                                            let x_40:
                                                                                                                              u8 =
                                                                                                                          1;
-                                                                                                            _v175.set(Some(x_20))
+                                                                                                            _v231.set(Some(x_40))
                                                                                                         }
                                                                                                         {
-                                                                                                            let v182:
+                                                                                                            let v241:
                                                                                                                              u8 =
-                                                                                                                         getValue(_v175.get().clone());
-                                                                                                            let _v183:
+                                                                                                                         match &_v231.get().clone()
+                                                                                                                             {
+                                                                                                                             None
+                                                                                                                             =>
+                                                                                                                             panic!("{}",
+                                                                                                                                    string("base.run_target / _v231=None"),),
+                                                                                                                             Some(_v231_0_0)
+                                                                                                                             =>
+                                                                                                                             _v231_0_0.clone(),
+                                                                                                                         };
+                                                                                                            let _v242:
                                                                                                                              MutCell<Option<u8>> =
                                                                                                                          MutCell::new(None::<u8>);
                                                                                                             {
-                                                                                                                let x_21:
+                                                                                                                let x_42:
                                                                                                                                  u8 =
                                                                                                                              1;
-                                                                                                                _v183.set(Some(x_21))
+                                                                                                                _v242.set(Some(x_42))
                                                                                                             }
                                                                                                             {
-                                                                                                                let v190:
+                                                                                                                let v252:
                                                                                                                                  u8 =
-                                                                                                                             getValue(_v183.get().clone());
-                                                                                                                let _v191:
+                                                                                                                             match &_v242.get().clone()
+                                                                                                                                 {
+                                                                                                                                 None
+                                                                                                                                 =>
+                                                                                                                                 panic!("{}",
+                                                                                                                                        string("base.run_target / _v242=None"),),
+                                                                                                                                 Some(_v242_0_0)
+                                                                                                                                 =>
+                                                                                                                                 _v242_0_0.clone(),
+                                                                                                                             };
+                                                                                                                let _v253:
                                                                                                                                  MutCell<Option<u8>> =
                                                                                                                              MutCell::new(None::<u8>);
                                                                                                                 {
-                                                                                                                    let x_22:
+                                                                                                                    let x_44:
                                                                                                                                      u8 =
                                                                                                                                  1;
-                                                                                                                    _v191.set(Some(x_22))
+                                                                                                                    _v253.set(Some(x_44))
                                                                                                                 }
                                                                                                                 {
-                                                                                                                    let v198:
+                                                                                                                    let v263:
                                                                                                                                      u8 =
-                                                                                                                                 getValue(_v191.get().clone());
-                                                                                                                    let _v199:
+                                                                                                                                 match &_v253.get().clone()
+                                                                                                                                     {
+                                                                                                                                     None
+                                                                                                                                     =>
+                                                                                                                                     panic!("{}",
+                                                                                                                                            string("base.run_target / _v253=None"),),
+                                                                                                                                     Some(_v253_0_0)
+                                                                                                                                     =>
+                                                                                                                                     _v253_0_0.clone(),
+                                                                                                                                 };
+                                                                                                                    let _v264:
                                                                                                                                      MutCell<Option<u8>> =
                                                                                                                                  MutCell::new(None::<u8>);
                                                                                                                     {
-                                                                                                                        let x_23:
+                                                                                                                        let x_46:
                                                                                                                                          u8 =
                                                                                                                                      1;
-                                                                                                                        _v199.set(Some(x_23))
+                                                                                                                        _v264.set(Some(x_46))
                                                                                                                     }
                                                                                                                     {
                                                                                                                         let v0_1_temp:
                                                                                                                                          LrcPtr<Dice::UH1> =
-                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v30,
-                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v38,
-                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(v46,
-                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(v54,
-                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(v62,
-                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(v70,
-                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(v78,
-                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(v86,
-                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(v94,
-                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(v102,
-                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(v110,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(v118,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(v126,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(v134,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(v142,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(v150,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v158,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v166,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(v174,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(v182,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(v190,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(v198,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(getValue(_v199.get().clone()),
+                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v32,
+                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v43,
+                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(v54,
+                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(v65,
+                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(v76,
+                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(v87,
+                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(v98,
+                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(v109,
+                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(v120,
+                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(v131,
+                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(v142,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(v153,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(v164,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(v175,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(v186,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(v197,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v208,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v219,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(v230,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(v241,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(v252,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(v263,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(match &_v264.get().clone()
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    None
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    =>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    panic!("{}",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           string("base.run_target / _v264=None"),),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Some(_v264_0_0)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    =>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    _v264_0_0.clone(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                },
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0)))))))))))))))))))))))))))))))))))))))))))))));
                                                                                                                         let v1_1_temp:
                                                                                                                                          i8 =
@@ -2776,277 +2961,451 @@ mod module_a51efde0 {
                             }
                         }
                     } else {
-                        let _v234: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                        let _v302: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                         {
-                            let x_24: u8 = 1;
-                            _v234.set(Some(x_24))
+                            let x_48: u8 = 1;
+                            _v302.set(Some(x_48))
                         }
                         {
-                            let v243: u8 = getValue(_v234.get().clone());
-                            let _v244: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                            let v312: u8 = match &_v302.get().clone() {
+                                None => panic!("{}", string("base.run_target / _v302=None"),),
+                                Some(_v302_0_0) => _v302_0_0.clone(),
+                            };
+                            let _v313: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                             {
-                                let x_25: u8 = 1;
-                                _v244.set(Some(x_25))
+                                let x_50: u8 = 1;
+                                _v313.set(Some(x_50))
                             }
                             {
-                                let v251: u8 = getValue(_v244.get().clone());
-                                let _v252: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                                let v323: u8 = match &_v313.get().clone() {
+                                    None => panic!("{}", string("base.run_target / _v313=None"),),
+                                    Some(_v313_0_0) => _v313_0_0.clone(),
+                                };
+                                let _v324: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                 {
-                                    let x_26: u8 = 1;
-                                    _v252.set(Some(x_26))
+                                    let x_52: u8 = 1;
+                                    _v324.set(Some(x_52))
                                 }
                                 {
-                                    let v259: u8 = getValue(_v252.get().clone());
-                                    let _v260: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                                    let v334: u8 = match &_v324.get().clone() {
+                                        None => {
+                                            panic!("{}", string("base.run_target / _v324=None"),)
+                                        }
+                                        Some(_v324_0_0) => _v324_0_0.clone(),
+                                    };
+                                    let _v335: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                     {
-                                        let x_27: u8 = 1;
-                                        _v260.set(Some(x_27))
+                                        let x_54: u8 = 1;
+                                        _v335.set(Some(x_54))
                                     }
                                     {
-                                        let v267: u8 = getValue(_v260.get().clone());
-                                        let _v268: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+                                        let v345: u8 = match &_v335.get().clone() {
+                                            None => {
+                                                panic!("{}", string("base.run_target / _v335=None"),)
+                                            }
+                                            Some(_v335_0_0) => _v335_0_0.clone(),
+                                        };
+                                        let _v346: MutCell<Option<u8>> = MutCell::new(None::<u8>);
                                         {
-                                            let x_28: u8 = 1;
-                                            _v268.set(Some(x_28))
+                                            let x_56: u8 = 1;
+                                            _v346.set(Some(x_56))
                                         }
                                         {
-                                            let v275: u8 = getValue(_v268.get().clone());
-                                            let _v276: MutCell<Option<u8>> =
+                                            let v356: u8 = match &_v346.get().clone() {
+                                                None => panic!(
+                                                    "{}",
+                                                    string("base.run_target / _v346=None"),
+                                                ),
+                                                Some(_v346_0_0) => _v346_0_0.clone(),
+                                            };
+                                            let _v357: MutCell<Option<u8>> =
                                                 MutCell::new(None::<u8>);
                                             {
-                                                let x_29: u8 = 1;
-                                                _v276.set(Some(x_29))
+                                                let x_58: u8 = 1;
+                                                _v357.set(Some(x_58))
                                             }
                                             {
-                                                let v283: u8 = getValue(_v276.get().clone());
-                                                let _v284: MutCell<Option<u8>> =
+                                                let v367: u8 = match &_v357.get().clone() {
+                                                    None => panic!(
+                                                        "{}",
+                                                        string("base.run_target / _v357=None"),
+                                                    ),
+                                                    Some(_v357_0_0) => _v357_0_0.clone(),
+                                                };
+                                                let _v368: MutCell<Option<u8>> =
                                                     MutCell::new(None::<u8>);
                                                 {
-                                                    let x_30: u8 = 1;
-                                                    _v284.set(Some(x_30))
+                                                    let x_60: u8 = 1;
+                                                    _v368.set(Some(x_60))
                                                 }
                                                 {
-                                                    let v291: u8 = getValue(_v284.get().clone());
-                                                    let _v292: MutCell<Option<u8>> =
+                                                    let v378: u8 = match &_v368.get().clone() {
+                                                        None => panic!(
+                                                            "{}",
+                                                            string("base.run_target / _v368=None"),
+                                                        ),
+                                                        Some(_v368_0_0) => _v368_0_0.clone(),
+                                                    };
+                                                    let _v379: MutCell<Option<u8>> =
                                                         MutCell::new(None::<u8>);
                                                     {
-                                                        let x_31: u8 = 1;
-                                                        _v292.set(Some(x_31))
+                                                        let x_62: u8 = 1;
+                                                        _v379.set(Some(x_62))
                                                     }
                                                     {
-                                                        let v299: u8 =
-                                                            getValue(_v292.get().clone());
-                                                        let _v300: MutCell<Option<u8>> =
+                                                        let v389: u8 = match &_v379.get().clone() {
+                                                            None => panic!(
+                                                                "{}",
+                                                                string(
+                                                                    "base.run_target / _v379=None"
+                                                                ),
+                                                            ),
+                                                            Some(_v379_0_0) => _v379_0_0.clone(),
+                                                        };
+                                                        let _v390: MutCell<Option<u8>> =
                                                             MutCell::new(None::<u8>);
                                                         {
-                                                            let x_32: u8 = 1;
-                                                            _v300.set(Some(x_32))
+                                                            let x_64: u8 = 1;
+                                                            _v390.set(Some(x_64))
                                                         }
                                                         {
-                                                            let v307: u8 =
-                                                                getValue(_v300.get().clone());
-                                                            let _v308: MutCell<Option<u8>> =
+                                                            let v400:
+                                                                             u8 =
+                                                                         match &_v390.get().clone()
+                                                                             {
+                                                                             None
+                                                                             =>
+                                                                             panic!("{}",
+                                                                                    string("base.run_target / _v390=None"),),
+                                                                             Some(_v390_0_0)
+                                                                             =>
+                                                                             _v390_0_0.clone(),
+                                                                         };
+                                                            let _v401: MutCell<Option<u8>> =
                                                                 MutCell::new(None::<u8>);
                                                             {
-                                                                let x_33: u8 = 1;
-                                                                _v308.set(Some(x_33))
+                                                                let x_66: u8 = 1;
+                                                                _v401.set(Some(x_66))
                                                             }
                                                             {
-                                                                let v315: u8 =
-                                                                    getValue(_v308.get().clone());
-                                                                let _v316: MutCell<Option<u8>> =
+                                                                let v411:
+                                                                                 u8 =
+                                                                             match &_v401.get().clone()
+                                                                                 {
+                                                                                 None
+                                                                                 =>
+                                                                                 panic!("{}",
+                                                                                        string("base.run_target / _v401=None"),),
+                                                                                 Some(_v401_0_0)
+                                                                                 =>
+                                                                                 _v401_0_0.clone(),
+                                                                             };
+                                                                let _v412: MutCell<Option<u8>> =
                                                                     MutCell::new(None::<u8>);
                                                                 {
-                                                                    let x_34: u8 = 1;
-                                                                    _v316.set(Some(x_34))
+                                                                    let x_68: u8 = 1;
+                                                                    _v412.set(Some(x_68))
                                                                 }
                                                                 {
-                                                                    let v323: u8 = getValue(
-                                                                        _v316.get().clone(),
-                                                                    );
-                                                                    let _v324: MutCell<Option<u8>> =
+                                                                    let v422:
+                                                                                     u8 =
+                                                                                 match &_v412.get().clone()
+                                                                                     {
+                                                                                     None
+                                                                                     =>
+                                                                                     panic!("{}",
+                                                                                            string("base.run_target / _v412=None"),),
+                                                                                     Some(_v412_0_0)
+                                                                                     =>
+                                                                                     _v412_0_0.clone(),
+                                                                                 };
+                                                                    let _v423: MutCell<Option<u8>> =
                                                                         MutCell::new(None::<u8>);
                                                                     {
-                                                                        let x_35: u8 = 1;
-                                                                        _v324.set(Some(x_35))
+                                                                        let x_70: u8 = 1;
+                                                                        _v423.set(Some(x_70))
                                                                     }
                                                                     {
-                                                                        let v331: u8 = getValue(
-                                                                            _v324.get().clone(),
-                                                                        );
-                                                                        let _v332: MutCell<
+                                                                        let v433:
+                                                                                         u8 =
+                                                                                     match &_v423.get().clone()
+                                                                                         {
+                                                                                         None
+                                                                                         =>
+                                                                                         panic!("{}",
+                                                                                                string("base.run_target / _v423=None"),),
+                                                                                         Some(_v423_0_0)
+                                                                                         =>
+                                                                                         _v423_0_0.clone(),
+                                                                                     };
+                                                                        let _v434: MutCell<
                                                                             Option<u8>,
                                                                         > = MutCell::new(
                                                                             None::<u8>,
                                                                         );
                                                                         {
-                                                                            let x_36: u8 = 1;
-                                                                            _v332.set(Some(x_36))
+                                                                            let x_72: u8 = 1;
+                                                                            _v434.set(Some(x_72))
                                                                         }
                                                                         {
-                                                                            let v339: u8 = getValue(
-                                                                                _v332.get().clone(),
-                                                                            );
-                                                                            let _v340: MutCell<
+                                                                            let v444:
+                                                                                             u8 =
+                                                                                         match &_v434.get().clone()
+                                                                                             {
+                                                                                             None
+                                                                                             =>
+                                                                                             panic!("{}",
+                                                                                                    string("base.run_target / _v434=None"),),
+                                                                                             Some(_v434_0_0)
+                                                                                             =>
+                                                                                             _v434_0_0.clone(),
+                                                                                         };
+                                                                            let _v445: MutCell<
                                                                                 Option<u8>,
                                                                             > = MutCell::new(
                                                                                 None::<u8>,
                                                                             );
                                                                             {
-                                                                                let x_37: u8 = 1;
-                                                                                _v340
-                                                                                    .set(Some(x_37))
+                                                                                let x_74: u8 = 1;
+                                                                                _v445
+                                                                                    .set(Some(x_74))
                                                                             }
                                                                             {
-                                                                                let v347: u8 =
-                                                                                    getValue(
-                                                                                        _v340
-                                                                                            .get()
-                                                                                            .clone(
-                                                                                            ),
-                                                                                    );
-                                                                                let _v348: MutCell<
+                                                                                let v455:
+                                                                                                 u8 =
+                                                                                             match &_v445.get().clone()
+                                                                                                 {
+                                                                                                 None
+                                                                                                 =>
+                                                                                                 panic!("{}",
+                                                                                                        string("base.run_target / _v445=None"),),
+                                                                                                 Some(_v445_0_0)
+                                                                                                 =>
+                                                                                                 _v445_0_0.clone(),
+                                                                                             };
+                                                                                let _v456: MutCell<
                                                                                     Option<u8>,
                                                                                 > = MutCell::new(
                                                                                     None::<u8>,
                                                                                 );
                                                                                 {
-                                                                                    let x_38: u8 =
+                                                                                    let x_76: u8 =
                                                                                         1;
-                                                                                    _v348.set(Some(
-                                                                                        x_38,
+                                                                                    _v456.set(Some(
+                                                                                        x_76,
                                                                                     ))
                                                                                 }
                                                                                 {
-                                                                                    let v355:
+                                                                                    let v466:
                                                                                                      u8 =
-                                                                                                 getValue(_v348.get().clone());
-                                                                                    let _v356:
+                                                                                                 match &_v456.get().clone()
+                                                                                                     {
+                                                                                                     None
+                                                                                                     =>
+                                                                                                     panic!("{}",
+                                                                                                            string("base.run_target / _v456=None"),),
+                                                                                                     Some(_v456_0_0)
+                                                                                                     =>
+                                                                                                     _v456_0_0.clone(),
+                                                                                                 };
+                                                                                    let _v467:
                                                                                                      MutCell<Option<u8>> =
                                                                                                  MutCell::new(None::<u8>);
                                                                                     {
-                                                                                        let x_39:
+                                                                                        let x_78:
                                                                                                          u8 =
                                                                                                      1;
-                                                                                        _v356.set(Some(x_39))
+                                                                                        _v467.set(Some(x_78))
                                                                                     }
                                                                                     {
-                                                                                        let v363:
+                                                                                        let v477:
                                                                                                          u8 =
-                                                                                                     getValue(_v356.get().clone());
-                                                                                        let _v364:
+                                                                                                     match &_v467.get().clone()
+                                                                                                         {
+                                                                                                         None
+                                                                                                         =>
+                                                                                                         panic!("{}",
+                                                                                                                string("base.run_target / _v467=None"),),
+                                                                                                         Some(_v467_0_0)
+                                                                                                         =>
+                                                                                                         _v467_0_0.clone(),
+                                                                                                     };
+                                                                                        let _v478:
                                                                                                          MutCell<Option<u8>> =
                                                                                                      MutCell::new(None::<u8>);
                                                                                         {
-                                                                                            let x_40:
+                                                                                            let x_80:
                                                                                                              u8 =
                                                                                                          1;
-                                                                                            _v364.set(Some(x_40))
+                                                                                            _v478.set(Some(x_80))
                                                                                         }
                                                                                         {
-                                                                                            let v371:
+                                                                                            let v488:
                                                                                                              u8 =
-                                                                                                         getValue(_v364.get().clone());
-                                                                                            let _v372:
+                                                                                                         match &_v478.get().clone()
+                                                                                                             {
+                                                                                                             None
+                                                                                                             =>
+                                                                                                             panic!("{}",
+                                                                                                                    string("base.run_target / _v478=None"),),
+                                                                                                             Some(_v478_0_0)
+                                                                                                             =>
+                                                                                                             _v478_0_0.clone(),
+                                                                                                         };
+                                                                                            let _v489:
                                                                                                              MutCell<Option<u8>> =
                                                                                                          MutCell::new(None::<u8>);
                                                                                             {
-                                                                                                let x_41:
+                                                                                                let x_82:
                                                                                                                  u8 =
                                                                                                              1;
-                                                                                                _v372.set(Some(x_41))
+                                                                                                _v489.set(Some(x_82))
                                                                                             }
                                                                                             {
-                                                                                                let v379:
+                                                                                                let v499:
                                                                                                                  u8 =
-                                                                                                             getValue(_v372.get().clone());
-                                                                                                let _v380:
+                                                                                                             match &_v489.get().clone()
+                                                                                                                 {
+                                                                                                                 None
+                                                                                                                 =>
+                                                                                                                 panic!("{}",
+                                                                                                                        string("base.run_target / _v489=None"),),
+                                                                                                                 Some(_v489_0_0)
+                                                                                                                 =>
+                                                                                                                 _v489_0_0.clone(),
+                                                                                                             };
+                                                                                                let _v500:
                                                                                                                  MutCell<Option<u8>> =
                                                                                                              MutCell::new(None::<u8>);
                                                                                                 {
-                                                                                                    let x_42:
+                                                                                                    let x_84:
                                                                                                                      u8 =
                                                                                                                  1;
-                                                                                                    _v380.set(Some(x_42))
+                                                                                                    _v500.set(Some(x_84))
                                                                                                 }
                                                                                                 {
-                                                                                                    let v387:
+                                                                                                    let v510:
                                                                                                                      u8 =
-                                                                                                                 getValue(_v380.get().clone());
-                                                                                                    let _v388:
+                                                                                                                 match &_v500.get().clone()
+                                                                                                                     {
+                                                                                                                     None
+                                                                                                                     =>
+                                                                                                                     panic!("{}",
+                                                                                                                            string("base.run_target / _v500=None"),),
+                                                                                                                     Some(_v500_0_0)
+                                                                                                                     =>
+                                                                                                                     _v500_0_0.clone(),
+                                                                                                                 };
+                                                                                                    let _v511:
                                                                                                                      MutCell<Option<u8>> =
                                                                                                                  MutCell::new(None::<u8>);
                                                                                                     {
-                                                                                                        let x_43:
+                                                                                                        let x_86:
                                                                                                                          u8 =
                                                                                                                      1;
-                                                                                                        _v388.set(Some(x_43))
+                                                                                                        _v511.set(Some(x_86))
                                                                                                     }
                                                                                                     {
-                                                                                                        let v395:
+                                                                                                        let v521:
                                                                                                                          u8 =
-                                                                                                                     getValue(_v388.get().clone());
-                                                                                                        let _v396:
+                                                                                                                     match &_v511.get().clone()
+                                                                                                                         {
+                                                                                                                         None
+                                                                                                                         =>
+                                                                                                                         panic!("{}",
+                                                                                                                                string("base.run_target / _v511=None"),),
+                                                                                                                         Some(_v511_0_0)
+                                                                                                                         =>
+                                                                                                                         _v511_0_0.clone(),
+                                                                                                                     };
+                                                                                                        let _v522:
                                                                                                                          MutCell<Option<u8>> =
                                                                                                                      MutCell::new(None::<u8>);
                                                                                                         {
-                                                                                                            let x_44:
+                                                                                                            let x_88:
                                                                                                                              u8 =
                                                                                                                          1;
-                                                                                                            _v396.set(Some(x_44))
+                                                                                                            _v522.set(Some(x_88))
                                                                                                         }
                                                                                                         {
-                                                                                                            let v403:
+                                                                                                            let v532:
                                                                                                                              u8 =
-                                                                                                                         getValue(_v396.get().clone());
-                                                                                                            let _v404:
+                                                                                                                         match &_v522.get().clone()
+                                                                                                                             {
+                                                                                                                             None
+                                                                                                                             =>
+                                                                                                                             panic!("{}",
+                                                                                                                                    string("base.run_target / _v522=None"),),
+                                                                                                                             Some(_v522_0_0)
+                                                                                                                             =>
+                                                                                                                             _v522_0_0.clone(),
+                                                                                                                         };
+                                                                                                            let _v533:
                                                                                                                              MutCell<Option<u8>> =
                                                                                                                          MutCell::new(None::<u8>);
                                                                                                             {
-                                                                                                                let x_45:
+                                                                                                                let x_90:
                                                                                                                                  u8 =
                                                                                                                              1;
-                                                                                                                _v404.set(Some(x_45))
+                                                                                                                _v533.set(Some(x_90))
                                                                                                             }
                                                                                                             {
-                                                                                                                let v411:
+                                                                                                                let v543:
                                                                                                                                  u8 =
-                                                                                                                             getValue(_v404.get().clone());
-                                                                                                                let _v412:
+                                                                                                                             match &_v533.get().clone()
+                                                                                                                                 {
+                                                                                                                                 None
+                                                                                                                                 =>
+                                                                                                                                 panic!("{}",
+                                                                                                                                        string("base.run_target / _v533=None"),),
+                                                                                                                                 Some(_v533_0_0)
+                                                                                                                                 =>
+                                                                                                                                 _v533_0_0.clone(),
+                                                                                                                             };
+                                                                                                                let _v544:
                                                                                                                                  MutCell<Option<u8>> =
                                                                                                                              MutCell::new(None::<u8>);
                                                                                                                 {
-                                                                                                                    let x_46:
+                                                                                                                    let x_92:
                                                                                                                                      u8 =
                                                                                                                                  1;
-                                                                                                                    _v412.set(Some(x_46))
+                                                                                                                    _v544.set(Some(x_92))
                                                                                                                 }
                                                                                                                 {
                                                                                                                     let v0_1_temp:
                                                                                                                                      LrcPtr<Dice::UH1> =
-                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(v243,
-                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(v251,
-                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(v259,
-                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(v267,
-                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v275,
-                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v283,
-                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(v291,
-                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(v299,
-                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(v307,
-                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(v315,
-                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(v323,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(v331,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(v339,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(v347,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(v355,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(v363,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(v371,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(v379,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(v387,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(v395,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v403,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v411,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(getValue(_v412.get().clone()),
+                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(v312,
+                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(v323,
+                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(v334,
+                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(v345,
+                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v356,
+                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v367,
+                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(v378,
+                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(v389,
+                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(v400,
+                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(v411,
+                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(v422,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(v433,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(v444,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(v455,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(v466,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(v477,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(v488,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(v499,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(v510,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(v521,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(v532,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(v543,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(match &_v544.get().clone()
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                None
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                =>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                panic!("{}",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       string("base.run_target / _v544=None"),),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Some(_v544_0_0)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                =>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                _v544_0_0.clone(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            },
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_0)))))))))))))))))))))))))))))))))))))))))))))));
                                                                                                                     let v1_1_temp:
                                                                                                                                      i8 =
@@ -3083,21 +3442,23 @@ mod module_a51efde0 {
             }
         }
         pub fn closure80(unitVar: (), v0_1: Array<string>) -> i32 {
-            let v1_1: string = sprintf!(
-                "calculate_dice_count / max: {} / n: {} / p: {}",
-                i64::MAX,
-                24_i8,
-                4738381338321616896_i64
-            );
-            printfn!("{0}", v1_1);
             {
-                let v5: string = sprintf!(
+                let value: string = sprintf!(
+                    "calculate_dice_count / max: {} / n: {} / p: {}",
+                    i64::MAX,
+                    24_i8,
+                    4738381338321616896_i64
+                );
+                printfn!("{0}", value)
+            }
+            {
+                let value_1: string = sprintf!(
                     "result: {}",
                     Dice::method14(LrcPtr::new(Dice::UH1::UH1_0), 0_i8)
                 );
-                printfn!("{0}", v5);
-                0_i32
+                printfn!("{0}", value_1)
             }
+            0_i32
         }
         pub fn v0() -> Func1<i64, Func1<LrcPtr<Dice::UH0>, LrcPtr<Dice::UH0>>> {
             static v0: OnceInit<Func1<i64, Func1<LrcPtr<Dice::UH0>, LrcPtr<Dice::UH0>>>> =
