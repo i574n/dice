@@ -1211,8 +1211,8 @@ export function closure77(unitVar: void, v0_1: Option<((arg0: string) => void)>)
 
 export function method39(v0_1: UH1_$union, v1_1: int64): US5_$union {
     const v2_1: int64 = toInt64(op_Addition(v1_1, 1n));
-    const v3_1 = `accumulate_dice_rolls / power: ${-1} / acc: ${v1_1} / result: ${v2_1}`;
-    console.log(v3_1);
+    const value = `accumulate_dice_rolls / power: ${-1} / acc: ${v1_1} / result: ${v2_1}`;
+    console.log(value);
     return US5_US5_0(v2_1, v0_1);
 }
 
@@ -1225,13 +1225,13 @@ export function method38(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v7: int64 = toInt64(fromUInt8(v3_1 - 1));
-            const v8 = `accumulate_dice_rolls / power: ${0} / acc: ${v1_1} / roll: ${v3_1} / value: ${v7}`;
-            console.log(v8);
+            const value = `accumulate_dice_rolls / power: ${0} / acc: ${v1_1} / roll: ${v3_1} / value: ${v7}`;
+            console.log(value);
             return method39(v4_1, toInt64(op_Addition(v1_1, v7)));
         }
         else {
-            const v11 = `accumulate_dice_rolls / power: ${0} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v11);
+            const value_1 = `accumulate_dice_rolls / power: ${0} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method39(v4_1, v1_1);
         }
     }
@@ -1246,13 +1246,13 @@ export function method37(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 6n));
-            const v9 = `accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method38(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method38(v4_1, v1_1);
         }
     }
@@ -1267,13 +1267,13 @@ export function method36(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 36n));
-            const v9 = `accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method37(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method37(v4_1, v1_1);
         }
     }
@@ -1288,13 +1288,13 @@ export function method35(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 216n));
-            const v9 = `accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method36(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method36(v4_1, v1_1);
         }
     }
@@ -1309,13 +1309,13 @@ export function method34(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 1296n));
-            const v9 = `accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method35(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method35(v4_1, v1_1);
         }
     }
@@ -1330,13 +1330,13 @@ export function method33(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 7776n));
-            const v9 = `accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method34(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method34(v4_1, v1_1);
         }
     }
@@ -1351,13 +1351,13 @@ export function method32(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 46656n));
-            const v9 = `accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method33(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method33(v4_1, v1_1);
         }
     }
@@ -1372,13 +1372,13 @@ export function method31(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 279936n));
-            const v9 = `accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method32(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method32(v4_1, v1_1);
         }
     }
@@ -1393,13 +1393,13 @@ export function method30(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 1679616n));
-            const v9 = `accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method31(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method31(v4_1, v1_1);
         }
     }
@@ -1414,13 +1414,13 @@ export function method29(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 10077696n));
-            const v9 = `accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method30(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method30(v4_1, v1_1);
         }
     }
@@ -1435,13 +1435,13 @@ export function method28(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 60466176n));
-            const v9 = `accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method29(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method29(v4_1, v1_1);
         }
     }
@@ -1456,13 +1456,13 @@ export function method27(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 362797056n));
-            const v9 = `accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method28(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method28(v4_1, v1_1);
         }
     }
@@ -1477,13 +1477,13 @@ export function method26(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 2176782336n));
-            const v9 = `accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method27(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method27(v4_1, v1_1);
         }
     }
@@ -1498,13 +1498,13 @@ export function method25(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 13060694016n));
-            const v9 = `accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method26(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method26(v4_1, v1_1);
         }
     }
@@ -1519,13 +1519,13 @@ export function method24(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 78364164096n));
-            const v9 = `accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method25(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method25(v4_1, v1_1);
         }
     }
@@ -1540,13 +1540,13 @@ export function method23(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 470184984576n));
-            const v9 = `accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method24(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method24(v4_1, v1_1);
         }
     }
@@ -1561,13 +1561,13 @@ export function method22(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 2821109907456n));
-            const v9 = `accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method23(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method23(v4_1, v1_1);
         }
     }
@@ -1582,13 +1582,13 @@ export function method21(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 16926659444736n));
-            const v9 = `accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method22(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method22(v4_1, v1_1);
         }
     }
@@ -1603,13 +1603,13 @@ export function method20(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 101559956668416n));
-            const v9 = `accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method21(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method21(v4_1, v1_1);
         }
     }
@@ -1624,13 +1624,13 @@ export function method19(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 609359740010496n));
-            const v9 = `accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method20(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method20(v4_1, v1_1);
         }
     }
@@ -1645,13 +1645,13 @@ export function method18(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 3656158440062976n));
-            const v9 = `accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method19(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method19(v4_1, v1_1);
         }
     }
@@ -1666,13 +1666,13 @@ export function method17(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 21936950640377856n));
-            const v9 = `accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method18(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method18(v4_1, v1_1);
         }
     }
@@ -1687,13 +1687,13 @@ export function method16(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 131621703842267136n));
-            const v9 = `accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method17(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method17(v4_1, v1_1);
         }
     }
@@ -1708,13 +1708,13 @@ export function method15(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 789730223053602816n));
-            const v9 = `accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(v9);
+            const value = `accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
+            console.log(value);
             return method16(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const v12 = `accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(v12);
+            const value_1 = `accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1}`;
+            console.log(value_1);
             return method16(v4_1, v1_1);
         }
     }
@@ -1730,300 +1730,570 @@ export function method14(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
             const value: int32 = nonSeeded().Next2(1, 7) | 0;
             x = (value & 0xFF);
             _v3 = x;
-            v0_1_mut = UH1_UH1_1(value_47(_v3), v0_1);
+            v0_1_mut = UH1_UH1_1((_v3 == null) ? (() => {
+                throw new Error("base.run_target / _v3=None");
+            })() : value_47(_v3), v0_1);
             v1_1_mut = (v1_1 + 1);
             continue method14;
         }
         else {
-            const v17: US5_$union = method15(v0_1, 0n);
-            if (v17.tag === /* US5_0 */ 0) {
-                const v19: UH1_$union = v17.fields[1];
-                const v18: int64 = v17.fields[0];
-                if (compare(v18, 9223372036854775807n) <= 0) {
-                    return v18;
+            const v18: US5_$union = method15(v0_1, 0n);
+            if (v18.tag === /* US5_0 */ 0) {
+                const v20: UH1_$union = v18.fields[1];
+                const v19: int64 = v18.fields[0];
+                if (compare(v19, 9223372036854775807n) <= 0) {
+                    return v19;
                 }
                 else {
-                    let _v21: Option<uint8> = undefined;
-                    let x_1: uint8;
-                    const value_1: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_1 = (value_1 & 0xFF);
-                    _v21 = x_1;
-                    const v30: uint8 = value_47(_v21);
-                    let _v31: Option<uint8> = undefined;
+                    let _v22: Option<uint8> = undefined;
                     let x_2: uint8;
-                    const value_2: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_2 = (value_2 & 0xFF);
-                    _v31 = x_2;
-                    const v38: uint8 = value_47(_v31);
-                    let _v39: Option<uint8> = undefined;
-                    let x_3: uint8;
-                    const value_3: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_3 = (value_3 & 0xFF);
-                    _v39 = x_3;
-                    const v46: uint8 = value_47(_v39);
-                    let _v47: Option<uint8> = undefined;
+                    const value_1: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_2 = (value_1 & 0xFF);
+                    _v22 = x_2;
+                    let v32: uint8;
+                    if (_v22 == null) {
+                        throw new Error("base.run_target / _v22=None");
+                    }
+                    else {
+                        v32 = value_47(_v22);
+                    }
+                    let _v33: Option<uint8> = undefined;
                     let x_4: uint8;
-                    const value_4: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_4 = (value_4 & 0xFF);
-                    _v47 = x_4;
-                    const v54: uint8 = value_47(_v47);
-                    let _v55: Option<uint8> = undefined;
-                    let x_5: uint8;
-                    const value_5: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_5 = (value_5 & 0xFF);
-                    _v55 = x_5;
-                    const v62: uint8 = value_47(_v55);
-                    let _v63: Option<uint8> = undefined;
+                    const value_2: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_4 = (value_2 & 0xFF);
+                    _v33 = x_4;
+                    let v43: uint8;
+                    if (_v33 == null) {
+                        throw new Error("base.run_target / _v33=None");
+                    }
+                    else {
+                        v43 = value_47(_v33);
+                    }
+                    let _v44: Option<uint8> = undefined;
                     let x_6: uint8;
-                    const value_6: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_6 = (value_6 & 0xFF);
-                    _v63 = x_6;
-                    const v70: uint8 = value_47(_v63);
-                    let _v71: Option<uint8> = undefined;
-                    let x_7: uint8;
-                    const value_7: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_7 = (value_7 & 0xFF);
-                    _v71 = x_7;
-                    const v78: uint8 = value_47(_v71);
-                    let _v79: Option<uint8> = undefined;
+                    const value_3: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_6 = (value_3 & 0xFF);
+                    _v44 = x_6;
+                    let v54: uint8;
+                    if (_v44 == null) {
+                        throw new Error("base.run_target / _v44=None");
+                    }
+                    else {
+                        v54 = value_47(_v44);
+                    }
+                    let _v55: Option<uint8> = undefined;
                     let x_8: uint8;
-                    const value_8: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_8 = (value_8 & 0xFF);
-                    _v79 = x_8;
-                    const v86: uint8 = value_47(_v79);
-                    let _v87: Option<uint8> = undefined;
-                    let x_9: uint8;
-                    const value_9: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_9 = (value_9 & 0xFF);
-                    _v87 = x_9;
-                    const v94: uint8 = value_47(_v87);
-                    let _v95: Option<uint8> = undefined;
+                    const value_4: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_8 = (value_4 & 0xFF);
+                    _v55 = x_8;
+                    let v65: uint8;
+                    if (_v55 == null) {
+                        throw new Error("base.run_target / _v55=None");
+                    }
+                    else {
+                        v65 = value_47(_v55);
+                    }
+                    let _v66: Option<uint8> = undefined;
                     let x_10: uint8;
-                    const value_10: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_10 = (value_10 & 0xFF);
-                    _v95 = x_10;
-                    const v102: uint8 = value_47(_v95);
-                    let _v103: Option<uint8> = undefined;
-                    let x_11: uint8;
-                    const value_11: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_11 = (value_11 & 0xFF);
-                    _v103 = x_11;
-                    const v110: uint8 = value_47(_v103);
-                    let _v111: Option<uint8> = undefined;
+                    const value_5: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_10 = (value_5 & 0xFF);
+                    _v66 = x_10;
+                    let v76: uint8;
+                    if (_v66 == null) {
+                        throw new Error("base.run_target / _v66=None");
+                    }
+                    else {
+                        v76 = value_47(_v66);
+                    }
+                    let _v77: Option<uint8> = undefined;
                     let x_12: uint8;
-                    const value_12: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_12 = (value_12 & 0xFF);
-                    _v111 = x_12;
-                    const v118: uint8 = value_47(_v111);
-                    let _v119: Option<uint8> = undefined;
-                    let x_13: uint8;
-                    const value_13: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_13 = (value_13 & 0xFF);
-                    _v119 = x_13;
-                    const v126: uint8 = value_47(_v119);
-                    let _v127: Option<uint8> = undefined;
+                    const value_6: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_12 = (value_6 & 0xFF);
+                    _v77 = x_12;
+                    let v87: uint8;
+                    if (_v77 == null) {
+                        throw new Error("base.run_target / _v77=None");
+                    }
+                    else {
+                        v87 = value_47(_v77);
+                    }
+                    let _v88: Option<uint8> = undefined;
                     let x_14: uint8;
-                    const value_14: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_14 = (value_14 & 0xFF);
-                    _v127 = x_14;
-                    const v134: uint8 = value_47(_v127);
-                    let _v135: Option<uint8> = undefined;
-                    let x_15: uint8;
-                    const value_15: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_15 = (value_15 & 0xFF);
-                    _v135 = x_15;
-                    const v142: uint8 = value_47(_v135);
-                    let _v143: Option<uint8> = undefined;
+                    const value_7: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_14 = (value_7 & 0xFF);
+                    _v88 = x_14;
+                    let v98: uint8;
+                    if (_v88 == null) {
+                        throw new Error("base.run_target / _v88=None");
+                    }
+                    else {
+                        v98 = value_47(_v88);
+                    }
+                    let _v99: Option<uint8> = undefined;
                     let x_16: uint8;
-                    const value_16: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_16 = (value_16 & 0xFF);
-                    _v143 = x_16;
-                    const v150: uint8 = value_47(_v143);
-                    let _v151: Option<uint8> = undefined;
-                    let x_17: uint8;
-                    const value_17: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_17 = (value_17 & 0xFF);
-                    _v151 = x_17;
-                    const v158: uint8 = value_47(_v151);
-                    let _v159: Option<uint8> = undefined;
+                    const value_8: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_16 = (value_8 & 0xFF);
+                    _v99 = x_16;
+                    let v109: uint8;
+                    if (_v99 == null) {
+                        throw new Error("base.run_target / _v99=None");
+                    }
+                    else {
+                        v109 = value_47(_v99);
+                    }
+                    let _v110: Option<uint8> = undefined;
                     let x_18: uint8;
-                    const value_18: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_18 = (value_18 & 0xFF);
-                    _v159 = x_18;
-                    const v166: uint8 = value_47(_v159);
-                    let _v167: Option<uint8> = undefined;
-                    let x_19: uint8;
-                    const value_19: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_19 = (value_19 & 0xFF);
-                    _v167 = x_19;
-                    const v174: uint8 = value_47(_v167);
-                    let _v175: Option<uint8> = undefined;
+                    const value_9: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_18 = (value_9 & 0xFF);
+                    _v110 = x_18;
+                    let v120: uint8;
+                    if (_v110 == null) {
+                        throw new Error("base.run_target / _v110=None");
+                    }
+                    else {
+                        v120 = value_47(_v110);
+                    }
+                    let _v121: Option<uint8> = undefined;
                     let x_20: uint8;
-                    const value_20: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_20 = (value_20 & 0xFF);
-                    _v175 = x_20;
-                    const v182: uint8 = value_47(_v175);
-                    let _v183: Option<uint8> = undefined;
-                    let x_21: uint8;
-                    const value_21: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_21 = (value_21 & 0xFF);
-                    _v183 = x_21;
-                    const v190: uint8 = value_47(_v183);
-                    let _v191: Option<uint8> = undefined;
+                    const value_10: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_20 = (value_10 & 0xFF);
+                    _v121 = x_20;
+                    let v131: uint8;
+                    if (_v121 == null) {
+                        throw new Error("base.run_target / _v121=None");
+                    }
+                    else {
+                        v131 = value_47(_v121);
+                    }
+                    let _v132: Option<uint8> = undefined;
                     let x_22: uint8;
+                    const value_11: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_22 = (value_11 & 0xFF);
+                    _v132 = x_22;
+                    let v142: uint8;
+                    if (_v132 == null) {
+                        throw new Error("base.run_target / _v132=None");
+                    }
+                    else {
+                        v142 = value_47(_v132);
+                    }
+                    let _v143: Option<uint8> = undefined;
+                    let x_24: uint8;
+                    const value_12: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_24 = (value_12 & 0xFF);
+                    _v143 = x_24;
+                    let v153: uint8;
+                    if (_v143 == null) {
+                        throw new Error("base.run_target / _v143=None");
+                    }
+                    else {
+                        v153 = value_47(_v143);
+                    }
+                    let _v154: Option<uint8> = undefined;
+                    let x_26: uint8;
+                    const value_13: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_26 = (value_13 & 0xFF);
+                    _v154 = x_26;
+                    let v164: uint8;
+                    if (_v154 == null) {
+                        throw new Error("base.run_target / _v154=None");
+                    }
+                    else {
+                        v164 = value_47(_v154);
+                    }
+                    let _v165: Option<uint8> = undefined;
+                    let x_28: uint8;
+                    const value_14: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_28 = (value_14 & 0xFF);
+                    _v165 = x_28;
+                    let v175: uint8;
+                    if (_v165 == null) {
+                        throw new Error("base.run_target / _v165=None");
+                    }
+                    else {
+                        v175 = value_47(_v165);
+                    }
+                    let _v176: Option<uint8> = undefined;
+                    let x_30: uint8;
+                    const value_15: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_30 = (value_15 & 0xFF);
+                    _v176 = x_30;
+                    let v186: uint8;
+                    if (_v176 == null) {
+                        throw new Error("base.run_target / _v176=None");
+                    }
+                    else {
+                        v186 = value_47(_v176);
+                    }
+                    let _v187: Option<uint8> = undefined;
+                    let x_32: uint8;
+                    const value_16: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_32 = (value_16 & 0xFF);
+                    _v187 = x_32;
+                    let v197: uint8;
+                    if (_v187 == null) {
+                        throw new Error("base.run_target / _v187=None");
+                    }
+                    else {
+                        v197 = value_47(_v187);
+                    }
+                    let _v198: Option<uint8> = undefined;
+                    let x_34: uint8;
+                    const value_17: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_34 = (value_17 & 0xFF);
+                    _v198 = x_34;
+                    let v208: uint8;
+                    if (_v198 == null) {
+                        throw new Error("base.run_target / _v198=None");
+                    }
+                    else {
+                        v208 = value_47(_v198);
+                    }
+                    let _v209: Option<uint8> = undefined;
+                    let x_36: uint8;
+                    const value_18: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_36 = (value_18 & 0xFF);
+                    _v209 = x_36;
+                    let v219: uint8;
+                    if (_v209 == null) {
+                        throw new Error("base.run_target / _v209=None");
+                    }
+                    else {
+                        v219 = value_47(_v209);
+                    }
+                    let _v220: Option<uint8> = undefined;
+                    let x_38: uint8;
+                    const value_19: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_38 = (value_19 & 0xFF);
+                    _v220 = x_38;
+                    let v230: uint8;
+                    if (_v220 == null) {
+                        throw new Error("base.run_target / _v220=None");
+                    }
+                    else {
+                        v230 = value_47(_v220);
+                    }
+                    let _v231: Option<uint8> = undefined;
+                    let x_40: uint8;
+                    const value_20: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_40 = (value_20 & 0xFF);
+                    _v231 = x_40;
+                    let v241: uint8;
+                    if (_v231 == null) {
+                        throw new Error("base.run_target / _v231=None");
+                    }
+                    else {
+                        v241 = value_47(_v231);
+                    }
+                    let _v242: Option<uint8> = undefined;
+                    let x_42: uint8;
+                    const value_21: int32 = nonSeeded().Next2(1, 7) | 0;
+                    x_42 = (value_21 & 0xFF);
+                    _v242 = x_42;
+                    let v252: uint8;
+                    if (_v242 == null) {
+                        throw new Error("base.run_target / _v242=None");
+                    }
+                    else {
+                        v252 = value_47(_v242);
+                    }
+                    let _v253: Option<uint8> = undefined;
+                    let x_44: uint8;
                     const value_22: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_22 = (value_22 & 0xFF);
-                    _v191 = x_22;
-                    const v198: uint8 = value_47(_v191);
-                    let _v199: Option<uint8> = undefined;
-                    let x_23: uint8;
+                    x_44 = (value_22 & 0xFF);
+                    _v253 = x_44;
+                    let v263: uint8;
+                    if (_v253 == null) {
+                        throw new Error("base.run_target / _v253=None");
+                    }
+                    else {
+                        v263 = value_47(_v253);
+                    }
+                    let _v264: Option<uint8> = undefined;
+                    let x_46: uint8;
                     const value_23: int32 = nonSeeded().Next2(1, 7) | 0;
-                    x_23 = (value_23 & 0xFF);
-                    _v199 = x_23;
-                    v0_1_mut = UH1_UH1_1(v30, UH1_UH1_1(v38, UH1_UH1_1(v46, UH1_UH1_1(v54, UH1_UH1_1(v62, UH1_UH1_1(v70, UH1_UH1_1(v78, UH1_UH1_1(v86, UH1_UH1_1(v94, UH1_UH1_1(v102, UH1_UH1_1(v110, UH1_UH1_1(v118, UH1_UH1_1(v126, UH1_UH1_1(v134, UH1_UH1_1(v142, UH1_UH1_1(v150, UH1_UH1_1(v158, UH1_UH1_1(v166, UH1_UH1_1(v174, UH1_UH1_1(v182, UH1_UH1_1(v190, UH1_UH1_1(v198, UH1_UH1_1(value_47(_v199), UH1_UH1_0())))))))))))))))))))))));
+                    x_46 = (value_23 & 0xFF);
+                    _v264 = x_46;
+                    v0_1_mut = UH1_UH1_1(v32, UH1_UH1_1(v43, UH1_UH1_1(v54, UH1_UH1_1(v65, UH1_UH1_1(v76, UH1_UH1_1(v87, UH1_UH1_1(v98, UH1_UH1_1(v109, UH1_UH1_1(v120, UH1_UH1_1(v131, UH1_UH1_1(v142, UH1_UH1_1(v153, UH1_UH1_1(v164, UH1_UH1_1(v175, UH1_UH1_1(v186, UH1_UH1_1(v197, UH1_UH1_1(v208, UH1_UH1_1(v219, UH1_UH1_1(v230, UH1_UH1_1(v241, UH1_UH1_1(v252, UH1_UH1_1(v263, UH1_UH1_1((_v264 == null) ? (() => {
+                        throw new Error("base.run_target / _v264=None");
+                    })() : value_47(_v264), UH1_UH1_0())))))))))))))))))))))));
                     v1_1_mut = 23;
                     continue method14;
                 }
             }
             else {
-                let _v234: Option<uint8> = undefined;
-                let x_24: uint8;
+                let _v302: Option<uint8> = undefined;
+                let x_48: uint8;
                 const value_24: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_24 = (value_24 & 0xFF);
-                _v234 = x_24;
-                const v243: uint8 = value_47(_v234);
-                let _v244: Option<uint8> = undefined;
-                let x_25: uint8;
+                x_48 = (value_24 & 0xFF);
+                _v302 = x_48;
+                let v312: uint8;
+                if (_v302 == null) {
+                    throw new Error("base.run_target / _v302=None");
+                }
+                else {
+                    v312 = value_47(_v302);
+                }
+                let _v313: Option<uint8> = undefined;
+                let x_50: uint8;
                 const value_25: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_25 = (value_25 & 0xFF);
-                _v244 = x_25;
-                const v251: uint8 = value_47(_v244);
-                let _v252: Option<uint8> = undefined;
-                let x_26: uint8;
-                const value_26: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_26 = (value_26 & 0xFF);
-                _v252 = x_26;
-                const v259: uint8 = value_47(_v252);
-                let _v260: Option<uint8> = undefined;
-                let x_27: uint8;
-                const value_27: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_27 = (value_27 & 0xFF);
-                _v260 = x_27;
-                const v267: uint8 = value_47(_v260);
-                let _v268: Option<uint8> = undefined;
-                let x_28: uint8;
-                const value_28: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_28 = (value_28 & 0xFF);
-                _v268 = x_28;
-                const v275: uint8 = value_47(_v268);
-                let _v276: Option<uint8> = undefined;
-                let x_29: uint8;
-                const value_29: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_29 = (value_29 & 0xFF);
-                _v276 = x_29;
-                const v283: uint8 = value_47(_v276);
-                let _v284: Option<uint8> = undefined;
-                let x_30: uint8;
-                const value_30: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_30 = (value_30 & 0xFF);
-                _v284 = x_30;
-                const v291: uint8 = value_47(_v284);
-                let _v292: Option<uint8> = undefined;
-                let x_31: uint8;
-                const value_31: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_31 = (value_31 & 0xFF);
-                _v292 = x_31;
-                const v299: uint8 = value_47(_v292);
-                let _v300: Option<uint8> = undefined;
-                let x_32: uint8;
-                const value_32: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_32 = (value_32 & 0xFF);
-                _v300 = x_32;
-                const v307: uint8 = value_47(_v300);
-                let _v308: Option<uint8> = undefined;
-                let x_33: uint8;
-                const value_33: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_33 = (value_33 & 0xFF);
-                _v308 = x_33;
-                const v315: uint8 = value_47(_v308);
-                let _v316: Option<uint8> = undefined;
-                let x_34: uint8;
-                const value_34: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_34 = (value_34 & 0xFF);
-                _v316 = x_34;
-                const v323: uint8 = value_47(_v316);
+                x_50 = (value_25 & 0xFF);
+                _v313 = x_50;
+                let v323: uint8;
+                if (_v313 == null) {
+                    throw new Error("base.run_target / _v313=None");
+                }
+                else {
+                    v323 = value_47(_v313);
+                }
                 let _v324: Option<uint8> = undefined;
-                let x_35: uint8;
-                const value_35: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_35 = (value_35 & 0xFF);
-                _v324 = x_35;
-                const v331: uint8 = value_47(_v324);
-                let _v332: Option<uint8> = undefined;
-                let x_36: uint8;
-                const value_36: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_36 = (value_36 & 0xFF);
-                _v332 = x_36;
-                const v339: uint8 = value_47(_v332);
-                let _v340: Option<uint8> = undefined;
-                let x_37: uint8;
-                const value_37: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_37 = (value_37 & 0xFF);
-                _v340 = x_37;
-                const v347: uint8 = value_47(_v340);
-                let _v348: Option<uint8> = undefined;
-                let x_38: uint8;
-                const value_38: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_38 = (value_38 & 0xFF);
-                _v348 = x_38;
-                const v355: uint8 = value_47(_v348);
-                let _v356: Option<uint8> = undefined;
-                let x_39: uint8;
-                const value_39: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_39 = (value_39 & 0xFF);
-                _v356 = x_39;
-                const v363: uint8 = value_47(_v356);
-                let _v364: Option<uint8> = undefined;
-                let x_40: uint8;
-                const value_40: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_40 = (value_40 & 0xFF);
-                _v364 = x_40;
-                const v371: uint8 = value_47(_v364);
-                let _v372: Option<uint8> = undefined;
-                let x_41: uint8;
-                const value_41: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_41 = (value_41 & 0xFF);
-                _v372 = x_41;
-                const v379: uint8 = value_47(_v372);
-                let _v380: Option<uint8> = undefined;
-                let x_42: uint8;
-                const value_42: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_42 = (value_42 & 0xFF);
-                _v380 = x_42;
-                const v387: uint8 = value_47(_v380);
-                let _v388: Option<uint8> = undefined;
-                let x_43: uint8;
-                const value_43: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_43 = (value_43 & 0xFF);
-                _v388 = x_43;
-                const v395: uint8 = value_47(_v388);
-                let _v396: Option<uint8> = undefined;
-                let x_44: uint8;
-                const value_44: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_44 = (value_44 & 0xFF);
-                _v396 = x_44;
-                const v403: uint8 = value_47(_v396);
-                let _v404: Option<uint8> = undefined;
-                let x_45: uint8;
-                const value_45: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_45 = (value_45 & 0xFF);
-                _v404 = x_45;
-                const v411: uint8 = value_47(_v404);
+                let x_52: uint8;
+                const value_26: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_52 = (value_26 & 0xFF);
+                _v324 = x_52;
+                let v334: uint8;
+                if (_v324 == null) {
+                    throw new Error("base.run_target / _v324=None");
+                }
+                else {
+                    v334 = value_47(_v324);
+                }
+                let _v335: Option<uint8> = undefined;
+                let x_54: uint8;
+                const value_27: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_54 = (value_27 & 0xFF);
+                _v335 = x_54;
+                let v345: uint8;
+                if (_v335 == null) {
+                    throw new Error("base.run_target / _v335=None");
+                }
+                else {
+                    v345 = value_47(_v335);
+                }
+                let _v346: Option<uint8> = undefined;
+                let x_56: uint8;
+                const value_28: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_56 = (value_28 & 0xFF);
+                _v346 = x_56;
+                let v356: uint8;
+                if (_v346 == null) {
+                    throw new Error("base.run_target / _v346=None");
+                }
+                else {
+                    v356 = value_47(_v346);
+                }
+                let _v357: Option<uint8> = undefined;
+                let x_58: uint8;
+                const value_29: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_58 = (value_29 & 0xFF);
+                _v357 = x_58;
+                let v367: uint8;
+                if (_v357 == null) {
+                    throw new Error("base.run_target / _v357=None");
+                }
+                else {
+                    v367 = value_47(_v357);
+                }
+                let _v368: Option<uint8> = undefined;
+                let x_60: uint8;
+                const value_30: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_60 = (value_30 & 0xFF);
+                _v368 = x_60;
+                let v378: uint8;
+                if (_v368 == null) {
+                    throw new Error("base.run_target / _v368=None");
+                }
+                else {
+                    v378 = value_47(_v368);
+                }
+                let _v379: Option<uint8> = undefined;
+                let x_62: uint8;
+                const value_31: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_62 = (value_31 & 0xFF);
+                _v379 = x_62;
+                let v389: uint8;
+                if (_v379 == null) {
+                    throw new Error("base.run_target / _v379=None");
+                }
+                else {
+                    v389 = value_47(_v379);
+                }
+                let _v390: Option<uint8> = undefined;
+                let x_64: uint8;
+                const value_32: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_64 = (value_32 & 0xFF);
+                _v390 = x_64;
+                let v400: uint8;
+                if (_v390 == null) {
+                    throw new Error("base.run_target / _v390=None");
+                }
+                else {
+                    v400 = value_47(_v390);
+                }
+                let _v401: Option<uint8> = undefined;
+                let x_66: uint8;
+                const value_33: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_66 = (value_33 & 0xFF);
+                _v401 = x_66;
+                let v411: uint8;
+                if (_v401 == null) {
+                    throw new Error("base.run_target / _v401=None");
+                }
+                else {
+                    v411 = value_47(_v401);
+                }
                 let _v412: Option<uint8> = undefined;
-                let x_46: uint8;
+                let x_68: uint8;
+                const value_34: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_68 = (value_34 & 0xFF);
+                _v412 = x_68;
+                let v422: uint8;
+                if (_v412 == null) {
+                    throw new Error("base.run_target / _v412=None");
+                }
+                else {
+                    v422 = value_47(_v412);
+                }
+                let _v423: Option<uint8> = undefined;
+                let x_70: uint8;
+                const value_35: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_70 = (value_35 & 0xFF);
+                _v423 = x_70;
+                let v433: uint8;
+                if (_v423 == null) {
+                    throw new Error("base.run_target / _v423=None");
+                }
+                else {
+                    v433 = value_47(_v423);
+                }
+                let _v434: Option<uint8> = undefined;
+                let x_72: uint8;
+                const value_36: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_72 = (value_36 & 0xFF);
+                _v434 = x_72;
+                let v444: uint8;
+                if (_v434 == null) {
+                    throw new Error("base.run_target / _v434=None");
+                }
+                else {
+                    v444 = value_47(_v434);
+                }
+                let _v445: Option<uint8> = undefined;
+                let x_74: uint8;
+                const value_37: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_74 = (value_37 & 0xFF);
+                _v445 = x_74;
+                let v455: uint8;
+                if (_v445 == null) {
+                    throw new Error("base.run_target / _v445=None");
+                }
+                else {
+                    v455 = value_47(_v445);
+                }
+                let _v456: Option<uint8> = undefined;
+                let x_76: uint8;
+                const value_38: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_76 = (value_38 & 0xFF);
+                _v456 = x_76;
+                let v466: uint8;
+                if (_v456 == null) {
+                    throw new Error("base.run_target / _v456=None");
+                }
+                else {
+                    v466 = value_47(_v456);
+                }
+                let _v467: Option<uint8> = undefined;
+                let x_78: uint8;
+                const value_39: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_78 = (value_39 & 0xFF);
+                _v467 = x_78;
+                let v477: uint8;
+                if (_v467 == null) {
+                    throw new Error("base.run_target / _v467=None");
+                }
+                else {
+                    v477 = value_47(_v467);
+                }
+                let _v478: Option<uint8> = undefined;
+                let x_80: uint8;
+                const value_40: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_80 = (value_40 & 0xFF);
+                _v478 = x_80;
+                let v488: uint8;
+                if (_v478 == null) {
+                    throw new Error("base.run_target / _v478=None");
+                }
+                else {
+                    v488 = value_47(_v478);
+                }
+                let _v489: Option<uint8> = undefined;
+                let x_82: uint8;
+                const value_41: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_82 = (value_41 & 0xFF);
+                _v489 = x_82;
+                let v499: uint8;
+                if (_v489 == null) {
+                    throw new Error("base.run_target / _v489=None");
+                }
+                else {
+                    v499 = value_47(_v489);
+                }
+                let _v500: Option<uint8> = undefined;
+                let x_84: uint8;
+                const value_42: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_84 = (value_42 & 0xFF);
+                _v500 = x_84;
+                let v510: uint8;
+                if (_v500 == null) {
+                    throw new Error("base.run_target / _v500=None");
+                }
+                else {
+                    v510 = value_47(_v500);
+                }
+                let _v511: Option<uint8> = undefined;
+                let x_86: uint8;
+                const value_43: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_86 = (value_43 & 0xFF);
+                _v511 = x_86;
+                let v521: uint8;
+                if (_v511 == null) {
+                    throw new Error("base.run_target / _v511=None");
+                }
+                else {
+                    v521 = value_47(_v511);
+                }
+                let _v522: Option<uint8> = undefined;
+                let x_88: uint8;
+                const value_44: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_88 = (value_44 & 0xFF);
+                _v522 = x_88;
+                let v532: uint8;
+                if (_v522 == null) {
+                    throw new Error("base.run_target / _v522=None");
+                }
+                else {
+                    v532 = value_47(_v522);
+                }
+                let _v533: Option<uint8> = undefined;
+                let x_90: uint8;
+                const value_45: int32 = nonSeeded().Next2(1, 7) | 0;
+                x_90 = (value_45 & 0xFF);
+                _v533 = x_90;
+                let v543: uint8;
+                if (_v533 == null) {
+                    throw new Error("base.run_target / _v533=None");
+                }
+                else {
+                    v543 = value_47(_v533);
+                }
+                let _v544: Option<uint8> = undefined;
+                let x_92: uint8;
                 const value_46: int32 = nonSeeded().Next2(1, 7) | 0;
-                x_46 = (value_46 & 0xFF);
-                _v412 = x_46;
-                v0_1_mut = UH1_UH1_1(v243, UH1_UH1_1(v251, UH1_UH1_1(v259, UH1_UH1_1(v267, UH1_UH1_1(v275, UH1_UH1_1(v283, UH1_UH1_1(v291, UH1_UH1_1(v299, UH1_UH1_1(v307, UH1_UH1_1(v315, UH1_UH1_1(v323, UH1_UH1_1(v331, UH1_UH1_1(v339, UH1_UH1_1(v347, UH1_UH1_1(v355, UH1_UH1_1(v363, UH1_UH1_1(v371, UH1_UH1_1(v379, UH1_UH1_1(v387, UH1_UH1_1(v395, UH1_UH1_1(v403, UH1_UH1_1(v411, UH1_UH1_1(value_47(_v412), UH1_UH1_0())))))))))))))))))))))));
+                x_92 = (value_46 & 0xFF);
+                _v544 = x_92;
+                v0_1_mut = UH1_UH1_1(v312, UH1_UH1_1(v323, UH1_UH1_1(v334, UH1_UH1_1(v345, UH1_UH1_1(v356, UH1_UH1_1(v367, UH1_UH1_1(v378, UH1_UH1_1(v389, UH1_UH1_1(v400, UH1_UH1_1(v411, UH1_UH1_1(v422, UH1_UH1_1(v433, UH1_UH1_1(v444, UH1_UH1_1(v455, UH1_UH1_1(v466, UH1_UH1_1(v477, UH1_UH1_1(v488, UH1_UH1_1(v499, UH1_UH1_1(v510, UH1_UH1_1(v521, UH1_UH1_1(v532, UH1_UH1_1(v543, UH1_UH1_1((_v544 == null) ? (() => {
+                    throw new Error("base.run_target / _v544=None");
+                })() : value_47(_v544), UH1_UH1_0())))))))))))))))))))))));
                 v1_1_mut = 23;
                 continue method14;
             }
@@ -2033,10 +2303,10 @@ export function method14(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
 }
 
 export function closure80(unitVar: void, v0_1: string[]): int32 {
-    const v1_1 = `calculate_dice_count / max: ${9223372036854775807n} / n: ${24} / p: ${4738381338321616896n}`;
-    console.log(v1_1);
-    const v5 = `result: ${method14(UH1_UH1_0(), 0)}`;
-    console.log(v5);
+    const value = `calculate_dice_count / max: ${9223372036854775807n} / n: ${24} / p: ${4738381338321616896n}`;
+    console.log(value);
+    const value_1 = `result: ${method14(UH1_UH1_0(), 0)}`;
+    console.log(value_1);
     return 0;
 }
 

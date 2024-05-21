@@ -164,9 +164,9 @@ inl render () =
                                         leptos.signal_get_untracked global_state.core_state .data
                                         |> leptos.signal_set (heap { data with
                                             max =
-                                                match $"!value |> string" with
+                                                match value |> sm'.obj_to_string with
                                                 | "" => 1
-                                                | x => $"!x |> int32"
+                                                | x => x |> i32
                                         })
                                 |> leptos.element_to_view
                             ])

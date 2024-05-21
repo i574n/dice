@@ -4,13 +4,13 @@ from dataclasses import dataclass
 import sys
 from typing import Any
 from fable_modules.fable_library.long import (op_addition, op_modulus, op_subtraction, from_integer, to_int, op_multiply)
-from fable_modules.fable_library.option import (default_arg, value as value_47)
+from fable_modules.fable_library.option import default_arg
 from fable_modules.fable_library.reflection import (TypeInfo, uint8_type, unit_type, lambda_type, union_type, string_type, record_type, int64_type, uint64_type)
 from fable_modules.fable_library.string_ import (to_text, interpolate)
 from fable_modules.fable_library.types import (Array, Union, Record, int64, FSharpRef, uint8, uint64, int8)
 from fable_modules.fable_library.util import randint
 
-def _expr212() -> TypeInfo:
+def _expr226() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -25,9 +25,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr212
+UH0_reflection = _expr226
 
-def _expr213() -> TypeInfo:
+def _expr227() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[], [("Item1", uint8_type), ("Item2", UH1_reflection())]])
 
 
@@ -42,9 +42,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr213
+UH1_reflection = _expr227
 
-def _expr214() -> TypeInfo:
+def _expr228() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[("f0_0", lambda_type(string_type, unit_type))], []])
 
 
@@ -60,9 +60,9 @@ class US0(Union):
         return ["US0_0", "US0_1"]
 
 
-US0_reflection = _expr214
+US0_reflection = _expr228
 
-def _expr215() -> TypeInfo:
+def _expr229() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", lambda_type(unit_type, UH0_reflection()))], [("f1_0", UH0_reflection())]])
 
 
@@ -78,9 +78,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr215
+US1_reflection = _expr229
 
-def _expr216() -> TypeInfo:
+def _expr230() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", US1_reflection())])
 
 
@@ -88,9 +88,9 @@ def _expr216() -> TypeInfo:
 class Mut0(Record):
     l0: US1
 
-Mut0_reflection = _expr216
+Mut0_reflection = _expr230
 
-def _expr217() -> TypeInfo:
+def _expr231() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", int64_type)])
 
 
@@ -98,9 +98,9 @@ def _expr217() -> TypeInfo:
 class Mut1(Record):
     l0: int64
 
-Mut1_reflection = _expr217
+Mut1_reflection = _expr231
 
-def _expr218() -> TypeInfo:
+def _expr232() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[("f0_0", uint8_type)], []])
 
 
@@ -116,9 +116,9 @@ class US2(Union):
         return ["US2_0", "US2_1"]
 
 
-US2_reflection = _expr218
+US2_reflection = _expr232
 
-def _expr219() -> TypeInfo:
+def _expr233() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", US2_reflection())])
 
 
@@ -126,9 +126,9 @@ def _expr219() -> TypeInfo:
 class Mut2(Record):
     l0: US2
 
-Mut2_reflection = _expr219
+Mut2_reflection = _expr233
 
-def _expr220() -> TypeInfo:
+def _expr234() -> TypeInfo:
     return union_type("Dice.US3", [], US3, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -144,9 +144,9 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr220
+US3_reflection = _expr234
 
-def _expr221() -> TypeInfo:
+def _expr235() -> TypeInfo:
     return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
 
 
@@ -161,9 +161,9 @@ class UH2(Union):
         return ["UH2_0", "UH2_1"]
 
 
-UH2_reflection = _expr221
+UH2_reflection = _expr235
 
-def _expr222() -> TypeInfo:
+def _expr236() -> TypeInfo:
     return union_type("Dice.US4", [], US4, lambda: [[("f0_0", uint64_type)], []])
 
 
@@ -179,9 +179,9 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr222
+US4_reflection = _expr236
 
-def _expr223() -> TypeInfo:
+def _expr237() -> TypeInfo:
     return union_type("Dice.US5", [], US5, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -197,7 +197,7 @@ class US5(Union):
         return ["US5_0", "US5_1"]
 
 
-US5_reflection = _expr223
+US5_reflection = _expr237
 
 def UH0__get_IsUH0_0(this: UH0, unit_arg: None) -> bool:
     if this.tag == 0:
@@ -384,10 +384,10 @@ def closure1(v0_1: int64, v1_1: UH0) -> UH0:
 
 
 def closure0(unit_var: None, v0_1: int64) -> Callable[[UH0], UH0]:
-    def _arrow224(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
+    def _arrow238(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
         return closure1(v0_1, v)
 
-    return _arrow224
+    return _arrow238
 
 
 def method1(v0_1_mut: UH1, v1_1_mut: UH1) -> UH1:
@@ -449,10 +449,10 @@ def closure7(v0_1: UH0, v1_1: Mut0, unit_var: None) -> UH0:
 
 def method4(v0_1: UH0, v1_1: Callable[[], UH0]) -> Callable[[], UH0]:
     v3_1: Mut0 = Mut0(US1(0, v1_1))
-    def _arrow225(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
+    def _arrow239(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
         return closure7(v0_1, v3_1, None)
 
-    return _arrow225
+    return _arrow239
 
 
 def method6(v0_1_mut: int64, v1_1_mut: UH0) -> US2:
@@ -529,10 +529,10 @@ def closure4(v0_1: US0, v1_1: UH1) -> Callable[[], uint8]:
     v12: Mut1 = Mut1(int64(1))
     v13: Mut1 = Mut1(int64(-1))
     v15: Mut2 = Mut2(US2(1))
-    def _arrow226(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
+    def _arrow240(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
         return closure8(v0_1, v10, v11, v12, v13, v15, None)
 
-    return _arrow226
+    return _arrow240
 
 
 def closure3(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
@@ -550,10 +550,10 @@ def closure3(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callabl
 
     _v1.contents = x_2
     v6: US0 = default_arg(_v1.contents, US0(1))
-    def _arrow227(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
+    def _arrow241(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
         return closure4(v6, v)
 
-    return _arrow227
+    return _arrow241
 
 
 def method7(v0_1_mut: US0, v1_1_mut: uint64, v2_1_mut: int8, v3_1_mut: uint64) -> int8:
@@ -1209,17 +1209,17 @@ def closure12(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool, v3_1: uint64) ->
 
 
 def closure11(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool) -> Callable[[uint64], uint64]:
-    def _arrow228(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
+    def _arrow242(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
         return closure12(v0_1, v1_1, v2_1, v)
 
-    return _arrow228
+    return _arrow242
 
 
 def closure10(v0_1: US0, v1_1: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
-    def _arrow229(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
+    def _arrow243(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
         return closure11(v0_1, v1_1, v)
 
-    return _arrow229
+    return _arrow243
 
 
 def closure9(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
@@ -1237,10 +1237,10 @@ def closure9(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callabl
 
     _v1.contents = x_2
     v6: US0 = default_arg(_v1.contents, US0(1))
-    def _arrow230(v: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
+    def _arrow244(v: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
         return closure10(v6, v)
 
-    return _arrow230
+    return _arrow244
 
 
 def method13(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
@@ -1289,17 +1289,17 @@ def closure79(v0_1: Callable[[str], None] | None, v1_1: uint64, v2_1: UH1) -> ui
 
 
 def closure78(v0_1: Callable[[str], None] | None, v1_1: uint64) -> Callable[[UH1], uint64 | None]:
-    def _arrow231(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
+    def _arrow245(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
         return closure79(v0_1, v1_1, v)
 
-    return _arrow231
+    return _arrow245
 
 
 def closure77(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
-    def _arrow232(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
+    def _arrow246(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
         return closure78(v0_1, v)
 
-    return _arrow232
+    return _arrow246
 
 
 def method39(v0_1: UH1, v1_1: int64) -> US5:
@@ -1773,299 +1773,572 @@ def method14(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
             value: int = randint(1, 7) or 0
             x = int(value+0x100 if value < 0 else value) & 0xFF
             _v3 = x
-            v0_1_mut = UH1(1, value_47(_v3), v0_1)
+            def _arrow247(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
+                raise Exception("base.run_target / _v3=None")
+
+            v0_1_mut = UH1(1, _arrow247() if (_v3 is None) else _v3, v0_1)
             v1_1_mut = v1_1 + int8(1)
             continue
 
         else: 
-            v17: US5 = method15(v0_1, int64(0))
-            if v17.tag == 0:
-                v18: int64 = v17.fields[0]
-                if v18 <= int64(9223372036854775807):
-                    return v18
+            v18: US5 = method15(v0_1, int64(0))
+            if v18.tag == 0:
+                v19: int64 = v18.fields[0]
+                if v19 <= int64(9223372036854775807):
+                    return v19
 
                 else: 
-                    _v21: uint8 | None = None
-                    x_1: uint8
-                    value_1: int = randint(1, 7) or 0
-                    x_1 = int(value_1+0x100 if value_1 < 0 else value_1) & 0xFF
-                    _v21 = x_1
-                    v30: uint8 = value_47(_v21)
-                    _v31: uint8 | None = None
+                    _v22: uint8 | None = None
                     x_2: uint8
-                    value_2: int = randint(1, 7) or 0
-                    x_2 = int(value_2+0x100 if value_2 < 0 else value_2) & 0xFF
-                    _v31 = x_2
-                    v38: uint8 = value_47(_v31)
-                    _v39: uint8 | None = None
-                    x_3: uint8
-                    value_3: int = randint(1, 7) or 0
-                    x_3 = int(value_3+0x100 if value_3 < 0 else value_3) & 0xFF
-                    _v39 = x_3
-                    v46: uint8 = value_47(_v39)
-                    _v47: uint8 | None = None
+                    value_1: int = randint(1, 7) or 0
+                    x_2 = int(value_1+0x100 if value_1 < 0 else value_1) & 0xFF
+                    _v22 = x_2
+                    v32: uint8
+                    if _v22 is None:
+                        raise Exception("base.run_target / _v22=None")
+
+                    else: 
+                        v32 = _v22
+
+                    _v33: uint8 | None = None
                     x_4: uint8
-                    value_4: int = randint(1, 7) or 0
-                    x_4 = int(value_4+0x100 if value_4 < 0 else value_4) & 0xFF
-                    _v47 = x_4
-                    v54: uint8 = value_47(_v47)
-                    _v55: uint8 | None = None
-                    x_5: uint8
-                    value_5: int = randint(1, 7) or 0
-                    x_5 = int(value_5+0x100 if value_5 < 0 else value_5) & 0xFF
-                    _v55 = x_5
-                    v62: uint8 = value_47(_v55)
-                    _v63: uint8 | None = None
+                    value_2: int = randint(1, 7) or 0
+                    x_4 = int(value_2+0x100 if value_2 < 0 else value_2) & 0xFF
+                    _v33 = x_4
+                    v43: uint8
+                    if _v33 is None:
+                        raise Exception("base.run_target / _v33=None")
+
+                    else: 
+                        v43 = _v33
+
+                    _v44: uint8 | None = None
                     x_6: uint8
-                    value_6: int = randint(1, 7) or 0
-                    x_6 = int(value_6+0x100 if value_6 < 0 else value_6) & 0xFF
-                    _v63 = x_6
-                    v70: uint8 = value_47(_v63)
-                    _v71: uint8 | None = None
-                    x_7: uint8
-                    value_7: int = randint(1, 7) or 0
-                    x_7 = int(value_7+0x100 if value_7 < 0 else value_7) & 0xFF
-                    _v71 = x_7
-                    v78: uint8 = value_47(_v71)
-                    _v79: uint8 | None = None
+                    value_3: int = randint(1, 7) or 0
+                    x_6 = int(value_3+0x100 if value_3 < 0 else value_3) & 0xFF
+                    _v44 = x_6
+                    v54: uint8
+                    if _v44 is None:
+                        raise Exception("base.run_target / _v44=None")
+
+                    else: 
+                        v54 = _v44
+
+                    _v55: uint8 | None = None
                     x_8: uint8
-                    value_8: int = randint(1, 7) or 0
-                    x_8 = int(value_8+0x100 if value_8 < 0 else value_8) & 0xFF
-                    _v79 = x_8
-                    v86: uint8 = value_47(_v79)
-                    _v87: uint8 | None = None
-                    x_9: uint8
-                    value_9: int = randint(1, 7) or 0
-                    x_9 = int(value_9+0x100 if value_9 < 0 else value_9) & 0xFF
-                    _v87 = x_9
-                    v94: uint8 = value_47(_v87)
-                    _v95: uint8 | None = None
+                    value_4: int = randint(1, 7) or 0
+                    x_8 = int(value_4+0x100 if value_4 < 0 else value_4) & 0xFF
+                    _v55 = x_8
+                    v65: uint8
+                    if _v55 is None:
+                        raise Exception("base.run_target / _v55=None")
+
+                    else: 
+                        v65 = _v55
+
+                    _v66: uint8 | None = None
                     x_10: uint8
-                    value_10: int = randint(1, 7) or 0
-                    x_10 = int(value_10+0x100 if value_10 < 0 else value_10) & 0xFF
-                    _v95 = x_10
-                    v102: uint8 = value_47(_v95)
-                    _v103: uint8 | None = None
-                    x_11: uint8
-                    value_11: int = randint(1, 7) or 0
-                    x_11 = int(value_11+0x100 if value_11 < 0 else value_11) & 0xFF
-                    _v103 = x_11
-                    v110: uint8 = value_47(_v103)
-                    _v111: uint8 | None = None
+                    value_5: int = randint(1, 7) or 0
+                    x_10 = int(value_5+0x100 if value_5 < 0 else value_5) & 0xFF
+                    _v66 = x_10
+                    v76: uint8
+                    if _v66 is None:
+                        raise Exception("base.run_target / _v66=None")
+
+                    else: 
+                        v76 = _v66
+
+                    _v77: uint8 | None = None
                     x_12: uint8
-                    value_12: int = randint(1, 7) or 0
-                    x_12 = int(value_12+0x100 if value_12 < 0 else value_12) & 0xFF
-                    _v111 = x_12
-                    v118: uint8 = value_47(_v111)
-                    _v119: uint8 | None = None
-                    x_13: uint8
-                    value_13: int = randint(1, 7) or 0
-                    x_13 = int(value_13+0x100 if value_13 < 0 else value_13) & 0xFF
-                    _v119 = x_13
-                    v126: uint8 = value_47(_v119)
-                    _v127: uint8 | None = None
+                    value_6: int = randint(1, 7) or 0
+                    x_12 = int(value_6+0x100 if value_6 < 0 else value_6) & 0xFF
+                    _v77 = x_12
+                    v87: uint8
+                    if _v77 is None:
+                        raise Exception("base.run_target / _v77=None")
+
+                    else: 
+                        v87 = _v77
+
+                    _v88: uint8 | None = None
                     x_14: uint8
-                    value_14: int = randint(1, 7) or 0
-                    x_14 = int(value_14+0x100 if value_14 < 0 else value_14) & 0xFF
-                    _v127 = x_14
-                    v134: uint8 = value_47(_v127)
-                    _v135: uint8 | None = None
-                    x_15: uint8
-                    value_15: int = randint(1, 7) or 0
-                    x_15 = int(value_15+0x100 if value_15 < 0 else value_15) & 0xFF
-                    _v135 = x_15
-                    v142: uint8 = value_47(_v135)
-                    _v143: uint8 | None = None
+                    value_7: int = randint(1, 7) or 0
+                    x_14 = int(value_7+0x100 if value_7 < 0 else value_7) & 0xFF
+                    _v88 = x_14
+                    v98: uint8
+                    if _v88 is None:
+                        raise Exception("base.run_target / _v88=None")
+
+                    else: 
+                        v98 = _v88
+
+                    _v99: uint8 | None = None
                     x_16: uint8
-                    value_16: int = randint(1, 7) or 0
-                    x_16 = int(value_16+0x100 if value_16 < 0 else value_16) & 0xFF
-                    _v143 = x_16
-                    v150: uint8 = value_47(_v143)
-                    _v151: uint8 | None = None
-                    x_17: uint8
-                    value_17: int = randint(1, 7) or 0
-                    x_17 = int(value_17+0x100 if value_17 < 0 else value_17) & 0xFF
-                    _v151 = x_17
-                    v158: uint8 = value_47(_v151)
-                    _v159: uint8 | None = None
+                    value_8: int = randint(1, 7) or 0
+                    x_16 = int(value_8+0x100 if value_8 < 0 else value_8) & 0xFF
+                    _v99 = x_16
+                    v109: uint8
+                    if _v99 is None:
+                        raise Exception("base.run_target / _v99=None")
+
+                    else: 
+                        v109 = _v99
+
+                    _v110: uint8 | None = None
                     x_18: uint8
-                    value_18: int = randint(1, 7) or 0
-                    x_18 = int(value_18+0x100 if value_18 < 0 else value_18) & 0xFF
-                    _v159 = x_18
-                    v166: uint8 = value_47(_v159)
-                    _v167: uint8 | None = None
-                    x_19: uint8
-                    value_19: int = randint(1, 7) or 0
-                    x_19 = int(value_19+0x100 if value_19 < 0 else value_19) & 0xFF
-                    _v167 = x_19
-                    v174: uint8 = value_47(_v167)
-                    _v175: uint8 | None = None
+                    value_9: int = randint(1, 7) or 0
+                    x_18 = int(value_9+0x100 if value_9 < 0 else value_9) & 0xFF
+                    _v110 = x_18
+                    v120: uint8
+                    if _v110 is None:
+                        raise Exception("base.run_target / _v110=None")
+
+                    else: 
+                        v120 = _v110
+
+                    _v121: uint8 | None = None
                     x_20: uint8
-                    value_20: int = randint(1, 7) or 0
-                    x_20 = int(value_20+0x100 if value_20 < 0 else value_20) & 0xFF
-                    _v175 = x_20
-                    v182: uint8 = value_47(_v175)
-                    _v183: uint8 | None = None
-                    x_21: uint8
-                    value_21: int = randint(1, 7) or 0
-                    x_21 = int(value_21+0x100 if value_21 < 0 else value_21) & 0xFF
-                    _v183 = x_21
-                    v190: uint8 = value_47(_v183)
-                    _v191: uint8 | None = None
+                    value_10: int = randint(1, 7) or 0
+                    x_20 = int(value_10+0x100 if value_10 < 0 else value_10) & 0xFF
+                    _v121 = x_20
+                    v131: uint8
+                    if _v121 is None:
+                        raise Exception("base.run_target / _v121=None")
+
+                    else: 
+                        v131 = _v121
+
+                    _v132: uint8 | None = None
                     x_22: uint8
+                    value_11: int = randint(1, 7) or 0
+                    x_22 = int(value_11+0x100 if value_11 < 0 else value_11) & 0xFF
+                    _v132 = x_22
+                    v142: uint8
+                    if _v132 is None:
+                        raise Exception("base.run_target / _v132=None")
+
+                    else: 
+                        v142 = _v132
+
+                    _v143: uint8 | None = None
+                    x_24: uint8
+                    value_12: int = randint(1, 7) or 0
+                    x_24 = int(value_12+0x100 if value_12 < 0 else value_12) & 0xFF
+                    _v143 = x_24
+                    v153: uint8
+                    if _v143 is None:
+                        raise Exception("base.run_target / _v143=None")
+
+                    else: 
+                        v153 = _v143
+
+                    _v154: uint8 | None = None
+                    x_26: uint8
+                    value_13: int = randint(1, 7) or 0
+                    x_26 = int(value_13+0x100 if value_13 < 0 else value_13) & 0xFF
+                    _v154 = x_26
+                    v164: uint8
+                    if _v154 is None:
+                        raise Exception("base.run_target / _v154=None")
+
+                    else: 
+                        v164 = _v154
+
+                    _v165: uint8 | None = None
+                    x_28: uint8
+                    value_14: int = randint(1, 7) or 0
+                    x_28 = int(value_14+0x100 if value_14 < 0 else value_14) & 0xFF
+                    _v165 = x_28
+                    v175: uint8
+                    if _v165 is None:
+                        raise Exception("base.run_target / _v165=None")
+
+                    else: 
+                        v175 = _v165
+
+                    _v176: uint8 | None = None
+                    x_30: uint8
+                    value_15: int = randint(1, 7) or 0
+                    x_30 = int(value_15+0x100 if value_15 < 0 else value_15) & 0xFF
+                    _v176 = x_30
+                    v186: uint8
+                    if _v176 is None:
+                        raise Exception("base.run_target / _v176=None")
+
+                    else: 
+                        v186 = _v176
+
+                    _v187: uint8 | None = None
+                    x_32: uint8
+                    value_16: int = randint(1, 7) or 0
+                    x_32 = int(value_16+0x100 if value_16 < 0 else value_16) & 0xFF
+                    _v187 = x_32
+                    v197: uint8
+                    if _v187 is None:
+                        raise Exception("base.run_target / _v187=None")
+
+                    else: 
+                        v197 = _v187
+
+                    _v198: uint8 | None = None
+                    x_34: uint8
+                    value_17: int = randint(1, 7) or 0
+                    x_34 = int(value_17+0x100 if value_17 < 0 else value_17) & 0xFF
+                    _v198 = x_34
+                    v208: uint8
+                    if _v198 is None:
+                        raise Exception("base.run_target / _v198=None")
+
+                    else: 
+                        v208 = _v198
+
+                    _v209: uint8 | None = None
+                    x_36: uint8
+                    value_18: int = randint(1, 7) or 0
+                    x_36 = int(value_18+0x100 if value_18 < 0 else value_18) & 0xFF
+                    _v209 = x_36
+                    v219: uint8
+                    if _v209 is None:
+                        raise Exception("base.run_target / _v209=None")
+
+                    else: 
+                        v219 = _v209
+
+                    _v220: uint8 | None = None
+                    x_38: uint8
+                    value_19: int = randint(1, 7) or 0
+                    x_38 = int(value_19+0x100 if value_19 < 0 else value_19) & 0xFF
+                    _v220 = x_38
+                    v230: uint8
+                    if _v220 is None:
+                        raise Exception("base.run_target / _v220=None")
+
+                    else: 
+                        v230 = _v220
+
+                    _v231: uint8 | None = None
+                    x_40: uint8
+                    value_20: int = randint(1, 7) or 0
+                    x_40 = int(value_20+0x100 if value_20 < 0 else value_20) & 0xFF
+                    _v231 = x_40
+                    v241: uint8
+                    if _v231 is None:
+                        raise Exception("base.run_target / _v231=None")
+
+                    else: 
+                        v241 = _v231
+
+                    _v242: uint8 | None = None
+                    x_42: uint8
+                    value_21: int = randint(1, 7) or 0
+                    x_42 = int(value_21+0x100 if value_21 < 0 else value_21) & 0xFF
+                    _v242 = x_42
+                    v252: uint8
+                    if _v242 is None:
+                        raise Exception("base.run_target / _v242=None")
+
+                    else: 
+                        v252 = _v242
+
+                    _v253: uint8 | None = None
+                    x_44: uint8
                     value_22: int = randint(1, 7) or 0
-                    x_22 = int(value_22+0x100 if value_22 < 0 else value_22) & 0xFF
-                    _v191 = x_22
-                    v198: uint8 = value_47(_v191)
-                    _v199: uint8 | None = None
-                    x_23: uint8
+                    x_44 = int(value_22+0x100 if value_22 < 0 else value_22) & 0xFF
+                    _v253 = x_44
+                    v263: uint8
+                    if _v253 is None:
+                        raise Exception("base.run_target / _v253=None")
+
+                    else: 
+                        v263 = _v253
+
+                    _v264: uint8 | None = None
+                    x_46: uint8
                     value_23: int = randint(1, 7) or 0
-                    x_23 = int(value_23+0x100 if value_23 < 0 else value_23) & 0xFF
-                    _v199 = x_23
-                    v0_1_mut = UH1(1, v30, UH1(1, v38, UH1(1, v46, UH1(1, v54, UH1(1, v62, UH1(1, v70, UH1(1, v78, UH1(1, v86, UH1(1, v94, UH1(1, v102, UH1(1, v110, UH1(1, v118, UH1(1, v126, UH1(1, v134, UH1(1, v142, UH1(1, v150, UH1(1, v158, UH1(1, v166, UH1(1, v174, UH1(1, v182, UH1(1, v190, UH1(1, v198, UH1(1, value_47(_v199), UH1(0))))))))))))))))))))))))
+                    x_46 = int(value_23+0x100 if value_23 < 0 else value_23) & 0xFF
+                    _v264 = x_46
+                    def _arrow248(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
+                        raise Exception("base.run_target / _v264=None")
+
+                    v0_1_mut = UH1(1, v32, UH1(1, v43, UH1(1, v54, UH1(1, v65, UH1(1, v76, UH1(1, v87, UH1(1, v98, UH1(1, v109, UH1(1, v120, UH1(1, v131, UH1(1, v142, UH1(1, v153, UH1(1, v164, UH1(1, v175, UH1(1, v186, UH1(1, v197, UH1(1, v208, UH1(1, v219, UH1(1, v230, UH1(1, v241, UH1(1, v252, UH1(1, v263, UH1(1, _arrow248() if (_v264 is None) else _v264, UH1(0))))))))))))))))))))))))
                     v1_1_mut = int8(23)
                     continue
 
 
             else: 
-                _v234: uint8 | None = None
-                x_24: uint8
+                _v302: uint8 | None = None
+                x_48: uint8
                 value_24: int = randint(1, 7) or 0
-                x_24 = int(value_24+0x100 if value_24 < 0 else value_24) & 0xFF
-                _v234 = x_24
-                v243: uint8 = value_47(_v234)
-                _v244: uint8 | None = None
-                x_25: uint8
+                x_48 = int(value_24+0x100 if value_24 < 0 else value_24) & 0xFF
+                _v302 = x_48
+                v312: uint8
+                if _v302 is None:
+                    raise Exception("base.run_target / _v302=None")
+
+                else: 
+                    v312 = _v302
+
+                _v313: uint8 | None = None
+                x_50: uint8
                 value_25: int = randint(1, 7) or 0
-                x_25 = int(value_25+0x100 if value_25 < 0 else value_25) & 0xFF
-                _v244 = x_25
-                v251: uint8 = value_47(_v244)
-                _v252: uint8 | None = None
-                x_26: uint8
-                value_26: int = randint(1, 7) or 0
-                x_26 = int(value_26+0x100 if value_26 < 0 else value_26) & 0xFF
-                _v252 = x_26
-                v259: uint8 = value_47(_v252)
-                _v260: uint8 | None = None
-                x_27: uint8
-                value_27: int = randint(1, 7) or 0
-                x_27 = int(value_27+0x100 if value_27 < 0 else value_27) & 0xFF
-                _v260 = x_27
-                v267: uint8 = value_47(_v260)
-                _v268: uint8 | None = None
-                x_28: uint8
-                value_28: int = randint(1, 7) or 0
-                x_28 = int(value_28+0x100 if value_28 < 0 else value_28) & 0xFF
-                _v268 = x_28
-                v275: uint8 = value_47(_v268)
-                _v276: uint8 | None = None
-                x_29: uint8
-                value_29: int = randint(1, 7) or 0
-                x_29 = int(value_29+0x100 if value_29 < 0 else value_29) & 0xFF
-                _v276 = x_29
-                v283: uint8 = value_47(_v276)
-                _v284: uint8 | None = None
-                x_30: uint8
-                value_30: int = randint(1, 7) or 0
-                x_30 = int(value_30+0x100 if value_30 < 0 else value_30) & 0xFF
-                _v284 = x_30
-                v291: uint8 = value_47(_v284)
-                _v292: uint8 | None = None
-                x_31: uint8
-                value_31: int = randint(1, 7) or 0
-                x_31 = int(value_31+0x100 if value_31 < 0 else value_31) & 0xFF
-                _v292 = x_31
-                v299: uint8 = value_47(_v292)
-                _v300: uint8 | None = None
-                x_32: uint8
-                value_32: int = randint(1, 7) or 0
-                x_32 = int(value_32+0x100 if value_32 < 0 else value_32) & 0xFF
-                _v300 = x_32
-                v307: uint8 = value_47(_v300)
-                _v308: uint8 | None = None
-                x_33: uint8
-                value_33: int = randint(1, 7) or 0
-                x_33 = int(value_33+0x100 if value_33 < 0 else value_33) & 0xFF
-                _v308 = x_33
-                v315: uint8 = value_47(_v308)
-                _v316: uint8 | None = None
-                x_34: uint8
-                value_34: int = randint(1, 7) or 0
-                x_34 = int(value_34+0x100 if value_34 < 0 else value_34) & 0xFF
-                _v316 = x_34
-                v323: uint8 = value_47(_v316)
+                x_50 = int(value_25+0x100 if value_25 < 0 else value_25) & 0xFF
+                _v313 = x_50
+                v323: uint8
+                if _v313 is None:
+                    raise Exception("base.run_target / _v313=None")
+
+                else: 
+                    v323 = _v313
+
                 _v324: uint8 | None = None
-                x_35: uint8
-                value_35: int = randint(1, 7) or 0
-                x_35 = int(value_35+0x100 if value_35 < 0 else value_35) & 0xFF
-                _v324 = x_35
-                v331: uint8 = value_47(_v324)
-                _v332: uint8 | None = None
-                x_36: uint8
-                value_36: int = randint(1, 7) or 0
-                x_36 = int(value_36+0x100 if value_36 < 0 else value_36) & 0xFF
-                _v332 = x_36
-                v339: uint8 = value_47(_v332)
-                _v340: uint8 | None = None
-                x_37: uint8
-                value_37: int = randint(1, 7) or 0
-                x_37 = int(value_37+0x100 if value_37 < 0 else value_37) & 0xFF
-                _v340 = x_37
-                v347: uint8 = value_47(_v340)
-                _v348: uint8 | None = None
-                x_38: uint8
-                value_38: int = randint(1, 7) or 0
-                x_38 = int(value_38+0x100 if value_38 < 0 else value_38) & 0xFF
-                _v348 = x_38
-                v355: uint8 = value_47(_v348)
-                _v356: uint8 | None = None
-                x_39: uint8
-                value_39: int = randint(1, 7) or 0
-                x_39 = int(value_39+0x100 if value_39 < 0 else value_39) & 0xFF
-                _v356 = x_39
-                v363: uint8 = value_47(_v356)
-                _v364: uint8 | None = None
-                x_40: uint8
-                value_40: int = randint(1, 7) or 0
-                x_40 = int(value_40+0x100 if value_40 < 0 else value_40) & 0xFF
-                _v364 = x_40
-                v371: uint8 = value_47(_v364)
-                _v372: uint8 | None = None
-                x_41: uint8
-                value_41: int = randint(1, 7) or 0
-                x_41 = int(value_41+0x100 if value_41 < 0 else value_41) & 0xFF
-                _v372 = x_41
-                v379: uint8 = value_47(_v372)
-                _v380: uint8 | None = None
-                x_42: uint8
-                value_42: int = randint(1, 7) or 0
-                x_42 = int(value_42+0x100 if value_42 < 0 else value_42) & 0xFF
-                _v380 = x_42
-                v387: uint8 = value_47(_v380)
-                _v388: uint8 | None = None
-                x_43: uint8
-                value_43: int = randint(1, 7) or 0
-                x_43 = int(value_43+0x100 if value_43 < 0 else value_43) & 0xFF
-                _v388 = x_43
-                v395: uint8 = value_47(_v388)
-                _v396: uint8 | None = None
-                x_44: uint8
-                value_44: int = randint(1, 7) or 0
-                x_44 = int(value_44+0x100 if value_44 < 0 else value_44) & 0xFF
-                _v396 = x_44
-                v403: uint8 = value_47(_v396)
-                _v404: uint8 | None = None
-                x_45: uint8
-                value_45: int = randint(1, 7) or 0
-                x_45 = int(value_45+0x100 if value_45 < 0 else value_45) & 0xFF
-                _v404 = x_45
-                v411: uint8 = value_47(_v404)
+                x_52: uint8
+                value_26: int = randint(1, 7) or 0
+                x_52 = int(value_26+0x100 if value_26 < 0 else value_26) & 0xFF
+                _v324 = x_52
+                v334: uint8
+                if _v324 is None:
+                    raise Exception("base.run_target / _v324=None")
+
+                else: 
+                    v334 = _v324
+
+                _v335: uint8 | None = None
+                x_54: uint8
+                value_27: int = randint(1, 7) or 0
+                x_54 = int(value_27+0x100 if value_27 < 0 else value_27) & 0xFF
+                _v335 = x_54
+                v345: uint8
+                if _v335 is None:
+                    raise Exception("base.run_target / _v335=None")
+
+                else: 
+                    v345 = _v335
+
+                _v346: uint8 | None = None
+                x_56: uint8
+                value_28: int = randint(1, 7) or 0
+                x_56 = int(value_28+0x100 if value_28 < 0 else value_28) & 0xFF
+                _v346 = x_56
+                v356: uint8
+                if _v346 is None:
+                    raise Exception("base.run_target / _v346=None")
+
+                else: 
+                    v356 = _v346
+
+                _v357: uint8 | None = None
+                x_58: uint8
+                value_29: int = randint(1, 7) or 0
+                x_58 = int(value_29+0x100 if value_29 < 0 else value_29) & 0xFF
+                _v357 = x_58
+                v367: uint8
+                if _v357 is None:
+                    raise Exception("base.run_target / _v357=None")
+
+                else: 
+                    v367 = _v357
+
+                _v368: uint8 | None = None
+                x_60: uint8
+                value_30: int = randint(1, 7) or 0
+                x_60 = int(value_30+0x100 if value_30 < 0 else value_30) & 0xFF
+                _v368 = x_60
+                v378: uint8
+                if _v368 is None:
+                    raise Exception("base.run_target / _v368=None")
+
+                else: 
+                    v378 = _v368
+
+                _v379: uint8 | None = None
+                x_62: uint8
+                value_31: int = randint(1, 7) or 0
+                x_62 = int(value_31+0x100 if value_31 < 0 else value_31) & 0xFF
+                _v379 = x_62
+                v389: uint8
+                if _v379 is None:
+                    raise Exception("base.run_target / _v379=None")
+
+                else: 
+                    v389 = _v379
+
+                _v390: uint8 | None = None
+                x_64: uint8
+                value_32: int = randint(1, 7) or 0
+                x_64 = int(value_32+0x100 if value_32 < 0 else value_32) & 0xFF
+                _v390 = x_64
+                v400: uint8
+                if _v390 is None:
+                    raise Exception("base.run_target / _v390=None")
+
+                else: 
+                    v400 = _v390
+
+                _v401: uint8 | None = None
+                x_66: uint8
+                value_33: int = randint(1, 7) or 0
+                x_66 = int(value_33+0x100 if value_33 < 0 else value_33) & 0xFF
+                _v401 = x_66
+                v411: uint8
+                if _v401 is None:
+                    raise Exception("base.run_target / _v401=None")
+
+                else: 
+                    v411 = _v401
+
                 _v412: uint8 | None = None
-                x_46: uint8
+                x_68: uint8
+                value_34: int = randint(1, 7) or 0
+                x_68 = int(value_34+0x100 if value_34 < 0 else value_34) & 0xFF
+                _v412 = x_68
+                v422: uint8
+                if _v412 is None:
+                    raise Exception("base.run_target / _v412=None")
+
+                else: 
+                    v422 = _v412
+
+                _v423: uint8 | None = None
+                x_70: uint8
+                value_35: int = randint(1, 7) or 0
+                x_70 = int(value_35+0x100 if value_35 < 0 else value_35) & 0xFF
+                _v423 = x_70
+                v433: uint8
+                if _v423 is None:
+                    raise Exception("base.run_target / _v423=None")
+
+                else: 
+                    v433 = _v423
+
+                _v434: uint8 | None = None
+                x_72: uint8
+                value_36: int = randint(1, 7) or 0
+                x_72 = int(value_36+0x100 if value_36 < 0 else value_36) & 0xFF
+                _v434 = x_72
+                v444: uint8
+                if _v434 is None:
+                    raise Exception("base.run_target / _v434=None")
+
+                else: 
+                    v444 = _v434
+
+                _v445: uint8 | None = None
+                x_74: uint8
+                value_37: int = randint(1, 7) or 0
+                x_74 = int(value_37+0x100 if value_37 < 0 else value_37) & 0xFF
+                _v445 = x_74
+                v455: uint8
+                if _v445 is None:
+                    raise Exception("base.run_target / _v445=None")
+
+                else: 
+                    v455 = _v445
+
+                _v456: uint8 | None = None
+                x_76: uint8
+                value_38: int = randint(1, 7) or 0
+                x_76 = int(value_38+0x100 if value_38 < 0 else value_38) & 0xFF
+                _v456 = x_76
+                v466: uint8
+                if _v456 is None:
+                    raise Exception("base.run_target / _v456=None")
+
+                else: 
+                    v466 = _v456
+
+                _v467: uint8 | None = None
+                x_78: uint8
+                value_39: int = randint(1, 7) or 0
+                x_78 = int(value_39+0x100 if value_39 < 0 else value_39) & 0xFF
+                _v467 = x_78
+                v477: uint8
+                if _v467 is None:
+                    raise Exception("base.run_target / _v467=None")
+
+                else: 
+                    v477 = _v467
+
+                _v478: uint8 | None = None
+                x_80: uint8
+                value_40: int = randint(1, 7) or 0
+                x_80 = int(value_40+0x100 if value_40 < 0 else value_40) & 0xFF
+                _v478 = x_80
+                v488: uint8
+                if _v478 is None:
+                    raise Exception("base.run_target / _v478=None")
+
+                else: 
+                    v488 = _v478
+
+                _v489: uint8 | None = None
+                x_82: uint8
+                value_41: int = randint(1, 7) or 0
+                x_82 = int(value_41+0x100 if value_41 < 0 else value_41) & 0xFF
+                _v489 = x_82
+                v499: uint8
+                if _v489 is None:
+                    raise Exception("base.run_target / _v489=None")
+
+                else: 
+                    v499 = _v489
+
+                _v500: uint8 | None = None
+                x_84: uint8
+                value_42: int = randint(1, 7) or 0
+                x_84 = int(value_42+0x100 if value_42 < 0 else value_42) & 0xFF
+                _v500 = x_84
+                v510: uint8
+                if _v500 is None:
+                    raise Exception("base.run_target / _v500=None")
+
+                else: 
+                    v510 = _v500
+
+                _v511: uint8 | None = None
+                x_86: uint8
+                value_43: int = randint(1, 7) or 0
+                x_86 = int(value_43+0x100 if value_43 < 0 else value_43) & 0xFF
+                _v511 = x_86
+                v521: uint8
+                if _v511 is None:
+                    raise Exception("base.run_target / _v511=None")
+
+                else: 
+                    v521 = _v511
+
+                _v522: uint8 | None = None
+                x_88: uint8
+                value_44: int = randint(1, 7) or 0
+                x_88 = int(value_44+0x100 if value_44 < 0 else value_44) & 0xFF
+                _v522 = x_88
+                v532: uint8
+                if _v522 is None:
+                    raise Exception("base.run_target / _v522=None")
+
+                else: 
+                    v532 = _v522
+
+                _v533: uint8 | None = None
+                x_90: uint8
+                value_45: int = randint(1, 7) or 0
+                x_90 = int(value_45+0x100 if value_45 < 0 else value_45) & 0xFF
+                _v533 = x_90
+                v543: uint8
+                if _v533 is None:
+                    raise Exception("base.run_target / _v533=None")
+
+                else: 
+                    v543 = _v533
+
+                _v544: uint8 | None = None
+                x_92: uint8
                 value_46: int = randint(1, 7) or 0
-                x_46 = int(value_46+0x100 if value_46 < 0 else value_46) & 0xFF
-                _v412 = x_46
-                v0_1_mut = UH1(1, v243, UH1(1, v251, UH1(1, v259, UH1(1, v267, UH1(1, v275, UH1(1, v283, UH1(1, v291, UH1(1, v299, UH1(1, v307, UH1(1, v315, UH1(1, v323, UH1(1, v331, UH1(1, v339, UH1(1, v347, UH1(1, v355, UH1(1, v363, UH1(1, v371, UH1(1, v379, UH1(1, v387, UH1(1, v395, UH1(1, v403, UH1(1, v411, UH1(1, value_47(_v412), UH1(0))))))))))))))))))))))))
+                x_92 = int(value_46+0x100 if value_46 < 0 else value_46) & 0xFF
+                _v544 = x_92
+                def _arrow249(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
+                    raise Exception("base.run_target / _v544=None")
+
+                v0_1_mut = UH1(1, v312, UH1(1, v323, UH1(1, v334, UH1(1, v345, UH1(1, v356, UH1(1, v367, UH1(1, v378, UH1(1, v389, UH1(1, v400, UH1(1, v411, UH1(1, v422, UH1(1, v433, UH1(1, v444, UH1(1, v455, UH1(1, v466, UH1(1, v477, UH1(1, v488, UH1(1, v499, UH1(1, v510, UH1(1, v521, UH1(1, v532, UH1(1, v543, UH1(1, _arrow249() if (_v544 is None) else _v544, UH1(0))))))))))))))))))))))))
                 v1_1_mut = int8(23)
                 continue
 
@@ -2079,51 +2352,51 @@ def closure80(unit_var: None, v0_1: Array[str]) -> int:
     return 0
 
 
-def _arrow233(v: int64) -> Callable[[UH0], UH0]:
+def _arrow250(v: int64) -> Callable[[UH0], UH0]:
     return closure0(None, v)
 
 
-v0: Callable[[int64, UH0], UH0] = _arrow233
+v0: Callable[[int64, UH0], UH0] = _arrow250
 
 def rotate_numbers(x: int64) -> Callable[[UH0], UH0]:
     return v0(x)
 
 
-def _arrow234(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
+def _arrow251(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return closure3(None, v)
 
 
-v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow234
+v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow251
 
 def create_sequential_roller(x: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return v1(x)
 
 
-def _arrow235(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
+def _arrow252(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return closure9(None, v)
 
 
-v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow235
+v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow252
 
 def roll_progressively(x: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return v2(x)
 
 
-def _arrow236(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
+def _arrow253(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return closure77(None, v)
 
 
-v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow236
+v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow253
 
 def roll_within_bounds(x: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return v3(x)
 
 
-def _arrow237(v: Array[str]) -> int:
+def _arrow254(v: Array[str]) -> int:
     return closure80(None, v)
 
 
-v4: Callable[[Array[str]], int] = _arrow237
+v4: Callable[[Array[str]], int] = _arrow254
 
 def main(args: Array[str]) -> int:
     return v4(args)

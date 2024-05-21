@@ -41,5 +41,5 @@ inl main () =
     model.near.rpc.types ()
     model.near.nearblocks.types ()
 
-    $"let main args = !main args" : ()
+    $'let main args = !main args' : ()
     print_static "</dice_ui>"
