@@ -1,4 +1,3 @@
-use futures::StreamExt;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
@@ -121,8 +120,10 @@ pub async fn fetch_transaction_status(hash: String) -> RpcResponse {
 
     let hash = hash.as_str();
 
-    futures::stream::iter(urls)
-        .fold((None, None), |(obj, code), url| async move {
+    futures::StreamExt::fold(
+        tokio_stream::iter(urls),
+        (None, None),
+        |(obj, code), url| async move {
             match (obj, code) {
                 (_, Some(_)) | (None, _) => {
                     let input_obj = RpcInput {
@@ -157,8 +158,9 @@ pub async fn fetch_transaction_status(hash: String) -> RpcResponse {
                 }
                 (obj, code) => (obj, code),
             }
-        })
-        .await
-        .0
-        .unwrap()
+        },
+    )
+    .await
+    .0
+    .unwrap()
 }

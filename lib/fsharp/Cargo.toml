@@ -11,6 +11,7 @@ inline_colorization = { workspace = true }
 regex = { workspace = true }
 chrono = { workspace = true }
 rand = { version = "~0.9.0-alpha.1" }
+sha2 = "~0.11.0-pre.3"
 
 [[bin]]
 name = "dice_fsharp"

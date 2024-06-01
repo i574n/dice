@@ -22,6 +22,8 @@ fable_library_rust = { path = "../polyglot/lib/rust/fable/fable_modules/fable-li
 inline_colorization = "~0.1"
 chrono = "~0.4"
 regex = "~1.10"
+tokio = { version = "~1.37" }
+futures = "~0.3"
 
 [[workspace.metadata.leptos]]
 name = "dice_ui"
