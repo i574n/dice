@@ -68,16 +68,8 @@ inl calculate_dice_count (log : option (string -> ())) max =
     else loop 0 1
 
 /// ## roll_dice
-inl roll_dice () : u8 =
-    run_target function
-        | Rust (Contract) => fun () =>
-            open rust_operators
-            !\($'"1"')
-        | Rust _ => fun () =>
-            open rust_operators
-            !\($'"rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"')
-        | _ => fun () =>
-            $'System.Random().Next (1, 7) |> uint8'
+let roll_dice () : u8 =
+    random' 1 7
 
 /// ## rotate_number
 inl rotate_number forall t {number}. (max : i64) (n : t) : t =
