@@ -2616,43 +2616,46 @@ mod module_a51efde0 {
 }
 pub use module_a51efde0::*;
 #[path = "../../polyglot/lib/fsharp/Common_contract.rs"]
-mod module_8cb3e09e;
-pub use module_8cb3e09e::*;
+mod module_ad43931;
+pub use module_ad43931::*;
 #[path = "../../polyglot/lib/spiral/async__contract.rs"]
-mod module_62d8b4ed;
-pub use module_62d8b4ed::*;
+mod module_67c461a2;
+pub use module_67c461a2::*;
 #[path = "../../polyglot/lib/spiral/common_contract.rs"]
-mod module_e7e93d99;
-pub use module_e7e93d99::*;
+mod module_181b15d6;
+pub use module_181b15d6::*;
 #[path = "../../polyglot/lib/spiral/crypto_contract.rs"]
-mod module_981523f7;
-pub use module_981523f7::*;
+mod module_90d9c778;
+pub use module_90d9c778::*;
 #[path = "../../polyglot/lib/spiral/date_time_contract.rs"]
-mod module_d18105aa;
-pub use module_d18105aa::*;
+mod module_e43a8385;
+pub use module_e43a8385::*;
 #[path = "../../polyglot/lib/spiral/file_system_contract.rs"]
-mod module_c5eb79e8;
-pub use module_c5eb79e8::*;
+mod module_a7db9b47;
+pub use module_a7db9b47::*;
 #[path = "../../polyglot/lib/spiral/lib_contract.rs"]
-mod module_8d8b0653;
-pub use module_8d8b0653::*;
+mod module_98e448fc;
+pub use module_98e448fc::*;
 #[path = "../../polyglot/lib/spiral/networking_contract.rs"]
-mod module_2612ff6a;
-pub use module_2612ff6a::*;
+mod module_268024e5;
+pub use module_268024e5::*;
+#[path = "../../polyglot/lib/spiral/platform_contract.rs"]
+mod module_7d8ad484;
+pub use module_7d8ad484::*;
 #[path = "../../polyglot/lib/spiral/runtime_contract.rs"]
-mod module_3a43928;
-pub use module_3a43928::*;
+mod module_485aae07;
+pub use module_485aae07::*;
 #[path = "../../polyglot/lib/spiral/sm_contract.rs"]
-mod module_2aeb754a;
-pub use module_2aeb754a::*;
+mod module_582b4305;
+pub use module_582b4305::*;
 #[path = "../../polyglot/lib/spiral/threading_contract.rs"]
-mod module_444ab8da;
-pub use module_444ab8da::*;
+mod module_d5afb6f5;
+pub use module_d5afb6f5::*;
 #[path = "../../polyglot/lib/spiral/trace_contract.rs"]
-mod module_e61b6515;
-pub use module_e61b6515::*;
+mod module_9e77af3a;
+pub use module_9e77af3a::*;
 pub mod Polyglot {
-    pub use crate::module_8cb3e09e::Polyglot::*;
+    pub use crate::module_ad43931::Polyglot::*;
 }
 pub fn main() {
     let args = std::env::args().skip(1).map(fromString).collect();
