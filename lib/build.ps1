@@ -27,11 +27,10 @@ $targetDir = GetTargetDir $projectName
 
 { BuildFable $targetDir $projectName "rs" } | Invoke-Block
 { BuildFable $targetDir $projectName "ts" } | Invoke-Block
-if (!$fast) {
-    { BuildFable $targetDir $projectName "py" } | Invoke-Block
-}
+{ BuildFable $targetDir $projectName "py" } | Invoke-Block
+
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
-    -replace "../../../../lib", "../../polyglot/lib" `
+    -replace "../../../lib", "../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     | FixRust `
     | Set-Content "$projectName.rs"
@@ -40,13 +39,11 @@ if (!$fast) {
     | FixTypeScript `
     | Set-Content "$projectName.ts"
 
-if (!$fast) {
-    Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
-}
+Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
 
 { BuildFable $targetDir $projectName "rs" "CONTRACT" } | Invoke-Block
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
-    -replace "../../../../lib", "../../polyglot/lib" `
+    -replace "../../../lib", "../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     -replace ".rs`"]", "_contract.rs`"]" `
     | FixRust `

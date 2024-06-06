@@ -24,23 +24,20 @@ $builderArgs = @("$projectName.fs", $runtime, "--packages", "Fable.Core", "--mod
 $targetDir = GetTargetDir $projectName
 
 { BuildFable $targetDir $projectName "rs" } | Invoke-Block
-if (!$fast) {
-
-    { BuildFable $targetDir $projectName "ts" } | Invoke-Block
-    { BuildFable $targetDir $projectName "py" } | Invoke-Block
-}
+{ BuildFable $targetDir $projectName "ts" } | Invoke-Block
+{ BuildFable $targetDir $projectName "py" } | Invoke-Block
 
 (Get-Content "$targetDir/target/rs/$projectName.rs") `
-    -replace "../../../../lib", "../../../polyglot/lib" `
+    -replace "../../../lib", "../../../polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     | FixRust `
     | Set-Content "$projectName.rs"
-if (!$fast) {
-    (Get-Content "$targetDir/target/ts/$projectName.ts") `
-        | FixTypeScript `
-        | Set-Content "$projectName.ts"
-    Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
-}
+
+(Get-Content "$targetDir/target/ts/$projectName.ts") `
+    | FixTypeScript `
+    | Set-Content "$projectName.ts"
+
+Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
 
 cargo +nightly fmt --
 
