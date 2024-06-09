@@ -56,7 +56,7 @@ if (!$fast) {
     { ~/.bun/bin/bun install --frozen-lockfile } | Invoke-Block
 }
 
-{ ~/.bun/bin/bun build-css } | Invoke-Block
+{ ~/.bun/bin/bun --bun build-css } | Invoke-Block
 
 Write-Output "trunk:"
 
@@ -74,7 +74,7 @@ $jsFile = ($html | Select-String -Pattern "import init, \* as bindings from '\./
 | Set-Content "$targetDir/trunk/$jsFile"
 
 Write-Output "rna:"
-{ rna build --bundle --minify --assetNames "[name]" $path --output dist --target es2022 } | Invoke-Block
+{ ~/.bun/bin/bunx --bun @chialab/rna build --bundle --minify --assetNames "[name]" $path --output dist --target es2022 } | Invoke-Block
 
 $path = "dist/index.html"
 
