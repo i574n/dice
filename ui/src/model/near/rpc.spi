@@ -292,7 +292,7 @@ inl receipts_outcome_unbox (x : receipts_outcome') : receipts_outcome =
     { block_hash id outcome proof }
 
 inl action_detail_unbox (x : action_detail') : action_detail =
-    inl actions = !\\(x, $'"$0.actions"') |> am'.vec_map' (mapm.map transfer_detail_unbox) |> am'.from_vec |> fun (a x : _ i32 _) => x
+    inl actions = !\\(x, $'"$0.actions"') |> am'.vec_map' (mapm.map' transfer_detail_unbox) |> am'.from_vec |> fun (a x : _ i32 _) => x
     inl gas_price = !\\(x, $'"$0.gas_price"')
     inl input_data_ids = !\\(x, $'"$0.input_data_ids"') |> am'.from_vec |> fun (a x : _ i32 _) => x
     inl output_data_receivers = !\\(x, $'"$0.output_data_receivers"') |> am'.from_vec |> fun (a x : _ i32 _) => x
