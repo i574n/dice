@@ -120,8 +120,8 @@ mod module_eef1bd43 {
             Default,
         )]
         pub struct Heap0 {
-            pub l0: Option<std::string::String>,
-            pub l1: Vec<LrcPtr<(bool, std::string::String)>>,
+            pub l0: Vec<LrcPtr<(bool, std::string::String)>>,
+            pub l1: Option<std::string::String>,
             pub l2: i32,
             pub l3: i32,
             pub l4: Dice_ui::US1,
@@ -134,9 +134,9 @@ mod module_eef1bd43 {
         #[derive(Clone, Debug, Default, serde::Serialize)]
         pub struct Heap1 {
             pub l0: leptos::RwSignal<bool>,
-            pub l1: leptos::RwSignal<LrcPtr<Dice_ui::Heap0>>,
-            pub l2: leptos::RwSignal<bool>,
-            pub l3: leptos::RwSignal<std::string::String>,
+            pub l1: leptos::RwSignal<bool>,
+            pub l2: leptos::RwSignal<std::string::String>,
+            pub l3: leptos::RwSignal<LrcPtr<Dice_ui::Heap0>>,
         }
         impl core::fmt::Display for Dice_ui::Heap1 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
@@ -217,9 +217,9 @@ mod module_eef1bd43 {
         )]
         pub struct Heap3 {
             pub l0: bool,
-            pub l1: LrcPtr<Dice_ui::Heap0>,
-            pub l2: bool,
-            pub l3: std::string::String,
+            pub l1: bool,
+            pub l2: std::string::String,
+            pub l3: LrcPtr<Dice_ui::Heap0>,
         }
         impl core::fmt::Display for Dice_ui::Heap3 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
@@ -836,7 +836,7 @@ mod module_eef1bd43 {
         #[derive(Clone, Debug, Default)]
         pub struct Mut2 {
             pub l0: MutCell<i32>,
-            pub l1: MutCell<Vec<(bool, string, bool, Dice_ui::US25, string)>>,
+            pub l1: MutCell<Vec<(string, Dice_ui::US25, string, bool, bool)>>,
         }
         impl core::fmt::Display for Dice_ui::Mut2 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
@@ -1396,18 +1396,18 @@ mod module_eef1bd43 {
         }
         #[derive(Clone, Debug, Default, PartialEq)]
         pub struct Heap5 {
-            pub l0: Array<(std::string::String, Option<std::string::String>)>,
-            pub l1: f64,
-            pub l2: u32,
+            pub l0: std::string::String,
+            pub l1: std::string::String,
+            pub l2: std::string::String,
             pub l3: std::string::String,
             pub l4: std::string::String,
-            pub l5: Array<std::string::String>,
-            pub l6: bool,
-            pub l7: f64,
-            pub l8: std::string::String,
-            pub l9: std::string::String,
-            pub l10: std::string::String,
-            pub l11: std::string::String,
+            pub l5: std::string::String,
+            pub l6: u32,
+            pub l7: Array<(std::string::String, Option<std::string::String>)>,
+            pub l8: f64,
+            pub l9: bool,
+            pub l10: f64,
+            pub l11: Array<std::string::String>,
         }
         impl core::fmt::Display for Dice_ui::Heap5 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
@@ -1419,18 +1419,18 @@ mod module_eef1bd43 {
             US46_0(
                 Option<
                     Array<(
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        u32,
                         Array<(std::string::String, Option<std::string::String>)>,
                         f64,
-                        u32,
-                        std::string::String,
-                        std::string::String,
-                        Array<std::string::String>,
                         bool,
                         f64,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
+                        Array<std::string::String>,
                     )>,
                 >,
             ),
@@ -1461,18 +1461,18 @@ mod module_eef1bd43 {
         pub enum US48 {
             US48_0(
                 Array<(
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    u32,
                     Array<(std::string::String, Option<std::string::String>)>,
                     f64,
-                    u32,
-                    std::string::String,
-                    std::string::String,
-                    Array<std::string::String>,
                     bool,
                     f64,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
+                    Array<std::string::String>,
                 )>,
             ),
             US48_1,
@@ -1744,7 +1744,7 @@ mod module_eef1bd43 {
         }
         #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
         pub enum US58 {
-            US58_0(Array<(bool, string, bool, Dice_ui::US25, string)>),
+            US58_0(Array<(string, Dice_ui::US25, string, bool, bool)>),
             US58_1,
         }
         impl Dice_ui::US58 {
@@ -1796,7 +1796,7 @@ mod module_eef1bd43 {
         }
         #[derive(Clone, Debug)]
         pub enum US59 {
-            US59_0(Option<Array<(bool, string, bool, Dice_ui::US25, string)>>),
+            US59_0(Option<Array<(string, Dice_ui::US25, string, bool, bool)>>),
             US59_1(std::string::String),
         }
         impl Dice_ui::US59 {
@@ -1832,15 +1832,6 @@ mod module_eef1bd43 {
         #[derive(Clone, Debug)]
         pub enum US60 {
             US60_0(
-                Option<(
-                    Option<(Option<std::string::String>, Option<std::string::String>)>,
-                    std::string::String,
-                    i32,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                )>,
-                Option<std::string::String>,
                 std::string::String,
                 Option<(
                     Array<(
@@ -1849,8 +1840,8 @@ mod module_eef1bd43 {
                             std::collections::HashMap<
                                 std::string::String,
                                 (
-                                    Option<std::string::String>,
                                     std::string::String,
+                                    Option<std::string::String>,
                                     Option<f64>,
                                     Option<std::string::String>,
                                 ),
@@ -1882,6 +1873,15 @@ mod module_eef1bd43 {
                         Array<(std::string::String, std::string::String)>,
                     )>,
                 )>,
+                Option<(
+                    std::string::String,
+                    std::string::String,
+                    Option<(Option<std::string::String>, Option<std::string::String>)>,
+                    i32,
+                    std::string::String,
+                    std::string::String,
+                )>,
+                Option<std::string::String>,
             ),
             US60_1,
         }
@@ -1987,15 +1987,6 @@ mod module_eef1bd43 {
         #[derive(Clone, Debug)]
         pub enum US64 {
             US64_0(
-                Option<(
-                    Option<(Option<std::string::String>, Option<std::string::String>)>,
-                    std::string::String,
-                    i32,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                )>,
-                Option<std::string::String>,
                 std::string::String,
                 Option<(
                     Array<(
@@ -2004,8 +1995,8 @@ mod module_eef1bd43 {
                             std::collections::HashMap<
                                 std::string::String,
                                 (
-                                    Option<std::string::String>,
                                     std::string::String,
+                                    Option<std::string::String>,
                                     Option<f64>,
                                     Option<std::string::String>,
                                 ),
@@ -2037,6 +2028,15 @@ mod module_eef1bd43 {
                         Array<(std::string::String, std::string::String)>,
                     )>,
                 )>,
+                Option<(
+                    std::string::String,
+                    std::string::String,
+                    Option<(Option<std::string::String>, Option<std::string::String>)>,
+                    i32,
+                    std::string::String,
+                    std::string::String,
+                )>,
+                Option<std::string::String>,
             ),
             US64_1(std::string::String),
         }
@@ -2091,15 +2091,6 @@ mod module_eef1bd43 {
         pub enum US66 {
             US66_0(
                 Option<(
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -2108,8 +2099,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -2141,6 +2132,15 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 )>,
             ),
             US66_1(std::string::String),
@@ -2169,10 +2169,10 @@ mod module_eef1bd43 {
         #[derive(Clone, Debug)]
         pub enum US67 {
             US67_0(
+                std::string::String,
+                std::string::String,
                 Option<(Option<std::string::String>, Option<std::string::String>)>,
-                std::string::String,
                 i32,
-                std::string::String,
                 std::string::String,
                 std::string::String,
             ),
@@ -3029,7 +3029,7 @@ mod module_eef1bd43 {
         pub fn closure26(v0_1: LrcPtr<Dice_ui::Heap3>, v1: bool) -> bool {
             let v4: bool = true;
             leptos::logging::log!("{}", string("state_core.use_core_database (8) / effect core_state_heap / debug signal_update"));
-            v0_1.l2
+            v0_1.l1
         }
         pub fn closure27(
             v0_1: LrcPtr<Dice_ui::Heap3>,
@@ -3037,7 +3037,7 @@ mod module_eef1bd43 {
         ) -> std::string::String {
             let v4: bool = true;
             leptos::logging::log!("{}", string("state_core.use_core_database (9) / effect core_state_heap / url_hash signal_update"));
-            v0_1.l3.clone()
+            v0_1.l2.clone()
         }
         pub fn closure28(
             v0_1: LrcPtr<Dice_ui::Heap3>,
@@ -3045,7 +3045,7 @@ mod module_eef1bd43 {
         ) -> LrcPtr<Dice_ui::Heap0> {
             let v4: bool = true;
             leptos::logging::log!("{}", string("state_core.use_core_database (10) / effect core_state_heap / data signal_update"));
-            v0_1.l1.clone()
+            v0_1.l3.clone()
         }
         pub fn closure24(v0_1: LrcPtr<Dice_ui::Heap2>, v1: LrcPtr<Dice_ui::Heap3>, unitVar: ()) {
             let v2: leptos::RwSignal<LrcPtr<Dice_ui::Heap1>> = v0_1.l0.clone();
@@ -3060,7 +3060,7 @@ mod module_eef1bd43 {
             let v10: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v2.clone());
             let v14: bool = true;
-            leptos::SignalUpdate::update(&v10.l2.clone(), |x| {
+            leptos::SignalUpdate::update(&v10.l1.clone(), |x| {
                 *x = Func1::new({
                     let v1 = v1.clone();
                     move |v_1: bool| Dice_ui::closure26(v1.clone(), v_1)
@@ -3069,7 +3069,7 @@ mod module_eef1bd43 {
             let v16: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v2.clone());
             let v20: bool = true;
-            leptos::SignalUpdate::update(&v16.l3.clone(), |x| {
+            leptos::SignalUpdate::update(&v16.l2.clone(), |x| {
                 *x = Func1::new({
                     let v1 = v1.clone();
                     move |v_2: std::string::String| Dice_ui::closure27(v1.clone(), v_2)
@@ -3077,7 +3077,7 @@ mod module_eef1bd43 {
             });
             let v22: LrcPtr<Dice_ui::Heap1> = leptos::SignalGetUntracked::get_untracked(&v2);
             let v26: bool = true;
-            leptos::SignalUpdate::update(&v22.l1.clone(), |x| {
+            leptos::SignalUpdate::update(&v22.l3.clone(), |x| {
                 *x = Func1::new({
                     let v1 = v1.clone();
                     move |v_3: LrcPtr<Dice_ui::Heap0>| Dice_ui::closure28(v1.clone(), v_3)
@@ -3721,16 +3721,16 @@ mod module_eef1bd43 {
             let v15: bool = leptos::SignalGet::get(&v12.l0.clone());
             let v17: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v10.clone());
-            let v20: bool = leptos::SignalGet::get(&v17.l2.clone());
+            let v20: bool = leptos::SignalGet::get(&v17.l1.clone());
             let v22: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v10.clone());
-            let v25: std::string::String = leptos::SignalGet::get(&v22.l3.clone());
+            let v25: std::string::String = leptos::SignalGet::get(&v22.l2.clone());
             let v27: LrcPtr<Dice_ui::Heap1> = leptos::SignalGetUntracked::get_untracked(&v10);
             let v31: LrcPtr<Dice_ui::Heap3> = LrcPtr::new(Dice_ui::Heap3 {
                 l0: v15,
-                l1: leptos::SignalGet::get(&v27.l1.clone()),
-                l2: v20,
-                l3: v25,
+                l1: v20,
+                l2: v25,
+                l3: leptos::SignalGet::get(&v27.l3.clone()),
             });
             let v33: string =
                 append(append(string("state_core.use_core_database (15) / effect new_core_state_heap / ##2 / new_core_state_heap: "),
@@ -3911,7 +3911,7 @@ mod module_eef1bd43 {
                 if v19 == "" {
                     let v24: LrcPtr<Dice_ui::Heap1> =
                         leptos::SignalGetUntracked::get_untracked(&v3.l0.clone());
-                    let v27: std::string::String = leptos::SignalGet::get(&v24.l3.clone());
+                    let v27: std::string::String = leptos::SignalGet::get(&v24.l2.clone());
                     let v29: string = fable_library_rust::String_::fromString(v27);
                     let v30: string = append(
                         append(
@@ -3939,7 +3939,7 @@ mod module_eef1bd43 {
                 let v45: &str = &*v14;
                 let v47: std::string::String = String::from(v45);
                 let v49: bool = true;
-                leptos::SignalSet::set(&v42.l3.clone(), v47);
+                leptos::SignalSet::set(&v42.l2.clone(), v47);
                 ()
             }
         }
@@ -4123,9 +4123,9 @@ mod module_eef1bd43 {
             let v3: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
             let v6: LrcPtr<Dice_ui::Heap0> =
-                leptos::SignalGetUntracked::get_untracked(&v3.l1.clone());
+                leptos::SignalGetUntracked::get_untracked(&v3.l3.clone());
             let v10: Vec<(bool, std::string::String)> = v6
-                .l1
+                .l0
                 .clone()
                 .into_iter()
                 .map(|x| {
@@ -4168,28 +4168,28 @@ mod module_eef1bd43 {
             leptos::logging::log!("{}", v24);
             v20
         }
-        pub fn closure51(unitVar: (), v0_1: string) -> (bool, string, bool, Dice_ui::US25, string) {
+        pub fn closure51(unitVar: (), v0_1: string) -> (string, Dice_ui::US25, string, bool, bool) {
             (
-                true,
-                string(""),
-                false,
-                Dice_ui::US25::US25_0,
                 append(
                     append(string("https://api3.nearblocks.io/v1/account/"), v0_1),
                     string(""),
                 ),
+                Dice_ui::US25::US25_0,
+                string(""),
+                false,
+                true,
             )
         }
         pub fn closure50(
             v0_1: leptos::Memo<Vec<string>>,
             unitVar: (),
-        ) -> Array<(bool, string, bool, Dice_ui::US25, string)> {
+        ) -> Array<(string, Dice_ui::US25, string, bool, bool)> {
             let v2: Vec<string> = v0_1();
-            let v5: Vec<(bool, string, bool, Dice_ui::US25, string)> = v2
+            let v5: Vec<(string, Dice_ui::US25, string, bool, bool)> = v2
                 .into_iter()
                 .map(|x| Func1::new(move |v: string| Dice_ui::closure51((), v))(x.clone()))
                 .collect::<Vec<_>>();
-            let v7: Array<(bool, string, bool, Dice_ui::US25, string)> =
+            let v7: Array<(string, Dice_ui::US25, string, bool, bool)> =
                 fable_library_rust::NativeArray_::array_from(v5);
             let v11: string =
                 Dice_ui::method8(200_i64,
@@ -4203,12 +4203,8 @@ mod module_eef1bd43 {
         pub fn method53(v0_1: i32, v1: LrcPtr<Dice_ui::Mut1>) -> bool {
             v1.l0.get().clone() < v0_1
         }
-        pub fn closure54(v0_1: string, v1: i32) -> (bool, string, bool, Dice_ui::US25, string) {
+        pub fn closure54(v0_1: string, v1: i32) -> (string, Dice_ui::US25, string, bool, bool) {
             (
-                true,
-                string(""),
-                false,
-                Dice_ui::US25::US25_0,
                 append(
                     append(
                         append(
@@ -4225,12 +4221,16 @@ mod module_eef1bd43 {
                     ),
                     string(""),
                 ),
+                Dice_ui::US25::US25_0,
+                string(""),
+                false,
+                true,
             )
         }
         pub fn closure53(
             v0_1: LrcPtr<Dice_ui::Heap0>,
             v1: string,
-        ) -> (string, Vec<(bool, string, bool, Dice_ui::US25, string)>) {
+        ) -> (string, Vec<(string, Dice_ui::US25, string, bool, bool)>) {
             let v2: i32 = v0_1.l3;
             let v3: Array<i32> = new_init(&0_i32, v2);
             let v4: LrcPtr<Dice_ui::Mut1> = LrcPtr::new(Dice_ui::Mut1 {
@@ -4264,13 +4264,13 @@ mod module_eef1bd43 {
             v0_1: LrcPtr<Dice_ui::Heap2>,
             v1: leptos::Memo<Vec<string>>,
             unitVar: (),
-        ) -> Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)> {
+        ) -> Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)> {
             let v4: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
             let v7: LrcPtr<Dice_ui::Heap0> =
-                leptos::SignalGetUntracked::get_untracked(&v4.l1.clone());
+                leptos::SignalGetUntracked::get_untracked(&v4.l3.clone());
             let v9: Vec<string> = v1();
-            let v12: Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)> = v9
+            let v12: Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)> = v9
                 .into_iter()
                 .map(|x| {
                     Func1::new({
@@ -4290,42 +4290,42 @@ mod module_eef1bd43 {
         }
         pub fn closure56(
             unitVar: (),
-            _arg: (string, Vec<(bool, string, bool, Dice_ui::US25, string)>),
-        ) -> Vec<(bool, string, bool, Dice_ui::US25, string)> {
+            _arg: (string, Vec<(string, Dice_ui::US25, string, bool, bool)>),
+        ) -> Vec<(string, Dice_ui::US25, string, bool, bool)> {
             _arg.1.clone()
         }
         pub fn method54(v0_1: i32, v1: LrcPtr<Dice_ui::Mut2>) -> bool {
             v1.l0.get().clone() < v0_1
         }
         pub fn method55(
-            v0_1: Vec<(bool, string, bool, Dice_ui::US25, string)>,
-        ) -> Vec<(bool, string, bool, Dice_ui::US25, string)> {
+            v0_1: Vec<(string, Dice_ui::US25, string, bool, bool)>,
+        ) -> Vec<(string, Dice_ui::US25, string, bool, bool)> {
             v0_1
         }
         pub fn method56(
-            v0_1: Vec<(bool, string, bool, Dice_ui::US25, string)>,
-        ) -> Vec<(bool, string, bool, Dice_ui::US25, string)> {
+            v0_1: Vec<(string, Dice_ui::US25, string, bool, bool)>,
+        ) -> Vec<(string, Dice_ui::US25, string, bool, bool)> {
             v0_1
         }
         pub fn closure55(
-            v0_1: leptos::Memo<Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)>>,
+            v0_1: leptos::Memo<Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)>>,
             unitVar: (),
-        ) -> Array<(bool, string, bool, Dice_ui::US25, string)> {
-            let v2: Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)> = v0_1();
-            let v5: Vec<Vec<(bool, string, bool, Dice_ui::US25, string)>> = v2
+        ) -> Array<(string, Dice_ui::US25, string, bool, bool)> {
+            let v2: Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)> = v0_1();
+            let v5: Vec<Vec<(string, Dice_ui::US25, string, bool, bool)>> = v2
                 .into_iter()
                 .map(|x| {
                     Func1::new(
                         move |arg10_0040: (
                             string,
-                            Vec<(bool, string, bool, Dice_ui::US25, string)>,
+                            Vec<(string, Dice_ui::US25, string, bool, bool)>,
                         )| Dice_ui::closure56((), arg10_0040),
                     )(x.clone())
                 })
                 .collect::<Vec<_>>();
-            let v8: Vec<(bool, string, bool, Dice_ui::US25, string)> =
-                new_empty::<(bool, string, bool, Dice_ui::US25, string)>().to_vec();
-            let v10: Array<Vec<(bool, string, bool, Dice_ui::US25, string)>> =
+            let v8: Vec<(string, Dice_ui::US25, string, bool, bool)> =
+                new_empty::<(string, Dice_ui::US25, string, bool, bool)>().to_vec();
+            let v10: Array<Vec<(string, Dice_ui::US25, string, bool, bool)>> =
                 fable_library_rust::NativeArray_::array_from(v5);
             let v11: i32 = count(v10.clone());
             let v12: LrcPtr<Dice_ui::Mut2> = LrcPtr::new(Dice_ui::Mut2 {
@@ -4334,23 +4334,23 @@ mod module_eef1bd43 {
             });
             while Dice_ui::method54(v11, v12.clone()) {
                 let v14: i32 = v12.l0.get().clone();
-                let v15: Vec<(bool, string, bool, Dice_ui::US25, string)> = v12.l1.get().clone();
-                let v17: Vec<(bool, string, bool, Dice_ui::US25, string)> =
+                let v15: Vec<(string, Dice_ui::US25, string, bool, bool)> = v12.l1.get().clone();
+                let v17: Vec<(string, Dice_ui::US25, string, bool, bool)> =
                     Dice_ui::method55(v10[v14].clone());
-                let v18: Vec<(bool, string, bool, Dice_ui::US25, string)> = Dice_ui::method56(v15);
+                let v18: Vec<(string, Dice_ui::US25, string, bool, bool)> = Dice_ui::method56(v15);
                 let v20: bool = true;
                 let mut v18 = v18;
                 let v22: bool = true;
                 v18.extend(v17);
-                let v24: Vec<(bool, string, bool, Dice_ui::US25, string)> = v18;
+                let v24: Vec<(string, Dice_ui::US25, string, bool, bool)> = v18;
                 let v25: i32 = v14 + 1_i32;
                 v12.l0.set(v25);
                 v12.l1.set(v24);
                 ()
             }
             {
-                let v26: Vec<(bool, string, bool, Dice_ui::US25, string)> = v12.l1.get().clone();
-                let v28: Array<(bool, string, bool, Dice_ui::US25, string)> =
+                let v26: Vec<(string, Dice_ui::US25, string, bool, bool)> = v12.l1.get().clone();
+                let v28: Array<(string, Dice_ui::US25, string, bool, bool)> =
                     fable_library_rust::NativeArray_::array_from(v26);
                 let v32: string =
                     Dice_ui::method8(200_i64,
@@ -4365,13 +4365,13 @@ mod module_eef1bd43 {
         }
         pub fn closure59(
             v0_1: string,
-            _arg: (bool, string, bool, Dice_ui::US25, string),
+            _arg: (string, Dice_ui::US25, string, bool, bool),
         ) -> string {
             v0_1
         }
         pub fn closure58(
             unitVar: (),
-            _arg: (string, Vec<(bool, string, bool, Dice_ui::US25, string)>),
+            _arg: (string, Vec<(string, Dice_ui::US25, string, bool, bool)>),
         ) -> Vec<string> {
             _arg.1
                 .clone()
@@ -4379,7 +4379,7 @@ mod module_eef1bd43 {
                 .map(|x| {
                     Func1::new({
                         let _arg = _arg.clone();
-                        move |arg10_0040: (bool, string, bool, Dice_ui::US25, string)| {
+                        move |arg10_0040: (string, Dice_ui::US25, string, bool, bool)| {
                             Dice_ui::closure59(_arg.0.clone(), arg10_0040)
                         }
                     })(x.clone())
@@ -4396,17 +4396,17 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn closure57(
-            v0_1: leptos::Memo<Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)>>,
+            v0_1: leptos::Memo<Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)>>,
             unitVar: (),
         ) -> Array<string> {
-            let v2: Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)> = v0_1();
+            let v2: Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)> = v0_1();
             let v5: Vec<Vec<string>> = v2
                 .into_iter()
                 .map(|x| {
                     Func1::new(
                         move |arg10_0040: (
                             string,
-                            Vec<(bool, string, bool, Dice_ui::US25, string)>,
+                            Vec<(string, Dice_ui::US25, string, bool, bool)>,
                         )| Dice_ui::closure58((), arg10_0040),
                     )(x.clone())
                 })
@@ -4462,18 +4462,18 @@ mod module_eef1bd43 {
             unitVar: (),
             v0_1: crate::model::near::nearblocks::Txn,
         ) -> (
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            u32,
             Array<(std::string::String, Option<std::string::String>)>,
             f64,
-            u32,
-            std::string::String,
-            std::string::String,
-            Array<std::string::String>,
             bool,
             f64,
-            std::string::String,
-            std::string::String,
-            std::string::String,
-            std::string::String,
+            Array<std::string::String>,
         ) {
             let v2: std::string::String = v0_1.clone().receipt_id;
             let v4: std::string::String = v0_1.clone().predecessor_account_id;
@@ -4517,48 +4517,48 @@ mod module_eef1bd43 {
                 _v39.set(x_2)
             }
             (
-                v24,
-                v28,
-                v16,
-                v12,
-                v10,
-                defaultValue(new_empty::<std::string::String>(), _v39.get().clone()),
-                v32,
-                v36,
-                v4,
                 v2,
+                v4,
                 v6,
                 v8,
+                v10,
+                v12,
+                v16,
+                v24,
+                v28,
+                v32,
+                v36,
+                defaultValue(new_empty::<std::string::String>(), _v39.get().clone()),
             )
         }
         pub fn method61(
             v0_1: Array<(
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                u32,
                 Array<(std::string::String, Option<std::string::String>)>,
                 f64,
-                u32,
-                std::string::String,
-                std::string::String,
-                Array<std::string::String>,
                 bool,
                 f64,
-                std::string::String,
-                std::string::String,
-                std::string::String,
-                std::string::String,
+                Array<std::string::String>,
             )>,
         ) -> Array<(
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            u32,
             Array<(std::string::String, Option<std::string::String>)>,
             f64,
-            u32,
-            std::string::String,
-            std::string::String,
-            Array<std::string::String>,
             bool,
             f64,
-            std::string::String,
-            std::string::String,
-            std::string::String,
-            std::string::String,
+            Array<std::string::String>,
         )> {
             v0_1
         }
@@ -4566,33 +4566,33 @@ mod module_eef1bd43 {
             unitVar: (),
             v0_1: crate::model::near::nearblocks::Root,
         ) -> Array<(
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            u32,
             Array<(std::string::String, Option<std::string::String>)>,
             f64,
-            u32,
-            std::string::String,
-            std::string::String,
-            Array<std::string::String>,
             bool,
             f64,
-            std::string::String,
-            std::string::String,
-            std::string::String,
-            std::string::String,
+            Array<std::string::String>,
         )> {
             let v2: Vec<crate::model::near::nearblocks::Txn> = v0_1.txns;
             let v5: Vec<(
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                u32,
                 Array<(std::string::String, Option<std::string::String>)>,
                 f64,
-                u32,
-                std::string::String,
-                std::string::String,
-                Array<std::string::String>,
                 bool,
                 f64,
-                std::string::String,
-                std::string::String,
-                std::string::String,
-                std::string::String,
+                Array<std::string::String>,
             )> = v2
                 .into_iter()
                 .map(|x| {
@@ -4612,12 +4612,12 @@ mod module_eef1bd43 {
             leptos::SignalGet::get(&v0_1)
         }
         pub fn closure64(
-            v0_1: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+            v0_1: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>>,
             v1: leptos::Resource<Dice_ui::US2, rexie::Rexie>,
             unitVar: (),
         ) -> (
             Option<rexie::Rexie>,
-            Array<(bool, string, bool, Dice_ui::US25, string)>,
+            Array<(string, Dice_ui::US25, string, bool, bool)>,
         ) {
             (leptos::SignalGet::get(&v1), v0_1())
         }
@@ -4781,7 +4781,7 @@ mod module_eef1bd43 {
         }
         pub fn closure65(
             v0_1: Option<rexie::Rexie>,
-            _arg: (bool, string, bool, Dice_ui::US25, string),
+            _arg: (string, Dice_ui::US25, string, bool, bool),
         ) -> std::pin::Pin<
             Box<
                 dyn std::future::Future<
@@ -4823,10 +4823,10 @@ mod module_eef1bd43 {
                                 append(
                                     append(
                                         append(
-                                            append(string("url["), _arg.4.clone()),
+                                            append(string("url["), _arg.0.clone()),
                                             string("]("),
                                         ),
-                                        sprintf!("{:?}", _arg.1.clone()),
+                                        sprintf!("{:?}", _arg.2.clone()),
                                     ),
                                     string(")"),
                                 ),
@@ -4897,7 +4897,7 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn method64(
-            v0_1: Array<(bool, string, bool, Dice_ui::US25, string)>,
+            v0_1: Array<(string, Dice_ui::US25, string, bool, bool)>,
             v1: Option<rexie::Rexie>,
         ) -> std::pin::Pin<
             Box<
@@ -4919,7 +4919,7 @@ mod module_eef1bd43 {
                            string(""));
                     let v9: bool = true;
                     leptos::logging::log!("{}", v7);
-                    let v11: Vec<(bool, string, bool, Dice_ui::US25, string)> = v0_1.to_vec();
+                    let v11: Vec<(string, Dice_ui::US25, string, bool, bool)> = v0_1.to_vec();
                     let v15: Vec<
                         std::pin::Pin<
                             Box<
@@ -4937,11 +4937,11 @@ mod module_eef1bd43 {
                                 Func1::new({
                                     let v1 = v1.clone();
                                     move |arg10_0040: (
-                                        bool,
                                         string,
-                                        bool,
                                         Dice_ui::US25,
                                         string,
+                                        bool,
+                                        bool,
                                     )| {
                                         Dice_ui::closure65(v1.clone(), arg10_0040)
                                     }
@@ -5002,12 +5002,12 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn method63(
-            v0_1: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+            v0_1: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>>,
             v1: leptos::Resource<Dice_ui::US2, rexie::Rexie>,
         ) -> leptos::Resource<
             (
                 Option<rexie::Rexie>,
-                Array<(bool, string, bool, Dice_ui::US25, string)>,
+                Array<(string, Dice_ui::US25, string, bool, bool)>,
             ),
             Result<Vec<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>,
         > {
@@ -5024,7 +5024,7 @@ mod module_eef1bd43 {
                     {
                         let patternInput: (
                             Option<rexie::Rexie>,
-                            Array<(bool, string, bool, Dice_ui::US25, string)>,
+                            Array<(string, Dice_ui::US25, string, bool, bool)>,
                         ) = x;
                         let v8: std::pin::Pin<
                             Box<
@@ -5071,7 +5071,7 @@ mod module_eef1bd43 {
             v0_1: leptos::Resource<
                 (
                     Option<rexie::Rexie>,
-                    Array<(bool, string, bool, Dice_ui::US25, string)>,
+                    Array<(string, Dice_ui::US25, string, bool, bool)>,
                 ),
                 Result<Vec<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>,
             >,
@@ -5187,13 +5187,13 @@ mod module_eef1bd43 {
             v35
         }
         pub fn closure70(
-            v0_1: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+            v0_1: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>>,
             v1: leptos::Memo<
                 Option<Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>>,
             >,
             unitVar: (),
         ) -> (
-            Array<(bool, string, bool, Dice_ui::US25, string)>,
+            Array<(string, Dice_ui::US25, string, bool, bool)>,
             Option<Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>>,
         ) {
             (v0_1(), v1())
@@ -5268,14 +5268,14 @@ mod module_eef1bd43 {
         pub fn closure75(
             v0_1: Dice_ui::US29,
             v1: i32,
-            _arg: (bool, string, bool, Dice_ui::US25, string),
+            _arg: (string, Dice_ui::US25, string, bool, bool),
         ) -> std::pin::Pin<
             Box<dyn std::future::Future<Output = Result<Option<string>, std::string::String>>>,
         > {
-            let v6: string = _arg.4.clone();
-            let v5: Dice_ui::US25 = _arg.3.clone();
-            let v4: bool = _arg.2.clone();
-            let v2: bool = _arg.0.clone();
+            let v6: bool = _arg.4.clone();
+            let v5: bool = _arg.3.clone();
+            let v3: Dice_ui::US25 = _arg.1.clone();
+            let v2: string = _arg.0.clone();
             let __result = Box::pin(async move {
                 //;
                 {
@@ -5349,10 +5349,10 @@ mod module_eef1bd43 {
                         _ => Dice_ui::US32::US32_1,
                     };
                     let v45: string =
-                        Dice_ui::method8(400_i64, sprintf!("{:?}", (v2, v4, v5.clone())));
+                        Dice_ui::method8(400_i64, sprintf!("{:?}", (v3.clone(), v5, v6)));
                     let v48: string = Dice_ui::method8(400_i64, sprintf!("{:?}", v0_1.clone()));
                     let v51: string = Dice_ui::method8(400_i64, sprintf!("{:?}", v42.clone()));
-                    let v74: bool = if v2 {
+                    let v74: bool = if v6 {
                         true
                     } else {
                         if let Dice_ui::US29::US29_0(v0_1_0_0) = &v0_1 {
@@ -5449,10 +5449,10 @@ mod module_eef1bd43 {
                     let v149: Dice_ui::US36 = if v74 == false {
                         Dice_ui::US36::US36_0(None::<string>)
                     } else {
-                        let v81: Dice_ui::US25 = Dice_ui::method76(v5);
+                        let v81: Dice_ui::US25 = Dice_ui::method76(v3);
                         let v99: reqwest_wasm::RequestBuilder = match &v81 {
                             Dice_ui::US25::US25_1 => {
-                                let v90: string = Dice_ui::method79(v6.clone());
+                                let v90: string = Dice_ui::method79(v2.clone());
                                 let v92: &str = &*v90;
                                 let v95: std::string::String = Dice_ui::method80(String::from(v92));
                                 reqwest_wasm::Client::builder()
@@ -5461,7 +5461,7 @@ mod module_eef1bd43 {
                                     .post(v95)
                             }
                             _ => {
-                                let v82: string = Dice_ui::method77(v6.clone());
+                                let v82: string = Dice_ui::method77(v2.clone());
                                 let v84: &str = &*v82;
                                 let v87: std::string::String = Dice_ui::method78(String::from(v84));
                                 reqwest_wasm::Client::builder()
@@ -5470,12 +5470,12 @@ mod module_eef1bd43 {
                                     .get(v87)
                             }
                         };
-                        let v101: &str = &*_arg.1.clone();
+                        let v101: &str = &*_arg.2.clone();
                         let v103: std::string::String = String::from(v101);
                         let v105: reqwest_wasm::RequestBuilder =
                             reqwest_wasm::RequestBuilder::body(v99, v103);
                         let v126: reqwest_wasm::RequestBuilder =
-                            Dice_ui::method82(if v4 == false {
+                            Dice_ui::method82(if v5 == false {
                                 v105
                             } else {
                                 let v110: std::string::String =
@@ -5536,7 +5536,7 @@ mod module_eef1bd43 {
             v0_1: Dice_ui::US29,
             v1: i32,
         ) -> Func1<
-            (bool, string, bool, Dice_ui::US25, string),
+            (string, Dice_ui::US25, string, bool, bool),
             std::pin::Pin<
                 Box<dyn std::future::Future<Output = Result<Option<string>, std::string::String>>>,
             >,
@@ -5544,7 +5544,7 @@ mod module_eef1bd43 {
             Func1::new({
                 let v0_1 = v0_1.clone();
                 let v1 = v1.clone();
-                move |arg10_0040: (bool, string, bool, Dice_ui::US25, string)| {
+                move |arg10_0040: (string, Dice_ui::US25, string, bool, bool)| {
                     Dice_ui::closure75(v0_1.clone(), v1, arg10_0040)
                 }
             })
@@ -5554,7 +5554,7 @@ mod module_eef1bd43 {
         ) -> Func1<
             i32,
             Func1<
-                (bool, string, bool, Dice_ui::US25, string),
+                (string, Dice_ui::US25, string, bool, bool),
                 std::pin::Pin<
                     Box<
                         dyn std::future::Future<
@@ -5570,8 +5570,8 @@ mod module_eef1bd43 {
             })
         }
         pub fn method85(
-            v0_1: Vec<(bool, string, bool, Dice_ui::US25, string)>,
-        ) -> Vec<(bool, string, bool, Dice_ui::US25, string)> {
+            v0_1: Vec<(string, Dice_ui::US25, string, bool, bool)>,
+        ) -> Vec<(string, Dice_ui::US25, string, bool, bool)> {
             v0_1
         }
         pub fn method86(
@@ -5598,7 +5598,7 @@ mod module_eef1bd43 {
         }
         pub fn method74(
             v0_1: Option<Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>>,
-            v1: Array<(bool, string, bool, Dice_ui::US25, string)>,
+            v1: Array<(string, Dice_ui::US25, string, bool, bool)>,
         ) -> std::pin::Pin<
             Box<
                 dyn std::future::Future<
@@ -5688,9 +5688,9 @@ mod module_eef1bd43 {
                         );
                         let v41: bool = true;
                         leptos::logging::log!("{}", v39);
-                        let v43: Vec<(bool, string, bool, Dice_ui::US25, string)> = v1.to_vec();
+                        let v43: Vec<(string, Dice_ui::US25, string, bool, bool)> = v1.to_vec();
                         let v44 = Dice_ui::method75(v35);
-                        let v45: Vec<(bool, string, bool, Dice_ui::US25, string)> =
+                        let v45: Vec<(string, Dice_ui::US25, string, bool, bool)> =
                             Dice_ui::method85(v43);
                         let v48: Vec<
                             std::pin::Pin<
@@ -5751,13 +5751,13 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn method73(
-            v0_1: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+            v0_1: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>>,
             v1: leptos::Memo<
                 Option<Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>>,
             >,
         ) -> leptos::Resource<
             (
-                Array<(bool, string, bool, Dice_ui::US25, string)>,
+                Array<(string, Dice_ui::US25, string, bool, bool)>,
                 Option<Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>>,
             ),
             Result<Array<Option<string>>, std::string::String>,
@@ -5774,7 +5774,7 @@ mod module_eef1bd43 {
                     //;
                     {
                         let patternInput: (
-                            Array<(bool, string, bool, Dice_ui::US25, string)>,
+                            Array<(string, Dice_ui::US25, string, bool, bool)>,
                             Option<
                                 Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>,
                             >,
@@ -5824,23 +5824,23 @@ mod module_eef1bd43 {
         pub fn closure78(
             v0_1: LrcPtr<Dice_ui::Heap4>,
             v1: Dice_ui::US5,
-            _arg: (bool, string, bool, Dice_ui::US25, string),
+            _arg: (string, Dice_ui::US25, string, bool, bool),
         ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Result<(), std::string::String>>>>
         {
-            let v6: string = _arg.4.clone();
+            let v2: string = _arg.0.clone();
             let __result = Box::pin(async move {
                 //;
                 {
                     let v60: Dice_ui::US37 = if let Dice_ui::US5::US5_0(v1_0_0) = &v1 {
                         let v9: string =
                             append(append(string("state_core.use_requests (11) / set_state_data_action / database=Some(_) / url: "),
-                                          v6.clone()), string(""));
+                                          v2.clone()), string(""));
                         let v11: bool = true;
                         leptos::logging::log!("{}", v9);
                         let v12: string = append(
                             append(
-                                append(append(string("url["), v6), string("](")),
-                                sprintf!("{:?}", _arg.1.clone()),
+                                append(append(string("url["), v2), string("](")),
+                                sprintf!("{:?}", _arg.2.clone()),
                             ),
                             string(")"),
                         );
@@ -5934,7 +5934,7 @@ mod module_eef1bd43 {
             v0_1
         }
         pub fn closure77(
-            v0_1: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+            v0_1: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>>,
             v1: leptos::Memo<Option<rexie::Rexie>>,
             v2: LrcPtr<Dice_ui::Heap4>,
         ) -> std::pin::Pin<
@@ -5970,9 +5970,9 @@ mod module_eef1bd43 {
                     {
                         let v16: Dice_ui::US5 =
                             defaultValue(Dice_ui::US5::US5_1, _v11.get().clone());
-                        let v18: Array<(bool, string, bool, Dice_ui::US25, string)> =
+                        let v18: Array<(string, Dice_ui::US25, string, bool, bool)> =
                             leptos::SignalGetUntracked::get_untracked(&v0_1);
-                        let v20: Vec<(bool, string, bool, Dice_ui::US25, string)> = v18.to_vec();
+                        let v20: Vec<(string, Dice_ui::US25, string, bool, bool)> = v18.to_vec();
                         let v24: Vec<
                             std::pin::Pin<
                                 Box<
@@ -5988,11 +5988,11 @@ mod module_eef1bd43 {
                                         let v16 = v16.clone();
                                         let v2 = v2.clone();
                                         move |arg10_0040: (
-                                            bool,
                                             string,
-                                            bool,
                                             Dice_ui::US25,
                                             string,
+                                            bool,
+                                            bool,
                                         )| {
                                             Dice_ui::closure78(v2.clone(), v16.clone(), arg10_0040)
                                         }
@@ -6084,7 +6084,7 @@ mod module_eef1bd43 {
             v0_1: Dice_ui::US29,
             v1: Dice_ui::US42,
             v2: i32,
-            _arg: (bool, string, bool, Dice_ui::US25, string),
+            _arg: (string, Dice_ui::US25, string, bool, bool),
         ) -> Result<Option<crate::model::near::nearblocks::Root>, std::string::String> {
             let v42: Dice_ui::US32 = match &v0_1 {
                 Dice_ui::US29::US29_0(v0_1_0_0) => {
@@ -6323,14 +6323,14 @@ mod module_eef1bd43 {
             v1: Dice_ui::US42,
             v2: i32,
         ) -> Func1<
-            (bool, string, bool, Dice_ui::US25, string),
+            (string, Dice_ui::US25, string, bool, bool),
             Result<Option<crate::model::near::nearblocks::Root>, std::string::String>,
         > {
             Func1::new({
                 let v0_1 = v0_1.clone();
                 let v1 = v1.clone();
                 let v2 = v2.clone();
-                move |arg10_0040: (bool, string, bool, Dice_ui::US25, string)| {
+                move |arg10_0040: (string, Dice_ui::US25, string, bool, bool)| {
                     Dice_ui::closure86(v0_1.clone(), v1.clone(), v2, arg10_0040)
                 }
             })
@@ -6341,7 +6341,7 @@ mod module_eef1bd43 {
         ) -> Func1<
             i32,
             Func1<
-                (bool, string, bool, Dice_ui::US25, string),
+                (string, Dice_ui::US25, string, bool, bool),
                 Result<Option<crate::model::near::nearblocks::Root>, std::string::String>,
             >,
         > {
@@ -6352,13 +6352,13 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure80(
-            v0_1: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+            v0_1: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>>,
             v1: leptos::Memo<
                 Option<Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>>,
             >,
             v2: leptos::Resource<
                 (
-                    Array<(bool, string, bool, Dice_ui::US25, string)>,
+                    Array<(string, Dice_ui::US25, string, bool, bool)>,
                     Option<Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>>,
                 ),
                 Result<Array<Option<string>>, std::string::String>,
@@ -6367,7 +6367,7 @@ mod module_eef1bd43 {
             unitVar: (),
         ) -> Array<Result<Option<crate::model::near::nearblocks::Root>, std::string::String>>
         {
-            let v5: Array<(bool, string, bool, Dice_ui::US25, string)> = v0_1();
+            let v5: Array<(string, Dice_ui::US25, string, bool, bool)> = v0_1();
             let v7: string = append(
                 append(
                     string("state_core.use_requests (13) / result memo / requests: "),
@@ -6529,9 +6529,9 @@ mod module_eef1bd43 {
                         _ => (),
                     }
                     {
-                        let v92: Vec<(bool, string, bool, Dice_ui::US25, string)> = v5.to_vec();
+                        let v92: Vec<(string, Dice_ui::US25, string, bool, bool)> = v5.to_vec();
                         let v93 = Dice_ui::method94(v38, v83.clone());
-                        let v94: Vec<(bool, string, bool, Dice_ui::US25, string)> =
+                        let v94: Vec<(string, Dice_ui::US25, string, bool, bool)> =
                             Dice_ui::method85(v92);
                         let v96: Vec<
                             Result<
@@ -6572,106 +6572,106 @@ mod module_eef1bd43 {
             v0_1: Func1<
                 crate::model::near::nearblocks::Root,
                 Array<(
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    u32,
                     Array<(std::string::String, Option<std::string::String>)>,
                     f64,
-                    u32,
-                    std::string::String,
-                    std::string::String,
-                    Array<std::string::String>,
                     bool,
                     f64,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
+                    Array<std::string::String>,
                 )>,
             >,
             v1: Option<crate::model::near::nearblocks::Root>,
         ) -> Option<
             Array<(
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                u32,
                 Array<(std::string::String, Option<std::string::String>)>,
                 f64,
-                u32,
-                std::string::String,
-                std::string::String,
-                Array<std::string::String>,
                 bool,
                 f64,
-                std::string::String,
-                std::string::String,
-                std::string::String,
-                std::string::String,
+                Array<std::string::String>,
             )>,
         > {
             let _v2: LrcPtr<
                 MutCell<
                     Option<
                         Array<(
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            u32,
                             Array<(std::string::String, Option<std::string::String>)>,
                             f64,
-                            u32,
-                            std::string::String,
-                            std::string::String,
-                            Array<std::string::String>,
                             bool,
                             f64,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
+                            Array<std::string::String>,
                         )>,
                     >,
                 >,
             > = refCell(
                 None::<
                     Array<(
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        u32,
                         Array<(std::string::String, Option<std::string::String>)>,
                         f64,
-                        u32,
-                        std::string::String,
-                        std::string::String,
-                        Array<std::string::String>,
                         bool,
                         f64,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
+                        Array<std::string::String>,
                     )>,
                 >,
             );
             {
                 let x_2: Option<
                     Array<(
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        u32,
                         Array<(std::string::String, Option<std::string::String>)>,
                         f64,
-                        u32,
-                        std::string::String,
-                        std::string::String,
-                        Array<std::string::String>,
                         bool,
                         f64,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
+                        Array<std::string::String>,
                     )>,
                 > = match &v1 {
                     None => {
                         None::<
                             Array<(
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                u32,
                                 Array<(std::string::String, Option<std::string::String>)>,
                                 f64,
-                                u32,
-                                std::string::String,
-                                std::string::String,
-                                Array<std::string::String>,
                                 bool,
                                 f64,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
+                                Array<std::string::String>,
                             )>,
                         >
                     }
@@ -6692,36 +6692,36 @@ mod module_eef1bd43 {
             v0_1: Func1<
                 crate::model::near::nearblocks::Root,
                 Array<(
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    u32,
                     Array<(std::string::String, Option<std::string::String>)>,
                     f64,
-                    u32,
-                    std::string::String,
-                    std::string::String,
-                    Array<std::string::String>,
                     bool,
                     f64,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
+                    Array<std::string::String>,
                 )>,
             >,
         ) -> Func1<
             Option<crate::model::near::nearblocks::Root>,
             Option<
                 Array<(
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    u32,
                     Array<(std::string::String, Option<std::string::String>)>,
                     f64,
-                    u32,
-                    std::string::String,
-                    std::string::String,
-                    Array<std::string::String>,
                     bool,
                     f64,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
+                    Array<std::string::String>,
                 )>,
             >,
         > {
@@ -6741,36 +6741,36 @@ mod module_eef1bd43 {
             v0_1: Func1<
                 crate::model::near::nearblocks::Root,
                 Array<(
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    u32,
                     Array<(std::string::String, Option<std::string::String>)>,
                     f64,
-                    u32,
-                    std::string::String,
-                    std::string::String,
-                    Array<std::string::String>,
                     bool,
                     f64,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
+                    Array<std::string::String>,
                 )>,
             >,
             v1: Result<Option<crate::model::near::nearblocks::Root>, std::string::String>,
         ) -> Result<
             Option<
                 Array<(
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    u32,
                     Array<(std::string::String, Option<std::string::String>)>,
                     f64,
-                    u32,
-                    std::string::String,
-                    std::string::String,
-                    Array<std::string::String>,
                     bool,
                     f64,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
+                    Array<std::string::String>,
                 )>,
             >,
             std::string::String,
@@ -6784,25 +6784,25 @@ mod module_eef1bd43 {
             v0_1: Func1<
                 crate::model::near::nearblocks::Root,
                 Array<(
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    u32,
                     Array<(std::string::String, Option<std::string::String>)>,
                     f64,
-                    u32,
-                    std::string::String,
-                    std::string::String,
-                    Array<std::string::String>,
                     bool,
                     f64,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
+                    Array<std::string::String>,
                 )>,
             >,
             v1: leptos::Resource<Dice_ui::US2, rexie::Rexie>,
             v2: leptos::Resource<
                 (
                     Option<rexie::Rexie>,
-                    Array<(bool, string, bool, Dice_ui::US25, string)>,
+                    Array<(string, Dice_ui::US25, string, bool, bool)>,
                 ),
                 Result<Vec<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>,
             >,
@@ -6814,18 +6814,18 @@ mod module_eef1bd43 {
             Result<
                 Option<
                     Array<(
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        u32,
                         Array<(std::string::String, Option<std::string::String>)>,
                         f64,
-                        u32,
-                        std::string::String,
-                        std::string::String,
-                        Array<std::string::String>,
                         bool,
                         f64,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
+                        Array<std::string::String>,
                     )>,
                 >,
                 std::string::String,
@@ -6934,18 +6934,18 @@ mod module_eef1bd43 {
                         Result<
                             Option<
                                 Array<(
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    u32,
                                     Array<(std::string::String, Option<std::string::String>)>,
                                     f64,
-                                    u32,
-                                    std::string::String,
-                                    std::string::String,
-                                    Array<std::string::String>,
                                     bool,
                                     f64,
-                                    std::string::String,
-                                    std::string::String,
-                                    std::string::String,
-                                    std::string::String,
+                                    Array<std::string::String>,
                                 )>,
                             >,
                             std::string::String,
@@ -6968,18 +6968,18 @@ mod module_eef1bd43 {
                         Result<
                             Option<
                                 Array<(
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    u32,
                                     Array<(std::string::String, Option<std::string::String>)>,
                                     f64,
-                                    u32,
-                                    std::string::String,
-                                    std::string::String,
-                                    Array<std::string::String>,
                                     bool,
                                     f64,
-                                    std::string::String,
-                                    std::string::String,
-                                    std::string::String,
-                                    std::string::String,
+                                    Array<std::string::String>,
                                 )>,
                             >,
                             std::string::String,
@@ -7002,22 +7002,22 @@ mod module_eef1bd43 {
             }
         }
         pub fn method62(
-            v0_1: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+            v0_1: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>>,
             v1: Func1<
                 crate::model::near::nearblocks::Root,
                 Array<(
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    u32,
                     Array<(std::string::String, Option<std::string::String>)>,
                     f64,
-                    u32,
-                    std::string::String,
-                    std::string::String,
-                    Array<std::string::String>,
                     bool,
                     f64,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
+                    Array<std::string::String>,
                 )>,
             >,
         ) -> leptos::Memo<
@@ -7025,18 +7025,18 @@ mod module_eef1bd43 {
                 Result<
                     Option<
                         Array<(
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            u32,
                             Array<(std::string::String, Option<std::string::String>)>,
                             f64,
-                            u32,
-                            std::string::String,
-                            std::string::String,
-                            Array<std::string::String>,
                             bool,
                             f64,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
+                            Array<std::string::String>,
                         )>,
                     >,
                     std::string::String,
@@ -7062,7 +7062,7 @@ mod module_eef1bd43 {
             let v14: leptos::Resource<
                 (
                     Option<rexie::Rexie>,
-                    Array<(bool, string, bool, Dice_ui::US25, string)>,
+                    Array<(string, Dice_ui::US25, string, bool, bool)>,
                 ),
                 Result<Vec<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>,
             > = Dice_ui::method63(v0_1.clone(), v8.clone());
@@ -7081,7 +7081,7 @@ mod module_eef1bd43 {
             > = leptos::create_memo(move |_| v17(()));
             let v20: leptos::Resource<
                 (
-                    Array<(bool, string, bool, Dice_ui::US25, string)>,
+                    Array<(string, Dice_ui::US25, string, bool, bool)>,
                     Option<Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>>,
                 ),
                 Result<Array<Option<string>>, std::string::String>,
@@ -7133,18 +7133,18 @@ mod module_eef1bd43 {
             unitVar: (),
             v0_1: Option<
                 Array<(
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    u32,
                     Array<(std::string::String, Option<std::string::String>)>,
                     f64,
-                    u32,
-                    std::string::String,
-                    std::string::String,
-                    Array<std::string::String>,
                     bool,
                     f64,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
+                    Array<std::string::String>,
                 )>,
             >,
         ) -> Dice_ui::US46 {
@@ -7158,18 +7158,18 @@ mod module_eef1bd43 {
             v0_1: Result<
                 Option<
                     Array<(
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        std::string::String,
+                        u32,
                         Array<(std::string::String, Option<std::string::String>)>,
                         f64,
-                        u32,
-                        std::string::String,
-                        std::string::String,
-                        Array<std::string::String>,
                         bool,
                         f64,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
+                        Array<std::string::String>,
                     )>,
                 >,
                 std::string::String,
@@ -7185,18 +7185,18 @@ mod module_eef1bd43 {
                 Dice_ui::US46::US46_0(v0_1_0_0) => {
                     let v1: Option<
                         Array<(
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            u32,
                             Array<(std::string::String, Option<std::string::String>)>,
                             f64,
-                            u32,
-                            std::string::String,
-                            std::string::String,
-                            Array<std::string::String>,
                             bool,
                             f64,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
+                            Array<std::string::String>,
                         )>,
                     > = v0_1_0_0.clone();
                     let _v2: LrcPtr<MutCell<Option<Dice_ui::US48>>> =
@@ -7206,18 +7206,18 @@ mod module_eef1bd43 {
                             None => None::<Dice_ui::US48>,
                             Some(v1_0_0) => {
                                 let x: Array<(
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    u32,
                                     Array<(std::string::String, Option<std::string::String>)>,
                                     f64,
-                                    u32,
-                                    std::string::String,
-                                    std::string::String,
-                                    Array<std::string::String>,
                                     bool,
                                     f64,
-                                    std::string::String,
-                                    std::string::String,
-                                    std::string::String,
-                                    std::string::String,
+                                    Array<std::string::String>,
                                 )> = v1_0_0.clone();
                                 Some((Func0::new({
                                     let x = x.clone();
@@ -7256,64 +7256,64 @@ mod module_eef1bd43 {
             unitVar: (),
             v0_: usize,
             v0__1: (
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                u32,
                 Array<(std::string::String, Option<std::string::String>)>,
                 f64,
-                u32,
-                std::string::String,
-                std::string::String,
-                Array<std::string::String>,
                 bool,
                 f64,
-                std::string::String,
-                std::string::String,
-                std::string::String,
-                std::string::String,
+                Array<std::string::String>,
             ),
         ) -> (
             usize,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            std::string::String,
+            u32,
             Array<(std::string::String, Option<std::string::String>)>,
             f64,
-            u32,
-            std::string::String,
-            std::string::String,
-            Array<std::string::String>,
             bool,
             f64,
-            std::string::String,
-            std::string::String,
-            std::string::String,
-            std::string::String,
+            Array<std::string::String>,
         ) {
             let v0_1: LrcPtr<(
                 usize,
                 (
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    std::string::String,
+                    u32,
                     Array<(std::string::String, Option<std::string::String>)>,
                     f64,
-                    u32,
-                    std::string::String,
-                    std::string::String,
-                    Array<std::string::String>,
                     bool,
                     f64,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
+                    Array<std::string::String>,
                 ),
             )> = LrcPtr::new((v0_, v0__1));
             let b: (
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                u32,
                 Array<(std::string::String, Option<std::string::String>)>,
                 f64,
-                u32,
-                std::string::String,
-                std::string::String,
-                Array<std::string::String>,
                 bool,
                 f64,
-                std::string::String,
-                std::string::String,
-                std::string::String,
-                std::string::String,
+                Array<std::string::String>,
             ) = v0_1.1.clone();
             (
                 v0_1.0.clone(),
@@ -7336,18 +7336,18 @@ mod module_eef1bd43 {
             v1: string,
             _arg: (
                 usize,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                std::string::String,
+                u32,
                 Array<(std::string::String, Option<std::string::String>)>,
                 f64,
-                u32,
-                std::string::String,
-                std::string::String,
-                Array<std::string::String>,
                 bool,
                 f64,
-                std::string::String,
-                std::string::String,
-                std::string::String,
-                std::string::String,
+                Array<std::string::String>,
             ),
         ) -> (string, usize, LrcPtr<Dice_ui::Heap5>) {
             (
@@ -7377,18 +7377,18 @@ mod module_eef1bd43 {
                     Dice_ui::US51::US51_0(match &v4 {
                         Dice_ui::US48::US48_0(v4_0_0) => {
                             let v7: Vec<(
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                u32,
                                 Array<(std::string::String, Option<std::string::String>)>,
                                 f64,
-                                u32,
-                                std::string::String,
-                                std::string::String,
-                                Array<std::string::String>,
                                 bool,
                                 f64,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
+                                Array<std::string::String>,
                             )> = match &v4 {
                                 Dice_ui::US48::US48_0(x) => x.clone(),
                                 _ => unreachable!(),
@@ -7400,35 +7400,35 @@ mod module_eef1bd43 {
                                 LrcPtr<(
                                     usize,
                                     (
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        u32,
                                         Array<(std::string::String, Option<std::string::String>)>,
                                         f64,
-                                        u32,
-                                        std::string::String,
-                                        std::string::String,
-                                        Array<std::string::String>,
                                         bool,
                                         f64,
-                                        std::string::String,
-                                        std::string::String,
-                                        std::string::String,
-                                        std::string::String,
+                                        Array<std::string::String>,
                                     ),
                                 )>,
                             > = v11.collect::<Vec<_>>();
                             let v16: Vec<(
                                 usize,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                u32,
                                 Array<(std::string::String, Option<std::string::String>)>,
                                 f64,
-                                u32,
-                                std::string::String,
-                                std::string::String,
-                                Array<std::string::String>,
                                 bool,
                                 f64,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
+                                Array<std::string::String>,
                             )> = v13
                                 .into_iter()
                                 .map(|x| {
@@ -7436,21 +7436,21 @@ mod module_eef1bd43 {
                                         move |tupledArg: LrcPtr<(
                                             usize,
                                             (
+                                                std::string::String,
+                                                std::string::String,
+                                                std::string::String,
+                                                std::string::String,
+                                                std::string::String,
+                                                std::string::String,
+                                                u32,
                                                 Array<(
                                                     std::string::String,
                                                     Option<std::string::String>,
                                                 )>,
                                                 f64,
-                                                u32,
-                                                std::string::String,
-                                                std::string::String,
-                                                Array<std::string::String>,
                                                 bool,
                                                 f64,
-                                                std::string::String,
-                                                std::string::String,
-                                                std::string::String,
-                                                std::string::String,
+                                                Array<std::string::String>,
                                             ),
                                         )>| {
                                             Dice_ui::closure101(
@@ -7464,33 +7464,33 @@ mod module_eef1bd43 {
                                 .collect::<Vec<_>>();
                             let v18: Array<(
                                 usize,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                u32,
                                 Array<(std::string::String, Option<std::string::String>)>,
                                 f64,
-                                u32,
-                                std::string::String,
-                                std::string::String,
-                                Array<std::string::String>,
                                 bool,
                                 f64,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
+                                Array<std::string::String>,
                             )> = fable_library_rust::NativeArray_::array_from(v16);
                             let v20: Vec<(
                                 usize,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                u32,
                                 Array<(std::string::String, Option<std::string::String>)>,
                                 f64,
-                                u32,
-                                std::string::String,
-                                std::string::String,
-                                Array<std::string::String>,
                                 bool,
                                 f64,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
+                                Array<std::string::String>,
                             )> = v18.to_vec();
                             Dice_ui::US52::US52_0(
                                 v20.into_iter()
@@ -7500,21 +7500,21 @@ mod module_eef1bd43 {
                                             let v3 = v3.clone();
                                             move |arg10_0040_1: (
                                                 usize,
+                                                std::string::String,
+                                                std::string::String,
+                                                std::string::String,
+                                                std::string::String,
+                                                std::string::String,
+                                                std::string::String,
+                                                u32,
                                                 Array<(
                                                     std::string::String,
                                                     Option<std::string::String>,
                                                 )>,
                                                 f64,
-                                                u32,
-                                                std::string::String,
-                                                std::string::String,
-                                                Array<std::string::String>,
                                                 bool,
                                                 f64,
-                                                std::string::String,
-                                                std::string::String,
-                                                std::string::String,
-                                                std::string::String,
+                                                Array<std::string::String>,
                                             )| {
                                                 Dice_ui::closure102(v1, v3.clone(), arg10_0040_1)
                                             }
@@ -7607,7 +7607,7 @@ mod module_eef1bd43 {
             unitVar: (),
             _arg: (string, usize, LrcPtr<Dice_ui::Heap5>),
         ) -> std::string::String {
-            (_arg.2.clone()).l3.clone()
+            (_arg.2.clone()).l5.clone()
         }
         pub fn method107() -> Func1<(string, usize, LrcPtr<Dice_ui::Heap5>), std::string::String> {
             Func1::new(move |arg10_0040: (string, usize, LrcPtr<Dice_ui::Heap5>)| {
@@ -7626,18 +7626,18 @@ mod module_eef1bd43 {
                     Result<
                         Option<
                             Array<(
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                std::string::String,
+                                u32,
                                 Array<(std::string::String, Option<std::string::String>)>,
                                 f64,
-                                u32,
-                                std::string::String,
-                                std::string::String,
-                                Array<std::string::String>,
                                 bool,
                                 f64,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
+                                Array<std::string::String>,
                             )>,
                         >,
                         std::string::String,
@@ -7651,18 +7651,18 @@ mod module_eef1bd43 {
                 Result<
                     Option<
                         Array<(
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            u32,
                             Array<(std::string::String, Option<std::string::String>)>,
                             f64,
-                            u32,
-                            std::string::String,
-                            std::string::String,
-                            Array<std::string::String>,
                             bool,
                             f64,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
+                            Array<std::string::String>,
                         )>,
                     >,
                     std::string::String,
@@ -7672,18 +7672,18 @@ mod module_eef1bd43 {
                 Result<
                     Option<
                         Array<(
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            std::string::String,
+                            u32,
                             Array<(std::string::String, Option<std::string::String>)>,
                             f64,
-                            u32,
-                            std::string::String,
-                            std::string::String,
-                            Array<std::string::String>,
                             bool,
                             f64,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
+                            Array<std::string::String>,
                         )>,
                     >,
                     std::string::String,
@@ -7696,18 +7696,18 @@ mod module_eef1bd43 {
                         move |v: Result<
                             Option<
                                 Array<(
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    std::string::String,
+                                    u32,
                                     Array<(std::string::String, Option<std::string::String>)>,
                                     f64,
-                                    u32,
-                                    std::string::String,
-                                    std::string::String,
-                                    Array<std::string::String>,
                                     bool,
                                     f64,
-                                    std::string::String,
-                                    std::string::String,
-                                    std::string::String,
-                                    std::string::String,
+                                    Array<std::string::String>,
                                 )>,
                             >,
                             std::string::String,
@@ -7982,16 +7982,16 @@ mod module_eef1bd43 {
         pub fn closure113(
             unitVar: (),
             v0_1: string,
-        ) -> (bool, string, bool, Dice_ui::US25, string) {
+        ) -> (string, Dice_ui::US25, string, bool, bool) {
             (
-                false,
+                string("https://rpc.mainnet.near.org"),
+                Dice_ui::US25::US25_1,
                 v0_1,
                 true,
-                Dice_ui::US25::US25_1,
-                string("https://rpc.mainnet.near.org"),
+                false,
             )
         }
-        pub fn method112() -> Func1<string, (bool, string, bool, Dice_ui::US25, string)> {
+        pub fn method112() -> Func1<string, (string, Dice_ui::US25, string, bool, bool)> {
             Func1::new(move |v: string| Dice_ui::closure113((), v))
         }
         pub fn method113(
@@ -8002,7 +8002,7 @@ mod module_eef1bd43 {
         pub fn closure111(
             unitVar: (),
             _arg: (string, usize, LrcPtr<Dice_ui::Heap5>),
-        ) -> Result<(bool, string, bool, Dice_ui::US25, string), std::string::String> {
+        ) -> Result<(string, Dice_ui::US25, string, bool, bool), std::string::String> {
             let v5: &str = &*string("2.0");
             let v7: std::string::String = String::from(v5);
             let v10: &str = &*string("dontcare");
@@ -8011,7 +8011,7 @@ mod module_eef1bd43 {
             let v17: std::string::String = String::from(v15);
             let v21: &str = &*string("bowen");
             let v24: Array<std::string::String> =
-                new_array(&[(_arg.2.clone()).l11.clone(), String::from(v21)]);
+                new_array(&[(_arg.2.clone()).l3.clone(), String::from(v21)]);
             let v26: Vec<std::string::String> = v24.to_vec();
             let v28: crate::model::near::rpc::RpcInput = crate::model::near::rpc::RpcInput {
                 jsonrpc: v7,
@@ -8034,7 +8034,7 @@ mod module_eef1bd43 {
                 Result<Option<Array<(string, usize, LrcPtr<Dice_ui::Heap5>)>>, std::string::String>,
             >,
             unitVar: (),
-        ) -> Result<Option<Array<(bool, string, bool, Dice_ui::US25, string)>>, std::string::String>
+        ) -> Result<Option<Array<(string, Dice_ui::US25, string, bool, bool)>>, std::string::String>
         {
             let v2: Result<
                 Option<Array<(string, usize, LrcPtr<Dice_ui::Heap5>)>>,
@@ -8078,7 +8078,7 @@ mod module_eef1bd43 {
                         .to_vec();
                         let v24: Vec<
                             Result<
-                                (bool, string, bool, Dice_ui::US25, string),
+                                (string, Dice_ui::US25, string, bool, bool),
                                 std::string::String,
                             >,
                         > = v21
@@ -8092,10 +8092,10 @@ mod module_eef1bd43 {
                             })
                             .collect::<Vec<_>>();
                         let v26: Result<
-                            Vec<(bool, string, bool, Dice_ui::US25, string)>,
+                            Vec<(string, Dice_ui::US25, string, bool, bool)>,
                             std::string::String,
                         > = v24.into_iter().collect();
-                        let v28: Vec<(bool, string, bool, Dice_ui::US25, string)> = v26?;
+                        let v28: Vec<(string, Dice_ui::US25, string, bool, bool)> = v26?;
                         Dice_ui::US57::US57_0(Dice_ui::US58::US58_0(
                             fable_library_rust::NativeArray_::array_from(v28),
                         ))
@@ -8113,21 +8113,21 @@ mod module_eef1bd43 {
                             Dice_ui::US58::US58_0(x) => x.clone(),
                             _ => unreachable!(),
                         }),
-                        _ => None::<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+                        _ => None::<Array<(string, Dice_ui::US25, string, bool, bool)>>,
                     })
                 }
                 Dice_ui::US57::US57_1(v39_1_0) => Dice_ui::US59::US59_1(v39_1_0.clone()),
             };
             let v56: Result<
-                Option<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+                Option<Array<(string, Dice_ui::US25, string, bool, bool)>>,
                 std::string::String,
             > = match &v50 {
                 Dice_ui::US59::US59_0(v50_0_0) => Ok::<
-                    Option<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+                    Option<Array<(string, Dice_ui::US25, string, bool, bool)>>,
                     std::string::String,
                 >(v50_0_0.clone()),
                 Dice_ui::US59::US59_1(v50_1_0) => Err::<
-                    Option<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+                    Option<Array<(string, Dice_ui::US25, string, bool, bool)>>,
                     std::string::String,
                 >(v50_1_0.clone()),
             };
@@ -8149,7 +8149,7 @@ mod module_eef1bd43 {
         }
         pub fn closure115(
             unitVar: (),
-            v0_1: Option<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+            v0_1: Option<Array<(string, Dice_ui::US25, string, bool, bool)>>,
         ) -> Dice_ui::US59 {
             Dice_ui::US59::US59_0(v0_1)
         }
@@ -8159,14 +8159,14 @@ mod module_eef1bd43 {
         pub fn closure114(
             v0_1: leptos::Memo<
                 Result<
-                    Option<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+                    Option<Array<(string, Dice_ui::US25, string, bool, bool)>>,
                     std::string::String,
                 >,
             >,
             unitVar: (),
-        ) -> Array<(bool, string, bool, Dice_ui::US25, string)> {
+        ) -> Array<(string, Dice_ui::US25, string, bool, bool)> {
             let v2: Result<
-                Option<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+                Option<Array<(string, Dice_ui::US25, string, bool, bool)>>,
                 std::string::String,
             > = v0_1();
             let v5: Dice_ui::US59 = match &v2 {
@@ -8175,7 +8175,7 @@ mod module_eef1bd43 {
             };
             let v17: Dice_ui::US57 = match &v5 {
                 Dice_ui::US59::US59_0(v5_0_0) => {
-                    let v6: Option<Array<(bool, string, bool, Dice_ui::US25, string)>> =
+                    let v6: Option<Array<(string, Dice_ui::US25, string, bool, bool)>> =
                         v5_0_0.clone();
                     let _v7: LrcPtr<MutCell<Option<Dice_ui::US58>>> =
                         refCell(None::<Dice_ui::US58>);
@@ -8183,7 +8183,7 @@ mod module_eef1bd43 {
                         let x_4: Option<Dice_ui::US58> = match &v6 {
                             None => None::<Dice_ui::US58>,
                             Some(v6_0_0) => {
-                                let x_2: Array<(bool, string, bool, Dice_ui::US25, string)> =
+                                let x_2: Array<(string, Dice_ui::US25, string, bool, bool)> =
                                     v6_0_0.clone();
                                 Some((Func0::new({
                                     let x_2 = x_2.clone();
@@ -8197,7 +8197,7 @@ mod module_eef1bd43 {
                 }
                 Dice_ui::US59::US59_1(v5_1_0) => Dice_ui::US57::US57_1(v5_1_0.clone()),
             };
-            let v23: Array<(bool, string, bool, Dice_ui::US25, string)> =
+            let v23: Array<(string, Dice_ui::US25, string, bool, bool)> =
                 if let Dice_ui::US57::US57_0(v17_0_0) = &v17 {
                     let v18: Dice_ui::US58 = match &v17 {
                         Dice_ui::US57::US57_0(x) => x.clone(),
@@ -8209,10 +8209,10 @@ mod module_eef1bd43 {
                             _ => unreachable!(),
                         }
                     } else {
-                        new_empty::<(bool, string, bool, Dice_ui::US25, string)>()
+                        new_empty::<(string, Dice_ui::US25, string, bool, bool)>()
                     }
                 } else {
-                    new_empty::<(bool, string, bool, Dice_ui::US25, string)>()
+                    new_empty::<(string, Dice_ui::US25, string, bool, bool)>()
                 };
             let v27: string = Dice_ui::method8(
                 200_i64,
@@ -8234,13 +8234,17 @@ mod module_eef1bd43 {
             unitVar: (),
             v0_1: crate::model::near::rpc::TransferDetail,
         ) -> (
-            Option<std::string::String>,
             std::string::String,
+            Option<std::string::String>,
             Option<f64>,
             Option<std::string::String>,
         ) {
-            let v2: std::string::String = v0_1.clone().deposit;
-            (v0_1.clone().args, v2, v0_1.clone().gas, v0_1.method_name)
+            (
+                v0_1.clone().deposit,
+                v0_1.clone().args,
+                v0_1.clone().gas,
+                v0_1.method_name,
+            )
         }
         pub fn closure120(
             unitVar: (),
@@ -8251,8 +8255,8 @@ mod module_eef1bd43 {
         ) -> std::collections::HashMap<
             std::string::String,
             (
-                Option<std::string::String>,
                 std::string::String,
+                Option<std::string::String>,
                 Option<f64>,
                 Option<std::string::String>,
             ),
@@ -8277,8 +8281,8 @@ mod module_eef1bd43 {
                 std::collections::HashMap<
                     std::string::String,
                     (
-                        Option<std::string::String>,
                         std::string::String,
+                        Option<std::string::String>,
                         Option<f64>,
                         Option<std::string::String>,
                     ),
@@ -8305,8 +8309,8 @@ mod module_eef1bd43 {
                 std::collections::HashMap<
                     std::string::String,
                     (
-                        Option<std::string::String>,
                         std::string::String,
+                        Option<std::string::String>,
                         Option<f64>,
                         Option<std::string::String>,
                     ),
@@ -8326,8 +8330,8 @@ mod module_eef1bd43 {
                 std::collections::HashMap<
                     std::string::String,
                     (
-                        Option<std::string::String>,
                         std::string::String,
+                        Option<std::string::String>,
                         Option<f64>,
                         Option<std::string::String>,
                     ),
@@ -8459,8 +8463,8 @@ mod module_eef1bd43 {
                     std::collections::HashMap<
                         std::string::String,
                         (
-                            Option<std::string::String>,
                             std::string::String,
+                            Option<std::string::String>,
                             Option<f64>,
                             Option<std::string::String>,
                         ),
@@ -8499,8 +8503,8 @@ mod module_eef1bd43 {
                     std::collections::HashMap<
                         std::string::String,
                         (
-                            Option<std::string::String>,
                             std::string::String,
+                            Option<std::string::String>,
                             Option<f64>,
                             Option<std::string::String>,
                         ),
@@ -8527,8 +8531,8 @@ mod module_eef1bd43 {
                     std::collections::HashMap<
                         std::string::String,
                         (
-                            Option<std::string::String>,
                             std::string::String,
+                            Option<std::string::String>,
                             Option<f64>,
                             Option<std::string::String>,
                         ),
@@ -8579,39 +8583,33 @@ mod module_eef1bd43 {
             unitVar: (),
             v0_1: crate::model::near::rpc::RpcError,
         ) -> (
+            std::string::String,
+            std::string::String,
             Option<(Option<std::string::String>, Option<std::string::String>)>,
-            std::string::String,
             i32,
-            std::string::String,
             std::string::String,
             std::string::String,
         ) {
             let v2: std::string::String = v0_1.clone().name;
             let v4: crate::model::near::rpc::ErrorCause = v0_1.clone().cause;
-            let v6: std::string::String = v4.clone().name;
-            let v10: Option<(Option<std::string::String>, Option<std::string::String>)> = map(
-                Func1::new(move |v: crate::model::near::rpc::ErrorCauseInfo| {
-                    Dice_ui::closure127((), v)
-                }),
-                v4.info,
-            );
-            let v12: i32 = v0_1.clone().code;
-            let v14: std::string::String = v0_1.clone().message;
-            (v10, v6, v12, v0_1.data, v14, v2)
+            (
+                v2,
+                v4.clone().name,
+                map(
+                    Func1::new(move |v: crate::model::near::rpc::ErrorCauseInfo| {
+                        Dice_ui::closure127((), v)
+                    }),
+                    v4.info,
+                ),
+                v0_1.clone().code,
+                v0_1.clone().message,
+                v0_1.data,
+            )
         }
         pub fn closure117(
             unitVar: (),
             v0_1: crate::model::near::rpc::RpcResponse,
         ) -> (
-            Option<(
-                Option<(Option<std::string::String>, Option<std::string::String>)>,
-                std::string::String,
-                i32,
-                std::string::String,
-                std::string::String,
-                std::string::String,
-            )>,
-            Option<std::string::String>,
             std::string::String,
             Option<(
                 Array<(
@@ -8620,8 +8618,8 @@ mod module_eef1bd43 {
                         std::collections::HashMap<
                             std::string::String,
                             (
-                                Option<std::string::String>,
                                 std::string::String,
+                                Option<std::string::String>,
                                 Option<f64>,
                                 Option<std::string::String>,
                             ),
@@ -8653,54 +8651,24 @@ mod module_eef1bd43 {
                     Array<(std::string::String, std::string::String)>,
                 )>,
             )>,
+            Option<(
+                std::string::String,
+                std::string::String,
+                Option<(Option<std::string::String>, Option<std::string::String>)>,
+                i32,
+                std::string::String,
+                std::string::String,
+            )>,
+            Option<std::string::String>,
         ) {
-            let v2: std::string::String = v0_1.clone().jsonrpc;
-            let v6: Option<(
-                Array<(
-                    std::string::String,
-                    Array<
-                        std::collections::HashMap<
-                            std::string::String,
-                            (
-                                Option<std::string::String>,
-                                std::string::String,
-                                Option<f64>,
-                                Option<std::string::String>,
-                            ),
-                        >,
-                    >,
-                    std::string::String,
-                    Array<std::string::String>,
-                    Array<std::string::String>,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                )>,
-                Array<(
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                    u64,
-                    Array<std::string::String>,
-                    Array<(
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    u8,
-                    Array<std::string::String>,
-                    std::collections::HashMap<std::string::String, std::string::String>,
-                    Option<std::string::String>,
-                    Array<(std::string::String, std::string::String)>,
-                )>,
-            )> = map(
-                Func1::new(move |v: crate::model::near::rpc::TransactionStatus| {
-                    Dice_ui::closure118((), v)
-                }),
-                v0_1.clone().result,
-            );
             (
+                v0_1.clone().jsonrpc,
+                map(
+                    Func1::new(move |v: crate::model::near::rpc::TransactionStatus| {
+                        Dice_ui::closure118((), v)
+                    }),
+                    v0_1.clone().result,
+                ),
                 map(
                     Func1::new(move |v_1: crate::model::near::rpc::RpcError| {
                         Dice_ui::closure126((), v_1)
@@ -8708,8 +8676,6 @@ mod module_eef1bd43 {
                     v0_1.clone().error,
                 ),
                 v0_1.id,
-                v2,
-                v6,
             )
         }
         pub fn closure131(
@@ -8732,7 +8698,7 @@ mod module_eef1bd43 {
             v0_1: Dice_ui::US29,
             v1: Dice_ui::US42,
             v2: i32,
-            _arg: (bool, string, bool, Dice_ui::US25, string),
+            _arg: (string, Dice_ui::US25, string, bool, bool),
         ) -> Result<Option<crate::model::near::rpc::RpcResponse>, std::string::String> {
             let v42: Dice_ui::US32 = match &v0_1 {
                 Dice_ui::US29::US29_0(v0_1_0_0) => {
@@ -8971,14 +8937,14 @@ mod module_eef1bd43 {
             v1: Dice_ui::US42,
             v2: i32,
         ) -> Func1<
-            (bool, string, bool, Dice_ui::US25, string),
+            (string, Dice_ui::US25, string, bool, bool),
             Result<Option<crate::model::near::rpc::RpcResponse>, std::string::String>,
         > {
             Func1::new({
                 let v0_1 = v0_1.clone();
                 let v1 = v1.clone();
                 let v2 = v2.clone();
-                move |arg10_0040: (bool, string, bool, Dice_ui::US25, string)| {
+                move |arg10_0040: (string, Dice_ui::US25, string, bool, bool)| {
                     Dice_ui::closure130(v0_1.clone(), v1.clone(), v2, arg10_0040)
                 }
             })
@@ -8989,7 +8955,7 @@ mod module_eef1bd43 {
         ) -> Func1<
             i32,
             Func1<
-                (bool, string, bool, Dice_ui::US25, string),
+                (string, Dice_ui::US25, string, bool, bool),
                 Result<Option<crate::model::near::rpc::RpcResponse>, std::string::String>,
             >,
         > {
@@ -9000,13 +8966,13 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure128(
-            v0_1: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+            v0_1: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>>,
             v1: leptos::Memo<
                 Option<Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>>,
             >,
             v2: leptos::Resource<
                 (
-                    Array<(bool, string, bool, Dice_ui::US25, string)>,
+                    Array<(string, Dice_ui::US25, string, bool, bool)>,
                     Option<Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>>,
                 ),
                 Result<Array<Option<string>>, std::string::String>,
@@ -9015,7 +8981,7 @@ mod module_eef1bd43 {
             unitVar: (),
         ) -> Array<Result<Option<crate::model::near::rpc::RpcResponse>, std::string::String>>
         {
-            let v5: Array<(bool, string, bool, Dice_ui::US25, string)> = v0_1();
+            let v5: Array<(string, Dice_ui::US25, string, bool, bool)> = v0_1();
             let v7: string = append(
                 append(
                     string("state_core.use_requests (13) / result memo / requests: "),
@@ -9177,9 +9143,9 @@ mod module_eef1bd43 {
                         _ => (),
                     }
                     {
-                        let v92: Vec<(bool, string, bool, Dice_ui::US25, string)> = v5.to_vec();
+                        let v92: Vec<(string, Dice_ui::US25, string, bool, bool)> = v5.to_vec();
                         let v93 = Dice_ui::method115(v38, v83.clone());
-                        let v94: Vec<(bool, string, bool, Dice_ui::US25, string)> =
+                        let v94: Vec<(string, Dice_ui::US25, string, bool, bool)> =
                             Dice_ui::method85(v92);
                         let v96: Vec<
                             Result<
@@ -9214,15 +9180,6 @@ mod module_eef1bd43 {
             v0_1: Func1<
                 crate::model::near::rpc::RpcResponse,
                 (
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -9231,8 +9188,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -9264,19 +9221,19 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 ),
             >,
             v1: Option<crate::model::near::rpc::RpcResponse>,
         ) -> Option<(
-            Option<(
-                Option<(Option<std::string::String>, Option<std::string::String>)>,
-                std::string::String,
-                i32,
-                std::string::String,
-                std::string::String,
-                std::string::String,
-            )>,
-            Option<std::string::String>,
             std::string::String,
             Option<(
                 Array<(
@@ -9285,8 +9242,8 @@ mod module_eef1bd43 {
                         std::collections::HashMap<
                             std::string::String,
                             (
-                                Option<std::string::String>,
                                 std::string::String,
+                                Option<std::string::String>,
                                 Option<f64>,
                                 Option<std::string::String>,
                             ),
@@ -9318,19 +9275,19 @@ mod module_eef1bd43 {
                     Array<(std::string::String, std::string::String)>,
                 )>,
             )>,
+            Option<(
+                std::string::String,
+                std::string::String,
+                Option<(Option<std::string::String>, Option<std::string::String>)>,
+                i32,
+                std::string::String,
+                std::string::String,
+            )>,
+            Option<std::string::String>,
         )> {
             let _v2: LrcPtr<
                 MutCell<
                     Option<(
-                        Option<(
-                            Option<(Option<std::string::String>, Option<std::string::String>)>,
-                            std::string::String,
-                            i32,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                        )>,
-                        Option<std::string::String>,
                         std::string::String,
                         Option<(
                             Array<(
@@ -9339,8 +9296,8 @@ mod module_eef1bd43 {
                                     std::collections::HashMap<
                                         std::string::String,
                                         (
-                                            Option<std::string::String>,
                                             std::string::String,
+                                            Option<std::string::String>,
                                             Option<f64>,
                                             Option<std::string::String>,
                                         ),
@@ -9372,19 +9329,19 @@ mod module_eef1bd43 {
                                 Array<(std::string::String, std::string::String)>,
                             )>,
                         )>,
+                        Option<(
+                            std::string::String,
+                            std::string::String,
+                            Option<(Option<std::string::String>, Option<std::string::String>)>,
+                            i32,
+                            std::string::String,
+                            std::string::String,
+                        )>,
+                        Option<std::string::String>,
                     )>,
                 >,
             > = refCell(
                 None::<(
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -9393,8 +9350,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -9426,19 +9383,19 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 )>,
             );
             {
                 let x_2: Option<(
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -9447,8 +9404,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -9480,18 +9437,18 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 )> = match &v1 {
                     None => {
                         None::<(
-                            Option<(
-                                Option<(Option<std::string::String>, Option<std::string::String>)>,
-                                std::string::String,
-                                i32,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
-                            )>,
-                            Option<std::string::String>,
                             std::string::String,
                             Option<(
                                 Array<(
@@ -9500,8 +9457,8 @@ mod module_eef1bd43 {
                                         std::collections::HashMap<
                                             std::string::String,
                                             (
-                                                Option<std::string::String>,
                                                 std::string::String,
+                                                Option<std::string::String>,
                                                 Option<f64>,
                                                 Option<std::string::String>,
                                             ),
@@ -9536,6 +9493,15 @@ mod module_eef1bd43 {
                                     Array<(std::string::String, std::string::String)>,
                                 )>,
                             )>,
+                            Option<(
+                                std::string::String,
+                                std::string::String,
+                                Option<(Option<std::string::String>, Option<std::string::String>)>,
+                                i32,
+                                std::string::String,
+                                std::string::String,
+                            )>,
+                            Option<std::string::String>,
                         )>
                     }
                     Some(v1_0_0) => {
@@ -9545,18 +9511,6 @@ mod module_eef1bd43 {
                             let x = x.clone();
                             move || {
                                 let patternInput: (
-                                    Option<(
-                                        Option<(
-                                            Option<std::string::String>,
-                                            Option<std::string::String>,
-                                        )>,
-                                        std::string::String,
-                                        i32,
-                                        std::string::String,
-                                        std::string::String,
-                                        std::string::String,
-                                    )>,
-                                    Option<std::string::String>,
                                     std::string::String,
                                     Option<(
                                         Array<(
@@ -9565,8 +9519,8 @@ mod module_eef1bd43 {
                                                 std::collections::HashMap<
                                                     std::string::String,
                                                     (
-                                                        Option<std::string::String>,
                                                         std::string::String,
+                                                        Option<std::string::String>,
                                                         Option<f64>,
                                                         Option<std::string::String>,
                                                     ),
@@ -9601,6 +9555,18 @@ mod module_eef1bd43 {
                                             Array<(std::string::String, std::string::String)>,
                                         )>,
                                     )>,
+                                    Option<(
+                                        std::string::String,
+                                        std::string::String,
+                                        Option<(
+                                            Option<std::string::String>,
+                                            Option<std::string::String>,
+                                        )>,
+                                        i32,
+                                        std::string::String,
+                                        std::string::String,
+                                    )>,
+                                    Option<std::string::String>,
                                 ) = v0_1(x.clone());
                                 (
                                     patternInput.0.clone(),
@@ -9620,15 +9586,6 @@ mod module_eef1bd43 {
             v0_1: Func1<
                 crate::model::near::rpc::RpcResponse,
                 (
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -9637,8 +9594,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -9670,20 +9627,20 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 ),
             >,
         ) -> Func1<
             Option<crate::model::near::rpc::RpcResponse>,
             Option<(
-                Option<(
-                    Option<(Option<std::string::String>, Option<std::string::String>)>,
-                    std::string::String,
-                    i32,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                )>,
-                Option<std::string::String>,
                 std::string::String,
                 Option<(
                     Array<(
@@ -9692,8 +9649,8 @@ mod module_eef1bd43 {
                             std::collections::HashMap<
                                 std::string::String,
                                 (
-                                    Option<std::string::String>,
                                     std::string::String,
+                                    Option<std::string::String>,
                                     Option<f64>,
                                     Option<std::string::String>,
                                 ),
@@ -9725,6 +9682,15 @@ mod module_eef1bd43 {
                         Array<(std::string::String, std::string::String)>,
                     )>,
                 )>,
+                Option<(
+                    std::string::String,
+                    std::string::String,
+                    Option<(Option<std::string::String>, Option<std::string::String>)>,
+                    i32,
+                    std::string::String,
+                    std::string::String,
+                )>,
+                Option<std::string::String>,
             )>,
         > {
             Func1::new({
@@ -9743,15 +9709,6 @@ mod module_eef1bd43 {
             v0_1: Func1<
                 crate::model::near::rpc::RpcResponse,
                 (
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -9760,8 +9717,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -9793,20 +9750,20 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 ),
             >,
             v1: Result<Option<crate::model::near::rpc::RpcResponse>, std::string::String>,
         ) -> Result<
             Option<(
-                Option<(
-                    Option<(Option<std::string::String>, Option<std::string::String>)>,
-                    std::string::String,
-                    i32,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                )>,
-                Option<std::string::String>,
                 std::string::String,
                 Option<(
                     Array<(
@@ -9815,8 +9772,8 @@ mod module_eef1bd43 {
                             std::collections::HashMap<
                                 std::string::String,
                                 (
-                                    Option<std::string::String>,
                                     std::string::String,
+                                    Option<std::string::String>,
                                     Option<f64>,
                                     Option<std::string::String>,
                                 ),
@@ -9848,6 +9805,15 @@ mod module_eef1bd43 {
                         Array<(std::string::String, std::string::String)>,
                     )>,
                 )>,
+                Option<(
+                    std::string::String,
+                    std::string::String,
+                    Option<(Option<std::string::String>, Option<std::string::String>)>,
+                    i32,
+                    std::string::String,
+                    std::string::String,
+                )>,
+                Option<std::string::String>,
             )>,
             std::string::String,
         > {
@@ -9860,15 +9826,6 @@ mod module_eef1bd43 {
             v0_1: Func1<
                 crate::model::near::rpc::RpcResponse,
                 (
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -9877,8 +9834,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -9910,13 +9867,22 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 ),
             >,
             v1: leptos::Resource<Dice_ui::US2, rexie::Rexie>,
             v2: leptos::Resource<
                 (
                     Option<rexie::Rexie>,
-                    Array<(bool, string, bool, Dice_ui::US25, string)>,
+                    Array<(string, Dice_ui::US25, string, bool, bool)>,
                 ),
                 Result<Vec<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>,
             >,
@@ -9927,15 +9893,6 @@ mod module_eef1bd43 {
         ) -> Array<
             Result<
                 Option<(
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -9944,8 +9901,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -9977,6 +9934,15 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 )>,
                 std::string::String,
             >,
@@ -10083,18 +10049,6 @@ mod module_eef1bd43 {
                     let v62: Vec<
                         Result<
                             Option<(
-                                Option<(
-                                    Option<(
-                                        Option<std::string::String>,
-                                        Option<std::string::String>,
-                                    )>,
-                                    std::string::String,
-                                    i32,
-                                    std::string::String,
-                                    std::string::String,
-                                    std::string::String,
-                                )>,
-                                Option<std::string::String>,
                                 std::string::String,
                                 Option<(
                                     Array<(
@@ -10103,8 +10057,8 @@ mod module_eef1bd43 {
                                             std::collections::HashMap<
                                                 std::string::String,
                                                 (
-                                                    Option<std::string::String>,
                                                     std::string::String,
+                                                    Option<std::string::String>,
                                                     Option<f64>,
                                                     Option<std::string::String>,
                                                 ),
@@ -10139,6 +10093,18 @@ mod module_eef1bd43 {
                                         Array<(std::string::String, std::string::String)>,
                                     )>,
                                 )>,
+                                Option<(
+                                    std::string::String,
+                                    std::string::String,
+                                    Option<(
+                                        Option<std::string::String>,
+                                        Option<std::string::String>,
+                                    )>,
+                                    i32,
+                                    std::string::String,
+                                    std::string::String,
+                                )>,
+                                Option<std::string::String>,
                             )>,
                             std::string::String,
                         >,
@@ -10159,18 +10125,6 @@ mod module_eef1bd43 {
                     let v64: Array<
                         Result<
                             Option<(
-                                Option<(
-                                    Option<(
-                                        Option<std::string::String>,
-                                        Option<std::string::String>,
-                                    )>,
-                                    std::string::String,
-                                    i32,
-                                    std::string::String,
-                                    std::string::String,
-                                    std::string::String,
-                                )>,
-                                Option<std::string::String>,
                                 std::string::String,
                                 Option<(
                                     Array<(
@@ -10179,8 +10133,8 @@ mod module_eef1bd43 {
                                             std::collections::HashMap<
                                                 std::string::String,
                                                 (
-                                                    Option<std::string::String>,
                                                     std::string::String,
+                                                    Option<std::string::String>,
                                                     Option<f64>,
                                                     Option<std::string::String>,
                                                 ),
@@ -10215,6 +10169,18 @@ mod module_eef1bd43 {
                                         Array<(std::string::String, std::string::String)>,
                                     )>,
                                 )>,
+                                Option<(
+                                    std::string::String,
+                                    std::string::String,
+                                    Option<(
+                                        Option<std::string::String>,
+                                        Option<std::string::String>,
+                                    )>,
+                                    i32,
+                                    std::string::String,
+                                    std::string::String,
+                                )>,
+                                Option<std::string::String>,
                             )>,
                             std::string::String,
                         >,
@@ -10236,19 +10202,10 @@ mod module_eef1bd43 {
             }
         }
         pub fn method114(
-            v0_1: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+            v0_1: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>>,
             v1: Func1<
                 crate::model::near::rpc::RpcResponse,
                 (
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -10257,8 +10214,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -10290,21 +10247,21 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 ),
             >,
         ) -> leptos::Memo<
             Array<
                 Result<
                     Option<(
-                        Option<(
-                            Option<(Option<std::string::String>, Option<std::string::String>)>,
-                            std::string::String,
-                            i32,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                        )>,
-                        Option<std::string::String>,
                         std::string::String,
                         Option<(
                             Array<(
@@ -10313,8 +10270,8 @@ mod module_eef1bd43 {
                                     std::collections::HashMap<
                                         std::string::String,
                                         (
-                                            Option<std::string::String>,
                                             std::string::String,
+                                            Option<std::string::String>,
                                             Option<f64>,
                                             Option<std::string::String>,
                                         ),
@@ -10346,6 +10303,15 @@ mod module_eef1bd43 {
                                 Array<(std::string::String, std::string::String)>,
                             )>,
                         )>,
+                        Option<(
+                            std::string::String,
+                            std::string::String,
+                            Option<(Option<std::string::String>, Option<std::string::String>)>,
+                            i32,
+                            std::string::String,
+                            std::string::String,
+                        )>,
+                        Option<std::string::String>,
                     )>,
                     std::string::String,
                 >,
@@ -10370,7 +10336,7 @@ mod module_eef1bd43 {
             let v14: leptos::Resource<
                 (
                     Option<rexie::Rexie>,
-                    Array<(bool, string, bool, Dice_ui::US25, string)>,
+                    Array<(string, Dice_ui::US25, string, bool, bool)>,
                 ),
                 Result<Vec<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>,
             > = Dice_ui::method63(v0_1.clone(), v8.clone());
@@ -10389,7 +10355,7 @@ mod module_eef1bd43 {
             > = leptos::create_memo(move |_| v17(()));
             let v20: leptos::Resource<
                 (
-                    Array<(bool, string, bool, Dice_ui::US25, string)>,
+                    Array<(string, Dice_ui::US25, string, bool, bool)>,
                     Option<Result<Array<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String>>,
                 ),
                 Result<Array<Option<string>>, std::string::String>,
@@ -10573,53 +10539,20 @@ mod module_eef1bd43 {
                             let v108: Dice_ui::US64 = match &v90 {
                                 Dice_ui::US63::US63_0(v90_0_0) => {
                                     let v91: crate::model::near::rpc::RpcResponse = v90_0_0.clone();
-                                    let v93: std::string::String = v91.clone().jsonrpc;
-                                    let v97:
-                                                Option<(Array<(std::string::String,
-                                                               Array<std::collections::HashMap<std::string::String, (Option<std::string::String>,
-                                                                                                                     std::string::String,
-                                                                                                                     Option<f64>,
-                                                                                                                     Option<std::string::String>)>>,
-                                                               std::string::String,
-                                                               Array<std::string::String>,
-                                                               Array<std::string::String>,
-                                                               std::string::String,
-                                                               std::string::String,
-                                                               std::string::String,
-                                                               std::string::String)>,
-                                                        Array<(std::string::String,
-                                                               std::string::String,
-                                                               std::string::String,
-                                                               u64,
-                                                               Array<std::string::String>,
-                                                               Array<(std::string::String,
-                                                                      std::string::String,
-                                                                      std::string::String)>,
-                                                               u8,
-                                                               Array<std::string::String>,
-                                                               std::collections::HashMap<std::string::String, std::string::String>,
-                                                               Option<std::string::String>,
-                                                               Array<(std::string::String,
-                                                                      std::string::String)>)>)> =
-                                            map(Func1::new(move
-                                                               |v_4:
-                                                                    crate::model::near::rpc::TransactionStatus|
-                                                               Dice_ui::closure118((),
-                                                                                   v_4)),
-                                                v91.clone().result);
-                                    Dice_ui::US64::US64_0(
-                                        map(
-                                            Func1::new(
-                                                move |v_5: crate::model::near::rpc::RpcError| {
-                                                    Dice_ui::closure126((), v_5)
-                                                },
-                                            ),
-                                            v91.clone().error,
-                                        ),
-                                        v91.id,
-                                        v93,
-                                        v97,
-                                    )
+                                    Dice_ui::US64::US64_0(v91.clone().jsonrpc,
+                                                              map(Func1::new(move
+                                                                                 |v_4:
+                                                                                      crate::model::near::rpc::TransactionStatus|
+                                                                                 Dice_ui::closure118((),
+                                                                                                     v_4)),
+                                                                  v91.clone().result),
+                                                              map(Func1::new(move
+                                                                                 |v_5:
+                                                                                      crate::model::near::rpc::RpcError|
+                                                                                 Dice_ui::closure126((),
+                                                                                                     v_5)),
+                                                                  v91.clone().error),
+                                                              v91.id)
                                 }
                                 Dice_ui::US63::US63_1(v90_1_0) => {
                                     Dice_ui::US64::US64_1(v90_1_0.clone())
@@ -10693,15 +10626,6 @@ mod module_eef1bd43 {
             unitVar: (),
         ) -> Result<
             Option<(
-                Option<(
-                    Option<(Option<std::string::String>, Option<std::string::String>)>,
-                    std::string::String,
-                    i32,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                )>,
-                Option<std::string::String>,
                 std::string::String,
                 Option<(
                     Array<(
@@ -10710,8 +10634,8 @@ mod module_eef1bd43 {
                             std::collections::HashMap<
                                 std::string::String,
                                 (
-                                    Option<std::string::String>,
                                     std::string::String,
+                                    Option<std::string::String>,
                                     Option<f64>,
                                     Option<std::string::String>,
                                 ),
@@ -10743,6 +10667,15 @@ mod module_eef1bd43 {
                         Array<(std::string::String, std::string::String)>,
                     )>,
                 )>,
+                Option<(
+                    std::string::String,
+                    std::string::String,
+                    Option<(Option<std::string::String>, Option<std::string::String>)>,
+                    i32,
+                    std::string::String,
+                    std::string::String,
+                )>,
+                Option<std::string::String>,
             )>,
             std::string::String,
         > {
@@ -10831,18 +10764,6 @@ mod module_eef1bd43 {
                             )),
                             _ => {
                                 None::<(
-                                    Option<(
-                                        Option<(
-                                            Option<std::string::String>,
-                                            Option<std::string::String>,
-                                        )>,
-                                        std::string::String,
-                                        i32,
-                                        std::string::String,
-                                        std::string::String,
-                                        std::string::String,
-                                    )>,
-                                    Option<std::string::String>,
                                     std::string::String,
                                     Option<(
                                         Array<(
@@ -10851,8 +10772,8 @@ mod module_eef1bd43 {
                                                 std::collections::HashMap<
                                                     std::string::String,
                                                     (
-                                                        Option<std::string::String>,
                                                         std::string::String,
+                                                        Option<std::string::String>,
                                                         Option<f64>,
                                                         Option<std::string::String>,
                                                     ),
@@ -10887,6 +10808,18 @@ mod module_eef1bd43 {
                                             Array<(std::string::String, std::string::String)>,
                                         )>,
                                     )>,
+                                    Option<(
+                                        std::string::String,
+                                        std::string::String,
+                                        Option<(
+                                            Option<std::string::String>,
+                                            Option<std::string::String>,
+                                        )>,
+                                        i32,
+                                        std::string::String,
+                                        std::string::String,
+                                    )>,
+                                    Option<std::string::String>,
                                 )>
                             }
                         })
@@ -10895,15 +10828,6 @@ mod module_eef1bd43 {
                 };
                 let v50: Result<
                     Option<(
-                        Option<(
-                            Option<(Option<std::string::String>, Option<std::string::String>)>,
-                            std::string::String,
-                            i32,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                        )>,
-                        Option<std::string::String>,
                         std::string::String,
                         Option<(
                             Array<(
@@ -10912,8 +10836,8 @@ mod module_eef1bd43 {
                                     std::collections::HashMap<
                                         std::string::String,
                                         (
-                                            Option<std::string::String>,
                                             std::string::String,
+                                            Option<std::string::String>,
                                             Option<f64>,
                                             Option<std::string::String>,
                                         ),
@@ -10945,20 +10869,20 @@ mod module_eef1bd43 {
                                 Array<(std::string::String, std::string::String)>,
                             )>,
                         )>,
+                        Option<(
+                            std::string::String,
+                            std::string::String,
+                            Option<(Option<std::string::String>, Option<std::string::String>)>,
+                            i32,
+                            std::string::String,
+                            std::string::String,
+                        )>,
+                        Option<std::string::String>,
                     )>,
                     std::string::String,
                 > = match &v44 {
                     Dice_ui::US66::US66_0(v44_0_0) => Ok::<
                         Option<(
-                            Option<(
-                                Option<(Option<std::string::String>, Option<std::string::String>)>,
-                                std::string::String,
-                                i32,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
-                            )>,
-                            Option<std::string::String>,
                             std::string::String,
                             Option<(
                                 Array<(
@@ -10967,8 +10891,8 @@ mod module_eef1bd43 {
                                         std::collections::HashMap<
                                             std::string::String,
                                             (
-                                                Option<std::string::String>,
                                                 std::string::String,
+                                                Option<std::string::String>,
                                                 Option<f64>,
                                                 Option<std::string::String>,
                                             ),
@@ -11003,20 +10927,20 @@ mod module_eef1bd43 {
                                     Array<(std::string::String, std::string::String)>,
                                 )>,
                             )>,
+                            Option<(
+                                std::string::String,
+                                std::string::String,
+                                Option<(Option<std::string::String>, Option<std::string::String>)>,
+                                i32,
+                                std::string::String,
+                                std::string::String,
+                            )>,
+                            Option<std::string::String>,
                         )>,
                         std::string::String,
                     >(v44_0_0.clone()),
                     Dice_ui::US66::US66_1(v44_1_0) => Err::<
                         Option<(
-                            Option<(
-                                Option<(Option<std::string::String>, Option<std::string::String>)>,
-                                std::string::String,
-                                i32,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
-                            )>,
-                            Option<std::string::String>,
                             std::string::String,
                             Option<(
                                 Array<(
@@ -11025,8 +10949,8 @@ mod module_eef1bd43 {
                                         std::collections::HashMap<
                                             std::string::String,
                                             (
-                                                Option<std::string::String>,
                                                 std::string::String,
+                                                Option<std::string::String>,
                                                 Option<f64>,
                                                 Option<std::string::String>,
                                             ),
@@ -11061,6 +10985,15 @@ mod module_eef1bd43 {
                                     Array<(std::string::String, std::string::String)>,
                                 )>,
                             )>,
+                            Option<(
+                                std::string::String,
+                                std::string::String,
+                                Option<(Option<std::string::String>, Option<std::string::String>)>,
+                                i32,
+                                std::string::String,
+                                std::string::String,
+                            )>,
+                            Option<std::string::String>,
                         )>,
                         std::string::String,
                     >(v44_1_0.clone()),
@@ -11083,15 +11016,6 @@ mod module_eef1bd43 {
         pub fn closure145(
             unitVar: (),
             v0_1: Option<(
-                Option<(
-                    Option<(Option<std::string::String>, Option<std::string::String>)>,
-                    std::string::String,
-                    i32,
-                    std::string::String,
-                    std::string::String,
-                    std::string::String,
-                )>,
-                Option<std::string::String>,
                 std::string::String,
                 Option<(
                     Array<(
@@ -11100,8 +11024,8 @@ mod module_eef1bd43 {
                             std::collections::HashMap<
                                 std::string::String,
                                 (
-                                    Option<std::string::String>,
                                     std::string::String,
+                                    Option<std::string::String>,
                                     Option<f64>,
                                     Option<std::string::String>,
                                 ),
@@ -11133,6 +11057,15 @@ mod module_eef1bd43 {
                         Array<(std::string::String, std::string::String)>,
                     )>,
                 )>,
+                Option<(
+                    std::string::String,
+                    std::string::String,
+                    Option<(Option<std::string::String>, Option<std::string::String>)>,
+                    i32,
+                    std::string::String,
+                    std::string::String,
+                )>,
+                Option<std::string::String>,
             )>,
         ) -> Dice_ui::US66 {
             Dice_ui::US66::US66_0(v0_1)
@@ -11144,15 +11077,6 @@ mod module_eef1bd43 {
             v0_1: leptos::Memo<
                 Result<
                     Option<(
-                        Option<(
-                            Option<(Option<std::string::String>, Option<std::string::String>)>,
-                            std::string::String,
-                            i32,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                        )>,
-                        Option<std::string::String>,
                         std::string::String,
                         Option<(
                             Array<(
@@ -11161,8 +11085,8 @@ mod module_eef1bd43 {
                                     std::collections::HashMap<
                                         std::string::String,
                                         (
-                                            Option<std::string::String>,
                                             std::string::String,
+                                            Option<std::string::String>,
                                             Option<f64>,
                                             Option<std::string::String>,
                                         ),
@@ -11194,6 +11118,15 @@ mod module_eef1bd43 {
                                 Array<(std::string::String, std::string::String)>,
                             )>,
                         )>,
+                        Option<(
+                            std::string::String,
+                            std::string::String,
+                            Option<(Option<std::string::String>, Option<std::string::String>)>,
+                            i32,
+                            std::string::String,
+                            std::string::String,
+                        )>,
+                        Option<std::string::String>,
                     )>,
                     std::string::String,
                 >,
@@ -11202,15 +11135,6 @@ mod module_eef1bd43 {
         ) -> Option<string> {
             let v2: Result<
                 Option<(
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -11219,8 +11143,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -11252,6 +11176,15 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 )>,
                 std::string::String,
             > = v0_1();
@@ -11262,15 +11195,6 @@ mod module_eef1bd43 {
             let v20: Dice_ui::US62 = match &v5 {
                 Dice_ui::US66::US66_0(v5_0_0) => {
                     let v6: Option<(
-                        Option<(
-                            Option<(Option<std::string::String>, Option<std::string::String>)>,
-                            std::string::String,
-                            i32,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                        )>,
-                        Option<std::string::String>,
                         std::string::String,
                         Option<(
                             Array<(
@@ -11279,8 +11203,8 @@ mod module_eef1bd43 {
                                     std::collections::HashMap<
                                         std::string::String,
                                         (
-                                            Option<std::string::String>,
                                             std::string::String,
+                                            Option<std::string::String>,
                                             Option<f64>,
                                             Option<std::string::String>,
                                         ),
@@ -11312,6 +11236,15 @@ mod module_eef1bd43 {
                                 Array<(std::string::String, std::string::String)>,
                             )>,
                         )>,
+                        Option<(
+                            std::string::String,
+                            std::string::String,
+                            Option<(Option<std::string::String>, Option<std::string::String>)>,
+                            i32,
+                            std::string::String,
+                            std::string::String,
+                        )>,
+                        Option<std::string::String>,
                     )> = v5_0_0.clone();
                     let _v7: LrcPtr<MutCell<Option<Dice_ui::US60>>> =
                         refCell(None::<Dice_ui::US60>);
@@ -11320,18 +11253,6 @@ mod module_eef1bd43 {
                             None => None::<Dice_ui::US60>,
                             Some(v6_0_0) => {
                                 let x_2: (
-                                    Option<(
-                                        Option<(
-                                            Option<std::string::String>,
-                                            Option<std::string::String>,
-                                        )>,
-                                        std::string::String,
-                                        i32,
-                                        std::string::String,
-                                        std::string::String,
-                                        std::string::String,
-                                    )>,
-                                    Option<std::string::String>,
                                     std::string::String,
                                     Option<(
                                         Array<(
@@ -11340,8 +11261,8 @@ mod module_eef1bd43 {
                                                 std::collections::HashMap<
                                                     std::string::String,
                                                     (
-                                                        Option<std::string::String>,
                                                         std::string::String,
+                                                        Option<std::string::String>,
                                                         Option<f64>,
                                                         Option<std::string::String>,
                                                     ),
@@ -11376,6 +11297,18 @@ mod module_eef1bd43 {
                                             Array<(std::string::String, std::string::String)>,
                                         )>,
                                     )>,
+                                    Option<(
+                                        std::string::String,
+                                        std::string::String,
+                                        Option<(
+                                            Option<std::string::String>,
+                                            Option<std::string::String>,
+                                        )>,
+                                        i32,
+                                        std::string::String,
+                                        std::string::String,
+                                    )>,
+                                    Option<std::string::String>,
                                 ) = v6_0_0.clone();
                                 Some((Func0::new({
                                     let x_2 = x_2.clone();
@@ -11402,34 +11335,34 @@ mod module_eef1bd43 {
                     _ => unreachable!(),
                 };
                 if let Dice_ui::US60::US60_0(v21_0_0, v21_0_1, v21_0_2, v21_0_3) = &v21 {
-                    let v22: Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                    let v24: Option<(
                         std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
                         i32,
                         std::string::String,
                         std::string::String,
-                        std::string::String,
                     )> = match &v21 {
-                        Dice_ui::US60::US60_0(x, _, _, _) => x.clone(),
+                        Dice_ui::US60::US60_0(_, _, x, _) => x.clone(),
                         _ => unreachable!(),
                     };
                     let _v26: LrcPtr<MutCell<Option<Dice_ui::US67>>> =
                         refCell(None::<Dice_ui::US67>);
                     {
-                        let x_7: Option<Dice_ui::US67> = match &v22 {
+                        let x_7: Option<Dice_ui::US67> = match &v24 {
                             None => None::<Dice_ui::US67>,
-                            Some(v22_0_0) => {
+                            Some(v24_0_0) => {
                                 let x_5: (
+                                    std::string::String,
+                                    std::string::String,
                                     Option<(
                                         Option<std::string::String>,
                                         Option<std::string::String>,
                                     )>,
-                                    std::string::String,
                                     i32,
                                     std::string::String,
                                     std::string::String,
-                                    std::string::String,
-                                ) = v22_0_0.clone();
+                                ) = v24_0_0.clone();
                                 Some((Func0::new({
                                     let x_5 = x_5.clone();
                                     move || {
@@ -11468,12 +11401,12 @@ mod module_eef1bd43 {
                                                     append(
                                                         toString(match &v36 {
                                                             Dice_ui::US67::US67_0(
-                                                                _,
-                                                                _,
-                                                                _,
-                                                                _,
-                                                                _,
                                                                 x,
+                                                                _,
+                                                                _,
+                                                                _,
+                                                                _,
+                                                                _,
                                                             ) => x.clone(),
                                                             _ => unreachable!(),
                                                         }),
@@ -11489,7 +11422,7 @@ mod module_eef1bd43 {
                                                 string(" - "),
                                             ),
                                             toString(match &v36 {
-                                                Dice_ui::US67::US67_0(_, _, _, x, _, _) => {
+                                                Dice_ui::US67::US67_0(_, _, _, _, _, x) => {
                                                     x.clone()
                                                 }
                                                 _ => unreachable!(),
@@ -11539,7 +11472,7 @@ mod module_eef1bd43 {
             let v3: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
             let v7: Option<std::string::String> =
-                (leptos::SignalGet::get(&v3.l1.clone())).l0.clone();
+                (leptos::SignalGet::get(&v3.l3.clone())).l1.clone();
             let _v8: LrcPtr<MutCell<Option<Dice_ui::US15>>> = refCell(None::<Dice_ui::US15>);
             {
                 let x_2: Option<Dice_ui::US15> = match &v7 {
@@ -11633,9 +11566,9 @@ mod module_eef1bd43 {
         > {
             let v3: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
-            let v6: LrcPtr<Dice_ui::Heap0> = leptos::SignalGet::get(&v3.l1.clone());
+            let v6: LrcPtr<Dice_ui::Heap0> = leptos::SignalGet::get(&v3.l3.clone());
             let v10: Vec<(bool, std::string::String)> = v6
-                .l1
+                .l0
                 .clone()
                 .into_iter()
                 .map(|x| {
@@ -11951,18 +11884,18 @@ mod module_eef1bd43 {
             let v7: leptos::RwSignal<LrcPtr<Dice_ui::Heap1>> = v2.l0.clone();
             let v9: LrcPtr<Dice_ui::Heap1> = leptos::SignalGetUntracked::get_untracked(&v7.clone());
             let v12: LrcPtr<Dice_ui::Heap0> =
-                leptos::SignalGetUntracked::get_untracked(&v9.l1.clone());
+                leptos::SignalGetUntracked::get_untracked(&v9.l3.clone());
             let v19: LrcPtr<Dice_ui::Heap1> = leptos::SignalGetUntracked::get_untracked(&v7);
             let v22: &str = &*v6;
             let v26: LrcPtr<Dice_ui::Heap0> = LrcPtr::new(Dice_ui::Heap0 {
-                l0: Some(String::from(v22)),
-                l1: v12.l1.clone(),
+                l0: v12.l0.clone(),
+                l1: Some(String::from(v22)),
                 l2: v12.l2,
                 l3: v12.l3,
                 l4: v12.l4.clone(),
             });
             let v28: bool = true;
-            leptos::SignalSet::set(&v19.l1.clone(), v26);
+            leptos::SignalSet::set(&v19.l3.clone(), v26);
             ()
         }
         pub fn closure170(unitVar: (), unitVar_1: ()) -> string {
@@ -13006,7 +12939,7 @@ mod module_eef1bd43 {
         pub fn closure191(v0_1: LrcPtr<Dice_ui::Heap2>, unitVar: ()) -> i32 {
             let v3: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
-            (leptos::SignalGetUntracked::get_untracked(&v3.l1.clone())).l2
+            (leptos::SignalGetUntracked::get_untracked(&v3.l3.clone())).l2
         }
         pub fn method156(v0_1: LrcPtr<Dice_ui::Heap2>) -> Func0<i32> {
             Func0::new({
@@ -13018,7 +12951,7 @@ mod module_eef1bd43 {
             let v2: leptos::RwSignal<LrcPtr<Dice_ui::Heap1>> = v0_1.l0.clone();
             let v4: LrcPtr<Dice_ui::Heap1> = leptos::SignalGetUntracked::get_untracked(&v2.clone());
             let v7: LrcPtr<Dice_ui::Heap0> =
-                leptos::SignalGetUntracked::get_untracked(&v4.l1.clone());
+                leptos::SignalGetUntracked::get_untracked(&v4.l3.clone());
             let v14: LrcPtr<Dice_ui::Heap1> = leptos::SignalGetUntracked::get_untracked(&v2);
             let v17: string = toString(v1);
             let v22: LrcPtr<Dice_ui::Heap0> = LrcPtr::new(Dice_ui::Heap0 {
@@ -13033,7 +12966,7 @@ mod module_eef1bd43 {
                 l4: v7.l4.clone(),
             });
             let v24: bool = true;
-            leptos::SignalSet::set(&v14.l1.clone(), v22);
+            leptos::SignalSet::set(&v14.l3.clone(), v22);
             ()
         }
         pub fn method157(v0_1: LrcPtr<Dice_ui::Heap2>) -> Func1<std::string::String, ()> {
@@ -13101,7 +13034,7 @@ mod module_eef1bd43 {
             let v4: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
             let v9: LrcPtr<Dice_ui::Heap6> = LrcPtr::new(Dice_ui::Heap6 {
-                l0: (leptos::SignalGetUntracked::get_untracked(&v4.l1.clone())).l2,
+                l0: (leptos::SignalGetUntracked::get_untracked(&v4.l3.clone())).l2,
             });
             let v11: bool = true;
             leptos::Action::dispatch(&v1, v9.clone());
@@ -14268,7 +14201,7 @@ mod module_eef1bd43 {
         pub fn closure220(unitVar: (), _arg: (string, usize, LrcPtr<Dice_ui::Heap5>)) -> bool {
             let v2: LrcPtr<Dice_ui::Heap5> = _arg.2.clone();
             let v5: Vec<(std::string::String, Option<std::string::String>)> =
-                v2.l0.clone().to_vec();
+                v2.l7.clone().to_vec();
             let v8: Vec<(string, Dice_ui::US34)> = v5
                 .into_iter()
                 .map(|x| {
@@ -14286,7 +14219,7 @@ mod module_eef1bd43 {
                 .filter(|x| v9(x.clone().clone()))
                 .collect::<Vec<_>>();
             if count(fable_library_rust::NativeArray_::array_from(v12)) > 0_i32 {
-                _arg.0.clone() == fable_library_rust::String_::fromString(v2.l10.clone())
+                _arg.0.clone() == fable_library_rust::String_::fromString(v2.l2.clone())
             } else {
                 false
             }
@@ -14524,7 +14457,7 @@ mod module_eef1bd43 {
         }
         pub fn closure232(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
             let v7: i64 = Dice_ui::method189(toInt64(fable_library_rust::String_::fromString(
-                v0_1.l3.clone(),
+                v0_1.l5.clone(),
             ))) / 1000_i64;
             let v9: Option<chrono::DateTime<chrono::Utc>> =
                 chrono::DateTime::from_timestamp_micros(v7);
@@ -14592,7 +14525,7 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure233(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v3: string = fable_library_rust::String_::fromString(v0_1.l8.clone());
+            let v3: string = fable_library_rust::String_::fromString(v0_1.l1.clone());
             let v5: &str = &*v3;
             let v7: std::string::String = String::from(v5);
             let v9: leptos::leptos_dom::Text = leptos::html::text(v7);
@@ -14607,7 +14540,7 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure234(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v3: string = fable_library_rust::String_::fromString(v0_1.l10.clone());
+            let v3: string = fable_library_rust::String_::fromString(v0_1.l2.clone());
             let v5: &str = &*v3;
             let v7: std::string::String = String::from(v5);
             let v9: leptos::leptos_dom::Text = leptos::html::text(v7);
@@ -14622,7 +14555,7 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure235(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v3: string = toString(v0_1.l7);
+            let v3: string = toString(v0_1.l10);
             let v5: &str = &*v3;
             let v7: std::string::String = String::from(v5);
             let v9: leptos::leptos_dom::Text = leptos::html::text(v7);
@@ -14640,7 +14573,7 @@ mod module_eef1bd43 {
             v1.l0.get().clone() < v0_1
         }
         pub fn closure236(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v1: Array<std::string::String> = v0_1.l5.clone();
+            let v1: Array<std::string::String> = v0_1.l11.clone();
             if count(v1.clone()) as u64 == 0_u64 {
                 let v6: &str = &*string("");
                 let v8: std::string::String = String::from(v6);
@@ -14708,15 +14641,6 @@ mod module_eef1bd43 {
             v0_1: LrcPtr<Dice_ui::Heap5>,
             v1: Result<
                 Option<(
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -14725,8 +14649,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -14758,12 +14682,21 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 )>,
                 std::string::String,
             >,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v5: string = if v0_1.l6 {
+            let v5: string = if v0_1.l9 {
                 string("Ok")
             } else {
                 string("Outcome Error")
@@ -14775,15 +14708,6 @@ mod module_eef1bd43 {
             let v23: Dice_ui::US62 = match &v8 {
                 Dice_ui::US66::US66_0(v8_0_0) => {
                     let v9: Option<(
-                        Option<(
-                            Option<(Option<std::string::String>, Option<std::string::String>)>,
-                            std::string::String,
-                            i32,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                        )>,
-                        Option<std::string::String>,
                         std::string::String,
                         Option<(
                             Array<(
@@ -14792,8 +14716,8 @@ mod module_eef1bd43 {
                                     std::collections::HashMap<
                                         std::string::String,
                                         (
-                                            Option<std::string::String>,
                                             std::string::String,
+                                            Option<std::string::String>,
                                             Option<f64>,
                                             Option<std::string::String>,
                                         ),
@@ -14825,6 +14749,15 @@ mod module_eef1bd43 {
                                 Array<(std::string::String, std::string::String)>,
                             )>,
                         )>,
+                        Option<(
+                            std::string::String,
+                            std::string::String,
+                            Option<(Option<std::string::String>, Option<std::string::String>)>,
+                            i32,
+                            std::string::String,
+                            std::string::String,
+                        )>,
+                        Option<std::string::String>,
                     )> = v8_0_0.clone();
                     let _v10: LrcPtr<MutCell<Option<Dice_ui::US60>>> =
                         refCell(None::<Dice_ui::US60>);
@@ -14833,18 +14766,6 @@ mod module_eef1bd43 {
                             None => None::<Dice_ui::US60>,
                             Some(v9_0_0) => {
                                 let x_2: (
-                                    Option<(
-                                        Option<(
-                                            Option<std::string::String>,
-                                            Option<std::string::String>,
-                                        )>,
-                                        std::string::String,
-                                        i32,
-                                        std::string::String,
-                                        std::string::String,
-                                        std::string::String,
-                                    )>,
-                                    Option<std::string::String>,
                                     std::string::String,
                                     Option<(
                                         Array<(
@@ -14853,8 +14774,8 @@ mod module_eef1bd43 {
                                                 std::collections::HashMap<
                                                     std::string::String,
                                                     (
-                                                        Option<std::string::String>,
                                                         std::string::String,
+                                                        Option<std::string::String>,
                                                         Option<f64>,
                                                         Option<std::string::String>,
                                                     ),
@@ -14889,6 +14810,18 @@ mod module_eef1bd43 {
                                             Array<(std::string::String, std::string::String)>,
                                         )>,
                                     )>,
+                                    Option<(
+                                        std::string::String,
+                                        std::string::String,
+                                        Option<(
+                                            Option<std::string::String>,
+                                            Option<std::string::String>,
+                                        )>,
+                                        i32,
+                                        std::string::String,
+                                        std::string::String,
+                                    )>,
+                                    Option<std::string::String>,
                                 ) = v9_0_0.clone();
                                 Some((Func0::new({
                                     let x_2 = x_2.clone();
@@ -14913,34 +14846,34 @@ mod module_eef1bd43 {
                 Dice_ui::US62::US62_0(v23_0_0) => {
                     let v24: Dice_ui::US60 = v23_0_0.clone();
                     if let Dice_ui::US60::US60_0(v24_0_0, v24_0_1, v24_0_2, v24_0_3) = &v24 {
-                        let v25: Option<(
-                            Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        let v27: Option<(
                             std::string::String,
+                            std::string::String,
+                            Option<(Option<std::string::String>, Option<std::string::String>)>,
                             i32,
                             std::string::String,
                             std::string::String,
-                            std::string::String,
                         )> = match &v24 {
-                            Dice_ui::US60::US60_0(x, _, _, _) => x.clone(),
+                            Dice_ui::US60::US60_0(_, _, x, _) => x.clone(),
                             _ => unreachable!(),
                         };
                         let _v29: LrcPtr<MutCell<Option<Dice_ui::US67>>> =
                             refCell(None::<Dice_ui::US67>);
                         {
-                            let x_7: Option<Dice_ui::US67> = match &v25 {
+                            let x_7: Option<Dice_ui::US67> = match &v27 {
                                 None => None::<Dice_ui::US67>,
-                                Some(v25_0_0) => {
+                                Some(v27_0_0) => {
                                     let x_5: (
+                                        std::string::String,
+                                        std::string::String,
                                         Option<(
                                             Option<std::string::String>,
                                             Option<std::string::String>,
                                         )>,
-                                        std::string::String,
                                         i32,
                                         std::string::String,
                                         std::string::String,
-                                        std::string::String,
-                                    ) = v25_0_0.clone();
+                                    ) = v27_0_0.clone();
                                     Some((Func0::new({
                                         let x_5 = x_5.clone();
                                         move || {
@@ -14973,20 +14906,20 @@ mod module_eef1bd43 {
                                     let _v46: LrcPtr<MutCell<Option<Dice_ui::US67>>> =
                                         refCell(None::<Dice_ui::US67>);
                                     {
-                                        let x_10: Option<Dice_ui::US67> = match &v25 {
+                                        let x_10: Option<Dice_ui::US67> = match &v27 {
                                             None => None::<Dice_ui::US67>,
-                                            Some(v25_0_0) => {
+                                            Some(v27_0_0) => {
                                                 let x_8: (
+                                                    std::string::String,
+                                                    std::string::String,
                                                     Option<(
                                                         Option<std::string::String>,
                                                         Option<std::string::String>,
                                                     )>,
-                                                    std::string::String,
                                                     i32,
                                                     std::string::String,
                                                     std::string::String,
-                                                    std::string::String,
-                                                ) = v25_0_0.clone();
+                                                ) = v27_0_0.clone();
                                                 Some((Func0::new({
                                                     let x_8 = x_8.clone();
                                                     move || {
@@ -15019,12 +14952,12 @@ mod module_eef1bd43 {
                                         {
                                             Dice_ui::US34::US34_0(append(append(append(append(append(append(append(toString(match &v56
                                                                                                                                         {
-                                                                                                                                        Dice_ui::US67::US67_0(_,
+                                                                                                                                        Dice_ui::US67::US67_0(x,
                                                                                                                                                               _,
                                                                                                                                                               _,
                                                                                                                                                               _,
                                                                                                                                                               _,
-                                                                                                                                                              x)
+                                                                                                                                                              _)
                                                                                                                                         =>
                                                                                                                                         x.clone(),
                                                                                                                                         _
@@ -15052,9 +14985,9 @@ mod module_eef1bd43 {
                                                                                                                    Dice_ui::US67::US67_0(_,
                                                                                                                                          _,
                                                                                                                                          _,
-                                                                                                                                         x,
                                                                                                                                          _,
-                                                                                                                                         _)
+                                                                                                                                         _,
+                                                                                                                                         x)
                                                                                                                    =>
                                                                                                                    x.clone(),
                                                                                                                    _
@@ -15094,15 +15027,15 @@ mod module_eef1bd43 {
                                     sprintf!(
                                         "{:?}",
                                         (
-                                            v25.clone(),
+                                            match &v24 {
+                                                Dice_ui::US60::US60_0(x, _, _, _) => x.clone(),
+                                                _ => unreachable!(),
+                                            },
                                             match &v24 {
                                                 Dice_ui::US60::US60_0(_, x, _, _) => x.clone(),
                                                 _ => unreachable!(),
                                             },
-                                            match &v24 {
-                                                Dice_ui::US60::US60_0(_, _, x, _) => x.clone(),
-                                                _ => unreachable!(),
-                                            },
+                                            v27.clone(),
                                             match &v24 {
                                                 Dice_ui::US60::US60_0(_, _, _, x) => x.clone(),
                                                 _ => unreachable!(),
@@ -15145,15 +15078,6 @@ mod module_eef1bd43 {
             v0_1: LrcPtr<Dice_ui::Heap5>,
             v1: Result<
                 Option<(
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -15162,8 +15086,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -15195,6 +15119,15 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 )>,
                 std::string::String,
             >,
@@ -15209,15 +15142,6 @@ mod module_eef1bd43 {
             v0_1: LrcPtr<Dice_ui::Heap5>,
             v1: Result<
                 Option<(
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -15226,8 +15150,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -15259,6 +15183,15 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 )>,
                 std::string::String,
             >,
@@ -15402,15 +15335,6 @@ mod module_eef1bd43 {
             v0_1: LrcPtr<Dice_ui::Heap5>,
             v1: Result<
                 Option<(
-                    Option<(
-                        Option<(Option<std::string::String>, Option<std::string::String>)>,
-                        std::string::String,
-                        i32,
-                        std::string::String,
-                        std::string::String,
-                        std::string::String,
-                    )>,
-                    Option<std::string::String>,
                     std::string::String,
                     Option<(
                         Array<(
@@ -15419,8 +15343,8 @@ mod module_eef1bd43 {
                                 std::collections::HashMap<
                                     std::string::String,
                                     (
-                                        Option<std::string::String>,
                                         std::string::String,
+                                        Option<std::string::String>,
                                         Option<f64>,
                                         Option<std::string::String>,
                                     ),
@@ -15452,6 +15376,15 @@ mod module_eef1bd43 {
                             Array<(std::string::String, std::string::String)>,
                         )>,
                     )>,
+                    Option<(
+                        std::string::String,
+                        std::string::String,
+                        Option<(Option<std::string::String>, Option<std::string::String>)>,
+                        i32,
+                        std::string::String,
+                        std::string::String,
+                    )>,
+                    Option<std::string::String>,
                 )>,
                 std::string::String,
             >,
@@ -15466,15 +15399,6 @@ mod module_eef1bd43 {
             v0_1: Array<
                 Result<
                     Option<(
-                        Option<(
-                            Option<(Option<std::string::String>, Option<std::string::String>)>,
-                            std::string::String,
-                            i32,
-                            std::string::String,
-                            std::string::String,
-                            std::string::String,
-                        )>,
-                        Option<std::string::String>,
                         std::string::String,
                         Option<(
                             Array<(
@@ -15483,8 +15407,8 @@ mod module_eef1bd43 {
                                     std::collections::HashMap<
                                         std::string::String,
                                         (
-                                            Option<std::string::String>,
                                             std::string::String,
+                                            Option<std::string::String>,
                                             Option<f64>,
                                             Option<std::string::String>,
                                         ),
@@ -15516,6 +15440,15 @@ mod module_eef1bd43 {
                                 Array<(std::string::String, std::string::String)>,
                             )>,
                         )>,
+                        Option<(
+                            std::string::String,
+                            std::string::String,
+                            Option<(Option<std::string::String>, Option<std::string::String>)>,
+                            i32,
+                            std::string::String,
+                            std::string::String,
+                        )>,
+                        Option<std::string::String>,
                     )>,
                     std::string::String,
                 >,
@@ -15696,15 +15629,6 @@ mod module_eef1bd43 {
                 Array<
                     Result<
                         Option<(
-                            Option<(
-                                Option<(Option<std::string::String>, Option<std::string::String>)>,
-                                std::string::String,
-                                i32,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
-                            )>,
-                            Option<std::string::String>,
                             std::string::String,
                             Option<(
                                 Array<(
@@ -15713,8 +15637,8 @@ mod module_eef1bd43 {
                                         std::collections::HashMap<
                                             std::string::String,
                                             (
-                                                Option<std::string::String>,
                                                 std::string::String,
+                                                Option<std::string::String>,
                                                 Option<f64>,
                                                 Option<std::string::String>,
                                             ),
@@ -15749,6 +15673,15 @@ mod module_eef1bd43 {
                                     Array<(std::string::String, std::string::String)>,
                                 )>,
                             )>,
+                            Option<(
+                                std::string::String,
+                                std::string::String,
+                                Option<(Option<std::string::String>, Option<std::string::String>)>,
+                                i32,
+                                std::string::String,
+                                std::string::String,
+                            )>,
+                            Option<std::string::String>,
                         )>,
                         std::string::String,
                     >,
@@ -15757,10 +15690,10 @@ mod module_eef1bd43 {
             v1: leptos::Memo<
                 Result<Option<Array<(string, usize, LrcPtr<Dice_ui::Heap5>)>>, std::string::String>,
             >,
-            v2: leptos::Memo<Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)>>,
+            v2: leptos::Memo<Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)>>,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v4: Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)> = v2();
+            let v4: Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)> = v2();
             let v119: Array<leptos::View> = new_array(&[
                 if count(fable_library_rust::NativeArray_::array_from(v4)) as u64 == 0_u64 {
                     let v12: string =
@@ -15846,18 +15779,6 @@ mod module_eef1bd43 {
                                 let v64: Array<
                                     Result<
                                         Option<(
-                                            Option<(
-                                                Option<(
-                                                    Option<std::string::String>,
-                                                    Option<std::string::String>,
-                                                )>,
-                                                std::string::String,
-                                                i32,
-                                                std::string::String,
-                                                std::string::String,
-                                                std::string::String,
-                                            )>,
-                                            Option<std::string::String>,
                                             std::string::String,
                                             Option<(
                                                 Array<(
@@ -15866,8 +15787,8 @@ mod module_eef1bd43 {
                                                         std::collections::HashMap<
                                                             std::string::String,
                                                             (
-                                                                Option<std::string::String>,
                                                                 std::string::String,
+                                                                Option<std::string::String>,
                                                                 Option<f64>,
                                                                 Option<std::string::String>,
                                                             ),
@@ -15905,6 +15826,18 @@ mod module_eef1bd43 {
                                                     )>,
                                                 )>,
                                             )>,
+                                            Option<(
+                                                std::string::String,
+                                                std::string::String,
+                                                Option<(
+                                                    Option<std::string::String>,
+                                                    Option<std::string::String>,
+                                                )>,
+                                                i32,
+                                                std::string::String,
+                                                std::string::String,
+                                            )>,
+                                            Option<std::string::String>,
                                         )>,
                                         std::string::String,
                                     >,
@@ -16016,15 +15949,6 @@ mod module_eef1bd43 {
                 Array<
                     Result<
                         Option<(
-                            Option<(
-                                Option<(Option<std::string::String>, Option<std::string::String>)>,
-                                std::string::String,
-                                i32,
-                                std::string::String,
-                                std::string::String,
-                                std::string::String,
-                            )>,
-                            Option<std::string::String>,
                             std::string::String,
                             Option<(
                                 Array<(
@@ -16033,8 +15957,8 @@ mod module_eef1bd43 {
                                         std::collections::HashMap<
                                             std::string::String,
                                             (
-                                                Option<std::string::String>,
                                                 std::string::String,
+                                                Option<std::string::String>,
                                                 Option<f64>,
                                                 Option<std::string::String>,
                                             ),
@@ -16069,6 +15993,15 @@ mod module_eef1bd43 {
                                     Array<(std::string::String, std::string::String)>,
                                 )>,
                             )>,
+                            Option<(
+                                std::string::String,
+                                std::string::String,
+                                Option<(Option<std::string::String>, Option<std::string::String>)>,
+                                i32,
+                                std::string::String,
+                                std::string::String,
+                            )>,
+                            Option<std::string::String>,
                         )>,
                         std::string::String,
                     >,
@@ -16077,7 +16010,7 @@ mod module_eef1bd43 {
             v1: leptos::Memo<
                 Result<Option<Array<(string, usize, LrcPtr<Dice_ui::Heap5>)>>, std::string::String>,
             >,
-            v2: leptos::Memo<Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)>>,
+            v2: leptos::Memo<Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)>>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -16391,9 +16324,9 @@ mod module_eef1bd43 {
         > {
             let v3: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
-            let v6: LrcPtr<Dice_ui::Heap0> = leptos::SignalGet::get(&v3.l1.clone());
+            let v6: LrcPtr<Dice_ui::Heap0> = leptos::SignalGet::get(&v3.l3.clone());
             let v8 = Dice_ui::method208();
-            let v9: Vec<LrcPtr<(bool, std::string::String)>> = Dice_ui::method209(v6.l1.clone());
+            let v9: Vec<LrcPtr<(bool, std::string::String)>> = Dice_ui::method209(v6.l0.clone());
             v9.iter()
                 .enumerate()
                 .map(|(i, x)| v8(i.try_into().unwrap())(x.clone()))
@@ -16630,8 +16563,7 @@ mod module_eef1bd43 {
                 )>,
             > = v23;
             LrcPtr::new(Dice_ui::Heap0 {
-                l0: v1.l0.clone(),
-                l1: v29
+                l0: v29
                     .into_iter()
                     .map(|x| {
                         Func1::new(
@@ -16647,6 +16579,7 @@ mod module_eef1bd43 {
                         )(x.clone())
                     })
                     .collect::<Vec<_>>(),
+                l1: v1.l1.clone(),
                 l2: v1.l2,
                 l3: v1.l3,
                 l4: v1.l4.clone(),
@@ -16674,7 +16607,7 @@ mod module_eef1bd43 {
             let v5: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
             let v9: bool = true;
-            leptos::SignalUpdate::update(&v5.l1.clone(), |x| {
+            leptos::SignalUpdate::update(&v5.l3.clone(), |x| {
                 *x = Func1::new({
                     let v1 = v1.clone();
                     move |v: LrcPtr<Dice_ui::Heap0>| Dice_ui::closure260(v1.clone(), v)
@@ -16869,23 +16802,23 @@ mod module_eef1bd43 {
             let v3: leptos::RwSignal<LrcPtr<Dice_ui::Heap1>> = v0_1.l0.clone();
             let v5: LrcPtr<Dice_ui::Heap1> = leptos::SignalGetUntracked::get_untracked(&v3.clone());
             let v8: LrcPtr<Dice_ui::Heap0> =
-                leptos::SignalGetUntracked::get_untracked(&v5.l1.clone());
+                leptos::SignalGetUntracked::get_untracked(&v5.l3.clone());
             let v15: LrcPtr<Dice_ui::Heap1> = leptos::SignalGetUntracked::get_untracked(&v3);
             let v17 = Dice_ui::method222(v1);
-            let v18: Vec<LrcPtr<(bool, std::string::String)>> = Dice_ui::method209(v8.l1.clone());
+            let v18: Vec<LrcPtr<(bool, std::string::String)>> = Dice_ui::method209(v8.l0.clone());
             let v21: LrcPtr<Dice_ui::Heap0> = LrcPtr::new(Dice_ui::Heap0 {
-                l0: v8.l0.clone(),
-                l1: v18
+                l0: v18
                     .iter()
                     .enumerate()
                     .map(|(i, x)| v17(i.try_into().unwrap())(x.clone()))
                     .collect::<Vec<_>>(),
+                l1: v8.l1.clone(),
                 l2: v8.l2,
                 l3: v8.l3,
                 l4: v8.l4.clone(),
             });
             let v23: bool = true;
-            leptos::SignalSet::set(&v15.l1.clone(), v21);
+            leptos::SignalSet::set(&v15.l3.clone(), v21);
             ()
         }
         pub fn closure277(
@@ -17304,23 +17237,23 @@ mod module_eef1bd43 {
             let v3: leptos::RwSignal<LrcPtr<Dice_ui::Heap1>> = v0_1.l0.clone();
             let v5: LrcPtr<Dice_ui::Heap1> = leptos::SignalGetUntracked::get_untracked(&v3.clone());
             let v8: LrcPtr<Dice_ui::Heap0> =
-                leptos::SignalGetUntracked::get_untracked(&v5.l1.clone());
+                leptos::SignalGetUntracked::get_untracked(&v5.l3.clone());
             let v15: LrcPtr<Dice_ui::Heap1> = leptos::SignalGetUntracked::get_untracked(&v3);
             let v17 = Dice_ui::method232(v1, v2);
-            let v18: Vec<LrcPtr<(bool, std::string::String)>> = Dice_ui::method209(v8.l1.clone());
+            let v18: Vec<LrcPtr<(bool, std::string::String)>> = Dice_ui::method209(v8.l0.clone());
             let v21: LrcPtr<Dice_ui::Heap0> = LrcPtr::new(Dice_ui::Heap0 {
-                l0: v8.l0.clone(),
-                l1: v18
+                l0: v18
                     .iter()
                     .enumerate()
                     .map(|(i, x)| v17(i.try_into().unwrap())(x.clone()))
                     .collect::<Vec<_>>(),
+                l1: v8.l1.clone(),
                 l2: v8.l2,
                 l3: v8.l3,
                 l4: v8.l4.clone(),
             });
             let v23: bool = true;
-            leptos::SignalSet::set(&v15.l1.clone(), v21);
+            leptos::SignalSet::set(&v15.l3.clone(), v21);
             ()
         }
         pub fn method231(v0_1: LrcPtr<Dice_ui::Heap2>, v1: i32) -> Func1<std::string::String, ()> {
@@ -17435,8 +17368,7 @@ mod module_eef1bd43 {
                 )>,
             > = v10;
             LrcPtr::new(Dice_ui::Heap0 {
-                l0: v2.l0.clone(),
-                l1: v17
+                l0: v17
                     .into_iter()
                     .map(|x| {
                         Func1::new(
@@ -17452,6 +17384,7 @@ mod module_eef1bd43 {
                         )(x.clone())
                     })
                     .collect::<Vec<_>>(),
+                l1: v2.l1.clone(),
                 l2: v2.l2,
                 l3: v2.l3,
                 l4: v2.l4.clone(),
@@ -17477,7 +17410,7 @@ mod module_eef1bd43 {
             let v6: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
             let v10: bool = true;
-            leptos::SignalUpdate::update(&v6.l1.clone(), |x| {
+            leptos::SignalUpdate::update(&v6.l3.clone(), |x| {
                 *x = Func1::new({
                     let v1 = v1.clone();
                     let v3 = v3.clone();
@@ -18621,7 +18554,7 @@ mod module_eef1bd43 {
             let v4: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
             let v8: bool = true;
-            leptos::SignalUpdate::update(&v4.l2.clone(), |x| {
+            leptos::SignalUpdate::update(&v4.l1.clone(), |x| {
                 *x = Func1::new(move |v: bool| Dice_ui::closure313((), v))(x.clone())
             });
             ()
@@ -18629,7 +18562,7 @@ mod module_eef1bd43 {
         pub fn closure323(v0_1: LrcPtr<Dice_ui::Heap2>, unitVar: ()) -> bool {
             let v3: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
-            leptos::SignalGet::get(&v3.l2.clone())
+            leptos::SignalGet::get(&v3.l1.clone())
         }
         pub fn method255(v0_1: LrcPtr<Dice_ui::Heap2>) -> Func0<bool> {
             Func0::new({
@@ -19939,7 +19872,7 @@ mod module_eef1bd43 {
             let v4: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
             let v8: bool = true;
-            leptos::SignalUpdate::update(&v4.l1.clone(), |x| {
+            leptos::SignalUpdate::update(&v4.l3.clone(), |x| {
                 *x = Func1::new(move |v: LrcPtr<Dice_ui::Heap0>| Dice_ui::closure367((), v))(
                     x.clone(),
                 )
@@ -19949,7 +19882,7 @@ mod module_eef1bd43 {
         pub fn closure368(v0_1: LrcPtr<Dice_ui::Heap2>, unitVar: ()) -> bool {
             let v3: LrcPtr<Dice_ui::Heap1> =
                 leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
-            if let Dice_ui::US1::US1_1 = &(leptos::SignalGet::get(&v3.l1.clone())).l4 {
+            if let Dice_ui::US1::US1_1 = &(leptos::SignalGet::get(&v3.l3.clone())).l4 {
                 true
             } else {
                 false
@@ -20399,22 +20332,22 @@ mod module_eef1bd43 {
             Func0::new(move || Dice_ui::closure382((), ()))
         }
         pub fn closure383(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
             let v17: i64 =
-                Dice_ui::method189(toInt64(fable_library_rust::String_::fromString(v3))) / 1000_i64;
+                Dice_ui::method189(toInt64(fable_library_rust::String_::fromString(v5))) / 1000_i64;
             let v19: Option<chrono::DateTime<chrono::Utc>> =
                 chrono::DateTime::from_timestamp_micros(v17);
             let _v20: LrcPtr<MutCell<Option<Dice_ui::US71>>> = refCell(None::<Dice_ui::US71>);
@@ -20475,18 +20408,18 @@ mod module_eef1bd43 {
             }
         }
         pub fn method297(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -20504,16 +20437,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure383(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -20604,21 +20537,21 @@ mod module_eef1bd43 {
             Func0::new(move || Dice_ui::closure387((), ()))
         }
         pub fn closure388(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v13: string = fable_library_rust::String_::fromString(v8);
+            let v13: string = fable_library_rust::String_::fromString(v1);
             let v15: &str = &*v13;
             let v17: std::string::String = String::from(v15);
             let v19: leptos::leptos_dom::Text = leptos::html::text(v17);
@@ -20627,18 +20560,18 @@ mod module_eef1bd43 {
             leptos::Fragment::new(v24)
         }
         pub fn method300(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -20656,16 +20589,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure388(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -20756,21 +20689,21 @@ mod module_eef1bd43 {
             Func0::new(move || Dice_ui::closure392((), ()))
         }
         pub fn closure393(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v13: string = fable_library_rust::String_::fromString(v10);
+            let v13: string = fable_library_rust::String_::fromString(v2);
             let v15: &str = &*v13;
             let v17: std::string::String = String::from(v15);
             let v19: leptos::leptos_dom::Text = leptos::html::text(v17);
@@ -20779,18 +20712,18 @@ mod module_eef1bd43 {
             leptos::Fragment::new(v24)
         }
         pub fn method303(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -20808,16 +20741,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure393(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -21288,21 +21221,21 @@ mod module_eef1bd43 {
             leptos::IntoView::into_view(v23)
         }
         pub fn closure398(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v13: Vec<(std::string::String, Option<std::string::String>)> = v0_1.to_vec();
+            let v13: Vec<(std::string::String, Option<std::string::String>)> = v7.to_vec();
             let v16: Vec<leptos::View> = v13
                 .into_iter()
                 .map(|x| {
@@ -21318,18 +21251,18 @@ mod module_eef1bd43 {
             leptos::Fragment::new(v20)
         }
         pub fn method306(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -21347,16 +21280,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure398(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -21450,21 +21383,21 @@ mod module_eef1bd43 {
             Func0::new(move || Dice_ui::closure418((), ()))
         }
         pub fn closure419(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v13: string = toString(v1);
+            let v13: string = toString(v8);
             let v15: &str = &*v13;
             let v17: std::string::String = String::from(v15);
             let v19: leptos::leptos_dom::Text = leptos::html::text(v17);
@@ -21473,18 +21406,18 @@ mod module_eef1bd43 {
             leptos::Fragment::new(v24)
         }
         pub fn method316(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -21502,16 +21435,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure419(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -21602,21 +21535,21 @@ mod module_eef1bd43 {
             Func0::new(move || Dice_ui::closure423((), ()))
         }
         pub fn closure424(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v13: string = ofBoolean(v6);
+            let v13: string = ofBoolean(v9);
             let v15: &str = &*v13;
             let v17: std::string::String = String::from(v15);
             let v19: leptos::leptos_dom::Text = leptos::html::text(v17);
@@ -21625,18 +21558,18 @@ mod module_eef1bd43 {
             leptos::Fragment::new(v24)
         }
         pub fn method319(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -21654,16 +21587,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure424(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -21754,21 +21687,21 @@ mod module_eef1bd43 {
             Func0::new(move || Dice_ui::closure428((), ()))
         }
         pub fn closure429(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v13: string = toString(v7);
+            let v13: string = toString(v10);
             let v15: &str = &*v13;
             let v17: std::string::String = String::from(v15);
             let v19: leptos::leptos_dom::Text = leptos::html::text(v17);
@@ -21777,18 +21710,18 @@ mod module_eef1bd43 {
             leptos::Fragment::new(v24)
         }
         pub fn method322(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -21806,16 +21739,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure429(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -21906,21 +21839,21 @@ mod module_eef1bd43 {
             Func0::new(move || Dice_ui::closure433((), ()))
         }
         pub fn closure434(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v13: string = toString(v2);
+            let v13: string = toString(v6);
             let v15: &str = &*v13;
             let v17: std::string::String = String::from(v15);
             let v19: leptos::leptos_dom::Text = leptos::html::text(v17);
@@ -21929,18 +21862,18 @@ mod module_eef1bd43 {
             leptos::Fragment::new(v24)
         }
         pub fn method325(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -21958,16 +21891,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure434(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -22058,21 +21991,21 @@ mod module_eef1bd43 {
             Func0::new(move || Dice_ui::closure438((), ()))
         }
         pub fn closure439(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v13: string = fable_library_rust::String_::fromString(v11);
+            let v13: string = fable_library_rust::String_::fromString(v3);
             let v15: &str = &*v13;
             let v17: std::string::String = String::from(v15);
             let v19: leptos::leptos_dom::Text = leptos::html::text(v17);
@@ -22081,18 +22014,18 @@ mod module_eef1bd43 {
             leptos::Fragment::new(v24)
         }
         pub fn method328(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -22110,16 +22043,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure439(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -22210,18 +22143,18 @@ mod module_eef1bd43 {
             Func0::new(move || Dice_ui::closure443((), ()))
         }
         pub fn closure444(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
             let v13: string = fable_library_rust::String_::fromString(v4);
@@ -22233,18 +22166,18 @@ mod module_eef1bd43 {
             leptos::Fragment::new(v24)
         }
         pub fn method331(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -22262,16 +22195,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure444(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -22362,21 +22295,21 @@ mod module_eef1bd43 {
             Func0::new(move || Dice_ui::closure448((), ()))
         }
         pub fn closure449(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v13: string = fable_library_rust::String_::fromString(v9);
+            let v13: string = fable_library_rust::String_::fromString(v0_1);
             let v15: &str = &*v13;
             let v17: std::string::String = String::from(v15);
             let v19: leptos::leptos_dom::Text = leptos::html::text(v17);
@@ -22385,18 +22318,18 @@ mod module_eef1bd43 {
             leptos::Fragment::new(v24)
         }
         pub fn method334(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -22414,16 +22347,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure449(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -22517,21 +22450,21 @@ mod module_eef1bd43 {
             string("[max-height:20vh]")
         }
         pub fn closure454(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
-            let v13: Vec<std::string::String> = v5.to_vec();
+            let v13: Vec<std::string::String> = v11.to_vec();
             let v16: Vec<string> = v13
                 .into_iter()
                 .map(|x| {
@@ -22581,18 +22514,18 @@ mod module_eef1bd43 {
             leptos::Fragment::new(v45)
         }
         pub fn method337(
-            v0_1: Array<(std::string::String, Option<std::string::String>)>,
-            v1: f64,
-            v2: u32,
+            v0_1: std::string::String,
+            v1: std::string::String,
+            v2: std::string::String,
             v3: std::string::String,
             v4: std::string::String,
-            v5: Array<std::string::String>,
-            v6: bool,
-            v7: f64,
-            v8: std::string::String,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
+            v5: std::string::String,
+            v6: u32,
+            v7: Array<(std::string::String, Option<std::string::String>)>,
+            v8: f64,
+            v9: bool,
+            v10: f64,
+            v11: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -22610,16 +22543,16 @@ mod module_eef1bd43 {
                 move || {
                     Dice_ui::closure454(
                         v0_1.clone(),
-                        v1,
-                        v2,
+                        v1.clone(),
+                        v2.clone(),
                         v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6,
-                        v7,
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
+                        v7.clone(),
+                        v8,
+                        v9,
+                        v10,
                         v11.clone(),
                         (),
                     )
@@ -22694,18 +22627,18 @@ mod module_eef1bd43 {
         }
         pub fn closure374(
             v0_1: string,
-            v1: Array<(std::string::String, Option<std::string::String>)>,
-            v2: f64,
-            v3: u32,
+            v1: std::string::String,
+            v2: std::string::String,
+            v3: std::string::String,
             v4: std::string::String,
             v5: std::string::String,
-            v6: Array<std::string::String>,
-            v7: bool,
-            v8: f64,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
-            v12: std::string::String,
+            v6: std::string::String,
+            v7: u32,
+            v8: Array<(std::string::String, Option<std::string::String>)>,
+            v9: f64,
+            v10: bool,
+            v11: f64,
+            v12: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
             let v15 = {
@@ -22787,16 +22720,16 @@ mod module_eef1bd43 {
                 Dice_ui::method296(),
                 Dice_ui::method297(
                     v1.clone(),
-                    v2,
-                    v3,
+                    v2.clone(),
+                    v3.clone(),
                     v4.clone(),
                     v5.clone(),
                     v6.clone(),
                     v7,
-                    v8,
-                    v9.clone(),
-                    v10.clone(),
-                    v11.clone(),
+                    v8.clone(),
+                    v9,
+                    v10,
+                    v11,
                     v12.clone(),
                 ),
             )));
@@ -22848,16 +22781,16 @@ mod module_eef1bd43 {
                 Dice_ui::method299(),
                 Dice_ui::method300(
                     v1.clone(),
-                    v2,
-                    v3,
+                    v2.clone(),
+                    v3.clone(),
                     v4.clone(),
                     v5.clone(),
                     v6.clone(),
                     v7,
-                    v8,
-                    v9.clone(),
-                    v10.clone(),
-                    v11.clone(),
+                    v8.clone(),
+                    v9,
+                    v10,
+                    v11,
                     v12.clone(),
                 ),
             )));
@@ -22909,16 +22842,16 @@ mod module_eef1bd43 {
                 Dice_ui::method302(),
                 Dice_ui::method303(
                     v1.clone(),
-                    v2,
-                    v3,
+                    v2.clone(),
+                    v3.clone(),
                     v4.clone(),
                     v5.clone(),
                     v6.clone(),
                     v7,
-                    v8,
-                    v9.clone(),
-                    v10.clone(),
-                    v11.clone(),
+                    v8.clone(),
+                    v9,
+                    v10,
+                    v11,
                     v12.clone(),
                 ),
             )));
@@ -22970,16 +22903,16 @@ mod module_eef1bd43 {
                 Dice_ui::method305(),
                 Dice_ui::method306(
                     v1.clone(),
-                    v2,
-                    v3,
+                    v2.clone(),
+                    v3.clone(),
                     v4.clone(),
                     v5.clone(),
                     v6.clone(),
                     v7,
-                    v8,
-                    v9.clone(),
-                    v10.clone(),
-                    v11.clone(),
+                    v8.clone(),
+                    v9,
+                    v10,
+                    v11,
                     v12.clone(),
                 ),
             )));
@@ -23031,16 +22964,16 @@ mod module_eef1bd43 {
                 Dice_ui::method315(),
                 Dice_ui::method316(
                     v1.clone(),
-                    v2,
-                    v3,
+                    v2.clone(),
+                    v3.clone(),
                     v4.clone(),
                     v5.clone(),
                     v6.clone(),
                     v7,
-                    v8,
-                    v9.clone(),
-                    v10.clone(),
-                    v11.clone(),
+                    v8.clone(),
+                    v9,
+                    v10,
+                    v11,
                     v12.clone(),
                 ),
             )));
@@ -23092,16 +23025,16 @@ mod module_eef1bd43 {
                 Dice_ui::method318(),
                 Dice_ui::method319(
                     v1.clone(),
-                    v2,
-                    v3,
+                    v2.clone(),
+                    v3.clone(),
                     v4.clone(),
                     v5.clone(),
                     v6.clone(),
                     v7,
-                    v8,
-                    v9.clone(),
-                    v10.clone(),
-                    v11.clone(),
+                    v8.clone(),
+                    v9,
+                    v10,
+                    v11,
                     v12.clone(),
                 ),
             )));
@@ -23153,16 +23086,16 @@ mod module_eef1bd43 {
                 Dice_ui::method321(),
                 Dice_ui::method322(
                     v1.clone(),
-                    v2,
-                    v3,
+                    v2.clone(),
+                    v3.clone(),
                     v4.clone(),
                     v5.clone(),
                     v6.clone(),
                     v7,
-                    v8,
-                    v9.clone(),
-                    v10.clone(),
-                    v11.clone(),
+                    v8.clone(),
+                    v9,
+                    v10,
+                    v11,
                     v12.clone(),
                 ),
             )));
@@ -23214,16 +23147,16 @@ mod module_eef1bd43 {
                 Dice_ui::method324(),
                 Dice_ui::method325(
                     v1.clone(),
-                    v2,
-                    v3,
+                    v2.clone(),
+                    v3.clone(),
                     v4.clone(),
                     v5.clone(),
                     v6.clone(),
                     v7,
-                    v8,
-                    v9.clone(),
-                    v10.clone(),
-                    v11.clone(),
+                    v8.clone(),
+                    v9,
+                    v10,
+                    v11,
                     v12.clone(),
                 ),
             )));
@@ -23275,16 +23208,16 @@ mod module_eef1bd43 {
                 Dice_ui::method327(),
                 Dice_ui::method328(
                     v1.clone(),
-                    v2,
-                    v3,
+                    v2.clone(),
+                    v3.clone(),
                     v4.clone(),
                     v5.clone(),
                     v6.clone(),
                     v7,
-                    v8,
-                    v9.clone(),
-                    v10.clone(),
-                    v11.clone(),
+                    v8.clone(),
+                    v9,
+                    v10,
+                    v11,
                     v12.clone(),
                 ),
             )));
@@ -23336,16 +23269,16 @@ mod module_eef1bd43 {
                 Dice_ui::method330(),
                 Dice_ui::method331(
                     v1.clone(),
-                    v2,
-                    v3,
+                    v2.clone(),
+                    v3.clone(),
                     v4.clone(),
                     v5.clone(),
                     v6.clone(),
                     v7,
-                    v8,
-                    v9.clone(),
-                    v10.clone(),
-                    v11.clone(),
+                    v8.clone(),
+                    v9,
+                    v10,
+                    v11,
                     v12.clone(),
                 ),
             )));
@@ -23397,16 +23330,16 @@ mod module_eef1bd43 {
                 Dice_ui::method333(),
                 Dice_ui::method334(
                     v1.clone(),
-                    v2,
-                    v3,
+                    v2.clone(),
+                    v3.clone(),
                     v4.clone(),
                     v5.clone(),
                     v6.clone(),
                     v7,
-                    v8,
-                    v9.clone(),
-                    v10.clone(),
-                    v11.clone(),
+                    v8.clone(),
+                    v9,
+                    v10,
+                    v11,
                     v12.clone(),
                 ),
             )));
@@ -23442,7 +23375,7 @@ mod module_eef1bd43 {
                 v225,
                 v246,
                 leptos::IntoView::into_view(v265),
-                if count(v6.clone()) as u64 == 0_u64 {
+                if count(v12.clone()) as u64 == 0_u64 {
                     let v271: Array<leptos::View> = Dice_ui::method124(new_empty::<leptos::View>());
                     leptos::CollectView::collect_view(v271.to_vec())
                 } else {
@@ -23502,18 +23435,18 @@ mod module_eef1bd43 {
         }
         pub fn method292(
             v0_1: string,
-            v1: Array<(std::string::String, Option<std::string::String>)>,
-            v2: f64,
-            v3: u32,
+            v1: std::string::String,
+            v2: std::string::String,
+            v3: std::string::String,
             v4: std::string::String,
             v5: std::string::String,
-            v6: Array<std::string::String>,
-            v7: bool,
-            v8: f64,
-            v9: std::string::String,
-            v10: std::string::String,
-            v11: std::string::String,
-            v12: std::string::String,
+            v6: std::string::String,
+            v7: u32,
+            v8: Array<(std::string::String, Option<std::string::String>)>,
+            v9: f64,
+            v10: bool,
+            v11: f64,
+            v12: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -23533,16 +23466,16 @@ mod module_eef1bd43 {
                     Dice_ui::closure374(
                         v0_1.clone(),
                         v1.clone(),
-                        v2,
-                        v3,
+                        v2.clone(),
+                        v3.clone(),
                         v4.clone(),
                         v5.clone(),
                         v6.clone(),
                         v7,
-                        v8,
-                        v9.clone(),
-                        v10.clone(),
-                        v11.clone(),
+                        v8.clone(),
+                        v9,
+                        v10,
+                        v11,
                         v12.clone(),
                         (),
                     )
@@ -23552,18 +23485,18 @@ mod module_eef1bd43 {
         pub fn closure372(
             v0_1: string,
             v1: i64,
-            v2: Array<(std::string::String, Option<std::string::String>)>,
-            v3: f64,
-            v4: u32,
+            v2: std::string::String,
+            v3: std::string::String,
+            v4: std::string::String,
             v5: std::string::String,
             v6: std::string::String,
-            v7: Array<std::string::String>,
-            v8: bool,
-            v9: f64,
-            v10: std::string::String,
-            v11: std::string::String,
-            v12: std::string::String,
-            v13: std::string::String,
+            v7: std::string::String,
+            v8: u32,
+            v9: Array<(std::string::String, Option<std::string::String>)>,
+            v10: f64,
+            v11: bool,
+            v12: f64,
+            v13: Array<std::string::String>,
             unitVar: (),
         ) -> leptos::Fragment {
             let v19: string = string(" class=\"flex items-center pb-[6px]\"");
@@ -23611,18 +23544,18 @@ mod module_eef1bd43 {
         pub fn method290(
             v0_1: string,
             v1: i64,
-            v2: Array<(std::string::String, Option<std::string::String>)>,
-            v3: f64,
-            v4: u32,
+            v2: std::string::String,
+            v3: std::string::String,
+            v4: std::string::String,
             v5: std::string::String,
             v6: std::string::String,
-            v7: Array<std::string::String>,
-            v8: bool,
-            v9: f64,
-            v10: std::string::String,
-            v11: std::string::String,
-            v12: std::string::String,
-            v13: std::string::String,
+            v7: std::string::String,
+            v8: u32,
+            v9: Array<(std::string::String, Option<std::string::String>)>,
+            v10: f64,
+            v11: bool,
+            v12: f64,
+            v13: Array<std::string::String>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
                 let v0_1 = v0_1.clone();
@@ -23644,16 +23577,16 @@ mod module_eef1bd43 {
                         v0_1.clone(),
                         v1,
                         v2.clone(),
-                        v3,
-                        v4,
+                        v3.clone(),
+                        v4.clone(),
                         v5.clone(),
                         v6.clone(),
                         v7.clone(),
                         v8,
-                        v9,
-                        v10.clone(),
-                        v11.clone(),
-                        v12.clone(),
+                        v9.clone(),
+                        v10,
+                        v11,
+                        v12,
                         v13.clone(),
                         (),
                     )
@@ -23676,16 +23609,16 @@ mod module_eef1bd43 {
                 _arg.0.clone(),
                 v16,
                 v2.l0.clone(),
-                v2.l1,
-                v2.l2,
+                v2.l1.clone(),
+                v2.l2.clone(),
                 v2.l3.clone(),
                 v2.l4.clone(),
                 v2.l5.clone(),
                 v2.l6,
-                v2.l7,
-                v2.l8.clone(),
-                v2.l9.clone(),
-                v2.l10.clone(),
+                v2.l7.clone(),
+                v2.l8,
+                v2.l9,
+                v2.l10,
                 v2.l11.clone(),
             )));
             let v32: string = append(
@@ -23746,7 +23679,7 @@ mod module_eef1bd43 {
         }
         pub fn closure460(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
             let v7: i64 = Dice_ui::method189(toInt64(fable_library_rust::String_::fromString(
-                v0_1.l3.clone(),
+                v0_1.l5.clone(),
             ))) / 1000_i64;
             let v9: Option<chrono::DateTime<chrono::Utc>> =
                 chrono::DateTime::from_timestamp_micros(v7);
@@ -23814,7 +23747,7 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure461(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v3: string = fable_library_rust::String_::fromString(v0_1.l8.clone());
+            let v3: string = fable_library_rust::String_::fromString(v0_1.l1.clone());
             let v5: &str = &*v3;
             let v7: std::string::String = String::from(v5);
             let v9: leptos::leptos_dom::Text = leptos::html::text(v7);
@@ -23829,7 +23762,7 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure462(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v3: string = fable_library_rust::String_::fromString(v0_1.l10.clone());
+            let v3: string = fable_library_rust::String_::fromString(v0_1.l2.clone());
             let v5: &str = &*v3;
             let v7: std::string::String = String::from(v5);
             let v9: leptos::leptos_dom::Text = leptos::html::text(v7);
@@ -23898,7 +23831,7 @@ mod module_eef1bd43 {
         }
         pub fn closure463(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
             let v3: Vec<(std::string::String, Option<std::string::String>)> =
-                v0_1.l0.clone().to_vec();
+                v0_1.l7.clone().to_vec();
             let v6: Vec<leptos::View> = v3
                 .into_iter()
                 .map(|x| {
@@ -23920,7 +23853,7 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure465(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v3: string = toString(v0_1.l1);
+            let v3: string = toString(v0_1.l8);
             let v5: &str = &*v3;
             let v7: std::string::String = String::from(v5);
             let v9: leptos::leptos_dom::Text = leptos::html::text(v7);
@@ -23935,7 +23868,7 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure466(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v3: string = toString(v0_1.l7);
+            let v3: string = toString(v0_1.l10);
             let v5: &str = &*v3;
             let v7: std::string::String = String::from(v5);
             let v9: leptos::leptos_dom::Text = leptos::html::text(v7);
@@ -23950,7 +23883,7 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure467(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v3: string = toString(v0_1.l2);
+            let v3: string = toString(v0_1.l6);
             let v5: &str = &*v3;
             let v7: std::string::String = String::from(v5);
             let v9: leptos::leptos_dom::Text = leptos::html::text(v7);
@@ -23968,7 +23901,7 @@ mod module_eef1bd43 {
             string("[max-height:20vh] [width:100vw] [max-width:100vw]")
         }
         pub fn closure468(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v1: Array<std::string::String> = v0_1.l5.clone();
+            let v1: Array<std::string::String> = v0_1.l11.clone();
             if count(v1.clone()) as u64 == 0_u64 {
                 let v6: &str = &*string("");
                 let v8: std::string::String = String::from(v6);
@@ -24036,7 +23969,7 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure470(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v3: string = ofBoolean(v0_1.l6);
+            let v3: string = ofBoolean(v0_1.l9);
             let v5: &str = &*v3;
             let v7: std::string::String = String::from(v5);
             let v9: leptos::leptos_dom::Text = leptos::html::text(v7);
@@ -24051,7 +23984,7 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure471(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v3: string = fable_library_rust::String_::fromString(v0_1.l11.clone());
+            let v3: string = fable_library_rust::String_::fromString(v0_1.l3.clone());
             let v5: &str = &*v3;
             let v7: std::string::String = String::from(v5);
             let v9: leptos::leptos_dom::Text = leptos::html::text(v7);
@@ -24081,7 +24014,7 @@ mod module_eef1bd43 {
             })
         }
         pub fn closure473(v0_1: LrcPtr<Dice_ui::Heap5>, unitVar: ()) -> leptos::Fragment {
-            let v3: string = fable_library_rust::String_::fromString(v0_1.l9.clone());
+            let v3: string = fable_library_rust::String_::fromString(v0_1.l0.clone());
             let v5: &str = &*v3;
             let v7: std::string::String = String::from(v5);
             let v9: leptos::leptos_dom::Text = leptos::html::text(v7);
@@ -24555,7 +24488,7 @@ mod module_eef1bd43 {
             '_method363: loop {
                 break '_method363 (if v1.get().clone() < count(v0_1.get().clone()) {
                     if Dice_ui::method364(
-                        ((v0_1[v1.get().clone()].clone()).2.clone()).l5.clone(),
+                        ((v0_1[v1.get().clone()].clone()).2.clone()).l11.clone(),
                         0_i32,
                     ) {
                         true
@@ -24973,7 +24906,7 @@ mod module_eef1bd43 {
             v1: leptos::Memo<
                 Result<Option<Array<(string, usize, LrcPtr<Dice_ui::Heap5>)>>, std::string::String>,
             >,
-            v2: leptos::Memo<Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)>>,
+            v2: leptos::Memo<Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)>>,
             v3: leptos::ReadSignal<bool>,
             unitVar: (),
         ) -> leptos::Fragment {
@@ -25000,7 +24933,7 @@ mod module_eef1bd43 {
                 let v20: Array<leptos::View> = Dice_ui::method124(new_empty::<leptos::View>());
                 leptos::CollectView::collect_view(v20.to_vec())
             };
-            let v25: Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)> = v2();
+            let v25: Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)> = v2();
             let v163: Array<leptos::View> = new_array(&[
                 v23,
                 if count(fable_library_rust::NativeArray_::array_from(v25)) as u64 == 0_u64 {
@@ -25070,7 +25003,7 @@ mod module_eef1bd43 {
                                 let v64: LrcPtr<Dice_ui::Heap1> =
                                     leptos::SignalGetUntracked::get_untracked(&v0_1.l0.clone());
                                 if if let Dice_ui::US1::US1_0 =
-                                    &(leptos::SignalGet::get(&v64.l1.clone())).l4
+                                    &(leptos::SignalGet::get(&v64.l3.clone())).l4
                                 {
                                     true
                                 } else {
@@ -25245,7 +25178,7 @@ mod module_eef1bd43 {
             v1: leptos::Memo<
                 Result<Option<Array<(string, usize, LrcPtr<Dice_ui::Heap5>)>>, std::string::String>,
             >,
-            v2: leptos::Memo<Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)>>,
+            v2: leptos::Memo<Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)>>,
             v3: leptos::ReadSignal<bool>,
         ) -> Func0<leptos::Fragment> {
             Func0::new({
@@ -25942,7 +25875,7 @@ mod module_eef1bd43 {
                             move |arg_1: ()| clo_1()
                         })
                     };
-                    let v23: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>> =
+                    let v23: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>> =
                         leptos::create_memo(move |_| v21(()));
                     let v26 = {
                         let clo_2 = Func0::new({
@@ -25956,7 +25889,7 @@ mod module_eef1bd43 {
                         })
                     };
                     let v28: leptos::Memo<
-                        Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)>,
+                        Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)>,
                     > = leptos::create_memo(move |_| v26(()));
                     let v31 = {
                         let clo_3 = Func0::new({
@@ -25968,7 +25901,7 @@ mod module_eef1bd43 {
                             move |arg_3: ()| clo_3()
                         })
                     };
-                    let v33: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>> =
+                    let v33: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>> =
                         leptos::create_memo(move |_| v31(()));
                     let v36 = {
                         let clo_4 = Func0::new({
@@ -25986,18 +25919,18 @@ mod module_eef1bd43 {
                             Result<
                                 Option<
                                     Array<(
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        u32,
                                         Array<(std::string::String, Option<std::string::String>)>,
                                         f64,
-                                        u32,
-                                        std::string::String,
-                                        std::string::String,
-                                        Array<std::string::String>,
                                         bool,
                                         f64,
-                                        std::string::String,
-                                        std::string::String,
-                                        std::string::String,
-                                        std::string::String,
+                                        Array<std::string::String>,
                                     )>,
                                 >,
                                 std::string::String,
@@ -26050,7 +25983,7 @@ mod module_eef1bd43 {
                     };
                     let v56: leptos::Memo<
                         Result<
-                            Option<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+                            Option<Array<(string, Dice_ui::US25, string, bool, bool)>>,
                             std::string::String,
                         >,
                     > = leptos::create_memo(move |_| v54(()));
@@ -26068,18 +26001,6 @@ mod module_eef1bd43 {
                         Array<
                             Result<
                                 Option<(
-                                    Option<(
-                                        Option<(
-                                            Option<std::string::String>,
-                                            Option<std::string::String>,
-                                        )>,
-                                        std::string::String,
-                                        i32,
-                                        std::string::String,
-                                        std::string::String,
-                                        std::string::String,
-                                    )>,
-                                    Option<std::string::String>,
                                     std::string::String,
                                     Option<(
                                         Array<(
@@ -26088,8 +26009,8 @@ mod module_eef1bd43 {
                                                 std::collections::HashMap<
                                                     std::string::String,
                                                     (
-                                                        Option<std::string::String>,
                                                         std::string::String,
+                                                        Option<std::string::String>,
                                                         Option<f64>,
                                                         Option<std::string::String>,
                                                     ),
@@ -26124,6 +26045,18 @@ mod module_eef1bd43 {
                                             Array<(std::string::String, std::string::String)>,
                                         )>,
                                     )>,
+                                    Option<(
+                                        std::string::String,
+                                        std::string::String,
+                                        Option<(
+                                            Option<std::string::String>,
+                                            Option<std::string::String>,
+                                        )>,
+                                        i32,
+                                        std::string::String,
+                                        std::string::String,
+                                    )>,
+                                    Option<std::string::String>,
                                 )>,
                                 std::string::String,
                             >,
@@ -26169,18 +26102,6 @@ mod module_eef1bd43 {
                     let v77: leptos::Memo<
                         Result<
                             Option<(
-                                Option<(
-                                    Option<(
-                                        Option<std::string::String>,
-                                        Option<std::string::String>,
-                                    )>,
-                                    std::string::String,
-                                    i32,
-                                    std::string::String,
-                                    std::string::String,
-                                    std::string::String,
-                                )>,
-                                Option<std::string::String>,
                                 std::string::String,
                                 Option<(
                                     Array<(
@@ -26189,8 +26110,8 @@ mod module_eef1bd43 {
                                             std::collections::HashMap<
                                                 std::string::String,
                                                 (
-                                                    Option<std::string::String>,
                                                     std::string::String,
+                                                    Option<std::string::String>,
                                                     Option<f64>,
                                                     Option<std::string::String>,
                                                 ),
@@ -26225,6 +26146,18 @@ mod module_eef1bd43 {
                                         Array<(std::string::String, std::string::String)>,
                                     )>,
                                 )>,
+                                Option<(
+                                    std::string::String,
+                                    std::string::String,
+                                    Option<(
+                                        Option<std::string::String>,
+                                        Option<std::string::String>,
+                                    )>,
+                                    i32,
+                                    std::string::String,
+                                    std::string::String,
+                                )>,
+                                Option<std::string::String>,
                             )>,
                             std::string::String,
                         >,
@@ -26570,7 +26503,7 @@ mod module_eef1bd43 {
                         let v461: Array<leptos::View> = new_array(&[
                             v415,
                             v432,
-                            if leptos::SignalGet::get(&v435.l2.clone()) {
+                            if leptos::SignalGet::get(&v435.l1.clone()) {
                                 let v440: Array<leptos::View> =
                                     Dice_ui::method124(new_empty::<leptos::View>());
                                 let v447: string =
@@ -26637,7 +26570,7 @@ mod module_eef1bd43 {
                             move |arg_19: ()| clo_19()
                         })
                     };
-                    let v181: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>> =
+                    let v181: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>> =
                         leptos::create_memo(move |_| v179(()));
                     let v184 = {
                         let clo_20 = Func0::new({
@@ -26651,7 +26584,7 @@ mod module_eef1bd43 {
                         })
                     };
                     let v186: leptos::Memo<
-                        Vec<(string, Vec<(bool, string, bool, Dice_ui::US25, string)>)>,
+                        Vec<(string, Vec<(string, Dice_ui::US25, string, bool, bool)>)>,
                     > = leptos::create_memo(move |_| v184(()));
                     let v189 = {
                         let clo_21 = Func0::new({
@@ -26663,7 +26596,7 @@ mod module_eef1bd43 {
                             move |arg_21: ()| clo_21()
                         })
                     };
-                    let v191: leptos::Memo<Array<(bool, string, bool, Dice_ui::US25, string)>> =
+                    let v191: leptos::Memo<Array<(string, Dice_ui::US25, string, bool, bool)>> =
                         leptos::create_memo(move |_| v189(()));
                     let v194 = {
                         let clo_22 = Func0::new({
@@ -26681,18 +26614,18 @@ mod module_eef1bd43 {
                             Result<
                                 Option<
                                     Array<(
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        std::string::String,
+                                        u32,
                                         Array<(std::string::String, Option<std::string::String>)>,
                                         f64,
-                                        u32,
-                                        std::string::String,
-                                        std::string::String,
-                                        Array<std::string::String>,
                                         bool,
                                         f64,
-                                        std::string::String,
-                                        std::string::String,
-                                        std::string::String,
-                                        std::string::String,
+                                        Array<std::string::String>,
                                     )>,
                                 >,
                                 std::string::String,
@@ -26745,7 +26678,7 @@ mod module_eef1bd43 {
                     };
                     let v214: leptos::Memo<
                         Result<
-                            Option<Array<(bool, string, bool, Dice_ui::US25, string)>>,
+                            Option<Array<(string, Dice_ui::US25, string, bool, bool)>>,
                             std::string::String,
                         >,
                     > = leptos::create_memo(move |_| v212(()));
@@ -26922,7 +26855,7 @@ mod module_eef1bd43 {
                             leptos::SignalGetUntracked::get_untracked(&v168.l0.clone());
                         let v322: Array<leptos::View> = new_array(&[
                             v293,
-                            if leptos::SignalGet::get(&v296.l2.clone()) {
+                            if leptos::SignalGet::get(&v296.l1.clone()) {
                                 let v301: Array<leptos::View> =
                                     Dice_ui::method124(new_empty::<leptos::View>());
                                 let v308: string =
@@ -28541,17 +28474,17 @@ mod module_eef1bd43 {
                 LrcPtr::new((true, String::from(v24))),
             ]);
             let v33: LrcPtr<Dice_ui::Heap0> = LrcPtr::new(Dice_ui::Heap0 {
-                l0: None::<std::string::String>,
-                l1: v28.to_vec(),
+                l0: v28.to_vec(),
+                l1: None::<std::string::String>,
                 l2: 1_i32,
                 l3: 1_i32,
                 l4: Dice_ui::US1::US1_0,
             });
             let v36: LrcPtr<Dice_ui::Heap1> = LrcPtr::new(Dice_ui::Heap1 {
                 l0: v6,
-                l1: leptos::create_rw_signal(v33),
-                l2: v8,
-                l3: v15,
+                l1: v8,
+                l2: v15,
+                l3: leptos::create_rw_signal(v33),
             });
             let v38: leptos::RwSignal<LrcPtr<Dice_ui::Heap1>> = leptos::create_rw_signal(v36);
             let v40: std::collections::HashMap<std::string::String, leptos::RwSignal<bool>> =
