@@ -29,22 +29,6 @@ mod module_a51efde0 {
             UH0_0(u8, Func0<LrcPtr<Dice::UH0>>),
             UH0_1,
         }
-        impl Dice::UH0 {
-            pub fn get_IsUH0_0(this_: LrcPtr<Dice::UH0>, unitArg: ()) -> bool {
-                if let Dice::UH0::UH0_0(this__0_0, this__0_1) = this_.as_ref() {
-                    true
-                } else {
-                    false
-                }
-            }
-            pub fn get_IsUH0_1(this_: LrcPtr<Dice::UH0>, unitArg: ()) -> bool {
-                if let Dice::UH0::UH0_1 = this_.as_ref() {
-                    true
-                } else {
-                    false
-                }
-            }
-        }
         impl core::fmt::Display for Dice::UH0 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
                 write!(f, "{}", core::any::type_name::<Self>())
@@ -54,22 +38,6 @@ mod module_a51efde0 {
         pub enum UH1 {
             UH1_0,
             UH1_1(u8, LrcPtr<Dice::UH1>),
-        }
-        impl Dice::UH1 {
-            pub fn get_IsUH1_0(this_: LrcPtr<Dice::UH1>, unitArg: ()) -> bool {
-                if let Dice::UH1::UH1_0 = this_.as_ref() {
-                    true
-                } else {
-                    false
-                }
-            }
-            pub fn get_IsUH1_1(this_: LrcPtr<Dice::UH1>, unitArg: ()) -> bool {
-                if let Dice::UH1::UH1_1(this__1_0, this__1_1) = this_.as_ref() {
-                    true
-                } else {
-                    false
-                }
-            }
         }
         impl core::fmt::Display for Dice::UH1 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
@@ -81,22 +49,6 @@ mod module_a51efde0 {
             US0_0(Func1<string, ()>),
             US0_1,
         }
-        impl Dice::US0 {
-            pub fn get_IsUS0_0(this_: &MutCell<Dice::US0>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
-            pub fn get_IsUS0_1(this_: &MutCell<Dice::US0>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
-        }
         impl core::fmt::Display for Dice::US0 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
                 write!(f, "{}", core::any::type_name::<Self>())
@@ -106,22 +58,6 @@ mod module_a51efde0 {
         pub enum US1 {
             US1_0(Func0<LrcPtr<Dice::UH0>>),
             US1_1(LrcPtr<Dice::UH0>),
-        }
-        impl Dice::US1 {
-            pub fn get_IsUS1_0(this_: &MutCell<Dice::US1>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
-            pub fn get_IsUS1_1(this_: &MutCell<Dice::US1>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
         }
         impl core::fmt::Display for Dice::US1 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
@@ -151,22 +87,6 @@ mod module_a51efde0 {
             US2_0(u8),
             US2_1,
         }
-        impl Dice::US2 {
-            pub fn get_IsUS2_0(this_: &MutCell<Dice::US2>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
-            pub fn get_IsUS2_1(this_: &MutCell<Dice::US2>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
-        }
         impl core::fmt::Display for Dice::US2 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
                 write!(f, "{}", core::any::type_name::<Self>())
@@ -186,22 +106,6 @@ mod module_a51efde0 {
             US3_0(u64, LrcPtr<Dice::UH1>),
             US3_1,
         }
-        impl Dice::US3 {
-            pub fn get_IsUS3_0(this_: &MutCell<Dice::US3>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
-            pub fn get_IsUS3_1(this_: &MutCell<Dice::US3>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
-        }
         impl core::fmt::Display for Dice::US3 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
                 write!(f, "{}", core::any::type_name::<Self>())
@@ -211,22 +115,6 @@ mod module_a51efde0 {
         pub enum UH2 {
             UH2_0(u64, Func0<LrcPtr<Dice::UH2>>),
             UH2_1,
-        }
-        impl Dice::UH2 {
-            pub fn get_IsUH2_0(this_: LrcPtr<Dice::UH2>, unitArg: ()) -> bool {
-                if let Dice::UH2::UH2_0(this__0_0, this__0_1) = this_.as_ref() {
-                    true
-                } else {
-                    false
-                }
-            }
-            pub fn get_IsUH2_1(this_: LrcPtr<Dice::UH2>, unitArg: ()) -> bool {
-                if let Dice::UH2::UH2_1 = this_.as_ref() {
-                    true
-                } else {
-                    false
-                }
-            }
         }
         impl core::fmt::Display for Dice::UH2 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
@@ -238,22 +126,6 @@ mod module_a51efde0 {
             US4_0(u64),
             US4_1,
         }
-        impl Dice::US4 {
-            pub fn get_IsUS4_0(this_: &MutCell<Dice::US4>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
-            pub fn get_IsUS4_1(this_: &MutCell<Dice::US4>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
-        }
         impl core::fmt::Display for Dice::US4 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
                 write!(f, "{}", core::any::type_name::<Self>())
@@ -263,22 +135,6 @@ mod module_a51efde0 {
         pub enum US5 {
             US5_0(i64, LrcPtr<Dice::UH1>),
             US5_1,
-        }
-        impl Dice::US5 {
-            pub fn get_IsUS5_0(this_: &MutCell<Dice::US5>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
-            pub fn get_IsUS5_1(this_: &MutCell<Dice::US5>, unitArg: ()) -> bool {
-                if unreachable!() {
-                    true
-                } else {
-                    false
-                }
-            }
         }
         impl core::fmt::Display for Dice::US5 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
