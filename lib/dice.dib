@@ -300,8 +300,9 @@ join dyn listm'.init_series 1i32 10000 1
 |> listm.map (fun _ => roll_progressively None roll_dice false 10i32)
 |> listm'.group_by id
 |> listm.map (fun (k, v) => k, (listm.length v : i32))
-|> listm.toArray
-|> fun (ar : a i32 _) =>
+|> listm'.box
+|> listm'.to_array'
+|> fun ar =>
     $'!ar |> Array.sortBy (fun (struct (a, b)) -> a)' : a i32 $'struct (int32 * int32)'
 
 #!spiral
@@ -312,8 +313,9 @@ join dyn listm'.init_series 1i32 10000 1
 |> listm.map (fun _ => roll_progressively None roll_dice true 10i32)
 |> listm'.group_by id
 |> listm.map (fun (k, v) => k, (listm.length v : i32))
-|> listm.toArray
-|> fun (ar : a i32 _) =>
+|> listm'.box
+|> listm'.to_array'
+|> fun ar =>
     $'!ar |> Array.sortBy (fun (struct (a, b)) -> a)' : a i32 $'struct (int32 * int32)'
 
 #!spiral

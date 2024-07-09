@@ -466,7 +466,7 @@ mod module_a51efde0 {
             unitVar: (),
             v0_1: Option<Func1<string, ()>>,
         ) -> Func1<LrcPtr<Dice::UH1>, Func0<u8>> {
-            let _v1: LrcPtr<MutCell<Option<Dice::US0>>> = refCell(None::<Dice::US0>);
+            let _v3: LrcPtr<MutCell<Option<Dice::US0>>> = refCell(None::<Dice::US0>);
             {
                 let x_2: Option<Dice::US0> = match &v0_1 {
                     None => None::<Dice::US0>,
@@ -478,13 +478,13 @@ mod module_a51efde0 {
                         }))())
                     }
                 };
-                _v1.set(x_2)
+                _v3.set(x_2)
             }
             {
-                let v6: Dice::US0 = defaultValue(Dice::US0::US0_1, _v1.get().clone());
+                let v30: Dice::US0 = defaultValue(Dice::US0::US0_1, _v3.get().clone());
                 Func1::new({
-                    let v6 = v6.clone();
-                    move |v: LrcPtr<Dice::UH1>| Dice::closure4(v6.clone(), v)
+                    let v30 = v30.clone();
+                    move |v: LrcPtr<Dice::UH1>| Dice::closure4(v30.clone(), v)
                 })
             }
         }
@@ -1309,7 +1309,7 @@ mod module_a51efde0 {
             unitVar: (),
             v0_1: Option<Func1<string, ()>>,
         ) -> Func1<Func0<u8>, Func1<bool, Func1<u64, u64>>> {
-            let _v1: LrcPtr<MutCell<Option<Dice::US0>>> = refCell(None::<Dice::US0>);
+            let _v3: LrcPtr<MutCell<Option<Dice::US0>>> = refCell(None::<Dice::US0>);
             {
                 let x_2: Option<Dice::US0> = match &v0_1 {
                     None => None::<Dice::US0>,
@@ -1321,13 +1321,13 @@ mod module_a51efde0 {
                         }))())
                     }
                 };
-                _v1.set(x_2)
+                _v3.set(x_2)
             }
             {
-                let v6: Dice::US0 = defaultValue(Dice::US0::US0_1, _v1.get().clone());
+                let v30: Dice::US0 = defaultValue(Dice::US0::US0_1, _v3.get().clone());
                 Func1::new({
-                    let v6 = v6.clone();
-                    move |v: Func0<u8>| Dice::closure10(v6.clone(), v)
+                    let v30 = v30.clone();
+                    move |v: Func0<u8>| Dice::closure10(v30.clone(), v)
                 })
             }
         }
@@ -1355,7 +1355,7 @@ mod module_a51efde0 {
             v1_1: u64,
             v2_1: LrcPtr<Dice::UH1>,
         ) -> Option<u64> {
-            let _v3: LrcPtr<MutCell<Option<Dice::US0>>> = refCell(None::<Dice::US0>);
+            let _v5: LrcPtr<MutCell<Option<Dice::US0>>> = refCell(None::<Dice::US0>);
             {
                 let x_2: Option<Dice::US0> = match &v0_1 {
                     None => None::<Dice::US0>,
@@ -1367,30 +1367,30 @@ mod module_a51efde0 {
                         }))())
                     }
                 };
-                _v3.set(x_2)
+                _v5.set(x_2)
             }
             {
-                let v13: Dice::US3 = Dice::method9(
-                    defaultValue(Dice::US0::US0_1, _v3.get().clone()),
+                let v44: Dice::US3 = Dice::method9(
+                    defaultValue(Dice::US0::US0_1, _v5.get().clone()),
                     Dice::method13(v2_1.clone(), 0_i8) - 1_i8,
                     v2_1,
                     0_u64,
                 );
-                let v23: Dice::US4 = if let Dice::US3::US3_0(v13_0_0, v13_0_1) = &v13 {
-                    let v14: u64 = match &v13 {
+                let v54: Dice::US4 = if let Dice::US3::US3_0(v44_0_0, v44_0_1) = &v44 {
+                    let v45: u64 = match &v44 {
                         Dice::US3::US3_0(x, _) => x.clone(),
                         _ => unreachable!(),
                     };
-                    if if v14 >= 1_u64 { v14 <= v1_1 } else { false } {
-                        Dice::US4::US4_0(v14)
+                    if if v45 >= 1_u64 { v45 <= v1_1 } else { false } {
+                        Dice::US4::US4_0(v45)
                     } else {
                         Dice::US4::US4_1
                     }
                 } else {
                     Dice::US4::US4_1
                 };
-                match &v23 {
-                    Dice::US4::US4_0(v23_0_0) => Some(match &v23 {
+                match &v54 {
+                    Dice::US4::US4_0(v54_0_0) => Some(match &v54 {
                         Dice::US4::US4_0(x) => x.clone(),
                         _ => unreachable!(),
                     }),
@@ -1418,14 +1418,14 @@ mod module_a51efde0 {
             })
         }
         pub fn method15() -> u8 {
-            let _v0: MutCell<Option<u8>> = MutCell::new(None::<u8>);
+            let _v2: MutCell<Option<u8>> = MutCell::new(None::<u8>);
             {
                 let x: u8 = rand::Rng::gen_range(&mut rand::thread_rng(), 1_u8..7_u8);
-                _v0.set(Some(x))
+                _v2.set(Some(x))
             }
-            match &_v0.get().clone() {
-                None => panic!("{}", string("base.run_target / _v0=None"),),
-                Some(_v0_0_0) => _v0_0_0.clone(),
+            match &_v2.get().clone() {
+                None => panic!("{}", string("base.run_target / _v2=None"),),
+                Some(_v2_0_0) => _v2_0_0.clone(),
             }
         }
         pub fn method40(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US5 {
