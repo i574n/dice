@@ -374,7 +374,7 @@ def closure4(v0_1: US0, v1_1: UH1) -> Callable[[], uint8]:
 
 
 def closure3(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
-    _v1: FSharpRef[US0 | None] = FSharpRef(None)
+    _v3: FSharpRef[US0 | None] = FSharpRef(None)
     x_2: US0 | None
     if v0_1 is None:
         x_2 = None
@@ -386,10 +386,10 @@ def closure3(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callabl
 
         x_2 = x_1(None)
 
-    _v1.contents = x_2
-    v6: US0 = default_arg(_v1.contents, US0(1))
+    _v3.contents = x_2
+    v30: US0 = default_arg(_v3.contents, US0(1))
     def _arrow319(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
-        return closure4(v6, v)
+        return closure4(v30, v)
 
     return _arrow319
 
@@ -1061,7 +1061,7 @@ def closure10(v0_1: US0, v1_1: Callable[[], uint8]) -> Callable[[bool, uint64], 
 
 
 def closure9(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
-    _v1: FSharpRef[US0 | None] = FSharpRef(None)
+    _v3: FSharpRef[US0 | None] = FSharpRef(None)
     x_2: US0 | None
     if v0_1 is None:
         x_2 = None
@@ -1073,10 +1073,10 @@ def closure9(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callabl
 
         x_2 = x_1(None)
 
-    _v1.contents = x_2
-    v6: US0 = default_arg(_v1.contents, US0(1))
+    _v3.contents = x_2
+    v30: US0 = default_arg(_v3.contents, US0(1))
     def _arrow322(v: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
-        return closure10(v6, v)
+        return closure10(v30, v)
 
     return _arrow322
 
@@ -1096,7 +1096,7 @@ def method13(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
 
 
 def closure79(v0_1: Callable[[str], None] | None, v1_1: uint64, v2_1: UH1) -> uint64 | None:
-    _v3: FSharpRef[US0 | None] = FSharpRef(None)
+    _v5: FSharpRef[US0 | None] = FSharpRef(None)
     x_2: US0 | None
     if v0_1 is None:
         x_2 = None
@@ -1108,18 +1108,18 @@ def closure79(v0_1: Callable[[str], None] | None, v1_1: uint64, v2_1: UH1) -> ui
 
         x_2 = x_1(None)
 
-    _v3.contents = x_2
-    v13: US3 = method9(default_arg(_v3.contents, US0(1)), method13(v2_1, int8(0)) - int8(1), v2_1, uint64(0))
-    v23: US4
-    if v13.tag == 0:
-        v14: uint64 = v13.fields[0]
-        v23 = US4(0, v14) if ((v14 <= v1_1) if (v14 >= uint64(1)) else False) else US4(1)
+    _v5.contents = x_2
+    v44: US3 = method9(default_arg(_v5.contents, US0(1)), method13(v2_1, int8(0)) - int8(1), v2_1, uint64(0))
+    v54: US4
+    if v44.tag == 0:
+        v45: uint64 = v44.fields[0]
+        v54 = US4(0, v45) if ((v45 <= v1_1) if (v45 >= uint64(1)) else False) else US4(1)
 
     else: 
-        v23 = US4(1)
+        v54 = US4(1)
 
-    if v23.tag == 0:
-        return v23.fields[0]
+    if v54.tag == 0:
+        return v54.fields[0]
 
     else: 
         return None
@@ -1141,17 +1141,17 @@ def closure77(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callab
 
 
 def method15(__unit: None=None) -> uint8:
-    _v0: uint8 | None = None
-    v15: Any = {}
+    _v2: uint8 | None = None
+    v25: Any = {}
     x: uint8
     value_2: int = randint(int(uint8(1)), int(uint8(7))) or 0
     x = int(value_2+0x100 if value_2 < 0 else value_2) & 0xFF
-    _v0 = x
-    if _v0 is None:
-        raise Exception("base.run_target / _v0=None")
+    _v2 = x
+    if _v2 is None:
+        raise Exception("base.run_target / _v2=None")
 
     else: 
-        return _v0
+        return _v2
 
 
 

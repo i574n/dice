@@ -301,7 +301,7 @@ inl render () =
                                         |> leptos.signal_get
                                     transactions
                                     |> am'.vec_map' fun { txn i } =>
-                                        inl rpc_response = index rpc_responses (i |> i32)
+                                        inl rpc_response = rpc_responses |> am'.from_vec |> am'.index (i |> i32)
 
                                         leptos.tr [
                                             $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'

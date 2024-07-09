@@ -1,11 +1,11 @@
-import { FSharpRef, Record, Union } from "./fable_modules/fable-library-ts.4.19.3/Types.js";
-import { int32, int8, uint8 } from "./fable_modules/fable-library-ts.4.19.3/Int32.js";
-import { uint64_type, int64_type, record_type, string_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "./fable_modules/fable-library-ts.4.19.3/Reflection.js";
-import { op_Multiply, toUInt64, equals, compare, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "./fable_modules/fable-library-ts.4.19.3/BigInt.js";
-import { IComparable, IEquatable } from "./fable_modules/fable-library-ts.4.19.3/Util.js";
-import { interpolate, toText } from "./fable_modules/fable-library-ts.4.19.3/String.js";
-import { defaultArg, value as value_3, Option } from "./fable_modules/fable-library-ts.4.19.3/Option.js";
-import { nonSeeded } from "./fable_modules/fable-library-ts.4.19.3/Random.js";
+import { FSharpRef, Record, Union } from "../../polyglot/deps/Fable/src/fable-library-ts/Types.js";
+import { int32, int8, uint8 } from "../../polyglot/deps/Fable/src/fable-library-ts/Int32.js";
+import { uint64_type, int64_type, record_type, string_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "../../polyglot/deps/Fable/src/fable-library-ts/Reflection.js";
+import { op_Multiply, toUInt64, equals, compare, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "../../polyglot/deps/Fable/src/fable-library-ts/BigInt.js";
+import { IComparable, IEquatable } from "../../polyglot/deps/Fable/src/fable-library-ts/Util.js";
+import { interpolate, toText } from "../../polyglot/deps/Fable/src/fable-library-ts/String.js";
+import { defaultArg, value as value_3, Option } from "../../polyglot/deps/Fable/src/fable-library-ts/Option.js";
+import { nonSeeded } from "../../polyglot/deps/Fable/src/fable-library-ts/Random.js";
 
 export type UH0_$union = 
     | UH0<0>
@@ -482,7 +482,7 @@ export function closure4(v0_1: US0_$union, v1_1: UH1_$union): (() => uint8) {
 }
 
 export function closure3(unitVar: void, v0_1: Option<((arg0: string) => void)>): ((arg0: UH1_$union) => (() => uint8)) {
-    const _v1: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
+    const _v3: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
     let x_2: Option<US0_$union>;
     if (v0_1 == null) {
         x_2 = undefined;
@@ -491,9 +491,9 @@ export function closure3(unitVar: void, v0_1: Option<((arg0: string) => void)>):
         const x: ((arg0: string) => void) = value_3(v0_1);
         x_2 = ((): US0_$union => US0_US0_0(x))();
     }
-    _v1.contents = x_2;
-    const v6: US0_$union = defaultArg(_v1.contents, US0_US0_1());
-    return (v: UH1_$union): (() => uint8) => closure4(v6, v);
+    _v3.contents = x_2;
+    const v30: US0_$union = defaultArg(_v3.contents, US0_US0_1());
+    return (v: UH1_$union): (() => uint8) => closure4(v30, v);
 }
 
 export function method7(v0_1_mut: US0_$union, v1_1_mut: uint64, v2_1_mut: int8, v3_1_mut: uint64): int8 {
@@ -979,7 +979,7 @@ export function closure10(v0_1: US0_$union, v1_1: (() => uint8)): ((arg0: boolea
 }
 
 export function closure9(unitVar: void, v0_1: Option<((arg0: string) => void)>): ((arg0: (() => uint8)) => ((arg0: boolean) => ((arg0: uint64) => uint64))) {
-    const _v1: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
+    const _v3: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
     let x_2: Option<US0_$union>;
     if (v0_1 == null) {
         x_2 = undefined;
@@ -988,9 +988,9 @@ export function closure9(unitVar: void, v0_1: Option<((arg0: string) => void)>):
         const x: ((arg0: string) => void) = value_3(v0_1);
         x_2 = ((): US0_$union => US0_US0_0(x))();
     }
-    _v1.contents = x_2;
-    const v6: US0_$union = defaultArg(_v1.contents, US0_US0_1());
-    return (v: (() => uint8)): ((arg0: boolean) => ((arg0: uint64) => uint64)) => closure10(v6, v);
+    _v3.contents = x_2;
+    const v30: US0_$union = defaultArg(_v3.contents, US0_US0_1());
+    return (v: (() => uint8)): ((arg0: boolean) => ((arg0: uint64) => uint64)) => closure10(v30, v);
 }
 
 export function method13(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
@@ -1011,7 +1011,7 @@ export function method13(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
 }
 
 export function closure79(v0_1: Option<((arg0: string) => void)>, v1_1: uint64, v2_1: UH1_$union): Option<uint64> {
-    const _v3: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
+    const _v5: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
     let x_2: Option<US0_$union>;
     if (v0_1 == null) {
         x_2 = undefined;
@@ -1020,19 +1020,19 @@ export function closure79(v0_1: Option<((arg0: string) => void)>, v1_1: uint64, 
         const x: ((arg0: string) => void) = value_3(v0_1);
         x_2 = ((): US0_$union => US0_US0_0(x))();
     }
-    _v3.contents = x_2;
-    const v13: US3_$union = method9(defaultArg(_v3.contents, US0_US0_1()), method13(v2_1, 0) - 1, v2_1, 0n);
-    let v23: US4_$union;
-    if (v13.tag === /* US3_0 */ 0) {
-        const v15: UH1_$union = v13.fields[1];
-        const v14: uint64 = v13.fields[0];
-        v23 = (((compare(v14, 1n) >= 0) && (compare(v14, v1_1) <= 0)) ? US4_US4_0(v14) : US4_US4_1());
+    _v5.contents = x_2;
+    const v44: US3_$union = method9(defaultArg(_v5.contents, US0_US0_1()), method13(v2_1, 0) - 1, v2_1, 0n);
+    let v54: US4_$union;
+    if (v44.tag === /* US3_0 */ 0) {
+        const v46: UH1_$union = v44.fields[1];
+        const v45: uint64 = v44.fields[0];
+        v54 = (((compare(v45, 1n) >= 0) && (compare(v45, v1_1) <= 0)) ? US4_US4_0(v45) : US4_US4_1());
     }
     else {
-        v23 = US4_US4_1();
+        v54 = US4_US4_1();
     }
-    if (v23.tag === /* US4_0 */ 0) {
-        return v23.fields[0];
+    if (v54.tag === /* US4_0 */ 0) {
+        return v54.fields[0];
     }
     else {
         return undefined;
@@ -1048,19 +1048,19 @@ export function closure77(unitVar: void, v0_1: Option<((arg0: string) => void)>)
 }
 
 export function method15(): uint8 {
-    let _v0: Option<uint8> = undefined;
-    const v7: any = nonSeeded();
-    const v9: int32 = ~~1 | 0;
-    const v11: int32 = ~~7 | 0;
+    let _v2: Option<uint8> = undefined;
+    const v9: any = nonSeeded();
+    const v11: int32 = ~~1 | 0;
+    const v13: int32 = ~~7 | 0;
     let x: uint8;
-    const value_2: int32 = v7.Next2(v9, v11) | 0;
+    const value_2: int32 = v9.Next2(v11, v13) | 0;
     x = (value_2 & 0xFF);
-    _v0 = x;
-    if (_v0 == null) {
-        throw new Error("base.run_target / _v0=None");
+    _v2 = x;
+    if (_v2 == null) {
+        throw new Error("base.run_target / _v2=None");
     }
     else {
-        return value_3(_v0);
+        return value_3(_v2);
     }
 }
 
