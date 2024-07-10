@@ -1,159 +1,19 @@
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("core::any::Any")>]
+[<Fable.Core.Erase; Fable.Core.Emit("web_sys::HtmlElement")>]
 #endif
-type core_any_Any = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("_")>]
-#endif
-type core_ops_Try<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("Func0<$0>")>]
-#endif
-type Func0<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("Func1<$0, $1>")>]
-#endif
-type Func0<'T, 'U> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("Box<$0>")>]
-#endif
-type Box<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("dyn $0")>]
-#endif
-type Dyn<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("Send")>]
-#endif
-type Send<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("Fn() -> $0")>]
-#endif
-type Fn<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("Fn()")>]
-#endif
-type FnUnit = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("FnOnce() -> $0")>]
-#endif
-type FnOnce<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("Fn($0)")>]
-#endif
-type ActionFn<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("Fn($0, $1)")>]
-#endif
-type ActionFn2<'T, 'U> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("impl $0")>]
-#endif
-type Impl<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("mut $0")>]
-#endif
-type Mut<'T> = class end
+type web_sys_HtmlElement = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("&$0")>]
 #endif
 type Ref<'T> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("$0 + $1")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::RwSignal<$0>")>]
 #endif
-type LifetimeJoin<'T, 'U> = class end
+type leptos_RwSignal<'T> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("'static")>]
+[<Fable.Core.Erase; Fable.Core.Emit("std::string::String")>]
 #endif
-type StaticLifetime = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("$0")>]
-#endif
-type LifetimeRef<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("$0 $1")>]
-#endif
-type Lifetime<'T, 'U> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("MutCell<$0>")>]
-#endif
-type MutCell<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::any::Any")>]
-#endif
-type std_any_Any = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::borrow::Cow<$0>")>]
-#endif
-type std_borrow_Cow<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::cell::RefCell<$0>")>]
-#endif
-type std_cell_RefCell<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::pin::Pin<$0>")>]
-#endif
-type std_pin_Pin<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::rc::Rc<$0>")>]
-#endif
-type std_rc_Rc<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::rc::Weak<$0>")>]
-#endif
-type std_rc_Weak<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("js_sys::Function")>]
-#endif
-type js_sys_Function = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("rexie::Error")>]
-#endif
-type rexie_Error = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("rexie::Rexie")>]
-#endif
-type rexie_Rexie = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("rexie::Store")>]
-#endif
-type rexie_Store = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("rexie::Transaction")>]
-#endif
-type rexie_Transaction = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("wasm_bindgen::JsValue")>]
-#endif
-type wasm_bindgen_JsValue = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("wasm_bindgen::closure::Closure<$0>")>]
-#endif
-type wasm_bindgen_closure_Closure<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("web_sys::Document")>]
-#endif
-type web_sys_Document = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("web_sys::HtmlElement")>]
-#endif
-type web_sys_HtmlElement = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("web_sys::Storage")>]
-#endif
-type web_sys_Storage = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("web_sys::Window")>]
-#endif
-type web_sys_Window = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("[$0]")>]
-#endif
-type Slice<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("_")>]
-#endif
-type Slice'<'T> = class end
+type std_string_String = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("Vec<$0>")>]
 #endif
@@ -163,217 +23,57 @@ type Vec<'T> = class end
 #endif
 type std_collections_HashMap<'K, 'V> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::collections::BTreeMap<$0, $1>")>]
+[<Fable.Core.Erase; Fable.Core.Emit("std::pin::Pin<$0>")>]
 #endif
-type std_collections_BTreeMap<'K, 'V> = class end
+type std_pin_Pin<'T> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("str")>]
+[<Fable.Core.Erase; Fable.Core.Emit("rexie::Rexie")>]
 #endif
-type Str = class end
+type rexie_Rexie = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("base64::DecodeError")>]
+[<Fable.Core.Erase; Fable.Core.Emit("rexie::Error")>]
 #endif
-type base64_DecodeError = class end
+type rexie_Error = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("borsh::io::Error")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::Resource<$0, $1>")>]
 #endif
-type borsh_io_Error = class end
+type leptos_Resource<'T, 'U> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("encoding_rs::Encoding")>]
+[<Fable.Core.Erase; Fable.Core.Emit("rexie::Transaction")>]
 #endif
-type encoding_rs_Encoding = class end
+type rexie_Transaction = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("js_sys::JsString")>]
+[<Fable.Core.Erase; Fable.Core.Emit("rexie::Store")>]
 #endif
-type js_sys_JsString = class end
+type rexie_Store = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("serde_json::Error")>]
+[<Fable.Core.Erase; Fable.Core.Emit("wasm_bindgen::JsValue")>]
 #endif
-type serde_json_Error = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("serde_json::Value")>]
-#endif
-type serde_json_Value = class end
+type wasm_bindgen_JsValue = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("serde_wasm_bindgen::Error")>]
 #endif
 type serde_wasm_bindgen_Error = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::ffi::OsStr")>]
+[<Fable.Core.Erase; Fable.Core.Emit("serde_json::Value")>]
 #endif
-type std_ffi_OsStr = class end
+type serde_json_Value = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::ffi::OsString")>]
+[<Fable.Core.Erase; Fable.Core.Emit("serde_json::Error")>]
 #endif
-type std_ffi_OsString = class end
+type serde_json_Error = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::fmt::Display<$0>")>]
+[<Fable.Core.Erase; Fable.Core.Emit("borsh::io::Error")>]
 #endif
-type std_fmt_Display<'T> = class end
+type borsh_io_Error = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::str::Utf8Error")>]
+[<Fable.Core.Erase; Fable.Core.Emit("web_sys::Window")>]
 #endif
-type std_str_Utf8Error = class end
+type web_sys_Window = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::string::FromUtf8Error")>]
+[<Fable.Core.Erase; Fable.Core.Emit("web_sys::Storage")>]
 #endif
-type std_string_FromUtf8Error = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::string::String")>]
-#endif
-type std_string_String = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::slice::Windows<$0>")>]
-#endif
-type std_slice_Windows<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("regex::Regex")>]
-#endif
-type regex_Regex = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("regex::Captures<$0>")>]
-#endif
-type regex_Captures<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("regex::CaptureMatches")>]
-#endif
-type regex_CaptureMatches = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("regex::CaptureNames")>]
-#endif
-type regex_CaptureNames = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("regex::Match")>]
-#endif
-type regex_Match = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("regex::Error")>]
-#endif
-type regex_Error = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("chrono::DateTime<$0>")>]
-#endif
-type chrono_DateTime<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("chrono::Local")>]
-#endif
-type chrono_Local = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("chrono::NaiveDateTime")>]
-#endif
-type chrono_NaiveDateTime = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("chrono::Utc")>]
-#endif
-type chrono_Utc = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::time::Duration")>]
-#endif
-type std_time_Duration = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("futures::future::JoinAll<$0>")>]
-#endif
-type futures_future_JoinAll<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("futures::future::TryJoinAll<$0>")>]
-#endif
-type futures_future_TryJoinAll<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("rayon::iter::Map<$0, _>")>]
-#endif
-type rayon_iter_Map<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("rayon::vec::IntoIter<$0>")>]
-#endif
-type rayon_vec_IntoIter<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::future::Future<Output = $0>")>]
-#endif
-type std_future_Future<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("tokio::prelude::stream::Fuse<$0>")>]
-#endif
-type futures_future_Fuse<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("tokio::task::JoinHandle<$0>")>]
-#endif
-type tokio_task_JoinHandle<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("tokio_stream::StreamExt")>]
-#endif
-type tokio_stream_StreamExt = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("reqwest_wasm::Error")>]
-#endif
-type reqwest_Error = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("reqwest_wasm::RequestBuilder")>]
-#endif
-type reqwest_RequestBuilder = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("reqwest_wasm::Response")>]
-#endif
-type reqwest_Response = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::env::VarError")>]
-#endif
-type std_env_VarError = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::thread::JoinHandle<$0>")>]
-#endif
-type std_thread_JoinHandle<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::sync::Arc<$0>")>]
-#endif
-type std_sync_Arc<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::sync::Mutex<$0>")>]
-#endif
-type std_sync_Mutex<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::sync::MutexGuard<$0>")>]
-#endif
-type std_sync_MutexGuard<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::sync::PoisonError<$0>")>]
-#endif
-type std_sync_PoisonError<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::sync::mpsc::Receiver<$0>")>]
-#endif
-type std_sync_mpsc_Receiver<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::sync::mpsc::SendError<$0>")>]
-#endif
-type std_sync_mpsc_SendError<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("std::sync::mpsc::Sender<$0>")>]
-#endif
-type std_sync_mpsc_Sender<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::Action<$0, $1>")>]
-#endif
-type leptos_Action<'T, 'U> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::For")>]
-#endif
-type leptos_For = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::Show")>]
-#endif
-type leptos_Show = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::Fragment")>]
-#endif
-type leptos_Fragment = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::HtmlElement<$0>")>]
-#endif
-type leptos_HtmlElement<'T> = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::IntoView")>]
-#endif
-type leptos_IntoView = class end
+type web_sys_Storage = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::Memo<$0>")>]
 #endif
@@ -383,113 +83,215 @@ type leptos_Memo<'T> = class end
 #endif
 type leptos_ReadSignal<'T> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::Resource<$0, $1>")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::WriteSignal<$0>")>]
 #endif
-type leptos_Resource<'T, 'U> = class end
+type leptos_WriteSignal<'T> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::RwSignal<$0>")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::Action<$0, $1>")>]
 #endif
-type leptos_RwSignal<'T> = class end
+type leptos_Action<'T, 'U> = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos_router::Location")>]
+#endif
+type leptos_router_Location = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("std::sync::Arc<$0>")>]
+#endif
+type std_sync_Arc<'T> = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos_router::Url")>]
+#endif
+type leptos_router_Url = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Root")>] type crate_model_near_nearblocks_Root = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Txn")>] type crate_model_near_nearblocks_Txn = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Block")>] type crate_model_near_nearblocks_Block = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Action")>] type crate_model_near_nearblocks_Action = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::ActionsAgg")>] type crate_model_near_nearblocks_ActionsAgg = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Outcomes")>] type crate_model_near_nearblocks_Outcomes = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::OutcomesAgg")>] type crate_model_near_nearblocks_OutcomesAgg = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("futures::future::TryJoinAll<$0>")>]
+#endif
+type futures_future_TryJoinAll<'T> = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("reqwest_wasm::RequestBuilder")>]
+#endif
+type reqwest_RequestBuilder = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("reqwest_wasm::Error")>]
+#endif
+type reqwest_Error = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("reqwest_wasm::Response")>]
+#endif
+type reqwest_Response = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::Signal<$0>")>]
 #endif
 type leptos_Signal<'T> = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::RpcInput")>] type crate_model_near_rpc_RpcInput = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::RpcResponse")>] type crate_model_near_rpc_RpcResponse = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::TransactionStatus")>] type crate_model_near_rpc_TransactionStatus = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::Receipt")>] type crate_model_near_rpc_Receipt = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::ReceiptDetail")>] type crate_model_near_rpc_ReceiptDetail = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::ActionDetail")>] type crate_model_near_rpc_ActionDetail = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::TransferDetail")>] type crate_model_near_rpc_TransferDetail = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::ReceiptsOutcome")>] type crate_model_near_rpc_ReceiptsOutcome = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::OutcomeDetail")>] type crate_model_near_rpc_OutcomeDetail = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::Metadata")>] type crate_model_near_rpc_Metadata = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::GasProfile")>] type crate_model_near_rpc_GasProfile = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::Proof")>] type crate_model_near_rpc_Proof = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::RpcError")>] type crate_model_near_rpc_RpcError = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::ErrorCause")>] type crate_model_near_rpc_ErrorCause = class end
+[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::ErrorCauseInfo")>] type crate_model_near_rpc_ErrorCauseInfo = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::View")>]
 #endif
 type leptos_View = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::WriteSignal<$0>")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::leptos_dom::Text")>]
 #endif
-type leptos_WriteSignal<'T> = class end
+type leptos_dom_Text = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::Fragment")>]
+#endif
+type leptos_Fragment = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("Func0<$0>")>]
+#endif
+type Func0<'T> = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("impl $0")>]
+#endif
+type Impl<'T> = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::HtmlElement<$0>")>]
+#endif
+type leptos_HtmlElement<'T> = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("chrono::DateTime<$0>")>]
+#endif
+type chrono_DateTime<'T> = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("chrono::NaiveDateTime")>]
+#endif
+type chrono_NaiveDateTime = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::ev::Event")>]
 #endif
 type leptos_ev_Event = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::ev::MouseEvent")>]
+[<Fable.Core.Erase; Fable.Core.Emit("Box<$0>")>]
 #endif
-type leptos_ev_MouseEvent = class end
+type Box<'T> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::A")>]
+[<Fable.Core.Erase; Fable.Core.Emit("wasm_bindgen::closure::Closure<$0>")>]
 #endif
-type leptos_html_A = class end
+type wasm_bindgen_closure_Closure<'T> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::AnyElement")>]
+[<Fable.Core.Erase; Fable.Core.Emit("str")>]
 #endif
-type leptos_html_AnyElement = class end
+type Str = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Button")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::IntoView")>]
 #endif
-type leptos_html_Button = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Details")>]
-#endif
-type leptos_html_Details = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Dd")>]
-#endif
-type leptos_html_Dd = class end
+type leptos_IntoView = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Div")>]
 #endif
 type leptos_html_Div = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Dl")>]
+[<Fable.Core.Erase; Fable.Core.Emit("dyn $0")>]
 #endif
-type leptos_html_Dl = class end
+type Dyn<'T> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Dt")>]
+[<Fable.Core.Erase; Fable.Core.Emit("std::future::Future<Output = $0>")>]
 #endif
-type leptos_html_Dt = class end
+type std_future_Future<'T> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Footer")>]
+[<Fable.Core.Erase; Fable.Core.Emit("[$0]")>]
 #endif
-type leptos_html_Footer = class end
+type Slice<'T> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Header")>]
+[<Fable.Core.Erase; Fable.Core.Emit("Fn($0, $1)")>]
 #endif
-type leptos_html_Header = class end
+type ActionFn2<'T, 'U> = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Input")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos_router::NavigateOptions")>]
 #endif
-type leptos_html_Input = class end
+type leptos_router_NavigateOptions = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Label")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::svg::Path")>]
 #endif
-type leptos_html_Label = class end
+type leptos_svg_Path = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Main")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::svg::Svg")>]
 #endif
-type leptos_html_Main = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Nav")>]
-#endif
-type leptos_html_Nav = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Option_")>]
-#endif
-type leptos_html_Option = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Pre")>]
-#endif
-type leptos_html_Pre = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Select")>]
-#endif
-type leptos_html_Select = class end
+type leptos_svg_Svg = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Span")>]
 #endif
 type leptos_html_Span = class end
 #if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Pre")>]
+#endif
+type leptos_html_Pre = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::svg::Circle")>]
+#endif
+type leptos_svg_Circle = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Button")>]
+#endif
+type leptos_html_Button = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("$0 $1")>]
+#endif
+type Lifetime<'T, 'U> = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("'static")>]
+#endif
+type StaticLifetime = class end
+#if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Summary")>]
 #endif
 type leptos_html_Summary = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Table")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Details")>]
 #endif
-type leptos_html_Table = class end
+type leptos_html_Details = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Input")>]
+#endif
+type leptos_html_Input = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::svg::Animate")>]
+#endif
+type leptos_svg_Animate = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::svg::Rect")>]
+#endif
+type leptos_svg_Rect = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Th")>]
+#endif
+type leptos_html_Th = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Tr")>]
+#endif
+type leptos_html_Tr = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("chrono::Utc")>]
+#endif
+type chrono_Utc = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("chrono::Local")>]
+#endif
+type chrono_Local = class end
+#if FABLE_COMPILER
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Td")>]
+#endif
+type leptos_html_Td = class end
 #if FABLE_COMPILER
 [<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Thead")>]
 #endif
@@ -499,99 +301,53 @@ type leptos_html_Thead = class end
 #endif
 type leptos_html_Tbody = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Tr")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Table")>]
 #endif
-type leptos_html_Tr = class end
+type leptos_html_Table = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Th")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Label")>]
 #endif
-type leptos_html_Th = class end
+type leptos_html_Label = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Td")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Dt")>]
 #endif
-type leptos_html_Td = class end
+type leptos_html_Dt = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::leptos_dom::helpers::IntervalHandle")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Dd")>]
 #endif
-type leptos_dom_IntervalHandle = class end
+type leptos_html_Dd = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::leptos_dom::Text")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Dl")>]
 #endif
-type leptos_dom_Text = class end
+type leptos_html_Dl = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::leptos_dom::Transparent")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Main")>]
 #endif
-type leptos_dom_Transparent = class end
+type leptos_html_Main = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::svg::Svg")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Option_")>]
 #endif
-type leptos_svg_Svg = class end
+type leptos_html_Option = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::svg::Path")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Select")>]
 #endif
-type leptos_svg_Path = class end
+type leptos_html_Select = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::svg::Circle")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::A")>]
 #endif
-type leptos_svg_Circle = class end
+type leptos_html_A = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::svg::Rect")>]
+[<Fable.Core.Erase; Fable.Core.Emit("leptos::html::Nav")>]
 #endif
-type leptos_svg_Rect = class end
+type leptos_html_Nav = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos::svg::Animate")>]
+[<Fable.Core.Erase; Fable.Core.Emit("Fn()")>]
 #endif
-type leptos_svg_Animate = class end
+type FnUnit = class end
 #if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos_router::Route")>]
+[<Fable.Core.Erase; Fable.Core.Emit("js_sys::Function")>]
 #endif
-type leptos_router_Route = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos_router::RouteDefinition")>]
-#endif
-type leptos_router_RouteDefinition = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos_router::Router")>]
-#endif
-type leptos_router_Router = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos_router::Routes")>]
-#endif
-type leptos_router_Routes = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos_router::Location")>]
-#endif
-type leptos_router_Location = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos_router::NavigateOptions")>]
-#endif
-type leptos_router_NavigateOptions = class end
-#if FABLE_COMPILER
-[<Fable.Core.Erase; Fable.Core.Emit("leptos_router::Url")>]
-#endif
-type leptos_router_Url = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::RpcInput")>] type crate_model_near_rpc_RpcInput = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::ErrorCauseInfo")>] type crate_model_near_rpc_ErrorCauseInfo = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::ErrorCause")>] type crate_model_near_rpc_ErrorCause = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::RpcError")>] type crate_model_near_rpc_RpcError = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::TransferDetail")>] type crate_model_near_rpc_TransferDetail = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::GasProfile")>] type crate_model_near_rpc_GasProfile = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::Metadata")>] type crate_model_near_rpc_Metadata = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::OutcomeDetail")>] type crate_model_near_rpc_OutcomeDetail = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::Proof")>] type crate_model_near_rpc_Proof = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::ReceiptsOutcome")>] type crate_model_near_rpc_ReceiptsOutcome = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::ActionDetail")>] type crate_model_near_rpc_ActionDetail = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::ReceiptDetail")>] type crate_model_near_rpc_ReceiptDetail = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::Receipt")>] type crate_model_near_rpc_Receipt = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::TransactionStatus")>] type crate_model_near_rpc_TransactionStatus = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::rpc::RpcResponse")>] type crate_model_near_rpc_RpcResponse = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Block")>] type crate_model_near_nearblocks_Block = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Action")>] type crate_model_near_nearblocks_Action = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::ActionsAgg")>] type crate_model_near_nearblocks_ActionsAgg = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Outcomes")>] type crate_model_near_nearblocks_Outcomes = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::OutcomesAgg")>] type crate_model_near_nearblocks_OutcomesAgg = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Txn")>] type crate_model_near_nearblocks_Txn = class end
-[<Fable.Core.Erase; Fable.Core.Emit("crate::model::near::nearblocks::Root")>] type crate_model_near_nearblocks_Root = class end
+type js_sys_Function = class end
 type [<Struct>] US0 =
     | US0_0 of f0_0 : web_sys_HtmlElement
     | US0_1
@@ -15815,6 +15571,6 @@ and closure0 () (v0 : (string [])) : int32 =
         Fable.Core.RustInterop.emitRustExpr () v74 
         ()
     0
-let v126 : ((string []) -> int32) = closure0()
-let main args = v126 args
+let v0 : ((string []) -> int32) = closure0()
+let main args = v0 args
 ()

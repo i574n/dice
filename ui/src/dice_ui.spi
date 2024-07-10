@@ -37,9 +37,5 @@ inl main (args : array_base string) =
 
 inl main () =
     print_static "<dice_ui>"
-    lib.types ()
-    model.near.rpc.types ()
-    model.near.nearblocks.types ()
-
     $'let main args = !main args' : ()
     print_static "</dice_ui>"

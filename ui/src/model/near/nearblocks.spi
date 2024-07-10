@@ -1,22 +1,47 @@
 open rust_operators
 
-inl types () =
-    global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Block\")>] type crate_model_near_nearblocks_Block = class end"
-    global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Action\")>] type crate_model_near_nearblocks_Action = class end"
-    global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::ActionsAgg\")>] type crate_model_near_nearblocks_ActionsAgg = class end"
-    global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Outcomes\")>] type crate_model_near_nearblocks_Outcomes = class end"
-    global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::OutcomesAgg\")>] type crate_model_near_nearblocks_OutcomesAgg = class end"
-    global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Txn\")>] type crate_model_near_nearblocks_Txn = class end"
-    global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Root\")>] type crate_model_near_nearblocks_Root = class end"
 
+nominal block' =
+    `(
+        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Block\")>] type crate_model_near_nearblocks_Block = class end"
+        $'' : $'crate_model_near_nearblocks_Block'
+    )
 
-nominal block' = $'crate_model_near_nearblocks_Block'
-nominal action' = $'crate_model_near_nearblocks_Action'
-nominal actions_agg' = $'crate_model_near_nearblocks_ActionsAgg'
-nominal outcomes' = $'crate_model_near_nearblocks_Outcomes'
-nominal outcomes_agg' = $'crate_model_near_nearblocks_OutcomesAgg'
-nominal txn' = $'crate_model_near_nearblocks_Txn'
-nominal root' = $'crate_model_near_nearblocks_Root'
+nominal action' =
+    `(
+        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Action\")>] type crate_model_near_nearblocks_Action = class end"
+        $'' : $'crate_model_near_nearblocks_Action'
+    )
+
+nominal actions_agg' =
+    `(
+        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::ActionsAgg\")>] type crate_model_near_nearblocks_ActionsAgg = class end"
+        $'' : $'crate_model_near_nearblocks_ActionsAgg'
+    )
+
+nominal outcomes' =
+    `(
+        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Outcomes\")>] type crate_model_near_nearblocks_Outcomes = class end"
+        $'' : $'crate_model_near_nearblocks_Outcomes'
+    )
+
+nominal outcomes_agg' =
+    `(
+        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::OutcomesAgg\")>] type crate_model_near_nearblocks_OutcomesAgg = class end"
+        $'' : $'crate_model_near_nearblocks_OutcomesAgg'
+    )
+
+nominal txn' =
+    `(
+        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Txn\")>] type crate_model_near_nearblocks_Txn = class end"
+        $'' : $'crate_model_near_nearblocks_Txn'
+    )
+
+nominal root' =
+    `(
+        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Root\")>] type crate_model_near_nearblocks_Root = class end"
+        $'' : $'crate_model_near_nearblocks_Root'
+    )
 
 
 type block =
