@@ -49,11 +49,11 @@ Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
     | FixRust `
     | Set-Content "$($projectName)_contract.rs"
 
-cargo +nightly fmt --
-{ cargo +nightly fmt -- } | Invoke-Block -Location contract
+cargo fmt --
+{ cargo fmt -- } | Invoke-Block -Location contract
 
 if (!$fast) {
-    { cargo +nightly run --release } | Invoke-Block
+    { cargo run --release } | Invoke-Block
 }
 
 if ($env:CI) {
