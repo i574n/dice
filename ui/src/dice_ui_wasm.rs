@@ -1239,12 +1239,12 @@ mod module_eef1bd43 {
                                 Err(v11_1_0) => Dice_ui::closure7((), v11_1_0.clone()),
                                 Ok(v11_0_0) => Dice_ui::closure6((), v11_0_0.clone()),
                             });
-                            let v22: string = string("v15 }}); { //");
+                            let v22: string = string("v15 }}); { // rust.fix_closure\'");
                             v15
                         }
                     });
                     {
-                        //;
+                        // rust.fix_closure';
                         {
                             let v24: std::pin::Pin<
                                 Box<dyn std::future::Future<Output = Dice_ui::US3>>,
@@ -1269,7 +1269,7 @@ mod module_eef1bd43 {
                             let v46: bool = true;
                             leptos::logging::log!("{}", v44);
                             let v47: rexie::Rexie = Dice_ui::method9(v32);
-                            let v55: string = string("v47 }}}}); {{{ //");
+                            let v55: string = string("v47 }}}}); {{{ // rust.fix_closure\'");
                             v47
                         }
                     }
@@ -1278,7 +1278,7 @@ mod module_eef1bd43 {
             {
                 {
                     {
-                        //;
+                        // rust.fix_closure';
                         __result
                     }
                 }
@@ -1299,13 +1299,13 @@ mod module_eef1bd43 {
                         let v5: std::pin::Pin<Box<dyn std::future::Future<Output = rexie::Rexie>>> =
                             Dice_ui::method10(Dice_ui::method6());
                         let v7: rexie::Rexie = v5.await;
-                        let v14: string = string("v7 }}); { //");
+                        let v14: string = string("v7 }}); { // rust.fix_closure\'");
                         v7
                     }
                 },
             );
             {
-                //;
+                // rust.fix_closure';
                 __result
             }
         }
@@ -1556,14 +1556,14 @@ mod module_eef1bd43 {
                             }),
                             _ => None::<Option<LrcPtr<Dice_ui::Heap3>>>,
                         }));
-                        let v145: string = string("v136 }}}); {{ //");
+                        let v145: string = string("v136 }}}); {{ // rust.fix_closure\'");
                         v136
                     }
                 }
             });
             {
                 {
-                    //;
+                    // rust.fix_closure';
                     __result
                 }
             }
@@ -1733,14 +1733,14 @@ mod module_eef1bd43 {
                             } else {
                                 Dice_ui::US4::US4_1
                             });
-                        let v165: string = string("v156 }}}); {{ //");
+                        let v165: string = string("v156 }}}); {{ // rust.fix_closure\'");
                         v156
                     }
                 }
             });
             {
                 {
-                    //;
+                    // rust.fix_closure';
                     __result
                 }
             }
@@ -1766,13 +1766,13 @@ mod module_eef1bd43 {
                         let v6: std::pin::Pin<Box<dyn std::future::Future<Output = Dice_ui::US4>>> =
                             Dice_ui::method28(Dice_ui::method12(x));
                         let v8: Dice_ui::US4 = v6.await;
-                        let v15: string = string("v8 }}); { //");
+                        let v15: string = string("v8 }}); { // rust.fix_closure\'");
                         v8
                     }
                 },
             );
             {
-                //;
+                // rust.fix_closure';
                 __result
             }
         }
@@ -2432,12 +2432,12 @@ mod module_eef1bd43 {
                                     v70.done().await?;
                                     let v89: Result<(), rexie::Error> =
                                         Dice_ui::method37(Ok::<(), rexie::Error>(()));
-                                    let v96: string = string("v89 }}); { //");
+                                    let v96: string = string("v89 }}); { // rust.fix_closure\'");
                                     v89
                                 }
                             });
                             {
-                                //;
+                                // rust.fix_closure';
                                 {
                                     let v98: std::pin::Pin<
                                         Box<
@@ -2475,12 +2475,12 @@ mod module_eef1bd43 {
                     }
                     Dice_ui::method38();
                     {
-                        let v115: string = string("() }}); { //");
+                        let v115: string = string("() }}); { // rust.fix_closure\'");
                         ()
                     }
                 });
                 {
-                    //;
+                    // rust.fix_closure';
                     __result
                 }
             }
@@ -3550,14 +3550,14 @@ mod module_eef1bd43 {
                                 }),
                                 _ => None::<LrcPtr<Dice_ui::Heap4>>,
                             }));
-                        let v145: string = string("v136 }}}); {{ //");
+                        let v145: string = string("v136 }}}); {{ // rust.fix_closure\'");
                         v136
                     }
                 }
             });
             {
                 {
-                    //;
+                    // rust.fix_closure';
                     __result
                 }
             }
@@ -3659,14 +3659,14 @@ mod module_eef1bd43 {
                                     )
                                 }
                             });
-                        let v74: string = string("v65 }}}); {{ //");
+                        let v74: string = string("v65 }}}); {{ // rust.fix_closure\'");
                         v65
                     }
                 }
             });
             {
                 {
-                    //;
+                    // rust.fix_closure';
                     __result
                 }
             }
@@ -3775,12 +3775,12 @@ mod module_eef1bd43 {
                     leptos::logging::log!("{}", v48);
                     let v51: Result<Vec<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String> =
                         Dice_ui::method69(v36);
-                    let v58: string = string("v51 }}); { //");
+                    let v58: string = string("v51 }}); { // rust.fix_closure\'");
                     v51
                 }
             });
             {
-                //;
+                // rust.fix_closure';
                 __result
             }
         }
@@ -3841,13 +3841,13 @@ mod module_eef1bd43 {
                         ));
                         let v10: Result<Vec<Option<LrcPtr<Dice_ui::Heap4>>>, std::string::String> =
                             v8.await;
-                        let v17: string = string("v10 }}); { //");
+                        let v17: string = string("v10 }}); { // rust.fix_closure\'");
                         v10
                     }
                 },
             );
             {
-                //;
+                // rust.fix_closure';
                 __result
             }
         }
@@ -4263,12 +4263,12 @@ mod module_eef1bd43 {
                                 Err::<Option<string>, std::string::String>(v214_1_0.clone())
                             }
                         });
-                    let v228: string = string("v221 }}); { //");
+                    let v228: string = string("v221 }}); { // rust.fix_closure\'");
                     v221
                 }
             });
             {
-                //;
+                // rust.fix_closure';
                 __result
             }
         }
@@ -4449,14 +4449,14 @@ mod module_eef1bd43 {
                         let v93: Result<Vec<Option<string>>, std::string::String> = v91.await;
                         let v97: Result<Vec<Option<string>>, std::string::String> =
                             Dice_ui::method85(Ok::<Vec<Option<string>>, std::string::String>(v93?));
-                        let v106: string = string("v97 }}}); {{ //");
+                        let v106: string = string("v97 }}}); {{ // rust.fix_closure\'");
                         v97
                     }
                 }
             });
             {
                 {
-                    //;
+                    // rust.fix_closure';
                     __result
                 }
             }
@@ -4514,13 +4514,13 @@ mod module_eef1bd43 {
                             patternInput.0.clone(),
                         ));
                         let v10: Result<Vec<Option<string>>, std::string::String> = v8.await;
-                        let v17: string = string("v10 }}); { //");
+                        let v17: string = string("v10 }}); { // rust.fix_closure\'");
                         v10
                     }
                 },
             );
             {
-                //;
+                // rust.fix_closure';
                 __result
             }
         }
@@ -4601,12 +4601,12 @@ mod module_eef1bd43 {
                                 v28.done().await?;
                                 let v47: Result<(), rexie::Error> =
                                     Dice_ui::method37(Ok::<(), rexie::Error>(()));
-                                let v54: string = string("v47 }}); { //");
+                                let v54: string = string("v47 }}); { // rust.fix_closure\'");
                                 v47
                             }
                         });
                         {
-                            //;
+                            // rust.fix_closure';
                             {
                                 let v56: std::pin::Pin<
                                     Box<dyn std::future::Future<Output = Result<(), rexie::Error>>>,
@@ -4632,12 +4632,12 @@ mod module_eef1bd43 {
                             })
                         }
                     });
-                    let v81: string = string("v74 }}); { //");
+                    let v81: string = string("v74 }}); { // rust.fix_closure\'");
                     v74
                 }
             });
             {
-                //;
+                // rust.fix_closure';
                 __result
             }
         }
@@ -4735,14 +4735,14 @@ mod module_eef1bd43 {
                         let v65: Result<Vec<()>, std::string::String> = v63.await;
                         let v69: Result<Vec<()>, std::string::String> =
                             Dice_ui::method91(Ok::<Vec<()>, std::string::String>(v65?));
-                        let v78: string = string("v69 }}}); {{ //");
+                        let v78: string = string("v69 }}}); {{ // rust.fix_closure\'");
                         v69
                     }
                 }
             });
             {
                 {
-                    //;
+                    // rust.fix_closure';
                     __result
                 }
             }
@@ -9202,12 +9202,12 @@ mod module_eef1bd43 {
                     let v357: bool = true;
                     leptos::logging::log!("{}", v355);
                     let v358: Result<Dice_ui::US60, std::string::String> = Dice_ui::method119(v343);
-                    let v365: string = string("v358 }}); { //");
+                    let v365: string = string("v358 }}); { // rust.fix_closure\'");
                     v358
                 }
             });
             {
-                //;
+                // rust.fix_closure';
                 __result
             }
         }

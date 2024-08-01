@@ -654,7 +654,7 @@ and method6 () : std_pin_Pin<Box<Dyn<std_future_Future<rexie_Rexie>>>> =
     let v19 : string = v18 + v17 
     let v20 : string = "{"
     let v21 : string = v16 + v20 
-    let v22 : string = "v15 " + v19 + "); " + v21 + " //"
+    let v22 : string = "v15 " + v19 + "); " + v21 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v22 
     let v23 : string = "__result"
     let v24 : std_pin_Pin<Box<Dyn<std_future_Future<US3>>>> = Fable.Core.RustInterop.emitRustExpr () v23 
@@ -681,7 +681,7 @@ and method6 () : std_pin_Pin<Box<Dyn<std_future_Future<rexie_Rexie>>>> =
     let v52 : string = v16 + v20 
     let v53 : string = v52 + v20 
     let v54 : string = v53 + v20 
-    let v55 : string = "v47 " + v51 + "); " + v54 + " //"
+    let v55 : string = "v47 " + v51 + "); " + v54 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v55 
     let v56 : string = "__result"
     let v57 : std_pin_Pin<Box<Dyn<std_future_Future<rexie_Rexie>>>> = Fable.Core.RustInterop.emitRustExpr () v56 
@@ -704,7 +704,7 @@ and method5 () : leptos_Resource<US2, rexie_Rexie> =
     let v11 : string = v10 + v9 
     let v12 : string = "{"
     let v13 : string = v8 + v12 
-    let v14 : string = "v7 " + v11 + "); " + v13 + " //"
+    let v14 : string = "v7 " + v11 + "); " + v13 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v14 
     let v15 : string = "__result"
     let v16 : leptos_Resource<US2, rexie_Rexie> = Fable.Core.RustInterop.emitRustExpr () v15 
@@ -1080,7 +1080,7 @@ and method14 (v0 : string, v1 : rexie_Rexie) : std_pin_Pin<Box<Dyn<std_future_Fu
     let v142 : string = "{"
     let v143 : string = v137 + v142 
     let v144 : string = v143 + v142 
-    let v145 : string = "v136 " + v141 + "); " + v144 + " //"
+    let v145 : string = "v136 " + v141 + "); " + v144 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v145 
     let v146 : string = "__result"
     let v147 : std_pin_Pin<Box<Dyn<std_future_Future<Result<Heap3 option option, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v146 
@@ -1193,7 +1193,7 @@ and method12 (v0 : rexie_Rexie option) : std_pin_Pin<Box<Dyn<std_future_Future<U
     let v162 : string = "{"
     let v163 : string = v157 + v162 
     let v164 : string = v163 + v162 
-    let v165 : string = "v156 " + v161 + "); " + v164 + " //"
+    let v165 : string = "v156 " + v161 + "); " + v164 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v165 
     let v166 : string = "__result"
     let v167 : std_pin_Pin<Box<Dyn<std_future_Future<US4>>>> = Fable.Core.RustInterop.emitRustExpr () v166 
@@ -1216,7 +1216,7 @@ and method11 (v0 : leptos_Resource<US2, rexie_Rexie>) : leptos_Resource<rexie_Re
     let v12 : string = v11 + v10 
     let v13 : string = "{"
     let v14 : string = v9 + v13 
-    let v15 : string = "v8 " + v12 + "); " + v14 + " //"
+    let v15 : string = "v8 " + v12 + "); " + v14 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v15 
     let v16 : string = "__result"
     let v17 : leptos_Resource<rexie_Rexie option, US4> = Fable.Core.RustInterop.emitRustExpr () v16 
@@ -1749,7 +1749,7 @@ and closure30 (v0 : leptos_Resource<US2, rexie_Rexie>) (v1 : Heap3) : std_pin_Pi
         let v93 : string = v92 + v91 
         let v94 : string = "{"
         let v95 : string = v90 + v94 
-        let v96 : string = "v89 " + v93 + "); " + v95 + " //"
+        let v96 : string = "v89 " + v93 + "); " + v95 + " // rust.fix_closure'"
         Fable.Core.RustInterop.emitRustExpr () v96 
         let v97 : string = "__result"
         let v98 : std_pin_Pin<Box<Dyn<std_future_Future<Result<unit, rexie_Error>>>>> = Fable.Core.RustInterop.emitRustExpr () v97 
@@ -1771,7 +1771,7 @@ and closure30 (v0 : leptos_Resource<US2, rexie_Rexie>) (v1 : Heap3) : std_pin_Pi
     let v112 : string = v111 + v110 
     let v113 : string = "{"
     let v114 : string = v109 + v113 
-    let v115 : string = "() " + v112 + "); " + v114 + " //"
+    let v115 : string = "() " + v112 + "); " + v114 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v115 
     let v116 : string = "__result"
     let v117 : std_pin_Pin<Box<Dyn<std_future_Future<unit>>>> = Fable.Core.RustInterop.emitRustExpr () v116 
@@ -2605,7 +2605,7 @@ and method66 (v0 : string, v1 : rexie_Rexie) : std_pin_Pin<Box<Dyn<std_future_Fu
     let v142 : string = "{"
     let v143 : string = v137 + v142 
     let v144 : string = v143 + v142 
-    let v145 : string = "v136 " + v141 + "); " + v144 + " //"
+    let v145 : string = "v136 " + v141 + "); " + v144 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v145 
     let v146 : string = "__result"
     let v147 : std_pin_Pin<Box<Dyn<std_future_Future<Result<Heap4 option, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v146 
@@ -2670,7 +2670,7 @@ and closure65 (v0 : rexie_Rexie option) struct (v1 : string, v2 : US25, v3 : str
     let v71 : string = "{"
     let v72 : string = v66 + v71 
     let v73 : string = v72 + v71 
-    let v74 : string = "v65 " + v70 + "); " + v73 + " //"
+    let v74 : string = "v65 " + v70 + "); " + v73 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v74 
     let v75 : string = "__result"
     let v76 : std_pin_Pin<Box<Dyn<std_future_Future<Result<Heap4 option, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v75 
@@ -2713,7 +2713,7 @@ and method64 (v0 : Vec<struct (string * US25 * string * bool * bool)>, v1 : rexi
     let v55 : string = v54 + v53 
     let v56 : string = "{"
     let v57 : string = v52 + v56 
-    let v58 : string = "v51 " + v55 + "); " + v57 + " //"
+    let v58 : string = "v51 " + v55 + "); " + v57 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v58 
     let v59 : string = "__result"
     let v60 : std_pin_Pin<Box<Dyn<std_future_Future<Result<Vec<Heap4 option>, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v59 
@@ -2736,7 +2736,7 @@ and method63 (v0 : leptos_Memo<Vec<struct (string * US25 * string * bool * bool)
     let v14 : string = v13 + v12 
     let v15 : string = "{"
     let v16 : string = v11 + v15 
-    let v17 : string = "v10 " + v14 + "); " + v16 + " //"
+    let v17 : string = "v10 " + v14 + "); " + v16 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v17 
     let v18 : string = "__result"
     let v19 : leptos_Resource<struct (rexie_Rexie option * Vec<struct (string * US25 * string * bool * bool)>), Result<Vec<Heap4 option>, std_string_String>> = Fable.Core.RustInterop.emitRustExpr () v18 
@@ -3093,7 +3093,7 @@ and closure74 (v0 : US29, v1 : int32) struct (v2 : string, v3 : US25, v4 : strin
     let v225 : string = v224 + v223 
     let v226 : string = "{"
     let v227 : string = v222 + v226 
-    let v228 : string = "v221 " + v225 + "); " + v227 + " //"
+    let v228 : string = "v221 " + v225 + "); " + v227 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v228 
     let v229 : string = "__result"
     let v230 : std_pin_Pin<Box<Dyn<std_future_Future<Result<string option, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v229 
@@ -3178,7 +3178,7 @@ and method72 (v0 : Result<Vec<Heap4 option>, std_string_String> option, v1 : Vec
     let v103 : string = "{"
     let v104 : string = v98 + v103 
     let v105 : string = v104 + v103 
-    let v106 : string = "v97 " + v102 + "); " + v105 + " //"
+    let v106 : string = "v97 " + v102 + "); " + v105 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v106 
     let v107 : string = "__result"
     let v108 : std_pin_Pin<Box<Dyn<std_future_Future<Result<Vec<string option>, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v107 
@@ -3201,7 +3201,7 @@ and method71 (v0 : leptos_Memo<Vec<struct (string * US25 * string * bool * bool)
     let v14 : string = v13 + v12 
     let v15 : string = "{"
     let v16 : string = v11 + v15 
-    let v17 : string = "v10 " + v14 + "); " + v16 + " //"
+    let v17 : string = "v10 " + v14 + "); " + v16 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v17 
     let v18 : string = "__result"
     let v19 : leptos_Resource<struct (Vec<struct (string * US25 * string * bool * bool)> * Result<Vec<Heap4 option>, std_string_String> option), Result<Vec<string option>, std_string_String>> = Fable.Core.RustInterop.emitRustExpr () v18 
@@ -3292,7 +3292,7 @@ and closure77 (v0 : Heap4, v1 : US5) struct (v2 : string, v3 : US25, v4 : string
             let v51 : string = v50 + v49 
             let v52 : string = "{"
             let v53 : string = v48 + v52 
-            let v54 : string = "v47 " + v51 + "); " + v53 + " //"
+            let v54 : string = "v47 " + v51 + "); " + v53 + " // rust.fix_closure'"
             Fable.Core.RustInterop.emitRustExpr () v54 
             let v55 : string = "__result"
             let v56 : std_pin_Pin<Box<Dyn<std_future_Future<Result<unit, rexie_Error>>>>> = Fable.Core.RustInterop.emitRustExpr () v55 
@@ -3324,7 +3324,7 @@ and closure77 (v0 : Heap4, v1 : US5) struct (v2 : string, v3 : US25, v4 : string
     let v78 : string = v77 + v76 
     let v79 : string = "{"
     let v80 : string = v75 + v79 
-    let v81 : string = "v74 " + v78 + "); " + v80 + " //"
+    let v81 : string = "v74 " + v78 + "); " + v80 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v81 
     let v82 : string = "__result"
     let v83 : std_pin_Pin<Box<Dyn<std_future_Future<Result<unit, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v82 
@@ -3381,7 +3381,7 @@ and closure76 (v0 : leptos_Memo<Vec<struct (string * US25 * string * bool * bool
     let v75 : string = "{"
     let v76 : string = v70 + v75 
     let v77 : string = v76 + v75 
-    let v78 : string = "v69 " + v74 + "); " + v77 + " //"
+    let v78 : string = "v69 " + v74 + "); " + v77 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v78 
     let v79 : string = "__result"
     let v80 : std_pin_Pin<Box<Dyn<std_future_Future<Result<Vec<unit>, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v79 
@@ -5155,7 +5155,7 @@ and closure132 () (v0 : Heap6) : std_pin_Pin<Box<Dyn<std_future_Future<Result<US
     let v362 : string = v361 + v360 
     let v363 : string = "{"
     let v364 : string = v359 + v363 
-    let v365 : string = "v358 " + v362 + "); " + v364 + " //"
+    let v365 : string = "v358 " + v362 + "); " + v364 + " // rust.fix_closure'"
     Fable.Core.RustInterop.emitRustExpr () v365 
     let v366 : string = "__result"
     let v367 : std_pin_Pin<Box<Dyn<std_future_Future<Result<US60, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v366 
