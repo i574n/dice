@@ -46,7 +46,7 @@ $targetDir = GetTargetDir $projectName
 # -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap3 {" `
 # -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap4 {" `
 
-cargo +nightly fmt --
+cargo fmt --
 leptosfmt (Resolve-Path "./src/$($projectName)_wasm.rs").Path
 
 if (!$fast) {
@@ -61,7 +61,7 @@ if (!$fast) {
 Write-Output "trunk:"
 
 { trunk build $($fast ? $() : '--release') --dist="$targetDir/trunk" --public-url="./" --no-sri } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.92" }
-# { cargo +nightly leptos build --release } | Invoke-Block
+# { cargo leptos build --release } | Invoke-Block
 
 $path = "$targetDir/trunk/index.html"
 $html = Get-Content $path -Raw

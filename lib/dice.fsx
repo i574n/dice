@@ -706,8 +706,7 @@ and method15 () : uint8 =
 and method40 (v0 : UH1, v1 : int64) : US5 =
     let v2 : int64 = v1 + 1L
     let v3 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1} / result: {v2}"
-    let v6 : (string -> unit) = System.Console.WriteLine
-    v6 v3
+    v3 |> System.Console.WriteLine
     US5_0(v2, v0)
 and method39 (v0 : UH1, v1 : int64) : US5 =
     match v0 with
@@ -717,14 +716,12 @@ and method39 (v0 : UH1, v1 : int64) : US5 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : string = $"accumulate_dice_rolls / power: {0y} / acc: {v1} / roll: {v3} / value: {v7}"
-            let v11 : (string -> unit) = System.Console.WriteLine
-            v11 v8
-            let v16 : int64 = v1 + v7
-            method40(v4, v16)
+            v8 |> System.Console.WriteLine
+            let v15 : int64 = v1 + v7
+            method40(v4, v15)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {0y} / acc: {v1} / roll: {v3}"
-            let v21 : (string -> unit) = System.Console.WriteLine
-            v21 v18
+            let v17 : string = $"accumulate_dice_rolls / power: {0y} / acc: {v1} / roll: {v3}"
+            v17 |> System.Console.WriteLine
             method40(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -737,14 +734,12 @@ and method38 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 6L
             let v9 : string = $"accumulate_dice_rolls / power: {1y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method39(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method39(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {1y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {1y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method39(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -757,14 +752,12 @@ and method37 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 36L
             let v9 : string = $"accumulate_dice_rolls / power: {2y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method38(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method38(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {2y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {2y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method38(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -777,14 +770,12 @@ and method36 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 216L
             let v9 : string = $"accumulate_dice_rolls / power: {3y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method37(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method37(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {3y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {3y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method37(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -797,14 +788,12 @@ and method35 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 1296L
             let v9 : string = $"accumulate_dice_rolls / power: {4y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method36(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method36(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {4y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {4y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method36(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -817,14 +806,12 @@ and method34 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 7776L
             let v9 : string = $"accumulate_dice_rolls / power: {5y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method35(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method35(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {5y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {5y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method35(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -837,14 +824,12 @@ and method33 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 46656L
             let v9 : string = $"accumulate_dice_rolls / power: {6y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method34(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method34(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {6y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {6y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method34(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -857,14 +842,12 @@ and method32 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 279936L
             let v9 : string = $"accumulate_dice_rolls / power: {7y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method33(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method33(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {7y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {7y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method33(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -877,14 +860,12 @@ and method31 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 1679616L
             let v9 : string = $"accumulate_dice_rolls / power: {8y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method32(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method32(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {8y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {8y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method32(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -897,14 +878,12 @@ and method30 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 10077696L
             let v9 : string = $"accumulate_dice_rolls / power: {9y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method31(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method31(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {9y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {9y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method31(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -917,14 +896,12 @@ and method29 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 60466176L
             let v9 : string = $"accumulate_dice_rolls / power: {10y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method30(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method30(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {10y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {10y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method30(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -937,14 +914,12 @@ and method28 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 362797056L
             let v9 : string = $"accumulate_dice_rolls / power: {11y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method29(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method29(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {11y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {11y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method29(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -957,14 +932,12 @@ and method27 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 2176782336L
             let v9 : string = $"accumulate_dice_rolls / power: {12y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method28(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method28(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {12y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {12y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method28(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -977,14 +950,12 @@ and method26 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 13060694016L
             let v9 : string = $"accumulate_dice_rolls / power: {13y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method27(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method27(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {13y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {13y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method27(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -997,14 +968,12 @@ and method25 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 78364164096L
             let v9 : string = $"accumulate_dice_rolls / power: {14y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method26(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method26(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {14y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {14y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method26(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1017,14 +986,12 @@ and method24 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 470184984576L
             let v9 : string = $"accumulate_dice_rolls / power: {15y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method25(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method25(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {15y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {15y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method25(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1037,14 +1004,12 @@ and method23 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 2821109907456L
             let v9 : string = $"accumulate_dice_rolls / power: {16y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method24(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method24(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {16y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {16y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method24(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1057,14 +1022,12 @@ and method22 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 16926659444736L
             let v9 : string = $"accumulate_dice_rolls / power: {17y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method23(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method23(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {17y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {17y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method23(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1077,14 +1040,12 @@ and method21 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 101559956668416L
             let v9 : string = $"accumulate_dice_rolls / power: {18y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method22(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method22(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {18y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {18y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method22(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1097,14 +1058,12 @@ and method20 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 609359740010496L
             let v9 : string = $"accumulate_dice_rolls / power: {19y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method21(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method21(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {19y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {19y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method21(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1117,14 +1076,12 @@ and method19 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 3656158440062976L
             let v9 : string = $"accumulate_dice_rolls / power: {20y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method20(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method20(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {20y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {20y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method20(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1137,14 +1094,12 @@ and method18 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 21936950640377856L
             let v9 : string = $"accumulate_dice_rolls / power: {21y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method19(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method19(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {21y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {21y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method19(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1157,14 +1112,12 @@ and method17 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 131621703842267136L
             let v9 : string = $"accumulate_dice_rolls / power: {22y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method18(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method18(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {22y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {22y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method18(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1177,14 +1130,12 @@ and method16 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 789730223053602816L
             let v9 : string = $"accumulate_dice_rolls / power: {23y} / acc: {v1} / roll: {v3} / value: {v8}"
-            let v12 : (string -> unit) = System.Console.WriteLine
-            v12 v9
-            let v17 : int64 = v1 + v8
-            method17(v4, v17)
+            v9 |> System.Console.WriteLine
+            let v16 : int64 = v1 + v8
+            method17(v4, v16)
         else
-            let v19 : string = $"accumulate_dice_rolls / power: {23y} / acc: {v1} / roll: {v3}"
-            let v22 : (string -> unit) = System.Console.WriteLine
-            v22 v19
+            let v18 : string = $"accumulate_dice_rolls / power: {23y} / acc: {v1} / roll: {v3}"
+            v18 |> System.Console.WriteLine
             method17(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1305,14 +1256,12 @@ and method14 (v0 : UH1, v1 : int8) : int64 =
             method14(v108, v109)
 and closure80 () (v0 : (string [])) : int32 =
     let v1 : string = $"calculate_dice_count / max: {9223372036854775807L} / n: {24y} / p: {4738381338321616896L}"
-    let v4 : (string -> unit) = System.Console.WriteLine
-    v4 v1
-    let v9 : UH1 = UH1_0
-    let v10 : int8 = 0y
-    let v11 : int64 = method14(v9, v10)
-    let v12 : string = $"result: {v11}"
-    let v15 : (string -> unit) = System.Console.WriteLine
-    v15 v12
+    v1 |> System.Console.WriteLine
+    let v8 : UH1 = UH1_0
+    let v9 : int8 = 0y
+    let v10 : int64 = method14(v8, v9)
+    let v11 : string = $"result: {v10}"
+    v11 |> System.Console.WriteLine
     0
 let v0 : (int64 -> (UH0 -> UH0)) = closure0()
 let rotate_numbers x = v0 x

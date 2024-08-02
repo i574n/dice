@@ -39,10 +39,10 @@ $targetDir = GetTargetDir $projectName
 
 Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
 
-cargo +nightly fmt --
+cargo fmt --
 
 if (!$fast) {
-    { cargo +nightly run --release } | Invoke-Block
+    { cargo run --release } | Invoke-Block
 }
 
 if ($env:CI) {
