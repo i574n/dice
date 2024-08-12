@@ -50,6 +50,22 @@ and closure1 (v0 : int64) (v1 : UH0) : UH0 =
     method0(v0, v1, v2)
 and closure0 () (v0 : int64) : (UH0 -> UH0) =
     closure1(v0)
+and closure4 (v0 : US0 option ref) (v1 : US0 option) : US0 option ref =
+    v0.Value <- v1 
+    v0
+and closure5 (v0 : (string -> unit) option, v1 : (US0 option -> US0 option ref)) () : unit =
+    match v0 with
+    | Some x -> (
+    (fun () ->
+    (fun () ->
+    let v2 : (string -> unit) = x
+    let v3 : US0 = US0_0(v2)
+    v3 
+    )
+    |> fun x -> x () |> Some
+    ) () ) | None -> None
+    |> v1 |> ignore
+    ()
 and method1 (v0 : UH1, v1 : UH1) : UH1 =
     match v0 with
     | UH1_1(v2, v3) -> (* Cons *)
@@ -64,19 +80,19 @@ and method2 (v0 : UH1, v1 : UH1) : UH1 =
         UH1_1(v2, v4)
     | UH1_0 -> (* Nil *)
         v1
-and closure5 (v0 : UH0) () : UH0 =
+and closure7 (v0 : UH0) () : UH0 =
     v0
 and method3 (v0 : UH1, v1 : UH0) : UH0 =
     match v0 with
     | UH1_1(v2, v3) -> (* Cons *)
         let v4 : UH0 = method3(v3, v1)
-        let v5 : (unit -> UH0) = closure5(v4)
+        let v5 : (unit -> UH0) = closure7(v4)
         UH0_0(v2, v5)
     | UH1_0 -> (* Nil *)
         v1
-and closure6 (v0 : UH0) () : UH0 =
+and closure8 (v0 : UH0) () : UH0 =
     v0
-and closure7 (v0 : UH0, v1 : Mut0) () : UH0 =
+and closure9 (v0 : UH0, v1 : Mut0) () : UH0 =
     let v2 : US1 = v1.l0
     match v2 with
     | US1_1(v3) -> (* Computed *)
@@ -96,7 +112,7 @@ and closure7 (v0 : UH0, v1 : Mut0) () : UH0 =
 and method4 (v0 : UH0, v1 : (unit -> UH0)) : (unit -> UH0) =
     let v2 : US1 = US1_0(v1)
     let v3 : Mut0 = {l0 = v2} : Mut0
-    closure7(v0, v3)
+    closure9(v0, v3)
 and method6 (v0 : int64, v1 : UH0) : US2 =
     match v1 with
     | UH0_0(v2, v3) -> (* StreamCons *)
@@ -161,9 +177,9 @@ and method5 (v0 : US0, v1 : (unit -> UH0), v2 : Mut1, v3 : Mut1, v4 : Mut1, v5 :
         let v18 : US2 = US2_0(v15)
         v5.l0 <- v18
         v15
-and closure8 (v0 : US0, v1 : (unit -> UH0), v2 : Mut1, v3 : Mut1, v4 : Mut1, v5 : Mut2) () : uint8 =
+and closure10 (v0 : US0, v1 : (unit -> UH0), v2 : Mut1, v3 : Mut1, v4 : Mut1, v5 : Mut2) () : uint8 =
     method5(v0, v1, v2, v3, v4, v5)
-and closure4 (v0 : US0) (v1 : UH1) : (unit -> uint8) =
+and closure6 (v0 : US0) (v1 : UH1) : (unit -> uint8) =
     let v2 : string = $"create_sequential_roller ()"
     match v0 with
     | US0_1 -> (* None *)
@@ -175,32 +191,26 @@ and closure4 (v0 : US0) (v1 : UH1) : (unit -> uint8) =
     let v6 : UH1 = method2(v1, v5)
     let v7 : UH0 = UH0_1
     let v8 : UH0 = method3(v6, v7)
-    let v9 : (unit -> UH0) = closure6(v8)
+    let v9 : (unit -> UH0) = closure8(v8)
     let v10 : (unit -> UH0) = method4(v8, v9)
     let v11 : Mut1 = {l0 = 0L} : Mut1
     let v12 : Mut1 = {l0 = 1L} : Mut1
     let v13 : Mut1 = {l0 = -1L} : Mut1
     let v14 : US2 = US2_1
     let v15 : Mut2 = {l0 = v14} : Mut2
-    closure8(v0, v10, v11, v12, v13, v15)
+    closure10(v0, v10, v11, v12, v13, v15)
 and closure3 () (v0 : (string -> unit) option) : (UH1 -> (unit -> uint8)) =
-    let v3 : US0 option = None
-    let _v3 = ref v3 
-    match v0 with
-    | Some x -> (
-    (fun () ->
-    (fun () ->
-    let v4 : (string -> unit) = x
-    let v5 : US0 = US0_0(v4)
-    v5 
-    )
-    |> fun x -> x () |> Some
-    ) () ) | None -> None
-    |> fun x -> _v3.Value <- x
-    let v6 : US0 option = _v3.Value 
-    let v29 : US0 = US0_1
-    let v30 : US0 = v6 |> Option.defaultValue v29 
-    closure4(v30)
+    let v1 : US0 option = None
+    let _v1 = ref v1 
+    let v2 : US0 option ref = _v1 
+    let v3 : (US0 option -> US0 option ref) = closure4(v2)
+    let v4 : unit = ()
+    let v5 : (unit -> unit) = closure5(v0, v3)
+    let v6 : unit = (fun () -> v5 (); v4) ()
+    let v7 : US0 option = _v1.Value 
+    let v18 : US0 = US0_1
+    let v19 : US0 = v7 |> Option.defaultValue v18 
+    closure6(v19)
 and method7 (v0 : US0, v1 : uint64, v2 : int8, v3 : uint64) : int8 =
     let v4 : bool = v3 < v1
     if v4 then
@@ -225,197 +235,197 @@ and method7 (v0 : US0, v1 : uint64, v2 : int8, v3 : uint64) : int8 =
         | US0_0(v13) -> (* Some *)
             v13 v12
         v2
-and closure76 () () : UH2 =
-    let v0 : (unit -> UH2) = closure76()
+and closure78 () () : UH2 =
+    let v0 : (unit -> UH2) = closure78()
     UH2_0(0UL, v0)
+and closure77 () () : UH2 =
+    let v0 : (unit -> UH2) = closure78()
+    UH2_0(9223372036854775808UL, v0)
+and closure76 () () : UH2 =
+    let v0 : (unit -> UH2) = closure77()
+    UH2_0(4611686018427387904UL, v0)
 and closure75 () () : UH2 =
     let v0 : (unit -> UH2) = closure76()
-    UH2_0(9223372036854775808UL, v0)
+    UH2_0(6917529027641081856UL, v0)
 and closure74 () () : UH2 =
     let v0 : (unit -> UH2) = closure75()
-    UH2_0(4611686018427387904UL, v0)
+    UH2_0(1152921504606846976UL, v0)
 and closure73 () () : UH2 =
     let v0 : (unit -> UH2) = closure74()
-    UH2_0(6917529027641081856UL, v0)
+    UH2_0(15564440312192434176UL, v0)
 and closure72 () () : UH2 =
     let v0 : (unit -> UH2) = closure73()
-    UH2_0(1152921504606846976UL, v0)
+    UH2_0(11817445422220181504UL, v0)
 and closure71 () () : UH2 =
     let v0 : (unit -> UH2) = closure72()
-    UH2_0(15564440312192434176UL, v0)
+    UH2_0(5044031582654955520UL, v0)
 and closure70 () () : UH2 =
     let v0 : (unit -> UH2) = closure71()
-    UH2_0(11817445422220181504UL, v0)
+    UH2_0(6989586621679009792UL, v0)
 and closure69 () () : UH2 =
     let v0 : (unit -> UH2) = closure70()
-    UH2_0(5044031582654955520UL, v0)
+    UH2_0(16537217831704461312UL, v0)
 and closure68 () () : UH2 =
     let v0 : (unit -> UH2) = closure69()
-    UH2_0(6989586621679009792UL, v0)
+    UH2_0(11979575008805519360UL, v0)
 and closure67 () () : UH2 =
     let v0 : (unit -> UH2) = closure68()
-    UH2_0(16537217831704461312UL, v0)
+    UH2_0(14294425217273954304UL, v0)
 and closure66 () () : UH2 =
     let v0 : (unit -> UH2) = closure67()
-    UH2_0(11979575008805519360UL, v0)
+    UH2_0(2382404202878992384UL, v0)
 and closure65 () () : UH2 =
     let v0 : (unit -> UH2) = closure66()
-    UH2_0(14294425217273954304UL, v0)
+    UH2_0(6545982058383015936UL, v0)
 and closure64 () () : UH2 =
     let v0 : (unit -> UH2) = closure65()
-    UH2_0(2382404202878992384UL, v0)
+    UH2_0(10314369046585278464UL, v0)
 and closure63 () () : UH2 =
     let v0 : (unit -> UH2) = closure64()
-    UH2_0(6545982058383015936UL, v0)
+    UH2_0(4793518853382471680UL, v0)
 and closure62 () () : UH2 =
     let v0 : (unit -> UH2) = closure63()
-    UH2_0(10314369046585278464UL, v0)
+    UH2_0(3873377154515337216UL, v0)
 and closure61 () () : UH2 =
     let v0 : (unit -> UH2) = closure62()
-    UH2_0(4793518853382471680UL, v0)
+    UH2_0(645562859085889536UL, v0)
 and closure60 () () : UH2 =
     let v0 : (unit -> UH2) = closure61()
-    UH2_0(3873377154515337216UL, v0)
+    UH2_0(107593809847648256UL, v0)
 and closure59 () () : UH2 =
     let v0 : (unit -> UH2) = closure60()
-    UH2_0(645562859085889536UL, v0)
+    UH2_0(3092389647259533312UL, v0)
 and closure58 () () : UH2 =
     let v0 : (unit -> UH2) = closure59()
-    UH2_0(107593809847648256UL, v0)
+    UH2_0(9738770311398031360UL, v0)
 and closure57 () () : UH2 =
     let v0 : (unit -> UH2) = closure58()
-    UH2_0(3092389647259533312UL, v0)
+    UH2_0(16995415113324298240UL, v0)
 and closure56 () () : UH2 =
     let v0 : (unit -> UH2) = closure57()
-    UH2_0(9738770311398031360UL, v0)
+    UH2_0(8981483876790566912UL, v0)
 and closure55 () () : UH2 =
     let v0 : (unit -> UH2) = closure56()
-    UH2_0(16995415113324298240UL, v0)
+    UH2_0(13794743361938128896UL, v0)
 and closure54 () () : UH2 =
     let v0 : (unit -> UH2) = closure55()
-    UH2_0(8981483876790566912UL, v0)
+    UH2_0(2299123893656354816UL, v0)
 and closure53 () () : UH2 =
     let v0 : (unit -> UH2) = closure54()
-    UH2_0(13794743361938128896UL, v0)
+    UH2_0(3457644661227651072UL, v0)
 and closure52 () () : UH2 =
     let v0 : (unit -> UH2) = closure53()
-    UH2_0(2299123893656354816UL, v0)
+    UH2_0(576274110204608512UL, v0)
 and closure51 () () : UH2 =
     let v0 : (unit -> UH2) = closure52()
-    UH2_0(3457644661227651072UL, v0)
+    UH2_0(6244960376270618624UL, v0)
 and closure50 () () : UH2 =
     let v0 : (unit -> UH2) = closure51()
-    UH2_0(576274110204608512UL, v0)
+    UH2_0(13338656111851470848UL, v0)
 and closure49 () () : UH2 =
     let v0 : (unit -> UH2) = closure50()
-    UH2_0(6244960376270618624UL, v0)
+    UH2_0(14520938734448279552UL, v0)
 and closure48 () () : UH2 =
     let v0 : (unit -> UH2) = closure49()
-    UH2_0(13338656111851470848UL, v0)
+    UH2_0(14717985838214414336UL, v0)
 and closure47 () () : UH2 =
     let v0 : (unit -> UH2) = closure48()
-    UH2_0(14520938734448279552UL, v0)
+    UH2_0(5527454985320660992UL, v0)
 and closure46 () () : UH2 =
     let v0 : (unit -> UH2) = closure47()
-    UH2_0(14717985838214414336UL, v0)
+    UH2_0(16293529225644736512UL, v0)
 and closure45 () () : UH2 =
     let v0 : (unit -> UH2) = closure46()
-    UH2_0(5527454985320660992UL, v0)
+    UH2_0(11938960241128898560UL, v0)
 and closure44 () () : UH2 =
     let v0 : (unit -> UH2) = closure45()
-    UH2_0(16293529225644736512UL, v0)
+    UH2_0(8138741398091333632UL, v0)
 and closure43 () () : UH2 =
     let v0 : (unit -> UH2) = closure44()
-    UH2_0(11938960241128898560UL, v0)
+    UH2_0(7505371590918406144UL, v0)
 and closure42 () () : UH2 =
     let v0 : (unit -> UH2) = closure43()
-    UH2_0(8138741398091333632UL, v0)
+    UH2_0(16623181993244360704UL, v0)
 and closure41 () () : UH2 =
     let v0 : (unit -> UH2) = closure42()
-    UH2_0(7505371590918406144UL, v0)
+    UH2_0(8919445023443910656UL, v0)
 and closure40 () () : UH2 =
     let v0 : (unit -> UH2) = closure41()
-    UH2_0(16623181993244360704UL, v0)
+    UH2_0(4561031516192243712UL, v0)
 and closure39 () () : UH2 =
     let v0 : (unit -> UH2) = closure40()
-    UH2_0(8919445023443910656UL, v0)
+    UH2_0(9983543956220149760UL, v0)
 and closure38 () () : UH2 =
     let v0 : (unit -> UH2) = closure39()
-    UH2_0(4561031516192243712UL, v0)
+    UH2_0(4738381338321616896UL, v0)
 and closure37 () () : UH2 =
     let v0 : (unit -> UH2) = closure38()
-    UH2_0(9983543956220149760UL, v0)
+    UH2_0(789730223053602816UL, v0)
 and closure36 () () : UH2 =
     let v0 : (unit -> UH2) = closure37()
-    UH2_0(4738381338321616896UL, v0)
+    UH2_0(131621703842267136UL, v0)
 and closure35 () () : UH2 =
     let v0 : (unit -> UH2) = closure36()
-    UH2_0(789730223053602816UL, v0)
+    UH2_0(21936950640377856UL, v0)
 and closure34 () () : UH2 =
     let v0 : (unit -> UH2) = closure35()
-    UH2_0(131621703842267136UL, v0)
+    UH2_0(3656158440062976UL, v0)
 and closure33 () () : UH2 =
     let v0 : (unit -> UH2) = closure34()
-    UH2_0(21936950640377856UL, v0)
+    UH2_0(609359740010496UL, v0)
 and closure32 () () : UH2 =
     let v0 : (unit -> UH2) = closure33()
-    UH2_0(3656158440062976UL, v0)
+    UH2_0(101559956668416UL, v0)
 and closure31 () () : UH2 =
     let v0 : (unit -> UH2) = closure32()
-    UH2_0(609359740010496UL, v0)
+    UH2_0(16926659444736UL, v0)
 and closure30 () () : UH2 =
     let v0 : (unit -> UH2) = closure31()
-    UH2_0(101559956668416UL, v0)
+    UH2_0(2821109907456UL, v0)
 and closure29 () () : UH2 =
     let v0 : (unit -> UH2) = closure30()
-    UH2_0(16926659444736UL, v0)
+    UH2_0(470184984576UL, v0)
 and closure28 () () : UH2 =
     let v0 : (unit -> UH2) = closure29()
-    UH2_0(2821109907456UL, v0)
+    UH2_0(78364164096UL, v0)
 and closure27 () () : UH2 =
     let v0 : (unit -> UH2) = closure28()
-    UH2_0(470184984576UL, v0)
+    UH2_0(13060694016UL, v0)
 and closure26 () () : UH2 =
     let v0 : (unit -> UH2) = closure27()
-    UH2_0(78364164096UL, v0)
+    UH2_0(2176782336UL, v0)
 and closure25 () () : UH2 =
     let v0 : (unit -> UH2) = closure26()
-    UH2_0(13060694016UL, v0)
+    UH2_0(362797056UL, v0)
 and closure24 () () : UH2 =
     let v0 : (unit -> UH2) = closure25()
-    UH2_0(2176782336UL, v0)
+    UH2_0(60466176UL, v0)
 and closure23 () () : UH2 =
     let v0 : (unit -> UH2) = closure24()
-    UH2_0(362797056UL, v0)
+    UH2_0(10077696UL, v0)
 and closure22 () () : UH2 =
     let v0 : (unit -> UH2) = closure23()
-    UH2_0(60466176UL, v0)
+    UH2_0(1679616UL, v0)
 and closure21 () () : UH2 =
     let v0 : (unit -> UH2) = closure22()
-    UH2_0(10077696UL, v0)
+    UH2_0(279936UL, v0)
 and closure20 () () : UH2 =
     let v0 : (unit -> UH2) = closure21()
-    UH2_0(1679616UL, v0)
+    UH2_0(46656UL, v0)
 and closure19 () () : UH2 =
     let v0 : (unit -> UH2) = closure20()
-    UH2_0(279936UL, v0)
+    UH2_0(7776UL, v0)
 and closure18 () () : UH2 =
     let v0 : (unit -> UH2) = closure19()
-    UH2_0(46656UL, v0)
+    UH2_0(1296UL, v0)
 and closure17 () () : UH2 =
     let v0 : (unit -> UH2) = closure18()
-    UH2_0(7776UL, v0)
+    UH2_0(216UL, v0)
 and closure16 () () : UH2 =
     let v0 : (unit -> UH2) = closure17()
-    UH2_0(1296UL, v0)
+    UH2_0(36UL, v0)
 and closure15 () () : UH2 =
     let v0 : (unit -> UH2) = closure16()
-    UH2_0(216UL, v0)
-and closure14 () () : UH2 =
-    let v0 : (unit -> UH2) = closure15()
-    UH2_0(36UL, v0)
-and closure13 () () : UH2 =
-    let v0 : (unit -> UH2) = closure14()
     UH2_0(6UL, v0)
 and method10 (v0 : int8, v1 : UH2) : US4 =
     match v1 with
@@ -446,7 +456,7 @@ and method9 (v0 : US0, v1 : int8, v2 : UH1, v3 : uint64) : US3 =
             let v12 : bool = v10 > 1uy
             if v12 then
                 let v13 : uint64 = 1UL
-                let v14 : (unit -> UH2) = closure13()
+                let v14 : (unit -> UH2) = closure15()
                 let v15 : UH2 = UH2_0(v13, v14)
                 let v16 : US4 = method10(v1, v15)
                 let v20 : uint64 =
@@ -556,7 +566,7 @@ and method8 (v0 : US0, v1 : (unit -> uint8), v2 : bool, v3 : uint64, v4 : int8, 
                 let v31 : UH1 = UH1_1(v30, v5)
                 let v32 : int8 = v6 + 1y
                 method8(v0, v1, v2, v3, v4, v31, v32)
-and closure12 (v0 : US0, v1 : (unit -> uint8), v2 : bool) (v3 : uint64) : uint64 =
+and closure14 (v0 : US0, v1 : (unit -> uint8), v2 : bool) (v3 : uint64) : uint64 =
     let v4 : bool = v3 = 1UL
     let v8 : int8 =
         if v4 then
@@ -569,28 +579,22 @@ and closure12 (v0 : US0, v1 : (unit -> uint8), v2 : bool) (v3 : uint64) : uint64
     let v10 : UH1 = UH1_0
     let v11 : int8 = 0y
     method8(v0, v1, v2, v3, v9, v10, v11)
-and closure11 (v0 : US0, v1 : (unit -> uint8)) (v2 : bool) : (uint64 -> uint64) =
-    closure12(v0, v1, v2)
-and closure10 (v0 : US0) (v1 : (unit -> uint8)) : (bool -> (uint64 -> uint64)) =
-    closure11(v0, v1)
-and closure9 () (v0 : (string -> unit) option) : ((unit -> uint8) -> (bool -> (uint64 -> uint64))) =
-    let v3 : US0 option = None
-    let _v3 = ref v3 
-    match v0 with
-    | Some x -> (
-    (fun () ->
-    (fun () ->
-    let v4 : (string -> unit) = x
-    let v5 : US0 = US0_0(v4)
-    v5 
-    )
-    |> fun x -> x () |> Some
-    ) () ) | None -> None
-    |> fun x -> _v3.Value <- x
-    let v6 : US0 option = _v3.Value 
-    let v29 : US0 = US0_1
-    let v30 : US0 = v6 |> Option.defaultValue v29 
-    closure10(v30)
+and closure13 (v0 : US0, v1 : (unit -> uint8)) (v2 : bool) : (uint64 -> uint64) =
+    closure14(v0, v1, v2)
+and closure12 (v0 : US0) (v1 : (unit -> uint8)) : (bool -> (uint64 -> uint64)) =
+    closure13(v0, v1)
+and closure11 () (v0 : (string -> unit) option) : ((unit -> uint8) -> (bool -> (uint64 -> uint64))) =
+    let v1 : US0 option = None
+    let _v1 = ref v1 
+    let v2 : US0 option ref = _v1 
+    let v3 : (US0 option -> US0 option ref) = closure4(v2)
+    let v4 : unit = ()
+    let v5 : (unit -> unit) = closure5(v0, v3)
+    let v6 : unit = (fun () -> v5 (); v4) ()
+    let v7 : US0 option = _v1.Value 
+    let v18 : US0 = US0_1
+    let v19 : US0 = v7 |> Option.defaultValue v18 
+    closure12(v19)
 and method13 (v0 : UH1, v1 : int8) : int8 =
     match v0 with
     | UH1_1(v2, v3) -> (* Cons *)
@@ -598,115 +602,112 @@ and method13 (v0 : UH1, v1 : int8) : int8 =
         method13(v3, v4)
     | UH1_0 -> (* Nil *)
         v1
-and closure79 (v0 : (string -> unit) option, v1 : uint64) (v2 : UH1) : uint64 option =
-    let v5 : US0 option = None
-    let _v5 = ref v5 
-    match v0 with
-    | Some x -> (
-    (fun () ->
-    (fun () ->
-    let v6 : (string -> unit) = x
-    let v7 : US0 = US0_0(v6)
-    v7 
-    )
-    |> fun x -> x () |> Some
-    ) () ) | None -> None
-    |> fun x -> _v5.Value <- x
-    let v8 : US0 option = _v5.Value 
-    let v31 : US0 = US0_1
-    let v32 : US0 = v8 |> Option.defaultValue v31 
-    let v40 : int8 = 0y
-    let v41 : int8 = method13(v2, v40)
-    let v42 : int8 = v41 - 1y
-    let v43 : uint64 = 0UL
-    let v44 : US3 = method9(v32, v42, v2, v43)
-    let v54 : US4 =
-        match v44 with
-        | US3_0(v45, v46) -> (* Some *)
-            let v47 : bool = v45 >= 1UL
-            let v49 : bool =
-                if v47 then
-                    let v48 : bool = v45 <= v1
-                    v48
+and closure81 (v0 : (string -> unit) option, v1 : uint64) (v2 : UH1) : uint64 option =
+    let v3 : US0 option = None
+    let _v3 = ref v3 
+    let v4 : US0 option ref = _v3 
+    let v5 : (US0 option -> US0 option ref) = closure4(v4)
+    let v6 : unit = ()
+    let v7 : (unit -> unit) = closure5(v0, v5)
+    let v8 : unit = (fun () -> v7 (); v6) ()
+    let v9 : US0 option = _v3.Value 
+    let v20 : US0 = US0_1
+    let v21 : US0 = v9 |> Option.defaultValue v20 
+    let v25 : int8 = 0y
+    let v26 : int8 = method13(v2, v25)
+    let v27 : int8 = v26 - 1y
+    let v28 : uint64 = 0UL
+    let v29 : US3 = method9(v21, v27, v2, v28)
+    let v39 : US4 =
+        match v29 with
+        | US3_0(v30, v31) -> (* Some *)
+            let v32 : bool = v30 >= 1UL
+            let v34 : bool =
+                if v32 then
+                    let v33 : bool = v30 <= v1
+                    v33
                 else
                     false
-            if v49 then
-                US4_0(v45)
+            if v34 then
+                US4_0(v30)
             else
                 US4_1
         | _ ->
             US4_1
-    match v54 with
+    match v39 with
     | US4_1 -> (* None *)
-        let v65 : uint64 option = None
-        v65
-    | US4_0(v55) -> (* Some *)
-        let v58 : uint64 option = Some v55 
-        v58
-and closure78 (v0 : (string -> unit) option) (v1 : uint64) : (UH1 -> uint64 option) =
-    closure79(v0, v1)
-and closure77 () (v0 : (string -> unit) option) : (uint64 -> (UH1 -> uint64 option)) =
-    closure78(v0)
+        let v44 : uint64 option = None
+        v44
+    | US4_0(v40) -> (* Some *)
+        let v41 : uint64 option = Some v40 
+        v41
+and closure80 (v0 : (string -> unit) option) (v1 : uint64) : (UH1 -> uint64 option) =
+    closure81(v0, v1)
+and closure79 () (v0 : (string -> unit) option) : (uint64 -> (UH1 -> uint64 option)) =
+    closure80(v0)
+and closure83 (v0 : string) () : unit =
+    let v1 : (string -> unit) = System.Console.WriteLine
+    v1 v0
 and method15 () : uint8 =
-    let v2 : bool = true
-    let mutable _v2 : uint8 option = None 
+    let v0 : unit = ()
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v3 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), $0..$1)"
-    let v4 : uint8 = Fable.Core.RustInterop.emitRustExpr struct (1uy, 7uy) v3 
-    v4 
+    let v1 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), $0..$1)"
+    let v2 : uint8 = Fable.Core.RustInterop.emitRustExpr struct (1uy, 7uy) v1 
+    let _v0 = v2 
     #endif
 #if FABLE_COMPILER_RUST && WASM
-    let v5 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), $0..$1)"
-    let v6 : uint8 = Fable.Core.RustInterop.emitRustExpr struct (1uy, 7uy) v5 
-    v6 
+    let v3 : string = "rand::Rng::gen_range(&mut rand::thread_rng(), $0..$1)"
+    let v4 : uint8 = Fable.Core.RustInterop.emitRustExpr struct (1uy, 7uy) v3 
+    let _v0 = v4 
     #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-    let v7 : uint8 = failwith<uint8> "common.random' / target=Rust(Contract)"
-    v7 
+    let v5 : uint8 = failwith<uint8> "common.random' / target=Rust(Contract)"
+    let _v0 = v5 
     #endif
 #if FABLE_COMPILER_TYPESCRIPT
-    let v8 : (unit -> System.Random) = System.Random 
-    let v9 : System.Random = v8 ()
+    let v6 : (unit -> System.Random) = System.Random 
+    let v7 : System.Random = v6 ()
+    let v8 : (uint8 -> int32) = int32
+    let v9 : int32 = v8 1uy
     let v10 : (uint8 -> int32) = int32
-    let v11 : int32 = v10 1uy
-    let v12 : (uint8 -> int32) = int32
-    let v13 : int32 = v12 7uy
-    let v14 : int32 = v9.Next (v11, v13)
-    let v17 : uint8 = v14 |> uint8 
-    v17 
+    let v11 : int32 = v10 7uy
+    let v12 : int32 = v7.Next (v9, v11)
+    let v13 : uint8 = v12 |> uint8 
+    let _v0 = v13 
     #endif
 #if FABLE_COMPILER_PYTHON
-    let v24 : (unit -> System.Random) = System.Random 
-    let v25 : System.Random = v24 ()
-    let v26 : (uint8 -> int32) = int32
-    let v27 : int32 = v26 1uy
-    let v28 : (uint8 -> int32) = int32
-    let v29 : int32 = v28 7uy
-    let v30 : int32 = v25.Next (v27, v29)
-    let v33 : uint8 = v30 |> uint8 
-    v33 
+    let v16 : (unit -> System.Random) = System.Random 
+    let v17 : System.Random = v16 ()
+    let v18 : (uint8 -> int32) = int32
+    let v19 : int32 = v18 1uy
+    let v20 : (uint8 -> int32) = int32
+    let v21 : int32 = v20 7uy
+    let v22 : int32 = v17.Next (v19, v21)
+    let v23 : uint8 = v22 |> uint8 
+    let _v0 = v23 
     #endif
 #else
-    let v40 : (unit -> System.Random) = System.Random 
-    let v41 : System.Random = v40 ()
-    let v42 : (uint8 -> int32) = int32
-    let v43 : int32 = v42 1uy
-    let v44 : (uint8 -> int32) = int32
-    let v45 : int32 = v44 7uy
-    let v46 : int32 = v41.Next (v43, v45)
-    let v49 : uint8 = v46 |> uint8 
-    v49 
+    let v26 : (unit -> System.Random) = System.Random 
+    let v27 : System.Random = v26 ()
+    let v28 : (uint8 -> int32) = int32
+    let v29 : int32 = v28 1uy
+    let v30 : (uint8 -> int32) = int32
+    let v31 : int32 = v30 7uy
+    let v32 : int32 = v27.Next (v29, v31)
+    let v33 : uint8 = v32 |> uint8 
+    let _v0 = v33 
     #endif
-    |> fun x -> _v2 <- Some x
-    let v56 : uint8 = match _v2 with Some x -> x | None -> failwith "base.run_target / _v2=None"
-    v56
+    let v36 : uint8 = _v0 
+    v36
 and method40 (v0 : UH1, v1 : int64) : US5 =
     let v2 : int64 = v1 + 1L
     let v3 : string = $"accumulate_dice_rolls / power: {-1y} / acc: {v1} / result: {v2}"
-    v3 |> System.Console.WriteLine
+    let v4 : unit = ()
+    let v5 : (unit -> unit) = closure83(v3)
+    let v6 : unit = (fun () -> v5 (); v4) ()
     US5_0(v2, v0)
 and method39 (v0 : UH1, v1 : int64) : US5 =
     match v0 with
@@ -716,12 +717,16 @@ and method39 (v0 : UH1, v1 : int64) : US5 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : string = $"accumulate_dice_rolls / power: {0y} / acc: {v1} / roll: {v3} / value: {v7}"
-            v8 |> System.Console.WriteLine
-            let v15 : int64 = v1 + v7
-            method40(v4, v15)
+            let v9 : unit = ()
+            let v10 : (unit -> unit) = closure83(v8)
+            let v11 : unit = (fun () -> v10 (); v9) ()
+            let v12 : int64 = v1 + v7
+            method40(v4, v12)
         else
-            let v17 : string = $"accumulate_dice_rolls / power: {0y} / acc: {v1} / roll: {v3}"
-            v17 |> System.Console.WriteLine
+            let v14 : string = $"accumulate_dice_rolls / power: {0y} / acc: {v1} / roll: {v3}"
+            let v15 : unit = ()
+            let v16 : (unit -> unit) = closure83(v14)
+            let v17 : unit = (fun () -> v16 (); v15) ()
             method40(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -734,12 +739,16 @@ and method38 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 6L
             let v9 : string = $"accumulate_dice_rolls / power: {1y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method39(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method39(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {1y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {1y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method39(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -752,12 +761,16 @@ and method37 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 36L
             let v9 : string = $"accumulate_dice_rolls / power: {2y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method38(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method38(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {2y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {2y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method38(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -770,12 +783,16 @@ and method36 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 216L
             let v9 : string = $"accumulate_dice_rolls / power: {3y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method37(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method37(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {3y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {3y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method37(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -788,12 +805,16 @@ and method35 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 1296L
             let v9 : string = $"accumulate_dice_rolls / power: {4y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method36(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method36(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {4y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {4y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method36(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -806,12 +827,16 @@ and method34 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 7776L
             let v9 : string = $"accumulate_dice_rolls / power: {5y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method35(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method35(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {5y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {5y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method35(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -824,12 +849,16 @@ and method33 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 46656L
             let v9 : string = $"accumulate_dice_rolls / power: {6y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method34(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method34(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {6y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {6y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method34(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -842,12 +871,16 @@ and method32 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 279936L
             let v9 : string = $"accumulate_dice_rolls / power: {7y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method33(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method33(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {7y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {7y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method33(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -860,12 +893,16 @@ and method31 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 1679616L
             let v9 : string = $"accumulate_dice_rolls / power: {8y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method32(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method32(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {8y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {8y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method32(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -878,12 +915,16 @@ and method30 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 10077696L
             let v9 : string = $"accumulate_dice_rolls / power: {9y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method31(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method31(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {9y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {9y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method31(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -896,12 +937,16 @@ and method29 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 60466176L
             let v9 : string = $"accumulate_dice_rolls / power: {10y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method30(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method30(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {10y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {10y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method30(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -914,12 +959,16 @@ and method28 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 362797056L
             let v9 : string = $"accumulate_dice_rolls / power: {11y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method29(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method29(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {11y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {11y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method29(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -932,12 +981,16 @@ and method27 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 2176782336L
             let v9 : string = $"accumulate_dice_rolls / power: {12y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method28(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method28(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {12y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {12y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method28(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -950,12 +1003,16 @@ and method26 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 13060694016L
             let v9 : string = $"accumulate_dice_rolls / power: {13y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method27(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method27(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {13y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {13y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method27(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -968,12 +1025,16 @@ and method25 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 78364164096L
             let v9 : string = $"accumulate_dice_rolls / power: {14y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method26(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method26(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {14y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {14y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method26(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -986,12 +1047,16 @@ and method24 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 470184984576L
             let v9 : string = $"accumulate_dice_rolls / power: {15y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method25(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method25(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {15y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {15y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method25(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1004,12 +1069,16 @@ and method23 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 2821109907456L
             let v9 : string = $"accumulate_dice_rolls / power: {16y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method24(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method24(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {16y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {16y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method24(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1022,12 +1091,16 @@ and method22 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 16926659444736L
             let v9 : string = $"accumulate_dice_rolls / power: {17y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method23(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method23(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {17y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {17y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method23(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1040,12 +1113,16 @@ and method21 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 101559956668416L
             let v9 : string = $"accumulate_dice_rolls / power: {18y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method22(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method22(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {18y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {18y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method22(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1058,12 +1135,16 @@ and method20 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 609359740010496L
             let v9 : string = $"accumulate_dice_rolls / power: {19y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method21(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method21(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {19y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {19y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method21(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1076,12 +1157,16 @@ and method19 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 3656158440062976L
             let v9 : string = $"accumulate_dice_rolls / power: {20y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method20(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method20(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {20y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {20y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method20(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1094,12 +1179,16 @@ and method18 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 21936950640377856L
             let v9 : string = $"accumulate_dice_rolls / power: {21y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method19(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method19(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {21y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {21y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method19(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1112,12 +1201,16 @@ and method17 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 131621703842267136L
             let v9 : string = $"accumulate_dice_rolls / power: {22y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method18(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method18(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {22y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {22y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method18(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1130,12 +1223,16 @@ and method16 (v0 : UH1, v1 : int64) : US5 =
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 789730223053602816L
             let v9 : string = $"accumulate_dice_rolls / power: {23y} / acc: {v1} / roll: {v3} / value: {v8}"
-            v9 |> System.Console.WriteLine
-            let v16 : int64 = v1 + v8
-            method17(v4, v16)
+            let v10 : unit = ()
+            let v11 : (unit -> unit) = closure83(v9)
+            let v12 : unit = (fun () -> v11 (); v10) ()
+            let v13 : int64 = v1 + v8
+            method17(v4, v13)
         else
-            let v18 : string = $"accumulate_dice_rolls / power: {23y} / acc: {v1} / roll: {v3}"
-            v18 |> System.Console.WriteLine
+            let v15 : string = $"accumulate_dice_rolls / power: {23y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method17(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1254,23 +1351,27 @@ and method14 (v0 : UH1, v1 : int8) : int64 =
             let v108 : UH1 = UH1_1(v62, v107)
             let v109 : int8 = 23y
             method14(v108, v109)
-and closure80 () (v0 : (string [])) : int32 =
+and closure82 () (v0 : (string [])) : int32 =
     let v1 : string = $"calculate_dice_count / max: {9223372036854775807L} / n: {24y} / p: {4738381338321616896L}"
-    v1 |> System.Console.WriteLine
-    let v8 : UH1 = UH1_0
-    let v9 : int8 = 0y
-    let v10 : int64 = method14(v8, v9)
-    let v11 : string = $"result: {v10}"
-    v11 |> System.Console.WriteLine
+    let v2 : unit = ()
+    let v3 : (unit -> unit) = closure83(v1)
+    let v4 : unit = (fun () -> v3 (); v2) ()
+    let v5 : UH1 = UH1_0
+    let v6 : int8 = 0y
+    let v7 : int64 = method14(v5, v6)
+    let v8 : string = $"result: {v7}"
+    let v9 : unit = ()
+    let v10 : (unit -> unit) = closure83(v8)
+    let v11 : unit = (fun () -> v10 (); v9) ()
     0
 let v0 : (int64 -> (UH0 -> UH0)) = closure0()
 let rotate_numbers x = v0 x
 let v1 : ((string -> unit) option -> (UH1 -> (unit -> uint8))) = closure3()
 let create_sequential_roller x = v1 x
-let v2 : ((string -> unit) option -> ((unit -> uint8) -> (bool -> (uint64 -> uint64)))) = closure9()
+let v2 : ((string -> unit) option -> ((unit -> uint8) -> (bool -> (uint64 -> uint64)))) = closure11()
 let roll_progressively x = v2 x
-let v3 : ((string -> unit) option -> (uint64 -> (UH1 -> uint64 option))) = closure77()
+let v3 : ((string -> unit) option -> (uint64 -> (UH1 -> uint64 option))) = closure79()
 let roll_within_bounds x = v3 x
-let v4 : ((string []) -> int32) = closure80()
+let v4 : ((string []) -> int32) = closure82()
 let main args = v4 args
 ()
