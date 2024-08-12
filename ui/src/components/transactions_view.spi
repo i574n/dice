@@ -149,8 +149,7 @@ inl render () =
                         fun () =>
                             txns
                             |> leptos.signal_get
-                            |> sm'.format_pretty'
-                            |> sm'.from_std_string
+                            |> sm'.format_pretty
                             |> ui.text_block_pre.render fun () => "[max-height:70vh]"
                             |> leptos.element_to_fragment
                 ])

@@ -3,8 +3,8 @@ import { int32, int8, uint8 } from "../../polyglot/deps/Fable/src/fable-library-
 import { uint64_type, int64_type, record_type, string_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "../../polyglot/deps/Fable/src/fable-library-ts/Reflection.js";
 import { op_Multiply, toUInt64, equals, compare, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "../../polyglot/deps/Fable/src/fable-library-ts/BigInt.js";
 import { IComparable, IEquatable } from "../../polyglot/deps/Fable/src/fable-library-ts/Util.js";
-import { interpolate, toText } from "../../polyglot/deps/Fable/src/fable-library-ts/String.js";
 import { defaultArg, value as value_3, Option } from "../../polyglot/deps/Fable/src/fable-library-ts/Option.js";
+import { interpolate, toText } from "../../polyglot/deps/Fable/src/fable-library-ts/String.js";
 import { nonSeeded } from "../../polyglot/deps/Fable/src/fable-library-ts/Random.js";
 
 export type UH0_$union = 
@@ -337,6 +337,16 @@ export function closure0(unitVar: void, v0_1: int64): ((arg0: UH0_$union) => UH0
     return (v: UH0_$union): UH0_$union => closure1(v0_1, v);
 }
 
+export function closure4(v0_1: FSharpRef<Option<US0_$union>>, v1_1: Option<US0_$union>): FSharpRef<Option<US0_$union>> {
+    v0_1.contents = v1_1;
+    return v0_1;
+}
+
+export function closure5(v0_1: Option<((arg0: string) => void)>, v1_1: ((arg0: Option<US0_$union>) => FSharpRef<Option<US0_$union>>), unitVar: void): void {
+    let x: ((arg0: string) => void);
+    v1_1((v0_1 == null) ? undefined : ((x = value_3(v0_1), ((): US0_$union => US0_US0_0(x))())));
+}
+
 export function method1(v0_1_mut: UH1_$union, v1_1_mut: UH1_$union): UH1_$union {
     method1:
     while (true) {
@@ -362,7 +372,7 @@ export function method2(v0_1: UH1_$union, v1_1: UH1_$union): UH1_$union {
     }
 }
 
-export function closure5(v0_1: UH0_$union, unitVar: void): UH0_$union {
+export function closure7(v0_1: UH0_$union, unitVar: void): UH0_$union {
     return v0_1;
 }
 
@@ -373,15 +383,15 @@ export function method3(v0_1: UH1_$union, v1_1: UH0_$union): UH0_$union {
     else {
         const v2_1: uint8 = v0_1.fields[0];
         const v4_1: UH0_$union = method3(v0_1.fields[1], v1_1);
-        return UH0_UH0_0(v2_1, (): UH0_$union => closure5(v4_1, undefined));
+        return UH0_UH0_0(v2_1, (): UH0_$union => closure7(v4_1, undefined));
     }
 }
 
-export function closure6(v0_1: UH0_$union, unitVar: void): UH0_$union {
+export function closure8(v0_1: UH0_$union, unitVar: void): UH0_$union {
     return v0_1;
 }
 
-export function closure7(v0_1: UH0_$union, v1_1: Mut0, unitVar: void): UH0_$union {
+export function closure9(v0_1: UH0_$union, v1_1: Mut0, unitVar: void): UH0_$union {
     const v2_1: US1_$union = v1_1.l0;
     if (v2_1.tag === /* US1_0 */ 0) {
         const v5: UH0_$union = v2_1.fields[0]();
@@ -396,7 +406,7 @@ export function closure7(v0_1: UH0_$union, v1_1: Mut0, unitVar: void): UH0_$unio
 
 export function method4(v0_1: UH0_$union, v1_1: (() => UH0_$union)): (() => UH0_$union) {
     const v3_1: Mut0 = new Mut0(US1_US1_0(v1_1));
-    return (): UH0_$union => closure7(v0_1, v3_1, undefined);
+    return (): UH0_$union => closure9(v0_1, v3_1, undefined);
 }
 
 export function method6(v0_1_mut: int64, v1_1_mut: UH0_$union): US2_$union {
@@ -464,36 +474,30 @@ export function method5(v0_1_mut: US0_$union, v1_1_mut: (() => UH0_$union), v2_1
     }
 }
 
-export function closure8(v0_1: US0_$union, v1_1: (() => UH0_$union), v2_1: Mut1, v3_1: Mut1, v4_1: Mut1, v5: Mut2, unitVar: void): uint8 {
+export function closure10(v0_1: US0_$union, v1_1: (() => UH0_$union), v2_1: Mut1, v3_1: Mut1, v4_1: Mut1, v5: Mut2, unitVar: void): uint8 {
     return method5(v0_1, v1_1, v2_1, v3_1, v4_1, v5);
 }
 
-export function closure4(v0_1: US0_$union, v1_1: UH1_$union): (() => uint8) {
+export function closure6(v0_1: US0_$union, v1_1: UH1_$union): (() => uint8) {
     if (v0_1.tag === /* US0_0 */ 0) {
         v0_1.fields[0]("create_sequential_roller ()");
     }
     const v8: UH0_$union = method3(method2(v1_1, method1(v1_1, UH1_UH1_0())), UH0_UH0_1());
-    const v10: (() => UH0_$union) = method4(v8, (): UH0_$union => closure6(v8, undefined));
+    const v10: (() => UH0_$union) = method4(v8, (): UH0_$union => closure8(v8, undefined));
     const v11: Mut1 = new Mut1(0n);
     const v12: Mut1 = new Mut1(1n);
     const v13: Mut1 = new Mut1(-1n);
     const v15: Mut2 = new Mut2(US2_US2_1());
-    return (): uint8 => closure8(v0_1, v10, v11, v12, v13, v15, undefined);
+    return (): uint8 => closure10(v0_1, v10, v11, v12, v13, v15, undefined);
 }
 
 export function closure3(unitVar: void, v0_1: Option<((arg0: string) => void)>): ((arg0: UH1_$union) => (() => uint8)) {
-    const _v3: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
-    let x_2: Option<US0_$union>;
-    if (v0_1 == null) {
-        x_2 = undefined;
-    }
-    else {
-        const x: ((arg0: string) => void) = value_3(v0_1);
-        x_2 = ((): US0_$union => US0_US0_0(x))();
-    }
-    _v3.contents = x_2;
-    const v30: US0_$union = defaultArg(_v3.contents, US0_US0_1());
-    return (v: UH1_$union): (() => uint8) => closure4(v30, v);
+    const _v1: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
+    let v6: any;
+    closure5(v0_1, (v: Option<US0_$union>): FSharpRef<Option<US0_$union>> => closure4(_v1, v), undefined);
+    v6 = undefined;
+    const v21: US0_$union = defaultArg(_v1.contents, US0_US0_1());
+    return (v_1: UH1_$union): (() => uint8) => closure6(v21, v_1);
 }
 
 export function method7(v0_1_mut: US0_$union, v1_1_mut: uint64, v2_1_mut: int8, v3_1_mut: uint64): int8 {
@@ -528,260 +532,260 @@ export function method7(v0_1_mut: US0_$union, v1_1_mut: uint64, v2_1_mut: int8, 
     }
 }
 
+export function closure78(unitVar: void, unitVar_1: void): UH2_$union {
+    return UH2_UH2_0(0n, (): UH2_$union => closure78(undefined, undefined));
+}
+
+export function closure77(unitVar: void, unitVar_1: void): UH2_$union {
+    return UH2_UH2_0(9223372036854775808n, (): UH2_$union => closure78(undefined, undefined));
+}
+
 export function closure76(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(0n, (): UH2_$union => closure76(undefined, undefined));
+    return UH2_UH2_0(4611686018427387904n, (): UH2_$union => closure77(undefined, undefined));
 }
 
 export function closure75(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(9223372036854775808n, (): UH2_$union => closure76(undefined, undefined));
+    return UH2_UH2_0(6917529027641081856n, (): UH2_$union => closure76(undefined, undefined));
 }
 
 export function closure74(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(4611686018427387904n, (): UH2_$union => closure75(undefined, undefined));
+    return UH2_UH2_0(1152921504606846976n, (): UH2_$union => closure75(undefined, undefined));
 }
 
 export function closure73(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(6917529027641081856n, (): UH2_$union => closure74(undefined, undefined));
+    return UH2_UH2_0(15564440312192434176n, (): UH2_$union => closure74(undefined, undefined));
 }
 
 export function closure72(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(1152921504606846976n, (): UH2_$union => closure73(undefined, undefined));
+    return UH2_UH2_0(11817445422220181504n, (): UH2_$union => closure73(undefined, undefined));
 }
 
 export function closure71(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(15564440312192434176n, (): UH2_$union => closure72(undefined, undefined));
+    return UH2_UH2_0(5044031582654955520n, (): UH2_$union => closure72(undefined, undefined));
 }
 
 export function closure70(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(11817445422220181504n, (): UH2_$union => closure71(undefined, undefined));
+    return UH2_UH2_0(6989586621679009792n, (): UH2_$union => closure71(undefined, undefined));
 }
 
 export function closure69(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(5044031582654955520n, (): UH2_$union => closure70(undefined, undefined));
+    return UH2_UH2_0(16537217831704461312n, (): UH2_$union => closure70(undefined, undefined));
 }
 
 export function closure68(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(6989586621679009792n, (): UH2_$union => closure69(undefined, undefined));
+    return UH2_UH2_0(11979575008805519360n, (): UH2_$union => closure69(undefined, undefined));
 }
 
 export function closure67(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(16537217831704461312n, (): UH2_$union => closure68(undefined, undefined));
+    return UH2_UH2_0(14294425217273954304n, (): UH2_$union => closure68(undefined, undefined));
 }
 
 export function closure66(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(11979575008805519360n, (): UH2_$union => closure67(undefined, undefined));
+    return UH2_UH2_0(2382404202878992384n, (): UH2_$union => closure67(undefined, undefined));
 }
 
 export function closure65(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(14294425217273954304n, (): UH2_$union => closure66(undefined, undefined));
+    return UH2_UH2_0(6545982058383015936n, (): UH2_$union => closure66(undefined, undefined));
 }
 
 export function closure64(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(2382404202878992384n, (): UH2_$union => closure65(undefined, undefined));
+    return UH2_UH2_0(10314369046585278464n, (): UH2_$union => closure65(undefined, undefined));
 }
 
 export function closure63(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(6545982058383015936n, (): UH2_$union => closure64(undefined, undefined));
+    return UH2_UH2_0(4793518853382471680n, (): UH2_$union => closure64(undefined, undefined));
 }
 
 export function closure62(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(10314369046585278464n, (): UH2_$union => closure63(undefined, undefined));
+    return UH2_UH2_0(3873377154515337216n, (): UH2_$union => closure63(undefined, undefined));
 }
 
 export function closure61(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(4793518853382471680n, (): UH2_$union => closure62(undefined, undefined));
+    return UH2_UH2_0(645562859085889536n, (): UH2_$union => closure62(undefined, undefined));
 }
 
 export function closure60(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(3873377154515337216n, (): UH2_$union => closure61(undefined, undefined));
+    return UH2_UH2_0(107593809847648256n, (): UH2_$union => closure61(undefined, undefined));
 }
 
 export function closure59(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(645562859085889536n, (): UH2_$union => closure60(undefined, undefined));
+    return UH2_UH2_0(3092389647259533312n, (): UH2_$union => closure60(undefined, undefined));
 }
 
 export function closure58(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(107593809847648256n, (): UH2_$union => closure59(undefined, undefined));
+    return UH2_UH2_0(9738770311398031360n, (): UH2_$union => closure59(undefined, undefined));
 }
 
 export function closure57(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(3092389647259533312n, (): UH2_$union => closure58(undefined, undefined));
+    return UH2_UH2_0(16995415113324298240n, (): UH2_$union => closure58(undefined, undefined));
 }
 
 export function closure56(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(9738770311398031360n, (): UH2_$union => closure57(undefined, undefined));
+    return UH2_UH2_0(8981483876790566912n, (): UH2_$union => closure57(undefined, undefined));
 }
 
 export function closure55(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(16995415113324298240n, (): UH2_$union => closure56(undefined, undefined));
+    return UH2_UH2_0(13794743361938128896n, (): UH2_$union => closure56(undefined, undefined));
 }
 
 export function closure54(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(8981483876790566912n, (): UH2_$union => closure55(undefined, undefined));
+    return UH2_UH2_0(2299123893656354816n, (): UH2_$union => closure55(undefined, undefined));
 }
 
 export function closure53(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(13794743361938128896n, (): UH2_$union => closure54(undefined, undefined));
+    return UH2_UH2_0(3457644661227651072n, (): UH2_$union => closure54(undefined, undefined));
 }
 
 export function closure52(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(2299123893656354816n, (): UH2_$union => closure53(undefined, undefined));
+    return UH2_UH2_0(576274110204608512n, (): UH2_$union => closure53(undefined, undefined));
 }
 
 export function closure51(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(3457644661227651072n, (): UH2_$union => closure52(undefined, undefined));
+    return UH2_UH2_0(6244960376270618624n, (): UH2_$union => closure52(undefined, undefined));
 }
 
 export function closure50(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(576274110204608512n, (): UH2_$union => closure51(undefined, undefined));
+    return UH2_UH2_0(13338656111851470848n, (): UH2_$union => closure51(undefined, undefined));
 }
 
 export function closure49(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(6244960376270618624n, (): UH2_$union => closure50(undefined, undefined));
+    return UH2_UH2_0(14520938734448279552n, (): UH2_$union => closure50(undefined, undefined));
 }
 
 export function closure48(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(13338656111851470848n, (): UH2_$union => closure49(undefined, undefined));
+    return UH2_UH2_0(14717985838214414336n, (): UH2_$union => closure49(undefined, undefined));
 }
 
 export function closure47(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(14520938734448279552n, (): UH2_$union => closure48(undefined, undefined));
+    return UH2_UH2_0(5527454985320660992n, (): UH2_$union => closure48(undefined, undefined));
 }
 
 export function closure46(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(14717985838214414336n, (): UH2_$union => closure47(undefined, undefined));
+    return UH2_UH2_0(16293529225644736512n, (): UH2_$union => closure47(undefined, undefined));
 }
 
 export function closure45(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(5527454985320660992n, (): UH2_$union => closure46(undefined, undefined));
+    return UH2_UH2_0(11938960241128898560n, (): UH2_$union => closure46(undefined, undefined));
 }
 
 export function closure44(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(16293529225644736512n, (): UH2_$union => closure45(undefined, undefined));
+    return UH2_UH2_0(8138741398091333632n, (): UH2_$union => closure45(undefined, undefined));
 }
 
 export function closure43(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(11938960241128898560n, (): UH2_$union => closure44(undefined, undefined));
+    return UH2_UH2_0(7505371590918406144n, (): UH2_$union => closure44(undefined, undefined));
 }
 
 export function closure42(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(8138741398091333632n, (): UH2_$union => closure43(undefined, undefined));
+    return UH2_UH2_0(16623181993244360704n, (): UH2_$union => closure43(undefined, undefined));
 }
 
 export function closure41(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(7505371590918406144n, (): UH2_$union => closure42(undefined, undefined));
+    return UH2_UH2_0(8919445023443910656n, (): UH2_$union => closure42(undefined, undefined));
 }
 
 export function closure40(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(16623181993244360704n, (): UH2_$union => closure41(undefined, undefined));
+    return UH2_UH2_0(4561031516192243712n, (): UH2_$union => closure41(undefined, undefined));
 }
 
 export function closure39(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(8919445023443910656n, (): UH2_$union => closure40(undefined, undefined));
+    return UH2_UH2_0(9983543956220149760n, (): UH2_$union => closure40(undefined, undefined));
 }
 
 export function closure38(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(4561031516192243712n, (): UH2_$union => closure39(undefined, undefined));
+    return UH2_UH2_0(4738381338321616896n, (): UH2_$union => closure39(undefined, undefined));
 }
 
 export function closure37(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(9983543956220149760n, (): UH2_$union => closure38(undefined, undefined));
+    return UH2_UH2_0(789730223053602816n, (): UH2_$union => closure38(undefined, undefined));
 }
 
 export function closure36(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(4738381338321616896n, (): UH2_$union => closure37(undefined, undefined));
+    return UH2_UH2_0(131621703842267136n, (): UH2_$union => closure37(undefined, undefined));
 }
 
 export function closure35(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(789730223053602816n, (): UH2_$union => closure36(undefined, undefined));
+    return UH2_UH2_0(21936950640377856n, (): UH2_$union => closure36(undefined, undefined));
 }
 
 export function closure34(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(131621703842267136n, (): UH2_$union => closure35(undefined, undefined));
+    return UH2_UH2_0(3656158440062976n, (): UH2_$union => closure35(undefined, undefined));
 }
 
 export function closure33(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(21936950640377856n, (): UH2_$union => closure34(undefined, undefined));
+    return UH2_UH2_0(609359740010496n, (): UH2_$union => closure34(undefined, undefined));
 }
 
 export function closure32(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(3656158440062976n, (): UH2_$union => closure33(undefined, undefined));
+    return UH2_UH2_0(101559956668416n, (): UH2_$union => closure33(undefined, undefined));
 }
 
 export function closure31(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(609359740010496n, (): UH2_$union => closure32(undefined, undefined));
+    return UH2_UH2_0(16926659444736n, (): UH2_$union => closure32(undefined, undefined));
 }
 
 export function closure30(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(101559956668416n, (): UH2_$union => closure31(undefined, undefined));
+    return UH2_UH2_0(2821109907456n, (): UH2_$union => closure31(undefined, undefined));
 }
 
 export function closure29(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(16926659444736n, (): UH2_$union => closure30(undefined, undefined));
+    return UH2_UH2_0(470184984576n, (): UH2_$union => closure30(undefined, undefined));
 }
 
 export function closure28(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(2821109907456n, (): UH2_$union => closure29(undefined, undefined));
+    return UH2_UH2_0(78364164096n, (): UH2_$union => closure29(undefined, undefined));
 }
 
 export function closure27(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(470184984576n, (): UH2_$union => closure28(undefined, undefined));
+    return UH2_UH2_0(13060694016n, (): UH2_$union => closure28(undefined, undefined));
 }
 
 export function closure26(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(78364164096n, (): UH2_$union => closure27(undefined, undefined));
+    return UH2_UH2_0(2176782336n, (): UH2_$union => closure27(undefined, undefined));
 }
 
 export function closure25(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(13060694016n, (): UH2_$union => closure26(undefined, undefined));
+    return UH2_UH2_0(362797056n, (): UH2_$union => closure26(undefined, undefined));
 }
 
 export function closure24(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(2176782336n, (): UH2_$union => closure25(undefined, undefined));
+    return UH2_UH2_0(60466176n, (): UH2_$union => closure25(undefined, undefined));
 }
 
 export function closure23(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(362797056n, (): UH2_$union => closure24(undefined, undefined));
+    return UH2_UH2_0(10077696n, (): UH2_$union => closure24(undefined, undefined));
 }
 
 export function closure22(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(60466176n, (): UH2_$union => closure23(undefined, undefined));
+    return UH2_UH2_0(1679616n, (): UH2_$union => closure23(undefined, undefined));
 }
 
 export function closure21(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(10077696n, (): UH2_$union => closure22(undefined, undefined));
+    return UH2_UH2_0(279936n, (): UH2_$union => closure22(undefined, undefined));
 }
 
 export function closure20(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(1679616n, (): UH2_$union => closure21(undefined, undefined));
+    return UH2_UH2_0(46656n, (): UH2_$union => closure21(undefined, undefined));
 }
 
 export function closure19(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(279936n, (): UH2_$union => closure20(undefined, undefined));
+    return UH2_UH2_0(7776n, (): UH2_$union => closure20(undefined, undefined));
 }
 
 export function closure18(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(46656n, (): UH2_$union => closure19(undefined, undefined));
+    return UH2_UH2_0(1296n, (): UH2_$union => closure19(undefined, undefined));
 }
 
 export function closure17(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(7776n, (): UH2_$union => closure18(undefined, undefined));
+    return UH2_UH2_0(216n, (): UH2_$union => closure18(undefined, undefined));
 }
 
 export function closure16(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(1296n, (): UH2_$union => closure17(undefined, undefined));
+    return UH2_UH2_0(36n, (): UH2_$union => closure17(undefined, undefined));
 }
 
 export function closure15(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(216n, (): UH2_$union => closure16(undefined, undefined));
-}
-
-export function closure14(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(36n, (): UH2_$union => closure15(undefined, undefined));
-}
-
-export function closure13(unitVar: void, unitVar_1: void): UH2_$union {
-    return UH2_UH2_0(6n, (): UH2_$union => closure14(undefined, undefined));
+    return UH2_UH2_0(6n, (): UH2_$union => closure16(undefined, undefined));
 }
 
 export function method10(v0_1_mut: int8, v1_1_mut: UH2_$union): US4_$union {
@@ -822,7 +826,7 @@ export function method9(v0_1_mut: US0_$union, v1_1_mut: int8, v2_1_mut: UH1_$uni
             const v11: UH1_$union = v2_1.fields[1];
             const v10: uint8 = v2_1.fields[0];
             if (v10 > 1) {
-                const v16: US4_$union = method10(v1_1, UH2_UH2_0(1n, (): UH2_$union => closure13(undefined, undefined)));
+                const v16: US4_$union = method10(v1_1, UH2_UH2_0(1n, (): UH2_$union => closure15(undefined, undefined)));
                 let v20: uint64;
                 if (v16.tag === /* US4_0 */ 0) {
                     v20 = v16.fields[0];
@@ -966,31 +970,25 @@ export function method8(v0_1_mut: US0_$union, v1_1_mut: (() => uint8), v2_1_mut:
     }
 }
 
-export function closure12(v0_1: US0_$union, v1_1: (() => uint8), v2_1: boolean, v3_1: uint64): uint64 {
+export function closure14(v0_1: US0_$union, v1_1: (() => uint8), v2_1: boolean, v3_1: uint64): uint64 {
     return method8(v0_1, v1_1, v2_1, v3_1, (equals(v3_1, 1n) ? 1 : method7(v0_1, v3_1, 0, 1n)) - 1, UH1_UH1_0(), 0);
 }
 
-export function closure11(v0_1: US0_$union, v1_1: (() => uint8), v2_1: boolean): ((arg0: uint64) => uint64) {
-    return (v: uint64): uint64 => closure12(v0_1, v1_1, v2_1, v);
+export function closure13(v0_1: US0_$union, v1_1: (() => uint8), v2_1: boolean): ((arg0: uint64) => uint64) {
+    return (v: uint64): uint64 => closure14(v0_1, v1_1, v2_1, v);
 }
 
-export function closure10(v0_1: US0_$union, v1_1: (() => uint8)): ((arg0: boolean) => ((arg0: uint64) => uint64)) {
-    return (v: boolean): ((arg0: uint64) => uint64) => closure11(v0_1, v1_1, v);
+export function closure12(v0_1: US0_$union, v1_1: (() => uint8)): ((arg0: boolean) => ((arg0: uint64) => uint64)) {
+    return (v: boolean): ((arg0: uint64) => uint64) => closure13(v0_1, v1_1, v);
 }
 
-export function closure9(unitVar: void, v0_1: Option<((arg0: string) => void)>): ((arg0: (() => uint8)) => ((arg0: boolean) => ((arg0: uint64) => uint64))) {
-    const _v3: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
-    let x_2: Option<US0_$union>;
-    if (v0_1 == null) {
-        x_2 = undefined;
-    }
-    else {
-        const x: ((arg0: string) => void) = value_3(v0_1);
-        x_2 = ((): US0_$union => US0_US0_0(x))();
-    }
-    _v3.contents = x_2;
-    const v30: US0_$union = defaultArg(_v3.contents, US0_US0_1());
-    return (v: (() => uint8)): ((arg0: boolean) => ((arg0: uint64) => uint64)) => closure10(v30, v);
+export function closure11(unitVar: void, v0_1: Option<((arg0: string) => void)>): ((arg0: (() => uint8)) => ((arg0: boolean) => ((arg0: uint64) => uint64))) {
+    const _v1: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
+    let v6: any;
+    closure5(v0_1, (v: Option<US0_$union>): FSharpRef<Option<US0_$union>> => closure4(_v1, v), undefined);
+    v6 = undefined;
+    const v21: US0_$union = defaultArg(_v1.contents, US0_US0_1());
+    return (v_1: (() => uint8)): ((arg0: boolean) => ((arg0: uint64) => uint64)) => closure12(v21, v_1);
 }
 
 export function method13(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
@@ -1010,64 +1008,54 @@ export function method13(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
     }
 }
 
-export function closure79(v0_1: Option<((arg0: string) => void)>, v1_1: uint64, v2_1: UH1_$union): Option<uint64> {
-    const _v5: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
-    let x_2: Option<US0_$union>;
-    if (v0_1 == null) {
-        x_2 = undefined;
+export function closure81(v0_1: Option<((arg0: string) => void)>, v1_1: uint64, v2_1: UH1_$union): Option<uint64> {
+    const _v3: FSharpRef<Option<US0_$union>> = new FSharpRef<Option<US0_$union>>(undefined);
+    let v8: any;
+    closure5(v0_1, (v: Option<US0_$union>): FSharpRef<Option<US0_$union>> => closure4(_v3, v), undefined);
+    v8 = undefined;
+    const v31: US3_$union = method9(defaultArg(_v3.contents, US0_US0_1()), method13(v2_1, 0) - 1, v2_1, 0n);
+    let v41: US4_$union;
+    if (v31.tag === /* US3_0 */ 0) {
+        const v33: UH1_$union = v31.fields[1];
+        const v32: uint64 = v31.fields[0];
+        v41 = (((compare(v32, 1n) >= 0) && (compare(v32, v1_1) <= 0)) ? US4_US4_0(v32) : US4_US4_1());
     }
     else {
-        const x: ((arg0: string) => void) = value_3(v0_1);
-        x_2 = ((): US0_$union => US0_US0_0(x))();
+        v41 = US4_US4_1();
     }
-    _v5.contents = x_2;
-    const v44: US3_$union = method9(defaultArg(_v5.contents, US0_US0_1()), method13(v2_1, 0) - 1, v2_1, 0n);
-    let v54: US4_$union;
-    if (v44.tag === /* US3_0 */ 0) {
-        const v46: UH1_$union = v44.fields[1];
-        const v45: uint64 = v44.fields[0];
-        v54 = (((compare(v45, 1n) >= 0) && (compare(v45, v1_1) <= 0)) ? US4_US4_0(v45) : US4_US4_1());
-    }
-    else {
-        v54 = US4_US4_1();
-    }
-    if (v54.tag === /* US4_0 */ 0) {
-        return v54.fields[0];
+    if (v41.tag === /* US4_0 */ 0) {
+        return v41.fields[0];
     }
     else {
         return undefined;
     }
 }
 
-export function closure78(v0_1: Option<((arg0: string) => void)>, v1_1: uint64): ((arg0: UH1_$union) => Option<uint64>) {
-    return (v: UH1_$union): Option<uint64> => closure79(v0_1, v1_1, v);
+export function closure80(v0_1: Option<((arg0: string) => void)>, v1_1: uint64): ((arg0: UH1_$union) => Option<uint64>) {
+    return (v: UH1_$union): Option<uint64> => closure81(v0_1, v1_1, v);
 }
 
-export function closure77(unitVar: void, v0_1: Option<((arg0: string) => void)>): ((arg0: uint64) => ((arg0: UH1_$union) => Option<uint64>)) {
-    return (v: uint64): ((arg0: UH1_$union) => Option<uint64>) => closure78(v0_1, v);
+export function closure79(unitVar: void, v0_1: Option<((arg0: string) => void)>): ((arg0: uint64) => ((arg0: UH1_$union) => Option<uint64>)) {
+    return (v: uint64): ((arg0: UH1_$union) => Option<uint64>) => closure80(v0_1, v);
+}
+
+export function closure83(v0_1: string, unitVar: void): void {
+    console.log(v0_1);
 }
 
 export function method15(): uint8 {
-    let _v2: Option<uint8> = undefined;
-    const v9: any = nonSeeded();
-    const v11: int32 = ~~1 | 0;
-    const v13: int32 = ~~7 | 0;
-    let x: uint8;
-    const value_2: int32 = v9.Next2(v11, v13) | 0;
-    x = (value_2 & 0xFF);
-    _v2 = x;
-    if (_v2 == null) {
-        throw new Error("base.run_target / _v2=None");
-    }
-    else {
-        return value_3(_v2);
-    }
+    const v7: any = nonSeeded();
+    const v9: int32 = ~~1 | 0;
+    const v11: int32 = ~~7 | 0;
+    const value_2: int32 = v7.Next2(v9, v11) | 0;
+    return value_2 & 0xFF;
 }
 
 export function method40(v0_1: UH1_$union, v1_1: int64): US5_$union {
     const v2_1: int64 = toInt64(op_Addition(v1_1, 1n));
-    const value = `accumulate_dice_rolls / power: ${-1} / acc: ${v1_1} / result: ${v2_1}`;
-    console.log(value);
+    let v6: any;
+    closure83(`accumulate_dice_rolls / power: ${-1} / acc: ${v1_1} / result: ${v2_1}`, undefined);
+    v6 = undefined;
     return US5_US5_0(v2_1, v0_1);
 }
 
@@ -1080,13 +1068,15 @@ export function method39(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v7: int64 = toInt64(fromUInt8(v3_1 - 1));
-            const value = `accumulate_dice_rolls / power: ${0} / acc: ${v1_1} / roll: ${v3_1} / value: ${v7}`;
-            console.log(value);
+            let v11: any;
+            closure83(`accumulate_dice_rolls / power: ${0} / acc: ${v1_1} / roll: ${v3_1} / value: ${v7}`, undefined);
+            v11 = undefined;
             return method40(v4_1, toInt64(op_Addition(v1_1, v7)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${0} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v18: any;
+            closure83(`accumulate_dice_rolls / power: ${0} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v18 = undefined;
             return method40(v4_1, v1_1);
         }
     }
@@ -1101,13 +1091,15 @@ export function method38(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 6n));
-            const value = `accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method39(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method39(v4_1, v1_1);
         }
     }
@@ -1122,13 +1114,15 @@ export function method37(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 36n));
-            const value = `accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method38(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method38(v4_1, v1_1);
         }
     }
@@ -1143,13 +1137,15 @@ export function method36(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 216n));
-            const value = `accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method37(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method37(v4_1, v1_1);
         }
     }
@@ -1164,13 +1160,15 @@ export function method35(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 1296n));
-            const value = `accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method36(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method36(v4_1, v1_1);
         }
     }
@@ -1185,13 +1183,15 @@ export function method34(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 7776n));
-            const value = `accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method35(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method35(v4_1, v1_1);
         }
     }
@@ -1206,13 +1206,15 @@ export function method33(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 46656n));
-            const value = `accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method34(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method34(v4_1, v1_1);
         }
     }
@@ -1227,13 +1229,15 @@ export function method32(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 279936n));
-            const value = `accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method33(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method33(v4_1, v1_1);
         }
     }
@@ -1248,13 +1252,15 @@ export function method31(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 1679616n));
-            const value = `accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method32(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method32(v4_1, v1_1);
         }
     }
@@ -1269,13 +1275,15 @@ export function method30(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 10077696n));
-            const value = `accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method31(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method31(v4_1, v1_1);
         }
     }
@@ -1290,13 +1298,15 @@ export function method29(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 60466176n));
-            const value = `accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method30(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method30(v4_1, v1_1);
         }
     }
@@ -1311,13 +1321,15 @@ export function method28(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 362797056n));
-            const value = `accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method29(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method29(v4_1, v1_1);
         }
     }
@@ -1332,13 +1344,15 @@ export function method27(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 2176782336n));
-            const value = `accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method28(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method28(v4_1, v1_1);
         }
     }
@@ -1353,13 +1367,15 @@ export function method26(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 13060694016n));
-            const value = `accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method27(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method27(v4_1, v1_1);
         }
     }
@@ -1374,13 +1390,15 @@ export function method25(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 78364164096n));
-            const value = `accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method26(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method26(v4_1, v1_1);
         }
     }
@@ -1395,13 +1413,15 @@ export function method24(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 470184984576n));
-            const value = `accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method25(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method25(v4_1, v1_1);
         }
     }
@@ -1416,13 +1436,15 @@ export function method23(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 2821109907456n));
-            const value = `accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method24(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method24(v4_1, v1_1);
         }
     }
@@ -1437,13 +1459,15 @@ export function method22(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 16926659444736n));
-            const value = `accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method23(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method23(v4_1, v1_1);
         }
     }
@@ -1458,13 +1482,15 @@ export function method21(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 101559956668416n));
-            const value = `accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method22(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method22(v4_1, v1_1);
         }
     }
@@ -1479,13 +1505,15 @@ export function method20(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 609359740010496n));
-            const value = `accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method21(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method21(v4_1, v1_1);
         }
     }
@@ -1500,13 +1528,15 @@ export function method19(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 3656158440062976n));
-            const value = `accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method20(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method20(v4_1, v1_1);
         }
     }
@@ -1521,13 +1551,15 @@ export function method18(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 21936950640377856n));
-            const value = `accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method19(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method19(v4_1, v1_1);
         }
     }
@@ -1542,13 +1574,15 @@ export function method17(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 131621703842267136n));
-            const value = `accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method18(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method18(v4_1, v1_1);
         }
     }
@@ -1563,13 +1597,15 @@ export function method16(v0_1: UH1_$union, v1_1: int64): US5_$union {
         const v3_1: uint8 = v0_1.fields[0];
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 789730223053602816n));
-            const value = `accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`;
-            console.log(value);
+            let v12: any;
+            closure83(`accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1} / value: ${v8}`, undefined);
+            v12 = undefined;
             return method17(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            const value_1 = `accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1}`;
-            console.log(value_1);
+            let v19: any;
+            closure83(`accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
+            v19 = undefined;
             return method17(v4_1, v1_1);
         }
     }
@@ -1608,11 +1644,13 @@ export function method14(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
     }
 }
 
-export function closure80(unitVar: void, v0_1: string[]): int32 {
-    const value = `calculate_dice_count / max: ${9223372036854775807n} / n: ${24} / p: ${4738381338321616896n}`;
-    console.log(value);
-    const value_1 = `result: ${method14(UH1_UH1_0(), 0)}`;
-    console.log(value_1);
+export function closure82(unitVar: void, v0_1: string[]): int32 {
+    let v4_1: any;
+    closure83(`calculate_dice_count / max: ${9223372036854775807n} / n: ${24} / p: ${4738381338321616896n}`, undefined);
+    v4_1 = undefined;
+    let v12: any;
+    closure83(`result: ${method14(UH1_UH1_0(), 0)}`, undefined);
+    v12 = undefined;
     return 0;
 }
 
@@ -1628,19 +1666,19 @@ export function create_sequential_roller(x: Option<((arg0: string) => void)>): (
     return v1(x);
 }
 
-export const v2 = (v: Option<((arg0: string) => void)>): ((arg0: (() => uint8)) => ((arg0: boolean) => ((arg0: uint64) => uint64))) => closure9(undefined, v);
+export const v2 = (v: Option<((arg0: string) => void)>): ((arg0: (() => uint8)) => ((arg0: boolean) => ((arg0: uint64) => uint64))) => closure11(undefined, v);
 
 export function roll_progressively(x: Option<((arg0: string) => void)>): ((arg0: (() => uint8)) => ((arg0: boolean) => ((arg0: uint64) => uint64))) {
     return v2(x);
 }
 
-export const v3 = (v: Option<((arg0: string) => void)>): ((arg0: uint64) => ((arg0: UH1_$union) => Option<uint64>)) => closure77(undefined, v);
+export const v3 = (v: Option<((arg0: string) => void)>): ((arg0: uint64) => ((arg0: UH1_$union) => Option<uint64>)) => closure79(undefined, v);
 
 export function roll_within_bounds(x: Option<((arg0: string) => void)>): ((arg0: uint64) => ((arg0: UH1_$union) => Option<uint64>)) {
     return v3(x);
 }
 
-export const v4 = (v: string[]): int32 => closure80(undefined, v);
+export const v4 = (v: string[]): int32 => closure82(undefined, v);
 
 (v4)(typeof process === 'object' ? process.argv.slice(2) : []);
 

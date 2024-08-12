@@ -45,8 +45,8 @@ inl render () : _ leptos.div =
         inl hash = hash |> sm'.strip_prefix '#' |> optionm'.unwrap_or #""
         inl hash_url = hash |> leptos.url_try_from |> resultm.unbox
 
-        inl hash_url_log = hash_url |> sm'.format_pretty'
-        leptos.log $'"content.render () / effect 2 / hash_url: " + string !hash_url_log + ""'
+        inl hash_url_log = hash_url |> sm'.format_pretty
+        leptos.log $'"content.render () / effect 2 / hash_url: " + !hash_url_log + ""'
 
         match hash_url with
         | Ok hash_url =>
@@ -69,8 +69,8 @@ inl render () : _ leptos.div =
                     None
                 |> optionm'.default_value (index tabs 0)
 
-            inl tab_log = tab |> sm'.format_pretty'
-            leptos.log $'"content.render () / effect 2 / new_tab: " + string !tab_log + ""'
+            inl tab_log = tab |> sm'.format_pretty
+            leptos.log $'"content.render () / effect 2 / new_tab: " + !tab_log + ""'
 
             set_tab |> leptos.signal_set tab
         | Error error =>
