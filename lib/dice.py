@@ -10,7 +10,7 @@ from fable_modules.fable_library.string_ import (to_text, interpolate)
 from fable_modules.fable_library.types import (Array, Union, Record, int64, FSharpRef, uint8, uint64, int8)
 from fable_modules.fable_library.util import (ignore, randint)
 
-def _expr334() -> TypeInfo:
+def _expr322() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -25,9 +25,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr334
+UH0_reflection = _expr322
 
-def _expr335() -> TypeInfo:
+def _expr324() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[], [("Item1", uint8_type), ("Item2", UH1_reflection())]])
 
 
@@ -42,9 +42,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr335
+UH1_reflection = _expr324
 
-def _expr336() -> TypeInfo:
+def _expr326() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[("f0_0", lambda_type(string_type, unit_type))], []])
 
 
@@ -60,9 +60,9 @@ class US0(Union):
         return ["US0_0", "US0_1"]
 
 
-US0_reflection = _expr336
+US0_reflection = _expr326
 
-def _expr337() -> TypeInfo:
+def _expr328() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", lambda_type(unit_type, UH0_reflection()))], [("f1_0", UH0_reflection())]])
 
 
@@ -78,9 +78,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr337
+US1_reflection = _expr328
 
-def _expr338() -> TypeInfo:
+def _expr330() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", US1_reflection())])
 
 
@@ -88,9 +88,9 @@ def _expr338() -> TypeInfo:
 class Mut0(Record):
     l0: US1
 
-Mut0_reflection = _expr338
+Mut0_reflection = _expr330
 
-def _expr339() -> TypeInfo:
+def _expr331() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", int64_type)])
 
 
@@ -98,9 +98,9 @@ def _expr339() -> TypeInfo:
 class Mut1(Record):
     l0: int64
 
-Mut1_reflection = _expr339
+Mut1_reflection = _expr331
 
-def _expr340() -> TypeInfo:
+def _expr334() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[("f0_0", uint8_type)], []])
 
 
@@ -116,9 +116,9 @@ class US2(Union):
         return ["US2_0", "US2_1"]
 
 
-US2_reflection = _expr340
+US2_reflection = _expr334
 
-def _expr341() -> TypeInfo:
+def _expr335() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", US2_reflection())])
 
 
@@ -126,9 +126,9 @@ def _expr341() -> TypeInfo:
 class Mut2(Record):
     l0: US2
 
-Mut2_reflection = _expr341
+Mut2_reflection = _expr335
 
-def _expr342() -> TypeInfo:
+def _expr338() -> TypeInfo:
     return union_type("Dice.US3", [], US3, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -144,9 +144,9 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr342
+US3_reflection = _expr338
 
-def _expr343() -> TypeInfo:
+def _expr340() -> TypeInfo:
     return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
 
 
@@ -161,9 +161,9 @@ class UH2(Union):
         return ["UH2_0", "UH2_1"]
 
 
-UH2_reflection = _expr343
+UH2_reflection = _expr340
 
-def _expr344() -> TypeInfo:
+def _expr342() -> TypeInfo:
     return union_type("Dice.US4", [], US4, lambda: [[("f0_0", uint64_type)], []])
 
 
@@ -179,9 +179,9 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr344
+US4_reflection = _expr342
 
-def _expr345() -> TypeInfo:
+def _expr344() -> TypeInfo:
     return union_type("Dice.US5", [], US5, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -197,7 +197,7 @@ class US5(Union):
         return ["US5_0", "US5_1"]
 
 
-US5_reflection = _expr345
+US5_reflection = _expr344
 
 def closure2(v0_1: UH0, unit_var: None) -> UH0:
     return v0_1
