@@ -496,8 +496,8 @@ export function closure3(unitVar: void, v0_1: Option<((arg0: string) => void)>):
     let v6: any;
     closure5(v0_1, (v: Option<US0_$union>): FSharpRef<Option<US0_$union>> => closure4(_v1, v), undefined);
     v6 = undefined;
-    const v19: US0_$union = defaultArg(_v1.contents, US0_US0_1());
-    return (v_1: UH1_$union): (() => uint8) => closure6(v19, v_1);
+    const v21: US0_$union = defaultArg(_v1.contents, US0_US0_1());
+    return (v_1: UH1_$union): (() => uint8) => closure6(v21, v_1);
 }
 
 export function method7(v0_1_mut: US0_$union, v1_1_mut: uint64, v2_1_mut: int8, v3_1_mut: uint64): int8 {
@@ -987,8 +987,8 @@ export function closure11(unitVar: void, v0_1: Option<((arg0: string) => void)>)
     let v6: any;
     closure5(v0_1, (v: Option<US0_$union>): FSharpRef<Option<US0_$union>> => closure4(_v1, v), undefined);
     v6 = undefined;
-    const v19: US0_$union = defaultArg(_v1.contents, US0_US0_1());
-    return (v_1: (() => uint8)): ((arg0: boolean) => ((arg0: uint64) => uint64)) => closure12(v19, v_1);
+    const v21: US0_$union = defaultArg(_v1.contents, US0_US0_1());
+    return (v_1: (() => uint8)): ((arg0: boolean) => ((arg0: uint64) => uint64)) => closure12(v21, v_1);
 }
 
 export function method13(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
@@ -1013,18 +1013,18 @@ export function closure81(v0_1: Option<((arg0: string) => void)>, v1_1: uint64, 
     let v8: any;
     closure5(v0_1, (v: Option<US0_$union>): FSharpRef<Option<US0_$union>> => closure4(_v3, v), undefined);
     v8 = undefined;
-    const v29: US3_$union = method9(defaultArg(_v3.contents, US0_US0_1()), method13(v2_1, 0) - 1, v2_1, 0n);
-    let v39: US4_$union;
-    if (v29.tag === /* US3_0 */ 0) {
-        const v31: UH1_$union = v29.fields[1];
-        const v30: uint64 = v29.fields[0];
-        v39 = (((compare(v30, 1n) >= 0) && (compare(v30, v1_1) <= 0)) ? US4_US4_0(v30) : US4_US4_1());
+    const v31: US3_$union = method9(defaultArg(_v3.contents, US0_US0_1()), method13(v2_1, 0) - 1, v2_1, 0n);
+    let v41: US4_$union;
+    if (v31.tag === /* US3_0 */ 0) {
+        const v33: UH1_$union = v31.fields[1];
+        const v32: uint64 = v31.fields[0];
+        v41 = (((compare(v32, 1n) >= 0) && (compare(v32, v1_1) <= 0)) ? US4_US4_0(v32) : US4_US4_1());
     }
     else {
-        v39 = US4_US4_1();
+        v41 = US4_US4_1();
     }
-    if (v39.tag === /* US4_0 */ 0) {
-        return v39.fields[0];
+    if (v41.tag === /* US4_0 */ 0) {
+        return v41.fields[0];
     }
     else {
         return undefined;
@@ -1074,9 +1074,9 @@ export function method39(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method40(v4_1, toInt64(op_Addition(v1_1, v7)));
         }
         else {
-            let v17: any;
+            let v18: any;
             closure83(`accumulate_dice_rolls / power: ${0} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v17 = undefined;
+            v18 = undefined;
             return method40(v4_1, v1_1);
         }
     }
@@ -1097,9 +1097,9 @@ export function method38(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method39(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${1} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method39(v4_1, v1_1);
         }
     }
@@ -1120,9 +1120,9 @@ export function method37(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method38(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${2} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method38(v4_1, v1_1);
         }
     }
@@ -1143,9 +1143,9 @@ export function method36(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method37(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${3} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method37(v4_1, v1_1);
         }
     }
@@ -1166,9 +1166,9 @@ export function method35(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method36(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${4} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method36(v4_1, v1_1);
         }
     }
@@ -1189,9 +1189,9 @@ export function method34(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method35(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${5} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method35(v4_1, v1_1);
         }
     }
@@ -1212,9 +1212,9 @@ export function method33(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method34(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${6} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method34(v4_1, v1_1);
         }
     }
@@ -1235,9 +1235,9 @@ export function method32(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method33(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${7} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method33(v4_1, v1_1);
         }
     }
@@ -1258,9 +1258,9 @@ export function method31(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method32(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${8} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method32(v4_1, v1_1);
         }
     }
@@ -1281,9 +1281,9 @@ export function method30(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method31(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${9} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method31(v4_1, v1_1);
         }
     }
@@ -1304,9 +1304,9 @@ export function method29(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method30(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${10} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method30(v4_1, v1_1);
         }
     }
@@ -1327,9 +1327,9 @@ export function method28(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method29(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${11} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method29(v4_1, v1_1);
         }
     }
@@ -1350,9 +1350,9 @@ export function method27(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method28(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${12} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method28(v4_1, v1_1);
         }
     }
@@ -1373,9 +1373,9 @@ export function method26(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method27(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${13} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method27(v4_1, v1_1);
         }
     }
@@ -1396,9 +1396,9 @@ export function method25(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method26(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${14} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method26(v4_1, v1_1);
         }
     }
@@ -1419,9 +1419,9 @@ export function method24(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method25(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${15} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method25(v4_1, v1_1);
         }
     }
@@ -1442,9 +1442,9 @@ export function method23(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method24(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${16} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method24(v4_1, v1_1);
         }
     }
@@ -1465,9 +1465,9 @@ export function method22(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method23(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${17} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method23(v4_1, v1_1);
         }
     }
@@ -1488,9 +1488,9 @@ export function method21(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method22(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${18} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method22(v4_1, v1_1);
         }
     }
@@ -1511,9 +1511,9 @@ export function method20(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method21(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${19} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method21(v4_1, v1_1);
         }
     }
@@ -1534,9 +1534,9 @@ export function method19(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method20(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${20} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method20(v4_1, v1_1);
         }
     }
@@ -1557,9 +1557,9 @@ export function method18(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method19(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${21} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method19(v4_1, v1_1);
         }
     }
@@ -1580,9 +1580,9 @@ export function method17(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method18(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${22} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method18(v4_1, v1_1);
         }
     }
@@ -1603,9 +1603,9 @@ export function method16(v0_1: UH1_$union, v1_1: int64): US5_$union {
             return method17(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v18: any;
+            let v19: any;
             closure83(`accumulate_dice_rolls / power: ${23} / acc: ${v1_1} / roll: ${v3_1}`, undefined);
-            v18 = undefined;
+            v19 = undefined;
             return method17(v4_1, v1_1);
         }
     }
@@ -1648,9 +1648,9 @@ export function closure82(unitVar: void, v0_1: string[]): int32 {
     let v4_1: any;
     closure83(`calculate_dice_count / max: ${9223372036854775807n} / n: ${24} / p: ${4738381338321616896n}`, undefined);
     v4_1 = undefined;
-    let v11: any;
+    let v12: any;
     closure83(`result: ${method14(UH1_UH1_0(), 0)}`, undefined);
-    v11 = undefined;
+    v12 = undefined;
     return 0;
 }
 

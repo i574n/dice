@@ -505,10 +505,10 @@ mod module_a51efde0 {
                 );
                 ()
             };
-            let v19: Dice::US0 = defaultValue(Dice::US0::US0_1, _v1.get().clone());
+            let v21: Dice::US0 = defaultValue(Dice::US0::US0_1, _v1.get().clone());
             Func1::new({
-                let v19 = v19.clone();
-                move |v_1: LrcPtr<Dice::UH1>| Dice::closure6(v19.clone(), v_1)
+                let v21 = v21.clone();
+                move |v_1: LrcPtr<Dice::UH1>| Dice::closure6(v21.clone(), v_1)
             })
         }
         pub fn method7(v0_1: Dice::US0, v1_1: u64, v2_1: i8, v3_1: u64) -> i8 {
@@ -1344,10 +1344,10 @@ mod module_a51efde0 {
                 );
                 ()
             };
-            let v19: Dice::US0 = defaultValue(Dice::US0::US0_1, _v1.get().clone());
+            let v21: Dice::US0 = defaultValue(Dice::US0::US0_1, _v1.get().clone());
             Func1::new({
-                let v19 = v19.clone();
-                move |v_1: Func0<u8>| Dice::closure12(v19.clone(), v_1)
+                let v21 = v21.clone();
+                move |v_1: Func0<u8>| Dice::closure12(v21.clone(), v_1)
             })
         }
         pub fn method13(v0_1: LrcPtr<Dice::UH1>, v1_1: i8) -> i8 {
@@ -1386,27 +1386,27 @@ mod module_a51efde0 {
                 );
                 ()
             };
-            let v29: Dice::US3 = Dice::method9(
+            let v31: Dice::US3 = Dice::method9(
                 defaultValue(Dice::US0::US0_1, _v3.get().clone()),
                 Dice::method13(v2_1.clone(), 0_i8) - 1_i8,
                 v2_1,
                 0_u64,
             );
-            let v39: Dice::US4 = if let Dice::US3::US3_0(v29_0_0, v29_0_1) = &v29 {
-                let v30: u64 = match &v29 {
+            let v41: Dice::US4 = if let Dice::US3::US3_0(v31_0_0, v31_0_1) = &v31 {
+                let v32: u64 = match &v31 {
                     Dice::US3::US3_0(x, _) => x.clone(),
                     _ => unreachable!(),
                 };
-                if if v30 >= 1_u64 { v30 <= v1_1 } else { false } {
-                    Dice::US4::US4_0(v30)
+                if if v32 >= 1_u64 { v32 <= v1_1 } else { false } {
+                    Dice::US4::US4_0(v32)
                 } else {
                     Dice::US4::US4_1
                 }
             } else {
                 Dice::US4::US4_1
             };
-            match &v39 {
-                Dice::US4::US4_0(v39_0_0) => Some(match &v39 {
+            match &v41 {
+                Dice::US4::US4_0(v41_0_0) => Some(match &v41 {
                     Dice::US4::US4_0(x) => x.clone(),
                     _ => unreachable!(),
                 }),
@@ -1476,7 +1476,7 @@ mod module_a51efde0 {
                         };
                         Dice::method40(v4_1.clone(), v1_1 + v7)
                     } else {
-                        let v17: () = {
+                        let v18: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1515,7 +1515,7 @@ mod module_a51efde0 {
                         };
                         Dice::method39(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1554,7 +1554,7 @@ mod module_a51efde0 {
                         };
                         Dice::method38(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1593,7 +1593,7 @@ mod module_a51efde0 {
                         };
                         Dice::method37(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1632,7 +1632,7 @@ mod module_a51efde0 {
                         };
                         Dice::method36(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1671,7 +1671,7 @@ mod module_a51efde0 {
                         };
                         Dice::method35(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1710,7 +1710,7 @@ mod module_a51efde0 {
                         };
                         Dice::method34(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1749,7 +1749,7 @@ mod module_a51efde0 {
                         };
                         Dice::method33(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1788,7 +1788,7 @@ mod module_a51efde0 {
                         };
                         Dice::method32(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1827,7 +1827,7 @@ mod module_a51efde0 {
                         };
                         Dice::method31(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1866,7 +1866,7 @@ mod module_a51efde0 {
                         };
                         Dice::method30(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1905,7 +1905,7 @@ mod module_a51efde0 {
                         };
                         Dice::method29(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1944,7 +1944,7 @@ mod module_a51efde0 {
                         };
                         Dice::method28(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -1983,7 +1983,7 @@ mod module_a51efde0 {
                         };
                         Dice::method27(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -2022,7 +2022,7 @@ mod module_a51efde0 {
                         };
                         Dice::method26(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -2061,7 +2061,7 @@ mod module_a51efde0 {
                         };
                         Dice::method25(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -2100,7 +2100,7 @@ mod module_a51efde0 {
                         };
                         Dice::method24(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -2139,7 +2139,7 @@ mod module_a51efde0 {
                         };
                         Dice::method23(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -2178,7 +2178,7 @@ mod module_a51efde0 {
                         };
                         Dice::method22(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -2217,7 +2217,7 @@ mod module_a51efde0 {
                         };
                         Dice::method21(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -2256,7 +2256,7 @@ mod module_a51efde0 {
                         };
                         Dice::method20(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -2295,7 +2295,7 @@ mod module_a51efde0 {
                         };
                         Dice::method19(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -2334,7 +2334,7 @@ mod module_a51efde0 {
                         };
                         Dice::method18(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -2373,7 +2373,7 @@ mod module_a51efde0 {
                         };
                         Dice::method17(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v18: () = {
+                        let v19: () = {
                             Dice::closure83(
                                 sprintf!(
                                     "accumulate_dice_rolls / power: {} / acc: {} / roll: {}",
@@ -2488,7 +2488,7 @@ mod module_a51efde0 {
                 );
                 ()
             };
-            let v11: () = {
+            let v12: () = {
                 Dice::closure83(
                     sprintf!(
                         "result: {}",

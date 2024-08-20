@@ -207,10 +207,10 @@ and closure3 () (v0 : (string -> unit) option) : (UH1 -> (unit -> uint8)) =
     let v4 : unit = ()
     let v5 : (unit -> unit) = closure5(v0, v3)
     let v6 : unit = (fun () -> v5 (); v4) ()
-    let v7 : US0 option = _v1.Value 
-    let v18 : US0 = US0_1
-    let v19 : US0 = v7 |> Option.defaultValue v18 
-    closure6(v19)
+    let v9 : US0 option = _v1.Value 
+    let v20 : US0 = US0_1
+    let v21 : US0 = v9 |> Option.defaultValue v20 
+    closure6(v21)
 and method7 (v0 : US0, v1 : uint64, v2 : int8, v3 : uint64) : int8 =
     let v4 : bool = v3 < v1
     if v4 then
@@ -591,10 +591,10 @@ and closure11 () (v0 : (string -> unit) option) : ((unit -> uint8) -> (bool -> (
     let v4 : unit = ()
     let v5 : (unit -> unit) = closure5(v0, v3)
     let v6 : unit = (fun () -> v5 (); v4) ()
-    let v7 : US0 option = _v1.Value 
-    let v18 : US0 = US0_1
-    let v19 : US0 = v7 |> Option.defaultValue v18 
-    closure12(v19)
+    let v9 : US0 option = _v1.Value 
+    let v20 : US0 = US0_1
+    let v21 : US0 = v9 |> Option.defaultValue v20 
+    closure12(v21)
 and method13 (v0 : UH1, v1 : int8) : int8 =
     match v0 with
     | UH1_1(v2, v3) -> (* Cons *)
@@ -610,37 +610,37 @@ and closure81 (v0 : (string -> unit) option, v1 : uint64) (v2 : UH1) : uint64 op
     let v6 : unit = ()
     let v7 : (unit -> unit) = closure5(v0, v5)
     let v8 : unit = (fun () -> v7 (); v6) ()
-    let v9 : US0 option = _v3.Value 
-    let v20 : US0 = US0_1
-    let v21 : US0 = v9 |> Option.defaultValue v20 
-    let v25 : int8 = 0y
-    let v26 : int8 = method13(v2, v25)
-    let v27 : int8 = v26 - 1y
-    let v28 : uint64 = 0UL
-    let v29 : US3 = method9(v21, v27, v2, v28)
-    let v39 : US4 =
-        match v29 with
-        | US3_0(v30, v31) -> (* Some *)
-            let v32 : bool = v30 >= 1UL
-            let v34 : bool =
-                if v32 then
-                    let v33 : bool = v30 <= v1
-                    v33
+    let v11 : US0 option = _v3.Value 
+    let v22 : US0 = US0_1
+    let v23 : US0 = v11 |> Option.defaultValue v22 
+    let v27 : int8 = 0y
+    let v28 : int8 = method13(v2, v27)
+    let v29 : int8 = v28 - 1y
+    let v30 : uint64 = 0UL
+    let v31 : US3 = method9(v23, v29, v2, v30)
+    let v41 : US4 =
+        match v31 with
+        | US3_0(v32, v33) -> (* Some *)
+            let v34 : bool = v32 >= 1UL
+            let v36 : bool =
+                if v34 then
+                    let v35 : bool = v32 <= v1
+                    v35
                 else
                     false
-            if v34 then
-                US4_0(v30)
+            if v36 then
+                US4_0(v32)
             else
                 US4_1
         | _ ->
             US4_1
-    match v39 with
+    match v41 with
     | US4_1 -> (* None *)
-        let v44 : uint64 option = None
-        v44
-    | US4_0(v40) -> (* Some *)
-        let v41 : uint64 option = Some v40 
-        v41
+        let v46 : uint64 option = None
+        v46
+    | US4_0(v42) -> (* Some *)
+        let v43 : uint64 option = Some v42 
+        v43
 and closure80 (v0 : (string -> unit) option) (v1 : uint64) : (UH1 -> uint64 option) =
     closure81(v0, v1)
 and closure79 () (v0 : (string -> unit) option) : (uint64 -> (UH1 -> uint64 option)) =
@@ -720,13 +720,13 @@ and method39 (v0 : UH1, v1 : int64) : US5 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure83(v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v12 : int64 = v1 + v7
-            method40(v4, v12)
+            let v13 : int64 = v1 + v7
+            method40(v4, v13)
         else
-            let v14 : string = $"accumulate_dice_rolls / power: {0y} / acc: {v1} / roll: {v3}"
-            let v15 : unit = ()
-            let v16 : (unit -> unit) = closure83(v14)
-            let v17 : unit = (fun () -> v16 (); v15) ()
+            let v15 : string = $"accumulate_dice_rolls / power: {0y} / acc: {v1} / roll: {v3}"
+            let v16 : unit = ()
+            let v17 : (unit -> unit) = closure83(v15)
+            let v18 : unit = (fun () -> v17 (); v16) ()
             method40(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -742,13 +742,13 @@ and method38 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method39(v4, v13)
+            let v14 : int64 = v1 + v8
+            method39(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {1y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {1y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method39(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -764,13 +764,13 @@ and method37 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method38(v4, v13)
+            let v14 : int64 = v1 + v8
+            method38(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {2y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {2y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method38(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -786,13 +786,13 @@ and method36 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method37(v4, v13)
+            let v14 : int64 = v1 + v8
+            method37(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {3y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {3y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method37(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -808,13 +808,13 @@ and method35 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method36(v4, v13)
+            let v14 : int64 = v1 + v8
+            method36(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {4y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {4y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method36(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -830,13 +830,13 @@ and method34 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method35(v4, v13)
+            let v14 : int64 = v1 + v8
+            method35(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {5y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {5y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method35(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -852,13 +852,13 @@ and method33 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method34(v4, v13)
+            let v14 : int64 = v1 + v8
+            method34(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {6y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {6y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method34(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -874,13 +874,13 @@ and method32 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method33(v4, v13)
+            let v14 : int64 = v1 + v8
+            method33(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {7y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {7y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method33(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -896,13 +896,13 @@ and method31 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method32(v4, v13)
+            let v14 : int64 = v1 + v8
+            method32(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {8y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {8y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method32(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -918,13 +918,13 @@ and method30 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method31(v4, v13)
+            let v14 : int64 = v1 + v8
+            method31(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {9y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {9y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method31(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -940,13 +940,13 @@ and method29 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method30(v4, v13)
+            let v14 : int64 = v1 + v8
+            method30(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {10y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {10y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method30(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -962,13 +962,13 @@ and method28 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method29(v4, v13)
+            let v14 : int64 = v1 + v8
+            method29(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {11y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {11y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method29(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -984,13 +984,13 @@ and method27 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method28(v4, v13)
+            let v14 : int64 = v1 + v8
+            method28(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {12y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {12y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method28(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1006,13 +1006,13 @@ and method26 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method27(v4, v13)
+            let v14 : int64 = v1 + v8
+            method27(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {13y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {13y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method27(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1028,13 +1028,13 @@ and method25 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method26(v4, v13)
+            let v14 : int64 = v1 + v8
+            method26(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {14y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {14y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method26(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1050,13 +1050,13 @@ and method24 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method25(v4, v13)
+            let v14 : int64 = v1 + v8
+            method25(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {15y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {15y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method25(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1072,13 +1072,13 @@ and method23 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method24(v4, v13)
+            let v14 : int64 = v1 + v8
+            method24(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {16y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {16y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method24(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1094,13 +1094,13 @@ and method22 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method23(v4, v13)
+            let v14 : int64 = v1 + v8
+            method23(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {17y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {17y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method23(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1116,13 +1116,13 @@ and method21 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method22(v4, v13)
+            let v14 : int64 = v1 + v8
+            method22(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {18y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {18y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method22(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1138,13 +1138,13 @@ and method20 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method21(v4, v13)
+            let v14 : int64 = v1 + v8
+            method21(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {19y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {19y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method21(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1160,13 +1160,13 @@ and method19 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method20(v4, v13)
+            let v14 : int64 = v1 + v8
+            method20(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {20y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {20y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method20(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1182,13 +1182,13 @@ and method18 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method19(v4, v13)
+            let v14 : int64 = v1 + v8
+            method19(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {21y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {21y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method19(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1204,13 +1204,13 @@ and method17 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method18(v4, v13)
+            let v14 : int64 = v1 + v8
+            method18(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {22y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {22y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method18(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1226,13 +1226,13 @@ and method16 (v0 : UH1, v1 : int64) : US5 =
             let v10 : unit = ()
             let v11 : (unit -> unit) = closure83(v9)
             let v12 : unit = (fun () -> v11 (); v10) ()
-            let v13 : int64 = v1 + v8
-            method17(v4, v13)
+            let v14 : int64 = v1 + v8
+            method17(v4, v14)
         else
-            let v15 : string = $"accumulate_dice_rolls / power: {23y} / acc: {v1} / roll: {v3}"
-            let v16 : unit = ()
-            let v17 : (unit -> unit) = closure83(v15)
-            let v18 : unit = (fun () -> v17 (); v16) ()
+            let v16 : string = $"accumulate_dice_rolls / power: {23y} / acc: {v1} / roll: {v3}"
+            let v17 : unit = ()
+            let v18 : (unit -> unit) = closure83(v16)
+            let v19 : unit = (fun () -> v18 (); v17) ()
             method17(v4, v1)
     | UH1_0 -> (* Nil *)
         US5_1
@@ -1356,13 +1356,13 @@ and closure82 () (v0 : (string [])) : int32 =
     let v2 : unit = ()
     let v3 : (unit -> unit) = closure83(v1)
     let v4 : unit = (fun () -> v3 (); v2) ()
-    let v5 : UH1 = UH1_0
-    let v6 : int8 = 0y
-    let v7 : int64 = method14(v5, v6)
-    let v8 : string = $"result: {v7}"
-    let v9 : unit = ()
-    let v10 : (unit -> unit) = closure83(v8)
-    let v11 : unit = (fun () -> v10 (); v9) ()
+    let v6 : UH1 = UH1_0
+    let v7 : int8 = 0y
+    let v8 : int64 = method14(v6, v7)
+    let v9 : string = $"result: {v8}"
+    let v10 : unit = ()
+    let v11 : (unit -> unit) = closure83(v9)
+    let v12 : unit = (fun () -> v11 (); v10) ()
     0
 let v0 : (int64 -> (UH0 -> UH0)) = closure0()
 let rotate_numbers x = v0 x

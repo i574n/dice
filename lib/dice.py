@@ -10,7 +10,7 @@ from fable_modules.fable_library.string_ import (to_text, interpolate)
 from fable_modules.fable_library.types import (Array, Union, Record, int64, FSharpRef, uint8, uint64, int8)
 from fable_modules.fable_library.util import (ignore, randint)
 
-def _expr250() -> TypeInfo:
+def _expr334() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -25,9 +25,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr250
+UH0_reflection = _expr334
 
-def _expr251() -> TypeInfo:
+def _expr335() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[], [("Item1", uint8_type), ("Item2", UH1_reflection())]])
 
 
@@ -42,9 +42,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr251
+UH1_reflection = _expr335
 
-def _expr252() -> TypeInfo:
+def _expr336() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[("f0_0", lambda_type(string_type, unit_type))], []])
 
 
@@ -60,9 +60,9 @@ class US0(Union):
         return ["US0_0", "US0_1"]
 
 
-US0_reflection = _expr252
+US0_reflection = _expr336
 
-def _expr253() -> TypeInfo:
+def _expr337() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", lambda_type(unit_type, UH0_reflection()))], [("f1_0", UH0_reflection())]])
 
 
@@ -78,9 +78,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr253
+US1_reflection = _expr337
 
-def _expr254() -> TypeInfo:
+def _expr338() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", US1_reflection())])
 
 
@@ -88,9 +88,9 @@ def _expr254() -> TypeInfo:
 class Mut0(Record):
     l0: US1
 
-Mut0_reflection = _expr254
+Mut0_reflection = _expr338
 
-def _expr255() -> TypeInfo:
+def _expr339() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", int64_type)])
 
 
@@ -98,9 +98,9 @@ def _expr255() -> TypeInfo:
 class Mut1(Record):
     l0: int64
 
-Mut1_reflection = _expr255
+Mut1_reflection = _expr339
 
-def _expr256() -> TypeInfo:
+def _expr340() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[("f0_0", uint8_type)], []])
 
 
@@ -116,9 +116,9 @@ class US2(Union):
         return ["US2_0", "US2_1"]
 
 
-US2_reflection = _expr256
+US2_reflection = _expr340
 
-def _expr257() -> TypeInfo:
+def _expr341() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", US2_reflection())])
 
 
@@ -126,9 +126,9 @@ def _expr257() -> TypeInfo:
 class Mut2(Record):
     l0: US2
 
-Mut2_reflection = _expr257
+Mut2_reflection = _expr341
 
-def _expr258() -> TypeInfo:
+def _expr342() -> TypeInfo:
     return union_type("Dice.US3", [], US3, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -144,9 +144,9 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr258
+US3_reflection = _expr342
 
-def _expr259() -> TypeInfo:
+def _expr343() -> TypeInfo:
     return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
 
 
@@ -161,9 +161,9 @@ class UH2(Union):
         return ["UH2_0", "UH2_1"]
 
 
-UH2_reflection = _expr259
+UH2_reflection = _expr343
 
-def _expr260() -> TypeInfo:
+def _expr344() -> TypeInfo:
     return union_type("Dice.US4", [], US4, lambda: [[("f0_0", uint64_type)], []])
 
 
@@ -179,9 +179,9 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr260
+US4_reflection = _expr344
 
-def _expr261() -> TypeInfo:
+def _expr345() -> TypeInfo:
     return union_type("Dice.US5", [], US5, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -197,7 +197,7 @@ class US5(Union):
         return ["US5_0", "US5_1"]
 
 
-US5_reflection = _expr261
+US5_reflection = _expr345
 
 def closure2(v0_1: UH0, unit_var: None) -> UH0:
     return v0_1
@@ -222,10 +222,10 @@ def closure1(v0_1: int64, v1_1: UH0) -> UH0:
 
 
 def closure0(unit_var: None, v0_1: int64) -> Callable[[UH0], UH0]:
-    def _arrow262(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
+    def _arrow346(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
         return closure1(v0_1, v)
 
-    return _arrow262
+    return _arrow346
 
 
 def closure4(v0_1: FSharpRef[US0 | None], v1_1: US0 | None=None) -> FSharpRef[US0 | None]:
@@ -234,14 +234,14 @@ def closure4(v0_1: FSharpRef[US0 | None], v1_1: US0 | None=None) -> FSharpRef[US
 
 
 def closure5(v0_1: Callable[[str], None] | None, v1_1: Callable[[US0 | None], FSharpRef[US0 | None]], unit_var: None) -> None:
-    def _arrow263(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> US0 | None:
+    def _arrow347(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> US0 | None:
         x: Callable[[str], None] = v0_1
         def x_1(__unit: None=None) -> US0:
             return US0(0, x)
 
         return x_1(None)
 
-    ignore(v1_1(None if (v0_1 is None) else _arrow263()))
+    ignore(v1_1(None if (v0_1 is None) else _arrow347()))
 
 
 def method1(v0_1_mut: UH1, v1_1_mut: UH1) -> UH1:
@@ -303,10 +303,10 @@ def closure9(v0_1: UH0, v1_1: Mut0, unit_var: None) -> UH0:
 
 def method4(v0_1: UH0, v1_1: Callable[[], UH0]) -> Callable[[], UH0]:
     v3_1: Mut0 = Mut0(US1(0, v1_1))
-    def _arrow264(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
+    def _arrow348(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
         return closure9(v0_1, v3_1, None)
 
-    return _arrow264
+    return _arrow348
 
 
 def method6(v0_1_mut: int64, v1_1_mut: UH0) -> US2:
@@ -383,10 +383,10 @@ def closure6(v0_1: US0, v1_1: UH1) -> Callable[[], uint8]:
     v12: Mut1 = Mut1(int64(1))
     v13: Mut1 = Mut1(int64(-1))
     v15: Mut2 = Mut2(US2(1))
-    def _arrow265(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
+    def _arrow349(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint8:
         return closure10(v0_1, v10, v11, v12, v13, v15, None)
 
-    return _arrow265
+    return _arrow349
 
 
 def closure3(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
@@ -397,11 +397,11 @@ def closure3(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callabl
 
     closure5(v0_1, v3_1, None)
     v6 = None
-    v19: US0 = default_arg(_v1.contents, US0(1))
-    def _arrow266(v_1: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
-        return closure6(v19, v_1)
+    v21: US0 = default_arg(_v1.contents, US0(1))
+    def _arrow350(v_1: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[], uint8]:
+        return closure6(v21, v_1)
 
-    return _arrow266
+    return _arrow350
 
 
 def method7(v0_1_mut: US0, v1_1_mut: uint64, v2_1_mut: int8, v3_1_mut: uint64) -> int8:
@@ -1057,17 +1057,17 @@ def closure14(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool, v3_1: uint64) ->
 
 
 def closure13(v0_1: US0, v1_1: Callable[[], uint8], v2_1: bool) -> Callable[[uint64], uint64]:
-    def _arrow267(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
+    def _arrow351(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> uint64:
         return closure14(v0_1, v1_1, v2_1, v)
 
-    return _arrow267
+    return _arrow351
 
 
 def closure12(v0_1: US0, v1_1: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
-    def _arrow268(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
+    def _arrow352(v: bool, v0_1: Any=v0_1, v1_1: Any=v1_1) -> Callable[[uint64], uint64]:
         return closure13(v0_1, v1_1, v)
 
-    return _arrow268
+    return _arrow352
 
 
 def closure11(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
@@ -1078,11 +1078,11 @@ def closure11(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callab
 
     closure5(v0_1, v3_1, None)
     v6 = None
-    v19: US0 = default_arg(_v1.contents, US0(1))
-    def _arrow269(v_1: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
-        return closure12(v19, v_1)
+    v21: US0 = default_arg(_v1.contents, US0(1))
+    def _arrow353(v_1: Callable[[], uint8], unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[bool, uint64], uint64]:
+        return closure12(v21, v_1)
 
-    return _arrow269
+    return _arrow353
 
 
 def method13(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
@@ -1107,17 +1107,17 @@ def closure81(v0_1: Callable[[str], None] | None, v1_1: uint64, v2_1: UH1) -> ui
 
     closure5(v0_1, v5, None)
     v8 = None
-    v29: US3 = method9(default_arg(_v3.contents, US0(1)), method13(v2_1, int8(0)) - int8(1), v2_1, uint64(0))
-    v39: US4
-    if v29.tag == 0:
-        v30: uint64 = v29.fields[0]
-        v39 = US4(0, v30) if ((v30 <= v1_1) if (v30 >= uint64(1)) else False) else US4(1)
+    v31: US3 = method9(default_arg(_v3.contents, US0(1)), method13(v2_1, int8(0)) - int8(1), v2_1, uint64(0))
+    v41: US4
+    if v31.tag == 0:
+        v32: uint64 = v31.fields[0]
+        v41 = US4(0, v32) if ((v32 <= v1_1) if (v32 >= uint64(1)) else False) else US4(1)
 
     else: 
-        v39 = US4(1)
+        v41 = US4(1)
 
-    if v39.tag == 0:
-        return v39.fields[0]
+    if v41.tag == 0:
+        return v41.fields[0]
 
     else: 
         return None
@@ -1125,17 +1125,17 @@ def closure81(v0_1: Callable[[str], None] | None, v1_1: uint64, v2_1: UH1) -> ui
 
 
 def closure80(v0_1: Callable[[str], None] | None, v1_1: uint64) -> Callable[[UH1], uint64 | None]:
-    def _arrow270(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
+    def _arrow354(v: UH1, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64 | None:
         return closure81(v0_1, v1_1, v)
 
-    return _arrow270
+    return _arrow354
 
 
 def closure79(unit_var: None, v0_1: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
-    def _arrow271(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
+    def _arrow355(v: uint64, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[UH1], uint64 | None]:
         return closure80(v0_1, v)
 
-    return _arrow271
+    return _arrow355
 
 
 def closure83(v0_1: str, unit_var: None) -> None:
@@ -1171,9 +1171,9 @@ def method39(v0_1: UH1, v1_1: int64) -> US5:
             return method40(v4_1, op_addition(v1_1, v7))
 
         else: 
-            v17: None
+            v18: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(0))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v17 = None
+            v18 = None
             return method40(v4_1, v1_1)
 
 
@@ -1194,9 +1194,9 @@ def method38(v0_1: UH1, v1_1: int64) -> US5:
             return method39(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(1))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method39(v4_1, v1_1)
 
 
@@ -1217,9 +1217,9 @@ def method37(v0_1: UH1, v1_1: int64) -> US5:
             return method38(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(2))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method38(v4_1, v1_1)
 
 
@@ -1240,9 +1240,9 @@ def method36(v0_1: UH1, v1_1: int64) -> US5:
             return method37(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(3))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method37(v4_1, v1_1)
 
 
@@ -1263,9 +1263,9 @@ def method35(v0_1: UH1, v1_1: int64) -> US5:
             return method36(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(4))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method36(v4_1, v1_1)
 
 
@@ -1286,9 +1286,9 @@ def method34(v0_1: UH1, v1_1: int64) -> US5:
             return method35(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(5))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method35(v4_1, v1_1)
 
 
@@ -1309,9 +1309,9 @@ def method33(v0_1: UH1, v1_1: int64) -> US5:
             return method34(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(6))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method34(v4_1, v1_1)
 
 
@@ -1332,9 +1332,9 @@ def method32(v0_1: UH1, v1_1: int64) -> US5:
             return method33(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(7))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method33(v4_1, v1_1)
 
 
@@ -1355,9 +1355,9 @@ def method31(v0_1: UH1, v1_1: int64) -> US5:
             return method32(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(8))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method32(v4_1, v1_1)
 
 
@@ -1378,9 +1378,9 @@ def method30(v0_1: UH1, v1_1: int64) -> US5:
             return method31(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(9))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method31(v4_1, v1_1)
 
 
@@ -1401,9 +1401,9 @@ def method29(v0_1: UH1, v1_1: int64) -> US5:
             return method30(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(10))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method30(v4_1, v1_1)
 
 
@@ -1424,9 +1424,9 @@ def method28(v0_1: UH1, v1_1: int64) -> US5:
             return method29(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(11))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method29(v4_1, v1_1)
 
 
@@ -1447,9 +1447,9 @@ def method27(v0_1: UH1, v1_1: int64) -> US5:
             return method28(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(12))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method28(v4_1, v1_1)
 
 
@@ -1470,9 +1470,9 @@ def method26(v0_1: UH1, v1_1: int64) -> US5:
             return method27(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(13))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method27(v4_1, v1_1)
 
 
@@ -1493,9 +1493,9 @@ def method25(v0_1: UH1, v1_1: int64) -> US5:
             return method26(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(14))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method26(v4_1, v1_1)
 
 
@@ -1516,9 +1516,9 @@ def method24(v0_1: UH1, v1_1: int64) -> US5:
             return method25(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(15))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method25(v4_1, v1_1)
 
 
@@ -1539,9 +1539,9 @@ def method23(v0_1: UH1, v1_1: int64) -> US5:
             return method24(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(16))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method24(v4_1, v1_1)
 
 
@@ -1562,9 +1562,9 @@ def method22(v0_1: UH1, v1_1: int64) -> US5:
             return method23(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(17))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method23(v4_1, v1_1)
 
 
@@ -1585,9 +1585,9 @@ def method21(v0_1: UH1, v1_1: int64) -> US5:
             return method22(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(18))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method22(v4_1, v1_1)
 
 
@@ -1608,9 +1608,9 @@ def method20(v0_1: UH1, v1_1: int64) -> US5:
             return method21(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(19))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method21(v4_1, v1_1)
 
 
@@ -1631,9 +1631,9 @@ def method19(v0_1: UH1, v1_1: int64) -> US5:
             return method20(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(20))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method20(v4_1, v1_1)
 
 
@@ -1654,9 +1654,9 @@ def method18(v0_1: UH1, v1_1: int64) -> US5:
             return method19(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(21))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method19(v4_1, v1_1)
 
 
@@ -1677,9 +1677,9 @@ def method17(v0_1: UH1, v1_1: int64) -> US5:
             return method18(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(22))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method18(v4_1, v1_1)
 
 
@@ -1700,9 +1700,9 @@ def method16(v0_1: UH1, v1_1: int64) -> US5:
             return method17(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v18: None
+            v19: None
             closure83(((((("accumulate_dice_rolls / power: " + str(int8(23))) + " / acc: ") + str(v1_1)) + " / roll: ") + str(v3_1)) + "", None)
-            v18 = None
+            v19 = None
             return method17(v4_1, v1_1)
 
 
@@ -1742,57 +1742,57 @@ def closure82(unit_var: None, v0_1: Array[str]) -> int:
     v4_1: None
     closure83(((((("calculate_dice_count / max: " + str(int64(9223372036854775807))) + " / n: ") + str(int8(24))) + " / p: ") + str(int64(4738381338321616896))) + "", None)
     v4_1 = None
-    v11: None
+    v12: None
     closure83(("result: " + str(method14(UH1(0), int8(0)))) + "", None)
-    v11 = None
+    v12 = None
     return 0
 
 
-def _arrow272(v: int64) -> Callable[[UH0], UH0]:
+def _arrow356(v: int64) -> Callable[[UH0], UH0]:
     return closure0(None, v)
 
 
-v0: Callable[[int64, UH0], UH0] = _arrow272
+v0: Callable[[int64, UH0], UH0] = _arrow356
 
 def rotate_numbers(x: int64) -> Callable[[UH0], UH0]:
     return v0(x)
 
 
-def _arrow273(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
+def _arrow357(v: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return closure3(None, v)
 
 
-v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow273
+v1: Callable[[Callable[[str], None] | None, UH1, None], uint8] = _arrow357
 
 def create_sequential_roller(x: Callable[[str], None] | None=None) -> Callable[[UH1, None], uint8]:
     return v1(x)
 
 
-def _arrow274(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
+def _arrow358(v: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return closure11(None, v)
 
 
-v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow274
+v2: Callable[[Callable[[str], None] | None, Callable[[], uint8], bool, uint64], uint64] = _arrow358
 
 def roll_progressively(x: Callable[[str], None] | None=None) -> Callable[[Callable[[], uint8], bool, uint64], uint64]:
     return v2(x)
 
 
-def _arrow275(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
+def _arrow359(v: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return closure79(None, v)
 
 
-v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow275
+v3: Callable[[Callable[[str], None] | None, uint64, UH1], uint64 | None] = _arrow359
 
 def roll_within_bounds(x: Callable[[str], None] | None=None) -> Callable[[uint64, UH1], uint64 | None]:
     return v3(x)
 
 
-def _arrow276(v: Array[str]) -> int:
+def _arrow360(v: Array[str]) -> int:
     return closure82(None, v)
 
 
-v4: Callable[[Array[str]], int] = _arrow276
+v4: Callable[[Array[str]], int] = _arrow360
 
 def main(args: Array[str]) -> int:
     return v4(args)
