@@ -19,22 +19,22 @@ chrono = { workspace = true }
 regex = { workspace = true }
 tokio = { workspace = true }
 futures = { workspace = true }
-tokio-stream = "~0.1"
-base64 = "~0.22"
-borsh = { version = "~1.5", features = ["derive", "rc"] }
-console_error_panic_hook = { version = "0.1"}
-console_log = { version = "1"}
-gloo-net = { version = "0.5", features = ["http"] }
-js-sys = "~0.3"
-leptos = { version = "~0.6", features = ["csr", "nightly"] }
-leptos_meta = { version = "~0.6", features = ["csr", "nightly"] }
-leptos_router = { version = "~0.6", features = ["csr", "nightly"] }
-log = "~0.4"
-reqwest-wasm = { version = "~0.11", features = ["json"] }
-rexie = "~0.5"
-serde = { version = "~1.0", features = ["rc"] }
-serde_json = { version = "~1.0", features = ["arbitrary_precision"] }
-serde-wasm-bindgen = "~0.6"
-wasm-bindgen = { version = "~0.2" }
-wasm-bindgen-futures = "~0.4"
-web-sys = { version = "~0.3", features = ["Storage"] }
+tokio-stream = ">=0.1,<1"
+base64 = ">=0.22,<1"
+borsh = { version = "1.5", features = ["derive", "rc"] }
+console_error_panic_hook = { version = ">=0.1,<1"}
+console_log = { version = "1.0"}
+gloo-net = { version = ">=0.6,<1", features = ["http"] }
+js-sys = ">=0.3,<1"
+leptos = { version = ">=0.6,<1", features = ["csr", "nightly"] }
+leptos_meta = { version = ">=0.6,<1", features = ["csr", "nightly"] }
+leptos_router = { version = ">=0.6,<1", features = ["csr", "nightly"] }
+log = ">=0.4,<1"
+reqwest-wasm = { version = ">=0.11,<1", features = ["json"] }
+rexie = ">=0.5,<1"
+serde = { version = "1.0", features = ["rc"] }
+serde_json = { version = "1.0", features = ["arbitrary_precision"] }
+serde-wasm-bindgen = ">=0.6,<1"
+wasm-bindgen = { version = ">=0.2,<1" }
+wasm-bindgen-futures = ">=0.4,<1"
+web-sys = { version = ">=0.3,<1", features = ["Storage"] }

@@ -7,10 +7,10 @@ repository.workspace = true
 
 [dependencies]
 tokio = { workspace = true }
-anyhow = "~1.0"
-borsh = { version = "~1.5" }
-serde_json = { version = "~1.0", features = ["arbitrary_precision"] }
-near-workspaces = { version = "~0.11", features = ["experimental", "unstable"] }
-near-sandbox-utils = { version = "~0.9", features = ["global_install"] }
+anyhow = "1.0"
+borsh = { version = "1.5" }
+serde_json = { version = "1.0", features = ["arbitrary_precision"] }
+near-workspaces = { version = "=0.11.1", features = ["experimental", "unstable"] }
+near-sandbox-utils = { version = ">=0.10.1,<1", features = ["global_install"] }
 
 [dev-dependencies]
