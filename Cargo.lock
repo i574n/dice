@@ -1468,8 +1468,8 @@ name = "dice_contract"
 version = "0.0.1"
 dependencies = [
  "borsh",
- "dice_contract_lib",
  "fable_library_rust",
+ "inline_colorization",
  "near-sdk",
 ]
 
