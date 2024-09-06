@@ -1483,8 +1483,8 @@ and closure41 (v0 : std_string_String option, v1 : (US3 option -> US3 option ref
     let v10 : (serde_json_Error -> std_string_String) = method32()
     let v11 : string = "$0.map_err(|x| $1(x))"
     let v12 : Result<Heap3, std_string_String> = Fable.Core.RustInterop.emitRustExpr struct (v9, v10) v11 
-    let v13 : string = "v12.ok()"
-    let v14 : Heap3 option = Fable.Core.RustInterop.emitRustExpr () v13 
+    let v13 : string = "$0.ok()"
+    let v14 : Heap3 option = Fable.Core.RustInterop.emitRustExpr v12 v13 
     let v15 : US3 option = None
     let _v15 = ref v15 
     let v16 : US3 option ref = _v15 

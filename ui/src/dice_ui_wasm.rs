@@ -11892,7 +11892,7 @@ mod module_eef1bd43 {
                                     let:x
                                     key=move |x| v88(x.to_owned())
                                     each=v87
-                                ></leptos::For>
+                                />
                             },
                         )]);
                         let v105: Vec<leptos::View> = v103.to_vec();
@@ -17350,7 +17350,7 @@ mod module_eef1bd43 {
                         let:x
                         key=move |x| v6(x.to_owned())
                         each=v5
-                    ></leptos::For>
+                    />
                 },
             )]);
             let v23: Vec<leptos::View> = v21.to_vec();
@@ -27810,13 +27810,7 @@ mod module_eef1bd43 {
             let v17: string =
                 string("leptos::IntoView::into_view(leptos::view! { <leptos_router::Route  children=Box::new(move || v7()) view=move || v6() path=v5 /> })");
             let v18: leptos::View = leptos::IntoView::into_view(
-                leptos::view! {
-                    <leptos_router::Route
-                        children=Box::new(move || v7())
-                        view=move || v6()
-                        path=v5
-                    ></leptos_router::Route>
-                },
+                leptos::view! { <leptos_router::Route children=Box::new(move || v7()) view=move || v6() path=v5 /> },
             );
             let v19: string = Dice_ui::method390();
             let v21: &str = &*v19;
@@ -27831,7 +27825,7 @@ mod module_eef1bd43 {
                         children=Box::new(move || v25())
                         view=move || v24()
                         path=v23
-                    ></leptos_router::Route>
+                    />
                 },
             );
             let v35: string = Dice_ui::method392();
@@ -27847,7 +27841,7 @@ mod module_eef1bd43 {
                         children=Box::new(move || v41())
                         view=move || v40()
                         path=v39
-                    ></leptos_router::Route>
+                    />
                 },
             );
             let v51: string = Dice_ui::method394();
@@ -27867,7 +27861,7 @@ mod module_eef1bd43 {
                             children=Box::new(move || v57())
                             view=move || v56()
                             path=v55
-                        ></leptos_router::Route>
+                        />
                     },
                 ),
             ]);
@@ -27885,7 +27879,7 @@ mod module_eef1bd43 {
             let v8: string =
                 string("leptos::IntoView::into_view(leptos::view! { <leptos_router::Routes  children=Box::new(move || v2(())) /> })");
             let v10: Array<leptos::View> = new_array(&[leptos::IntoView::into_view(
-                leptos::view! { <leptos_router::Routes children=Box::new(move || v2(()))></leptos_router::Routes> },
+                leptos::view! { <leptos_router::Routes children=Box::new(move || v2(())) /> },
             )]);
             let v12: Vec<leptos::View> = v10.to_vec();
             leptos::Fragment::new(v12)
@@ -27936,7 +27930,7 @@ mod module_eef1bd43 {
             let v51: string =
                 string("leptos::IntoView::into_view(leptos::view! { <leptos_router::Router  children=Box::new(move || v46()) /> })");
             leptos::IntoView::into_view(
-                leptos::view! { <leptos_router::Router children=Box::new(move || v46())></leptos_router::Router> },
+                leptos::view! { <leptos_router::Router children=Box::new(move || v46()) /> },
             )
         }
         pub fn method2() {

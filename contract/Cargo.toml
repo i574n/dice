@@ -7,7 +7,7 @@ repository.workspace = true
 
 [lib]
 crate-type = ["cdylib"]
-# path = "dice_contract.rs"
+path = "dice_contract.rs"
 
 [dependencies]
 inline_colorization = { workspace = true }
