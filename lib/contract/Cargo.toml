@@ -8,7 +8,7 @@ repository.workspace = true
 [dependencies]
 fable_library_rust = { workspace = true }
 inline_colorization = { workspace = true }
-near-sdk = "~5.1"
+near-sdk = "5.4"
 
 [dev-dependencies]
 

@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>dice.dib</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>dice_contract.dib</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7531,11 +7531,26 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="dice-(Dice)">dice (Dice)<a class="anchor-link" href="#dice-(Dice)">¶</a></h1>
+<h1 id="dice_contract">dice_contract<a class="anchor-link" href="#dice_contract">¶</a></h1>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">open</span> <span class="n">rust</span>
+<span class="nb">open</span> <span class="n">rust</span><span class="o">.</span><span class="n">rust_operators</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7552,91 +7567,28 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="sixth_power_sequence">sixth_power_sequence<a class="anchor-link" href="#sixth_power_sequence">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">sixth_power_sequence</span> <span class="p">()</span> <span class="o">=</span>
-    <span class="n">stream</span><span class="o">.</span><span class="n">iterate</span> <span class="p">((</span><span class="o">*</span><span class="p">)</span> <span class="mi">6</span><span class="p">)</span> <span class="mi">1</span>
-</pre></div>
+<h2 id="dice_contract">dice_contract<a class="anchor-link" href="#dice_contract">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">sixth_power_sequence</span> <span class="p">()</span>
-<span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">take_while</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">7</span><span class="n">i32</span><span class="p">)</span>
-<span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">to_list</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="p">[</span> <span class="mi">1</span><span class="n">i32</span><span class="p">;</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">36</span><span class="p">;</span> <span class="mi">216</span><span class="p">;</span> <span class="mi">1296</span><span class="p">;</span> <span class="mi">7776</span><span class="p">;</span> <span class="mi">46656</span><span class="p">;</span> <span class="mi">279936</span> <span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>__assert_eq / actual: UH0_1
-  (1,
-   UH0_1
-     (6,
-      UH0_1
-        (36,
-         UH0_1
-           (216,
-            UH0_1 (1296, UH0_1 (7776, UH0_1 (46656, UH0_1 (279936, UH0_0)))))))) / expected: UH0_1
-  (1,
-   UH0_1
-     (6,
-      UH0_1
-        (36,
-         UH0_1
-           (216,
-            UH0_1 (1296, UH0_1 (7776, UH0_1 (46656, UH0_1 (279936, UH0_0))))))))
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="accumulate_dice_rolls">accumulate_dice_rolls<a class="anchor-link" href="#accumulate_dice_rolls">¶</a></h2>
+<h3 id="state">state<a class="anchor-link" href="#state">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7644,41 +7596,16 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">accumulate_dice_rolls</span>
-    <span class="p">(</span><span class="n">log</span> <span class="p">:</span> <span class="n">option</span> <span class="p">(</span><span class="n">string</span> <span class="o">-&gt;</span> <span class="p">()))</span>
-    <span class="p">(</span><span class="n">rolls</span> <span class="p">:</span> <span class="nb">list</span> <span class="n">u8</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">power</span> <span class="p">:</span> <span class="n">i8</span><span class="p">)</span>
-    <span class="n">acc</span>
-    <span class="o">=</span>
-    <span class="n">inl</span> <span class="n">rec</span> <span class="n">body</span> <span class="n">acc</span> <span class="n">power</span> <span class="n">rolls</span> <span class="o">=</span>
-        <span class="k">match</span> <span class="n">rolls</span> <span class="k">with</span>
-        <span class="o">|</span> <span class="n">_</span> <span class="n">when</span> <span class="n">power</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">=&gt;</span>
-            <span class="n">inl</span> <span class="n">result</span> <span class="o">=</span> <span class="n">acc</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="n">log</span> <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.iter ((|&gt;) $'</span><span class="err">$</span><span class="s2">"accumulate_dice_rolls / power: {!power} / acc: {!acc} / result: {!result}"</span><span class="s1">')</span>
-            <span class="n">Some</span> <span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">rolls</span><span class="p">)</span>
-        <span class="o">|</span> <span class="p">[]</span> <span class="o">=&gt;</span> <span class="kc">None</span>
-        <span class="o">|</span> <span class="n">roll</span> <span class="p">::</span> <span class="n">rest</span> <span class="n">when</span> <span class="n">roll</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">=&gt;</span>
-            <span class="n">inl</span> <span class="n">coeff</span> <span class="o">=</span> <span class="n">sixth_power_sequence</span> <span class="p">()</span> <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">item</span> <span class="n">power</span>
-            <span class="n">inl</span> <span class="n">value</span> <span class="o">=</span> <span class="n">conv</span> <span class="p">(</span><span class="n">roll</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">coeff</span>
-            <span class="n">log</span> <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.iter ((|&gt;) $'</span><span class="err">$</span><span class="s2">"accumulate_dice_rolls / power: {!power} / acc: {!acc} / roll: {!roll} / value: {!value}"</span><span class="s1">'</span>
-            <span class="p">)</span>
-            <span class="n">loop</span> <span class="p">(</span><span class="n">acc</span> <span class="o">+</span> <span class="n">value</span><span class="p">)</span> <span class="p">(</span><span class="n">power</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">rest</span>
-        <span class="o">|</span> <span class="n">roll</span> <span class="p">::</span> <span class="n">rest</span> <span class="o">=&gt;</span>
-            <span class="n">log</span> <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.iter ((|&gt;) $'</span><span class="err">$</span><span class="s2">"accumulate_dice_rolls / power: {!power} / acc: {!acc} / roll: {!roll}"</span><span class="s1">')</span>
-            <span class="n">loop</span> <span class="n">acc</span> <span class="p">(</span><span class="n">power</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">rest</span>
-    <span class="ow">and</span> <span class="n">inl</span> <span class="n">loop</span> <span class="n">acc</span> <span class="n">power</span> <span class="n">rolls</span> <span class="o">=</span>
-        <span class="k">if</span> <span class="n">var_is</span> <span class="n">rolls</span> <span class="o">|&gt;</span> <span class="ow">not</span>
-        <span class="n">then</span> <span class="n">body</span> <span class="n">acc</span> <span class="n">power</span> <span class="n">rolls</span>
-        <span class="k">else</span>
-            <span class="n">inl</span> <span class="n">acc</span> <span class="o">=</span> <span class="n">dyn</span> <span class="n">acc</span>
-            <span class="n">join</span> <span class="n">body</span> <span class="n">acc</span> <span class="n">power</span> <span class="n">rolls</span>
-    <span class="n">loop</span> <span class="n">acc</span> <span class="n">power</span> <span class="n">rolls</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">type</span> <span class="n">state</span> <span class="o">=</span>
+    <span class="p">{</span>
+        <span class="n">version</span> <span class="p">:</span> <span class="n">u32</span>
+    <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7687,9 +7614,9 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<span class="o">///!</span><span class="w"> </span>rust<span class="w"> </span>-c
 
-<span class="n">accumulate_dice_rolls</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="p">[</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]</span> <span class="mi">0</span> <span class="mi">1000</span><span class="n">i32</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="mi">1006</span><span class="p">,</span> <span class="p">[</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]))</span>
+<span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7702,15 +7629,35 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>accumulate_dice_rolls / power: 0 / acc: 1000 / roll: 6 / value: 5
-accumulate_dice_rolls / power: -1 / acc: 1005 / result: 1006
-__assert_eq / actual: US0_0 (1006, UH0_1 (5uy, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0))))) / expected: US0_0 (1006, UH0_1 (5uy, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0)))))
+<pre>09:23:59 <span class="ansi-blue-intense-fg">  debug</span> #1 spiral_wasm.print_usd / { retry = 1; total_gas_burnt_usd = +0.000808; total_gas_burnt = 1209371440851 }
+09:23:59 <span class="ansi-blue-intense-fg">  debug</span> #2 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+09:23:59 <span class="ansi-blue-intense-fg">  debug</span> #3 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000602; tokens_burnt_usd = +0.000602; gas_burnt = 901289581511; tokens_burnt = 90128958151100000000 }
+09:23:59 <span class="ansi-yellow-fg">warning</span> #4 spiral_wasm.run / Error error / { retry = 1; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 1 }" }
+09:24:08 <span class="ansi-blue-intense-fg">  debug</span> #5 spiral_wasm.print_usd / { retry = 2; total_gas_burnt_usd = +0.000808; total_gas_burnt = 1209371440851 }
+09:24:08 <span class="ansi-blue-intense-fg">  debug</span> #6 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+09:24:08 <span class="ansi-blue-intense-fg">  debug</span> #7 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000602; tokens_burnt_usd = +0.000602; gas_burnt = 901289581511; tokens_burnt = 90128958151100000000 }
+09:24:08 <span class="ansi-yellow-fg">warning</span> #8 spiral_wasm.run / Error error / { retry = 2; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 2 }" }
+09:24:16 <span class="ansi-blue-intense-fg">  debug</span> #9 spiral_wasm.print_usd / { retry = 3; total_gas_burnt_usd = +0.000957; total_gas_burnt = 1432554003351 }
+09:24:16 <span class="ansi-blue-intense-fg">  debug</span> #10 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+09:24:16 <span class="ansi-blue-intense-fg">  debug</span> #11 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000602; tokens_burnt_usd = +0.000602; gas_burnt = 901289581511; tokens_burnt = 90128958151100000000 }
+09:24:16 <span class="ansi-blue-intense-fg">  debug</span> #12 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="new">new<a class="anchor-link" href="#new">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7718,27 +7665,11 @@ __assert_eq / actual: US0_0 (1006, UH0_1 (5uy, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2u
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">accumulate_dice_rolls</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="p">[</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]</span> <span class="mi">1</span> <span class="mi">1000</span><span class="n">i32</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="mi">1035</span><span class="p">,</span> <span class="p">[</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">new</span> <span class="p">()</span> <span class="p">:</span> <span class="n">state</span> <span class="o">=</span>
+    <span class="p">{</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="p">}</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>accumulate_dice_rolls / power: 1 / acc: 1000 / roll: 6 / value: 30
-accumulate_dice_rolls / power: 0 / acc: 1030 / roll: 5 / value: 4
-accumulate_dice_rolls / power: -1 / acc: 1034 / result: 1035
-__assert_eq / actual: US0_0 (1035, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0)))) / expected: US0_0 (1035, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0))))
-</pre>
 </div>
 </div>
 </div>
@@ -7752,9 +7683,10 @@ __assert_eq / actual: US0_0 (1035, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0))))
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<span class="o">///!</span><span class="w"> </span>rust<span class="w"> </span>-c
 
-<span class="n">accumulate_dice_rolls</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="p">[</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]</span> <span class="mi">2</span> <span class="mi">1000</span><span class="n">i32</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="mi">1208</span><span class="p">,</span> <span class="p">[</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]))</span>
+<span class="n">inl</span> <span class="n">state</span> <span class="o">=</span> <span class="n">new</span> <span class="p">()</span>
+<span class="n">trace</span> <span class="n">Verbose</span> <span class="p">(</span><span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">"dice_contract"</span><span class="p">)</span> <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">state</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -7767,1173 +7699,17 @@ __assert_eq / actual: US0_0 (1035, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0))))
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>accumulate_dice_rolls / power: 2 / acc: 1000 / roll: 6 / value: 180
-accumulate_dice_rolls / power: 1 / acc: 1180 / roll: 5 / value: 24
-accumulate_dice_rolls / power: 0 / acc: 1204 / roll: 4 / value: 3
-accumulate_dice_rolls / power: -1 / acc: 1207 / result: 1208
-__assert_eq / actual: US0_0 (1208, UH0_1 (3uy, UH0_1 (2uy, UH0_0))) / expected: US0_0 (1208, UH0_1 (3uy, UH0_1 (2uy, UH0_0)))
+<pre>00:00:00 <span class="ansi-black-intense-fg">verbose</span> #1 dice_contract / { state = { version = 1 } }
+09:24:35 <span class="ansi-blue-intense-fg">  debug</span> #1 spiral_wasm.print_usd / { retry = 1; total_gas_burnt_usd = +0.000938; total_gas_burnt = 1404100924729 }
+09:24:35 <span class="ansi-blue-intense-fg">  debug</span> #2 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+09:24:35 <span class="ansi-blue-intense-fg">  debug</span> #3 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000732; tokens_burnt_usd = +0.000732; gas_burnt = 1096019065389; tokens_burnt = 109601906538900000000 }
+09:24:35 <span class="ansi-yellow-fg">warning</span> #4 spiral_wasm.run / Error error / { retry = 1; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 1 }" }
+00:00:00 <span class="ansi-black-intense-fg">verbose</span> #1 dice_contract / { state = { version = 1 } }
+09:24:44 <span class="ansi-blue-intense-fg">  debug</span> #5 spiral_wasm.print_usd / { retry = 2; total_gas_burnt_usd = +0.001087; total_gas_burnt = 1627283487229 }
+09:24:44 <span class="ansi-blue-intense-fg">  debug</span> #6 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+09:24:44 <span class="ansi-blue-intense-fg">  debug</span> #7 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000732; tokens_burnt_usd = +0.000732; gas_burnt = 1096019065389; tokens_burnt = 109601906538900000000 }
+09:24:44 <span class="ansi-blue-intense-fg">  debug</span> #8 spiral_wasm.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
 </pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=11">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="roll_within_bounds">roll_within_bounds<a class="anchor-link" href="#roll_within_bounds">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=12">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">roll_within_bounds</span> <span class="p">(</span><span class="n">log</span> <span class="p">:</span> <span class="n">option</span> <span class="p">(</span><span class="n">string</span> <span class="o">-&gt;</span> <span class="p">()))</span> <span class="nb">max</span> <span class="n">rolls</span> <span class="o">=</span>
-    <span class="n">inl</span> <span class="n">power</span> <span class="o">=</span> <span class="n">listm</span><span class="o">.</span><span class="n">length</span> <span class="n">rolls</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="k">match</span> <span class="n">accumulate_dice_rolls</span> <span class="n">log</span> <span class="n">rolls</span> <span class="n">power</span> <span class="mi">0</span> <span class="k">with</span>
-    <span class="o">|</span> <span class="n">Some</span> <span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="n">when</span> <span class="n">result</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">result</span> <span class="o">&lt;=</span> <span class="nb">max</span> <span class="o">=&gt;</span> <span class="n">Some</span> <span class="n">result</span>
-    <span class="o">|</span> <span class="n">_</span> <span class="o">=&gt;</span> <span class="kc">None</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=13">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">roll_within_bounds</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="mi">2000</span><span class="n">i32</span> <span class="p">[</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span> <span class="p">]</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="p">(</span><span class="n">Some</span> <span class="mi">995</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>accumulate_dice_rolls / power: 4 / acc: 0 / roll: 1
-accumulate_dice_rolls / power: 3 / acc: 0 / roll: 5 / value: 864
-accumulate_dice_rolls / power: 2 / acc: 864 / roll: 4 / value: 108
-accumulate_dice_rolls / power: 1 / acc: 972 / roll: 4 / value: 18
-accumulate_dice_rolls / power: 0 / acc: 990 / roll: 5 / value: 4
-accumulate_dice_rolls / power: -1 / acc: 994 / result: 995
-__assert_eq / actual: US0_0 995 / expected: US0_0 995
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=14">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">roll_within_bounds</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="mi">2000</span><span class="n">i32</span> <span class="p">[</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span> <span class="p">]</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="p">(</span><span class="n">Some</span> <span class="mi">1715</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>accumulate_dice_rolls / power: 4 / acc: 0 / roll: 2 / value: 1296
-accumulate_dice_rolls / power: 3 / acc: 1296 / roll: 2 / value: 216
-accumulate_dice_rolls / power: 2 / acc: 1512 / roll: 6 / value: 180
-accumulate_dice_rolls / power: 1 / acc: 1692 / roll: 4 / value: 18
-accumulate_dice_rolls / power: 0 / acc: 1710 / roll: 5 / value: 4
-accumulate_dice_rolls / power: -1 / acc: 1714 / result: 1715
-__assert_eq / actual: US0_0 1715 / expected: US0_0 1715
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=15">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">roll_within_bounds</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="mi">2000</span><span class="n">i32</span> <span class="p">[</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span> <span class="p">]</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="kc">None</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>accumulate_dice_rolls / power: 4 / acc: 0 / roll: 4 / value: 3888
-accumulate_dice_rolls / power: 3 / acc: 3888 / roll: 1
-accumulate_dice_rolls / power: 2 / acc: 3888 / roll: 1
-accumulate_dice_rolls / power: 1 / acc: 3888 / roll: 2 / value: 6
-accumulate_dice_rolls / power: 0 / acc: 3894 / roll: 3 / value: 2
-accumulate_dice_rolls / power: -1 / acc: 3896 / result: 3897
-__assert_eq / actual: US0_1 / expected: US0_1
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=16">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="calculate_dice_count">calculate_dice_count<a class="anchor-link" href="#calculate_dice_count">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=17">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">calculate_dice_count</span> <span class="p">(</span><span class="n">log</span> <span class="p">:</span> <span class="n">option</span> <span class="p">(</span><span class="n">string</span> <span class="o">-&gt;</span> <span class="p">()))</span> <span class="nb">max</span> <span class="o">=</span>
-    <span class="n">inl</span> <span class="n">rec</span> <span class="n">body</span> <span class="n">n</span> <span class="n">p</span> <span class="o">=</span>
-        <span class="n">inl</span> <span class="k">return</span> <span class="p">()</span> <span class="o">=</span>
-            <span class="n">log</span> <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.iter ((|&gt;) $'</span><span class="err">$</span><span class="s2">"calculate_dice_count / max: {!max} / n: {!n} / p: {!p}"</span><span class="s1">')</span>
-            <span class="n">n</span>
-
-        <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="nb">max</span> <span class="n">then</span>
-            <span class="n">inl</span> <span class="n">p</span><span class="s1">' = p * 6</span>
-            <span class="k">if</span> <span class="n">p</span><span class="s1">' &gt; p</span>
-            <span class="n">then</span> <span class="n">loop</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="n">p</span><span class="s1">'</span>
-            <span class="k">else</span> <span class="k">return</span> <span class="p">()</span>
-        <span class="k">else</span> <span class="k">return</span> <span class="p">()</span>
-
-    <span class="ow">and</span> <span class="n">inl</span> <span class="n">loop</span> <span class="n">n</span> <span class="n">p</span> <span class="o">=</span>
-        <span class="k">if</span> <span class="n">var_is</span> <span class="nb">max</span> <span class="o">|&gt;</span> <span class="ow">not</span>
-        <span class="n">then</span> <span class="n">body</span> <span class="n">n</span> <span class="n">p</span>
-        <span class="k">else</span>
-            <span class="n">inl</span> <span class="n">n</span> <span class="o">=</span> <span class="n">dyn</span> <span class="n">n</span>
-            <span class="n">inl</span> <span class="n">p</span> <span class="o">=</span> <span class="n">dyn</span> <span class="n">p</span>
-            <span class="n">join</span> <span class="n">body</span> <span class="n">n</span> <span class="n">p</span>
-    <span class="k">if</span> <span class="nb">max</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">then</span> <span class="mi">1</span>
-    <span class="k">else</span> <span class="n">loop</span> <span class="mi">0</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=18">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">calculate_dice_count</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="mi">36</span><span class="n">i32</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="mi">2</span><span class="n">i32</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>calculate_dice_count / max: 36 / n: 2 / p: 36
-__assert_eq / actual: 2 / expected: 2
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=19">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">calculate_dice_count</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="mi">7777</span><span class="n">i32</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="mi">6</span><span class="n">i32</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>calculate_dice_count / max: 7777 / n: 6 / p: 46656
-__assert_eq / actual: 6 / expected: 6
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=20">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="roll_dice">roll_dice<a class="anchor-link" href="#roll_dice">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=21">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">roll_dice</span> <span class="p">()</span> <span class="p">:</span> <span class="n">u8</span> <span class="o">=</span>
-    <span class="n">random</span><span class="s1">' 1 7</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=22">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="rotate_number">rotate_number<a class="anchor-link" href="#rotate_number">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=23">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">rotate_number</span> <span class="n">forall</span> <span class="n">t</span> <span class="p">{</span><span class="n">number</span><span class="p">}</span><span class="o">.</span> <span class="p">(</span><span class="nb">max</span> <span class="p">:</span> <span class="n">i64</span><span class="p">)</span> <span class="p">(</span><span class="n">n</span> <span class="p">:</span> <span class="n">t</span><span class="p">)</span> <span class="p">:</span> <span class="n">t</span> <span class="o">=</span>
-    <span class="p">(</span><span class="n">conv</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">)</span> <span class="o">%</span> <span class="nb">max</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">|&gt;</span> <span class="n">conv</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=24">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="rotate_numbers">rotate_numbers<a class="anchor-link" href="#rotate_numbers">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=25">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">rotate_numbers</span> <span class="nb">max</span> <span class="n">items</span> <span class="o">=</span>
-    <span class="n">items</span> <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">rotate_number</span> <span class="nb">max</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=26">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">listm</span><span class="s1">'.init_series -1 14 1i32</span>
-<span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">from_list</span>
-<span class="o">|&gt;</span> <span class="n">rotate_numbers</span> <span class="mi">6</span>
-<span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">to_list</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="p">[</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>__assert_eq / actual: UH0_1
-  (5,
-   UH0_1
-     (6,
-      UH0_1
-        (1,
-         UH0_1
-           (2,
-            UH0_1
-              (3,
-               UH0_1
-                 (4,
-                  UH0_1
-                    (5,
-                     UH0_1
-                       (6,
-                        UH0_1
-                          (1,
-                           UH0_1
-                             (2,
-                              UH0_1
-                                (3,
-                                 UH0_1
-                                   (4,
-                                    UH0_1
-                                      (5, UH0_1 (6, UH0_1 (1, UH0_1 (2, UH0_0)))))))))))))))) / expected: UH0_1
-  (5,
-   UH0_1
-     (6,
-      UH0_1
-        (1,
-         UH0_1
-           (2,
-            UH0_1
-              (3,
-               UH0_1
-                 (4,
-                  UH0_1
-                    (5,
-                     UH0_1
-                       (6,
-                        UH0_1
-                          (1,
-                           UH0_1
-                             (2,
-                              UH0_1
-                                (3,
-                                 UH0_1
-                                   (4,
-                                    UH0_1
-                                      (5, UH0_1 (6, UH0_1 (1, UH0_1 (2, UH0_0))))))))))))))))
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=27">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="create_sequential_roller">create_sequential_roller<a class="anchor-link" href="#create_sequential_roller">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=28">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">create_sequential_roller</span> <span class="p">(</span><span class="n">log</span> <span class="p">:</span> <span class="n">option</span> <span class="p">(</span><span class="n">string</span> <span class="o">-&gt;</span> <span class="p">()))</span> <span class="nb">list</span> <span class="o">=</span>
-    <span class="n">log</span> <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.iter ((|&gt;) $'</span><span class="err">$</span><span class="s2">"create_sequential_roller ()"</span><span class="s1">')</span>
-    <span class="n">inl</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">list</span> <span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">rev</span> <span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">append</span> <span class="nb">list</span> <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">from_list</span> <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">memoize</span>
-    <span class="n">inl</span> <span class="n">current_index</span> <span class="o">=</span> <span class="n">mut</span> <span class="mi">0</span><span class="n">i64</span>
-    <span class="n">inl</span> <span class="n">acc</span> <span class="o">=</span> <span class="n">mut</span> <span class="mi">1</span>
-    <span class="n">inl</span> <span class="nb">len</span> <span class="o">=</span> <span class="n">mut</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="n">inl</span> <span class="n">last_item</span> <span class="o">=</span> <span class="n">mut</span> <span class="kc">None</span>
-    <span class="n">let</span> <span class="n">rec</span> <span class="n">loop</span> <span class="p">()</span> <span class="o">=</span>
-        <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span>
-            <span class="n">inl</span> <span class="n">current_index</span> <span class="o">=</span> <span class="o">*</span><span class="n">current_index</span>
-            <span class="n">inl</span> <span class="n">acc</span> <span class="o">=</span> <span class="o">*</span><span class="n">acc</span>
-            <span class="n">inl</span> <span class="nb">len</span> <span class="o">=</span> <span class="o">*</span><span class="nb">len</span>
-            <span class="n">inl</span> <span class="n">last_item</span> <span class="o">=</span> <span class="o">*</span><span class="n">last_item</span>
-            <span class="n">log</span> <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.iter ((|&gt;) $'</span><span class="err">$</span><span class="s2">"create_sequential_roller / roll / current_index: {!current_index} / acc: {!acc} / len: {!len} / last_item: %A{!last_item}"</span><span class="s1">')</span>
-        <span class="o">|&gt;</span> <span class="n">fun</span> <span class="n">x</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="p">()</span>
-        <span class="k">match</span> <span class="n">s</span> <span class="p">()</span> <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">try_item</span> <span class="o">*</span><span class="n">current_index</span> <span class="k">with</span>
-        <span class="o">|</span> <span class="n">Some</span> <span class="n">item</span> <span class="o">=&gt;</span>
-            <span class="n">current_index</span> <span class="o">&lt;-</span> <span class="o">*</span><span class="n">current_index</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="n">last_item</span> <span class="o">&lt;-</span> <span class="n">Some</span> <span class="n">item</span>
-            <span class="n">item</span>
-        <span class="o">|</span> <span class="kc">None</span> <span class="o">=&gt;</span>
-            <span class="n">log</span> <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.iter ((|&gt;) $'</span><span class="err">$</span><span class="s2">"create_sequential_roller / roll / None"</span><span class="s1">')</span>
-            <span class="k">if</span> <span class="o">*</span><span class="nb">len</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-            <span class="n">then</span> <span class="nb">len</span> <span class="o">&lt;-</span> <span class="o">*</span><span class="n">current_index</span>
-            <span class="n">acc</span> <span class="o">&lt;-</span>
-                <span class="k">if</span> <span class="o">*</span><span class="n">acc</span> <span class="o">&gt;=</span> <span class="o">*</span><span class="nb">len</span>
-                <span class="n">then</span> <span class="mi">1</span>
-                <span class="k">else</span> <span class="o">*</span><span class="n">acc</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="n">current_index</span> <span class="o">&lt;-</span> <span class="o">*</span><span class="n">acc</span> <span class="o">-</span> <span class="mi">1</span>
-            <span class="n">last_item</span> <span class="o">&lt;-</span> <span class="kc">None</span>
-            <span class="n">loop</span> <span class="p">()</span>
-    <span class="n">loop</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=29">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">inl</span> <span class="n">sequential_roll</span> <span class="o">=</span> <span class="n">create_sequential_roller</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="p">[</span> <span class="mi">1</span><span class="n">i32</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">4</span> <span class="p">]</span>
-
-<span class="n">am</span><span class="o">.</span><span class="n">init</span> <span class="mi">50</span><span class="n">i32</span> <span class="p">(</span><span class="n">ignore</span> <span class="o">&gt;&gt;</span> <span class="n">sequential_roll</span><span class="p">)</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="p">(</span><span class="n">a</span> <span class="p">;[</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span>
-<span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]</span> <span class="p">:</span> <span class="n">a</span> <span class="n">i32</span> <span class="n">i32</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>create_sequential_roller ()
-create_sequential_roller / roll / current_index: 0 / acc: 1 / len: -1 / last_item: US1_1
-create_sequential_roller / roll / current_index: 1 / acc: 1 / len: -1 / last_item: US1_0 1
-create_sequential_roller / roll / current_index: 2 / acc: 1 / len: -1 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 3 / acc: 1 / len: -1 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 4 / acc: 1 / len: -1 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 5 / acc: 1 / len: -1 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 6 / acc: 1 / len: -1 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 7 / acc: 1 / len: -1 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 8 / acc: 1 / len: -1 / last_item: US1_0 1
-create_sequential_roller / roll / None
-create_sequential_roller / roll / current_index: 1 / acc: 2 / len: 8 / last_item: US1_1
-create_sequential_roller / roll / current_index: 2 / acc: 2 / len: 8 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 3 / acc: 2 / len: 8 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 4 / acc: 2 / len: 8 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 5 / acc: 2 / len: 8 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 6 / acc: 2 / len: 8 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 7 / acc: 2 / len: 8 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 8 / acc: 2 / len: 8 / last_item: US1_0 1
-create_sequential_roller / roll / None
-create_sequential_roller / roll / current_index: 2 / acc: 3 / len: 8 / last_item: US1_1
-create_sequential_roller / roll / current_index: 3 / acc: 3 / len: 8 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 4 / acc: 3 / len: 8 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 5 / acc: 3 / len: 8 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 6 / acc: 3 / len: 8 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 7 / acc: 3 / len: 8 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 8 / acc: 3 / len: 8 / last_item: US1_0 1
-create_sequential_roller / roll / None
-create_sequential_roller / roll / current_index: 3 / acc: 4 / len: 8 / last_item: US1_1
-create_sequential_roller / roll / current_index: 4 / acc: 4 / len: 8 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 5 / acc: 4 / len: 8 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 6 / acc: 4 / len: 8 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 7 / acc: 4 / len: 8 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 8 / acc: 4 / len: 8 / last_item: US1_0 1
-create_sequential_roller / roll / None
-create_sequential_roller / roll / current_index: 4 / acc: 5 / len: 8 / last_item: US1_1
-create_sequential_roller / roll / current_index: 5 / acc: 5 / len: 8 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 6 / acc: 5 / len: 8 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 7 / acc: 5 / len: 8 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 8 / acc: 5 / len: 8 / last_item: US1_0 1
-create_sequential_roller / roll / None
-create_sequential_roller / roll / current_index: 5 / acc: 6 / len: 8 / last_item: US1_1
-create_sequential_roller / roll / current_index: 6 / acc: 6 / len: 8 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 7 / acc: 6 / len: 8 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 8 / acc: 6 / len: 8 / last_item: US1_0 1
-create_sequential_roller / roll / None
-create_sequential_roller / roll / current_index: 6 / acc: 7 / len: 8 / last_item: US1_1
-create_sequential_roller / roll / current_index: 7 / acc: 7 / len: 8 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 8 / acc: 7 / len: 8 / last_item: US1_0 1
-create_sequential_roller / roll / None
-create_sequential_roller / roll / current_index: 7 / acc: 8 / len: 8 / last_item: US1_1
-create_sequential_roller / roll / current_index: 8 / acc: 8 / len: 8 / last_item: US1_0 1
-create_sequential_roller / roll / None
-create_sequential_roller / roll / current_index: 0 / acc: 1 / len: 8 / last_item: US1_1
-create_sequential_roller / roll / current_index: 1 / acc: 1 / len: 8 / last_item: US1_0 1
-create_sequential_roller / roll / current_index: 2 / acc: 1 / len: 8 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 3 / acc: 1 / len: 8 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 4 / acc: 1 / len: 8 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 5 / acc: 1 / len: 8 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 6 / acc: 1 / len: 8 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 7 / acc: 1 / len: 8 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 8 / acc: 1 / len: 8 / last_item: US1_0 1
-create_sequential_roller / roll / None
-create_sequential_roller / roll / current_index: 1 / acc: 2 / len: 8 / last_item: US1_1
-create_sequential_roller / roll / current_index: 2 / acc: 2 / len: 8 / last_item: US1_0 2
-create_sequential_roller / roll / current_index: 3 / acc: 2 / len: 8 / last_item: US1_0 3
-create_sequential_roller / roll / current_index: 4 / acc: 2 / len: 8 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 5 / acc: 2 / len: 8 / last_item: US1_0 4
-create_sequential_roller / roll / current_index: 6 / acc: 2 / len: 8 / last_item: US1_0 3
-__assert_eq / actual: [|1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
-  4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2|] / expected: [|1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
-  4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2|]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=30">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="roll_progressively">roll_progressively<a class="anchor-link" href="#roll_progressively">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=31">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">roll_progressively</span> <span class="p">(</span><span class="n">log</span> <span class="p">:</span> <span class="n">option</span> <span class="p">(</span><span class="n">string</span> <span class="o">-&gt;</span> <span class="p">()))</span> <span class="n">roll</span> <span class="n">reroll</span> <span class="nb">max</span> <span class="o">=</span>
-    <span class="n">inl</span> <span class="n">power</span> <span class="o">=</span> <span class="p">(</span><span class="n">calculate_dice_count</span> <span class="n">log</span> <span class="nb">max</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="n">let</span> <span class="n">rec</span> <span class="n">loop</span> <span class="n">rolls</span> <span class="n">size</span> <span class="o">=</span>
-        <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;</span> <span class="n">power</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="n">then</span> <span class="n">loop</span> <span class="p">(</span><span class="n">roll</span> <span class="p">()</span> <span class="p">::</span> <span class="n">rolls</span><span class="p">)</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="k">else</span> <span class="n">accumulate_dice_rolls</span> <span class="n">log</span> <span class="n">rolls</span> <span class="n">power</span> <span class="mi">0</span> <span class="o">|&gt;</span> <span class="n">function</span>
-            <span class="o">|</span> <span class="n">Some</span> <span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="n">when</span> <span class="n">result</span> <span class="o">&lt;=</span> <span class="nb">max</span> <span class="o">=&gt;</span> <span class="n">result</span>
-            <span class="o">|</span> <span class="n">_</span> <span class="n">when</span> <span class="n">reroll</span> <span class="o">=&gt;</span> <span class="n">loop</span> <span class="p">(</span><span class="n">listm</span><span class="o">.</span><span class="n">init</span> <span class="n">power</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">=&gt;</span> <span class="n">roll</span> <span class="p">()))</span> <span class="n">power</span>
-            <span class="o">|</span> <span class="n">_</span> <span class="o">=&gt;</span> <span class="n">loop</span> <span class="p">(</span><span class="n">roll</span> <span class="p">()</span> <span class="p">::</span> <span class="n">rolls</span><span class="p">)</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">loop</span> <span class="p">[]</span> <span class="mi">0</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=32">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">roll_progressively</span> <span class="kc">None</span> <span class="n">roll_dice</span> <span class="n">false</span> <span class="mi">1</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="mi">1</span><span class="n">i32</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>__assert_eq / actual: 1 / expected: 1
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=33">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">inl</span> <span class="n">sequential_roll</span> <span class="o">=</span> <span class="n">create_sequential_roller</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="p">[</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">1</span> <span class="p">]</span>
-
-<span class="n">roll_progressively</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="n">sequential_roll</span> <span class="n">false</span> <span class="mi">2000</span><span class="n">i32</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="mi">995</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>create_sequential_roller ()
-calculate_dice_count / max: 2000 / n: 5 / p: 7776
-create_sequential_roller / roll / current_index: 0 / acc: 1 / len: -1 / last_item: US1_1
-create_sequential_roller / roll / current_index: 1 / acc: 1 / len: -1 / last_item: US1_0 5uy
-create_sequential_roller / roll / current_index: 2 / acc: 1 / len: -1 / last_item: US1_0 4uy
-create_sequential_roller / roll / current_index: 3 / acc: 1 / len: -1 / last_item: US1_0 4uy
-create_sequential_roller / roll / current_index: 4 / acc: 1 / len: -1 / last_item: US1_0 5uy
-accumulate_dice_rolls / power: 4 / acc: 0 / roll: 1
-accumulate_dice_rolls / power: 3 / acc: 0 / roll: 5 / value: 864
-accumulate_dice_rolls / power: 2 / acc: 864 / roll: 4 / value: 108
-accumulate_dice_rolls / power: 1 / acc: 972 / roll: 4 / value: 18
-accumulate_dice_rolls / power: 0 / acc: 990 / roll: 5 / value: 4
-accumulate_dice_rolls / power: -1 / acc: 994 / result: 995
-__assert_eq / actual: 995 / expected: 995
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=34">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">inl</span> <span class="n">sequential_roll</span> <span class="o">=</span> <span class="n">create_sequential_roller</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="p">[</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]</span>
-
-<span class="n">roll_progressively</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="n">sequential_roll</span> <span class="n">false</span> <span class="mi">2000</span><span class="n">i32</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="mi">1678</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>create_sequential_roller ()
-calculate_dice_count / max: 2000 / n: 5 / p: 7776
-create_sequential_roller / roll / current_index: 0 / acc: 1 / len: -1 / last_item: US1_1
-create_sequential_roller / roll / current_index: 1 / acc: 1 / len: -1 / last_item: US1_0 5uy
-create_sequential_roller / roll / current_index: 2 / acc: 1 / len: -1 / last_item: US1_0 4uy
-create_sequential_roller / roll / current_index: 3 / acc: 1 / len: -1 / last_item: US1_0 4uy
-create_sequential_roller / roll / current_index: 4 / acc: 1 / len: -1 / last_item: US1_0 5uy
-accumulate_dice_rolls / power: 4 / acc: 0 / roll: 2 / value: 1296
-accumulate_dice_rolls / power: 3 / acc: 1296 / roll: 5 / value: 864
-accumulate_dice_rolls / power: 2 / acc: 2160 / roll: 4 / value: 108
-accumulate_dice_rolls / power: 1 / acc: 2268 / roll: 4 / value: 18
-accumulate_dice_rolls / power: 0 / acc: 2286 / roll: 5 / value: 4
-accumulate_dice_rolls / power: -1 / acc: 2290 / result: 2291
-create_sequential_roller / roll / current_index: 5 / acc: 1 / len: -1 / last_item: US1_0 2uy
-accumulate_dice_rolls / power: 4 / acc: 0 / roll: 2 / value: 1296
-accumulate_dice_rolls / power: 3 / acc: 1296 / roll: 2 / value: 216
-accumulate_dice_rolls / power: 2 / acc: 1512 / roll: 5 / value: 144
-accumulate_dice_rolls / power: 1 / acc: 1656 / roll: 4 / value: 18
-accumulate_dice_rolls / power: 0 / acc: 1674 / roll: 4 / value: 3
-accumulate_dice_rolls / power: -1 / acc: 1677 / result: 1678
-__assert_eq / actual: 1678 / expected: 1678
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=35">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">join</span> <span class="n">dyn</span> <span class="n">listm</span><span class="s1">'.init_series 1i32 10000 1</span>
-<span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">=&gt;</span> <span class="n">roll_progressively</span> <span class="kc">None</span> <span class="n">roll_dice</span> <span class="n">false</span> <span class="mi">10</span><span class="n">i32</span><span class="p">)</span>
-<span class="o">|&gt;</span> <span class="n">listm</span><span class="s1">'.group_by id</span>
-<span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="n">listm</span><span class="o">.</span><span class="n">length</span> <span class="n">v</span> <span class="p">:</span> <span class="n">i32</span><span class="p">))</span>
-<span class="o">|&gt;</span> <span class="n">listm</span><span class="s1">'.box</span>
-<span class="o">|&gt;</span> <span class="n">listm</span><span class="s1">'.to_array'</span>
-<span class="o">|&gt;</span> <span class="n">fun</span> <span class="n">ar</span> <span class="o">=&gt;</span>
-    <span class="err">$</span><span class="s1">'!ar |&gt; Array.sortBy (fun (struct (a, b)) -&gt; a)'</span> <span class="p">:</span> <span class="n">a</span> <span class="n">i32</span> <span class="err">$</span><span class="s1">'struct (int32 * int32)'</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 244)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>244</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 741)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>741</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1343)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1343</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1372)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1372</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1352)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1352</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1262)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1262</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 288)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>288</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 687)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>687</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1345)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1345</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1366)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1366</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
-.dni-code-hint {
-    font-style: italic;
-    overflow: hidden;
-    white-space: nowrap;
-}
-.dni-treeview {
-    white-space: nowrap;
-}
-.dni-treeview td {
-    vertical-align: top;
-    text-align: start;
-}
-details.dni-treeview {
-    padding-left: 1em;
-}
-table td {
-    text-align: start;
-}
-table tr { 
-    vertical-align: top; 
-    margin: 0em 0px;
-}
-table tr td pre 
-{ 
-    vertical-align: top !important; 
-    margin: 0em 0px !important;
-} 
-table th {
-    text-align: start;
-}
-</style>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=36">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-
-<span class="n">join</span> <span class="n">dyn</span> <span class="n">listm</span><span class="s1">'.init_series 1i32 10000 1</span>
-<span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">=&gt;</span> <span class="n">roll_progressively</span> <span class="kc">None</span> <span class="n">roll_dice</span> <span class="n">true</span> <span class="mi">10</span><span class="n">i32</span><span class="p">)</span>
-<span class="o">|&gt;</span> <span class="n">listm</span><span class="s1">'.group_by id</span>
-<span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="n">listm</span><span class="o">.</span><span class="n">length</span> <span class="n">v</span> <span class="p">:</span> <span class="n">i32</span><span class="p">))</span>
-<span class="o">|&gt;</span> <span class="n">listm</span><span class="s1">'.box</span>
-<span class="o">|&gt;</span> <span class="n">listm</span><span class="s1">'.to_array'</span>
-<span class="o">|&gt;</span> <span class="n">fun</span> <span class="n">ar</span> <span class="o">=&gt;</span>
-    <span class="err">$</span><span class="s1">'!ar |&gt; Array.sortBy (fun (struct (a, b)) -&gt; a)'</span> <span class="p">:</span> <span class="n">a</span> <span class="n">i32</span> <span class="err">$</span><span class="s1">'struct (int32 * int32)'</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 985)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>985</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 1000)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1000</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 998)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>998</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1002)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1002</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 922)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>922</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1010)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1010</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 987)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>987</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 1106)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1106</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1031)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1031</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 959)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>959</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
-.dni-code-hint {
-    font-style: italic;
-    overflow: hidden;
-    white-space: nowrap;
-}
-.dni-treeview {
-    white-space: nowrap;
-}
-.dni-treeview td {
-    vertical-align: top;
-    text-align: start;
-}
-details.dni-treeview {
-    padding-left: 1em;
-}
-table td {
-    text-align: start;
-}
-table tr { 
-    vertical-align: top; 
-    margin: 0em 0px;
-}
-table tr td pre 
-{ 
-    vertical-align: top !important; 
-    margin: 0em 0px !important;
-} 
-table th {
-    text-align: start;
-}
-</style>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=37">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
-<span class="o">////</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">180000</span>
-
-<span class="n">join</span> <span class="n">dyn</span> <span class="n">listm</span><span class="s1">'.init_series 1i32 100 1</span>
-<span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">iter</span> <span class="n">fun</span> <span class="n">n</span> <span class="o">=&gt;</span>
-    <span class="n">listm</span><span class="s1">'.init_series 0i32 1 1</span>
-    <span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">iter</span> <span class="n">fun</span> <span class="n">reroll</span> <span class="o">=&gt;</span>
-        <span class="n">join</span> <span class="n">dyn</span> <span class="n">listm</span><span class="s1">'.init_series 1i32 3500 1</span>
-        <span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">map</span> <span class="n">fun</span> <span class="n">_</span> <span class="o">=&gt;</span> <span class="n">roll_progressively</span> <span class="kc">None</span> <span class="n">roll_dice</span> <span class="p">(</span><span class="n">reroll</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="n">n</span>
-        <span class="o">|&gt;</span> <span class="n">listm</span><span class="s1">'.group_by id</span>
-        <span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">length</span>
-        <span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="n">n</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>__assert_eq / actual: 1 / expected: 1
-__assert_eq / actual: 1 / expected: 1
-__assert_eq / actual: 2 / expected: 2
-__assert_eq / actual: 2 / expected: 2
-__assert_eq / actual: 3 / expected: 3
-__assert_eq / actual: 3 / expected: 3
-__assert_eq / actual: 4 / expected: 4
-__assert_eq / actual: 4 / expected: 4
-__assert_eq / actual: 5 / expected: 5
-__assert_eq / actual: 5 / expected: 5
-__assert_eq / actual: 6 / expected: 6
-__assert_eq / actual: 6 / expected: 6
-__assert_eq / actual: 7 / expected: 7
-__assert_eq / actual: 7 / expected: 7
-__assert_eq / actual: 8 / expected: 8
-__assert_eq / actual: 8 / expected: 8
-__assert_eq / actual: 9 / expected: 9
-__assert_eq / actual: 9 / expected: 9
-__assert_eq / actual: 10 / expected: 10
-__assert_eq / actual: 10 / expected: 10
-__assert_eq / actual: 11 / expected: 11
-__assert_eq / actual: 11 / expected: 11
-__assert_eq / actual: 12 / expected: 12
-__assert_eq / actual: 12 / expected: 12
-__assert_eq / actual: 13 / expected: 13
-__assert_eq / actual: 13 / expected: 13
-__assert_eq / actual: 14 / expected: 14
-__assert_eq / actual: 14 / expected: 14
-__assert_eq / actual: 15 / expected: 15
-__assert_eq / actual: 15 / expected: 15
-__assert_eq / actual: 16 / expected: 16
-__assert_eq / actual: 16 / expected: 16
-__assert_eq / actual: 17 / expected: 17
-__assert_eq / actual: 17 / expected: 17
-__assert_eq / actual: 18 / expected: 18
-__assert_eq / actual: 18 / expected: 18
-__assert_eq / actual: 19 / expected: 19
-__assert_eq / actual: 19 / expected: 19
-__assert_eq / actual: 20 / expected: 20
-__assert_eq / actual: 20 / expected: 20
-__assert_eq / actual: 21 / expected: 21
-__assert_eq / actual: 21 / expected: 21
-__assert_eq / actual: 22 / expected: 22
-__assert_eq / actual: 22 / expected: 22
-__assert_eq / actual: 23 / expected: 23
-__assert_eq / actual: 23 / expected: 23
-__assert_eq / actual: 24 / expected: 24
-__assert_eq / actual: 24 / expected: 24
-__assert_eq / actual: 25 / expected: 25
-__assert_eq / actual: 25 / expected: 25
-__assert_eq / actual: 26 / expected: 26
-__assert_eq / actual: 26 / expected: 26
-__assert_eq / actual: 27 / expected: 27
-__assert_eq / actual: 27 / expected: 27
-__assert_eq / actual: 28 / expected: 28
-__assert_eq / actual: 28 / expected: 28
-__assert_eq / actual: 29 / expected: 29
-__assert_eq / actual: 29 / expected: 29
-__assert_eq / actual: 30 / expected: 30
-__assert_eq / actual: 30 / expected: 30
-__assert_eq / actual: 31 / expected: 31
-__assert_eq / actual: 31 / expected: 31
-__assert_eq / actual: 32 / expected: 32
-__assert_eq / actual: 32 / expected: 32
-__assert_eq / actual: 33 / expected: 33
-__assert_eq / actual: 33 / expected: 33
-__assert_eq / actual: 34 / expected: 34
-__assert_eq / actual: 34 / expected: 34
-__assert_eq / actual: 35 / expected: 35
-__assert_eq / actual: 35 / expected: 35
-__assert_eq / actual: 36 / expected: 36
-__assert_eq / actual: 36 / expected: 36
-__assert_eq / actual: 37 / expected: 37
-__assert_eq / actual: 37 / expected: 37
-__assert_eq / actual: 38 / expected: 38
-__assert_eq / actual: 38 / expected: 38
-__assert_eq / actual: 39 / expected: 39
-__assert_eq / actual: 39 / expected: 39
-__assert_eq / actual: 40 / expected: 40
-__assert_eq / actual: 40 / expected: 40
-__assert_eq / actual: 41 / expected: 41
-__assert_eq / actual: 41 / expected: 41
-__assert_eq / actual: 42 / expected: 42
-__assert_eq / actual: 42 / expected: 42
-__assert_eq / actual: 43 / expected: 43
-__assert_eq / actual: 43 / expected: 43
-__assert_eq / actual: 44 / expected: 44
-__assert_eq / actual: 44 / expected: 44
-__assert_eq / actual: 45 / expected: 45
-__assert_eq / actual: 45 / expected: 45
-__assert_eq / actual: 46 / expected: 46
-__assert_eq / actual: 46 / expected: 46
-__assert_eq / actual: 47 / expected: 47
-__assert_eq / actual: 47 / expected: 47
-__assert_eq / actual: 48 / expected: 48
-__assert_eq / actual: 48 / expected: 48
-__assert_eq / actual: 49 / expected: 49
-__assert_eq / actual: 49 / expected: 49
-__assert_eq / actual: 50 / expected: 50
-__assert_eq / actual: 50 / expected: 50
-__assert_eq / actual: 51 / expected: 51
-__assert_eq / actual: 51 / expected: 51
-__assert_eq / actual: 52 / expected: 52
-__assert_eq / actual: 52 / expected: 52
-__assert_eq / actual: 53 / expected: 53
-__assert_eq / actual: 53 / expected: 53
-__assert_eq / actual: 54 / expected: 54
-__assert_eq / actual: 54 / expected: 54
-__assert_eq / actual: 55 / expected: 55
-__assert_eq / actual: 55 / expected: 55
-__assert_eq / actual: 56 / expected: 56
-__assert_eq / actual: 56 / expected: 56
-__assert_eq / actual: 57 / expected: 57
-__assert_eq / actual: 57 / expected: 57
-__assert_eq / actual: 58 / expected: 58
-__assert_eq / actual: 58 / expected: 58
-__assert_eq / actual: 59 / expected: 59
-__assert_eq / actual: 59 / expected: 59
-__assert_eq / actual: 60 / expected: 60
-__assert_eq / actual: 60 / expected: 60
-__assert_eq / actual: 61 / expected: 61
-__assert_eq / actual: 61 / expected: 61
-__assert_eq / actual: 62 / expected: 62
-__assert_eq / actual: 62 / expected: 62
-__assert_eq / actual: 63 / expected: 63
-__assert_eq / actual: 63 / expected: 63
-__assert_eq / actual: 64 / expected: 64
-__assert_eq / actual: 64 / expected: 64
-__assert_eq / actual: 65 / expected: 65
-__assert_eq / actual: 65 / expected: 65
-__assert_eq / actual: 66 / expected: 66
-__assert_eq / actual: 66 / expected: 66
-__assert_eq / actual: 67 / expected: 67
-__assert_eq / actual: 67 / expected: 67
-__assert_eq / actual: 68 / expected: 68
-__assert_eq / actual: 68 / expected: 68
-__assert_eq / actual: 69 / expected: 69
-__assert_eq / actual: 69 / expected: 69
-__assert_eq / actual: 70 / expected: 70
-__assert_eq / actual: 70 / expected: 70
-__assert_eq / actual: 71 / expected: 71
-__assert_eq / actual: 71 / expected: 71
-__assert_eq / actual: 72 / expected: 72
-__assert_eq / actual: 72 / expected: 72
-__assert_eq / actual: 73 / expected: 73
-__assert_eq / actual: 73 / expected: 73
-__assert_eq / actual: 74 / expected: 74
-__assert_eq / actual: 74 / expected: 74
-__assert_eq / actual: 75 / expected: 75
-__assert_eq / actual: 75 / expected: 75
-__assert_eq / actual: 76 / expected: 76
-__assert_eq / actual: 76 / expected: 76
-__assert_eq / actual: 77 / expected: 77
-__assert_eq / actual: 77 / expected: 77
-__assert_eq / actual: 78 / expected: 78
-__assert_eq / actual: 78 / expected: 78
-__assert_eq / actual: 79 / expected: 79
-__assert_eq / actual: 79 / expected: 79
-__assert_eq / actual: 80 / expected: 80
-__assert_eq / actual: 80 / expected: 80
-__assert_eq / actual: 81 / expected: 81
-__assert_eq / actual: 81 / expected: 81
-__assert_eq / actual: 82 / expected: 82
-__assert_eq / actual: 82 / expected: 82
-__assert_eq / actual: 83 / expected: 83
-__assert_eq / actual: 83 / expected: 83
-__assert_eq / actual: 84 / expected: 84
-__assert_eq / actual: 84 / expected: 84
-__assert_eq / actual: 85 / expected: 85
-__assert_eq / actual: 85 / expected: 85
-__assert_eq / actual: 86 / expected: 86
-__assert_eq / actual: 86 / expected: 86
-__assert_eq / actual: 87 / expected: 87
-__assert_eq / actual: 87 / expected: 87
-__assert_eq / actual: 88 / expected: 88
-__assert_eq / actual: 88 / expected: 88
-__assert_eq / actual: 89 / expected: 89
-__assert_eq / actual: 89 / expected: 89
-__assert_eq / actual: 90 / expected: 90
-__assert_eq / actual: 90 / expected: 90
-__assert_eq / actual: 91 / expected: 91
-__assert_eq / actual: 91 / expected: 91
-__assert_eq / actual: 92 / expected: 92
-__assert_eq / actual: 92 / expected: 92
-__assert_eq / actual: 93 / expected: 93
-__assert_eq / actual: 93 / expected: 93
-__assert_eq / actual: 94 / expected: 94
-__assert_eq / actual: 94 / expected: 94
-__assert_eq / actual: 95 / expected: 95
-__assert_eq / actual: 95 / expected: 95
-__assert_eq / actual: 96 / expected: 96
-__assert_eq / actual: 96 / expected: 96
-__assert_eq / actual: 97 / expected: 97
-__assert_eq / actual: 97 / expected: 97
-__assert_eq / actual: 98 / expected: 98
-__assert_eq / actual: 98 / expected: 98
-__assert_eq / actual: 99 / expected: 99
-__assert_eq / actual: 99 / expected: 99
-__assert_eq / actual: 100 / expected: 100
-__assert_eq / actual: 100 / expected: 100
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=38">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="main">main<a class="anchor-link" href="#main">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=39">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">main</span> <span class="p">(</span><span class="n">_args</span> <span class="p">:</span> <span class="n">array_base</span> <span class="n">string</span><span class="p">)</span> <span class="o">=</span>
-    <span class="n">inl</span> <span class="n">result</span> <span class="o">=</span> <span class="n">roll_progressively</span> <span class="p">(</span><span class="n">Some</span> <span class="n">console</span><span class="o">.</span><span class="n">write_line</span><span class="p">)</span> <span class="n">roll_dice</span> <span class="n">true</span> <span class="p">(</span><span class="n">limit</span><span class="o">.</span><span class="n">max</span> <span class="p">:</span> <span class="n">i64</span><span class="p">)</span>
-    <span class="n">console</span><span class="o">.</span><span class="n">write_line</span> <span class="p">(</span><span class="err">$</span><span class="s1">'$"result: {!result}"'</span> <span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-    <span class="mi">0</span><span class="n">i32</span>
-
-<span class="n">inl</span> <span class="n">main</span> <span class="p">()</span> <span class="o">=</span>
-    <span class="n">inl</span> <span class="n">rotate_numbers</span><span class="s1">' : i64 -&gt; stream.stream u8 -&gt; stream.stream u8 =</span>
-        <span class="n">rotate_numbers</span>
-
-    <span class="n">inl</span> <span class="n">create_sequential_roller</span><span class="s1">' :</span>
-        <span class="n">optionm</span><span class="s1">'.option'</span> <span class="p">(</span><span class="n">string</span> <span class="o">-&gt;</span> <span class="p">())</span>
-        <span class="o">-&gt;</span> <span class="nb">list</span> <span class="n">u8</span> 
-        <span class="o">-&gt;</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="n">u8</span><span class="p">)</span>
-        <span class="o">=</span>
-        <span class="n">optionm</span><span class="s1">'.unbox &gt;&gt; create_sequential_roller</span>
-
-    <span class="n">inl</span> <span class="n">roll_progressively</span><span class="s1">' :</span>
-        <span class="n">optionm</span><span class="s1">'.option'</span> <span class="p">(</span><span class="n">string</span> <span class="o">-&gt;</span> <span class="p">())</span> 
-        <span class="o">-&gt;</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="n">u8</span><span class="p">)</span>
-        <span class="o">-&gt;</span> <span class="nb">bool</span>
-        <span class="o">-&gt;</span> <span class="n">u64</span>
-        <span class="o">-&gt;</span> <span class="n">u64</span>
-        <span class="o">=</span>
-        <span class="n">optionm</span><span class="s1">'.unbox &gt;&gt; roll_progressively</span>
-
-    <span class="n">inl</span> <span class="n">roll_within_bounds</span><span class="s1">' :</span>
-        <span class="n">optionm</span><span class="s1">'.option'</span> <span class="p">(</span><span class="n">string</span> <span class="o">-&gt;</span> <span class="p">())</span>
-        <span class="o">-&gt;</span> <span class="n">u64</span>
-        <span class="o">-&gt;</span> <span class="nb">list</span> <span class="n">u8</span>
-        <span class="o">-&gt;</span> <span class="n">optionm</span><span class="s1">'.option'</span> <span class="n">u64</span>
-        <span class="o">=</span>
-        <span class="n">fun</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">=&gt;</span>
-            <span class="p">(</span><span class="n">optionm</span><span class="s1">'.unbox &gt;&gt; roll_within_bounds) a b c</span>
-            <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.box</span>
-
-    <span class="err">$</span><span class="s1">'let rotate_numbers x = !rotate_numbers'</span> <span class="n">x</span><span class="s1">' : ()</span>
-    <span class="err">$</span><span class="s1">'let create_sequential_roller x = !create_sequential_roller'</span> <span class="n">x</span><span class="s1">' : ()</span>
-    <span class="err">$</span><span class="s1">'let roll_progressively x = !roll_progressively'</span> <span class="n">x</span><span class="s1">' : ()</span>
-    <span class="err">$</span><span class="s1">'let roll_within_bounds x = !roll_within_bounds'</span> <span class="n">x</span><span class="s1">' : ()</span>
-    <span class="err">$</span><span class="s1">'let main args = !main args'</span> <span class="p">:</span> <span class="p">()</span>
-</pre></div>
 </div>
 </div>
 </div>
