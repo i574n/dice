@@ -203,7 +203,9 @@ mod module_491a246d {
                         *count_ref += 1; //;
                         if s.len() == 0 || *count_ref % 6 == 0 {
                             //;
-                            near_sdk::log!("{:?}", acc_ref.clone().drain(..acc_ref.len() - 1)); //;
+                            let lines: String =
+                                acc_ref.clone().drain(..acc_ref.len() - 1).collect(); //;
+                            near_sdk::log!("{}", lines); //;
                             *acc_ref = String::new(); //;
                         } //;
                         acc_ref.push_str(
@@ -217,9 +219,9 @@ mod module_491a246d {
             } //;
         } /* c;
           {
-              let v152: bool =
+              let v153: bool =
                   true; // ??? / i: 4uy / i': 1uy / acc: 6uy / n: 1uy;
-              let v154: bool =
+              let v155: bool =
                   true; */
  // ???? / i: 4uy / i': 2uy / acc: 6uy / n: 1uy;
         #[near_sdk::near_bindgen] //;
@@ -228,7 +230,8 @@ mod module_491a246d {
             pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 {
                 //;
                 {
-                    let v159: &near_sdk::store::vec::Vector<u8> = &self.0 .1;
+                    let v160: &near_sdk::store::vec::Vector<u8> = &self.0 .1;
+                    let v162: Vec<u8> = v160.iter().map(|x| *x).collect::<Vec<u8>>();
                     let seed = near_sdk::env::random_seed(); //;
                     let block_timestamp = near_sdk::env::block_timestamp(); //;
                     let signer_account_id = near_sdk::env::signer_account_id(); //;
@@ -238,16 +241,17 @@ mod module_491a246d {
                     let entropy: Vec<u8> = vec![
                         //;
                         seed.clone(),                                          //;
-                        block_timestamp.to_le_bytes().to_vec(),                //;
-                        block_height.to_le_bytes().to_vec(),                   //;
+                        v162.clone(),                                          //;
                         epoch_height.to_le_bytes().to_vec(),                   //;
+                        block_height.to_le_bytes().to_vec(),                   //;
+                        block_timestamp.to_le_bytes().to_vec(),                //;
                         account_balance.as_yoctonear().to_le_bytes().to_vec(), //;
                         signer_account_id.as_bytes().to_vec(),                 //;
-                        v159.iter().map(|x| *x).collect::<Vec<u8>>(),          //;
-                        key.clone().into_bytes(),                              //;
                         proof.clone().into_bytes(),                            //;
+                        key.clone().into_bytes(),                              //;
                     ]
                     .concat(); //;
+                    let entropy_len = entropy.len(); //;
                     let hash_u8 = near_sdk::env::keccak512(&entropy); //;
                     self.contribute_seed(hash_u8.clone()); //;
                     let hash_stream = Util::vec_u8_to_stream(hash_u8.clone()); //;
@@ -260,48 +264,36 @@ mod module_491a246d {
                         //;
                         let rolls_list_log = Util::list_u8_to_vec(rolls_list.clone().into()); //;
                         let signer_account_id_log = signer_account_id.as_str(); //;
-                        near_sdk::log!(
-                            //;
-                            "{}", //;
-                            format!(
+                        near_sdk::log!( //;
+                                                            "{}", /* /*;
+                                                {
+                                                    let v192: string =
+                                                        string("            */ format!(\"generate_random_number / max: {max:?} / key: {key:?} / proof: {proof:?} / block_timestamp: {block_timestamp:?} / block_height: {block_height:?} / epoch_height: {epoch_height:?} / account_balance: {account_balance:?} / signer_account_id: {signer_account_id_log:?} / seed: {seed:?} / seeds: {v162:?} / entropy_len: {entropy_len:?} / entropy: {entropy:?} / hash_u8: {hash_u8:?} / rolls_list: {rolls_list_log:?}\") //");
+                                                                */ format!("generate_random_number / max: {max:?} / key: {key:?} / proof: {proof:?} / block_timestamp: {block_timestamp:?} / block_height: {block_height:?} / epoch_height: {epoch_height:?} / account_balance: {account_balance:?} / signer_account_id: {signer_account_id_log:?} / seed: {seed:?} / seeds: {v162:?} / entropy_len: {entropy_len:?} / entropy: {entropy:?} / hash_u8: {hash_u8:?} / rolls_list: {rolls_list_log:?}") //;
+                                                            ); //;
+                        let logger = Self::get_logger(); //;
+                        let sequential_roll =
+                            dice_contract_lib::Dice::create_sequential_roller(Some(
                                 //;
-                                "{}",
-                                ("generate_random_number".to_owned() //;
-                                                                + " / max: {max:?}" //;
-                                                                + " / key: {key:?}" //;
-                                                                + " / proof: {proof:?}" //;
-                                                                + " / block_timestamp: {block_timestamp:?}" //;
-                                                                + " / block_height: {block_height:?}" //;
-                                                                + " / epoch_height: {epoch_height:?}" //;
-                                                                + " / account_balance: {account_balance:?}" //;
-                                                                + " / signer_account_id: {signer_account_id_log:?}" //;
-                                                                + " / seed: {seed:?}" //;
-                                                                + " / entropy: {entropy:?}" //;
-                                                                + " / hash_u8: {hash_u8:?}" //;
-                                                                + " / rolls_list: {rolls_list_log:?}") //;
-                            )  //;
-                        ); //;
+                                logger.clone(), //;
+                            ))(rolls_list.into()); //;
+                        let result =
+                            dice_contract_lib::Dice::roll_progressively(Some(logger.clone()))(
+                                //;
+                                sequential_roll, //;
+                            )(true)(max); //;
+                        logger("".into()); //;
+                        result as u64 //;
                     } //;
-                    let logger = Self::get_logger(); //;
-                    let sequential_roll = dice_contract_lib::Dice::create_sequential_roller(Some(
-                        //;
-                        logger.clone(), //;
-                    ))(rolls_list.into()); //;
-                    let result = dice_contract_lib::Dice::roll_progressively(Some(logger.clone()))(
-                        //;
-                        sequential_roll, //;
-                    )(true)(max); //;
-                    logger("".into()); //;
-                    result as u64 //;
                 } //;
             } //;
         } /* c;
           {
-              let v218: bool =
-                  true; // ??? / i: 5uy / i': 1uy / acc: 7uy / n: 2uy;
-              let v220: bool =
+              let v208: bool =
+                  true; // ??? / i: 5uy / i': 1uy / acc: 7uy / n: 3uy;
+              let v210: bool =
                   true; */
- // ???? / i: 5uy / i': 2uy / acc: 7uy / n: 2uy;
+ // ???? / i: 5uy / i': 2uy / acc: 7uy / n: 3uy;
         #[near_sdk::near_bindgen] //;
         impl State {
             //;
@@ -318,17 +310,17 @@ mod module_491a246d {
                 let rolls = Util::vec_u8_to_list(rolls); //;
                 let logger = Self::get_logger(); //;
                 let result = //;
-                                                            dice_contract_lib::Dice::roll_within_bounds(Some(logger.clone()))(max)(rolls.into()); //;
+                                                                dice_contract_lib::Dice::roll_within_bounds(Some(logger.clone()))(max)(rolls.into()); //;
                 logger("".into()); //;
                 result //;
             } //;
         } /* c;
           {
-              let v239: bool =
-                  true; // ??? / i: 6uy / i': 1uy / acc: 9uy / n: 1uy;
-              let v241: bool =
+              let v229: bool =
+                  true; // ??? / i: 6uy / i': 1uy / acc: 10uy / n: 1uy;
+              let v231: bool =
                   true; */
- // ???? / i: 6uy / i': 2uy / acc: 9uy / n: 1uy;
+ // ???? / i: 6uy / i': 2uy / acc: 10uy / n: 1uy;
         #[near_sdk::near_bindgen] //;
         impl State {
             //;
@@ -344,52 +336,58 @@ mod module_491a246d {
             } //;
         } /* c;
           {
-              let v254: bool =
-                  true; // ??? / i: 7uy / i': 1uy / acc: 10uy / n: 1uy;
-              let v256: bool =
+              let v244:
+                      bool =
+                  true; // ??? / i: 7uy / i': 1uy / acc: 11uy / n: 1uy;
+              let v246:
+                      bool =
                   true; */
- // ???? / i: 7uy / i': 2uy / acc: 10uy / n: 1uy;
+ // ???? / i: 7uy / i': 2uy / acc: 11uy / n: 1uy;
         fn _main() //;
         //;
         {
-            let v260: bool = true;
+            let v250: bool = true;
             {
-                (); // ?? / i': 1uy / n: 11uy;
-                let v262: bool = true;
+                (); // ?? / i': 1uy / n: 12uy;
+                let v252: bool = true;
                 {
-                    (); // ?? / i': 2uy / n: 11uy;
-                    let v264: bool = true;
+                    (); // ?? / i': 2uy / n: 12uy;
+                    let v254: bool = true;
                     {
-                        (); // ?? / i': 3uy / n: 11uy;
-                        let v266: bool = true;
+                        (); // ?? / i': 3uy / n: 12uy;
+                        let v256: bool = true;
                         {
-                            (); // ?? / i': 4uy / n: 11uy;
-                            let v268: bool = true;
+                            (); // ?? / i': 4uy / n: 12uy;
+                            let v258: bool = true;
                             {
-                                (); // ?? / i': 5uy / n: 11uy;
-                                let v270: bool = true;
+                                (); // ?? / i': 5uy / n: 12uy;
+                                let v260: bool = true;
                                 {
-                                    (); // ?? / i': 6uy / n: 11uy;
-                                    let v272: bool = true;
+                                    (); // ?? / i': 6uy / n: 12uy;
+                                    let v262: bool = true;
                                     {
-                                        (); // ?? / i': 7uy / n: 11uy;
-                                        let v274: bool = true;
+                                        (); // ?? / i': 7uy / n: 12uy;
+                                        let v264: bool = true;
                                         {
-                                            (); // ?? / i': 8uy / n: 11uy;
-                                            let v276: bool = true;
+                                            (); // ?? / i': 8uy / n: 12uy;
+                                            let v266: bool = true;
                                             {
-                                                (); // ?? / i': 9uy / n: 11uy;
-                                                let v278: bool = true;
+                                                (); // ?? / i': 9uy / n: 12uy;
+                                                let v268: bool = true;
                                                 {
-                                                    (); // ?? / i': 10uy / n: 11uy;
-                                                    let v280: bool = true;
+                                                    (); // ?? / i': 10uy / n: 12uy;
+                                                    let v270: bool = true;
                                                     {
-                                                        (); // ?? / i': 11uy / n: 11uy;
-                                                        let v282: bool = true;
+                                                        (); // ?? / i': 11uy / n: 12uy;
+                                                        let v272: bool = true;
                                                         {
+                                                            (); // ?? / i': 12uy / n: 12uy;
+                                                            let v274: bool = true;
                                                             {
-                                                                (); // ? / i': 12uy / n: 11uy;
-                                                                ()
+                                                                {
+                                                                    (); // ? / i': 13uy / n: 12uy;
+                                                                    ()
+                                                                }
                                                             }
                                                         }
                                                     }
