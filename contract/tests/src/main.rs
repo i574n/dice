@@ -99,6 +99,7 @@ async fn main() -> anyhow::Result<()> {
             "proof": "proof",
             "max": 2000,
         }))
+        .gas(near_workspaces::types::Gas::from_tgas(300))
         .transact()
         .await?;
     println!("\n\ngenerate_random_number(contract, ''): {result:#?}");

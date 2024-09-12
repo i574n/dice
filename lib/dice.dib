@@ -37,7 +37,6 @@ sixth_power_sequence ()
 #!spiral
 
 inl accumulate_dice_rolls
-    (log : option (string -> ()))
     (rolls : list u8)
     (power : i8)
     acc
@@ -46,17 +45,22 @@ inl accumulate_dice_rolls
         match rolls with
         | _ when power < 0 =>
             inl result = acc + 1
-            log |> optionm'.iter ((|>) $'$"accumulate_dice_rolls / power: {!power} / acc: {!acc} / result: {!result}"')
+            trace Debug
+                fun () => $'$"dice.accumulate_dice_rolls"'
+                fun () => { power acc result }
             Some (result, rolls)
         | [] => None
         | roll :: rest when roll > 1 =>
             inl coeff = sixth_power_sequence () |> stream.item power
             inl value = conv (roll - 1) * coeff
-            log |> optionm'.iter ((|>) $'$"accumulate_dice_rolls / power: {!power} / acc: {!acc} / roll: {!roll} / value: {!value}"'
-            )
+            trace Debug
+                fun () => $'$"dice.accumulate_dice_rolls"'
+                fun () => { power acc roll value }
             loop (acc + value) (power - 1) rest
         | roll :: rest =>
-            log |> optionm'.iter ((|>) $'$"accumulate_dice_rolls / power: {!power} / acc: {!acc} / roll: {!roll}"')
+            trace Debug
+                fun () => $'$"dice.accumulate_dice_rolls"'
+                fun () => { power acc roll }
             loop acc (power - 1) rest
     and inl loop acc power rolls =
         if var_is rolls |> not
@@ -70,21 +74,21 @@ inl accumulate_dice_rolls
 
 //// test
 
-accumulate_dice_rolls (Some console.write_line) [ 6; 5; 4; 3; 2 ] 0 1000i32
+accumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 0 1000i32
 |> _assert_eq (Some (1006, [ 5; 4; 3; 2 ]))
 
 #!spiral
 
 //// test
 
-accumulate_dice_rolls (Some console.write_line) [ 6; 5; 4; 3; 2 ] 1 1000i32
+accumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 1 1000i32
 |> _assert_eq (Some (1035, [ 4; 3; 2 ]))
 
 #!spiral
 
 //// test
 
-accumulate_dice_rolls (Some console.write_line) [ 6; 5; 4; 3; 2 ] 2 1000i32
+accumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 2 1000i32
 |> _assert_eq (Some (1208, [ 3; 2 ]))
 
 #!markdown
@@ -93,9 +97,9 @@ accumulate_dice_rolls (Some console.write_line) [ 6; 5; 4; 3; 2 ] 2 1000i32
 
 #!spiral
 
-inl roll_within_bounds (log : option (string -> ())) max rolls =
+inl roll_within_bounds max rolls =
     inl power = listm.length rolls - 1
-    match accumulate_dice_rolls log rolls power 0 with
+    match accumulate_dice_rolls rolls power 0 with
     | Some (result, _) when result >= 1 && result <= max => Some result
     | _ => None
 
@@ -103,21 +107,21 @@ inl roll_within_bounds (log : option (string -> ())) max rolls =
 
 //// test
 
-roll_within_bounds (Some console.write_line) 2000i32 [ 1; 5; 4; 4; 5 ]
+roll_within_bounds 2000i32 [ 1; 5; 4; 4; 5 ]
 |> _assert_eq (Some 995)
 
 #!spiral
 
 //// test
 
-roll_within_bounds (Some console.write_line) 2000i32 [ 2; 2; 6; 4; 5 ]
+roll_within_bounds 2000i32 [ 2; 2; 6; 4; 5 ]
 |> _assert_eq (Some 1715)
 
 #!spiral
 
 //// test
 
-roll_within_bounds (Some console.write_line) 2000i32 [ 4; 1; 1; 2; 3 ]
+roll_within_bounds 2000i32 [ 4; 1; 1; 2; 3 ]
 |> _assert_eq None
 
 #!markdown
@@ -126,10 +130,12 @@ roll_within_bounds (Some console.write_line) 2000i32 [ 4; 1; 1; 2; 3 ]
 
 #!spiral
 
-inl calculate_dice_count (log : option (string -> ())) max =
+inl calculate_dice_count max =
     inl rec body n p =
         inl return () =
-            log |> optionm'.iter ((|>) $'$"calculate_dice_count / max: {!max} / n: {!n} / p: {!p}"')
+            trace Debug
+                fun () => $'$"dice.calculate_dice_count"'
+                fun () => { max n p }
             n
 
         if p < max then
@@ -154,14 +160,14 @@ inl calculate_dice_count (log : option (string -> ())) max =
 
 //// test
 
-calculate_dice_count (Some console.write_line) 36i32
+calculate_dice_count 36i32
 |> _assert_eq 2i32
 
 #!spiral
 
 //// test
 
-calculate_dice_count (Some console.write_line) 7777i32
+calculate_dice_count 7777i32
 |> _assert_eq 6i32
 
 #!markdown
@@ -207,8 +213,8 @@ listm'.init_series -1 14 1i32
 
 #!spiral
 
-inl create_sequential_roller (log : option (string -> ())) list =
-    log |> optionm'.iter ((|>) $'$"create_sequential_roller ()"')
+inl create_sequential_roller list =
+    trace Debug (fun () => $'$"dice.create_sequential_roller ()"') id
     inl s = list |> listm.rev |> listm.append list |> stream.from_list |> stream.memoize
     inl current_index = mut 0i64
     inl acc = mut 1
@@ -219,8 +225,10 @@ inl create_sequential_roller (log : option (string -> ())) list =
             inl current_index = *current_index
             inl acc = *acc
             inl len = *len
-            inl last_item = *last_item
-            log |> optionm'.iter ((|>) $'$"create_sequential_roller / roll / current_index: {!current_index} / acc: {!acc} / len: {!len} / last_item: %A{!last_item}"')
+            inl last_item = *last_item |> optionm'.box
+            trace Debug
+                fun () => $'$"dice.create_sequential_roller / roll"'
+                fun () => { current_index acc len last_item }
         |> fun x => x ()
         match s () |> stream.try_item *current_index with
         | Some item =>
@@ -228,7 +236,7 @@ inl create_sequential_roller (log : option (string -> ())) list =
             last_item <- Some item
             item
         | None =>
-            log |> optionm'.iter ((|>) $'$"create_sequential_roller / roll / None"')
+            trace Debug (fun () => $'$"dice.create_sequential_roller / roll / None"') id
             if *len = -1
             then len <- *current_index
             acc <-
@@ -244,7 +252,7 @@ inl create_sequential_roller (log : option (string -> ())) list =
 
 //// test
 
-inl sequential_roll = create_sequential_roller (Some console.write_line) [ 1i32; 2; 3; 4 ]
+inl sequential_roll = create_sequential_roller [ 1i32; 2; 3; 4 ]
 
 am.init 50i32 (ignore >> sequential_roll)
 |> _assert_eq (a ;[ 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
@@ -256,12 +264,12 @@ am.init 50i32 (ignore >> sequential_roll)
 
 #!spiral
 
-inl roll_progressively (log : option (string -> ())) roll reroll max =
-    inl power = (calculate_dice_count log max) - 1
+inl roll_progressively roll reroll max =
+    inl power = (calculate_dice_count max) - 1
     let rec loop rolls size =
         if size < power + 1
         then loop (roll () :: rolls) (size + 1)
-        else accumulate_dice_rolls log rolls power 0 |> function
+        else accumulate_dice_rolls rolls power 0 |> function
             | Some (result, _) when result <= max => result
             | _ when reroll => loop (listm.init power (fun _ => roll ())) power
             | _ => loop (roll () :: rolls) (size + 1)
@@ -271,33 +279,36 @@ inl roll_progressively (log : option (string -> ())) roll reroll max =
 
 //// test
 
-roll_progressively None roll_dice false 1
+roll_progressively roll_dice false 1
 |> _assert_eq 1i32
 
 #!spiral
 
 //// test
 
-inl sequential_roll = create_sequential_roller (Some console.write_line) [ 5; 4; 4; 5; 1 ]
+inl sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 1 ]
 
-roll_progressively (Some console.write_line) sequential_roll false 2000i32
+roll_progressively sequential_roll false 2000i32
 |> _assert_eq 995
 
 #!spiral
 
 //// test
 
-inl sequential_roll = create_sequential_roller (Some console.write_line) [ 5; 4; 4; 5; 2 ]
+inl sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 2 ]
 
-roll_progressively (Some console.write_line) sequential_roll false 2000i32
+roll_progressively sequential_roll false 2000i32
 |> _assert_eq 1678
 
 #!spiral
 
 //// test
 
+inl { level } = get_trace_state_or_init None
+level <- Info
+
 join dyn listm'.init_series 1i32 10000 1
-|> listm.map (fun _ => roll_progressively None roll_dice false 10i32)
+|> listm.map (fun _ => roll_progressively roll_dice false 10i32)
 |> listm'.group_by id
 |> listm.map (fun (k, v) => k, (listm.length v : i32))
 |> listm'.box
@@ -309,8 +320,11 @@ join dyn listm'.init_series 1i32 10000 1
 
 //// test
 
+inl { level } = get_trace_state_or_init None
+level <- Info
+
 join dyn listm'.init_series 1i32 10000 1
-|> listm.map (fun _ => roll_progressively None roll_dice true 10i32)
+|> listm.map (fun _ => roll_progressively roll_dice true 10i32)
 |> listm'.group_by id
 |> listm.map (fun (k, v) => k, (listm.length v : i32))
 |> listm'.box
@@ -323,15 +337,18 @@ join dyn listm'.init_series 1i32 10000 1
 //// test
 //// timeout=180000
 
+inl { level } = get_trace_state_or_init None
+level <- Info
+
 join dyn listm'.init_series 1i32 100 1
 |> listm.iter fun n =>
     listm'.init_series 0i32 1 1
     |> listm.iter fun reroll =>
         join dyn listm'.init_series 1i32 3500 1
-        |> listm.map fun _ => roll_progressively None roll_dice (reroll = 1) n
+        |> listm.map fun _ => roll_progressively roll_dice (reroll = 1) n
         |> listm'.group_by id
         |> listm.length
-        |> _assert_eq n
+        |> __assert_eq Silent n
 
 #!markdown
 
@@ -340,8 +357,10 @@ join dyn listm'.init_series 1i32 100 1
 #!spiral
 
 inl main (_args : array_base string) =
-    inl result = roll_progressively (Some console.write_line) roll_dice true (limit.max : i64)
-    console.write_line ($'$"result: {!result}"' : string)
+    inl result = roll_progressively roll_dice true (limit.max : i64)
+    trace Debug
+        fun () => $'$"dice.main"'
+        fun () => { result }
     0i32
 
 inl main () =
@@ -349,29 +368,26 @@ inl main () =
         rotate_numbers
 
     inl create_sequential_roller' :
-        optionm'.option' (string -> ())
-        -> list u8 
+        list u8 
         -> (() -> u8)
         =
-        optionm'.unbox >> create_sequential_roller
+        create_sequential_roller
 
     inl roll_progressively' :
-        optionm'.option' (string -> ()) 
-        -> (() -> u8)
+        (() -> u8)
         -> bool
         -> u64
         -> u64
         =
-        optionm'.unbox >> roll_progressively
+        roll_progressively
 
     inl roll_within_bounds' :
-        optionm'.option' (string -> ())
-        -> u64
+        u64
         -> list u8
         -> optionm'.option' u64
         =
-        fun a b c =>
-            (optionm'.unbox >> roll_within_bounds) a b c
+        fun a b =>
+            roll_within_bounds a b
             |> optionm'.box
 
     $'let rotate_numbers x = !rotate_numbers' x' : ()
