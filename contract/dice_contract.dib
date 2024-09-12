@@ -23,6 +23,56 @@ open testing
 
 #!markdown
 
+### util
+
+#!spiral
+
+inl util () =
+    !\($'"pub struct Util {} //"') : ()
+    !\($'"impl Util { //"') : ()
+    !\($'"    fn stream_u8_to_list( //"') : ()
+    !\($'"        s: fable_library_rust::Native_::LrcPtr<dice_contract_lib::Dice::UH0>, //"') : ()
+    !\($'"    ) -> dice_contract_lib::Dice::UH1 { //"') : ()
+    !\($'"        match s.as_ref() { //"') : ()
+    !\($'"            dice_contract_lib::Dice::UH0::UH0_0(n, f) => { //"') : ()
+    !\($'"                dice_contract_lib::Dice::UH1::UH1_1(*n, Self::stream_u8_to_list(f()).into()) //"') : ()
+    !\($'"            } //"') : ()
+    !\($'"            dice_contract_lib::Dice::UH0::UH0_1 => dice_contract_lib::Dice::UH1::UH1_0, //"') : ()
+    !\($'"        } //"') : ()
+    !\($'"    } //"') : ()
+    !\($'"    fn list_u8_to_vec( //"') : ()
+    !\($'"        s: fable_library_rust::Native_::LrcPtr<dice_contract_lib::Dice::UH1>, //"') : ()
+    !\($'"    ) -> Vec<u8> { //"') : ()
+    !\($'"        match s.as_ref() { //"') : ()
+    !\($'"            dice_contract_lib::Dice::UH1::UH1_1(n, f) => { //"') : ()
+    !\($'"                let mut v = Self::list_u8_to_vec(f.clone()); //"') : ()
+    !\($'"                v.insert(0, *n); //"') : ()
+    !\($'"                v //"') : ()
+    !\($'"            } //"') : ()
+    !\($'"            dice_contract_lib::Dice::UH1::UH1_0 => vec\![], //"') : ()
+    !\($'"        } //"') : ()
+    !\($'"    } //"') : ()
+    !\($'"    fn vec_u8_to_list(v: Vec<u8>) -> dice_contract_lib::Dice::UH1 { //"') : ()
+    !\($'"        v.iter() //"') : ()
+    !\($'"            .rev() //"') : ()
+    !\($'"            .fold(dice_contract_lib::Dice::UH1::UH1_0, |acc, x| { //"') : ()
+    !\($'"                dice_contract_lib::Dice::UH1::UH1_1(*x, acc.into()) //"') : ()
+    !\($'"            }) //"') : ()
+    !\($'"    } //"') : ()
+    !\($'"    fn vec_u8_to_stream(v: Vec<u8>) -> dice_contract_lib::Dice::UH0 { //"') : ()
+    !\($'"        v.iter() //"') : ()
+    !\($'"            .rev() //"') : ()
+    !\($'"            .fold(dice_contract_lib::Dice::UH0::UH0_1, |acc, x| { //"') : ()
+    !\($'"                dice_contract_lib::Dice::UH0::UH0_0( //"') : ()
+    !\($'"                    *x, //"') : ()
+    !\($'"                    fable_library_rust::Native_::Func0::new(move || acc.clone().into()), //"') : ()
+    !\($'"                ) //"') : ()
+    !\($'"            }) //"') : ()
+    !\($'"    } //"') : ()
+    !\($'"} //"') : ()
+
+#!markdown
+
 ### state
 
 #!spiral
@@ -39,6 +89,13 @@ type state =
 ///! rust -c
 
 ()
+
+#!spiral
+
+//// test
+///! rust -c
+
+trace Verbose (fun () => "") id
 
 #!markdown
 
@@ -58,7 +115,127 @@ inl new () : state =
 ///! rust -c
 
 inl state = new ()
-trace Verbose (fun () => "dice_contract") fun () => { state }
+trace Verbose (fun () => "dice_contract") fun () => { state = state |> sm'.format_debug }
+trace Verbose (fun () => "") id
+
+#!markdown
+
+### max_seeds
+
+#!spiral
+
+inl max_seeds () : unativeint =
+    100i32 |> convert
+
+#!markdown
+
+### contribute_seed
+
+#!spiral
+
+inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.vec u8) : () =
+    !\($'"    !seeds.extend(!seed); //"') : ()
+    inl max_seeds = max_seeds ()
+
+    inl seed_excess_len : i32 =
+        !\($'"(!seeds.len() as i32) - !max_seeds as i32"')
+
+    if seed_excess_len > 0 then
+        inl seed_excess : am'.vec u8 =
+            !\\(seed_excess_len, $'"!seeds.drain(0..$0 as u32).collect()"')
+        trace Debug
+            fun () => $'$"dice_contract.contribute_seed"'
+            fun () => { seed_excess = seed_excess |> sm'.format_debug }
+
+#!markdown
+
+### generate_random_number
+
+#!spiral
+
+inl generate_random_number
+    (seeds : am'.vec u8) (key : sm'.std_string) (proof : sm'.std_string) (max : u64)
+    : u64
+    =
+
+    inl seed = near.random_seed ()
+
+    inl block_timestamp = near.block_timestamp ()
+    inl block_height = near.block_height ()
+    inl epoch_height = near.epoch_height ()
+    inl account_balance = near.account_balance ()
+    inl signer_account_id = near.signer_account_id ()
+
+    inl entropy : am'.vec u8 =
+        ;[
+            seed
+            seeds
+            epoch_height |> am'.to_le_bytes |> am'.to_vec'
+            block_height |> am'.to_le_bytes |> am'.to_vec'
+            block_timestamp |> am'.to_le_bytes |> am'.to_vec'
+            account_balance |> near.as_yoctonear |> am'.to_le_bytes |> am'.to_vec'
+            signer_account_id |> am'.as_bytes |> am'.to_vec''
+            proof |> sm'.into_bytes
+            key |> sm'.into_bytes
+        ]
+        |> am'.to_vec
+        |> rust.concat
+    
+    inl entropy_len = entropy |> am'.vec_len
+
+    inl hash_u8 : am'.vec u8 = !\($'$"near_sdk::env::keccak512(&!entropy)"')
+
+    !\($'"    self.contribute_seed(!hash_u8.clone()); //"') : ()
+    !\($'"    let hash_stream = Util::vec_u8_to_stream(!hash_u8.clone()); //"') : ()
+    !\($'"    let rolls_list = Util::stream_u8_to_list(dice_contract_lib::Dice::rotate_numbers(6)( //"') : ()
+    !\($'"        hash_stream.into(), //"') : ()
+    !\($'"    )); //"') : ()
+    inl rolls_list_log : am'.vec u8 = !\($'"Util::list_u8_to_vec(rolls_list.clone().into())"')
+
+    trace Debug
+        fun () => $'$"dice_contract.generate_random_number"'
+        fun () =>
+            {
+                max
+                key
+                proof
+                block_timestamp
+                block_height
+                epoch_height
+                account_balance = account_balance |> sm'.format_debug
+                signer_account_id = signer_account_id |> sm'.to_string
+                seed = seed |> sm'.format_debug
+                seeds = seeds |> sm'.format_debug
+                entropy_len
+                entropy = entropy |> sm'.format_debug
+                hash_u8 = hash_u8 |> sm'.format_debug
+                rolls_list_log = rolls_list_log |> sm'.format_debug
+            }
+
+    !\($'"    let sequential_roll = //"') : ()
+    !\($'"        dice_contract_lib::Dice::create_sequential_roller(rolls_list.into()); //"') : ()
+    !\($'"    let result = dice_contract_lib::Dice::roll_progressively //"') : ()
+    !\($'"        (sequential_roll)(true)(max); //"') : ()
+
+    trace Debug (fun () => "") id
+
+    !\($'"result as u64"')
+
+#!markdown
+
+### roll_within_bounds
+
+#!spiral
+
+inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
+    trace Debug
+        fun () => $'$"dice_contract.roll_within_bounds"'
+        fun () => { max rolls = rolls |> sm'.format_debug }
+    !\\(rolls, $'"    let rolls = Util::vec_u8_to_list($0); //"') : ()
+    !\($'"    let result = //"') : ()
+    !\($'"        dice_contract_lib::Dice::roll_within_bounds(max)(rolls.into()); //"') : ()
+    trace Debug (fun () => "") id
+    !\($'"result"')
 
 #!markdown
 
@@ -68,58 +245,10 @@ trace Verbose (fun () => "dice_contract") fun () => { state }
 
 ///! _
 
-inl max_seeds () : unativeint =
-    100i32 |> convert
-
 inl main () =
     !\($'"} //"') : ()
 
-    inl util () =
-        !\($'"pub struct Util {} //"') : ()
-        !\($'"impl Util { //"') : ()
-        !\($'"    fn stream_u8_to_list( //"') : ()
-        !\($'"        s: fable_library_rust::Native_::LrcPtr<dice_contract_lib::Dice::UH0>, //"') : ()
-        !\($'"    ) -> dice_contract_lib::Dice::UH1 { //"') : ()
-        !\($'"        match s.as_ref() { //"') : ()
-        !\($'"            dice_contract_lib::Dice::UH0::UH0_0(n, f) => { //"') : ()
-        !\($'"                dice_contract_lib::Dice::UH1::UH1_1(*n, Self::stream_u8_to_list(f()).into()) //"') : ()
-        !\($'"            } //"') : ()
-        !\($'"            dice_contract_lib::Dice::UH0::UH0_1 => dice_contract_lib::Dice::UH1::UH1_0, //"') : ()
-        !\($'"        } //"') : ()
-        !\($'"    } //"') : ()
-        !\($'"    fn list_u8_to_vec( //"') : ()
-        !\($'"        s: fable_library_rust::Native_::LrcPtr<dice_contract_lib::Dice::UH1>, //"') : ()
-        !\($'"    ) -> Vec<u8> { //"') : ()
-        !\($'"        match s.as_ref() { //"') : ()
-        !\($'"            dice_contract_lib::Dice::UH1::UH1_1(n, f) => { //"') : ()
-        !\($'"                let mut v = Self::list_u8_to_vec(f.clone()); //"') : ()
-        !\($'"                v.insert(0, *n); //"') : ()
-        !\($'"                v //"') : ()
-        !\($'"            } //"') : ()
-        !\($'"            dice_contract_lib::Dice::UH1::UH1_0 => vec\![], //"') : ()
-        !\($'"        } //"') : ()
-        !\($'"    } //"') : ()
-        !\($'"    fn vec_u8_to_list(v: Vec<u8>) -> dice_contract_lib::Dice::UH1 { //"') : ()
-        !\($'"        v.iter() //"') : ()
-        !\($'"            .rev() //"') : ()
-        !\($'"            .fold(dice_contract_lib::Dice::UH1::UH1_0, |acc, x| { //"') : ()
-        !\($'"                dice_contract_lib::Dice::UH1::UH1_1(*x, acc.into()) //"') : ()
-        !\($'"            }) //"') : ()
-        !\($'"    } //"') : ()
-        !\($'"    fn vec_u8_to_stream(v: Vec<u8>) -> dice_contract_lib::Dice::UH0 { //"') : ()
-        !\($'"        v.iter() //"') : ()
-        !\($'"            .rev() //"') : ()
-        !\($'"            .fold(dice_contract_lib::Dice::UH0::UH0_1, |acc, x| { //"') : ()
-        !\($'"                dice_contract_lib::Dice::UH0::UH0_0( //"') : ()
-        !\($'"                    *x, //"') : ()
-        !\($'"                    fable_library_rust::Native_::Func0::new(move || acc.clone().into()), //"') : ()
-        !\($'"                ) //"') : ()
-        !\($'"            }) //"') : ()
-        !\($'"    } //"') : ()
-        !\($'"} //"') : ()
-
     util ()
-
 
     !\($'"#[derive( //"') : ()
     !\($'"  near_sdk::PanicOnDefault, //"') : ()
@@ -173,21 +302,12 @@ inl main () =
 
     inl contribute_seed () =
         !\($'"pub fn contribute_seed(&mut self, seed: Vec<u8>) { //"') : ()
-        inl seeds : rust.ref (rust.mut' (near.vector u8)) =
-            !\($'$"&mut self.0.1"')
+        inl seeds : rust.ref (rust.mut' (near.vector u8)) = !\($'$"&mut self.0.1"')
+        inl seed : am'.vec u8 = !\($'$"seed"')
+        
+        seed |> contribute_seed seeds
 
-        !\($'"    !seeds.extend(seed); //"') : ()
-        inl max_seeds = max_seeds ()
-        !\($'"    let seed_excess_len = (!seeds.len() as i32) - !max_seeds as i32; //"') : ()
-        !\($'"    if seed_excess_len > 0 { //"') : ()
-        !\($'"        let seed_excess: Vec<_> = !seeds.drain(0..seed_excess_len as u32).collect(); //"') : ()
-        !\($'"        near_sdk::log\!( //"') : ()
-        !\($'"            \\\"{}\\\", //"') : ()
-        !\($'"            format\!( //"') : ()
-        !\($'"                \\\"contribute_seed / seed_excess: {seed_excess:?}\\\" //"') : ()
-        !\($'"            ) //"') : ()
-        !\($'"        ); //"') : ()
-        !\($'"    } //"') : ()
+
         !\($'"} //"') : ()
 
         !\($'"} //"') : ()
@@ -203,75 +323,38 @@ inl main () =
 
         1
 
-    inl get_logger () =
-        !\($'"fn get_logger() -> fable_library_rust::Native_::Func1<fable_library_rust::String_::string, ()> { //"') : ()
-        !\($'"    let count = std::rc::Rc::new(std::cell::RefCell::new(0)); //"') : ()
-        !\($'"    let acc = std::rc::Rc::new(std::cell::RefCell::new(String::new())); //"') : ()
-        !\($'"    let closure = { //"') : ()
-        !\($'"        let count = std::rc::Rc::clone(&count); //"') : ()
-        !\($'"        let acc = std::rc::Rc::clone(&acc); //"') : ()
-        !\($'"        move |s: fable_library_rust::String_::string| { //"') : ()
-        !\($'"            let mut count_ref = count.borrow_mut(); //"') : ()
-        !\($'"            let mut acc_ref = acc.borrow_mut(); //"') : ()
-        !\($'"            *count_ref += 1; //"') : ()
-        !\($'"            if s.len() == 0 || *count_ref % 6 == 0 { //"') : ()
-        !\($'"                let lines : String = acc_ref.clone().drain(..acc_ref.len() - 1).collect(); //"') : ()
-        !\($'"                near_sdk::log\!(\\\"{}\\\", lines); //"') : ()
-        !\($'"                *acc_ref = String::new(); //"') : ()
-        !\($'"            } //"') : ()
-        !\($'"            acc_ref.push_str(&(s.to_string() + \\\"\n\\\")); //"') : ()
-        !\($'"        } //"') : ()
-        !\($'"    }; //"') : ()
-        !\($'"    fable_library_rust::Native_::Func1::new(closure) //"') : ()
-        !\($'"} //"') : ()
-
-        1
-
     inl generate_random_number () =
         !\($'"pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 { //"') : ()
-        inl seeds : rust.ref (near.vector u8) =
-            !\($'$"&self.0.1"')
+
+        inl key : sm'.std_string = !\($'$"key"')
+        inl proof : sm'.std_string = !\($'$"proof"')
+        inl max : u64 = !\($'$"max"')
+
+        inl seeds : rust.ref (near.vector u8) = !\($'$"&self.0.1"')
         inl seeds : am'.vec u8 = !\($'$"!seeds.iter().map(|x| *x).collect::<Vec<u8>>()"')
-        !\($'"    let seed = near_sdk::env::random_seed(); //"') : ()
-        !\($'"    let block_timestamp = near_sdk::env::block_timestamp(); //"') : ()
-        !\($'"    let signer_account_id = near_sdk::env::signer_account_id(); //"') : ()
-        !\($'"    let account_balance = near_sdk::env::account_balance(); //"') : ()
-        !\($'"    let block_height = near_sdk::env::block_height(); //"') : ()
-        !\($'"    let epoch_height = near_sdk::env::epoch_height(); //"') : ()
-        !\($'"    let entropy: Vec<u8> = vec\![ //"') : ()
-        !\($'"        seed.clone(), //"') : ()
-        !\($'"        !seeds.clone(), //"') : ()
-        !\($'"        epoch_height.to_le_bytes().to_vec(), //"') : ()
-        !\($'"        block_height.to_le_bytes().to_vec(), //"') : ()
-        !\($'"        block_timestamp.to_le_bytes().to_vec(), //"') : ()
-        !\($'"        account_balance.as_yoctonear().to_le_bytes().to_vec(), //"') : ()
-        !\($'"        signer_account_id.as_bytes().to_vec(), //"') : ()
-        !\($'"        proof.clone().into_bytes(), //"') : ()
-        !\($'"        key.clone().into_bytes(), //"') : ()
-        !\($'"    ].concat(); //"') : ()
-        !\($'"    let entropy_len = entropy.len(); //"') : ()
-        !\($'"    let hash_u8 = near_sdk::env::keccak512(&entropy); //"') : ()
-        !\($'"    self.contribute_seed(hash_u8.clone()); //"') : ()
-        !\($'"    let hash_stream = Util::vec_u8_to_stream(hash_u8.clone()); //"') : ()
-        !\($'"    let rolls_list = Util::stream_u8_to_list(dice_contract_lib::Dice::rotate_numbers(6)( //"') : ()
-        !\($'"        hash_stream.into(), //"') : ()
-        !\($'"    )); //"') : ()
-        !\($'"    { //"') : ()
-        !\($'"        let rolls_list_log = Util::list_u8_to_vec(rolls_list.clone().into()); //"') : ()
-        !\($'"        let signer_account_id_log = signer_account_id.as_str(); //"') : ()
-        !\($'"        near_sdk::log\!( //"') : ()
-        !\($'"            \\\"{}\\\", /* /*"') : ()
-        !\($'"            */ format\!(\\\"generate_random_number / max: {max:?} / key: {key:?} / proof: {proof:?} / block_timestamp: {block_timestamp:?} / block_height: {block_height:?} / epoch_height: {epoch_height:?} / account_balance: {account_balance:?} / signer_account_id: {signer_account_id_log:?} / seed: {seed:?} / seeds: {!seeds:?} / entropy_len: {entropy_len:?} / entropy: {entropy:?} / hash_u8: {hash_u8:?} / rolls_list: {rolls_list_log:?}\\\") //"') : ()
-        !\($'"        ); //"') : ()
-        !\($'"    let logger = Self::get_logger(); //"') : ()
-        !\($'"    let sequential_roll = dice_contract_lib::Dice::create_sequential_roller(Some( //"') : ()
-        !\($'"        logger.clone(), //"') : ()
-        !\($'"    ))(rolls_list.into()); //"') : ()
-        !\($'"    let result = dice_contract_lib::Dice::roll_progressively(Some(logger.clone()))( //"') : ()
-        !\($'"        sequential_roll, //"') : ()
-        !\($'"    )(true)(max); //"') : ()
-        !\($'"    logger(\\\"\\\".into()); //"') : ()
-        !\($'"    result as u64 //"') : ()
+        
+        inl result = generate_random_number seeds key proof max
+
+        !\($'"!result //"') : ()
+
+        !\($'"} //"') : ()
+
+        !\($'"} //"') : ()
+
+        !\($'"} //"') : ()
+
+        !\($'"} //"') : ()
+
+        4
+
+    inl roll_within_bounds () =
+        !\($'"pub fn roll_within_bounds(&self, max: u64, rolls: Vec<u8>) -> Option<u64> { //"') : ()
+        inl max : u64 = !\($'$"max"')
+        inl rolls : am'.vec u8 = !\($'$"rolls"')
+        inl result = roll_within_bounds max rolls
+
+        !\($'"!result //"') : ()
+
         !\($'"} //"') : ()
 
         !\($'"} //"') : ()
@@ -279,24 +362,6 @@ inl main () =
         !\($'"} //"') : ()
 
         3
-
-    inl roll_within_bounds () =
-        !\($'"pub fn roll_within_bounds(&self, max: u64, rolls: Vec<u8>) -> Option<u64> { //"') : ()
-        !\($'"    near_sdk::log\!( //"') : ()
-        !\($'"        \\\"{}\\\", //"') : ()
-        !\($'"        format\!( //"') : ()
-        !\($'"            \\\"roll_within_bounds / max: {max:#?} / rolls: {rolls:?}\\\" //"') : ()
-        !\($'"        ) //"') : ()
-        !\($'"    ); //"') : ()
-        !\($'"    let rolls = Util::vec_u8_to_list(rolls); //"') : ()
-        !\($'"    let logger = Self::get_logger(); //"') : ()
-        !\($'"    let result = //"') : ()
-        !\($'"        dice_contract_lib::Dice::roll_within_bounds(Some(logger.clone()))(max)(rolls.into()); //"') : ()
-        !\($'"    logger(\\\"\\\".into()); //"') : ()
-        !\($'"    result //"') : ()
-        !\($'"} //"') : ()
-
-        1
 
     inl roll_within_bounds_borsh () =
         !\($'"#[result_serializer(borsh)] //"') : ()
@@ -316,7 +381,6 @@ inl main () =
             new_
             contribute_seed
             contribute_seed_borsh
-            get_logger
             generate_random_number
             roll_within_bounds
             roll_within_bounds_borsh

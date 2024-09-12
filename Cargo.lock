@@ -1472,6 +1472,7 @@ dependencies = [
  "fable_library_rust",
  "inline_colorization",
  "near-sdk",
+ "near-token 0.3.0",
 ]
 
 [[package]]
