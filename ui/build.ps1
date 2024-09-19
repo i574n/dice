@@ -4,13 +4,13 @@ param(
 )
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
-. ../../polyglot/scripts/core.ps1
-. ../../polyglot/lib/spiral/lib.ps1
+. ../deps/polyglot/scripts/core.ps1
+. ../deps/polyglot/lib/spiral/lib.ps1
 
 
 $projectName = "dice_ui"
 
-{ . ../../polyglot/apps/spiral/dist/Supervisor$(_exe) --build-file "src/$projectName.spi" "src/$projectName.fsx" --timeout 20000 } | Invoke-Block
+{ . ../deps/polyglot/apps/spiral/dist/Supervisor$(_exe) --build-file "src/$projectName.spi" "src/$projectName.fsx" --timeout 20000 } | Invoke-Block
 
 (Get-Content "src/$projectName.fsx") `
     -replace "and Heap2 =", "and  Heap2 =" `
@@ -18,14 +18,14 @@ $projectName = "dice_ui"
 
 $runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
 $builderArgs = @("src/$projectName.fsx", "--persist-only", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
-{ . ../../polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
+{ . ../deps/polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
 
 $targetDir = GetTargetDir $projectName
 
 { BuildFable $targetDir $projectName "rs" "WASM" } | Invoke-Block
 
-(Get-Content "$targetDir/target/rs/$projectName.rs") `
-    -replace "../../../lib", "../../../polyglot/lib" `
+(Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
+    -replace "../../../lib", "../../deps/polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     -replace ".rs`"]", "_wasm.rs`"]" `
     -replace "pub use crate::module_", "// pub use crate::module_" `

@@ -3,7 +3,7 @@ param(
 )
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
-. ../../../polyglot/scripts/core.ps1
+. ../deps/polyglot/scripts/core.ps1
 
 
 Set-Location ..
@@ -35,4 +35,4 @@ if ($Error.Count -gt 0) {
     exit 1
 }
 
-{ . ../../polyglot/apps/dir-tree-html/dist/DirTreeHtml$(_exe) --dir . --html index.html } | Invoke-Block
+{ . ../deps/polyglot/apps/dir-tree-html/dist/DirTreeHtml$(_exe) --dir . --html index.html } | Invoke-Block

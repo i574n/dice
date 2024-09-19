@@ -4,7 +4,7 @@ param(
 )
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
-. ../../polyglot/scripts/core.ps1
+. ../deps/polyglot/scripts/core.ps1
 
 
 { pwsh ../lib/build.ps1 -fast $($fast ?? '') } | Invoke-Block

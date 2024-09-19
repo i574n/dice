@@ -1,7 +1,9 @@
-packageDir: ../polyglot/lib
+packageDir: deps/polyglot/lib
 packages:
     |core-
     spiral-
 modules:
     lib/
         dice
+    contract/
+        dice_contract

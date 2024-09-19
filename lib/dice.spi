@@ -2,7 +2,7 @@
 
 /// ## sixth_power_sequence
 inl sixth_power_sequence () =
-    stream.iterate ((*) 6) 1
+    stream.iterate_map ((*) 6) (fun x => if x <= 0 then None else Some x) 1
 
 /// ## accumulate_dice_rolls
 inl accumulate_dice_rolls

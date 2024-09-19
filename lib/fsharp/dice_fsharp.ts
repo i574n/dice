@@ -1,10 +1,10 @@
-import { map, item as item_1, iterate, unfold, cache } from "../../polyglot/deps/Fable/src/fable-library-ts/Seq.js";
-import { int32 } from "../../polyglot/deps/Fable/src/fable-library-ts/Int32.js";
-import { value as value_1, toArray, Option } from "../../polyglot/deps/Fable/src/fable-library-ts/Option.js";
-import { empty, initialize, cons, tryItem, length, tail, head, isEmpty, FSharpList } from "../../polyglot/deps/Fable/src/fable-library-ts/List.js";
-import { nonSeeded } from "../../polyglot/deps/Fable/src/fable-library-ts/Random.js";
-import { printf, toConsole } from "../../polyglot/deps/Fable/src/fable-library-ts/String.js";
-import { TraceLevel_Debug, trace } from "./lib/fsharp/Common.js";
+import { map, item as item_1, iterate, unfold, cache } from "../../../../deps/Fable/src/fable-library-ts/Seq.js";
+import { int32 } from "../../../../deps/Fable/src/fable-library-ts/Int32.js";
+import { value as value_1, toArray, Option } from "../../../../deps/Fable/src/fable-library-ts/Option.js";
+import { empty, initialize, cons, tryItem, length, tail, head, isEmpty, FSharpList } from "../../../../deps/Fable/src/fable-library-ts/List.js";
+import { nonSeeded } from "../../../../deps/Fable/src/fable-library-ts/Random.js";
+import { printf, toConsole } from "../../../../deps/Fable/src/fable-library-ts/String.js";
+import { TraceLevel_Debug, trace } from "../../../lib/fsharp/Common.js";
 
 /**
  * ## sixthPowerSequence

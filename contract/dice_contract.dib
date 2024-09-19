@@ -35,7 +35,10 @@ inl util () =
     !\($'"    ) -> dice_contract_lib::Dice::UH1 { //"') : ()
     !\($'"        match s.as_ref() { //"') : ()
     !\($'"            dice_contract_lib::Dice::UH0::UH0_0(n, f) => { //"') : ()
-    !\($'"                dice_contract_lib::Dice::UH1::UH1_1(*n, Self::stream_u8_to_list(f()).into()) //"') : ()
+    !\($'"                dice_contract_lib::Dice::UH1::UH1_1( //"') : ()
+    !\($'"                    *n, //"') : ()
+    !\($'"                    Self::stream_u8_to_list(f()).into() //"') : ()
+    !\($'"                ) //"') : ()
     !\($'"            } //"') : ()
     !\($'"            dice_contract_lib::Dice::UH0::UH0_1 => dice_contract_lib::Dice::UH1::UH1_0, //"') : ()
     !\($'"        } //"') : ()
@@ -83,14 +86,14 @@ type state =
         seeds : near.vector u8
     }
 
-#!spiral
+#!markdown
 
 //// test
 ///! rust -c
 
 ()
 
-#!spiral
+#!markdown
 
 //// test
 ///! rust -c
@@ -109,7 +112,7 @@ inl new () : state =
         seeds = "seeds" |> sm'.byte_slice |> near.new_vector
     }
 
-#!spiral
+#!markdown
 
 //// test
 ///! rust -c
@@ -134,11 +137,10 @@ inl max_seeds () : unativeint =
 #!spiral
 
 inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.vec u8) : () =
-    !\($'"    !seeds.extend(!seed); //"') : ()
+    !\($'"!seeds.extend(!seed); //"') : ()
     inl max_seeds = max_seeds ()
 
-    inl seed_excess_len : i32 =
-        !\($'"(!seeds.len() as i32) - !max_seeds as i32"')
+    inl seed_excess_len : i32 = !\($'"(!seeds.len() as i32) - !max_seeds as i32"')
 
     if seed_excess_len > 0 then
         inl seed_excess : am'.vec u8 =
@@ -185,11 +187,11 @@ inl generate_random_number
 
     inl hash_u8 : am'.vec u8 = !\($'$"near_sdk::env::keccak512(&!entropy)"')
 
-    !\($'"    self.contribute_seed(!hash_u8.clone()); //"') : ()
-    !\($'"    let hash_stream = Util::vec_u8_to_stream(!hash_u8.clone()); //"') : ()
-    !\($'"    let rolls_list = Util::stream_u8_to_list(dice_contract_lib::Dice::rotate_numbers(6)( //"') : ()
-    !\($'"        hash_stream.into(), //"') : ()
-    !\($'"    )); //"') : ()
+    !\($'"self.contribute_seed(!hash_u8.clone()); //"') : ()
+    !\($'"let hash_stream = Util::vec_u8_to_stream(!hash_u8.clone()); //"') : ()
+    !\($'"let rolls_list = Util::stream_u8_to_list(dice_contract_lib::Dice::rotate_numbers(6)( //"') : ()
+    !\($'"    hash_stream.into(), //"') : ()
+    !\($'")); //"') : ()
     inl rolls_list_log : am'.vec u8 = !\($'"Util::list_u8_to_vec(rolls_list.clone().into())"')
 
     trace Debug
@@ -212,10 +214,10 @@ inl generate_random_number
                 rolls_list_log = rolls_list_log |> sm'.format_debug
             }
 
-    !\($'"    let sequential_roll = //"') : ()
-    !\($'"        dice_contract_lib::Dice::create_sequential_roller(rolls_list.into()); //"') : ()
-    !\($'"    let result = dice_contract_lib::Dice::roll_progressively //"') : ()
-    !\($'"        (sequential_roll)(true)(max); //"') : ()
+    !\($'"let sequential_roll = //"') : ()
+    !\($'"    dice_contract_lib::Dice::create_sequential_roller(rolls_list.into()); //"') : ()
+    !\($'"let result = dice_contract_lib::Dice::roll_progressively //"') : ()
+    !\($'"    (sequential_roll)(true)(max); //"') : ()
 
     trace Debug (fun () => "") id
 
@@ -227,15 +229,41 @@ inl generate_random_number
 
 #!spiral
 
+//// package=../dice
+
 inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
+
+    // !\\(rolls, $'"let rolls = Util::vec_u8_to_list($0); //"') : ()
+
+
+    inl rolls = rolls |> am'.from_vec |> fun (x : _ int _) => x |> am'.to_list' |> listm'.unbox
+    inl result = rolls |> lib.dice.roll_within_bounds max
+    // !\($'"let result = dice_contract_lib::Dice::roll_within_bounds(!max)(!rolls.into()); //"') : ()
+
+    inl result = result |> optionm'.box
+
     trace Debug
-        fun () => $'$"dice_contract.roll_within_bounds"'
-        fun () => { max rolls = rolls |> sm'.format_debug }
-    !\\(rolls, $'"    let rolls = Util::vec_u8_to_list($0); //"') : ()
-    !\($'"    let result = //"') : ()
-    !\($'"        dice_contract_lib::Dice::roll_within_bounds(max)(rolls.into()); //"') : ()
+        fun () => "dice_contract.roll_within_bounds"
+        fun () => { max rolls = rolls |> sm'.format_debug; result }
+
     trace Debug (fun () => "") id
-    !\($'"result"')
+
+    // !\($'"result"')
+
+    result
+
+#!spiral
+
+//// test
+///! rust -cl
+
+inl rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.to_vec
+
+// util ()
+
+rolls
+|> roll_within_bounds 2000
+|> _assert_eq' (optionm'.some' 995)
 
 #!markdown
 
@@ -353,15 +381,13 @@ inl main () =
         inl rolls : am'.vec u8 = !\($'$"rolls"')
         inl result = roll_within_bounds max rolls
 
-        !\($'"!result //"') : ()
+        !\\(result, $'"$0 //"') : ()
 
         !\($'"} //"') : ()
 
         !\($'"} //"') : ()
 
-        !\($'"} //"') : ()
-
-        3
+        2
 
     inl roll_within_bounds_borsh () =
         !\($'"#[result_serializer(borsh)] //"') : ()

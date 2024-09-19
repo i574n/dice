@@ -24,7 +24,7 @@ class IOsEnviron(Protocol):
         ...
 
 
-def _expr334() -> TypeInfo:
+def _expr337() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -39,9 +39,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr334
+UH0_reflection = _expr337
 
-def _expr335() -> TypeInfo:
+def _expr338() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[], [("Item1", uint8_type), ("Item2", UH1_reflection())]])
 
 
@@ -56,9 +56,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr335
+UH1_reflection = _expr338
 
-def _expr336() -> TypeInfo:
+def _expr339() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[], [], [], [], []])
 
 
@@ -74,9 +74,9 @@ class US0(Union):
         return ["US0_0", "US0_1", "US0_2", "US0_3", "US0_4"]
 
 
-US0_reflection = _expr336
+US0_reflection = _expr339
 
-def _expr337() -> TypeInfo:
+def _expr340() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", int64_type)])
 
 
@@ -84,9 +84,9 @@ def _expr337() -> TypeInfo:
 class Mut0(Record):
     l0: int64
 
-Mut0_reflection = _expr337
+Mut0_reflection = _expr340
 
-def _expr338() -> TypeInfo:
+def _expr341() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", lambda_type(string_type, unit_type))])
 
 
@@ -94,9 +94,9 @@ def _expr338() -> TypeInfo:
 class Mut1(Record):
     l0: Callable[[str], None]
 
-Mut1_reflection = _expr338
+Mut1_reflection = _expr341
 
-def _expr339() -> TypeInfo:
+def _expr342() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", bool_type)])
 
 
@@ -104,9 +104,9 @@ def _expr339() -> TypeInfo:
 class Mut2(Record):
     l0: bool
 
-Mut2_reflection = _expr339
+Mut2_reflection = _expr342
 
-def _expr340() -> TypeInfo:
+def _expr343() -> TypeInfo:
     return record_type("Dice.Mut3", [], Mut3, lambda: [("l0", string_type)])
 
 
@@ -114,9 +114,9 @@ def _expr340() -> TypeInfo:
 class Mut3(Record):
     l0: str
 
-Mut3_reflection = _expr340
+Mut3_reflection = _expr343
 
-def _expr341() -> TypeInfo:
+def _expr344() -> TypeInfo:
     return record_type("Dice.Mut4", [], Mut4, lambda: [("l0", US0_reflection())])
 
 
@@ -124,9 +124,9 @@ def _expr341() -> TypeInfo:
 class Mut4(Record):
     l0: US0
 
-Mut4_reflection = _expr341
+Mut4_reflection = _expr344
 
-def _expr342() -> TypeInfo:
+def _expr345() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", string_type)], []])
 
 
@@ -142,9 +142,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr342
+US1_reflection = _expr345
 
-def _expr343() -> TypeInfo:
+def _expr346() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[("f0_0", US0_reflection())], []])
 
 
@@ -160,9 +160,9 @@ class US2(Union):
         return ["US2_0", "US2_1"]
 
 
-US2_reflection = _expr343
+US2_reflection = _expr346
 
-def _expr344() -> TypeInfo:
+def _expr347() -> TypeInfo:
     return union_type("Dice.US3", [], US3, lambda: [[("f0_0", int64_type)], []])
 
 
@@ -178,9 +178,9 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr344
+US3_reflection = _expr347
 
-def _expr345() -> TypeInfo:
+def _expr348() -> TypeInfo:
     return union_type("Dice.US4", [], US4, lambda: [[("f0_0", lambda_type(unit_type, UH0_reflection()))], [("f1_0", UH0_reflection())]])
 
 
@@ -196,9 +196,9 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr345
+US4_reflection = _expr348
 
-def _expr346() -> TypeInfo:
+def _expr349() -> TypeInfo:
     return record_type("Dice.Mut5", [], Mut5, lambda: [("l0", US4_reflection())])
 
 
@@ -206,9 +206,9 @@ def _expr346() -> TypeInfo:
 class Mut5(Record):
     l0: US4
 
-Mut5_reflection = _expr346
+Mut5_reflection = _expr349
 
-def _expr347() -> TypeInfo:
+def _expr350() -> TypeInfo:
     return union_type("Dice.US5", [], US5, lambda: [[("f0_0", uint8_type)], []])
 
 
@@ -224,9 +224,9 @@ class US5(Union):
         return ["US5_0", "US5_1"]
 
 
-US5_reflection = _expr347
+US5_reflection = _expr350
 
-def _expr348() -> TypeInfo:
+def _expr351() -> TypeInfo:
     return record_type("Dice.Mut6", [], Mut6, lambda: [("l0", US5_reflection())])
 
 
@@ -234,9 +234,9 @@ def _expr348() -> TypeInfo:
 class Mut6(Record):
     l0: US5
 
-Mut6_reflection = _expr348
+Mut6_reflection = _expr351
 
-def _expr349() -> TypeInfo:
+def _expr352() -> TypeInfo:
     return union_type("Dice.US6", [], US6, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -252,9 +252,9 @@ class US6(Union):
         return ["US6_0", "US6_1"]
 
 
-US6_reflection = _expr349
+US6_reflection = _expr352
 
-def _expr350() -> TypeInfo:
+def _expr353() -> TypeInfo:
     return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
 
 
@@ -269,9 +269,9 @@ class UH2(Union):
         return ["UH2_0", "UH2_1"]
 
 
-UH2_reflection = _expr350
+UH2_reflection = _expr353
 
-def _expr351() -> TypeInfo:
+def _expr354() -> TypeInfo:
     return union_type("Dice.US7", [], US7, lambda: [[("f0_0", uint64_type)], []])
 
 
@@ -287,9 +287,9 @@ class US7(Union):
         return ["US7_0", "US7_1"]
 
 
-US7_reflection = _expr351
+US7_reflection = _expr354
 
-def _expr352() -> TypeInfo:
+def _expr355() -> TypeInfo:
     return union_type("Dice.US8", [], US8, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -305,7 +305,7 @@ class US8(Union):
         return ["US8_0", "US8_1"]
 
 
-US8_reflection = _expr352
+US8_reflection = _expr355
 
 def closure2(v0_1: UH0, unit_var: None) -> UH0:
     return v0_1
@@ -330,10 +330,10 @@ def closure1(v0_1: int64, v1_1: UH0) -> UH0:
 
 
 def closure0(unit_var: None, v0_1: int64) -> Callable[[UH0], UH0]:
-    def _arrow353(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
+    def _arrow356(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
         return closure1(v0_1, v)
 
-    return _arrow353
+    return _arrow356
 
 
 def method2(__unit: None=None) -> str:
@@ -350,14 +350,14 @@ def closure6(v0_1: FSharpRef[US1 | None], v1_1: US1 | None=None) -> FSharpRef[US
 
 
 def closure7(v0_1: str | None, v1_1: Callable[[US1 | None], FSharpRef[US1 | None]], unit_var: None) -> None:
-    def _arrow354(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> US1 | None:
+    def _arrow357(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> US1 | None:
         x: str = v0_1
         def x_1(__unit: None=None) -> US1:
             return US1(0, x)
 
         return x_1(None)
 
-    ignore(v1_1(None if (v0_1 is None) else _arrow354()))
+    ignore(v1_1(None if (v0_1 is None) else _arrow357()))
 
 
 def method3(v0_1: str) -> str:
@@ -400,7 +400,7 @@ def closure8(unit_var: None, v0_1: str) -> None:
 def method1(v0_1: US0) -> tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None]:
     v173: str = method3(method2())
     v178: US2 = US2(0, US0(0)) if ("Verbose" == v173) else US2(1)
-    def _arrow355(__unit: None=None, v0_1: Any=v0_1) -> US2:
+    def _arrow358(__unit: None=None, v0_1: Any=v0_1) -> US2:
         v185: US2 = US2(0, US0(1)) if ("Debug" == v173) else US2(1)
         if v185.tag == 0:
             return US2(0, v185.fields[0])
@@ -422,7 +422,7 @@ def method1(v0_1: US0) -> tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None]:
 
 
 
-    _v1: tuple[US2, US3] = (US2(0, v178.fields[0]) if (v178.tag == 0) else _arrow355(), US3(0, ticks_1(now())) if (method3(method5()) == "True") else US3(1))
+    _v1: tuple[US2, US3] = (US2(0, v178.fields[0]) if (v178.tag == 0) else _arrow358(), US3(0, ticks_1(now())) if (method3(method5()) == "True") else US3(1))
     v295: US3 = _v1[1]
     v294: US2 = _v1[0]
     def v360(v: str, v0_1: Any=v0_1) -> None:
@@ -449,14 +449,14 @@ def closure10(v0_1: FSharpRef[US3 | None], v1_1: US3 | None=None) -> FSharpRef[U
 
 
 def closure11(v0_1: int64 | None, v1_1: Callable[[US3 | None], FSharpRef[US3 | None]], unit_var: None) -> None:
-    def _arrow356(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> US3 | None:
+    def _arrow359(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> US3 | None:
         x: int64 = v0_1
         def x_1(__unit: None=None) -> US3:
             return US3(0, x)
 
         return x_1(None)
 
-    ignore(v1_1(None if (v0_1 is None) else _arrow356()))
+    ignore(v1_1(None if (v0_1 is None) else _arrow359()))
 
 
 def method6(__unit: None=None) -> str:
@@ -498,12 +498,12 @@ def closure4(unit_var: None, unit_var_1: None) -> None:
     v35 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v67: US0 = pattern_input_1[4].l0
-    class ObjectExpr357:
+    class ObjectExpr360:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v67, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr357()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v67, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr360()))):
         v75: None
         closure9(pattern_input[0], None)
         v75 = None
@@ -519,11 +519,11 @@ def closure4(unit_var: None, unit_var_1: None) -> None:
         closure11(pattern_input_2[5], v360, None)
         v363 = None
         v378: US3 = default_arg(_v358.contents, US3(1))
-        def _arrow358(__unit: None=None, unit_var: Any=unit_var, unit_var_1: Any=unit_var_1) -> Any:
+        def _arrow361(__unit: None=None, unit_var: Any=unit_var, unit_var_1: Any=unit_var_1) -> Any:
             v392: Any = create(op_subtraction(ticks_1(now()), v378.fields[0]))
             return create_1(1, 1, 1, hours(v392), minutes(v392), seconds(v392), milliseconds(v392))
 
-        v423: str = to_string(_arrow358() if (v378.tag == 0) else now(), method7())
+        v423: str = to_string(_arrow361() if (v378.tag == 0) else now(), method7())
         v624: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v635: int64 = pattern_input_2[0].l0
         v637: Mut3 = Mut3(method9())
@@ -592,10 +592,10 @@ def closure16(v0_1: UH0, v1_1: Mut5, unit_var: None) -> UH0:
 
 def method13(v0_1: UH0, v1_1: Callable[[], UH0]) -> Callable[[], UH0]:
     v3_1: Mut5 = Mut5(US4(0, v1_1))
-    def _arrow359(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
+    def _arrow362(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
         return closure16(v0_1, v3_1, None)
 
-    return _arrow359
+    return _arrow362
 
 
 def closure19(v0_1: Mut3, v1_1: str, unit_var: None) -> None:
@@ -616,12 +616,12 @@ def closure18(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: uint8 | None, unit_va
     v39 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v71: US0 = pattern_input_1[4].l0
-    class ObjectExpr360:
+    class ObjectExpr363:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v71, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr360()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v71, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr363()))):
         v79: None
         closure9(pattern_input[0], None)
         v79 = None
@@ -637,11 +637,11 @@ def closure18(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: uint8 | None, unit_va
         closure11(pattern_input_2[5], v364, None)
         v367 = None
         v382: US3 = default_arg(_v362.contents, US3(1))
-        def _arrow361(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, unit_var: Any=unit_var) -> Any:
+        def _arrow364(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, unit_var: Any=unit_var) -> Any:
             v396: Any = create(op_subtraction(ticks_1(now()), v382.fields[0]))
             return create_1(1, 1, 1, hours(v396), minutes(v396), seconds(v396), milliseconds(v396))
 
-        v427: str = to_string(_arrow361() if (v382.tag == 0) else now(), method7())
+        v427: str = to_string(_arrow364() if (v382.tag == 0) else now(), method7())
         v628: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v639: int64 = pattern_input_2[0].l0
         v641: Mut3 = Mut3(method9())
@@ -732,12 +732,12 @@ def closure20(unit_var: None, unit_var_1: None) -> None:
     v35 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v67: US0 = pattern_input_1[4].l0
-    class ObjectExpr362:
+    class ObjectExpr365:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v67, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr362()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v67, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr365()))):
         v75: None
         closure9(pattern_input[0], None)
         v75 = None
@@ -753,11 +753,11 @@ def closure20(unit_var: None, unit_var_1: None) -> None:
         closure11(pattern_input_2[5], v360, None)
         v363 = None
         v378: US3 = default_arg(_v358.contents, US3(1))
-        def _arrow363(__unit: None=None, unit_var: Any=unit_var, unit_var_1: Any=unit_var_1) -> Any:
+        def _arrow366(__unit: None=None, unit_var: Any=unit_var, unit_var_1: Any=unit_var_1) -> Any:
             v392: Any = create(op_subtraction(ticks_1(now()), v378.fields[0]))
             return create_1(1, 1, 1, hours(v392), minutes(v392), seconds(v392), milliseconds(v392))
 
-        v423: str = to_string(_arrow363() if (v378.tag == 0) else now(), method7())
+        v423: str = to_string(_arrow366() if (v378.tag == 0) else now(), method7())
         v624: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v635: int64 = pattern_input_2[0].l0
         v637: Mut3 = Mut3(method9())
@@ -826,10 +826,10 @@ def closure3(unit_var: None, v0_1: UH1) -> Callable[[], uint8]:
     v764: Mut0 = Mut0(int64(1))
     v765: Mut0 = Mut0(int64(-1))
     v767: Mut6 = Mut6(US5(1))
-    def _arrow364(__unit: None=None, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint8:
+    def _arrow367(__unit: None=None, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint8:
         return closure17(v762, v763, v764, v765, v767, None)
 
-    return _arrow364
+    return _arrow367
 
 
 def closure24(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
@@ -845,12 +845,12 @@ def closure24(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr365:
+    class ObjectExpr368:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr365()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr368()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -866,11 +866,11 @@ def closure24(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow366(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow369(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow366() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow369() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -959,12 +959,12 @@ def closure25(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr367:
+    class ObjectExpr370:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr367()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr370()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -980,11 +980,11 @@ def closure25(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow368(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow371(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow368() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow371() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -1034,10 +1034,7 @@ def closure25(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
 
 
 def closure89(unit_var: None, unit_var_1: None) -> UH2:
-    def v0_1(__unit: None=None, unit_var: Any=unit_var, unit_var_1: Any=unit_var_1) -> UH2:
-        return closure89(None, None)
-
-    return UH2(0, uint64(0), v0_1)
+    return UH2(1)
 
 
 def closure88(unit_var: None, unit_var_1: None) -> UH2:
@@ -1511,12 +1508,12 @@ def closure90(v0_1: uint64, v1_1: int8, v2_1: uint8, v3_1: uint64, unit_var: Non
     v39 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v71: US0 = pattern_input_1[4].l0
-    class ObjectExpr369:
+    class ObjectExpr372:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v71, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr369()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v71, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr372()))):
         v79: None
         closure9(pattern_input[0], None)
         v79 = None
@@ -1532,11 +1529,11 @@ def closure90(v0_1: uint64, v1_1: int8, v2_1: uint8, v3_1: uint64, unit_var: Non
         closure11(pattern_input_2[5], v364, None)
         v367 = None
         v382: US3 = default_arg(_v362.contents, US3(1))
-        def _arrow370(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, unit_var: Any=unit_var) -> Any:
+        def _arrow373(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, unit_var: Any=unit_var) -> Any:
             v396: Any = create(op_subtraction(ticks_1(now()), v382.fields[0]))
             return create_1(1, 1, 1, hours(v396), minutes(v396), seconds(v396), milliseconds(v396))
 
-        v427: str = to_string(_arrow370() if (v382.tag == 0) else now(), method7())
+        v427: str = to_string(_arrow373() if (v382.tag == 0) else now(), method7())
         v628: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v639: int64 = pattern_input_2[0].l0
         v641: Mut3 = Mut3(method9())
@@ -1610,12 +1607,12 @@ def closure91(v0_1: uint64, v1_1: int8, v2_1: uint8, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr371:
+    class ObjectExpr374:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr371()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr374()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -1631,11 +1628,11 @@ def closure91(v0_1: uint64, v1_1: int8, v2_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow372(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow375(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow372() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow375() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -1837,17 +1834,17 @@ def closure23(v0_1: Callable[[], uint8], v1_1: bool, v2_1: uint64) -> uint64:
 
 
 def closure22(v0_1: Callable[[], uint8], v1_1: bool) -> Callable[[uint64], uint64]:
-    def _arrow373(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64:
+    def _arrow376(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64:
         return closure23(v0_1, v1_1, v)
 
-    return _arrow373
+    return _arrow376
 
 
 def closure21(unit_var: None, v0_1: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
-    def _arrow374(v: bool, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[uint64], uint64]:
+    def _arrow377(v: bool, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[uint64], uint64]:
         return closure22(v0_1, v)
 
-    return _arrow374
+    return _arrow377
 
 
 def method22(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
@@ -1883,10 +1880,10 @@ def closure93(v0_1: uint64, v1_1: UH1) -> uint64 | None:
 
 
 def closure92(unit_var: None, v0_1: uint64) -> Callable[[UH1], uint64 | None]:
-    def _arrow375(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint64 | None:
+    def _arrow378(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint64 | None:
         return closure93(v0_1, v)
 
-    return _arrow375
+    return _arrow378
 
 
 def closure95(unit_var: None, unit_var_1: None) -> None:
@@ -1902,12 +1899,12 @@ def closure95(unit_var: None, unit_var_1: None) -> None:
     v35 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v67: US0 = pattern_input_1[4].l0
-    class ObjectExpr376:
+    class ObjectExpr379:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v67, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr376()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v67, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr379()))):
         v75: None
         closure9(pattern_input[0], None)
         v75 = None
@@ -1923,11 +1920,11 @@ def closure95(unit_var: None, unit_var_1: None) -> None:
         closure11(pattern_input_2[5], v360, None)
         v363 = None
         v378: US3 = default_arg(_v358.contents, US3(1))
-        def _arrow377(__unit: None=None, unit_var: Any=unit_var, unit_var_1: Any=unit_var_1) -> Any:
+        def _arrow380(__unit: None=None, unit_var: Any=unit_var, unit_var_1: Any=unit_var_1) -> Any:
             v392: Any = create(op_subtraction(ticks_1(now()), v378.fields[0]))
             return create_1(1, 1, 1, hours(v392), minutes(v392), seconds(v392), milliseconds(v392))
 
-        v423: str = to_string(_arrow377() if (v378.tag == 0) else now(), method7())
+        v423: str = to_string(_arrow380() if (v378.tag == 0) else now(), method7())
         v624: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v635: int64 = pattern_input_2[0].l0
         v637: Mut3 = Mut3(method9())
@@ -1995,12 +1992,12 @@ def closure96(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr378:
+    class ObjectExpr381:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr378()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr381()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -2016,11 +2013,11 @@ def closure96(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow379(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow382(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow379() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow382() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -2094,12 +2091,12 @@ def closure97(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr380:
+    class ObjectExpr383:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr380()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr383()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -2115,11 +2112,11 @@ def closure97(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow381(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow384(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow381() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow384() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -2193,12 +2190,12 @@ def closure98(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr382:
+    class ObjectExpr385:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr382()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr385()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -2214,11 +2211,11 @@ def closure98(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow383(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow386(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow383() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow386() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -2292,12 +2289,12 @@ def closure99(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr384:
+    class ObjectExpr387:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr384()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr387()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -2313,11 +2310,11 @@ def closure99(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow385(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow388(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow385() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow388() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -2391,12 +2388,12 @@ def closure100(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr386:
+    class ObjectExpr389:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr386()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr389()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -2412,11 +2409,11 @@ def closure100(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow387(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow390(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow387() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow390() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -2490,12 +2487,12 @@ def closure101(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr388:
+    class ObjectExpr391:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr388()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr391()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -2511,11 +2508,11 @@ def closure101(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow389(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow392(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow389() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow392() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -2589,12 +2586,12 @@ def closure102(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr390:
+    class ObjectExpr393:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr390()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr393()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -2610,11 +2607,11 @@ def closure102(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow391(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow394(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow391() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow394() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -2688,12 +2685,12 @@ def closure103(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr392:
+    class ObjectExpr395:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr392()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr395()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -2709,11 +2706,11 @@ def closure103(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow393(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow396(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow393() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow396() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -2787,12 +2784,12 @@ def closure104(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr394:
+    class ObjectExpr397:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr394()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr397()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -2808,11 +2805,11 @@ def closure104(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow395(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow398(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow395() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow398() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -2886,12 +2883,12 @@ def closure105(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr396:
+    class ObjectExpr399:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr396()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr399()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -2907,11 +2904,11 @@ def closure105(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow397(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow400(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow397() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow400() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -2985,12 +2982,12 @@ def closure106(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr398:
+    class ObjectExpr401:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr398()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr401()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -3006,11 +3003,11 @@ def closure106(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow399(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow402(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow399() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow402() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -3084,12 +3081,12 @@ def closure107(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr400:
+    class ObjectExpr403:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr400()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr403()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -3105,11 +3102,11 @@ def closure107(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow401(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow404(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow401() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow404() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -3183,12 +3180,12 @@ def closure108(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr402:
+    class ObjectExpr405:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr402()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr405()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -3204,11 +3201,11 @@ def closure108(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow403(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow406(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow403() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow406() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -3282,12 +3279,12 @@ def closure109(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr404:
+    class ObjectExpr407:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr404()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr407()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -3303,11 +3300,11 @@ def closure109(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow405(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow408(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow405() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow408() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -3381,12 +3378,12 @@ def closure110(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr406:
+    class ObjectExpr409:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr406()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr409()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -3402,11 +3399,11 @@ def closure110(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow407(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow410(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow407() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow410() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -3480,12 +3477,12 @@ def closure111(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr408:
+    class ObjectExpr411:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr408()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr411()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -3501,11 +3498,11 @@ def closure111(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow409(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow412(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow409() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow412() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -3579,12 +3576,12 @@ def closure112(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr410:
+    class ObjectExpr413:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr410()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr413()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -3600,11 +3597,11 @@ def closure112(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow411(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow414(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow411() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow414() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -3678,12 +3675,12 @@ def closure113(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr412:
+    class ObjectExpr415:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr412()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr415()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -3699,11 +3696,11 @@ def closure113(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow413(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow416(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow413() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow416() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -3777,12 +3774,12 @@ def closure114(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr414:
+    class ObjectExpr417:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr414()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr417()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -3798,11 +3795,11 @@ def closure114(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow415(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow418(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow415() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow418() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -3876,12 +3873,12 @@ def closure115(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr416:
+    class ObjectExpr419:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr416()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr419()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -3897,11 +3894,11 @@ def closure115(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow417(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow420(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow417() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow420() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -3975,12 +3972,12 @@ def closure116(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr418:
+    class ObjectExpr421:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr418()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr421()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -3996,11 +3993,11 @@ def closure116(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow419(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow422(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow419() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow422() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -4074,12 +4071,12 @@ def closure117(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr420:
+    class ObjectExpr423:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr420()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr423()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -4095,11 +4092,11 @@ def closure117(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow421(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow424(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow421() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow424() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -4173,12 +4170,12 @@ def closure118(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr422:
+    class ObjectExpr425:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr422()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr425()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -4194,11 +4191,11 @@ def closure118(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow423(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow426(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow423() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow426() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -4272,12 +4269,12 @@ def closure119(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v38 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v70: US0 = pattern_input_1[4].l0
-    class ObjectExpr424:
+    class ObjectExpr427:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr424()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v70, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr427()))):
         v78: None
         closure9(pattern_input[0], None)
         v78 = None
@@ -4293,11 +4290,11 @@ def closure119(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v363, None)
         v366 = None
         v381: US3 = default_arg(_v361.contents, US3(1))
-        def _arrow425(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
+        def _arrow428(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> Any:
             v395: Any = create(op_subtraction(ticks_1(now()), v381.fields[0]))
             return create_1(1, 1, 1, hours(v395), minutes(v395), seconds(v395), milliseconds(v395))
 
-        v426: str = to_string(_arrow425() if (v381.tag == 0) else now(), method7())
+        v426: str = to_string(_arrow428() if (v381.tag == 0) else now(), method7())
         v627: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v638: int64 = pattern_input_2[0].l0
         v640: Mut3 = Mut3(method9())
@@ -4371,12 +4368,12 @@ def closure120(v0_1: int64, v1_1: int64, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr426:
+    class ObjectExpr429:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr426()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr429()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -4392,11 +4389,11 @@ def closure120(v0_1: int64, v1_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow427(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow430(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow427() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow430() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -4466,12 +4463,12 @@ def closure121(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr428:
+    class ObjectExpr431:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr428()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr431()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -4487,11 +4484,11 @@ def closure121(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow429(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow432(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow429() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow432() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -4576,12 +4573,12 @@ def closure122(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr430:
+    class ObjectExpr433:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr430()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr433()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -4597,11 +4594,11 @@ def closure122(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow431(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow434(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow431() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow434() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -4686,12 +4683,12 @@ def closure123(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr432:
+    class ObjectExpr435:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr432()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr435()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -4707,11 +4704,11 @@ def closure123(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow433(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow436(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow433() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow436() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -4796,12 +4793,12 @@ def closure124(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr434:
+    class ObjectExpr437:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr434()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr437()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -4817,11 +4814,11 @@ def closure124(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow435(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow438(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow435() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow438() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -4906,12 +4903,12 @@ def closure125(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr436:
+    class ObjectExpr439:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr436()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr439()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -4927,11 +4924,11 @@ def closure125(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow437(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow440(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow437() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow440() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -5016,12 +5013,12 @@ def closure126(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr438:
+    class ObjectExpr441:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr438()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr441()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -5037,11 +5034,11 @@ def closure126(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow439(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow442(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow439() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow442() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -5126,12 +5123,12 @@ def closure127(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr440:
+    class ObjectExpr443:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr440()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr443()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -5147,11 +5144,11 @@ def closure127(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow441(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow444(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow441() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow444() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -5236,12 +5233,12 @@ def closure128(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr442:
+    class ObjectExpr445:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr442()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr445()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -5257,11 +5254,11 @@ def closure128(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow443(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow446(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow443() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow446() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -5346,12 +5343,12 @@ def closure129(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr444:
+    class ObjectExpr447:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr444()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr447()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -5367,11 +5364,11 @@ def closure129(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow445(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow448(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow445() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow448() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -5456,12 +5453,12 @@ def closure130(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr446:
+    class ObjectExpr449:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr446()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr449()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -5477,11 +5474,11 @@ def closure130(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow447(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow450(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow447() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow450() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -5566,12 +5563,12 @@ def closure131(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr448:
+    class ObjectExpr451:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr448()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr451()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -5587,11 +5584,11 @@ def closure131(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow449(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow452(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow449() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow452() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -5676,12 +5673,12 @@ def closure132(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr450:
+    class ObjectExpr453:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr450()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr453()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -5697,11 +5694,11 @@ def closure132(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow451(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow454(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow451() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow454() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -5786,12 +5783,12 @@ def closure133(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr452:
+    class ObjectExpr455:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr452()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr455()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -5807,11 +5804,11 @@ def closure133(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow453(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow456(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow453() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow456() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -5896,12 +5893,12 @@ def closure134(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr454:
+    class ObjectExpr457:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr454()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr457()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -5917,11 +5914,11 @@ def closure134(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow455(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow458(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow455() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow458() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -6006,12 +6003,12 @@ def closure135(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr456:
+    class ObjectExpr459:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr456()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr459()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -6027,11 +6024,11 @@ def closure135(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow457(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow460(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow457() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow460() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -6116,12 +6113,12 @@ def closure136(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr458:
+    class ObjectExpr461:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr458()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr461()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -6137,11 +6134,11 @@ def closure136(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow459(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow462(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow459() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow462() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -6226,12 +6223,12 @@ def closure137(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr460:
+    class ObjectExpr463:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr460()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr463()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -6247,11 +6244,11 @@ def closure137(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow461(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow464(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow461() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow464() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -6336,12 +6333,12 @@ def closure138(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr462:
+    class ObjectExpr465:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr462()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr465()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -6357,11 +6354,11 @@ def closure138(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow463(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow466(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow463() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow466() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -6446,12 +6443,12 @@ def closure139(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr464:
+    class ObjectExpr467:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr464()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr467()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -6467,11 +6464,11 @@ def closure139(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow465(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow468(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow465() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow468() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -6556,12 +6553,12 @@ def closure140(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr466:
+    class ObjectExpr469:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr466()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr469()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -6577,11 +6574,11 @@ def closure140(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow467(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow470(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow467() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow470() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -6666,12 +6663,12 @@ def closure141(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr468:
+    class ObjectExpr471:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr468()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr471()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -6687,11 +6684,11 @@ def closure141(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow469(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow472(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow469() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow472() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -6776,12 +6773,12 @@ def closure142(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr470:
+    class ObjectExpr473:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr470()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr473()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -6797,11 +6794,11 @@ def closure142(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow471(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow474(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow471() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow474() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -6886,12 +6883,12 @@ def closure143(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr472:
+    class ObjectExpr475:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr472()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr475()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -6907,11 +6904,11 @@ def closure143(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow473(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow476(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow473() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow476() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -6996,12 +6993,12 @@ def closure144(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v37 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v69: US0 = pattern_input_1[4].l0
-    class ObjectExpr474:
+    class ObjectExpr477:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr474()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v69, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr477()))):
         v77: None
         closure9(pattern_input[0], None)
         v77 = None
@@ -7017,11 +7014,11 @@ def closure144(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         closure11(pattern_input_2[5], v362, None)
         v365 = None
         v380: US3 = default_arg(_v360.contents, US3(1))
-        def _arrow475(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
+        def _arrow478(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> Any:
             v394: Any = create(op_subtraction(ticks_1(now()), v380.fields[0]))
             return create_1(1, 1, 1, hours(v394), minutes(v394), seconds(v394), milliseconds(v394))
 
-        v425: str = to_string(_arrow475() if (v380.tag == 0) else now(), method7())
+        v425: str = to_string(_arrow478() if (v380.tag == 0) else now(), method7())
         v626: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v637: int64 = pattern_input_2[0].l0
         v639: Mut3 = Mut3(method9())
@@ -7136,12 +7133,12 @@ def closure145(v0_1: int64, unit_var: None) -> None:
     v36 = None
     pattern_input_1: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v68: US0 = pattern_input_1[4].l0
-    class ObjectExpr476:
+    class ObjectExpr479:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v68, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr476()))):
+    if False if (pattern_input_1[2].l0 == False) else (1 >= find(v68, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr479()))):
         v76: None
         closure9(pattern_input[0], None)
         v76 = None
@@ -7157,11 +7154,11 @@ def closure145(v0_1: int64, unit_var: None) -> None:
         closure11(pattern_input_2[5], v361, None)
         v364 = None
         v379: US3 = default_arg(_v359.contents, US3(1))
-        def _arrow477(__unit: None=None, v0_1: Any=v0_1, unit_var: Any=unit_var) -> Any:
+        def _arrow480(__unit: None=None, v0_1: Any=v0_1, unit_var: Any=unit_var) -> Any:
             v393: Any = create(op_subtraction(ticks_1(now()), v379.fields[0]))
             return create_1(1, 1, 1, hours(v393), minutes(v393), seconds(v393), milliseconds(v393))
 
-        v424: str = to_string(_arrow477() if (v379.tag == 0) else now(), method7())
+        v424: str = to_string(_arrow480() if (v379.tag == 0) else now(), method7())
         v625: str = ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method8()
         v636: int64 = pattern_input_2[0].l0
         v638: Mut3 = Mut3(method9())
@@ -7196,51 +7193,51 @@ def closure94(unit_var: None, v0_1: Array[str]) -> int:
     return 0
 
 
-def _arrow478(v: int64) -> Callable[[UH0], UH0]:
+def _arrow481(v: int64) -> Callable[[UH0], UH0]:
     return closure0(None, v)
 
 
-v0: Callable[[int64, UH0], UH0] = _arrow478
+v0: Callable[[int64, UH0], UH0] = _arrow481
 
 def rotate_numbers(x: int64) -> Callable[[UH0], UH0]:
     return v0(x)
 
 
-def _arrow479(v: UH1) -> Callable[[], uint8]:
+def _arrow482(v: UH1) -> Callable[[], uint8]:
     return closure3(None, v)
 
 
-v1: Callable[[UH1, None], uint8] = _arrow479
+v1: Callable[[UH1, None], uint8] = _arrow482
 
 def create_sequential_roller(x: UH1) -> Callable[[], uint8]:
     return v1(x)
 
 
-def _arrow480(v: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
+def _arrow483(v: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
     return closure21(None, v)
 
 
-v2: Callable[[Callable[[], uint8], bool, uint64], uint64] = _arrow480
+v2: Callable[[Callable[[], uint8], bool, uint64], uint64] = _arrow483
 
 def roll_progressively(x: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
     return v2(x)
 
 
-def _arrow481(v: uint64) -> Callable[[UH1], uint64 | None]:
+def _arrow484(v: uint64) -> Callable[[UH1], uint64 | None]:
     return closure92(None, v)
 
 
-v3: Callable[[uint64, UH1], uint64 | None] = _arrow481
+v3: Callable[[uint64, UH1], uint64 | None] = _arrow484
 
 def roll_within_bounds(x: uint64) -> Callable[[UH1], uint64 | None]:
     return v3(x)
 
 
-def _arrow482(v: Array[str]) -> int:
+def _arrow485(v: Array[str]) -> int:
     return closure94(None, v)
 
 
-v4: Callable[[Array[str]], int] = _arrow482
+v4: Callable[[Array[str]], int] = _arrow485
 
 def main(args: Array[str]) -> int:
     return v4(args)

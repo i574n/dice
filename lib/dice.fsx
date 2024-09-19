@@ -3350,8 +3350,7 @@ and closure25 (v0 : uint64, v1 : int8, v2 : uint64) () : unit =
         let v865 : (string -> unit) = v20.l0
         v865 v811
 and closure89 () () : UH2 =
-    let v0 : (unit -> UH2) = closure89()
-    UH2_0(0UL, v0)
+    UH2_1
 and closure88 () () : UH2 =
     let v0 : (unit -> UH2) = closure89()
     UH2_0(9223372036854775808UL, v0)

@@ -10,7 +10,7 @@
 #![allow(unused_variables)]
 use fable_library_rust::NativeArray_::array_from;
 use fable_library_rust::String_::fromString;
-mod module_a51efde0 {
+mod module_1d76f080 {
     pub mod Dice {
         use super::*;
         use fable_library_rust::Interfaces_::System::Collections::Generic::IEnumerable_1;
@@ -1855,10 +1855,7 @@ mod module_a51efde0 {
             }
         }
         pub fn closure89(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                0_u64,
-                Func0::new(move || Dice::closure89((), ())),
-            ))
+            LrcPtr::new(Dice::UH2::UH2_1)
         }
         pub fn closure88(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
@@ -15754,48 +15751,48 @@ mod module_a51efde0 {
         }
     }
 }
-pub use module_a51efde0::*;
-#[path = "../../polyglot/lib/fsharp/Common_contract.rs"]
-mod module_ad43931;
-pub use module_ad43931::*;
-#[path = "../../polyglot/lib/spiral/async__contract.rs"]
-mod module_67c461a2;
-pub use module_67c461a2::*;
-#[path = "../../polyglot/lib/spiral/common_contract.rs"]
-mod module_181b15d6;
-pub use module_181b15d6::*;
-#[path = "../../polyglot/lib/spiral/crypto_contract.rs"]
-mod module_90d9c778;
-pub use module_90d9c778::*;
-#[path = "../../polyglot/lib/spiral/date_time_contract.rs"]
-mod module_e43a8385;
-pub use module_e43a8385::*;
-#[path = "../../polyglot/lib/spiral/file_system_contract.rs"]
-mod module_a7db9b47;
-pub use module_a7db9b47::*;
-#[path = "../../polyglot/lib/spiral/lib_contract.rs"]
-mod module_98e448fc;
-pub use module_98e448fc::*;
-#[path = "../../polyglot/lib/spiral/networking_contract.rs"]
-mod module_268024e5;
-pub use module_268024e5::*;
-#[path = "../../polyglot/lib/spiral/platform_contract.rs"]
-mod module_7d8ad484;
-pub use module_7d8ad484::*;
-#[path = "../../polyglot/lib/spiral/runtime_contract.rs"]
-mod module_485aae07;
-pub use module_485aae07::*;
-#[path = "../../polyglot/lib/spiral/sm_contract.rs"]
-mod module_582b4305;
-pub use module_582b4305::*;
-#[path = "../../polyglot/lib/spiral/threading_contract.rs"]
-mod module_d5afb6f5;
-pub use module_d5afb6f5::*;
-#[path = "../../polyglot/lib/spiral/trace_contract.rs"]
-mod module_9e77af3a;
-pub use module_9e77af3a::*;
+pub use module_1d76f080::*;
+#[path = "../deps/polyglot/lib/fsharp/Common_contract.rs"]
+mod module_6140596b;
+pub use module_6140596b::*;
+#[path = "../deps/polyglot/lib/spiral/async__contract.rs"]
+mod module_daedefb8;
+pub use module_daedefb8::*;
+#[path = "../deps/polyglot/lib/spiral/common_contract.rs"]
+mod module_70286a4c;
+pub use module_70286a4c::*;
+#[path = "../deps/polyglot/lib/spiral/crypto_contract.rs"]
+mod module_4a98a962;
+pub use module_4a98a962::*;
+#[path = "../deps/polyglot/lib/spiral/date_time_contract.rs"]
+mod module_94ca555f;
+pub use module_94ca555f::*;
+#[path = "../deps/polyglot/lib/spiral/file_system_contract.rs"]
+mod module_b697ea1d;
+pub use module_b697ea1d::*;
+#[path = "../deps/polyglot/lib/spiral/lib_contract.rs"]
+mod module_ed8da8a6;
+pub use module_ed8da8a6::*;
+#[path = "../deps/polyglot/lib/spiral/networking_contract.rs"]
+mod module_9dd8007f;
+pub use module_9dd8007f::*;
+#[path = "../deps/polyglot/lib/spiral/platform_contract.rs"]
+mod module_4c4781e;
+pub use module_4c4781e::*;
+#[path = "../deps/polyglot/lib/spiral/runtime_contract.rs"]
+mod module_c40559dd;
+pub use module_c40559dd::*;
+#[path = "../deps/polyglot/lib/spiral/sm_contract.rs"]
+mod module_fc92da1f;
+pub use module_fc92da1f::*;
+#[path = "../deps/polyglot/lib/spiral/threading_contract.rs"]
+mod module_af40e92f;
+pub use module_af40e92f::*;
+#[path = "../deps/polyglot/lib/spiral/trace_contract.rs"]
+mod module_981750e0;
+pub use module_981750e0::*;
 pub mod Polyglot {
-    pub use crate::module_ad43931::Polyglot::*;
+    pub use crate::module_6140596b::Polyglot::*;
 }
 pub fn main() {
     let args = std::env::args().skip(1).map(fromString).collect();
