@@ -12,13 +12,15 @@ if (!$fast) {
     Set-Location polyglot
     git pull
     Set-Location $ScriptDir
-
-    pwsh ../../polyglot/scripts/init.ps1
 }
 
 . ../../polyglot/scripts/core.ps1
 
 EnsureSymbolicLink -Path "../deps/polyglot" -Target "../../polyglot"
+
+if (!$fast) {
+    { pwsh ../deps/polyglot/scripts/init.ps1 } | Invoke-Block
+}
 
 { pwsh ../deps/polyglot/apps/builder/build.ps1 -fast 1 } | Invoke-Block
 { pwsh ../deps/polyglot/apps/parser/build.ps1 -fast 1 } | Invoke-Block

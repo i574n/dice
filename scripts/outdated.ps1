@@ -15,7 +15,7 @@ function CheckToml {
         [Object[]]$_args
     )
     $toml = [IO.Path]::GetFullPath("$ScriptDir/$toml")
-    Write-Output "`nCheckToml / toml: $toml"
+    Write-Output "`nCheckToml / toml: $toml / _args: $_args"
     { cargo outdated -m $toml @_args } | Invoke-Block -OnError Continue
 }
 

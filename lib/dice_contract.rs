@@ -21,7 +21,6 @@ mod module_1d76f080 {
         use fable_library_rust::Map_::ofSeq;
         use fable_library_rust::NativeArray_::new_array;
         use fable_library_rust::NativeArray_::Array;
-        use fable_library_rust::Native_::refCell;
         use fable_library_rust::Native_::Any;
         use fable_library_rust::Native_::Func0;
         use fable_library_rust::Native_::Func1;
@@ -30,6 +29,7 @@ mod module_1d76f080 {
         use fable_library_rust::Native_::OnceInit;
         use fable_library_rust::Option_::defaultValue;
         use fable_library_rust::Option_::getValue;
+        use fable_library_rust::Option_::map;
         use fable_library_rust::Seq_::ofList;
         use fable_library_rust::String_::append;
         use fable_library_rust::String_::padLeft;
@@ -315,32 +315,11 @@ mod module_1d76f080 {
         pub fn method4() -> string {
             string("")
         }
-        pub fn closure6(
-            v0_1: LrcPtr<MutCell<Option<Dice::US1>>>,
-            v1_1: Option<Dice::US1>,
-        ) -> LrcPtr<MutCell<Option<Dice::US1>>> {
-            v0_1.set(v1_1);
-            v0_1
+        pub fn closure6(unitVar: (), v0_1: string) -> Dice::US1 {
+            Dice::US1::US1_0(v0_1)
         }
-        pub fn closure7(
-            v0_1: Option<string>,
-            v1_1: Func1<Option<Dice::US1>, LrcPtr<MutCell<Option<Dice::US1>>>>,
-            unitVar: (),
-        ) {
-            {
-                let value: LrcPtr<MutCell<Option<Dice::US1>>> = v1_1(match &v0_1 {
-                    None => None::<Dice::US1>,
-                    Some(v0_1_0_0) => {
-                        let x: string = v0_1_0_0.clone();
-                        Some((Func0::new({
-                            let x = x.clone();
-                            move || Dice::US1::US1_0(x.clone())
-                        }))())
-                    }
-                });
-                ()
-            }
-            ()
+        pub fn method5() -> Func1<string, Dice::US1> {
+            Func1::new(move |v: string| Dice::closure6((), v))
         }
         pub fn method3(v0_1: string) -> string {
             let v33: Result<std::string::String, std::env::VarError> = std::env::var(&*v0_1);
@@ -356,10 +335,10 @@ mod module_1d76f080 {
             let v44: string = Dice::method4();
             v43.unwrap_or(v44)
         }
-        pub fn method5() -> string {
+        pub fn method6() -> string {
             string("AUTOMATION")
         }
-        pub fn closure8(unitVar: (), v0_1: string) {
+        pub fn closure7(unitVar: (), v0_1: string) {
             ();
         }
         pub fn method1(
@@ -387,10 +366,10 @@ mod module_1d76f080 {
             let v294: Dice::US2 = _v1.0.clone();
             (
                 LrcPtr::new(Dice::Mut0 {
-                    l0: MutCell::new(0_i64),
+                    l0: MutCell::new(1_i64),
                 }),
                 LrcPtr::new(Dice::Mut1 {
-                    l0: MutCell::new(Func1::new(move |v: string| Dice::closure8((), v))),
+                    l0: MutCell::new(Func1::new(move |v: string| Dice::closure7((), v))),
                 }),
                 LrcPtr::new(Dice::Mut2 {
                     l0: MutCell::new(true),
@@ -437,59 +416,159 @@ mod module_1d76f080 {
                 ()
             };
         }
+        pub fn closure8(unitVar: (), v0_1: i64) -> Dice::US3 {
+            Dice::US3::US3_0(v0_1)
+        }
+        pub fn method8() -> Func1<i64, Dice::US3> {
+            Func1::new(move |v: i64| Dice::closure8((), v))
+        }
+        pub fn method9() -> string {
+            string("hh:mm:ss")
+        }
+        pub fn method10() -> string {
+            string("HH:mm:ss")
+        }
+        pub fn method7(
+            v0_1: LrcPtr<Dice::Mut0>,
+            v1_1: LrcPtr<Dice::Mut1>,
+            v2_1: LrcPtr<Dice::Mut2>,
+            v3_1: LrcPtr<Dice::Mut3>,
+            v4_1: LrcPtr<Dice::Mut4>,
+            v5: Option<i64>,
+        ) -> string {
+            let v130: u64 = near_sdk::env::block_timestamp();
+            let v144: Dice::US3 = defaultValue(Dice::US3::US3_1, map(Dice::method8(), v5));
+            let v154: u64 = match &v144 {
+                Dice::US3::US3_0(v144_0_0) => {
+                    v130 - match &v144 {
+                        Dice::US3::US3_0(x) => x.clone(),
+                        _ => unreachable!(),
+                    } as u64
+                }
+                _ => v130,
+            } / 1000000000_u64;
+            let v155: u64 = v154 % 60_u64;
+            let v157: u64 = v154 / 60_u64 % 60_u64;
+            let v159: u64 = v154 / 3600_u64 % 24_u64;
+            let v161: std::string::String = format!("{:02}:{:02}:{:02}", v159, v157, v155);
+            fable_library_rust::String_::fromString(v161)
+        }
+        pub fn method12() -> string {
+            string("\u{001b}[0m")
+        }
+        pub fn method11() -> string {
+            let v5: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
+            let v41: &str = inline_colorization::color_bright_blue;
+            let v43: &str = &*v5;
+            let v45: &str = inline_colorization::color_reset;
+            let v47: std::string::String = format!("{}{}{}", v41, v43, v45);
+            fable_library_rust::String_::fromString(v47)
+        }
+        pub fn method14() -> string {
+            string("")
+        }
+        pub fn method13() -> string {
+            let v1_1: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
+                l0: MutCell::new(Dice::method14()),
+            });
+            v1_1.l0.get().clone()
+        }
+        pub fn method15(
+            v0_1: string,
+            v1_1: string,
+            v2_1: string,
+            v3_1: i64,
+            v4_1: string,
+        ) -> string {
+            trimEndChars(
+                trimStartChars(
+                    sprintf!("{} {} #{} {} / {}", v0_1, v1_1, v3_1, v2_1, v4_1),
+                    toArray(empty::<char>()),
+                ),
+                toArray(ofArray(new_array(&[' ', '/']))),
+            )
+        }
         pub fn closure9(v0_1: LrcPtr<Dice::Mut0>, unitVar: ()) {
             let v2_1: i64 = v0_1.l0.get().clone() + 1_i64;
             v0_1.l0.set(v2_1);
             ()
         }
-        pub fn closure10(
-            v0_1: LrcPtr<MutCell<Option<Dice::US3>>>,
-            v1_1: Option<Dice::US3>,
-        ) -> LrcPtr<MutCell<Option<Dice::US3>>> {
-            v0_1.set(v1_1);
-            v0_1
-        }
-        pub fn closure11(
-            v0_1: Option<i64>,
-            v1_1: Func1<Option<Dice::US3>, LrcPtr<MutCell<Option<Dice::US3>>>>,
-            unitVar: (),
-        ) {
-            {
-                let value: LrcPtr<MutCell<Option<Dice::US3>>> = v1_1(match &v0_1 {
-                    None => None::<Dice::US3>,
-                    Some(v0_1_0_0) => {
-                        let x: i64 = v0_1_0_0.clone();
-                        Some((Func0::new({
-                            let x = x.clone();
-                            move || Dice::US3::US3_0(x)
-                        }))())
-                    }
-                });
-                ()
-            }
-            ()
-        }
-        pub fn method6() -> string {
-            string("hh:mm:ss")
-        }
-        pub fn method7() -> string {
-            string("HH:mm:ss")
-        }
-        pub fn method8() -> string {
-            string("\u{001b}[0m")
-        }
-        pub fn method9() -> string {
-            string("")
-        }
-        pub fn closure13(v0_1: string, unitVar: ()) {
+        pub fn closure11(v0_1: string, unitVar: ()) {
             printfn!("{0}", v0_1);
         }
-        pub fn closure12(unitVar: (), v0_1: string) {
+        pub fn closure10(unitVar: (), v0_1: string) {
             let v3_1: () = {
-                Dice::closure13(v0_1, ());
+                Dice::closure11(v0_1, ());
                 ()
             };
             ()
+        }
+        pub fn method16(
+            v0_1: string,
+            v1_1: LrcPtr<Dice::Mut0>,
+            v2_1: LrcPtr<Dice::Mut1>,
+            v3_1: LrcPtr<Dice::Mut2>,
+            v4_1: LrcPtr<Dice::Mut3>,
+            v5: LrcPtr<Dice::Mut4>,
+            v6: Option<i64>,
+        ) {
+            let v9: () = {
+                Dice::closure9(v1_1, ());
+                ()
+            };
+            let v25: string = if v4_1.l0.get().clone() == string("") {
+                v0_1.clone()
+            } else {
+                if v0_1.clone() == string("") {
+                    v4_1.l0.get().clone()
+                } else {
+                    append(append(v4_1.l0.get().clone(), string("\n")), v0_1.clone())
+                }
+            };
+            let v27: &str = &*v25.clone();
+            let v29 = v27.chars();
+            let v31 = v29;
+            let v33: Vec<char> = v31.collect::<Vec<_>>();
+            let v35: Vec<Vec<char>> = v33
+                .chunks(15000)
+                .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
+                .collect::<Vec<_>>();
+            let v37: bool = true;
+            let _vec_map: Vec<_> = v35
+                .into_iter()
+                .map(|x| {
+                    //;
+                    let v39: Vec<char> = x;
+                    let v41: std::string::String = String::from_iter(v39);
+                    let v43: bool = true;
+                    v41
+                })
+                .collect::<Vec<_>>();
+            let v45: Vec<std::string::String> = _vec_map;
+            if if v0_1.clone() != string("") {
+                v45.clone().len() as i32 <= 1_i32
+            } else {
+                false
+            } {
+                v4_1.l0.set(v25);
+                ()
+            } else {
+                v4_1.l0.set(string(""));
+                {
+                    let v57: bool = true;
+                    v45.into_iter().for_each(|x| {
+                        //;
+                        let v59: std::string::String = x;
+                        let v61: bool = true;
+                        near_sdk::log!("{}", v59);
+                        let v63: bool = true;
+                        let v65: bool = true;
+                    }); //;
+                    ()
+                }
+            }
+            ();
+            (v2_1.l0.get().clone())(v0_1)
         }
         pub fn closure4(unitVar: (), unitVar_1: ()) {
             fn v1_1() {
@@ -507,26 +586,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v19: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v35: () = {
-                v1_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v67: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v34: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v67,
+                        v34,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -536,11 +602,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v75: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v41: () = {
+                    v1_1();
                     ()
                 };
-                let v79: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v55: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v81: string = Dice::method15(
+                    Dice::method7(
+                        v55.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.create_sequential_roller ()"),
+                    v55.l0.get().clone(),
+                    Dice::method13(),
+                );
+                let v83: () = {
                     v1_1();
                     ()
                 };
@@ -552,123 +641,22 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v249: u64 = near_sdk::env::block_timestamp();
-                let _v250: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v255: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v250 = _v250.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v250.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v270: Dice::US3 = defaultValue(Dice::US3::US3_1, _v250.get().clone());
-                let v280: u64 = match &v270 {
-                    Dice::US3::US3_0(v270_0_0) => {
-                        v249 - match &v270 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v249,
-                } / 1000000000_u64;
-                let v281: u64 = v280 % 60_u64;
-                let v283: u64 = v280 / 60_u64 % 60_u64;
-                let v285: u64 = v280 / 3600_u64 % 24_u64;
-                let v287: std::string::String = format!("{:02}:{:02}:{:02}", v285, v283, v281);
-                let v289: string = fable_library_rust::String_::fromString(v287);
-                let v569: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v607: &str = inline_colorization::color_bright_blue;
-                let v609: &str = &*v569;
-                let v611: &str = inline_colorization::color_reset;
-                let v613: string = string("format!(\"{v607}{v609}{v611}\")");
-                let v614: std::string::String = format!("{v607}{v609}{v611}");
-                let v616: string = fable_library_rust::String_::fromString(v614);
-                let v635: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v637: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v697: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v289,
-                            v616,
-                            v635,
-                            string("dice.create_sequential_roller ()"),
-                            v637.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v711: string = if v19.l0.get().clone() == string("") {
-                    v697.clone()
-                } else {
-                    if v697.clone() == string("") {
-                        v19.l0.get().clone()
-                    } else {
-                        append(append(v19.l0.get().clone(), string("\n")), v697.clone())
-                    }
-                };
-                let v713: &str = &*v711.clone();
-                let v715 = v713.chars();
-                let v717 = v715;
-                let v719: Vec<char> = v717.collect::<Vec<_>>();
-                let v721: Vec<Vec<char>> = v719
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v723: bool = true;
-                let _vec_map: Vec<_> = v721
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v725: Vec<char> = x;
-                        let v727: std::string::String = String::from_iter(v725);
-                        let v729: bool = true;
-                        v727
-                    })
-                    .collect::<Vec<_>>();
-                let v731: Vec<std::string::String> = _vec_map;
-                if if v697.clone() != string("") {
-                    v731.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v19.l0.set(v711);
-                    ()
-                } else {
-                    v19.l0.set(string(""));
-                    {
-                        let v743: bool = true;
-                        v731.into_iter().for_each(|x| {
-                            //;
-                            let v745: std::string::String = x;
-                            near_sdk::log!("{}", v745);
-                            {
-                                let v748: bool = true;
-                                let v750: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v697)
+                Dice::method16(
+                    v81,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method10(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH1>) -> LrcPtr<Dice::UH1> {
+        pub fn method17(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH1>) -> LrcPtr<Dice::UH1> {
             let v0_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v0_1.clone());
             let v1_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v1_1.clone());
-            '_method10: loop {
-                break '_method10 (match v0_1.get().clone().as_ref() {
+            '_method17: loop {
+                break '_method17 (match v0_1.get().clone().as_ref() {
                     Dice::UH1::UH1_0 => v1_1.get().clone(),
                     Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                         let v0_1_temp: LrcPtr<Dice::UH1> = match v0_1.get().clone().as_ref() {
@@ -684,12 +672,12 @@ mod module_1d76f080 {
                         ));
                         v0_1.set(v0_1_temp);
                         v1_1.set(v1_1_temp);
-                        continue '_method10;
+                        continue '_method17;
                     }
                 });
             }
         }
-        pub fn method11(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH1>) -> LrcPtr<Dice::UH1> {
+        pub fn method18(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH1>) -> LrcPtr<Dice::UH1> {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => v1_1.clone(),
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => LrcPtr::new(Dice::UH1::UH1_1(
@@ -697,7 +685,7 @@ mod module_1d76f080 {
                         Dice::UH1::UH1_1(x, _) => x.clone(),
                         _ => unreachable!(),
                     },
-                    Dice::method11(
+                    Dice::method18(
                         match v0_1.as_ref() {
                             Dice::UH1::UH1_1(_, x) => x.clone(),
                             _ => unreachable!(),
@@ -707,14 +695,14 @@ mod module_1d76f080 {
                 )),
             }
         }
-        pub fn closure14(v0_1: LrcPtr<Dice::UH0>, unitVar: ()) -> LrcPtr<Dice::UH0> {
+        pub fn closure12(v0_1: LrcPtr<Dice::UH0>, unitVar: ()) -> LrcPtr<Dice::UH0> {
             v0_1
         }
-        pub fn method12(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH0>) -> LrcPtr<Dice::UH0> {
+        pub fn method19(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH0>) -> LrcPtr<Dice::UH0> {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => v1_1.clone(),
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH0> = Dice::method12(
+                    let v4_1: LrcPtr<Dice::UH0> = Dice::method19(
                         match v0_1.as_ref() {
                             Dice::UH1::UH1_1(_, x) => x.clone(),
                             _ => unreachable!(),
@@ -728,16 +716,16 @@ mod module_1d76f080 {
                         },
                         Func0::new({
                             let v4_1 = v4_1.clone();
-                            move || Dice::closure14(v4_1.clone(), ())
+                            move || Dice::closure12(v4_1.clone(), ())
                         }),
                     ))
                 }
             }
         }
-        pub fn closure15(v0_1: LrcPtr<Dice::UH0>, unitVar: ()) -> LrcPtr<Dice::UH0> {
+        pub fn closure13(v0_1: LrcPtr<Dice::UH0>, unitVar: ()) -> LrcPtr<Dice::UH0> {
             v0_1
         }
-        pub fn closure16(
+        pub fn closure14(
             v0_1: LrcPtr<Dice::UH0>,
             v1_1: LrcPtr<Dice::Mut5>,
             unitVar: (),
@@ -750,7 +738,7 @@ mod module_1d76f080 {
                         Dice::UH0::UH0_1 => LrcPtr::new(Dice::UH0::UH0_1),
                         Dice::UH0::UH0_0(v5_0_0, v5_0_1) => LrcPtr::new(Dice::UH0::UH0_0(
                             v5_0_0.clone(),
-                            Dice::method13(v0_1, v5_0_1.clone()),
+                            Dice::method20(v0_1, v5_0_1.clone()),
                         )),
                     };
                     v1_1.l0.set(Dice::US4::US4_1(v12.clone()));
@@ -759,7 +747,7 @@ mod module_1d76f080 {
                 Dice::US4::US4_1(v2_1_1_0) => v2_1_1_0.clone(),
             }
         }
-        pub fn method13(
+        pub fn method20(
             v0_1: LrcPtr<Dice::UH0>,
             v1_1: Func0<LrcPtr<Dice::UH0>>,
         ) -> Func0<LrcPtr<Dice::UH0>> {
@@ -769,15 +757,94 @@ mod module_1d76f080 {
             Func0::new({
                 let v0_1 = v0_1.clone();
                 let v3_1 = v3_1.clone();
-                move || Dice::closure16(v0_1.clone(), v3_1.clone(), ())
+                move || Dice::closure14(v0_1.clone(), v3_1.clone(), ())
             })
         }
-        pub fn closure19(v0_1: LrcPtr<Dice::Mut3>, v1_1: string, unitVar: ()) {
+        pub fn closure17(v0_1: LrcPtr<Dice::Mut3>, v1_1: string, unitVar: ()) {
             let v3_1: string = append(v0_1.l0.get().clone(), v1_1);
             v0_1.l0.set(v3_1);
             ()
         }
-        pub fn closure18(v0_1: i64, v1_1: i64, v2_1: i64, v3_1: Option<u8>, unitVar: ()) {
+        pub fn method22(v0_1: i64, v1_1: i64, v2_1: i64, v3_1: Option<u8>) -> string {
+            let v5: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
+                l0: MutCell::new(Dice::method14()),
+            });
+            let v12: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("{ ")), ());
+                ()
+            };
+            let v21: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("current_index")), ());
+                ()
+            };
+            let v30: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v38: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", v0_1), ());
+                ()
+            };
+            let v47: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v56: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("acc")), ());
+                ()
+            };
+            let v64: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v72: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", v1_1), ());
+                ()
+            };
+            let v80: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v89: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("len")), ());
+                ()
+            };
+            let v97: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v105: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v113: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v122: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("last_item")), ());
+                ()
+            };
+            let v130: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v143: std::string::String = format!("{:#?}", v3_1);
+            let v165: () = {
+                Dice::closure17(
+                    v5.clone(),
+                    sprintf!("{}", fable_library_rust::String_::fromString(v143)),
+                    (),
+                );
+                ()
+            };
+            let v174: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" }")), ());
+                ()
+            };
+            v5.l0.get().clone()
+        }
+        pub fn closure16(v0_1: i64, v1_1: i64, v2_1: i64, v3_1: Option<u8>, unitVar: ()) {
             fn v5() {
                 Dice::closure5((), ());
             }
@@ -793,26 +860,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v23: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v39: () = {
-                v5();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v71: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v38: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v71,
+                        v38,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -822,11 +876,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v79: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v45: () = {
+                    v5();
                     ()
                 };
-                let v83: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v59: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v59.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.create_sequential_roller / roll"),
+                    v59.l0.get().clone(),
+                    Dice::method22(v0_1, v1_1, v2_1, v3_1),
+                );
+                let v87: () = {
                     v5();
                     ()
                 };
@@ -838,196 +915,22 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v253: u64 = near_sdk::env::block_timestamp();
-                let _v254: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v259: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v254 = _v254.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v254.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v274: Dice::US3 = defaultValue(Dice::US3::US3_1, _v254.get().clone());
-                let v284: u64 = match &v274 {
-                    Dice::US3::US3_0(v274_0_0) => {
-                        v253 - match &v274 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v253,
-                } / 1000000000_u64;
-                let v285: u64 = v284 % 60_u64;
-                let v287: u64 = v284 / 60_u64 % 60_u64;
-                let v289: u64 = v284 / 3600_u64 % 24_u64;
-                let v291: std::string::String = format!("{:02}:{:02}:{:02}", v289, v287, v285);
-                let v293: string = fable_library_rust::String_::fromString(v291);
-                let v573: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v611: &str = inline_colorization::color_bright_blue;
-                let v613: &str = &*v573;
-                let v615: &str = inline_colorization::color_reset;
-                let v617: string = string("format!(\"{v611}{v613}{v615}\")");
-                let v618: std::string::String = format!("{v611}{v613}{v615}");
-                let v620: string = fable_library_rust::String_::fromString(v618);
-                let v639: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v641: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v648: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v657: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("current_index")), ());
-                    ()
-                };
-                let v666: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v674: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v683: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v692: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v700: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v708: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v716: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v725: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("len")), ());
-                    ()
-                };
-                let v733: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v741: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v749: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v758: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("last_item")), ());
-                    ()
-                };
-                let v766: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v779: std::string::String = format!("{:#?}", v3_1);
-                let v801: () = {
-                    Dice::closure19(
-                        v641.clone(),
-                        sprintf!("{}", fable_library_rust::String_::fromString(v779)),
-                        (),
-                    );
-                    ()
-                };
-                let v810: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v872: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v293,
-                            v620,
-                            v639,
-                            string("dice.create_sequential_roller / roll"),
-                            v641.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v886: string = if v23.l0.get().clone() == string("") {
-                    v872.clone()
-                } else {
-                    if v872.clone() == string("") {
-                        v23.l0.get().clone()
-                    } else {
-                        append(append(v23.l0.get().clone(), string("\n")), v872.clone())
-                    }
-                };
-                let v888: &str = &*v886.clone();
-                let v890 = v888.chars();
-                let v892 = v890;
-                let v894: Vec<char> = v892.collect::<Vec<_>>();
-                let v896: Vec<Vec<char>> = v894
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v898: bool = true;
-                let _vec_map: Vec<_> = v896
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v900: Vec<char> = x;
-                        let v902: std::string::String = String::from_iter(v900);
-                        let v904: bool = true;
-                        v902
-                    })
-                    .collect::<Vec<_>>();
-                let v906: Vec<std::string::String> = _vec_map;
-                if if v872.clone() != string("") {
-                    v906.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v23.l0.set(v886);
-                    ()
-                } else {
-                    v23.l0.set(string(""));
-                    {
-                        let v918: bool = true;
-                        v906.into_iter().for_each(|x| {
-                            //;
-                            let v920: std::string::String = x;
-                            near_sdk::log!("{}", v920);
-                            {
-                                let v923: bool = true;
-                                let v925: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v872)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method15(v0_1: i64, v1_1: LrcPtr<Dice::UH0>) -> Dice::US5 {
+        pub fn method23(v0_1: i64, v1_1: LrcPtr<Dice::UH0>) -> Dice::US5 {
             let v0_1: MutCell<i64> = MutCell::new(v0_1);
             let v1_1: MutCell<LrcPtr<Dice::UH0>> = MutCell::new(v1_1.clone());
-            '_method15: loop {
-                break '_method15 (match v1_1.get().clone().as_ref() {
+            '_method23: loop {
+                break '_method23 (match v1_1.get().clone().as_ref() {
                     Dice::UH0::UH0_1 => Dice::US5::US5_1,
                     Dice::UH0::UH0_0(v1_1_0_0, v1_1_0_1) => {
                         if v0_1.get().clone() <= 0_i64 {
@@ -1037,13 +940,13 @@ mod module_1d76f080 {
                             let v1_1_temp: LrcPtr<Dice::UH0> = (v1_1_0_1)();
                             v0_1.set(v0_1_temp);
                             v1_1.set(v1_1_temp);
-                            continue '_method15;
+                            continue '_method23;
                         }
                     }
                 });
             }
         }
-        pub fn closure20(unitVar: (), unitVar_1: ()) {
+        pub fn closure18(unitVar: (), unitVar_1: ()) {
             fn v1_1() {
                 Dice::closure5((), ());
             }
@@ -1059,26 +962,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v19: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v35: () = {
-                v1_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v67: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v34: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v67,
+                        v34,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -1088,11 +978,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v75: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v41: () = {
+                    v1_1();
                     ()
                 };
-                let v79: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v55: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v81: string = Dice::method15(
+                    Dice::method7(
+                        v55.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.create_sequential_roller / roll / None"),
+                    v55.l0.get().clone(),
+                    Dice::method13(),
+                );
+                let v83: () = {
                     v1_1();
                     ()
                 };
@@ -1104,119 +1017,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v249: u64 = near_sdk::env::block_timestamp();
-                let _v250: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v255: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v250 = _v250.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v250.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v270: Dice::US3 = defaultValue(Dice::US3::US3_1, _v250.get().clone());
-                let v280: u64 = match &v270 {
-                    Dice::US3::US3_0(v270_0_0) => {
-                        v249 - match &v270 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v249,
-                } / 1000000000_u64;
-                let v281: u64 = v280 % 60_u64;
-                let v283: u64 = v280 / 60_u64 % 60_u64;
-                let v285: u64 = v280 / 3600_u64 % 24_u64;
-                let v287: std::string::String = format!("{:02}:{:02}:{:02}", v285, v283, v281);
-                let v289: string = fable_library_rust::String_::fromString(v287);
-                let v569: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v607: &str = inline_colorization::color_bright_blue;
-                let v609: &str = &*v569;
-                let v611: &str = inline_colorization::color_reset;
-                let v613: string = string("format!(\"{v607}{v609}{v611}\")");
-                let v614: std::string::String = format!("{v607}{v609}{v611}");
-                let v616: string = fable_library_rust::String_::fromString(v614);
-                let v635: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v637: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v697: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v289,
-                            v616,
-                            v635,
-                            string("dice.create_sequential_roller / roll / None"),
-                            v637.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v711: string = if v19.l0.get().clone() == string("") {
-                    v697.clone()
-                } else {
-                    if v697.clone() == string("") {
-                        v19.l0.get().clone()
-                    } else {
-                        append(append(v19.l0.get().clone(), string("\n")), v697.clone())
-                    }
-                };
-                let v713: &str = &*v711.clone();
-                let v715 = v713.chars();
-                let v717 = v715;
-                let v719: Vec<char> = v717.collect::<Vec<_>>();
-                let v721: Vec<Vec<char>> = v719
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v723: bool = true;
-                let _vec_map: Vec<_> = v721
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v725: Vec<char> = x;
-                        let v727: std::string::String = String::from_iter(v725);
-                        let v729: bool = true;
-                        v727
-                    })
-                    .collect::<Vec<_>>();
-                let v731: Vec<std::string::String> = _vec_map;
-                if if v697.clone() != string("") {
-                    v731.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v19.l0.set(v711);
-                    ()
-                } else {
-                    v19.l0.set(string(""));
-                    {
-                        let v743: bool = true;
-                        v731.into_iter().for_each(|x| {
-                            //;
-                            let v745: std::string::String = x;
-                            near_sdk::log!("{}", v745);
-                            {
-                                let v748: bool = true;
-                                let v750: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v697)
+                Dice::method16(
+                    v81,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method14(
+        pub fn method21(
             v0_1: Func0<LrcPtr<Dice::UH0>>,
             v1_1: LrcPtr<Dice::Mut0>,
             v2_1: LrcPtr<Dice::Mut0>,
@@ -1228,14 +1040,14 @@ mod module_1d76f080 {
             let v2_1: MutCell<LrcPtr<Dice::Mut0>> = MutCell::new(v2_1.clone());
             let v3_1: MutCell<LrcPtr<Dice::Mut0>> = MutCell::new(v3_1.clone());
             let v4_1: MutCell<LrcPtr<Dice::Mut6>> = MutCell::new(v4_1.clone());
-            '_method14: loop {
-                break '_method14 ({
+            '_method21: loop {
+                break '_method21 ({
                     let v5: i64 = v1_1.l0.get().clone();
                     let v6: i64 = v2_1.l0.get().clone();
                     let v7: i64 = v3_1.l0.get().clone();
                     let v8: Dice::US5 = v4_1.l0.get().clone();
                     let v18: () = {
-                        Dice::closure18(
+                        Dice::closure16(
                             v5,
                             v6,
                             v7,
@@ -1250,39 +1062,39 @@ mod module_1d76f080 {
                         );
                         ()
                     };
-                    let v942: LrcPtr<Dice::UH0> = v0_1();
-                    let v944: Dice::US5 = Dice::method15(v1_1.l0.get().clone(), v942);
-                    match &v944 {
-                        Dice::US5::US5_0(v944_0_0) => {
-                            let v945: u8 = match &v944 {
+                    let v134: LrcPtr<Dice::UH0> = v0_1();
+                    let v136: Dice::US5 = Dice::method23(v1_1.l0.get().clone(), v134);
+                    match &v136 {
+                        Dice::US5::US5_0(v136_0_0) => {
+                            let v137: u8 = match &v136 {
                                 Dice::US5::US5_0(x) => x.clone(),
                                 _ => unreachable!(),
                             };
-                            let v947: i64 = v1_1.l0.get().clone() + 1_i64;
-                            v1_1.l0.set(v947);
-                            v4_1.l0.set(Dice::US5::US5_0(v945));
-                            v945
+                            let v139: i64 = v1_1.l0.get().clone() + 1_i64;
+                            v1_1.l0.set(v139);
+                            v4_1.l0.set(Dice::US5::US5_0(v137));
+                            v137
                         }
                         _ => {
-                            let v951: () = {
-                                Dice::closure20((), ());
+                            let v143: () = {
+                                Dice::closure18((), ());
                                 ()
                             };
                             if v3_1.l0.get().clone() == -1_i64 {
-                                let v1706: i64 = v1_1.l0.get().clone();
-                                v3_1.l0.set(v1706);
+                                let v261: i64 = v1_1.l0.get().clone();
+                                v3_1.l0.set(v261);
                                 ()
                             }
                             {
-                                let v1712: i64 = if v2_1.l0.get().clone() >= v3_1.l0.get().clone() {
+                                let v267: i64 = if v2_1.l0.get().clone() >= v3_1.l0.get().clone() {
                                     1_i64
                                 } else {
                                     v2_1.l0.get().clone() + 1_i64
                                 };
-                                v2_1.l0.set(v1712);
+                                v2_1.l0.set(v267);
                                 {
-                                    let v1714: i64 = v2_1.l0.get().clone() - 1_i64;
-                                    v1_1.l0.set(v1714);
+                                    let v269: i64 = v2_1.l0.get().clone() - 1_i64;
+                                    v1_1.l0.set(v269);
                                     v4_1.l0.set(Dice::US5::US5_1);
                                     {
                                         let v0_1_temp = v0_1.get().clone();
@@ -1295,7 +1107,7 @@ mod module_1d76f080 {
                                         v2_1.set(v2_1_temp);
                                         v3_1.set(v3_1_temp);
                                         v4_1.set(v4_1_temp);
-                                        continue '_method14;
+                                        continue '_method21;
                                     }
                                 }
                             }
@@ -1304,7 +1116,7 @@ mod module_1d76f080 {
                 });
             }
         }
-        pub fn closure17(
+        pub fn closure15(
             v0_1: Func0<LrcPtr<Dice::UH0>>,
             v1_1: LrcPtr<Dice::Mut0>,
             v2_1: LrcPtr<Dice::Mut0>,
@@ -1312,58 +1124,116 @@ mod module_1d76f080 {
             v4_1: LrcPtr<Dice::Mut6>,
             unitVar: (),
         ) -> u8 {
-            Dice::method14(v0_1, v1_1, v2_1, v3_1, v4_1)
+            Dice::method21(v0_1, v1_1, v2_1, v3_1, v4_1)
         }
         pub fn closure3(unitVar: (), v0_1: LrcPtr<Dice::UH1>) -> Func0<u8> {
             let v3_1: () = {
                 Dice::closure4((), ());
                 ()
             };
-            let v760: LrcPtr<Dice::UH0> = Dice::method12(
-                Dice::method11(
+            let v123: LrcPtr<Dice::UH0> = Dice::method19(
+                Dice::method18(
                     v0_1.clone(),
-                    Dice::method10(v0_1, LrcPtr::new(Dice::UH1::UH1_0)),
+                    Dice::method17(v0_1, LrcPtr::new(Dice::UH1::UH1_0)),
                 ),
                 LrcPtr::new(Dice::UH0::UH0_1),
             );
-            let v762 = Dice::method13(
-                v760.clone(),
+            let v125 = Dice::method20(
+                v123.clone(),
                 Func0::new({
-                    let v760 = v760.clone();
-                    move || Dice::closure15(v760.clone(), ())
+                    let v123 = v123.clone();
+                    move || Dice::closure13(v123.clone(), ())
                 }),
             );
-            let v763: LrcPtr<Dice::Mut0> = LrcPtr::new(Dice::Mut0 {
+            let v126: LrcPtr<Dice::Mut0> = LrcPtr::new(Dice::Mut0 {
                 l0: MutCell::new(0_i64),
             });
-            let v764: LrcPtr<Dice::Mut0> = LrcPtr::new(Dice::Mut0 {
+            let v127: LrcPtr<Dice::Mut0> = LrcPtr::new(Dice::Mut0 {
                 l0: MutCell::new(1_i64),
             });
-            let v765: LrcPtr<Dice::Mut0> = LrcPtr::new(Dice::Mut0 {
+            let v128: LrcPtr<Dice::Mut0> = LrcPtr::new(Dice::Mut0 {
                 l0: MutCell::new(-1_i64),
             });
-            let v767: LrcPtr<Dice::Mut6> = LrcPtr::new(Dice::Mut6 {
+            let v130: LrcPtr<Dice::Mut6> = LrcPtr::new(Dice::Mut6 {
                 l0: MutCell::new(Dice::US5::US5_1),
             });
             Func0::new({
-                let v762 = v762.clone();
-                let v763 = v763.clone();
-                let v764 = v764.clone();
-                let v765 = v765.clone();
-                let v767 = v767.clone();
+                let v125 = v125.clone();
+                let v126 = v126.clone();
+                let v127 = v127.clone();
+                let v128 = v128.clone();
+                let v130 = v130.clone();
                 move || {
-                    Dice::closure17(
-                        v762.clone(),
-                        v763.clone(),
-                        v764.clone(),
-                        v765.clone(),
-                        v767.clone(),
+                    Dice::closure15(
+                        v125.clone(),
+                        v126.clone(),
+                        v127.clone(),
+                        v128.clone(),
+                        v130.clone(),
                         (),
                     )
                 }
             })
         }
-        pub fn closure24(v0_1: u64, v1_1: i8, v2_1: u64, unitVar: ()) {
+        pub fn method25(v0_1: u64, v1_1: i8, v2_1: u64) -> string {
+            let v4_1: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
+                l0: MutCell::new(Dice::method14()),
+            });
+            let v11: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("{ ")), ());
+                ()
+            };
+            let v20: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("max")), ());
+                ()
+            };
+            let v29: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v37: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v0_1), ());
+                ()
+            };
+            let v46: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v55: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("n")), ());
+                ()
+            };
+            let v63: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v71: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v1_1), ());
+                ()
+            };
+            let v79: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v88: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("p")), ());
+                ()
+            };
+            let v96: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v104: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v113: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" }")), ());
+                ()
+            };
+            v4_1.l0.get().clone()
+        }
+        pub fn closure22(v0_1: u64, v1_1: i8, v2_1: u64, unitVar: ()) {
             fn v4_1() {
                 Dice::closure5((), ());
             }
@@ -1379,26 +1249,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -1408,11 +1265,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.calculate_dice_count"),
+                    v58.l0.get().clone(),
+                    Dice::method25(v0_1, v1_1, v2_1),
+                );
+                let v86: () = {
                     v4_1();
                     ()
                 };
@@ -1424,176 +1304,23 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("max")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("n")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("p")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v749: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v811: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.calculate_dice_count"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v825: string = if v22.l0.get().clone() == string("") {
-                    v811.clone()
-                } else {
-                    if v811.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v811.clone())
-                    }
-                };
-                let v827: &str = &*v825.clone();
-                let v829 = v827.chars();
-                let v831 = v829;
-                let v833: Vec<char> = v831.collect::<Vec<_>>();
-                let v835: Vec<Vec<char>> = v833
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v837: bool = true;
-                let _vec_map: Vec<_> = v835
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v839: Vec<char> = x;
-                        let v841: std::string::String = String::from_iter(v839);
-                        let v843: bool = true;
-                        v841
-                    })
-                    .collect::<Vec<_>>();
-                let v845: Vec<std::string::String> = _vec_map;
-                if if v811.clone() != string("") {
-                    v845.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v825);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v857: bool = true;
-                        v845.into_iter().for_each(|x| {
-                            //;
-                            let v859: std::string::String = x;
-                            near_sdk::log!("{}", v859);
-                            {
-                                let v862: bool = true;
-                                let v864: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v811)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method16(v0_1: u64, v1_1: i8, v2_1: u64) -> i8 {
+        pub fn method24(v0_1: u64, v1_1: i8, v2_1: u64) -> i8 {
             let v0_1: MutCell<u64> = MutCell::new(v0_1);
             let v1_1: MutCell<i8> = MutCell::new(v1_1);
             let v2_1: MutCell<u64> = MutCell::new(v2_1);
-            '_method16: loop {
-                break '_method16 (if v2_1.get().clone() < v0_1.get().clone() {
+            '_method24: loop {
+                break '_method24 (if v2_1.get().clone() < v0_1.get().clone() {
                     let v4_1: u64 = v2_1.get().clone() * 6_u64;
                     if v4_1 > v2_1.get().clone() {
                         let v0_1_temp: u64 = v0_1.get().clone();
@@ -1602,10 +1329,10 @@ mod module_1d76f080 {
                         v0_1.set(v0_1_temp);
                         v1_1.set(v1_1_temp);
                         v2_1.set(v2_1_temp);
-                        continue '_method16;
+                        continue '_method24;
                     } else {
                         let v10: () = {
-                            Dice::closure24(
+                            Dice::closure22(
                                 v0_1.get().clone(),
                                 v1_1.get().clone(),
                                 v2_1.get().clone(),
@@ -1616,8 +1343,8 @@ mod module_1d76f080 {
                         v1_1.get().clone()
                     }
                 } else {
-                    let v877: () = {
-                        Dice::closure24(
+                    let v129: () = {
+                        Dice::closure22(
                             v0_1.get().clone(),
                             v1_1.get().clone(),
                             v2_1.get().clone(),
@@ -1629,7 +1356,65 @@ mod module_1d76f080 {
                 });
             }
         }
-        pub fn closure25(v0_1: u64, v1_1: i8, v2_1: u64, unitVar: ()) {
+        pub fn method28(v0_1: i8, v1_1: u64, v2_1: u64) -> string {
+            let v4_1: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
+                l0: MutCell::new(Dice::method14()),
+            });
+            let v11: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("{ ")), ());
+                ()
+            };
+            let v20: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("power")), ());
+                ()
+            };
+            let v29: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v37: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v0_1), ());
+                ()
+            };
+            let v46: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v55: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("acc")), ());
+                ()
+            };
+            let v63: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v71: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v1_1), ());
+                ()
+            };
+            let v79: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v88: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("result")), ());
+                ()
+            };
+            let v96: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v104: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v113: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" }")), ());
+                ()
+            };
+            v4_1.l0.get().clone()
+        }
+        pub fn closure23(v0_1: u64, v1_1: i8, v2_1: u64, unitVar: ()) {
             fn v4_1() {
                 Dice::closure5((), ());
             }
@@ -1645,26 +1430,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -1674,11 +1446,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method28(v1_1, v0_1, v2_1),
+                );
+                let v86: () = {
                     v4_1();
                     ()
                 };
@@ -1690,556 +1485,403 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("result")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v749: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v811: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v825: string = if v22.l0.get().clone() == string("") {
-                    v811.clone()
-                } else {
-                    if v811.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v811.clone())
-                    }
-                };
-                let v827: &str = &*v825.clone();
-                let v829 = v827.chars();
-                let v831 = v829;
-                let v833: Vec<char> = v831.collect::<Vec<_>>();
-                let v835: Vec<Vec<char>> = v833
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v837: bool = true;
-                let _vec_map: Vec<_> = v835
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v839: Vec<char> = x;
-                        let v841: std::string::String = String::from_iter(v839);
-                        let v843: bool = true;
-                        v841
-                    })
-                    .collect::<Vec<_>>();
-                let v845: Vec<std::string::String> = _vec_map;
-                if if v811.clone() != string("") {
-                    v845.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v825);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v857: bool = true;
-                        v845.into_iter().for_each(|x| {
-                            //;
-                            let v859: std::string::String = x;
-                            near_sdk::log!("{}", v859);
-                            {
-                                let v862: bool = true;
-                                let v864: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v811)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn closure89(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_1)
-        }
-        pub fn closure88(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                9223372036854775808_u64,
-                Func0::new(move || Dice::closure89((), ())),
-            ))
-        }
         pub fn closure87(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                4611686018427387904_u64,
-                Func0::new(move || Dice::closure88((), ())),
-            ))
+            LrcPtr::new(Dice::UH2::UH2_1)
         }
         pub fn closure86(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                6917529027641081856_u64,
+                9223372036854775808_u64,
                 Func0::new(move || Dice::closure87((), ())),
             ))
         }
         pub fn closure85(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                1152921504606846976_u64,
+                4611686018427387904_u64,
                 Func0::new(move || Dice::closure86((), ())),
             ))
         }
         pub fn closure84(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                15564440312192434176_u64,
+                6917529027641081856_u64,
                 Func0::new(move || Dice::closure85((), ())),
             ))
         }
         pub fn closure83(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                11817445422220181504_u64,
+                1152921504606846976_u64,
                 Func0::new(move || Dice::closure84((), ())),
             ))
         }
         pub fn closure82(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                5044031582654955520_u64,
+                15564440312192434176_u64,
                 Func0::new(move || Dice::closure83((), ())),
             ))
         }
         pub fn closure81(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                6989586621679009792_u64,
+                11817445422220181504_u64,
                 Func0::new(move || Dice::closure82((), ())),
             ))
         }
         pub fn closure80(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                16537217831704461312_u64,
+                5044031582654955520_u64,
                 Func0::new(move || Dice::closure81((), ())),
             ))
         }
         pub fn closure79(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                11979575008805519360_u64,
+                6989586621679009792_u64,
                 Func0::new(move || Dice::closure80((), ())),
             ))
         }
         pub fn closure78(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                14294425217273954304_u64,
+                16537217831704461312_u64,
                 Func0::new(move || Dice::closure79((), ())),
             ))
         }
         pub fn closure77(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                2382404202878992384_u64,
+                11979575008805519360_u64,
                 Func0::new(move || Dice::closure78((), ())),
             ))
         }
         pub fn closure76(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                6545982058383015936_u64,
+                14294425217273954304_u64,
                 Func0::new(move || Dice::closure77((), ())),
             ))
         }
         pub fn closure75(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                10314369046585278464_u64,
+                2382404202878992384_u64,
                 Func0::new(move || Dice::closure76((), ())),
             ))
         }
         pub fn closure74(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                4793518853382471680_u64,
+                6545982058383015936_u64,
                 Func0::new(move || Dice::closure75((), ())),
             ))
         }
         pub fn closure73(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                3873377154515337216_u64,
+                10314369046585278464_u64,
                 Func0::new(move || Dice::closure74((), ())),
             ))
         }
         pub fn closure72(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                645562859085889536_u64,
+                4793518853382471680_u64,
                 Func0::new(move || Dice::closure73((), ())),
             ))
         }
         pub fn closure71(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                107593809847648256_u64,
+                3873377154515337216_u64,
                 Func0::new(move || Dice::closure72((), ())),
             ))
         }
         pub fn closure70(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                3092389647259533312_u64,
+                645562859085889536_u64,
                 Func0::new(move || Dice::closure71((), ())),
             ))
         }
         pub fn closure69(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                9738770311398031360_u64,
+                107593809847648256_u64,
                 Func0::new(move || Dice::closure70((), ())),
             ))
         }
         pub fn closure68(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                16995415113324298240_u64,
+                3092389647259533312_u64,
                 Func0::new(move || Dice::closure69((), ())),
             ))
         }
         pub fn closure67(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                8981483876790566912_u64,
+                9738770311398031360_u64,
                 Func0::new(move || Dice::closure68((), ())),
             ))
         }
         pub fn closure66(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                13794743361938128896_u64,
+                16995415113324298240_u64,
                 Func0::new(move || Dice::closure67((), ())),
             ))
         }
         pub fn closure65(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                2299123893656354816_u64,
+                8981483876790566912_u64,
                 Func0::new(move || Dice::closure66((), ())),
             ))
         }
         pub fn closure64(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                3457644661227651072_u64,
+                13794743361938128896_u64,
                 Func0::new(move || Dice::closure65((), ())),
             ))
         }
         pub fn closure63(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                576274110204608512_u64,
+                2299123893656354816_u64,
                 Func0::new(move || Dice::closure64((), ())),
             ))
         }
         pub fn closure62(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                6244960376270618624_u64,
+                3457644661227651072_u64,
                 Func0::new(move || Dice::closure63((), ())),
             ))
         }
         pub fn closure61(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                13338656111851470848_u64,
+                576274110204608512_u64,
                 Func0::new(move || Dice::closure62((), ())),
             ))
         }
         pub fn closure60(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                14520938734448279552_u64,
+                6244960376270618624_u64,
                 Func0::new(move || Dice::closure61((), ())),
             ))
         }
         pub fn closure59(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                14717985838214414336_u64,
+                13338656111851470848_u64,
                 Func0::new(move || Dice::closure60((), ())),
             ))
         }
         pub fn closure58(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                5527454985320660992_u64,
+                14520938734448279552_u64,
                 Func0::new(move || Dice::closure59((), ())),
             ))
         }
         pub fn closure57(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                16293529225644736512_u64,
+                14717985838214414336_u64,
                 Func0::new(move || Dice::closure58((), ())),
             ))
         }
         pub fn closure56(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                11938960241128898560_u64,
+                5527454985320660992_u64,
                 Func0::new(move || Dice::closure57((), ())),
             ))
         }
         pub fn closure55(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                8138741398091333632_u64,
+                16293529225644736512_u64,
                 Func0::new(move || Dice::closure56((), ())),
             ))
         }
         pub fn closure54(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                7505371590918406144_u64,
+                11938960241128898560_u64,
                 Func0::new(move || Dice::closure55((), ())),
             ))
         }
         pub fn closure53(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                16623181993244360704_u64,
+                8138741398091333632_u64,
                 Func0::new(move || Dice::closure54((), ())),
             ))
         }
         pub fn closure52(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                8919445023443910656_u64,
+                7505371590918406144_u64,
                 Func0::new(move || Dice::closure53((), ())),
             ))
         }
         pub fn closure51(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                4561031516192243712_u64,
+                16623181993244360704_u64,
                 Func0::new(move || Dice::closure52((), ())),
             ))
         }
         pub fn closure50(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                9983543956220149760_u64,
+                8919445023443910656_u64,
                 Func0::new(move || Dice::closure51((), ())),
             ))
         }
         pub fn closure49(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                4738381338321616896_u64,
+                4561031516192243712_u64,
                 Func0::new(move || Dice::closure50((), ())),
             ))
         }
         pub fn closure48(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                789730223053602816_u64,
+                9983543956220149760_u64,
                 Func0::new(move || Dice::closure49((), ())),
             ))
         }
         pub fn closure47(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                131621703842267136_u64,
+                4738381338321616896_u64,
                 Func0::new(move || Dice::closure48((), ())),
             ))
         }
         pub fn closure46(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                21936950640377856_u64,
+                789730223053602816_u64,
                 Func0::new(move || Dice::closure47((), ())),
             ))
         }
         pub fn closure45(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                3656158440062976_u64,
+                131621703842267136_u64,
                 Func0::new(move || Dice::closure46((), ())),
             ))
         }
         pub fn closure44(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                609359740010496_u64,
+                21936950640377856_u64,
                 Func0::new(move || Dice::closure45((), ())),
             ))
         }
         pub fn closure43(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                101559956668416_u64,
+                3656158440062976_u64,
                 Func0::new(move || Dice::closure44((), ())),
             ))
         }
         pub fn closure42(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                16926659444736_u64,
+                609359740010496_u64,
                 Func0::new(move || Dice::closure43((), ())),
             ))
         }
         pub fn closure41(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                2821109907456_u64,
+                101559956668416_u64,
                 Func0::new(move || Dice::closure42((), ())),
             ))
         }
         pub fn closure40(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                470184984576_u64,
+                16926659444736_u64,
                 Func0::new(move || Dice::closure41((), ())),
             ))
         }
         pub fn closure39(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                78364164096_u64,
+                2821109907456_u64,
                 Func0::new(move || Dice::closure40((), ())),
             ))
         }
         pub fn closure38(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                13060694016_u64,
+                470184984576_u64,
                 Func0::new(move || Dice::closure39((), ())),
             ))
         }
         pub fn closure37(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                2176782336_u64,
+                78364164096_u64,
                 Func0::new(move || Dice::closure38((), ())),
             ))
         }
         pub fn closure36(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                362797056_u64,
+                13060694016_u64,
                 Func0::new(move || Dice::closure37((), ())),
             ))
         }
         pub fn closure35(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                60466176_u64,
+                2176782336_u64,
                 Func0::new(move || Dice::closure36((), ())),
             ))
         }
         pub fn closure34(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                10077696_u64,
+                362797056_u64,
                 Func0::new(move || Dice::closure35((), ())),
             ))
         }
         pub fn closure33(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                1679616_u64,
+                60466176_u64,
                 Func0::new(move || Dice::closure34((), ())),
             ))
         }
         pub fn closure32(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                279936_u64,
+                10077696_u64,
                 Func0::new(move || Dice::closure33((), ())),
             ))
         }
         pub fn closure31(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                46656_u64,
+                1679616_u64,
                 Func0::new(move || Dice::closure32((), ())),
             ))
         }
         pub fn closure30(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                7776_u64,
+                279936_u64,
                 Func0::new(move || Dice::closure31((), ())),
             ))
         }
         pub fn closure29(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                1296_u64,
+                46656_u64,
                 Func0::new(move || Dice::closure30((), ())),
             ))
         }
         pub fn closure28(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                216_u64,
+                7776_u64,
                 Func0::new(move || Dice::closure29((), ())),
             ))
         }
         pub fn closure27(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                36_u64,
+                1296_u64,
                 Func0::new(move || Dice::closure28((), ())),
             ))
         }
         pub fn closure26(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
             LrcPtr::new(Dice::UH2::UH2_0(
-                6_u64,
+                216_u64,
                 Func0::new(move || Dice::closure27((), ())),
             ))
         }
-        pub fn method19(v0_1: i8, v1_1: LrcPtr<Dice::UH2>) -> Dice::US7 {
+        pub fn closure25(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
+            LrcPtr::new(Dice::UH2::UH2_0(
+                36_u64,
+                Func0::new(move || Dice::closure26((), ())),
+            ))
+        }
+        pub fn closure24(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
+            LrcPtr::new(Dice::UH2::UH2_0(
+                6_u64,
+                Func0::new(move || Dice::closure25((), ())),
+            ))
+        }
+        pub fn method29(v0_1: i8, v1_1: LrcPtr<Dice::UH2>) -> Dice::US7 {
             let v0_1: MutCell<i8> = MutCell::new(v0_1);
             let v1_1: MutCell<LrcPtr<Dice::UH2>> = MutCell::new(v1_1.clone());
-            '_method19: loop {
-                break '_method19 (match v1_1.get().clone().as_ref() {
+            '_method29: loop {
+                break '_method29 (match v1_1.get().clone().as_ref() {
                     Dice::UH2::UH2_1 => Dice::US7::US7_1,
                     Dice::UH2::UH2_0(v1_1_0_0, v1_1_0_1) => {
                         if v0_1.get().clone() <= 0_i8 {
@@ -2249,13 +1891,87 @@ mod module_1d76f080 {
                             let v1_1_temp: LrcPtr<Dice::UH2> = (v1_1_0_1)();
                             v0_1.set(v0_1_temp);
                             v1_1.set(v1_1_temp);
-                            continue '_method19;
+                            continue '_method29;
                         }
                     }
                 });
             }
         }
-        pub fn closure90(v0_1: u64, v1_1: i8, v2_1: u8, v3_1: u64, unitVar: ()) {
+        pub fn method30(v0_1: i8, v1_1: u64, v2_1: u8, v3_1: u64) -> string {
+            let v5: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
+                l0: MutCell::new(Dice::method14()),
+            });
+            let v12: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("{ ")), ());
+                ()
+            };
+            let v21: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("power")), ());
+                ()
+            };
+            let v30: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v38: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", v0_1), ());
+                ()
+            };
+            let v47: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v56: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("acc")), ());
+                ()
+            };
+            let v64: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v72: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", v1_1), ());
+                ()
+            };
+            let v80: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v89: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("roll")), ());
+                ()
+            };
+            let v97: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v105: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v113: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v122: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("value")), ());
+                ()
+            };
+            let v130: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v138: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", v3_1), ());
+                ()
+            };
+            let v147: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" }")), ());
+                ()
+            };
+            v5.l0.get().clone()
+        }
+        pub fn closure88(v0_1: u64, v1_1: i8, v2_1: u8, v3_1: u64, unitVar: ()) {
             fn v5() {
                 Dice::closure5((), ());
             }
@@ -2271,26 +1987,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v23: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v39: () = {
-                v5();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v71: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v38: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v71,
+                        v38,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -2300,11 +2003,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v79: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v45: () = {
+                    v5();
                     ()
                 };
-                let v83: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v59: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v59.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v59.l0.get().clone(),
+                    Dice::method30(v1_1, v0_1, v2_1, v3_1),
+                );
+                let v87: () = {
                     v5();
                     ()
                 };
@@ -2316,187 +2042,76 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v253: u64 = near_sdk::env::block_timestamp();
-                let _v254: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v259: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v254 = _v254.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v254.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v274: Dice::US3 = defaultValue(Dice::US3::US3_1, _v254.get().clone());
-                let v284: u64 = match &v274 {
-                    Dice::US3::US3_0(v274_0_0) => {
-                        v253 - match &v274 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v253,
-                } / 1000000000_u64;
-                let v285: u64 = v284 % 60_u64;
-                let v287: u64 = v284 / 60_u64 % 60_u64;
-                let v289: u64 = v284 / 3600_u64 % 24_u64;
-                let v291: std::string::String = format!("{:02}:{:02}:{:02}", v289, v287, v285);
-                let v293: string = fable_library_rust::String_::fromString(v291);
-                let v573: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v611: &str = inline_colorization::color_bright_blue;
-                let v613: &str = &*v573;
-                let v615: &str = inline_colorization::color_reset;
-                let v617: string = string("format!(\"{v611}{v613}{v615}\")");
-                let v618: std::string::String = format!("{v611}{v613}{v615}");
-                let v620: string = fable_library_rust::String_::fromString(v618);
-                let v639: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v641: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v648: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v657: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v666: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v674: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v683: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v692: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v700: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v708: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v716: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v725: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v733: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v741: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v749: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v758: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v766: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v774: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", v3_1), ());
-                    ()
-                };
-                let v783: () = {
-                    Dice::closure19(v641.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v845: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v293,
-                            v620,
-                            v639,
-                            string("dice.accumulate_dice_rolls"),
-                            v641.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v859: string = if v23.l0.get().clone() == string("") {
-                    v845.clone()
-                } else {
-                    if v845.clone() == string("") {
-                        v23.l0.get().clone()
-                    } else {
-                        append(append(v23.l0.get().clone(), string("\n")), v845.clone())
-                    }
-                };
-                let v861: &str = &*v859.clone();
-                let v863 = v861.chars();
-                let v865 = v863;
-                let v867: Vec<char> = v865.collect::<Vec<_>>();
-                let v869: Vec<Vec<char>> = v867
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v871: bool = true;
-                let _vec_map: Vec<_> = v869
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v873: Vec<char> = x;
-                        let v875: std::string::String = String::from_iter(v873);
-                        let v877: bool = true;
-                        v875
-                    })
-                    .collect::<Vec<_>>();
-                let v879: Vec<std::string::String> = _vec_map;
-                if if v845.clone() != string("") {
-                    v879.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v23.l0.set(v859);
-                    ()
-                } else {
-                    v23.l0.set(string(""));
-                    {
-                        let v891: bool = true;
-                        v879.into_iter().for_each(|x| {
-                            //;
-                            let v893: std::string::String = x;
-                            near_sdk::log!("{}", v893);
-                            {
-                                let v896: bool = true;
-                                let v898: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v845)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn closure91(v0_1: u64, v1_1: i8, v2_1: u8, unitVar: ()) {
+        pub fn method31(v0_1: i8, v1_1: u64, v2_1: u8) -> string {
+            let v4_1: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
+                l0: MutCell::new(Dice::method14()),
+            });
+            let v11: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("{ ")), ());
+                ()
+            };
+            let v20: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("power")), ());
+                ()
+            };
+            let v29: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v37: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v0_1), ());
+                ()
+            };
+            let v46: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v55: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("acc")), ());
+                ()
+            };
+            let v63: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v71: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v1_1), ());
+                ()
+            };
+            let v79: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v88: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("roll")), ());
+                ()
+            };
+            let v96: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v104: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v113: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" }")), ());
+                ()
+            };
+            v4_1.l0.get().clone()
+        }
+        pub fn closure89(v0_1: u64, v1_1: i8, v2_1: u8, unitVar: ()) {
             fn v4_1() {
                 Dice::closure5((), ());
             }
@@ -2512,26 +2127,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -2541,11 +2143,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method31(v1_1, v0_1, v2_1),
+                );
+                let v86: () = {
                     v4_1();
                     ()
                 };
@@ -2557,179 +2182,26 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v749: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v811: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v825: string = if v22.l0.get().clone() == string("") {
-                    v811.clone()
-                } else {
-                    if v811.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v811.clone())
-                    }
-                };
-                let v827: &str = &*v825.clone();
-                let v829 = v827.chars();
-                let v831 = v829;
-                let v833: Vec<char> = v831.collect::<Vec<_>>();
-                let v835: Vec<Vec<char>> = v833
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v837: bool = true;
-                let _vec_map: Vec<_> = v835
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v839: Vec<char> = x;
-                        let v841: std::string::String = String::from_iter(v839);
-                        let v843: bool = true;
-                        v841
-                    })
-                    .collect::<Vec<_>>();
-                let v845: Vec<std::string::String> = _vec_map;
-                if if v811.clone() != string("") {
-                    v845.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v825);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v857: bool = true;
-                        v845.into_iter().for_each(|x| {
-                            //;
-                            let v859: std::string::String = x;
-                            near_sdk::log!("{}", v859);
-                            {
-                                let v862: bool = true;
-                                let v864: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v811)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method18(v0_1: i8, v1_1: LrcPtr<Dice::UH1>, v2_1: u64) -> Dice::US6 {
+        pub fn method27(v0_1: i8, v1_1: LrcPtr<Dice::UH1>, v2_1: u64) -> Dice::US6 {
             let v0_1: MutCell<i8> = MutCell::new(v0_1);
             let v1_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v1_1.clone());
             let v2_1: MutCell<u64> = MutCell::new(v2_1);
-            '_method18: loop {
-                break '_method18 (if v0_1.get().clone() < 0_i8 {
+            '_method27: loop {
+                break '_method27 (if v0_1.get().clone() < 0_i8 {
                     let v4_1: u64 = v2_1.get().clone() + 1_u64;
                     let v7: () = {
-                        Dice::closure25(v2_1.get().clone(), v0_1.get().clone(), v4_1, ());
+                        Dice::closure23(v2_1.get().clone(), v0_1.get().clone(), v4_1, ());
                         ()
                     };
                     Dice::US6::US6_0(v4_1, v1_1.get().clone())
@@ -2737,67 +2209,67 @@ mod module_1d76f080 {
                     match v1_1.get().clone().as_ref() {
                         Dice::UH1::UH1_0 => Dice::US6::US6_1,
                         Dice::UH1::UH1_1(v1_1_1_0, v1_1_1_1) => {
-                            let v874: LrcPtr<Dice::UH1> = match v1_1.get().clone().as_ref() {
+                            let v126: LrcPtr<Dice::UH1> = match v1_1.get().clone().as_ref() {
                                 Dice::UH1::UH1_1(_, x) => x.clone(),
                                 _ => unreachable!(),
                             };
-                            let v873: u8 = match v1_1.get().clone().as_ref() {
+                            let v125: u8 = match v1_1.get().clone().as_ref() {
                                 Dice::UH1::UH1_1(x, _) => x.clone(),
                                 _ => unreachable!(),
                             };
-                            if v873 > 1_u8 {
-                                let v879: Dice::US7 = Dice::method19(
+                            if v125 > 1_u8 {
+                                let v131: Dice::US7 = Dice::method29(
                                     v0_1.get().clone(),
                                     LrcPtr::new(Dice::UH2::UH2_0(
                                         1_u64,
-                                        Func0::new(move || Dice::closure26((), ())),
+                                        Func0::new(move || Dice::closure24((), ())),
                                     )),
                                 );
-                                let v886: u64 = (v873 - 1_u8) as u64
-                                    * match &v879 {
-                                        Dice::US7::US7_0(v879_0_0) => match &v879 {
+                                let v138: u64 = (v125 - 1_u8) as u64
+                                    * match &v131 {
+                                        Dice::US7::US7_0(v131_0_0) => match &v131 {
                                             Dice::US7::US7_0(x) => x.clone(),
                                             _ => unreachable!(),
                                         },
                                         _ => panic!("{}", string("Option does not have a value."),),
                                     };
-                                let v889: () = {
-                                    Dice::closure90(
+                                let v141: () = {
+                                    Dice::closure88(
                                         v2_1.get().clone(),
                                         v0_1.get().clone(),
-                                        v873,
-                                        v886,
+                                        v125,
+                                        v138,
                                         (),
                                     );
                                     ()
                                 };
                                 {
                                     let v0_1_temp: i8 = v0_1.get().clone() - 1_i8;
-                                    let v1_1_temp: LrcPtr<Dice::UH1> = v874;
-                                    let v2_1_temp: u64 = v2_1.get().clone() + v886;
+                                    let v1_1_temp: LrcPtr<Dice::UH1> = v126;
+                                    let v2_1_temp: u64 = v2_1.get().clone() + v138;
                                     v0_1.set(v0_1_temp);
                                     v1_1.set(v1_1_temp);
                                     v2_1.set(v2_1_temp);
-                                    continue '_method18;
+                                    continue '_method27;
                                 }
                             } else {
-                                let v1791: () = {
-                                    Dice::closure91(
+                                let v262: () = {
+                                    Dice::closure89(
                                         v2_1.get().clone(),
                                         v0_1.get().clone(),
-                                        v873,
+                                        v125,
                                         (),
                                     );
                                     ()
                                 };
                                 {
                                     let v0_1_temp: i8 = v0_1.get().clone() - 1_i8;
-                                    let v1_1_temp: LrcPtr<Dice::UH1> = v874.clone();
+                                    let v1_1_temp: LrcPtr<Dice::UH1> = v126.clone();
                                     let v2_1_temp: u64 = v2_1.get().clone();
                                     v0_1.set(v0_1_temp);
                                     v1_1.set(v1_1_temp);
                                     v2_1.set(v2_1_temp);
-                                    continue '_method18;
+                                    continue '_method27;
                                 }
                             }
                         }
@@ -2805,17 +2277,17 @@ mod module_1d76f080 {
                 });
             }
         }
-        pub fn method20(v0_1: i8, v1_1: Func0<u8>, v2_1: i8) -> LrcPtr<Dice::UH1> {
+        pub fn method32(v0_1: i8, v1_1: Func0<u8>, v2_1: i8) -> LrcPtr<Dice::UH1> {
             if v2_1 < v0_1 {
                 LrcPtr::new(Dice::UH1::UH1_1(
                     v1_1(),
-                    Dice::method20(v0_1, v1_1, v2_1 + 1_i8),
+                    Dice::method32(v0_1, v1_1, v2_1 + 1_i8),
                 ))
             } else {
                 LrcPtr::new(Dice::UH1::UH1_0)
             }
         }
-        pub fn method21(
+        pub fn method33(
             v0_1: Func0<u8>,
             v1_1: bool,
             v2_1: u64,
@@ -2827,11 +2299,11 @@ mod module_1d76f080 {
             let v2_1: MutCell<u64> = MutCell::new(v2_1);
             let v3_1: MutCell<i8> = MutCell::new(v3_1);
             let v4_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v4_1.clone());
-            '_method21: loop {
-                break '_method21 ({
+            '_method33: loop {
+                break '_method33 ({
                     let v5: i8 = v3_1.get().clone() + 1_i8;
                     if v3_1.get().clone() < v5 {
-                        Dice::method17(
+                        Dice::method26(
                             v0_1.get().clone(),
                             v1_1.get().clone(),
                             v2_1.get().clone(),
@@ -2841,7 +2313,7 @@ mod module_1d76f080 {
                         )
                     } else {
                         let v11: Dice::US6 =
-                            Dice::method18(v3_1.get().clone(), v4_1.get().clone(), 0_u64);
+                            Dice::method27(v3_1.get().clone(), v4_1.get().clone(), 0_u64);
                         if let Dice::US6::US6_0(v11_0_0, v11_0_1) = &v11 {
                             let v12: u64 = match &v11 {
                                 Dice::US6::US6_0(x, _) => x.clone(),
@@ -2855,7 +2327,7 @@ mod module_1d76f080 {
                                     let v1_1_temp: bool = v1_1.get().clone();
                                     let v2_1_temp: u64 = v2_1.get().clone();
                                     let v3_1_temp: i8 = v3_1.get().clone();
-                                    let v4_1_temp: LrcPtr<Dice::UH1> = Dice::method20(
+                                    let v4_1_temp: LrcPtr<Dice::UH1> = Dice::method32(
                                         v3_1.get().clone(),
                                         v0_1.get().clone(),
                                         0_i8,
@@ -2865,9 +2337,9 @@ mod module_1d76f080 {
                                     v2_1.set(v2_1_temp);
                                     v3_1.set(v3_1_temp);
                                     v4_1.set(v4_1_temp);
-                                    continue '_method21;
+                                    continue '_method33;
                                 } else {
-                                    Dice::method17(
+                                    Dice::method26(
                                         v0_1.get().clone(),
                                         v1_1.get().clone(),
                                         v2_1.get().clone(),
@@ -2884,15 +2356,15 @@ mod module_1d76f080 {
                                 let v2_1_temp: u64 = v2_1.get().clone();
                                 let v3_1_temp: i8 = v3_1.get().clone();
                                 let v4_1_temp: LrcPtr<Dice::UH1> =
-                                    Dice::method20(v3_1.get().clone(), v0_1.get().clone(), 0_i8);
+                                    Dice::method32(v3_1.get().clone(), v0_1.get().clone(), 0_i8);
                                 v0_1.set(v0_1_temp);
                                 v1_1.set(v1_1_temp);
                                 v2_1.set(v2_1_temp);
                                 v3_1.set(v3_1_temp);
                                 v4_1.set(v4_1_temp);
-                                continue '_method21;
+                                continue '_method33;
                             } else {
-                                Dice::method17(
+                                Dice::method26(
                                     v0_1.get().clone(),
                                     v1_1.get().clone(),
                                     v2_1.get().clone(),
@@ -2906,7 +2378,7 @@ mod module_1d76f080 {
                 });
             }
         }
-        pub fn method17(
+        pub fn method26(
             v0_1: Func0<u8>,
             v1_1: bool,
             v2_1: u64,
@@ -2920,8 +2392,8 @@ mod module_1d76f080 {
             let v3_1: MutCell<i8> = MutCell::new(v3_1);
             let v4_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v4_1.clone());
             let v5: MutCell<i8> = MutCell::new(v5);
-            '_method17: loop {
-                break '_method17 (if v5.get().clone() < v3_1.get().clone() + 1_i8 {
+            '_method26: loop {
+                break '_method26 (if v5.get().clone() < v3_1.get().clone() + 1_i8 {
                     let v0_1_temp = v0_1.get().clone();
                     let v1_1_temp: bool = v1_1.get().clone();
                     let v2_1_temp: u64 = v2_1.get().clone();
@@ -2935,10 +2407,10 @@ mod module_1d76f080 {
                     v3_1.set(v3_1_temp);
                     v4_1.set(v4_1_temp);
                     v5.set(v5_temp);
-                    continue '_method17;
+                    continue '_method26;
                 } else {
                     let v13: Dice::US6 =
-                        Dice::method18(v3_1.get().clone(), v4_1.get().clone(), 0_u64);
+                        Dice::method27(v3_1.get().clone(), v4_1.get().clone(), 0_u64);
                     if let Dice::US6::US6_0(v13_0_0, v13_0_1) = &v13 {
                         let v14: u64 = match &v13 {
                             Dice::US6::US6_0(x, _) => x.clone(),
@@ -2948,12 +2420,12 @@ mod module_1d76f080 {
                             v14
                         } else {
                             if v1_1.get().clone() {
-                                Dice::method21(
+                                Dice::method33(
                                     v0_1.get().clone(),
                                     v1_1.get().clone(),
                                     v2_1.get().clone(),
                                     v3_1.get().clone(),
-                                    Dice::method20(v3_1.get().clone(), v0_1.get().clone(), 0_i8),
+                                    Dice::method32(v3_1.get().clone(), v0_1.get().clone(), 0_i8),
                                 )
                             } else {
                                 let v0_1_temp = v0_1.get().clone();
@@ -2969,17 +2441,17 @@ mod module_1d76f080 {
                                 v3_1.set(v3_1_temp);
                                 v4_1.set(v4_1_temp);
                                 v5.set(v5_temp);
-                                continue '_method17;
+                                continue '_method26;
                             }
                         }
                     } else {
                         if v1_1.get().clone() {
-                            Dice::method21(
+                            Dice::method33(
                                 v0_1.get().clone(),
                                 v1_1.get().clone(),
                                 v2_1.get().clone(),
                                 v3_1.get().clone(),
-                                Dice::method20(v3_1.get().clone(), v0_1.get().clone(), 0_i8),
+                                Dice::method32(v3_1.get().clone(), v0_1.get().clone(), 0_i8),
                             )
                         } else {
                             let v0_1_temp = v0_1.get().clone();
@@ -2995,44 +2467,44 @@ mod module_1d76f080 {
                             v3_1.set(v3_1_temp);
                             v4_1.set(v4_1_temp);
                             v5.set(v5_temp);
-                            continue '_method17;
+                            continue '_method26;
                         }
                     }
                 });
             }
         }
-        pub fn closure23(v0_1: Func0<u8>, v1_1: bool, v2_1: u64) -> u64 {
-            Dice::method17(
+        pub fn closure21(v0_1: Func0<u8>, v1_1: bool, v2_1: u64) -> u64 {
+            Dice::method26(
                 v0_1,
                 v1_1,
                 v2_1,
                 (if v2_1 == 1_u64 {
                     1_i8
                 } else {
-                    Dice::method16(v2_1, 0_i8, 1_u64)
+                    Dice::method24(v2_1, 0_i8, 1_u64)
                 }) - 1_i8,
                 LrcPtr::new(Dice::UH1::UH1_0),
                 0_i8,
             )
         }
-        pub fn closure22(v0_1: Func0<u8>, v1_1: bool) -> Func1<u64, u64> {
+        pub fn closure20(v0_1: Func0<u8>, v1_1: bool) -> Func1<u64, u64> {
             Func1::new({
                 let v0_1 = v0_1.clone();
                 let v1_1 = v1_1.clone();
-                move |v: u64| Dice::closure23(v0_1.clone(), v1_1, v)
+                move |v: u64| Dice::closure21(v0_1.clone(), v1_1, v)
             })
         }
-        pub fn closure21(unitVar: (), v0_1: Func0<u8>) -> Func1<bool, Func1<u64, u64>> {
+        pub fn closure19(unitVar: (), v0_1: Func0<u8>) -> Func1<bool, Func1<u64, u64>> {
             Func1::new({
                 let v0_1 = v0_1.clone();
-                move |v: bool| Dice::closure22(v0_1.clone(), v)
+                move |v: bool| Dice::closure20(v0_1.clone(), v)
             })
         }
-        pub fn method22(v0_1: LrcPtr<Dice::UH1>, v1_1: i8) -> i8 {
+        pub fn method34(v0_1: LrcPtr<Dice::UH1>, v1_1: i8) -> i8 {
             let v0_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v0_1.clone());
             let v1_1: MutCell<i8> = MutCell::new(v1_1);
-            '_method22: loop {
-                break '_method22 (match v0_1.get().clone().as_ref() {
+            '_method34: loop {
+                break '_method34 (match v0_1.get().clone().as_ref() {
                     Dice::UH1::UH1_0 => v1_1.get().clone(),
                     Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                         let v0_1_temp: LrcPtr<Dice::UH1> = match v0_1.get().clone().as_ref() {
@@ -3042,14 +2514,14 @@ mod module_1d76f080 {
                         let v1_1_temp: i8 = v1_1.get().clone() + 1_i8;
                         v0_1.set(v0_1_temp);
                         v1_1.set(v1_1_temp);
-                        continue '_method22;
+                        continue '_method34;
                     }
                 });
             }
         }
-        pub fn closure93(v0_1: u64, v1_1: LrcPtr<Dice::UH1>) -> Option<u64> {
+        pub fn closure91(v0_1: u64, v1_1: LrcPtr<Dice::UH1>) -> Option<u64> {
             let v6: Dice::US6 =
-                Dice::method18(Dice::method22(v1_1.clone(), 0_i8) - 1_i8, v1_1, 0_u64);
+                Dice::method27(Dice::method34(v1_1.clone(), 0_i8) - 1_i8, v1_1, 0_u64);
             let v16: Dice::US7 = if let Dice::US6::US6_0(v6_0_0, v6_0_1) = &v6 {
                 let v7: u64 = match &v6 {
                     Dice::US6::US6_0(x, _) => x.clone(),
@@ -3071,13 +2543,71 @@ mod module_1d76f080 {
                 _ => None::<u64>,
             }
         }
-        pub fn closure92(unitVar: (), v0_1: u64) -> Func1<LrcPtr<Dice::UH1>, Option<u64>> {
+        pub fn closure90(unitVar: (), v0_1: u64) -> Func1<LrcPtr<Dice::UH1>, Option<u64>> {
             Func1::new({
                 let v0_1 = v0_1.clone();
-                move |v: LrcPtr<Dice::UH1>| Dice::closure93(v0_1, v)
+                move |v: LrcPtr<Dice::UH1>| Dice::closure91(v0_1, v)
             })
         }
-        pub fn closure95(unitVar: (), unitVar_1: ()) {
+        pub fn method35(v0_1: i64, v1_1: i8, v2_1: i64) -> string {
+            let v4_1: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
+                l0: MutCell::new(Dice::method14()),
+            });
+            let v11: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("{ ")), ());
+                ()
+            };
+            let v20: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("max")), ());
+                ()
+            };
+            let v29: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v37: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v0_1), ());
+                ()
+            };
+            let v46: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v55: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("n")), ());
+                ()
+            };
+            let v63: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v71: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v1_1), ());
+                ()
+            };
+            let v79: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v88: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("p")), ());
+                ()
+            };
+            let v96: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v104: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v113: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" }")), ());
+                ()
+            };
+            v4_1.l0.get().clone()
+        }
+        pub fn closure93(unitVar: (), unitVar_1: ()) {
             fn v1_1() {
                 Dice::closure5((), ());
             }
@@ -3093,26 +2623,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v19: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v35: () = {
-                v1_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v67: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v34: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v67,
+                        v34,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -3122,11 +2639,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v75: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v41: () = {
+                    v1_1();
                     ()
                 };
-                let v79: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v55: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v55.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.calculate_dice_count"),
+                    v55.l0.get().clone(),
+                    Dice::method35(i64::MAX, 24_i8, 4738381338321616896_i64),
+                );
+                let v86: () = {
                     v1_1();
                     ()
                 };
@@ -3138,172 +2678,257 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v249: u64 = near_sdk::env::block_timestamp();
-                let _v250: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v255: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v250 = _v250.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v250.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v270: Dice::US3 = defaultValue(Dice::US3::US3_1, _v250.get().clone());
-                let v280: u64 = match &v270 {
-                    Dice::US3::US3_0(v270_0_0) => {
-                        v249 - match &v270 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v249,
-                } / 1000000000_u64;
-                let v281: u64 = v280 % 60_u64;
-                let v283: u64 = v280 / 60_u64 % 60_u64;
-                let v285: u64 = v280 / 3600_u64 % 24_u64;
-                let v287: std::string::String = format!("{:02}:{:02}:{:02}", v285, v283, v281);
-                let v289: string = fable_library_rust::String_::fromString(v287);
-                let v569: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v607: &str = inline_colorization::color_bright_blue;
-                let v609: &str = &*v569;
-                let v611: &str = inline_colorization::color_reset;
-                let v613: string = string("format!(\"{v607}{v609}{v611}\")");
-                let v614: std::string::String = format!("{v607}{v609}{v611}");
-                let v616: string = fable_library_rust::String_::fromString(v614);
-                let v635: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v637: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v644: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v653: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", string("max")), ());
-                    ()
-                };
-                let v662: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v670: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", i64::MAX), ());
-                    ()
-                };
-                let v679: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v688: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", string("n")), ());
-                    ()
-                };
-                let v696: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v704: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", 24_i8), ());
-                    ()
-                };
-                let v712: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v721: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", string("p")), ());
-                    ()
-                };
-                let v729: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v737: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", 4738381338321616896_i64), ());
-                    ()
-                };
-                let v746: () = {
-                    Dice::closure19(v637.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v808: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v289,
-                            v616,
-                            v635,
-                            string("dice.calculate_dice_count"),
-                            v637.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v822: string = if v19.l0.get().clone() == string("") {
-                    v808.clone()
-                } else {
-                    if v808.clone() == string("") {
-                        v19.l0.get().clone()
-                    } else {
-                        append(append(v19.l0.get().clone(), string("\n")), v808.clone())
-                    }
-                };
-                let v824: &str = &*v822.clone();
-                let v826 = v824.chars();
-                let v828 = v826;
-                let v830: Vec<char> = v828.collect::<Vec<_>>();
-                let v832: Vec<Vec<char>> = v830
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v834: bool = true;
-                let _vec_map: Vec<_> = v832
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v836: Vec<char> = x;
-                        let v838: std::string::String = String::from_iter(v836);
-                        let v840: bool = true;
-                        v838
-                    })
-                    .collect::<Vec<_>>();
-                let v842: Vec<std::string::String> = _vec_map;
-                if if v808.clone() != string("") {
-                    v842.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v19.l0.set(v822);
-                    ()
-                } else {
-                    v19.l0.set(string(""));
-                    {
-                        let v854: bool = true;
-                        v842.into_iter().for_each(|x| {
-                            //;
-                            let v856: std::string::String = x;
-                            near_sdk::log!("{}", v856);
-                            {
-                                let v859: bool = true;
-                                let v861: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v808)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method24() -> u8 {
+        pub fn method37() -> u8 {
             panic!("{}", string("common.random\' / target=Rust(Contract)"),)
+        }
+        pub fn method39(v0_1: i8, v1_1: i64, v2_1: u8, v3_1: i64) -> string {
+            let v5: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
+                l0: MutCell::new(Dice::method14()),
+            });
+            let v12: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("{ ")), ());
+                ()
+            };
+            let v21: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("power")), ());
+                ()
+            };
+            let v30: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v38: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", v0_1), ());
+                ()
+            };
+            let v47: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v56: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("acc")), ());
+                ()
+            };
+            let v64: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v72: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", v1_1), ());
+                ()
+            };
+            let v80: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v89: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("roll")), ());
+                ()
+            };
+            let v97: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v105: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v113: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v122: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string("value")), ());
+                ()
+            };
+            let v130: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v138: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", v3_1), ());
+                ()
+            };
+            let v147: () = {
+                Dice::closure17(v5.clone(), sprintf!("{}", string(" }")), ());
+                ()
+            };
+            v5.l0.get().clone()
+        }
+        pub fn closure94(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
+            fn v4_1() {
+                Dice::closure5((), ());
+            }
+            let v5: () = {
+                v4_1();
+                ()
+            };
+            let patternInput: (
+                LrcPtr<Dice::Mut0>,
+                LrcPtr<Dice::Mut1>,
+                LrcPtr<Dice::Mut2>,
+                LrcPtr<Dice::Mut3>,
+                LrcPtr<Dice::Mut4>,
+                Option<i64>,
+            ) = getValue(Dice::TraceState::trace_state().get().clone());
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
+                false
+            } else {
+                1_i32
+                    >= find(
+                        v37,
+                        ofSeq(ofList(ofArray(new_array(&[
+                            LrcPtr::new((Dice::US0::US0_0, 0_i32)),
+                            LrcPtr::new((Dice::US0::US0_1, 1_i32)),
+                            LrcPtr::new((Dice::US0::US0_2, 2_i32)),
+                            LrcPtr::new((Dice::US0::US0_3, 3_i32)),
+                            LrcPtr::new((Dice::US0::US0_4, 4_i32)),
+                        ])))),
+                    )
+            } {
+                let v44: () = {
+                    v4_1();
+                    ()
+                };
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(23_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
+                    v4_1();
+                    ()
+                };
+                let patternInput_2: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
+            }
+        }
+        pub fn closure95(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
+            fn v4_1() {
+                Dice::closure5((), ());
+            }
+            let v5: () = {
+                v4_1();
+                ()
+            };
+            let patternInput: (
+                LrcPtr<Dice::Mut0>,
+                LrcPtr<Dice::Mut1>,
+                LrcPtr<Dice::Mut2>,
+                LrcPtr<Dice::Mut3>,
+                LrcPtr<Dice::Mut4>,
+                Option<i64>,
+            ) = getValue(Dice::TraceState::trace_state().get().clone());
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
+                false
+            } else {
+                1_i32
+                    >= find(
+                        v37,
+                        ofSeq(ofList(ofArray(new_array(&[
+                            LrcPtr::new((Dice::US0::US0_0, 0_i32)),
+                            LrcPtr::new((Dice::US0::US0_1, 1_i32)),
+                            LrcPtr::new((Dice::US0::US0_2, 2_i32)),
+                            LrcPtr::new((Dice::US0::US0_3, 3_i32)),
+                            LrcPtr::new((Dice::US0::US0_4, 4_i32)),
+                        ])))),
+                    )
+            } {
+                let v44: () = {
+                    v4_1();
+                    ()
+                };
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(22_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
+                    v4_1();
+                    ()
+                };
+                let patternInput_2: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
+            }
         }
         pub fn closure96(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
             fn v4_1() {
@@ -3321,26 +2946,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -3350,11 +2962,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(21_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -3366,184 +3001,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 23_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure97(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -3562,26 +3028,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -3591,11 +3044,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(20_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -3607,184 +3083,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 22_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure98(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -3803,26 +3110,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -3832,11 +3126,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(19_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -3848,184 +3165,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 21_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure99(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -4044,26 +3192,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -4073,11 +3208,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(18_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -4089,184 +3247,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 20_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure100(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -4285,26 +3274,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -4314,11 +3290,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(17_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -4330,184 +3329,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 19_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure101(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -4526,26 +3356,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -4555,11 +3372,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(16_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -4571,184 +3411,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 18_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure102(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -4767,26 +3438,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -4796,11 +3454,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(15_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -4812,184 +3493,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 17_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure103(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -5008,26 +3520,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -5037,11 +3536,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(14_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -5053,184 +3575,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 16_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure104(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -5249,26 +3602,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -5278,11 +3618,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(13_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -5294,184 +3657,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 15_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure105(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -5490,26 +3684,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -5519,11 +3700,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(12_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -5535,184 +3739,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 14_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure106(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -5731,26 +3766,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -5760,11 +3782,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(11_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -5776,184 +3821,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 13_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure107(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -5972,26 +3848,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -6001,11 +3864,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(10_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -6017,184 +3903,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 12_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure108(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -6213,26 +3930,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -6242,11 +3946,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(9_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -6258,184 +3985,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 11_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure109(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -6454,26 +4012,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -6483,11 +4028,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(8_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -6499,184 +4067,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 10_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure110(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -6695,26 +4094,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -6724,11 +4110,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(7_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -6740,184 +4149,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 9_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure111(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -6936,26 +4176,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -6965,11 +4192,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(6_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -6981,184 +4231,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 8_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure112(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -7177,26 +4258,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -7206,11 +4274,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(5_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -7222,184 +4313,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 7_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure113(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -7418,26 +4340,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -7447,11 +4356,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(4_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -7463,184 +4395,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 6_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure114(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -7659,26 +4422,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -7688,11 +4438,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(3_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -7704,184 +4477,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 5_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure115(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -7900,26 +4504,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -7929,11 +4520,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(2_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -7945,184 +4559,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 4_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure116(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -8141,26 +4586,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -8170,11 +4602,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(1_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -8186,184 +4641,15 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 3_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
         pub fn closure117(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
@@ -8382,26 +4668,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v37: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v70,
+                        v37,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -8411,11 +4684,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v44: () = {
+                    v4_1();
                     ()
                 };
-                let v82: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v58: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v85: string = Dice::method15(
+                    Dice::method7(
+                        v58.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v58.l0.get().clone(),
+                    Dice::method39(0_i8, v0_1, v1_1, v2_1),
+                );
+                let v87: () = {
                     v4_1();
                     ()
                 };
@@ -8427,669 +4723,76 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 2_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
+                Dice::method16(
+                    v85,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn closure118(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            fn v4_1() {
-                Dice::closure5((), ());
-            }
-            let v5: () = {
-                v4_1();
+        pub fn method64(v0_1: i8, v1_1: i64, v2_1: i64) -> string {
+            let v4_1: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
+                l0: MutCell::new(Dice::method14()),
+            });
+            let v11: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("{ ")), ());
                 ()
             };
-            let patternInput: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
+            let v20: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("power")), ());
                 ()
             };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
-                false
-            } else {
-                1_i32
-                    >= find(
-                        v70,
-                        ofSeq(ofList(ofArray(new_array(&[
-                            LrcPtr::new((Dice::US0::US0_0, 0_i32)),
-                            LrcPtr::new((Dice::US0::US0_1, 1_i32)),
-                            LrcPtr::new((Dice::US0::US0_2, 2_i32)),
-                            LrcPtr::new((Dice::US0::US0_3, 3_i32)),
-                            LrcPtr::new((Dice::US0::US0_4, 4_i32)),
-                        ])))),
-                    )
-            } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
-                    ()
-                };
-                let v82: () = {
-                    v4_1();
-                    ()
-                };
-                let patternInput_2: (
-                    LrcPtr<Dice::Mut0>,
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut2>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 1_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
-            }
+            let v29: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v37: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v0_1), ());
+                ()
+            };
+            let v46: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v55: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("acc")), ());
+                ()
+            };
+            let v63: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v71: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v1_1), ());
+                ()
+            };
+            let v79: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v88: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("result")), ());
+                ()
+            };
+            let v96: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v104: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v113: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" }")), ());
+                ()
+            };
+            v4_1.l0.get().clone()
         }
-        pub fn closure119(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            fn v4_1() {
-                Dice::closure5((), ());
-            }
-            let v5: () = {
-                v4_1();
-                ()
-            };
-            let patternInput: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v22: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v38: () = {
-                v4_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v70: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
-                false
-            } else {
-                1_i32
-                    >= find(
-                        v70,
-                        ofSeq(ofList(ofArray(new_array(&[
-                            LrcPtr::new((Dice::US0::US0_0, 0_i32)),
-                            LrcPtr::new((Dice::US0::US0_1, 1_i32)),
-                            LrcPtr::new((Dice::US0::US0_2, 2_i32)),
-                            LrcPtr::new((Dice::US0::US0_3, 3_i32)),
-                            LrcPtr::new((Dice::US0::US0_4, 4_i32)),
-                        ])))),
-                    )
-            } {
-                let v78: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
-                    ()
-                };
-                let v82: () = {
-                    v4_1();
-                    ()
-                };
-                let patternInput_2: (
-                    LrcPtr<Dice::Mut0>,
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut2>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v252: u64 = near_sdk::env::block_timestamp();
-                let _v253: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v258: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v253 = _v253.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v253.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v273: Dice::US3 = defaultValue(Dice::US3::US3_1, _v253.get().clone());
-                let v283: u64 = match &v273 {
-                    Dice::US3::US3_0(v273_0_0) => {
-                        v252 - match &v273 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v252,
-                } / 1000000000_u64;
-                let v284: u64 = v283 % 60_u64;
-                let v286: u64 = v283 / 60_u64 % 60_u64;
-                let v288: u64 = v283 / 3600_u64 % 24_u64;
-                let v290: std::string::String = format!("{:02}:{:02}:{:02}", v288, v286, v284);
-                let v292: string = fable_library_rust::String_::fromString(v290);
-                let v572: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v610: &str = inline_colorization::color_bright_blue;
-                let v612: &str = &*v572;
-                let v614: &str = inline_colorization::color_reset;
-                let v616: string = string("format!(\"{v610}{v612}{v614}\")");
-                let v617: std::string::String = format!("{v610}{v612}{v614}");
-                let v619: string = fable_library_rust::String_::fromString(v617);
-                let v638: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v640: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v647: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v656: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v665: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v673: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", 0_i8), ());
-                    ()
-                };
-                let v682: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v691: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v699: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v707: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v715: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v724: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v732: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v740: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v757: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string("value")), ());
-                    ()
-                };
-                let v765: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v773: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", v2_1), ());
-                    ()
-                };
-                let v782: () = {
-                    Dice::closure19(v640.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v844: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v292,
-                            v619,
-                            v638,
-                            string("dice.accumulate_dice_rolls"),
-                            v640.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v858: string = if v22.l0.get().clone() == string("") {
-                    v844.clone()
-                } else {
-                    if v844.clone() == string("") {
-                        v22.l0.get().clone()
-                    } else {
-                        append(append(v22.l0.get().clone(), string("\n")), v844.clone())
-                    }
-                };
-                let v860: &str = &*v858.clone();
-                let v862 = v860.chars();
-                let v864 = v862;
-                let v866: Vec<char> = v864.collect::<Vec<_>>();
-                let v868: Vec<Vec<char>> = v866
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v870: bool = true;
-                let _vec_map: Vec<_> = v868
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v872: Vec<char> = x;
-                        let v874: std::string::String = String::from_iter(v872);
-                        let v876: bool = true;
-                        v874
-                    })
-                    .collect::<Vec<_>>();
-                let v878: Vec<std::string::String> = _vec_map;
-                if if v844.clone() != string("") {
-                    v878.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v22.l0.set(v858);
-                    ()
-                } else {
-                    v22.l0.set(string(""));
-                    {
-                        let v890: bool = true;
-                        v878.into_iter().for_each(|x| {
-                            //;
-                            let v892: std::string::String = x;
-                            near_sdk::log!("{}", v892);
-                            {
-                                let v895: bool = true;
-                                let v897: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v844)
-            }
-        }
-        pub fn closure120(v0_1: i64, v1_1: i64, unitVar: ()) {
+        pub fn closure118(v0_1: i64, v1_1: i64, unitVar: ()) {
             fn v3_1() {
                 Dice::closure5((), ());
             }
@@ -9105,26 +4808,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -9134,11 +4824,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method64(-1_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -9150,177 +4863,304 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", -1_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("result")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method49(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method63(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             let v2_1: i64 = v1_1 + 1_i64;
             let v5: () = {
-                Dice::closure120(v1_1, v2_1, ());
+                Dice::closure118(v1_1, v2_1, ());
                 ()
             };
             Dice::US8::US8_0(v2_1, v0_1)
+        }
+        pub fn method65(v0_1: i8, v1_1: i64, v2_1: u8) -> string {
+            let v4_1: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
+                l0: MutCell::new(Dice::method14()),
+            });
+            let v11: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("{ ")), ());
+                ()
+            };
+            let v20: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("power")), ());
+                ()
+            };
+            let v29: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v37: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v0_1), ());
+                ()
+            };
+            let v46: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v55: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("acc")), ());
+                ()
+            };
+            let v63: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v71: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v1_1), ());
+                ()
+            };
+            let v79: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("; ")), ());
+                ()
+            };
+            let v88: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string("roll")), ());
+                ()
+            };
+            let v96: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v104: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v113: () = {
+                Dice::closure17(v4_1.clone(), sprintf!("{}", string(" }")), ());
+                ()
+            };
+            v4_1.l0.get().clone()
+        }
+        pub fn closure119(v0_1: i64, v1_1: u8, unitVar: ()) {
+            fn v3_1() {
+                Dice::closure5((), ());
+            }
+            let v4_1: () = {
+                v3_1();
+                ()
+            };
+            let patternInput: (
+                LrcPtr<Dice::Mut0>,
+                LrcPtr<Dice::Mut1>,
+                LrcPtr<Dice::Mut2>,
+                LrcPtr<Dice::Mut3>,
+                LrcPtr<Dice::Mut4>,
+                Option<i64>,
+            ) = getValue(Dice::TraceState::trace_state().get().clone());
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
+                false
+            } else {
+                1_i32
+                    >= find(
+                        v36,
+                        ofSeq(ofList(ofArray(new_array(&[
+                            LrcPtr::new((Dice::US0::US0_0, 0_i32)),
+                            LrcPtr::new((Dice::US0::US0_1, 1_i32)),
+                            LrcPtr::new((Dice::US0::US0_2, 2_i32)),
+                            LrcPtr::new((Dice::US0::US0_3, 3_i32)),
+                            LrcPtr::new((Dice::US0::US0_4, 4_i32)),
+                        ])))),
+                    )
+            } {
+                let v43: () = {
+                    v3_1();
+                    ()
+                };
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(0_i8, v0_1, v1_1),
+                );
+                let v86: () = {
+                    v3_1();
+                    ()
+                };
+                let patternInput_2: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
+            }
+        }
+        pub fn method62(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+            match v0_1.as_ref() {
+                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    if v3_1 > 1_u8 {
+                        let v7: i64 = (v3_1 - 1_u8) as i64;
+                        let v10: () = {
+                            Dice::closure117(v1_1, v3_1, v7, ());
+                            ()
+                        };
+                        Dice::method63(v4_1.clone(), v1_1 + v7)
+                    } else {
+                        let v131: () = {
+                            Dice::closure119(v1_1, v3_1, ());
+                            ()
+                        };
+                        Dice::method63(v4_1, v1_1)
+                    }
+                }
+            }
+        }
+        pub fn closure120(v0_1: i64, v1_1: u8, unitVar: ()) {
+            fn v3_1() {
+                Dice::closure5((), ());
+            }
+            let v4_1: () = {
+                v3_1();
+                ()
+            };
+            let patternInput: (
+                LrcPtr<Dice::Mut0>,
+                LrcPtr<Dice::Mut1>,
+                LrcPtr<Dice::Mut2>,
+                LrcPtr<Dice::Mut3>,
+                LrcPtr<Dice::Mut4>,
+                Option<i64>,
+            ) = getValue(Dice::TraceState::trace_state().get().clone());
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
+                false
+            } else {
+                1_i32
+                    >= find(
+                        v36,
+                        ofSeq(ofList(ofArray(new_array(&[
+                            LrcPtr::new((Dice::US0::US0_0, 0_i32)),
+                            LrcPtr::new((Dice::US0::US0_1, 1_i32)),
+                            LrcPtr::new((Dice::US0::US0_2, 2_i32)),
+                            LrcPtr::new((Dice::US0::US0_3, 3_i32)),
+                            LrcPtr::new((Dice::US0::US0_4, 4_i32)),
+                        ])))),
+                    )
+            } {
+                let v43: () = {
+                    v3_1();
+                    ()
+                };
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(1_i8, v0_1, v1_1),
+                );
+                let v86: () = {
+                    v3_1();
+                    ()
+                };
+                let patternInput_2: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
+            }
+        }
+        pub fn method61(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+            match v0_1.as_ref() {
+                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
+                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(_, x) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    let v3_1: u8 = match v0_1.as_ref() {
+                        Dice::UH1::UH1_1(x, _) => x.clone(),
+                        _ => unreachable!(),
+                    };
+                    if v3_1 > 1_u8 {
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 6_i64;
+                        let v11: () = {
+                            Dice::closure116(v1_1, v3_1, v8, ());
+                            ()
+                        };
+                        Dice::method62(v4_1.clone(), v1_1 + v8)
+                    } else {
+                        let v132: () = {
+                            Dice::closure120(v1_1, v3_1, ());
+                            ()
+                        };
+                        Dice::method62(v4_1, v1_1)
+                    }
+                }
+            }
         }
         pub fn closure121(v0_1: i64, v1_1: u8, unitVar: ()) {
             fn v3_1() {
@@ -9338,26 +5178,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -9367,11 +5194,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(2_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -9383,171 +5233,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 0_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method48(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method60(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -9560,18 +5257,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v7: i64 = (v3_1 - 1_u8) as i64;
-                        let v10: () = {
-                            Dice::closure119(v1_1, v3_1, v7, ());
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 36_i64;
+                        let v11: () = {
+                            Dice::closure115(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method49(v4_1.clone(), v1_1 + v7)
+                        Dice::method61(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v911: () = {
+                        let v132: () = {
                             Dice::closure121(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method49(v4_1, v1_1)
+                        Dice::method61(v4_1, v1_1)
                     }
                 }
             }
@@ -9592,26 +5289,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -9621,11 +5305,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(3_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -9637,171 +5344,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 1_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method47(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method59(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -9814,18 +5368,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 6_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 216_i64;
                         let v11: () = {
-                            Dice::closure118(v1_1, v3_1, v8, ());
+                            Dice::closure114(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method48(v4_1.clone(), v1_1 + v8)
+                        Dice::method60(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure122(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method48(v4_1, v1_1)
+                        Dice::method60(v4_1, v1_1)
                     }
                 }
             }
@@ -9846,26 +5400,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -9875,11 +5416,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(4_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -9891,171 +5455,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 2_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method46(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method58(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -10068,18 +5479,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 36_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 1296_i64;
                         let v11: () = {
-                            Dice::closure117(v1_1, v3_1, v8, ());
+                            Dice::closure113(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method47(v4_1.clone(), v1_1 + v8)
+                        Dice::method59(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure123(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method47(v4_1, v1_1)
+                        Dice::method59(v4_1, v1_1)
                     }
                 }
             }
@@ -10100,26 +5511,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -10129,11 +5527,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(5_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -10145,171 +5566,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 3_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method45(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method57(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -10322,18 +5590,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 216_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 7776_i64;
                         let v11: () = {
-                            Dice::closure116(v1_1, v3_1, v8, ());
+                            Dice::closure112(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method46(v4_1.clone(), v1_1 + v8)
+                        Dice::method58(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure124(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method46(v4_1, v1_1)
+                        Dice::method58(v4_1, v1_1)
                     }
                 }
             }
@@ -10354,26 +5622,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -10383,11 +5638,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(6_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -10399,171 +5677,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 4_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method44(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method56(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -10576,18 +5701,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 1296_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 46656_i64;
                         let v11: () = {
-                            Dice::closure115(v1_1, v3_1, v8, ());
+                            Dice::closure111(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method45(v4_1.clone(), v1_1 + v8)
+                        Dice::method57(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure125(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method45(v4_1, v1_1)
+                        Dice::method57(v4_1, v1_1)
                     }
                 }
             }
@@ -10608,26 +5733,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -10637,11 +5749,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(7_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -10653,171 +5788,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 5_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method43(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method55(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -10830,18 +5812,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 7776_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 279936_i64;
                         let v11: () = {
-                            Dice::closure114(v1_1, v3_1, v8, ());
+                            Dice::closure110(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method44(v4_1.clone(), v1_1 + v8)
+                        Dice::method56(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure126(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method44(v4_1, v1_1)
+                        Dice::method56(v4_1, v1_1)
                     }
                 }
             }
@@ -10862,26 +5844,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -10891,11 +5860,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(8_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -10907,171 +5899,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 6_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method42(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method54(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -11084,18 +5923,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 46656_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 1679616_i64;
                         let v11: () = {
-                            Dice::closure113(v1_1, v3_1, v8, ());
+                            Dice::closure109(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method43(v4_1.clone(), v1_1 + v8)
+                        Dice::method55(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure127(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method43(v4_1, v1_1)
+                        Dice::method55(v4_1, v1_1)
                     }
                 }
             }
@@ -11116,26 +5955,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -11145,11 +5971,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(9_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -11161,171 +6010,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 7_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method41(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method53(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -11338,18 +6034,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 279936_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 10077696_i64;
                         let v11: () = {
-                            Dice::closure112(v1_1, v3_1, v8, ());
+                            Dice::closure108(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method42(v4_1.clone(), v1_1 + v8)
+                        Dice::method54(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure128(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method42(v4_1, v1_1)
+                        Dice::method54(v4_1, v1_1)
                     }
                 }
             }
@@ -11370,26 +6066,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -11399,11 +6082,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(10_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -11415,171 +6121,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 8_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method40(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method52(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -11592,18 +6145,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 1679616_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 60466176_i64;
                         let v11: () = {
-                            Dice::closure111(v1_1, v3_1, v8, ());
+                            Dice::closure107(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method41(v4_1.clone(), v1_1 + v8)
+                        Dice::method53(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure129(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method41(v4_1, v1_1)
+                        Dice::method53(v4_1, v1_1)
                     }
                 }
             }
@@ -11624,26 +6177,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -11653,11 +6193,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(11_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -11669,171 +6232,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 9_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method39(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method51(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -11846,18 +6256,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 10077696_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 362797056_i64;
                         let v11: () = {
-                            Dice::closure110(v1_1, v3_1, v8, ());
+                            Dice::closure106(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method40(v4_1.clone(), v1_1 + v8)
+                        Dice::method52(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure130(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method40(v4_1, v1_1)
+                        Dice::method52(v4_1, v1_1)
                     }
                 }
             }
@@ -11878,26 +6288,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -11907,11 +6304,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(12_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -11923,171 +6343,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 10_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method38(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method50(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -12100,18 +6367,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 60466176_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 2176782336_i64;
                         let v11: () = {
-                            Dice::closure109(v1_1, v3_1, v8, ());
+                            Dice::closure105(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method39(v4_1.clone(), v1_1 + v8)
+                        Dice::method51(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure131(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method39(v4_1, v1_1)
+                        Dice::method51(v4_1, v1_1)
                     }
                 }
             }
@@ -12132,26 +6399,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -12161,11 +6415,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(13_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -12177,171 +6454,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 11_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method37(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method49(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -12354,18 +6478,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 362797056_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 13060694016_i64;
                         let v11: () = {
-                            Dice::closure108(v1_1, v3_1, v8, ());
+                            Dice::closure104(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method38(v4_1.clone(), v1_1 + v8)
+                        Dice::method50(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure132(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method38(v4_1, v1_1)
+                        Dice::method50(v4_1, v1_1)
                     }
                 }
             }
@@ -12386,26 +6510,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -12415,11 +6526,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(14_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -12431,171 +6565,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 12_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method36(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method48(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -12608,18 +6589,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 2176782336_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 78364164096_i64;
                         let v11: () = {
-                            Dice::closure107(v1_1, v3_1, v8, ());
+                            Dice::closure103(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method37(v4_1.clone(), v1_1 + v8)
+                        Dice::method49(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure133(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method37(v4_1, v1_1)
+                        Dice::method49(v4_1, v1_1)
                     }
                 }
             }
@@ -12640,26 +6621,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -12669,11 +6637,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(15_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -12685,171 +6676,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 13_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method35(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method47(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -12862,18 +6700,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 13060694016_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 470184984576_i64;
                         let v11: () = {
-                            Dice::closure106(v1_1, v3_1, v8, ());
+                            Dice::closure102(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method36(v4_1.clone(), v1_1 + v8)
+                        Dice::method48(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure134(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method36(v4_1, v1_1)
+                        Dice::method48(v4_1, v1_1)
                     }
                 }
             }
@@ -12894,26 +6732,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -12923,11 +6748,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(16_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -12939,171 +6787,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 14_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method34(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method46(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -13116,18 +6811,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 78364164096_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 2821109907456_i64;
                         let v11: () = {
-                            Dice::closure105(v1_1, v3_1, v8, ());
+                            Dice::closure101(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method35(v4_1.clone(), v1_1 + v8)
+                        Dice::method47(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure135(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method35(v4_1, v1_1)
+                        Dice::method47(v4_1, v1_1)
                     }
                 }
             }
@@ -13148,26 +6843,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -13177,11 +6859,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(17_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -13193,171 +6898,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 15_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method33(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method45(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -13370,18 +6922,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 470184984576_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 16926659444736_i64;
                         let v11: () = {
-                            Dice::closure104(v1_1, v3_1, v8, ());
+                            Dice::closure100(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method34(v4_1.clone(), v1_1 + v8)
+                        Dice::method46(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure136(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method34(v4_1, v1_1)
+                        Dice::method46(v4_1, v1_1)
                     }
                 }
             }
@@ -13402,26 +6954,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -13431,11 +6970,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(18_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -13447,171 +7009,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 16_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method32(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method44(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -13624,18 +7033,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 2821109907456_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 101559956668416_i64;
                         let v11: () = {
-                            Dice::closure103(v1_1, v3_1, v8, ());
+                            Dice::closure99(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method33(v4_1.clone(), v1_1 + v8)
+                        Dice::method45(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure137(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method33(v4_1, v1_1)
+                        Dice::method45(v4_1, v1_1)
                     }
                 }
             }
@@ -13656,26 +7065,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -13685,11 +7081,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(19_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -13701,171 +7120,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 17_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method31(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method43(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -13878,18 +7144,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 16926659444736_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 609359740010496_i64;
                         let v11: () = {
-                            Dice::closure102(v1_1, v3_1, v8, ());
+                            Dice::closure98(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method32(v4_1.clone(), v1_1 + v8)
+                        Dice::method44(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure138(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method32(v4_1, v1_1)
+                        Dice::method44(v4_1, v1_1)
                     }
                 }
             }
@@ -13910,26 +7176,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -13939,11 +7192,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(20_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -13955,171 +7231,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 18_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method30(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method42(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -14132,18 +7255,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 101559956668416_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 3656158440062976_i64;
                         let v11: () = {
-                            Dice::closure101(v1_1, v3_1, v8, ());
+                            Dice::closure97(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method31(v4_1.clone(), v1_1 + v8)
+                        Dice::method43(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure139(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method31(v4_1, v1_1)
+                        Dice::method43(v4_1, v1_1)
                     }
                 }
             }
@@ -14164,26 +7287,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -14193,11 +7303,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(21_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -14209,171 +7342,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 19_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method29(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method41(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -14386,18 +7366,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 609359740010496_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 21936950640377856_i64;
                         let v11: () = {
-                            Dice::closure100(v1_1, v3_1, v8, ());
+                            Dice::closure96(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method30(v4_1.clone(), v1_1 + v8)
+                        Dice::method42(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure140(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method30(v4_1, v1_1)
+                        Dice::method42(v4_1, v1_1)
                     }
                 }
             }
@@ -14418,26 +7398,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -14447,11 +7414,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(22_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -14463,171 +7453,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 20_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method28(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method40(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -14640,18 +7477,18 @@ mod module_1d76f080 {
                         _ => unreachable!(),
                     };
                     if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 3656158440062976_i64;
+                        let v8: i64 = (v3_1 - 1_u8) as i64 * 131621703842267136_i64;
                         let v11: () = {
-                            Dice::closure99(v1_1, v3_1, v8, ());
+                            Dice::closure95(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method29(v4_1.clone(), v1_1 + v8)
+                        Dice::method41(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
+                        let v132: () = {
                             Dice::closure141(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method29(v4_1, v1_1)
+                        Dice::method41(v4_1, v1_1)
                     }
                 }
             }
@@ -14672,26 +7509,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v36: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v69,
+                        v36,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -14701,11 +7525,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v43: () = {
+                    v3_1();
                     ()
                 };
-                let v81: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v57: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v84: string = Dice::method15(
+                    Dice::method7(
+                        v57.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.accumulate_dice_rolls"),
+                    v57.l0.get().clone(),
+                    Dice::method65(23_i8, v0_1, v1_1),
+                );
+                let v86: () = {
                     v3_1();
                     ()
                 };
@@ -14717,679 +7564,18 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 21_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
+                Dice::method16(
+                    v84,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn method27(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 21936950640377856_i64;
-                        let v11: () = {
-                            Dice::closure98(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method28(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v912: () = {
-                            Dice::closure142(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method28(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn closure143(v0_1: i64, v1_1: u8, unitVar: ()) {
-            fn v3_1() {
-                Dice::closure5((), ());
-            }
-            let v4_1: () = {
-                v3_1();
-                ()
-            };
-            let patternInput: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
-                false
-            } else {
-                1_i32
-                    >= find(
-                        v69,
-                        ofSeq(ofList(ofArray(new_array(&[
-                            LrcPtr::new((Dice::US0::US0_0, 0_i32)),
-                            LrcPtr::new((Dice::US0::US0_1, 1_i32)),
-                            LrcPtr::new((Dice::US0::US0_2, 2_i32)),
-                            LrcPtr::new((Dice::US0::US0_3, 3_i32)),
-                            LrcPtr::new((Dice::US0::US0_4, 4_i32)),
-                        ])))),
-                    )
-            } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
-                    ()
-                };
-                let v81: () = {
-                    v3_1();
-                    ()
-                };
-                let patternInput_2: (
-                    LrcPtr<Dice::Mut0>,
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut2>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 22_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
-            }
-        }
-        pub fn method26(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 131621703842267136_i64;
-                        let v11: () = {
-                            Dice::closure97(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method27(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v912: () = {
-                            Dice::closure143(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method27(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn closure144(v0_1: i64, v1_1: u8, unitVar: ()) {
-            fn v3_1() {
-                Dice::closure5((), ());
-            }
-            let v4_1: () = {
-                v3_1();
-                ()
-            };
-            let patternInput: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v21: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v37: () = {
-                v3_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v69: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
-                false
-            } else {
-                1_i32
-                    >= find(
-                        v69,
-                        ofSeq(ofList(ofArray(new_array(&[
-                            LrcPtr::new((Dice::US0::US0_0, 0_i32)),
-                            LrcPtr::new((Dice::US0::US0_1, 1_i32)),
-                            LrcPtr::new((Dice::US0::US0_2, 2_i32)),
-                            LrcPtr::new((Dice::US0::US0_3, 3_i32)),
-                            LrcPtr::new((Dice::US0::US0_4, 4_i32)),
-                        ])))),
-                    )
-            } {
-                let v77: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
-                    ()
-                };
-                let v81: () = {
-                    v3_1();
-                    ()
-                };
-                let patternInput_2: (
-                    LrcPtr<Dice::Mut0>,
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut2>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v251: u64 = near_sdk::env::block_timestamp();
-                let _v252: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v257: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v252 = _v252.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v252.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v272: Dice::US3 = defaultValue(Dice::US3::US3_1, _v252.get().clone());
-                let v282: u64 = match &v272 {
-                    Dice::US3::US3_0(v272_0_0) => {
-                        v251 - match &v272 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v251,
-                } / 1000000000_u64;
-                let v283: u64 = v282 % 60_u64;
-                let v285: u64 = v282 / 60_u64 % 60_u64;
-                let v287: u64 = v282 / 3600_u64 % 24_u64;
-                let v289: std::string::String = format!("{:02}:{:02}:{:02}", v287, v285, v283);
-                let v291: string = fable_library_rust::String_::fromString(v289);
-                let v571: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v609: &str = inline_colorization::color_bright_blue;
-                let v611: &str = &*v571;
-                let v613: &str = inline_colorization::color_reset;
-                let v615: string = string("format!(\"{v609}{v611}{v613}\")");
-                let v616: std::string::String = format!("{v609}{v611}{v613}");
-                let v618: string = fable_library_rust::String_::fromString(v616);
-                let v637: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v639: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v646: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v655: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("power")), ());
-                    ()
-                };
-                let v664: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v672: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", 23_i8), ());
-                    ()
-                };
-                let v681: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v690: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("acc")), ());
-                    ()
-                };
-                let v698: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v706: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v714: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("; ")), ());
-                    ()
-                };
-                let v723: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string("roll")), ());
-                    ()
-                };
-                let v731: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v739: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", v1_1), ());
-                    ()
-                };
-                let v748: () = {
-                    Dice::closure19(v639.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v810: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v291,
-                            v618,
-                            v637,
-                            string("dice.accumulate_dice_rolls"),
-                            v639.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v824: string = if v21.l0.get().clone() == string("") {
-                    v810.clone()
-                } else {
-                    if v810.clone() == string("") {
-                        v21.l0.get().clone()
-                    } else {
-                        append(append(v21.l0.get().clone(), string("\n")), v810.clone())
-                    }
-                };
-                let v826: &str = &*v824.clone();
-                let v828 = v826.chars();
-                let v830 = v828;
-                let v832: Vec<char> = v830.collect::<Vec<_>>();
-                let v834: Vec<Vec<char>> = v832
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v836: bool = true;
-                let _vec_map: Vec<_> = v834
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v838: Vec<char> = x;
-                        let v840: std::string::String = String::from_iter(v838);
-                        let v842: bool = true;
-                        v840
-                    })
-                    .collect::<Vec<_>>();
-                let v844: Vec<std::string::String> = _vec_map;
-                if if v810.clone() != string("") {
-                    v844.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v21.l0.set(v824);
-                    ()
-                } else {
-                    v21.l0.set(string(""));
-                    {
-                        let v856: bool = true;
-                        v844.into_iter().for_each(|x| {
-                            //;
-                            let v858: std::string::String = x;
-                            near_sdk::log!("{}", v858);
-                            {
-                                let v861: bool = true;
-                                let v863: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v810)
-            }
-        }
-        pub fn method25(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method38(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
             match v0_1.as_ref() {
                 Dice::UH1::UH1_0 => Dice::US8::US8_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
@@ -15404,33 +7590,33 @@ mod module_1d76f080 {
                     if v3_1 > 1_u8 {
                         let v8: i64 = (v3_1 - 1_u8) as i64 * 789730223053602816_i64;
                         let v11: () = {
-                            Dice::closure96(v1_1, v3_1, v8, ());
+                            Dice::closure94(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method26(v4_1.clone(), v1_1 + v8)
+                        Dice::method40(v4_1.clone(), v1_1 + v8)
                     } else {
-                        let v912: () = {
-                            Dice::closure144(v1_1, v3_1, ());
+                        let v132: () = {
+                            Dice::closure142(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method26(v4_1, v1_1)
+                        Dice::method40(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method23(v0_1: LrcPtr<Dice::UH1>, v1_1: i8) -> i64 {
+        pub fn method36(v0_1: LrcPtr<Dice::UH1>, v1_1: i8) -> i64 {
             let v0_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v0_1.clone());
             let v1_1: MutCell<i8> = MutCell::new(v1_1);
-            '_method23: loop {
-                break '_method23 (if v1_1.get().clone() < 24_i8 {
+            '_method36: loop {
+                break '_method36 (if v1_1.get().clone() < 24_i8 {
                     let v0_1_temp: LrcPtr<Dice::UH1> =
-                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(), v0_1.get().clone()));
+                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(), v0_1.get().clone()));
                     let v1_1_temp: i8 = v1_1.get().clone() + 1_i8;
                     v0_1.set(v0_1_temp);
                     v1_1.set(v1_1_temp);
-                    continue '_method23;
+                    continue '_method36;
                 } else {
-                    let v8: Dice::US8 = Dice::method25(v0_1.get().clone(), 0_i64);
+                    let v8: Dice::US8 = Dice::method38(v0_1.get().clone(), 0_i64);
                     if let Dice::US8::US8_0(v8_0_0, v8_0_1) = &v8 {
                         let v9: i64 = match &v8 {
                             Dice::US8::US8_0(x, _) => x.clone(),
@@ -15440,70 +7626,96 @@ mod module_1d76f080 {
                             v9
                         } else {
                             let v0_1_temp: LrcPtr<Dice::UH1> =
-                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
+                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0)))))))))))))))))))))))))))))))))))))))))))))));
                             let v1_1_temp: i8 = 23_i8;
                             v0_1.set(v0_1_temp);
                             v1_1.set(v1_1_temp);
-                            continue '_method23;
+                            continue '_method36;
                         }
                     } else {
                         let v0_1_temp: LrcPtr<Dice::UH1> =
-                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method24(),
+                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method37(),
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0)))))))))))))))))))))))))))))))))))))))))))))));
                         let v1_1_temp: i8 = 23_i8;
                         v0_1.set(v0_1_temp);
                         v1_1.set(v1_1_temp);
-                        continue '_method23;
+                        continue '_method36;
                     }
                 });
             }
         }
-        pub fn closure145(v0_1: i64, unitVar: ()) {
+        pub fn method66(v0_1: i64) -> string {
+            let v2_1: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
+                l0: MutCell::new(Dice::method14()),
+            });
+            let v9: () = {
+                Dice::closure17(v2_1.clone(), sprintf!("{}", string("{ ")), ());
+                ()
+            };
+            let v18: () = {
+                Dice::closure17(v2_1.clone(), sprintf!("{}", string("result")), ());
+                ()
+            };
+            let v27: () = {
+                Dice::closure17(v2_1.clone(), sprintf!("{}", string(" = ")), ());
+                ()
+            };
+            let v35: () = {
+                Dice::closure17(v2_1.clone(), sprintf!("{}", v0_1), ());
+                ()
+            };
+            let v44: () = {
+                Dice::closure17(v2_1.clone(), sprintf!("{}", string(" }")), ());
+                ()
+            };
+            v2_1.l0.get().clone()
+        }
+        pub fn closure143(v0_1: i64, unitVar: ()) {
             fn v2_1() {
                 Dice::closure5((), ());
             }
@@ -15519,26 +7731,13 @@ mod module_1d76f080 {
                 LrcPtr<Dice::Mut4>,
                 Option<i64>,
             ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v20: LrcPtr<Dice::Mut3> = patternInput.3.clone();
-            let v36: () = {
-                v2_1();
-                ()
-            };
-            let patternInput_1: (
-                LrcPtr<Dice::Mut0>,
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut2>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v68: Dice::US0 = (patternInput_1.4.clone()).l0.get().clone();
-            if if (patternInput_1.2.clone()).l0.get().clone() == false {
+            let v35: Dice::US0 = (patternInput.4.clone()).l0.get().clone();
+            if if (patternInput.2.clone()).l0.get().clone() == false {
                 false
             } else {
                 1_i32
                     >= find(
-                        v68,
+                        v35,
                         ofSeq(ofList(ofArray(new_array(&[
                             LrcPtr::new((Dice::US0::US0_0, 0_i32)),
                             LrcPtr::new((Dice::US0::US0_1, 1_i32)),
@@ -15548,11 +7747,34 @@ mod module_1d76f080 {
                         ])))),
                     )
             } {
-                let v76: () = {
-                    Dice::closure9(patternInput.0.clone(), ());
+                let v42: () = {
+                    v2_1();
                     ()
                 };
-                let v80: () = {
+                let patternInput_1: (
+                    LrcPtr<Dice::Mut0>,
+                    LrcPtr<Dice::Mut1>,
+                    LrcPtr<Dice::Mut2>,
+                    LrcPtr<Dice::Mut3>,
+                    LrcPtr<Dice::Mut4>,
+                    Option<i64>,
+                ) = getValue(Dice::TraceState::trace_state().get().clone());
+                let v56: LrcPtr<Dice::Mut0> = patternInput_1.0.clone();
+                let v82: string = Dice::method15(
+                    Dice::method7(
+                        v56.clone(),
+                        patternInput_1.1.clone(),
+                        patternInput_1.2.clone(),
+                        patternInput_1.3.clone(),
+                        patternInput_1.4.clone(),
+                        patternInput_1.5.clone(),
+                    ),
+                    Dice::method11(),
+                    string("dice.main"),
+                    v56.l0.get().clone(),
+                    Dice::method66(v0_1),
+                );
+                let v84: () = {
                     v2_1();
                     ()
                 };
@@ -15564,145 +7786,24 @@ mod module_1d76f080 {
                     LrcPtr<Dice::Mut4>,
                     Option<i64>,
                 ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v250: u64 = near_sdk::env::block_timestamp();
-                let _v251: LrcPtr<MutCell<Option<Dice::US3>>> = refCell(None::<Dice::US3>);
-                let v256: () = {
-                    Dice::closure11(
-                        patternInput_2.5.clone(),
-                        Func1::new({
-                            let _v251 = _v251.clone();
-                            move |v: Option<Dice::US3>| Dice::closure10(_v251.clone(), v)
-                        }),
-                        (),
-                    );
-                    ()
-                };
-                let v271: Dice::US3 = defaultValue(Dice::US3::US3_1, _v251.get().clone());
-                let v281: u64 = match &v271 {
-                    Dice::US3::US3_0(v271_0_0) => {
-                        v250 - match &v271 {
-                            Dice::US3::US3_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        } as u64
-                    }
-                    _ => v250,
-                } / 1000000000_u64;
-                let v282: u64 = v281 % 60_u64;
-                let v284: u64 = v281 / 60_u64 % 60_u64;
-                let v286: u64 = v281 / 3600_u64 % 24_u64;
-                let v288: std::string::String = format!("{:02}:{:02}:{:02}", v286, v284, v282);
-                let v290: string = fable_library_rust::String_::fromString(v288);
-                let v570: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
-                let v608: &str = inline_colorization::color_bright_blue;
-                let v610: &str = &*v570;
-                let v612: &str = inline_colorization::color_reset;
-                let v614: string = string("format!(\"{v608}{v610}{v612}\")");
-                let v615: std::string::String = format!("{v608}{v610}{v612}");
-                let v617: string = fable_library_rust::String_::fromString(v615);
-                let v636: i64 = (patternInput_2.0.clone()).l0.get().clone();
-                let v638: LrcPtr<Dice::Mut3> = LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Dice::method9()),
-                });
-                let v645: () = {
-                    Dice::closure19(v638.clone(), sprintf!("{}", string("{ ")), ());
-                    ()
-                };
-                let v654: () = {
-                    Dice::closure19(v638.clone(), sprintf!("{}", string("result")), ());
-                    ()
-                };
-                let v663: () = {
-                    Dice::closure19(v638.clone(), sprintf!("{}", string(" = ")), ());
-                    ()
-                };
-                let v671: () = {
-                    Dice::closure19(v638.clone(), sprintf!("{}", v0_1), ());
-                    ()
-                };
-                let v680: () = {
-                    Dice::closure19(v638.clone(), sprintf!("{}", string(" }")), ());
-                    ()
-                };
-                let v742: string = trimEndChars(
-                    trimStartChars(
-                        sprintf!(
-                            "{} {} #{} {} / {}",
-                            v290,
-                            v617,
-                            v636,
-                            string("dice.main"),
-                            v638.l0.get().clone()
-                        ),
-                        toArray(empty::<char>()),
-                    ),
-                    toArray(ofArray(new_array(&[' ', '/']))),
-                );
-                let v756: string = if v20.l0.get().clone() == string("") {
-                    v742.clone()
-                } else {
-                    if v742.clone() == string("") {
-                        v20.l0.get().clone()
-                    } else {
-                        append(append(v20.l0.get().clone(), string("\n")), v742.clone())
-                    }
-                };
-                let v758: &str = &*v756.clone();
-                let v760 = v758.chars();
-                let v762 = v760;
-                let v764: Vec<char> = v762.collect::<Vec<_>>();
-                let v766: Vec<Vec<char>> = v764
-                    .chunks(15000)
-                    .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
-                    .collect::<Vec<_>>();
-                let v768: bool = true;
-                let _vec_map: Vec<_> = v766
-                    .into_iter()
-                    .map(|x| {
-                        //;
-                        let v770: Vec<char> = x;
-                        let v772: std::string::String = String::from_iter(v770);
-                        let v774: bool = true;
-                        v772
-                    })
-                    .collect::<Vec<_>>();
-                let v776: Vec<std::string::String> = _vec_map;
-                if if v742.clone() != string("") {
-                    v776.clone().len() as i32 <= 1_i32
-                } else {
-                    false
-                } {
-                    v20.l0.set(v756);
-                    ()
-                } else {
-                    v20.l0.set(string(""));
-                    {
-                        let v788: bool = true;
-                        v776.into_iter().for_each(|x| {
-                            //;
-                            let v790: std::string::String = x;
-                            near_sdk::log!("{}", v790);
-                            {
-                                let v793: bool = true;
-                                let v795: bool = true;
-                            }
-                        });
-                        {
-                            //;
-                            ()
-                        }
-                    }
-                }
-                ();
-                ((patternInput.1.clone()).l0.get().clone())(v742)
+                Dice::method16(
+                    v82,
+                    patternInput_2.0.clone(),
+                    patternInput_2.1.clone(),
+                    patternInput_2.2.clone(),
+                    patternInput_2.3.clone(),
+                    patternInput_2.4.clone(),
+                    patternInput_2.5.clone(),
+                )
             }
         }
-        pub fn closure94(unitVar: (), v0_1: Array<string>) -> i32 {
+        pub fn closure92(unitVar: (), v0_1: Array<string>) -> i32 {
             let v3_1: () = {
-                Dice::closure95((), ());
+                Dice::closure93((), ());
                 ()
             };
-            let v872: () = {
-                Dice::closure145(Dice::method23(LrcPtr::new(Dice::UH1::UH1_0), 0_i8), ());
+            let v127: () = {
+                Dice::closure143(Dice::method36(LrcPtr::new(Dice::UH1::UH1_0), 0_i8), ());
                 ()
             };
             0_i32
@@ -15726,7 +7827,7 @@ mod module_1d76f080 {
         }
         pub fn v2() -> Func1<Func0<u8>, Func1<bool, Func1<u64, u64>>> {
             static v2: OnceInit<Func1<Func0<u8>, Func1<bool, Func1<u64, u64>>>> = OnceInit::new();
-            v2.get_or_init(|| Func1::new(move |v: Func0<u8>| Dice::closure21((), v)))
+            v2.get_or_init(|| Func1::new(move |v: Func0<u8>| Dice::closure19((), v)))
                 .clone()
         }
         pub fn roll_progressively(x: Func0<u8>) -> Func1<bool, Func1<u64, u64>> {
@@ -15735,7 +7836,7 @@ mod module_1d76f080 {
         pub fn v3() -> Func1<u64, Func1<LrcPtr<Dice::UH1>, Option<u64>>> {
             static v3: OnceInit<Func1<u64, Func1<LrcPtr<Dice::UH1>, Option<u64>>>> =
                 OnceInit::new();
-            v3.get_or_init(|| Func1::new(move |v: u64| Dice::closure92((), v)))
+            v3.get_or_init(|| Func1::new(move |v: u64| Dice::closure90((), v)))
                 .clone()
         }
         pub fn roll_within_bounds(x: u64) -> Func1<LrcPtr<Dice::UH1>, Option<u64>> {
@@ -15743,7 +7844,7 @@ mod module_1d76f080 {
         }
         pub fn v4() -> Func1<Array<string>, i32> {
             static v4: OnceInit<Func1<Array<string>, i32>> = OnceInit::new();
-            v4.get_or_init(|| Func1::new(move |v: Array<string>| Dice::closure94((), v)))
+            v4.get_or_init(|| Func1::new(move |v: Array<string>| Dice::closure92((), v)))
                 .clone()
         }
         pub fn main(args: Array<string>) -> i32 {

@@ -72,7 +72,7 @@ type state =
 /// ### new
 inl new () : state =
     {
-        version = 1
+        version = 2
         seeds = "seeds" |> sm'.byte_slice |> near.new_vector
     }
 
@@ -166,7 +166,7 @@ inl generate_random_number
     !\($'"let result = dice_contract_lib::Dice::roll_progressively //"') : ()
     !\($'"    (sequential_roll)(true)(max); //"') : ()
 
-    trace Debug (fun () => "") id
+    trace Debug (fun () => "") (join id)
 
     !\($'"result as u64"')
 
@@ -177,9 +177,8 @@ inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
 
     // !\\(rolls, $'"let rolls = Util::vec_u8_to_list($0); //"') : ()
 
-
-    inl rolls = rolls |> am'.from_vec |> fun (x : _ int _) => x |> am'.to_list' |> listm'.unbox
-    inl result = rolls |> lib.dice.roll_within_bounds max
+    inl rolls_list = rolls |> am'.from_vec |> fun (x : _ int _) => x |> am'.to_list' |> listm'.unbox
+    inl result = rolls_list |> lib.dice.roll_within_bounds max
     // !\($'"let result = dice_contract_lib::Dice::roll_within_bounds(!max)(!rolls.into()); //"') : ()
 
     inl result = result |> optionm'.box
@@ -188,7 +187,7 @@ inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
         fun () => "dice_contract.roll_within_bounds"
         fun () => { max rolls = rolls |> sm'.format_debug; result }
 
-    trace Debug (fun () => "") id
+    trace Debug (fun () => "") (join id)
 
     // !\($'"result"')
 
@@ -229,7 +228,7 @@ inl main () =
 
     !\($'"impl From<OldState> for State { //"') : ()
     !\($'"    fn from(old_state: OldState) -> Self { //"') : ()
-    !\($'"        Self((old_state.version, old_state.seeds)) //"') : ()
+    !\($'"        Self((old_state.version + 1, old_state.seeds)) //"') : ()
     !\($'"    } //"') : ()
     !\($'"} //"') : ()
 
@@ -256,7 +255,7 @@ inl main () =
         !\($'"pub fn contribute_seed(&mut self, seed: Vec<u8>) { //"') : ()
         inl seeds : rust.ref (rust.mut' (near.vector u8)) = !\($'$"&mut self.0.1"')
         inl seed : am'.vec u8 = !\($'$"seed"')
-        
+
         seed |> contribute_seed seeds
 
 
@@ -284,7 +283,7 @@ inl main () =
 
         inl seeds : rust.ref (near.vector u8) = !\($'$"&self.0.1"')
         inl seeds : am'.vec u8 = !\($'$"!seeds.iter().map(|x| *x).collect::<Vec<u8>>()"')
-        
+
         inl result = generate_random_number seeds key proof max
 
         !\($'"!result //"') : ()
@@ -322,7 +321,7 @@ inl main () =
         !\($'") -> Option<u64> { //"') : ()
         !\($'"    self.roll_within_bounds(max, rolls) //"') : ()
         !\($'"} //"') : ()
-        
+
         1
 
 
