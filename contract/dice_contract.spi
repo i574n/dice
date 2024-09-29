@@ -59,29 +59,12 @@ type state =
         seeds : near.vector u8
     }
 
-/// //// test
-/// ///! rust -c
-/// 
-/// ()
-
-/// //// test
-/// ///! rust -c
-/// 
-/// trace Verbose (fun () => "") id
-
 /// ### new
 inl new () : state =
     {
         version = 2
         seeds = "seeds" |> sm'.byte_slice |> near.new_vector
     }
-
-/// //// test
-/// ///! rust -c
-/// 
-/// inl state = new ()
-/// trace Verbose (fun () => "dice_contract") fun () => { state = state |> sm'.format_debug }
-/// trace Verbose (fun () => "") id
 
 /// ### max_seeds
 inl max_seeds () : unativeint =

@@ -86,14 +86,14 @@ type state =
         seeds : near.vector u8
     }
 
-#!markdown
+#!spiral
 
 //// test
 ///! rust -c
 
 ()
 
-#!markdown
+#!spiral
 
 //// test
 ///! rust -c
@@ -112,7 +112,7 @@ inl new () : state =
         seeds = "seeds" |> sm'.byte_slice |> near.new_vector
     }
 
-#!markdown
+#!spiral
 
 //// test
 ///! rust -c
@@ -243,7 +243,7 @@ inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
 
     trace Debug
         fun () => "dice_contract.roll_within_bounds"
-        fun () => { max rolls = rolls |> sm'.format_debug; result }
+        fun () => { max rolls = rolls |> sm'.format_debug; result = result |> sm'.format_debug }
 
     trace Debug (fun () => "") (join id)
 
@@ -257,8 +257,6 @@ inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
 ///! rust -c
 
 inl rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.to_vec
-
-// util ()
 
 rolls
 |> roll_within_bounds 2000

@@ -24,7 +24,7 @@ class IOsEnviron(Protocol):
         ...
 
 
-def _expr318() -> TypeInfo:
+def _expr323() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -39,9 +39,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr318
+UH0_reflection = _expr323
 
-def _expr319() -> TypeInfo:
+def _expr324() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[], [("Item1", uint8_type), ("Item2", UH1_reflection())]])
 
 
@@ -56,9 +56,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr319
+UH1_reflection = _expr324
 
-def _expr320() -> TypeInfo:
+def _expr325() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[], [], [], [], []])
 
 
@@ -74,9 +74,9 @@ class US0(Union):
         return ["US0_0", "US0_1", "US0_2", "US0_3", "US0_4"]
 
 
-US0_reflection = _expr320
+US0_reflection = _expr325
 
-def _expr321() -> TypeInfo:
+def _expr326() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", int64_type)])
 
 
@@ -84,9 +84,9 @@ def _expr321() -> TypeInfo:
 class Mut0(Record):
     l0: int64
 
-Mut0_reflection = _expr321
+Mut0_reflection = _expr326
 
-def _expr322() -> TypeInfo:
+def _expr327() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", lambda_type(string_type, unit_type))])
 
 
@@ -94,9 +94,9 @@ def _expr322() -> TypeInfo:
 class Mut1(Record):
     l0: Callable[[str], None]
 
-Mut1_reflection = _expr322
+Mut1_reflection = _expr327
 
-def _expr323() -> TypeInfo:
+def _expr328() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", bool_type)])
 
 
@@ -104,9 +104,9 @@ def _expr323() -> TypeInfo:
 class Mut2(Record):
     l0: bool
 
-Mut2_reflection = _expr323
+Mut2_reflection = _expr328
 
-def _expr324() -> TypeInfo:
+def _expr329() -> TypeInfo:
     return record_type("Dice.Mut3", [], Mut3, lambda: [("l0", string_type)])
 
 
@@ -114,9 +114,9 @@ def _expr324() -> TypeInfo:
 class Mut3(Record):
     l0: str
 
-Mut3_reflection = _expr324
+Mut3_reflection = _expr329
 
-def _expr325() -> TypeInfo:
+def _expr330() -> TypeInfo:
     return record_type("Dice.Mut4", [], Mut4, lambda: [("l0", US0_reflection())])
 
 
@@ -124,9 +124,9 @@ def _expr325() -> TypeInfo:
 class Mut4(Record):
     l0: US0
 
-Mut4_reflection = _expr325
+Mut4_reflection = _expr330
 
-def _expr326() -> TypeInfo:
+def _expr331() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", string_type)], []])
 
 
@@ -142,9 +142,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr326
+US1_reflection = _expr331
 
-def _expr327() -> TypeInfo:
+def _expr332() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[("f0_0", US0_reflection())], []])
 
 
@@ -160,9 +160,9 @@ class US2(Union):
         return ["US2_0", "US2_1"]
 
 
-US2_reflection = _expr327
+US2_reflection = _expr332
 
-def _expr328() -> TypeInfo:
+def _expr333() -> TypeInfo:
     return union_type("Dice.US3", [], US3, lambda: [[("f0_0", int64_type)], []])
 
 
@@ -178,9 +178,9 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr328
+US3_reflection = _expr333
 
-def _expr329() -> TypeInfo:
+def _expr334() -> TypeInfo:
     return union_type("Dice.US4", [], US4, lambda: [[("f0_0", lambda_type(unit_type, UH0_reflection()))], [("f1_0", UH0_reflection())]])
 
 
@@ -196,9 +196,9 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr329
+US4_reflection = _expr334
 
-def _expr330() -> TypeInfo:
+def _expr335() -> TypeInfo:
     return record_type("Dice.Mut5", [], Mut5, lambda: [("l0", US4_reflection())])
 
 
@@ -206,9 +206,9 @@ def _expr330() -> TypeInfo:
 class Mut5(Record):
     l0: US4
 
-Mut5_reflection = _expr330
+Mut5_reflection = _expr335
 
-def _expr331() -> TypeInfo:
+def _expr336() -> TypeInfo:
     return union_type("Dice.US5", [], US5, lambda: [[("f0_0", uint8_type)], []])
 
 
@@ -224,9 +224,9 @@ class US5(Union):
         return ["US5_0", "US5_1"]
 
 
-US5_reflection = _expr331
+US5_reflection = _expr336
 
-def _expr332() -> TypeInfo:
+def _expr337() -> TypeInfo:
     return record_type("Dice.Mut6", [], Mut6, lambda: [("l0", US5_reflection())])
 
 
@@ -234,9 +234,9 @@ def _expr332() -> TypeInfo:
 class Mut6(Record):
     l0: US5
 
-Mut6_reflection = _expr332
+Mut6_reflection = _expr337
 
-def _expr333() -> TypeInfo:
+def _expr338() -> TypeInfo:
     return union_type("Dice.US6", [], US6, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -252,9 +252,9 @@ class US6(Union):
         return ["US6_0", "US6_1"]
 
 
-US6_reflection = _expr333
+US6_reflection = _expr338
 
-def _expr334() -> TypeInfo:
+def _expr339() -> TypeInfo:
     return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
 
 
@@ -269,9 +269,9 @@ class UH2(Union):
         return ["UH2_0", "UH2_1"]
 
 
-UH2_reflection = _expr334
+UH2_reflection = _expr339
 
-def _expr335() -> TypeInfo:
+def _expr340() -> TypeInfo:
     return union_type("Dice.US7", [], US7, lambda: [[("f0_0", uint64_type)], []])
 
 
@@ -287,9 +287,9 @@ class US7(Union):
         return ["US7_0", "US7_1"]
 
 
-US7_reflection = _expr335
+US7_reflection = _expr340
 
-def _expr336() -> TypeInfo:
+def _expr341() -> TypeInfo:
     return union_type("Dice.US8", [], US8, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -305,7 +305,7 @@ class US8(Union):
         return ["US8_0", "US8_1"]
 
 
-US8_reflection = _expr336
+US8_reflection = _expr341
 
 def closure2(v0_1: UH0, unit_var: None) -> UH0:
     return v0_1
@@ -330,10 +330,10 @@ def closure1(v0_1: int64, v1_1: UH0) -> UH0:
 
 
 def closure0(unit_var: None, v0_1: int64) -> Callable[[UH0], UH0]:
-    def _arrow337(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
+    def _arrow342(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
         return closure1(v0_1, v)
 
-    return _arrow337
+    return _arrow342
 
 
 def method2(__unit: None=None) -> str:
@@ -349,10 +349,10 @@ def closure6(unit_var: None, v0_1: str) -> US1:
 
 
 def method5(__unit: None=None) -> Callable[[str], US1]:
-    def _arrow338(v: str) -> US1:
+    def _arrow343(v: str) -> US1:
         return closure6(None, v)
 
-    return _arrow338
+    return _arrow343
 
 
 def method3(v0_1: str) -> str:
@@ -386,37 +386,37 @@ def closure7(unit_var: None, v0_1: str) -> None:
 
 
 def method1(v0_1: US0) -> tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None]:
-    v173: str = method3(method2())
-    v178: US2 = US2(0, US0(0)) if ("Verbose" == v173) else US2(1)
-    def _arrow339(__unit: None=None, v0_1: Any=v0_1) -> US2:
-        v185: US2 = US2(0, US0(1)) if ("Debug" == v173) else US2(1)
-        if v185.tag == 0:
-            return US2(0, v185.fields[0])
+    v230: str = method3(method2())
+    v235: US2 = US2(0, US0(0)) if ("Verbose" == v230) else US2(1)
+    def _arrow344(__unit: None=None, v0_1: Any=v0_1) -> US2:
+        v242: US2 = US2(0, US0(1)) if ("Debug" == v230) else US2(1)
+        if v242.tag == 0:
+            return US2(0, v242.fields[0])
 
         else: 
-            v192: US2 = US2(0, US0(2)) if ("Info" == v173) else US2(1)
-            if v192.tag == 0:
-                return US2(0, v192.fields[0])
+            v249: US2 = US2(0, US0(2)) if ("Info" == v230) else US2(1)
+            if v249.tag == 0:
+                return US2(0, v249.fields[0])
 
             else: 
-                v199: US2 = US2(0, US0(3)) if ("Warning" == v173) else US2(1)
-                if v199.tag == 0:
-                    return US2(0, v199.fields[0])
+                v256: US2 = US2(0, US0(3)) if ("Warning" == v230) else US2(1)
+                if v256.tag == 0:
+                    return US2(0, v256.fields[0])
 
                 else: 
-                    v206: US2 = US2(0, US0(4)) if ("Critical" == v173) else US2(1)
-                    return US2(0, v206.fields[0]) if (v206.tag == 0) else US2(1)
+                    v263: US2 = US2(0, US0(4)) if ("Critical" == v230) else US2(1)
+                    return US2(0, v263.fields[0]) if (v263.tag == 0) else US2(1)
 
 
 
 
-    _v1: tuple[US2, US3] = (US2(0, v178.fields[0]) if (v178.tag == 0) else _arrow339(), US3(0, ticks_1(now())) if (method3(method6()) == "True") else US3(1))
-    v295: US3 = _v1[1]
-    v294: US2 = _v1[0]
-    def v360(v: str, v0_1: Any=v0_1) -> None:
+    _v1: tuple[US2, US3] = (US2(0, v235.fields[0]) if (v235.tag == 0) else _arrow344(), US3(0, ticks_1(now())) if (method3(method6()) == "True") else US3(1))
+    v352: US3 = _v1[1]
+    v351: US2 = _v1[0]
+    def v417(v: str, v0_1: Any=v0_1) -> None:
         closure7(None, v)
 
-    return (Mut0(int64(1)), Mut1(v360), Mut2(True), Mut3(""), Mut4(v294.fields[0] if (v294.tag == 0) else v0_1), v295.fields[0] if (v295.tag == 0) else None)
+    return (Mut0(int64(1)), Mut1(v417), Mut2(True), Mut3(""), Mut4(v351.fields[0] if (v351.tag == 0) else v0_1), v352.fields[0] if (v352.tag == 0) else None)
 
 
 def closure5(unit_var: None, unit_var_1: None) -> None:
@@ -431,10 +431,10 @@ def closure8(unit_var: None, v0_1: int64) -> US3:
 
 
 def method8(__unit: None=None) -> Callable[[int64], US3]:
-    def _arrow340(v: int64) -> US3:
+    def _arrow345(v: int64) -> US3:
         return closure8(None, v)
 
-    return _arrow340
+    return _arrow345
 
 
 def method9(__unit: None=None) -> str:
@@ -447,11 +447,11 @@ def method10(__unit: None=None) -> str:
 
 def method7(v0_1: Mut0, v1_1: Mut1, v2_1: Mut2, v3_1: Mut3, v4_1: Mut4, v5: int64 | None=None) -> str:
     v238: US3 = default_arg(map(method8(), v5), US3(1))
-    def _arrow341(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, v4_1: Any=v4_1, v5: Any=v5) -> Any:
+    def _arrow346(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, v4_1: Any=v4_1, v5: Any=v5) -> Any:
         v252: Any = create(op_subtraction(ticks_1(now()), v238.fields[0]))
         return create_1(1, 1, 1, hours(v252), minutes(v252), seconds(v252), milliseconds(v252))
 
-    return to_string(_arrow341() if (v238.tag == 0) else now(), method10())
+    return to_string(_arrow346() if (v238.tag == 0) else now(), method10())
 
 
 def method12(__unit: None=None) -> str:
@@ -507,12 +507,12 @@ def closure4(unit_var: None, unit_var_1: None) -> None:
     v2_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v34: US0 = pattern_input[4].l0
-    class ObjectExpr342:
+    class ObjectExpr347:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v34, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr342()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v34, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr347()))):
         v41: None
         v1_1(None)
         v41 = None
@@ -586,10 +586,10 @@ def closure14(v0_1: UH0, v1_1: Mut5, unit_var: None) -> UH0:
 
 def method20(v0_1: UH0, v1_1: Callable[[], UH0]) -> Callable[[], UH0]:
     v3_1: Mut5 = Mut5(US4(0, v1_1))
-    def _arrow343(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
+    def _arrow348(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
         return closure14(v0_1, v3_1, None)
 
-    return _arrow343
+    return _arrow348
 
 
 def closure17(v0_1: Mut3, v1_1: str, unit_var: None) -> None:
@@ -662,12 +662,12 @@ def closure16(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: uint8 | None, unit_va
     v6 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v38: US0 = pattern_input[4].l0
-    class ObjectExpr344:
+    class ObjectExpr349:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v38, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr344()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v38, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr349()))):
         v45: None
         v5(None)
         v45 = None
@@ -708,12 +708,12 @@ def closure18(unit_var: None, unit_var_1: None) -> None:
     v2_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v34: US0 = pattern_input[4].l0
-    class ObjectExpr345:
+    class ObjectExpr350:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v34, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr345()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v34, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr350()))):
         v41: None
         v1_1(None)
         v41 = None
@@ -787,10 +787,10 @@ def closure3(unit_var: None, v0_1: UH1) -> Callable[[], uint8]:
     v127: Mut0 = Mut0(int64(1))
     v128: Mut0 = Mut0(int64(-1))
     v130: Mut6 = Mut6(US5(1))
-    def _arrow346(__unit: None=None, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint8:
+    def _arrow351(__unit: None=None, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint8:
         return closure15(v125, v126, v127, v128, v130, None)
 
-    return _arrow346
+    return _arrow351
 
 
 def method25(v0_1: uint64, v1_1: int8, v2_1: uint64) -> str:
@@ -846,12 +846,12 @@ def closure22(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr347:
+    class ObjectExpr352:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr347()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr352()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -946,12 +946,12 @@ def closure23(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr348:
+    class ObjectExpr353:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr348()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr353()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -1493,12 +1493,12 @@ def closure88(v0_1: uint64, v1_1: int8, v2_1: uint8, v3_1: uint64, unit_var: Non
     v6 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v38: US0 = pattern_input[4].l0
-    class ObjectExpr349:
+    class ObjectExpr354:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v38, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr349()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v38, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr354()))):
         v45: None
         v5(None)
         v45 = None
@@ -1566,12 +1566,12 @@ def closure89(v0_1: uint64, v1_1: int8, v2_1: uint8, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr350:
+    class ObjectExpr355:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr350()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr355()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -1739,17 +1739,17 @@ def closure21(v0_1: Callable[[], uint8], v1_1: bool, v2_1: uint64) -> uint64:
 
 
 def closure20(v0_1: Callable[[], uint8], v1_1: bool) -> Callable[[uint64], uint64]:
-    def _arrow351(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64:
+    def _arrow356(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64:
         return closure21(v0_1, v1_1, v)
 
-    return _arrow351
+    return _arrow356
 
 
 def closure19(unit_var: None, v0_1: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
-    def _arrow352(v: bool, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[uint64], uint64]:
+    def _arrow357(v: bool, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[uint64], uint64]:
         return closure20(v0_1, v)
 
-    return _arrow352
+    return _arrow357
 
 
 def method34(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
@@ -1785,10 +1785,10 @@ def closure91(v0_1: uint64, v1_1: UH1) -> uint64 | None:
 
 
 def closure90(unit_var: None, v0_1: uint64) -> Callable[[UH1], uint64 | None]:
-    def _arrow353(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint64 | None:
+    def _arrow358(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint64 | None:
         return closure91(v0_1, v)
 
-    return _arrow353
+    return _arrow358
 
 
 def method35(v0_1: int64, v1_1: int8, v2_1: int64) -> str:
@@ -1844,12 +1844,12 @@ def closure93(unit_var: None, unit_var_1: None) -> None:
     v2_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v34: US0 = pattern_input[4].l0
-    class ObjectExpr354:
+    class ObjectExpr359:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v34, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr354()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v34, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr359()))):
         v41: None
         v1_1(None)
         v41 = None
@@ -1935,12 +1935,12 @@ def closure94(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr355:
+    class ObjectExpr360:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr355()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr360()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -1964,12 +1964,12 @@ def closure95(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr356:
+    class ObjectExpr361:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr356()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr361()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -1993,12 +1993,12 @@ def closure96(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr357:
+    class ObjectExpr362:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr357()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr362()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2022,12 +2022,12 @@ def closure97(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr358:
+    class ObjectExpr363:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr358()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr363()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2051,12 +2051,12 @@ def closure98(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr359:
+    class ObjectExpr364:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr359()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr364()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2080,12 +2080,12 @@ def closure99(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr360:
+    class ObjectExpr365:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr360()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr365()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2109,12 +2109,12 @@ def closure100(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr361:
+    class ObjectExpr366:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr361()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr366()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2138,12 +2138,12 @@ def closure101(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr362:
+    class ObjectExpr367:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr362()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr367()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2167,12 +2167,12 @@ def closure102(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr363:
+    class ObjectExpr368:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr363()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr368()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2196,12 +2196,12 @@ def closure103(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr364:
+    class ObjectExpr369:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr364()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr369()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2225,12 +2225,12 @@ def closure104(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr365:
+    class ObjectExpr370:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr365()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr370()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2254,12 +2254,12 @@ def closure105(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr366:
+    class ObjectExpr371:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr366()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr371()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2283,12 +2283,12 @@ def closure106(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr367:
+    class ObjectExpr372:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr367()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr372()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2312,12 +2312,12 @@ def closure107(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr368:
+    class ObjectExpr373:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr368()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr373()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2341,12 +2341,12 @@ def closure108(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr369:
+    class ObjectExpr374:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr369()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr374()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2370,12 +2370,12 @@ def closure109(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr370:
+    class ObjectExpr375:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr370()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr375()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2399,12 +2399,12 @@ def closure110(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr371:
+    class ObjectExpr376:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr371()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr376()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2428,12 +2428,12 @@ def closure111(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr372:
+    class ObjectExpr377:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr372()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr377()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2457,12 +2457,12 @@ def closure112(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr373:
+    class ObjectExpr378:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr373()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr378()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2486,12 +2486,12 @@ def closure113(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr374:
+    class ObjectExpr379:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr374()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr379()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2515,12 +2515,12 @@ def closure114(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr375:
+    class ObjectExpr380:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr375()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr380()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2544,12 +2544,12 @@ def closure115(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr376:
+    class ObjectExpr381:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr376()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr381()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2573,12 +2573,12 @@ def closure116(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr377:
+    class ObjectExpr382:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr377()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr382()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2602,12 +2602,12 @@ def closure117(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     v5 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v37: US0 = pattern_input[4].l0
-    class ObjectExpr378:
+    class ObjectExpr383:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr378()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr383()))):
         v44: None
         v4_1(None)
         v44 = None
@@ -2675,12 +2675,12 @@ def closure118(v0_1: int64, v1_1: int64, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr379:
+    class ObjectExpr384:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr379()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr384()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -2756,12 +2756,12 @@ def closure119(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr380:
+    class ObjectExpr385:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr380()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr385()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -2808,12 +2808,12 @@ def closure120(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr381:
+    class ObjectExpr386:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr381()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr386()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -2860,12 +2860,12 @@ def closure121(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr382:
+    class ObjectExpr387:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr382()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr387()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -2912,12 +2912,12 @@ def closure122(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr383:
+    class ObjectExpr388:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr383()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr388()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -2964,12 +2964,12 @@ def closure123(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr384:
+    class ObjectExpr389:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr384()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr389()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3016,12 +3016,12 @@ def closure124(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr385:
+    class ObjectExpr390:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr385()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr390()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3068,12 +3068,12 @@ def closure125(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr386:
+    class ObjectExpr391:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr386()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr391()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3120,12 +3120,12 @@ def closure126(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr387:
+    class ObjectExpr392:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr387()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr392()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3172,12 +3172,12 @@ def closure127(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr388:
+    class ObjectExpr393:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr388()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr393()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3224,12 +3224,12 @@ def closure128(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr389:
+    class ObjectExpr394:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr389()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr394()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3276,12 +3276,12 @@ def closure129(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr390:
+    class ObjectExpr395:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr390()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr395()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3328,12 +3328,12 @@ def closure130(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr391:
+    class ObjectExpr396:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr391()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr396()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3380,12 +3380,12 @@ def closure131(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr392:
+    class ObjectExpr397:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr392()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr397()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3432,12 +3432,12 @@ def closure132(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr393:
+    class ObjectExpr398:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr393()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr398()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3484,12 +3484,12 @@ def closure133(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr394:
+    class ObjectExpr399:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr394()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr399()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3536,12 +3536,12 @@ def closure134(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr395:
+    class ObjectExpr400:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr395()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr400()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3588,12 +3588,12 @@ def closure135(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr396:
+    class ObjectExpr401:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr396()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr401()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3640,12 +3640,12 @@ def closure136(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr397:
+    class ObjectExpr402:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr397()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr402()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3692,12 +3692,12 @@ def closure137(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr398:
+    class ObjectExpr403:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr398()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr403()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3744,12 +3744,12 @@ def closure138(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr399:
+    class ObjectExpr404:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr399()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr404()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3796,12 +3796,12 @@ def closure139(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr400:
+    class ObjectExpr405:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr400()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr405()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3848,12 +3848,12 @@ def closure140(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr401:
+    class ObjectExpr406:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr401()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr406()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3900,12 +3900,12 @@ def closure141(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr402:
+    class ObjectExpr407:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr402()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr407()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -3952,12 +3952,12 @@ def closure142(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     v4_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v36: US0 = pattern_input[4].l0
-    class ObjectExpr403:
+    class ObjectExpr408:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr403()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr408()))):
         v43: None
         v3_1(None)
         v43 = None
@@ -4054,12 +4054,12 @@ def closure143(v0_1: int64, unit_var: None) -> None:
     v3_1 = None
     pattern_input: tuple[Mut0, Mut1, Mut2, Mut3, Mut4, int64 | None] = value_3(TraceState_trace_state())
     v35: US0 = pattern_input[4].l0
-    class ObjectExpr404:
+    class ObjectExpr409:
         @property
         def Compare(self) -> Callable[[US0, US0], int]:
             return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v35, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr404()))):
+    if False if (pattern_input[2].l0 == False) else (1 >= find(v35, of_seq(to_enumerable([(US0(0), 0), (US0(1), 1), (US0(2), 2), (US0(3), 3), (US0(4), 4)]), ObjectExpr409()))):
         v42: None
         v2_1(None)
         v42 = None
@@ -4084,51 +4084,51 @@ def closure92(unit_var: None, v0_1: Array[str]) -> int:
     return 0
 
 
-def _arrow405(v: int64) -> Callable[[UH0], UH0]:
+def _arrow410(v: int64) -> Callable[[UH0], UH0]:
     return closure0(None, v)
 
 
-v0: Callable[[int64, UH0], UH0] = _arrow405
+v0: Callable[[int64, UH0], UH0] = _arrow410
 
 def rotate_numbers(x: int64) -> Callable[[UH0], UH0]:
     return v0(x)
 
 
-def _arrow406(v: UH1) -> Callable[[], uint8]:
+def _arrow411(v: UH1) -> Callable[[], uint8]:
     return closure3(None, v)
 
 
-v1: Callable[[UH1, None], uint8] = _arrow406
+v1: Callable[[UH1, None], uint8] = _arrow411
 
 def create_sequential_roller(x: UH1) -> Callable[[], uint8]:
     return v1(x)
 
 
-def _arrow407(v: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
+def _arrow412(v: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
     return closure19(None, v)
 
 
-v2: Callable[[Callable[[], uint8], bool, uint64], uint64] = _arrow407
+v2: Callable[[Callable[[], uint8], bool, uint64], uint64] = _arrow412
 
 def roll_progressively(x: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
     return v2(x)
 
 
-def _arrow408(v: uint64) -> Callable[[UH1], uint64 | None]:
+def _arrow413(v: uint64) -> Callable[[UH1], uint64 | None]:
     return closure90(None, v)
 
 
-v3: Callable[[uint64, UH1], uint64 | None] = _arrow408
+v3: Callable[[uint64, UH1], uint64 | None] = _arrow413
 
 def roll_within_bounds(x: uint64) -> Callable[[UH1], uint64 | None]:
     return v3(x)
 
 
-def _arrow409(v: Array[str]) -> int:
+def _arrow414(v: Array[str]) -> int:
     return closure92(None, v)
 
 
-v4: Callable[[Array[str]], int] = _arrow409
+v4: Callable[[Array[str]], int] = _arrow414
 
 def main(args: Array[str]) -> int:
     return v4(args)

@@ -433,8 +433,8 @@ mod module_1d76f080 {
                     Dice::US3::US3_1
                 },
             );
-            let v295: Dice::US3 = _v1.1.clone();
-            let v294: Dice::US2 = _v1.0.clone();
+            let v352: Dice::US3 = _v1.1.clone();
+            let v351: Dice::US2 = _v1.0.clone();
             (
                 LrcPtr::new(Dice::Mut0 {
                     l0: MutCell::new(1_i64),
@@ -449,16 +449,16 @@ mod module_1d76f080 {
                     l0: MutCell::new(string("")),
                 }),
                 LrcPtr::new(Dice::Mut4 {
-                    l0: MutCell::new(match &v294 {
-                        Dice::US2::US2_0(v294_0_0) => match &v294 {
+                    l0: MutCell::new(match &v351 {
+                        Dice::US2::US2_0(v351_0_0) => match &v351 {
                             Dice::US2::US2_0(x) => x.clone(),
                             _ => unreachable!(),
                         },
                         _ => v0_1,
                     }),
                 }),
-                match &v295 {
-                    Dice::US3::US3_0(v295_0_0) => Some(match &v295 {
+                match &v352 {
+                    Dice::US3::US3_0(v352_0_0) => Some(match &v352 {
                         Dice::US3::US3_0(x) => x.clone(),
                         _ => unreachable!(),
                     }),
@@ -540,10 +540,10 @@ mod module_1d76f080 {
         pub fn method11() -> string {
             let v5: string = padLeft(toLower(string("Debug")), 7_i32, ' ');
             let v21: &str = inline_colorization::color_bright_blue;
-            let v23: &str = &*v5;
-            let v25: &str = inline_colorization::color_reset;
-            let v27: std::string::String = format!("{}{}{}", v21, v23, v25);
-            fable_library_rust::String_::fromString(v27)
+            let v24: &str = &*v5;
+            let v44: &str = inline_colorization::color_reset;
+            let v46: std::string::String = format!("{}{}{}", v21, v24, v44);
+            fable_library_rust::String_::fromString(v46)
         }
         pub fn method14() -> string {
             string("")
