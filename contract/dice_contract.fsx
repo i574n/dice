@@ -84,15 +84,26 @@ and [<Struct>] US3 =
 and UH0 =
     | UH0_0
     | UH0_1 of uint8 * UH0
-and [<Struct>] US4 =
-    | US4_0 of f0_0 : uint64 * f0_1 : UH0
-    | US4_1
 and UH1 =
-    | UH1_0 of uint64 * (unit -> UH1)
+    | UH1_0 of uint8 * (unit -> UH1)
     | UH1_1
+and [<Struct>] US4 =
+    | US4_0 of f0_0 : (unit -> UH1)
+    | US4_1 of f1_0 : UH1
+and Mut5 = {mutable l0 : US4}
 and [<Struct>] US5 =
-    | US5_0 of f0_0 : uint64
+    | US5_0 of f0_0 : uint8
     | US5_1
+and Mut6 = {mutable l0 : US5}
+and [<Struct>] US6 =
+    | US6_0 of f0_0 : uint64 * f0_1 : UH0
+    | US6_1
+and UH2 =
+    | UH2_0 of uint64 * (unit -> UH2)
+    | UH2_1
+and [<Struct>] US7 =
+    | US7_0 of f0_0 : uint64
+    | US7_1
 let rec method1 () : string =
     let v0 : string = "TRACE_LEVEL"
     v0
@@ -1144,8 +1155,9 @@ and method12 (v0 : string) : string =
     let v44 : unit = (fun () -> v43 (); v42) ()
     let v47 : string = v2.l0
     v47
-and method14 (v0 : string, v1 : string, v2 : string, v3 : int64, v4 : string) : string =
-    let v5 : string = $"{v0} {v1} #{v3} %s{v2} / {v4}"
+and method14 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
+    let v4 : string = "dice_contract.contribute_seed"
+    let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
     let v8 : char list = []
     let v9 : (char list -> (char [])) = List.toArray
     let v10 : (char []) = v9 v8
@@ -1322,22 +1334,64 @@ and closure1 (v0 : Vec<uint8>) () : unit =
         let struct (v56 : Mut0, v57 : Mut1, v58 : Mut2, v59 : Mut3, v60 : Mut4, v61 : int64 option) = TraceState.trace_state.Value
         let v74 : string = method6(v56, v57, v58, v59, v60, v61)
         let v75 : string = method10()
-        let v76 : string = $"dice_contract.contribute_seed"
-        let v77 : bool = v76 = ""
-        let v85 : string =
-            if v77 then
-                let v78 : string = ""
-                v78
-            else
-                let v79 : int64 = v56.l0
-                let v80 : string = $"%A{v0}"
-                let v83 : string = method12(v80)
-                method14(v74, v75, v76, v79, v83)
-        let v86 : unit = ()
-        let v87 : unit = (fun () -> v2 (); v86) ()
-        let struct (v101 : Mut0, v102 : Mut1, v103 : Mut2, v104 : Mut3, v105 : Mut4, v106 : int64 option) = TraceState.trace_state.Value
-        method15(v85, v101, v102, v103, v104, v105, v106)
-and method16 (v0 : uint64, v1 : std_string_String, v2 : std_string_String, v3 : uint64, v4 : uint64, v5 : uint64, v6 : string, v7 : std_string_String, v8 : string, v9 : string, v10 : unativeint, v11 : string, v12 : string, v13 : string) : string =
+        let v76 : int64 = v56.l0
+        let v77 : string = $"%A{v0}"
+        let v80 : string = method12(v77)
+        let v81 : string = method14(v74, v75, v76, v80)
+        let v82 : unit = ()
+        let v83 : unit = (fun () -> v2 (); v82) ()
+        let struct (v97 : Mut0, v98 : Mut1, v99 : Mut2, v100 : Mut3, v101 : Mut4, v102 : int64 option) = TraceState.trace_state.Value
+        method15(v81, v97, v98, v99, v100, v101, v102)
+and closure11 (v0 : uint8) (v1 : UH0) : UH0 =
+    UH0_1(v0, v1)
+and closure10 () (v0 : uint8) : (UH0 -> UH0) =
+    closure11(v0)
+and method16 () : (uint8 -> (UH0 -> UH0)) =
+    closure10()
+and closure12 (v0 : UH1) () : UH1 =
+    v0
+and method17 (v0 : UH0, v1 : UH1) : UH1 =
+    match v0 with
+    | UH0_1(v2, v3) -> (* Cons *)
+        let v4 : UH1 = method17(v3, v1)
+        let v5 : (unit -> UH1) = closure12(v4)
+        UH1_0(v2, v5)
+    | UH0_0 -> (* Nil *)
+        v1
+and closure13 (v0 : UH1) () : UH1 =
+    v0
+and method18 (v0 : UH1, v1 : UH1) : UH1 =
+    match v0 with
+    | UH1_0(v2, v3) -> (* StreamCons *)
+        let v4 : UH1 = v3 ()
+        let v5 : UH1 = method18(v4, v1)
+        let v6 : int64 = int64 v2
+        let v7 : int64 = v6 - 1L
+        let v8 : int64 = v7 + 6L
+        let v9 : int64 = v8 % 6L
+        let v10 : int64 = v9 + 1L
+        let v11 : uint8 = uint8 v10
+        let v12 : (unit -> UH1) = closure13(v5)
+        UH1_0(v11, v12)
+    | UH1_1 -> (* StreamNil *)
+        v1
+and method19 (v0 : UH1, v1 : UH0) : UH0 =
+    match v0 with
+    | UH1_0(v2, v3) -> (* StreamCons *)
+        let v4 : UH1 = v3 ()
+        let v5 : UH0 = method19(v4, v1)
+        UH0_1(v2, v5)
+    | UH1_1 -> (* StreamNil *)
+        v1
+and method20 (v0 : UH0, v1 : uint8 list) : uint8 list =
+    match v0 with
+    | UH0_1(v2, v3) -> (* Cons *)
+        let v4 : uint8 list = method20(v3, v1)
+        let v5 : uint8 list = v2 :: v4 
+        v5
+    | UH0_0 -> (* Nil *)
+        v1
+and method21 (v0 : uint64, v1 : std_string_String, v2 : std_string_String, v3 : uint64, v4 : uint64, v5 : uint64, v6 : string, v7 : std_string_String, v8 : string, v9 : string, v10 : unativeint, v11 : string, v12 : string, v13 : string) : string =
     let v14 : string = method13()
     let v15 : Mut3 = {l0 = v14} : Mut3
     let v16 : string = "{ "
@@ -1720,7 +1774,7 @@ and method16 (v0 : uint64, v1 : std_string_String, v2 : std_string_String, v3 : 
     let v559 : unit = ()
     let v560 : (unit -> unit) = closure6(v15, v556)
     let v561 : unit = (fun () -> v560 (); v559) ()
-    let v564 : string = "rolls_list_log"
+    let v564 : string = "rolls"
     let v565 : string = $"{v564}"
     let v568 : unit = ()
     let v569 : (unit -> unit) = closure6(v15, v565)
@@ -1740,54 +1794,1073 @@ and method16 (v0 : uint64, v1 : std_string_String, v2 : std_string_String, v3 : 
     let v595 : unit = (fun () -> v594 (); v593) ()
     let v598 : string = v15.l0
     v598
-and closure10 (v0 : Vec<uint8>, v1 : std_string_String, v2 : std_string_String, v3 : uint64, v4 : Vec<uint8>, v5 : uint64, v6 : uint64, v7 : uint64, v8 : near_token_NearToken, v9 : near_sdk_AccountId, v10 : Vec<uint8>, v11 : unativeint, v12 : Vec<uint8>, v13 : Vec<uint8>) () : unit =
-    let v14 : unit = ()
-    let v15 : (unit -> unit) = closure2()
-    let v16 : unit = (fun () -> v15 (); v14) ()
-    let struct (v30 : Mut0, v31 : Mut1, v32 : Mut2, v33 : Mut3, v34 : Mut4, v35 : int64 option) = TraceState.trace_state.Value
-    let v48 : US0 = v34.l0
-    let v49 : bool = v32.l0
-    let v50 : bool = v49 = false
-    let v53 : bool =
-        if v50 then
+and method22 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
+    let v4 : string = "dice_contract.generate_random_number"
+    let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
+    let v8 : char list = []
+    let v9 : (char list -> (char [])) = List.toArray
+    let v10 : (char []) = v9 v8
+    let v13 : string = v5.TrimStart v10 
+    let v31 : char list = []
+    let v32 : char list = '/' :: v31 
+    let v35 : char list = ' ' :: v32 
+    let v38 : (char list -> (char [])) = List.toArray
+    let v39 : (char []) = v38 v35
+    let v42 : string = v13.TrimEnd v39 
+    v42
+and closure14 (v0 : Ref<Mut<near_sdk_store_vec_Vector<uint8>>>, v1 : std_string_String, v2 : std_string_String, v3 : uint64, v4 : Vec<uint8>, v5 : uint64, v6 : uint64, v7 : uint64, v8 : near_token_NearToken, v9 : near_sdk_AccountId, v10 : Vec<uint8>, v11 : Vec<uint8>, v12 : UH0) () : unit =
+    let v13 : unit = ()
+    let v14 : (unit -> unit) = closure2()
+    let v15 : unit = (fun () -> v14 (); v13) ()
+    let struct (v29 : Mut0, v30 : Mut1, v31 : Mut2, v32 : Mut3, v33 : Mut4, v34 : int64 option) = TraceState.trace_state.Value
+    let v47 : US0 = v33.l0
+    let v48 : bool = v31.l0
+    let v49 : bool = v48 = false
+    let v52 : bool =
+        if v49 then
             false
         else
-            let v51 : int32 = [ US0_0, 0; US0_1, 1; US0_2, 2; US0_3, 3; US0_4, 4 ] |> Map |> Map.find v48
-            let v52 : bool = 1 >= v51
-            v52
-    if v53 then
-        let v54 : unit = ()
-        let v55 : unit = (fun () -> v15 (); v54) ()
-        let struct (v69 : Mut0, v70 : Mut1, v71 : Mut2, v72 : Mut3, v73 : Mut4, v74 : int64 option) = TraceState.trace_state.Value
-        let v87 : string = method6(v69, v70, v71, v72, v73, v74)
-        let v88 : string = method10()
-        let v89 : string = $"dice_contract.generate_random_number"
-        let v90 : bool = v89 = ""
-        let v115 : string =
-            if v90 then
-                let v91 : string = ""
-                v91
+            let v50 : int32 = [ US0_0, 0; US0_1, 1; US0_2, 2; US0_3, 3; US0_4, 4 ] |> Map |> Map.find v47
+            let v51 : bool = 1 >= v50
+            v51
+    if v52 then
+        let v53 : unit = ()
+        let v54 : unit = (fun () -> v14 (); v53) ()
+        let struct (v68 : Mut0, v69 : Mut1, v70 : Mut2, v71 : Mut3, v72 : Mut4, v73 : int64 option) = TraceState.trace_state.Value
+        let v86 : string = method6(v68, v69, v70, v71, v72, v73)
+        let v87 : string = method10()
+        let v88 : int64 = v68.l0
+        let v89 : string = $"%A{v8}"
+        let v92 : string = $"v9.to_string()"
+        let v93 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v92 
+        let v94 : string = $"%A{v4}"
+        let v97 : string = $"%A{v0}"
+        let v100 : string = "$0.len()"
+        let v101 : unativeint = Fable.Core.RustInterop.emitRustExpr v10 v100 
+        let v102 : string = $"%A{v10}"
+        let v105 : string = $"%A{v11}"
+        let v108 : uint8 list = []
+        let v109 : uint8 list = method20(v12, v108)
+        let v110 : (uint8 list -> (uint8 [])) = List.toArray
+        let v111 : (uint8 []) = v110 v109
+        let v114 : string = "$0.to_vec()"
+        let v115 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr v111 v114 
+        let v116 : string = $"%A{v115}"
+        let v119 : string = method21(v3, v1, v2, v7, v6, v5, v89, v93, v94, v97, v101, v102, v105, v116)
+        let v120 : string = method22(v86, v87, v88, v119)
+        let v121 : unit = ()
+        let v122 : unit = (fun () -> v14 (); v121) ()
+        let struct (v136 : Mut0, v137 : Mut1, v138 : Mut2, v139 : Mut3, v140 : Mut4, v141 : int64 option) = TraceState.trace_state.Value
+        method15(v120, v136, v137, v138, v139, v140, v141)
+and method23 (v0 : UH0, v1 : UH0) : UH0 =
+    match v0 with
+    | UH0_1(v2, v3) -> (* Cons *)
+        let v4 : UH0 = UH0_1(v2, v1)
+        method23(v3, v4)
+    | UH0_0 -> (* Nil *)
+        v1
+and method24 (v0 : UH0, v1 : UH0) : UH0 =
+    match v0 with
+    | UH0_1(v2, v3) -> (* Cons *)
+        let v4 : UH0 = method24(v3, v1)
+        UH0_1(v2, v4)
+    | UH0_0 -> (* Nil *)
+        v1
+and closure15 (v0 : UH1) () : UH1 =
+    v0
+and closure16 (v0 : UH1, v1 : Mut5) () : UH1 =
+    let v2 : US4 = v1.l0
+    match v2 with
+    | US4_1(v3) -> (* Computed *)
+        v3
+    | US4_0(v4) -> (* NotComputed *)
+        let v5 : UH1 = v4 ()
+        let v12 : UH1 =
+            match v5 with
+            | UH1_0(v7, v8) -> (* StreamCons *)
+                let v9 : (unit -> UH1) = method25(v0, v8)
+                UH1_0(v7, v9)
+            | UH1_1 -> (* StreamNil *)
+                UH1_1
+        let v13 : US4 = US4_1(v12)
+        v1.l0 <- v13
+        v12
+and method25 (v0 : UH1, v1 : (unit -> UH1)) : (unit -> UH1) =
+    let v2 : US4 = US4_0(v1)
+    let v3 : Mut5 = {l0 = v2} : Mut5
+    closure16(v0, v3)
+and method27 (v0 : uint64, v1 : uint64, v2 : int8) : string =
+    let v3 : string = method13()
+    let v4 : Mut3 = {l0 = v3} : Mut3
+    let v5 : string = "{ "
+    let v6 : string = $"{v5}"
+    let v9 : unit = ()
+    let v10 : (unit -> unit) = closure6(v4, v6)
+    let v11 : unit = (fun () -> v10 (); v9) ()
+    let v14 : string = "max"
+    let v15 : string = $"{v14}"
+    let v18 : unit = ()
+    let v19 : (unit -> unit) = closure6(v4, v15)
+    let v20 : unit = (fun () -> v19 (); v18) ()
+    let v23 : string = " = "
+    let v24 : string = $"{v23}"
+    let v27 : unit = ()
+    let v28 : (unit -> unit) = closure6(v4, v24)
+    let v29 : unit = (fun () -> v28 (); v27) ()
+    let v32 : string = $"{v0}"
+    let v35 : unit = ()
+    let v36 : (unit -> unit) = closure6(v4, v32)
+    let v37 : unit = (fun () -> v36 (); v35) ()
+    let v40 : string = "; "
+    let v41 : string = $"{v40}"
+    let v44 : unit = ()
+    let v45 : (unit -> unit) = closure6(v4, v41)
+    let v46 : unit = (fun () -> v45 (); v44) ()
+    let v49 : string = "p"
+    let v50 : string = $"{v49}"
+    let v53 : unit = ()
+    let v54 : (unit -> unit) = closure6(v4, v50)
+    let v55 : unit = (fun () -> v54 (); v53) ()
+    let v58 : string = $"{v23}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure6(v4, v58)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v66 : string = $"{v1}"
+    let v69 : unit = ()
+    let v70 : (unit -> unit) = closure6(v4, v66)
+    let v71 : unit = (fun () -> v70 (); v69) ()
+    let v74 : string = $"{v40}"
+    let v77 : unit = ()
+    let v78 : (unit -> unit) = closure6(v4, v74)
+    let v79 : unit = (fun () -> v78 (); v77) ()
+    let v82 : string = "n"
+    let v83 : string = $"{v82}"
+    let v86 : unit = ()
+    let v87 : (unit -> unit) = closure6(v4, v83)
+    let v88 : unit = (fun () -> v87 (); v86) ()
+    let v91 : string = $"{v23}"
+    let v94 : unit = ()
+    let v95 : (unit -> unit) = closure6(v4, v91)
+    let v96 : unit = (fun () -> v95 (); v94) ()
+    let v99 : string = $"{v2}"
+    let v102 : unit = ()
+    let v103 : (unit -> unit) = closure6(v4, v99)
+    let v104 : unit = (fun () -> v103 (); v102) ()
+    let v107 : string = " }"
+    let v108 : string = $"{v107}"
+    let v111 : unit = ()
+    let v112 : (unit -> unit) = closure6(v4, v108)
+    let v113 : unit = (fun () -> v112 (); v111) ()
+    let v116 : string = v4.l0
+    v116
+and method28 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
+    let v4 : string = "dice.calculate_dice_count"
+    let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
+    let v8 : char list = []
+    let v9 : (char list -> (char [])) = List.toArray
+    let v10 : (char []) = v9 v8
+    let v13 : string = v5.TrimStart v10 
+    let v31 : char list = []
+    let v32 : char list = '/' :: v31 
+    let v35 : char list = ' ' :: v32 
+    let v38 : (char list -> (char [])) = List.toArray
+    let v39 : (char []) = v38 v35
+    let v42 : string = v13.TrimEnd v39 
+    v42
+and closure17 (v0 : uint64, v1 : int8, v2 : uint64) () : unit =
+    let v3 : unit = ()
+    let v4 : (unit -> unit) = closure2()
+    let v5 : unit = (fun () -> v4 (); v3) ()
+    let struct (v19 : Mut0, v20 : Mut1, v21 : Mut2, v22 : Mut3, v23 : Mut4, v24 : int64 option) = TraceState.trace_state.Value
+    let v37 : US0 = v23.l0
+    let v38 : bool = v21.l0
+    let v39 : bool = v38 = false
+    let v42 : bool =
+        if v39 then
+            false
+        else
+            let v40 : int32 = [ US0_0, 0; US0_1, 1; US0_2, 2; US0_3, 3; US0_4, 4 ] |> Map |> Map.find v37
+            let v41 : bool = 1 >= v40
+            v41
+    if v42 then
+        let v43 : unit = ()
+        let v44 : unit = (fun () -> v4 (); v43) ()
+        let struct (v58 : Mut0, v59 : Mut1, v60 : Mut2, v61 : Mut3, v62 : Mut4, v63 : int64 option) = TraceState.trace_state.Value
+        let v76 : string = method6(v58, v59, v60, v61, v62, v63)
+        let v77 : string = method10()
+        let v78 : int64 = v58.l0
+        let v79 : string = method27(v0, v2, v1)
+        let v80 : string = method28(v76, v77, v78, v79)
+        let v81 : unit = ()
+        let v82 : unit = (fun () -> v4 (); v81) ()
+        let struct (v96 : Mut0, v97 : Mut1, v98 : Mut2, v99 : Mut3, v100 : Mut4, v101 : int64 option) = TraceState.trace_state.Value
+        method15(v80, v96, v97, v98, v99, v100, v101)
+and method26 (v0 : uint64, v1 : int8, v2 : uint64) : int8 =
+    let v3 : bool = v2 < v0
+    if v3 then
+        let v4 : uint64 = v2 * 6UL
+        let v5 : bool = v4 > v2
+        if v5 then
+            let v6 : int8 = v1 + 1y
+            method26(v0, v6, v4)
+        else
+            let v8 : unit = ()
+            let v9 : (unit -> unit) = closure17(v0, v1, v2)
+            let v10 : unit = (fun () -> v9 (); v8) ()
+            v1
+    else
+        let v123 : unit = ()
+        let v124 : (unit -> unit) = closure17(v0, v1, v2)
+        let v125 : unit = (fun () -> v124 (); v123) ()
+        v1
+and method31 (v0 : int64, v1 : int64, v2 : int64, v3 : string) : string =
+    let v4 : string = method13()
+    let v5 : Mut3 = {l0 = v4} : Mut3
+    let v6 : string = "{ "
+    let v7 : string = $"{v6}"
+    let v10 : unit = ()
+    let v11 : (unit -> unit) = closure6(v5, v7)
+    let v12 : unit = (fun () -> v11 (); v10) ()
+    let v15 : string = "current_index"
+    let v16 : string = $"{v15}"
+    let v19 : unit = ()
+    let v20 : (unit -> unit) = closure6(v5, v16)
+    let v21 : unit = (fun () -> v20 (); v19) ()
+    let v24 : string = " = "
+    let v25 : string = $"{v24}"
+    let v28 : unit = ()
+    let v29 : (unit -> unit) = closure6(v5, v25)
+    let v30 : unit = (fun () -> v29 (); v28) ()
+    let v33 : string = $"{v0}"
+    let v36 : unit = ()
+    let v37 : (unit -> unit) = closure6(v5, v33)
+    let v38 : unit = (fun () -> v37 (); v36) ()
+    let v41 : string = "; "
+    let v42 : string = $"{v41}"
+    let v45 : unit = ()
+    let v46 : (unit -> unit) = closure6(v5, v42)
+    let v47 : unit = (fun () -> v46 (); v45) ()
+    let v50 : string = "acc"
+    let v51 : string = $"{v50}"
+    let v54 : unit = ()
+    let v55 : (unit -> unit) = closure6(v5, v51)
+    let v56 : unit = (fun () -> v55 (); v54) ()
+    let v59 : string = $"{v24}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure6(v5, v59)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v67 : string = $"{v1}"
+    let v70 : unit = ()
+    let v71 : (unit -> unit) = closure6(v5, v67)
+    let v72 : unit = (fun () -> v71 (); v70) ()
+    let v75 : string = $"{v41}"
+    let v78 : unit = ()
+    let v79 : (unit -> unit) = closure6(v5, v75)
+    let v80 : unit = (fun () -> v79 (); v78) ()
+    let v83 : string = "len"
+    let v84 : string = $"{v83}"
+    let v87 : unit = ()
+    let v88 : (unit -> unit) = closure6(v5, v84)
+    let v89 : unit = (fun () -> v88 (); v87) ()
+    let v92 : string = $"{v24}"
+    let v95 : unit = ()
+    let v96 : (unit -> unit) = closure6(v5, v92)
+    let v97 : unit = (fun () -> v96 (); v95) ()
+    let v100 : string = $"{v2}"
+    let v103 : unit = ()
+    let v104 : (unit -> unit) = closure6(v5, v100)
+    let v105 : unit = (fun () -> v104 (); v103) ()
+    let v108 : string = $"{v41}"
+    let v111 : unit = ()
+    let v112 : (unit -> unit) = closure6(v5, v108)
+    let v113 : unit = (fun () -> v112 (); v111) ()
+    let v116 : string = "last_item"
+    let v117 : string = $"{v116}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure6(v5, v117)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v125 : string = $"{v24}"
+    let v128 : unit = ()
+    let v129 : (unit -> unit) = closure6(v5, v125)
+    let v130 : unit = (fun () -> v129 (); v128) ()
+    let v133 : string = $"{v3}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure6(v5, v133)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v141 : string = " }"
+    let v142 : string = $"{v141}"
+    let v145 : unit = ()
+    let v146 : (unit -> unit) = closure6(v5, v142)
+    let v147 : unit = (fun () -> v146 (); v145) ()
+    let v150 : string = v5.l0
+    v150
+and method32 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
+    let v4 : string = "dice.create_sequential_roller / roll"
+    let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
+    let v8 : char list = []
+    let v9 : (char list -> (char [])) = List.toArray
+    let v10 : (char []) = v9 v8
+    let v13 : string = v5.TrimStart v10 
+    let v31 : char list = []
+    let v32 : char list = '/' :: v31 
+    let v35 : char list = ' ' :: v32 
+    let v38 : (char list -> (char [])) = List.toArray
+    let v39 : (char []) = v38 v35
+    let v42 : string = v13.TrimEnd v39 
+    v42
+and closure18 (v0 : int64, v1 : int64, v2 : int64, v3 : uint8 option) () : unit =
+    let v4 : unit = ()
+    let v5 : (unit -> unit) = closure2()
+    let v6 : unit = (fun () -> v5 (); v4) ()
+    let struct (v20 : Mut0, v21 : Mut1, v22 : Mut2, v23 : Mut3, v24 : Mut4, v25 : int64 option) = TraceState.trace_state.Value
+    let v38 : US0 = v24.l0
+    let v39 : bool = v22.l0
+    let v40 : bool = v39 = false
+    let v43 : bool =
+        if v40 then
+            false
+        else
+            let v41 : int32 = [ US0_0, 0; US0_1, 1; US0_2, 2; US0_3, 3; US0_4, 4 ] |> Map |> Map.find v38
+            let v42 : bool = 1 >= v41
+            v42
+    if v43 then
+        let v44 : unit = ()
+        let v45 : unit = (fun () -> v5 (); v44) ()
+        let struct (v59 : Mut0, v60 : Mut1, v61 : Mut2, v62 : Mut3, v63 : Mut4, v64 : int64 option) = TraceState.trace_state.Value
+        let v77 : string = method6(v59, v60, v61, v62, v63, v64)
+        let v78 : string = method10()
+        let v79 : int64 = v59.l0
+        let v80 : string = $"%A{v3}"
+        let v83 : string = method31(v0, v1, v2, v80)
+        let v84 : string = method32(v77, v78, v79, v83)
+        let v85 : unit = ()
+        let v86 : unit = (fun () -> v5 (); v85) ()
+        let struct (v100 : Mut0, v101 : Mut1, v102 : Mut2, v103 : Mut3, v104 : Mut4, v105 : int64 option) = TraceState.trace_state.Value
+        method15(v84, v100, v101, v102, v103, v104, v105)
+and method33 (v0 : int64, v1 : UH1) : US5 =
+    match v1 with
+    | UH1_0(v2, v3) -> (* StreamCons *)
+        let v4 : bool = v0 <= 0L
+        if v4 then
+            US5_0(v2)
+        else
+            let v6 : int64 = v0 - 1L
+            let v7 : UH1 = v3 ()
+            method33(v6, v7)
+    | UH1_1 -> (* StreamNil *)
+        US5_1
+and method34 () : string =
+    let v0 : string = method13()
+    let v1 : Mut3 = {l0 = v0} : Mut3
+    let v2 : string = v1.l0
+    v2
+and method35 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
+    let v4 : string = "dice.create_sequential_roller / roll / None"
+    let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
+    let v8 : char list = []
+    let v9 : (char list -> (char [])) = List.toArray
+    let v10 : (char []) = v9 v8
+    let v13 : string = v5.TrimStart v10 
+    let v31 : char list = []
+    let v32 : char list = '/' :: v31 
+    let v35 : char list = ' ' :: v32 
+    let v38 : (char list -> (char [])) = List.toArray
+    let v39 : (char []) = v38 v35
+    let v42 : string = v13.TrimEnd v39 
+    v42
+and closure19 () () : unit =
+    let v0 : unit = ()
+    let v1 : (unit -> unit) = closure2()
+    let v2 : unit = (fun () -> v1 (); v0) ()
+    let struct (v16 : Mut0, v17 : Mut1, v18 : Mut2, v19 : Mut3, v20 : Mut4, v21 : int64 option) = TraceState.trace_state.Value
+    let v34 : US0 = v20.l0
+    let v35 : bool = v18.l0
+    let v36 : bool = v35 = false
+    let v39 : bool =
+        if v36 then
+            false
+        else
+            let v37 : int32 = [ US0_0, 0; US0_1, 1; US0_2, 2; US0_3, 3; US0_4, 4 ] |> Map |> Map.find v34
+            let v38 : bool = 1 >= v37
+            v38
+    if v39 then
+        let v40 : unit = ()
+        let v41 : unit = (fun () -> v1 (); v40) ()
+        let struct (v55 : Mut0, v56 : Mut1, v57 : Mut2, v58 : Mut3, v59 : Mut4, v60 : int64 option) = TraceState.trace_state.Value
+        let v73 : string = method6(v55, v56, v57, v58, v59, v60)
+        let v74 : string = method10()
+        let v75 : int64 = v55.l0
+        let v76 : string = method34()
+        let v77 : string = method35(v73, v74, v75, v76)
+        let v78 : unit = ()
+        let v79 : unit = (fun () -> v1 (); v78) ()
+        let struct (v93 : Mut0, v94 : Mut1, v95 : Mut2, v96 : Mut3, v97 : Mut4, v98 : int64 option) = TraceState.trace_state.Value
+        method15(v77, v93, v94, v95, v96, v97, v98)
+and method30 (v0 : (unit -> UH1), v1 : Mut0, v2 : Mut0, v3 : Mut0, v4 : Mut6) : uint8 =
+    let v5 : int64 = v1.l0
+    let v6 : int64 = v2.l0
+    let v7 : int64 = v3.l0
+    let v8 : US5 = v4.l0
+    let v15 : uint8 option =
+        match v8 with
+        | US5_1 -> (* None *)
+            let v13 : uint8 option = None
+            v13
+        | US5_0(v9) -> (* Some *)
+            let v10 : uint8 option = Some v9 
+            v10
+    let v16 : unit = ()
+    let v17 : (unit -> unit) = closure18(v5, v6, v7, v15)
+    let v18 : unit = (fun () -> v17 (); v16) ()
+    let v133 : UH1 = v0 ()
+    let v134 : int64 = v1.l0
+    let v135 : US5 = method33(v134, v133)
+    match v135 with
+    | US5_1 -> (* None *)
+        let v140 : unit = ()
+        let v141 : (unit -> unit) = closure19()
+        let v142 : unit = (fun () -> v141 (); v140) ()
+        let v254 : int64 = v3.l0
+        let v255 : bool = v254 = -1L
+        if v255 then
+            let v256 : int64 = v1.l0
+            v3.l0 <- v256
+            ()
+        let v257 : int64 = v2.l0
+        let v258 : int64 = v3.l0
+        let v259 : bool = v257 >= v258
+        let v262 : int64 =
+            if v259 then
+                1L
             else
-                let v92 : int64 = v69.l0
-                let v93 : string = $"%A{v8}"
-                let v96 : string = $"v9.to_string()"
-                let v97 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v96 
-                let v98 : string = $"%A{v4}"
-                let v101 : string = $"%A{v0}"
-                let v104 : string = $"%A{v10}"
-                let v107 : string = $"%A{v12}"
-                let v110 : string = $"%A{v13}"
-                let v113 : string = method16(v3, v1, v2, v5, v6, v7, v93, v97, v98, v101, v11, v104, v107, v110)
-                method14(v87, v88, v89, v92, v113)
-        let v116 : unit = ()
-        let v117 : unit = (fun () -> v15 (); v116) ()
-        let struct (v131 : Mut0, v132 : Mut1, v133 : Mut2, v134 : Mut3, v135 : Mut4, v136 : int64 option) = TraceState.trace_state.Value
-        method15(v115, v131, v132, v133, v134, v135, v136)
-and closure11 () () : unit =
+                let v260 : int64 = v2.l0
+                let v261 : int64 = v260 + 1L
+                v261
+        v2.l0 <- v262
+        let v263 : int64 = v2.l0
+        let v264 : int64 = v263 - 1L
+        v1.l0 <- v264
+        let v265 : US5 = US5_1
+        v4.l0 <- v265
+        method30(v0, v1, v2, v3, v4)
+    | US5_0(v136) -> (* Some *)
+        let v137 : int64 = v1.l0
+        let v138 : int64 = v137 + 1L
+        v1.l0 <- v138
+        let v139 : US5 = US5_0(v136)
+        v4.l0 <- v139
+        v136
+and method37 (v0 : int8, v1 : uint64, v2 : uint64) : string =
+    let v3 : string = method13()
+    let v4 : Mut3 = {l0 = v3} : Mut3
+    let v5 : string = "{ "
+    let v6 : string = $"{v5}"
+    let v9 : unit = ()
+    let v10 : (unit -> unit) = closure6(v4, v6)
+    let v11 : unit = (fun () -> v10 (); v9) ()
+    let v14 : string = "power"
+    let v15 : string = $"{v14}"
+    let v18 : unit = ()
+    let v19 : (unit -> unit) = closure6(v4, v15)
+    let v20 : unit = (fun () -> v19 (); v18) ()
+    let v23 : string = " = "
+    let v24 : string = $"{v23}"
+    let v27 : unit = ()
+    let v28 : (unit -> unit) = closure6(v4, v24)
+    let v29 : unit = (fun () -> v28 (); v27) ()
+    let v32 : string = $"{v0}"
+    let v35 : unit = ()
+    let v36 : (unit -> unit) = closure6(v4, v32)
+    let v37 : unit = (fun () -> v36 (); v35) ()
+    let v40 : string = "; "
+    let v41 : string = $"{v40}"
+    let v44 : unit = ()
+    let v45 : (unit -> unit) = closure6(v4, v41)
+    let v46 : unit = (fun () -> v45 (); v44) ()
+    let v49 : string = "acc"
+    let v50 : string = $"{v49}"
+    let v53 : unit = ()
+    let v54 : (unit -> unit) = closure6(v4, v50)
+    let v55 : unit = (fun () -> v54 (); v53) ()
+    let v58 : string = $"{v23}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure6(v4, v58)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v66 : string = $"{v1}"
+    let v69 : unit = ()
+    let v70 : (unit -> unit) = closure6(v4, v66)
+    let v71 : unit = (fun () -> v70 (); v69) ()
+    let v74 : string = $"{v40}"
+    let v77 : unit = ()
+    let v78 : (unit -> unit) = closure6(v4, v74)
+    let v79 : unit = (fun () -> v78 (); v77) ()
+    let v82 : string = "result"
+    let v83 : string = $"{v82}"
+    let v86 : unit = ()
+    let v87 : (unit -> unit) = closure6(v4, v83)
+    let v88 : unit = (fun () -> v87 (); v86) ()
+    let v91 : string = $"{v23}"
+    let v94 : unit = ()
+    let v95 : (unit -> unit) = closure6(v4, v91)
+    let v96 : unit = (fun () -> v95 (); v94) ()
+    let v99 : string = $"{v2}"
+    let v102 : unit = ()
+    let v103 : (unit -> unit) = closure6(v4, v99)
+    let v104 : unit = (fun () -> v103 (); v102) ()
+    let v107 : string = " }"
+    let v108 : string = $"{v107}"
+    let v111 : unit = ()
+    let v112 : (unit -> unit) = closure6(v4, v108)
+    let v113 : unit = (fun () -> v112 (); v111) ()
+    let v116 : string = v4.l0
+    v116
+and method38 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
+    let v4 : string = "dice.accumulate_dice_rolls"
+    let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
+    let v8 : char list = []
+    let v9 : (char list -> (char [])) = List.toArray
+    let v10 : (char []) = v9 v8
+    let v13 : string = v5.TrimStart v10 
+    let v31 : char list = []
+    let v32 : char list = '/' :: v31 
+    let v35 : char list = ' ' :: v32 
+    let v38 : (char list -> (char [])) = List.toArray
+    let v39 : (char []) = v38 v35
+    let v42 : string = v13.TrimEnd v39 
+    v42
+and closure20 (v0 : uint64, v1 : int8, v2 : uint64) () : unit =
+    let v3 : unit = ()
+    let v4 : (unit -> unit) = closure2()
+    let v5 : unit = (fun () -> v4 (); v3) ()
+    let struct (v19 : Mut0, v20 : Mut1, v21 : Mut2, v22 : Mut3, v23 : Mut4, v24 : int64 option) = TraceState.trace_state.Value
+    let v37 : US0 = v23.l0
+    let v38 : bool = v21.l0
+    let v39 : bool = v38 = false
+    let v42 : bool =
+        if v39 then
+            false
+        else
+            let v40 : int32 = [ US0_0, 0; US0_1, 1; US0_2, 2; US0_3, 3; US0_4, 4 ] |> Map |> Map.find v37
+            let v41 : bool = 1 >= v40
+            v41
+    if v42 then
+        let v43 : unit = ()
+        let v44 : unit = (fun () -> v4 (); v43) ()
+        let struct (v58 : Mut0, v59 : Mut1, v60 : Mut2, v61 : Mut3, v62 : Mut4, v63 : int64 option) = TraceState.trace_state.Value
+        let v76 : string = method6(v58, v59, v60, v61, v62, v63)
+        let v77 : string = method10()
+        let v78 : int64 = v58.l0
+        let v79 : string = method37(v1, v0, v2)
+        let v80 : string = method38(v76, v77, v78, v79)
+        let v81 : unit = ()
+        let v82 : unit = (fun () -> v4 (); v81) ()
+        let struct (v96 : Mut0, v97 : Mut1, v98 : Mut2, v99 : Mut3, v100 : Mut4, v101 : int64 option) = TraceState.trace_state.Value
+        method15(v80, v96, v97, v98, v99, v100, v101)
+and closure84 () () : UH2 =
+    UH2_1
+and closure83 () () : UH2 =
+    let v0 : (unit -> UH2) = closure84()
+    UH2_0(9223372036854775808UL, v0)
+and closure82 () () : UH2 =
+    let v0 : (unit -> UH2) = closure83()
+    UH2_0(4611686018427387904UL, v0)
+and closure81 () () : UH2 =
+    let v0 : (unit -> UH2) = closure82()
+    UH2_0(6917529027641081856UL, v0)
+and closure80 () () : UH2 =
+    let v0 : (unit -> UH2) = closure81()
+    UH2_0(1152921504606846976UL, v0)
+and closure79 () () : UH2 =
+    let v0 : (unit -> UH2) = closure80()
+    UH2_0(15564440312192434176UL, v0)
+and closure78 () () : UH2 =
+    let v0 : (unit -> UH2) = closure79()
+    UH2_0(11817445422220181504UL, v0)
+and closure77 () () : UH2 =
+    let v0 : (unit -> UH2) = closure78()
+    UH2_0(5044031582654955520UL, v0)
+and closure76 () () : UH2 =
+    let v0 : (unit -> UH2) = closure77()
+    UH2_0(6989586621679009792UL, v0)
+and closure75 () () : UH2 =
+    let v0 : (unit -> UH2) = closure76()
+    UH2_0(16537217831704461312UL, v0)
+and closure74 () () : UH2 =
+    let v0 : (unit -> UH2) = closure75()
+    UH2_0(11979575008805519360UL, v0)
+and closure73 () () : UH2 =
+    let v0 : (unit -> UH2) = closure74()
+    UH2_0(14294425217273954304UL, v0)
+and closure72 () () : UH2 =
+    let v0 : (unit -> UH2) = closure73()
+    UH2_0(2382404202878992384UL, v0)
+and closure71 () () : UH2 =
+    let v0 : (unit -> UH2) = closure72()
+    UH2_0(6545982058383015936UL, v0)
+and closure70 () () : UH2 =
+    let v0 : (unit -> UH2) = closure71()
+    UH2_0(10314369046585278464UL, v0)
+and closure69 () () : UH2 =
+    let v0 : (unit -> UH2) = closure70()
+    UH2_0(4793518853382471680UL, v0)
+and closure68 () () : UH2 =
+    let v0 : (unit -> UH2) = closure69()
+    UH2_0(3873377154515337216UL, v0)
+and closure67 () () : UH2 =
+    let v0 : (unit -> UH2) = closure68()
+    UH2_0(645562859085889536UL, v0)
+and closure66 () () : UH2 =
+    let v0 : (unit -> UH2) = closure67()
+    UH2_0(107593809847648256UL, v0)
+and closure65 () () : UH2 =
+    let v0 : (unit -> UH2) = closure66()
+    UH2_0(3092389647259533312UL, v0)
+and closure64 () () : UH2 =
+    let v0 : (unit -> UH2) = closure65()
+    UH2_0(9738770311398031360UL, v0)
+and closure63 () () : UH2 =
+    let v0 : (unit -> UH2) = closure64()
+    UH2_0(16995415113324298240UL, v0)
+and closure62 () () : UH2 =
+    let v0 : (unit -> UH2) = closure63()
+    UH2_0(8981483876790566912UL, v0)
+and closure61 () () : UH2 =
+    let v0 : (unit -> UH2) = closure62()
+    UH2_0(13794743361938128896UL, v0)
+and closure60 () () : UH2 =
+    let v0 : (unit -> UH2) = closure61()
+    UH2_0(2299123893656354816UL, v0)
+and closure59 () () : UH2 =
+    let v0 : (unit -> UH2) = closure60()
+    UH2_0(3457644661227651072UL, v0)
+and closure58 () () : UH2 =
+    let v0 : (unit -> UH2) = closure59()
+    UH2_0(576274110204608512UL, v0)
+and closure57 () () : UH2 =
+    let v0 : (unit -> UH2) = closure58()
+    UH2_0(6244960376270618624UL, v0)
+and closure56 () () : UH2 =
+    let v0 : (unit -> UH2) = closure57()
+    UH2_0(13338656111851470848UL, v0)
+and closure55 () () : UH2 =
+    let v0 : (unit -> UH2) = closure56()
+    UH2_0(14520938734448279552UL, v0)
+and closure54 () () : UH2 =
+    let v0 : (unit -> UH2) = closure55()
+    UH2_0(14717985838214414336UL, v0)
+and closure53 () () : UH2 =
+    let v0 : (unit -> UH2) = closure54()
+    UH2_0(5527454985320660992UL, v0)
+and closure52 () () : UH2 =
+    let v0 : (unit -> UH2) = closure53()
+    UH2_0(16293529225644736512UL, v0)
+and closure51 () () : UH2 =
+    let v0 : (unit -> UH2) = closure52()
+    UH2_0(11938960241128898560UL, v0)
+and closure50 () () : UH2 =
+    let v0 : (unit -> UH2) = closure51()
+    UH2_0(8138741398091333632UL, v0)
+and closure49 () () : UH2 =
+    let v0 : (unit -> UH2) = closure50()
+    UH2_0(7505371590918406144UL, v0)
+and closure48 () () : UH2 =
+    let v0 : (unit -> UH2) = closure49()
+    UH2_0(16623181993244360704UL, v0)
+and closure47 () () : UH2 =
+    let v0 : (unit -> UH2) = closure48()
+    UH2_0(8919445023443910656UL, v0)
+and closure46 () () : UH2 =
+    let v0 : (unit -> UH2) = closure47()
+    UH2_0(4561031516192243712UL, v0)
+and closure45 () () : UH2 =
+    let v0 : (unit -> UH2) = closure46()
+    UH2_0(9983543956220149760UL, v0)
+and closure44 () () : UH2 =
+    let v0 : (unit -> UH2) = closure45()
+    UH2_0(4738381338321616896UL, v0)
+and closure43 () () : UH2 =
+    let v0 : (unit -> UH2) = closure44()
+    UH2_0(789730223053602816UL, v0)
+and closure42 () () : UH2 =
+    let v0 : (unit -> UH2) = closure43()
+    UH2_0(131621703842267136UL, v0)
+and closure41 () () : UH2 =
+    let v0 : (unit -> UH2) = closure42()
+    UH2_0(21936950640377856UL, v0)
+and closure40 () () : UH2 =
+    let v0 : (unit -> UH2) = closure41()
+    UH2_0(3656158440062976UL, v0)
+and closure39 () () : UH2 =
+    let v0 : (unit -> UH2) = closure40()
+    UH2_0(609359740010496UL, v0)
+and closure38 () () : UH2 =
+    let v0 : (unit -> UH2) = closure39()
+    UH2_0(101559956668416UL, v0)
+and closure37 () () : UH2 =
+    let v0 : (unit -> UH2) = closure38()
+    UH2_0(16926659444736UL, v0)
+and closure36 () () : UH2 =
+    let v0 : (unit -> UH2) = closure37()
+    UH2_0(2821109907456UL, v0)
+and closure35 () () : UH2 =
+    let v0 : (unit -> UH2) = closure36()
+    UH2_0(470184984576UL, v0)
+and closure34 () () : UH2 =
+    let v0 : (unit -> UH2) = closure35()
+    UH2_0(78364164096UL, v0)
+and closure33 () () : UH2 =
+    let v0 : (unit -> UH2) = closure34()
+    UH2_0(13060694016UL, v0)
+and closure32 () () : UH2 =
+    let v0 : (unit -> UH2) = closure33()
+    UH2_0(2176782336UL, v0)
+and closure31 () () : UH2 =
+    let v0 : (unit -> UH2) = closure32()
+    UH2_0(362797056UL, v0)
+and closure30 () () : UH2 =
+    let v0 : (unit -> UH2) = closure31()
+    UH2_0(60466176UL, v0)
+and closure29 () () : UH2 =
+    let v0 : (unit -> UH2) = closure30()
+    UH2_0(10077696UL, v0)
+and closure28 () () : UH2 =
+    let v0 : (unit -> UH2) = closure29()
+    UH2_0(1679616UL, v0)
+and closure27 () () : UH2 =
+    let v0 : (unit -> UH2) = closure28()
+    UH2_0(279936UL, v0)
+and closure26 () () : UH2 =
+    let v0 : (unit -> UH2) = closure27()
+    UH2_0(46656UL, v0)
+and closure25 () () : UH2 =
+    let v0 : (unit -> UH2) = closure26()
+    UH2_0(7776UL, v0)
+and closure24 () () : UH2 =
+    let v0 : (unit -> UH2) = closure25()
+    UH2_0(1296UL, v0)
+and closure23 () () : UH2 =
+    let v0 : (unit -> UH2) = closure24()
+    UH2_0(216UL, v0)
+and closure22 () () : UH2 =
+    let v0 : (unit -> UH2) = closure23()
+    UH2_0(36UL, v0)
+and closure21 () () : UH2 =
+    let v0 : (unit -> UH2) = closure22()
+    UH2_0(6UL, v0)
+and method39 (v0 : int8, v1 : UH2) : US7 =
+    match v1 with
+    | UH2_0(v2, v3) -> (* StreamCons *)
+        let v4 : bool = v0 <= 0y
+        if v4 then
+            US7_0(v2)
+        else
+            let v6 : int8 = v0 - 1y
+            let v7 : UH2 = v3 ()
+            method39(v6, v7)
+    | UH2_1 -> (* StreamNil *)
+        US7_1
+and method40 (v0 : int8, v1 : uint64, v2 : uint8, v3 : uint64) : string =
+    let v4 : string = method13()
+    let v5 : Mut3 = {l0 = v4} : Mut3
+    let v6 : string = "{ "
+    let v7 : string = $"{v6}"
+    let v10 : unit = ()
+    let v11 : (unit -> unit) = closure6(v5, v7)
+    let v12 : unit = (fun () -> v11 (); v10) ()
+    let v15 : string = "power"
+    let v16 : string = $"{v15}"
+    let v19 : unit = ()
+    let v20 : (unit -> unit) = closure6(v5, v16)
+    let v21 : unit = (fun () -> v20 (); v19) ()
+    let v24 : string = " = "
+    let v25 : string = $"{v24}"
+    let v28 : unit = ()
+    let v29 : (unit -> unit) = closure6(v5, v25)
+    let v30 : unit = (fun () -> v29 (); v28) ()
+    let v33 : string = $"{v0}"
+    let v36 : unit = ()
+    let v37 : (unit -> unit) = closure6(v5, v33)
+    let v38 : unit = (fun () -> v37 (); v36) ()
+    let v41 : string = "; "
+    let v42 : string = $"{v41}"
+    let v45 : unit = ()
+    let v46 : (unit -> unit) = closure6(v5, v42)
+    let v47 : unit = (fun () -> v46 (); v45) ()
+    let v50 : string = "acc"
+    let v51 : string = $"{v50}"
+    let v54 : unit = ()
+    let v55 : (unit -> unit) = closure6(v5, v51)
+    let v56 : unit = (fun () -> v55 (); v54) ()
+    let v59 : string = $"{v24}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure6(v5, v59)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v67 : string = $"{v1}"
+    let v70 : unit = ()
+    let v71 : (unit -> unit) = closure6(v5, v67)
+    let v72 : unit = (fun () -> v71 (); v70) ()
+    let v75 : string = $"{v41}"
+    let v78 : unit = ()
+    let v79 : (unit -> unit) = closure6(v5, v75)
+    let v80 : unit = (fun () -> v79 (); v78) ()
+    let v83 : string = "roll"
+    let v84 : string = $"{v83}"
+    let v87 : unit = ()
+    let v88 : (unit -> unit) = closure6(v5, v84)
+    let v89 : unit = (fun () -> v88 (); v87) ()
+    let v92 : string = $"{v24}"
+    let v95 : unit = ()
+    let v96 : (unit -> unit) = closure6(v5, v92)
+    let v97 : unit = (fun () -> v96 (); v95) ()
+    let v100 : string = $"{v2}"
+    let v103 : unit = ()
+    let v104 : (unit -> unit) = closure6(v5, v100)
+    let v105 : unit = (fun () -> v104 (); v103) ()
+    let v108 : string = $"{v41}"
+    let v111 : unit = ()
+    let v112 : (unit -> unit) = closure6(v5, v108)
+    let v113 : unit = (fun () -> v112 (); v111) ()
+    let v116 : string = "value"
+    let v117 : string = $"{v116}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure6(v5, v117)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v125 : string = $"{v24}"
+    let v128 : unit = ()
+    let v129 : (unit -> unit) = closure6(v5, v125)
+    let v130 : unit = (fun () -> v129 (); v128) ()
+    let v133 : string = $"{v3}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure6(v5, v133)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v141 : string = " }"
+    let v142 : string = $"{v141}"
+    let v145 : unit = ()
+    let v146 : (unit -> unit) = closure6(v5, v142)
+    let v147 : unit = (fun () -> v146 (); v145) ()
+    let v150 : string = v5.l0
+    v150
+and closure85 (v0 : uint64, v1 : int8, v2 : uint8, v3 : uint64) () : unit =
+    let v4 : unit = ()
+    let v5 : (unit -> unit) = closure2()
+    let v6 : unit = (fun () -> v5 (); v4) ()
+    let struct (v20 : Mut0, v21 : Mut1, v22 : Mut2, v23 : Mut3, v24 : Mut4, v25 : int64 option) = TraceState.trace_state.Value
+    let v38 : US0 = v24.l0
+    let v39 : bool = v22.l0
+    let v40 : bool = v39 = false
+    let v43 : bool =
+        if v40 then
+            false
+        else
+            let v41 : int32 = [ US0_0, 0; US0_1, 1; US0_2, 2; US0_3, 3; US0_4, 4 ] |> Map |> Map.find v38
+            let v42 : bool = 1 >= v41
+            v42
+    if v43 then
+        let v44 : unit = ()
+        let v45 : unit = (fun () -> v5 (); v44) ()
+        let struct (v59 : Mut0, v60 : Mut1, v61 : Mut2, v62 : Mut3, v63 : Mut4, v64 : int64 option) = TraceState.trace_state.Value
+        let v77 : string = method6(v59, v60, v61, v62, v63, v64)
+        let v78 : string = method10()
+        let v79 : int64 = v59.l0
+        let v80 : string = method40(v1, v0, v2, v3)
+        let v81 : string = method38(v77, v78, v79, v80)
+        let v82 : unit = ()
+        let v83 : unit = (fun () -> v5 (); v82) ()
+        let struct (v97 : Mut0, v98 : Mut1, v99 : Mut2, v100 : Mut3, v101 : Mut4, v102 : int64 option) = TraceState.trace_state.Value
+        method15(v81, v97, v98, v99, v100, v101, v102)
+and method41 (v0 : int8, v1 : uint64, v2 : uint8) : string =
+    let v3 : string = method13()
+    let v4 : Mut3 = {l0 = v3} : Mut3
+    let v5 : string = "{ "
+    let v6 : string = $"{v5}"
+    let v9 : unit = ()
+    let v10 : (unit -> unit) = closure6(v4, v6)
+    let v11 : unit = (fun () -> v10 (); v9) ()
+    let v14 : string = "power"
+    let v15 : string = $"{v14}"
+    let v18 : unit = ()
+    let v19 : (unit -> unit) = closure6(v4, v15)
+    let v20 : unit = (fun () -> v19 (); v18) ()
+    let v23 : string = " = "
+    let v24 : string = $"{v23}"
+    let v27 : unit = ()
+    let v28 : (unit -> unit) = closure6(v4, v24)
+    let v29 : unit = (fun () -> v28 (); v27) ()
+    let v32 : string = $"{v0}"
+    let v35 : unit = ()
+    let v36 : (unit -> unit) = closure6(v4, v32)
+    let v37 : unit = (fun () -> v36 (); v35) ()
+    let v40 : string = "; "
+    let v41 : string = $"{v40}"
+    let v44 : unit = ()
+    let v45 : (unit -> unit) = closure6(v4, v41)
+    let v46 : unit = (fun () -> v45 (); v44) ()
+    let v49 : string = "acc"
+    let v50 : string = $"{v49}"
+    let v53 : unit = ()
+    let v54 : (unit -> unit) = closure6(v4, v50)
+    let v55 : unit = (fun () -> v54 (); v53) ()
+    let v58 : string = $"{v23}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure6(v4, v58)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v66 : string = $"{v1}"
+    let v69 : unit = ()
+    let v70 : (unit -> unit) = closure6(v4, v66)
+    let v71 : unit = (fun () -> v70 (); v69) ()
+    let v74 : string = $"{v40}"
+    let v77 : unit = ()
+    let v78 : (unit -> unit) = closure6(v4, v74)
+    let v79 : unit = (fun () -> v78 (); v77) ()
+    let v82 : string = "roll"
+    let v83 : string = $"{v82}"
+    let v86 : unit = ()
+    let v87 : (unit -> unit) = closure6(v4, v83)
+    let v88 : unit = (fun () -> v87 (); v86) ()
+    let v91 : string = $"{v23}"
+    let v94 : unit = ()
+    let v95 : (unit -> unit) = closure6(v4, v91)
+    let v96 : unit = (fun () -> v95 (); v94) ()
+    let v99 : string = $"{v2}"
+    let v102 : unit = ()
+    let v103 : (unit -> unit) = closure6(v4, v99)
+    let v104 : unit = (fun () -> v103 (); v102) ()
+    let v107 : string = " }"
+    let v108 : string = $"{v107}"
+    let v111 : unit = ()
+    let v112 : (unit -> unit) = closure6(v4, v108)
+    let v113 : unit = (fun () -> v112 (); v111) ()
+    let v116 : string = v4.l0
+    v116
+and closure86 (v0 : uint64, v1 : int8, v2 : uint8) () : unit =
+    let v3 : unit = ()
+    let v4 : (unit -> unit) = closure2()
+    let v5 : unit = (fun () -> v4 (); v3) ()
+    let struct (v19 : Mut0, v20 : Mut1, v21 : Mut2, v22 : Mut3, v23 : Mut4, v24 : int64 option) = TraceState.trace_state.Value
+    let v37 : US0 = v23.l0
+    let v38 : bool = v21.l0
+    let v39 : bool = v38 = false
+    let v42 : bool =
+        if v39 then
+            false
+        else
+            let v40 : int32 = [ US0_0, 0; US0_1, 1; US0_2, 2; US0_3, 3; US0_4, 4 ] |> Map |> Map.find v37
+            let v41 : bool = 1 >= v40
+            v41
+    if v42 then
+        let v43 : unit = ()
+        let v44 : unit = (fun () -> v4 (); v43) ()
+        let struct (v58 : Mut0, v59 : Mut1, v60 : Mut2, v61 : Mut3, v62 : Mut4, v63 : int64 option) = TraceState.trace_state.Value
+        let v76 : string = method6(v58, v59, v60, v61, v62, v63)
+        let v77 : string = method10()
+        let v78 : int64 = v58.l0
+        let v79 : string = method41(v1, v0, v2)
+        let v80 : string = method38(v76, v77, v78, v79)
+        let v81 : unit = ()
+        let v82 : unit = (fun () -> v4 (); v81) ()
+        let struct (v96 : Mut0, v97 : Mut1, v98 : Mut2, v99 : Mut3, v100 : Mut4, v101 : int64 option) = TraceState.trace_state.Value
+        method15(v80, v96, v97, v98, v99, v100, v101)
+and method36 (v0 : int8, v1 : UH0, v2 : uint64) : US6 =
+    let v3 : bool = v0 < 0y
+    if v3 then
+        let v4 : uint64 = v2 + 1UL
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure20(v2, v0, v4)
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        US6_0(v4, v1)
+    else
+        match v1 with
+        | UH0_1(v121, v122) -> (* Cons *)
+            let v123 : bool = v121 > 1uy
+            if v123 then
+                let v124 : uint64 = 1UL
+                let v125 : (unit -> UH2) = closure21()
+                let v126 : UH2 = UH2_0(v124, v125)
+                let v127 : US7 = method39(v0, v126)
+                let v131 : uint64 =
+                    match v127 with
+                    | US7_1 -> (* None *)
+                        failwith<uint64> "Option does not have a value."
+                    | US7_0(v128) -> (* Some *)
+                        v128
+                let v132 : uint8 = v121 - 1uy
+                let v133 : uint64 = uint64 v132
+                let v134 : uint64 = v133 * v131
+                let v135 : unit = ()
+                let v136 : (unit -> unit) = closure85(v2, v0, v121, v134)
+                let v137 : unit = (fun () -> v136 (); v135) ()
+                let v249 : uint64 = v2 + v134
+                let v250 : int8 = v0 - 1y
+                method36(v250, v122, v249)
+            else
+                let v252 : unit = ()
+                let v253 : (unit -> unit) = closure86(v2, v0, v121)
+                let v254 : unit = (fun () -> v253 (); v252) ()
+                let v366 : int8 = v0 - 1y
+                method36(v366, v122, v2)
+        | UH0_0 -> (* Nil *)
+            US6_1
+and method42 (v0 : int8, v1 : (unit -> UH1), v2 : Mut0, v3 : Mut0, v4 : Mut0, v5 : Mut6, v6 : int8) : UH0 =
+    let v7 : bool = v6 < v0
+    if v7 then
+        let v8 : uint8 = method30(v1, v2, v3, v4, v5)
+        let v9 : int8 = v6 + 1y
+        let v10 : UH0 = method42(v0, v1, v2, v3, v4, v5, v9)
+        UH0_1(v8, v10)
+    else
+        UH0_0
+and method43 (v0 : (unit -> UH1), v1 : Mut0, v2 : Mut0, v3 : Mut0, v4 : Mut6, v5 : uint64, v6 : int8, v7 : UH0) : uint64 =
+    let v8 : int8 = v6 + 1y
+    let v9 : bool = v6 < v8
+    if v9 then
+        let v10 : uint8 = method30(v0, v1, v2, v3, v4)
+        let v11 : UH0 = UH0_1(v10, v7)
+        method29(v0, v1, v2, v3, v4, v5, v6, v11, v8)
+    else
+        let v13 : uint64 = 0UL
+        let v14 : US6 = method36(v6, v7, v13)
+        match v14 with
+        | US6_0(v15, v16) -> (* Some *)
+            let v17 : bool = v15 <= v5
+            if v17 then
+                v15
+            else
+                let v18 : int8 = 0y
+                let v19 : UH0 = method42(v6, v0, v1, v2, v3, v4, v18)
+                method43(v0, v1, v2, v3, v4, v5, v6, v19)
+        | _ ->
+            let v22 : int8 = 0y
+            let v23 : UH0 = method42(v6, v0, v1, v2, v3, v4, v22)
+            method43(v0, v1, v2, v3, v4, v5, v6, v23)
+and method29 (v0 : (unit -> UH1), v1 : Mut0, v2 : Mut0, v3 : Mut0, v4 : Mut6, v5 : uint64, v6 : int8, v7 : UH0, v8 : int8) : uint64 =
+    let v9 : int8 = v6 + 1y
+    let v10 : bool = v8 < v9
+    if v10 then
+        let v11 : uint8 = method30(v0, v1, v2, v3, v4)
+        let v12 : UH0 = UH0_1(v11, v7)
+        let v13 : int8 = v8 + 1y
+        method29(v0, v1, v2, v3, v4, v5, v6, v12, v13)
+    else
+        let v15 : uint64 = 0UL
+        let v16 : US6 = method36(v6, v7, v15)
+        match v16 with
+        | US6_0(v17, v18) -> (* Some *)
+            let v19 : bool = v17 <= v5
+            if v19 then
+                v17
+            else
+                let v20 : int8 = 0y
+                let v21 : UH0 = method42(v6, v0, v1, v2, v3, v4, v20)
+                method43(v0, v1, v2, v3, v4, v5, v6, v21)
+        | _ ->
+            let v24 : int8 = 0y
+            let v25 : UH0 = method42(v6, v0, v1, v2, v3, v4, v24)
+            method43(v0, v1, v2, v3, v4, v5, v6, v25)
+and closure87 () () : unit =
     ()
-and method17 () : (unit -> unit) =
-    closure11()
-and method18 (v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : int64 option) : unit =
+and method44 () : (unit -> unit) =
+    closure87()
+and method45 (v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : int64 option) : unit =
     let v6 : unit = ()
     let v7 : (unit -> unit) = closure7(v0)
     let v8 : unit = (fun () -> v7 (); v6) ()
@@ -1918,7 +2991,7 @@ and method18 (v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : int64 
     _v13 
     let v84 : (string -> unit) = v1.l0
     v84 v11
-and closure12 (v0 : (unit -> unit)) () : unit =
+and closure88 (v0 : (unit -> unit)) () : unit =
     let v1 : unit = ()
     let v2 : (unit -> unit) = closure2()
     let v3 : unit = (fun () -> v2 (); v1) ()
@@ -1942,578 +3015,15 @@ and closure12 (v0 : (unit -> unit)) () : unit =
         let v76 : unit = ()
         let v77 : unit = (fun () -> v2 (); v76) ()
         let struct (v91 : Mut0, v92 : Mut1, v93 : Mut2, v94 : Mut3, v95 : Mut4, v96 : int64 option) = TraceState.trace_state.Value
-        method18(v91, v92, v93, v94, v95, v96)
-and closure14 (v0 : uint8) (v1 : UH0) : UH0 =
-    UH0_1(v0, v1)
-and closure13 () (v0 : uint8) : (UH0 -> UH0) =
-    closure14(v0)
-and method19 () : (uint8 -> (UH0 -> UH0)) =
-    closure13()
-and method20 (v0 : UH0, v1 : int8) : int8 =
+        method45(v91, v92, v93, v94, v95, v96)
+and method46 (v0 : UH0, v1 : int8) : int8 =
     match v0 with
     | UH0_1(v2, v3) -> (* Cons *)
         let v4 : int8 = v1 + 1y
-        method20(v3, v4)
+        method46(v3, v4)
     | UH0_0 -> (* Nil *)
         v1
-and method22 (v0 : int8, v1 : uint64, v2 : uint64) : string =
-    let v3 : string = method13()
-    let v4 : Mut3 = {l0 = v3} : Mut3
-    let v5 : string = "{ "
-    let v6 : string = $"{v5}"
-    let v9 : unit = ()
-    let v10 : (unit -> unit) = closure6(v4, v6)
-    let v11 : unit = (fun () -> v10 (); v9) ()
-    let v14 : string = "power"
-    let v15 : string = $"{v14}"
-    let v18 : unit = ()
-    let v19 : (unit -> unit) = closure6(v4, v15)
-    let v20 : unit = (fun () -> v19 (); v18) ()
-    let v23 : string = " = "
-    let v24 : string = $"{v23}"
-    let v27 : unit = ()
-    let v28 : (unit -> unit) = closure6(v4, v24)
-    let v29 : unit = (fun () -> v28 (); v27) ()
-    let v32 : string = $"{v0}"
-    let v35 : unit = ()
-    let v36 : (unit -> unit) = closure6(v4, v32)
-    let v37 : unit = (fun () -> v36 (); v35) ()
-    let v40 : string = "; "
-    let v41 : string = $"{v40}"
-    let v44 : unit = ()
-    let v45 : (unit -> unit) = closure6(v4, v41)
-    let v46 : unit = (fun () -> v45 (); v44) ()
-    let v49 : string = "acc"
-    let v50 : string = $"{v49}"
-    let v53 : unit = ()
-    let v54 : (unit -> unit) = closure6(v4, v50)
-    let v55 : unit = (fun () -> v54 (); v53) ()
-    let v58 : string = $"{v23}"
-    let v61 : unit = ()
-    let v62 : (unit -> unit) = closure6(v4, v58)
-    let v63 : unit = (fun () -> v62 (); v61) ()
-    let v66 : string = $"{v1}"
-    let v69 : unit = ()
-    let v70 : (unit -> unit) = closure6(v4, v66)
-    let v71 : unit = (fun () -> v70 (); v69) ()
-    let v74 : string = $"{v40}"
-    let v77 : unit = ()
-    let v78 : (unit -> unit) = closure6(v4, v74)
-    let v79 : unit = (fun () -> v78 (); v77) ()
-    let v82 : string = "result"
-    let v83 : string = $"{v82}"
-    let v86 : unit = ()
-    let v87 : (unit -> unit) = closure6(v4, v83)
-    let v88 : unit = (fun () -> v87 (); v86) ()
-    let v91 : string = $"{v23}"
-    let v94 : unit = ()
-    let v95 : (unit -> unit) = closure6(v4, v91)
-    let v96 : unit = (fun () -> v95 (); v94) ()
-    let v99 : string = $"{v2}"
-    let v102 : unit = ()
-    let v103 : (unit -> unit) = closure6(v4, v99)
-    let v104 : unit = (fun () -> v103 (); v102) ()
-    let v107 : string = " }"
-    let v108 : string = $"{v107}"
-    let v111 : unit = ()
-    let v112 : (unit -> unit) = closure6(v4, v108)
-    let v113 : unit = (fun () -> v112 (); v111) ()
-    let v116 : string = v4.l0
-    v116
-and closure15 (v0 : uint64, v1 : int8, v2 : uint64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure2()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut0, v20 : Mut1, v21 : Mut2, v22 : Mut3, v23 : Mut4, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US0 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US0_0, 0; US0_1, 1; US0_2, 2; US0_3, 3; US0_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut0, v59 : Mut1, v60 : Mut2, v61 : Mut3, v62 : Mut4, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method6(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method10()
-        let v78 : string = $"dice.accumulate_dice_rolls"
-        let v79 : bool = v78 = ""
-        let v84 : string =
-            if v79 then
-                let v80 : string = ""
-                v80
-            else
-                let v81 : int64 = v58.l0
-                let v82 : string = method22(v1, v0, v2)
-                method14(v76, v77, v78, v81, v82)
-        let v85 : unit = ()
-        let v86 : unit = (fun () -> v4 (); v85) ()
-        let struct (v100 : Mut0, v101 : Mut1, v102 : Mut2, v103 : Mut3, v104 : Mut4, v105 : int64 option) = TraceState.trace_state.Value
-        method15(v84, v100, v101, v102, v103, v104, v105)
-and closure79 () () : UH1 =
-    UH1_1
-and closure78 () () : UH1 =
-    let v0 : (unit -> UH1) = closure79()
-    UH1_0(9223372036854775808UL, v0)
-and closure77 () () : UH1 =
-    let v0 : (unit -> UH1) = closure78()
-    UH1_0(4611686018427387904UL, v0)
-and closure76 () () : UH1 =
-    let v0 : (unit -> UH1) = closure77()
-    UH1_0(6917529027641081856UL, v0)
-and closure75 () () : UH1 =
-    let v0 : (unit -> UH1) = closure76()
-    UH1_0(1152921504606846976UL, v0)
-and closure74 () () : UH1 =
-    let v0 : (unit -> UH1) = closure75()
-    UH1_0(15564440312192434176UL, v0)
-and closure73 () () : UH1 =
-    let v0 : (unit -> UH1) = closure74()
-    UH1_0(11817445422220181504UL, v0)
-and closure72 () () : UH1 =
-    let v0 : (unit -> UH1) = closure73()
-    UH1_0(5044031582654955520UL, v0)
-and closure71 () () : UH1 =
-    let v0 : (unit -> UH1) = closure72()
-    UH1_0(6989586621679009792UL, v0)
-and closure70 () () : UH1 =
-    let v0 : (unit -> UH1) = closure71()
-    UH1_0(16537217831704461312UL, v0)
-and closure69 () () : UH1 =
-    let v0 : (unit -> UH1) = closure70()
-    UH1_0(11979575008805519360UL, v0)
-and closure68 () () : UH1 =
-    let v0 : (unit -> UH1) = closure69()
-    UH1_0(14294425217273954304UL, v0)
-and closure67 () () : UH1 =
-    let v0 : (unit -> UH1) = closure68()
-    UH1_0(2382404202878992384UL, v0)
-and closure66 () () : UH1 =
-    let v0 : (unit -> UH1) = closure67()
-    UH1_0(6545982058383015936UL, v0)
-and closure65 () () : UH1 =
-    let v0 : (unit -> UH1) = closure66()
-    UH1_0(10314369046585278464UL, v0)
-and closure64 () () : UH1 =
-    let v0 : (unit -> UH1) = closure65()
-    UH1_0(4793518853382471680UL, v0)
-and closure63 () () : UH1 =
-    let v0 : (unit -> UH1) = closure64()
-    UH1_0(3873377154515337216UL, v0)
-and closure62 () () : UH1 =
-    let v0 : (unit -> UH1) = closure63()
-    UH1_0(645562859085889536UL, v0)
-and closure61 () () : UH1 =
-    let v0 : (unit -> UH1) = closure62()
-    UH1_0(107593809847648256UL, v0)
-and closure60 () () : UH1 =
-    let v0 : (unit -> UH1) = closure61()
-    UH1_0(3092389647259533312UL, v0)
-and closure59 () () : UH1 =
-    let v0 : (unit -> UH1) = closure60()
-    UH1_0(9738770311398031360UL, v0)
-and closure58 () () : UH1 =
-    let v0 : (unit -> UH1) = closure59()
-    UH1_0(16995415113324298240UL, v0)
-and closure57 () () : UH1 =
-    let v0 : (unit -> UH1) = closure58()
-    UH1_0(8981483876790566912UL, v0)
-and closure56 () () : UH1 =
-    let v0 : (unit -> UH1) = closure57()
-    UH1_0(13794743361938128896UL, v0)
-and closure55 () () : UH1 =
-    let v0 : (unit -> UH1) = closure56()
-    UH1_0(2299123893656354816UL, v0)
-and closure54 () () : UH1 =
-    let v0 : (unit -> UH1) = closure55()
-    UH1_0(3457644661227651072UL, v0)
-and closure53 () () : UH1 =
-    let v0 : (unit -> UH1) = closure54()
-    UH1_0(576274110204608512UL, v0)
-and closure52 () () : UH1 =
-    let v0 : (unit -> UH1) = closure53()
-    UH1_0(6244960376270618624UL, v0)
-and closure51 () () : UH1 =
-    let v0 : (unit -> UH1) = closure52()
-    UH1_0(13338656111851470848UL, v0)
-and closure50 () () : UH1 =
-    let v0 : (unit -> UH1) = closure51()
-    UH1_0(14520938734448279552UL, v0)
-and closure49 () () : UH1 =
-    let v0 : (unit -> UH1) = closure50()
-    UH1_0(14717985838214414336UL, v0)
-and closure48 () () : UH1 =
-    let v0 : (unit -> UH1) = closure49()
-    UH1_0(5527454985320660992UL, v0)
-and closure47 () () : UH1 =
-    let v0 : (unit -> UH1) = closure48()
-    UH1_0(16293529225644736512UL, v0)
-and closure46 () () : UH1 =
-    let v0 : (unit -> UH1) = closure47()
-    UH1_0(11938960241128898560UL, v0)
-and closure45 () () : UH1 =
-    let v0 : (unit -> UH1) = closure46()
-    UH1_0(8138741398091333632UL, v0)
-and closure44 () () : UH1 =
-    let v0 : (unit -> UH1) = closure45()
-    UH1_0(7505371590918406144UL, v0)
-and closure43 () () : UH1 =
-    let v0 : (unit -> UH1) = closure44()
-    UH1_0(16623181993244360704UL, v0)
-and closure42 () () : UH1 =
-    let v0 : (unit -> UH1) = closure43()
-    UH1_0(8919445023443910656UL, v0)
-and closure41 () () : UH1 =
-    let v0 : (unit -> UH1) = closure42()
-    UH1_0(4561031516192243712UL, v0)
-and closure40 () () : UH1 =
-    let v0 : (unit -> UH1) = closure41()
-    UH1_0(9983543956220149760UL, v0)
-and closure39 () () : UH1 =
-    let v0 : (unit -> UH1) = closure40()
-    UH1_0(4738381338321616896UL, v0)
-and closure38 () () : UH1 =
-    let v0 : (unit -> UH1) = closure39()
-    UH1_0(789730223053602816UL, v0)
-and closure37 () () : UH1 =
-    let v0 : (unit -> UH1) = closure38()
-    UH1_0(131621703842267136UL, v0)
-and closure36 () () : UH1 =
-    let v0 : (unit -> UH1) = closure37()
-    UH1_0(21936950640377856UL, v0)
-and closure35 () () : UH1 =
-    let v0 : (unit -> UH1) = closure36()
-    UH1_0(3656158440062976UL, v0)
-and closure34 () () : UH1 =
-    let v0 : (unit -> UH1) = closure35()
-    UH1_0(609359740010496UL, v0)
-and closure33 () () : UH1 =
-    let v0 : (unit -> UH1) = closure34()
-    UH1_0(101559956668416UL, v0)
-and closure32 () () : UH1 =
-    let v0 : (unit -> UH1) = closure33()
-    UH1_0(16926659444736UL, v0)
-and closure31 () () : UH1 =
-    let v0 : (unit -> UH1) = closure32()
-    UH1_0(2821109907456UL, v0)
-and closure30 () () : UH1 =
-    let v0 : (unit -> UH1) = closure31()
-    UH1_0(470184984576UL, v0)
-and closure29 () () : UH1 =
-    let v0 : (unit -> UH1) = closure30()
-    UH1_0(78364164096UL, v0)
-and closure28 () () : UH1 =
-    let v0 : (unit -> UH1) = closure29()
-    UH1_0(13060694016UL, v0)
-and closure27 () () : UH1 =
-    let v0 : (unit -> UH1) = closure28()
-    UH1_0(2176782336UL, v0)
-and closure26 () () : UH1 =
-    let v0 : (unit -> UH1) = closure27()
-    UH1_0(362797056UL, v0)
-and closure25 () () : UH1 =
-    let v0 : (unit -> UH1) = closure26()
-    UH1_0(60466176UL, v0)
-and closure24 () () : UH1 =
-    let v0 : (unit -> UH1) = closure25()
-    UH1_0(10077696UL, v0)
-and closure23 () () : UH1 =
-    let v0 : (unit -> UH1) = closure24()
-    UH1_0(1679616UL, v0)
-and closure22 () () : UH1 =
-    let v0 : (unit -> UH1) = closure23()
-    UH1_0(279936UL, v0)
-and closure21 () () : UH1 =
-    let v0 : (unit -> UH1) = closure22()
-    UH1_0(46656UL, v0)
-and closure20 () () : UH1 =
-    let v0 : (unit -> UH1) = closure21()
-    UH1_0(7776UL, v0)
-and closure19 () () : UH1 =
-    let v0 : (unit -> UH1) = closure20()
-    UH1_0(1296UL, v0)
-and closure18 () () : UH1 =
-    let v0 : (unit -> UH1) = closure19()
-    UH1_0(216UL, v0)
-and closure17 () () : UH1 =
-    let v0 : (unit -> UH1) = closure18()
-    UH1_0(36UL, v0)
-and closure16 () () : UH1 =
-    let v0 : (unit -> UH1) = closure17()
-    UH1_0(6UL, v0)
-and method23 (v0 : int8, v1 : UH1) : US5 =
-    match v1 with
-    | UH1_0(v2, v3) -> (* StreamCons *)
-        let v4 : bool = v0 <= 0y
-        if v4 then
-            US5_0(v2)
-        else
-            let v6 : int8 = v0 - 1y
-            let v7 : UH1 = v3 ()
-            method23(v6, v7)
-    | UH1_1 -> (* StreamNil *)
-        US5_1
-and method24 (v0 : int8, v1 : uint64, v2 : uint8, v3 : uint64) : string =
-    let v4 : string = method13()
-    let v5 : Mut3 = {l0 = v4} : Mut3
-    let v6 : string = "{ "
-    let v7 : string = $"{v6}"
-    let v10 : unit = ()
-    let v11 : (unit -> unit) = closure6(v5, v7)
-    let v12 : unit = (fun () -> v11 (); v10) ()
-    let v15 : string = "power"
-    let v16 : string = $"{v15}"
-    let v19 : unit = ()
-    let v20 : (unit -> unit) = closure6(v5, v16)
-    let v21 : unit = (fun () -> v20 (); v19) ()
-    let v24 : string = " = "
-    let v25 : string = $"{v24}"
-    let v28 : unit = ()
-    let v29 : (unit -> unit) = closure6(v5, v25)
-    let v30 : unit = (fun () -> v29 (); v28) ()
-    let v33 : string = $"{v0}"
-    let v36 : unit = ()
-    let v37 : (unit -> unit) = closure6(v5, v33)
-    let v38 : unit = (fun () -> v37 (); v36) ()
-    let v41 : string = "; "
-    let v42 : string = $"{v41}"
-    let v45 : unit = ()
-    let v46 : (unit -> unit) = closure6(v5, v42)
-    let v47 : unit = (fun () -> v46 (); v45) ()
-    let v50 : string = "acc"
-    let v51 : string = $"{v50}"
-    let v54 : unit = ()
-    let v55 : (unit -> unit) = closure6(v5, v51)
-    let v56 : unit = (fun () -> v55 (); v54) ()
-    let v59 : string = $"{v24}"
-    let v62 : unit = ()
-    let v63 : (unit -> unit) = closure6(v5, v59)
-    let v64 : unit = (fun () -> v63 (); v62) ()
-    let v67 : string = $"{v1}"
-    let v70 : unit = ()
-    let v71 : (unit -> unit) = closure6(v5, v67)
-    let v72 : unit = (fun () -> v71 (); v70) ()
-    let v75 : string = $"{v41}"
-    let v78 : unit = ()
-    let v79 : (unit -> unit) = closure6(v5, v75)
-    let v80 : unit = (fun () -> v79 (); v78) ()
-    let v83 : string = "roll"
-    let v84 : string = $"{v83}"
-    let v87 : unit = ()
-    let v88 : (unit -> unit) = closure6(v5, v84)
-    let v89 : unit = (fun () -> v88 (); v87) ()
-    let v92 : string = $"{v24}"
-    let v95 : unit = ()
-    let v96 : (unit -> unit) = closure6(v5, v92)
-    let v97 : unit = (fun () -> v96 (); v95) ()
-    let v100 : string = $"{v2}"
-    let v103 : unit = ()
-    let v104 : (unit -> unit) = closure6(v5, v100)
-    let v105 : unit = (fun () -> v104 (); v103) ()
-    let v108 : string = $"{v41}"
-    let v111 : unit = ()
-    let v112 : (unit -> unit) = closure6(v5, v108)
-    let v113 : unit = (fun () -> v112 (); v111) ()
-    let v116 : string = "value"
-    let v117 : string = $"{v116}"
-    let v120 : unit = ()
-    let v121 : (unit -> unit) = closure6(v5, v117)
-    let v122 : unit = (fun () -> v121 (); v120) ()
-    let v125 : string = $"{v24}"
-    let v128 : unit = ()
-    let v129 : (unit -> unit) = closure6(v5, v125)
-    let v130 : unit = (fun () -> v129 (); v128) ()
-    let v133 : string = $"{v3}"
-    let v136 : unit = ()
-    let v137 : (unit -> unit) = closure6(v5, v133)
-    let v138 : unit = (fun () -> v137 (); v136) ()
-    let v141 : string = " }"
-    let v142 : string = $"{v141}"
-    let v145 : unit = ()
-    let v146 : (unit -> unit) = closure6(v5, v142)
-    let v147 : unit = (fun () -> v146 (); v145) ()
-    let v150 : string = v5.l0
-    v150
-and closure80 (v0 : uint64, v1 : int8, v2 : uint8, v3 : uint64) () : unit =
-    let v4 : unit = ()
-    let v5 : (unit -> unit) = closure2()
-    let v6 : unit = (fun () -> v5 (); v4) ()
-    let struct (v20 : Mut0, v21 : Mut1, v22 : Mut2, v23 : Mut3, v24 : Mut4, v25 : int64 option) = TraceState.trace_state.Value
-    let v38 : US0 = v24.l0
-    let v39 : bool = v22.l0
-    let v40 : bool = v39 = false
-    let v43 : bool =
-        if v40 then
-            false
-        else
-            let v41 : int32 = [ US0_0, 0; US0_1, 1; US0_2, 2; US0_3, 3; US0_4, 4 ] |> Map |> Map.find v38
-            let v42 : bool = 1 >= v41
-            v42
-    if v43 then
-        let v44 : unit = ()
-        let v45 : unit = (fun () -> v5 (); v44) ()
-        let struct (v59 : Mut0, v60 : Mut1, v61 : Mut2, v62 : Mut3, v63 : Mut4, v64 : int64 option) = TraceState.trace_state.Value
-        let v77 : string = method6(v59, v60, v61, v62, v63, v64)
-        let v78 : string = method10()
-        let v79 : string = $"dice.accumulate_dice_rolls"
-        let v80 : bool = v79 = ""
-        let v85 : string =
-            if v80 then
-                let v81 : string = ""
-                v81
-            else
-                let v82 : int64 = v59.l0
-                let v83 : string = method24(v1, v0, v2, v3)
-                method14(v77, v78, v79, v82, v83)
-        let v86 : unit = ()
-        let v87 : unit = (fun () -> v5 (); v86) ()
-        let struct (v101 : Mut0, v102 : Mut1, v103 : Mut2, v104 : Mut3, v105 : Mut4, v106 : int64 option) = TraceState.trace_state.Value
-        method15(v85, v101, v102, v103, v104, v105, v106)
-and method25 (v0 : int8, v1 : uint64, v2 : uint8) : string =
-    let v3 : string = method13()
-    let v4 : Mut3 = {l0 = v3} : Mut3
-    let v5 : string = "{ "
-    let v6 : string = $"{v5}"
-    let v9 : unit = ()
-    let v10 : (unit -> unit) = closure6(v4, v6)
-    let v11 : unit = (fun () -> v10 (); v9) ()
-    let v14 : string = "power"
-    let v15 : string = $"{v14}"
-    let v18 : unit = ()
-    let v19 : (unit -> unit) = closure6(v4, v15)
-    let v20 : unit = (fun () -> v19 (); v18) ()
-    let v23 : string = " = "
-    let v24 : string = $"{v23}"
-    let v27 : unit = ()
-    let v28 : (unit -> unit) = closure6(v4, v24)
-    let v29 : unit = (fun () -> v28 (); v27) ()
-    let v32 : string = $"{v0}"
-    let v35 : unit = ()
-    let v36 : (unit -> unit) = closure6(v4, v32)
-    let v37 : unit = (fun () -> v36 (); v35) ()
-    let v40 : string = "; "
-    let v41 : string = $"{v40}"
-    let v44 : unit = ()
-    let v45 : (unit -> unit) = closure6(v4, v41)
-    let v46 : unit = (fun () -> v45 (); v44) ()
-    let v49 : string = "acc"
-    let v50 : string = $"{v49}"
-    let v53 : unit = ()
-    let v54 : (unit -> unit) = closure6(v4, v50)
-    let v55 : unit = (fun () -> v54 (); v53) ()
-    let v58 : string = $"{v23}"
-    let v61 : unit = ()
-    let v62 : (unit -> unit) = closure6(v4, v58)
-    let v63 : unit = (fun () -> v62 (); v61) ()
-    let v66 : string = $"{v1}"
-    let v69 : unit = ()
-    let v70 : (unit -> unit) = closure6(v4, v66)
-    let v71 : unit = (fun () -> v70 (); v69) ()
-    let v74 : string = $"{v40}"
-    let v77 : unit = ()
-    let v78 : (unit -> unit) = closure6(v4, v74)
-    let v79 : unit = (fun () -> v78 (); v77) ()
-    let v82 : string = "roll"
-    let v83 : string = $"{v82}"
-    let v86 : unit = ()
-    let v87 : (unit -> unit) = closure6(v4, v83)
-    let v88 : unit = (fun () -> v87 (); v86) ()
-    let v91 : string = $"{v23}"
-    let v94 : unit = ()
-    let v95 : (unit -> unit) = closure6(v4, v91)
-    let v96 : unit = (fun () -> v95 (); v94) ()
-    let v99 : string = $"{v2}"
-    let v102 : unit = ()
-    let v103 : (unit -> unit) = closure6(v4, v99)
-    let v104 : unit = (fun () -> v103 (); v102) ()
-    let v107 : string = " }"
-    let v108 : string = $"{v107}"
-    let v111 : unit = ()
-    let v112 : (unit -> unit) = closure6(v4, v108)
-    let v113 : unit = (fun () -> v112 (); v111) ()
-    let v116 : string = v4.l0
-    v116
-and closure81 (v0 : uint64, v1 : int8, v2 : uint8) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure2()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut0, v20 : Mut1, v21 : Mut2, v22 : Mut3, v23 : Mut4, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US0 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US0_0, 0; US0_1, 1; US0_2, 2; US0_3, 3; US0_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut0, v59 : Mut1, v60 : Mut2, v61 : Mut3, v62 : Mut4, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method6(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method10()
-        let v78 : string = $"dice.accumulate_dice_rolls"
-        let v79 : bool = v78 = ""
-        let v84 : string =
-            if v79 then
-                let v80 : string = ""
-                v80
-            else
-                let v81 : int64 = v58.l0
-                let v82 : string = method25(v1, v0, v2)
-                method14(v76, v77, v78, v81, v82)
-        let v85 : unit = ()
-        let v86 : unit = (fun () -> v4 (); v85) ()
-        let struct (v100 : Mut0, v101 : Mut1, v102 : Mut2, v103 : Mut3, v104 : Mut4, v105 : int64 option) = TraceState.trace_state.Value
-        method15(v84, v100, v101, v102, v103, v104, v105)
-and method21 (v0 : int8, v1 : UH0, v2 : uint64) : US4 =
-    let v3 : bool = v0 < 0y
-    if v3 then
-        let v4 : uint64 = v2 + 1UL
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure15(v2, v0, v4)
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        US4_0(v4, v1)
-    else
-        match v1 with
-        | UH0_1(v125, v126) -> (* Cons *)
-            let v127 : bool = v125 > 1uy
-            if v127 then
-                let v128 : uint64 = 1UL
-                let v129 : (unit -> UH1) = closure16()
-                let v130 : UH1 = UH1_0(v128, v129)
-                let v131 : US5 = method23(v0, v130)
-                let v135 : uint64 =
-                    match v131 with
-                    | US5_1 -> (* None *)
-                        failwith<uint64> "Option does not have a value."
-                    | US5_0(v132) -> (* Some *)
-                        v132
-                let v136 : uint8 = v125 - 1uy
-                let v137 : uint64 = uint64 v136
-                let v138 : uint64 = v137 * v135
-                let v139 : unit = ()
-                let v140 : (unit -> unit) = closure80(v2, v0, v125, v138)
-                let v141 : unit = (fun () -> v140 (); v139) ()
-                let v257 : uint64 = v2 + v138
-                let v258 : int8 = v0 - 1y
-                method21(v258, v126, v257)
-            else
-                let v260 : unit = ()
-                let v261 : (unit -> unit) = closure81(v2, v0, v125)
-                let v262 : unit = (fun () -> v261 (); v260) ()
-                let v378 : int8 = v0 - 1y
-                method21(v378, v126, v2)
-        | UH0_0 -> (* Nil *)
-            US4_1
-and method26 (v0 : uint64, v1 : string, v2 : uint64 option) : string =
+and method47 (v0 : uint64, v1 : string, v2 : string) : string =
     let v3 : string = method13()
     let v4 : Mut3 = {l0 = v3} : Mut3
     let v5 : string = "{ "
@@ -2566,56 +3076,18 @@ and method26 (v0 : uint64, v1 : string, v2 : uint64 option) : string =
     let v94 : unit = ()
     let v95 : (unit -> unit) = closure6(v4, v91)
     let v96 : unit = (fun () -> v95 (); v94) ()
-    let v99 : unit = ()
-    
-#if FABLE_COMPILER || WASM || CONTRACT
-    
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v100 : string = "format!(\"{:#?}\", $0)"
-    let v101 : std_string_String = Fable.Core.RustInterop.emitRustExpr v2 v100 
-    let v102 : string = "fable_library_rust::String_::fromString($0)"
-    let v103 : string = Fable.Core.RustInterop.emitRustExpr v101 v102 
-    let _v99 = v103 
-    #endif
-#if FABLE_COMPILER_RUST && WASM
-    let v104 : string = "format!(\"{:#?}\", $0)"
-    let v105 : std_string_String = Fable.Core.RustInterop.emitRustExpr v2 v104 
-    let v106 : string = "fable_library_rust::String_::fromString($0)"
-    let v107 : string = Fable.Core.RustInterop.emitRustExpr v105 v106 
-    let _v99 = v107 
-    #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-    let v108 : string = "format!(\"{:#?}\", $0)"
-    let v109 : std_string_String = Fable.Core.RustInterop.emitRustExpr v2 v108 
-    let v110 : string = "fable_library_rust::String_::fromString($0)"
-    let v111 : string = Fable.Core.RustInterop.emitRustExpr v109 v110 
-    let _v99 = v111 
-    #endif
-#if FABLE_COMPILER_TYPESCRIPT
-    let v112 : string = $"%A{v2}"
-    let _v99 = v112 
-    #endif
-#if FABLE_COMPILER_PYTHON
-    let v115 : string = $"%A{v2}"
-    let _v99 = v115 
-    #endif
-#else
-    let v118 : string = $"%A{v2}"
-    let _v99 = v118 
-    #endif
-    let v121 : string = _v99 
-    let v126 : string = $"{v121}"
-    let v129 : unit = ()
-    let v130 : (unit -> unit) = closure6(v4, v126)
-    let v131 : unit = (fun () -> v130 (); v129) ()
-    let v134 : string = " }"
-    let v135 : string = $"{v134}"
-    let v138 : unit = ()
-    let v139 : (unit -> unit) = closure6(v4, v135)
-    let v140 : unit = (fun () -> v139 (); v138) ()
-    let v143 : string = v4.l0
-    v143
-and method27 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
+    let v99 : string = $"{v2}"
+    let v102 : unit = ()
+    let v103 : (unit -> unit) = closure6(v4, v99)
+    let v104 : unit = (fun () -> v103 (); v102) ()
+    let v107 : string = " }"
+    let v108 : string = $"{v107}"
+    let v111 : unit = ()
+    let v112 : (unit -> unit) = closure6(v4, v108)
+    let v113 : unit = (fun () -> v112 (); v111) ()
+    let v116 : string = v4.l0
+    v116
+and method48 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
     let v4 : string = "dice_contract.roll_within_bounds"
     let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
     let v8 : char list = []
@@ -2629,7 +3101,7 @@ and method27 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
     let v39 : (char []) = v38 v35
     let v42 : string = v13.TrimEnd v39 
     v42
-and closure82 (v0 : uint64, v1 : Vec<uint8>, v2 : uint64 option) () : unit =
+and closure89 (v0 : uint64, v1 : Vec<uint8>, v2 : uint64 option) () : unit =
     let v3 : unit = ()
     let v4 : (unit -> unit) = closure2()
     let v5 : unit = (fun () -> v4 (); v3) ()
@@ -2652,15 +3124,16 @@ and closure82 (v0 : uint64, v1 : Vec<uint8>, v2 : uint64 option) () : unit =
         let v77 : string = method10()
         let v78 : int64 = v58.l0
         let v79 : string = $"%A{v1}"
-        let v82 : string = method26(v0, v79, v2)
-        let v83 : string = method27(v76, v77, v78, v82)
-        let v84 : unit = ()
-        let v85 : unit = (fun () -> v4 (); v84) ()
-        let struct (v99 : Mut0, v100 : Mut1, v101 : Mut2, v102 : Mut3, v103 : Mut4, v104 : int64 option) = TraceState.trace_state.Value
-        method15(v83, v99, v100, v101, v102, v103, v104)
-and method28 () : (unit -> unit) =
-    closure11()
-and closure83 (v0 : (unit -> unit)) () : unit =
+        let v82 : string = $"%A{v2}"
+        let v85 : string = method47(v0, v79, v82)
+        let v86 : string = method48(v76, v77, v78, v85)
+        let v87 : unit = ()
+        let v88 : unit = (fun () -> v4 (); v87) ()
+        let struct (v102 : Mut0, v103 : Mut1, v104 : Mut2, v105 : Mut3, v106 : Mut4, v107 : int64 option) = TraceState.trace_state.Value
+        method15(v86, v102, v103, v104, v105, v106, v107)
+and method49 () : (unit -> unit) =
+    closure87()
+and closure90 (v0 : (unit -> unit)) () : unit =
     let v1 : unit = ()
     let v2 : (unit -> unit) = closure2()
     let v3 : unit = (fun () -> v2 (); v1) ()
@@ -2684,460 +3157,402 @@ and closure83 (v0 : (unit -> unit)) () : unit =
         let v76 : unit = ()
         let v77 : unit = (fun () -> v2 (); v76) ()
         let struct (v91 : Mut0, v92 : Mut1, v93 : Mut2, v94 : Mut3, v95 : Mut4, v96 : int64 option) = TraceState.trace_state.Value
-        method18(v91, v92, v93, v94, v95, v96)
+        method45(v91, v92, v93, v94, v95, v96)
 and closure0 () () : unit =
     let v0 : string = "} //"
     Fable.Core.RustInterop.emitRustExpr () v0 
-    let v1 : string = "pub struct Util {} //"
+    let v1 : string = "#[derive( //"
     Fable.Core.RustInterop.emitRustExpr () v1 
-    let v2 : string = "impl Util { //"
+    let v2 : string = "  near_sdk::PanicOnDefault, //"
     Fable.Core.RustInterop.emitRustExpr () v2 
-    let v3 : string = "    fn stream_u8_to_list( //"
+    let v3 : string = "  borsh::BorshDeserialize, //"
     Fable.Core.RustInterop.emitRustExpr () v3 
-    let v4 : string = "        s: fable_library_rust::Native_::LrcPtr<dice_contract_lib::Dice::UH0>, //"
+    let v4 : string = "  borsh::BorshSerialize, //"
     Fable.Core.RustInterop.emitRustExpr () v4 
-    let v5 : string = "    ) -> dice_contract_lib::Dice::UH1 { //"
+    let v5 : string = ")] //"
     Fable.Core.RustInterop.emitRustExpr () v5 
-    let v6 : string = "        match s.as_ref() { //"
+    let v6 : string = "pub struct OldState { //"
     Fable.Core.RustInterop.emitRustExpr () v6 
-    let v7 : string = "            dice_contract_lib::Dice::UH0::UH0_0(n, f) => { //"
+    let v7 : string = "    version: u32, //"
     Fable.Core.RustInterop.emitRustExpr () v7 
-    let v8 : string = "                dice_contract_lib::Dice::UH1::UH1_1( //"
+    let v8 : string = "    seeds: near_sdk::store::vec::Vector<u8>, //"
     Fable.Core.RustInterop.emitRustExpr () v8 
-    let v9 : string = "                    *n, //"
+    let v9 : string = "} //"
     Fable.Core.RustInterop.emitRustExpr () v9 
-    let v10 : string = "                    Self::stream_u8_to_list(f()).into() //"
+    let v10 : string = "#[near_sdk::near_bindgen] //"
     Fable.Core.RustInterop.emitRustExpr () v10 
-    let v11 : string = "                ) //"
+    let v11 : string = "#[derive( //"
     Fable.Core.RustInterop.emitRustExpr () v11 
-    let v12 : string = "            } //"
+    let v12 : string = "  near_sdk::PanicOnDefault, //"
     Fable.Core.RustInterop.emitRustExpr () v12 
-    let v13 : string = "            dice_contract_lib::Dice::UH0::UH0_1 => dice_contract_lib::Dice::UH1::UH1_0, //"
+    let v13 : string = "  borsh::BorshDeserialize, //"
     Fable.Core.RustInterop.emitRustExpr () v13 
-    let v14 : string = "        } //"
+    let v14 : string = "  borsh::BorshSerialize, //"
     Fable.Core.RustInterop.emitRustExpr () v14 
-    let v15 : string = "    } //"
+    let v15 : string = ")] //"
     Fable.Core.RustInterop.emitRustExpr () v15 
-    let v16 : string = "    fn list_u8_to_vec( //"
+    let v16 : string = "pub struct State ( //"
     Fable.Core.RustInterop.emitRustExpr () v16 
-    let v17 : string = "        s: fable_library_rust::Native_::LrcPtr<dice_contract_lib::Dice::UH1>, //"
+    let v17 : string = "/*"
     Fable.Core.RustInterop.emitRustExpr () v17 
-    let v18 : string = "    ) -> Vec<u8> { //"
-    Fable.Core.RustInterop.emitRustExpr () v18 
-    let v19 : string = "        match s.as_ref() { //"
-    Fable.Core.RustInterop.emitRustExpr () v19 
-    let v20 : string = "            dice_contract_lib::Dice::UH1::UH1_1(n, f) => { //"
-    Fable.Core.RustInterop.emitRustExpr () v20 
-    let v21 : string = "                let mut v = Self::list_u8_to_vec(f.clone()); //"
+    let v18 : TypeEmit<struct (uint32 * near_sdk_store_vec_Vector<uint8>)> = null |> unbox<TypeEmit<struct (uint32 * near_sdk_store_vec_Vector<uint8>)>>
+    let v21 : string = "*/ )"
     Fable.Core.RustInterop.emitRustExpr () v21 
-    let v22 : string = "                v.insert(0, *n); //"
+    let v22 : string = "impl From<OldState> for State { //"
     Fable.Core.RustInterop.emitRustExpr () v22 
-    let v23 : string = "                v //"
+    let v23 : string = "    fn from(old_state: OldState) -> Self { //"
     Fable.Core.RustInterop.emitRustExpr () v23 
-    let v24 : string = "            } //"
+    let v24 : string = "        Self((old_state.version + 1, old_state.seeds)) //"
     Fable.Core.RustInterop.emitRustExpr () v24 
-    let v25 : string = "            dice_contract_lib::Dice::UH1::UH1_0 => vec![], //"
+    let v25 : string = "    } //"
     Fable.Core.RustInterop.emitRustExpr () v25 
-    let v26 : string = "        } //"
+    let v26 : string = "} //"
     Fable.Core.RustInterop.emitRustExpr () v26 
-    let v27 : string = "    } //"
+    let v27 : string = "#[near_sdk::near_bindgen] //"
     Fable.Core.RustInterop.emitRustExpr () v27 
-    let v28 : string = "    fn vec_u8_to_list(v: Vec<u8>) -> dice_contract_lib::Dice::UH1 { //"
+    let v28 : string = "impl State { //"
     Fable.Core.RustInterop.emitRustExpr () v28 
-    let v29 : string = "        v.iter() //"
+    let v29 : string = "#[init] //"
     Fable.Core.RustInterop.emitRustExpr () v29 
-    let v30 : string = "            .rev() //"
+    let v30 : string = "pub fn new() -> Self { // 1"
     Fable.Core.RustInterop.emitRustExpr () v30 
-    let v31 : string = "            .fold(dice_contract_lib::Dice::UH1::UH1_0, |acc, x| { //"
-    Fable.Core.RustInterop.emitRustExpr () v31 
-    let v32 : string = "                dice_contract_lib::Dice::UH1::UH1_1(*x, acc.into()) //"
-    Fable.Core.RustInterop.emitRustExpr () v32 
-    let v33 : string = "            }) //"
-    Fable.Core.RustInterop.emitRustExpr () v33 
-    let v34 : string = "    } //"
-    Fable.Core.RustInterop.emitRustExpr () v34 
-    let v35 : string = "    fn vec_u8_to_stream(v: Vec<u8>) -> dice_contract_lib::Dice::UH0 { //"
-    Fable.Core.RustInterop.emitRustExpr () v35 
-    let v36 : string = "        v.iter() //"
-    Fable.Core.RustInterop.emitRustExpr () v36 
-    let v37 : string = "            .rev() //"
-    Fable.Core.RustInterop.emitRustExpr () v37 
-    let v38 : string = "            .fold(dice_contract_lib::Dice::UH0::UH0_1, |acc, x| { //"
-    Fable.Core.RustInterop.emitRustExpr () v38 
-    let v39 : string = "                dice_contract_lib::Dice::UH0::UH0_0( //"
-    Fable.Core.RustInterop.emitRustExpr () v39 
-    let v40 : string = "                    *x, //"
-    Fable.Core.RustInterop.emitRustExpr () v40 
-    let v41 : string = "                    fable_library_rust::Native_::Func0::new(move || acc.clone().into()), //"
-    Fable.Core.RustInterop.emitRustExpr () v41 
-    let v42 : string = "                ) //"
-    Fable.Core.RustInterop.emitRustExpr () v42 
-    let v43 : string = "            }) //"
+    let v31 : string = "true; /*"
+    let v32 : bool = Fable.Core.RustInterop.emitRustExpr () v31 
+    let v33 : TypeEmit<unit> = null |> unbox<TypeEmit<unit>>
+    let v36 : string = "true; */"
+    let v37 : bool = Fable.Core.RustInterop.emitRustExpr () v36 
+    let v38 : string = "seeds"
+    let v39 : string = "b\"" + v38 + "\""
+    let v40 : Ref<Slice<uint8>> = Fable.Core.RustInterop.emitRustExpr () v39 
+    let v41 : string = "near_sdk::store::vec::Vector::new($0)"
+    let v42 : near_sdk_store_vec_Vector<uint8> = Fable.Core.RustInterop.emitRustExpr v40 v41 
+    let _result = struct (2u, v42) in _result |> (fun x -> Fable.Core.RustInterop.emitRustExpr x $"Self($0) // x") // 2
+    let v43 : string = "} // 2."
     Fable.Core.RustInterop.emitRustExpr () v43 
-    let v44 : string = "    } //"
+    let v44 : string = "} // 1."
     Fable.Core.RustInterop.emitRustExpr () v44 
-    let v45 : string = "} //"
+    let v45 : string = "} /* c"
     Fable.Core.RustInterop.emitRustExpr () v45 
-    let v46 : string = "#[derive( //"
-    Fable.Core.RustInterop.emitRustExpr () v46 
-    let v47 : string = "  near_sdk::PanicOnDefault, //"
-    Fable.Core.RustInterop.emitRustExpr () v47 
-    let v48 : string = "  borsh::BorshDeserialize, //"
-    Fable.Core.RustInterop.emitRustExpr () v48 
-    let v49 : string = "  borsh::BorshSerialize, //"
-    Fable.Core.RustInterop.emitRustExpr () v49 
-    let v50 : string = ")] //"
+    let v46 : string = "true; // ??? / i: 1uy / i': 1uy / acc: 0uy / n: 2uy"
+    let v47 : bool = Fable.Core.RustInterop.emitRustExpr () v46 
+    let v48 : string = "true; */ // ???? / i: 1uy / i': 2uy / acc: 0uy / n: 2uy"
+    let v49 : bool = Fable.Core.RustInterop.emitRustExpr () v48 
+    let v50 : string = "#[near_sdk::near_bindgen] //"
     Fable.Core.RustInterop.emitRustExpr () v50 
-    let v51 : string = "pub struct OldState { //"
+    let v51 : string = "impl State { //"
     Fable.Core.RustInterop.emitRustExpr () v51 
-    let v52 : string = "    version: u32, //"
+    let v52 : string = "pub fn contribute_seed(&mut self, seed: Vec<u8>) { //"
     Fable.Core.RustInterop.emitRustExpr () v52 
-    let v53 : string = "    seeds: near_sdk::store::vec::Vector<u8>, //"
-    Fable.Core.RustInterop.emitRustExpr () v53 
-    let v54 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v54 
-    let v55 : string = "#[near_sdk::near_bindgen] //"
-    Fable.Core.RustInterop.emitRustExpr () v55 
-    let v56 : string = "#[derive( //"
-    Fable.Core.RustInterop.emitRustExpr () v56 
-    let v57 : string = "  near_sdk::PanicOnDefault, //"
-    Fable.Core.RustInterop.emitRustExpr () v57 
-    let v58 : string = "  borsh::BorshDeserialize, //"
-    Fable.Core.RustInterop.emitRustExpr () v58 
-    let v59 : string = "  borsh::BorshSerialize, //"
-    Fable.Core.RustInterop.emitRustExpr () v59 
-    let v60 : string = ")] //"
-    Fable.Core.RustInterop.emitRustExpr () v60 
-    let v61 : string = "pub struct State ( //"
-    Fable.Core.RustInterop.emitRustExpr () v61 
-    let v62 : string = "/*"
-    Fable.Core.RustInterop.emitRustExpr () v62 
-    let v63 : TypeEmit<struct (uint32 * near_sdk_store_vec_Vector<uint8>)> = null |> unbox<TypeEmit<struct (uint32 * near_sdk_store_vec_Vector<uint8>)>>
-    let v66 : string = "*/ )"
-    Fable.Core.RustInterop.emitRustExpr () v66 
-    let v67 : string = "impl From<OldState> for State { //"
-    Fable.Core.RustInterop.emitRustExpr () v67 
-    let v68 : string = "    fn from(old_state: OldState) -> Self { //"
-    Fable.Core.RustInterop.emitRustExpr () v68 
-    let v69 : string = "        Self((old_state.version + 1, old_state.seeds)) //"
-    Fable.Core.RustInterop.emitRustExpr () v69 
-    let v70 : string = "    } //"
-    Fable.Core.RustInterop.emitRustExpr () v70 
-    let v71 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v71 
-    let v72 : string = "#[near_sdk::near_bindgen] //"
-    Fable.Core.RustInterop.emitRustExpr () v72 
-    let v73 : string = "impl State { //"
-    Fable.Core.RustInterop.emitRustExpr () v73 
-    let v74 : string = "#[init] //"
-    Fable.Core.RustInterop.emitRustExpr () v74 
-    let v75 : string = "pub fn new() -> Self { // 1"
-    Fable.Core.RustInterop.emitRustExpr () v75 
-    let v76 : string = "true; /*"
-    let v77 : bool = Fable.Core.RustInterop.emitRustExpr () v76 
-    let v78 : TypeEmit<unit> = null |> unbox<TypeEmit<unit>>
-    let v81 : string = "true; */"
-    let v82 : bool = Fable.Core.RustInterop.emitRustExpr () v81 
-    let v83 : string = "seeds"
-    let v84 : string = "b\"" + v83 + "\""
-    let v85 : Ref<Slice<uint8>> = Fable.Core.RustInterop.emitRustExpr () v84 
-    let v86 : string = "near_sdk::store::vec::Vector::new(v85)"
-    let v87 : near_sdk_store_vec_Vector<uint8> = Fable.Core.RustInterop.emitRustExpr () v86 
-    let _result = struct (2u, v87) in _result |> (fun x -> Fable.Core.RustInterop.emitRustExpr x $"Self($0) // x") // 2
-    let v88 : string = "} // 2."
-    Fable.Core.RustInterop.emitRustExpr () v88 
-    let v89 : string = "} // 1."
-    Fable.Core.RustInterop.emitRustExpr () v89 
-    let v90 : string = "} /* c"
-    Fable.Core.RustInterop.emitRustExpr () v90 
-    let v91 : string = "true; // ??? / i: 1uy / i': 1uy / acc: 0uy / n: 2uy"
-    let v92 : bool = Fable.Core.RustInterop.emitRustExpr () v91 
-    let v93 : string = "true; */ // ???? / i: 1uy / i': 2uy / acc: 0uy / n: 2uy"
-    let v94 : bool = Fable.Core.RustInterop.emitRustExpr () v93 
-    let v95 : string = "#[near_sdk::near_bindgen] //"
-    Fable.Core.RustInterop.emitRustExpr () v95 
-    let v96 : string = "impl State { //"
-    Fable.Core.RustInterop.emitRustExpr () v96 
-    let v97 : string = "pub fn contribute_seed(&mut self, seed: Vec<u8>) { //"
-    Fable.Core.RustInterop.emitRustExpr () v97 
-    let v98 : string = $"&mut self.0.1"
-    let v99 : Ref<Mut<near_sdk_store_vec_Vector<uint8>>> = Fable.Core.RustInterop.emitRustExpr () v98 
-    let v100 : string = $"seed"
-    let v101 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v100 
-    let v102 : string = "v99.extend(v101); //"
-    Fable.Core.RustInterop.emitRustExpr () v102 
-    let v103 : unativeint = 100 |> unativeint 
-    let v106 : string = "(v99.len() as i32) - v103 as i32"
-    let v107 : int32 = Fable.Core.RustInterop.emitRustExpr () v106 
-    let v108 : bool = v107 > 0
-    if v108 then
-        let v109 : string = "v99.drain(0..$0 as u32).collect()"
-        let v110 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr v107 v109 
-        let v111 : unit = ()
-        let v112 : (unit -> unit) = closure1(v110)
-        let v113 : unit = (fun () -> v112 (); v111) ()
+    let v53 : string = $"&mut self.0.1"
+    let v54 : Ref<Mut<near_sdk_store_vec_Vector<uint8>>> = Fable.Core.RustInterop.emitRustExpr () v53 
+    let v55 : string = $"seed"
+    let v56 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v55 
+    let v57 : string = "true; v54.extend($0); //"
+    let v58 : bool = Fable.Core.RustInterop.emitRustExpr v56 v57 
+    let v59 : string = $"v54.len()"
+    let v60 : uint32 = Fable.Core.RustInterop.emitRustExpr () v59 
+    let v61 : (uint32 -> int32) = int32
+    let v62 : int32 = v61 v60
+    let v63 : unativeint = 100 |> unativeint 
+    let v66 : (unativeint -> int32) = int32
+    let v67 : int32 = v66 v63
+    let v68 : int32 = v62 - v67
+    let v69 : bool = v68 > 0
+    if v69 then
+        let v70 : string = "v54.drain(0..$0 as u32).collect::<Vec<_>>()"
+        let v71 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr v68 v70 
+        let v72 : unit = ()
+        let v73 : (unit -> unit) = closure1(v71)
+        let v74 : unit = (fun () -> v73 (); v72) ()
         ()
-    let v232 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v232 
-    let v233 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v233 
-    let v234 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v234 
-    let v235 : string = "} /* c"
-    Fable.Core.RustInterop.emitRustExpr () v235 
-    let v236 : string = "true; // ??? / i: 2uy / i': 1uy / acc: 2uy / n: 3uy"
-    let v237 : bool = Fable.Core.RustInterop.emitRustExpr () v236 
-    let v238 : string = "true; */ // ???? / i: 2uy / i': 2uy / acc: 2uy / n: 3uy"
-    let v239 : bool = Fable.Core.RustInterop.emitRustExpr () v238 
-    let v240 : string = "#[near_sdk::near_bindgen] //"
-    Fable.Core.RustInterop.emitRustExpr () v240 
-    let v241 : string = "impl State { //"
-    Fable.Core.RustInterop.emitRustExpr () v241 
-    let v242 : string = "pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) { //"
-    Fable.Core.RustInterop.emitRustExpr () v242 
-    let v243 : string = "    self.contribute_seed(seed) //"
-    Fable.Core.RustInterop.emitRustExpr () v243 
-    let v244 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v244 
-    let v245 : string = "} /* c"
-    Fable.Core.RustInterop.emitRustExpr () v245 
-    let v246 : string = "true; // ??? / i: 3uy / i': 1uy / acc: 5uy / n: 1uy"
-    let v247 : bool = Fable.Core.RustInterop.emitRustExpr () v246 
-    let v248 : string = "true; */ // ???? / i: 3uy / i': 2uy / acc: 5uy / n: 1uy"
-    let v249 : bool = Fable.Core.RustInterop.emitRustExpr () v248 
-    let v250 : string = "#[near_sdk::near_bindgen] //"
-    Fable.Core.RustInterop.emitRustExpr () v250 
-    let v251 : string = "impl State { //"
-    Fable.Core.RustInterop.emitRustExpr () v251 
-    let v252 : string = "pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 { //"
-    Fable.Core.RustInterop.emitRustExpr () v252 
-    let v253 : string = $"key"
-    let v254 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v253 
-    let v255 : string = $"proof"
-    let v256 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v255 
-    let v257 : string = $"max"
-    let v258 : uint64 = Fable.Core.RustInterop.emitRustExpr () v257 
-    let v259 : string = $"&self.0.1"
-    let v260 : Ref<near_sdk_store_vec_Vector<uint8>> = Fable.Core.RustInterop.emitRustExpr () v259 
-    let v261 : string = $"v260.iter().map(|x| *x).collect::<Vec<u8>>()"
-    let v262 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v261 
-    let v263 : string = $"near_sdk::env::random_seed()"
-    let v264 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v263 
-    let v265 : string = $"near_sdk::env::block_timestamp()"
-    let v266 : uint64 = Fable.Core.RustInterop.emitRustExpr () v265 
-    let v267 : string = $"near_sdk::env::block_height()"
-    let v268 : uint64 = Fable.Core.RustInterop.emitRustExpr () v267 
-    let v269 : string = $"near_sdk::env::epoch_height()"
-    let v270 : uint64 = Fable.Core.RustInterop.emitRustExpr () v269 
-    let v271 : string = $"near_sdk::env::account_balance()"
-    let v272 : near_token_NearToken = Fable.Core.RustInterop.emitRustExpr () v271 
-    let v273 : string = $"near_sdk::env::signer_account_id()"
-    let v274 : near_sdk_AccountId = Fable.Core.RustInterop.emitRustExpr () v273 
-    let v275 : string = $"v270.to_le_bytes()"
-    let v276 : Slice'<uint8> = Fable.Core.RustInterop.emitRustExpr () v275 
-    let v277 : string = $"v276.to_vec()"
-    let v278 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v277 
-    let v279 : string = $"v268.to_le_bytes()"
-    let v280 : Slice'<uint8> = Fable.Core.RustInterop.emitRustExpr () v279 
-    let v281 : string = $"v280.to_vec()"
-    let v282 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v281 
-    let v283 : string = $"v266.to_le_bytes()"
-    let v284 : Slice'<uint8> = Fable.Core.RustInterop.emitRustExpr () v283 
-    let v285 : string = $"v284.to_vec()"
-    let v286 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v285 
-    let v287 : string = "$0.as_yoctonear()"
-    let v288 : u128 = Fable.Core.RustInterop.emitRustExpr v272 v287 
-    let v289 : string = $"v288.to_le_bytes()"
-    let v290 : Slice'<uint8> = Fable.Core.RustInterop.emitRustExpr () v289 
-    let v291 : string = $"v290.to_vec()"
-    let v292 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v291 
-    let v293 : string = $"v274.as_bytes()"
-    let v294 : Ref<Slice<uint8>> = Fable.Core.RustInterop.emitRustExpr () v293 
-    let v295 : string = $"v294.to_vec()"
-    let v296 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v295 
-    let v297 : string = $"$0.into_bytes()"
-    let v298 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr v256 v297 
-    let v299 : string = $"$0.into_bytes()"
-    let v300 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr v254 v299 
-    let v301 : (Vec<uint8> []) = [|v264; v262; v278; v282; v286; v292; v296; v298; v300|]
-    let v302 : string = "$0.to_vec()"
-    let v303 : Vec<Vec<uint8>> = Fable.Core.RustInterop.emitRustExpr v301 v302 
-    let v304 : string = $"v303.concat()"
-    let v305 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v304 
-    let v306 : string = "$0.len()"
-    let v307 : unativeint = Fable.Core.RustInterop.emitRustExpr v305 v306 
-    let v308 : string = $"near_sdk::env::keccak512(&v305)"
-    let v309 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v308 
-    let v310 : string = "self.contribute_seed(v309.clone()); //"
-    Fable.Core.RustInterop.emitRustExpr () v310 
-    let v311 : string = "let hash_stream = Util::vec_u8_to_stream(v309.clone()); //"
-    Fable.Core.RustInterop.emitRustExpr () v311 
-    let v312 : string = "let rolls_list = Util::stream_u8_to_list(dice_contract_lib::Dice::rotate_numbers(6)( //"
-    Fable.Core.RustInterop.emitRustExpr () v312 
-    let v313 : string = "    hash_stream.into(), //"
-    Fable.Core.RustInterop.emitRustExpr () v313 
-    let v314 : string = ")); //"
-    Fable.Core.RustInterop.emitRustExpr () v314 
-    let v315 : string = "Util::list_u8_to_vec(rolls_list.clone().into())"
-    let v316 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v315 
-    let v317 : unit = ()
-    let v318 : (unit -> unit) = closure10(v262, v254, v256, v258, v264, v266, v268, v270, v272, v274, v305, v307, v309, v316)
-    let v319 : unit = (fun () -> v318 (); v317) ()
-    let v455 : string = "let sequential_roll = //"
-    Fable.Core.RustInterop.emitRustExpr () v455 
-    let v456 : string = "    dice_contract_lib::Dice::create_sequential_roller(rolls_list.into()); //"
-    Fable.Core.RustInterop.emitRustExpr () v456 
-    let v457 : string = "let result = dice_contract_lib::Dice::roll_progressively //"
-    Fable.Core.RustInterop.emitRustExpr () v457 
-    let v458 : string = "    (sequential_roll)(true)(max); //"
-    Fable.Core.RustInterop.emitRustExpr () v458 
-    let v459 : (unit -> unit) = method17()
-    let v460 : unit = ()
-    let v461 : (unit -> unit) = closure12(v459)
-    let v462 : unit = (fun () -> v461 (); v460) ()
-    let v571 : string = "result as u64"
-    let v572 : uint64 = Fable.Core.RustInterop.emitRustExpr () v571 
-    let v573 : string = "v572 //"
-    Fable.Core.RustInterop.emitRustExpr () v573 
-    let v574 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v574 
-    let v575 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v575 
-    let v576 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v576 
-    let v577 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v577 
-    let v578 : string = "} /* c"
-    Fable.Core.RustInterop.emitRustExpr () v578 
-    let v579 : string = "true; // ??? / i: 4uy / i': 1uy / acc: 6uy / n: 4uy"
-    let v580 : bool = Fable.Core.RustInterop.emitRustExpr () v579 
-    let v581 : string = "true; */ // ???? / i: 4uy / i': 2uy / acc: 6uy / n: 4uy"
-    let v582 : bool = Fable.Core.RustInterop.emitRustExpr () v581 
-    let v583 : string = "#[near_sdk::near_bindgen] //"
-    Fable.Core.RustInterop.emitRustExpr () v583 
-    let v584 : string = "impl State { //"
-    Fable.Core.RustInterop.emitRustExpr () v584 
-    let v585 : string = "pub fn roll_within_bounds(&self, max: u64, rolls: Vec<u8>) -> Option<u64> { //"
-    Fable.Core.RustInterop.emitRustExpr () v585 
-    let v586 : string = $"max"
-    let v587 : uint64 = Fable.Core.RustInterop.emitRustExpr () v586 
-    let v588 : string = $"rolls"
-    let v589 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v588 
-    let v590 : string = "fable_library_rust::NativeArray_::array_from($0)"
-    let v591 : (uint8 []) = Fable.Core.RustInterop.emitRustExpr v589 v590 
-    let v592 : uint8 list = v591 |> Array.toList
-    let v593 : ((uint8 -> (UH0 -> UH0)) -> (uint8 list -> (UH0 -> UH0))) = List.foldBack
-    let v594 : (uint8 -> (UH0 -> UH0)) = method19()
-    let v595 : (uint8 list -> (UH0 -> UH0)) = v593 v594
-    let v596 : (UH0 -> UH0) = v595 v592
-    let v597 : UH0 = UH0_0
-    let v598 : UH0 = v596 v597
-    let v603 : int8 = 0y
-    let v604 : int8 = method20(v598, v603)
-    let v605 : int8 = v604 - 1y
-    let v606 : uint64 = 0UL
-    let v607 : US4 = method21(v605, v598, v606)
-    let v617 : US5 =
-        match v607 with
-        | US4_0(v608, v609) -> (* Some *)
-            let v610 : bool = v608 >= 1UL
-            let v612 : bool =
-                if v610 then
-                    let v611 : bool = v608 <= v587
-                    v611
+    let v189 : string = "} //"
+    Fable.Core.RustInterop.emitRustExpr () v189 
+    let v190 : string = "} //"
+    Fable.Core.RustInterop.emitRustExpr () v190 
+    let v191 : string = "} /* c"
+    Fable.Core.RustInterop.emitRustExpr () v191 
+    let v192 : string = "true; // ??? / i: 2uy / i': 1uy / acc: 2uy / n: 2uy"
+    let v193 : bool = Fable.Core.RustInterop.emitRustExpr () v192 
+    let v194 : string = "true; */ // ???? / i: 2uy / i': 2uy / acc: 2uy / n: 2uy"
+    let v195 : bool = Fable.Core.RustInterop.emitRustExpr () v194 
+    let v196 : string = "#[near_sdk::near_bindgen] //"
+    Fable.Core.RustInterop.emitRustExpr () v196 
+    let v197 : string = "impl State { //"
+    Fable.Core.RustInterop.emitRustExpr () v197 
+    let v198 : string = "pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) { //"
+    Fable.Core.RustInterop.emitRustExpr () v198 
+    let v199 : string = "    self.contribute_seed(seed) //"
+    Fable.Core.RustInterop.emitRustExpr () v199 
+    let v200 : string = "} //"
+    Fable.Core.RustInterop.emitRustExpr () v200 
+    let v201 : string = "} /* c"
+    Fable.Core.RustInterop.emitRustExpr () v201 
+    let v202 : string = "true; // ??? / i: 3uy / i': 1uy / acc: 4uy / n: 1uy"
+    let v203 : bool = Fable.Core.RustInterop.emitRustExpr () v202 
+    let v204 : string = "true; */ // ???? / i: 3uy / i': 2uy / acc: 4uy / n: 1uy"
+    let v205 : bool = Fable.Core.RustInterop.emitRustExpr () v204 
+    let v206 : string = "#[near_sdk::near_bindgen] //"
+    Fable.Core.RustInterop.emitRustExpr () v206 
+    let v207 : string = "impl State { //"
+    Fable.Core.RustInterop.emitRustExpr () v207 
+    let v208 : string = "pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 { //"
+    Fable.Core.RustInterop.emitRustExpr () v208 
+    let v209 : string = $"key"
+    let v210 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v209 
+    let v211 : string = $"proof"
+    let v212 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v211 
+    let v213 : string = $"max"
+    let v214 : uint64 = Fable.Core.RustInterop.emitRustExpr () v213 
+    let v215 : string = $"&mut self.0.1"
+    let v216 : Ref<Mut<near_sdk_store_vec_Vector<uint8>>> = Fable.Core.RustInterop.emitRustExpr () v215 
+    let v217 : string = $"near_sdk::env::random_seed()"
+    let v218 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v217 
+    let v219 : string = $"near_sdk::env::epoch_height()"
+    let v220 : uint64 = Fable.Core.RustInterop.emitRustExpr () v219 
+    let v221 : string = $"near_sdk::env::block_height()"
+    let v222 : uint64 = Fable.Core.RustInterop.emitRustExpr () v221 
+    let v223 : string = $"near_sdk::env::block_timestamp()"
+    let v224 : uint64 = Fable.Core.RustInterop.emitRustExpr () v223 
+    let v225 : string = $"near_sdk::env::account_balance()"
+    let v226 : near_token_NearToken = Fable.Core.RustInterop.emitRustExpr () v225 
+    let v227 : string = $"near_sdk::env::signer_account_id()"
+    let v228 : near_sdk_AccountId = Fable.Core.RustInterop.emitRustExpr () v227 
+    let v229 : string = $"&*v216"
+    let v230 : Ref<near_sdk_store_vec_Vector<uint8>> = Fable.Core.RustInterop.emitRustExpr () v229 
+    let v231 : string = $"v230.iter().map(|x| *x).collect::<Vec<_>>()"
+    let v232 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v231 
+    let v233 : string = $"v220.to_le_bytes()"
+    let v234 : Slice'<uint8> = Fable.Core.RustInterop.emitRustExpr () v233 
+    let v235 : string = $"v234.to_vec()"
+    let v236 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v235 
+    let v237 : string = $"v222.to_le_bytes()"
+    let v238 : Slice'<uint8> = Fable.Core.RustInterop.emitRustExpr () v237 
+    let v239 : string = $"v238.to_vec()"
+    let v240 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v239 
+    let v241 : string = $"v224.to_le_bytes()"
+    let v242 : Slice'<uint8> = Fable.Core.RustInterop.emitRustExpr () v241 
+    let v243 : string = $"v242.to_vec()"
+    let v244 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v243 
+    let v245 : string = "$0.as_yoctonear()"
+    let v246 : u128 = Fable.Core.RustInterop.emitRustExpr v226 v245 
+    let v247 : string = $"v246.to_le_bytes()"
+    let v248 : Slice'<uint8> = Fable.Core.RustInterop.emitRustExpr () v247 
+    let v249 : string = $"v248.to_vec()"
+    let v250 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v249 
+    let v251 : string = $"v228.as_bytes()"
+    let v252 : Ref<Slice<uint8>> = Fable.Core.RustInterop.emitRustExpr () v251 
+    let v253 : string = $"v252.to_vec()"
+    let v254 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v253 
+    let v255 : string = $"$0.into_bytes()"
+    let v256 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr v212 v255 
+    let v257 : string = $"$0.into_bytes()"
+    let v258 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr v210 v257 
+    let v259 : (Vec<uint8> []) = [|v218; v232; v236; v240; v244; v250; v254; v256; v258|]
+    let v260 : string = "$0.to_vec()"
+    let v261 : Vec<Vec<uint8>> = Fable.Core.RustInterop.emitRustExpr v259 v260 
+    let v262 : string = $"v261.concat()"
+    let v263 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v262 
+    let v264 : string = $"near_sdk::env::keccak512(&$0)"
+    let v265 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr v263 v264 
+    let v266 : string = "true; v216.extend($0); //"
+    let v267 : bool = Fable.Core.RustInterop.emitRustExpr v265 v266 
+    let v268 : string = $"v216.len()"
+    let v269 : uint32 = Fable.Core.RustInterop.emitRustExpr () v268 
+    let v270 : (uint32 -> int32) = int32
+    let v271 : int32 = v270 v269
+    let v272 : unativeint = 100 |> unativeint 
+    let v275 : (unativeint -> int32) = int32
+    let v276 : int32 = v275 v272
+    let v277 : int32 = v271 - v276
+    let v278 : bool = v277 > 0
+    if v278 then
+        let v279 : string = "v216.drain(0..$0 as u32).collect::<Vec<_>>()"
+        let v280 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr v277 v279 
+        let v281 : unit = ()
+        let v282 : (unit -> unit) = closure1(v280)
+        let v283 : unit = (fun () -> v282 (); v281) ()
+        ()
+    let v398 : string = "fable_library_rust::NativeArray_::array_from($0)"
+    let v399 : (uint8 []) = Fable.Core.RustInterop.emitRustExpr v265 v398 
+    let v400 : uint8 list = v399 |> Array.toList
+    let v401 : ((uint8 -> (UH0 -> UH0)) -> (uint8 list -> (UH0 -> UH0))) = List.foldBack
+    let v402 : (uint8 -> (UH0 -> UH0)) = method16()
+    let v403 : (uint8 list -> (UH0 -> UH0)) = v401 v402
+    let v404 : (UH0 -> UH0) = v403 v400
+    let v405 : UH0 = UH0_0
+    let v406 : UH0 = v404 v405
+    let v411 : UH1 = UH1_1
+    let v412 : UH1 = method17(v406, v411)
+    let v413 : UH1 = UH1_1
+    let v414 : UH1 = method18(v412, v413)
+    let v415 : UH0 = UH0_0
+    let v416 : UH0 = method19(v414, v415)
+    let v417 : unit = ()
+    let v418 : (unit -> unit) = closure14(v216, v210, v212, v214, v218, v220, v222, v224, v226, v228, v263, v265, v416)
+    let v419 : unit = (fun () -> v418 (); v417) ()
+    let v561 : UH0 = UH0_0
+    let v562 : UH0 = method23(v416, v561)
+    let v563 : UH0 = method24(v416, v562)
+    let v564 : UH1 = UH1_1
+    let v565 : UH1 = method17(v563, v564)
+    let v566 : (unit -> UH1) = closure15(v565)
+    let v567 : (unit -> UH1) = method25(v565, v566)
+    let v568 : Mut0 = {l0 = 0L} : Mut0
+    let v569 : Mut0 = {l0 = 1L} : Mut0
+    let v570 : Mut0 = {l0 = -1L} : Mut0
+    let v571 : US5 = US5_1
+    let v572 : Mut6 = {l0 = v571} : Mut6
+    let v573 : bool = v214 = 1UL
+    let v577 : int8 =
+        if v573 then
+            1y
+        else
+            let v574 : int8 = 0y
+            let v575 : uint64 = 1UL
+            method26(v214, v574, v575)
+    let v578 : int8 = v577 - 1y
+    let v579 : UH0 = UH0_0
+    let v580 : int8 = 0y
+    let v581 : uint64 = method29(v567, v568, v569, v570, v572, v214, v578, v579, v580)
+    let v582 : (unit -> unit) = method44()
+    let v583 : unit = ()
+    let v584 : (unit -> unit) = closure88(v582)
+    let v585 : unit = (fun () -> v584 (); v583) ()
+    let v694 : string = "v581 //"
+    Fable.Core.RustInterop.emitRustExpr () v694 
+    let v695 : string = "} //"
+    Fable.Core.RustInterop.emitRustExpr () v695 
+    let v696 : string = "} //"
+    Fable.Core.RustInterop.emitRustExpr () v696 
+    let v697 : string = "} //"
+    Fable.Core.RustInterop.emitRustExpr () v697 
+    let v698 : string = "} /* c"
+    Fable.Core.RustInterop.emitRustExpr () v698 
+    let v699 : string = "true; // ??? / i: 4uy / i': 1uy / acc: 5uy / n: 3uy"
+    let v700 : bool = Fable.Core.RustInterop.emitRustExpr () v699 
+    let v701 : string = "true; */ // ???? / i: 4uy / i': 2uy / acc: 5uy / n: 3uy"
+    let v702 : bool = Fable.Core.RustInterop.emitRustExpr () v701 
+    let v703 : string = "#[near_sdk::near_bindgen] //"
+    Fable.Core.RustInterop.emitRustExpr () v703 
+    let v704 : string = "impl State { //"
+    Fable.Core.RustInterop.emitRustExpr () v704 
+    let v705 : string = "pub fn roll_within_bounds(&self, max: u64, rolls: Vec<u8>) -> Option<u64> { //"
+    Fable.Core.RustInterop.emitRustExpr () v705 
+    let v706 : string = $"max"
+    let v707 : uint64 = Fable.Core.RustInterop.emitRustExpr () v706 
+    let v708 : string = $"rolls"
+    let v709 : Vec<uint8> = Fable.Core.RustInterop.emitRustExpr () v708 
+    let v710 : string = "fable_library_rust::NativeArray_::array_from($0)"
+    let v711 : (uint8 []) = Fable.Core.RustInterop.emitRustExpr v709 v710 
+    let v712 : uint8 list = v711 |> Array.toList
+    let v713 : ((uint8 -> (UH0 -> UH0)) -> (uint8 list -> (UH0 -> UH0))) = List.foldBack
+    let v714 : (uint8 -> (UH0 -> UH0)) = method16()
+    let v715 : (uint8 list -> (UH0 -> UH0)) = v713 v714
+    let v716 : (UH0 -> UH0) = v715 v712
+    let v717 : UH0 = UH0_0
+    let v718 : UH0 = v716 v717
+    let v723 : int8 = 0y
+    let v724 : int8 = method46(v718, v723)
+    let v725 : int8 = v724 - 1y
+    let v726 : uint64 = 0UL
+    let v727 : US6 = method36(v725, v718, v726)
+    let v737 : US7 =
+        match v727 with
+        | US6_0(v728, v729) -> (* Some *)
+            let v730 : bool = v728 >= 1UL
+            let v732 : bool =
+                if v730 then
+                    let v731 : bool = v728 <= v707
+                    v731
                 else
                     false
-            if v612 then
-                US5_0(v608)
+            if v732 then
+                US7_0(v728)
             else
-                US5_1
+                US7_1
         | _ ->
-            US5_1
-    let v624 : uint64 option =
-        match v617 with
-        | US5_1 -> (* None *)
-            let v622 : uint64 option = None
-            v622
-        | US5_0(v618) -> (* Some *)
-            let v619 : uint64 option = Some v618 
-            v619
-    let v625 : unit = ()
-    let v626 : (unit -> unit) = closure82(v587, v589, v624)
-    let v627 : unit = (fun () -> v626 (); v625) ()
-    let v742 : (unit -> unit) = method28()
-    let v743 : unit = ()
-    let v744 : (unit -> unit) = closure83(v742)
-    let v745 : unit = (fun () -> v744 (); v743) ()
-    let v854 : string = "$0 //"
-    Fable.Core.RustInterop.emitRustExpr v624 v854 
-    let v855 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v855 
-    let v856 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v856 
-    let v857 : string = "} /* c"
-    Fable.Core.RustInterop.emitRustExpr () v857 
-    let v858 : string = "true; // ??? / i: 5uy / i': 1uy / acc: 10uy / n: 2uy"
-    let v859 : bool = Fable.Core.RustInterop.emitRustExpr () v858 
-    let v860 : string = "true; */ // ???? / i: 5uy / i': 2uy / acc: 10uy / n: 2uy"
-    let v861 : bool = Fable.Core.RustInterop.emitRustExpr () v860 
-    let v862 : string = "#[near_sdk::near_bindgen] //"
-    Fable.Core.RustInterop.emitRustExpr () v862 
-    let v863 : string = "impl State { //"
-    Fable.Core.RustInterop.emitRustExpr () v863 
-    let v864 : string = "#[result_serializer(borsh)] //"
-    Fable.Core.RustInterop.emitRustExpr () v864 
-    let v865 : string = "pub fn roll_within_bounds_borsh( //"
-    Fable.Core.RustInterop.emitRustExpr () v865 
-    let v866 : string = "    &self, //"
-    Fable.Core.RustInterop.emitRustExpr () v866 
-    let v867 : string = "    #[serializer(borsh)] max: u64, //"
-    Fable.Core.RustInterop.emitRustExpr () v867 
-    let v868 : string = "    #[serializer(borsh)] rolls: Vec<u8>, //"
-    Fable.Core.RustInterop.emitRustExpr () v868 
-    let v869 : string = ") -> Option<u64> { //"
-    Fable.Core.RustInterop.emitRustExpr () v869 
-    let v870 : string = "    self.roll_within_bounds(max, rolls) //"
-    Fable.Core.RustInterop.emitRustExpr () v870 
-    let v871 : string = "} //"
-    Fable.Core.RustInterop.emitRustExpr () v871 
-    let v872 : string = "} /* c"
-    Fable.Core.RustInterop.emitRustExpr () v872 
-    let v873 : string = "true; // ??? / i: 6uy / i': 1uy / acc: 12uy / n: 1uy"
-    let v874 : bool = Fable.Core.RustInterop.emitRustExpr () v873 
-    let v875 : string = "true; */ // ???? / i: 6uy / i': 2uy / acc: 12uy / n: 1uy"
-    let v876 : bool = Fable.Core.RustInterop.emitRustExpr () v875 
-    let v877 : string = "fn _main() //"
-    Fable.Core.RustInterop.emitRustExpr () v877 
-    let v878 : string = " //"
-    Fable.Core.RustInterop.emitRustExpr () v878 
-    let v879 : string = "true; { (); // ?? / i': 1uy / n: 13uy"
-    let v880 : bool = Fable.Core.RustInterop.emitRustExpr () v879 
-    let v881 : string = "true; { (); // ?? / i': 2uy / n: 13uy"
-    let v882 : bool = Fable.Core.RustInterop.emitRustExpr () v881 
-    let v883 : string = "true; { (); // ?? / i': 3uy / n: 13uy"
-    let v884 : bool = Fable.Core.RustInterop.emitRustExpr () v883 
-    let v885 : string = "true; { (); // ?? / i': 4uy / n: 13uy"
-    let v886 : bool = Fable.Core.RustInterop.emitRustExpr () v885 
-    let v887 : string = "true; { (); // ?? / i': 5uy / n: 13uy"
-    let v888 : bool = Fable.Core.RustInterop.emitRustExpr () v887 
-    let v889 : string = "true; { (); // ?? / i': 6uy / n: 13uy"
-    let v890 : bool = Fable.Core.RustInterop.emitRustExpr () v889 
-    let v891 : string = "true; { (); // ?? / i': 7uy / n: 13uy"
-    let v892 : bool = Fable.Core.RustInterop.emitRustExpr () v891 
-    let v893 : string = "true; { (); // ?? / i': 8uy / n: 13uy"
-    let v894 : bool = Fable.Core.RustInterop.emitRustExpr () v893 
-    let v895 : string = "true; { (); // ?? / i': 9uy / n: 13uy"
-    let v896 : bool = Fable.Core.RustInterop.emitRustExpr () v895 
-    let v897 : string = "true; { (); // ?? / i': 10uy / n: 13uy"
-    let v898 : bool = Fable.Core.RustInterop.emitRustExpr () v897 
-    let v899 : string = "true; { (); // ?? / i': 11uy / n: 13uy"
-    let v900 : bool = Fable.Core.RustInterop.emitRustExpr () v899 
-    let v901 : string = "true; { (); // ?? / i': 12uy / n: 13uy"
-    let v902 : bool = Fable.Core.RustInterop.emitRustExpr () v901 
-    let v903 : string = "true; { (); // ?? / i': 13uy / n: 13uy"
-    let v904 : bool = Fable.Core.RustInterop.emitRustExpr () v903 
-    let v905 : string = "true; { { (); // ? / i': 14uy / n: 13uy"
-    let v906 : bool = Fable.Core.RustInterop.emitRustExpr () v905 
+            US7_1
+    let v744 : uint64 option =
+        match v737 with
+        | US7_1 -> (* None *)
+            let v742 : uint64 option = None
+            v742
+        | US7_0(v738) -> (* Some *)
+            let v739 : uint64 option = Some v738 
+            v739
+    let v745 : unit = ()
+    let v746 : (unit -> unit) = closure89(v707, v709, v744)
+    let v747 : unit = (fun () -> v746 (); v745) ()
+    let v865 : (unit -> unit) = method49()
+    let v866 : unit = ()
+    let v867 : (unit -> unit) = closure90(v865)
+    let v868 : unit = (fun () -> v867 (); v866) ()
+    let v977 : string = "$0 //"
+    Fable.Core.RustInterop.emitRustExpr v744 v977 
+    let v978 : string = "} //"
+    Fable.Core.RustInterop.emitRustExpr () v978 
+    let v979 : string = "} //"
+    Fable.Core.RustInterop.emitRustExpr () v979 
+    let v980 : string = "} /* c"
+    Fable.Core.RustInterop.emitRustExpr () v980 
+    let v981 : string = "true; // ??? / i: 5uy / i': 1uy / acc: 8uy / n: 2uy"
+    let v982 : bool = Fable.Core.RustInterop.emitRustExpr () v981 
+    let v983 : string = "true; */ // ???? / i: 5uy / i': 2uy / acc: 8uy / n: 2uy"
+    let v984 : bool = Fable.Core.RustInterop.emitRustExpr () v983 
+    let v985 : string = "#[near_sdk::near_bindgen] //"
+    Fable.Core.RustInterop.emitRustExpr () v985 
+    let v986 : string = "impl State { //"
+    Fable.Core.RustInterop.emitRustExpr () v986 
+    let v987 : string = "#[result_serializer(borsh)] //"
+    Fable.Core.RustInterop.emitRustExpr () v987 
+    let v988 : string = "pub fn roll_within_bounds_borsh( //"
+    Fable.Core.RustInterop.emitRustExpr () v988 
+    let v989 : string = "    &self, //"
+    Fable.Core.RustInterop.emitRustExpr () v989 
+    let v990 : string = "    #[serializer(borsh)] max: u64, //"
+    Fable.Core.RustInterop.emitRustExpr () v990 
+    let v991 : string = "    #[serializer(borsh)] rolls: Vec<u8>, //"
+    Fable.Core.RustInterop.emitRustExpr () v991 
+    let v992 : string = ") -> Option<u64> { //"
+    Fable.Core.RustInterop.emitRustExpr () v992 
+    let v993 : string = "    self.roll_within_bounds(max, rolls) //"
+    Fable.Core.RustInterop.emitRustExpr () v993 
+    let v994 : string = "} //"
+    Fable.Core.RustInterop.emitRustExpr () v994 
+    let v995 : string = "} /* c"
+    Fable.Core.RustInterop.emitRustExpr () v995 
+    let v996 : string = "true; // ??? / i: 6uy / i': 1uy / acc: 10uy / n: 1uy"
+    let v997 : bool = Fable.Core.RustInterop.emitRustExpr () v996 
+    let v998 : string = "true; */ // ???? / i: 6uy / i': 2uy / acc: 10uy / n: 1uy"
+    let v999 : bool = Fable.Core.RustInterop.emitRustExpr () v998 
+    let v1000 : string = "fn _main() //"
+    Fable.Core.RustInterop.emitRustExpr () v1000 
+    let v1001 : string = " //"
+    Fable.Core.RustInterop.emitRustExpr () v1001 
+    let v1002 : string = "true; { (); // ?? / i': 1uy / n: 11uy"
+    let v1003 : bool = Fable.Core.RustInterop.emitRustExpr () v1002 
+    let v1004 : string = "true; { (); // ?? / i': 2uy / n: 11uy"
+    let v1005 : bool = Fable.Core.RustInterop.emitRustExpr () v1004 
+    let v1006 : string = "true; { (); // ?? / i': 3uy / n: 11uy"
+    let v1007 : bool = Fable.Core.RustInterop.emitRustExpr () v1006 
+    let v1008 : string = "true; { (); // ?? / i': 4uy / n: 11uy"
+    let v1009 : bool = Fable.Core.RustInterop.emitRustExpr () v1008 
+    let v1010 : string = "true; { (); // ?? / i': 5uy / n: 11uy"
+    let v1011 : bool = Fable.Core.RustInterop.emitRustExpr () v1010 
+    let v1012 : string = "true; { (); // ?? / i': 6uy / n: 11uy"
+    let v1013 : bool = Fable.Core.RustInterop.emitRustExpr () v1012 
+    let v1014 : string = "true; { (); // ?? / i': 7uy / n: 11uy"
+    let v1015 : bool = Fable.Core.RustInterop.emitRustExpr () v1014 
+    let v1016 : string = "true; { (); // ?? / i': 8uy / n: 11uy"
+    let v1017 : bool = Fable.Core.RustInterop.emitRustExpr () v1016 
+    let v1018 : string = "true; { (); // ?? / i': 9uy / n: 11uy"
+    let v1019 : bool = Fable.Core.RustInterop.emitRustExpr () v1018 
+    let v1020 : string = "true; { (); // ?? / i': 10uy / n: 11uy"
+    let v1021 : bool = Fable.Core.RustInterop.emitRustExpr () v1020 
+    let v1022 : string = "true; { (); // ?? / i': 11uy / n: 11uy"
+    let v1023 : bool = Fable.Core.RustInterop.emitRustExpr () v1022 
+    let v1024 : string = "true; { { (); // ? / i': 12uy / n: 11uy"
+    let v1025 : bool = Fable.Core.RustInterop.emitRustExpr () v1024 
     ()
 let v0 : (unit -> unit) = closure0()
 v0 |> ignore

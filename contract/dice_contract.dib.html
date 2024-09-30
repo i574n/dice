@@ -7543,7 +7543,9 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">open</span> <span class="n">rust</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">package</span><span class="o">=../</span><span class="n">dice</span>
+
+<span class="nb">open</span> <span class="n">rust</span>
 <span class="nb">open</span> <span class="n">rust</span><span class="o">.</span><span class="n">rust_operators</span>
 </pre></div>
 </div>
@@ -7584,81 +7586,11 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="util">util<a class="anchor-link" href="#util">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">util</span> <span class="p">()</span> <span class="o">=</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"pub struct Util {} //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"impl Util { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    fn stream_u8_to_list( //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"        s: fable_library_rust::Native_::LrcPtr&lt;dice_contract_lib::Dice::UH0&gt;, //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    ) -&gt; dice_contract_lib::Dice::UH1 { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"        match s.as_ref() { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            dice_contract_lib::Dice::UH0::UH0_0(n, f) =&gt; { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                dice_contract_lib::Dice::UH1::UH1_1( //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                    *n, //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                    Self::stream_u8_to_list(f()).into() //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                ) //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            } //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            dice_contract_lib::Dice::UH0::UH0_1 =&gt; dice_contract_lib::Dice::UH1::UH1_0, //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"        } //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    } //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    fn list_u8_to_vec( //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"        s: fable_library_rust::Native_::LrcPtr&lt;dice_contract_lib::Dice::UH1&gt;, //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    ) -&gt; Vec&lt;u8&gt; { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"        match s.as_ref() { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            dice_contract_lib::Dice::UH1::UH1_1(n, f) =&gt; { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                let mut v = Self::list_u8_to_vec(f.clone()); //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                v.insert(0, *n); //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                v //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            } //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            dice_contract_lib::Dice::UH1::UH1_0 =&gt; vec\![], //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"        } //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    } //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    fn vec_u8_to_list(v: Vec&lt;u8&gt;) -&gt; dice_contract_lib::Dice::UH1 { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"        v.iter() //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            .rev() //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            .fold(dice_contract_lib::Dice::UH1::UH1_0, |acc, x| { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                dice_contract_lib::Dice::UH1::UH1_1(*x, acc.into()) //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            }) //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    } //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    fn vec_u8_to_stream(v: Vec&lt;u8&gt;) -&gt; dice_contract_lib::Dice::UH0 { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"        v.iter() //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            .rev() //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            .fold(dice_contract_lib::Dice::UH0::UH0_1, |acc, x| { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                dice_contract_lib::Dice::UH0::UH0_0( //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                    *x, //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                    fable_library_rust::Native_::Func0::new(move || acc.clone().into()), //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"                ) //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"            }) //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    } //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"} //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="state">state<a class="anchor-link" href="#state">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7676,7 +7608,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7700,16 +7632,24 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>23:50:00 <span class="ansi-blue-intense-fg">  debug</span> #1 near_workspaces.print_usd / { retry = 1; total_gas_burnt_usd = +0.000957; total_gas_burnt = 1432554003351 }
-23:50:00 <span class="ansi-blue-intense-fg">  debug</span> #2 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
-23:50:00 <span class="ansi-blue-intense-fg">  debug</span> #3 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000602; tokens_burnt_usd = +0.000602; gas_burnt = 901289581511; tokens_burnt = 90128958151100000000 }
-23:50:00 <span class="ansi-blue-intense-fg">  debug</span> #4 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
+<pre>00:00:14 <span class="ansi-green-intense-fg">   info</span> #1 near_workspaces.print_usd / { retry = 1; total_gas_burnt_usd = +0.000808; total_gas_burnt = 1209371440851 }
+00:00:14 <span class="ansi-green-intense-fg">   info</span> #2 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:00:14 <span class="ansi-green-intense-fg">   info</span> #3 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000602; tokens_burnt_usd = +0.000602; gas_burnt = 901289581511; tokens_burnt = 90128958151100000000 }
+00:00:14 <span class="ansi-yellow-fg">warning</span> #4 spiral_wasm.run / Error error / { retry = 1; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 1 }" }
+00:00:28 <span class="ansi-green-intense-fg">   info</span> #5 near_workspaces.print_usd / { retry = 2; total_gas_burnt_usd = +0.000808; total_gas_burnt = 1209371440851 }
+00:00:28 <span class="ansi-green-intense-fg">   info</span> #6 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:00:28 <span class="ansi-green-intense-fg">   info</span> #7 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000602; tokens_burnt_usd = +0.000602; gas_burnt = 901289581511; tokens_burnt = 90128958151100000000 }
+00:00:28 <span class="ansi-yellow-fg">warning</span> #8 spiral_wasm.run / Error error / { retry = 2; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 2 }" }
+00:00:38 <span class="ansi-green-intense-fg">   info</span> #9 near_workspaces.print_usd / { retry = 3; total_gas_burnt_usd = +0.000957; total_gas_burnt = 1432554003351 }
+00:00:38 <span class="ansi-green-intense-fg">   info</span> #10 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:00:38 <span class="ansi-green-intense-fg">   info</span> #11 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000602; tokens_burnt_usd = +0.000602; gas_burnt = 901289581511; tokens_burnt = 90128958151100000000 }
+00:00:38 <span class="ansi-green-intense-fg">   info</span> #12 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=10">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7733,17 +7673,21 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>23:50:12 <span class="ansi-blue-intense-fg">  debug</span> #1 near_workspaces.print_usd / { retry = 1; total_gas_burnt_usd = +0.001015; total_gas_burnt = 1519042951658 }
-23:50:12 <span class="ansi-blue-intense-fg">  debug</span> #2 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
-23:50:12 <span class="ansi-blue-intense-fg">  debug</span> #3 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000660; tokens_burnt_usd = +0.000660; gas_burnt = 987778529818; tokens_burnt = 98777852981800000000 }
-23:50:12 <span class="ansi-blue-intense-fg">  debug</span> #4 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
+<pre>00:00:17 <span class="ansi-green-intense-fg">   info</span> #1 near_workspaces.print_usd / { retry = 1; total_gas_burnt_usd = +0.000866; total_gas_burnt = 1295860389158 }
+00:00:17 <span class="ansi-green-intense-fg">   info</span> #2 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:00:17 <span class="ansi-green-intense-fg">   info</span> #3 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000660; tokens_burnt_usd = +0.000660; gas_burnt = 987778529818; tokens_burnt = 98777852981800000000 }
+00:00:17 <span class="ansi-yellow-fg">warning</span> #4 spiral_wasm.run / Error error / { retry = 1; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 1 }" }
+00:00:29 <span class="ansi-green-intense-fg">   info</span> #5 near_workspaces.print_usd / { retry = 2; total_gas_burnt_usd = +0.001015; total_gas_burnt = 1519042951658 }
+00:00:29 <span class="ansi-green-intense-fg">   info</span> #6 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:00:29 <span class="ansi-green-intense-fg">   info</span> #7 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000660; tokens_burnt_usd = +0.000660; gas_burnt = 987778529818; tokens_burnt = 98777852981800000000 }
+00:00:29 <span class="ansi-green-intense-fg">   info</span> #8 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=11">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7753,7 +7697,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=12">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=10">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7771,7 +7715,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=13">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=11">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7798,27 +7742,17 @@ a.anchor-link {
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>00:00:00 <span class="ansi-black-intense-fg">verbose</span> #1 dice_contract / { state = (2, Vector { len: 0, prefix: [115, 101, 101, 100, 115] }) }
-23:50:25 <span class="ansi-blue-intense-fg">  debug</span> #1 near_workspaces.print_usd / { retry = 1; total_gas_burnt_usd = +0.001006; total_gas_burnt = 1505541412147 }
-23:50:25 <span class="ansi-blue-intense-fg">  debug</span> #2 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
-23:50:25 <span class="ansi-blue-intense-fg">  debug</span> #3 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000800; tokens_burnt_usd = +0.000800; gas_burnt = 1197459552807; tokens_burnt = 119745955280700000000 }
-23:50:25 <span class="ansi-yellow-fg">warning</span> #4 spiral_wasm.run / Error error / { retry = 1; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 1 }" }
-00:00:00 <span class="ansi-black-intense-fg">verbose</span> #1 dice_contract / { state = (2, Vector { len: 0, prefix: [115, 101, 101, 100, 115] }) }
-23:50:33 <span class="ansi-blue-intense-fg">  debug</span> #5 near_workspaces.print_usd / { retry = 2; total_gas_burnt_usd = +0.001006; total_gas_burnt = 1505541412147 }
-23:50:33 <span class="ansi-blue-intense-fg">  debug</span> #6 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
-23:50:33 <span class="ansi-blue-intense-fg">  debug</span> #7 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000800; tokens_burnt_usd = +0.000800; gas_burnt = 1197459552807; tokens_burnt = 119745955280700000000 }
-23:50:33 <span class="ansi-yellow-fg">warning</span> #8 spiral_wasm.run / Error error / { retry = 2; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 2 }" }
-00:00:00 <span class="ansi-black-intense-fg">verbose</span> #1 dice_contract / { state = (2, Vector { len: 0, prefix: [115, 101, 101, 100, 115] }) }
-23:50:40 <span class="ansi-blue-intense-fg">  debug</span> #9 near_workspaces.print_usd / { retry = 3; total_gas_burnt_usd = +0.001155; total_gas_burnt = 1728723974647 }
-23:50:40 <span class="ansi-blue-intense-fg">  debug</span> #10 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
-23:50:40 <span class="ansi-blue-intense-fg">  debug</span> #11 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000800; tokens_burnt_usd = +0.000800; gas_burnt = 1197459552807; tokens_burnt = 119745955280700000000 }
-23:50:40 <span class="ansi-blue-intense-fg">  debug</span> #12 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
+00:00:13 <span class="ansi-green-intense-fg">   info</span> #1 near_workspaces.print_usd / { retry = 1; total_gas_burnt_usd = +0.001155; total_gas_burnt = 1728723974647 }
+00:00:13 <span class="ansi-green-intense-fg">   info</span> #2 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:00:13 <span class="ansi-green-intense-fg">   info</span> #3 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000800; tokens_burnt_usd = +0.000800; gas_burnt = 1197459552807; tokens_burnt = 119745955280700000000 }
+00:00:13 <span class="ansi-green-intense-fg">   info</span> #4 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=14">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=12">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7828,7 +7762,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=15">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=13">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7844,13 +7778,48 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=16">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=14">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="contribute_seed">contribute_seed<a class="anchor-link" href="#contribute_seed">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=15">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">contribute_seed</span> <span class="p">(</span><span class="n">seeds</span> <span class="p">:</span> <span class="n">rust</span><span class="o">.</span><span class="n">ref</span> <span class="p">(</span><span class="n">rust</span><span class="o">.</span><span class="n">mut</span><span class="s1">' (near.vector u8))) (seed : am'</span><span class="o">.</span><span class="n">vec</span> <span class="n">u8</span><span class="p">)</span> <span class="p">:</span> <span class="p">()</span> <span class="o">=</span>
+    <span class="n">seeds</span> <span class="o">|&gt;</span> <span class="n">near</span><span class="o">.</span><span class="n">vector_extend</span> <span class="n">seed</span>
+
+    <span class="n">inl</span> <span class="n">seed_excess_len</span> <span class="o">=</span> <span class="p">(</span><span class="n">seeds</span> <span class="o">|&gt;</span> <span class="n">rust</span><span class="o">.</span><span class="n">len</span> <span class="o">|&gt;</span> <span class="n">fun</span> <span class="n">x</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="p">:</span> <span class="n">u32</span> <span class="o">|&gt;</span> <span class="n">i32</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">max_seeds</span> <span class="p">()</span> <span class="o">|&gt;</span> <span class="n">i32</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">seed_excess_len</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">then</span>
+        <span class="n">inl</span> <span class="n">seed_excess</span> <span class="p">:</span> <span class="n">am</span><span class="s1">'.vec u8 =</span>
+            <span class="o">!</span><span class="se">\\</span><span class="o">(</span>seed_excess_len,<span class="w"> </span><span class="s1">$'"!seeds.drain(0..$0 as u32).collect::&lt;Vec&lt;_&gt;&gt;()"'</span><span class="o">)</span>
+        <span class="n">trace</span> <span class="n">Debug</span>
+            <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">"dice_contract.contribute_seed"</span>
+            <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">seed_excess</span> <span class="o">=</span> <span class="n">seed_excess</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug }</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=16">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="generate_random_number">generate_random_number<a class="anchor-link" href="#generate_random_number">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7862,59 +7831,23 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">contribute_seed</span> <span class="p">(</span><span class="n">seeds</span> <span class="p">:</span> <span class="n">rust</span><span class="o">.</span><span class="n">ref</span> <span class="p">(</span><span class="n">rust</span><span class="o">.</span><span class="n">mut</span><span class="s1">' (near.vector u8))) (seed : am'</span><span class="o">.</span><span class="n">vec</span> <span class="n">u8</span><span class="p">)</span> <span class="p">:</span> <span class="p">()</span> <span class="o">=</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"!seeds.extend(!seed); //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="n">inl</span> <span class="n">max_seeds</span> <span class="o">=</span> <span class="n">max_seeds</span> <span class="p">()</span>
-
-    <span class="n">inl</span> <span class="n">seed_excess_len</span> <span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="o">!</span><span class="se">\(</span><span class="s1">$'"(!seeds.len() as i32) - !max_seeds as i32"'</span><span class="o">)</span>
-
-    <span class="k">if</span> <span class="n">seed_excess_len</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">then</span>
-        <span class="n">inl</span> <span class="n">seed_excess</span> <span class="p">:</span> <span class="n">am</span><span class="s1">'.vec u8 =</span>
-            <span class="o">!</span><span class="se">\\</span><span class="o">(</span>seed_excess_len,<span class="w"> </span><span class="s1">$'"!seeds.drain(0..$0 as u32).collect()"'</span><span class="o">)</span>
-        <span class="n">trace</span> <span class="n">Debug</span>
-            <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="s1">'$"dice_contract.contribute_seed"'</span>
-            <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">seed_excess</span> <span class="o">=</span> <span class="n">seed_excess</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug }</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=18">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="generate_random_number">generate_random_number<a class="anchor-link" href="#generate_random_number">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=19">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">generate_random_number</span>
-    <span class="p">(</span><span class="n">seeds</span> <span class="p">:</span> <span class="n">am</span><span class="s1">'.vec u8) (key : sm'</span><span class="o">.</span><span class="n">std_string</span><span class="p">)</span> <span class="p">(</span><span class="n">proof</span> <span class="p">:</span> <span class="n">sm</span><span class="s1">'.std_string) (max : u64)</span>
+    <span class="p">(</span><span class="n">seeds</span> <span class="p">:</span> <span class="n">rust</span><span class="o">.</span><span class="n">ref</span> <span class="p">(</span><span class="n">rust</span><span class="o">.</span><span class="n">mut</span><span class="s1">' (near.vector u8)))</span>
+    <span class="p">(</span><span class="n">key</span> <span class="p">:</span> <span class="n">sm</span><span class="s1">'.std_string)</span>
+    <span class="p">(</span><span class="n">proof</span> <span class="p">:</span> <span class="n">sm</span><span class="s1">'.std_string)</span>
+    <span class="p">(</span><span class="nb">max</span> <span class="p">:</span> <span class="n">u64</span><span class="p">)</span>
     <span class="p">:</span> <span class="n">u64</span>
     <span class="o">=</span>
-
     <span class="n">inl</span> <span class="n">seed</span> <span class="o">=</span> <span class="n">near</span><span class="o">.</span><span class="n">random_seed</span> <span class="p">()</span>
-
-    <span class="n">inl</span> <span class="n">block_timestamp</span> <span class="o">=</span> <span class="n">near</span><span class="o">.</span><span class="n">block_timestamp</span> <span class="p">()</span>
-    <span class="n">inl</span> <span class="n">block_height</span> <span class="o">=</span> <span class="n">near</span><span class="o">.</span><span class="n">block_height</span> <span class="p">()</span>
     <span class="n">inl</span> <span class="n">epoch_height</span> <span class="o">=</span> <span class="n">near</span><span class="o">.</span><span class="n">epoch_height</span> <span class="p">()</span>
+    <span class="n">inl</span> <span class="n">block_height</span> <span class="o">=</span> <span class="n">near</span><span class="o">.</span><span class="n">block_height</span> <span class="p">()</span>
+    <span class="n">inl</span> <span class="n">block_timestamp</span> <span class="o">=</span> <span class="n">near</span><span class="o">.</span><span class="n">block_timestamp</span> <span class="p">()</span>
     <span class="n">inl</span> <span class="n">account_balance</span> <span class="o">=</span> <span class="n">near</span><span class="o">.</span><span class="n">account_balance</span> <span class="p">()</span>
     <span class="n">inl</span> <span class="n">signer_account_id</span> <span class="o">=</span> <span class="n">near</span><span class="o">.</span><span class="n">signer_account_id</span> <span class="p">()</span>
-
-    <span class="n">inl</span> <span class="n">entropy</span> <span class="p">:</span> <span class="n">am</span><span class="s1">'.vec u8 =</span>
+    <span class="n">inl</span> <span class="n">entropy</span> <span class="o">=</span>
         <span class="p">;[</span>
             <span class="n">seed</span>
-            <span class="n">seeds</span>
+            <span class="n">seeds</span> <span class="o">|&gt;</span> <span class="n">rust</span><span class="o">.</span><span class="n">reref</span> <span class="o">|&gt;</span> <span class="n">near</span><span class="o">.</span><span class="n">vector_to_vec</span>
             <span class="n">epoch_height</span> <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.to_le_bytes |&gt; am'</span><span class="o">.</span><span class="n">to_vec</span><span class="s1">'</span>
             <span class="n">block_height</span> <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.to_le_bytes |&gt; am'</span><span class="o">.</span><span class="n">to_vec</span><span class="s1">'</span>
             <span class="n">block_timestamp</span> <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.to_le_bytes |&gt; am'</span><span class="o">.</span><span class="n">to_vec</span><span class="s1">'</span>
@@ -7925,53 +7858,129 @@ a.anchor-link {
         <span class="p">]</span>
         <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.to_vec</span>
         <span class="o">|&gt;</span> <span class="n">rust</span><span class="o">.</span><span class="n">concat</span>
-    
-    <span class="n">inl</span> <span class="n">entropy_len</span> <span class="o">=</span> <span class="n">entropy</span> <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.vec_len</span>
-
-    <span class="n">inl</span> <span class="n">hash_u8</span> <span class="p">:</span> <span class="n">am</span><span class="s1">'.vec u8 = !\($'</span><span class="err">$</span><span class="s2">"near_sdk::env::keccak512(&amp;!entropy)"</span><span class="s1">')</span>
-
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"self.contribute_seed(!hash_u8.clone()); //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"let hash_stream = Util::vec_u8_to_stream(!hash_u8.clone()); //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"let rolls_list = Util::stream_u8_to_list(dice_contract_lib::Dice::rotate_numbers(6)( //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    hash_stream.into(), //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'")); //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="n">inl</span> <span class="n">rolls_list_log</span> <span class="p">:</span> <span class="n">am</span><span class="s1">'.vec u8 = !\($'</span><span class="s2">"Util::list_u8_to_vec(rolls_list.clone().into())"</span><span class="s1">')</span>
-
+    <span class="n">inl</span> <span class="n">hash_u8</span> <span class="o">=</span> <span class="n">entropy</span> <span class="o">|&gt;</span> <span class="n">near</span><span class="o">.</span><span class="n">keccak512</span>
+    <span class="n">hash_u8</span> <span class="o">|&gt;</span> <span class="n">contribute_seed</span> <span class="n">seeds</span>
+    <span class="n">inl</span> <span class="n">rolls_list</span> <span class="o">=</span>
+        <span class="n">hash_u8</span>
+        <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.from_vec_base</span>
+        <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.to_list_base'</span>
+        <span class="o">|&gt;</span> <span class="n">listm</span><span class="s1">'.unbox</span>
+        <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">from_list</span>
+        <span class="o">|&gt;</span> <span class="n">lib</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">rotate_numbers</span> <span class="mi">6</span>
+        <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">to_list</span>
     <span class="n">trace</span> <span class="n">Debug</span>
-        <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="s1">'$"dice_contract.generate_random_number"'</span>
-        <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span>
-            <span class="p">{</span>
-                <span class="nb">max</span>
-                <span class="n">key</span>
-                <span class="n">proof</span>
-                <span class="n">block_timestamp</span>
-                <span class="n">block_height</span>
-                <span class="n">epoch_height</span>
-                <span class="n">account_balance</span> <span class="o">=</span> <span class="n">account_balance</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
-                <span class="n">signer_account_id</span> <span class="o">=</span> <span class="n">signer_account_id</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.to_string</span>
-                <span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
-                <span class="n">seeds</span> <span class="o">=</span> <span class="n">seeds</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
-                <span class="n">entropy_len</span>
-                <span class="n">entropy</span> <span class="o">=</span> <span class="n">entropy</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
-                <span class="n">hash_u8</span> <span class="o">=</span> <span class="n">hash_u8</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
-                <span class="n">rolls_list_log</span> <span class="o">=</span> <span class="n">rolls_list_log</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
-            <span class="p">}</span>
-
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"let sequential_roll = //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    dice_contract_lib::Dice::create_sequential_roller(rolls_list.into()); //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"let result = dice_contract_lib::Dice::roll_progressively //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"    (sequential_roll)(true)(max); //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-
+        <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">"dice_contract.generate_random_number"</span>
+        <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nb">max</span>
+            <span class="n">key</span>
+            <span class="n">proof</span>
+            <span class="n">block_timestamp</span>
+            <span class="n">block_height</span>
+            <span class="n">epoch_height</span>
+            <span class="n">account_balance</span> <span class="o">=</span> <span class="n">account_balance</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
+            <span class="n">signer_account_id</span> <span class="o">=</span> <span class="n">signer_account_id</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.to_string</span>
+            <span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
+            <span class="n">seeds</span> <span class="o">=</span> <span class="n">seeds</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
+            <span class="n">entropy_len</span> <span class="o">=</span> <span class="n">entropy</span> <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.vec_len</span>
+            <span class="n">entropy</span> <span class="o">=</span> <span class="n">entropy</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
+            <span class="n">hash_u8</span> <span class="o">=</span> <span class="n">hash_u8</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
+            <span class="n">rolls</span> <span class="o">=</span> <span class="n">rolls_list</span> <span class="o">|&gt;</span> <span class="n">listm</span><span class="s1">'.box |&gt; listm'</span><span class="o">.</span><span class="n">to_array</span><span class="s1">' |&gt; am'</span><span class="o">.</span><span class="n">to_vec</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug</span>
+        <span class="p">}</span>
+    <span class="n">inl</span> <span class="n">sequential_roll</span> <span class="o">=</span> <span class="n">rolls_list</span> <span class="o">|&gt;</span> <span class="n">lib</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">create_sequential_roller</span>
+    <span class="n">inl</span> <span class="n">result</span> <span class="o">=</span> <span class="n">lib</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll_progressively</span> <span class="n">sequential_roll</span> <span class="n">true</span> <span class="nb">max</span>
     <span class="n">trace</span> <span class="n">Debug</span> <span class="p">(</span><span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">)</span> <span class="p">(</span><span class="n">join</span> <span class="nb">id</span><span class="p">)</span>
-
-    <span class="o">!</span><span class="se">\(</span><span class="s1">$'"result as u64"'</span><span class="o">)</span>
+    <span class="n">result</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=18">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=20">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<span class="o">///!</span><span class="w"> </span>rust<span class="w"> </span>-cd<span class="w"> </span>near-token
+
+<span class="mi">2000</span>
+<span class="o">|&gt;</span> <span class="n">generate_random_number</span>
+    <span class="p">(</span><span class="s2">""</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.byte_slice |&gt; near.new_vector |&gt; rust.to_ref_mut)</span>
+    <span class="p">(</span><span class="s2">""</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.to_std_string)</span>
+    <span class="p">(</span><span class="s2">""</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.to_std_string)</span>
+<span class="o">|&gt;</span> <span class="n">_assert_gt</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice_contract.generate_random_number / { max = 2000; key = ""; proof = ""; block_timestamp = 1727659408378215764; block_height = 9; epoch_height = 1; account_balance = NearToken { inner: 99817379736552383587979200 }; signer_account_id = "dev-20240930012326-51157437206495"; seed = [201, 187, 145, 184, 231, 38, 134, 212, 132, 252, 12, 188, 225, 50, 77, 162, 191, 127, 116, 211, 67, 87, 65, 164, 253, 127, 255, 159, 112, 3, 88, 112]; seeds = Vector { len: 64, prefix: [] }; entropy_len = 105; entropy = [201, 187, 145, 184, 231, 38, 134, 212, 132, 252, 12, 188, 225, 50, 77, 162, 191, 127, 116, 211, 67, 87, 65, 164, 253, 127, 255, 159, 112, 3, 88, 112, 1, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 84, 189, 62, 17, 20, 225, 249, 23, 192, 143, 230, 30, 215, 18, 132, 255, 38, 145, 82, 0, 0, 0, 0, 0, 100, 101, 118, 45, 50, 48, 50, 52, 48, 57, 51, 48, 48, 49, 50, 51, 50, 54, 45, 53, 49, 49, 53, 55, 52, 51, 55, 50, 48, 54, 52, 57, 53]; hash_u8 = [150, 140, 61, 149, 66, 94, 49, 37, 95, 209, 160, 24, 139, 60, 174, 152, 156, 137, 120, 223, 184, 254, 39, 187, 103, 85, 173, 52, 177, 18, 197, 55, 179, 113, 107, 42, 73, 55, 41, 18, 106, 109, 114, 37, 169, 66, 160, 187, 113, 69, 0, 7, 229, 145, 221, 45, 76, 200, 100, 150, 135, 192, 34, 54]; rolls = [6, 2, 1, 5, 6, 4, 1, 1, 5, 5, 4, 6, 1, 6, 6, 2, 6, 5, 6, 1, 4, 2, 3, 1, 1, 1, 5, 4, 3, 6, 5, 1, 5, 5, 5, 6, 1, 1, 5, 6, 4, 1, 6, 1, 1, 6, 4, 1, 5, 3, 6, 1, 1, 1, 5, 3, 4, 2, 4, 6, 3, 6, 4, 6] }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.calculate_dice_count / { max = 2000; p = 7776; n = 5 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.create_sequential_roller / roll / { current_index = 0; acc = 1; len = -1; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.create_sequential_roller / roll / { current_index = 1; acc = 1; len = -1; last_item = Some(6) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.create_sequential_roller / roll / { current_index = 2; acc = 1; len = -1; last_item = Some(2) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.create_sequential_roller / roll / { current_index = 3; acc = 1; len = -1; last_item = Some(1) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice.create_sequential_roller / roll / { current_index = 4; acc = 1; len = -1; last_item = Some(5) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #8 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 6; value = 6480 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #9 dice.accumulate_dice_rolls / { power = 3; acc = 6480; roll = 5; value = 864 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #10 dice.accumulate_dice_rolls / { power = 2; acc = 7344; roll = 1 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #11 dice.accumulate_dice_rolls / { power = 1; acc = 7344; roll = 2; value = 6 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #12 dice.accumulate_dice_rolls / { power = 0; acc = 7350; roll = 6; value = 5 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #13 dice.accumulate_dice_rolls / { power = -1; acc = 7355; result = 7356 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #14 dice.create_sequential_roller / roll / { current_index = 5; acc = 1; len = -1; last_item = Some(6) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #15 dice.create_sequential_roller / roll / { current_index = 6; acc = 1; len = -1; last_item = Some(4) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #16 dice.create_sequential_roller / roll / { current_index = 7; acc = 1; len = -1; last_item = Some(1) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #17 dice.create_sequential_roller / roll / { current_index = 8; acc = 1; len = -1; last_item = Some(1) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #18 dice.create_sequential_roller / roll / { current_index = 9; acc = 1; len = -1; last_item = Some(5) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #19 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 5; value = 5184 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #20 dice.accumulate_dice_rolls / { power = 3; acc = 5184; roll = 4; value = 648 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #21 dice.accumulate_dice_rolls / { power = 2; acc = 5832; roll = 1 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #22 dice.accumulate_dice_rolls / { power = 1; acc = 5832; roll = 1 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #23 dice.accumulate_dice_rolls / { power = 0; acc = 5832; roll = 5; value = 4 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #24 dice.accumulate_dice_rolls / { power = -1; acc = 5836; result = 5837 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #25 dice.create_sequential_roller / roll / { current_index = 10; acc = 1; len = -1; last_item = Some(5) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #26 dice.create_sequential_roller / roll / { current_index = 11; acc = 1; len = -1; last_item = Some(4) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #27 dice.create_sequential_roller / roll / { current_index = 12; acc = 1; len = -1; last_item = Some(6) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #28 dice.create_sequential_roller / roll / { current_index = 13; acc = 1; len = -1; last_item = Some(1) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #29 dice.create_sequential_roller / roll / { current_index = 14; acc = 1; len = -1; last_item = Some(6) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #30 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 6; value = 6480 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #31 dice.accumulate_dice_rolls / { power = 3; acc = 6480; roll = 4; value = 648 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #32 dice.accumulate_dice_rolls / { power = 2; acc = 7128; roll = 6; value = 180 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #33 dice.accumulate_dice_rolls / { power = 1; acc = 7308; roll = 1 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #34 dice.accumulate_dice_rolls / { power = 0; acc = 7308; roll = 6; value = 5 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #35 dice.accumulate_dice_rolls / { power = -1; acc = 7313; result = 7314 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #36 dice.create_sequential_roller / roll / { current_index = 15; acc = 1; len = -1; last_item = Some(6) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #37 dice.create_sequential_roller / roll / { current_index = 16; acc = 1; len = -1; last_item = Some(2) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #38 dice.create_sequential_roller / roll / { current_index = 17; acc = 1; len = -1; last_item = Some(6) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #39 dice.create_sequential_roller / roll / { current_index = 18; acc = 1; len = -1; last_item = Some(5) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #40 dice.create_sequential_roller / roll / { current_index = 19; acc = 1; len = -1; last_item = Some(6) }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #41 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 1 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #42 dice.accumulate_dice_rolls / { power = 3; acc = 0; roll = 2; value = 216 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #43 dice.accumulate_dice_rolls / { power = 2; acc = 216; roll = 6; value = 180 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #44 dice.accumulate_dice_rolls / { power = 1; acc = 396; roll = 5; value = 24 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #45 dice.accumulate_dice_rolls / { power = 0; acc = 420; roll = 6; value = 5 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #46 dice.accumulate_dice_rolls / { power = -1; acc = 425; result = 426 }
+00:00:15 <span class="ansi-green-intense-fg">   info</span> #1 near_workspaces.print_usd / { retry = 1; total_gas_burnt_usd = +0.063639; total_gas_burnt = 95268632524523 }
+00:00:15 <span class="ansi-green-intense-fg">   info</span> #2 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:00:15 <span class="ansi-green-intense-fg">   info</span> #3 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.063285; tokens_burnt_usd = +0.063285; gas_burnt = 94737368102683; tokens_burnt = 9473736810268300000000 }
+00:00:15 <span class="ansi-green-intense-fg">   info</span> #4 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7981,7 +7990,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=21">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=20">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7989,33 +7998,25 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">package</span><span class="o">=../</span><span class="n">dice</span>
-
-<span class="n">inl</span> <span class="n">roll_within_bounds</span> <span class="p">(</span><span class="nb">max</span> <span class="p">:</span> <span class="n">u64</span><span class="p">)</span> <span class="p">(</span><span class="n">rolls</span> <span class="p">:</span> <span class="n">am</span><span class="s1">'.vec u8) : optionm'</span><span class="o">.</span><span class="n">option</span><span class="s1">' u64 =</span>
-
-    <span class="o">//</span> <span class="o">!</span><span class="se">\\</span><span class="o">(</span>rolls,<span class="w"> </span><span class="s1">$'"let rolls = Util::vec_u8_to_list($0); //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-
-    <span class="n">inl</span> <span class="n">rolls_list</span> <span class="o">=</span> <span class="n">rolls</span> <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.from_vec |&gt; fun (x : _ int _) =&gt; x |&gt; am'</span><span class="o">.</span><span class="n">to_list</span><span class="s1">' |&gt; listm'</span><span class="o">.</span><span class="n">unbox</span>
-    <span class="n">inl</span> <span class="n">result</span> <span class="o">=</span> <span class="n">rolls_list</span> <span class="o">|&gt;</span> <span class="n">lib</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll_within_bounds</span> <span class="nb">max</span>
-    <span class="o">//</span> <span class="o">!</span><span class="se">\(</span><span class="s1">$'"let result = dice_contract_lib::Dice::roll_within_bounds(!max)(!rolls.into()); //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-
-    <span class="n">inl</span> <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.box</span>
-
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">roll_within_bounds</span> <span class="p">(</span><span class="nb">max</span> <span class="p">:</span> <span class="n">u64</span><span class="p">)</span> <span class="p">(</span><span class="n">rolls</span> <span class="p">:</span> <span class="n">am</span><span class="s1">'.vec u8) : optionm'</span><span class="o">.</span><span class="n">option</span><span class="s1">' u64 =</span>
+    <span class="n">inl</span> <span class="n">result</span> <span class="o">=</span>
+        <span class="n">rolls</span>
+        <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.from_vec_base</span>
+        <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.to_list_base'</span>
+        <span class="o">|&gt;</span> <span class="n">listm</span><span class="s1">'.unbox</span>
+        <span class="o">|&gt;</span> <span class="n">lib</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll_within_bounds</span> <span class="nb">max</span>
+        <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.box</span>
     <span class="n">trace</span> <span class="n">Debug</span>
         <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">"dice_contract.roll_within_bounds"</span>
-        <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nb">max</span> <span class="n">rolls</span> <span class="o">=</span> <span class="n">rolls</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug; result }</span>
-
+        <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nb">max</span> <span class="n">rolls</span> <span class="o">=</span> <span class="n">rolls</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug; result = result |&gt; sm'</span><span class="o">.</span><span class="n">format_debug</span> <span class="p">}</span>
     <span class="n">trace</span> <span class="n">Debug</span> <span class="p">(</span><span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">)</span> <span class="p">(</span><span class="n">join</span> <span class="nb">id</span><span class="p">)</span>
-
-    <span class="o">//</span> <span class="o">!</span><span class="se">\(</span><span class="s1">$'"result"'</span><span class="o">)</span>
-
     <span class="n">result</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=22">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=21">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8049,65 +8050,99 @@ a.anchor-link {
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 972; roll = 4; value = 18 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 990; roll = 5; value = 4 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 994; result = 995 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice_contract.roll_within_bounds / { max = 2000; rolls = [1, 5, 4, 4, 5]; result = Some(
-    995,
-) }
-23:50:55 <span class="ansi-blue-intense-fg">  debug</span> #1 near_workspaces.print_usd / { retry = 1; total_gas_burnt_usd = +0.002692; total_gas_burnt = 4030380386857 }
-23:50:55 <span class="ansi-blue-intense-fg">  debug</span> #2 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
-23:50:55 <span class="ansi-blue-intense-fg">  debug</span> #3 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.002486; tokens_burnt_usd = +0.002486; gas_burnt = 3722298527517; tokens_burnt = 372229852751700000000 }
-23:50:55 <span class="ansi-yellow-fg">warning</span> #4 spiral_wasm.run / Error error / { retry = 1; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 1 }" }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice_contract.roll_within_bounds / { max = 2000; rolls = [1, 5, 4, 4, 5]; result = Some(995) }
+00:00:14 <span class="ansi-green-intense-fg">   info</span> #1 near_workspaces.print_usd / { retry = 1; total_gas_burnt_usd = +0.002684; total_gas_burnt = 4018646672889 }
+00:00:14 <span class="ansi-green-intense-fg">   info</span> #2 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:00:14 <span class="ansi-green-intense-fg">   info</span> #3 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.002479; tokens_burnt_usd = +0.002479; gas_burnt = 3710564813549; tokens_burnt = 371056481354900000000 }
+00:00:14 <span class="ansi-yellow-fg">warning</span> #4 spiral_wasm.run / Error error / { retry = 1; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 1 }" }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 1 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = 3; acc = 0; roll = 5; value = 864 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.accumulate_dice_rolls / { power = 2; acc = 864; roll = 4; value = 108 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 972; roll = 4; value = 18 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 990; roll = 5; value = 4 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 994; result = 995 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice_contract.roll_within_bounds / { max = 2000; rolls = [1, 5, 4, 4, 5]; result = Some(
-    995,
-) }
-23:51:03 <span class="ansi-blue-intense-fg">  debug</span> #5 near_workspaces.print_usd / { retry = 2; total_gas_burnt_usd = +0.002692; total_gas_burnt = 4030380386857 }
-23:51:03 <span class="ansi-blue-intense-fg">  debug</span> #6 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
-23:51:03 <span class="ansi-blue-intense-fg">  debug</span> #7 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.002486; tokens_burnt_usd = +0.002486; gas_burnt = 3722298527517; tokens_burnt = 372229852751700000000 }
-23:51:03 <span class="ansi-yellow-fg">warning</span> #8 spiral_wasm.run / Error error / { retry = 2; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 2 }" }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice_contract.roll_within_bounds / { max = 2000; rolls = [1, 5, 4, 4, 5]; result = Some(995) }
+00:00:27 <span class="ansi-green-intense-fg">   info</span> #5 near_workspaces.print_usd / { retry = 2; total_gas_burnt_usd = +0.002684; total_gas_burnt = 4018646672889 }
+00:00:27 <span class="ansi-green-intense-fg">   info</span> #6 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:00:27 <span class="ansi-green-intense-fg">   info</span> #7 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.002479; tokens_burnt_usd = +0.002479; gas_burnt = 3710564813549; tokens_burnt = 371056481354900000000 }
+00:00:27 <span class="ansi-yellow-fg">warning</span> #8 spiral_wasm.run / Error error / { retry = 2; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 2 }" }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 1 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = 3; acc = 0; roll = 5; value = 864 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.accumulate_dice_rolls / { power = 2; acc = 864; roll = 4; value = 108 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 972; roll = 4; value = 18 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 990; roll = 5; value = 4 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 994; result = 995 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice_contract.roll_within_bounds / { max = 2000; rolls = [1, 5, 4, 4, 5]; result = Some(
-    995,
-) }
-23:51:10 <span class="ansi-blue-intense-fg">  debug</span> #9 near_workspaces.print_usd / { retry = 3; total_gas_burnt_usd = +0.002692; total_gas_burnt = 4030380386857 }
-23:51:10 <span class="ansi-blue-intense-fg">  debug</span> #10 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
-23:51:10 <span class="ansi-blue-intense-fg">  debug</span> #11 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.002486; tokens_burnt_usd = +0.002486; gas_burnt = 3722298527517; tokens_burnt = 372229852751700000000 }
-23:51:10 <span class="ansi-yellow-fg">warning</span> #12 spiral_wasm.run / Error error / { retry = 3; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 3 }" }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice_contract.roll_within_bounds / { max = 2000; rolls = [1, 5, 4, 4, 5]; result = Some(995) }
+00:00:46 <span class="ansi-green-intense-fg">   info</span> #9 near_workspaces.print_usd / { retry = 3; total_gas_burnt_usd = +0.002684; total_gas_burnt = 4018646672889 }
+00:00:46 <span class="ansi-green-intense-fg">   info</span> #10 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:00:46 <span class="ansi-green-intense-fg">   info</span> #11 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.002479; tokens_burnt_usd = +0.002479; gas_burnt = 3710564813549; tokens_burnt = 371056481354900000000 }
+00:00:47 <span class="ansi-yellow-fg">warning</span> #12 spiral_wasm.run / Error error / { retry = 3; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 3 }" }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 1 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = 3; acc = 0; roll = 5; value = 864 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.accumulate_dice_rolls / { power = 2; acc = 864; roll = 4; value = 108 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 972; roll = 4; value = 18 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 990; roll = 5; value = 4 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 994; result = 995 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice_contract.roll_within_bounds / { max = 2000; rolls = [1, 5, 4, 4, 5]; result = Some(
-    995,
-) }
-23:51:16 <span class="ansi-blue-intense-fg">  debug</span> #13 near_workspaces.print_usd / { retry = 4; total_gas_burnt_usd = +0.002692; total_gas_burnt = 4030380386857 }
-23:51:16 <span class="ansi-blue-intense-fg">  debug</span> #14 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
-23:51:16 <span class="ansi-blue-intense-fg">  debug</span> #15 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.002486; tokens_burnt_usd = +0.002486; gas_burnt = 3722298527517; tokens_burnt = 372229852751700000000 }
-23:51:16 <span class="ansi-yellow-fg">warning</span> #16 spiral_wasm.run / Error error / { retry = 4; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 4 }" }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice_contract.roll_within_bounds / { max = 2000; rolls = [1, 5, 4, 4, 5]; result = Some(995) }
+00:01:00 <span class="ansi-green-intense-fg">   info</span> #13 near_workspaces.print_usd / { retry = 4; total_gas_burnt_usd = +0.002684; total_gas_burnt = 4018646672889 }
+00:01:00 <span class="ansi-green-intense-fg">   info</span> #14 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:01:00 <span class="ansi-green-intense-fg">   info</span> #15 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.002479; tokens_burnt_usd = +0.002479; gas_burnt = 3710564813549; tokens_burnt = 371056481354900000000 }
+00:01:00 <span class="ansi-yellow-fg">warning</span> #16 spiral_wasm.run / Error error / { retry = 4; error = "{ receipt_failures = []; receipt_outcomes_len = 1; retry = 4 }" }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 1 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = 3; acc = 0; roll = 5; value = 864 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.accumulate_dice_rolls / { power = 2; acc = 864; roll = 4; value = 108 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 972; roll = 4; value = 18 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 990; roll = 5; value = 4 }
 00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 994; result = 995 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice_contract.roll_within_bounds / { max = 2000; rolls = [1, 5, 4, 4, 5]; result = Some(
-    995,
-) }
-23:51:23 <span class="ansi-blue-intense-fg">  debug</span> #17 near_workspaces.print_usd / { retry = 5; total_gas_burnt_usd = +0.002841; total_gas_burnt = 4253562949357 }
-23:51:23 <span class="ansi-blue-intense-fg">  debug</span> #18 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
-23:51:23 <span class="ansi-blue-intense-fg">  debug</span> #19 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.002486; tokens_burnt_usd = +0.002486; gas_burnt = 3722298527517; tokens_burnt = 372229852751700000000 }
-23:51:23 <span class="ansi-blue-intense-fg">  debug</span> #20 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice_contract.roll_within_bounds / { max = 2000; rolls = [1, 5, 4, 4, 5]; result = Some(995) }
+00:01:10 <span class="ansi-green-intense-fg">   info</span> #17 near_workspaces.print_usd / { retry = 5; total_gas_burnt_usd = +0.002834; total_gas_burnt = 4241829235389 }
+00:01:10 <span class="ansi-green-intense-fg">   info</span> #18 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:01:10 <span class="ansi-green-intense-fg">   info</span> #19 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.002479; tokens_burnt_usd = +0.002479; gas_burnt = 3710564813549; tokens_burnt = 371056481354900000000 }
+00:01:10 <span class="ansi-green-intense-fg">   info</span> #20 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=22">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<span class="o">///!</span><span class="w"> </span>rust<span class="w"> </span>-c
+
+<span class="n">inl</span> <span class="n">rolls</span> <span class="o">=</span> <span class="p">;[</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span> <span class="p">]</span> <span class="o">|&gt;</span> <span class="n">am</span><span class="s1">'.to_vec</span>
+
+<span class="n">rolls</span>
+<span class="o">|&gt;</span> <span class="n">roll_within_bounds</span> <span class="mi">2000</span>
+<span class="o">|&gt;</span> <span class="n">_assert_eq</span><span class="s1">' (optionm'</span><span class="o">.</span><span class="n">some</span><span class="s1">' 1715)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 2; value = 1296 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = 3; acc = 1296; roll = 2; value = 216 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.accumulate_dice_rolls / { power = 2; acc = 1512; roll = 6; value = 180 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 1692; roll = 4; value = 18 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 1710; roll = 5; value = 4 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 1714; result = 1715 }
+00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice_contract.roll_within_bounds / { max = 2000; rolls = [2, 2, 6, 4, 5]; result = Some(1715) }
+00:00:12 <span class="ansi-green-intense-fg">   info</span> #1 near_workspaces.print_usd / { retry = 1; total_gas_burnt_usd = +0.002907; total_gas_burnt = 4352020384326 }
+00:00:12 <span class="ansi-green-intense-fg">   info</span> #2 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000206; tokens_burnt_usd = +0.000206; gas_burnt = 308081859340; tokens_burnt = 30808185934000000000 }
+00:00:12 <span class="ansi-green-intense-fg">   info</span> #3 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.002552; tokens_burnt_usd = +0.002552; gas_burnt = 3820755962486; tokens_burnt = 382075596248600000000 }
+00:00:12 <span class="ansi-green-intense-fg">   info</span> #4 near_workspaces.print_usd / outcome / { is_success = true; gas_burnt_usd = +0.000149; tokens_burnt_usd = +0.000000; gas_burnt = 223182562500; tokens_burnt = 0 }
 </pre>
 </div>
 </div>
@@ -8136,8 +8171,6 @@ a.anchor-link {
 
 <span class="n">inl</span> <span class="n">main</span> <span class="p">()</span> <span class="o">=</span>
     <span class="o">!</span><span class="se">\(</span><span class="s1">$'"} //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-
-    <span class="n">util</span> <span class="p">()</span>
 
     <span class="o">!</span><span class="se">\(</span><span class="s1">$'"#[derive( //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
     <span class="o">!</span><span class="se">\(</span><span class="s1">$'"  near_sdk::PanicOnDefault, //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
@@ -8196,14 +8229,11 @@ a.anchor-link {
 
         <span class="n">seed</span> <span class="o">|&gt;</span> <span class="n">contribute_seed</span> <span class="n">seeds</span>
 
-
         <span class="o">!</span><span class="se">\(</span><span class="s1">$'"} //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
 
         <span class="o">!</span><span class="se">\(</span><span class="s1">$'"} //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
 
-        <span class="o">!</span><span class="se">\(</span><span class="s1">$'"} //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-
-        <span class="mi">3</span>
+        <span class="mi">2</span>
 
     <span class="n">inl</span> <span class="n">contribute_seed_borsh</span> <span class="p">()</span> <span class="o">=</span>
         <span class="o">!</span><span class="se">\(</span><span class="s1">$'"pub fn contribute_seed_borsh(&amp;mut self, #[serializer(borsh)] seed: Vec&lt;u8&gt;) { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
@@ -8219,8 +8249,7 @@ a.anchor-link {
         <span class="n">inl</span> <span class="n">proof</span> <span class="p">:</span> <span class="n">sm</span><span class="s1">'.std_string = !\($'</span><span class="err">$</span><span class="s2">"proof"</span><span class="s1">')</span>
         <span class="n">inl</span> <span class="nb">max</span> <span class="p">:</span> <span class="n">u64</span> <span class="o">=</span> <span class="o">!</span><span class="se">\(</span><span class="s1">$'$"max"'</span><span class="o">)</span>
 
-        <span class="n">inl</span> <span class="n">seeds</span> <span class="p">:</span> <span class="n">rust</span><span class="o">.</span><span class="n">ref</span> <span class="p">(</span><span class="n">near</span><span class="o">.</span><span class="n">vector</span> <span class="n">u8</span><span class="p">)</span> <span class="o">=</span> <span class="o">!</span><span class="se">\(</span><span class="s1">$'$"&amp;self.0.1"'</span><span class="o">)</span>
-        <span class="n">inl</span> <span class="n">seeds</span> <span class="p">:</span> <span class="n">am</span><span class="s1">'.vec u8 = !\($'</span><span class="err">$</span><span class="s2">"!seeds.iter().map(|x| *x).collect::&lt;Vec&lt;u8&gt;&gt;()"</span><span class="s1">')</span>
+        <span class="n">inl</span> <span class="n">seeds</span> <span class="p">:</span> <span class="n">rust</span><span class="o">.</span><span class="n">ref</span> <span class="p">(</span><span class="n">rust</span><span class="o">.</span><span class="n">mut</span><span class="s1">' (near.vector u8)) = !\($'</span><span class="err">$</span><span class="s2">"&amp;mut self.0.1"</span><span class="s1">')</span>
 
         <span class="n">inl</span> <span class="n">result</span> <span class="o">=</span> <span class="n">generate_random_number</span> <span class="n">seeds</span> <span class="n">key</span> <span class="n">proof</span> <span class="nb">max</span>
 
@@ -8232,9 +8261,7 @@ a.anchor-link {
 
         <span class="o">!</span><span class="se">\(</span><span class="s1">$'"} //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
 
-        <span class="o">!</span><span class="se">\(</span><span class="s1">$'"} //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
-
-        <span class="mi">4</span>
+        <span class="mi">3</span>
 
     <span class="n">inl</span> <span class="n">roll_within_bounds</span> <span class="p">()</span> <span class="o">=</span>
         <span class="o">!</span><span class="se">\(</span><span class="s1">$'"pub fn roll_within_bounds(&amp;self, max: u64, rolls: Vec&lt;u8&gt;) -&gt; Option&lt;u64&gt; { //"'</span><span class="o">)</span><span class="w"> </span>:<span class="w"> </span><span class="o">()</span>
