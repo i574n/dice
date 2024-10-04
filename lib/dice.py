@@ -11,7 +11,7 @@ from fable_modules.fable_library.long import (op_addition, op_modulus, op_subtra
 from fable_modules.fable_library.map import (find, of_seq)
 from fable_modules.fable_library.option import (some, value as value_3, default_arg, map)
 from fable_modules.fable_library.reflection import (TypeInfo, uint8_type, unit_type, lambda_type, union_type, record_type, int64_type, string_type, bool_type, uint64_type)
-from fable_modules.fable_library.string_ import (pad_left, trim_end, trim_start, to_text, interpolate)
+from fable_modules.fable_library.string_ import (trim_end, trim_start, to_text, interpolate)
 from fable_modules.fable_library.time_span import (create, hours, minutes, seconds, milliseconds)
 from fable_modules.fable_library.types import (int64, Array, Union, Record, uint8, uint64, int8)
 from fable_modules.fable_library.util import (create_atom, to_enumerable, compare, randint)
@@ -24,7 +24,7 @@ class IOsEnviron(Protocol):
         ...
 
 
-def _expr323() -> TypeInfo:
+def _expr309() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -39,9 +39,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr323
+UH0_reflection = _expr309
 
-def _expr324() -> TypeInfo:
+def _expr310() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[], [("Item1", uint8_type), ("Item2", UH1_reflection())]])
 
 
@@ -56,9 +56,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr324
+UH1_reflection = _expr310
 
-def _expr325() -> TypeInfo:
+def _expr311() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[("f0_0", lambda_type(unit_type, UH0_reflection()))], [("f1_0", UH0_reflection())]])
 
 
@@ -74,9 +74,9 @@ class US0(Union):
         return ["US0_0", "US0_1"]
 
 
-US0_reflection = _expr325
+US0_reflection = _expr311
 
-def _expr326() -> TypeInfo:
+def _expr312() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", US0_reflection())])
 
 
@@ -84,9 +84,9 @@ def _expr326() -> TypeInfo:
 class Mut0(Record):
     l0: US0
 
-Mut0_reflection = _expr326
+Mut0_reflection = _expr312
 
-def _expr327() -> TypeInfo:
+def _expr313() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", int64_type)])
 
 
@@ -94,9 +94,9 @@ def _expr327() -> TypeInfo:
 class Mut1(Record):
     l0: int64
 
-Mut1_reflection = _expr327
+Mut1_reflection = _expr313
 
-def _expr328() -> TypeInfo:
+def _expr314() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", uint8_type)], []])
 
 
@@ -112,9 +112,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr328
+US1_reflection = _expr314
 
-def _expr329() -> TypeInfo:
+def _expr315() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", US1_reflection())])
 
 
@@ -122,9 +122,9 @@ def _expr329() -> TypeInfo:
 class Mut2(Record):
     l0: US1
 
-Mut2_reflection = _expr329
+Mut2_reflection = _expr315
 
-def _expr330() -> TypeInfo:
+def _expr316() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[], [], [], [], []])
 
 
@@ -140,9 +140,9 @@ class US2(Union):
         return ["US2_0", "US2_1", "US2_2", "US2_3", "US2_4"]
 
 
-US2_reflection = _expr330
+US2_reflection = _expr316
 
-def _expr331() -> TypeInfo:
+def _expr317() -> TypeInfo:
     return record_type("Dice.Mut3", [], Mut3, lambda: [("l0", lambda_type(string_type, unit_type))])
 
 
@@ -150,9 +150,9 @@ def _expr331() -> TypeInfo:
 class Mut3(Record):
     l0: Callable[[str], None]
 
-Mut3_reflection = _expr331
+Mut3_reflection = _expr317
 
-def _expr332() -> TypeInfo:
+def _expr318() -> TypeInfo:
     return record_type("Dice.Mut4", [], Mut4, lambda: [("l0", bool_type)])
 
 
@@ -160,9 +160,9 @@ def _expr332() -> TypeInfo:
 class Mut4(Record):
     l0: bool
 
-Mut4_reflection = _expr332
+Mut4_reflection = _expr318
 
-def _expr333() -> TypeInfo:
+def _expr319() -> TypeInfo:
     return record_type("Dice.Mut5", [], Mut5, lambda: [("l0", string_type)])
 
 
@@ -170,9 +170,9 @@ def _expr333() -> TypeInfo:
 class Mut5(Record):
     l0: str
 
-Mut5_reflection = _expr333
+Mut5_reflection = _expr319
 
-def _expr334() -> TypeInfo:
+def _expr320() -> TypeInfo:
     return record_type("Dice.Mut6", [], Mut6, lambda: [("l0", US2_reflection())])
 
 
@@ -180,9 +180,9 @@ def _expr334() -> TypeInfo:
 class Mut6(Record):
     l0: US2
 
-Mut6_reflection = _expr334
+Mut6_reflection = _expr320
 
-def _expr335() -> TypeInfo:
+def _expr321() -> TypeInfo:
     return union_type("Dice.US3", [], US3, lambda: [[("f0_0", string_type)], []])
 
 
@@ -198,9 +198,9 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr335
+US3_reflection = _expr321
 
-def _expr336() -> TypeInfo:
+def _expr322() -> TypeInfo:
     return union_type("Dice.US4", [], US4, lambda: [[("f0_0", US2_reflection())], []])
 
 
@@ -216,9 +216,9 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr336
+US4_reflection = _expr322
 
-def _expr337() -> TypeInfo:
+def _expr323() -> TypeInfo:
     return union_type("Dice.US5", [], US5, lambda: [[("f0_0", int64_type)], []])
 
 
@@ -234,9 +234,9 @@ class US5(Union):
         return ["US5_0", "US5_1"]
 
 
-US5_reflection = _expr337
+US5_reflection = _expr323
 
-def _expr338() -> TypeInfo:
+def _expr324() -> TypeInfo:
     return union_type("Dice.US6", [], US6, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -252,9 +252,9 @@ class US6(Union):
         return ["US6_0", "US6_1"]
 
 
-US6_reflection = _expr338
+US6_reflection = _expr324
 
-def _expr339() -> TypeInfo:
+def _expr325() -> TypeInfo:
     return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
 
 
@@ -269,9 +269,9 @@ class UH2(Union):
         return ["UH2_0", "UH2_1"]
 
 
-UH2_reflection = _expr339
+UH2_reflection = _expr325
 
-def _expr340() -> TypeInfo:
+def _expr326() -> TypeInfo:
     return union_type("Dice.US7", [], US7, lambda: [[("f0_0", uint64_type)], []])
 
 
@@ -287,9 +287,9 @@ class US7(Union):
         return ["US7_0", "US7_1"]
 
 
-US7_reflection = _expr340
+US7_reflection = _expr326
 
-def _expr341() -> TypeInfo:
+def _expr327() -> TypeInfo:
     return union_type("Dice.US8", [], US8, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -305,7 +305,7 @@ class US8(Union):
         return ["US8_0", "US8_1"]
 
 
-US8_reflection = _expr341
+US8_reflection = _expr327
 
 def closure2(v0_1: UH0, unit_var: None) -> UH0:
     return v0_1
@@ -330,10 +330,10 @@ def closure1(v0_1: int64, v1_1: UH0) -> UH0:
 
 
 def closure0(unit_var: None, v0_1: int64) -> Callable[[UH0], UH0]:
-    def _arrow342(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
+    def _arrow328(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
         return closure1(v0_1, v)
 
-    return _arrow342
+    return _arrow328
 
 
 def method1(v0_1_mut: UH1, v1_1_mut: UH1) -> UH1:
@@ -395,17 +395,17 @@ def closure6(v0_1: UH0, v1_1: Mut0, unit_var: None) -> UH0:
 
 def method4(v0_1: UH0, v1_1: Callable[[], UH0]) -> Callable[[], UH0]:
     v3_1: Mut0 = Mut0(US0(0, v1_1))
-    def _arrow343(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
+    def _arrow329(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
         return closure6(v0_1, v3_1, None)
 
-    return _arrow343
+    return _arrow329
 
 
-def method7(__unit: None=None) -> str:
+def method8(__unit: None=None) -> str:
     return "TRACE_LEVEL"
 
 
-def method9(__unit: None=None) -> str:
+def method10(__unit: None=None) -> str:
     return ""
 
 
@@ -413,14 +413,14 @@ def closure10(unit_var: None, v0_1: str) -> US3:
     return US3(0, v0_1)
 
 
-def method10(__unit: None=None) -> Callable[[str], US3]:
-    def _arrow344(v: str) -> US3:
+def method11(__unit: None=None) -> Callable[[str], US3]:
+    def _arrow330(v: str) -> US3:
         return closure10(None, v)
 
-    return _arrow344
+    return _arrow330
 
 
-def method8(v0_1: str) -> str:
+def method9(v0_1: str) -> str:
     v50: IOsEnviron = os
     v52: Any = v50.environ
     _v56: (str | None) | None = None
@@ -433,7 +433,7 @@ def method8(v0_1: str) -> str:
     else: 
         v61 = value_3(_v56)
 
-    v77: US3 = default_arg(map(method10(), v61), US3(1))
+    v77: US3 = default_arg(map(method11(), v61), US3(1))
     if v77.tag == 0:
         return v77.fields[0]
 
@@ -442,7 +442,7 @@ def method8(v0_1: str) -> str:
 
 
 
-def method11(__unit: None=None) -> str:
+def method12(__unit: None=None) -> str:
     return "AUTOMATION"
 
 
@@ -450,10 +450,10 @@ def closure11(unit_var: None, v0_1: str) -> None:
     pass
 
 
-def method6(v0_1: US2) -> tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None]:
-    v230: str = method8(method7())
+def method7(v0_1: US2) -> tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None]:
+    v230: str = method9(method8())
     v235: US4 = US4(0, US2(0)) if ("Verbose" == v230) else US4(1)
-    def _arrow345(__unit: None=None, v0_1: Any=v0_1) -> US4:
+    def _arrow331(__unit: None=None, v0_1: Any=v0_1) -> US4:
         v242: US4 = US4(0, US2(1)) if ("Debug" == v230) else US4(1)
         if v242.tag == 0:
             return US4(0, v242.fields[0])
@@ -475,7 +475,7 @@ def method6(v0_1: US2) -> tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None]:
 
 
 
-    _v1: tuple[US4, US5] = (US4(0, v235.fields[0]) if (v235.tag == 0) else _arrow345(), US5(0, ticks_1(now())) if (method8(method11()) == "True") else US5(1))
+    _v1: tuple[US4, US5] = (US4(0, v235.fields[0]) if (v235.tag == 0) else _arrow331(), US5(0, ticks_1(now())) if (method9(method12()) == "True") else US5(1))
     v352: US5 = _v1[1]
     v351: US4 = _v1[0]
     def v417(v: str, v0_1: Any=v0_1) -> None:
@@ -486,8 +486,32 @@ def method6(v0_1: US2) -> tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None]:
 
 def closure9(unit_var: None, unit_var_1: None) -> None:
     if TraceState_trace_state() is None:
-        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = method6(US2(0))
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = method7(US2(0))
         TraceState_trace_state((pattern_input[0], pattern_input[1], pattern_input[2], pattern_input[3], pattern_input[4], pattern_input[5]))
+
+
+
+def method6(v0_1: US2) -> bool:
+    v3_1: None
+    closure9(None, None)
+    v3_1 = None
+    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+    v35: US2 = pattern_input[4].l0
+    if pattern_input[2].l0 == False:
+        return False
+
+    else: 
+        class ObjectExpr332:
+            @property
+            def Compare(self) -> Callable[[US2, US2], int]:
+                return compare
+
+        class ObjectExpr333:
+            @property
+            def Compare(self) -> Callable[[US2, US2], int]:
+                return compare
+
+        return find(v0_1, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr332())) >= find(v35, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr333()))
 
 
 
@@ -495,36 +519,28 @@ def closure12(unit_var: None, v0_1: int64) -> US5:
     return US5(0, v0_1)
 
 
-def method13(__unit: None=None) -> Callable[[int64], US5]:
-    def _arrow346(v: int64) -> US5:
+def method14(__unit: None=None) -> Callable[[int64], US5]:
+    def _arrow334(v: int64) -> US5:
         return closure12(None, v)
 
-    return _arrow346
-
-
-def method14(__unit: None=None) -> str:
-    return "hh:mm:ss"
+    return _arrow334
 
 
 def method15(__unit: None=None) -> str:
-    return "HH:mm:ss"
-
-
-def method12(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None=None) -> str:
-    v238: US5 = default_arg(map(method13(), v5), US5(1))
-    def _arrow347(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, v4_1: Any=v4_1, v5: Any=v5) -> Any:
-        v252: Any = create(op_subtraction(ticks_1(now()), v238.fields[0]))
-        return create_1(1, 1, 1, hours(v252), minutes(v252), seconds(v252), milliseconds(v252))
-
-    return to_string(_arrow347() if (v238.tag == 0) else now(), method15())
-
-
-def method17(__unit: None=None) -> str:
-    return "\u001b[0m"
+    return "hh:mm:ss"
 
 
 def method16(__unit: None=None) -> str:
-    return ("\u001b[94m" + pad_left("Debug".lower(), 7, " ")) + method17()
+    return "HH:mm:ss"
+
+
+def method13(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None=None) -> str:
+    v238: US5 = default_arg(map(method14(), v5), US5(1))
+    def _arrow335(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, v4_1: Any=v4_1, v5: Any=v5) -> Any:
+        v252: Any = create(op_subtraction(ticks_1(now()), v238.fields[0]))
+        return create_1(1, 1, 1, hours(v252), minutes(v252), seconds(v252), milliseconds(v252))
+
+    return to_string(_arrow335() if (v238.tag == 0) else now(), method16())
 
 
 def method19(__unit: None=None) -> str:
@@ -536,7 +552,24 @@ def closure13(v0_1: Mut5, v1_1: str, unit_var: None) -> None:
     v0_1.l0 = v3_1
 
 
-def method18(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: str) -> str:
+def method18(v0_1: str) -> str:
+    v2_1: Mut5 = Mut5(method19())
+    v8: None
+    closure13(v2_1, ("" + str(v0_1)) + "", None)
+    v8 = None
+    return v2_1.l0
+
+
+def method20(__unit: None=None) -> str:
+    return "\u001b[0m"
+
+
+def method17(__unit: None=None) -> str:
+    v2_1: str = "Debug".lower()
+    return ("\u001b[94m" + method18(v2_1[0])) + method20()
+
+
+def method22(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: str) -> str:
     v5: Mut5 = Mut5(method19())
     v12: None
     closure13(v5, ("" + "{ ") + "", None)
@@ -592,8 +625,13 @@ def method18(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: str) -> str:
     return v5.l0
 
 
-def method20(v0_1: str, v1_1: str, v2_1: int64, v3_1: str) -> str:
-    return trim_end(trim_start(((((((((("" + v0_1) + " ") + v1_1) + " #") + str(v2_1)) + " ") + "dice.create_sequential_roller / roll") + " / ") + v3_1) + "", *to_array(empty())), *to_array(of_array([" ", "/"])))
+def method23(v0_1: str) -> str:
+    return trim_end(trim_start(v0_1, *to_array(empty())), *to_array(of_array([" ", "/"])))
+
+
+def method21(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: int64, v10: int64, v11: str) -> str:
+    v12: str = method22(v8, v9, v10, v11)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.create_sequential_roller / roll") + " / ") + v12) + "")
 
 
 def closure14(v0_1: Mut1, unit_var: None) -> None:
@@ -611,44 +649,35 @@ def closure15(unit_var: None, v0_1: str) -> None:
     v3_1 = None
 
 
-def method21(v0_1: str, v1_1: Mut1, v2_1: Mut3, v3_1: Mut4, v4_1: Mut5, v5: Mut6, v6: int64 | None=None) -> None:
-    v9: None
-    closure14(v1_1, None)
-    v9 = None
+def method24(v0_1: str) -> None:
+    v3_1: None
+    closure9(None, None)
+    v3_1 = None
+    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+    v37: None
+    closure14(pattern_input[0], None)
+    v37 = None
     closure15(None, v0_1)
-    v2_1.l0(v0_1)
+    pattern_input[1].l0(v0_1)
 
 
 def closure8(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: uint8 | None, unit_var: None) -> None:
-    def v5(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v8: None
         closure9(None, None)
-
-    v6: None
-    v5(None)
-    v6 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v38: US2 = pattern_input[4].l0
-    class ObjectExpr348:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v38, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr348()))):
-        v45: None
-        v5(None)
-        v45 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v59: Mut1 = pattern_input_1[0]
-        v84: str = method20(method12(v59, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v59.l0, method18(v0_1, v1_1, v2_1, to_text(interpolate("%A%P()", [v3_1]))))
-        v86: None
-        v5(None)
-        v86 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v84, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v8 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v27: int64 | None = pattern_input[5]
+        v26: Mut6 = pattern_input[4]
+        v25: Mut5 = pattern_input[3]
+        v24: Mut4 = pattern_input[2]
+        v23: Mut3 = pattern_input[1]
+        v22: Mut1 = pattern_input[0]
+        method24(method21(v22, v23, v24, v25, v26, v27, method13(v22, v23, v24, v25, v26, v27), method17(), v0_1, v1_1, v2_1, to_text(interpolate("%A%P()", [v3_1]))))
 
 
 
-def method22(v0_1_mut: int64, v1_1_mut: UH0) -> US1:
+def method25(v0_1_mut: int64, v1_1_mut: UH0) -> US1:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v1_1.tag == 1:
@@ -665,41 +694,29 @@ def method22(v0_1_mut: int64, v1_1_mut: UH0) -> US1:
         break
 
 
-def method23(__unit: None=None) -> str:
+def method27(__unit: None=None) -> str:
     v1_1: Mut5 = Mut5(method19())
     return v1_1.l0
 
 
-def method24(v0_1: str, v1_1: str, v2_1: int64, v3_1: str) -> str:
-    return trim_end(trim_start(((((((((("" + v0_1) + " ") + v1_1) + " #") + str(v2_1)) + " ") + "dice.create_sequential_roller / roll / None") + " / ") + v3_1) + "", *to_array(empty())), *to_array(of_array([" ", "/"])))
+def method26(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str) -> str:
+    v8: str = method27()
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.create_sequential_roller / roll / None") + " / ") + v8) + "")
 
 
 def closure17(unit_var: None, unit_var_1: None) -> None:
-    def v1_1(__unit: None=None, unit_var: Any=unit_var, unit_var_1: Any=unit_var_1) -> None:
+    if method6(US2(1)):
+        v4_1: None
         closure9(None, None)
-
-    v2_1: None
-    v1_1(None)
-    v2_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v34: US2 = pattern_input[4].l0
-    class ObjectExpr349:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v34, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr349()))):
-        v41: None
-        v1_1(None)
-        v41 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v55: Mut1 = pattern_input_1[0]
-        v77: str = method24(method12(v55, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v55.l0, method23())
-        v79: None
-        v1_1(None)
-        v79 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v77, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v4_1 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v23: int64 | None = pattern_input[5]
+        v22: Mut6 = pattern_input[4]
+        v21: Mut5 = pattern_input[3]
+        v20: Mut4 = pattern_input[2]
+        v19: Mut3 = pattern_input[1]
+        v18: Mut1 = pattern_input[0]
+        method24(method26(v18, v19, v20, v21, v22, v23, method13(v18, v19, v20, v21, v22, v23), method17()))
 
 
 
@@ -713,27 +730,27 @@ def method5(v0_1_mut: Callable[[], UH0], v1_1_mut: Mut1, v2_1_mut: Mut1, v3_1_mu
         v18: None
         closure8(v5, v6, v7, v8.fields[0] if (v8.tag == 0) else None, None)
         v18 = None
-        v133: UH0 = v0_1(None)
-        v135: US1 = method22(v1_1.l0, v133)
-        if v135.tag == 0:
-            v136: uint8 = v135.fields[0]
-            v138: int64 = op_addition(v1_1.l0, int64(1))
-            v1_1.l0 = v138
-            v4_1.l0 = US1(0, v136)
-            return v136
+        v61: UH0 = v0_1(None)
+        v63: US1 = method25(v1_1.l0, v61)
+        if v63.tag == 0:
+            v64: uint8 = v63.fields[0]
+            v66: int64 = op_addition(v1_1.l0, int64(1))
+            v1_1.l0 = v66
+            v4_1.l0 = US1(0, v64)
+            return v64
 
         else: 
-            v142: None
+            v70: None
             closure17(None, None)
-            v142 = None
+            v70 = None
             if v3_1.l0 == int64(-1):
-                v256: int64 = v1_1.l0
-                v3_1.l0 = v256
+                v112: int64 = v1_1.l0
+                v3_1.l0 = v112
 
-            v262: int64 = int64(1) if (v2_1.l0 >= v3_1.l0) else op_addition(v2_1.l0, int64(1))
-            v2_1.l0 = v262
-            v264: int64 = op_subtraction(v2_1.l0, int64(1))
-            v1_1.l0 = v264
+            v118: int64 = int64(1) if (v2_1.l0 >= v3_1.l0) else op_addition(v2_1.l0, int64(1))
+            v2_1.l0 = v118
+            v120: int64 = op_subtraction(v2_1.l0, int64(1))
+            v1_1.l0 = v120
             v4_1.l0 = US1(1)
             v0_1_mut = v0_1
             v1_1_mut = v1_1
@@ -759,13 +776,13 @@ def closure3(unit_var: None, v0_1: UH1) -> Callable[[], uint8]:
     v9: Mut1 = Mut1(int64(1))
     v10: Mut1 = Mut1(int64(-1))
     v12: Mut2 = Mut2(US1(1))
-    def _arrow350(__unit: None=None, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint8:
+    def _arrow336(__unit: None=None, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint8:
         return closure7(v7, v8, v9, v10, v12, None)
 
-    return _arrow350
+    return _arrow336
 
 
-def method26(v0_1: uint64, v1_1: uint64, v2_1: int8) -> str:
+def method30(v0_1: uint64, v1_1: uint64, v2_1: int8) -> str:
     v4_1: Mut5 = Mut5(method19())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
@@ -809,40 +826,28 @@ def method26(v0_1: uint64, v1_1: uint64, v2_1: int8) -> str:
     return v4_1.l0
 
 
-def method27(v0_1: str, v1_1: str, v2_1: int64, v3_1: str) -> str:
-    return trim_end(trim_start(((((((((("" + v0_1) + " ") + v1_1) + " #") + str(v2_1)) + " ") + "dice.calculate_dice_count") + " / ") + v3_1) + "", *to_array(empty())), *to_array(of_array([" ", "/"])))
+def method29(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: uint64, v9: uint64, v10: int8) -> str:
+    v11: str = method30(v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.calculate_dice_count") + " / ") + v11) + "")
 
 
 def closure21(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
-
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr351:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr351()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v80: str = method27(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method26(v0_1, v2_1, v1_1))
-        v82: None
-        v4_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method29(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v2_1, v1_1))
 
 
 
-def method25(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64) -> int8:
+def method28(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64) -> int8:
     while True:
         (v0_1, v1_1, v2_1) = (v0_1_mut, v1_1_mut, v2_1_mut)
         if v2_1 < v0_1:
@@ -861,15 +866,15 @@ def method25(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64) -> int8:
 
 
         else: 
-            v125: None
+            v53: None
             closure21(v0_1, v1_1, v2_1, None)
-            v125 = None
+            v53 = None
             return v1_1
 
         break
 
 
-def method30(v0_1: int8, v1_1: uint64, v2_1: uint64) -> str:
+def method34(v0_1: int8, v1_1: uint64, v2_1: uint64) -> str:
     v4_1: Mut5 = Mut5(method19())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
@@ -913,36 +918,24 @@ def method30(v0_1: int8, v1_1: uint64, v2_1: uint64) -> str:
     return v4_1.l0
 
 
-def method31(v0_1: str, v1_1: str, v2_1: int64, v3_1: str) -> str:
-    return trim_end(trim_start(((((((((("" + v0_1) + " ") + v1_1) + " #") + str(v2_1)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v3_1) + "", *to_array(empty())), *to_array(of_array([" ", "/"])))
+def method33(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint64) -> str:
+    v11: str = method34(v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure22(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
-
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr352:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr352()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method30(v1_1, v0_1, v2_1))
-        v82: None
-        v4_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method33(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v1_1, v0_1, v2_1))
 
 
 
@@ -1391,7 +1384,7 @@ def closure23(unit_var: None, unit_var_1: None) -> UH2:
     return UH2(0, uint64(6), v0_1)
 
 
-def method32(v0_1_mut: int8, v1_1_mut: UH2) -> US7:
+def method35(v0_1_mut: int8, v1_1_mut: UH2) -> US7:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v1_1.tag == 1:
@@ -1408,7 +1401,7 @@ def method32(v0_1_mut: int8, v1_1_mut: UH2) -> US7:
         break
 
 
-def method33(v0_1: int8, v1_1: uint64, v2_1: uint8, v3_1: uint64) -> str:
+def method37(v0_1: int8, v1_1: uint64, v2_1: uint8, v3_1: uint64) -> str:
     v5: Mut5 = Mut5(method19())
     v12: None
     closure13(v5, ("" + "{ ") + "", None)
@@ -1464,36 +1457,28 @@ def method33(v0_1: int8, v1_1: uint64, v2_1: uint8, v3_1: uint64) -> str:
     return v5.l0
 
 
+def method36(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint8, v11: uint64) -> str:
+    v12: str = method37(v8, v9, v10, v11)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+
+
 def closure87(v0_1: uint64, v1_1: int8, v2_1: uint8, v3_1: uint64, unit_var: None) -> None:
-    def v5(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v8: None
         closure9(None, None)
-
-    v6: None
-    v5(None)
-    v6 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v38: US2 = pattern_input[4].l0
-    class ObjectExpr353:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v38, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr353()))):
-        v45: None
-        v5(None)
-        v45 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v59: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v59, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v59.l0, method33(v1_1, v0_1, v2_1, v3_1))
-        v83: None
-        v5(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v8 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v27: int64 | None = pattern_input[5]
+        v26: Mut6 = pattern_input[4]
+        v25: Mut5 = pattern_input[3]
+        v24: Mut4 = pattern_input[2]
+        v23: Mut3 = pattern_input[1]
+        v22: Mut1 = pattern_input[0]
+        method24(method36(v22, v23, v24, v25, v26, v27, method13(v22, v23, v24, v25, v26, v27), method17(), v1_1, v0_1, v2_1, v3_1))
 
 
 
-def method34(v0_1: int8, v1_1: uint64, v2_1: uint8) -> str:
+def method39(v0_1: int8, v1_1: uint64, v2_1: uint8) -> str:
     v4_1: Mut5 = Mut5(method19())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
@@ -1537,36 +1522,28 @@ def method34(v0_1: int8, v1_1: uint64, v2_1: uint8) -> str:
     return v4_1.l0
 
 
+def method38(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint8) -> str:
+    v11: str = method39(v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+
+
 def closure88(v0_1: uint64, v1_1: int8, v2_1: uint8, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
-
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr354:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr354()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method34(v1_1, v0_1, v2_1))
-        v82: None
-        v4_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method38(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v1_1, v0_1, v2_1))
 
 
 
-def method29(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US6:
+def method32(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US6:
     while True:
         (v0_1, v1_1, v2_1) = (v0_1_mut, v1_1_mut, v2_1_mut)
         if v0_1 < int8(0):
@@ -1580,35 +1557,35 @@ def method29(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US6:
             return US6(1)
 
         else: 
-            v122: UH1 = v1_1.fields[1]
-            v121: uint8 = v1_1.fields[0]
-            if v121 > uint8(1):
-                def v125(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> UH2:
+            v50: UH1 = v1_1.fields[1]
+            v49: uint8 = v1_1.fields[0]
+            if v49 > uint8(1):
+                def v53(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> UH2:
                     return closure23(None, None)
 
-                v127: US7 = method32(v0_1, UH2(0, uint64(1), v125))
-                v131: uint64
-                if v127.tag == 0:
-                    v131 = v127.fields[0]
+                v55: US7 = method35(v0_1, UH2(0, uint64(1), v53))
+                v59: uint64
+                if v55.tag == 0:
+                    v59 = v55.fields[0]
 
                 else: 
                     raise Exception("Option does not have a value.")
 
-                v134: uint64 = op_multiply(from_integer(v121 - uint8(1), True, 4), v131)
-                v137: None
-                closure87(v2_1, v0_1, v121, v134, None)
-                v137 = None
+                v62: uint64 = op_multiply(from_integer(v49 - uint8(1), True, 4), v59)
+                v65: None
+                closure87(v2_1, v0_1, v49, v62, None)
+                v65 = None
                 v0_1_mut = v0_1 - int8(1)
-                v1_1_mut = v122
-                v2_1_mut = op_addition(v2_1, v134)
+                v1_1_mut = v50
+                v2_1_mut = op_addition(v2_1, v62)
                 continue
 
             else: 
-                v254: None
-                closure88(v2_1, v0_1, v121, None)
-                v254 = None
+                v110: None
+                closure88(v2_1, v0_1, v49, None)
+                v110 = None
                 v0_1_mut = v0_1 - int8(1)
-                v1_1_mut = v122
+                v1_1_mut = v50
                 v2_1_mut = v2_1
                 continue
 
@@ -1616,24 +1593,24 @@ def method29(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US6:
         break
 
 
-def method35(v0_1: int8, v1_1: Callable[[], uint8], v2_1: int8) -> UH1:
+def method40(v0_1: int8, v1_1: Callable[[], uint8], v2_1: int8) -> UH1:
     if v2_1 < v0_1:
-        return UH1(1, v1_1(None), method35(v0_1, v1_1, v2_1 + int8(1)))
+        return UH1(1, v1_1(None), method40(v0_1, v1_1, v2_1 + int8(1)))
 
     else: 
         return UH1(0)
 
 
 
-def method36(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1) -> uint64:
+def method41(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1) -> uint64:
     while True:
         (v0_1, v1_1, v2_1, v3_1, v4_1) = (v0_1_mut, v1_1_mut, v2_1_mut, v3_1_mut, v4_1_mut)
         v5: int8 = (v3_1 + int8(1)) or 0
         if v3_1 < v5:
-            return method28(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
+            return method31(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
 
         else: 
-            v11: US6 = method29(v3_1, v4_1, uint64(0))
+            v11: US6 = method32(v3_1, v4_1, uint64(0))
             if v11.tag == 0:
                 v12: uint64 = v11.fields[0]
                 if v12 <= v2_1:
@@ -1644,11 +1621,11 @@ def method36(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
                     v1_1_mut = v1_1
                     v2_1_mut = v2_1
                     v3_1_mut = v3_1
-                    v4_1_mut = method35(v3_1, v0_1, int8(0))
+                    v4_1_mut = method40(v3_1, v0_1, int8(0))
                     continue
 
                 else: 
-                    return method28(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
+                    return method31(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
 
 
             elif v1_1:
@@ -1656,17 +1633,17 @@ def method36(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
                 v1_1_mut = v1_1
                 v2_1_mut = v2_1
                 v3_1_mut = v3_1
-                v4_1_mut = method35(v3_1, v0_1, int8(0))
+                v4_1_mut = method40(v3_1, v0_1, int8(0))
                 continue
 
             else: 
-                return method28(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
+                return method31(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
 
 
         break
 
 
-def method28(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1, v5_mut: int8) -> uint64:
+def method31(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1, v5_mut: int8) -> uint64:
     while True:
         (v0_1, v1_1, v2_1, v3_1, v4_1, v5) = (v0_1_mut, v1_1_mut, v2_1_mut, v3_1_mut, v4_1_mut, v5_mut)
         if v5 < (v3_1 + int8(1)):
@@ -1679,14 +1656,14 @@ def method28(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
             continue
 
         else: 
-            v13: US6 = method29(v3_1, v4_1, uint64(0))
+            v13: US6 = method32(v3_1, v4_1, uint64(0))
             if v13.tag == 0:
                 v14: uint64 = v13.fields[0]
                 if v14 <= v2_1:
                     return v14
 
                 elif v1_1:
-                    return method36(v0_1, v1_1, v2_1, v3_1, method35(v3_1, v0_1, int8(0)))
+                    return method41(v0_1, v1_1, v2_1, v3_1, method40(v3_1, v0_1, int8(0)))
 
                 else: 
                     v0_1_mut = v0_1
@@ -1699,7 +1676,7 @@ def method28(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
 
 
             elif v1_1:
-                return method36(v0_1, v1_1, v2_1, v3_1, method35(v3_1, v0_1, int8(0)))
+                return method41(v0_1, v1_1, v2_1, v3_1, method40(v3_1, v0_1, int8(0)))
 
             else: 
                 v0_1_mut = v0_1
@@ -1715,24 +1692,24 @@ def method28(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
 
 
 def closure20(v0_1: Callable[[], uint8], v1_1: bool, v2_1: uint64) -> uint64:
-    return method28(v0_1, v1_1, v2_1, (int8(1) if (v2_1 == uint64(1)) else method25(v2_1, int8(0), uint64(1))) - int8(1), UH1(0), int8(0))
+    return method31(v0_1, v1_1, v2_1, (int8(1) if (v2_1 == uint64(1)) else method28(v2_1, int8(0), uint64(1))) - int8(1), UH1(0), int8(0))
 
 
 def closure19(v0_1: Callable[[], uint8], v1_1: bool) -> Callable[[uint64], uint64]:
-    def _arrow355(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64:
+    def _arrow337(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64:
         return closure20(v0_1, v1_1, v)
 
-    return _arrow355
+    return _arrow337
 
 
 def closure18(unit_var: None, v0_1: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
-    def _arrow356(v: bool, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[uint64], uint64]:
+    def _arrow338(v: bool, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[uint64], uint64]:
         return closure19(v0_1, v)
 
-    return _arrow356
+    return _arrow338
 
 
-def method37(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
+def method42(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v0_1.tag == 0:
@@ -1747,7 +1724,7 @@ def method37(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
 
 
 def closure90(v0_1: uint64, v1_1: UH1) -> uint64 | None:
-    v6: US6 = method29(method37(v1_1, int8(0)) - int8(1), v1_1, uint64(0))
+    v6: US6 = method32(method42(v1_1, int8(0)) - int8(1), v1_1, uint64(0))
     v16: US7
     if v6.tag == 0:
         v7: uint64 = v6.fields[0]
@@ -1765,13 +1742,13 @@ def closure90(v0_1: uint64, v1_1: UH1) -> uint64 | None:
 
 
 def closure89(unit_var: None, v0_1: uint64) -> Callable[[UH1], uint64 | None]:
-    def _arrow357(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint64 | None:
+    def _arrow339(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint64 | None:
         return closure90(v0_1, v)
 
-    return _arrow357
+    return _arrow339
 
 
-def method38(v0_1: int64, v1_1: int64, v2_1: int8) -> str:
+def method44(v0_1: int64, v1_1: int64, v2_1: int8) -> str:
     v4_1: Mut5 = Mut5(method19())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
@@ -1815,42 +1792,34 @@ def method38(v0_1: int64, v1_1: int64, v2_1: int8) -> str:
     return v4_1.l0
 
 
+def method43(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str) -> str:
+    v11: str = method44(int64(9223372036854775807), int64(4738381338321616896), int8(24))
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.calculate_dice_count") + " / ") + v11) + "")
+
+
 def closure92(unit_var: None, unit_var_1: None) -> None:
-    def v1_1(__unit: None=None, unit_var: Any=unit_var, unit_var_1: Any=unit_var_1) -> None:
+    if method6(US2(1)):
+        v4_1: None
         closure9(None, None)
-
-    v2_1: None
-    v1_1(None)
-    v2_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v34: US2 = pattern_input[4].l0
-    class ObjectExpr358:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v34, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr358()))):
-        v41: None
-        v1_1(None)
-        v41 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v55: Mut1 = pattern_input_1[0]
-        v80: str = method27(method12(v55, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v55.l0, method38(int64(9223372036854775807), int64(4738381338321616896), int8(24)))
-        v82: None
-        v1_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v4_1 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v23: int64 | None = pattern_input[5]
+        v22: Mut6 = pattern_input[4]
+        v21: Mut5 = pattern_input[3]
+        v20: Mut4 = pattern_input[2]
+        v19: Mut3 = pattern_input[1]
+        v18: Mut1 = pattern_input[0]
+        method24(method43(v18, v19, v20, v21, v22, v23, method13(v18, v19, v20, v21, v22, v23), method17()))
 
 
 
-def method40(__unit: None=None) -> uint8:
+def method46(__unit: None=None) -> uint8:
     v17: Any = {}
     value_2: int = randint(int(uint8(1)), int(uint8(7))) or 0
     return int(value_2+0x100 if value_2 < 0 else value_2) & 0xFF
 
 
-def method42(v0_1: int8, v1_1: int64, v2_1: uint8, v3_1: int64) -> str:
+def method49(v0_1: int8, v1_1: int64, v2_1: uint8, v3_1: int64) -> str:
     v5: Mut5 = Mut5(method19())
     v12: None
     closure13(v5, ("" + "{ ") + "", None)
@@ -1906,703 +1875,511 @@ def method42(v0_1: int8, v1_1: int64, v2_1: uint8, v3_1: int64) -> str:
     return v5.l0
 
 
+def method48(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(23), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+
+
 def closure93(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method48(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr359:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr359()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(23), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method51(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(22), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure94(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method51(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr360:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr360()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(22), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method53(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(21), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure95(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method53(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr361:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr361()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(21), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method55(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(20), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure96(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method55(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr362:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr362()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(20), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method57(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(19), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure97(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method57(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr363:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr363()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(19), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method59(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(18), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure98(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method59(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr364:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr364()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(18), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method61(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(17), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure99(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method61(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr365:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr365()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(17), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method63(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(16), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure100(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method63(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr366:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr366()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(16), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method65(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(15), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure101(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method65(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr367:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr367()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(15), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method67(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(14), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure102(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method67(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr368:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr368()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(14), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method69(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(13), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure103(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method69(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr369:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr369()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(13), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method71(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(12), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure104(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method71(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr370:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr370()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(12), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method73(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(11), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure105(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method73(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr371:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr371()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(11), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method75(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(10), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure106(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method75(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr372:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr372()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(10), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method77(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(9), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure107(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method77(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr373:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr373()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(9), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method79(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(8), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure108(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method79(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr374:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr374()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(8), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method81(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(7), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure109(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method81(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr375:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr375()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(7), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method83(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(6), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure110(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method83(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr376:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr376()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(6), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method85(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(5), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure111(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method85(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr377:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr377()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(5), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method87(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(4), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure112(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method87(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr378:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr378()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(4), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method89(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(3), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure113(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method89(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr379:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr379()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(3), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method91(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(2), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure114(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method91(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr380:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr380()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(2), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method93(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(1), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure115(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method93(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr381:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
 
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr381()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(1), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
 
+def method95(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method49(int8(0), v8, v9, v10)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure116(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
-    def v4_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v7: None
         closure9(None, None)
-
-    v5: None
-    v4_1(None)
-    v5 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v37: US2 = pattern_input[4].l0
-    class ObjectExpr382:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v37, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr382()))):
-        v44: None
-        v4_1(None)
-        v44 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v58: Mut1 = pattern_input_1[0]
-        v81: str = method31(method12(v58, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v58.l0, method42(int8(0), v0_1, v1_1, v2_1))
-        v83: None
-        v4_1(None)
-        v83 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v81, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v7 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v26: int64 | None = pattern_input[5]
+        v25: Mut6 = pattern_input[4]
+        v24: Mut5 = pattern_input[3]
+        v23: Mut4 = pattern_input[2]
+        v22: Mut3 = pattern_input[1]
+        v21: Mut1 = pattern_input[0]
+        method24(method95(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method67(v0_1: int8, v1_1: int64, v2_1: int64) -> str:
+def method98(v0_1: int8, v1_1: int64, v2_1: int64) -> str:
     v4_1: Mut5 = Mut5(method19())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
@@ -2646,36 +2423,28 @@ def method67(v0_1: int8, v1_1: int64, v2_1: int64) -> str:
     return v4_1.l0
 
 
+def method97(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: int64) -> str:
+    v11: str = method98(int8(-1), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+
+
 def closure117(v0_1: int64, v1_1: int64, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr383:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr383()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method67(int8(-1), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method97(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method66(v0_1: UH1, v1_1: int64) -> US8:
+def method96(v0_1: UH1, v1_1: int64) -> US8:
     v2_1: int64 = op_addition(v1_1, int64(1))
     v5: None
     closure117(v1_1, v2_1, None)
@@ -2683,7 +2452,7 @@ def method66(v0_1: UH1, v1_1: int64) -> US8:
     return US8(0, v2_1, v0_1)
 
 
-def method68(v0_1: int8, v1_1: int64, v2_1: uint8) -> str:
+def method100(v0_1: int8, v1_1: int64, v2_1: uint8) -> str:
     v4_1: Mut5 = Mut5(method19())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
@@ -2727,36 +2496,28 @@ def method68(v0_1: int8, v1_1: int64, v2_1: uint8) -> str:
     return v4_1.l0
 
 
+def method99(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(0), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+
+
 def closure118(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr384:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr384()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(0), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method99(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method65(v0_1: UH1, v1_1: int64) -> US8:
+def method94(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -2768,47 +2529,39 @@ def method65(v0_1: UH1, v1_1: int64) -> US8:
             v10: None
             closure116(v1_1, v3_1, v7, None)
             v10 = None
-            return method66(v4_1, op_addition(v1_1, v7))
+            return method96(v4_1, op_addition(v1_1, v7))
 
         else: 
-            v127: None
+            v54: None
             closure118(v1_1, v3_1, None)
-            v127 = None
-            return method66(v4_1, v1_1)
+            v54 = None
+            return method96(v4_1, v1_1)
 
 
+
+
+def method101(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(1), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure119(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr385:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr385()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(1), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method101(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method64(v0_1: UH1, v1_1: int64) -> US8:
+def method92(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -2820,47 +2573,39 @@ def method64(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure115(v1_1, v3_1, v8, None)
             v11 = None
-            return method65(v4_1, op_addition(v1_1, v8))
+            return method94(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure119(v1_1, v3_1, None)
-            v128 = None
-            return method65(v4_1, v1_1)
+            v55 = None
+            return method94(v4_1, v1_1)
 
 
+
+
+def method102(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(2), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure120(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr386:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr386()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(2), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method102(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method63(v0_1: UH1, v1_1: int64) -> US8:
+def method90(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -2872,47 +2617,39 @@ def method63(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure114(v1_1, v3_1, v8, None)
             v11 = None
-            return method64(v4_1, op_addition(v1_1, v8))
+            return method92(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure120(v1_1, v3_1, None)
-            v128 = None
-            return method64(v4_1, v1_1)
+            v55 = None
+            return method92(v4_1, v1_1)
 
 
+
+
+def method103(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(3), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure121(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr387:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr387()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(3), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method103(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method62(v0_1: UH1, v1_1: int64) -> US8:
+def method88(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -2924,47 +2661,39 @@ def method62(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure113(v1_1, v3_1, v8, None)
             v11 = None
-            return method63(v4_1, op_addition(v1_1, v8))
+            return method90(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure121(v1_1, v3_1, None)
-            v128 = None
-            return method63(v4_1, v1_1)
+            v55 = None
+            return method90(v4_1, v1_1)
 
 
+
+
+def method104(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(4), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure122(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr388:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr388()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(4), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method104(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method61(v0_1: UH1, v1_1: int64) -> US8:
+def method86(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -2976,47 +2705,39 @@ def method61(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure112(v1_1, v3_1, v8, None)
             v11 = None
-            return method62(v4_1, op_addition(v1_1, v8))
+            return method88(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure122(v1_1, v3_1, None)
-            v128 = None
-            return method62(v4_1, v1_1)
+            v55 = None
+            return method88(v4_1, v1_1)
 
 
+
+
+def method105(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(5), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure123(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr389:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr389()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(5), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method105(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method60(v0_1: UH1, v1_1: int64) -> US8:
+def method84(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3028,47 +2749,39 @@ def method60(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure111(v1_1, v3_1, v8, None)
             v11 = None
-            return method61(v4_1, op_addition(v1_1, v8))
+            return method86(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure123(v1_1, v3_1, None)
-            v128 = None
-            return method61(v4_1, v1_1)
+            v55 = None
+            return method86(v4_1, v1_1)
 
 
+
+
+def method106(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(6), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure124(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr390:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr390()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(6), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method106(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method59(v0_1: UH1, v1_1: int64) -> US8:
+def method82(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3080,47 +2793,39 @@ def method59(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure110(v1_1, v3_1, v8, None)
             v11 = None
-            return method60(v4_1, op_addition(v1_1, v8))
+            return method84(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure124(v1_1, v3_1, None)
-            v128 = None
-            return method60(v4_1, v1_1)
+            v55 = None
+            return method84(v4_1, v1_1)
 
 
+
+
+def method107(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(7), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure125(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr391:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr391()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(7), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method107(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method58(v0_1: UH1, v1_1: int64) -> US8:
+def method80(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3132,47 +2837,39 @@ def method58(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure109(v1_1, v3_1, v8, None)
             v11 = None
-            return method59(v4_1, op_addition(v1_1, v8))
+            return method82(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure125(v1_1, v3_1, None)
-            v128 = None
-            return method59(v4_1, v1_1)
+            v55 = None
+            return method82(v4_1, v1_1)
 
 
+
+
+def method108(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(8), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure126(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr392:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr392()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(8), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method108(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method57(v0_1: UH1, v1_1: int64) -> US8:
+def method78(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3184,47 +2881,39 @@ def method57(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure108(v1_1, v3_1, v8, None)
             v11 = None
-            return method58(v4_1, op_addition(v1_1, v8))
+            return method80(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure126(v1_1, v3_1, None)
-            v128 = None
-            return method58(v4_1, v1_1)
+            v55 = None
+            return method80(v4_1, v1_1)
 
 
+
+
+def method109(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(9), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure127(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr393:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr393()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(9), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method109(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method56(v0_1: UH1, v1_1: int64) -> US8:
+def method76(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3236,47 +2925,39 @@ def method56(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure107(v1_1, v3_1, v8, None)
             v11 = None
-            return method57(v4_1, op_addition(v1_1, v8))
+            return method78(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure127(v1_1, v3_1, None)
-            v128 = None
-            return method57(v4_1, v1_1)
+            v55 = None
+            return method78(v4_1, v1_1)
 
 
+
+
+def method110(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(10), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure128(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr394:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr394()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(10), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method110(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method55(v0_1: UH1, v1_1: int64) -> US8:
+def method74(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3288,47 +2969,39 @@ def method55(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure106(v1_1, v3_1, v8, None)
             v11 = None
-            return method56(v4_1, op_addition(v1_1, v8))
+            return method76(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure128(v1_1, v3_1, None)
-            v128 = None
-            return method56(v4_1, v1_1)
+            v55 = None
+            return method76(v4_1, v1_1)
 
 
+
+
+def method111(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(11), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure129(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr395:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr395()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(11), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method111(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method54(v0_1: UH1, v1_1: int64) -> US8:
+def method72(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3340,47 +3013,39 @@ def method54(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure105(v1_1, v3_1, v8, None)
             v11 = None
-            return method55(v4_1, op_addition(v1_1, v8))
+            return method74(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure129(v1_1, v3_1, None)
-            v128 = None
-            return method55(v4_1, v1_1)
+            v55 = None
+            return method74(v4_1, v1_1)
 
 
+
+
+def method112(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(12), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure130(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr396:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr396()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(12), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method112(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method53(v0_1: UH1, v1_1: int64) -> US8:
+def method70(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3392,47 +3057,39 @@ def method53(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure104(v1_1, v3_1, v8, None)
             v11 = None
-            return method54(v4_1, op_addition(v1_1, v8))
+            return method72(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure130(v1_1, v3_1, None)
-            v128 = None
-            return method54(v4_1, v1_1)
+            v55 = None
+            return method72(v4_1, v1_1)
 
 
+
+
+def method113(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(13), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure131(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr397:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr397()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(13), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method113(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method52(v0_1: UH1, v1_1: int64) -> US8:
+def method68(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3444,47 +3101,39 @@ def method52(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure103(v1_1, v3_1, v8, None)
             v11 = None
-            return method53(v4_1, op_addition(v1_1, v8))
+            return method70(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure131(v1_1, v3_1, None)
-            v128 = None
-            return method53(v4_1, v1_1)
+            v55 = None
+            return method70(v4_1, v1_1)
 
 
+
+
+def method114(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(14), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure132(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr398:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr398()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(14), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method114(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method51(v0_1: UH1, v1_1: int64) -> US8:
+def method66(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3496,47 +3145,39 @@ def method51(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure102(v1_1, v3_1, v8, None)
             v11 = None
-            return method52(v4_1, op_addition(v1_1, v8))
+            return method68(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure132(v1_1, v3_1, None)
-            v128 = None
-            return method52(v4_1, v1_1)
+            v55 = None
+            return method68(v4_1, v1_1)
 
 
+
+
+def method115(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(15), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure133(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr399:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr399()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(15), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method115(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method50(v0_1: UH1, v1_1: int64) -> US8:
+def method64(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3548,47 +3189,39 @@ def method50(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure101(v1_1, v3_1, v8, None)
             v11 = None
-            return method51(v4_1, op_addition(v1_1, v8))
+            return method66(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure133(v1_1, v3_1, None)
-            v128 = None
-            return method51(v4_1, v1_1)
+            v55 = None
+            return method66(v4_1, v1_1)
 
 
+
+
+def method116(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(16), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure134(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr400:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr400()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(16), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method116(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method49(v0_1: UH1, v1_1: int64) -> US8:
+def method62(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3600,47 +3233,39 @@ def method49(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure100(v1_1, v3_1, v8, None)
             v11 = None
-            return method50(v4_1, op_addition(v1_1, v8))
+            return method64(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure134(v1_1, v3_1, None)
-            v128 = None
-            return method50(v4_1, v1_1)
+            v55 = None
+            return method64(v4_1, v1_1)
 
 
+
+
+def method117(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(17), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure135(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr401:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr401()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(17), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method117(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method48(v0_1: UH1, v1_1: int64) -> US8:
+def method60(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3652,47 +3277,39 @@ def method48(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure99(v1_1, v3_1, v8, None)
             v11 = None
-            return method49(v4_1, op_addition(v1_1, v8))
+            return method62(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure135(v1_1, v3_1, None)
-            v128 = None
-            return method49(v4_1, v1_1)
+            v55 = None
+            return method62(v4_1, v1_1)
 
 
+
+
+def method118(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(18), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure136(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr402:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr402()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(18), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method118(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method47(v0_1: UH1, v1_1: int64) -> US8:
+def method58(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3704,47 +3321,39 @@ def method47(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure98(v1_1, v3_1, v8, None)
             v11 = None
-            return method48(v4_1, op_addition(v1_1, v8))
+            return method60(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure136(v1_1, v3_1, None)
-            v128 = None
-            return method48(v4_1, v1_1)
+            v55 = None
+            return method60(v4_1, v1_1)
 
 
+
+
+def method119(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(19), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure137(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr403:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr403()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(19), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method119(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method46(v0_1: UH1, v1_1: int64) -> US8:
+def method56(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3756,47 +3365,39 @@ def method46(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure97(v1_1, v3_1, v8, None)
             v11 = None
-            return method47(v4_1, op_addition(v1_1, v8))
+            return method58(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure137(v1_1, v3_1, None)
-            v128 = None
-            return method47(v4_1, v1_1)
+            v55 = None
+            return method58(v4_1, v1_1)
 
 
+
+
+def method120(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(20), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure138(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr404:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr404()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(20), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method120(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method45(v0_1: UH1, v1_1: int64) -> US8:
+def method54(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3808,47 +3409,39 @@ def method45(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure96(v1_1, v3_1, v8, None)
             v11 = None
-            return method46(v4_1, op_addition(v1_1, v8))
+            return method56(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure138(v1_1, v3_1, None)
-            v128 = None
-            return method46(v4_1, v1_1)
+            v55 = None
+            return method56(v4_1, v1_1)
 
 
+
+
+def method121(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(21), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure139(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr405:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr405()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(21), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method121(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method44(v0_1: UH1, v1_1: int64) -> US8:
+def method52(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3860,47 +3453,39 @@ def method44(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure95(v1_1, v3_1, v8, None)
             v11 = None
-            return method45(v4_1, op_addition(v1_1, v8))
+            return method54(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure139(v1_1, v3_1, None)
-            v128 = None
-            return method45(v4_1, v1_1)
+            v55 = None
+            return method54(v4_1, v1_1)
 
 
+
+
+def method122(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(22), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure140(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr406:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr406()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(22), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method122(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method43(v0_1: UH1, v1_1: int64) -> US8:
+def method50(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3912,47 +3497,39 @@ def method43(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure94(v1_1, v3_1, v8, None)
             v11 = None
-            return method44(v4_1, op_addition(v1_1, v8))
+            return method52(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure140(v1_1, v3_1, None)
-            v128 = None
-            return method44(v4_1, v1_1)
+            v55 = None
+            return method52(v4_1, v1_1)
 
 
+
+
+def method123(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method100(int8(23), v8, v9)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure141(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    def v3_1(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v6: None
         closure9(None, None)
-
-    v4_1: None
-    v3_1(None)
-    v4_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v36: US2 = pattern_input[4].l0
-    class ObjectExpr407:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v36, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr407()))):
-        v43: None
-        v3_1(None)
-        v43 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v57: Mut1 = pattern_input_1[0]
-        v80: str = method31(method12(v57, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v57.l0, method68(int8(23), v0_1, v1_1))
-        v82: None
-        v3_1(None)
-        v82 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v80, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v6 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v25: int64 | None = pattern_input[5]
+        v24: Mut6 = pattern_input[4]
+        v23: Mut5 = pattern_input[3]
+        v22: Mut4 = pattern_input[2]
+        v21: Mut3 = pattern_input[1]
+        v20: Mut1 = pattern_input[0]
+        method24(method123(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
 
 
 
-def method41(v0_1: UH1, v1_1: int64) -> US8:
+def method47(v0_1: UH1, v1_1: int64) -> US8:
     if v0_1.tag == 0:
         return US8(1)
 
@@ -3964,40 +3541,40 @@ def method41(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure93(v1_1, v3_1, v8, None)
             v11 = None
-            return method43(v4_1, op_addition(v1_1, v8))
+            return method50(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v128: None
+            v55: None
             closure141(v1_1, v3_1, None)
-            v128 = None
-            return method43(v4_1, v1_1)
+            v55 = None
+            return method50(v4_1, v1_1)
 
 
 
 
-def method39(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
+def method45(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v1_1 < int8(24):
-            v0_1_mut = UH1(1, method40(), v0_1)
+            v0_1_mut = UH1(1, method46(), v0_1)
             v1_1_mut = v1_1 + int8(1)
             continue
 
         else: 
-            v8: US8 = method41(v0_1, int64(0))
+            v8: US8 = method47(v0_1, int64(0))
             if v8.tag == 0:
                 v9: int64 = v8.fields[0]
                 if v9 <= int64(9223372036854775807):
                     return v9
 
                 else: 
-                    v0_1_mut = UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(0))))))))))))))))))))))))
+                    v0_1_mut = UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(0))))))))))))))))))))))))
                     v1_1_mut = int8(23)
                     continue
 
 
             else: 
-                v0_1_mut = UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(1, method40(), UH1(0))))))))))))))))))))))))
+                v0_1_mut = UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(0))))))))))))))))))))))))
                 v1_1_mut = int8(23)
                 continue
 
@@ -4005,7 +3582,7 @@ def method39(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
         break
 
 
-def method69(v0_1: int64) -> str:
+def method125(v0_1: int64) -> str:
     v2_1: Mut5 = Mut5(method19())
     v9: None
     closure13(v2_1, ("" + "{ ") + "", None)
@@ -4025,36 +3602,24 @@ def method69(v0_1: int64) -> str:
     return v2_1.l0
 
 
-def method70(v0_1: str, v1_1: str, v2_1: int64, v3_1: str) -> str:
-    return trim_end(trim_start(((((((((("" + v0_1) + " ") + v1_1) + " #") + str(v2_1)) + " ") + "dice.main") + " / ") + v3_1) + "", *to_array(empty())), *to_array(of_array([" ", "/"])))
+def method124(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64) -> str:
+    v9: str = method125(v8)
+    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.main") + " / ") + v9) + "")
 
 
 def closure142(v0_1: int64, unit_var: None) -> None:
-    def v2_1(__unit: None=None, v0_1: Any=v0_1, unit_var: Any=unit_var) -> None:
+    if method6(US2(1)):
+        v5: None
         closure9(None, None)
-
-    v3_1: None
-    v2_1(None)
-    v3_1 = None
-    pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v35: US2 = pattern_input[4].l0
-    class ObjectExpr408:
-        @property
-        def Compare(self) -> Callable[[US2, US2], int]:
-            return compare
-
-    if False if (pattern_input[2].l0 == False) else (1 >= find(v35, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr408()))):
-        v42: None
-        v2_1(None)
-        v42 = None
-        pattern_input_1: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v56: Mut1 = pattern_input_1[0]
-        v78: str = method70(method12(v56, pattern_input_1[1], pattern_input_1[2], pattern_input_1[3], pattern_input_1[4], pattern_input_1[5]), method16(), v56.l0, method69(v0_1))
-        v80: None
-        v2_1(None)
-        v80 = None
-        pattern_input_2: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        method21(v78, pattern_input_2[0], pattern_input_2[1], pattern_input_2[2], pattern_input_2[3], pattern_input_2[4], pattern_input_2[5])
+        v5 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v24: int64 | None = pattern_input[5]
+        v23: Mut6 = pattern_input[4]
+        v22: Mut5 = pattern_input[3]
+        v21: Mut4 = pattern_input[2]
+        v20: Mut3 = pattern_input[1]
+        v19: Mut1 = pattern_input[0]
+        method24(method124(v19, v20, v21, v22, v23, v24, method13(v19, v20, v21, v22, v23, v24), method17(), v0_1))
 
 
 
@@ -4062,57 +3627,57 @@ def closure91(unit_var: None, v0_1: Array[str]) -> int:
     v3_1: None
     closure92(None, None)
     v3_1 = None
-    v123: None
-    closure142(method39(UH1(0), int8(0)), None)
-    v123 = None
+    v48: None
+    closure142(method45(UH1(0), int8(0)), None)
+    v48 = None
     return 0
 
 
-def _arrow409(v: int64) -> Callable[[UH0], UH0]:
+def _arrow340(v: int64) -> Callable[[UH0], UH0]:
     return closure0(None, v)
 
 
-v0: Callable[[int64, UH0], UH0] = _arrow409
+v0: Callable[[int64, UH0], UH0] = _arrow340
 
 def rotate_numbers(x: int64) -> Callable[[UH0], UH0]:
     return v0(x)
 
 
-def _arrow410(v: UH1) -> Callable[[], uint8]:
+def _arrow341(v: UH1) -> Callable[[], uint8]:
     return closure3(None, v)
 
 
-v1: Callable[[UH1, None], uint8] = _arrow410
+v1: Callable[[UH1, None], uint8] = _arrow341
 
 def create_sequential_roller(x: UH1) -> Callable[[], uint8]:
     return v1(x)
 
 
-def _arrow411(v: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
+def _arrow342(v: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
     return closure18(None, v)
 
 
-v2: Callable[[Callable[[], uint8], bool, uint64], uint64] = _arrow411
+v2: Callable[[Callable[[], uint8], bool, uint64], uint64] = _arrow342
 
 def roll_progressively(x: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
     return v2(x)
 
 
-def _arrow412(v: uint64) -> Callable[[UH1], uint64 | None]:
+def _arrow343(v: uint64) -> Callable[[UH1], uint64 | None]:
     return closure89(None, v)
 
 
-v3: Callable[[uint64, UH1], uint64 | None] = _arrow412
+v3: Callable[[uint64, UH1], uint64 | None] = _arrow343
 
 def roll_within_bounds(x: uint64) -> Callable[[UH1], uint64 | None]:
     return v3(x)
 
 
-def _arrow413(v: Array[str]) -> int:
+def _arrow344(v: Array[str]) -> int:
     return closure91(None, v)
 
 
-v4: Callable[[Array[str]], int] = _arrow413
+v4: Callable[[Array[str]], int] = _arrow344
 
 def main(args: Array[str]) -> int:
     return v4(args)

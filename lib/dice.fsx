@@ -148,17 +148,17 @@ and method4 (v0 : UH0, v1 : (unit -> UH0)) : (unit -> UH0) =
     let v2 : US0 = US0_0(v1)
     let v3 : Mut0 = {l0 = v2} : Mut0
     closure6(v0, v3)
-and method7 () : string =
+and method8 () : string =
     let v0 : string = "TRACE_LEVEL"
     v0
-and method9 () : string =
+and method10 () : string =
     let v0 : string = ""
     v0
 and closure10 () (v0 : string) : US3 =
     US3_0(v0)
-and method10 () : (string -> US3) =
+and method11 () : (string -> US3) =
     closure10()
-and method8 (v0 : string) : string =
+and method9 (v0 : string) : string =
     let v1 : unit = ()
     
 #if FABLE_COMPILER || WASM || CONTRACT
@@ -176,7 +176,7 @@ and method8 (v0 : string) : string =
     let v11 : bool = Fable.Core.RustInterop.emitRustExpr v9 v10 
     let v12 : string = "_result_map_"
     let v13 : Result<string, std_env_VarError> = Fable.Core.RustInterop.emitRustExpr () v12 
-    let v14 : string = method9()
+    let v14 : string = method10()
     let v15 : string = "$0.unwrap_or($1)"
     let v16 : string = Fable.Core.RustInterop.emitRustExpr struct (v13, v14) v15 
     let _v1 = v16 
@@ -194,7 +194,7 @@ and method8 (v0 : string) : string =
     let v26 : bool = Fable.Core.RustInterop.emitRustExpr v24 v25 
     let v27 : string = "_result_map_"
     let v28 : Result<string, std_env_VarError> = Fable.Core.RustInterop.emitRustExpr () v27 
-    let v29 : string = method9()
+    let v29 : string = method10()
     let v30 : string = "$0.unwrap_or($1)"
     let v31 : string = Fable.Core.RustInterop.emitRustExpr struct (v28, v29) v30 
     let _v1 = v31 
@@ -212,7 +212,7 @@ and method8 (v0 : string) : string =
     let v41 : bool = Fable.Core.RustInterop.emitRustExpr v39 v40 
     let v42 : string = "_result_map_"
     let v43 : Result<string, std_env_VarError> = Fable.Core.RustInterop.emitRustExpr () v42 
-    let v44 : string = method9()
+    let v44 : string = method10()
     let v45 : string = "$0.unwrap_or($1)"
     let v46 : string = Fable.Core.RustInterop.emitRustExpr struct (v43, v44) v45 
     let _v1 = v46 
@@ -239,7 +239,7 @@ and method8 (v0 : string) : string =
     #endif
     |> fun x -> _v56 <- Some x
     let v61 : string option = match _v56 with Some x -> x | None -> failwith "optionm'.of_obj / _v56=None"
-    let v64 : (string -> US3) = method10()
+    let v64 : (string -> US3) = method11()
     let v65 : US3 option = v61 |> Option.map v64 
     let v76 : US3 = US3_1
     let v77 : US3 = v65 |> Option.defaultValue v76 
@@ -265,7 +265,7 @@ and method8 (v0 : string) : string =
     #endif
     |> fun x -> _v86 <- Some x
     let v89 : string option = match _v86 with Some x -> x | None -> failwith "optionm'.of_obj / _v86=None"
-    let v92 : (string -> US3) = method10()
+    let v92 : (string -> US3) = method11()
     let v93 : US3 option = v89 |> Option.map v92 
     let v104 : US3 = US3_1
     let v105 : US3 = v93 |> Option.defaultValue v104 
@@ -280,19 +280,19 @@ and method8 (v0 : string) : string =
     #endif
     let v113 : string = _v1 
     v113
-and method11 () : string =
+and method12 () : string =
     let v0 : string = "AUTOMATION"
     v0
 and closure11 () (v0 : string) : unit =
     ()
-and method6 (v0 : US2) : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) =
+and method7 (v0 : US2) : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) =
     let v1 : unit = ()
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v2 : string = method7()
-    let v3 : string = method8(v2)
+    let v2 : string = method8()
+    let v3 : string = method9(v2)
     
     
     
@@ -355,8 +355,8 @@ and method6 (v0 : US2) : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option
                 US4_0(v16)
         | US4_0(v9) -> (* Some *)
             US4_0(v9)
-    let v50 : string = method11()
-    let v51 : string = method8(v50)
+    let v50 : string = method12()
+    let v51 : string = method9(v50)
     let v52 : bool = v51 = "True"
     let v62 : US5 =
         if v52 then
@@ -524,8 +524,8 @@ and method6 (v0 : US2) : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option
     let _v1 = struct (v167, v166) 
     #endif
 #if FABLE_COMPILER_TYPESCRIPT
-    let v168 : string = method7()
-    let v169 : string = method8(v168)
+    let v168 : string = method8()
+    let v169 : string = method9(v168)
     
     
     
@@ -588,8 +588,8 @@ and method6 (v0 : US2) : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option
                 US4_0(v182)
         | US4_0(v175) -> (* Some *)
             US4_0(v175)
-    let v216 : string = method11()
-    let v217 : string = method8(v216)
+    let v216 : string = method12()
+    let v217 : string = method9(v216)
     let v218 : bool = v217 = "True"
     let v228 : US5 =
         if v218 then
@@ -602,8 +602,8 @@ and method6 (v0 : US2) : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option
     let _v1 = struct (v215, v228) 
     #endif
 #if FABLE_COMPILER_PYTHON
-    let v229 : string = method7()
-    let v230 : string = method8(v229)
+    let v229 : string = method8()
+    let v230 : string = method9(v229)
     
     
     
@@ -666,8 +666,8 @@ and method6 (v0 : US2) : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option
                 US4_0(v243)
         | US4_0(v236) -> (* Some *)
             US4_0(v236)
-    let v277 : string = method11()
-    let v278 : string = method8(v277)
+    let v277 : string = method12()
+    let v278 : string = method9(v277)
     let v279 : bool = v278 = "True"
     let v289 : US5 =
         if v279 then
@@ -680,8 +680,8 @@ and method6 (v0 : US2) : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option
     let _v1 = struct (v276, v289) 
     #endif
 #else
-    let v290 : string = method7()
-    let v291 : string = method8(v290)
+    let v290 : string = method8()
+    let v291 : string = method9(v290)
     
     
     
@@ -744,8 +744,8 @@ and method6 (v0 : US2) : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option
                 US4_0(v304)
         | US4_0(v297) -> (* Some *)
             US4_0(v297)
-    let v338 : string = method11()
-    let v339 : string = method8(v338)
+    let v338 : string = method12()
+    let v339 : string = method9(v338)
     let v340 : bool = v339 = "True"
     let v350 : US5 =
         if v340 then
@@ -784,27 +784,42 @@ and closure9 () () : unit =
     let v0 : bool = TraceState.trace_state.IsNone
     if v0 then
         let v1 : US2 = US2_0
-        let struct (v2 : Mut1, v3 : Mut3, v4 : Mut4, v5 : Mut5, v6 : Mut6, v7 : int64 option) = method6(v1)
+        let struct (v2 : Mut1, v3 : Mut3, v4 : Mut4, v5 : Mut5, v6 : Mut6, v7 : int64 option) = method7(v1)
         let v8 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v2, v3, v4, v5, v6, v7) 
         TraceState.trace_state <- v8 
         ()
+and method6 (v0 : US2) : bool =
+    let v1 : unit = ()
+    let v2 : (unit -> unit) = closure9()
+    let v3 : unit = (fun () -> v2 (); v1) ()
+    let struct (v17 : Mut1, v18 : Mut3, v19 : Mut4, v20 : Mut5, v21 : Mut6, v22 : int64 option) = TraceState.trace_state.Value
+    let v35 : US2 = v21.l0
+    let v36 : bool = v19.l0
+    let v37 : bool = v36 = false
+    if v37 then
+        false
+    else
+        let v38 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v0
+        let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v35
+        let v40 : bool = v38 >= v39
+        v40
 and closure12 () (v0 : int64) : US5 =
     US5_0(v0)
-and method13 () : (int64 -> US5) =
+and method14 () : (int64 -> US5) =
     closure12()
-and method14 () : string =
+and method15 () : string =
     let v0 : string = "hh:mm:ss"
     v0
-and method15 () : string =
+and method16 () : string =
     let v0 : string = "HH:mm:ss"
     v0
-and method12 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option) : string =
+and method13 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option) : string =
     let v6 : unit = ()
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v7 : (int64 -> US5) = method13()
+    let v7 : (int64 -> US5) = method14()
     let v8 : US5 option = v5 |> Option.map v7 
     let v19 : US5 = US5_1
     let v20 : US5 = v8 |> Option.defaultValue v19 
@@ -830,13 +845,13 @@ and method12 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
             let v50 : int32 = v49 v34
             let v53 : System.DateTime = System.DateTime (1, 1, 1, v38, v42, v46, v50)
             v53
-    let v61 : string = method14()
+    let v61 : string = method15()
     let v64 : (string -> string) = v60.ToString
     let v65 : string = v64 v61
     let _v6 = v65 
     #endif
 #if FABLE_COMPILER_RUST && WASM
-    let v68 : (int64 -> US5) = method13()
+    let v68 : (int64 -> US5) = method14()
     let v69 : US5 option = v5 |> Option.map v68 
     let v80 : US5 = US5_1
     let v81 : US5 = v69 |> Option.defaultValue v80 
@@ -862,7 +877,7 @@ and method12 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
             let v111 : int32 = v110 v95
             let v114 : System.DateTime = System.DateTime (1, 1, 1, v99, v103, v107, v111)
             v114
-    let v122 : string = method14()
+    let v122 : string = method15()
     let v125 : (string -> string) = v121.ToString
     let v126 : string = v125 v122
     let _v6 = v126 
@@ -870,7 +885,7 @@ and method12 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
 #if FABLE_COMPILER_RUST && CONTRACT
     let v129 : string = $"near_sdk::env::block_timestamp()"
     let v130 : uint64 = Fable.Core.RustInterop.emitRustExpr () v129 
-    let v131 : (int64 -> US5) = method13()
+    let v131 : (int64 -> US5) = method14()
     let v132 : US5 option = v5 |> Option.map v131 
     let v143 : US5 = US5_1
     let v144 : US5 = v132 |> Option.defaultValue v143 
@@ -896,7 +911,7 @@ and method12 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let _v6 = v163 
     #endif
 #if FABLE_COMPILER_TYPESCRIPT
-    let v164 : (int64 -> US5) = method13()
+    let v164 : (int64 -> US5) = method14()
     let v165 : US5 option = v5 |> Option.map v164 
     let v176 : US5 = US5_1
     let v177 : US5 = v165 |> Option.defaultValue v176 
@@ -922,13 +937,13 @@ and method12 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
             let v207 : int32 = v206 v191
             let v210 : System.DateTime = System.DateTime (1, 1, 1, v195, v199, v203, v207)
             v210
-    let v218 : string = method15()
+    let v218 : string = method16()
     let v221 : (string -> string) = v217.ToString
     let v222 : string = v221 v218
     let _v6 = v222 
     #endif
 #if FABLE_COMPILER_PYTHON
-    let v225 : (int64 -> US5) = method13()
+    let v225 : (int64 -> US5) = method14()
     let v226 : US5 option = v5 |> Option.map v225 
     let v237 : US5 = US5_1
     let v238 : US5 = v226 |> Option.defaultValue v237 
@@ -954,13 +969,13 @@ and method12 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
             let v268 : int32 = v267 v252
             let v271 : System.DateTime = System.DateTime (1, 1, 1, v256, v260, v264, v268)
             v271
-    let v279 : string = method15()
+    let v279 : string = method16()
     let v282 : (string -> string) = v278.ToString
     let v283 : string = v282 v279
     let _v6 = v283 
     #endif
 #else
-    let v286 : (int64 -> US5) = method13()
+    let v286 : (int64 -> US5) = method14()
     let v287 : US5 option = v5 |> Option.map v286 
     let v298 : US5 = US5_1
     let v299 : US5 = v287 |> Option.defaultValue v298 
@@ -986,182 +1001,13 @@ and method12 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
             let v329 : int32 = v328 v313
             let v332 : System.DateTime = System.DateTime (1, 1, 1, v317, v321, v325, v329)
             v332
-    let v340 : string = method15()
+    let v340 : string = method16()
     let v343 : (string -> string) = v339.ToString
     let v344 : string = v343 v340
     let _v6 = v344 
     #endif
     let v347 : string = _v6 
     v347
-and method17 () : string =
-    let v0 : string = "\u001b[0m"
-    v0
-and method16 () : string =
-    
-    
-    
-    
-    
-    let v0 : string = "Debug"
-    let v1 : (unit -> string) = v0.ToLower
-    let v2 : string = v1 ()
-    let v5 : string = v2.PadLeft (7, ' ')
-    let v19 : unit = ()
-    
-#if FABLE_COMPILER || WASM || CONTRACT
-    
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v20 : string = "inline_colorization::color_bright_blue"
-    let v21 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v20 
-    let v22 : unit = ()
-    
-#if FABLE_COMPILER || WASM || CONTRACT
-    
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v23 : string = "&*$0"
-    let v24 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v5 v23 
-    let _v22 = v24 
-    #endif
-#if FABLE_COMPILER_RUST && WASM
-    let v25 : string = "&*$0"
-    let v26 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v5 v25 
-    let _v22 = v26 
-    #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-    let v27 : string = "&*$0"
-    let v28 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v5 v27 
-    let _v22 = v28 
-    #endif
-#if FABLE_COMPILER_TYPESCRIPT
-    let v29 : Ref<Str> = v5 |> unbox<Ref<Str>>
-    let _v22 = v29 
-    #endif
-#if FABLE_COMPILER_PYTHON
-    let v32 : Ref<Str> = v5 |> unbox<Ref<Str>>
-    let _v22 = v32 
-    #endif
-#else
-    let v35 : Ref<Str> = v5 |> unbox<Ref<Str>>
-    let _v22 = v35 
-    #endif
-    let v38 : Ref<Str> = _v22 
-    let v43 : string = "inline_colorization::color_reset"
-    let v44 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v43 
-    let v45 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
-    let v46 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v21, v38, v44) v45 
-    let v47 : string = "fable_library_rust::String_::fromString($0)"
-    let v48 : string = Fable.Core.RustInterop.emitRustExpr v46 v47 
-    let _v19 = v48 
-    #endif
-#if FABLE_COMPILER_RUST && WASM
-    let v49 : string = "inline_colorization::color_bright_blue"
-    let v50 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v49 
-    let v51 : unit = ()
-    
-#if FABLE_COMPILER || WASM || CONTRACT
-    
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v52 : string = "&*$0"
-    let v53 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v5 v52 
-    let _v51 = v53 
-    #endif
-#if FABLE_COMPILER_RUST && WASM
-    let v54 : string = "&*$0"
-    let v55 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v5 v54 
-    let _v51 = v55 
-    #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-    let v56 : string = "&*$0"
-    let v57 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v5 v56 
-    let _v51 = v57 
-    #endif
-#if FABLE_COMPILER_TYPESCRIPT
-    let v58 : Ref<Str> = v5 |> unbox<Ref<Str>>
-    let _v51 = v58 
-    #endif
-#if FABLE_COMPILER_PYTHON
-    let v61 : Ref<Str> = v5 |> unbox<Ref<Str>>
-    let _v51 = v61 
-    #endif
-#else
-    let v64 : Ref<Str> = v5 |> unbox<Ref<Str>>
-    let _v51 = v64 
-    #endif
-    let v67 : Ref<Str> = _v51 
-    let v72 : string = "inline_colorization::color_reset"
-    let v73 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v72 
-    let v74 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
-    let v75 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v50, v67, v73) v74 
-    let v76 : string = "fable_library_rust::String_::fromString($0)"
-    let v77 : string = Fable.Core.RustInterop.emitRustExpr v75 v76 
-    let _v19 = v77 
-    #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-    let v78 : string = "inline_colorization::color_bright_blue"
-    let v79 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v78 
-    let v80 : unit = ()
-    
-#if FABLE_COMPILER || WASM || CONTRACT
-    
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v81 : string = "&*$0"
-    let v82 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v5 v81 
-    let _v80 = v82 
-    #endif
-#if FABLE_COMPILER_RUST && WASM
-    let v83 : string = "&*$0"
-    let v84 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v5 v83 
-    let _v80 = v84 
-    #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-    let v85 : string = "&*$0"
-    let v86 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v5 v85 
-    let _v80 = v86 
-    #endif
-#if FABLE_COMPILER_TYPESCRIPT
-    let v87 : Ref<Str> = v5 |> unbox<Ref<Str>>
-    let _v80 = v87 
-    #endif
-#if FABLE_COMPILER_PYTHON
-    let v90 : Ref<Str> = v5 |> unbox<Ref<Str>>
-    let _v80 = v90 
-    #endif
-#else
-    let v93 : Ref<Str> = v5 |> unbox<Ref<Str>>
-    let _v80 = v93 
-    #endif
-    let v96 : Ref<Str> = _v80 
-    let v101 : string = "inline_colorization::color_reset"
-    let v102 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v101 
-    let v103 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
-    let v104 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v79, v96, v102) v103 
-    let v105 : string = "fable_library_rust::String_::fromString($0)"
-    let v106 : string = Fable.Core.RustInterop.emitRustExpr v104 v105 
-    let _v19 = v106 
-    #endif
-#if FABLE_COMPILER_TYPESCRIPT
-    let v107 : string = "\u001b[94m"
-    let v108 : string = method17()
-    let v109 : string = v107 + v5 
-    let v110 : string = v109 + v108 
-    let _v19 = v110 
-    #endif
-#if FABLE_COMPILER_PYTHON
-    let v111 : string = "\u001b[94m"
-    let v112 : string = method17()
-    let v113 : string = v111 + v5 
-    let v114 : string = v113 + v112 
-    let _v19 = v114 
-    #endif
-#else
-    let v115 : string = "\u001b[94m"
-    let v116 : string = method17()
-    let v117 : string = v115 + v5 
-    let v118 : string = v117 + v116 
-    let _v19 = v118 
-    #endif
-    let v119 : string = _v19 
-    v119
 and method19 () : string =
     let v0 : string = ""
     v0
@@ -1170,7 +1016,186 @@ and closure13 (v0 : Mut5, v1 : string) () : unit =
     let v3 : string = v2 + v1 
     v0.l0 <- v3
     ()
-and method18 (v0 : int64, v1 : int64, v2 : int64, v3 : string) : string =
+and method18 (v0 : char) : string =
+    let v1 : string = method19()
+    let v2 : Mut5 = {l0 = v1} : Mut5
+    let v3 : string = $"{v0}"
+    let v6 : unit = ()
+    let v7 : (unit -> unit) = closure13(v2, v3)
+    let v8 : unit = (fun () -> v7 (); v6) ()
+    let v11 : string = v2.l0
+    v11
+and method20 () : string =
+    let v0 : string = "\u001b[0m"
+    v0
+and method17 () : string =
+    
+    
+    
+    
+    
+    let v0 : string = "Debug"
+    let v1 : (unit -> string) = v0.ToLower
+    let v2 : string = v1 ()
+    let v5 : char = v2.[int 0]
+    let v6 : string = method18(v5)
+    let v7 : unit = ()
+    
+#if FABLE_COMPILER || WASM || CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    let v8 : string = "inline_colorization::color_bright_blue"
+    let v9 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v8 
+    let v10 : unit = ()
+    
+#if FABLE_COMPILER || WASM || CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    let v11 : string = "&*$0"
+    let v12 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v6 v11 
+    let _v10 = v12 
+    #endif
+#if FABLE_COMPILER_RUST && WASM
+    let v13 : string = "&*$0"
+    let v14 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v6 v13 
+    let _v10 = v14 
+    #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+    let v15 : string = "&*$0"
+    let v16 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v6 v15 
+    let _v10 = v16 
+    #endif
+#if FABLE_COMPILER_TYPESCRIPT
+    let v17 : Ref<Str> = v6 |> unbox<Ref<Str>>
+    let _v10 = v17 
+    #endif
+#if FABLE_COMPILER_PYTHON
+    let v20 : Ref<Str> = v6 |> unbox<Ref<Str>>
+    let _v10 = v20 
+    #endif
+#else
+    let v23 : Ref<Str> = v6 |> unbox<Ref<Str>>
+    let _v10 = v23 
+    #endif
+    let v26 : Ref<Str> = _v10 
+    let v31 : string = "inline_colorization::color_reset"
+    let v32 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v31 
+    let v33 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
+    let v34 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v9, v26, v32) v33 
+    let v35 : string = "fable_library_rust::String_::fromString($0)"
+    let v36 : string = Fable.Core.RustInterop.emitRustExpr v34 v35 
+    let _v7 = v36 
+    #endif
+#if FABLE_COMPILER_RUST && WASM
+    let v37 : string = "inline_colorization::color_bright_blue"
+    let v38 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v37 
+    let v39 : unit = ()
+    
+#if FABLE_COMPILER || WASM || CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    let v40 : string = "&*$0"
+    let v41 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v6 v40 
+    let _v39 = v41 
+    #endif
+#if FABLE_COMPILER_RUST && WASM
+    let v42 : string = "&*$0"
+    let v43 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v6 v42 
+    let _v39 = v43 
+    #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+    let v44 : string = "&*$0"
+    let v45 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v6 v44 
+    let _v39 = v45 
+    #endif
+#if FABLE_COMPILER_TYPESCRIPT
+    let v46 : Ref<Str> = v6 |> unbox<Ref<Str>>
+    let _v39 = v46 
+    #endif
+#if FABLE_COMPILER_PYTHON
+    let v49 : Ref<Str> = v6 |> unbox<Ref<Str>>
+    let _v39 = v49 
+    #endif
+#else
+    let v52 : Ref<Str> = v6 |> unbox<Ref<Str>>
+    let _v39 = v52 
+    #endif
+    let v55 : Ref<Str> = _v39 
+    let v60 : string = "inline_colorization::color_reset"
+    let v61 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v60 
+    let v62 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
+    let v63 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v38, v55, v61) v62 
+    let v64 : string = "fable_library_rust::String_::fromString($0)"
+    let v65 : string = Fable.Core.RustInterop.emitRustExpr v63 v64 
+    let _v7 = v65 
+    #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+    let v66 : string = "inline_colorization::color_bright_blue"
+    let v67 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v66 
+    let v68 : unit = ()
+    
+#if FABLE_COMPILER || WASM || CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    let v69 : string = "&*$0"
+    let v70 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v6 v69 
+    let _v68 = v70 
+    #endif
+#if FABLE_COMPILER_RUST && WASM
+    let v71 : string = "&*$0"
+    let v72 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v6 v71 
+    let _v68 = v72 
+    #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+    let v73 : string = "&*$0"
+    let v74 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v6 v73 
+    let _v68 = v74 
+    #endif
+#if FABLE_COMPILER_TYPESCRIPT
+    let v75 : Ref<Str> = v6 |> unbox<Ref<Str>>
+    let _v68 = v75 
+    #endif
+#if FABLE_COMPILER_PYTHON
+    let v78 : Ref<Str> = v6 |> unbox<Ref<Str>>
+    let _v68 = v78 
+    #endif
+#else
+    let v81 : Ref<Str> = v6 |> unbox<Ref<Str>>
+    let _v68 = v81 
+    #endif
+    let v84 : Ref<Str> = _v68 
+    let v89 : string = "inline_colorization::color_reset"
+    let v90 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v89 
+    let v91 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
+    let v92 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v67, v84, v90) v91 
+    let v93 : string = "fable_library_rust::String_::fromString($0)"
+    let v94 : string = Fable.Core.RustInterop.emitRustExpr v92 v93 
+    let _v7 = v94 
+    #endif
+#if FABLE_COMPILER_TYPESCRIPT
+    let v95 : string = "\u001b[94m"
+    let v96 : string = method20()
+    let v97 : string = v95 + v6 
+    let v98 : string = v97 + v96 
+    let _v7 = v98 
+    #endif
+#if FABLE_COMPILER_PYTHON
+    let v99 : string = "\u001b[94m"
+    let v100 : string = method20()
+    let v101 : string = v99 + v6 
+    let v102 : string = v101 + v100 
+    let _v7 = v102 
+    #endif
+#else
+    let v103 : string = "\u001b[94m"
+    let v104 : string = method20()
+    let v105 : string = v103 + v6 
+    let v106 : string = v105 + v104 
+    let _v7 = v106 
+    #endif
+    let v107 : string = _v7 
+    v107
+and method22 (v0 : int64, v1 : int64, v2 : int64, v3 : string) : string =
     let v4 : string = method19()
     let v5 : Mut5 = {l0 = v4} : Mut5
     let v6 : string = "{ "
@@ -1251,20 +1276,24 @@ and method18 (v0 : int64, v1 : int64, v2 : int64, v3 : string) : string =
     let v147 : unit = (fun () -> v146 (); v145) ()
     let v150 : string = v5.l0
     v150
-and method20 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
-    let v4 : string = "dice.create_sequential_roller / roll"
-    let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
-    let v8 : char list = []
-    let v9 : (char list -> (char [])) = List.toArray
-    let v10 : (char []) = v9 v8
-    let v13 : string = v5.TrimStart v10 
-    let v31 : char list = []
-    let v32 : char list = '/' :: v31 
-    let v35 : char list = ' ' :: v32 
-    let v38 : (char list -> (char [])) = List.toArray
-    let v39 : (char []) = v38 v35
-    let v42 : string = v13.TrimEnd v39 
-    v42
+and method23 (v0 : string) : string =
+    let v1 : char list = []
+    let v2 : (char list -> (char [])) = List.toArray
+    let v3 : (char []) = v2 v1
+    let v6 : string = v0.TrimStart v3 
+    let v24 : char list = []
+    let v25 : char list = '/' :: v24 
+    let v28 : char list = ' ' :: v25 
+    let v31 : (char list -> (char [])) = List.toArray
+    let v32 : (char []) = v31 v28
+    let v35 : string = v6.TrimEnd v32 
+    v35
+and method21 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : int64, v10 : int64, v11 : string) : string =
+    let v12 : string = method22(v8, v9, v10, v11)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.create_sequential_roller / roll"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure14 (v0 : Mut1) () : unit =
     let v1 : int64 = v0.l0
     let v2 : int64 = v1 + 1L
@@ -1278,167 +1307,155 @@ and closure15 () (v0 : string) : unit =
     let v2 : (unit -> unit) = closure16(v0)
     let v3 : unit = (fun () -> v2 (); v1) ()
     ()
-and method21 (v0 : string, v1 : Mut1, v2 : Mut3, v3 : Mut4, v4 : Mut5, v5 : Mut6, v6 : int64 option) : unit =
-    let v7 : unit = ()
-    let v8 : (unit -> unit) = closure14(v1)
-    let v9 : unit = (fun () -> v8 (); v7) ()
-    let v12 : (string -> unit) = closure15()
-    let v13 : unit = ()
+and method24 (v0 : string) : unit =
+    let v1 : unit = ()
+    let v2 : (unit -> unit) = closure9()
+    let v3 : unit = (fun () -> v2 (); v1) ()
+    let struct (v17 : Mut1, v18 : Mut3, v19 : Mut4, v20 : Mut5, v21 : Mut6, v22 : int64 option) = TraceState.trace_state.Value
+    let v35 : unit = ()
+    let v36 : (unit -> unit) = closure14(v17)
+    let v37 : unit = (fun () -> v36 (); v35) ()
+    let v40 : (string -> unit) = closure15()
+    let v41 : unit = ()
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v14 : string = @"println!(""{}"", $0)"
-    Fable.Core.RustInterop.emitRustExpr v0 v14 
-    let _v13 = () 
+    let v42 : string = @"println!(""{}"", $0)"
+    Fable.Core.RustInterop.emitRustExpr v0 v42 
+    let _v41 = () 
     #endif
 #if FABLE_COMPILER_RUST && WASM
-    let v15 : string = @"println!(""{}"", $0)"
-    Fable.Core.RustInterop.emitRustExpr v0 v15 
-    let _v13 = () 
+    let v43 : string = @"println!(""{}"", $0)"
+    Fable.Core.RustInterop.emitRustExpr v0 v43 
+    let _v41 = () 
     #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-    let v16 : string = v4.l0
-    let v17 : bool = v16 = ""
-    let v25 : string =
-        if v17 then
+    let v44 : string = v20.l0
+    let v45 : bool = v44 = ""
+    let v53 : string =
+        if v45 then
             v0
         else
-            let v18 : bool = v0 = ""
-            if v18 then
-                let v19 : string = v4.l0
-                v19
+            let v46 : bool = v0 = ""
+            if v46 then
+                let v47 : string = v20.l0
+                v47
             else
-                let v20 : string = v4.l0
-                let v21 : string = "\n"
-                let v22 : string = v20 + v21 
-                let v23 : string = v22 + v0 
-                v23
-    let v26 : unit = ()
+                let v48 : string = v20.l0
+                let v49 : string = "\n"
+                let v50 : string = v48 + v49 
+                let v51 : string = v50 + v0 
+                v51
+    let v54 : unit = ()
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v27 : string = "&*$0"
-    let v28 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v25 v27 
-    let _v26 = v28 
+    let v55 : string = "&*$0"
+    let v56 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v53 v55 
+    let _v54 = v56 
     #endif
 #if FABLE_COMPILER_RUST && WASM
-    let v29 : string = "&*$0"
-    let v30 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v25 v29 
-    let _v26 = v30 
+    let v57 : string = "&*$0"
+    let v58 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v53 v57 
+    let _v54 = v58 
     #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-    let v31 : string = "&*$0"
-    let v32 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v25 v31 
-    let _v26 = v32 
+    let v59 : string = "&*$0"
+    let v60 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v53 v59 
+    let _v54 = v60 
     #endif
 #if FABLE_COMPILER_TYPESCRIPT
-    let v33 : Ref<Str> = v25 |> unbox<Ref<Str>>
-    let _v26 = v33 
+    let v61 : Ref<Str> = v53 |> unbox<Ref<Str>>
+    let _v54 = v61 
     #endif
 #if FABLE_COMPILER_PYTHON
-    let v36 : Ref<Str> = v25 |> unbox<Ref<Str>>
-    let _v26 = v36 
+    let v64 : Ref<Str> = v53 |> unbox<Ref<Str>>
+    let _v54 = v64 
     #endif
 #else
-    let v39 : Ref<Str> = v25 |> unbox<Ref<Str>>
-    let _v26 = v39 
+    let v67 : Ref<Str> = v53 |> unbox<Ref<Str>>
+    let _v54 = v67 
     #endif
-    let v42 : Ref<Str> = _v26 
-    let v47 : string = $"$0.chars()"
-    let v48 : Mut<_> = Fable.Core.RustInterop.emitRustExpr v42 v47 
-    let v49 : string = "$0"
-    let v50 : _ = Fable.Core.RustInterop.emitRustExpr v48 v49 
-    let v51 : string = "$0.collect::<Vec<_>>()"
-    let v52 : Vec<char> = Fable.Core.RustInterop.emitRustExpr v50 v51 
-    let v53 : string = "$0.chunks(15000).map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>()).collect::<Vec<_>>()"
-    let v54 : Vec<Vec<char>> = Fable.Core.RustInterop.emitRustExpr v52 v53 
-    let v55 : string = "true; let _vec_map : Vec<_> = $0.into_iter().map(|x| { //"
-    let v56 : bool = Fable.Core.RustInterop.emitRustExpr v54 v55 
-    let v57 : string = "x"
-    let v58 : Vec<char> = Fable.Core.RustInterop.emitRustExpr () v57 
-    let v59 : string = "String::from_iter($0)"
-    let v60 : std_string_String = Fable.Core.RustInterop.emitRustExpr v58 v59 
-    let v61 : string = "true; $0 }).collect::<Vec<_>>()"
-    let v62 : bool = Fable.Core.RustInterop.emitRustExpr v60 v61 
-    let v63 : string = "_vec_map"
-    let v64 : Vec<std_string_String> = Fable.Core.RustInterop.emitRustExpr () v63 
-    let v65 : string = "$0.len()"
-    let v66 : unativeint = Fable.Core.RustInterop.emitRustExpr v64 v65 
-    let v67 : (unativeint -> int32) = int32
-    let v68 : int32 = v67 v66
-    let v69 : string = ""
-    let v70 : bool = v0 <> v69 
-    let v74 : bool =
-        if v70 then
-            let v73 : bool = v68 <= 1
-            v73
+    let v70 : Ref<Str> = _v54 
+    let v75 : string = $"$0.chars()"
+    let v76 : Mut<_> = Fable.Core.RustInterop.emitRustExpr v70 v75 
+    let v77 : string = "$0"
+    let v78 : _ = Fable.Core.RustInterop.emitRustExpr v76 v77 
+    let v79 : string = "$0.collect::<Vec<_>>()"
+    let v80 : Vec<char> = Fable.Core.RustInterop.emitRustExpr v78 v79 
+    let v81 : string = "$0.chunks(15000).map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>()).collect::<Vec<_>>()"
+    let v82 : Vec<Vec<char>> = Fable.Core.RustInterop.emitRustExpr v80 v81 
+    let v83 : string = "true; let _vec_map : Vec<_> = $0.into_iter().map(|x| { //"
+    let v84 : bool = Fable.Core.RustInterop.emitRustExpr v82 v83 
+    let v85 : string = "x"
+    let v86 : Vec<char> = Fable.Core.RustInterop.emitRustExpr () v85 
+    let v87 : string = "String::from_iter($0)"
+    let v88 : std_string_String = Fable.Core.RustInterop.emitRustExpr v86 v87 
+    let v89 : string = "true; $0 }).collect::<Vec<_>>()"
+    let v90 : bool = Fable.Core.RustInterop.emitRustExpr v88 v89 
+    let v91 : string = "_vec_map"
+    let v92 : Vec<std_string_String> = Fable.Core.RustInterop.emitRustExpr () v91 
+    let v93 : string = "$0.len()"
+    let v94 : unativeint = Fable.Core.RustInterop.emitRustExpr v92 v93 
+    let v95 : (unativeint -> int32) = int32
+    let v96 : int32 = v95 v94
+    let v97 : string = ""
+    let v98 : bool = v0 <> v97 
+    let v102 : bool =
+        if v98 then
+            let v101 : bool = v96 <= 1
+            v101
         else
             false
-    if v74 then
-        v4.l0 <- v25
+    if v102 then
+        v20.l0 <- v53
         ()
     else
-        v4.l0 <- v69
-        let v75 : string = "true; $0.into_iter().for_each(|x| { //"
-        let v76 : bool = Fable.Core.RustInterop.emitRustExpr v64 v75 
-        let v77 : string = "x"
-        let v78 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v77 
-        let v79 : string = $"true; near_sdk::log!(\"{{}}\", $0)"
-        let v80 : bool = Fable.Core.RustInterop.emitRustExpr v78 v79 
-        let v81 : string = $"true"
-        let v82 : bool = Fable.Core.RustInterop.emitRustExpr () v81 
-        let v83 : string = "true; }); //"
-        let v84 : bool = Fable.Core.RustInterop.emitRustExpr () v83 
+        v20.l0 <- v97
+        let v103 : string = "true; $0.into_iter().for_each(|x| { //"
+        let v104 : bool = Fable.Core.RustInterop.emitRustExpr v92 v103 
+        let v105 : string = "x"
+        let v106 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v105 
+        let v107 : string = $"true; near_sdk::log!(\"{{}}\", $0)"
+        let v108 : bool = Fable.Core.RustInterop.emitRustExpr v106 v107 
+        let v109 : string = $"true"
+        let v110 : bool = Fable.Core.RustInterop.emitRustExpr () v109 
+        let v111 : string = "true; }); //"
+        let v112 : bool = Fable.Core.RustInterop.emitRustExpr () v111 
         ()
-    let _v13 = () 
+    let _v41 = () 
     #endif
 #if FABLE_COMPILER_TYPESCRIPT
-    v12 v0
-    let _v13 = () 
+    v40 v0
+    let _v41 = () 
     #endif
 #if FABLE_COMPILER_PYTHON
-    v12 v0
-    let _v13 = () 
+    v40 v0
+    let _v41 = () 
     #endif
 #else
-    v12 v0
-    let _v13 = () 
+    v40 v0
+    let _v41 = () 
     #endif
-    _v13 
-    let v85 : (string -> unit) = v2.l0
-    v85 v0
+    _v41 
+    let v113 : (string -> unit) = v18.l0
+    v113 v0
 and closure8 (v0 : int64, v1 : int64, v2 : int64, v3 : uint8 option) () : unit =
-    let v4 : unit = ()
-    let v5 : (unit -> unit) = closure9()
-    let v6 : unit = (fun () -> v5 (); v4) ()
-    let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
-    let v38 : US2 = v24.l0
-    let v39 : bool = v22.l0
-    let v40 : bool = v39 = false
-    let v43 : bool =
-        if v40 then
-            false
-        else
-            let v41 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v38
-            let v42 : bool = 1 >= v41
-            v42
-    if v43 then
-        let v44 : unit = ()
-        let v45 : unit = (fun () -> v5 (); v44) ()
-        let struct (v59 : Mut1, v60 : Mut3, v61 : Mut4, v62 : Mut5, v63 : Mut6, v64 : int64 option) = TraceState.trace_state.Value
-        let v77 : string = method12(v59, v60, v61, v62, v63, v64)
-        let v78 : string = method16()
-        let v79 : int64 = v59.l0
-        let v80 : string = $"%A{v3}"
-        let v83 : string = method18(v0, v1, v2, v80)
-        let v84 : string = method20(v77, v78, v79, v83)
-        let v85 : unit = ()
-        let v86 : unit = (fun () -> v5 (); v85) ()
-        let struct (v100 : Mut1, v101 : Mut3, v102 : Mut4, v103 : Mut5, v104 : Mut6, v105 : int64 option) = TraceState.trace_state.Value
-        method21(v84, v100, v101, v102, v103, v104, v105)
-and method22 (v0 : int64, v1 : UH0) : US1 =
+    let v4 : US2 = US2_1
+    let v5 : bool = method6(v4)
+    if v5 then
+        let v6 : unit = ()
+        let v7 : (unit -> unit) = closure9()
+        let v8 : unit = (fun () -> v7 (); v6) ()
+        let struct (v22 : Mut1, v23 : Mut3, v24 : Mut4, v25 : Mut5, v26 : Mut6, v27 : int64 option) = TraceState.trace_state.Value
+        let v40 : string = method13(v22, v23, v24, v25, v26, v27)
+        let v41 : string = method17()
+        let v42 : string = $"%A{v3}"
+        let v45 : string = method21(v22, v23, v24, v25, v26, v27, v40, v41, v0, v1, v2, v42)
+        method24(v45)
+and method25 (v0 : int64, v1 : UH0) : US1 =
     match v1 with
     | UH0_0(v2, v3) -> (* StreamCons *)
         let v4 : bool = v0 <= 0L
@@ -1447,56 +1464,32 @@ and method22 (v0 : int64, v1 : UH0) : US1 =
         else
             let v6 : int64 = v0 - 1L
             let v7 : UH0 = v3 ()
-            method22(v6, v7)
+            method25(v6, v7)
     | UH0_1 -> (* StreamNil *)
         US1_1
-and method23 () : string =
+and method27 () : string =
     let v0 : string = method19()
     let v1 : Mut5 = {l0 = v0} : Mut5
     let v2 : string = v1.l0
     v2
-and method24 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
-    let v4 : string = "dice.create_sequential_roller / roll / None"
-    let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
-    let v8 : char list = []
-    let v9 : (char list -> (char [])) = List.toArray
-    let v10 : (char []) = v9 v8
-    let v13 : string = v5.TrimStart v10 
-    let v31 : char list = []
-    let v32 : char list = '/' :: v31 
-    let v35 : char list = ' ' :: v32 
-    let v38 : (char list -> (char [])) = List.toArray
-    let v39 : (char []) = v38 v35
-    let v42 : string = v13.TrimEnd v39 
-    v42
+and method26 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string) : string =
+    let v8 : string = method27()
+    let v9 : int64 = v0.l0
+    let v10 : string = "dice.create_sequential_roller / roll / None"
+    let v11 : string = $"{v6} {v7} #{v9} %s{v10} / {v8}"
+    method23(v11)
 and closure17 () () : unit =
-    let v0 : unit = ()
-    let v1 : (unit -> unit) = closure9()
-    let v2 : unit = (fun () -> v1 (); v0) ()
-    let struct (v16 : Mut1, v17 : Mut3, v18 : Mut4, v19 : Mut5, v20 : Mut6, v21 : int64 option) = TraceState.trace_state.Value
-    let v34 : US2 = v20.l0
-    let v35 : bool = v18.l0
-    let v36 : bool = v35 = false
-    let v39 : bool =
-        if v36 then
-            false
-        else
-            let v37 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v34
-            let v38 : bool = 1 >= v37
-            v38
-    if v39 then
-        let v40 : unit = ()
-        let v41 : unit = (fun () -> v1 (); v40) ()
-        let struct (v55 : Mut1, v56 : Mut3, v57 : Mut4, v58 : Mut5, v59 : Mut6, v60 : int64 option) = TraceState.trace_state.Value
-        let v73 : string = method12(v55, v56, v57, v58, v59, v60)
-        let v74 : string = method16()
-        let v75 : int64 = v55.l0
-        let v76 : string = method23()
-        let v77 : string = method24(v73, v74, v75, v76)
-        let v78 : unit = ()
-        let v79 : unit = (fun () -> v1 (); v78) ()
-        let struct (v93 : Mut1, v94 : Mut3, v95 : Mut4, v96 : Mut5, v97 : Mut6, v98 : int64 option) = TraceState.trace_state.Value
-        method21(v77, v93, v94, v95, v96, v97, v98)
+    let v0 : US2 = US2_1
+    let v1 : bool = method6(v0)
+    if v1 then
+        let v2 : unit = ()
+        let v3 : (unit -> unit) = closure9()
+        let v4 : unit = (fun () -> v3 (); v2) ()
+        let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
+        let v36 : string = method13(v18, v19, v20, v21, v22, v23)
+        let v37 : string = method17()
+        let v38 : string = method26(v18, v19, v20, v21, v22, v23, v36, v37)
+        method24(v38)
 and method5 (v0 : (unit -> UH0), v1 : Mut1, v2 : Mut1, v3 : Mut1, v4 : Mut2) : uint8 =
     let v5 : int64 = v1.l0
     let v6 : int64 = v2.l0
@@ -1513,44 +1506,44 @@ and method5 (v0 : (unit -> UH0), v1 : Mut1, v2 : Mut1, v3 : Mut1, v4 : Mut2) : u
     let v16 : unit = ()
     let v17 : (unit -> unit) = closure8(v5, v6, v7, v15)
     let v18 : unit = (fun () -> v17 (); v16) ()
-    let v133 : UH0 = v0 ()
-    let v134 : int64 = v1.l0
-    let v135 : US1 = method22(v134, v133)
-    match v135 with
+    let v61 : UH0 = v0 ()
+    let v62 : int64 = v1.l0
+    let v63 : US1 = method25(v62, v61)
+    match v63 with
     | US1_1 -> (* None *)
-        let v140 : unit = ()
-        let v141 : (unit -> unit) = closure17()
-        let v142 : unit = (fun () -> v141 (); v140) ()
-        let v254 : int64 = v3.l0
-        let v255 : bool = v254 = -1L
-        if v255 then
-            let v256 : int64 = v1.l0
-            v3.l0 <- v256
+        let v68 : unit = ()
+        let v69 : (unit -> unit) = closure17()
+        let v70 : unit = (fun () -> v69 (); v68) ()
+        let v110 : int64 = v3.l0
+        let v111 : bool = v110 = -1L
+        if v111 then
+            let v112 : int64 = v1.l0
+            v3.l0 <- v112
             ()
-        let v257 : int64 = v2.l0
-        let v258 : int64 = v3.l0
-        let v259 : bool = v257 >= v258
-        let v262 : int64 =
-            if v259 then
+        let v113 : int64 = v2.l0
+        let v114 : int64 = v3.l0
+        let v115 : bool = v113 >= v114
+        let v118 : int64 =
+            if v115 then
                 1L
             else
-                let v260 : int64 = v2.l0
-                let v261 : int64 = v260 + 1L
-                v261
-        v2.l0 <- v262
-        let v263 : int64 = v2.l0
-        let v264 : int64 = v263 - 1L
-        v1.l0 <- v264
-        let v265 : US1 = US1_1
-        v4.l0 <- v265
+                let v116 : int64 = v2.l0
+                let v117 : int64 = v116 + 1L
+                v117
+        v2.l0 <- v118
+        let v119 : int64 = v2.l0
+        let v120 : int64 = v119 - 1L
+        v1.l0 <- v120
+        let v121 : US1 = US1_1
+        v4.l0 <- v121
         method5(v0, v1, v2, v3, v4)
-    | US1_0(v136) -> (* Some *)
-        let v137 : int64 = v1.l0
-        let v138 : int64 = v137 + 1L
-        v1.l0 <- v138
-        let v139 : US1 = US1_0(v136)
-        v4.l0 <- v139
-        v136
+    | US1_0(v64) -> (* Some *)
+        let v65 : int64 = v1.l0
+        let v66 : int64 = v65 + 1L
+        v1.l0 <- v66
+        let v67 : US1 = US1_0(v64)
+        v4.l0 <- v67
+        v64
 and closure7 (v0 : (unit -> UH0), v1 : Mut1, v2 : Mut1, v3 : Mut1, v4 : Mut2) () : uint8 =
     method5(v0, v1, v2, v3, v4)
 and closure3 () (v0 : UH1) : (unit -> uint8) =
@@ -1567,7 +1560,7 @@ and closure3 () (v0 : UH1) : (unit -> uint8) =
     let v11 : US1 = US1_1
     let v12 : Mut2 = {l0 = v11} : Mut2
     closure7(v7, v8, v9, v10, v12)
-and method26 (v0 : uint64, v1 : uint64, v2 : int8) : string =
+and method30 (v0 : uint64, v1 : uint64, v2 : int8) : string =
     let v3 : string = method19()
     let v4 : Mut5 = {l0 = v3} : Mut5
     let v5 : string = "{ "
@@ -1631,67 +1624,43 @@ and method26 (v0 : uint64, v1 : uint64, v2 : int8) : string =
     let v113 : unit = (fun () -> v112 (); v111) ()
     let v116 : string = v4.l0
     v116
-and method27 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
-    let v4 : string = "dice.calculate_dice_count"
-    let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
-    let v8 : char list = []
-    let v9 : (char list -> (char [])) = List.toArray
-    let v10 : (char []) = v9 v8
-    let v13 : string = v5.TrimStart v10 
-    let v31 : char list = []
-    let v32 : char list = '/' :: v31 
-    let v35 : char list = ' ' :: v32 
-    let v38 : (char list -> (char [])) = List.toArray
-    let v39 : (char []) = v38 v35
-    let v42 : string = v13.TrimEnd v39 
-    v42
+and method29 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : uint64, v9 : uint64, v10 : int8) : string =
+    let v11 : string = method30(v8, v9, v10)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.calculate_dice_count"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure21 (v0 : uint64, v1 : int8, v2 : uint64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : string = method26(v0, v2, v1)
-        let v80 : string = method27(v76, v77, v78, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v4 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method25 (v0 : uint64, v1 : int8, v2 : uint64) : int8 =
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method29(v21, v22, v23, v24, v25, v26, v39, v40, v0, v2, v1)
+        method24(v41)
+and method28 (v0 : uint64, v1 : int8, v2 : uint64) : int8 =
     let v3 : bool = v2 < v0
     if v3 then
         let v4 : uint64 = v2 * 6UL
         let v5 : bool = v4 > v2
         if v5 then
             let v6 : int8 = v1 + 1y
-            method25(v0, v6, v4)
+            method28(v0, v6, v4)
         else
             let v8 : unit = ()
             let v9 : (unit -> unit) = closure21(v0, v1, v2)
             let v10 : unit = (fun () -> v9 (); v8) ()
             v1
     else
-        let v123 : unit = ()
-        let v124 : (unit -> unit) = closure21(v0, v1, v2)
-        let v125 : unit = (fun () -> v124 (); v123) ()
+        let v51 : unit = ()
+        let v52 : (unit -> unit) = closure21(v0, v1, v2)
+        let v53 : unit = (fun () -> v52 (); v51) ()
         v1
-and method30 (v0 : int8, v1 : uint64, v2 : uint64) : string =
+and method34 (v0 : int8, v1 : uint64, v2 : uint64) : string =
     let v3 : string = method19()
     let v4 : Mut5 = {l0 = v3} : Mut5
     let v5 : string = "{ "
@@ -1755,48 +1724,24 @@ and method30 (v0 : int8, v1 : uint64, v2 : uint64) : string =
     let v113 : unit = (fun () -> v112 (); v111) ()
     let v116 : string = v4.l0
     v116
-and method31 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
-    let v4 : string = "dice.accumulate_dice_rolls"
-    let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
-    let v8 : char list = []
-    let v9 : (char list -> (char [])) = List.toArray
-    let v10 : (char []) = v9 v8
-    let v13 : string = v5.TrimStart v10 
-    let v31 : char list = []
-    let v32 : char list = '/' :: v31 
-    let v35 : char list = ' ' :: v32 
-    let v38 : (char list -> (char [])) = List.toArray
-    let v39 : (char []) = v38 v35
-    let v42 : string = v13.TrimEnd v39 
-    v42
+and method33 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int8, v9 : uint64, v10 : uint64) : string =
+    let v11 : string = method34(v8, v9, v10)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure22 (v0 : uint64, v1 : int8, v2 : uint64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : string = method30(v1, v0, v2)
-        let v80 : string = method31(v76, v77, v78, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v4 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method33(v21, v22, v23, v24, v25, v26, v39, v40, v1, v0, v2)
+        method24(v41)
 and closure86 () () : UH2 =
     UH2_1
 and closure85 () () : UH2 =
@@ -1988,7 +1933,7 @@ and closure24 () () : UH2 =
 and closure23 () () : UH2 =
     let v0 : (unit -> UH2) = closure24()
     UH2_0(6UL, v0)
-and method32 (v0 : int8, v1 : UH2) : US7 =
+and method35 (v0 : int8, v1 : UH2) : US7 =
     match v1 with
     | UH2_0(v2, v3) -> (* StreamCons *)
         let v4 : bool = v0 <= 0y
@@ -1997,10 +1942,10 @@ and method32 (v0 : int8, v1 : UH2) : US7 =
         else
             let v6 : int8 = v0 - 1y
             let v7 : UH2 = v3 ()
-            method32(v6, v7)
+            method35(v6, v7)
     | UH2_1 -> (* StreamNil *)
         US7_1
-and method33 (v0 : int8, v1 : uint64, v2 : uint8, v3 : uint64) : string =
+and method37 (v0 : int8, v1 : uint64, v2 : uint8, v3 : uint64) : string =
     let v4 : string = method19()
     let v5 : Mut5 = {l0 = v4} : Mut5
     let v6 : string = "{ "
@@ -2081,35 +2026,25 @@ and method33 (v0 : int8, v1 : uint64, v2 : uint8, v3 : uint64) : string =
     let v147 : unit = (fun () -> v146 (); v145) ()
     let v150 : string = v5.l0
     v150
+and method36 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int8, v9 : uint64, v10 : uint8, v11 : uint64) : string =
+    let v12 : string = method37(v8, v9, v10, v11)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure87 (v0 : uint64, v1 : int8, v2 : uint8, v3 : uint64) () : unit =
-    let v4 : unit = ()
-    let v5 : (unit -> unit) = closure9()
-    let v6 : unit = (fun () -> v5 (); v4) ()
-    let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
-    let v38 : US2 = v24.l0
-    let v39 : bool = v22.l0
-    let v40 : bool = v39 = false
-    let v43 : bool =
-        if v40 then
-            false
-        else
-            let v41 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v38
-            let v42 : bool = 1 >= v41
-            v42
-    if v43 then
-        let v44 : unit = ()
-        let v45 : unit = (fun () -> v5 (); v44) ()
-        let struct (v59 : Mut1, v60 : Mut3, v61 : Mut4, v62 : Mut5, v63 : Mut6, v64 : int64 option) = TraceState.trace_state.Value
-        let v77 : string = method12(v59, v60, v61, v62, v63, v64)
-        let v78 : string = method16()
-        let v79 : int64 = v59.l0
-        let v80 : string = method33(v1, v0, v2, v3)
-        let v81 : string = method31(v77, v78, v79, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v5 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
-and method34 (v0 : int8, v1 : uint64, v2 : uint8) : string =
+    let v4 : US2 = US2_1
+    let v5 : bool = method6(v4)
+    if v5 then
+        let v6 : unit = ()
+        let v7 : (unit -> unit) = closure9()
+        let v8 : unit = (fun () -> v7 (); v6) ()
+        let struct (v22 : Mut1, v23 : Mut3, v24 : Mut4, v25 : Mut5, v26 : Mut6, v27 : int64 option) = TraceState.trace_state.Value
+        let v40 : string = method13(v22, v23, v24, v25, v26, v27)
+        let v41 : string = method17()
+        let v42 : string = method36(v22, v23, v24, v25, v26, v27, v40, v41, v1, v0, v2, v3)
+        method24(v42)
+and method39 (v0 : int8, v1 : uint64, v2 : uint8) : string =
     let v3 : string = method19()
     let v4 : Mut5 = {l0 = v3} : Mut5
     let v5 : string = "{ "
@@ -2173,35 +2108,25 @@ and method34 (v0 : int8, v1 : uint64, v2 : uint8) : string =
     let v113 : unit = (fun () -> v112 (); v111) ()
     let v116 : string = v4.l0
     v116
+and method38 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int8, v9 : uint64, v10 : uint8) : string =
+    let v11 : string = method39(v8, v9, v10)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure88 (v0 : uint64, v1 : int8, v2 : uint8) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : string = method34(v1, v0, v2)
-        let v80 : string = method31(v76, v77, v78, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v4 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method29 (v0 : int8, v1 : UH1, v2 : uint64) : US6 =
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method38(v21, v22, v23, v24, v25, v26, v39, v40, v1, v0, v2)
+        method24(v41)
+and method32 (v0 : int8, v1 : UH1, v2 : uint64) : US6 =
     let v3 : bool = v0 < 0y
     if v3 then
         let v4 : uint64 = v2 + 1UL
@@ -2211,55 +2136,55 @@ and method29 (v0 : int8, v1 : UH1, v2 : uint64) : US6 =
         US6_0(v4, v1)
     else
         match v1 with
-        | UH1_1(v121, v122) -> (* Cons *)
-            let v123 : bool = v121 > 1uy
-            if v123 then
-                let v124 : uint64 = 1UL
-                let v125 : (unit -> UH2) = closure23()
-                let v126 : UH2 = UH2_0(v124, v125)
-                let v127 : US7 = method32(v0, v126)
-                let v131 : uint64 =
-                    match v127 with
+        | UH1_1(v49, v50) -> (* Cons *)
+            let v51 : bool = v49 > 1uy
+            if v51 then
+                let v52 : uint64 = 1UL
+                let v53 : (unit -> UH2) = closure23()
+                let v54 : UH2 = UH2_0(v52, v53)
+                let v55 : US7 = method35(v0, v54)
+                let v59 : uint64 =
+                    match v55 with
                     | US7_1 -> (* None *)
                         failwith<uint64> "Option does not have a value."
-                    | US7_0(v128) -> (* Some *)
-                        v128
-                let v132 : uint8 = v121 - 1uy
-                let v133 : uint64 = uint64 v132
-                let v134 : uint64 = v133 * v131
-                let v135 : unit = ()
-                let v136 : (unit -> unit) = closure87(v2, v0, v121, v134)
-                let v137 : unit = (fun () -> v136 (); v135) ()
-                let v249 : uint64 = v2 + v134
-                let v250 : int8 = v0 - 1y
-                method29(v250, v122, v249)
+                    | US7_0(v56) -> (* Some *)
+                        v56
+                let v60 : uint8 = v49 - 1uy
+                let v61 : uint64 = uint64 v60
+                let v62 : uint64 = v61 * v59
+                let v63 : unit = ()
+                let v64 : (unit -> unit) = closure87(v2, v0, v49, v62)
+                let v65 : unit = (fun () -> v64 (); v63) ()
+                let v105 : uint64 = v2 + v62
+                let v106 : int8 = v0 - 1y
+                method32(v106, v50, v105)
             else
-                let v252 : unit = ()
-                let v253 : (unit -> unit) = closure88(v2, v0, v121)
-                let v254 : unit = (fun () -> v253 (); v252) ()
-                let v366 : int8 = v0 - 1y
-                method29(v366, v122, v2)
+                let v108 : unit = ()
+                let v109 : (unit -> unit) = closure88(v2, v0, v49)
+                let v110 : unit = (fun () -> v109 (); v108) ()
+                let v150 : int8 = v0 - 1y
+                method32(v150, v50, v2)
         | UH1_0 -> (* Nil *)
             US6_1
-and method35 (v0 : int8, v1 : (unit -> uint8), v2 : int8) : UH1 =
+and method40 (v0 : int8, v1 : (unit -> uint8), v2 : int8) : UH1 =
     let v3 : bool = v2 < v0
     if v3 then
         let v4 : uint8 = v1 ()
         let v5 : int8 = v2 + 1y
-        let v6 : UH1 = method35(v0, v1, v5)
+        let v6 : UH1 = method40(v0, v1, v5)
         UH1_1(v4, v6)
     else
         UH1_0
-and method36 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1) : uint64 =
+and method41 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1) : uint64 =
     let v5 : int8 = v3 + 1y
     let v6 : bool = v3 < v5
     if v6 then
         let v7 : uint8 = v0 ()
         let v8 : UH1 = UH1_1(v7, v4)
-        method28(v0, v1, v2, v3, v8, v5)
+        method31(v0, v1, v2, v3, v8, v5)
     else
         let v10 : uint64 = 0UL
-        let v11 : US6 = method29(v3, v4, v10)
+        let v11 : US6 = method32(v3, v4, v10)
         match v11 with
         | US6_0(v12, v13) -> (* Some *)
             let v14 : bool = v12 <= v2
@@ -2268,32 +2193,32 @@ and method36 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1)
             else
                 if v1 then
                     let v15 : int8 = 0y
-                    let v16 : UH1 = method35(v3, v0, v15)
-                    method36(v0, v1, v2, v3, v16)
+                    let v16 : UH1 = method40(v3, v0, v15)
+                    method41(v0, v1, v2, v3, v16)
                 else
                     let v18 : uint8 = v0 ()
                     let v19 : UH1 = UH1_1(v18, v4)
-                    method28(v0, v1, v2, v3, v19, v5)
+                    method31(v0, v1, v2, v3, v19, v5)
         | _ ->
             if v1 then
                 let v23 : int8 = 0y
-                let v24 : UH1 = method35(v3, v0, v23)
-                method36(v0, v1, v2, v3, v24)
+                let v24 : UH1 = method40(v3, v0, v23)
+                method41(v0, v1, v2, v3, v24)
             else
                 let v26 : uint8 = v0 ()
                 let v27 : UH1 = UH1_1(v26, v4)
-                method28(v0, v1, v2, v3, v27, v5)
-and method28 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1, v5 : int8) : uint64 =
+                method31(v0, v1, v2, v3, v27, v5)
+and method31 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1, v5 : int8) : uint64 =
     let v6 : int8 = v3 + 1y
     let v7 : bool = v5 < v6
     if v7 then
         let v8 : uint8 = v0 ()
         let v9 : UH1 = UH1_1(v8, v4)
         let v10 : int8 = v5 + 1y
-        method28(v0, v1, v2, v3, v9, v10)
+        method31(v0, v1, v2, v3, v9, v10)
     else
         let v12 : uint64 = 0UL
-        let v13 : US6 = method29(v3, v4, v12)
+        let v13 : US6 = method32(v3, v4, v12)
         match v13 with
         | US6_0(v14, v15) -> (* Some *)
             let v16 : bool = v14 <= v2
@@ -2302,23 +2227,23 @@ and method28 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1,
             else
                 if v1 then
                     let v17 : int8 = 0y
-                    let v18 : UH1 = method35(v3, v0, v17)
-                    method36(v0, v1, v2, v3, v18)
+                    let v18 : UH1 = method40(v3, v0, v17)
+                    method41(v0, v1, v2, v3, v18)
                 else
                     let v20 : uint8 = v0 ()
                     let v21 : UH1 = UH1_1(v20, v4)
                     let v22 : int8 = v5 + 1y
-                    method28(v0, v1, v2, v3, v21, v22)
+                    method31(v0, v1, v2, v3, v21, v22)
         | _ ->
             if v1 then
                 let v26 : int8 = 0y
-                let v27 : UH1 = method35(v3, v0, v26)
-                method36(v0, v1, v2, v3, v27)
+                let v27 : UH1 = method40(v3, v0, v26)
+                method41(v0, v1, v2, v3, v27)
             else
                 let v29 : uint8 = v0 ()
                 let v30 : UH1 = UH1_1(v29, v4)
                 let v31 : int8 = v5 + 1y
-                method28(v0, v1, v2, v3, v30, v31)
+                method31(v0, v1, v2, v3, v30, v31)
 and closure20 (v0 : (unit -> uint8), v1 : bool) (v2 : uint64) : uint64 =
     let v3 : bool = v2 = 1UL
     let v7 : int8 =
@@ -2327,28 +2252,28 @@ and closure20 (v0 : (unit -> uint8), v1 : bool) (v2 : uint64) : uint64 =
         else
             let v4 : int8 = 0y
             let v5 : uint64 = 1UL
-            method25(v2, v4, v5)
+            method28(v2, v4, v5)
     let v8 : int8 = v7 - 1y
     let v9 : UH1 = UH1_0
     let v10 : int8 = 0y
-    method28(v0, v1, v2, v8, v9, v10)
+    method31(v0, v1, v2, v8, v9, v10)
 and closure19 (v0 : (unit -> uint8)) (v1 : bool) : (uint64 -> uint64) =
     closure20(v0, v1)
 and closure18 () (v0 : (unit -> uint8)) : (bool -> (uint64 -> uint64)) =
     closure19(v0)
-and method37 (v0 : UH1, v1 : int8) : int8 =
+and method42 (v0 : UH1, v1 : int8) : int8 =
     match v0 with
     | UH1_1(v2, v3) -> (* Cons *)
         let v4 : int8 = v1 + 1y
-        method37(v3, v4)
+        method42(v3, v4)
     | UH1_0 -> (* Nil *)
         v1
 and closure90 (v0 : uint64) (v1 : UH1) : uint64 option =
     let v2 : int8 = 0y
-    let v3 : int8 = method37(v1, v2)
+    let v3 : int8 = method42(v1, v2)
     let v4 : int8 = v3 - 1y
     let v5 : uint64 = 0UL
-    let v6 : US6 = method29(v4, v1, v5)
+    let v6 : US6 = method32(v4, v1, v5)
     let v16 : US7 =
         match v6 with
         | US6_0(v7, v8) -> (* Some *)
@@ -2374,7 +2299,7 @@ and closure90 (v0 : uint64) (v1 : UH1) : uint64 option =
         v18
 and closure89 () (v0 : uint64) : (UH1 -> uint64 option) =
     closure90(v0)
-and method38 (v0 : int64, v1 : int64, v2 : int8) : string =
+and method44 (v0 : int64, v1 : int64, v2 : int8) : string =
     let v3 : string = method19()
     let v4 : Mut5 = {l0 = v3} : Mut5
     let v5 : string = "{ "
@@ -2438,38 +2363,28 @@ and method38 (v0 : int64, v1 : int64, v2 : int8) : string =
     let v113 : unit = (fun () -> v112 (); v111) ()
     let v116 : string = v4.l0
     v116
+and method43 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string) : string =
+    let v8 : int64 = 9223372036854775807L
+    let v9 : int64 = 4738381338321616896L
+    let v10 : int8 = 24y
+    let v11 : string = method44(v8, v9, v10)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.calculate_dice_count"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure92 () () : unit =
-    let v0 : unit = ()
-    let v1 : (unit -> unit) = closure9()
-    let v2 : unit = (fun () -> v1 (); v0) ()
-    let struct (v16 : Mut1, v17 : Mut3, v18 : Mut4, v19 : Mut5, v20 : Mut6, v21 : int64 option) = TraceState.trace_state.Value
-    let v34 : US2 = v20.l0
-    let v35 : bool = v18.l0
-    let v36 : bool = v35 = false
-    let v39 : bool =
-        if v36 then
-            false
-        else
-            let v37 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v34
-            let v38 : bool = 1 >= v37
-            v38
-    if v39 then
-        let v40 : unit = ()
-        let v41 : unit = (fun () -> v1 (); v40) ()
-        let struct (v55 : Mut1, v56 : Mut3, v57 : Mut4, v58 : Mut5, v59 : Mut6, v60 : int64 option) = TraceState.trace_state.Value
-        let v73 : string = method12(v55, v56, v57, v58, v59, v60)
-        let v74 : string = method16()
-        let v75 : int64 = v55.l0
-        let v76 : int64 = 9223372036854775807L
-        let v77 : int64 = 4738381338321616896L
-        let v78 : int8 = 24y
-        let v79 : string = method38(v76, v77, v78)
-        let v80 : string = method27(v73, v74, v75, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v1 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method40 () : uint8 =
+    let v0 : US2 = US2_1
+    let v1 : bool = method6(v0)
+    if v1 then
+        let v2 : unit = ()
+        let v3 : (unit -> unit) = closure9()
+        let v4 : unit = (fun () -> v3 (); v2) ()
+        let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
+        let v36 : string = method13(v18, v19, v20, v21, v22, v23)
+        let v37 : string = method17()
+        let v38 : string = method43(v18, v19, v20, v21, v22, v23, v36, v37)
+        method24(v38)
+and method46 () : uint8 =
     let v0 : unit = ()
     
 #if FABLE_COMPILER || WASM || CONTRACT
@@ -2523,7 +2438,7 @@ and method40 () : uint8 =
     #endif
     let v36 : uint8 = _v0 
     v36
-and method42 (v0 : int8, v1 : int64, v2 : uint8, v3 : int64) : string =
+and method49 (v0 : int8, v1 : int64, v2 : uint8, v3 : int64) : string =
     let v4 : string = method19()
     let v5 : Mut5 = {l0 = v4} : Mut5
     let v6 : string = "{ "
@@ -2604,703 +2519,463 @@ and method42 (v0 : int8, v1 : int64, v2 : uint8, v3 : int64) : string =
     let v147 : unit = (fun () -> v146 (); v145) ()
     let v150 : string = v5.l0
     v150
+and method48 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 23y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure93 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 23y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method48(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method51 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 22y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure94 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 22y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method51(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method53 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 21y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure95 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 21y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method53(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method55 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 20y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure96 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 20y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method55(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method57 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 19y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure97 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 19y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method57(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method59 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 18y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure98 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 18y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method59(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method61 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 17y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure99 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 17y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method61(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method63 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 16y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure100 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 16y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method63(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method65 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 15y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure101 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 15y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method65(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method67 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 14y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure102 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 14y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method67(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method69 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 13y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure103 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 13y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method69(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method71 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 12y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure104 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 12y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method71(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method73 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 11y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure105 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 11y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method73(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method75 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 10y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure106 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 10y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method75(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method77 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 9y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure107 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 9y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method77(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method79 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 8y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure108 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 8y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method79(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method81 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 7y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure109 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 7y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method81(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method83 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 6y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure110 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 6y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method83(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method85 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 5y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure111 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 5y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method85(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method87 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 4y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure112 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 4y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method87(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method89 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 3y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure113 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 3y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method89(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method91 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 2y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure114 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 2y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method91(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method93 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 1y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure115 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 1y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method93(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method95 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : int8 = 0y
+    let v12 : string = method49(v11, v8, v9, v10)
+    let v13 : int64 = v0.l0
+    let v14 : string = "dice.accumulate_dice_rolls"
+    let v15 : string = $"{v6} {v7} #{v13} %s{v14} / {v12}"
+    method23(v15)
 and closure116 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure9()
-    let v5 : unit = (fun () -> v4 (); v3) ()
-    let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
-    let v37 : US2 = v23.l0
-    let v38 : bool = v21.l0
-    let v39 : bool = v38 = false
-    let v42 : bool =
-        if v39 then
-            false
-        else
-            let v40 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v37
-            let v41 : bool = 1 >= v40
-            v41
-    if v42 then
-        let v43 : unit = ()
-        let v44 : unit = (fun () -> v4 (); v43) ()
-        let struct (v58 : Mut1, v59 : Mut3, v60 : Mut4, v61 : Mut5, v62 : Mut6, v63 : int64 option) = TraceState.trace_state.Value
-        let v76 : string = method12(v58, v59, v60, v61, v62, v63)
-        let v77 : string = method16()
-        let v78 : int64 = v58.l0
-        let v79 : int8 = 0y
-        let v80 : string = method42(v79, v0, v1, v2)
-        let v81 : string = method31(v76, v77, v78, v80)
-        let v82 : unit = ()
-        let v83 : unit = (fun () -> v4 (); v82) ()
-        let struct (v97 : Mut1, v98 : Mut3, v99 : Mut4, v100 : Mut5, v101 : Mut6, v102 : int64 option) = TraceState.trace_state.Value
-        method21(v81, v97, v98, v99, v100, v101, v102)
-and method67 (v0 : int8, v1 : int64, v2 : int64) : string =
+    let v3 : US2 = US2_1
+    let v4 : bool = method6(v3)
+    if v4 then
+        let v5 : unit = ()
+        let v6 : (unit -> unit) = closure9()
+        let v7 : unit = (fun () -> v6 (); v5) ()
+        let struct (v21 : Mut1, v22 : Mut3, v23 : Mut4, v24 : Mut5, v25 : Mut6, v26 : int64 option) = TraceState.trace_state.Value
+        let v39 : string = method13(v21, v22, v23, v24, v25, v26)
+        let v40 : string = method17()
+        let v41 : string = method95(v21, v22, v23, v24, v25, v26, v39, v40, v0, v1, v2)
+        method24(v41)
+and method98 (v0 : int8, v1 : int64, v2 : int64) : string =
     let v3 : string = method19()
     let v4 : Mut5 = {l0 = v3} : Mut5
     let v5 : string = "{ "
@@ -3364,42 +3039,32 @@ and method67 (v0 : int8, v1 : int64, v2 : int64) : string =
     let v113 : unit = (fun () -> v112 (); v111) ()
     let v116 : string = v4.l0
     v116
+and method97 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : int64) : string =
+    let v10 : int8 = -1y
+    let v11 : string = method98(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure117 (v0 : int64, v1 : int64) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = -1y
-        let v79 : string = method67(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method66 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method97(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method96 (v0 : UH1, v1 : int64) : US8 =
     let v2 : int64 = v1 + 1L
     let v3 : unit = ()
     let v4 : (unit -> unit) = closure117(v1, v2)
     let v5 : unit = (fun () -> v4 (); v3) ()
     US8_0(v2, v0)
-and method68 (v0 : int8, v1 : int64, v2 : uint8) : string =
+and method100 (v0 : int8, v1 : int64, v2 : uint8) : string =
     let v3 : string = method19()
     let v4 : Mut5 = {l0 = v3} : Mut5
     let v5 : string = "{ "
@@ -3463,36 +3128,26 @@ and method68 (v0 : int8, v1 : int64, v2 : uint8) : string =
     let v113 : unit = (fun () -> v112 (); v111) ()
     let v116 : string = v4.l0
     v116
+and method99 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 0y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure118 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 0y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method65 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method99(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method94 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3502,45 +3157,35 @@ and method65 (v0 : UH1, v1 : int64) : US8 =
             let v8 : unit = ()
             let v9 : (unit -> unit) = closure116(v1, v3, v7)
             let v10 : unit = (fun () -> v9 (); v8) ()
-            let v123 : int64 = v1 + v7
-            method66(v4, v123)
+            let v50 : int64 = v1 + v7
+            method96(v4, v50)
         else
-            let v125 : unit = ()
-            let v126 : (unit -> unit) = closure118(v1, v3)
-            let v127 : unit = (fun () -> v126 (); v125) ()
-            method66(v4, v1)
+            let v52 : unit = ()
+            let v53 : (unit -> unit) = closure118(v1, v3)
+            let v54 : unit = (fun () -> v53 (); v52) ()
+            method96(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method101 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 1y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure119 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 1y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method64 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method101(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method92 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3551,45 +3196,35 @@ and method64 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure115(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method65(v4, v124)
+            let v51 : int64 = v1 + v8
+            method94(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure119(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method65(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure119(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method94(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method102 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 2y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure120 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 2y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method63 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method102(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method90 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3600,45 +3235,35 @@ and method63 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure114(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method64(v4, v124)
+            let v51 : int64 = v1 + v8
+            method92(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure120(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method64(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure120(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method92(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method103 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 3y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure121 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 3y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method62 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method103(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method88 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3649,45 +3274,35 @@ and method62 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure113(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method63(v4, v124)
+            let v51 : int64 = v1 + v8
+            method90(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure121(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method63(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure121(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method90(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method104 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 4y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure122 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 4y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method61 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method104(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method86 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3698,45 +3313,35 @@ and method61 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure112(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method62(v4, v124)
+            let v51 : int64 = v1 + v8
+            method88(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure122(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method62(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure122(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method88(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method105 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 5y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure123 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 5y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method60 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method105(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method84 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3747,45 +3352,35 @@ and method60 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure111(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method61(v4, v124)
+            let v51 : int64 = v1 + v8
+            method86(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure123(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method61(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure123(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method86(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method106 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 6y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure124 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 6y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method59 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method106(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method82 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3796,45 +3391,35 @@ and method59 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure110(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method60(v4, v124)
+            let v51 : int64 = v1 + v8
+            method84(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure124(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method60(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure124(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method84(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method107 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 7y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure125 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 7y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method58 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method107(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method80 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3845,45 +3430,35 @@ and method58 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure109(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method59(v4, v124)
+            let v51 : int64 = v1 + v8
+            method82(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure125(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method59(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure125(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method82(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method108 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 8y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure126 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 8y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method57 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method108(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method78 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3894,45 +3469,35 @@ and method57 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure108(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method58(v4, v124)
+            let v51 : int64 = v1 + v8
+            method80(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure126(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method58(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure126(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method80(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method109 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 9y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure127 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 9y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method56 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method109(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method76 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3943,45 +3508,35 @@ and method56 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure107(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method57(v4, v124)
+            let v51 : int64 = v1 + v8
+            method78(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure127(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method57(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure127(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method78(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method110 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 10y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure128 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 10y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method55 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method110(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method74 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3992,45 +3547,35 @@ and method55 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure106(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method56(v4, v124)
+            let v51 : int64 = v1 + v8
+            method76(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure128(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method56(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure128(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method76(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method111 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 11y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure129 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 11y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method54 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method111(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method72 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4041,45 +3586,35 @@ and method54 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure105(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method55(v4, v124)
+            let v51 : int64 = v1 + v8
+            method74(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure129(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method55(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure129(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method74(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method112 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 12y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure130 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 12y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method53 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method112(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method70 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4090,45 +3625,35 @@ and method53 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure104(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method54(v4, v124)
+            let v51 : int64 = v1 + v8
+            method72(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure130(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method54(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure130(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method72(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method113 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 13y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure131 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 13y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method52 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method113(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method68 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4139,45 +3664,35 @@ and method52 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure103(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method53(v4, v124)
+            let v51 : int64 = v1 + v8
+            method70(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure131(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method53(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure131(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method70(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method114 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 14y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure132 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 14y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method51 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method114(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method66 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4188,45 +3703,35 @@ and method51 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure102(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method52(v4, v124)
+            let v51 : int64 = v1 + v8
+            method68(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure132(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method52(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure132(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method68(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method115 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 15y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure133 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 15y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method50 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method115(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method64 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4237,45 +3742,35 @@ and method50 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure101(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method51(v4, v124)
+            let v51 : int64 = v1 + v8
+            method66(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure133(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method51(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure133(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method66(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method116 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 16y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure134 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 16y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method49 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method116(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method62 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4286,45 +3781,35 @@ and method49 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure100(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method50(v4, v124)
+            let v51 : int64 = v1 + v8
+            method64(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure134(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method50(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure134(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method64(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method117 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 17y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure135 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 17y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method48 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method117(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method60 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4335,45 +3820,35 @@ and method48 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure99(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method49(v4, v124)
+            let v51 : int64 = v1 + v8
+            method62(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure135(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method49(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure135(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method62(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method118 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 18y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure136 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 18y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method47 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method118(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method58 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4384,45 +3859,35 @@ and method47 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure98(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method48(v4, v124)
+            let v51 : int64 = v1 + v8
+            method60(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure136(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method48(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure136(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method60(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method119 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 19y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure137 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 19y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method46 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method119(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method56 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4433,45 +3898,35 @@ and method46 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure97(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method47(v4, v124)
+            let v51 : int64 = v1 + v8
+            method58(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure137(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method47(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure137(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method58(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method120 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 20y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure138 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 20y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method45 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method120(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method54 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4482,45 +3937,35 @@ and method45 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure96(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method46(v4, v124)
+            let v51 : int64 = v1 + v8
+            method56(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure138(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method46(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure138(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method56(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method121 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 21y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure139 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 21y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method44 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method121(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method52 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4531,45 +3976,35 @@ and method44 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure95(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method45(v4, v124)
+            let v51 : int64 = v1 + v8
+            method54(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure139(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method45(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure139(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method54(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method122 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 22y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure140 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 22y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method43 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method122(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method50 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4580,45 +4015,35 @@ and method43 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure94(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method44(v4, v124)
+            let v51 : int64 = v1 + v8
+            method52(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure140(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method44(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure140(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method52(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
+and method123 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int8 = 23y
+    let v11 : string = method100(v10, v8, v9)
+    let v12 : int64 = v0.l0
+    let v13 : string = "dice.accumulate_dice_rolls"
+    let v14 : string = $"{v6} {v7} #{v12} %s{v13} / {v11}"
+    method23(v14)
 and closure141 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : unit = ()
-    let v3 : (unit -> unit) = closure9()
-    let v4 : unit = (fun () -> v3 (); v2) ()
-    let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-    let v36 : US2 = v22.l0
-    let v37 : bool = v20.l0
-    let v38 : bool = v37 = false
-    let v41 : bool =
-        if v38 then
-            false
-        else
-            let v39 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v36
-            let v40 : bool = 1 >= v39
-            v40
-    if v41 then
-        let v42 : unit = ()
-        let v43 : unit = (fun () -> v3 (); v42) ()
-        let struct (v57 : Mut1, v58 : Mut3, v59 : Mut4, v60 : Mut5, v61 : Mut6, v62 : int64 option) = TraceState.trace_state.Value
-        let v75 : string = method12(v57, v58, v59, v60, v61, v62)
-        let v76 : string = method16()
-        let v77 : int64 = v57.l0
-        let v78 : int8 = 23y
-        let v79 : string = method68(v78, v0, v1)
-        let v80 : string = method31(v75, v76, v77, v79)
-        let v81 : unit = ()
-        let v82 : unit = (fun () -> v3 (); v81) ()
-        let struct (v96 : Mut1, v97 : Mut3, v98 : Mut4, v99 : Mut5, v100 : Mut6, v101 : int64 option) = TraceState.trace_state.Value
-        method21(v80, v96, v97, v98, v99, v100, v101)
-and method41 (v0 : UH1, v1 : int64) : US8 =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v4 : unit = ()
+        let v5 : (unit -> unit) = closure9()
+        let v6 : unit = (fun () -> v5 (); v4) ()
+        let struct (v20 : Mut1, v21 : Mut3, v22 : Mut4, v23 : Mut5, v24 : Mut6, v25 : int64 option) = TraceState.trace_state.Value
+        let v38 : string = method13(v20, v21, v22, v23, v24, v25)
+        let v39 : string = method17()
+        let v40 : string = method123(v20, v21, v22, v23, v24, v25, v38, v39, v0, v1)
+        method24(v40)
+and method47 (v0 : UH1, v1 : int64) : US8 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4629,54 +4054,54 @@ and method41 (v0 : UH1, v1 : int64) : US8 =
             let v9 : unit = ()
             let v10 : (unit -> unit) = closure93(v1, v3, v8)
             let v11 : unit = (fun () -> v10 (); v9) ()
-            let v124 : int64 = v1 + v8
-            method43(v4, v124)
+            let v51 : int64 = v1 + v8
+            method50(v4, v51)
         else
-            let v126 : unit = ()
-            let v127 : (unit -> unit) = closure141(v1, v3)
-            let v128 : unit = (fun () -> v127 (); v126) ()
-            method43(v4, v1)
+            let v53 : unit = ()
+            let v54 : (unit -> unit) = closure141(v1, v3)
+            let v55 : unit = (fun () -> v54 (); v53) ()
+            method50(v4, v1)
     | UH1_0 -> (* Nil *)
         US8_1
-and method39 (v0 : UH1, v1 : int8) : int64 =
+and method45 (v0 : UH1, v1 : int8) : int64 =
     let v2 : bool = v1 < 24y
     if v2 then
-        let v3 : uint8 = method40()
+        let v3 : uint8 = method46()
         let v4 : UH1 = UH1_1(v3, v0)
         let v5 : int8 = v1 + 1y
-        method39(v4, v5)
+        method45(v4, v5)
     else
         let v7 : int64 = 0L
-        let v8 : US8 = method41(v0, v7)
+        let v8 : US8 = method47(v0, v7)
         match v8 with
         | US8_0(v9, v10) -> (* Some *)
             let v11 : bool = v9 <= 9223372036854775807L
             if v11 then
                 v9
             else
-                let v12 : uint8 = method40()
-                let v13 : uint8 = method40()
-                let v14 : uint8 = method40()
-                let v15 : uint8 = method40()
-                let v16 : uint8 = method40()
-                let v17 : uint8 = method40()
-                let v18 : uint8 = method40()
-                let v19 : uint8 = method40()
-                let v20 : uint8 = method40()
-                let v21 : uint8 = method40()
-                let v22 : uint8 = method40()
-                let v23 : uint8 = method40()
-                let v24 : uint8 = method40()
-                let v25 : uint8 = method40()
-                let v26 : uint8 = method40()
-                let v27 : uint8 = method40()
-                let v28 : uint8 = method40()
-                let v29 : uint8 = method40()
-                let v30 : uint8 = method40()
-                let v31 : uint8 = method40()
-                let v32 : uint8 = method40()
-                let v33 : uint8 = method40()
-                let v34 : uint8 = method40()
+                let v12 : uint8 = method46()
+                let v13 : uint8 = method46()
+                let v14 : uint8 = method46()
+                let v15 : uint8 = method46()
+                let v16 : uint8 = method46()
+                let v17 : uint8 = method46()
+                let v18 : uint8 = method46()
+                let v19 : uint8 = method46()
+                let v20 : uint8 = method46()
+                let v21 : uint8 = method46()
+                let v22 : uint8 = method46()
+                let v23 : uint8 = method46()
+                let v24 : uint8 = method46()
+                let v25 : uint8 = method46()
+                let v26 : uint8 = method46()
+                let v27 : uint8 = method46()
+                let v28 : uint8 = method46()
+                let v29 : uint8 = method46()
+                let v30 : uint8 = method46()
+                let v31 : uint8 = method46()
+                let v32 : uint8 = method46()
+                let v33 : uint8 = method46()
+                let v34 : uint8 = method46()
                 let v35 : UH1 = UH1_0
                 let v36 : UH1 = UH1_1(v34, v35)
                 let v37 : UH1 = UH1_1(v33, v36)
@@ -4702,31 +4127,31 @@ and method39 (v0 : UH1, v1 : int8) : int64 =
                 let v57 : UH1 = UH1_1(v13, v56)
                 let v58 : UH1 = UH1_1(v12, v57)
                 let v59 : int8 = 23y
-                method39(v58, v59)
+                method45(v58, v59)
         | _ ->
-            let v62 : uint8 = method40()
-            let v63 : uint8 = method40()
-            let v64 : uint8 = method40()
-            let v65 : uint8 = method40()
-            let v66 : uint8 = method40()
-            let v67 : uint8 = method40()
-            let v68 : uint8 = method40()
-            let v69 : uint8 = method40()
-            let v70 : uint8 = method40()
-            let v71 : uint8 = method40()
-            let v72 : uint8 = method40()
-            let v73 : uint8 = method40()
-            let v74 : uint8 = method40()
-            let v75 : uint8 = method40()
-            let v76 : uint8 = method40()
-            let v77 : uint8 = method40()
-            let v78 : uint8 = method40()
-            let v79 : uint8 = method40()
-            let v80 : uint8 = method40()
-            let v81 : uint8 = method40()
-            let v82 : uint8 = method40()
-            let v83 : uint8 = method40()
-            let v84 : uint8 = method40()
+            let v62 : uint8 = method46()
+            let v63 : uint8 = method46()
+            let v64 : uint8 = method46()
+            let v65 : uint8 = method46()
+            let v66 : uint8 = method46()
+            let v67 : uint8 = method46()
+            let v68 : uint8 = method46()
+            let v69 : uint8 = method46()
+            let v70 : uint8 = method46()
+            let v71 : uint8 = method46()
+            let v72 : uint8 = method46()
+            let v73 : uint8 = method46()
+            let v74 : uint8 = method46()
+            let v75 : uint8 = method46()
+            let v76 : uint8 = method46()
+            let v77 : uint8 = method46()
+            let v78 : uint8 = method46()
+            let v79 : uint8 = method46()
+            let v80 : uint8 = method46()
+            let v81 : uint8 = method46()
+            let v82 : uint8 = method46()
+            let v83 : uint8 = method46()
+            let v84 : uint8 = method46()
             let v85 : UH1 = UH1_0
             let v86 : UH1 = UH1_1(v84, v85)
             let v87 : UH1 = UH1_1(v83, v86)
@@ -4752,8 +4177,8 @@ and method39 (v0 : UH1, v1 : int8) : int64 =
             let v107 : UH1 = UH1_1(v63, v106)
             let v108 : UH1 = UH1_1(v62, v107)
             let v109 : int8 = 23y
-            method39(v108, v109)
-and method69 (v0 : int64) : string =
+            method45(v108, v109)
+and method125 (v0 : int64) : string =
     let v1 : string = method19()
     let v2 : Mut5 = {l0 = v1} : Mut5
     let v3 : string = "{ "
@@ -4782,58 +4207,34 @@ and method69 (v0 : int64) : string =
     let v44 : unit = (fun () -> v43 (); v42) ()
     let v47 : string = v2.l0
     v47
-and method70 (v0 : string, v1 : string, v2 : int64, v3 : string) : string =
-    let v4 : string = "dice.main"
-    let v5 : string = $"{v0} {v1} #{v2} %s{v4} / {v3}"
-    let v8 : char list = []
-    let v9 : (char list -> (char [])) = List.toArray
-    let v10 : (char []) = v9 v8
-    let v13 : string = v5.TrimStart v10 
-    let v31 : char list = []
-    let v32 : char list = '/' :: v31 
-    let v35 : char list = ' ' :: v32 
-    let v38 : (char list -> (char [])) = List.toArray
-    let v39 : (char []) = v38 v35
-    let v42 : string = v13.TrimEnd v39 
-    v42
+and method124 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64) : string =
+    let v9 : string = method125(v8)
+    let v10 : int64 = v0.l0
+    let v11 : string = "dice.main"
+    let v12 : string = $"{v6} {v7} #{v10} %s{v11} / {v9}"
+    method23(v12)
 and closure142 (v0 : int64) () : unit =
-    let v1 : unit = ()
-    let v2 : (unit -> unit) = closure9()
-    let v3 : unit = (fun () -> v2 (); v1) ()
-    let struct (v17 : Mut1, v18 : Mut3, v19 : Mut4, v20 : Mut5, v21 : Mut6, v22 : int64 option) = TraceState.trace_state.Value
-    let v35 : US2 = v21.l0
-    let v36 : bool = v19.l0
-    let v37 : bool = v36 = false
-    let v40 : bool =
-        if v37 then
-            false
-        else
-            let v38 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v35
-            let v39 : bool = 1 >= v38
-            v39
-    if v40 then
-        let v41 : unit = ()
-        let v42 : unit = (fun () -> v2 (); v41) ()
-        let struct (v56 : Mut1, v57 : Mut3, v58 : Mut4, v59 : Mut5, v60 : Mut6, v61 : int64 option) = TraceState.trace_state.Value
-        let v74 : string = method12(v56, v57, v58, v59, v60, v61)
-        let v75 : string = method16()
-        let v76 : int64 = v56.l0
-        let v77 : string = method69(v0)
-        let v78 : string = method70(v74, v75, v76, v77)
-        let v79 : unit = ()
-        let v80 : unit = (fun () -> v2 (); v79) ()
-        let struct (v94 : Mut1, v95 : Mut3, v96 : Mut4, v97 : Mut5, v98 : Mut6, v99 : int64 option) = TraceState.trace_state.Value
-        method21(v78, v94, v95, v96, v97, v98, v99)
+    let v1 : US2 = US2_1
+    let v2 : bool = method6(v1)
+    if v2 then
+        let v3 : unit = ()
+        let v4 : (unit -> unit) = closure9()
+        let v5 : unit = (fun () -> v4 (); v3) ()
+        let struct (v19 : Mut1, v20 : Mut3, v21 : Mut4, v22 : Mut5, v23 : Mut6, v24 : int64 option) = TraceState.trace_state.Value
+        let v37 : string = method13(v19, v20, v21, v22, v23, v24)
+        let v38 : string = method17()
+        let v39 : string = method124(v19, v20, v21, v22, v23, v24, v37, v38, v0)
+        method24(v39)
 and closure91 () (v0 : (string [])) : int32 =
     let v1 : unit = ()
     let v2 : (unit -> unit) = closure92()
     let v3 : unit = (fun () -> v2 (); v1) ()
-    let v118 : UH1 = UH1_0
-    let v119 : int8 = 0y
-    let v120 : int64 = method39(v118, v119)
-    let v121 : unit = ()
-    let v122 : (unit -> unit) = closure142(v120)
-    let v123 : unit = (fun () -> v122 (); v121) ()
+    let v43 : UH1 = UH1_0
+    let v44 : int8 = 0y
+    let v45 : int64 = method45(v43, v44)
+    let v46 : unit = ()
+    let v47 : (unit -> unit) = closure142(v45)
+    let v48 : unit = (fun () -> v47 (); v46) ()
     0
 let v0 : (int64 -> (UH0 -> UH0)) = closure0()
 let rotate_numbers x = v0 x

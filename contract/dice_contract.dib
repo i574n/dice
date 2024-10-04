@@ -95,7 +95,42 @@ inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.
             !\\(seed_excess_len, $'"!seeds.drain(0..$0 as u32).collect::<Vec<_>>()"')
         trace Debug
             fun () => "dice_contract.contribute_seed"
-            fun () => { seed_excess = seed_excess |> sm'.format_debug }
+            fun () => { seed_excess_len seed_excess = seed_excess |> sm'.format_debug }
+    trace Debug (fun () => "") (join id)
+
+#!spiral
+
+//// test
+///! rust -c
+
+inl replicate n =
+    let rec loop i acc =
+        if i > n
+        then acc
+        else
+            inl i' = i % 10
+            inl i' =
+                if i' = 0
+                then i % limit.max
+                else i'
+            loop (i + 1) (i' :: acc)
+    loop 1 []
+    |> listm.rev
+    |> listm'.box
+    |> listm'.to_array'
+
+inl max_seeds : u32 = max_seeds () |> convert
+inl seeds = "" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut
+
+conv max_seeds * 1.2f64
+|> replicate
+|> am'.map_base u8
+|> am'.to_vec
+|> contribute_seed seeds
+
+seeds
+|> rust.len
+|> _assert_eq max_seeds
 
 #!markdown
 
@@ -116,6 +151,7 @@ inl generate_random_number
     inl block_timestamp = near.block_timestamp ()
     inl account_balance = near.account_balance ()
     inl signer_account_id = near.signer_account_id ()
+    inl predecessor_account_id = near.predecessor_account_id ()
     inl entropy =
         ;[
             seed
@@ -125,6 +161,7 @@ inl generate_random_number
             block_timestamp |> am'.to_le_bytes |> am'.to_vec'
             account_balance |> near.as_yoctonear |> am'.to_le_bytes |> am'.to_vec'
             signer_account_id |> am'.as_bytes |> am'.to_vec''
+            predecessor_account_id |> am'.as_bytes |> am'.to_vec''
             proof |> sm'.into_bytes
             key |> sm'.into_bytes
         ]
@@ -151,6 +188,7 @@ inl generate_random_number
             epoch_height
             account_balance = account_balance |> sm'.format_debug
             signer_account_id = signer_account_id |> sm'.to_string
+            predecessor_account_id = predecessor_account_id |> sm'.to_string
             seed = seed |> sm'.format_debug
             seeds = seeds |> sm'.format_debug
             entropy_len = entropy |> am'.vec_len
@@ -289,7 +327,9 @@ inl main () =
 
         !\($'"} //"') : ()
 
-        2
+        !\($'"} //"') : ()
+
+        3
 
     inl contribute_seed_borsh () =
         !\($'"pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) { //"') : ()

@@ -1,13 +1,13 @@
 import { compare, IComparable, IEquatable, createAtom } from "../../../../deps/Fable/src/fable-library-ts/Util.js";
-import { value as value_3, map, defaultArg, Option } from "../../../../deps/Fable/src/fable-library-ts/Option.js";
+import { map, defaultArg, value as value_3, Option } from "../../../../deps/Fable/src/fable-library-ts/Option.js";
 import { op_Multiply, toUInt64, equals, compare as compare_1, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "../../../../deps/Fable/src/fable-library-ts/BigInt.js";
 import { Record, Union } from "../../../../deps/Fable/src/fable-library-ts/Types.js";
 import { int8, int32, uint8 } from "../../../../deps/Fable/src/fable-library-ts/Int32.js";
 import { uint64_type, bool_type, string_type, int64_type, record_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "../../../../deps/Fable/src/fable-library-ts/Reflection.js";
 import { create, toString, now, getTicks } from "../../../../deps/Fable/src/fable-library-ts/Date.js";
-import { milliseconds, seconds, minutes, hours, fromTicks } from "../../../../deps/Fable/src/fable-library-ts/TimeSpan.js";
-import { interpolate, toText, trimStart, trimEnd, padLeft } from "../../../../deps/Fable/src/fable-library-ts/String.js";
 import { ofSeq, find } from "../../../../deps/Fable/src/fable-library-ts/Map.js";
+import { milliseconds, seconds, minutes, hours, fromTicks } from "../../../../deps/Fable/src/fable-library-ts/TimeSpan.js";
+import { interpolate, toText, trimStart, trimEnd } from "../../../../deps/Fable/src/fable-library-ts/String.js";
 import { nonSeeded } from "../../../../deps/Fable/src/fable-library-ts/Random.js";
 
 export let TraceState_trace_state = createAtom<Option<[Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>]>>(undefined);
@@ -564,11 +564,11 @@ export function method4(v0_1: UH0_$union, v1_1: (() => UH0_$union)): (() => UH0_
     return (): UH0_$union => closure6(v0_1, v3_1, undefined);
 }
 
-export function method7(): string {
+export function method8(): string {
     return "TRACE_LEVEL";
 }
 
-export function method9(): string {
+export function method10(): string {
     return "";
 }
 
@@ -576,26 +576,26 @@ export function closure10(unitVar: void, v0_1: string): US3_$union {
     return US3_US3_0(v0_1);
 }
 
-export function method10(): ((arg0: string) => US3_$union) {
+export function method11(): ((arg0: string) => US3_$union) {
     return (v: string): US3_$union => closure10(undefined, v);
 }
 
-export function method8(v0_1: string): string {
+export function method9(v0_1: string): string {
     return process.env[v0_1] ?? "";
 }
 
-export function method11(): string {
+export function method12(): string {
     return "AUTOMATION";
 }
 
 export function closure11(unitVar: void, v0_1: string): void {
 }
 
-export function method6(v0_1: US2_$union): [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] {
+export function method7(v0_1: US2_$union): [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] {
     let v181: US4_$union, v188: US4_$union, v195: US4_$union, v202: US4_$union;
-    const v169: string = method8(method7());
+    const v169: string = method9(method8());
     const v174: US4_$union = ("Verbose" === v169) ? US4_US4_0(US2_US2_0()) : US4_US4_1();
-    const _v1 = [(v174.tag === /* US4_0 */ 0) ? US4_US4_0(v174.fields[0]) : ((v181 = (("Debug" === v169) ? US4_US4_0(US2_US2_1()) : US4_US4_1()), (v181.tag === /* US4_0 */ 0) ? US4_US4_0(v181.fields[0]) : ((v188 = (("Info" === v169) ? US4_US4_0(US2_US2_2()) : US4_US4_1()), (v188.tag === /* US4_0 */ 0) ? US4_US4_0(v188.fields[0]) : ((v195 = (("Warning" === v169) ? US4_US4_0(US2_US2_3()) : US4_US4_1()), (v195.tag === /* US4_0 */ 0) ? US4_US4_0(v195.fields[0]) : ((v202 = (("Critical" === v169) ? US4_US4_0(US2_US2_4()) : US4_US4_1()), (v202.tag === /* US4_0 */ 0) ? US4_US4_0(v202.fields[0]) : US4_US4_1())))))))), (method8(method11()) === "True") ? US5_US5_0(getTicks(now())) : US5_US5_1()] as [US4_$union, US5_$union];
+    const _v1 = [(v174.tag === /* US4_0 */ 0) ? US4_US4_0(v174.fields[0]) : ((v181 = (("Debug" === v169) ? US4_US4_0(US2_US2_1()) : US4_US4_1()), (v181.tag === /* US4_0 */ 0) ? US4_US4_0(v181.fields[0]) : ((v188 = (("Info" === v169) ? US4_US4_0(US2_US2_2()) : US4_US4_1()), (v188.tag === /* US4_0 */ 0) ? US4_US4_0(v188.fields[0]) : ((v195 = (("Warning" === v169) ? US4_US4_0(US2_US2_3()) : US4_US4_1()), (v195.tag === /* US4_0 */ 0) ? US4_US4_0(v195.fields[0]) : ((v202 = (("Critical" === v169) ? US4_US4_0(US2_US2_4()) : US4_US4_1()), (v202.tag === /* US4_0 */ 0) ? US4_US4_0(v202.fields[0]) : US4_US4_1())))))))), (method9(method12()) === "True") ? US5_US5_0(getTicks(now())) : US5_US5_1()] as [US4_$union, US5_$union];
     const v352: US5_$union = _v1[1];
     const v351: US4_$union = _v1[0];
     return [new Mut1(1n), new Mut3((v: string): void => {
@@ -605,8 +605,26 @@ export function method6(v0_1: US2_$union): [Mut1, Mut3, Mut4, Mut5, Mut6, Option
 
 export function closure9(unitVar: void, unitVar_1: void): void {
     if (TraceState_trace_state() == null) {
-        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = method6(US2_US2_0());
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = method7(US2_US2_0());
         TraceState_trace_state([patternInput[0], patternInput[1], patternInput[2], patternInput[3], patternInput[4], patternInput[5]] as [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>]);
+    }
+}
+
+export function method6(v0_1: US2_$union): boolean {
+    let v3_1: any;
+    closure9(undefined, undefined);
+    v3_1 = undefined;
+    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+    const v35: US2_$union = patternInput[4].l0;
+    if (patternInput[2].l0 === false) {
+        return false;
+    }
+    else {
+        return find<US2_$union, int32>(v0_1, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
+            Compare: compare,
+        })) >= find<US2_$union, int32>(v35, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
+            Compare: compare,
+        }));
     }
 }
 
@@ -614,30 +632,22 @@ export function closure12(unitVar: void, v0_1: int64): US5_$union {
     return US5_US5_0(v0_1);
 }
 
-export function method13(): ((arg0: int64) => US5_$union) {
+export function method14(): ((arg0: int64) => US5_$union) {
     return (v: int64): US5_$union => closure12(undefined, v);
 }
 
-export function method14(): string {
+export function method15(): string {
     return "hh:mm:ss";
 }
 
-export function method15(): string {
+export function method16(): string {
     return "HH:mm:ss";
 }
 
-export function method12(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>): string {
+export function method13(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>): string {
     let v181: int64, v191: number;
-    const v177: US5_$union = defaultArg(map<int64, US5_$union>(method13(), v5), US5_US5_1());
-    return toString((v177.tag === /* US5_0 */ 0) ? ((v181 = v177.fields[0], (v191 = fromTicks(toInt64(op_Subtraction(getTicks(now()), v181))), create(1, 1, 1, hours(v191), minutes(v191), seconds(v191), milliseconds(v191))))) : now(), method15());
-}
-
-export function method17(): string {
-    return "\u001b[0m";
-}
-
-export function method16(): string {
-    return ("\u001b[94m" + padLeft("Debug".toLocaleLowerCase(), 7, " ")) + method17();
+    const v177: US5_$union = defaultArg(map<int64, US5_$union>(method14(), v5), US5_US5_1());
+    return toString((v177.tag === /* US5_0 */ 0) ? ((v181 = v177.fields[0], (v191 = fromTicks(toInt64(op_Subtraction(getTicks(now()), v181))), create(1, 1, 1, hours(v191), minutes(v191), seconds(v191), milliseconds(v191))))) : now(), method16());
 }
 
 export function method19(): string {
@@ -649,7 +659,24 @@ export function closure13(v0_1: Mut5, v1_1: string, unitVar: void): void {
     v0_1.l0 = v3_1;
 }
 
-export function method18(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: string): string {
+export function method18(v0_1: string): string {
+    const v2_1: Mut5 = new Mut5(method19());
+    let v8: any;
+    closure13(v2_1, `${v0_1}`, undefined);
+    v8 = undefined;
+    return v2_1.l0;
+}
+
+export function method20(): string {
+    return "\u001b[0m";
+}
+
+export function method17(): string {
+    const v2_1: string = "Debug".toLocaleLowerCase();
+    return ("\u001b[94m" + method18(v2_1[0])) + method20();
+}
+
+export function method22(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: string): string {
     const v5: Mut5 = new Mut5(method19());
     let v12: any;
     closure13(v5, `${"{ "}`, undefined);
@@ -705,8 +732,13 @@ export function method18(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: string): s
     return v5.l0;
 }
 
-export function method20(v0_1: string, v1_1: string, v2_1: int64, v3_1: string): string {
-    return trimEnd(trimStart(`${v0_1} ${v1_1} #${v2_1} ${"dice.create_sequential_roller / roll"} / ${v3_1}`, ...[]), ...[" ", "/"]);
+export function method23(v0_1: string): string {
+    return trimEnd(trimStart(v0_1, ...[]), ...[" ", "/"]);
+}
+
+export function method21(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: int64, v10: int64, v11: string): string {
+    const v12: string = method22(v8, v9, v10, v11);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.create_sequential_roller / roll"} / ${v12}`);
 }
 
 export function closure14(v0_1: Mut1, unitVar: void): void {
@@ -724,42 +756,36 @@ export function closure15(unitVar: void, v0_1: string): void {
     v3_1 = undefined;
 }
 
-export function method21(v0_1: string, v1_1: Mut1, v2_1: Mut3, v3_1: Mut4, v4_1: Mut5, v5: Mut6, v6: Option<int64>): void {
-    let v9: any;
-    closure14(v1_1, undefined);
-    v9 = undefined;
+export function method24(v0_1: string): void {
+    let v3_1: any;
+    closure9(undefined, undefined);
+    v3_1 = undefined;
+    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+    let v37: any;
+    closure14(patternInput[0], undefined);
+    v37 = undefined;
     closure15(undefined, v0_1);
-    v2_1.l0(v0_1);
+    patternInput[1].l0(v0_1);
 }
 
 export function closure8(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: Option<uint8>, unitVar: void): void {
-    const v5 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v8: any;
         closure9(undefined, undefined);
-    };
-    let v6: any;
-    v5();
-    v6 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v38: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v38, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v45: any;
-        v5();
-        v45 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v59: Mut1 = patternInput_1[0];
-        const v84: string = method20(method12(v59, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v59.l0, method18(v0_1, v1_1, v2_1, toText(interpolate("%A%P()", [v3_1]))));
-        let v86: any;
-        v5();
-        v86 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v84, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v8 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v27: Option<int64> = patternInput[5];
+        const v26: Mut6 = patternInput[4];
+        const v25: Mut5 = patternInput[3];
+        const v24: Mut4 = patternInput[2];
+        const v23: Mut3 = patternInput[1];
+        const v22: Mut1 = patternInput[0];
+        method24(method21(v22, v23, v24, v25, v26, v27, method13(v22, v23, v24, v25, v26, v27), method17(), v0_1, v1_1, v2_1, toText(interpolate("%A%P()", [v3_1]))));
     }
 }
 
-export function method22(v0_1_mut: int64, v1_1_mut: UH0_$union): US1_$union {
-    method22:
+export function method25(v0_1_mut: int64, v1_1_mut: UH0_$union): US1_$union {
+    method25:
     while (true) {
         const v0_1: int64 = v0_1_mut, v1_1: UH0_$union = v1_1_mut;
         if (v1_1.tag === /* UH0_1 */ 1) {
@@ -774,45 +800,36 @@ export function method22(v0_1_mut: int64, v1_1_mut: UH0_$union): US1_$union {
             else {
                 v0_1_mut = toInt64(op_Subtraction(v0_1, 1n));
                 v1_1_mut = v3_1();
-                continue method22;
+                continue method25;
             }
         }
         break;
     }
 }
 
-export function method23(): string {
+export function method27(): string {
     const v1_1: Mut5 = new Mut5(method19());
     return v1_1.l0;
 }
 
-export function method24(v0_1: string, v1_1: string, v2_1: int64, v3_1: string): string {
-    return trimEnd(trimStart(`${v0_1} ${v1_1} #${v2_1} ${"dice.create_sequential_roller / roll / None"} / ${v3_1}`, ...[]), ...[" ", "/"]);
+export function method26(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string): string {
+    const v8: string = method27();
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.create_sequential_roller / roll / None"} / ${v8}`);
 }
 
 export function closure17(unitVar: void, unitVar_1: void): void {
-    const v1_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v4_1: any;
         closure9(undefined, undefined);
-    };
-    let v2_1: any;
-    v1_1();
-    v2_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v34: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v34, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v41: any;
-        v1_1();
-        v41 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v55: Mut1 = patternInput_1[0];
-        const v77: string = method24(method12(v55, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v55.l0, method23());
-        let v79: any;
-        v1_1();
-        v79 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v77, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v4_1 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v23: Option<int64> = patternInput[5];
+        const v22: Mut6 = patternInput[4];
+        const v21: Mut5 = patternInput[3];
+        const v20: Mut4 = patternInput[2];
+        const v19: Mut3 = patternInput[1];
+        const v18: Mut1 = patternInput[0];
+        method24(method26(v18, v19, v20, v21, v22, v23, method13(v18, v19, v20, v21, v22, v23), method17()));
     }
 }
 
@@ -827,27 +844,27 @@ export function method5(v0_1_mut: (() => UH0_$union), v1_1_mut: Mut1, v2_1_mut: 
         let v18: any;
         closure8(v5, v6, v7, (v8.tag === /* US1_0 */ 0) ? v8.fields[0] : undefined, undefined);
         v18 = undefined;
-        const v133: UH0_$union = v0_1();
-        const v135: US1_$union = method22(v1_1.l0, v133);
-        if (v135.tag === /* US1_0 */ 0) {
-            const v136: uint8 = v135.fields[0];
-            const v138: int64 = toInt64(op_Addition(v1_1.l0, 1n));
-            v1_1.l0 = v138;
-            v4_1.l0 = US1_US1_0(v136);
-            return v136;
+        const v61: UH0_$union = v0_1();
+        const v63: US1_$union = method25(v1_1.l0, v61);
+        if (v63.tag === /* US1_0 */ 0) {
+            const v64: uint8 = v63.fields[0];
+            const v66: int64 = toInt64(op_Addition(v1_1.l0, 1n));
+            v1_1.l0 = v66;
+            v4_1.l0 = US1_US1_0(v64);
+            return v64;
         }
         else {
-            let v142: any;
+            let v70: any;
             closure17(undefined, undefined);
-            v142 = undefined;
+            v70 = undefined;
             if (equals(v3_1.l0, -1n)) {
-                const v256: int64 = v1_1.l0;
-                v3_1.l0 = v256;
+                const v112: int64 = v1_1.l0;
+                v3_1.l0 = v112;
             }
-            const v262: int64 = (compare_1(v2_1.l0, v3_1.l0) >= 0) ? (1n) : toInt64(op_Addition(v2_1.l0, 1n));
-            v2_1.l0 = v262;
-            const v264: int64 = toInt64(op_Subtraction(v2_1.l0, 1n));
-            v1_1.l0 = v264;
+            const v118: int64 = (compare_1(v2_1.l0, v3_1.l0) >= 0) ? (1n) : toInt64(op_Addition(v2_1.l0, 1n));
+            v2_1.l0 = v118;
+            const v120: int64 = toInt64(op_Subtraction(v2_1.l0, 1n));
+            v1_1.l0 = v120;
             v4_1.l0 = US1_US1_1();
             v0_1_mut = v0_1;
             v1_1_mut = v1_1;
@@ -874,7 +891,7 @@ export function closure3(unitVar: void, v0_1: UH1_$union): (() => uint8) {
     return (): uint8 => closure7(v7, v8, v9, v10, v12, undefined);
 }
 
-export function method26(v0_1: uint64, v1_1: uint64, v2_1: int8): string {
+export function method30(v0_1: uint64, v1_1: uint64, v2_1: int8): string {
     const v4_1: Mut5 = new Mut5(method19());
     let v11: any;
     closure13(v4_1, `${"{ "}`, undefined);
@@ -918,38 +935,29 @@ export function method26(v0_1: uint64, v1_1: uint64, v2_1: int8): string {
     return v4_1.l0;
 }
 
-export function method27(v0_1: string, v1_1: string, v2_1: int64, v3_1: string): string {
-    return trimEnd(trimStart(`${v0_1} ${v1_1} #${v2_1} ${"dice.calculate_dice_count"} / ${v3_1}`, ...[]), ...[" ", "/"]);
+export function method29(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: uint64, v9: uint64, v10: int8): string {
+    const v11: string = method30(v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.calculate_dice_count"} / ${v11}`);
 }
 
 export function closure21(v0_1: uint64, v1_1: int8, v2_1: uint64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v80: string = method27(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method26(v0_1, v2_1, v1_1));
-        let v82: any;
-        v4_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method29(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v2_1, v1_1));
     }
 }
 
-export function method25(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64): int8 {
-    method25:
+export function method28(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64): int8 {
+    method28:
     while (true) {
         const v0_1: uint64 = v0_1_mut, v1_1: int8 = v1_1_mut, v2_1: uint64 = v2_1_mut;
         if (compare_1(v2_1, v0_1) < 0) {
@@ -958,7 +966,7 @@ export function method25(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64): in
                 v0_1_mut = v0_1;
                 v1_1_mut = (v1_1 + 1);
                 v2_1_mut = v4_1;
-                continue method25;
+                continue method28;
             }
             else {
                 let v10: any;
@@ -968,16 +976,16 @@ export function method25(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64): in
             }
         }
         else {
-            let v125: any;
+            let v53: any;
             closure21(v0_1, v1_1, v2_1, undefined);
-            v125 = undefined;
+            v53 = undefined;
             return v1_1 | 0;
         }
         break;
     }
 }
 
-export function method30(v0_1: int8, v1_1: uint64, v2_1: uint64): string {
+export function method34(v0_1: int8, v1_1: uint64, v2_1: uint64): string {
     const v4_1: Mut5 = new Mut5(method19());
     let v11: any;
     closure13(v4_1, `${"{ "}`, undefined);
@@ -1021,33 +1029,24 @@ export function method30(v0_1: int8, v1_1: uint64, v2_1: uint64): string {
     return v4_1.l0;
 }
 
-export function method31(v0_1: string, v1_1: string, v2_1: int64, v3_1: string): string {
-    return trimEnd(trimStart(`${v0_1} ${v1_1} #${v2_1} ${"dice.accumulate_dice_rolls"} / ${v3_1}`, ...[]), ...[" ", "/"]);
+export function method33(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int8, v9: uint64, v10: uint64): string {
+    const v11: string = method34(v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure22(v0_1: uint64, v1_1: int8, v2_1: uint64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method30(v1_1, v0_1, v2_1));
-        let v82: any;
-        v4_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method33(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v1_1, v0_1, v2_1));
     }
 }
 
@@ -1307,8 +1306,8 @@ export function closure23(unitVar: void, unitVar_1: void): UH2_$union {
     return UH2_UH2_0(6n, (): UH2_$union => closure24(undefined, undefined));
 }
 
-export function method32(v0_1_mut: int8, v1_1_mut: UH2_$union): US7_$union {
-    method32:
+export function method35(v0_1_mut: int8, v1_1_mut: UH2_$union): US7_$union {
+    method35:
     while (true) {
         const v0_1: int8 = v0_1_mut, v1_1: UH2_$union = v1_1_mut;
         if (v1_1.tag === /* UH2_1 */ 1) {
@@ -1320,13 +1319,13 @@ export function method32(v0_1_mut: int8, v1_1_mut: UH2_$union): US7_$union {
         else {
             v0_1_mut = (v0_1 - 1);
             v1_1_mut = v1_1.fields[1]();
-            continue method32;
+            continue method35;
         }
         break;
     }
 }
 
-export function method33(v0_1: int8, v1_1: uint64, v2_1: uint8, v3_1: uint64): string {
+export function method37(v0_1: int8, v1_1: uint64, v2_1: uint8, v3_1: uint64): string {
     const v5: Mut5 = new Mut5(method19());
     let v12: any;
     closure13(v5, `${"{ "}`, undefined);
@@ -1382,33 +1381,28 @@ export function method33(v0_1: int8, v1_1: uint64, v2_1: uint8, v3_1: uint64): s
     return v5.l0;
 }
 
+export function method36(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int8, v9: uint64, v10: uint8, v11: uint64): string {
+    const v12: string = method37(v8, v9, v10, v11);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
+}
+
 export function closure87(v0_1: uint64, v1_1: int8, v2_1: uint8, v3_1: uint64, unitVar: void): void {
-    const v5 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v8: any;
         closure9(undefined, undefined);
-    };
-    let v6: any;
-    v5();
-    v6 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v38: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v38, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v45: any;
-        v5();
-        v45 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v59: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v59, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v59.l0, method33(v1_1, v0_1, v2_1, v3_1));
-        let v83: any;
-        v5();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v8 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v27: Option<int64> = patternInput[5];
+        const v26: Mut6 = patternInput[4];
+        const v25: Mut5 = patternInput[3];
+        const v24: Mut4 = patternInput[2];
+        const v23: Mut3 = patternInput[1];
+        const v22: Mut1 = patternInput[0];
+        method24(method36(v22, v23, v24, v25, v26, v27, method13(v22, v23, v24, v25, v26, v27), method17(), v1_1, v0_1, v2_1, v3_1));
     }
 }
 
-export function method34(v0_1: int8, v1_1: uint64, v2_1: uint8): string {
+export function method39(v0_1: int8, v1_1: uint64, v2_1: uint8): string {
     const v4_1: Mut5 = new Mut5(method19());
     let v11: any;
     closure13(v4_1, `${"{ "}`, undefined);
@@ -1452,34 +1446,29 @@ export function method34(v0_1: int8, v1_1: uint64, v2_1: uint8): string {
     return v4_1.l0;
 }
 
+export function method38(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int8, v9: uint64, v10: uint8): string {
+    const v11: string = method39(v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
+}
+
 export function closure88(v0_1: uint64, v1_1: int8, v2_1: uint8, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method34(v1_1, v0_1, v2_1));
-        let v82: any;
-        v4_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method38(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v1_1, v0_1, v2_1));
     }
 }
 
-export function method29(v0_1_mut: int8, v1_1_mut: UH1_$union, v2_1_mut: uint64): US6_$union {
-    method29:
+export function method32(v0_1_mut: int8, v1_1_mut: UH1_$union, v2_1_mut: uint64): US6_$union {
+    method32:
     while (true) {
         const v0_1: int8 = v0_1_mut, v1_1: UH1_$union = v1_1_mut, v2_1: uint64 = v2_1_mut;
         if (v0_1 < 0) {
@@ -1493,59 +1482,59 @@ export function method29(v0_1_mut: int8, v1_1_mut: UH1_$union, v2_1_mut: uint64)
             return US6_US6_1();
         }
         else {
-            const v122: UH1_$union = v1_1.fields[1];
-            const v121: uint8 = v1_1.fields[0];
-            if (v121 > 1) {
-                const v127: US7_$union = method32(v0_1, UH2_UH2_0(1n, (): UH2_$union => closure23(undefined, undefined)));
-                let v131: uint64;
-                if (v127.tag === /* US7_0 */ 0) {
-                    v131 = v127.fields[0];
+            const v50: UH1_$union = v1_1.fields[1];
+            const v49: uint8 = v1_1.fields[0];
+            if (v49 > 1) {
+                const v55: US7_$union = method35(v0_1, UH2_UH2_0(1n, (): UH2_$union => closure23(undefined, undefined)));
+                let v59: uint64;
+                if (v55.tag === /* US7_0 */ 0) {
+                    v59 = v55.fields[0];
                 }
                 else {
                     throw new Error("Option does not have a value.");
                 }
-                const v134: uint64 = toUInt64(op_Multiply(toUInt64(fromUInt8(v121 - 1)), v131));
-                let v137: any;
-                closure87(v2_1, v0_1, v121, v134, undefined);
-                v137 = undefined;
+                const v62: uint64 = toUInt64(op_Multiply(toUInt64(fromUInt8(v49 - 1)), v59));
+                let v65: any;
+                closure87(v2_1, v0_1, v49, v62, undefined);
+                v65 = undefined;
                 v0_1_mut = (v0_1 - 1);
-                v1_1_mut = v122;
-                v2_1_mut = toUInt64(op_Addition(v2_1, v134));
-                continue method29;
+                v1_1_mut = v50;
+                v2_1_mut = toUInt64(op_Addition(v2_1, v62));
+                continue method32;
             }
             else {
-                let v254: any;
-                closure88(v2_1, v0_1, v121, undefined);
-                v254 = undefined;
+                let v110: any;
+                closure88(v2_1, v0_1, v49, undefined);
+                v110 = undefined;
                 v0_1_mut = (v0_1 - 1);
-                v1_1_mut = v122;
+                v1_1_mut = v50;
                 v2_1_mut = v2_1;
-                continue method29;
+                continue method32;
             }
         }
         break;
     }
 }
 
-export function method35(v0_1: int8, v1_1: (() => uint8), v2_1: int8): UH1_$union {
+export function method40(v0_1: int8, v1_1: (() => uint8), v2_1: int8): UH1_$union {
     if (v2_1 < v0_1) {
-        return UH1_UH1_1(v1_1(), method35(v0_1, v1_1, v2_1 + 1));
+        return UH1_UH1_1(v1_1(), method40(v0_1, v1_1, v2_1 + 1));
     }
     else {
         return UH1_UH1_0();
     }
 }
 
-export function method36(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1_$union): uint64 {
-    method36:
+export function method41(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1_$union): uint64 {
+    method41:
     while (true) {
         const v0_1: (() => uint8) = v0_1_mut, v1_1: boolean = v1_1_mut, v2_1: uint64 = v2_1_mut, v3_1: int8 = v3_1_mut, v4_1: UH1_$union = v4_1_mut;
         const v5: int8 = (v3_1 + 1) | 0;
         if (v3_1 < v5) {
-            return method28(v0_1, v1_1, v2_1, v3_1, UH1_UH1_1(v0_1(), v4_1), v5);
+            return method31(v0_1, v1_1, v2_1, v3_1, UH1_UH1_1(v0_1(), v4_1), v5);
         }
         else {
-            const v11: US6_$union = method29(v3_1, v4_1, 0n);
+            const v11: US6_$union = method32(v3_1, v4_1, 0n);
             if (v11.tag === /* US6_0 */ 0) {
                 const v13: UH1_$union = v11.fields[1];
                 const v12: uint64 = v11.fields[0];
@@ -1557,11 +1546,11 @@ export function method36(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: u
                     v1_1_mut = v1_1;
                     v2_1_mut = v2_1;
                     v3_1_mut = v3_1;
-                    v4_1_mut = method35(v3_1, v0_1, 0);
-                    continue method36;
+                    v4_1_mut = method40(v3_1, v0_1, 0);
+                    continue method41;
                 }
                 else {
-                    return method28(v0_1, v1_1, v2_1, v3_1, UH1_UH1_1(v0_1(), v4_1), v5);
+                    return method31(v0_1, v1_1, v2_1, v3_1, UH1_UH1_1(v0_1(), v4_1), v5);
                 }
             }
             else if (v1_1) {
@@ -1569,19 +1558,19 @@ export function method36(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: u
                 v1_1_mut = v1_1;
                 v2_1_mut = v2_1;
                 v3_1_mut = v3_1;
-                v4_1_mut = method35(v3_1, v0_1, 0);
-                continue method36;
+                v4_1_mut = method40(v3_1, v0_1, 0);
+                continue method41;
             }
             else {
-                return method28(v0_1, v1_1, v2_1, v3_1, UH1_UH1_1(v0_1(), v4_1), v5);
+                return method31(v0_1, v1_1, v2_1, v3_1, UH1_UH1_1(v0_1(), v4_1), v5);
             }
         }
         break;
     }
 }
 
-export function method28(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1_$union, v5_mut: int8): uint64 {
-    method28:
+export function method31(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1_$union, v5_mut: int8): uint64 {
+    method31:
     while (true) {
         const v0_1: (() => uint8) = v0_1_mut, v1_1: boolean = v1_1_mut, v2_1: uint64 = v2_1_mut, v3_1: int8 = v3_1_mut, v4_1: UH1_$union = v4_1_mut, v5: int8 = v5_mut;
         if (v5 < (v3_1 + 1)) {
@@ -1591,10 +1580,10 @@ export function method28(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: u
             v3_1_mut = v3_1;
             v4_1_mut = UH1_UH1_1(v0_1(), v4_1);
             v5_mut = (v5 + 1);
-            continue method28;
+            continue method31;
         }
         else {
-            const v13: US6_$union = method29(v3_1, v4_1, 0n);
+            const v13: US6_$union = method32(v3_1, v4_1, 0n);
             if (v13.tag === /* US6_0 */ 0) {
                 const v15: UH1_$union = v13.fields[1];
                 const v14: uint64 = v13.fields[0];
@@ -1602,7 +1591,7 @@ export function method28(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: u
                     return v14;
                 }
                 else if (v1_1) {
-                    return method36(v0_1, v1_1, v2_1, v3_1, method35(v3_1, v0_1, 0));
+                    return method41(v0_1, v1_1, v2_1, v3_1, method40(v3_1, v0_1, 0));
                 }
                 else {
                     v0_1_mut = v0_1;
@@ -1611,11 +1600,11 @@ export function method28(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: u
                     v3_1_mut = v3_1;
                     v4_1_mut = UH1_UH1_1(v0_1(), v4_1);
                     v5_mut = (v5 + 1);
-                    continue method28;
+                    continue method31;
                 }
             }
             else if (v1_1) {
-                return method36(v0_1, v1_1, v2_1, v3_1, method35(v3_1, v0_1, 0));
+                return method41(v0_1, v1_1, v2_1, v3_1, method40(v3_1, v0_1, 0));
             }
             else {
                 v0_1_mut = v0_1;
@@ -1624,7 +1613,7 @@ export function method28(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: u
                 v3_1_mut = v3_1;
                 v4_1_mut = UH1_UH1_1(v0_1(), v4_1);
                 v5_mut = (v5 + 1);
-                continue method28;
+                continue method31;
             }
         }
         break;
@@ -1632,7 +1621,7 @@ export function method28(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: u
 }
 
 export function closure20(v0_1: (() => uint8), v1_1: boolean, v2_1: uint64): uint64 {
-    return method28(v0_1, v1_1, v2_1, (equals(v2_1, 1n) ? 1 : method25(v2_1, 0, 1n)) - 1, UH1_UH1_0(), 0);
+    return method31(v0_1, v1_1, v2_1, (equals(v2_1, 1n) ? 1 : method28(v2_1, 0, 1n)) - 1, UH1_UH1_0(), 0);
 }
 
 export function closure19(v0_1: (() => uint8), v1_1: boolean): ((arg0: uint64) => uint64) {
@@ -1643,8 +1632,8 @@ export function closure18(unitVar: void, v0_1: (() => uint8)): ((arg0: boolean) 
     return (v: boolean): ((arg0: uint64) => uint64) => closure19(v0_1, v);
 }
 
-export function method37(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
-    method37:
+export function method42(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
+    method42:
     while (true) {
         const v0_1: UH1_$union = v0_1_mut, v1_1: int8 = v1_1_mut;
         if (v0_1.tag === /* UH1_0 */ 0) {
@@ -1654,14 +1643,14 @@ export function method37(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
             const v2_1: uint8 = v0_1.fields[0];
             v0_1_mut = v0_1.fields[1];
             v1_1_mut = (v1_1 + 1);
-            continue method37;
+            continue method42;
         }
         break;
     }
 }
 
 export function closure90(v0_1: uint64, v1_1: UH1_$union): Option<uint64> {
-    const v6: US6_$union = method29(method37(v1_1, 0) - 1, v1_1, 0n);
+    const v6: US6_$union = method32(method42(v1_1, 0) - 1, v1_1, 0n);
     let v16: US7_$union;
     if (v6.tag === /* US6_0 */ 0) {
         const v8: UH1_$union = v6.fields[1];
@@ -1683,7 +1672,7 @@ export function closure89(unitVar: void, v0_1: uint64): ((arg0: UH1_$union) => O
     return (v: UH1_$union): Option<uint64> => closure90(v0_1, v);
 }
 
-export function method38(v0_1: int64, v1_1: int64, v2_1: int8): string {
+export function method44(v0_1: int64, v1_1: int64, v2_1: int8): string {
     const v4_1: Mut5 = new Mut5(method19());
     let v11: any;
     closure13(v4_1, `${"{ "}`, undefined);
@@ -1727,33 +1716,28 @@ export function method38(v0_1: int64, v1_1: int64, v2_1: int8): string {
     return v4_1.l0;
 }
 
+export function method43(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string): string {
+    const v11: string = method44(9223372036854775807n, 4738381338321616896n, 24);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.calculate_dice_count"} / ${v11}`);
+}
+
 export function closure92(unitVar: void, unitVar_1: void): void {
-    const v1_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v4_1: any;
         closure9(undefined, undefined);
-    };
-    let v2_1: any;
-    v1_1();
-    v2_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v34: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v34, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v41: any;
-        v1_1();
-        v41 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v55: Mut1 = patternInput_1[0];
-        const v80: string = method27(method12(v55, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v55.l0, method38(9223372036854775807n, 4738381338321616896n, 24));
-        let v82: any;
-        v1_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v4_1 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v23: Option<int64> = patternInput[5];
+        const v22: Mut6 = patternInput[4];
+        const v21: Mut5 = patternInput[3];
+        const v20: Mut4 = patternInput[2];
+        const v19: Mut3 = patternInput[1];
+        const v18: Mut1 = patternInput[0];
+        method24(method43(v18, v19, v20, v21, v22, v23, method13(v18, v19, v20, v21, v22, v23), method17()));
     }
 }
 
-export function method40(): uint8 {
+export function method46(): uint8 {
     const v7: any = nonSeeded();
     const v9: int32 = ~~1 | 0;
     const v11: int32 = ~~7 | 0;
@@ -1761,7 +1745,7 @@ export function method40(): uint8 {
     return value_2 & 0xFF;
 }
 
-export function method42(v0_1: int8, v1_1: int64, v2_1: uint8, v3_1: int64): string {
+export function method49(v0_1: int8, v1_1: int64, v2_1: uint8, v3_1: int64): string {
     const v5: Mut5 = new Mut5(method19());
     let v12: any;
     closure13(v5, `${"{ "}`, undefined);
@@ -1817,631 +1801,511 @@ export function method42(v0_1: int8, v1_1: int64, v2_1: uint8, v3_1: int64): str
     return v5.l0;
 }
 
+export function method48(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(23, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
+}
+
 export function closure93(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(23, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method48(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method51(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(22, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure94(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(22, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method51(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method53(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(21, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure95(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(21, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method53(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method55(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(20, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure96(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(20, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method55(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method57(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(19, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure97(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(19, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method57(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method59(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(18, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure98(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(18, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method59(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method61(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(17, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure99(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(17, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method61(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method63(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(16, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure100(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(16, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method63(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method65(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(15, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure101(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(15, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method65(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method67(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(14, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure102(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(14, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method67(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method69(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(13, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure103(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(13, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method69(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method71(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(12, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure104(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(12, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method71(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method73(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(11, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure105(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(11, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method73(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method75(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(10, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure106(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(10, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method75(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method77(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(9, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure107(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(9, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method77(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method79(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(8, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure108(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(8, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method79(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method81(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(7, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure109(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(7, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method81(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method83(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(6, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure110(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(6, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method83(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method85(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(5, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure111(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(5, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method85(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method87(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(4, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure112(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(4, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method87(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method89(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(3, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure113(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(3, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method89(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method91(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(2, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure114(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(2, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method91(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method93(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(1, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure115(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(1, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method93(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
+}
+
+export function method95(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8, v10: int64): string {
+    const v12: string = method49(0, v8, v9, v10);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v12}`);
 }
 
 export function closure116(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void): void {
-    const v4_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v7: any;
         closure9(undefined, undefined);
-    };
-    let v5: any;
-    v4_1();
-    v5 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v37: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v37, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v44: any;
-        v4_1();
-        v44 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v58: Mut1 = patternInput_1[0];
-        const v81: string = method31(method12(v58, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v58.l0, method42(0, v0_1, v1_1, v2_1));
-        let v83: any;
-        v4_1();
-        v83 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v81, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v7 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v26: Option<int64> = patternInput[5];
+        const v25: Mut6 = patternInput[4];
+        const v24: Mut5 = patternInput[3];
+        const v23: Mut4 = patternInput[2];
+        const v22: Mut3 = patternInput[1];
+        const v21: Mut1 = patternInput[0];
+        method24(method95(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
     }
 }
 
-export function method67(v0_1: int8, v1_1: int64, v2_1: int64): string {
+export function method98(v0_1: int8, v1_1: int64, v2_1: int64): string {
     const v4_1: Mut5 = new Mut5(method19());
     let v11: any;
     closure13(v4_1, `${"{ "}`, undefined);
@@ -2485,33 +2349,28 @@ export function method67(v0_1: int8, v1_1: int64, v2_1: int64): string {
     return v4_1.l0;
 }
 
+export function method97(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: int64): string {
+    const v11: string = method98(-1, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
+}
+
 export function closure117(v0_1: int64, v1_1: int64, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method67(-1, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method97(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method66(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method96(v0_1: UH1_$union, v1_1: int64): US8_$union {
     const v2_1: int64 = toInt64(op_Addition(v1_1, 1n));
     let v5: any;
     closure117(v1_1, v2_1, undefined);
@@ -2519,7 +2378,7 @@ export function method66(v0_1: UH1_$union, v1_1: int64): US8_$union {
     return US8_US8_0(v2_1, v0_1);
 }
 
-export function method68(v0_1: int8, v1_1: int64, v2_1: uint8): string {
+export function method100(v0_1: int8, v1_1: int64, v2_1: uint8): string {
     const v4_1: Mut5 = new Mut5(method19());
     let v11: any;
     closure13(v4_1, `${"{ "}`, undefined);
@@ -2563,33 +2422,28 @@ export function method68(v0_1: int8, v1_1: int64, v2_1: uint8): string {
     return v4_1.l0;
 }
 
+export function method99(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(0, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
+}
+
 export function closure118(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(0, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method99(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method65(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method94(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -2601,44 +2455,39 @@ export function method65(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v10: any;
             closure116(v1_1, v3_1, v7, undefined);
             v10 = undefined;
-            return method66(v4_1, toInt64(op_Addition(v1_1, v7)));
+            return method96(v4_1, toInt64(op_Addition(v1_1, v7)));
         }
         else {
-            let v127: any;
+            let v54: any;
             closure118(v1_1, v3_1, undefined);
-            v127 = undefined;
-            return method66(v4_1, v1_1);
+            v54 = undefined;
+            return method96(v4_1, v1_1);
         }
     }
+}
+
+export function method101(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(1, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure119(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(1, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method101(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method64(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method92(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -2650,44 +2499,39 @@ export function method64(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure115(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method65(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method94(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure119(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method65(v4_1, v1_1);
+            v55 = undefined;
+            return method94(v4_1, v1_1);
         }
     }
+}
+
+export function method102(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(2, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure120(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(2, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method102(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method63(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method90(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -2699,44 +2543,39 @@ export function method63(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure114(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method64(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method92(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure120(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method64(v4_1, v1_1);
+            v55 = undefined;
+            return method92(v4_1, v1_1);
         }
     }
+}
+
+export function method103(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(3, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure121(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(3, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method103(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method62(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method88(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -2748,44 +2587,39 @@ export function method62(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure113(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method63(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method90(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure121(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method63(v4_1, v1_1);
+            v55 = undefined;
+            return method90(v4_1, v1_1);
         }
     }
+}
+
+export function method104(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(4, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure122(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(4, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method104(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method61(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method86(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -2797,44 +2631,39 @@ export function method61(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure112(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method62(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method88(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure122(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method62(v4_1, v1_1);
+            v55 = undefined;
+            return method88(v4_1, v1_1);
         }
     }
+}
+
+export function method105(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(5, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure123(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(5, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method105(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method60(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method84(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -2846,44 +2675,39 @@ export function method60(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure111(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method61(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method86(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure123(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method61(v4_1, v1_1);
+            v55 = undefined;
+            return method86(v4_1, v1_1);
         }
     }
+}
+
+export function method106(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(6, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure124(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(6, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method106(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method59(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method82(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -2895,44 +2719,39 @@ export function method59(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure110(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method60(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method84(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure124(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method60(v4_1, v1_1);
+            v55 = undefined;
+            return method84(v4_1, v1_1);
         }
     }
+}
+
+export function method107(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(7, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure125(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(7, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method107(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method58(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method80(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -2944,44 +2763,39 @@ export function method58(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure109(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method59(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method82(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure125(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method59(v4_1, v1_1);
+            v55 = undefined;
+            return method82(v4_1, v1_1);
         }
     }
+}
+
+export function method108(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(8, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure126(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(8, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method108(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method57(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method78(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -2993,44 +2807,39 @@ export function method57(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure108(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method58(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method80(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure126(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method58(v4_1, v1_1);
+            v55 = undefined;
+            return method80(v4_1, v1_1);
         }
     }
+}
+
+export function method109(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(9, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure127(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(9, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method109(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method56(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method76(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3042,44 +2851,39 @@ export function method56(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure107(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method57(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method78(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure127(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method57(v4_1, v1_1);
+            v55 = undefined;
+            return method78(v4_1, v1_1);
         }
     }
+}
+
+export function method110(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(10, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure128(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(10, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method110(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method55(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method74(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3091,44 +2895,39 @@ export function method55(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure106(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method56(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method76(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure128(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method56(v4_1, v1_1);
+            v55 = undefined;
+            return method76(v4_1, v1_1);
         }
     }
+}
+
+export function method111(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(11, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure129(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(11, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method111(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method54(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method72(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3140,44 +2939,39 @@ export function method54(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure105(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method55(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method74(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure129(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method55(v4_1, v1_1);
+            v55 = undefined;
+            return method74(v4_1, v1_1);
         }
     }
+}
+
+export function method112(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(12, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure130(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(12, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method112(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method53(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method70(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3189,44 +2983,39 @@ export function method53(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure104(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method54(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method72(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure130(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method54(v4_1, v1_1);
+            v55 = undefined;
+            return method72(v4_1, v1_1);
         }
     }
+}
+
+export function method113(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(13, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure131(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(13, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method113(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method52(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method68(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3238,44 +3027,39 @@ export function method52(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure103(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method53(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method70(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure131(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method53(v4_1, v1_1);
+            v55 = undefined;
+            return method70(v4_1, v1_1);
         }
     }
+}
+
+export function method114(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(14, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure132(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(14, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method114(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method51(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method66(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3287,44 +3071,39 @@ export function method51(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure102(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method52(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method68(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure132(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method52(v4_1, v1_1);
+            v55 = undefined;
+            return method68(v4_1, v1_1);
         }
     }
+}
+
+export function method115(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(15, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure133(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(15, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method115(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method50(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method64(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3336,44 +3115,39 @@ export function method50(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure101(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method51(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method66(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure133(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method51(v4_1, v1_1);
+            v55 = undefined;
+            return method66(v4_1, v1_1);
         }
     }
+}
+
+export function method116(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(16, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure134(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(16, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method116(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method49(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method62(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3385,44 +3159,39 @@ export function method49(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure100(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method50(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method64(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure134(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method50(v4_1, v1_1);
+            v55 = undefined;
+            return method64(v4_1, v1_1);
         }
     }
+}
+
+export function method117(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(17, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure135(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(17, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method117(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method48(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method60(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3434,44 +3203,39 @@ export function method48(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure99(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method49(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method62(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure135(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method49(v4_1, v1_1);
+            v55 = undefined;
+            return method62(v4_1, v1_1);
         }
     }
+}
+
+export function method118(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(18, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure136(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(18, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method118(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method47(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method58(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3483,44 +3247,39 @@ export function method47(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure98(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method48(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method60(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure136(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method48(v4_1, v1_1);
+            v55 = undefined;
+            return method60(v4_1, v1_1);
         }
     }
+}
+
+export function method119(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(19, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure137(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(19, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method119(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method46(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method56(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3532,44 +3291,39 @@ export function method46(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure97(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method47(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method58(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure137(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method47(v4_1, v1_1);
+            v55 = undefined;
+            return method58(v4_1, v1_1);
         }
     }
+}
+
+export function method120(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(20, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure138(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(20, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method120(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method45(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method54(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3581,44 +3335,39 @@ export function method45(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure96(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method46(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method56(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure138(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method46(v4_1, v1_1);
+            v55 = undefined;
+            return method56(v4_1, v1_1);
         }
     }
+}
+
+export function method121(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(21, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure139(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(21, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method121(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method44(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method52(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3630,44 +3379,39 @@ export function method44(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure95(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method45(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method54(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure139(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method45(v4_1, v1_1);
+            v55 = undefined;
+            return method54(v4_1, v1_1);
         }
     }
+}
+
+export function method122(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(22, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure140(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(22, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method122(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method43(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method50(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3679,44 +3423,39 @@ export function method43(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure94(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method44(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method52(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure140(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method44(v4_1, v1_1);
+            v55 = undefined;
+            return method52(v4_1, v1_1);
         }
     }
+}
+
+export function method123(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64, v9: uint8): string {
+    const v11: string = method100(23, v8, v9);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.accumulate_dice_rolls"} / ${v11}`);
 }
 
 export function closure141(v0_1: int64, v1_1: uint8, unitVar: void): void {
-    const v3_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v6: any;
         closure9(undefined, undefined);
-    };
-    let v4_1: any;
-    v3_1();
-    v4_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v36: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v36, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v43: any;
-        v3_1();
-        v43 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v57: Mut1 = patternInput_1[0];
-        const v80: string = method31(method12(v57, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v57.l0, method68(23, v0_1, v1_1));
-        let v82: any;
-        v3_1();
-        v82 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v80, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v6 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v25: Option<int64> = patternInput[5];
+        const v24: Mut6 = patternInput[4];
+        const v23: Mut5 = patternInput[3];
+        const v22: Mut4 = patternInput[2];
+        const v21: Mut3 = patternInput[1];
+        const v20: Mut1 = patternInput[0];
+        method24(method123(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
     }
 }
 
-export function method41(v0_1: UH1_$union, v1_1: int64): US8_$union {
+export function method47(v0_1: UH1_$union, v1_1: int64): US8_$union {
     if (v0_1.tag === /* UH1_0 */ 0) {
         return US8_US8_1();
     }
@@ -3728,28 +3467,28 @@ export function method41(v0_1: UH1_$union, v1_1: int64): US8_$union {
             let v11: any;
             closure93(v1_1, v3_1, v8, undefined);
             v11 = undefined;
-            return method43(v4_1, toInt64(op_Addition(v1_1, v8)));
+            return method50(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v128: any;
+            let v55: any;
             closure141(v1_1, v3_1, undefined);
-            v128 = undefined;
-            return method43(v4_1, v1_1);
+            v55 = undefined;
+            return method50(v4_1, v1_1);
         }
     }
 }
 
-export function method39(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
-    method39:
+export function method45(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
+    method45:
     while (true) {
         const v0_1: UH1_$union = v0_1_mut, v1_1: int8 = v1_1_mut;
         if (v1_1 < 24) {
-            v0_1_mut = UH1_UH1_1(method40(), v0_1);
+            v0_1_mut = UH1_UH1_1(method46(), v0_1);
             v1_1_mut = (v1_1 + 1);
-            continue method39;
+            continue method45;
         }
         else {
-            const v8: US8_$union = method41(v0_1, 0n);
+            const v8: US8_$union = method47(v0_1, 0n);
             if (v8.tag === /* US8_0 */ 0) {
                 const v9: int64 = v8.fields[0];
                 const v10: UH1_$union = v8.fields[1];
@@ -3757,22 +3496,22 @@ export function method39(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
                     return v9;
                 }
                 else {
-                    v0_1_mut = UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_0())))))))))))))))))))))));
+                    v0_1_mut = UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_0())))))))))))))))))))))));
                     v1_1_mut = 23;
-                    continue method39;
+                    continue method45;
                 }
             }
             else {
-                v0_1_mut = UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_1(method40(), UH1_UH1_0())))))))))))))))))))))));
+                v0_1_mut = UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_1(method46(), UH1_UH1_0())))))))))))))))))))))));
                 v1_1_mut = 23;
-                continue method39;
+                continue method45;
             }
         }
         break;
     }
 }
 
-export function method69(v0_1: int64): string {
+export function method125(v0_1: int64): string {
     const v2_1: Mut5 = new Mut5(method19());
     let v9: any;
     closure13(v2_1, `${"{ "}`, undefined);
@@ -3792,33 +3531,24 @@ export function method69(v0_1: int64): string {
     return v2_1.l0;
 }
 
-export function method70(v0_1: string, v1_1: string, v2_1: int64, v3_1: string): string {
-    return trimEnd(trimStart(`${v0_1} ${v1_1} #${v2_1} ${"dice.main"} / ${v3_1}`, ...[]), ...[" ", "/"]);
+export function method124(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>, v6: string, v7: string, v8: int64): string {
+    const v9: string = method125(v8);
+    return method23(`${v6} ${v7} #${v0_1.l0} ${"dice.main"} / ${v9}`);
 }
 
 export function closure142(v0_1: int64, unitVar: void): void {
-    const v2_1 = (): void => {
+    if (method6(US2_US2_1())) {
+        let v5: any;
         closure9(undefined, undefined);
-    };
-    let v3_1: any;
-    v2_1();
-    v3_1 = undefined;
-    const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v35: US2_$union = patternInput[4].l0;
-    if ((patternInput[2].l0 === false) ? false : (1 >= find<US2_$union, int32>(v35, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
-        Compare: compare,
-    })))) {
-        let v42: any;
-        v2_1();
-        v42 = undefined;
-        const patternInput_1: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v56: Mut1 = patternInput_1[0];
-        const v78: string = method70(method12(v56, patternInput_1[1], patternInput_1[2], patternInput_1[3], patternInput_1[4], patternInput_1[5]), method16(), v56.l0, method69(v0_1));
-        let v80: any;
-        v2_1();
-        v80 = undefined;
-        const patternInput_2: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        method21(v78, patternInput_2[0], patternInput_2[1], patternInput_2[2], patternInput_2[3], patternInput_2[4], patternInput_2[5]);
+        v5 = undefined;
+        const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
+        const v24: Option<int64> = patternInput[5];
+        const v23: Mut6 = patternInput[4];
+        const v22: Mut5 = patternInput[3];
+        const v21: Mut4 = patternInput[2];
+        const v20: Mut3 = patternInput[1];
+        const v19: Mut1 = patternInput[0];
+        method24(method124(v19, v20, v21, v22, v23, v24, method13(v19, v20, v21, v22, v23, v24), method17(), v0_1));
     }
 }
 
@@ -3826,9 +3556,9 @@ export function closure91(unitVar: void, v0_1: string[]): int32 {
     let v3_1: any;
     closure92(undefined, undefined);
     v3_1 = undefined;
-    let v123: any;
-    closure142(method39(UH1_UH1_0(), 0), undefined);
-    v123 = undefined;
+    let v48: any;
+    closure142(method45(UH1_UH1_0(), 0), undefined);
+    v48 = undefined;
     return 0;
 }
 
