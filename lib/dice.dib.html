@@ -7571,7 +7571,7 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">sixth_power_sequence</span> <span class="p">()</span> <span class="o">=</span>
-    <span class="n">stream</span><span class="o">.</span><span class="n">iterate</span> <span class="p">((</span><span class="o">*</span><span class="p">)</span> <span class="mi">6</span><span class="p">)</span> <span class="mi">1</span>
+    <span class="n">stream</span><span class="o">.</span><span class="n">iterate_map</span> <span class="p">((</span><span class="o">*</span><span class="p">)</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="n">fun</span> <span class="n">x</span> <span class="o">=&gt;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="n">then</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">Some</span> <span class="n">x</span><span class="p">)</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -7590,7 +7590,7 @@ a.anchor-link {
 <span class="n">sixth_power_sequence</span> <span class="p">()</span>
 <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">take_while</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">7</span><span class="n">i32</span><span class="p">)</span>
 <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">to_list</span>
-<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="p">[</span> <span class="mi">1</span><span class="n">i32</span><span class="p">;</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">36</span><span class="p">;</span> <span class="mi">216</span><span class="p">;</span> <span class="mi">1296</span><span class="p">;</span> <span class="mi">7776</span><span class="p">;</span> <span class="mi">46656</span><span class="p">;</span> <span class="mi">279936</span> <span class="p">]</span>
+<span class="o">|&gt;</span> <span class="n">_assert_eq</span> <span class="p">[</span> <span class="mi">1</span><span class="n">u64</span><span class="p">;</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">36</span><span class="p">;</span> <span class="mi">216</span><span class="p">;</span> <span class="mi">1296</span><span class="p">;</span> <span class="mi">7776</span><span class="p">;</span> <span class="mi">46656</span><span class="p">;</span> <span class="mi">279936</span> <span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -7604,22 +7604,24 @@ a.anchor-link {
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>__assert_eq / actual: UH0_1
-  (1,
+  (1UL,
    UH0_1
-     (6,
+     (6UL,
       UH0_1
-        (36,
+        (36UL,
          UH0_1
-           (216,
-            UH0_1 (1296, UH0_1 (7776, UH0_1 (46656, UH0_1 (279936, UH0_0)))))))) / expected: UH0_1
-  (1,
+           (216UL,
+            UH0_1
+              (1296UL, UH0_1 (7776UL, UH0_1 (46656UL, UH0_1 (279936UL, UH0_0)))))))) / expected: UH0_1
+  (1UL,
    UH0_1
-     (6,
+     (6UL,
       UH0_1
-        (36,
+        (36UL,
          UH0_1
-           (216,
-            UH0_1 (1296, UH0_1 (7776, UH0_1 (46656, UH0_1 (279936, UH0_0))))))))
+           (216UL,
+            UH0_1
+              (1296UL, UH0_1 (7776UL, UH0_1 (46656UL, UH0_1 (279936UL, UH0_0))))))))
 </pre>
 </div>
 </div>
@@ -7654,7 +7656,7 @@ a.anchor-link {
         <span class="o">|</span> <span class="n">_</span> <span class="n">when</span> <span class="n">power</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">=&gt;</span>
             <span class="n">inl</span> <span class="n">result</span> <span class="o">=</span> <span class="n">acc</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="n">trace</span> <span class="n">Debug</span>
-                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="s1">'$"dice.accumulate_dice_rolls"'</span>
+                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">"dice.accumulate_dice_rolls"</span>
                 <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">power</span> <span class="n">acc</span> <span class="n">result</span> <span class="p">}</span>
             <span class="n">Some</span> <span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">rolls</span><span class="p">)</span>
         <span class="o">|</span> <span class="p">[]</span> <span class="o">=&gt;</span> <span class="kc">None</span>
@@ -7662,12 +7664,12 @@ a.anchor-link {
             <span class="n">inl</span> <span class="n">coeff</span> <span class="o">=</span> <span class="n">sixth_power_sequence</span> <span class="p">()</span> <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">item</span> <span class="n">power</span>
             <span class="n">inl</span> <span class="n">value</span> <span class="o">=</span> <span class="n">conv</span> <span class="p">(</span><span class="n">roll</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">coeff</span>
             <span class="n">trace</span> <span class="n">Debug</span>
-                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="s1">'$"dice.accumulate_dice_rolls"'</span>
+                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">"dice.accumulate_dice_rolls"</span>
                 <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">power</span> <span class="n">acc</span> <span class="n">roll</span> <span class="n">value</span> <span class="p">}</span>
             <span class="n">loop</span> <span class="p">(</span><span class="n">acc</span> <span class="o">+</span> <span class="n">value</span><span class="p">)</span> <span class="p">(</span><span class="n">power</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">rest</span>
         <span class="o">|</span> <span class="n">roll</span> <span class="p">::</span> <span class="n">rest</span> <span class="o">=&gt;</span>
             <span class="n">trace</span> <span class="n">Debug</span>
-                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="s1">'$"dice.accumulate_dice_rolls"'</span>
+                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">"dice.accumulate_dice_rolls"</span>
                 <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">power</span> <span class="n">acc</span> <span class="n">roll</span> <span class="p">}</span>
             <span class="n">loop</span> <span class="n">acc</span> <span class="p">(</span><span class="n">power</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">rest</span>
     <span class="ow">and</span> <span class="n">inl</span> <span class="n">loop</span> <span class="n">acc</span> <span class="n">power</span> <span class="n">rolls</span> <span class="o">=</span>
@@ -7706,8 +7708,8 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 0; acc = 1000; roll = 6; value = 5 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = -1; acc = 1005; result = 1006 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.accumulate_dice_rolls / { power = 0; acc = 1000; roll = 6; value = 5 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #2 dice.accumulate_dice_rolls / { power = -1; acc = 1005; result = 1006 }
 __assert_eq / actual: US4_0 (1006, UH0_1 (5uy, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0))))) / expected: US4_0 (1006, UH0_1 (5uy, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0)))))
 </pre>
 </div>
@@ -7738,9 +7740,9 @@ __assert_eq / actual: US4_0 (1006, UH0_1 (5uy, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2u
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 1; acc = 1000; roll = 6; value = 30 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = 0; acc = 1030; roll = 5; value = 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.accumulate_dice_rolls / { power = -1; acc = 1034; result = 1035 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.accumulate_dice_rolls / { power = 1; acc = 1000; roll = 6; value = 30 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #2 dice.accumulate_dice_rolls / { power = 0; acc = 1030; roll = 5; value = 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #3 dice.accumulate_dice_rolls / { power = -1; acc = 1034; result = 1035 }
 __assert_eq / actual: US4_0 (1035, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0)))) / expected: US4_0 (1035, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0))))
 </pre>
 </div>
@@ -7771,10 +7773,10 @@ __assert_eq / actual: US4_0 (1035, UH0_1 (4uy, UH0_1 (3uy, UH0_1 (2uy, UH0_0))))
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 2; acc = 1000; roll = 6; value = 180 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = 1; acc = 1180; roll = 5; value = 24 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.accumulate_dice_rolls / { power = 0; acc = 1204; roll = 4; value = 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.accumulate_dice_rolls / { power = -1; acc = 1207; result = 1208 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.accumulate_dice_rolls / { power = 2; acc = 1000; roll = 6; value = 180 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #2 dice.accumulate_dice_rolls / { power = 1; acc = 1180; roll = 5; value = 24 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #3 dice.accumulate_dice_rolls / { power = 0; acc = 1204; roll = 4; value = 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #4 dice.accumulate_dice_rolls / { power = -1; acc = 1207; result = 1208 }
 __assert_eq / actual: US4_0 (1208, UH0_1 (3uy, UH0_1 (2uy, UH0_0))) / expected: US4_0 (1208, UH0_1 (3uy, UH0_1 (2uy, UH0_0)))
 </pre>
 </div>
@@ -7834,12 +7836,12 @@ __assert_eq / actual: US4_0 (1208, UH0_1 (3uy, UH0_1 (2uy, UH0_0))) / expected: 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = 3; acc = 0; roll = 5; value = 864 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.accumulate_dice_rolls / { power = 2; acc = 864; roll = 4; value = 108 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 972; roll = 4; value = 18 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 990; roll = 5; value = 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 994; result = 995 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #2 dice.accumulate_dice_rolls / { power = 3; acc = 0; roll = 5; value = 864 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #3 dice.accumulate_dice_rolls / { power = 2; acc = 864; roll = 4; value = 108 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 972; roll = 4; value = 18 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 990; roll = 5; value = 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 994; result = 995 }
 __assert_eq / actual: US4_0 995 / expected: US4_0 995
 </pre>
 </div>
@@ -7870,12 +7872,12 @@ __assert_eq / actual: US4_0 995 / expected: US4_0 995
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 2; value = 1296 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = 3; acc = 1296; roll = 2; value = 216 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.accumulate_dice_rolls / { power = 2; acc = 1512; roll = 6; value = 180 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 1692; roll = 4; value = 18 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 1710; roll = 5; value = 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 1714; result = 1715 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 2; value = 1296 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #2 dice.accumulate_dice_rolls / { power = 3; acc = 1296; roll = 2; value = 216 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #3 dice.accumulate_dice_rolls / { power = 2; acc = 1512; roll = 6; value = 180 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 1692; roll = 4; value = 18 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 1710; roll = 5; value = 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 1714; result = 1715 }
 __assert_eq / actual: US4_0 1715 / expected: US4_0 1715
 </pre>
 </div>
@@ -7906,12 +7908,12 @@ __assert_eq / actual: US4_0 1715 / expected: US4_0 1715
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 4; value = 3888 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = 3; acc = 3888; roll = 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.accumulate_dice_rolls / { power = 2; acc = 3888; roll = 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 3888; roll = 2; value = 6 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 3894; roll = 3; value = 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 3896; result = 3897 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 4; value = 3888 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #2 dice.accumulate_dice_rolls / { power = 3; acc = 3888; roll = 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #3 dice.accumulate_dice_rolls / { power = 2; acc = 3888; roll = 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #4 dice.accumulate_dice_rolls / { power = 1; acc = 3888; roll = 2; value = 6 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #5 dice.accumulate_dice_rolls / { power = 0; acc = 3894; roll = 3; value = 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #6 dice.accumulate_dice_rolls / { power = -1; acc = 3896; result = 3897 }
 __assert_eq / actual: US4_1 / expected: US4_1
 </pre>
 </div>
@@ -7941,17 +7943,15 @@ __assert_eq / actual: US4_1 / expected: US4_1
     <span class="n">inl</span> <span class="n">rec</span> <span class="n">body</span> <span class="n">n</span> <span class="n">p</span> <span class="o">=</span>
         <span class="n">inl</span> <span class="k">return</span> <span class="p">()</span> <span class="o">=</span>
             <span class="n">trace</span> <span class="n">Debug</span>
-                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="s1">'$"dice.calculate_dice_count"'</span>
-                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nb">max</span> <span class="n">n</span> <span class="n">p</span> <span class="p">}</span>
+                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">"dice.calculate_dice_count"</span>
+                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nb">max</span> <span class="n">p</span> <span class="n">n</span> <span class="p">}</span>
             <span class="n">n</span>
-
         <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="nb">max</span> <span class="n">then</span>
             <span class="n">inl</span> <span class="n">p</span><span class="s1">' = p * 6</span>
             <span class="k">if</span> <span class="n">p</span><span class="s1">' &gt; p</span>
             <span class="n">then</span> <span class="n">loop</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="n">p</span><span class="s1">'</span>
             <span class="k">else</span> <span class="k">return</span> <span class="p">()</span>
         <span class="k">else</span> <span class="k">return</span> <span class="p">()</span>
-
     <span class="ow">and</span> <span class="n">inl</span> <span class="n">loop</span> <span class="n">n</span> <span class="n">p</span> <span class="o">=</span>
         <span class="k">if</span> <span class="n">var_is</span> <span class="nb">max</span> <span class="o">|&gt;</span> <span class="ow">not</span>
         <span class="n">then</span> <span class="n">body</span> <span class="n">n</span> <span class="n">p</span>
@@ -7991,7 +7991,7 @@ __assert_eq / actual: US4_1 / expected: US4_1
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.calculate_dice_count / { max = 36; n = 2; p = 36 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.calculate_dice_count / { max = 36; p = 36; n = 2 }
 __assert_eq / actual: 2 / expected: 2
 </pre>
 </div>
@@ -8022,7 +8022,7 @@ __assert_eq / actual: 2 / expected: 2
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.calculate_dice_count / { max = 7777; n = 6; p = 46656 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.calculate_dice_count / { max = 7777; p = 46656; n = 6 }
 __assert_eq / actual: 6 / expected: 6
 </pre>
 </div>
@@ -8210,7 +8210,6 @@ __assert_eq / actual: 6 / expected: 6
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">create_sequential_roller</span> <span class="nb">list</span> <span class="o">=</span>
-    <span class="n">trace</span> <span class="n">Debug</span> <span class="p">(</span><span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="s1">'$"dice.create_sequential_roller ()"'</span><span class="p">)</span> <span class="nb">id</span>
     <span class="n">inl</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">list</span> <span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">rev</span> <span class="o">|&gt;</span> <span class="n">listm</span><span class="o">.</span><span class="n">append</span> <span class="nb">list</span> <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">from_list</span> <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">memoize</span>
     <span class="n">inl</span> <span class="n">current_index</span> <span class="o">=</span> <span class="n">mut</span> <span class="mi">0</span><span class="n">i64</span>
     <span class="n">inl</span> <span class="n">acc</span> <span class="o">=</span> <span class="n">mut</span> <span class="mi">1</span>
@@ -8223,8 +8222,8 @@ __assert_eq / actual: 6 / expected: 6
             <span class="n">inl</span> <span class="nb">len</span> <span class="o">=</span> <span class="o">*</span><span class="nb">len</span>
             <span class="n">inl</span> <span class="n">last_item</span> <span class="o">=</span> <span class="o">*</span><span class="n">last_item</span> <span class="o">|&gt;</span> <span class="n">optionm</span><span class="s1">'.box</span>
             <span class="n">trace</span> <span class="n">Debug</span>
-                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="s1">'$"dice.create_sequential_roller / roll"'</span>
-                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">current_index</span> <span class="n">acc</span> <span class="nb">len</span> <span class="n">last_item</span> <span class="p">}</span>
+                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">"dice.create_sequential_roller / roll"</span>
+                <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">current_index</span> <span class="n">acc</span> <span class="nb">len</span> <span class="n">last_item</span> <span class="o">=</span> <span class="n">last_item</span> <span class="o">|&gt;</span> <span class="n">sm</span><span class="s1">'.format_debug }</span>
         <span class="o">|&gt;</span> <span class="n">fun</span> <span class="n">x</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="p">()</span>
         <span class="k">match</span> <span class="n">s</span> <span class="p">()</span> <span class="o">|&gt;</span> <span class="n">stream</span><span class="o">.</span><span class="n">try_item</span> <span class="o">*</span><span class="n">current_index</span> <span class="k">with</span>
         <span class="o">|</span> <span class="n">Some</span> <span class="n">item</span> <span class="o">=&gt;</span>
@@ -8232,7 +8231,7 @@ __assert_eq / actual: 6 / expected: 6
             <span class="n">last_item</span> <span class="o">&lt;-</span> <span class="n">Some</span> <span class="n">item</span>
             <span class="n">item</span>
         <span class="o">|</span> <span class="kc">None</span> <span class="o">=&gt;</span>
-            <span class="n">trace</span> <span class="n">Debug</span> <span class="p">(</span><span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="s1">'$"dice.create_sequential_roller / roll / None"'</span><span class="p">)</span> <span class="nb">id</span>
+            <span class="n">trace</span> <span class="n">Debug</span> <span class="p">(</span><span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">"dice.create_sequential_roller / roll / None"</span><span class="p">)</span> <span class="nb">id</span>
             <span class="k">if</span> <span class="o">*</span><span class="nb">len</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
             <span class="n">then</span> <span class="nb">len</span> <span class="o">&lt;-</span> <span class="o">*</span><span class="n">current_index</span>
             <span class="n">acc</span> <span class="o">&lt;-</span>
@@ -8275,75 +8274,74 @@ __assert_eq / actual: 6 / expected: 6
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.create_sequential_roller ()
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.create_sequential_roller / roll / { current_index = 0; acc = 1; len = -1; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.create_sequential_roller / roll / { current_index = 1; acc = 1; len = -1; last_item = Some 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.create_sequential_roller / roll / { current_index = 2; acc = 1; len = -1; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.create_sequential_roller / roll / { current_index = 3; acc = 1; len = -1; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.create_sequential_roller / roll / { current_index = 4; acc = 1; len = -1; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice.create_sequential_roller / roll / { current_index = 5; acc = 1; len = -1; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #8 dice.create_sequential_roller / roll / { current_index = 6; acc = 1; len = -1; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #9 dice.create_sequential_roller / roll / { current_index = 7; acc = 1; len = -1; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #10 dice.create_sequential_roller / roll / { current_index = 8; acc = 1; len = -1; last_item = Some 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #11 dice.create_sequential_roller / roll / None
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #12 dice.create_sequential_roller / roll / { current_index = 1; acc = 2; len = 8; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #13 dice.create_sequential_roller / roll / { current_index = 2; acc = 2; len = 8; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #14 dice.create_sequential_roller / roll / { current_index = 3; acc = 2; len = 8; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #15 dice.create_sequential_roller / roll / { current_index = 4; acc = 2; len = 8; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #16 dice.create_sequential_roller / roll / { current_index = 5; acc = 2; len = 8; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #17 dice.create_sequential_roller / roll / { current_index = 6; acc = 2; len = 8; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #18 dice.create_sequential_roller / roll / { current_index = 7; acc = 2; len = 8; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #19 dice.create_sequential_roller / roll / { current_index = 8; acc = 2; len = 8; last_item = Some 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #20 dice.create_sequential_roller / roll / None
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #21 dice.create_sequential_roller / roll / { current_index = 2; acc = 3; len = 8; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #22 dice.create_sequential_roller / roll / { current_index = 3; acc = 3; len = 8; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #23 dice.create_sequential_roller / roll / { current_index = 4; acc = 3; len = 8; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #24 dice.create_sequential_roller / roll / { current_index = 5; acc = 3; len = 8; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #25 dice.create_sequential_roller / roll / { current_index = 6; acc = 3; len = 8; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #26 dice.create_sequential_roller / roll / { current_index = 7; acc = 3; len = 8; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #27 dice.create_sequential_roller / roll / { current_index = 8; acc = 3; len = 8; last_item = Some 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #28 dice.create_sequential_roller / roll / None
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #29 dice.create_sequential_roller / roll / { current_index = 3; acc = 4; len = 8; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #30 dice.create_sequential_roller / roll / { current_index = 4; acc = 4; len = 8; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #31 dice.create_sequential_roller / roll / { current_index = 5; acc = 4; len = 8; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #32 dice.create_sequential_roller / roll / { current_index = 6; acc = 4; len = 8; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #33 dice.create_sequential_roller / roll / { current_index = 7; acc = 4; len = 8; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #34 dice.create_sequential_roller / roll / { current_index = 8; acc = 4; len = 8; last_item = Some 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #35 dice.create_sequential_roller / roll / None
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #36 dice.create_sequential_roller / roll / { current_index = 4; acc = 5; len = 8; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #37 dice.create_sequential_roller / roll / { current_index = 5; acc = 5; len = 8; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #38 dice.create_sequential_roller / roll / { current_index = 6; acc = 5; len = 8; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #39 dice.create_sequential_roller / roll / { current_index = 7; acc = 5; len = 8; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #40 dice.create_sequential_roller / roll / { current_index = 8; acc = 5; len = 8; last_item = Some 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #41 dice.create_sequential_roller / roll / None
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #42 dice.create_sequential_roller / roll / { current_index = 5; acc = 6; len = 8; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #43 dice.create_sequential_roller / roll / { current_index = 6; acc = 6; len = 8; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #44 dice.create_sequential_roller / roll / { current_index = 7; acc = 6; len = 8; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #45 dice.create_sequential_roller / roll / { current_index = 8; acc = 6; len = 8; last_item = Some 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #46 dice.create_sequential_roller / roll / None
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #47 dice.create_sequential_roller / roll / { current_index = 6; acc = 7; len = 8; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #48 dice.create_sequential_roller / roll / { current_index = 7; acc = 7; len = 8; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #49 dice.create_sequential_roller / roll / { current_index = 8; acc = 7; len = 8; last_item = Some 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #50 dice.create_sequential_roller / roll / None
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #51 dice.create_sequential_roller / roll / { current_index = 7; acc = 8; len = 8; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #52 dice.create_sequential_roller / roll / { current_index = 8; acc = 8; len = 8; last_item = Some 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #53 dice.create_sequential_roller / roll / None
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #54 dice.create_sequential_roller / roll / { current_index = 0; acc = 1; len = 8; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #55 dice.create_sequential_roller / roll / { current_index = 1; acc = 1; len = 8; last_item = Some 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #56 dice.create_sequential_roller / roll / { current_index = 2; acc = 1; len = 8; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #57 dice.create_sequential_roller / roll / { current_index = 3; acc = 1; len = 8; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #58 dice.create_sequential_roller / roll / { current_index = 4; acc = 1; len = 8; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #59 dice.create_sequential_roller / roll / { current_index = 5; acc = 1; len = 8; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #60 dice.create_sequential_roller / roll / { current_index = 6; acc = 1; len = 8; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #61 dice.create_sequential_roller / roll / { current_index = 7; acc = 1; len = 8; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #62 dice.create_sequential_roller / roll / { current_index = 8; acc = 1; len = 8; last_item = Some 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #63 dice.create_sequential_roller / roll / None
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #64 dice.create_sequential_roller / roll / { current_index = 1; acc = 2; len = 8; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #65 dice.create_sequential_roller / roll / { current_index = 2; acc = 2; len = 8; last_item = Some 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #66 dice.create_sequential_roller / roll / { current_index = 3; acc = 2; len = 8; last_item = Some 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #67 dice.create_sequential_roller / roll / { current_index = 4; acc = 2; len = 8; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #68 dice.create_sequential_roller / roll / { current_index = 5; acc = 2; len = 8; last_item = Some 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #69 dice.create_sequential_roller / roll / { current_index = 6; acc = 2; len = 8; last_item = Some 3 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.create_sequential_roller / roll / { current_index = 0; acc = 1; len = -1; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #2 dice.create_sequential_roller / roll / { current_index = 1; acc = 1; len = -1; last_item = Some 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #3 dice.create_sequential_roller / roll / { current_index = 2; acc = 1; len = -1; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #4 dice.create_sequential_roller / roll / { current_index = 3; acc = 1; len = -1; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #5 dice.create_sequential_roller / roll / { current_index = 4; acc = 1; len = -1; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #6 dice.create_sequential_roller / roll / { current_index = 5; acc = 1; len = -1; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #7 dice.create_sequential_roller / roll / { current_index = 6; acc = 1; len = -1; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #8 dice.create_sequential_roller / roll / { current_index = 7; acc = 1; len = -1; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #9 dice.create_sequential_roller / roll / { current_index = 8; acc = 1; len = -1; last_item = Some 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #10 dice.create_sequential_roller / roll / None
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #11 dice.create_sequential_roller / roll / { current_index = 1; acc = 2; len = 8; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #12 dice.create_sequential_roller / roll / { current_index = 2; acc = 2; len = 8; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #13 dice.create_sequential_roller / roll / { current_index = 3; acc = 2; len = 8; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #14 dice.create_sequential_roller / roll / { current_index = 4; acc = 2; len = 8; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #15 dice.create_sequential_roller / roll / { current_index = 5; acc = 2; len = 8; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #16 dice.create_sequential_roller / roll / { current_index = 6; acc = 2; len = 8; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #17 dice.create_sequential_roller / roll / { current_index = 7; acc = 2; len = 8; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #18 dice.create_sequential_roller / roll / { current_index = 8; acc = 2; len = 8; last_item = Some 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #19 dice.create_sequential_roller / roll / None
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #20 dice.create_sequential_roller / roll / { current_index = 2; acc = 3; len = 8; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #21 dice.create_sequential_roller / roll / { current_index = 3; acc = 3; len = 8; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #22 dice.create_sequential_roller / roll / { current_index = 4; acc = 3; len = 8; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #23 dice.create_sequential_roller / roll / { current_index = 5; acc = 3; len = 8; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #24 dice.create_sequential_roller / roll / { current_index = 6; acc = 3; len = 8; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #25 dice.create_sequential_roller / roll / { current_index = 7; acc = 3; len = 8; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #26 dice.create_sequential_roller / roll / { current_index = 8; acc = 3; len = 8; last_item = Some 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #27 dice.create_sequential_roller / roll / None
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #28 dice.create_sequential_roller / roll / { current_index = 3; acc = 4; len = 8; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #29 dice.create_sequential_roller / roll / { current_index = 4; acc = 4; len = 8; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #30 dice.create_sequential_roller / roll / { current_index = 5; acc = 4; len = 8; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #31 dice.create_sequential_roller / roll / { current_index = 6; acc = 4; len = 8; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #32 dice.create_sequential_roller / roll / { current_index = 7; acc = 4; len = 8; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #33 dice.create_sequential_roller / roll / { current_index = 8; acc = 4; len = 8; last_item = Some 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #34 dice.create_sequential_roller / roll / None
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #35 dice.create_sequential_roller / roll / { current_index = 4; acc = 5; len = 8; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #36 dice.create_sequential_roller / roll / { current_index = 5; acc = 5; len = 8; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #37 dice.create_sequential_roller / roll / { current_index = 6; acc = 5; len = 8; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #38 dice.create_sequential_roller / roll / { current_index = 7; acc = 5; len = 8; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #39 dice.create_sequential_roller / roll / { current_index = 8; acc = 5; len = 8; last_item = Some 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #40 dice.create_sequential_roller / roll / None
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #41 dice.create_sequential_roller / roll / { current_index = 5; acc = 6; len = 8; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #42 dice.create_sequential_roller / roll / { current_index = 6; acc = 6; len = 8; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #43 dice.create_sequential_roller / roll / { current_index = 7; acc = 6; len = 8; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #44 dice.create_sequential_roller / roll / { current_index = 8; acc = 6; len = 8; last_item = Some 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #45 dice.create_sequential_roller / roll / None
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #46 dice.create_sequential_roller / roll / { current_index = 6; acc = 7; len = 8; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #47 dice.create_sequential_roller / roll / { current_index = 7; acc = 7; len = 8; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #48 dice.create_sequential_roller / roll / { current_index = 8; acc = 7; len = 8; last_item = Some 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #49 dice.create_sequential_roller / roll / None
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #50 dice.create_sequential_roller / roll / { current_index = 7; acc = 8; len = 8; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #51 dice.create_sequential_roller / roll / { current_index = 8; acc = 8; len = 8; last_item = Some 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #52 dice.create_sequential_roller / roll / None
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #53 dice.create_sequential_roller / roll / { current_index = 0; acc = 1; len = 8; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #54 dice.create_sequential_roller / roll / { current_index = 1; acc = 1; len = 8; last_item = Some 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #55 dice.create_sequential_roller / roll / { current_index = 2; acc = 1; len = 8; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #56 dice.create_sequential_roller / roll / { current_index = 3; acc = 1; len = 8; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #57 dice.create_sequential_roller / roll / { current_index = 4; acc = 1; len = 8; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #58 dice.create_sequential_roller / roll / { current_index = 5; acc = 1; len = 8; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #59 dice.create_sequential_roller / roll / { current_index = 6; acc = 1; len = 8; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #60 dice.create_sequential_roller / roll / { current_index = 7; acc = 1; len = 8; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #61 dice.create_sequential_roller / roll / { current_index = 8; acc = 1; len = 8; last_item = Some 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #62 dice.create_sequential_roller / roll / None
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #63 dice.create_sequential_roller / roll / { current_index = 1; acc = 2; len = 8; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #64 dice.create_sequential_roller / roll / { current_index = 2; acc = 2; len = 8; last_item = Some 2 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #65 dice.create_sequential_roller / roll / { current_index = 3; acc = 2; len = 8; last_item = Some 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #66 dice.create_sequential_roller / roll / { current_index = 4; acc = 2; len = 8; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #67 dice.create_sequential_roller / roll / { current_index = 5; acc = 2; len = 8; last_item = Some 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #68 dice.create_sequential_roller / roll / { current_index = 6; acc = 2; len = 8; last_item = Some 3 }
 __assert_eq / actual: [|1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
   4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2|] / expected: [|1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
   4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2|]
@@ -8410,10 +8408,8 @@ __assert_eq / actual: [|1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3;
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.accumulate_dice_rolls / { power = 0; acc = 0; roll = 2; value = 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.accumulate_dice_rolls / { power = -1; acc = 1; result = 2 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.accumulate_dice_rolls / { power = 0; acc = 0; roll = 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.accumulate_dice_rolls / { power = -1; acc = 0; result = 1 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.accumulate_dice_rolls / { power = 0; acc = 0; roll = 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #2 dice.accumulate_dice_rolls / { power = -1; acc = 0; result = 1 }
 __assert_eq / actual: 1 / expected: 1
 </pre>
 </div>
@@ -8446,19 +8442,18 @@ __assert_eq / actual: 1 / expected: 1
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.create_sequential_roller ()
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.calculate_dice_count / { max = 2000; n = 5; p = 7776 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.create_sequential_roller / roll / { current_index = 0; acc = 1; len = -1; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.create_sequential_roller / roll / { current_index = 1; acc = 1; len = -1; last_item = Some 5uy }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.create_sequential_roller / roll / { current_index = 2; acc = 1; len = -1; last_item = Some 4uy }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.create_sequential_roller / roll / { current_index = 3; acc = 1; len = -1; last_item = Some 4uy }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice.create_sequential_roller / roll / { current_index = 4; acc = 1; len = -1; last_item = Some 5uy }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #8 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 1 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #9 dice.accumulate_dice_rolls / { power = 3; acc = 0; roll = 5; value = 864 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #10 dice.accumulate_dice_rolls / { power = 2; acc = 864; roll = 4; value = 108 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #11 dice.accumulate_dice_rolls / { power = 1; acc = 972; roll = 4; value = 18 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #12 dice.accumulate_dice_rolls / { power = 0; acc = 990; roll = 5; value = 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #13 dice.accumulate_dice_rolls / { power = -1; acc = 994; result = 995 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.calculate_dice_count / { max = 2000; p = 7776; n = 5 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #2 dice.create_sequential_roller / roll / { current_index = 0; acc = 1; len = -1; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #3 dice.create_sequential_roller / roll / { current_index = 1; acc = 1; len = -1; last_item = Some 5uy }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #4 dice.create_sequential_roller / roll / { current_index = 2; acc = 1; len = -1; last_item = Some 4uy }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #5 dice.create_sequential_roller / roll / { current_index = 3; acc = 1; len = -1; last_item = Some 4uy }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #6 dice.create_sequential_roller / roll / { current_index = 4; acc = 1; len = -1; last_item = Some 5uy }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #7 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 1 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #8 dice.accumulate_dice_rolls / { power = 3; acc = 0; roll = 5; value = 864 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #9 dice.accumulate_dice_rolls / { power = 2; acc = 864; roll = 4; value = 108 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #10 dice.accumulate_dice_rolls / { power = 1; acc = 972; roll = 4; value = 18 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #11 dice.accumulate_dice_rolls / { power = 0; acc = 990; roll = 5; value = 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #12 dice.accumulate_dice_rolls / { power = -1; acc = 994; result = 995 }
 __assert_eq / actual: 995 / expected: 995
 </pre>
 </div>
@@ -8491,26 +8486,25 @@ __assert_eq / actual: 995 / expected: 995
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #1 dice.create_sequential_roller ()
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #2 dice.calculate_dice_count / { max = 2000; n = 5; p = 7776 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #3 dice.create_sequential_roller / roll / { current_index = 0; acc = 1; len = -1; last_item = None }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #4 dice.create_sequential_roller / roll / { current_index = 1; acc = 1; len = -1; last_item = Some 5uy }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #5 dice.create_sequential_roller / roll / { current_index = 2; acc = 1; len = -1; last_item = Some 4uy }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #6 dice.create_sequential_roller / roll / { current_index = 3; acc = 1; len = -1; last_item = Some 4uy }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #7 dice.create_sequential_roller / roll / { current_index = 4; acc = 1; len = -1; last_item = Some 5uy }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #8 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 2; value = 1296 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #9 dice.accumulate_dice_rolls / { power = 3; acc = 1296; roll = 5; value = 864 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #10 dice.accumulate_dice_rolls / { power = 2; acc = 2160; roll = 4; value = 108 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #11 dice.accumulate_dice_rolls / { power = 1; acc = 2268; roll = 4; value = 18 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #12 dice.accumulate_dice_rolls / { power = 0; acc = 2286; roll = 5; value = 4 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #13 dice.accumulate_dice_rolls / { power = -1; acc = 2290; result = 2291 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #14 dice.create_sequential_roller / roll / { current_index = 5; acc = 1; len = -1; last_item = Some 2uy }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #15 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 2; value = 1296 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #16 dice.accumulate_dice_rolls / { power = 3; acc = 1296; roll = 2; value = 216 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #17 dice.accumulate_dice_rolls / { power = 2; acc = 1512; roll = 5; value = 144 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #18 dice.accumulate_dice_rolls / { power = 1; acc = 1656; roll = 4; value = 18 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #19 dice.accumulate_dice_rolls / { power = 0; acc = 1674; roll = 4; value = 3 }
-00:00:00 <span class="ansi-blue-intense-fg">  debug</span> #20 dice.accumulate_dice_rolls / { power = -1; acc = 1677; result = 1678 }
+<pre>00:00:00 <span class="ansi-blue-intense-fg">d</span> #1 dice.calculate_dice_count / { max = 2000; p = 7776; n = 5 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #2 dice.create_sequential_roller / roll / { current_index = 0; acc = 1; len = -1; last_item = None }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #3 dice.create_sequential_roller / roll / { current_index = 1; acc = 1; len = -1; last_item = Some 5uy }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #4 dice.create_sequential_roller / roll / { current_index = 2; acc = 1; len = -1; last_item = Some 4uy }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #5 dice.create_sequential_roller / roll / { current_index = 3; acc = 1; len = -1; last_item = Some 4uy }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #6 dice.create_sequential_roller / roll / { current_index = 4; acc = 1; len = -1; last_item = Some 5uy }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #7 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 2; value = 1296 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #8 dice.accumulate_dice_rolls / { power = 3; acc = 1296; roll = 5; value = 864 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #9 dice.accumulate_dice_rolls / { power = 2; acc = 2160; roll = 4; value = 108 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #10 dice.accumulate_dice_rolls / { power = 1; acc = 2268; roll = 4; value = 18 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #11 dice.accumulate_dice_rolls / { power = 0; acc = 2286; roll = 5; value = 4 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #12 dice.accumulate_dice_rolls / { power = -1; acc = 2290; result = 2291 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #13 dice.create_sequential_roller / roll / { current_index = 5; acc = 1; len = -1; last_item = Some 2uy }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #14 dice.accumulate_dice_rolls / { power = 4; acc = 0; roll = 2; value = 1296 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #15 dice.accumulate_dice_rolls / { power = 3; acc = 1296; roll = 2; value = 216 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #16 dice.accumulate_dice_rolls / { power = 2; acc = 1512; roll = 5; value = 144 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #17 dice.accumulate_dice_rolls / { power = 1; acc = 1656; roll = 4; value = 18 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #18 dice.accumulate_dice_rolls / { power = 0; acc = 1674; roll = 4; value = 3 }
+00:00:00 <span class="ansi-blue-intense-fg">d</span> #19 dice.accumulate_dice_rolls / { power = -1; acc = 1677; result = 1678 }
 __assert_eq / actual: 1678 / expected: 1678
 </pre>
 </div>
@@ -8550,7 +8544,7 @@ __assert_eq / actual: 1678 / expected: 1678
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 270)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>270</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 745)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>745</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1317)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1317</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1324)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1324</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1331)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1331</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1250)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1250</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 271)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>271</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 749)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>749</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1338)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1338</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1405)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1405</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
+<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 277)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>277</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 705)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>705</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1369)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1369</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1320)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1320</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1360)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1360</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1330)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1330</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 254)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>254</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 750)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>750</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1331)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1331</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1304)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1304</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
 .dni-code-hint {
     font-style: italic;
     overflow: hidden;
@@ -8619,7 +8613,7 @@ table th {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 992)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>992</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 975)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>975</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 1020)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1020</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1012)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1012</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 945)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>945</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 981)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>981</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 1022)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1022</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 997)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>997</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 1018)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1018</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 1038)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1038</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
+<table><thead><tr><th><i>index</i></th><th>value</th></tr></thead><tbody><tr><td>0</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(1, 1010)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>1</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1010</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>1</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(2, 996)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>2</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>996</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>2</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(3, 974)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>3</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>974</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>3</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(4, 1065)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>4</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1065</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>4</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(5, 1026)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>5</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1026</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>5</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(6, 1011)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>6</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>1011</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>6</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(7, 977)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>7</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>977</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>7</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(8, 979)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>8</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>979</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>8</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(9, 986)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>9</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>986</pre></div></td></tr></tbody></table></div></details></td></tr><tr><td>9</td><td><details class="dni-treeview"><summary><span class="dni-code-hint"><code>(10, 976)</code></span></summary><div><table><thead><tr></tr></thead><tbody><tr><td>Item1</td><td><div class="dni-plaintext"><pre>10</pre></div></td></tr><tr><td>Item2</td><td><div class="dni-plaintext"><pre>976</pre></div></td></tr></tbody></table></div></details></td></tr></tbody></table><style>
 .dni-code-hint {
     font-style: italic;
     overflow: hidden;
@@ -8705,7 +8699,7 @@ table th {
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">inl</span> <span class="n">main</span> <span class="p">(</span><span class="n">_args</span> <span class="p">:</span> <span class="n">array_base</span> <span class="n">string</span><span class="p">)</span> <span class="o">=</span>
     <span class="n">inl</span> <span class="n">result</span> <span class="o">=</span> <span class="n">roll_progressively</span> <span class="n">roll_dice</span> <span class="n">true</span> <span class="p">(</span><span class="n">limit</span><span class="o">.</span><span class="n">max</span> <span class="p">:</span> <span class="n">i64</span><span class="p">)</span>
     <span class="n">trace</span> <span class="n">Debug</span>
-        <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="s1">'$"dice.main"'</span>
+        <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s2">"dice.main"</span>
         <span class="n">fun</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">result</span> <span class="p">}</span>
     <span class="mi">0</span><span class="n">i32</span>
 

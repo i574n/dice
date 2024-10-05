@@ -5,21 +5,21 @@ param(
 )
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
-. ../../../polyglot/scripts/core.ps1
-. ../../../polyglot/lib/spiral/lib.ps1
+. ../../deps/polyglot/scripts/core.ps1
+. ../../deps/polyglot/lib/spiral/lib.ps1
 
 
 $projectName = "dice_fsharp"
 
 if (!$fast -and !$SkipNotebook) {
-    { . ../../apps/spiral/dist/Supervisor$(_exe) --execute-command "../../workspace/target/release/spiral_builder$(_exe) dib --path ../../../dice/lib/fsharp/$projectName.dib" } | Invoke-Block -Retries 3 -Location ../../../polyglot/lib/fsharp
+    { . ../../apps/spiral/dist/Supervisor$(_exe) --execute-command "../../workspace/target/release/spiral_builder$(_exe) dib --path $ScriptDir/$projectName.dib" } | Invoke-Block -Retries 3 -Location ../../deps/polyglot/lib/fsharp
 }
 
-{ . ../../../polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" fs } | Invoke-Block
+{ . ../../deps/polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" fs } | Invoke-Block
 
 $runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
 $builderArgs = @("$projectName.fs", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
-{ . ../../../polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
+{ . ../../deps/polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
 
 $targetDir = GetTargetDir $projectName
 
@@ -27,17 +27,17 @@ $targetDir = GetTargetDir $projectName
 { BuildFable $targetDir $projectName "ts" } | Invoke-Block
 { BuildFable $targetDir $projectName "py" } | Invoke-Block
 
-(Get-Content "$targetDir/target/rs/$projectName.rs") `
-    -replace "../../../lib", "../../../polyglot/lib" `
+(Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
+    -replace "../../../lib", "../../deps/polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     | FixRust `
     | Set-Content "$projectName.rs"
 
-(Get-Content "$targetDir/target/ts/$projectName.ts") `
+(Get-Content "$targetDir/target/ts/polyglot/target/Builder/$projectName/$projectName.ts") `
     | FixTypeScript `
     | Set-Content "$projectName.ts"
 
-Copy-Item "$targetDir/target/py/$projectName.py" "$projectName.py" -Force
+Copy-Item "$targetDir/target/py/polyglot/target/Builder/$projectName/$projectName.py" "$projectName.py" -Force
 
 cargo fmt --
 

@@ -19,7 +19,7 @@ open testing
 #!spiral
 
 inl sixth_power_sequence () =
-    stream.iterate ((*) 6) 1
+    stream.iterate_map ((*) 6) (fun x => if x <= 0 then None else Some x) 1
 
 #!spiral
 
@@ -28,7 +28,7 @@ inl sixth_power_sequence () =
 sixth_power_sequence ()
 |> stream.take_while (fun _ i => i <= 7i32)
 |> stream.to_list
-|> _assert_eq [ 1i32; 6; 36; 216; 1296; 7776; 46656; 279936 ]
+|> _assert_eq [ 1u64; 6; 36; 216; 1296; 7776; 46656; 279936 ]
 
 #!markdown
 
@@ -46,7 +46,7 @@ inl accumulate_dice_rolls
         | _ when power < 0 =>
             inl result = acc + 1
             trace Debug
-                fun () => $'$"dice.accumulate_dice_rolls"'
+                fun () => "dice.accumulate_dice_rolls"
                 fun () => { power acc result }
             Some (result, rolls)
         | [] => None
@@ -54,12 +54,12 @@ inl accumulate_dice_rolls
             inl coeff = sixth_power_sequence () |> stream.item power
             inl value = conv (roll - 1) * coeff
             trace Debug
-                fun () => $'$"dice.accumulate_dice_rolls"'
+                fun () => "dice.accumulate_dice_rolls"
                 fun () => { power acc roll value }
             loop (acc + value) (power - 1) rest
         | roll :: rest =>
             trace Debug
-                fun () => $'$"dice.accumulate_dice_rolls"'
+                fun () => "dice.accumulate_dice_rolls"
                 fun () => { power acc roll }
             loop acc (power - 1) rest
     and inl loop acc power rolls =
@@ -134,17 +134,15 @@ inl calculate_dice_count max =
     inl rec body n p =
         inl return () =
             trace Debug
-                fun () => $'$"dice.calculate_dice_count"'
-                fun () => { max n p }
+                fun () => "dice.calculate_dice_count"
+                fun () => { max p n }
             n
-
         if p < max then
             inl p' = p * 6
             if p' > p
             then loop (n + 1) p'
             else return ()
         else return ()
-
     and inl loop n p =
         if var_is max |> not
         then body n p
@@ -214,7 +212,6 @@ listm'.init_series -1 14 1i32
 #!spiral
 
 inl create_sequential_roller list =
-    trace Debug (fun () => $'$"dice.create_sequential_roller ()"') id
     inl s = list |> listm.rev |> listm.append list |> stream.from_list |> stream.memoize
     inl current_index = mut 0i64
     inl acc = mut 1
@@ -227,8 +224,8 @@ inl create_sequential_roller list =
             inl len = *len
             inl last_item = *last_item |> optionm'.box
             trace Debug
-                fun () => $'$"dice.create_sequential_roller / roll"'
-                fun () => { current_index acc len last_item }
+                fun () => "dice.create_sequential_roller / roll"
+                fun () => { current_index acc len last_item = last_item |> sm'.format_debug }
         |> fun x => x ()
         match s () |> stream.try_item *current_index with
         | Some item =>
@@ -236,7 +233,7 @@ inl create_sequential_roller list =
             last_item <- Some item
             item
         | None =>
-            trace Debug (fun () => $'$"dice.create_sequential_roller / roll / None"') id
+            trace Debug (fun () => "dice.create_sequential_roller / roll / None") id
             if *len = -1
             then len <- *current_index
             acc <-
@@ -359,7 +356,7 @@ join dyn listm'.init_series 1i32 100 1
 inl main (_args : array_base string) =
     inl result = roll_progressively roll_dice true (limit.max : i64)
     trace Debug
-        fun () => $'$"dice.main"'
+        fun () => "dice.main"
         fun () => { result }
     0i32
 

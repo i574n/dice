@@ -4,7 +4,7 @@ param(
 )
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
-. ../../polyglot/scripts/core.ps1
+. ../deps/polyglot/scripts/core.ps1
 
 
 # npx -y tailwindcss -i input.css -o target/tailwind.css
@@ -12,6 +12,6 @@ $ErrorActionPreference = "Stop"
 if (!$fast) {
     ~/.bun/bin/bunx --bun ssl-serve --ssl dist
 } else {
-    $targetDir = "../../polyglot/target/polyglot/builder/dice_ui"
+    $targetDir = "../deps/polyglot/target/polyglot/builder/dice_ui"
     { trunk serve --dist="$targetDir/trunk" } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.89" }
 }

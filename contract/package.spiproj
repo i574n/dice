@@ -1,6 +1,0 @@
-packageDir: ../../polyglot/lib
-packages:
-    |core-
-    spiral-
-modules:
-    dice_contract
