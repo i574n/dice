@@ -37,7 +37,7 @@ $targetDir = GetTargetDir $projectName
 
 cargo fmt --
 
-{ cargo build --release --target wasm32-unknown-unknown } | Invoke-Block -EnvironmentVariables @{ "AUTOMATION" = "False" }
+{ cargo +nightly-2024-07-14 build --release --target wasm32-unknown-unknown } | Invoke-Block -EnvironmentVariables @{ "AUTOMATION" = "False" }
 New-Item dist -ItemType Directory -Force | Out-Null
 Copy-Item ../target/wasm32-unknown-unknown/release/dice_contract.wasm dist/dice.wasm -Force
 

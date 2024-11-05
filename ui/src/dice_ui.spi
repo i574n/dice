@@ -8,7 +8,7 @@ inl main (args : array_base string) =
     !\($'"let _ = console_log::init_with_level(log::Level::Debug)"')
     !\($'"console_error_panic_hook::set_once()"')
 
-    inl body : optionm'.option' wasm.html_element = !\($'"leptos::document().body()"')
+    inl body : optionm'.option' wasm.html_element = !\($'"leptos::prelude::document().body()"')
     inl body = body |> optionm'.unbox
     inl body_log = body |> sm'.format_debug
 
@@ -30,7 +30,7 @@ inl main (args : array_base string) =
         inl fn_closure = fn |> wasm.closure_wrap
         inl fn = fn_closure |> wasm.closure_as_ref |> wasm.unchecked_ref
 
-        !\($'"leptos::document().add_event_listener_with_callback(\\\"DOMContentLoaded\\\", !fn).unwrap()"')
+        !\($'"leptos::prelude::document().add_event_listener_with_callback(\\\"DOMContentLoaded\\\", !fn).unwrap()"')
 
         fn_closure |> wasm.closure_forget
 

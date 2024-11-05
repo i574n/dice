@@ -121,7 +121,7 @@ pub async fn fetch_transaction_status(hash: String) -> RpcResponse {
     let hash = hash.as_str();
 
     futures::StreamExt::fold(
-        tokio_stream::iter(urls),
+        futures::stream::iter(urls),
         (None, None),
         |(obj, code), url| async move {
             match (obj, code) {

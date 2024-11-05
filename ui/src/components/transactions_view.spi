@@ -33,20 +33,20 @@ inl render () =
             ]
         |> leptos.element_to_view
 
-    ;[
+    [
         ui.accordion.render
             fun props => { props with
                 title = fun () => "Transactions"
                 summary_class = fun () => "py-[7px]"
                 right_element = Some settings_button
             }
-            fun () => :>(;[
+            fun () => :>[
                 if settings_visible |> leptos.signal_get
                 then
                     leptos.div [
                         $'"class=\\\"px-[12px] py-[10px]\\\""'
                     ] fun () =>
-                        :>(;[
+                        :>[
                             ui.divider.render fun () =>
                                 "Settings" |> leptos.text_fragment
                             |> leptos.element_to_view
@@ -76,7 +76,7 @@ inl render () =
                                                 }
                                         |> leptos.element_to_fragment
                             |> leptos.element_to_view
-                        ])
+                        ]
                     |> leptos.element_to_view
                 else ;[] |> leptos.views_to_view
 
@@ -108,8 +108,9 @@ inl render () =
                                         |> transaction.render account (i |> i64)
                                         |> leptos.element_to_view
                                     |> am'.from_vec
-                                    |> fun (a x : _ i32 _) => x
-                                    |> leptos.view_array_to_fragment
+                                    |> fun (a x : _ int _) => x
+                                    |> leptos.views_to_view
+                                    |> leptos.view_to_fragment
                                 |> leptos.element_to_view
 
                             | false =>
@@ -118,8 +119,9 @@ inl render () =
                                 |> am'.vec_map' transaction.tr_render
                                 |> am'.vec_map' leptos.element_to_view
                                 |> am'.from_vec
-                                |> fun (a x : _ i32 _) => x
-                                |> leptos.view_array_to_fragment
+                                |> fun (a x : _ int _) => x
+                                |> leptos.views_to_view
+                                |> leptos.view_to_fragment
                                 |> ui.table.render (
                                     transaction.tr_head_render transactions
                                     |> leptos.element_to_fragment
@@ -133,7 +135,7 @@ inl render () =
                         | _ =>
                             ui.loading_panel.render ()
                             |> leptos.element_to_view
-            ])
+            ]
         |> leptos.element_to_view
 
         if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
@@ -142,7 +144,7 @@ inl render () =
                     title = fun () => "Debug"
                     summary_class = fun () => "py-[7px]"
                 }
-                fun () => :>(;[
+                fun () => :>[
                     ui.grid_pair.render
                         id
                         fun () => "Transactions" |> leptos.text_fragment
@@ -152,8 +154,8 @@ inl render () =
                             |> sm'.format_pretty
                             |> ui.text_block_pre.render fun () => "[max-height:70vh]"
                             |> leptos.element_to_fragment
-                ])
+                ]
             |> leptos.element_to_view
         else ;[] |> leptos.views_to_view
     ]
-    |> leptos.view_array_to_fragment
+    |> leptos.view_list_to_fragment

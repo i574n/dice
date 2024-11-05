@@ -25,7 +25,7 @@ inl menu_tab_id = function
     | Settings => "settings"
 
 inl tabs () =
-    ;[
+    [
         Dice Dice'
         Lists
         Transactions
@@ -37,11 +37,11 @@ inl render tab =
     leptos.log $'"menu_tabs.render ()"'
 
     let url = leptos.use_url ()
-    :>(;[
+    :>[
         leptos.div [
             $'"class=\\\"hidden\\\""'
         ] fun () =>
-            :>(;[
+            :>[
                 leptos.label [
                     $'"for=\\\"Tab\\\""'
                     $'"class=\\\"sr-only\\\""'
@@ -54,17 +54,14 @@ inl render tab =
                     $'"class=\\\"w-full rounded-md border-gray-200\\\""'
                 ] fun () =>
                     tabs ()
-                    |> am'.to_vec
-                    |> am'.vec_map' fun tab' =>
+                    |> listm.map fun tab' =>
                         leptos.option'
                             fun () => (tab |> leptos.signal_get) = tab'
                             (tab' |> menu_tab_label)
                         |> leptos.element_to_view
-                    |> am'.from_vec
-                    |> fun (a x : _ i32 _) => x
-                    |> leptos.view_array_to_fragment
+                    |> leptos.view_list_to_fragment
                 |> leptos.element_to_view
-            ])
+            ]
 
         leptos.div [
             $'"class=\\\"flex flex-1 [overflow-x:auto] [overflow-y:hidden]\\\""'
@@ -77,8 +74,7 @@ inl render tab =
                     $'"aria-label=\\\"Tabs\\\""'
                 ] fun () =>
                     tabs ()
-                    |> am'.to_vec
-                    |> am'.vec_map' fun tab' =>
+                    |> listm.map fun tab' =>
                         inl id = tab' |> menu_tab_id
                         inl class = fun () => "h-5 w-5"
                         ui.tab_link.render
@@ -90,13 +86,11 @@ inl render tab =
                             | Lists => svg.lists.render class [] |> leptos.element_to_fragment
                             | Transactions => svg.transactions.render class [] |> leptos.element_to_fragment
                             | Settings => svg.settings.render class [] |> leptos.element_to_fragment
-                            | _ => ;[] |> leptos.view_array_to_fragment
+                            | _ => [] |> leptos.view_list_to_fragment
                             (tab' |> menu_tab_label)
                             fun () => (tab |> leptos.signal_get) = tab'
                         |> leptos.element_to_view
-                    |> am'.from_vec
-                    |> fun (a x : _ i32 _) => x
-                    |> leptos.view_array_to_fragment
+                    |> leptos.view_list_to_fragment
                 |> leptos.element_to_fragment
             |> leptos.element_to_fragment
-    ])
+    ]

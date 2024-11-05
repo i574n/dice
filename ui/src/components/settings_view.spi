@@ -2,7 +2,7 @@ open rust.rust_operators
 open sm'_operators
 open leptos
 
-inl global_state_log_render () : _ leptos.pre =
+inl global_state_log_render () : _ (_ leptos.pre) =
     leptos.log $'"settings_view.global_state_log_render ()"'
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
@@ -108,7 +108,7 @@ inl render () =
                 $'"aria-label=\\\"Add\\\""'
             ]
 
-    ;[
+    [
         ui.accordion.render
             fun props => { props with
                 title = fun () => "Accounts"
@@ -130,7 +130,7 @@ inl render () =
                                 $'"class=\\\"flex gap-[8px] [align-items:center]\\\""'
                             ] fun () =>
                                 inl i = join i
-                                :>(;[
+                                :>[
                                     ui.toggle.render
                                         fun () => $'"account-" + string !i + ""'
                                         fun () =>
@@ -186,7 +186,7 @@ inl render () =
                                     if (accounts_count |> leptos.signal_get) = 1i32
                                     then ;[] |> leptos.views_to_view
                                     else delete_button i |> leptos.element_to_view
-                                ])
+                                ]
                             |> leptos.element_to_fragment
                     |> leptos.view_to_fragment
                 |> leptos.element_to_fragment
@@ -201,7 +201,7 @@ inl render () =
                 leptos.div [
                     $'"class=\\\"flex flex-1 flex-col p-[11px] gap-[11px]\\\""'
                 ] fun () =>
-                    :>(;[
+                    :>[
                         ui.grid_pair.render
                             fun props => { props with
                                 class = fun () => "items-center p-0"
@@ -233,7 +233,7 @@ inl render () =
                                         leptos.signal_get_untracked global_state.core_state .debug
                                         |> leptos.signal_update not
                                     |> leptos.element_to_fragment
-                    ])
+                    ]
                 |> leptos.element_to_fragment
         |> leptos.element_to_view
 
@@ -252,4 +252,4 @@ inl render () =
             |> leptos.element_to_view
         else ;[] |> leptos.views_to_view
     ]
-    |> leptos.view_array_to_fragment
+    |> leptos.view_list_to_fragment

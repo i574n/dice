@@ -105,21 +105,21 @@ inl render () =
             |> am'.vec_map' fun i, x =>
                 i, x |> fst
 
-    ;[
+    [
         ui.accordion.render
             fun props => { props with
                 title = fun () => "Roll"
                 summary_class = fun () => "py-[7px]"
             }
-            fun () => :>(;[
+            fun () => :>[
                 leptos.div [
                     $'"class=\\\"flex flex-col p-[10px] gap-[11px]\\\""'
                 ] fun () =>
-                    :>(;[
+                    :>[
                         leptos.div [
                             $'"class=\\\"flex [flex-direction:column] [gap:2px] [align-items:flex-start]\\\""'
                         ] fun () =>
-                            :>(;[
+                            :>[
                                 "Account" |> leptos.text_view
 
                                 ui.dropdown.render fun props => { props with
@@ -137,13 +137,13 @@ inl render () =
                                         })
                                 }
                                 |> leptos.element_to_view
-                            ])
+                            ]
                         |> leptos.element_to_view
 
                         leptos.div [
                             $'"class=\\\"flex [flex-direction:column] [gap:2px] [align-items:flex-start]\\\""'
                         ] fun () =>
-                            :>(;[
+                            :>[
                                 "Max" |> leptos.text_view
 
                                 ui.text_input.render
@@ -169,13 +169,13 @@ inl render () =
                                                 | x => x |> i32
                                         })
                                 |> leptos.element_to_view
-                            ])
+                            ]
                         |> leptos.element_to_view
 
                         leptos.div [
                             $'"class=\\\"flex\\\""'
                         ] fun () =>
-                            :>(;[
+                            :>[
                                 ui.loading_button.render
                                     "Roll"
                                     fun () =>
@@ -197,10 +197,10 @@ inl render () =
                                     |> ui.error_label.render
                                     |> leptos.element_to_view
                                 | _ => ;[] |> leptos.views_to_view
-                            ])
+                            ]
                         |> leptos.element_to_view
-                ])
-            ])
+                ]
+            ]
         |> leptos.element_to_view
 
         ui.accordion.render
@@ -208,7 +208,7 @@ inl render () =
                 title = fun () => "History"
                 summary_class = fun () => "py-[7px]"
             }
-            fun () => :>(;[
+            fun () => :>[
                 match accounts_txns_requests |> leptos.signal_get |> am'.from_vec with
                 | (a ;[] : _ i32 _) =>
                     "No account selected"
@@ -256,7 +256,7 @@ inl render () =
                                     leptos.tr [
 
                                     ] fun () =>
-                                        :>(;[
+                                        :>[
                                             leptos.th [
                                                 $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
                                             ] fun () =>
@@ -292,7 +292,7 @@ inl render () =
                                             ] fun () =>
                                                 "Status" |> leptos.text_fragment
                                             |> leptos.element_to_view
-                                        ])
+                                        ]
                                     |> leptos.element_to_fragment
                                 )
                                 (
@@ -306,7 +306,7 @@ inl render () =
                                         leptos.tr [
                                             $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
                                         ] fun () =>
-                                            :>(;[
+                                            :>[
                                                 leptos.td [
                                                     $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
                                                 ] fun () =>
@@ -405,11 +405,12 @@ inl render () =
                                                             $'$"{!s} / {!rpc_response_log}"'
                                                     |> leptos.text_fragment
                                                 |> leptos.element_to_view
-                                            ])
+                                            ]
                                         |> leptos.element_to_view
                                     |> am'.from_vec
-                                    |> fun (a x : _ i32 _) => x
-                                    |> leptos.view_array_to_fragment
+                                    |> fun (a x : _ int _) => x
+                                    |> leptos.views_to_view
+                                    |> leptos.view_to_fragment
                                 )
                                 |> leptos.element_to_view
                         | Error error =>
@@ -420,7 +421,7 @@ inl render () =
                         | _ =>
                             ui.loading_panel.render ()
                             |> leptos.element_to_view
-            ])
+            ]
         |> leptos.element_to_view
     ]
-    |> leptos.view_array_to_fragment
+    |> leptos.view_list_to_fragment

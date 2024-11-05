@@ -20,7 +20,7 @@ inl action_render action method =
         fun () =>
             leptos.div [
                 $'"class=\\\"flex flex-1 flex-col\\\""'
-            ] fun () => :>(;[
+            ] fun () => :>[
                 ui.grid_pair.render
                     fun props => { props with
                         class = fun () => ""
@@ -37,7 +37,7 @@ inl action_render action method =
                         | None =>
                             "None" |> leptos.text_fragment
                 |> leptos.element_to_view
-            ])
+            ]
             |> leptos.element_to_fragment
 
 inl tr_head_render (transactions : array_base hooks.use_transactions.account_transaction) =
@@ -47,7 +47,7 @@ inl tr_head_render (transactions : array_base hooks.use_transactions.account_tra
     leptos.tr [
 
     ] fun () =>
-        :>(;[
+        :>[
             leptos.th [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
             ] fun () =>
@@ -133,7 +133,7 @@ inl tr_head_render (transactions : array_base hooks.use_transactions.account_tra
             ] fun () =>
                 "Receipt ID" |> leptos.text_fragment
             |> leptos.element_to_view
-        ])
+        ]
 
 inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
     print_static "<transaction.tr_render>"
@@ -142,7 +142,7 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
     leptos.tr [
         $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
     ] fun () =>
-        :>(;[
+        :>[
             leptos.td [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
             ] fun () =>
@@ -186,9 +186,9 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                     action_render action method
                     |> leptos.element_to_view
                 |> am'.from_vec
-                |> fun x => x : _ i32 _
-                |> fun (a x) => x
-                |> leptos.view_array_to_fragment
+                |> fun (a x : _ int _) => x
+                |> leptos.views_to_view
+                |> leptos.view_to_fragment
             |> leptos.element_to_view
 
             leptos.td [
@@ -264,9 +264,9 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                     |> to_string
                     |> leptos.text_fragment
             |> leptos.element_to_view
-        ])
+        ]
 
-inl render account (index : i64) (transaction : txn) : _ leptos.div =
+inl render account (index : i64) (transaction : txn) : _ (_ leptos.div) =
     print_static "<transaction.render>"
     leptos.log $'"transaction.render (1)"'
 
@@ -274,7 +274,7 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
 
     leptos.div [
         $'"class=\\\"flex flex-1 flex-col overflow-x-auto\\\""'
-    ] fun () => :>(;[
+    ] fun () => :>[
         ui.divider.render fun () =>
             $'"Transaction " + string (!index + 1L) + ""' |> leptos.text_fragment
         |> leptos.element_to_view
@@ -282,7 +282,7 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
         leptos.div [
             $'"class=\\\"grid flex-1 divide-y-[1px] divide-gray-500/[.10]\\\""'
         ] fun () =>
-            :>(;[
+            :>[
                 ui.grid_pair.render
                     fun props => { props with
                         padding_class = fun () => ""
@@ -347,8 +347,9 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                             action_render action method
                             |> leptos.element_to_view
                         |> am'.from_vec
-                        |> fun ((a x) : _ i32 _) => x
-                        |> leptos.view_array_to_fragment
+                        |> fun (a x : _ int _) => x
+                        |> leptos.views_to_view
+                        |> leptos.view_to_fragment
                 |> leptos.element_to_view
 
                 ui.grid_pair.render
@@ -456,6 +457,6 @@ inl render account (index : i64) (transaction : txn) : _ leptos.div =
                             |> ui.text_block_pre.render fun () => "[max-height:20vh]"
                             |> leptos.element_to_fragment
                     |> leptos.element_to_view
-            ])
+            ]
         |> leptos.element_to_view
-    ])
+    ]

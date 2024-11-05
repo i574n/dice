@@ -44,15 +44,16 @@ inl render () =
             fun () =>
                 view () |> leptos.element_to_fragment
             fun () =>
-                ;[] |> leptos.view_array_to_fragment
+                [] |> leptos.view_list_to_fragment
 
     leptos.router fun () =>
         leptos.routes fun () =>
             inl home_render = join home.render
-            :>(;[
+            [
                 route' "" fun () => home_render { router = 1 }
                 route' "/" fun () => home_render { router = 2 }
                 route' "/*" fun () => home_render { router = 3 }
                 route' "*" fun () => home_render { router = 4 }
-            ])
+            ]
+            |> am'.new_vec
         |> leptos.view_to_fragment

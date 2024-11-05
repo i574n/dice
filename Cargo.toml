@@ -22,7 +22,6 @@ fable_library_rust = { path = "deps/polyglot/lib/rust/fable/fable_modules/fable-
 inline_colorization = ">=0.1,<1"
 chrono = ">=0.4,<1"
 regex = "1.10"
-tokio = { version = "1.39" }
 futures = ">=0.3,<1"
 
 [[workspace.metadata.leptos]]
