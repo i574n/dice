@@ -210,9 +210,9 @@ mod module_1d76f080 {
                 write!(f, "{}", core::any::type_name::<Self>())
             }
         }
-        #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
+        #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
         pub enum US3 {
-            US3_0(string),
+            US3_0(Dice::US2),
             US3_1,
         }
         impl core::fmt::Display for Dice::US3 {
@@ -222,7 +222,7 @@ mod module_1d76f080 {
         }
         #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
         pub enum US4 {
-            US4_0(Dice::US2),
+            US4_0(i64),
             US4_1,
         }
         impl core::fmt::Display for Dice::US4 {
@@ -232,20 +232,44 @@ mod module_1d76f080 {
         }
         #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
         pub enum US5 {
-            US5_0(i64),
+            US5_0,
             US5_1,
+            US5_2,
         }
         impl core::fmt::Display for Dice::US5 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
                 write!(f, "{}", core::any::type_name::<Self>())
             }
         }
-        #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
+        #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
         pub enum US6 {
-            US6_0(u64, LrcPtr<Dice::UH1>),
-            US6_1,
+            US6_0(Dice::US5),
+            US6_1(Dice::US5),
+            US6_2(Dice::US5),
+            US6_3(Dice::US5),
+            US6_4(Dice::US5),
         }
         impl core::fmt::Display for Dice::US6 {
+            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+                write!(f, "{}", core::any::type_name::<Self>())
+            }
+        }
+        #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
+        pub enum US7 {
+            US7_0(string),
+            US7_1,
+        }
+        impl core::fmt::Display for Dice::US7 {
+            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+                write!(f, "{}", core::any::type_name::<Self>())
+            }
+        }
+        #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
+        pub enum US8 {
+            US8_0(u64, LrcPtr<Dice::UH1>),
+            US8_1,
+        }
+        impl core::fmt::Display for Dice::US8 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
                 write!(f, "{}", core::any::type_name::<Self>())
             }
@@ -261,21 +285,21 @@ mod module_1d76f080 {
             }
         }
         #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub enum US7 {
-            US7_0(u64),
-            US7_1,
+        pub enum US9 {
+            US9_0(u64),
+            US9_1,
         }
-        impl core::fmt::Display for Dice::US7 {
+        impl core::fmt::Display for Dice::US9 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
                 write!(f, "{}", core::any::type_name::<Self>())
             }
         }
         #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub enum US8 {
-            US8_0(i64, LrcPtr<Dice::UH1>),
-            US8_1,
+        pub enum US10 {
+            US10_0(i64, LrcPtr<Dice::UH1>),
+            US10_1,
         }
-        impl core::fmt::Display for Dice::US8 {
+        impl core::fmt::Display for Dice::US10 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
                 write!(f, "{}", core::any::type_name::<Self>())
             }
@@ -419,16 +443,13 @@ mod module_1d76f080 {
                 move || Dice::closure6(v0_1.clone(), v3_1.clone(), ())
             })
         }
-        pub fn method8() -> string {
-            string("TRACE_LEVEL")
-        }
         pub fn method10() -> string {
             string("")
         }
-        pub fn closure10(unitVar: (), v0_1: string) -> Dice::US3 {
-            Dice::US3::US3_0(v0_1)
+        pub fn closure10(unitVar: (), v0_1: string) -> Dice::US7 {
+            Dice::US7::US7_0(v0_1)
         }
-        pub fn method11() -> Func1<string, Dice::US3> {
+        pub fn method11() -> Func1<string, Dice::US7> {
             Func1::new(move |v: string| Dice::closure10((), v))
         }
         pub fn method9(v0_1: string) -> string {
@@ -445,8 +466,87 @@ mod module_1d76f080 {
             let v14: string = Dice::method10();
             v13.unwrap_or(v14)
         }
-        pub fn method12() -> string {
-            string("AUTOMATION")
+        pub fn method8() -> (Dice::US3, Dice::US4) {
+            let v1_1: string = Dice::method9(string("TRACE_LEVEL"));
+            let v6: Dice::US3 = if string("Verbose") == v1_1.clone() {
+                Dice::US3::US3_0(Dice::US2::US2_0)
+            } else {
+                Dice::US3::US3_1
+            };
+            (
+                match &v6 {
+                    Dice::US3::US3_0(v6_0_0) => Dice::US3::US3_0(match &v6 {
+                        Dice::US3::US3_0(x) => x.clone(),
+                        _ => unreachable!(),
+                    }),
+                    _ => {
+                        let v13: Dice::US3 = if string("Debug") == v1_1.clone() {
+                            Dice::US3::US3_0(Dice::US2::US2_1)
+                        } else {
+                            Dice::US3::US3_1
+                        };
+                        match &v13 {
+                            Dice::US3::US3_0(v13_0_0) => Dice::US3::US3_0(match &v13 {
+                                Dice::US3::US3_0(x) => x.clone(),
+                                _ => unreachable!(),
+                            }),
+                            _ => {
+                                let v20: Dice::US3 = if string("Info") == v1_1.clone() {
+                                    Dice::US3::US3_0(Dice::US2::US2_2)
+                                } else {
+                                    Dice::US3::US3_1
+                                };
+                                match &v20 {
+                                    Dice::US3::US3_0(v20_0_0) => Dice::US3::US3_0(match &v20 {
+                                        Dice::US3::US3_0(x) => x.clone(),
+                                        _ => unreachable!(),
+                                    }),
+                                    _ => {
+                                        let v27: Dice::US3 = if string("Warning") == v1_1.clone() {
+                                            Dice::US3::US3_0(Dice::US2::US2_3)
+                                        } else {
+                                            Dice::US3::US3_1
+                                        };
+                                        match &v27 {
+                                            Dice::US3::US3_0(v27_0_0) => {
+                                                Dice::US3::US3_0(match &v27 {
+                                                    Dice::US3::US3_0(x) => x.clone(),
+                                                    _ => unreachable!(),
+                                                })
+                                            }
+                                            _ => {
+                                                let v34: Dice::US3 =
+                                                    if string("Critical") == v1_1.clone() {
+                                                        Dice::US3::US3_0(Dice::US2::US2_4)
+                                                    } else {
+                                                        Dice::US3::US3_1
+                                                    };
+                                                match &v34 {
+                                                    Dice::US3::US3_0(v34_0_0) => {
+                                                        Dice::US3::US3_0(match &v34 {
+                                                            Dice::US3::US3_0(x) => x.clone(),
+                                                            _ => unreachable!(),
+                                                        })
+                                                    }
+                                                    _ => Dice::US3::US3_1,
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                if Dice::method9(string("AUTOMATION")) != string("True") {
+                    Dice::US4::US4_1
+                } else {
+                    Dice::US4::US4_0({
+                        let _arg: DateTime = DateTime::now();
+                        _arg.ticks()
+                    })
+                },
+            )
         }
         pub fn closure11(unitVar: (), v0_1: string) {
             ();
@@ -461,88 +561,10 @@ mod module_1d76f080 {
             LrcPtr<Dice::Mut6>,
             Option<i64>,
         ) {
-            let v3_1: string = Dice::method9(Dice::method8());
-            let v8: Dice::US4 = if string("Verbose") == v3_1.clone() {
-                Dice::US4::US4_0(Dice::US2::US2_0)
-            } else {
-                Dice::US4::US4_1
-            };
-            let _v1: (Dice::US4, Dice::US5) = (
-                match &v8 {
-                    Dice::US4::US4_0(v8_0_0) => Dice::US4::US4_0(match &v8 {
-                        Dice::US4::US4_0(x) => x.clone(),
-                        _ => unreachable!(),
-                    }),
-                    _ => {
-                        let v15: Dice::US4 = if string("Debug") == v3_1.clone() {
-                            Dice::US4::US4_0(Dice::US2::US2_1)
-                        } else {
-                            Dice::US4::US4_1
-                        };
-                        match &v15 {
-                            Dice::US4::US4_0(v15_0_0) => Dice::US4::US4_0(match &v15 {
-                                Dice::US4::US4_0(x) => x.clone(),
-                                _ => unreachable!(),
-                            }),
-                            _ => {
-                                let v22: Dice::US4 = if string("Info") == v3_1.clone() {
-                                    Dice::US4::US4_0(Dice::US2::US2_2)
-                                } else {
-                                    Dice::US4::US4_1
-                                };
-                                match &v22 {
-                                    Dice::US4::US4_0(v22_0_0) => Dice::US4::US4_0(match &v22 {
-                                        Dice::US4::US4_0(x) => x.clone(),
-                                        _ => unreachable!(),
-                                    }),
-                                    _ => {
-                                        let v29: Dice::US4 = if string("Warning") == v3_1.clone() {
-                                            Dice::US4::US4_0(Dice::US2::US2_3)
-                                        } else {
-                                            Dice::US4::US4_1
-                                        };
-                                        match &v29 {
-                                            Dice::US4::US4_0(v29_0_0) => {
-                                                Dice::US4::US4_0(match &v29 {
-                                                    Dice::US4::US4_0(x) => x.clone(),
-                                                    _ => unreachable!(),
-                                                })
-                                            }
-                                            _ => {
-                                                let v36: Dice::US4 =
-                                                    if string("Critical") == v3_1.clone() {
-                                                        Dice::US4::US4_0(Dice::US2::US2_4)
-                                                    } else {
-                                                        Dice::US4::US4_1
-                                                    };
-                                                match &v36 {
-                                                    Dice::US4::US4_0(v36_0_0) => {
-                                                        Dice::US4::US4_0(match &v36 {
-                                                            Dice::US4::US4_0(x) => x.clone(),
-                                                            _ => unreachable!(),
-                                                        })
-                                                    }
-                                                    _ => Dice::US4::US4_1,
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                if Dice::method9(Dice::method12()) == string("True") {
-                    Dice::US5::US5_0({
-                        let _arg: DateTime = DateTime::now();
-                        _arg.ticks()
-                    })
-                } else {
-                    Dice::US5::US5_1
-                },
-            );
-            let v352: Dice::US5 = _v1.1.clone();
-            let v351: Dice::US4 = _v1.0.clone();
+            let patternInput: (Dice::US3, Dice::US4) = Dice::method8();
+            let _v1: (Dice::US3, Dice::US4) = (patternInput.0.clone(), patternInput.1.clone());
+            let v132: Dice::US4 = _v1.1.clone();
+            let v131: Dice::US3 = _v1.0.clone();
             (
                 LrcPtr::new(Dice::Mut1 {
                     l0: MutCell::new(1_i64),
@@ -557,17 +579,17 @@ mod module_1d76f080 {
                     l0: MutCell::new(string("")),
                 }),
                 LrcPtr::new(Dice::Mut6 {
-                    l0: MutCell::new(match &v351 {
-                        Dice::US4::US4_0(v351_0_0) => match &v351 {
-                            Dice::US4::US4_0(x) => x.clone(),
+                    l0: MutCell::new(match &v131 {
+                        Dice::US3::US3_0(v131_0_0) => match &v131 {
+                            Dice::US3::US3_0(x) => x.clone(),
                             _ => unreachable!(),
                         },
                         _ => v0_1,
                     }),
                 }),
-                match &v352 {
-                    Dice::US5::US5_0(v352_0_0) => Some(match &v352 {
-                        Dice::US5::US5_0(x) => x.clone(),
+                match &v132 {
+                    Dice::US4::US4_0(v132_0_0) => Some(match &v132 {
+                        Dice::US4::US4_0(x) => x.clone(),
                         _ => unreachable!(),
                     }),
                     _ => None::<i64>,
@@ -633,19 +655,19 @@ mod module_1d76f080 {
                 )
             }
         }
-        pub fn closure12(unitVar: (), v0_1: i64) -> Dice::US5 {
-            Dice::US5::US5_0(v0_1)
+        pub fn closure12(unitVar: (), v0_1: i64) -> Dice::US4 {
+            Dice::US4::US4_0(v0_1)
         }
-        pub fn method14() -> Func1<i64, Dice::US5> {
+        pub fn method13() -> Func1<i64, Dice::US4> {
             Func1::new(move |v: i64| Dice::closure12((), v))
         }
-        pub fn method15() -> string {
+        pub fn method14() -> string {
             string("hh:mm:ss")
         }
-        pub fn method16() -> string {
+        pub fn method15() -> string {
             string("HH:mm:ss")
         }
-        pub fn method13(
+        pub fn method12(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -653,15 +675,15 @@ mod module_1d76f080 {
             v4_1: LrcPtr<Dice::Mut6>,
             v5: Option<i64>,
         ) -> string {
-            let v20: Dice::US5 = defaultValue(Dice::US5::US5_1, map(Dice::method14(), v5));
-            let v60: DateTime = match &v20 {
-                Dice::US5::US5_0(v20_0_0) => {
-                    let v34: TimeSpan = TimeSpan::new_ticks(
+            let v20: Dice::US4 = defaultValue(Dice::US4::US4_1, map(Dice::method13(), v5));
+            let v116: DateTime = match &v20 {
+                Dice::US4::US4_0(v20_0_0) => {
+                    let v78: TimeSpan = TimeSpan::new_ticks(
                         {
                             let _arg: DateTime = DateTime::now();
                             _arg.ticks()
                         } - match &v20 {
-                            Dice::US5::US5_0(x) => x.clone(),
+                            Dice::US4::US4_0(x) => x.clone(),
                             _ => unreachable!(),
                         },
                     );
@@ -669,18 +691,18 @@ mod module_1d76f080 {
                         1_i32,
                         1_i32,
                         1_i32,
-                        v34.hours(),
-                        v34.minutes(),
-                        v34.seconds(),
-                        v34.milliseconds(),
+                        v78.hours(),
+                        v78.minutes(),
+                        v78.seconds(),
+                        v78.milliseconds(),
                     )
                 }
                 _ => DateTime::now(),
             };
-            let provider: string = Dice::method15();
-            v60.toString(provider)
+            let provider: string = Dice::method14();
+            v116.toString(provider)
         }
-        pub fn method19() -> string {
+        pub fn method18() -> string {
             string("")
         }
         pub fn closure13(v0_1: LrcPtr<Dice::Mut5>, v1_1: string, unitVar: ()) {
@@ -688,9 +710,9 @@ mod module_1d76f080 {
             v0_1.l0.set(v3_1);
             ()
         }
-        pub fn method18(v0_1: char) -> string {
+        pub fn method17(v0_1: char) -> string {
             let v2_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             let v8: () = {
                 Dice::closure13(v2_1.clone(), sprintf!("{}", v0_1), ());
@@ -698,20 +720,20 @@ mod module_1d76f080 {
             };
             v2_1.l0.get().clone()
         }
-        pub fn method20() -> string {
+        pub fn method19() -> string {
             string("\u{001b}[0m")
         }
-        pub fn method17() -> string {
-            let v6: string = Dice::method18(getCharAt(toLower(string("Debug")), 0_i32));
+        pub fn method16() -> string {
+            let v6: string = Dice::method17(getCharAt(toLower(string("Debug")), 0_i32));
             let v9: &str = inline_colorization::color_bright_blue;
             let v12: &str = &*v6;
-            let v32: &str = inline_colorization::color_reset;
-            let v34: std::string::String = format!("{}{}{}", v9, v12, v32);
-            fable_library_rust::String_::fromString(v34)
+            let v35: &str = inline_colorization::color_reset;
+            let v37: std::string::String = format!("{}{}{}", v9, v12, v35);
+            fable_library_rust::String_::fromString(v37)
         }
-        pub fn method22(v0_1: i64, v1_1: i64, v2_1: i64, v3_1: string) -> string {
+        pub fn method21(v0_1: i64, v1_1: i64, v2_1: i64, v3_1: string) -> string {
             let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             let v12: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", string("{ ")), ());
@@ -783,13 +805,13 @@ mod module_1d76f080 {
             };
             v5.l0.get().clone()
         }
-        pub fn method23(v0_1: string) -> string {
+        pub fn method22(v0_1: string) -> string {
             trimEndChars(
                 trimStartChars(v0_1, toArray(empty::<char>())),
                 toArray(ofArray(new_array(&[' ', '/']))),
             )
         }
-        pub fn method21(
+        pub fn method20(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -803,8 +825,8 @@ mod module_1d76f080 {
             v10: i64,
             v11: string,
         ) -> string {
-            let v12: string = Dice::method22(v8, v9, v10, v11);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method21(v8, v9, v10, v11);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -828,7 +850,7 @@ mod module_1d76f080 {
             };
             ()
         }
-        pub fn method24(v0_1: string) {
+        pub fn method23(v0_1: string) {
             let v3_1: () = {
                 Dice::closure9((), ());
                 ()
@@ -869,15 +891,15 @@ mod module_1d76f080 {
                 let v24: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v23: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v22: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method21(
+                Dice::method23(Dice::method20(
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
                     v27.clone(),
-                    Dice::method13(v22, v23, v24, v25, v26, v27),
-                    Dice::method17(),
+                    Dice::method12(v22, v23, v24, v25, v26, v27),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
@@ -885,11 +907,11 @@ mod module_1d76f080 {
                 ))
             };
         }
-        pub fn method25(v0_1: i64, v1_1: LrcPtr<Dice::UH0>) -> Dice::US1 {
+        pub fn method24(v0_1: i64, v1_1: LrcPtr<Dice::UH0>) -> Dice::US1 {
             let v0_1: MutCell<i64> = MutCell::new(v0_1);
             let v1_1: MutCell<LrcPtr<Dice::UH0>> = MutCell::new(v1_1.clone());
-            '_method25: loop {
-                break '_method25 (match v1_1.get().clone().as_ref() {
+            '_method24: loop {
+                break '_method24 (match v1_1.get().clone().as_ref() {
                     Dice::UH0::UH0_1 => Dice::US1::US1_1,
                     Dice::UH0::UH0_0(v1_1_0_0, v1_1_0_1) => {
                         if v0_1.get().clone() <= 0_i64 {
@@ -899,19 +921,19 @@ mod module_1d76f080 {
                             let v1_1_temp: LrcPtr<Dice::UH0> = (v1_1_0_1)();
                             v0_1.set(v0_1_temp);
                             v1_1.set(v1_1_temp);
-                            continue '_method25;
+                            continue '_method24;
                         }
                     }
                 });
             }
         }
-        pub fn method27() -> string {
+        pub fn method26() -> string {
             let v1_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             v1_1.l0.get().clone()
         }
-        pub fn method26(
+        pub fn method25(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -921,8 +943,8 @@ mod module_1d76f080 {
             v6: string,
             v7: string,
         ) -> string {
-            let v8: string = Dice::method27();
-            Dice::method23(sprintf!(
+            let v8: string = Dice::method26();
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -951,15 +973,15 @@ mod module_1d76f080 {
                 let v20: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v19: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v18: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method26(
+                Dice::method23(Dice::method25(
                     v18.clone(),
                     v19.clone(),
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
-                    Dice::method13(v18, v19, v20, v21, v22, v23),
-                    Dice::method17(),
+                    Dice::method12(v18, v19, v20, v21, v22, v23),
+                    Dice::method16(),
                 ))
             };
         }
@@ -998,7 +1020,7 @@ mod module_1d76f080 {
                         ()
                     };
                     let v61: LrcPtr<Dice::UH0> = v0_1();
-                    let v63: Dice::US1 = Dice::method25(v1_1.l0.get().clone(), v61);
+                    let v63: Dice::US1 = Dice::method24(v1_1.l0.get().clone(), v61);
                     match &v63 {
                         Dice::US1::US1_0(v63_0_0) => {
                             let v64: u8 = match &v63 {
@@ -1106,9 +1128,9 @@ mod module_1d76f080 {
                 }
             })
         }
-        pub fn method30(v0_1: u64, v1_1: u64, v2_1: i8) -> string {
+        pub fn method29(v0_1: u64, v1_1: u64, v2_1: i8) -> string {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             let v11: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
@@ -1164,7 +1186,7 @@ mod module_1d76f080 {
             };
             v4_1.l0.get().clone()
         }
-        pub fn method29(
+        pub fn method28(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -1177,8 +1199,8 @@ mod module_1d76f080 {
             v9: u64,
             v10: i8,
         ) -> string {
-            let v11: string = Dice::method30(v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method29(v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -1207,27 +1229,27 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method29(
+                Dice::method23(Dice::method28(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v2_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method28(v0_1: u64, v1_1: i8, v2_1: u64) -> i8 {
+        pub fn method27(v0_1: u64, v1_1: i8, v2_1: u64) -> i8 {
             let v0_1: MutCell<u64> = MutCell::new(v0_1);
             let v1_1: MutCell<i8> = MutCell::new(v1_1);
             let v2_1: MutCell<u64> = MutCell::new(v2_1);
-            '_method28: loop {
-                break '_method28 (if v2_1.get().clone() < v0_1.get().clone() {
+            '_method27: loop {
+                break '_method27 (if v2_1.get().clone() < v0_1.get().clone() {
                     let v4_1: u64 = v2_1.get().clone() * 6_u64;
                     if v4_1 > v2_1.get().clone() {
                         let v0_1_temp: u64 = v0_1.get().clone();
@@ -1236,7 +1258,7 @@ mod module_1d76f080 {
                         v0_1.set(v0_1_temp);
                         v1_1.set(v1_1_temp);
                         v2_1.set(v2_1_temp);
-                        continue '_method28;
+                        continue '_method27;
                     } else {
                         let v10: () = {
                             Dice::closure21(
@@ -1263,9 +1285,9 @@ mod module_1d76f080 {
                 });
             }
         }
-        pub fn method34(v0_1: i8, v1_1: u64, v2_1: u64) -> string {
+        pub fn method33(v0_1: i8, v1_1: u64, v2_1: u64) -> string {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             let v11: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
@@ -1321,7 +1343,7 @@ mod module_1d76f080 {
             };
             v4_1.l0.get().clone()
         }
-        pub fn method33(
+        pub fn method32(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -1334,8 +1356,8 @@ mod module_1d76f080 {
             v9: u64,
             v10: u64,
         ) -> string {
-            let v11: string = Dice::method34(v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method33(v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -1364,15 +1386,15 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method33(
+                Dice::method23(Dice::method32(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v1_1,
                     v0_1,
                     v2_1,
@@ -1760,29 +1782,29 @@ mod module_1d76f080 {
                 Func0::new(move || Dice::closure24((), ())),
             ))
         }
-        pub fn method35(v0_1: i8, v1_1: LrcPtr<Dice::UH2>) -> Dice::US7 {
+        pub fn method34(v0_1: i8, v1_1: LrcPtr<Dice::UH2>) -> Dice::US9 {
             let v0_1: MutCell<i8> = MutCell::new(v0_1);
             let v1_1: MutCell<LrcPtr<Dice::UH2>> = MutCell::new(v1_1.clone());
-            '_method35: loop {
-                break '_method35 (match v1_1.get().clone().as_ref() {
-                    Dice::UH2::UH2_1 => Dice::US7::US7_1,
+            '_method34: loop {
+                break '_method34 (match v1_1.get().clone().as_ref() {
+                    Dice::UH2::UH2_1 => Dice::US9::US9_1,
                     Dice::UH2::UH2_0(v1_1_0_0, v1_1_0_1) => {
                         if v0_1.get().clone() <= 0_i8 {
-                            Dice::US7::US7_0(v1_1_0_0.clone())
+                            Dice::US9::US9_0(v1_1_0_0.clone())
                         } else {
                             let v0_1_temp: i8 = v0_1.get().clone() - 1_i8;
                             let v1_1_temp: LrcPtr<Dice::UH2> = (v1_1_0_1)();
                             v0_1.set(v0_1_temp);
                             v1_1.set(v1_1_temp);
-                            continue '_method35;
+                            continue '_method34;
                         }
                     }
                 });
             }
         }
-        pub fn method37(v0_1: i8, v1_1: u64, v2_1: u8, v3_1: u64) -> string {
+        pub fn method36(v0_1: i8, v1_1: u64, v2_1: u8, v3_1: u64) -> string {
             let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             let v12: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", string("{ ")), ());
@@ -1854,7 +1876,7 @@ mod module_1d76f080 {
             };
             v5.l0.get().clone()
         }
-        pub fn method36(
+        pub fn method35(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -1868,8 +1890,8 @@ mod module_1d76f080 {
             v10: u8,
             v11: u64,
         ) -> string {
-            let v12: string = Dice::method37(v8, v9, v10, v11);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method36(v8, v9, v10, v11);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -1898,15 +1920,15 @@ mod module_1d76f080 {
                 let v24: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v23: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v22: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method36(
+                Dice::method23(Dice::method35(
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
                     v27.clone(),
-                    Dice::method13(v22, v23, v24, v25, v26, v27),
-                    Dice::method17(),
+                    Dice::method12(v22, v23, v24, v25, v26, v27),
+                    Dice::method16(),
                     v1_1,
                     v0_1,
                     v2_1,
@@ -1914,9 +1936,9 @@ mod module_1d76f080 {
                 ))
             };
         }
-        pub fn method39(v0_1: i8, v1_1: u64, v2_1: u8) -> string {
+        pub fn method38(v0_1: i8, v1_1: u64, v2_1: u8) -> string {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             let v11: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
@@ -1972,7 +1994,7 @@ mod module_1d76f080 {
             };
             v4_1.l0.get().clone()
         }
-        pub fn method38(
+        pub fn method37(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -1985,8 +2007,8 @@ mod module_1d76f080 {
             v9: u64,
             v10: u8,
         ) -> string {
-            let v11: string = Dice::method39(v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method38(v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -2015,36 +2037,36 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method38(
+                Dice::method23(Dice::method37(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v1_1,
                     v0_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method32(v0_1: i8, v1_1: LrcPtr<Dice::UH1>, v2_1: u64) -> Dice::US6 {
+        pub fn method31(v0_1: i8, v1_1: LrcPtr<Dice::UH1>, v2_1: u64) -> Dice::US8 {
             let v0_1: MutCell<i8> = MutCell::new(v0_1);
             let v1_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v1_1.clone());
             let v2_1: MutCell<u64> = MutCell::new(v2_1);
-            '_method32: loop {
-                break '_method32 (if v0_1.get().clone() < 0_i8 {
+            '_method31: loop {
+                break '_method31 (if v0_1.get().clone() < 0_i8 {
                     let v4_1: u64 = v2_1.get().clone() + 1_u64;
                     let v7: () = {
                         Dice::closure22(v2_1.get().clone(), v0_1.get().clone(), v4_1, ());
                         ()
                     };
-                    Dice::US6::US6_0(v4_1, v1_1.get().clone())
+                    Dice::US8::US8_0(v4_1, v1_1.get().clone())
                 } else {
                     match v1_1.get().clone().as_ref() {
-                        Dice::UH1::UH1_0 => Dice::US6::US6_1,
+                        Dice::UH1::UH1_0 => Dice::US8::US8_1,
                         Dice::UH1::UH1_1(v1_1_1_0, v1_1_1_1) => {
                             let v50: LrcPtr<Dice::UH1> = match v1_1.get().clone().as_ref() {
                                 Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -2055,7 +2077,7 @@ mod module_1d76f080 {
                                 _ => unreachable!(),
                             };
                             if v49 > 1_u8 {
-                                let v55: Dice::US7 = Dice::method35(
+                                let v55: Dice::US9 = Dice::method34(
                                     v0_1.get().clone(),
                                     LrcPtr::new(Dice::UH2::UH2_0(
                                         1_u64,
@@ -2064,8 +2086,8 @@ mod module_1d76f080 {
                                 );
                                 let v62: u64 = (v49 - 1_u8) as u64
                                     * match &v55 {
-                                        Dice::US7::US7_0(v55_0_0) => match &v55 {
-                                            Dice::US7::US7_0(x) => x.clone(),
+                                        Dice::US9::US9_0(v55_0_0) => match &v55 {
+                                            Dice::US9::US9_0(x) => x.clone(),
                                             _ => unreachable!(),
                                         },
                                         _ => panic!("{}", string("Option does not have a value."),),
@@ -2087,7 +2109,7 @@ mod module_1d76f080 {
                                     v0_1.set(v0_1_temp);
                                     v1_1.set(v1_1_temp);
                                     v2_1.set(v2_1_temp);
-                                    continue '_method32;
+                                    continue '_method31;
                                 }
                             } else {
                                 let v110: () = {
@@ -2106,7 +2128,7 @@ mod module_1d76f080 {
                                     v0_1.set(v0_1_temp);
                                     v1_1.set(v1_1_temp);
                                     v2_1.set(v2_1_temp);
-                                    continue '_method32;
+                                    continue '_method31;
                                 }
                             }
                         }
@@ -2114,17 +2136,17 @@ mod module_1d76f080 {
                 });
             }
         }
-        pub fn method40(v0_1: i8, v1_1: Func0<u8>, v2_1: i8) -> LrcPtr<Dice::UH1> {
+        pub fn method39(v0_1: i8, v1_1: Func0<u8>, v2_1: i8) -> LrcPtr<Dice::UH1> {
             if v2_1 < v0_1 {
                 LrcPtr::new(Dice::UH1::UH1_1(
                     v1_1(),
-                    Dice::method40(v0_1, v1_1, v2_1 + 1_i8),
+                    Dice::method39(v0_1, v1_1, v2_1 + 1_i8),
                 ))
             } else {
                 LrcPtr::new(Dice::UH1::UH1_0)
             }
         }
-        pub fn method41(
+        pub fn method40(
             v0_1: Func0<u8>,
             v1_1: bool,
             v2_1: u64,
@@ -2136,11 +2158,11 @@ mod module_1d76f080 {
             let v2_1: MutCell<u64> = MutCell::new(v2_1);
             let v3_1: MutCell<i8> = MutCell::new(v3_1);
             let v4_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v4_1.clone());
-            '_method41: loop {
-                break '_method41 ({
+            '_method40: loop {
+                break '_method40 ({
                     let v5: i8 = v3_1.get().clone() + 1_i8;
                     if v3_1.get().clone() < v5 {
-                        Dice::method31(
+                        Dice::method30(
                             v0_1.get().clone(),
                             v1_1.get().clone(),
                             v2_1.get().clone(),
@@ -2149,11 +2171,11 @@ mod module_1d76f080 {
                             v5,
                         )
                     } else {
-                        let v11: Dice::US6 =
-                            Dice::method32(v3_1.get().clone(), v4_1.get().clone(), 0_u64);
-                        if let Dice::US6::US6_0(v11_0_0, v11_0_1) = &v11 {
+                        let v11: Dice::US8 =
+                            Dice::method31(v3_1.get().clone(), v4_1.get().clone(), 0_u64);
+                        if let Dice::US8::US8_0(v11_0_0, v11_0_1) = &v11 {
                             let v12: u64 = match &v11 {
-                                Dice::US6::US6_0(x, _) => x.clone(),
+                                Dice::US8::US8_0(x, _) => x.clone(),
                                 _ => unreachable!(),
                             };
                             if v12 <= v2_1.get().clone() {
@@ -2164,7 +2186,7 @@ mod module_1d76f080 {
                                     let v1_1_temp: bool = v1_1.get().clone();
                                     let v2_1_temp: u64 = v2_1.get().clone();
                                     let v3_1_temp: i8 = v3_1.get().clone();
-                                    let v4_1_temp: LrcPtr<Dice::UH1> = Dice::method40(
+                                    let v4_1_temp: LrcPtr<Dice::UH1> = Dice::method39(
                                         v3_1.get().clone(),
                                         v0_1.get().clone(),
                                         0_i8,
@@ -2174,9 +2196,9 @@ mod module_1d76f080 {
                                     v2_1.set(v2_1_temp);
                                     v3_1.set(v3_1_temp);
                                     v4_1.set(v4_1_temp);
-                                    continue '_method41;
+                                    continue '_method40;
                                 } else {
-                                    Dice::method31(
+                                    Dice::method30(
                                         v0_1.get().clone(),
                                         v1_1.get().clone(),
                                         v2_1.get().clone(),
@@ -2193,15 +2215,15 @@ mod module_1d76f080 {
                                 let v2_1_temp: u64 = v2_1.get().clone();
                                 let v3_1_temp: i8 = v3_1.get().clone();
                                 let v4_1_temp: LrcPtr<Dice::UH1> =
-                                    Dice::method40(v3_1.get().clone(), v0_1.get().clone(), 0_i8);
+                                    Dice::method39(v3_1.get().clone(), v0_1.get().clone(), 0_i8);
                                 v0_1.set(v0_1_temp);
                                 v1_1.set(v1_1_temp);
                                 v2_1.set(v2_1_temp);
                                 v3_1.set(v3_1_temp);
                                 v4_1.set(v4_1_temp);
-                                continue '_method41;
+                                continue '_method40;
                             } else {
-                                Dice::method31(
+                                Dice::method30(
                                     v0_1.get().clone(),
                                     v1_1.get().clone(),
                                     v2_1.get().clone(),
@@ -2215,7 +2237,7 @@ mod module_1d76f080 {
                 });
             }
         }
-        pub fn method31(
+        pub fn method30(
             v0_1: Func0<u8>,
             v1_1: bool,
             v2_1: u64,
@@ -2229,8 +2251,8 @@ mod module_1d76f080 {
             let v3_1: MutCell<i8> = MutCell::new(v3_1);
             let v4_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v4_1.clone());
             let v5: MutCell<i8> = MutCell::new(v5);
-            '_method31: loop {
-                break '_method31 (if v5.get().clone() < v3_1.get().clone() + 1_i8 {
+            '_method30: loop {
+                break '_method30 (if v5.get().clone() < v3_1.get().clone() + 1_i8 {
                     let v0_1_temp = v0_1.get().clone();
                     let v1_1_temp: bool = v1_1.get().clone();
                     let v2_1_temp: u64 = v2_1.get().clone();
@@ -2244,25 +2266,25 @@ mod module_1d76f080 {
                     v3_1.set(v3_1_temp);
                     v4_1.set(v4_1_temp);
                     v5.set(v5_temp);
-                    continue '_method31;
+                    continue '_method30;
                 } else {
-                    let v13: Dice::US6 =
-                        Dice::method32(v3_1.get().clone(), v4_1.get().clone(), 0_u64);
-                    if let Dice::US6::US6_0(v13_0_0, v13_0_1) = &v13 {
+                    let v13: Dice::US8 =
+                        Dice::method31(v3_1.get().clone(), v4_1.get().clone(), 0_u64);
+                    if let Dice::US8::US8_0(v13_0_0, v13_0_1) = &v13 {
                         let v14: u64 = match &v13 {
-                            Dice::US6::US6_0(x, _) => x.clone(),
+                            Dice::US8::US8_0(x, _) => x.clone(),
                             _ => unreachable!(),
                         };
                         if v14 <= v2_1.get().clone() {
                             v14
                         } else {
                             if v1_1.get().clone() {
-                                Dice::method41(
+                                Dice::method40(
                                     v0_1.get().clone(),
                                     v1_1.get().clone(),
                                     v2_1.get().clone(),
                                     v3_1.get().clone(),
-                                    Dice::method40(v3_1.get().clone(), v0_1.get().clone(), 0_i8),
+                                    Dice::method39(v3_1.get().clone(), v0_1.get().clone(), 0_i8),
                                 )
                             } else {
                                 let v0_1_temp = v0_1.get().clone();
@@ -2278,17 +2300,17 @@ mod module_1d76f080 {
                                 v3_1.set(v3_1_temp);
                                 v4_1.set(v4_1_temp);
                                 v5.set(v5_temp);
-                                continue '_method31;
+                                continue '_method30;
                             }
                         }
                     } else {
                         if v1_1.get().clone() {
-                            Dice::method41(
+                            Dice::method40(
                                 v0_1.get().clone(),
                                 v1_1.get().clone(),
                                 v2_1.get().clone(),
                                 v3_1.get().clone(),
-                                Dice::method40(v3_1.get().clone(), v0_1.get().clone(), 0_i8),
+                                Dice::method39(v3_1.get().clone(), v0_1.get().clone(), 0_i8),
                             )
                         } else {
                             let v0_1_temp = v0_1.get().clone();
@@ -2304,21 +2326,21 @@ mod module_1d76f080 {
                             v3_1.set(v3_1_temp);
                             v4_1.set(v4_1_temp);
                             v5.set(v5_temp);
-                            continue '_method31;
+                            continue '_method30;
                         }
                     }
                 });
             }
         }
         pub fn closure20(v0_1: Func0<u8>, v1_1: bool, v2_1: u64) -> u64 {
-            Dice::method31(
+            Dice::method30(
                 v0_1,
                 v1_1,
                 v2_1,
                 (if v2_1 == 1_u64 {
                     1_i8
                 } else {
-                    Dice::method28(v2_1, 0_i8, 1_u64)
+                    Dice::method27(v2_1, 0_i8, 1_u64)
                 }) - 1_i8,
                 LrcPtr::new(Dice::UH1::UH1_0),
                 0_i8,
@@ -2337,11 +2359,11 @@ mod module_1d76f080 {
                 move |v: bool| Dice::closure19(v0_1.clone(), v)
             })
         }
-        pub fn method42(v0_1: LrcPtr<Dice::UH1>, v1_1: i8) -> i8 {
+        pub fn method41(v0_1: LrcPtr<Dice::UH1>, v1_1: i8) -> i8 {
             let v0_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v0_1.clone());
             let v1_1: MutCell<i8> = MutCell::new(v1_1);
-            '_method42: loop {
-                break '_method42 (match v0_1.get().clone().as_ref() {
+            '_method41: loop {
+                break '_method41 (match v0_1.get().clone().as_ref() {
                     Dice::UH1::UH1_0 => v1_1.get().clone(),
                     Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                         let v0_1_temp: LrcPtr<Dice::UH1> = match v0_1.get().clone().as_ref() {
@@ -2351,30 +2373,30 @@ mod module_1d76f080 {
                         let v1_1_temp: i8 = v1_1.get().clone() + 1_i8;
                         v0_1.set(v0_1_temp);
                         v1_1.set(v1_1_temp);
-                        continue '_method42;
+                        continue '_method41;
                     }
                 });
             }
         }
         pub fn closure90(v0_1: u64, v1_1: LrcPtr<Dice::UH1>) -> Option<u64> {
-            let v6: Dice::US6 =
-                Dice::method32(Dice::method42(v1_1.clone(), 0_i8) - 1_i8, v1_1, 0_u64);
-            let v16: Dice::US7 = if let Dice::US6::US6_0(v6_0_0, v6_0_1) = &v6 {
+            let v6: Dice::US8 =
+                Dice::method31(Dice::method41(v1_1.clone(), 0_i8) - 1_i8, v1_1, 0_u64);
+            let v16: Dice::US9 = if let Dice::US8::US8_0(v6_0_0, v6_0_1) = &v6 {
                 let v7: u64 = match &v6 {
-                    Dice::US6::US6_0(x, _) => x.clone(),
+                    Dice::US8::US8_0(x, _) => x.clone(),
                     _ => unreachable!(),
                 };
                 if if v7 >= 1_u64 { v7 <= v0_1 } else { false } {
-                    Dice::US7::US7_0(v7)
+                    Dice::US9::US9_0(v7)
                 } else {
-                    Dice::US7::US7_1
+                    Dice::US9::US9_1
                 }
             } else {
-                Dice::US7::US7_1
+                Dice::US9::US9_1
             };
             match &v16 {
-                Dice::US7::US7_0(v16_0_0) => Some(match &v16 {
-                    Dice::US7::US7_0(x) => x.clone(),
+                Dice::US9::US9_0(v16_0_0) => Some(match &v16 {
+                    Dice::US9::US9_0(x) => x.clone(),
                     _ => unreachable!(),
                 }),
                 _ => None::<u64>,
@@ -2386,9 +2408,9 @@ mod module_1d76f080 {
                 move |v: LrcPtr<Dice::UH1>| Dice::closure90(v0_1, v)
             })
         }
-        pub fn method44(v0_1: i64, v1_1: i64, v2_1: i8) -> string {
+        pub fn method43(v0_1: i64, v1_1: i64, v2_1: i8) -> string {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             let v11: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
@@ -2444,7 +2466,7 @@ mod module_1d76f080 {
             };
             v4_1.l0.get().clone()
         }
-        pub fn method43(
+        pub fn method42(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -2454,8 +2476,8 @@ mod module_1d76f080 {
             v6: string,
             v7: string,
         ) -> string {
-            let v11: string = Dice::method44(i64::MAX, 4738381338321616896_i64, 24_i8);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method43(i64::MAX, 4738381338321616896_i64, 24_i8);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -2484,24 +2506,24 @@ mod module_1d76f080 {
                 let v20: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v19: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v18: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method43(
+                Dice::method23(Dice::method42(
                     v18.clone(),
                     v19.clone(),
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
-                    Dice::method13(v18, v19, v20, v21, v22, v23),
-                    Dice::method17(),
+                    Dice::method12(v18, v19, v20, v21, v22, v23),
+                    Dice::method16(),
                 ))
             };
         }
-        pub fn method46() -> u8 {
+        pub fn method45() -> u8 {
             rand::Rng::gen_range(&mut rand::thread_rng(), 1_u8..7_u8)
         }
-        pub fn method49(v0_1: i8, v1_1: i64, v2_1: u8, v3_1: i64) -> string {
+        pub fn method48(v0_1: i8, v1_1: i64, v2_1: u8, v3_1: i64) -> string {
             let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             let v12: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", string("{ ")), ());
@@ -2573,7 +2595,7 @@ mod module_1d76f080 {
             };
             v5.l0.get().clone()
         }
-        pub fn method48(
+        pub fn method47(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -2586,8 +2608,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(23_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(23_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -2616,22 +2638,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method48(
+                Dice::method23(Dice::method47(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method51(
+        pub fn method50(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -2644,8 +2666,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(22_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(22_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -2674,22 +2696,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method51(
+                Dice::method23(Dice::method50(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method53(
+        pub fn method52(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -2702,8 +2724,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(21_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(21_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -2732,22 +2754,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method53(
+                Dice::method23(Dice::method52(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method55(
+        pub fn method54(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -2760,8 +2782,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(20_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(20_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -2790,22 +2812,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method55(
+                Dice::method23(Dice::method54(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method57(
+        pub fn method56(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -2818,8 +2840,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(19_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(19_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -2848,22 +2870,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method57(
+                Dice::method23(Dice::method56(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method59(
+        pub fn method58(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -2876,8 +2898,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(18_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(18_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -2906,22 +2928,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method59(
+                Dice::method23(Dice::method58(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method61(
+        pub fn method60(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -2934,8 +2956,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(17_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(17_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -2964,22 +2986,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method61(
+                Dice::method23(Dice::method60(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method63(
+        pub fn method62(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -2992,8 +3014,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(16_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(16_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3022,22 +3044,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method63(
+                Dice::method23(Dice::method62(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method65(
+        pub fn method64(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3050,8 +3072,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(15_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(15_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3080,22 +3102,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method65(
+                Dice::method23(Dice::method64(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method67(
+        pub fn method66(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3108,8 +3130,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(14_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(14_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3138,22 +3160,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method67(
+                Dice::method23(Dice::method66(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method69(
+        pub fn method68(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3166,8 +3188,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(13_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(13_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3196,22 +3218,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method69(
+                Dice::method23(Dice::method68(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method71(
+        pub fn method70(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3224,8 +3246,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(12_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(12_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3254,22 +3276,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method71(
+                Dice::method23(Dice::method70(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method73(
+        pub fn method72(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3282,8 +3304,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(11_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(11_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3312,22 +3334,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method73(
+                Dice::method23(Dice::method72(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method75(
+        pub fn method74(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3340,8 +3362,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(10_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(10_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3370,22 +3392,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method75(
+                Dice::method23(Dice::method74(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method77(
+        pub fn method76(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3398,8 +3420,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(9_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(9_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3428,22 +3450,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method77(
+                Dice::method23(Dice::method76(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method79(
+        pub fn method78(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3456,8 +3478,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(8_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(8_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3486,22 +3508,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method79(
+                Dice::method23(Dice::method78(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method81(
+        pub fn method80(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3514,8 +3536,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(7_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(7_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3544,22 +3566,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method81(
+                Dice::method23(Dice::method80(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method83(
+        pub fn method82(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3572,8 +3594,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(6_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(6_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3602,22 +3624,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method83(
+                Dice::method23(Dice::method82(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method85(
+        pub fn method84(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3630,8 +3652,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(5_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(5_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3660,22 +3682,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method85(
+                Dice::method23(Dice::method84(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method87(
+        pub fn method86(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3688,8 +3710,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(4_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(4_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3718,22 +3740,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method87(
+                Dice::method23(Dice::method86(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method89(
+        pub fn method88(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3746,8 +3768,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(3_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(3_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3776,22 +3798,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method89(
+                Dice::method23(Dice::method88(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method91(
+        pub fn method90(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3804,8 +3826,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(2_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(2_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3834,22 +3856,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method91(
+                Dice::method23(Dice::method90(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method93(
+        pub fn method92(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3862,8 +3884,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(1_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(1_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3892,22 +3914,22 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method93(
+                Dice::method23(Dice::method92(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method95(
+        pub fn method94(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -3920,8 +3942,8 @@ mod module_1d76f080 {
             v9: u8,
             v10: i64,
         ) -> string {
-            let v12: string = Dice::method49(0_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
+            let v12: string = Dice::method48(0_i8, v8, v9, v10);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -3950,24 +3972,24 @@ mod module_1d76f080 {
                 let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method95(
+                Dice::method23(Dice::method94(
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
                     v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
+                    Dice::method12(v21, v22, v23, v24, v25, v26),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                     v2_1,
                 ))
             };
         }
-        pub fn method98(v0_1: i8, v1_1: i64, v2_1: i64) -> string {
+        pub fn method97(v0_1: i8, v1_1: i64, v2_1: i64) -> string {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             let v11: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
@@ -4023,7 +4045,7 @@ mod module_1d76f080 {
             };
             v4_1.l0.get().clone()
         }
-        pub fn method97(
+        pub fn method96(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -4035,8 +4057,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: i64,
         ) -> string {
-            let v11: string = Dice::method98(-1_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method97(-1_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -4065,31 +4087,31 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method97(
+                Dice::method23(Dice::method96(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method96(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method95(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             let v2_1: i64 = v1_1 + 1_i64;
             let v5: () = {
                 Dice::closure117(v1_1, v2_1, ());
                 ()
             };
-            Dice::US8::US8_0(v2_1, v0_1)
+            Dice::US10::US10_0(v2_1, v0_1)
         }
-        pub fn method100(v0_1: i8, v1_1: i64, v2_1: u8) -> string {
+        pub fn method99(v0_1: i8, v1_1: i64, v2_1: u8) -> string {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             let v11: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
@@ -4145,7 +4167,7 @@ mod module_1d76f080 {
             };
             v4_1.l0.get().clone()
         }
-        pub fn method99(
+        pub fn method98(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -4157,8 +4179,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(0_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(0_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -4187,23 +4209,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method99(
+                Dice::method23(Dice::method98(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method94(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method93(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -4219,18 +4241,18 @@ mod module_1d76f080 {
                             Dice::closure116(v1_1, v3_1, v7, ());
                             ()
                         };
-                        Dice::method96(v4_1.clone(), v1_1 + v7)
+                        Dice::method95(v4_1.clone(), v1_1 + v7)
                     } else {
                         let v54: () = {
                             Dice::closure118(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method96(v4_1, v1_1)
+                        Dice::method95(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method101(
+        pub fn method100(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -4242,8 +4264,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(1_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(1_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -4272,23 +4294,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method101(
+                Dice::method23(Dice::method100(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method92(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method91(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -4304,18 +4326,18 @@ mod module_1d76f080 {
                             Dice::closure115(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method94(v4_1.clone(), v1_1 + v8)
+                        Dice::method93(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure119(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method94(v4_1, v1_1)
+                        Dice::method93(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method102(
+        pub fn method101(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -4327,8 +4349,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(2_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(2_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -4357,23 +4379,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method102(
+                Dice::method23(Dice::method101(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method90(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method89(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -4389,18 +4411,18 @@ mod module_1d76f080 {
                             Dice::closure114(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method92(v4_1.clone(), v1_1 + v8)
+                        Dice::method91(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure120(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method92(v4_1, v1_1)
+                        Dice::method91(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method103(
+        pub fn method102(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -4412,8 +4434,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(3_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(3_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -4442,23 +4464,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method103(
+                Dice::method23(Dice::method102(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method88(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method87(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -4474,18 +4496,18 @@ mod module_1d76f080 {
                             Dice::closure113(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method90(v4_1.clone(), v1_1 + v8)
+                        Dice::method89(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure121(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method90(v4_1, v1_1)
+                        Dice::method89(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method104(
+        pub fn method103(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -4497,8 +4519,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(4_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(4_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -4527,23 +4549,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method104(
+                Dice::method23(Dice::method103(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method86(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method85(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -4559,18 +4581,18 @@ mod module_1d76f080 {
                             Dice::closure112(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method88(v4_1.clone(), v1_1 + v8)
+                        Dice::method87(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure122(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method88(v4_1, v1_1)
+                        Dice::method87(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method105(
+        pub fn method104(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -4582,8 +4604,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(5_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(5_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -4612,23 +4634,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method105(
+                Dice::method23(Dice::method104(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method84(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method83(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -4644,18 +4666,18 @@ mod module_1d76f080 {
                             Dice::closure111(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method86(v4_1.clone(), v1_1 + v8)
+                        Dice::method85(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure123(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method86(v4_1, v1_1)
+                        Dice::method85(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method106(
+        pub fn method105(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -4667,8 +4689,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(6_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(6_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -4697,23 +4719,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method106(
+                Dice::method23(Dice::method105(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method82(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method81(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -4729,18 +4751,18 @@ mod module_1d76f080 {
                             Dice::closure110(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method84(v4_1.clone(), v1_1 + v8)
+                        Dice::method83(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure124(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method84(v4_1, v1_1)
+                        Dice::method83(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method107(
+        pub fn method106(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -4752,8 +4774,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(7_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(7_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -4782,23 +4804,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method107(
+                Dice::method23(Dice::method106(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method80(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method79(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -4814,18 +4836,18 @@ mod module_1d76f080 {
                             Dice::closure109(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method82(v4_1.clone(), v1_1 + v8)
+                        Dice::method81(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure125(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method82(v4_1, v1_1)
+                        Dice::method81(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method108(
+        pub fn method107(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -4837,8 +4859,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(8_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(8_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -4867,23 +4889,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method108(
+                Dice::method23(Dice::method107(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method78(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method77(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -4899,18 +4921,18 @@ mod module_1d76f080 {
                             Dice::closure108(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method80(v4_1.clone(), v1_1 + v8)
+                        Dice::method79(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure126(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method80(v4_1, v1_1)
+                        Dice::method79(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method109(
+        pub fn method108(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -4922,8 +4944,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(9_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(9_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -4952,23 +4974,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method109(
+                Dice::method23(Dice::method108(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method76(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method75(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -4984,18 +5006,18 @@ mod module_1d76f080 {
                             Dice::closure107(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method78(v4_1.clone(), v1_1 + v8)
+                        Dice::method77(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure127(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method78(v4_1, v1_1)
+                        Dice::method77(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method110(
+        pub fn method109(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5007,8 +5029,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(10_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(10_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5037,23 +5059,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method110(
+                Dice::method23(Dice::method109(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method74(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method73(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -5069,18 +5091,18 @@ mod module_1d76f080 {
                             Dice::closure106(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method76(v4_1.clone(), v1_1 + v8)
+                        Dice::method75(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure128(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method76(v4_1, v1_1)
+                        Dice::method75(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method111(
+        pub fn method110(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5092,8 +5114,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(11_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(11_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5122,23 +5144,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method111(
+                Dice::method23(Dice::method110(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method72(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method71(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -5154,18 +5176,18 @@ mod module_1d76f080 {
                             Dice::closure105(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method74(v4_1.clone(), v1_1 + v8)
+                        Dice::method73(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure129(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method74(v4_1, v1_1)
+                        Dice::method73(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method112(
+        pub fn method111(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5177,8 +5199,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(12_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(12_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5207,23 +5229,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method112(
+                Dice::method23(Dice::method111(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method70(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method69(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -5239,18 +5261,18 @@ mod module_1d76f080 {
                             Dice::closure104(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method72(v4_1.clone(), v1_1 + v8)
+                        Dice::method71(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure130(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method72(v4_1, v1_1)
+                        Dice::method71(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method113(
+        pub fn method112(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5262,8 +5284,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(13_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(13_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5292,23 +5314,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method113(
+                Dice::method23(Dice::method112(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method68(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method67(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -5324,18 +5346,18 @@ mod module_1d76f080 {
                             Dice::closure103(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method70(v4_1.clone(), v1_1 + v8)
+                        Dice::method69(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure131(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method70(v4_1, v1_1)
+                        Dice::method69(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method114(
+        pub fn method113(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5347,8 +5369,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(14_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(14_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5377,23 +5399,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method114(
+                Dice::method23(Dice::method113(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method66(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method65(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -5409,18 +5431,18 @@ mod module_1d76f080 {
                             Dice::closure102(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method68(v4_1.clone(), v1_1 + v8)
+                        Dice::method67(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure132(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method68(v4_1, v1_1)
+                        Dice::method67(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method115(
+        pub fn method114(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5432,8 +5454,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(15_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(15_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5462,23 +5484,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method115(
+                Dice::method23(Dice::method114(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method64(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method63(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -5494,18 +5516,18 @@ mod module_1d76f080 {
                             Dice::closure101(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method66(v4_1.clone(), v1_1 + v8)
+                        Dice::method65(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure133(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method66(v4_1, v1_1)
+                        Dice::method65(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method116(
+        pub fn method115(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5517,8 +5539,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(16_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(16_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5547,23 +5569,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method116(
+                Dice::method23(Dice::method115(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method62(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method61(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -5579,18 +5601,18 @@ mod module_1d76f080 {
                             Dice::closure100(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method64(v4_1.clone(), v1_1 + v8)
+                        Dice::method63(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure134(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method64(v4_1, v1_1)
+                        Dice::method63(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method117(
+        pub fn method116(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5602,8 +5624,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(17_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(17_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5632,23 +5654,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method117(
+                Dice::method23(Dice::method116(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method60(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method59(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -5664,18 +5686,18 @@ mod module_1d76f080 {
                             Dice::closure99(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method62(v4_1.clone(), v1_1 + v8)
+                        Dice::method61(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure135(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method62(v4_1, v1_1)
+                        Dice::method61(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method118(
+        pub fn method117(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5687,8 +5709,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(18_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(18_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5717,23 +5739,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method118(
+                Dice::method23(Dice::method117(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method58(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method57(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -5749,18 +5771,18 @@ mod module_1d76f080 {
                             Dice::closure98(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method60(v4_1.clone(), v1_1 + v8)
+                        Dice::method59(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure136(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method60(v4_1, v1_1)
+                        Dice::method59(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method119(
+        pub fn method118(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5772,8 +5794,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(19_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(19_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5802,23 +5824,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method119(
+                Dice::method23(Dice::method118(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method56(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method55(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -5834,18 +5856,18 @@ mod module_1d76f080 {
                             Dice::closure97(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method58(v4_1.clone(), v1_1 + v8)
+                        Dice::method57(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure137(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method58(v4_1, v1_1)
+                        Dice::method57(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method120(
+        pub fn method119(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5857,8 +5879,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(20_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(20_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5887,23 +5909,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method120(
+                Dice::method23(Dice::method119(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method54(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method53(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -5919,18 +5941,18 @@ mod module_1d76f080 {
                             Dice::closure96(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method56(v4_1.clone(), v1_1 + v8)
+                        Dice::method55(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure138(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method56(v4_1, v1_1)
+                        Dice::method55(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method121(
+        pub fn method120(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -5942,8 +5964,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(21_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(21_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -5972,23 +5994,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method121(
+                Dice::method23(Dice::method120(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method52(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method51(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -6004,18 +6026,18 @@ mod module_1d76f080 {
                             Dice::closure95(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method54(v4_1.clone(), v1_1 + v8)
+                        Dice::method53(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure139(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method54(v4_1, v1_1)
+                        Dice::method53(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method122(
+        pub fn method121(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -6027,8 +6049,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(22_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(22_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -6057,23 +6079,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method122(
+                Dice::method23(Dice::method121(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method50(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method49(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -6089,18 +6111,18 @@ mod module_1d76f080 {
                             Dice::closure94(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method52(v4_1.clone(), v1_1 + v8)
+                        Dice::method51(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure140(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method52(v4_1, v1_1)
+                        Dice::method51(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method123(
+        pub fn method122(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -6112,8 +6134,8 @@ mod module_1d76f080 {
             v8: i64,
             v9: u8,
         ) -> string {
-            let v11: string = Dice::method100(23_i8, v8, v9);
-            Dice::method23(sprintf!(
+            let v11: string = Dice::method99(23_i8, v8, v9);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -6142,23 +6164,23 @@ mod module_1d76f080 {
                 let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method123(
+                Dice::method23(Dice::method122(
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
                     v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
+                    Dice::method12(v20, v21, v22, v23, v24, v25),
+                    Dice::method16(),
                     v0_1,
                     v1_1,
                 ))
             };
         }
-        pub fn method47(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
+        pub fn method46(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US10 {
             match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
+                Dice::UH1::UH1_0 => Dice::US10::US10_1,
                 Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
                     let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
                         Dice::UH1::UH1_1(_, x) => x.clone(),
@@ -6174,105 +6196,105 @@ mod module_1d76f080 {
                             Dice::closure93(v1_1, v3_1, v8, ());
                             ()
                         };
-                        Dice::method50(v4_1.clone(), v1_1 + v8)
+                        Dice::method49(v4_1.clone(), v1_1 + v8)
                     } else {
                         let v55: () = {
                             Dice::closure141(v1_1, v3_1, ());
                             ()
                         };
-                        Dice::method50(v4_1, v1_1)
+                        Dice::method49(v4_1, v1_1)
                     }
                 }
             }
         }
-        pub fn method45(v0_1: LrcPtr<Dice::UH1>, v1_1: i8) -> i64 {
+        pub fn method44(v0_1: LrcPtr<Dice::UH1>, v1_1: i8) -> i64 {
             let v0_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v0_1.clone());
             let v1_1: MutCell<i8> = MutCell::new(v1_1);
-            '_method45: loop {
-                break '_method45 (if v1_1.get().clone() < 24_i8 {
+            '_method44: loop {
+                break '_method44 (if v1_1.get().clone() < 24_i8 {
                     let v0_1_temp: LrcPtr<Dice::UH1> =
-                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(), v0_1.get().clone()));
+                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(), v0_1.get().clone()));
                     let v1_1_temp: i8 = v1_1.get().clone() + 1_i8;
                     v0_1.set(v0_1_temp);
                     v1_1.set(v1_1_temp);
-                    continue '_method45;
+                    continue '_method44;
                 } else {
-                    let v8: Dice::US8 = Dice::method47(v0_1.get().clone(), 0_i64);
-                    if let Dice::US8::US8_0(v8_0_0, v8_0_1) = &v8 {
+                    let v8: Dice::US10 = Dice::method46(v0_1.get().clone(), 0_i64);
+                    if let Dice::US10::US10_0(v8_0_0, v8_0_1) = &v8 {
                         let v9: i64 = match &v8 {
-                            Dice::US8::US8_0(x, _) => x.clone(),
+                            Dice::US10::US10_0(x, _) => x.clone(),
                             _ => unreachable!(),
                         };
                         if v9 <= i64::MAX {
                             v9
                         } else {
                             let v0_1_temp: LrcPtr<Dice::UH1> =
-                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
+                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_0)))))))))))))))))))))))))))))))))))))))))))))));
                             let v1_1_temp: i8 = 23_i8;
                             v0_1.set(v0_1_temp);
                             v1_1.set(v1_1_temp);
-                            continue '_method45;
+                            continue '_method44;
                         }
                     } else {
                         let v0_1_temp: LrcPtr<Dice::UH1> =
-                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
+                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method45(),
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_0)))))))))))))))))))))))))))))))))))))))))))))));
                         let v1_1_temp: i8 = 23_i8;
                         v0_1.set(v0_1_temp);
                         v1_1.set(v1_1_temp);
-                        continue '_method45;
+                        continue '_method44;
                     }
                 });
             }
         }
-        pub fn method125(v0_1: i64) -> string {
+        pub fn method124(v0_1: i64) -> string {
             let v2_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
+                l0: MutCell::new(Dice::method18()),
             });
             let v9: () = {
                 Dice::closure13(v2_1.clone(), sprintf!("{}", string("{ ")), ());
@@ -6296,7 +6318,7 @@ mod module_1d76f080 {
             };
             v2_1.l0.get().clone()
         }
-        pub fn method124(
+        pub fn method123(
             v0_1: LrcPtr<Dice::Mut1>,
             v1_1: LrcPtr<Dice::Mut3>,
             v2_1: LrcPtr<Dice::Mut4>,
@@ -6307,8 +6329,8 @@ mod module_1d76f080 {
             v7: string,
             v8: i64,
         ) -> string {
-            let v9: string = Dice::method125(v8);
-            Dice::method23(sprintf!(
+            let v9: string = Dice::method124(v8);
+            Dice::method22(sprintf!(
                 "{} {} #{} {} / {}",
                 v6,
                 v7,
@@ -6337,15 +6359,15 @@ mod module_1d76f080 {
                 let v21: LrcPtr<Dice::Mut4> = patternInput.2.clone();
                 let v20: LrcPtr<Dice::Mut3> = patternInput.1.clone();
                 let v19: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method124(
+                Dice::method23(Dice::method123(
                     v19.clone(),
                     v20.clone(),
                     v21.clone(),
                     v22.clone(),
                     v23.clone(),
                     v24.clone(),
-                    Dice::method13(v19, v20, v21, v22, v23, v24),
-                    Dice::method17(),
+                    Dice::method12(v19, v20, v21, v22, v23, v24),
+                    Dice::method16(),
                     v0_1,
                 ))
             };
@@ -6356,7 +6378,7 @@ mod module_1d76f080 {
                 ()
             };
             let v48: () = {
-                Dice::closure142(Dice::method45(LrcPtr::new(Dice::UH1::UH1_0), 0_i8), ());
+                Dice::closure142(Dice::method44(LrcPtr::new(Dice::UH1::UH1_0), 0_i8), ());
                 ()
             };
             0_i32

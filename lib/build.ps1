@@ -46,6 +46,7 @@ Copy-Item "$targetDir/target/py/polyglot/target/Builder/$projectName/$projectNam
     -replace "../../../lib", "../deps/polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     -replace ".rs`"]", "_contract.rs`"]" `
+    -replace "use fable_library_rust::DateTime_::DateTime;", "type DateTime = ();" `
     | FixRust `
     | Set-Content "$($projectName)_contract.rs"
 

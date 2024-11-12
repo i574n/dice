@@ -88,8 +88,8 @@ inl generate_random_number
             block_height
             epoch_height
             account_balance = account_balance |> sm'.format_debug
-            signer_account_id = signer_account_id |> sm'.to_string
-            predecessor_account_id = predecessor_account_id |> sm'.to_string
+            signer_account_id = signer_account_id |> sm'.to_string'
+            predecessor_account_id = predecessor_account_id |> sm'.to_string'
             seed = seed |> sm'.format_debug
             seeds = seeds |> sm'.format_debug
             entropy_len = entropy |> am'.vec_len

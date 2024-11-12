@@ -7,7 +7,7 @@ import sys
 from typing import (Any, Protocol)
 from fable_modules.fable_library.date import (ticks as ticks_1, now, to_string, create as create_1)
 from fable_modules.fable_library.list import (to_array, empty, of_array)
-from fable_modules.fable_library.long import (op_addition, op_modulus, op_subtraction, from_integer, to_int, op_multiply)
+from fable_modules.fable_library.long import (op_addition, op_modulus, op_subtraction, from_integer, to_int, from_value, op_multiply)
 from fable_modules.fable_library.map import (find, of_seq)
 from fable_modules.fable_library.option import (some, value as value_3, default_arg, map)
 from fable_modules.fable_library.reflection import (TypeInfo, uint8_type, unit_type, lambda_type, union_type, record_type, int64_type, string_type, bool_type, uint64_type)
@@ -24,7 +24,7 @@ class IOsEnviron(Protocol):
         ...
 
 
-def _expr309() -> TypeInfo:
+def _expr423() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -39,9 +39,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr309
+UH0_reflection = _expr423
 
-def _expr310() -> TypeInfo:
+def _expr424() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[], [("Item1", uint8_type), ("Item2", UH1_reflection())]])
 
 
@@ -56,9 +56,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr310
+UH1_reflection = _expr424
 
-def _expr311() -> TypeInfo:
+def _expr425() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[("f0_0", lambda_type(unit_type, UH0_reflection()))], [("f1_0", UH0_reflection())]])
 
 
@@ -74,9 +74,9 @@ class US0(Union):
         return ["US0_0", "US0_1"]
 
 
-US0_reflection = _expr311
+US0_reflection = _expr425
 
-def _expr312() -> TypeInfo:
+def _expr426() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", US0_reflection())])
 
 
@@ -84,9 +84,9 @@ def _expr312() -> TypeInfo:
 class Mut0(Record):
     l0: US0
 
-Mut0_reflection = _expr312
+Mut0_reflection = _expr426
 
-def _expr313() -> TypeInfo:
+def _expr427() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", int64_type)])
 
 
@@ -94,9 +94,9 @@ def _expr313() -> TypeInfo:
 class Mut1(Record):
     l0: int64
 
-Mut1_reflection = _expr313
+Mut1_reflection = _expr427
 
-def _expr314() -> TypeInfo:
+def _expr428() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", uint8_type)], []])
 
 
@@ -112,9 +112,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr314
+US1_reflection = _expr428
 
-def _expr315() -> TypeInfo:
+def _expr429() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", US1_reflection())])
 
 
@@ -122,9 +122,9 @@ def _expr315() -> TypeInfo:
 class Mut2(Record):
     l0: US1
 
-Mut2_reflection = _expr315
+Mut2_reflection = _expr429
 
-def _expr316() -> TypeInfo:
+def _expr430() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[], [], [], [], []])
 
 
@@ -140,9 +140,9 @@ class US2(Union):
         return ["US2_0", "US2_1", "US2_2", "US2_3", "US2_4"]
 
 
-US2_reflection = _expr316
+US2_reflection = _expr430
 
-def _expr317() -> TypeInfo:
+def _expr431() -> TypeInfo:
     return record_type("Dice.Mut3", [], Mut3, lambda: [("l0", lambda_type(string_type, unit_type))])
 
 
@@ -150,9 +150,9 @@ def _expr317() -> TypeInfo:
 class Mut3(Record):
     l0: Callable[[str], None]
 
-Mut3_reflection = _expr317
+Mut3_reflection = _expr431
 
-def _expr318() -> TypeInfo:
+def _expr432() -> TypeInfo:
     return record_type("Dice.Mut4", [], Mut4, lambda: [("l0", bool_type)])
 
 
@@ -160,9 +160,9 @@ def _expr318() -> TypeInfo:
 class Mut4(Record):
     l0: bool
 
-Mut4_reflection = _expr318
+Mut4_reflection = _expr432
 
-def _expr319() -> TypeInfo:
+def _expr433() -> TypeInfo:
     return record_type("Dice.Mut5", [], Mut5, lambda: [("l0", string_type)])
 
 
@@ -170,9 +170,9 @@ def _expr319() -> TypeInfo:
 class Mut5(Record):
     l0: str
 
-Mut5_reflection = _expr319
+Mut5_reflection = _expr433
 
-def _expr320() -> TypeInfo:
+def _expr434() -> TypeInfo:
     return record_type("Dice.Mut6", [], Mut6, lambda: [("l0", US2_reflection())])
 
 
@@ -180,10 +180,10 @@ def _expr320() -> TypeInfo:
 class Mut6(Record):
     l0: US2
 
-Mut6_reflection = _expr320
+Mut6_reflection = _expr434
 
-def _expr321() -> TypeInfo:
-    return union_type("Dice.US3", [], US3, lambda: [[("f0_0", string_type)], []])
+def _expr435() -> TypeInfo:
+    return union_type("Dice.US3", [], US3, lambda: [[("f0_0", US2_reflection())], []])
 
 
 class US3(Union):
@@ -198,10 +198,10 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr321
+US3_reflection = _expr435
 
-def _expr322() -> TypeInfo:
-    return union_type("Dice.US4", [], US4, lambda: [[("f0_0", US2_reflection())], []])
+def _expr436() -> TypeInfo:
+    return union_type("Dice.US4", [], US4, lambda: [[("f0_0", int64_type)], []])
 
 
 class US4(Union):
@@ -216,10 +216,10 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr322
+US4_reflection = _expr436
 
-def _expr323() -> TypeInfo:
-    return union_type("Dice.US5", [], US5, lambda: [[("f0_0", int64_type)], []])
+def _expr437() -> TypeInfo:
+    return union_type("Dice.US5", [], US5, lambda: [[], [], []])
 
 
 class US5(Union):
@@ -231,13 +231,13 @@ class US5(Union):
 
     @staticmethod
     def cases() -> list[str]:
-        return ["US5_0", "US5_1"]
+        return ["US5_0", "US5_1", "US5_2"]
 
 
-US5_reflection = _expr323
+US5_reflection = _expr437
 
-def _expr324() -> TypeInfo:
-    return union_type("Dice.US6", [], US6, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
+def _expr438() -> TypeInfo:
+    return union_type("Dice.US6", [], US6, lambda: [[("f0_0", US5_reflection())], [("f1_0", US5_reflection())], [("f2_0", US5_reflection())], [("f3_0", US5_reflection())], [("f4_0", US5_reflection())]])
 
 
 class US6(Union):
@@ -249,30 +249,13 @@ class US6(Union):
 
     @staticmethod
     def cases() -> list[str]:
-        return ["US6_0", "US6_1"]
+        return ["US6_0", "US6_1", "US6_2", "US6_3", "US6_4"]
 
 
-US6_reflection = _expr324
+US6_reflection = _expr438
 
-def _expr325() -> TypeInfo:
-    return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
-
-
-class UH2(Union):
-    def __init__(self, tag: int, *fields: Any) -> None:
-        super().__init__()
-        self.tag: int = tag or 0
-        self.fields: Array[Any] = list(fields)
-
-    @staticmethod
-    def cases() -> list[str]:
-        return ["UH2_0", "UH2_1"]
-
-
-UH2_reflection = _expr325
-
-def _expr326() -> TypeInfo:
-    return union_type("Dice.US7", [], US7, lambda: [[("f0_0", uint64_type)], []])
+def _expr439() -> TypeInfo:
+    return union_type("Dice.US7", [], US7, lambda: [[("f0_0", string_type)], []])
 
 
 class US7(Union):
@@ -287,10 +270,10 @@ class US7(Union):
         return ["US7_0", "US7_1"]
 
 
-US7_reflection = _expr326
+US7_reflection = _expr439
 
-def _expr327() -> TypeInfo:
-    return union_type("Dice.US8", [], US8, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
+def _expr440() -> TypeInfo:
+    return union_type("Dice.US8", [], US8, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
 
 
 class US8(Union):
@@ -305,7 +288,60 @@ class US8(Union):
         return ["US8_0", "US8_1"]
 
 
-US8_reflection = _expr327
+US8_reflection = _expr440
+
+def _expr441() -> TypeInfo:
+    return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
+
+
+class UH2(Union):
+    def __init__(self, tag: int, *fields: Any) -> None:
+        super().__init__()
+        self.tag: int = tag or 0
+        self.fields: Array[Any] = list(fields)
+
+    @staticmethod
+    def cases() -> list[str]:
+        return ["UH2_0", "UH2_1"]
+
+
+UH2_reflection = _expr441
+
+def _expr442() -> TypeInfo:
+    return union_type("Dice.US9", [], US9, lambda: [[("f0_0", uint64_type)], []])
+
+
+class US9(Union):
+    __slots__ = ["tag", "fields"]
+    def __init__(self, tag: int, *fields: Any) -> None:
+        super().__init__()
+        self.tag: int = tag or 0
+        self.fields: Array[Any] = list(fields)
+
+    @staticmethod
+    def cases() -> list[str]:
+        return ["US9_0", "US9_1"]
+
+
+US9_reflection = _expr442
+
+def _expr443() -> TypeInfo:
+    return union_type("Dice.US10", [], US10, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
+
+
+class US10(Union):
+    __slots__ = ["tag", "fields"]
+    def __init__(self, tag: int, *fields: Any) -> None:
+        super().__init__()
+        self.tag: int = tag or 0
+        self.fields: Array[Any] = list(fields)
+
+    @staticmethod
+    def cases() -> list[str]:
+        return ["US10_0", "US10_1"]
+
+
+US10_reflection = _expr443
 
 def closure2(v0_1: UH0, unit_var: None) -> UH0:
     return v0_1
@@ -330,10 +366,10 @@ def closure1(v0_1: int64, v1_1: UH0) -> UH0:
 
 
 def closure0(unit_var: None, v0_1: int64) -> Callable[[UH0], UH0]:
-    def _arrow328(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
+    def _arrow444(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
         return closure1(v0_1, v)
 
-    return _arrow328
+    return _arrow444
 
 
 def method1(v0_1_mut: UH1, v1_1_mut: UH1) -> UH1:
@@ -395,55 +431,75 @@ def closure6(v0_1: UH0, v1_1: Mut0, unit_var: None) -> UH0:
 
 def method4(v0_1: UH0, v1_1: Callable[[], UH0]) -> Callable[[], UH0]:
     v3_1: Mut0 = Mut0(US0(0, v1_1))
-    def _arrow329(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
+    def _arrow445(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
         return closure6(v0_1, v3_1, None)
 
-    return _arrow329
-
-
-def method8(__unit: None=None) -> str:
-    return "TRACE_LEVEL"
+    return _arrow445
 
 
 def method10(__unit: None=None) -> str:
     return ""
 
 
-def closure10(unit_var: None, v0_1: str) -> US3:
-    return US3(0, v0_1)
+def closure10(unit_var: None, v0_1: str) -> US7:
+    return US7(0, v0_1)
 
 
-def method11(__unit: None=None) -> Callable[[str], US3]:
-    def _arrow330(v: str) -> US3:
+def method11(__unit: None=None) -> Callable[[str], US7]:
+    def _arrow446(v: str) -> US7:
         return closure10(None, v)
 
-    return _arrow330
+    return _arrow446
 
 
 def method9(v0_1: str) -> str:
-    v50: IOsEnviron = os
-    v52: Any = v50.environ
-    _v56: (str | None) | None = None
-    x: str | None = v52.get(v0_1)
-    _v56 = some(x)
-    v61: str | None
-    if _v56 is None:
-        raise Exception("optionm\'.of_obj / _v56=None")
+    v28: IOsEnviron = os
+    v30: Any = v28.environ
+    _v34: (str | None) | None = None
+    x: str | None = v30.get(v0_1)
+    _v34 = some(x)
+    v39: str | None
+    if _v34 is None:
+        raise Exception("optionm\'.of_obj / _v34=None")
 
     else: 
-        v61 = value_3(_v56)
+        v39 = value_3(_v34)
 
-    v77: US3 = default_arg(map(method11(), v61), US3(1))
-    if v77.tag == 0:
-        return v77.fields[0]
+    v55: US7 = default_arg(map(method11(), v39), US7(1))
+    if v55.tag == 0:
+        return v55.fields[0]
 
     else: 
         return ""
 
 
 
-def method12(__unit: None=None) -> str:
-    return "AUTOMATION"
+def method8(__unit: None=None) -> tuple[US3, US4]:
+    v1_1: str = method9("TRACE_LEVEL")
+    v6: US3 = US3(0, US2(0)) if ("Verbose" == v1_1) else US3(1)
+    def _arrow447(__unit: None=None) -> US3:
+        v13: US3 = US3(0, US2(1)) if ("Debug" == v1_1) else US3(1)
+        if v13.tag == 0:
+            return US3(0, v13.fields[0])
+
+        else: 
+            v20: US3 = US3(0, US2(2)) if ("Info" == v1_1) else US3(1)
+            if v20.tag == 0:
+                return US3(0, v20.fields[0])
+
+            else: 
+                v27: US3 = US3(0, US2(3)) if ("Warning" == v1_1) else US3(1)
+                if v27.tag == 0:
+                    return US3(0, v27.fields[0])
+
+                else: 
+                    v34: US3 = US3(0, US2(4)) if ("Critical" == v1_1) else US3(1)
+                    return US3(0, v34.fields[0]) if (v34.tag == 0) else US3(1)
+
+
+
+
+    return (US3(0, v6.fields[0]) if (v6.tag == 0) else _arrow447(), US4(1) if (method9("AUTOMATION") != "True") else US4(0, from_value(ticks_1(now()), False)))
 
 
 def closure11(unit_var: None, v0_1: str) -> None:
@@ -451,37 +507,14 @@ def closure11(unit_var: None, v0_1: str) -> None:
 
 
 def method7(v0_1: US2) -> tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None]:
-    v230: str = method9(method8())
-    v235: US4 = US4(0, US2(0)) if ("Verbose" == v230) else US4(1)
-    def _arrow331(__unit: None=None, v0_1: Any=v0_1) -> US4:
-        v242: US4 = US4(0, US2(1)) if ("Debug" == v230) else US4(1)
-        if v242.tag == 0:
-            return US4(0, v242.fields[0])
-
-        else: 
-            v249: US4 = US4(0, US2(2)) if ("Info" == v230) else US4(1)
-            if v249.tag == 0:
-                return US4(0, v249.fields[0])
-
-            else: 
-                v256: US4 = US4(0, US2(3)) if ("Warning" == v230) else US4(1)
-                if v256.tag == 0:
-                    return US4(0, v256.fields[0])
-
-                else: 
-                    v263: US4 = US4(0, US2(4)) if ("Critical" == v230) else US4(1)
-                    return US4(0, v263.fields[0]) if (v263.tag == 0) else US4(1)
-
-
-
-
-    _v1: tuple[US4, US5] = (US4(0, v235.fields[0]) if (v235.tag == 0) else _arrow331(), US5(0, ticks_1(now())) if (method9(method12()) == "True") else US5(1))
-    v352: US5 = _v1[1]
-    v351: US4 = _v1[0]
-    def v417(v: str, v0_1: Any=v0_1) -> None:
+    pattern_input: tuple[US3, US4] = method8()
+    _v1: tuple[US3, US4] = (pattern_input[0], pattern_input[1])
+    v132: US4 = _v1[1]
+    v131: US3 = _v1[0]
+    def v138(v: str, v0_1: Any=v0_1) -> None:
         closure11(None, v)
 
-    return (Mut1(int64(1)), Mut3(v417), Mut4(True), Mut5(""), Mut6(v351.fields[0] if (v351.tag == 0) else v0_1), v352.fields[0] if (v352.tag == 0) else None)
+    return (Mut1(int64(1)), Mut3(v138), Mut4(True), Mut5(""), Mut6(v131.fields[0] if (v131.tag == 0) else v0_1), v132.fields[0] if (v132.tag == 0) else None)
 
 
 def closure9(unit_var: None, unit_var_1: None) -> None:
@@ -501,49 +534,49 @@ def method6(v0_1: US2) -> bool:
         return False
 
     else: 
-        class ObjectExpr332:
+        class ObjectExpr448:
             @property
             def Compare(self) -> Callable[[US2, US2], int]:
                 return compare
 
-        class ObjectExpr333:
+        class ObjectExpr449:
             @property
             def Compare(self) -> Callable[[US2, US2], int]:
                 return compare
 
-        return find(v0_1, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr332())) >= find(v35, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr333()))
+        return find(v0_1, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr448())) >= find(v35, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr449()))
 
 
 
-def closure12(unit_var: None, v0_1: int64) -> US5:
-    return US5(0, v0_1)
+def closure12(unit_var: None, v0_1: int64) -> US4:
+    return US4(0, v0_1)
 
 
-def method14(__unit: None=None) -> Callable[[int64], US5]:
-    def _arrow334(v: int64) -> US5:
+def method13(__unit: None=None) -> Callable[[int64], US4]:
+    def _arrow450(v: int64) -> US4:
         return closure12(None, v)
 
-    return _arrow334
+    return _arrow450
 
 
-def method15(__unit: None=None) -> str:
+def method14(__unit: None=None) -> str:
     return "hh:mm:ss"
 
 
-def method16(__unit: None=None) -> str:
+def method15(__unit: None=None) -> str:
     return "HH:mm:ss"
 
 
-def method13(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None=None) -> str:
-    v238: US5 = default_arg(map(method14(), v5), US5(1))
-    def _arrow335(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, v4_1: Any=v4_1, v5: Any=v5) -> Any:
-        v252: Any = create(op_subtraction(ticks_1(now()), v238.fields[0]))
-        return create_1(1, 1, 1, hours(v252), minutes(v252), seconds(v252), milliseconds(v252))
+def method12(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None=None) -> str:
+    v408: US4 = default_arg(map(method13(), v5), US4(1))
+    def _arrow451(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1, v3_1: Any=v3_1, v4_1: Any=v4_1, v5: Any=v5) -> Any:
+        v466: Any = create(op_subtraction(from_value(ticks_1(now()), False), v408.fields[0]))
+        return create_1(1, 1, 1, hours(v466), minutes(v466), seconds(v466), milliseconds(v466))
 
-    return to_string(_arrow335() if (v238.tag == 0) else now(), method16())
+    return to_string(_arrow451() if (v408.tag == 0) else now(), method15())
 
 
-def method19(__unit: None=None) -> str:
+def method18(__unit: None=None) -> str:
     return ""
 
 
@@ -552,25 +585,25 @@ def closure13(v0_1: Mut5, v1_1: str, unit_var: None) -> None:
     v0_1.l0 = v3_1
 
 
-def method18(v0_1: str) -> str:
-    v2_1: Mut5 = Mut5(method19())
+def method17(v0_1: str) -> str:
+    v2_1: Mut5 = Mut5(method18())
     v8: None
     closure13(v2_1, ("" + str(v0_1)) + "", None)
     v8 = None
     return v2_1.l0
 
 
-def method20(__unit: None=None) -> str:
+def method19(__unit: None=None) -> str:
     return "\u001b[0m"
 
 
-def method17(__unit: None=None) -> str:
+def method16(__unit: None=None) -> str:
     v2_1: str = "Debug".lower()
-    return ("\u001b[94m" + method18(v2_1[0])) + method20()
+    return ("\u001b[94m" + method17(v2_1[0])) + method19()
 
 
-def method22(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: str) -> str:
-    v5: Mut5 = Mut5(method19())
+def method21(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: str) -> str:
+    v5: Mut5 = Mut5(method18())
     v12: None
     closure13(v5, ("" + "{ ") + "", None)
     v12 = None
@@ -625,13 +658,13 @@ def method22(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: str) -> str:
     return v5.l0
 
 
-def method23(v0_1: str) -> str:
+def method22(v0_1: str) -> str:
     return trim_end(trim_start(v0_1, *to_array(empty())), *to_array(of_array([" ", "/"])))
 
 
-def method21(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: int64, v10: int64, v11: str) -> str:
-    v12: str = method22(v8, v9, v10, v11)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.create_sequential_roller / roll") + " / ") + v12) + "")
+def method20(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: int64, v10: int64, v11: str) -> str:
+    v12: str = method21(v8, v9, v10, v11)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.create_sequential_roller / roll") + " / ") + v12) + "")
 
 
 def closure14(v0_1: Mut1, unit_var: None) -> None:
@@ -649,7 +682,7 @@ def closure15(unit_var: None, v0_1: str) -> None:
     v3_1 = None
 
 
-def method24(v0_1: str) -> None:
+def method23(v0_1: str) -> None:
     v3_1: None
     closure9(None, None)
     v3_1 = None
@@ -673,11 +706,11 @@ def closure8(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: uint8 | None, unit_var
         v24: Mut4 = pattern_input[2]
         v23: Mut3 = pattern_input[1]
         v22: Mut1 = pattern_input[0]
-        method24(method21(v22, v23, v24, v25, v26, v27, method13(v22, v23, v24, v25, v26, v27), method17(), v0_1, v1_1, v2_1, to_text(interpolate("%A%P()", [v3_1]))))
+        method23(method20(v22, v23, v24, v25, v26, v27, method12(v22, v23, v24, v25, v26, v27), method16(), v0_1, v1_1, v2_1, to_text(interpolate("%A%P()", [v3_1]))))
 
 
 
-def method25(v0_1_mut: int64, v1_1_mut: UH0) -> US1:
+def method24(v0_1_mut: int64, v1_1_mut: UH0) -> US1:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v1_1.tag == 1:
@@ -694,14 +727,14 @@ def method25(v0_1_mut: int64, v1_1_mut: UH0) -> US1:
         break
 
 
-def method27(__unit: None=None) -> str:
-    v1_1: Mut5 = Mut5(method19())
+def method26(__unit: None=None) -> str:
+    v1_1: Mut5 = Mut5(method18())
     return v1_1.l0
 
 
-def method26(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str) -> str:
-    v8: str = method27()
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.create_sequential_roller / roll / None") + " / ") + v8) + "")
+def method25(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str) -> str:
+    v8: str = method26()
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.create_sequential_roller / roll / None") + " / ") + v8) + "")
 
 
 def closure17(unit_var: None, unit_var_1: None) -> None:
@@ -716,7 +749,7 @@ def closure17(unit_var: None, unit_var_1: None) -> None:
         v20: Mut4 = pattern_input[2]
         v19: Mut3 = pattern_input[1]
         v18: Mut1 = pattern_input[0]
-        method24(method26(v18, v19, v20, v21, v22, v23, method13(v18, v19, v20, v21, v22, v23), method17()))
+        method23(method25(v18, v19, v20, v21, v22, v23, method12(v18, v19, v20, v21, v22, v23), method16()))
 
 
 
@@ -731,7 +764,7 @@ def method5(v0_1_mut: Callable[[], UH0], v1_1_mut: Mut1, v2_1_mut: Mut1, v3_1_mu
         closure8(v5, v6, v7, v8.fields[0] if (v8.tag == 0) else None, None)
         v18 = None
         v61: UH0 = v0_1(None)
-        v63: US1 = method25(v1_1.l0, v61)
+        v63: US1 = method24(v1_1.l0, v61)
         if v63.tag == 0:
             v64: uint8 = v63.fields[0]
             v66: int64 = op_addition(v1_1.l0, int64(1))
@@ -776,14 +809,14 @@ def closure3(unit_var: None, v0_1: UH1) -> Callable[[], uint8]:
     v9: Mut1 = Mut1(int64(1))
     v10: Mut1 = Mut1(int64(-1))
     v12: Mut2 = Mut2(US1(1))
-    def _arrow336(__unit: None=None, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint8:
+    def _arrow452(__unit: None=None, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint8:
         return closure7(v7, v8, v9, v10, v12, None)
 
-    return _arrow336
+    return _arrow452
 
 
-def method30(v0_1: uint64, v1_1: uint64, v2_1: int8) -> str:
-    v4_1: Mut5 = Mut5(method19())
+def method29(v0_1: uint64, v1_1: uint64, v2_1: int8) -> str:
+    v4_1: Mut5 = Mut5(method18())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
     v11 = None
@@ -826,9 +859,9 @@ def method30(v0_1: uint64, v1_1: uint64, v2_1: int8) -> str:
     return v4_1.l0
 
 
-def method29(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: uint64, v9: uint64, v10: int8) -> str:
-    v11: str = method30(v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.calculate_dice_count") + " / ") + v11) + "")
+def method28(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: uint64, v9: uint64, v10: int8) -> str:
+    v11: str = method29(v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.calculate_dice_count") + " / ") + v11) + "")
 
 
 def closure21(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
@@ -843,11 +876,11 @@ def closure21(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method29(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v2_1, v1_1))
+        method23(method28(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v2_1, v1_1))
 
 
 
-def method28(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64) -> int8:
+def method27(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64) -> int8:
     while True:
         (v0_1, v1_1, v2_1) = (v0_1_mut, v1_1_mut, v2_1_mut)
         if v2_1 < v0_1:
@@ -874,8 +907,8 @@ def method28(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64) -> int8:
         break
 
 
-def method34(v0_1: int8, v1_1: uint64, v2_1: uint64) -> str:
-    v4_1: Mut5 = Mut5(method19())
+def method33(v0_1: int8, v1_1: uint64, v2_1: uint64) -> str:
+    v4_1: Mut5 = Mut5(method18())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
     v11 = None
@@ -918,9 +951,9 @@ def method34(v0_1: int8, v1_1: uint64, v2_1: uint64) -> str:
     return v4_1.l0
 
 
-def method33(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint64) -> str:
-    v11: str = method34(v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method32(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint64) -> str:
+    v11: str = method33(v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure22(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
@@ -935,7 +968,7 @@ def closure22(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method33(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v1_1, v0_1, v2_1))
+        method23(method32(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v1_1, v0_1, v2_1))
 
 
 
@@ -1384,14 +1417,14 @@ def closure23(unit_var: None, unit_var_1: None) -> UH2:
     return UH2(0, uint64(6), v0_1)
 
 
-def method35(v0_1_mut: int8, v1_1_mut: UH2) -> US7:
+def method34(v0_1_mut: int8, v1_1_mut: UH2) -> US9:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v1_1.tag == 1:
-            return US7(1)
+            return US9(1)
 
         elif v0_1 <= int8(0):
-            return US7(0, v1_1.fields[0])
+            return US9(0, v1_1.fields[0])
 
         else: 
             v0_1_mut = v0_1 - int8(1)
@@ -1401,8 +1434,8 @@ def method35(v0_1_mut: int8, v1_1_mut: UH2) -> US7:
         break
 
 
-def method37(v0_1: int8, v1_1: uint64, v2_1: uint8, v3_1: uint64) -> str:
-    v5: Mut5 = Mut5(method19())
+def method36(v0_1: int8, v1_1: uint64, v2_1: uint8, v3_1: uint64) -> str:
+    v5: Mut5 = Mut5(method18())
     v12: None
     closure13(v5, ("" + "{ ") + "", None)
     v12 = None
@@ -1457,9 +1490,9 @@ def method37(v0_1: int8, v1_1: uint64, v2_1: uint8, v3_1: uint64) -> str:
     return v5.l0
 
 
-def method36(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint8, v11: uint64) -> str:
-    v12: str = method37(v8, v9, v10, v11)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method35(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint8, v11: uint64) -> str:
+    v12: str = method36(v8, v9, v10, v11)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure87(v0_1: uint64, v1_1: int8, v2_1: uint8, v3_1: uint64, unit_var: None) -> None:
@@ -1474,12 +1507,12 @@ def closure87(v0_1: uint64, v1_1: int8, v2_1: uint8, v3_1: uint64, unit_var: Non
         v24: Mut4 = pattern_input[2]
         v23: Mut3 = pattern_input[1]
         v22: Mut1 = pattern_input[0]
-        method24(method36(v22, v23, v24, v25, v26, v27, method13(v22, v23, v24, v25, v26, v27), method17(), v1_1, v0_1, v2_1, v3_1))
+        method23(method35(v22, v23, v24, v25, v26, v27, method12(v22, v23, v24, v25, v26, v27), method16(), v1_1, v0_1, v2_1, v3_1))
 
 
 
-def method39(v0_1: int8, v1_1: uint64, v2_1: uint8) -> str:
-    v4_1: Mut5 = Mut5(method19())
+def method38(v0_1: int8, v1_1: uint64, v2_1: uint8) -> str:
+    v4_1: Mut5 = Mut5(method18())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
     v11 = None
@@ -1522,9 +1555,9 @@ def method39(v0_1: int8, v1_1: uint64, v2_1: uint8) -> str:
     return v4_1.l0
 
 
-def method38(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint8) -> str:
-    v11: str = method39(v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method37(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint8) -> str:
+    v11: str = method38(v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure88(v0_1: uint64, v1_1: int8, v2_1: uint8, unit_var: None) -> None:
@@ -1539,11 +1572,11 @@ def closure88(v0_1: uint64, v1_1: int8, v2_1: uint8, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method38(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v1_1, v0_1, v2_1))
+        method23(method37(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v1_1, v0_1, v2_1))
 
 
 
-def method32(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US6:
+def method31(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US8:
     while True:
         (v0_1, v1_1, v2_1) = (v0_1_mut, v1_1_mut, v2_1_mut)
         if v0_1 < int8(0):
@@ -1551,10 +1584,10 @@ def method32(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US6:
             v7: None
             closure22(v2_1, v0_1, v4_1, None)
             v7 = None
-            return US6(0, v4_1, v1_1)
+            return US8(0, v4_1, v1_1)
 
         elif v1_1.tag == 0:
-            return US6(1)
+            return US8(1)
 
         else: 
             v50: UH1 = v1_1.fields[1]
@@ -1563,7 +1596,7 @@ def method32(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US6:
                 def v53(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> UH2:
                     return closure23(None, None)
 
-                v55: US7 = method35(v0_1, UH2(0, uint64(1), v53))
+                v55: US9 = method34(v0_1, UH2(0, uint64(1), v53))
                 v59: uint64
                 if v55.tag == 0:
                     v59 = v55.fields[0]
@@ -1593,24 +1626,24 @@ def method32(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US6:
         break
 
 
-def method40(v0_1: int8, v1_1: Callable[[], uint8], v2_1: int8) -> UH1:
+def method39(v0_1: int8, v1_1: Callable[[], uint8], v2_1: int8) -> UH1:
     if v2_1 < v0_1:
-        return UH1(1, v1_1(None), method40(v0_1, v1_1, v2_1 + int8(1)))
+        return UH1(1, v1_1(None), method39(v0_1, v1_1, v2_1 + int8(1)))
 
     else: 
         return UH1(0)
 
 
 
-def method41(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1) -> uint64:
+def method40(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1) -> uint64:
     while True:
         (v0_1, v1_1, v2_1, v3_1, v4_1) = (v0_1_mut, v1_1_mut, v2_1_mut, v3_1_mut, v4_1_mut)
         v5: int8 = (v3_1 + int8(1)) or 0
         if v3_1 < v5:
-            return method31(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
+            return method30(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
 
         else: 
-            v11: US6 = method32(v3_1, v4_1, uint64(0))
+            v11: US8 = method31(v3_1, v4_1, uint64(0))
             if v11.tag == 0:
                 v12: uint64 = v11.fields[0]
                 if v12 <= v2_1:
@@ -1621,11 +1654,11 @@ def method41(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
                     v1_1_mut = v1_1
                     v2_1_mut = v2_1
                     v3_1_mut = v3_1
-                    v4_1_mut = method40(v3_1, v0_1, int8(0))
+                    v4_1_mut = method39(v3_1, v0_1, int8(0))
                     continue
 
                 else: 
-                    return method31(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
+                    return method30(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
 
 
             elif v1_1:
@@ -1633,17 +1666,17 @@ def method41(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
                 v1_1_mut = v1_1
                 v2_1_mut = v2_1
                 v3_1_mut = v3_1
-                v4_1_mut = method40(v3_1, v0_1, int8(0))
+                v4_1_mut = method39(v3_1, v0_1, int8(0))
                 continue
 
             else: 
-                return method31(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
+                return method30(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
 
 
         break
 
 
-def method31(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1, v5_mut: int8) -> uint64:
+def method30(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1, v5_mut: int8) -> uint64:
     while True:
         (v0_1, v1_1, v2_1, v3_1, v4_1, v5) = (v0_1_mut, v1_1_mut, v2_1_mut, v3_1_mut, v4_1_mut, v5_mut)
         if v5 < (v3_1 + int8(1)):
@@ -1656,14 +1689,14 @@ def method31(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
             continue
 
         else: 
-            v13: US6 = method32(v3_1, v4_1, uint64(0))
+            v13: US8 = method31(v3_1, v4_1, uint64(0))
             if v13.tag == 0:
                 v14: uint64 = v13.fields[0]
                 if v14 <= v2_1:
                     return v14
 
                 elif v1_1:
-                    return method41(v0_1, v1_1, v2_1, v3_1, method40(v3_1, v0_1, int8(0)))
+                    return method40(v0_1, v1_1, v2_1, v3_1, method39(v3_1, v0_1, int8(0)))
 
                 else: 
                     v0_1_mut = v0_1
@@ -1676,7 +1709,7 @@ def method31(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
 
 
             elif v1_1:
-                return method41(v0_1, v1_1, v2_1, v3_1, method40(v3_1, v0_1, int8(0)))
+                return method40(v0_1, v1_1, v2_1, v3_1, method39(v3_1, v0_1, int8(0)))
 
             else: 
                 v0_1_mut = v0_1
@@ -1692,24 +1725,24 @@ def method31(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
 
 
 def closure20(v0_1: Callable[[], uint8], v1_1: bool, v2_1: uint64) -> uint64:
-    return method31(v0_1, v1_1, v2_1, (int8(1) if (v2_1 == uint64(1)) else method28(v2_1, int8(0), uint64(1))) - int8(1), UH1(0), int8(0))
+    return method30(v0_1, v1_1, v2_1, (int8(1) if (v2_1 == uint64(1)) else method27(v2_1, int8(0), uint64(1))) - int8(1), UH1(0), int8(0))
 
 
 def closure19(v0_1: Callable[[], uint8], v1_1: bool) -> Callable[[uint64], uint64]:
-    def _arrow337(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64:
+    def _arrow453(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64:
         return closure20(v0_1, v1_1, v)
 
-    return _arrow337
+    return _arrow453
 
 
 def closure18(unit_var: None, v0_1: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
-    def _arrow338(v: bool, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[uint64], uint64]:
+    def _arrow454(v: bool, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[uint64], uint64]:
         return closure19(v0_1, v)
 
-    return _arrow338
+    return _arrow454
 
 
-def method42(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
+def method41(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v0_1.tag == 0:
@@ -1724,14 +1757,14 @@ def method42(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
 
 
 def closure90(v0_1: uint64, v1_1: UH1) -> uint64 | None:
-    v6: US6 = method32(method42(v1_1, int8(0)) - int8(1), v1_1, uint64(0))
-    v16: US7
+    v6: US8 = method31(method41(v1_1, int8(0)) - int8(1), v1_1, uint64(0))
+    v16: US9
     if v6.tag == 0:
         v7: uint64 = v6.fields[0]
-        v16 = US7(0, v7) if ((v7 <= v0_1) if (v7 >= uint64(1)) else False) else US7(1)
+        v16 = US9(0, v7) if ((v7 <= v0_1) if (v7 >= uint64(1)) else False) else US9(1)
 
     else: 
-        v16 = US7(1)
+        v16 = US9(1)
 
     if v16.tag == 0:
         return v16.fields[0]
@@ -1742,14 +1775,14 @@ def closure90(v0_1: uint64, v1_1: UH1) -> uint64 | None:
 
 
 def closure89(unit_var: None, v0_1: uint64) -> Callable[[UH1], uint64 | None]:
-    def _arrow339(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint64 | None:
+    def _arrow455(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint64 | None:
         return closure90(v0_1, v)
 
-    return _arrow339
+    return _arrow455
 
 
-def method44(v0_1: int64, v1_1: int64, v2_1: int8) -> str:
-    v4_1: Mut5 = Mut5(method19())
+def method43(v0_1: int64, v1_1: int64, v2_1: int8) -> str:
+    v4_1: Mut5 = Mut5(method18())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
     v11 = None
@@ -1792,9 +1825,9 @@ def method44(v0_1: int64, v1_1: int64, v2_1: int8) -> str:
     return v4_1.l0
 
 
-def method43(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str) -> str:
-    v11: str = method44(int64(9223372036854775807), int64(4738381338321616896), int8(24))
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.calculate_dice_count") + " / ") + v11) + "")
+def method42(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str) -> str:
+    v11: str = method43(int64(9223372036854775807), int64(4738381338321616896), int8(24))
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.calculate_dice_count") + " / ") + v11) + "")
 
 
 def closure92(unit_var: None, unit_var_1: None) -> None:
@@ -1809,18 +1842,18 @@ def closure92(unit_var: None, unit_var_1: None) -> None:
         v20: Mut4 = pattern_input[2]
         v19: Mut3 = pattern_input[1]
         v18: Mut1 = pattern_input[0]
-        method24(method43(v18, v19, v20, v21, v22, v23, method13(v18, v19, v20, v21, v22, v23), method17()))
+        method23(method42(v18, v19, v20, v21, v22, v23, method12(v18, v19, v20, v21, v22, v23), method16()))
 
 
 
-def method46(__unit: None=None) -> uint8:
-    v17: Any = {}
+def method45(__unit: None=None) -> uint8:
+    v27: Any = {}
     value_2: int = randint(int(uint8(1)), int(uint8(7))) or 0
     return int(value_2+0x100 if value_2 < 0 else value_2) & 0xFF
 
 
-def method49(v0_1: int8, v1_1: int64, v2_1: uint8, v3_1: int64) -> str:
-    v5: Mut5 = Mut5(method19())
+def method48(v0_1: int8, v1_1: int64, v2_1: uint8, v3_1: int64) -> str:
+    v5: Mut5 = Mut5(method18())
     v12: None
     closure13(v5, ("" + "{ ") + "", None)
     v12 = None
@@ -1875,9 +1908,9 @@ def method49(v0_1: int8, v1_1: int64, v2_1: uint8, v3_1: int64) -> str:
     return v5.l0
 
 
-def method48(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(23), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method47(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(23), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure93(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -1892,13 +1925,13 @@ def closure93(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method48(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method47(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method51(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(22), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method50(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(22), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure94(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -1913,13 +1946,13 @@ def closure94(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method51(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method50(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method53(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(21), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method52(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(21), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure95(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -1934,13 +1967,13 @@ def closure95(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method53(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method52(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method55(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(20), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method54(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(20), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure96(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -1955,13 +1988,13 @@ def closure96(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method55(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method54(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method57(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(19), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method56(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(19), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure97(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -1976,13 +2009,13 @@ def closure97(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method57(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method56(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method59(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(18), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method58(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(18), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure98(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -1997,13 +2030,13 @@ def closure98(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method59(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method58(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method61(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(17), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method60(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(17), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure99(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2018,13 +2051,13 @@ def closure99(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method61(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method60(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method63(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(16), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method62(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(16), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure100(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2039,13 +2072,13 @@ def closure100(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method63(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method62(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method65(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(15), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method64(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(15), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure101(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2060,13 +2093,13 @@ def closure101(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method65(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method64(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method67(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(14), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method66(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(14), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure102(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2081,13 +2114,13 @@ def closure102(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method67(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method66(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method69(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(13), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method68(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(13), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure103(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2102,13 +2135,13 @@ def closure103(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method69(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method68(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method71(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(12), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method70(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(12), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure104(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2123,13 +2156,13 @@ def closure104(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method71(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method70(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method73(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(11), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method72(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(11), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure105(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2144,13 +2177,13 @@ def closure105(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method73(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method72(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method75(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(10), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method74(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(10), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure106(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2165,13 +2198,13 @@ def closure106(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method75(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method74(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method77(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(9), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method76(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(9), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure107(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2186,13 +2219,13 @@ def closure107(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method77(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method76(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method79(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(8), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method78(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(8), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure108(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2207,13 +2240,13 @@ def closure108(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method79(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method78(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method81(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(7), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method80(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(7), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure109(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2228,13 +2261,13 @@ def closure109(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method81(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method80(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method83(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(6), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method82(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(6), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure110(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2249,13 +2282,13 @@ def closure110(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method83(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method82(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method85(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(5), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method84(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(5), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure111(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2270,13 +2303,13 @@ def closure111(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method85(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method84(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method87(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(4), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method86(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(4), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure112(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2291,13 +2324,13 @@ def closure112(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method87(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method86(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method89(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(3), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method88(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(3), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure113(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2312,13 +2345,13 @@ def closure113(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method89(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method88(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method91(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(2), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method90(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(2), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure114(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2333,13 +2366,13 @@ def closure114(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method91(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method90(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method93(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(1), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method92(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(1), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure115(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2354,13 +2387,13 @@ def closure115(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method93(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method92(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method95(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(0), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method94(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: str = method48(int8(0), v8, v9, v10)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
 
 
 def closure116(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
@@ -2375,12 +2408,12 @@ def closure116(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
         v23: Mut4 = pattern_input[2]
         v22: Mut3 = pattern_input[1]
         v21: Mut1 = pattern_input[0]
-        method24(method95(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1))
+        method23(method94(v21, v22, v23, v24, v25, v26, method12(v21, v22, v23, v24, v25, v26), method16(), v0_1, v1_1, v2_1))
 
 
 
-def method98(v0_1: int8, v1_1: int64, v2_1: int64) -> str:
-    v4_1: Mut5 = Mut5(method19())
+def method97(v0_1: int8, v1_1: int64, v2_1: int64) -> str:
+    v4_1: Mut5 = Mut5(method18())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
     v11 = None
@@ -2423,9 +2456,9 @@ def method98(v0_1: int8, v1_1: int64, v2_1: int64) -> str:
     return v4_1.l0
 
 
-def method97(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: int64) -> str:
-    v11: str = method98(int8(-1), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method96(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: int64) -> str:
+    v11: str = method97(int8(-1), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure117(v0_1: int64, v1_1: int64, unit_var: None) -> None:
@@ -2440,20 +2473,20 @@ def closure117(v0_1: int64, v1_1: int64, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method97(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method96(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method96(v0_1: UH1, v1_1: int64) -> US8:
+def method95(v0_1: UH1, v1_1: int64) -> US10:
     v2_1: int64 = op_addition(v1_1, int64(1))
     v5: None
     closure117(v1_1, v2_1, None)
     v5 = None
-    return US8(0, v2_1, v0_1)
+    return US10(0, v2_1, v0_1)
 
 
-def method100(v0_1: int8, v1_1: int64, v2_1: uint8) -> str:
-    v4_1: Mut5 = Mut5(method19())
+def method99(v0_1: int8, v1_1: int64, v2_1: uint8) -> str:
+    v4_1: Mut5 = Mut5(method18())
     v11: None
     closure13(v4_1, ("" + "{ ") + "", None)
     v11 = None
@@ -2496,9 +2529,9 @@ def method100(v0_1: int8, v1_1: int64, v2_1: uint8) -> str:
     return v4_1.l0
 
 
-def method99(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(0), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method98(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(0), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure118(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2513,13 +2546,13 @@ def closure118(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method99(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method98(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method94(v0_1: UH1, v1_1: int64) -> US8:
+def method93(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -2529,20 +2562,20 @@ def method94(v0_1: UH1, v1_1: int64) -> US8:
             v10: None
             closure116(v1_1, v3_1, v7, None)
             v10 = None
-            return method96(v4_1, op_addition(v1_1, v7))
+            return method95(v4_1, op_addition(v1_1, v7))
 
         else: 
             v54: None
             closure118(v1_1, v3_1, None)
             v54 = None
-            return method96(v4_1, v1_1)
+            return method95(v4_1, v1_1)
 
 
 
 
-def method101(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(1), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method100(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(1), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure119(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2557,13 +2590,13 @@ def closure119(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method101(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method100(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method92(v0_1: UH1, v1_1: int64) -> US8:
+def method91(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -2573,20 +2606,20 @@ def method92(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure115(v1_1, v3_1, v8, None)
             v11 = None
-            return method94(v4_1, op_addition(v1_1, v8))
+            return method93(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure119(v1_1, v3_1, None)
             v55 = None
-            return method94(v4_1, v1_1)
+            return method93(v4_1, v1_1)
 
 
 
 
-def method102(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(2), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method101(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(2), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure120(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2601,13 +2634,13 @@ def closure120(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method102(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method101(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method90(v0_1: UH1, v1_1: int64) -> US8:
+def method89(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -2617,20 +2650,20 @@ def method90(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure114(v1_1, v3_1, v8, None)
             v11 = None
-            return method92(v4_1, op_addition(v1_1, v8))
+            return method91(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure120(v1_1, v3_1, None)
             v55 = None
-            return method92(v4_1, v1_1)
+            return method91(v4_1, v1_1)
 
 
 
 
-def method103(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(3), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method102(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(3), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure121(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2645,13 +2678,13 @@ def closure121(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method103(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method102(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method88(v0_1: UH1, v1_1: int64) -> US8:
+def method87(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -2661,20 +2694,20 @@ def method88(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure113(v1_1, v3_1, v8, None)
             v11 = None
-            return method90(v4_1, op_addition(v1_1, v8))
+            return method89(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure121(v1_1, v3_1, None)
             v55 = None
-            return method90(v4_1, v1_1)
+            return method89(v4_1, v1_1)
 
 
 
 
-def method104(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(4), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method103(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(4), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure122(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2689,13 +2722,13 @@ def closure122(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method104(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method103(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method86(v0_1: UH1, v1_1: int64) -> US8:
+def method85(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -2705,20 +2738,20 @@ def method86(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure112(v1_1, v3_1, v8, None)
             v11 = None
-            return method88(v4_1, op_addition(v1_1, v8))
+            return method87(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure122(v1_1, v3_1, None)
             v55 = None
-            return method88(v4_1, v1_1)
+            return method87(v4_1, v1_1)
 
 
 
 
-def method105(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(5), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method104(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(5), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure123(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2733,13 +2766,13 @@ def closure123(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method105(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method104(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method84(v0_1: UH1, v1_1: int64) -> US8:
+def method83(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -2749,20 +2782,20 @@ def method84(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure111(v1_1, v3_1, v8, None)
             v11 = None
-            return method86(v4_1, op_addition(v1_1, v8))
+            return method85(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure123(v1_1, v3_1, None)
             v55 = None
-            return method86(v4_1, v1_1)
+            return method85(v4_1, v1_1)
 
 
 
 
-def method106(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(6), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method105(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(6), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure124(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2777,13 +2810,13 @@ def closure124(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method106(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method105(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method82(v0_1: UH1, v1_1: int64) -> US8:
+def method81(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -2793,20 +2826,20 @@ def method82(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure110(v1_1, v3_1, v8, None)
             v11 = None
-            return method84(v4_1, op_addition(v1_1, v8))
+            return method83(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure124(v1_1, v3_1, None)
             v55 = None
-            return method84(v4_1, v1_1)
+            return method83(v4_1, v1_1)
 
 
 
 
-def method107(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(7), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method106(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(7), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure125(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2821,13 +2854,13 @@ def closure125(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method107(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method106(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method80(v0_1: UH1, v1_1: int64) -> US8:
+def method79(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -2837,20 +2870,20 @@ def method80(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure109(v1_1, v3_1, v8, None)
             v11 = None
-            return method82(v4_1, op_addition(v1_1, v8))
+            return method81(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure125(v1_1, v3_1, None)
             v55 = None
-            return method82(v4_1, v1_1)
+            return method81(v4_1, v1_1)
 
 
 
 
-def method108(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(8), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method107(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(8), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure126(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2865,13 +2898,13 @@ def closure126(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method108(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method107(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method78(v0_1: UH1, v1_1: int64) -> US8:
+def method77(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -2881,20 +2914,20 @@ def method78(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure108(v1_1, v3_1, v8, None)
             v11 = None
-            return method80(v4_1, op_addition(v1_1, v8))
+            return method79(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure126(v1_1, v3_1, None)
             v55 = None
-            return method80(v4_1, v1_1)
+            return method79(v4_1, v1_1)
 
 
 
 
-def method109(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(9), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method108(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(9), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure127(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2909,13 +2942,13 @@ def closure127(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method109(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method108(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method76(v0_1: UH1, v1_1: int64) -> US8:
+def method75(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -2925,20 +2958,20 @@ def method76(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure107(v1_1, v3_1, v8, None)
             v11 = None
-            return method78(v4_1, op_addition(v1_1, v8))
+            return method77(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure127(v1_1, v3_1, None)
             v55 = None
-            return method78(v4_1, v1_1)
+            return method77(v4_1, v1_1)
 
 
 
 
-def method110(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(10), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method109(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(10), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure128(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2953,13 +2986,13 @@ def closure128(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method110(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method109(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method74(v0_1: UH1, v1_1: int64) -> US8:
+def method73(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -2969,20 +3002,20 @@ def method74(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure106(v1_1, v3_1, v8, None)
             v11 = None
-            return method76(v4_1, op_addition(v1_1, v8))
+            return method75(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure128(v1_1, v3_1, None)
             v55 = None
-            return method76(v4_1, v1_1)
+            return method75(v4_1, v1_1)
 
 
 
 
-def method111(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(11), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method110(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(11), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure129(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -2997,13 +3030,13 @@ def closure129(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method111(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method110(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method72(v0_1: UH1, v1_1: int64) -> US8:
+def method71(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3013,20 +3046,20 @@ def method72(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure105(v1_1, v3_1, v8, None)
             v11 = None
-            return method74(v4_1, op_addition(v1_1, v8))
+            return method73(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure129(v1_1, v3_1, None)
             v55 = None
-            return method74(v4_1, v1_1)
+            return method73(v4_1, v1_1)
 
 
 
 
-def method112(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(12), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method111(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(12), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure130(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3041,13 +3074,13 @@ def closure130(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method112(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method111(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method70(v0_1: UH1, v1_1: int64) -> US8:
+def method69(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3057,20 +3090,20 @@ def method70(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure104(v1_1, v3_1, v8, None)
             v11 = None
-            return method72(v4_1, op_addition(v1_1, v8))
+            return method71(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure130(v1_1, v3_1, None)
             v55 = None
-            return method72(v4_1, v1_1)
+            return method71(v4_1, v1_1)
 
 
 
 
-def method113(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(13), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method112(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(13), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure131(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3085,13 +3118,13 @@ def closure131(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method113(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method112(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method68(v0_1: UH1, v1_1: int64) -> US8:
+def method67(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3101,20 +3134,20 @@ def method68(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure103(v1_1, v3_1, v8, None)
             v11 = None
-            return method70(v4_1, op_addition(v1_1, v8))
+            return method69(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure131(v1_1, v3_1, None)
             v55 = None
-            return method70(v4_1, v1_1)
+            return method69(v4_1, v1_1)
 
 
 
 
-def method114(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(14), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method113(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(14), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure132(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3129,13 +3162,13 @@ def closure132(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method114(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method113(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method66(v0_1: UH1, v1_1: int64) -> US8:
+def method65(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3145,20 +3178,20 @@ def method66(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure102(v1_1, v3_1, v8, None)
             v11 = None
-            return method68(v4_1, op_addition(v1_1, v8))
+            return method67(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure132(v1_1, v3_1, None)
             v55 = None
-            return method68(v4_1, v1_1)
+            return method67(v4_1, v1_1)
 
 
 
 
-def method115(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(15), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method114(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(15), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure133(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3173,13 +3206,13 @@ def closure133(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method115(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method114(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method64(v0_1: UH1, v1_1: int64) -> US8:
+def method63(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3189,20 +3222,20 @@ def method64(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure101(v1_1, v3_1, v8, None)
             v11 = None
-            return method66(v4_1, op_addition(v1_1, v8))
+            return method65(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure133(v1_1, v3_1, None)
             v55 = None
-            return method66(v4_1, v1_1)
+            return method65(v4_1, v1_1)
 
 
 
 
-def method116(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(16), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method115(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(16), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure134(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3217,13 +3250,13 @@ def closure134(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method116(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method115(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method62(v0_1: UH1, v1_1: int64) -> US8:
+def method61(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3233,20 +3266,20 @@ def method62(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure100(v1_1, v3_1, v8, None)
             v11 = None
-            return method64(v4_1, op_addition(v1_1, v8))
+            return method63(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure134(v1_1, v3_1, None)
             v55 = None
-            return method64(v4_1, v1_1)
+            return method63(v4_1, v1_1)
 
 
 
 
-def method117(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(17), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method116(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(17), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure135(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3261,13 +3294,13 @@ def closure135(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method117(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method116(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method60(v0_1: UH1, v1_1: int64) -> US8:
+def method59(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3277,20 +3310,20 @@ def method60(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure99(v1_1, v3_1, v8, None)
             v11 = None
-            return method62(v4_1, op_addition(v1_1, v8))
+            return method61(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure135(v1_1, v3_1, None)
             v55 = None
-            return method62(v4_1, v1_1)
+            return method61(v4_1, v1_1)
 
 
 
 
-def method118(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(18), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method117(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(18), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure136(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3305,13 +3338,13 @@ def closure136(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method118(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method117(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method58(v0_1: UH1, v1_1: int64) -> US8:
+def method57(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3321,20 +3354,20 @@ def method58(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure98(v1_1, v3_1, v8, None)
             v11 = None
-            return method60(v4_1, op_addition(v1_1, v8))
+            return method59(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure136(v1_1, v3_1, None)
             v55 = None
-            return method60(v4_1, v1_1)
+            return method59(v4_1, v1_1)
 
 
 
 
-def method119(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(19), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method118(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(19), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure137(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3349,13 +3382,13 @@ def closure137(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method119(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method118(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method56(v0_1: UH1, v1_1: int64) -> US8:
+def method55(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3365,20 +3398,20 @@ def method56(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure97(v1_1, v3_1, v8, None)
             v11 = None
-            return method58(v4_1, op_addition(v1_1, v8))
+            return method57(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure137(v1_1, v3_1, None)
             v55 = None
-            return method58(v4_1, v1_1)
+            return method57(v4_1, v1_1)
 
 
 
 
-def method120(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(20), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method119(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(20), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure138(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3393,13 +3426,13 @@ def closure138(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method120(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method119(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method54(v0_1: UH1, v1_1: int64) -> US8:
+def method53(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3409,20 +3442,20 @@ def method54(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure96(v1_1, v3_1, v8, None)
             v11 = None
-            return method56(v4_1, op_addition(v1_1, v8))
+            return method55(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure138(v1_1, v3_1, None)
             v55 = None
-            return method56(v4_1, v1_1)
+            return method55(v4_1, v1_1)
 
 
 
 
-def method121(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(21), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method120(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(21), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure139(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3437,13 +3470,13 @@ def closure139(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method121(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method120(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method52(v0_1: UH1, v1_1: int64) -> US8:
+def method51(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3453,20 +3486,20 @@ def method52(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure95(v1_1, v3_1, v8, None)
             v11 = None
-            return method54(v4_1, op_addition(v1_1, v8))
+            return method53(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure139(v1_1, v3_1, None)
             v55 = None
-            return method54(v4_1, v1_1)
+            return method53(v4_1, v1_1)
 
 
 
 
-def method122(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(22), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method121(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(22), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure140(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3481,13 +3514,13 @@ def closure140(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method122(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method121(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method50(v0_1: UH1, v1_1: int64) -> US8:
+def method49(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3497,20 +3530,20 @@ def method50(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure94(v1_1, v3_1, v8, None)
             v11 = None
-            return method52(v4_1, op_addition(v1_1, v8))
+            return method51(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure140(v1_1, v3_1, None)
             v55 = None
-            return method52(v4_1, v1_1)
+            return method51(v4_1, v1_1)
 
 
 
 
-def method123(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(23), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method122(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: str = method99(int8(23), v8, v9)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
 
 
 def closure141(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
@@ -3525,13 +3558,13 @@ def closure141(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
         v22: Mut4 = pattern_input[2]
         v21: Mut3 = pattern_input[1]
         v20: Mut1 = pattern_input[0]
-        method24(method123(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1))
+        method23(method122(v20, v21, v22, v23, v24, v25, method12(v20, v21, v22, v23, v24, v25), method16(), v0_1, v1_1))
 
 
 
-def method47(v0_1: UH1, v1_1: int64) -> US8:
+def method46(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
-        return US8(1)
+        return US10(1)
 
     else: 
         v4_1: UH1 = v0_1.fields[1]
@@ -3541,40 +3574,40 @@ def method47(v0_1: UH1, v1_1: int64) -> US8:
             v11: None
             closure93(v1_1, v3_1, v8, None)
             v11 = None
-            return method50(v4_1, op_addition(v1_1, v8))
+            return method49(v4_1, op_addition(v1_1, v8))
 
         else: 
             v55: None
             closure141(v1_1, v3_1, None)
             v55 = None
-            return method50(v4_1, v1_1)
+            return method49(v4_1, v1_1)
 
 
 
 
-def method45(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
+def method44(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v1_1 < int8(24):
-            v0_1_mut = UH1(1, method46(), v0_1)
+            v0_1_mut = UH1(1, method45(), v0_1)
             v1_1_mut = v1_1 + int8(1)
             continue
 
         else: 
-            v8: US8 = method47(v0_1, int64(0))
+            v8: US10 = method46(v0_1, int64(0))
             if v8.tag == 0:
                 v9: int64 = v8.fields[0]
                 if v9 <= int64(9223372036854775807):
                     return v9
 
                 else: 
-                    v0_1_mut = UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(0))))))))))))))))))))))))
+                    v0_1_mut = UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(0))))))))))))))))))))))))
                     v1_1_mut = int8(23)
                     continue
 
 
             else: 
-                v0_1_mut = UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(0))))))))))))))))))))))))
+                v0_1_mut = UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(1, method45(), UH1(0))))))))))))))))))))))))
                 v1_1_mut = int8(23)
                 continue
 
@@ -3582,8 +3615,8 @@ def method45(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
         break
 
 
-def method125(v0_1: int64) -> str:
-    v2_1: Mut5 = Mut5(method19())
+def method124(v0_1: int64) -> str:
+    v2_1: Mut5 = Mut5(method18())
     v9: None
     closure13(v2_1, ("" + "{ ") + "", None)
     v9 = None
@@ -3602,9 +3635,9 @@ def method125(v0_1: int64) -> str:
     return v2_1.l0
 
 
-def method124(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64) -> str:
-    v9: str = method125(v8)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.main") + " / ") + v9) + "")
+def method123(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64) -> str:
+    v9: str = method124(v8)
+    return method22(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.main") + " / ") + v9) + "")
 
 
 def closure142(v0_1: int64, unit_var: None) -> None:
@@ -3619,7 +3652,7 @@ def closure142(v0_1: int64, unit_var: None) -> None:
         v21: Mut4 = pattern_input[2]
         v20: Mut3 = pattern_input[1]
         v19: Mut1 = pattern_input[0]
-        method24(method124(v19, v20, v21, v22, v23, v24, method13(v19, v20, v21, v22, v23, v24), method17(), v0_1))
+        method23(method123(v19, v20, v21, v22, v23, v24, method12(v19, v20, v21, v22, v23, v24), method16(), v0_1))
 
 
 
@@ -3628,56 +3661,56 @@ def closure91(unit_var: None, v0_1: Array[str]) -> int:
     closure92(None, None)
     v3_1 = None
     v48: None
-    closure142(method45(UH1(0), int8(0)), None)
+    closure142(method44(UH1(0), int8(0)), None)
     v48 = None
     return 0
 
 
-def _arrow340(v: int64) -> Callable[[UH0], UH0]:
+def _arrow456(v: int64) -> Callable[[UH0], UH0]:
     return closure0(None, v)
 
 
-v0: Callable[[int64, UH0], UH0] = _arrow340
+v0: Callable[[int64, UH0], UH0] = _arrow456
 
 def rotate_numbers(x: int64) -> Callable[[UH0], UH0]:
     return v0(x)
 
 
-def _arrow341(v: UH1) -> Callable[[], uint8]:
+def _arrow457(v: UH1) -> Callable[[], uint8]:
     return closure3(None, v)
 
 
-v1: Callable[[UH1, None], uint8] = _arrow341
+v1: Callable[[UH1, None], uint8] = _arrow457
 
 def create_sequential_roller(x: UH1) -> Callable[[], uint8]:
     return v1(x)
 
 
-def _arrow342(v: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
+def _arrow458(v: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
     return closure18(None, v)
 
 
-v2: Callable[[Callable[[], uint8], bool, uint64], uint64] = _arrow342
+v2: Callable[[Callable[[], uint8], bool, uint64], uint64] = _arrow458
 
 def roll_progressively(x: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
     return v2(x)
 
 
-def _arrow343(v: uint64) -> Callable[[UH1], uint64 | None]:
+def _arrow459(v: uint64) -> Callable[[UH1], uint64 | None]:
     return closure89(None, v)
 
 
-v3: Callable[[uint64, UH1], uint64 | None] = _arrow343
+v3: Callable[[uint64, UH1], uint64 | None] = _arrow459
 
 def roll_within_bounds(x: uint64) -> Callable[[UH1], uint64 | None]:
     return v3(x)
 
 
-def _arrow344(v: Array[str]) -> int:
+def _arrow460(v: Array[str]) -> int:
     return closure91(None, v)
 
 
-v4: Callable[[Array[str]], int] = _arrow344
+v4: Callable[[Array[str]], int] = _arrow460
 
 def main(args: Array[str]) -> int:
     return v4(args)
