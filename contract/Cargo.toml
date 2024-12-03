@@ -11,7 +11,7 @@ path = "dice_contract.rs"
 
 [dependencies]
 inline_colorization = { workspace = true }
-fable_library_rust = { workspace = true }
+fable_library_rust = { workspace = true, features = ["atomic"] }
 dice_contract_lib = { path = "../lib/contract" }
 borsh = "1.5"
 near-sdk = "5.4"

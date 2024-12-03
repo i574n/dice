@@ -419,8 +419,8 @@ mod module_faa356c0 {
             LrcPtr<Dice_contract::Mut4>,
             Option<i64>,
         ) {
-            let v64: string = string("env!(\"AUTOMATION\")");
-            let v65: &str = env!("AUTOMATION");
+            let v64: string = string("option_env!(\"AUTOMATION\").unwrap_or(\"\")");
+            let v65: &str = option_env!("AUTOMATION").unwrap_or("");
             let v72: std::string::String = String::from(v65);
             let _v1: (Dice_contract::US1, Dice_contract::US2) = (
                 Dice_contract::US1::US1_1,
@@ -546,23 +546,23 @@ mod module_faa356c0 {
             v4: LrcPtr<Dice_contract::Mut4>,
             v5: Option<i64>,
         ) -> string {
-            let v242: u64 = near_sdk::env::block_timestamp();
-            let v256: Dice_contract::US2 =
+            let v252: u64 = near_sdk::env::block_timestamp();
+            let v266: Dice_contract::US2 =
                 defaultValue(Dice_contract::US2::US2_1, map(Dice_contract::method7(), v5));
-            let v268: u64 = match &v256 {
-                Dice_contract::US2::US2_0(v256_0_0) => {
-                    v242 - match &v256 {
+            let v278: u64 = match &v266 {
+                Dice_contract::US2::US2_0(v266_0_0) => {
+                    v252 - match &v266 {
                         Dice_contract::US2::US2_0(x) => x.clone(),
                         _ => unreachable!(),
                     } as u64
                 }
-                _ => v242,
+                _ => v252,
             } / 1000000000_u64;
-            let v269: u64 = v268 % 60_u64;
-            let v271: u64 = v268 / 60_u64 % 60_u64;
-            let v273: u64 = v268 / 3600_u64 % 24_u64;
-            let v275: std::string::String = format!("{:02}:{:02}:{:02}", v273, v271, v269);
-            fable_library_rust::String_::fromString(v275)
+            let v279: u64 = v278 % 60_u64;
+            let v281: u64 = v278 / 60_u64 % 60_u64;
+            let v283: u64 = v278 / 3600_u64 % 24_u64;
+            let v285: std::string::String = format!("{:02}:{:02}:{:02}", v283, v281, v279);
+            fable_library_rust::String_::fromString(v285)
         }
         pub fn method12() -> string {
             string("")

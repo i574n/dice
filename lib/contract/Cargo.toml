@@ -6,7 +6,7 @@ license-file.workspace = true
 repository.workspace = true
 
 [dependencies]
-fable_library_rust = { workspace = true }
+fable_library_rust = { workspace = true, features = ["atomic"] }
 inline_colorization = { workspace = true }
 near-sdk = "5.4"
 
