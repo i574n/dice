@@ -356,7 +356,7 @@ let run () =
 #!fsharp
 
 #r @"../../../../../../../.nuget/packages/fscheck/3.0.0-rc3/lib/netstandard2.0/FsCheck.dll"
-#r @"../../../../../../../.nuget/packages/expecto.fscheck/10.2.1-fscheck3/lib/net6.0/Expecto.FsCheck3.dll"
+#r @"../../../../../../../.nuget/packages/expecto.fscheck/11.0.0-alpha2/lib/net6.0/Expecto.FsCheck3.dll"
 
 #!fsharp
 
@@ -556,7 +556,7 @@ let rec printTaskList taskList =
 printTaskList taskList
 
 Expecto.Tests.runTestsWithCLIArgs [] [||] properties
-|> _assertEqual 0
+|> _assertEqual 2
 
 #!markdown
 

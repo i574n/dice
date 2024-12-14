@@ -30,6 +30,7 @@ $targetDir = GetTargetDir $projectName
 
 (Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
     -replace "../../../lib", "../deps/polyglot/lib" `
+    -replace "../../../../../../../../../../../../polyglot", "../deps/polyglot" `
     -replace ".fsx`"]", ".rs`"]" `
     -replace ".rs`"]", "_contract.rs`"]" `
     -replace "use fable_library_rust::DateTime_::DateTime;", "type DateTime = ();" `
