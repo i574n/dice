@@ -99,7 +99,7 @@ inl render () : _ (_ leptos.div) =
                             ] fun () =>
                                 fragment
                             |> leptos.element_to_view
-                        | None => ;[] |> leptos.views_to_view
+                        | None => [] |> leptos.view_list_to_view
                     |> leptos.view_to_fragment
                 |> leptos.element_to_view
 

@@ -182,12 +182,10 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
             ] fun () =>
                 txn.actions
                 |> am'.to_vec
-                |> am'.vec_map' fun { action method } =>
+                |> am'.vec_map fun { action method } =>
                     action_render action method
                     |> leptos.element_to_view
-                |> am'.from_vec
-                |> fun (a x : _ int _) => x
-                |> leptos.views_to_view
+                |> leptos.vec_to_view
                 |> leptos.view_to_fragment
             |> leptos.element_to_view
 
@@ -343,12 +341,10 @@ inl render account (index : i64) (transaction : txn) : _ (_ leptos.div) =
                     fun () =>
                         transaction.actions
                         |> am'.to_vec
-                        |> am'.vec_map' fun { action method } =>
+                        |> am'.vec_map fun { action method } =>
                             action_render action method
                             |> leptos.element_to_view
-                        |> am'.from_vec
-                        |> fun (a x : _ int _) => x
-                        |> leptos.views_to_view
+                        |> leptos.vec_to_view
                         |> leptos.view_to_fragment
                 |> leptos.element_to_view
 
@@ -437,7 +433,7 @@ inl render account (index : i64) (transaction : txn) : _ (_ leptos.div) =
                 |> leptos.element_to_view
 
                 match transaction.logs with
-                | ;[] => ;[] |> leptos.views_to_view
+                | ;[] => [] |> leptos.view_list_to_view
                 | _ =>
                     ui.grid_pair.render
                         fun props => { props with

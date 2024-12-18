@@ -33,7 +33,7 @@ inl render () =
             ]
         |> leptos.element_to_view
 
-    [
+    :>[
         ui.accordion.render
             fun props => { props with
                 title = fun () => "Transactions"
@@ -78,7 +78,7 @@ inl render () =
                             |> leptos.element_to_view
                         ]
                     |> leptos.element_to_view
-                else ;[] |> leptos.views_to_view
+                else [] |> leptos.view_list_to_view
 
                 match accounts_txns_requests |> leptos.signal_get |> am'.from_vec with
                 | (a ;[] : _ i32 _) =>
@@ -103,24 +103,20 @@ inl render () =
                                 ] fun () =>
                                     transactions
                                     |> am'.to_vec
-                                    |> am'.vec_map' fun { account i txn } =>
+                                    |> am'.vec_map fun { account i txn } =>
                                         !txn
                                         |> transaction.render account (i |> i64)
                                         |> leptos.element_to_view
-                                    |> am'.from_vec
-                                    |> fun (a x : _ int _) => x
-                                    |> leptos.views_to_view
+                                    |> leptos.vec_to_view
                                     |> leptos.view_to_fragment
                                 |> leptos.element_to_view
 
                             | false =>
                                 transactions
                                 |> am'.to_vec
-                                |> am'.vec_map' transaction.tr_render
-                                |> am'.vec_map' leptos.element_to_view
-                                |> am'.from_vec
-                                |> fun (a x : _ int _) => x
-                                |> leptos.views_to_view
+                                |> am'.vec_map transaction.tr_render
+                                |> am'.vec_map leptos.element_to_view
+                                |> leptos.vec_to_view
                                 |> leptos.view_to_fragment
                                 |> ui.table.render (
                                     transaction.tr_head_render transactions
@@ -156,6 +152,5 @@ inl render () =
                             |> leptos.element_to_fragment
                 ]
             |> leptos.element_to_view
-        else ;[] |> leptos.views_to_view
+        else [] |> leptos.view_list_to_view
     ]
-    |> leptos.view_list_to_fragment

@@ -105,7 +105,7 @@ inl render () =
             |> am'.vec_map' fun i, x =>
                 i, x |> fst
 
-    [
+    :>[
         ui.accordion.render
             fun props => { props with
                 title = fun () => "Roll"
@@ -181,7 +181,7 @@ inl render () =
                                     fun () =>
                                         roll_action
                                         |> leptos.action_pending
-                                        |> leptos.signal_get
+                                        |> leptos.memo_get'
                                     fun () =>
                                         inl max =
                                             leptos.signal_get_untracked global_state.core_state .data
@@ -196,7 +196,7 @@ inl render () =
                                     error_message
                                     |> ui.error_label.render
                                     |> leptos.element_to_view
-                                | _ => ;[] |> leptos.views_to_view
+                                | _ => [] |> leptos.view_list_to_view
                             ]
                         |> leptos.element_to_view
                 ]
@@ -300,7 +300,7 @@ inl render () =
                                         rpc_responses
                                         |> leptos.signal_get
                                     transactions
-                                    |> am'.vec_map' fun { txn i } =>
+                                    |> am'.vec_map fun { txn i } =>
                                         inl rpc_response = rpc_responses |> am'.from_vec |> am'.index (i |> i32)
 
                                         leptos.tr [
@@ -407,9 +407,7 @@ inl render () =
                                                 |> leptos.element_to_view
                                             ]
                                         |> leptos.element_to_view
-                                    |> am'.from_vec
-                                    |> fun (a x : _ int _) => x
-                                    |> leptos.views_to_view
+                                    |> leptos.vec_to_view
                                     |> leptos.view_to_fragment
                                 )
                                 |> leptos.element_to_view
@@ -424,4 +422,3 @@ inl render () =
             ]
         |> leptos.element_to_view
     ]
-    |> leptos.view_list_to_fragment

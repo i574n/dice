@@ -25,7 +25,8 @@ $targetDir = GetTargetDir $projectName
 { BuildFable $targetDir $projectName "rs" "WASM" } | Invoke-Block
 
 (Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
-    -replace "../../../lib", "../../deps/polyglot/lib" `
+    -replace "`"../../../../../../../../../../../../polyglot", "`"../../deps/polyglot" `
+    -replace "`"../../../lib", "`"../../deps/polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     -replace ".rs`"]", "_wasm.rs`"]" `
     -replace "pub use crate::module_", "// pub use crate::module_" `

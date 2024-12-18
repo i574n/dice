@@ -7,7 +7,6 @@ inl render () =
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
-    [
+    :>[
         "???" |> leptos.text_view
     ]
-    |> leptos.view_list_to_fragment

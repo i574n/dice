@@ -108,7 +108,7 @@ inl render () =
                 $'"aria-label=\\\"Add\\\""'
             ]
 
-    [
+    :>[
         ui.accordion.render
             fun props => { props with
                 title = fun () => "Accounts"
@@ -184,7 +184,7 @@ inl render () =
                                     |> leptos.element_to_view
 
                                     if (accounts_count |> leptos.signal_get) = 1i32
-                                    then ;[] |> leptos.views_to_view
+                                    then [] |> leptos.view_list_to_view
                                     else delete_button i |> leptos.element_to_view
                                 ]
                             |> leptos.element_to_fragment
@@ -250,6 +250,5 @@ inl render () =
                         fun () => global_state_log_render () |> leptos.element_to_fragment
                     |> leptos.element_to_fragment
             |> leptos.element_to_view
-        else ;[] |> leptos.views_to_view
+        else [] |> leptos.view_list_to_view
     ]
-    |> leptos.view_list_to_fragment
