@@ -10,13 +10,13 @@ inl render () =
     inl global_state : state.global_state =
         heap {
             core_state =
-                leptos.create_rw_signal <|
+                leptos.new_arc_rw_signal <|
                     heap {
-                        dark_mode = leptos.create_rw_signal false
-                        debug = leptos.create_rw_signal false
-                        url_hash = leptos.create_rw_signal ("" |> sm'.to_std_string)
+                        dark_mode = leptos.new_arc_rw_signal false
+                        debug = leptos.new_arc_rw_signal false
+                        url_hash = leptos.new_arc_rw_signal ("" |> sm'.to_std_string)
                         data =
-                            leptos.create_rw_signal <|
+                            leptos.new_arc_rw_signal <|
                                 heap {
                                     accounts =
                                         ;[
@@ -30,7 +30,7 @@ inl render () =
                                     transactions_view_type = state.Details
                                 }
                     }
-            loading = mapm.new_hash_map () |> leptos.create_rw_signal
+            loading = mapm.new_hash_map () |> leptos.new_arc_rw_signal
         }
 
     fun () =>

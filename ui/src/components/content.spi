@@ -14,7 +14,7 @@ inl render () : _ (_ leptos.div) =
 
     inl (loaded, set_loaded) = false |> leptos.create_signal
 
-    leptos.create_effect fun () =>
+    leptos.new_effect fun () =>
         inl loaded = loaded |> leptos.signal_get
 
         inl hash = location |> leptos.location_hash |> leptos.signal_get
@@ -36,11 +36,14 @@ inl render () : _ (_ leptos.div) =
                     navigate url_hash
 
             set_loaded |> leptos.signal_set true
+            true
         else
             leptos.signal_get_untracked global_state.core_state .url_hash
             |> leptos.signal_set (new_url_hash |> sm'.to_std_string)
+            false
+        |> ignore
 
-    leptos.create_effect fun () =>
+    leptos.new_effect fun () =>
         inl hash = location |> leptos.location_hash |> leptos.signal_get
         inl hash = hash |> sm'.strip_prefix '#' |> optionm'.unwrap_or #""
         inl hash_url = hash |> leptos.url_try_from |> resultm.unbox
@@ -72,8 +75,11 @@ inl render () : _ (_ leptos.div) =
             leptos.log $'"content.render () / effect 2 / new_tab: " + !tab_log + ""'
 
             set_tab |> leptos.signal_set tab
+            true
         | Error error =>
             leptos.log $'"content.render () / effect 2 / hash_url error: " + string !error + ""'
+            false
+        |> ignore
 
     leptos.div [
         $'"class=\\\"flex flex-1 max-[100px]:[overflow-x:auto]\\\""'
