@@ -581,9 +581,10 @@ mod module_1d76f080 {
             Option<i64>,
         ) {
             let patternInput: (Dice::US3, Dice::US4) = Dice::method8();
-            let _v1: (Dice::US3, Dice::US4) = (patternInput.0.clone(), patternInput.1.clone());
-            let v132: Dice::US4 = _v1.1.clone();
-            let v131: Dice::US3 = _v1.0.clone();
+            let _run_target_args__v1: (Dice::US3, Dice::US4) =
+                (patternInput.0.clone(), patternInput.1.clone());
+            let v132: Dice::US4 = _run_target_args__v1.1.clone();
+            let v131: Dice::US3 = _run_target_args__v1.0.clone();
             (
                 LrcPtr::new(Dice::Mut1 {
                     l0: MutCell::new(1_i64),

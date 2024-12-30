@@ -28,7 +28,8 @@ $targetDir = GetTargetDir $projectName
 { BuildFable $targetDir $projectName "py" } | Invoke-Block
 
 (Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
-    -replace "../../../lib", "../../deps/polyglot/lib" `
+    -replace "`"../../../../../../../../../../../../polyglot/lib", "`"../../deps/polyglot/lib" `
+    -replace "`"../../../lib", "`"../../deps/polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     | FixRust `
     | Set-Content "$projectName.rs"

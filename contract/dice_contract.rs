@@ -438,7 +438,7 @@ mod module_faa356c0 {
             let v64: string = string("option_env!(\"AUTOMATION\").unwrap_or(\"\")");
             let v65: &str = option_env!("AUTOMATION").unwrap_or("");
             let v72: std::string::String = String::from(v65);
-            let _v1: (Dice_contract::US1, Dice_contract::US2) = (
+            let _run_target_args__v1: (Dice_contract::US1, Dice_contract::US2) = (
                 Dice_contract::US1::US1_1,
                 if (fable_library_rust::String_::fromString(v72)) != string("True") {
                     Dice_contract::US2::US2_1
@@ -446,8 +446,8 @@ mod module_faa356c0 {
                     Dice_contract::US2::US2_0(near_sdk::env::block_timestamp() as i64)
                 },
             );
-            let v132: Dice_contract::US2 = _v1.1.clone();
-            let v131: Dice_contract::US1 = _v1.0.clone();
+            let v132: Dice_contract::US2 = _run_target_args__v1.1.clone();
+            let v131: Dice_contract::US1 = _run_target_args__v1.0.clone();
             (
                 LrcPtr::new(Dice_contract::Mut0 {
                     l0: MutCell::new(1_i64),
@@ -3468,8 +3468,9 @@ mod module_faa356c0 {
                             Dice_contract::closure11(Dice_contract::method19(), ());
                             ()
                         };
-                        let v367: List<u8> =
-                            ofArray(fable_library_rust::NativeArray_::array_from(v252.clone()));
+                        let v367: List<u8> = ofArray(fable_library_rust::NativeArray_::array_from(
+                            v252.clone().clone(),
+                        ));
                         let v402: LrcPtr<Dice_contract::UH0> = Dice_contract::method24(
                             Dice_contract::method23(
                                 Dice_contract::method22(
@@ -3570,8 +3571,9 @@ mod module_faa356c0 {
                 {
                     let v553: u64 = max;
                     let v555: Vec<u8> = rolls;
-                    let v558: List<u8> =
-                        ofArray(fable_library_rust::NativeArray_::array_from(v555.clone()));
+                    let v558: List<u8> = ofArray(fable_library_rust::NativeArray_::array_from(
+                        v555.clone().clone(),
+                    ));
                     let v566: LrcPtr<Dice_contract::UH0> = foldBack(
                         Func2::new(move |b0: u8, b1: LrcPtr<Dice_contract::UH0>| {
                             (Dice_contract::method21())(b0)(b1)

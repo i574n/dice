@@ -577,7 +577,7 @@ mod module_1d76f080 {
             let v64: string = string("option_env!(\"AUTOMATION\").unwrap_or(\"\")");
             let v65: &str = option_env!("AUTOMATION").unwrap_or("");
             let v72: std::string::String = String::from(v65);
-            let _v1: (Dice::US3, Dice::US4) = (
+            let _run_target_args__v1: (Dice::US3, Dice::US4) = (
                 Dice::US3::US3_1,
                 if (fable_library_rust::String_::fromString(v72)) != string("True") {
                     Dice::US4::US4_1
@@ -585,8 +585,8 @@ mod module_1d76f080 {
                     Dice::US4::US4_0(near_sdk::env::block_timestamp() as i64)
                 },
             );
-            let v132: Dice::US4 = _v1.1.clone();
-            let v131: Dice::US3 = _v1.0.clone();
+            let v132: Dice::US4 = _run_target_args__v1.1.clone();
+            let v131: Dice::US3 = _run_target_args__v1.0.clone();
             (
                 LrcPtr::new(Dice::Mut1 {
                     l0: MutCell::new(1_i64),

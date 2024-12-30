@@ -556,7 +556,7 @@ let rec printTaskList taskList =
 printTaskList taskList
 
 Expecto.Tests.runTestsWithCLIArgs [] [||] properties
-|> _assertEqual 2
+|> _assertEqual 0
 
 #!markdown
 
