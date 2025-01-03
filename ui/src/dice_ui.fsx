@@ -8821,7 +8821,7 @@ and closure174 (v0 : leptos_prelude_ArcMemo<Vec<struct (int32 * leptos_prelude_R
                 let v411 : unit = ()
                 let _let'_v411 =
                     seq {
-                        for i = 0 to v408.Length - 1 do yield v408.[i]
+                        yield! v408 
                         (* indent
                         ()
                     indent *)
@@ -9845,7 +9845,7 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
     let v610 : unit = ()
     let _let'_v610 =
         seq {
-            for i = 0 to v607.Length - 1 do yield v607.[i]
+            yield! v607 
             (* indent
             ()
         indent *)
@@ -13888,7 +13888,7 @@ and closure207 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Vec<struct (int32 * int3
     let v119 : unit = ()
     let _let'_v119 =
         seq {
-            for i = 0 to v116.Length - 1 do yield v116.[i]
+            yield! v116 
             (* indent
             ()
         indent *)
@@ -14709,7 +14709,7 @@ and closure228 (v0 : Heap2) () : leptos_dom_Fragment =
     let v84 : unit = ()
     let _let'_v84 =
         seq {
-            for i = 0 to v81.Length - 1 do yield v81.[i]
+            yield! v81 
             (* indent
             ()
         indent *)
@@ -15280,7 +15280,7 @@ and closure238 (v0 : Heap2) () : leptos_dom_Fragment =
     let v84 : unit = ()
     let _let'_v84 =
         seq {
-            for i = 0 to v81.Length - 1 do yield v81.[i]
+            yield! v81 
             (* indent
             ()
         indent *)
@@ -16460,7 +16460,7 @@ and closure263 (v0 : Heap2) () : leptos_dom_Fragment =
     let v84 : unit = ()
     let _let'_v84 =
         seq {
-            for i = 0 to v81.Length - 1 do yield v81.[i]
+            yield! v81 
             (* indent
             ()
         indent *)

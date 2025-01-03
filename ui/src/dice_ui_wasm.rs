@@ -18,8 +18,6 @@ mod module_75bc3c80 {
         use fable_library_rust::Convert_::toInt32;
         use fable_library_rust::Convert_::toInt64;
         use fable_library_rust::List_::foldBack;
-        use fable_library_rust::List_::item;
-        use fable_library_rust::List_::length as length_1;
         use fable_library_rust::List_::ofArray as ofArray_1;
         use fable_library_rust::List_::List;
         use fable_library_rust::NativeArray_::get_Count;
@@ -38,10 +36,9 @@ mod module_75bc3c80 {
         use fable_library_rust::Native_::OnceInit;
         use fable_library_rust::Option_::defaultValue;
         use fable_library_rust::Option_::map;
-        use fable_library_rust::Range_::rangeNumeric;
         use fable_library_rust::Seq_::delay;
-        use fable_library_rust::Seq_::map as map_1;
         use fable_library_rust::Seq_::ofArray;
+        use fable_library_rust::Seq_::ofList;
         use fable_library_rust::Seq_::toArray;
         use fable_library_rust::String_::append;
         use fable_library_rust::String_::concat;
@@ -12373,44 +12370,30 @@ mod module_75bc3c80 {
                                                        let v331: bool = */
                             }); //;
                             let v333: Func0<()> = _func0_from_v248;
-                            let v408: List<string> = ofArray_1(new_array(&[
-                                string("flex"),
-                                string("flex-1"),
-                                string("gap-[10px]"),
-                                string("[align-items:center]"),
-                                string("[justify-content:center]"),
-                                string("inline-block"),
-                                string("rounded"),
-                                string("border"),
-                                string("border-gray-400"),
-                                string("hover:bg-gray-100"),
-                                string("px-[22px]"),
-                                string("py-1"),
-                                string("text-sm"),
-                                string("text-gray-900"),
-                                string("bg-gray-200"),
-                                string("hover:text-gray-600"),
-                                string("focus:outline-none"),
-                                string("focus:ring"),
-                                string("active:text-gray-500"),
-                            ]));
                             let v423: string = join(
                                 string(" "),
-                                toArray(delay(Func0::new({
-                                    let v408 = v408.clone();
-                                    move || {
-                                        map_1(
-                                            Func1::new({
-                                                let v408 = v408.clone();
-                                                move |i: i32| item(i, v408.clone())
-                                            }),
-                                            rangeNumeric(
-                                                0_i32,
-                                                1_i32,
-                                                (length_1(v408.clone())) - 1_i32,
-                                            ),
-                                        )
-                                    }
+                                toArray(delay(Func0::new(move || {
+                                    ofList(ofArray_1(new_array(&[
+                                        string("flex"),
+                                        string("flex-1"),
+                                        string("gap-[10px]"),
+                                        string("[align-items:center]"),
+                                        string("[justify-content:center]"),
+                                        string("inline-block"),
+                                        string("rounded"),
+                                        string("border"),
+                                        string("border-gray-400"),
+                                        string("hover:bg-gray-100"),
+                                        string("px-[22px]"),
+                                        string("py-1"),
+                                        string("text-sm"),
+                                        string("text-gray-900"),
+                                        string("bg-gray-200"),
+                                        string("hover:text-gray-600"),
+                                        string("focus:outline-none"),
+                                        string("focus:ring"),
+                                        string("active:text-gray-500"),
+                                    ])))
                                 }))),
                             );
                             let v430: &str = &*v423;
@@ -13157,39 +13140,29 @@ mod module_75bc3c80 {
                                        let v534: bool = */
             }); //;
             let v536: Func0<()> = _func0_from_v514;
-            let v607: List<string> = ofArray_1(new_array(&[
-                string("flex"),
-                string("gap-[10px]"),
-                string("[align-items:center]"),
-                string("inline-block"),
-                string("rounded"),
-                string("border"),
-                string("border-gray-400"),
-                string("hover:bg-gray-400"),
-                string("px-4"),
-                string("py-1"),
-                string("text-sm"),
-                string("font-medium"),
-                string("text-gray-900"),
-                string("bg-transparent"),
-                string("hover:text-gray-600"),
-                string("focus:outline-none"),
-                string("focus:ring"),
-                string("active:text-gray-500"),
-            ]));
             let v622: string = join(
                 string(" "),
-                toArray(delay(Func0::new({
-                    let v607 = v607.clone();
-                    move || {
-                        map_1(
-                            Func1::new({
-                                let v607 = v607.clone();
-                                move |i: i32| item(i, v607.clone())
-                            }),
-                            rangeNumeric(0_i32, 1_i32, (length_1(v607.clone())) - 1_i32),
-                        )
-                    }
+                toArray(delay(Func0::new(move || {
+                    ofList(ofArray_1(new_array(&[
+                        string("flex"),
+                        string("gap-[10px]"),
+                        string("[align-items:center]"),
+                        string("inline-block"),
+                        string("rounded"),
+                        string("border"),
+                        string("border-gray-400"),
+                        string("hover:bg-gray-400"),
+                        string("px-4"),
+                        string("py-1"),
+                        string("text-sm"),
+                        string("font-medium"),
+                        string("text-gray-900"),
+                        string("bg-transparent"),
+                        string("hover:text-gray-600"),
+                        string("focus:outline-none"),
+                        string("focus:ring"),
+                        string("active:text-gray-500"),
+                    ])))
                 }))),
             );
             let v629: &str = &*v622;
@@ -16758,27 +16731,17 @@ mod module_75bc3c80 {
                         let v91: bool = */
                 }); //;
                 let v93: Func0<std::string::String> = _func0_from_v36;
-                let v116: List<string> = ofArray_1(new_array(&[
-                    string("block"),
-                    string("relative"),
-                    string("h-8"),
-                    string("w-14"),
-                    string("cursor-pointer"),
-                    string("[-webkit-tap-highlight-color:_transparent]"),
-                ]));
                 let v131: string = join(
                     string(" "),
-                    toArray(delay(Func0::new({
-                        let v116 = v116.clone();
-                        move || {
-                            map_1(
-                                Func1::new({
-                                    let v116 = v116.clone();
-                                    move |i: i32| item(i, v116.clone())
-                                }),
-                                rangeNumeric(0_i32, 1_i32, (length_1(v116.clone())) - 1_i32),
-                            )
-                        }
+                    toArray(delay(Func0::new(move || {
+                        ofList(ofArray_1(new_array(&[
+                            string("block"),
+                            string("relative"),
+                            string("h-8"),
+                            string("w-14"),
+                            string("cursor-pointer"),
+                            string("[-webkit-tap-highlight-color:_transparent]"),
+                        ])))
                     }))),
                 );
                 let v138: &str = &*v131;
@@ -17421,27 +17384,17 @@ mod module_75bc3c80 {
                     let v56: bool = */
             }); //;
             let v58: Func0<std::string::String> = _func0_from_v1;
-            let v81: List<string> = ofArray_1(new_array(&[
-                string("block"),
-                string("relative"),
-                string("h-8"),
-                string("w-14"),
-                string("cursor-pointer"),
-                string("[-webkit-tap-highlight-color:_transparent]"),
-            ]));
             let v96: string = join(
                 string(" "),
-                toArray(delay(Func0::new({
-                    let v81 = v81.clone();
-                    move || {
-                        map_1(
-                            Func1::new({
-                                let v81 = v81.clone();
-                                move |i: i32| item(i, v81.clone())
-                            }),
-                            rangeNumeric(0_i32, 1_i32, (length_1(v81.clone())) - 1_i32),
-                        )
-                    }
+                toArray(delay(Func0::new(move || {
+                    ofList(ofArray_1(new_array(&[
+                        string("block"),
+                        string("relative"),
+                        string("h-8"),
+                        string("w-14"),
+                        string("cursor-pointer"),
+                        string("[-webkit-tap-highlight-color:_transparent]"),
+                    ])))
                 }))),
             );
             let v103: &str = &*v96;
@@ -17783,27 +17736,17 @@ mod module_75bc3c80 {
                     let v56: bool = */
             }); //;
             let v58: Func0<std::string::String> = _func0_from_v1;
-            let v81: List<string> = ofArray_1(new_array(&[
-                string("block"),
-                string("relative"),
-                string("h-8"),
-                string("w-14"),
-                string("cursor-pointer"),
-                string("[-webkit-tap-highlight-color:_transparent]"),
-            ]));
             let v96: string = join(
                 string(" "),
-                toArray(delay(Func0::new({
-                    let v81 = v81.clone();
-                    move || {
-                        map_1(
-                            Func1::new({
-                                let v81 = v81.clone();
-                                move |i: i32| item(i, v81.clone())
-                            }),
-                            rangeNumeric(0_i32, 1_i32, (length_1(v81.clone())) - 1_i32),
-                        )
-                    }
+                toArray(delay(Func0::new(move || {
+                    ofList(ofArray_1(new_array(&[
+                        string("block"),
+                        string("relative"),
+                        string("h-8"),
+                        string("w-14"),
+                        string("cursor-pointer"),
+                        string("[-webkit-tap-highlight-color:_transparent]"),
+                    ])))
                 }))),
             );
             let v103: &str = &*v96;
@@ -18687,27 +18630,17 @@ mod module_75bc3c80 {
                     let v56: bool = */
             }); //;
             let v58: Func0<std::string::String> = _func0_from_v1;
-            let v81: List<string> = ofArray_1(new_array(&[
-                string("block"),
-                string("relative"),
-                string("h-8"),
-                string("w-14"),
-                string("cursor-pointer"),
-                string("[-webkit-tap-highlight-color:_transparent]"),
-            ]));
             let v96: string = join(
                 string(" "),
-                toArray(delay(Func0::new({
-                    let v81 = v81.clone();
-                    move || {
-                        map_1(
-                            Func1::new({
-                                let v81 = v81.clone();
-                                move |i: i32| item(i, v81.clone())
-                            }),
-                            rangeNumeric(0_i32, 1_i32, (length_1(v81.clone())) - 1_i32),
-                        )
-                    }
+                toArray(delay(Func0::new(move || {
+                    ofList(ofArray_1(new_array(&[
+                        string("block"),
+                        string("relative"),
+                        string("h-8"),
+                        string("w-14"),
+                        string("cursor-pointer"),
+                        string("[-webkit-tap-highlight-color:_transparent]"),
+                    ])))
                 }))),
             );
             let v103: &str = &*v96;

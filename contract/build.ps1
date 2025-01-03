@@ -13,7 +13,7 @@ $ErrorActionPreference = "Stop"
 $projectName = "dice_contract"
 
 if (!$fast -and !$SkipNotebook) {
-    { . apps/spiral/dist/Supervisor$(_exe) --execute-command "workspace/target/release/spiral_builder$(_exe) dib --path $ScriptDir/$projectName.dib --retries $($fast -or !$env:CI ? 1 : 3)" } | Invoke-Block -Location ../deps/polyglot
+    { . apps/spiral/dist/Supervisor$(_exe) --execute-command "deps/spiral/workspace/target/release/spiral$(_exe) dib --path $ScriptDir/$projectName.dib --retries $($fast -or !$env:CI ? 1 : 3)" } | Invoke-Block -Location ../deps/polyglot
 }
 
 { . ../deps/polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" spi } | Invoke-Block
