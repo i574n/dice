@@ -24,7 +24,7 @@ class IOsEnviron(Protocol):
         ...
 
 
-def _expr412() -> TypeInfo:
+def _expr415() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
 
 
@@ -39,9 +39,9 @@ class UH0(Union):
         return ["UH0_0", "UH0_1"]
 
 
-UH0_reflection = _expr412
+UH0_reflection = _expr415
 
-def _expr413() -> TypeInfo:
+def _expr416() -> TypeInfo:
     return union_type("Dice.UH1", [], UH1, lambda: [[], [("Item1", uint8_type), ("Item2", UH1_reflection())]])
 
 
@@ -56,9 +56,9 @@ class UH1(Union):
         return ["UH1_0", "UH1_1"]
 
 
-UH1_reflection = _expr413
+UH1_reflection = _expr416
 
-def _expr414() -> TypeInfo:
+def _expr417() -> TypeInfo:
     return union_type("Dice.US0", [], US0, lambda: [[("f0_0", lambda_type(unit_type, UH0_reflection()))], [("f1_0", UH0_reflection())]])
 
 
@@ -74,9 +74,9 @@ class US0(Union):
         return ["US0_0", "US0_1"]
 
 
-US0_reflection = _expr414
+US0_reflection = _expr417
 
-def _expr415() -> TypeInfo:
+def _expr418() -> TypeInfo:
     return record_type("Dice.Mut0", [], Mut0, lambda: [("l0", US0_reflection())])
 
 
@@ -84,9 +84,9 @@ def _expr415() -> TypeInfo:
 class Mut0(Record):
     l0: US0
 
-Mut0_reflection = _expr415
+Mut0_reflection = _expr418
 
-def _expr416() -> TypeInfo:
+def _expr419() -> TypeInfo:
     return record_type("Dice.Mut1", [], Mut1, lambda: [("l0", int64_type)])
 
 
@@ -94,9 +94,9 @@ def _expr416() -> TypeInfo:
 class Mut1(Record):
     l0: int64
 
-Mut1_reflection = _expr416
+Mut1_reflection = _expr419
 
-def _expr417() -> TypeInfo:
+def _expr420() -> TypeInfo:
     return union_type("Dice.US1", [], US1, lambda: [[("f0_0", uint8_type)], []])
 
 
@@ -112,9 +112,9 @@ class US1(Union):
         return ["US1_0", "US1_1"]
 
 
-US1_reflection = _expr417
+US1_reflection = _expr420
 
-def _expr418() -> TypeInfo:
+def _expr421() -> TypeInfo:
     return record_type("Dice.Mut2", [], Mut2, lambda: [("l0", US1_reflection())])
 
 
@@ -122,9 +122,9 @@ def _expr418() -> TypeInfo:
 class Mut2(Record):
     l0: US1
 
-Mut2_reflection = _expr418
+Mut2_reflection = _expr421
 
-def _expr419() -> TypeInfo:
+def _expr422() -> TypeInfo:
     return union_type("Dice.US2", [], US2, lambda: [[], [], [], [], []])
 
 
@@ -140,9 +140,9 @@ class US2(Union):
         return ["US2_0", "US2_1", "US2_2", "US2_3", "US2_4"]
 
 
-US2_reflection = _expr419
+US2_reflection = _expr422
 
-def _expr420() -> TypeInfo:
+def _expr423() -> TypeInfo:
     return record_type("Dice.Mut3", [], Mut3, lambda: [("l0", lambda_type(string_type, unit_type))])
 
 
@@ -150,9 +150,9 @@ def _expr420() -> TypeInfo:
 class Mut3(Record):
     l0: Callable[[str], None]
 
-Mut3_reflection = _expr420
+Mut3_reflection = _expr423
 
-def _expr421() -> TypeInfo:
+def _expr424() -> TypeInfo:
     return record_type("Dice.Mut4", [], Mut4, lambda: [("l0", bool_type)])
 
 
@@ -160,9 +160,9 @@ def _expr421() -> TypeInfo:
 class Mut4(Record):
     l0: bool
 
-Mut4_reflection = _expr421
+Mut4_reflection = _expr424
 
-def _expr422() -> TypeInfo:
+def _expr425() -> TypeInfo:
     return record_type("Dice.Mut5", [], Mut5, lambda: [("l0", string_type)])
 
 
@@ -170,9 +170,9 @@ def _expr422() -> TypeInfo:
 class Mut5(Record):
     l0: str
 
-Mut5_reflection = _expr422
+Mut5_reflection = _expr425
 
-def _expr423() -> TypeInfo:
+def _expr426() -> TypeInfo:
     return record_type("Dice.Mut6", [], Mut6, lambda: [("l0", US2_reflection())])
 
 
@@ -180,9 +180,9 @@ def _expr423() -> TypeInfo:
 class Mut6(Record):
     l0: US2
 
-Mut6_reflection = _expr423
+Mut6_reflection = _expr426
 
-def _expr424() -> TypeInfo:
+def _expr427() -> TypeInfo:
     return union_type("Dice.US3", [], US3, lambda: [[("f0_0", US2_reflection())], []])
 
 
@@ -198,9 +198,9 @@ class US3(Union):
         return ["US3_0", "US3_1"]
 
 
-US3_reflection = _expr424
+US3_reflection = _expr427
 
-def _expr425() -> TypeInfo:
+def _expr428() -> TypeInfo:
     return union_type("Dice.US4", [], US4, lambda: [[("f0_0", int64_type)], []])
 
 
@@ -216,9 +216,9 @@ class US4(Union):
         return ["US4_0", "US4_1"]
 
 
-US4_reflection = _expr425
+US4_reflection = _expr428
 
-def _expr426() -> TypeInfo:
+def _expr429() -> TypeInfo:
     return union_type("Dice.US5", [], US5, lambda: [[], [], []])
 
 
@@ -234,9 +234,9 @@ class US5(Union):
         return ["US5_0", "US5_1", "US5_2"]
 
 
-US5_reflection = _expr426
+US5_reflection = _expr429
 
-def _expr427() -> TypeInfo:
+def _expr430() -> TypeInfo:
     return union_type("Dice.US6", [], US6, lambda: [[("f0_0", US5_reflection())], [("f1_0", US5_reflection())], [("f2_0", US5_reflection())], [("f3_0", US5_reflection())], [("f4_0", US5_reflection())]])
 
 
@@ -252,9 +252,9 @@ class US6(Union):
         return ["US6_0", "US6_1", "US6_2", "US6_3", "US6_4"]
 
 
-US6_reflection = _expr427
+US6_reflection = _expr430
 
-def _expr428() -> TypeInfo:
+def _expr431() -> TypeInfo:
     return union_type("Dice.US7", [], US7, lambda: [[("f0_0", string_type)], []])
 
 
@@ -270,9 +270,9 @@ class US7(Union):
         return ["US7_0", "US7_1"]
 
 
-US7_reflection = _expr428
+US7_reflection = _expr431
 
-def _expr429() -> TypeInfo:
+def _expr432() -> TypeInfo:
     return union_type("Dice.US8", [], US8, lambda: [[("f0_0", uint64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -288,9 +288,9 @@ class US8(Union):
         return ["US8_0", "US8_1"]
 
 
-US8_reflection = _expr429
+US8_reflection = _expr432
 
-def _expr430() -> TypeInfo:
+def _expr433() -> TypeInfo:
     return union_type("Dice.UH2", [], UH2, lambda: [[("Item1", uint64_type), ("Item2", lambda_type(unit_type, UH2_reflection()))], []])
 
 
@@ -305,9 +305,9 @@ class UH2(Union):
         return ["UH2_0", "UH2_1"]
 
 
-UH2_reflection = _expr430
+UH2_reflection = _expr433
 
-def _expr431() -> TypeInfo:
+def _expr434() -> TypeInfo:
     return union_type("Dice.US9", [], US9, lambda: [[("f0_0", uint64_type)], []])
 
 
@@ -323,9 +323,9 @@ class US9(Union):
         return ["US9_0", "US9_1"]
 
 
-US9_reflection = _expr431
+US9_reflection = _expr434
 
-def _expr432() -> TypeInfo:
+def _expr435() -> TypeInfo:
     return union_type("Dice.US10", [], US10, lambda: [[("f0_0", int64_type), ("f0_1", UH1_reflection())], []])
 
 
@@ -341,7 +341,7 @@ class US10(Union):
         return ["US10_0", "US10_1"]
 
 
-US10_reflection = _expr432
+US10_reflection = _expr435
 
 def closure2(v0_1: UH0, unit_var: None) -> UH0:
     return v0_1
@@ -366,10 +366,10 @@ def closure1(v0_1: int64, v1_1: UH0) -> UH0:
 
 
 def closure0(unit_var: None, v0_1: int64) -> Callable[[UH0], UH0]:
-    def _arrow433(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
+    def _arrow436(v: UH0, unit_var: Any=unit_var, v0_1: Any=v0_1) -> UH0:
         return closure1(v0_1, v)
 
-    return _arrow433
+    return _arrow436
 
 
 def method1(v0_1_mut: UH1, v1_1_mut: UH1) -> UH1:
@@ -431,10 +431,10 @@ def closure6(v0_1: UH0, v1_1: Mut0, unit_var: None) -> UH0:
 
 def method4(v0_1: UH0, v1_1: Callable[[], UH0]) -> Callable[[], UH0]:
     v3_1: Mut0 = Mut0(US0(0, v1_1))
-    def _arrow434(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
+    def _arrow437(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1) -> UH0:
         return closure6(v0_1, v3_1, None)
 
-    return _arrow434
+    return _arrow437
 
 
 def method10(v0_1: str) -> str:
@@ -450,10 +450,10 @@ def closure10(unit_var: None, v0_1: str) -> US7:
 
 
 def method12(__unit: None=None) -> Callable[[str], US7]:
-    def _arrow435(v: str) -> US7:
+    def _arrow438(v: str) -> US7:
         return closure10(None, v)
 
-    return _arrow435
+    return _arrow438
 
 
 def method9(v0_1: str) -> str:
@@ -481,7 +481,7 @@ def method9(v0_1: str) -> str:
 def method8(__unit: None=None) -> tuple[US3, US4]:
     v1_1: str = method9("TRACE_LEVEL")
     v6: US3 = US3(0, US2(0)) if ("Verbose" == v1_1) else US3(1)
-    def _arrow436(__unit: None=None) -> US3:
+    def _arrow439(__unit: None=None) -> US3:
         v13: US3 = US3(0, US2(1)) if ("Debug" == v1_1) else US3(1)
         if v13.tag == 0:
             return US3(0, v13.fields[0])
@@ -503,7 +503,7 @@ def method8(__unit: None=None) -> tuple[US3, US4]:
 
 
 
-    return (US3(0, v6.fields[0]) if (v6.tag == 0) else _arrow436(), US4(1) if (method9("AUTOMATION") != "True") else US4(0, from_value(ticks_1(now()), False)))
+    return (US3(0, v6.fields[0]) if (v6.tag == 0) else _arrow439(), US4(1) if (method9("AUTOMATION") != "True") else US4(0, from_value(ticks_1(now()), False)))
 
 
 def closure11(unit_var: None, v0_1: str) -> None:
@@ -538,17 +538,17 @@ def method6(v0_1: US2) -> bool:
         return False
 
     else: 
-        class ObjectExpr437:
+        class ObjectExpr440:
             @property
             def Compare(self) -> Callable[[US2, US2], int]:
                 return compare
 
-        class ObjectExpr438:
+        class ObjectExpr441:
             @property
             def Compare(self) -> Callable[[US2, US2], int]:
                 return compare
 
-        return find(v0_1, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr437())) >= find(v35, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr438()))
+        return find(v0_1, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr440())) >= find(v35, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr441()))
 
 
 
@@ -557,10 +557,10 @@ def closure12(unit_var: None, v0_1: int64) -> US4:
 
 
 def method14(__unit: None=None) -> Callable[[int64], US4]:
-    def _arrow439(v: int64) -> US4:
+    def _arrow442(v: int64) -> US4:
         return closure12(None, v)
 
-    return _arrow439
+    return _arrow442
 
 
 def method15(__unit: None=None) -> str:
@@ -818,10 +818,10 @@ def closure3(unit_var: None, v0_1: UH1) -> Callable[[], uint8]:
     v9: Mut1 = Mut1(int64(1))
     v10: Mut1 = Mut1(int64(-1))
     v12: Mut2 = Mut2(US1(1))
-    def _arrow440(__unit: None=None, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint8:
+    def _arrow443(__unit: None=None, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint8:
         return closure7(v7, v8, v9, v10, v12, None)
 
-    return _arrow440
+    return _arrow443
 
 
 def method30(v0_1: uint64, v1_1: uint64, v2_1: int8) -> str:
@@ -1738,17 +1738,17 @@ def closure20(v0_1: Callable[[], uint8], v1_1: bool, v2_1: uint64) -> uint64:
 
 
 def closure19(v0_1: Callable[[], uint8], v1_1: bool) -> Callable[[uint64], uint64]:
-    def _arrow441(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64:
+    def _arrow444(v: uint64, v0_1: Any=v0_1, v1_1: Any=v1_1) -> uint64:
         return closure20(v0_1, v1_1, v)
 
-    return _arrow441
+    return _arrow444
 
 
 def closure18(unit_var: None, v0_1: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
-    def _arrow442(v: bool, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[uint64], uint64]:
+    def _arrow445(v: bool, unit_var: Any=unit_var, v0_1: Any=v0_1) -> Callable[[uint64], uint64]:
         return closure19(v0_1, v)
 
-    return _arrow442
+    return _arrow445
 
 
 def method42(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
@@ -1784,10 +1784,10 @@ def closure90(v0_1: uint64, v1_1: UH1) -> uint64 | None:
 
 
 def closure89(unit_var: None, v0_1: uint64) -> Callable[[UH1], uint64 | None]:
-    def _arrow443(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint64 | None:
+    def _arrow446(v: UH1, unit_var: Any=unit_var, v0_1: Any=v0_1) -> uint64 | None:
         return closure90(v0_1, v)
 
-    return _arrow443
+    return _arrow446
 
 
 def method44(v0_1: int64, v1_1: int64, v2_1: int8) -> str:
@@ -3675,51 +3675,51 @@ def closure91(unit_var: None, v0_1: Array[str]) -> int:
     return 0
 
 
-def _arrow444(v: int64) -> Callable[[UH0], UH0]:
+def _arrow447(v: int64) -> Callable[[UH0], UH0]:
     return closure0(None, v)
 
 
-v0: Callable[[int64, UH0], UH0] = _arrow444
+v0: Callable[[int64, UH0], UH0] = _arrow447
 
 def rotate_numbers(x: int64) -> Callable[[UH0], UH0]:
     return v0(x)
 
 
-def _arrow445(v: UH1) -> Callable[[], uint8]:
+def _arrow448(v: UH1) -> Callable[[], uint8]:
     return closure3(None, v)
 
 
-v1: Callable[[UH1, None], uint8] = _arrow445
+v1: Callable[[UH1, None], uint8] = _arrow448
 
 def create_sequential_roller(x: UH1) -> Callable[[], uint8]:
     return v1(x)
 
 
-def _arrow446(v: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
+def _arrow449(v: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
     return closure18(None, v)
 
 
-v2: Callable[[Callable[[], uint8], bool, uint64], uint64] = _arrow446
+v2: Callable[[Callable[[], uint8], bool, uint64], uint64] = _arrow449
 
 def roll_progressively(x: Callable[[], uint8]) -> Callable[[bool, uint64], uint64]:
     return v2(x)
 
 
-def _arrow447(v: uint64) -> Callable[[UH1], uint64 | None]:
+def _arrow450(v: uint64) -> Callable[[UH1], uint64 | None]:
     return closure89(None, v)
 
 
-v3: Callable[[uint64, UH1], uint64 | None] = _arrow447
+v3: Callable[[uint64, UH1], uint64 | None] = _arrow450
 
 def roll_within_bounds(x: uint64) -> Callable[[UH1], uint64 | None]:
     return v3(x)
 
 
-def _arrow448(v: Array[str]) -> int:
+def _arrow451(v: Array[str]) -> int:
     return closure91(None, v)
 
 
-v4: Callable[[Array[str]], int] = _arrow448
+v4: Callable[[Array[str]], int] = _arrow451
 
 def main(args: Array[str]) -> int:
     return v4(args)
