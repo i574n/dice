@@ -28,9 +28,20 @@ $targetDir = GetTargetDir $projectName
 
 { BuildFable $targetDir $projectName "rs" "CONTRACT" } | Invoke-Block
 
-(Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
-    -replace "../../../lib", "../deps/polyglot/lib" `
-    -replace "../../../../../../../../../../../../polyglot", "../deps/polyglot" `
+$path = "$targetDir/$projectName.rs"
+if (!($path | Test-Path)) {
+    $path = "$targetDir/target/rs/$projectName.rs"
+}
+if (!($path | Test-Path)) {
+    $path = "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs"
+}
+Write-Output "dice/contract/build.ps1 / path: $path"
+(Get-Content $path) `
+    -replace "`"../../../lib", "`"../deps/polyglot/lib" `
+    -replace "`"./lib", "`"../deps/polyglot/lib" `
+    -replace "`"../../../../../lib", "`"../deps/polyglot/lib" `
+    -replace "`"../../../deps", "`"../deps" `
+    -replace "`"../../../../../../../../../../../../polyglot", "`"../deps/polyglot" `
     -replace ".fsx`"]", ".rs`"]" `
     -replace ".rs`"]", "_contract.rs`"]" `
     -replace "use fable_library_rust::DateTime_::DateTime;", "type DateTime = ();" `
