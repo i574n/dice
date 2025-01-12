@@ -1,14 +1,14 @@
-import { compare, IComparable, IEquatable, createAtom } from "../../../../deps/Fable/src/fable-library-ts/Util.js";
-import { map, defaultArg, value as value_3, Option } from "../../../../deps/Fable/src/fable-library-ts/Option.js";
-import { op_Multiply, toUInt64, equals, compare as compare_1, fromInt64, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "../../../../deps/Fable/src/fable-library-ts/BigInt.js";
-import { Record, Union } from "../../../../deps/Fable/src/fable-library-ts/Types.js";
-import { int8, int32, uint8 } from "../../../../deps/Fable/src/fable-library-ts/Int32.js";
-import { uint64_type, bool_type, string_type, int64_type, record_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "../../../../deps/Fable/src/fable-library-ts/Reflection.js";
-import { toString, create, now, getTicks } from "../../../../deps/Fable/src/fable-library-ts/Date.js";
-import { ofSeq, find } from "../../../../deps/Fable/src/fable-library-ts/Map.js";
-import { milliseconds, seconds, minutes, hours, fromTicks } from "../../../../deps/Fable/src/fable-library-ts/TimeSpan.js";
-import { interpolate, toText, trimStart, trimEnd } from "../../../../deps/Fable/src/fable-library-ts/String.js";
-import { nonSeeded } from "../../../../deps/Fable/src/fable-library-ts/Random.js";
+import { compare, IComparable, IEquatable, createAtom } from "../../polyglot/deps/Fable/src/fable-library-ts/Util.js";
+import { map, defaultArg, value as value_3, Option } from "../../polyglot/deps/Fable/src/fable-library-ts/Option.js";
+import { op_Multiply, toUInt64, equals, compare as compare_1, fromInt64, toUInt8, fromUInt8, op_Subtraction, op_Modulus, op_Addition, toInt64, uint64, int64 } from "../../polyglot/deps/Fable/src/fable-library-ts/BigInt.js";
+import { Record, Union } from "../../polyglot/deps/Fable/src/fable-library-ts/Types.js";
+import { int8, int32, uint8 } from "../../polyglot/deps/Fable/src/fable-library-ts/Int32.js";
+import { uint64_type, bool_type, string_type, int64_type, record_type, union_type, lambda_type, unit_type, uint8_type, TypeInfo } from "../../polyglot/deps/Fable/src/fable-library-ts/Reflection.js";
+import { toString, create, now, getTicks } from "../../polyglot/deps/Fable/src/fable-library-ts/Date.js";
+import { ofSeq, find } from "../../polyglot/deps/Fable/src/fable-library-ts/Map.js";
+import { milliseconds, seconds, minutes, hours, fromTicks } from "../../polyglot/deps/Fable/src/fable-library-ts/TimeSpan.js";
+import { interpolate, toText, trimStart, trimEnd } from "../../polyglot/deps/Fable/src/fable-library-ts/String.js";
+import { nonSeeded } from "../../polyglot/deps/Fable/src/fable-library-ts/Random.js";
 
 export let TraceState_trace_state = createAtom<Option<[Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>]>>(undefined);
 

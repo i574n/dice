@@ -29,28 +29,57 @@ $targetDir = GetTargetDir $projectName
 { BuildFable $targetDir $projectName "ts" } | Invoke-Block
 { BuildFable $targetDir $projectName "py" } | Invoke-Block
 
-(Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
+$Path = "$targetDir/target/rs/$projectName.rs"
+if (!($Path | Test-Path)) {
+    $Path = "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs"
+}
+$Target = "$projectName.rs"
+Write-Output "dice/lib/build.ps1 / Path: $Path / Target: $Target"
+(Get-Content $Path) `
+    -replace "`"./lib", "`"../deps/polyglot/lib" `
     -replace "../../../lib", "../deps/polyglot/lib" `
     -replace "../../../../../../../../../../../../polyglot", "../deps/polyglot" `
+    -replace "../../../deps/polyglot", "../deps/polyglot" `
     -replace ".fsx`"]", ".rs`"]" `
     | FixRust `
-    | Set-Content "$projectName.rs"
+    | Set-Content $Target
 
-(Get-Content "$targetDir/target/ts/polyglot/target/Builder/$projectName/$projectName.ts") `
+$Path = "$targetDir/target/ts/$projectName.ts"
+if (!($Path | Test-Path)) {
+    $Path = "$targetDir/target/ts/polyglot/target/Builder/$projectName/$projectName.ts"
+}
+$Target = "$projectName.ts"
+Write-Output "dice/lib/build.ps1 / Path: $Path / Target: $Target"
+(Get-Content $Path) `
     | FixTypeScript `
-    | Set-Content "$projectName.ts"
+    | Set-Content $Target
 
-Copy-Item "$targetDir/target/py/polyglot/target/Builder/$projectName/$projectName.py" "$projectName.py" -Force
+$Path = "$targetDir/target/py/$projectName.py"
+if (!($Path | Test-Path)) {
+    $Path = "$targetDir/target/py/polyglot/target/Builder/$projectName/$projectName.py"
+}
+$Target = "$projectName.py"
+Write-Output "dice/lib/build.ps1 / Path: $Path / Target: $Target"
+Copy-Item $Path $Target -Force
 
 { BuildFable $targetDir $projectName "rs" "CONTRACT" } | Invoke-Block
-(Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
-    -replace "../../../lib", "../deps/polyglot/lib" `
+
+$Path = "$targetDir/target/rs/$projectName.rs"
+if (!($Path | Test-Path)) {
+    $Path = "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs"
+}
+$Target = "$($projectName)_contract.rs"
+Write-Output "dice/lib/build.ps1 / Path: $Path / Target: $Target"
+(Get-Content $Path) `
+    -replace "`"../../../../../lib", "`"../deps/polyglot/lib" `
+    -replace "`"./lib", "`"../deps/polyglot/lib" `
     -replace "../../../../../../../../../../../../polyglot", "../deps/polyglot" `
+    -replace "../../../deps/polyglot", "../deps/polyglot" `
     -replace ".fsx`"]", ".rs`"]" `
     -replace ".rs`"]", "_contract.rs`"]" `
     -replace "use fable_library_rust::DateTime_::DateTime;", "type DateTime = ();" `
     | FixRust `
-    | Set-Content "$($projectName)_contract.rs"
+    | Set-Content $Target
 
 cargo fmt --
 { cargo fmt -- } | Invoke-Block -Location contract
