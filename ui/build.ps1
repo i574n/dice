@@ -48,7 +48,7 @@ $targetDir = GetTargetDir $projectName
 # -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap4 {" `
 
 cargo fmt --
-leptosfmt (Resolve-Path "./src/$($projectName)_wasm.rs").Path
+leptosfmt (ResolveLink (GetFullPath "./src/$($projectName)_wasm.rs"))
 
 if (!$fast) {
     Remove-Item $targetDir/trunk -Recurse -Force -ErrorAction Ignore
