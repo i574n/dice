@@ -24,9 +24,16 @@ $targetDir = GetTargetDir $projectName
 
 { BuildFable $targetDir $projectName "rs" "WASM" } | Invoke-Block
 
-(Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
+$path = "$targetDir/target/rs/$projectName.rs"
+if (!(Test-Path $path)) {
+    $path = "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs"
+}
+Write-Output "dice/ui/build.ps1 / path: $path"
+(Get-Content $path) `
     -replace "`"../../../../../../../../../../../../polyglot", "`"../../deps/polyglot" `
     -replace "`"../../../lib", "`"../../deps/polyglot/lib" `
+    -replace "`"../../../../../lib", "`"../../deps/polyglot/lib" `
+    -replace "`"./lib", "`"../../deps/polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     -replace ".rs`"]", "_wasm.rs`"]" `
     -replace "pub use crate::module_", "// pub use crate::module_" `

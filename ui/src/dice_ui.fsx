@@ -661,7 +661,9 @@ and method1 () : string =
 and method2 (v0 : web_sys_HtmlElement) : web_sys_HtmlElement =
     v0
 and closure6 () (v0 : rexie_Error) : std_string_String =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -784,7 +786,9 @@ and closure10 (v0 : Func0<string, std_string_String>) (v1 : string) : std_string
 and method11 (v0 : std_sync_Arc<rexie_Rexie>) : std_sync_Arc<rexie_Rexie> =
     v0
 and closure11 () (v0 : rexie_Error) : std_string_String =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -827,7 +831,9 @@ and method13 () : string =
     let v0 : string = "store"
     v0
 and closure12 () (v0 : rexie_Error) : std_string_String =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -870,7 +876,9 @@ and method15 () : string =
     let v0 : string = "core-state-heap"
     v0
 and closure13 () (v0 : rexie_Error) : std_string_String =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -916,7 +924,9 @@ and method17 () : (wasm_bindgen_JsValue -> US4) =
 and method18 (v0 : wasm_bindgen_JsValue) : wasm_bindgen_JsValue =
     v0
 and closure15 () (v0 : serde_wasm_bindgen_Error) : std_string_String =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -962,7 +972,9 @@ and method20 () : (serde_json_Value -> US5) =
 and method21 (v0 : serde_json_Value) : serde_json_Value =
     v0
 and closure17 () (v0 : serde_json_Error) : std_string_String =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -1002,7 +1014,9 @@ and closure17 () (v0 : serde_json_Error) : std_string_String =
 and method22 () : (serde_json_Error -> std_string_String) =
     closure17()
 and closure18 () (v0 : borsh_io_Error) : std_string_String =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -1103,7 +1117,9 @@ and method39 () : (std_string_String -> US14) =
 and method41 (v0 : string) : string =
     v0
 and closure31 () (v0 : serde_json_Error) : std_string_String =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -1146,7 +1162,9 @@ and closure30 () (v0 : std_string_String) : US8 =
     let v1 : string = "fable_library_rust::String_::fromString($0)"
     let v2 : string = Fable.Core.RustInterop.emitRustExpr v0 v1 
     let v3 : string = method41(v2)
+    (* run_target_args'
     let v4 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -1185,7 +1203,9 @@ and closure30 () (v0 : std_string_String) : US8 =
     let v28 : string = "serde_json::from_str(&$0)"
     let v29 : Result<Heap3, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr v23 v28 
     let v30 : (serde_json_Error -> std_string_String) = method42()
+    (* run_target_args'
     let v31 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -1221,7 +1241,9 @@ and closure30 () (v0 : std_string_String) : US8 =
     let _run_target_args'_v31 = v41 
     #endif
     let v42 : Result<Heap3, std_string_String> = _run_target_args'_v31 
+    (* run_target_args'
     let v45 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -1953,7 +1975,9 @@ and method93 (v0 : reqwest_RequestBuilder) : reqwest_RequestBuilder =
 and method94 (v0 : reqwest_RequestBuilder) : reqwest_RequestBuilder =
     v0
 and closure74 () (v0 : reqwest_Error) : std_string_String =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -2116,7 +2140,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
                 match v105 with
                 | US23_0 -> (* Get *)
                     let v106 : string = method89(v2)
+                    (* run_target_args'
                     let v107 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -2152,7 +2178,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
                     let _run_target_args'_v107 = v123 
                     #endif
                     let v126 : Ref<Str> = _run_target_args'_v107 
+                    (* run_target_args'
                     let v131 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -2194,7 +2222,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
                     v157
                 | US23_1 -> (* Post *)
                     let v158 : string = method91(v2)
+                    (* run_target_args'
                     let v159 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -2230,7 +2260,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
                     let _run_target_args'_v159 = v175 
                     #endif
                     let v178 : Ref<Str> = _run_target_args'_v159 
+                    (* run_target_args'
                     let v183 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -2270,7 +2302,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
                     let v208 : string = "reqwest_wasm::Client::builder().build().map_err(|err| err.to_string())?.post(v207)"
                     let v209 : reqwest_RequestBuilder = Fable.Core.RustInterop.emitRustExpr () v208 
                     v209
+            (* run_target_args'
             let v212 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -2306,7 +2340,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
             let _run_target_args'_v212 = v228 
             #endif
             let v231 : Ref<Str> = _run_target_args'_v212 
+            (* run_target_args'
             let v236 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -2356,7 +2392,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
                     let v267 : string = "fable_library_rust::String_::fromString($0)"
                     let v268 : string = Fable.Core.RustInterop.emitRustExpr v266 v267 
                     let v269 : reqwest_RequestBuilder = method93(v261)
+                    (* run_target_args'
                     let v270 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -2392,7 +2430,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
                     let _run_target_args'_v270 = v286 
                     #endif
                     let v289 : Ref<Str> = _run_target_args'_v270 
+                    (* run_target_args'
                     let v294 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -2429,7 +2469,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
                     #endif
                     let v313 : std_string_String = _run_target_args'_v294 
                     let v318 : string = "application/json"
+                    (* run_target_args'
                     let v319 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -2465,7 +2507,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
                     let _run_target_args'_v319 = v335 
                     #endif
                     let v338 : Ref<Str> = _run_target_args'_v319 
+                    (* run_target_args'
                     let v343 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -2510,7 +2554,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
             let v373 : string = "v372.await"
             let v374 : Result<reqwest_Response, reqwest_Error> = Fable.Core.RustInterop.emitRustExpr () v373 
             let v375 : (reqwest_Error -> std_string_String) = method95()
+            (* run_target_args'
             let v376 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -2553,7 +2599,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
             let v394 : string = "v393.await"
             let v395 : Result<std_string_String, reqwest_Error> = Fable.Core.RustInterop.emitRustExpr () v394 
             let v396 : (reqwest_Error -> std_string_String) = method95()
+            (* run_target_args'
             let v397 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -2609,7 +2657,9 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
     let x = v425 //
     let v429 : _ = x
     let v430 : unit = ()
+    (* run_target_args'
     let v431 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -2659,7 +2709,9 @@ and method97 (v0 : Vec<std_pin_Pin<Box<Dyn<std_future_Future<Result<string optio
 and method98 (v0 : string) : string =
     v0
 and closure75 () (v0 : rexie_Error) : std_string_String =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -2821,7 +2873,9 @@ and closure84 (v0 : US35, v1 : US41, v2 : int32) struct (v3 : string, v4 : US23,
     match v104 with
     | US31_0(v105) -> (* Some *)
         let v106 : string = method41(v105)
+        (* run_target_args'
         let v107 : unit = ()
+        run_target_args' *)
         
 #if FABLE_COMPILER || WASM || CONTRACT
         
@@ -2860,7 +2914,9 @@ and closure84 (v0 : US35, v1 : US41, v2 : int32) struct (v3 : string, v4 : US23,
         let v131 : string = "serde_json::from_str(&$0)"
         let v132 : Result<crate_model_near_nearblocks_Root, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr v126 v131 
         let v133 : (serde_json_Error -> std_string_String) = method42()
+        (* run_target_args'
         let v134 : unit = ()
+        run_target_args' *)
         
 #if FABLE_COMPILER || WASM || CONTRACT
         
@@ -2909,7 +2965,9 @@ and closure84 (v0 : US35, v1 : US41, v2 : int32) struct (v3 : string, v4 : US23,
                 match v153 with
                 | US31_0(v154) -> (* Some *)
                     let v155 : string = method41(v154)
+                    (* run_target_args'
                     let v156 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -2948,7 +3006,9 @@ and closure84 (v0 : US35, v1 : US41, v2 : int32) struct (v3 : string, v4 : US23,
                     let v180 : string = "serde_json::from_str(&$0)"
                     let v181 : Result<crate_model_near_nearblocks_Root, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr v175 v180 
                     let v182 : (serde_json_Error -> std_string_String) = method42()
+                    (* run_target_args'
                     let v183 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -3125,7 +3185,9 @@ and closure78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v207 : bool =
                 match v154 with
                 | US31_0(v155) -> (* Some *)
+                    (* run_target_args'
                     let v156 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -3161,7 +3223,9 @@ and closure78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
                     let _run_target_args'_v156 = v172 
                     #endif
                     let v175 : Ref<Str> = _run_target_args'_v156 
+                    (* run_target_args'
                     let v180 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -3363,7 +3427,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let v31 : string = "v30.await"
     let v32 : Result<rexie_Rexie, rexie_Error> = Fable.Core.RustInterop.emitRustExpr () v31 
     let v33 : (rexie_Error -> std_string_String) = method6()
+    (* run_target_args'
     let v34 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -3405,7 +3471,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let x = v45 //
     let v51 : _ = x
     let v52 : unit = ()
+    (* run_target_args'
     let v53 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -3445,7 +3513,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let v67 : std_pin_Pin<Box<Dyn<std_future_Future<Result<rexie_Rexie, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v66 
     let v68 : string = "v67.await"
     let v69 : Result<rexie_Rexie, std_string_String> = Fable.Core.RustInterop.emitRustExpr () v68 
+    (* run_target_args'
     let v70 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -3495,7 +3565,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let x = v87 //
     let v97 : _ = x
     let v98 : unit = ()
+    (* run_target_args'
     let v99 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -3617,7 +3689,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let v213 : bool = Fable.Core.RustInterop.emitRustExpr () v212 
             let v214 : string = $"value"
             let v215 : string = Fable.Core.RustInterop.emitRustExpr () v214 
+            (* run_target_args'
             let v216 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -3653,7 +3727,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let _run_target_args'_v216 = v232 
             #endif
             let v235 : Ref<Str> = _run_target_args'_v216 
+            (* run_target_args'
             let v240 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -3704,7 +3780,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let v275 : string = "$0.transaction(&v273, rexie::TransactionMode::ReadOnly)"
             let v276 : Result<rexie_Transaction, rexie_Error> = Fable.Core.RustInterop.emitRustExpr v274 v275 
             let v277 : (rexie_Error -> std_string_String) = method12()
+            (* run_target_args'
             let v278 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -3743,7 +3821,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let v292 : string = "$0?"
             let v293 : rexie_Transaction = Fable.Core.RustInterop.emitRustExpr v289 v292 
             let v294 : string = method13()
+            (* run_target_args'
             let v295 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -3782,7 +3862,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let v319 : string = "v293.store($0)"
             let v320 : Result<rexie_Store, rexie_Error> = Fable.Core.RustInterop.emitRustExpr v314 v319 
             let v321 : (rexie_Error -> std_string_String) = method14()
+            (* run_target_args'
             let v322 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -3821,7 +3903,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let v336 : string = "$0?"
             let v337 : rexie_Store = Fable.Core.RustInterop.emitRustExpr v333 v336 
             let v338 : string = method79(v197)
+            (* run_target_args'
             let v339 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -3864,7 +3948,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let v367 : string = "v366.await"
             let v368 : Result<wasm_bindgen_JsValue option, rexie_Error> = Fable.Core.RustInterop.emitRustExpr () v367 
             let v369 : (rexie_Error -> std_string_String) = method16()
+            (* run_target_args'
             let v370 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -3915,7 +4001,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
                     let v405 : string = "serde_wasm_bindgen::from_value(v404)"
                     let v406 : Result<serde_json_Value option, serde_wasm_bindgen_Error> = Fable.Core.RustInterop.emitRustExpr () v405 
                     let v407 : (serde_wasm_bindgen_Error -> std_string_String) = method19()
+                    (* run_target_args'
                     let v408 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -3965,7 +4053,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
                         let v443 : string = "serde_json::from_value(v442)"
                         let v444 : Result<Vec<uint8>, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr () v443 
                         let v445 : (serde_json_Error -> std_string_String) = method22()
+                        (* run_target_args'
                         let v446 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -4018,7 +4108,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
                         let v474 : string = "borsh::BorshDeserialize::deserialize(&mut v471)"
                         let v475 : Result<Heap4, borsh_io_Error> = Fable.Core.RustInterop.emitRustExpr () v474 
                         let v476 : (borsh_io_Error -> std_string_String) = method23()
+                        (* run_target_args'
                         let v477 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -4070,7 +4162,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let x = v507 //
             let v509 : _ = x
             let v510 : unit = ()
+            (* run_target_args'
             let v511 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -4129,7 +4223,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             US24_0(v542)
         | _ ->
             let v544 : string = "database=None"
+            (* run_target_args'
             let v545 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -4165,7 +4261,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let _run_target_args'_v545 = v561 
             #endif
             let v564 : Ref<Str> = _run_target_args'_v545 
+            (* run_target_args'
             let v569 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -4220,7 +4318,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let x = v600 //
     let v610 : _ = x
     let v611 : unit = ()
+    (* run_target_args'
     let v612 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -4341,7 +4441,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let x = v734 //
     let v736 : _ = x
     let v737 : unit = ()
+    (* run_target_args'
     let v738 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -4463,7 +4565,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let v853 : string = "serde_wasm_bindgen::to_value(&v852).unwrap()"
             let v854 : wasm_bindgen_JsValue = Fable.Core.RustInterop.emitRustExpr () v853 
             let v855 : string = method98(v833)
+            (* run_target_args'
             let v856 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -4512,7 +4616,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let x = v888 //
             let v890 : _ = x
             let v891 : unit = ()
+            (* run_target_args'
             let v892 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -4553,7 +4659,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let v907 : string = "v906.await"
             let v908 : Result<unit, rexie_Error> = Fable.Core.RustInterop.emitRustExpr () v907 
             let v909 : (rexie_Error -> std_string_String) = method99()
+            (* run_target_args'
             let v910 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -4597,7 +4705,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let x = v926 //
             let v928 : _ = x
             let v929 : unit = ()
+            (* run_target_args'
             let v930 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -4674,7 +4784,9 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let x = v976 //
     let v978 : _ = x
     let v979 : unit = ()
+    (* run_target_args'
     let v980 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -5182,7 +5294,9 @@ and closure110 () (v0 : (struct (string * unativeint * Heap5) [])) : US47 =
 and method140 () : ((struct (string * unativeint * Heap5) []) -> US47) =
     closure110()
 and closure111 () (v0 : serde_json_Error) : std_string_String =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -5277,7 +5391,9 @@ and closure107 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint 
                 let v36 : string = $"value"
                 let struct (v37 : string, v38 : unativeint, v39 : Heap5) = Fable.Core.RustInterop.emitRustExpr () v36 
                 let v40 : string = "2.0"
+                (* run_target_args'
                 let v41 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -5313,7 +5429,9 @@ and closure107 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint 
                 let _run_target_args'_v41 = v57 
                 #endif
                 let v60 : Ref<Str> = _run_target_args'_v41 
+                (* run_target_args'
                 let v65 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -5350,7 +5468,9 @@ and closure107 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint 
                 #endif
                 let v84 : std_string_String = _run_target_args'_v65 
                 let v89 : string = "dontcare"
+                (* run_target_args'
                 let v90 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -5386,7 +5506,9 @@ and closure107 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint 
                 let _run_target_args'_v90 = v106 
                 #endif
                 let v109 : Ref<Str> = _run_target_args'_v90 
+                (* run_target_args'
                 let v114 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -5423,7 +5545,9 @@ and closure107 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint 
                 #endif
                 let v133 : std_string_String = _run_target_args'_v114 
                 let v138 : string = "EXPERIMENTAL_tx_status"
+                (* run_target_args'
                 let v139 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -5459,7 +5583,9 @@ and closure107 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint 
                 let _run_target_args'_v139 = v155 
                 #endif
                 let v158 : Ref<Str> = _run_target_args'_v139 
+                (* run_target_args'
                 let v163 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -5497,7 +5623,9 @@ and closure107 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint 
                 let v182 : std_string_String = _run_target_args'_v163 
                 let v187 : std_string_String = v39.l3
                 let v188 : string = "bowen"
+                (* run_target_args'
                 let v189 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -5533,7 +5661,9 @@ and closure107 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint 
                 let _run_target_args'_v189 = v205 
                 #endif
                 let v208 : Ref<Str> = _run_target_args'_v189 
+                (* run_target_args'
                 let v213 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -5577,7 +5707,9 @@ and closure107 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint 
                 let v242 : string = "serde_json::to_string(&v241)"
                 let v243 : Result<std_string_String, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr () v242 
                 let v244 : (serde_json_Error -> std_string_String) = method141()
+                (* run_target_args'
                 let v245 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -6074,7 +6206,9 @@ and closure132 (v0 : US35, v1 : US41, v2 : int32) struct (v3 : string, v4 : US23
     match v104 with
     | US31_0(v105) -> (* Some *)
         let v106 : string = method41(v105)
+        (* run_target_args'
         let v107 : unit = ()
+        run_target_args' *)
         
 #if FABLE_COMPILER || WASM || CONTRACT
         
@@ -6113,7 +6247,9 @@ and closure132 (v0 : US35, v1 : US41, v2 : int32) struct (v3 : string, v4 : US23
         let v131 : string = "serde_json::from_str(&$0)"
         let v132 : Result<crate_model_near_rpc_RpcResponse, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr v126 v131 
         let v133 : (serde_json_Error -> std_string_String) = method42()
+        (* run_target_args'
         let v134 : unit = ()
+        run_target_args' *)
         
 #if FABLE_COMPILER || WASM || CONTRACT
         
@@ -6162,7 +6298,9 @@ and closure132 (v0 : US35, v1 : US41, v2 : int32) struct (v3 : string, v4 : US23
                 match v153 with
                 | US31_0(v154) -> (* Some *)
                     let v155 : string = method41(v154)
+                    (* run_target_args'
                     let v156 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -6201,7 +6339,9 @@ and closure132 (v0 : US35, v1 : US41, v2 : int32) struct (v3 : string, v4 : US23
                     let v180 : string = "serde_json::from_str(&$0)"
                     let v181 : Result<crate_model_near_rpc_RpcResponse, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr v175 v180 
                     let v182 : (serde_json_Error -> std_string_String) = method42()
+                    (* run_target_args'
                     let v183 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -6378,7 +6518,9 @@ and closure130 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string *
             let v207 : bool =
                 match v154 with
                 | US31_0(v155) -> (* Some *)
+                    (* run_target_args'
                     let v156 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -6414,7 +6556,9 @@ and closure130 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string *
                     let _run_target_args'_v156 = v172 
                     #endif
                     let v175 : Ref<Str> = _run_target_args'_v156 
+                    (* run_target_args'
                     let v180 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -6616,7 +6760,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let v31 : string = "v30.await"
     let v32 : Result<rexie_Rexie, rexie_Error> = Fable.Core.RustInterop.emitRustExpr () v31 
     let v33 : (rexie_Error -> std_string_String) = method6()
+    (* run_target_args'
     let v34 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -6658,7 +6804,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let x = v45 //
     let v51 : _ = x
     let v52 : unit = ()
+    (* run_target_args'
     let v53 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -6698,7 +6846,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let v67 : std_pin_Pin<Box<Dyn<std_future_Future<Result<rexie_Rexie, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v66 
     let v68 : string = "v67.await"
     let v69 : Result<rexie_Rexie, std_string_String> = Fable.Core.RustInterop.emitRustExpr () v68 
+    (* run_target_args'
     let v70 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -6748,7 +6898,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let x = v87 //
     let v97 : _ = x
     let v98 : unit = ()
+    (* run_target_args'
     let v99 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -6870,7 +7022,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v213 : bool = Fable.Core.RustInterop.emitRustExpr () v212 
             let v214 : string = $"value"
             let v215 : string = Fable.Core.RustInterop.emitRustExpr () v214 
+            (* run_target_args'
             let v216 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -6906,7 +7060,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let _run_target_args'_v216 = v232 
             #endif
             let v235 : Ref<Str> = _run_target_args'_v216 
+            (* run_target_args'
             let v240 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -6957,7 +7113,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v275 : string = "$0.transaction(&v273, rexie::TransactionMode::ReadOnly)"
             let v276 : Result<rexie_Transaction, rexie_Error> = Fable.Core.RustInterop.emitRustExpr v274 v275 
             let v277 : (rexie_Error -> std_string_String) = method12()
+            (* run_target_args'
             let v278 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -6996,7 +7154,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v292 : string = "$0?"
             let v293 : rexie_Transaction = Fable.Core.RustInterop.emitRustExpr v289 v292 
             let v294 : string = method13()
+            (* run_target_args'
             let v295 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -7035,7 +7195,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v319 : string = "v293.store($0)"
             let v320 : Result<rexie_Store, rexie_Error> = Fable.Core.RustInterop.emitRustExpr v314 v319 
             let v321 : (rexie_Error -> std_string_String) = method14()
+            (* run_target_args'
             let v322 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -7074,7 +7236,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v336 : string = "$0?"
             let v337 : rexie_Store = Fable.Core.RustInterop.emitRustExpr v333 v336 
             let v338 : string = method79(v197)
+            (* run_target_args'
             let v339 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -7117,7 +7281,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v367 : string = "v366.await"
             let v368 : Result<wasm_bindgen_JsValue option, rexie_Error> = Fable.Core.RustInterop.emitRustExpr () v367 
             let v369 : (rexie_Error -> std_string_String) = method16()
+            (* run_target_args'
             let v370 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -7168,7 +7334,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
                     let v405 : string = "serde_wasm_bindgen::from_value(v404)"
                     let v406 : Result<serde_json_Value option, serde_wasm_bindgen_Error> = Fable.Core.RustInterop.emitRustExpr () v405 
                     let v407 : (serde_wasm_bindgen_Error -> std_string_String) = method19()
+                    (* run_target_args'
                     let v408 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -7218,7 +7386,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
                         let v443 : string = "serde_json::from_value(v442)"
                         let v444 : Result<Vec<uint8>, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr () v443 
                         let v445 : (serde_json_Error -> std_string_String) = method22()
+                        (* run_target_args'
                         let v446 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -7271,7 +7441,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
                         let v474 : string = "borsh::BorshDeserialize::deserialize(&mut v471)"
                         let v475 : Result<Heap4, borsh_io_Error> = Fable.Core.RustInterop.emitRustExpr () v474 
                         let v476 : (borsh_io_Error -> std_string_String) = method23()
+                        (* run_target_args'
                         let v477 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -7323,7 +7495,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let x = v507 //
             let v509 : _ = x
             let v510 : unit = ()
+            (* run_target_args'
             let v511 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -7382,7 +7556,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             US24_0(v542)
         | _ ->
             let v544 : string = "database=None"
+            (* run_target_args'
             let v545 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -7418,7 +7594,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let _run_target_args'_v545 = v561 
             #endif
             let v564 : Ref<Str> = _run_target_args'_v545 
+            (* run_target_args'
             let v569 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -7473,7 +7651,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let x = v600 //
     let v610 : _ = x
     let v611 : unit = ()
+    (* run_target_args'
     let v612 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -7594,7 +7774,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let x = v734 //
     let v736 : _ = x
     let v737 : unit = ()
+    (* run_target_args'
     let v738 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -7716,7 +7898,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v853 : string = "serde_wasm_bindgen::to_value(&v852).unwrap()"
             let v854 : wasm_bindgen_JsValue = Fable.Core.RustInterop.emitRustExpr () v853 
             let v855 : string = method98(v833)
+            (* run_target_args'
             let v856 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -7765,7 +7949,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let x = v888 //
             let v890 : _ = x
             let v891 : unit = ()
+            (* run_target_args'
             let v892 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -7806,7 +7992,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v907 : string = "v906.await"
             let v908 : Result<unit, rexie_Error> = Fable.Core.RustInterop.emitRustExpr () v907 
             let v909 : (rexie_Error -> std_string_String) = method99()
+            (* run_target_args'
             let v910 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -7850,7 +8038,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let x = v926 //
             let v928 : _ = x
             let v929 : unit = ()
+            (* run_target_args'
             let v930 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -7927,7 +8117,9 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let x = v976 //
     let v978 : _ = x
     let v979 : unit = ()
+    (* run_target_args'
     let v980 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -8515,7 +8707,9 @@ and closure174 (v0 : leptos_prelude_ArcMemo<Vec<struct (int32 * leptos_prelude_R
             let v109 : string = "class=\"[overflow-y:auto] [text-wrap:wrap]\""
             let v110 : string = " " + v109 + v4 + ""
             let v111 : string = "No data"
+            (* run_target_args'
             let v112 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -8551,7 +8745,9 @@ and closure174 (v0 : leptos_prelude_ArcMemo<Vec<struct (int32 * leptos_prelude_R
             let _run_target_args'_v112 = v128 
             #endif
             let v131 : Ref<Str> = _run_target_args'_v112 
+            (* run_target_args'
             let v136 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -8696,7 +8892,9 @@ and closure174 (v0 : leptos_prelude_ArcMemo<Vec<struct (int32 * leptos_prelude_R
                 let v271 : string = $"leptos::prelude::ArcRwSignal::get_untracked(&$0)"
                 let v272 : Heap1 = Fable.Core.RustInterop.emitRustExpr v270 v271 
                 let v273 : leptos_prelude_ArcRwSignal<Heap0> = v272.l3
+                (* run_target_args'
                 let v274 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -8732,7 +8930,9 @@ and closure174 (v0 : leptos_prelude_ArcMemo<Vec<struct (int32 * leptos_prelude_R
                 let _run_target_args'_v274 = v290 
                 #endif
                 let v293 : Ref<Str> = _run_target_args'_v274 
+                (* run_target_args'
                 let v298 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -8834,7 +9034,9 @@ and closure174 (v0 : leptos_prelude_ArcMemo<Vec<struct (int32 * leptos_prelude_R
                 let v421 : string = " "
                 let v422 : (string seq -> string) = v420 v421
                 let v423 : string = v422 v414
+                (* run_target_args'
                 let v426 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -8870,7 +9072,9 @@ and closure174 (v0 : leptos_prelude_ArcMemo<Vec<struct (int32 * leptos_prelude_R
                 let _run_target_args'_v426 = v442 
                 #endif
                 let v445 : Ref<Str> = _run_target_args'_v426 
+                (* run_target_args'
                 let v450 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -9033,7 +9237,9 @@ and closure174 (v0 : leptos_prelude_ArcMemo<Vec<struct (int32 * leptos_prelude_R
                         let v601 : string = "leptos::prelude::IntoAny::into_any($0)"
                         let v602 : leptos_prelude_AnyView_ = Fable.Core.RustInterop.emitRustExpr v600 v601 
                         v602
+                (* run_target_args'
                 let v604 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -9069,7 +9275,9 @@ and closure174 (v0 : leptos_prelude_ArcMemo<Vec<struct (int32 * leptos_prelude_R
                 let _run_target_args'_v604 = v620 
                 #endif
                 let v623 : Ref<Str> = _run_target_args'_v604 
+                (* run_target_args'
                 let v628 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -9214,7 +9422,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
     let v8 : string = "class=\"flex [flex-direction:column] [gap:2px] [align-items:flex-start]\""
     let v9 : string = " " + v8 + v6 + ""
     let v10 : string = "Account"
+    (* run_target_args'
     let v11 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -9250,7 +9460,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
     let _run_target_args'_v11 = v27 
     #endif
     let v30 : Ref<Str> = _run_target_args'_v11 
+    (* run_target_args'
     let v35 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -9340,7 +9552,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
     let v114 : string = "class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\""
     let v115 : string = " " + v114 + v6 + ""
     let v116 : string = v113 ()
+    (* run_target_args'
     let v117 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -9376,7 +9590,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
     let _run_target_args'_v117 = v133 
     #endif
     let v136 : Ref<Str> = _run_target_args'_v117 
+    (* run_target_args'
     let v141 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -9602,7 +9818,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
     let v352 : string = "class=\"flex [flex-direction:column] [gap:2px] [align-items:flex-start]\""
     let v353 : string = " " + v352 + v6 + ""
     let v354 : string = "Max"
+    (* run_target_args'
     let v355 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -9638,7 +9856,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
     let _run_target_args'_v355 = v371 
     #endif
     let v374 : Ref<Str> = _run_target_args'_v355 
+    (* run_target_args'
     let v379 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -9858,7 +10078,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
     let v620 : string = " "
     let v621 : (string seq -> string) = v619 v620
     let v622 : string = v621 v613
+    (* run_target_args'
     let v625 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -9894,7 +10116,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
     let _run_target_args'_v625 = v641 
     #endif
     let v644 : Ref<Str> = _run_target_args'_v625 
+    (* run_target_args'
     let v649 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -9939,7 +10163,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
     let v679 : string = " " + v676 + v678 + ""
     let v680 : string = " " + v677 + v679 + ""
     let v681 : string = "Roll"
+    (* run_target_args'
     let v682 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -9975,7 +10201,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
     let _run_target_args'_v682 = v698 
     #endif
     let v701 : Ref<Str> = _run_target_args'_v682 
+    (* run_target_args'
     let v706 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -10479,7 +10707,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
             let v1202 : leptos_prelude_AnyView_ = Fable.Core.RustInterop.emitRustExpr v1200 v1201 
             let v1203 : string = "class=\"[overflow-y:auto] [text-wrap:wrap]\""
             let v1204 : string = " " + v1203 + v6 + ""
+            (* run_target_args'
             let v1205 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -10515,7 +10745,9 @@ and closure167 (v0 : Heap2, v1 : leptos_prelude_ArcAction<Heap6, Result<US59, st
             let _run_target_args'_v1205 = v1221 
             #endif
             let v1224 : Ref<Str> = _run_target_args'_v1205 
+            (* run_target_args'
             let v1229 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -10825,7 +11057,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
             let v79 : string = "class=\"[overflow-y:auto] [text-wrap:wrap]\""
             let v80 : string = " " + v79 + v10 + ""
             let v81 : string = "No account selected"
+            (* run_target_args'
             let v82 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -10861,7 +11095,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
             let _run_target_args'_v82 = v98 
             #endif
             let v101 : Ref<Str> = _run_target_args'_v82 
+            (* run_target_args'
             let v106 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -11028,7 +11264,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                 let v1986 : leptos_prelude_AnyView_ = Fable.Core.RustInterop.emitRustExpr v1984 v1985 
                 let v1987 : string = "class=\"[overflow-y:auto] [text-wrap:wrap]\""
                 let v1988 : string = " " + v1987 + v1918 + ""
+                (* run_target_args'
                 let v1989 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -11064,7 +11302,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                 let _run_target_args'_v1989 = v2005 
                 #endif
                 let v2008 : Ref<Str> = _run_target_args'_v1989 
+                (* run_target_args'
                 let v2013 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -11152,7 +11392,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let v205 : string = ""
                     let v206 : string = " " + v204 + v205 + ""
                     let v207 : string = "Block Timestamp"
+                    (* run_target_args'
                     let v208 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11188,7 +11430,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v208 = v224 
                     #endif
                     let v227 : Ref<Str> = _run_target_args'_v208 
+                    (* run_target_args'
                     let v232 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11245,7 +11489,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let v274 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                     let v275 : string = " " + v274 + v205 + ""
                     let v276 : string = "Predecessor"
+                    (* run_target_args'
                     let v277 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11281,7 +11527,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v277 = v293 
                     #endif
                     let v296 : Ref<Str> = _run_target_args'_v277 
+                    (* run_target_args'
                     let v301 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11337,7 +11585,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let v342 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                     let v343 : string = " " + v342 + v205 + ""
                     let v344 : string = "Receiver"
+                    (* run_target_args'
                     let v345 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11373,7 +11623,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v345 = v361 
                     #endif
                     let v364 : Ref<Str> = _run_target_args'_v345 
+                    (* run_target_args'
                     let v369 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11429,7 +11681,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let v410 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                     let v411 : string = " " + v410 + v205 + ""
                     let v412 : string = "Fee"
+                    (* run_target_args'
                     let v413 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11465,7 +11719,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v413 = v429 
                     #endif
                     let v432 : Ref<Str> = _run_target_args'_v413 
+                    (* run_target_args'
                     let v437 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11521,7 +11777,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let v478 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                     let v479 : string = " " + v478 + v205 + ""
                     let v480 : string = "Result"
+                    (* run_target_args'
                     let v481 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11557,7 +11815,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v481 = v497 
                     #endif
                     let v500 : Ref<Str> = _run_target_args'_v481 
+                    (* run_target_args'
                     let v505 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11613,7 +11873,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let v546 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                     let v547 : string = " " + v546 + v205 + ""
                     let v548 : string = "Status"
+                    (* run_target_args'
                     let v549 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11649,7 +11911,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v549 = v565 
                     #endif
                     let v568 : Ref<Str> = _run_target_args'_v549 
+                    (* run_target_args'
                     let v573 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11799,7 +12063,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                             v729
                         | US69_0(v727) -> (* Ok *)
                             v727
+                    (* run_target_args'
                     let v732 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11835,7 +12101,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v732 = v748 
                     #endif
                     let v751 : Ref<Str> = _run_target_args'_v732 
+                    (* run_target_args'
                     let v756 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11894,7 +12162,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let v800 : std_string_String = v660.l1
                     let v801 : string = "fable_library_rust::String_::fromString($0)"
                     let v802 : string = Fable.Core.RustInterop.emitRustExpr v800 v801 
+                    (* run_target_args'
                     let v803 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11930,7 +12200,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v803 = v819 
                     #endif
                     let v822 : Ref<Str> = _run_target_args'_v803 
+                    (* run_target_args'
                     let v827 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -11988,7 +12260,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let v870 : std_string_String = v660.l2
                     let v871 : string = "fable_library_rust::String_::fromString($0)"
                     let v872 : string = Fable.Core.RustInterop.emitRustExpr v870 v871 
+                    (* run_target_args'
                     let v873 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -12024,7 +12298,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v873 = v889 
                     #endif
                     let v892 : Ref<Str> = _run_target_args'_v873 
+                    (* run_target_args'
                     let v897 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -12082,7 +12358,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let v940 : float = v660.l10
                     let v941 : (float -> string) = _.ToString()
                     let v942 : string = v941 v940
+                    (* run_target_args'
                     let v945 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -12118,7 +12396,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v945 = v961 
                     #endif
                     let v964 : Ref<Str> = _run_target_args'_v945 
+                    (* run_target_args'
                     let v969 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -12178,7 +12458,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let v1014 : bool = v1013 = 0UL
                     let v1159 : leptos_dom_Fragment =
                         if v1014 then
+                            (* run_target_args'
                             let v1015 : unit = ()
+                            run_target_args' *)
                             
 #if FABLE_COMPILER || WASM || CONTRACT
                             
@@ -12214,7 +12496,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                             let _run_target_args'_v1015 = v1031 
                             #endif
                             let v1034 : Ref<Str> = _run_target_args'_v1015 
+                            (* run_target_args'
                             let v1039 : unit = ()
+                            run_target_args' *)
                             
 #if FABLE_COMPILER || WASM || CONTRACT
                             
@@ -12301,7 +12585,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                                     v1099
                                 | US31_0(v1098) -> (* Some *)
                                     v1098
+                            (* run_target_args'
                             let v1102 : unit = ()
+                            run_target_args' *)
                             
 #if FABLE_COMPILER || WASM || CONTRACT
                             
@@ -12337,7 +12623,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                             let _run_target_args'_v1102 = v1118 
                             #endif
                             let v1121 : Ref<Str> = _run_target_args'_v1102 
+                            (* run_target_args'
                             let v1126 : unit = ()
+                            run_target_args' *)
                             
 #if FABLE_COMPILER || WASM || CONTRACT
                             
@@ -12472,7 +12760,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                             let v1305 : string = $"RPC Response: {v1304}"
                             v1305
                     let v1310 : string = $"{v1173} / {v1309}"
+                    (* run_target_args'
                     let v1311 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -12508,7 +12798,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v1311 = v1327 
                     #endif
                     let v1330 : Ref<Str> = _run_target_args'_v1311 
+                    (* run_target_args'
                     let v1335 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -13016,7 +13308,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let v1826 : string = "leptos::prelude::IntoAny::into_any($0)"
                     let v1827 : leptos_prelude_AnyView_ = Fable.Core.RustInterop.emitRustExpr v1825 v1826 
                     let v1828 : string = "Loading..."
+                    (* run_target_args'
                     let v1829 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -13052,7 +13346,9 @@ and closure186 (v0 : leptos_prelude_ArcMemo<Vec<Result<struct (std_string_String
                     let _run_target_args'_v1829 = v1845 
                     #endif
                     let v1848 : Ref<Str> = _run_target_args'_v1829 
+                    (* run_target_args'
                     let v1853 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -13251,7 +13547,9 @@ and closure199 (v0 : leptos_prelude_ArcMemo<Vec<(int32 * struct (leptos_prelude_
     let v10 : ((int32 * struct (leptos_prelude_ReadSignal<(bool * std_string_String)> * leptos_prelude_WriteSignal<(bool * std_string_String)>)) []) = Fable.Core.RustInterop.emitRustExpr v8 v9 
     let v11 : int32 = v10.Length
     let v12 : string = ""
+    (* run_target_args'
     let v13 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -13287,7 +13585,9 @@ and closure199 (v0 : leptos_prelude_ArcMemo<Vec<(int32 * struct (leptos_prelude_
     let _run_target_args'_v13 = v29 
     #endif
     let v32 : Ref<Str> = _run_target_args'_v13 
+    (* run_target_args'
     let v37 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -13365,7 +13665,9 @@ and closure202 () () : string =
     v0
 and closure203 () () : std_string_String =
     let v0 : string = " bg-gray-300 hover:bg-gray-200"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -13401,7 +13703,9 @@ and closure203 () () : std_string_String =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -13524,7 +13828,9 @@ and method220 (v0 : leptos_prelude_ReadSignal<(bool * std_string_String)>) : (un
     closure212(v0)
 and closure213 (v0 : int32) () : std_string_String =
     let v1 : string = "account-" + string v0 + ""
+    (* run_target_args'
     let v2 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -13560,7 +13866,9 @@ and closure213 (v0 : int32) () : std_string_String =
     let _run_target_args'_v2 = v18 
     #endif
     let v21 : Ref<Str> = _run_target_args'_v2 
+    (* run_target_args'
     let v26 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -13679,7 +13987,9 @@ and closure220 () () : string =
     v0
 and closure221 () () : std_string_String =
     let v0 : string = " pr-[7px] pl-[5px]"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -13715,7 +14025,9 @@ and closure221 () () : std_string_String =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -13794,7 +14106,9 @@ and closure207 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Vec<struct (int32 * int3
     let v37 : string = $"true; let _func0_from_v36 = Func0::from(move || {{ //"
     let v38 : bool = Fable.Core.RustInterop.emitRustExpr () v37 
     let v39 : string = "account-" + string v35 + ""
+    (* run_target_args'
     let v40 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -13830,7 +14144,9 @@ and closure207 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Vec<struct (int32 * int3
     let _run_target_args'_v40 = v56 
     #endif
     let v59 : Ref<Str> = _run_target_args'_v40 
+    (* run_target_args'
     let v64 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -13901,7 +14217,9 @@ and closure207 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Vec<struct (int32 * int3
     let v129 : string = " "
     let v130 : (string seq -> string) = v128 v129
     let v131 : string = v130 v122
+    (* run_target_args'
     let v134 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -13937,7 +14255,9 @@ and closure207 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Vec<struct (int32 * int3
     let _run_target_args'_v134 = v150 
     #endif
     let v153 : Ref<Str> = _run_target_args'_v134 
+    (* run_target_args'
     let v158 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -14419,7 +14739,9 @@ and method228 () : (unit -> string) =
     closure225()
 and closure227 () () : leptos_dom_Fragment =
     let v0 : string = "Dark Mode"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -14455,7 +14777,9 @@ and closure227 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -14535,7 +14859,9 @@ and method231 (v0 : Heap2) : (unit -> bool) =
     closure231(v0)
 and closure232 () () : std_string_String =
     let v0 : string = "dark-mode"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -14571,7 +14897,9 @@ and closure232 () () : std_string_String =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -14615,7 +14943,9 @@ and closure228 (v0 : Heap2) () : leptos_dom_Fragment =
     let v2 : string = $"true; let _func0_from_v1 = Func0::from(move || {{ //"
     let v3 : bool = Fable.Core.RustInterop.emitRustExpr () v2 
     let v4 : string = "dark-mode"
+    (* run_target_args'
     let v5 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -14651,7 +14981,9 @@ and closure228 (v0 : Heap2) () : leptos_dom_Fragment =
     let _run_target_args'_v5 = v21 
     #endif
     let v24 : Ref<Str> = _run_target_args'_v5 
+    (* run_target_args'
     let v29 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -14722,7 +15054,9 @@ and closure228 (v0 : Heap2) () : leptos_dom_Fragment =
     let v94 : string = " "
     let v95 : (string seq -> string) = v93 v94
     let v96 : string = v95 v87
+    (* run_target_args'
     let v99 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -14758,7 +15092,9 @@ and closure228 (v0 : Heap2) () : leptos_dom_Fragment =
     let _run_target_args'_v99 = v115 
     #endif
     let v118 : Ref<Str> = _run_target_args'_v99 
+    (* run_target_args'
     let v123 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -14993,7 +15329,9 @@ and closure236 () () : string =
     v0
 and closure237 () () : leptos_dom_Fragment =
     let v0 : string = "Debug"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -15029,7 +15367,9 @@ and closure237 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -15106,7 +15446,9 @@ and method235 (v0 : Heap2) : (unit -> bool) =
     closure240(v0)
 and closure241 () () : std_string_String =
     let v0 : string = "debug"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -15142,7 +15484,9 @@ and closure241 () () : std_string_String =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -15186,7 +15530,9 @@ and closure238 (v0 : Heap2) () : leptos_dom_Fragment =
     let v2 : string = $"true; let _func0_from_v1 = Func0::from(move || {{ //"
     let v3 : bool = Fable.Core.RustInterop.emitRustExpr () v2 
     let v4 : string = "debug"
+    (* run_target_args'
     let v5 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -15222,7 +15568,9 @@ and closure238 (v0 : Heap2) () : leptos_dom_Fragment =
     let _run_target_args'_v5 = v21 
     #endif
     let v24 : Ref<Str> = _run_target_args'_v5 
+    (* run_target_args'
     let v29 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -15293,7 +15641,9 @@ and closure238 (v0 : Heap2) () : leptos_dom_Fragment =
     let v94 : string = " "
     let v95 : (string seq -> string) = v93 v94
     let v96 : string = v95 v87
+    (* run_target_args'
     let v99 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -15329,7 +15679,9 @@ and closure238 (v0 : Heap2) () : leptos_dom_Fragment =
     let _run_target_args'_v99 = v115 
     #endif
     let v118 : Ref<Str> = _run_target_args'_v99 
+    (* run_target_args'
     let v123 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -15712,7 +16064,9 @@ and method237 () : (unit -> string) =
     closure245()
 and closure247 () () : leptos_dom_Fragment =
     let v0 : string = "Global State"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -15748,7 +16102,9 @@ and closure247 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -15846,7 +16202,9 @@ and closure248 () () : leptos_dom_Fragment =
     let v15 : string = "class=move || \"[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] \".to_owned() + &v14(())"
     let v16 : string = ""
     let v17 : string = " " + v15 + v16 + ""
+    (* run_target_args'
     let v18 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -15882,7 +16240,9 @@ and closure248 () () : leptos_dom_Fragment =
     let _run_target_args'_v18 = v34 
     #endif
     let v37 : Ref<Str> = _run_target_args'_v18 
+    (* run_target_args'
     let v42 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16065,7 +16425,9 @@ and method243 (v0 : leptos_prelude_AnyView_) : (unit -> string) =
     closure259()
 and closure261 () () : leptos_dom_Fragment =
     let v0 : string = "Settings"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16101,7 +16463,9 @@ and closure261 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16150,7 +16514,9 @@ and closure261 () () : leptos_dom_Fragment =
     v58
 and closure262 () () : leptos_dom_Fragment =
     let v0 : string = "Table View"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16186,7 +16552,9 @@ and closure262 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16286,7 +16654,9 @@ and method246 (v0 : Heap2) : (unit -> bool) =
     closure266(v0)
 and closure267 () () : std_string_String =
     let v0 : string = "table-view"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16322,7 +16692,9 @@ and closure267 () () : std_string_String =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16366,7 +16738,9 @@ and closure263 (v0 : Heap2) () : leptos_dom_Fragment =
     let v2 : string = $"true; let _func0_from_v1 = Func0::from(move || {{ //"
     let v3 : bool = Fable.Core.RustInterop.emitRustExpr () v2 
     let v4 : string = "table-view"
+    (* run_target_args'
     let v5 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16402,7 +16776,9 @@ and closure263 (v0 : Heap2) () : leptos_dom_Fragment =
     let _run_target_args'_v5 = v21 
     #endif
     let v24 : Ref<Str> = _run_target_args'_v5 
+    (* run_target_args'
     let v29 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16473,7 +16849,9 @@ and closure263 (v0 : Heap2) () : leptos_dom_Fragment =
     let v94 : string = " "
     let v95 : (string seq -> string) = v93 v94
     let v96 : string = v95 v87
+    (* run_target_args'
     let v99 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16509,7 +16887,9 @@ and closure263 (v0 : Heap2) () : leptos_dom_Fragment =
     let _run_target_args'_v99 = v115 
     #endif
     let v118 : Ref<Str> = _run_target_args'_v99 
+    (* run_target_args'
     let v123 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16735,7 +17115,9 @@ and closure268 () () : string =
     v0
 and closure269 (v0 : int64) () : leptos_dom_Fragment =
     let v1 : string = "Transaction " + string (v0 + 1L) + ""
+    (* run_target_args'
     let v2 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16771,7 +17153,9 @@ and closure269 (v0 : int64) () : leptos_dom_Fragment =
     let _run_target_args'_v2 = v18 
     #endif
     let v21 : Ref<Str> = _run_target_args'_v2 
+    (* run_target_args'
     let v26 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16820,7 +17204,9 @@ and closure269 (v0 : int64) () : leptos_dom_Fragment =
     v59
 and closure270 () () : leptos_dom_Fragment =
     let v0 : string = "Account"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16856,7 +17242,9 @@ and closure270 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16906,7 +17294,9 @@ and closure270 () () : leptos_dom_Fragment =
 and method248 () : (unit -> leptos_dom_Fragment) =
     closure270()
 and closure271 (v0 : string) () : leptos_dom_Fragment =
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16942,7 +17332,9 @@ and closure271 (v0 : string) () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -16999,7 +17391,9 @@ and closure273 () () : string =
     v0
 and closure274 () () : leptos_dom_Fragment =
     let v0 : string = "Block Timestamp"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17035,7 +17429,9 @@ and closure274 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17128,7 +17524,9 @@ and closure275 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
             v63
         | US69_0(v61) -> (* Ok *)
             v61
+    (* run_target_args'
     let v66 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17164,7 +17562,9 @@ and closure275 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let _run_target_args'_v66 = v82 
     #endif
     let v85 : Ref<Str> = _run_target_args'_v66 
+    (* run_target_args'
     let v90 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17221,7 +17621,9 @@ and closure277 () () : string =
     v0
 and closure278 () () : leptos_dom_Fragment =
     let v0 : string = "Predecessor"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17257,7 +17659,9 @@ and closure278 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17309,7 +17713,9 @@ and method252 () : (unit -> leptos_dom_Fragment) =
 and closure279 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_String, v3 : std_string_String, v4 : std_string_String, v5 : std_string_String, v6 : uint32, v7 : (struct (std_string_String * std_string_String option) []), v8 : float, v9 : bool, v10 : float, v11 : (std_string_String [])) () : leptos_dom_Fragment =
     let v12 : string = "fable_library_rust::String_::fromString($0)"
     let v13 : string = Fable.Core.RustInterop.emitRustExpr v1 v12 
+    (* run_target_args'
     let v14 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17345,7 +17751,9 @@ and closure279 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let _run_target_args'_v14 = v30 
     #endif
     let v33 : Ref<Str> = _run_target_args'_v14 
+    (* run_target_args'
     let v38 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17402,7 +17810,9 @@ and closure281 () () : string =
     v0
 and closure282 () () : leptos_dom_Fragment =
     let v0 : string = "Receiver"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17438,7 +17848,9 @@ and closure282 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17490,7 +17902,9 @@ and method254 () : (unit -> leptos_dom_Fragment) =
 and closure283 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_String, v3 : std_string_String, v4 : std_string_String, v5 : std_string_String, v6 : uint32, v7 : (struct (std_string_String * std_string_String option) []), v8 : float, v9 : bool, v10 : float, v11 : (std_string_String [])) () : leptos_dom_Fragment =
     let v12 : string = "fable_library_rust::String_::fromString($0)"
     let v13 : string = Fable.Core.RustInterop.emitRustExpr v2 v12 
+    (* run_target_args'
     let v14 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17526,7 +17940,9 @@ and closure283 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let _run_target_args'_v14 = v30 
     #endif
     let v33 : Ref<Str> = _run_target_args'_v14 
+    (* run_target_args'
     let v38 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17583,7 +17999,9 @@ and closure285 () () : string =
     v0
 and closure286 () () : leptos_dom_Fragment =
     let v0 : string = "Actions"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17619,7 +18037,9 @@ and closure286 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17688,7 +18108,9 @@ and closure288 (v0 : std_string_String) () : leptos_dom_Fragment =
                     v8
                 else
                     v2
+    (* run_target_args'
     let v12 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17724,7 +18146,9 @@ and closure288 (v0 : std_string_String) () : leptos_dom_Fragment =
     let _run_target_args'_v12 = v28 
     #endif
     let v31 : Ref<Str> = _run_target_args'_v12 
+    (* run_target_args'
     let v36 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17775,7 +18199,9 @@ and method258 (v0 : std_string_String) : (unit -> leptos_dom_Fragment) =
     closure288(v0)
 and closure290 () () : leptos_dom_Fragment =
     let v0 : string = "Method"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17811,7 +18237,9 @@ and closure290 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -17868,7 +18296,9 @@ and closure291 (v0 : std_string_String option) () : leptos_dom_Fragment =
     match v14 with
     | US14_1 -> (* None *)
         let v79 : string = "None"
+        (* run_target_args'
         let v80 : unit = ()
+        run_target_args' *)
         
 #if FABLE_COMPILER || WASM || CONTRACT
         
@@ -17904,7 +18334,9 @@ and closure291 (v0 : std_string_String option) () : leptos_dom_Fragment =
         let _run_target_args'_v80 = v96 
         #endif
         let v99 : Ref<Str> = _run_target_args'_v80 
+        (* run_target_args'
         let v104 : unit = ()
+        run_target_args' *)
         
 #if FABLE_COMPILER || WASM || CONTRACT
         
@@ -17954,7 +18386,9 @@ and closure291 (v0 : std_string_String option) () : leptos_dom_Fragment =
     | US14_0(v18) -> (* Some *)
         let v19 : string = "fable_library_rust::String_::fromString($0)"
         let v20 : string = Fable.Core.RustInterop.emitRustExpr v18 v19 
+        (* run_target_args'
         let v21 : unit = ()
+        run_target_args' *)
         
 #if FABLE_COMPILER || WASM || CONTRACT
         
@@ -17990,7 +18424,9 @@ and closure291 (v0 : std_string_String option) () : leptos_dom_Fragment =
         let _run_target_args'_v21 = v37 
         #endif
         let v40 : Ref<Str> = _run_target_args'_v21 
+        (* run_target_args'
         let v45 : unit = ()
+        run_target_args' *)
         
 #if FABLE_COMPILER || WASM || CONTRACT
         
@@ -18245,7 +18681,9 @@ and closure301 () () : string =
     v0
 and closure302 () () : leptos_dom_Fragment =
     let v0 : string = "Deposit"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18281,7 +18719,9 @@ and closure302 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18333,7 +18773,9 @@ and method262 () : (unit -> leptos_dom_Fragment) =
 and closure303 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_String, v3 : std_string_String, v4 : std_string_String, v5 : std_string_String, v6 : uint32, v7 : (struct (std_string_String * std_string_String option) []), v8 : float, v9 : bool, v10 : float, v11 : (std_string_String [])) () : leptos_dom_Fragment =
     let v12 : (float -> string) = _.ToString()
     let v13 : string = v12 v8
+    (* run_target_args'
     let v16 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18369,7 +18811,9 @@ and closure303 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let _run_target_args'_v16 = v32 
     #endif
     let v35 : Ref<Str> = _run_target_args'_v16 
+    (* run_target_args'
     let v40 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18426,7 +18870,9 @@ and closure305 () () : string =
     v0
 and closure306 () () : leptos_dom_Fragment =
     let v0 : string = "Outcome Status"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18462,7 +18908,9 @@ and closure306 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18514,7 +18962,9 @@ and method264 () : (unit -> leptos_dom_Fragment) =
 and closure307 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_String, v3 : std_string_String, v4 : std_string_String, v5 : std_string_String, v6 : uint32, v7 : (struct (std_string_String * std_string_String option) []), v8 : float, v9 : bool, v10 : float, v11 : (std_string_String [])) () : leptos_dom_Fragment =
     let v12 : (bool -> string) = _.ToString()
     let v13 : string = v12 v9
+    (* run_target_args'
     let v16 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18550,7 +19000,9 @@ and closure307 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let _run_target_args'_v16 = v32 
     #endif
     let v35 : Ref<Str> = _run_target_args'_v16 
+    (* run_target_args'
     let v40 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18607,7 +19059,9 @@ and closure309 () () : string =
     v0
 and closure310 () () : leptos_dom_Fragment =
     let v0 : string = "Fee"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18643,7 +19097,9 @@ and closure310 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18695,7 +19151,9 @@ and method266 () : (unit -> leptos_dom_Fragment) =
 and closure311 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_String, v3 : std_string_String, v4 : std_string_String, v5 : std_string_String, v6 : uint32, v7 : (struct (std_string_String * std_string_String option) []), v8 : float, v9 : bool, v10 : float, v11 : (std_string_String [])) () : leptos_dom_Fragment =
     let v12 : (float -> string) = _.ToString()
     let v13 : string = v12 v10
+    (* run_target_args'
     let v16 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18731,7 +19189,9 @@ and closure311 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let _run_target_args'_v16 = v32 
     #endif
     let v35 : Ref<Str> = _run_target_args'_v16 
+    (* run_target_args'
     let v40 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18788,7 +19248,9 @@ and closure313 () () : string =
     v0
 and closure314 () () : leptos_dom_Fragment =
     let v0 : string = "Block Height"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18824,7 +19286,9 @@ and closure314 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18876,7 +19340,9 @@ and method268 () : (unit -> leptos_dom_Fragment) =
 and closure315 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_String, v3 : std_string_String, v4 : std_string_String, v5 : std_string_String, v6 : uint32, v7 : (struct (std_string_String * std_string_String option) []), v8 : float, v9 : bool, v10 : float, v11 : (std_string_String [])) () : leptos_dom_Fragment =
     let v12 : (uint32 -> string) = _.ToString()
     let v13 : string = v12 v6
+    (* run_target_args'
     let v16 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18912,7 +19378,9 @@ and closure315 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let _run_target_args'_v16 = v32 
     #endif
     let v35 : Ref<Str> = _run_target_args'_v16 
+    (* run_target_args'
     let v40 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -18969,7 +19437,9 @@ and closure317 () () : string =
     v0
 and closure318 () () : leptos_dom_Fragment =
     let v0 : string = "Hash"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19005,7 +19475,9 @@ and closure318 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19057,7 +19529,9 @@ and method270 () : (unit -> leptos_dom_Fragment) =
 and closure319 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_String, v3 : std_string_String, v4 : std_string_String, v5 : std_string_String, v6 : uint32, v7 : (struct (std_string_String * std_string_String option) []), v8 : float, v9 : bool, v10 : float, v11 : (std_string_String [])) () : leptos_dom_Fragment =
     let v12 : string = "fable_library_rust::String_::fromString($0)"
     let v13 : string = Fable.Core.RustInterop.emitRustExpr v3 v12 
+    (* run_target_args'
     let v14 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19093,7 +19567,9 @@ and closure319 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let _run_target_args'_v14 = v30 
     #endif
     let v33 : Ref<Str> = _run_target_args'_v14 
+    (* run_target_args'
     let v38 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19150,7 +19626,9 @@ and closure321 () () : string =
     v0
 and closure322 () () : leptos_dom_Fragment =
     let v0 : string = "Block Hash"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19186,7 +19664,9 @@ and closure322 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19238,7 +19718,9 @@ and method272 () : (unit -> leptos_dom_Fragment) =
 and closure323 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_String, v3 : std_string_String, v4 : std_string_String, v5 : std_string_String, v6 : uint32, v7 : (struct (std_string_String * std_string_String option) []), v8 : float, v9 : bool, v10 : float, v11 : (std_string_String [])) () : leptos_dom_Fragment =
     let v12 : string = "fable_library_rust::String_::fromString($0)"
     let v13 : string = Fable.Core.RustInterop.emitRustExpr v4 v12 
+    (* run_target_args'
     let v14 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19274,7 +19756,9 @@ and closure323 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let _run_target_args'_v14 = v30 
     #endif
     let v33 : Ref<Str> = _run_target_args'_v14 
+    (* run_target_args'
     let v38 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19331,7 +19815,9 @@ and closure325 () () : string =
     v0
 and closure326 () () : leptos_dom_Fragment =
     let v0 : string = "Receipt ID"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19367,7 +19853,9 @@ and closure326 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19419,7 +19907,9 @@ and method274 () : (unit -> leptos_dom_Fragment) =
 and closure327 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_String, v3 : std_string_String, v4 : std_string_String, v5 : std_string_String, v6 : uint32, v7 : (struct (std_string_String * std_string_String option) []), v8 : float, v9 : bool, v10 : float, v11 : (std_string_String [])) () : leptos_dom_Fragment =
     let v12 : string = "fable_library_rust::String_::fromString($0)"
     let v13 : string = Fable.Core.RustInterop.emitRustExpr v0 v12 
+    (* run_target_args'
     let v14 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19455,7 +19945,9 @@ and closure327 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let _run_target_args'_v14 = v30 
     #endif
     let v33 : Ref<Str> = _run_target_args'_v14 
+    (* run_target_args'
     let v38 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19512,7 +20004,9 @@ and closure329 () () : string =
     v0
 and closure330 () () : leptos_dom_Fragment =
     let v0 : string = "Logs"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19548,7 +20042,9 @@ and closure330 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19649,7 +20145,9 @@ and closure331 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let v49 : string = "class=move || \"[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] \".to_owned() + &v48(())"
     let v50 : string = ""
     let v51 : string = " " + v49 + v50 + ""
+    (* run_target_args'
     let v52 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -19685,7 +20183,9 @@ and closure331 (v0 : std_string_String, v1 : std_string_String, v2 : std_string_
     let _run_target_args'_v52 = v68 
     #endif
     let v71 : Ref<Str> = _run_target_args'_v52 
+    (* run_target_args'
     let v76 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -20016,7 +20516,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
             let v221 : string = "class=\"[overflow-y:auto] [text-wrap:wrap]\""
             let v222 : string = " " + v221 + v152 + ""
             let v223 : string = "No account selected"
+            (* run_target_args'
             let v224 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -20052,7 +20554,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
             let _run_target_args'_v224 = v240 
             #endif
             let v243 : Ref<Str> = _run_target_args'_v224 
+            (* run_target_args'
             let v248 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -20219,7 +20723,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                 let v3954 : leptos_prelude_AnyView_ = Fable.Core.RustInterop.emitRustExpr v3952 v3953 
                 let v3955 : string = "class=\"[overflow-y:auto] [text-wrap:wrap]\""
                 let v3956 : string = " " + v3955 + v3886 + ""
+                (* run_target_args'
                 let v3957 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -20255,7 +20761,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                 let _run_target_args'_v3957 = v3973 
                 #endif
                 let v3976 : Ref<Str> = _run_target_args'_v3957 
+                (* run_target_args'
                 let v3981 : unit = ()
+                run_target_args' *)
                 
 #if FABLE_COMPILER || WASM || CONTRACT
                 
@@ -21261,7 +21769,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v1259 : string = " " + v1257 + v1258 + ""
                         let v1260 : string = "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
                         let v1261 : string = " " + v1260 + v1258 + ""
+                        (* run_target_args'
                         let v1262 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21297,7 +21807,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v1262 = v1278 
                         #endif
                         let v1281 : Ref<Str> = _run_target_args'_v1262 
+                        (* run_target_args'
                         let v1286 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21397,7 +21909,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                                 v1382
                             | US69_0(v1380) -> (* Ok *)
                                 v1380
+                        (* run_target_args'
                         let v1385 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21433,7 +21947,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v1385 = v1401 
                         #endif
                         let v1404 : Ref<Str> = _run_target_args'_v1385 
+                        (* run_target_args'
                         let v1409 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21491,7 +22007,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v1452 : std_string_String = v1253.l1
                         let v1453 : string = "fable_library_rust::String_::fromString($0)"
                         let v1454 : string = Fable.Core.RustInterop.emitRustExpr v1452 v1453 
+                        (* run_target_args'
                         let v1455 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21527,7 +22045,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v1455 = v1471 
                         #endif
                         let v1474 : Ref<Str> = _run_target_args'_v1455 
+                        (* run_target_args'
                         let v1479 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21585,7 +22105,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v1522 : std_string_String = v1253.l2
                         let v1523 : string = "fable_library_rust::String_::fromString($0)"
                         let v1524 : string = Fable.Core.RustInterop.emitRustExpr v1522 v1523 
+                        (* run_target_args'
                         let v1525 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21621,7 +22143,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v1525 = v1541 
                         #endif
                         let v1544 : Ref<Str> = _run_target_args'_v1525 
+                        (* run_target_args'
                         let v1549 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21769,7 +22293,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v1683 : float = v1253.l8
                         let v1684 : (float -> string) = _.ToString()
                         let v1685 : string = v1684 v1683
+                        (* run_target_args'
                         let v1688 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21805,7 +22331,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v1688 = v1704 
                         #endif
                         let v1707 : Ref<Str> = _run_target_args'_v1688 
+                        (* run_target_args'
                         let v1712 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21863,7 +22391,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v1755 : float = v1253.l10
                         let v1756 : (float -> string) = _.ToString()
                         let v1757 : string = v1756 v1755
+                        (* run_target_args'
                         let v1760 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21899,7 +22429,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v1760 = v1776 
                         #endif
                         let v1779 : Ref<Str> = _run_target_args'_v1760 
+                        (* run_target_args'
                         let v1784 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21957,7 +22489,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v1827 : uint32 = v1253.l6
                         let v1828 : (uint32 -> string) = _.ToString()
                         let v1829 : string = v1828 v1827
+                        (* run_target_args'
                         let v1832 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -21993,7 +22527,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v1832 = v1848 
                         #endif
                         let v1851 : Ref<Str> = _run_target_args'_v1832 
+                        (* run_target_args'
                         let v1856 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22053,7 +22589,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v1901 : bool = v1900 = 0UL
                         let v2072 : leptos_dom_Fragment =
                             if v1901 then
+                                (* run_target_args'
                                 let v1902 : unit = ()
+                                run_target_args' *)
                                 
 #if FABLE_COMPILER || WASM || CONTRACT
                                 
@@ -22089,7 +22627,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                                 let _run_target_args'_v1902 = v1918 
                                 #endif
                                 let v1921 : Ref<Str> = _run_target_args'_v1902 
+                                (* run_target_args'
                                 let v1926 : unit = ()
+                                run_target_args' *)
                                 
 #if FABLE_COMPILER || WASM || CONTRACT
                                 
@@ -22172,7 +22712,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                                 let v1996 : (unit -> string) = Fable.Core.RustInterop.emitRustExpr v1995 v1994 
                                 let v1997 : string = "class=move || \"[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] \".to_owned() + &v1996(())"
                                 let v1998 : string = " " + v1997 + v1258 + ""
+                                (* run_target_args'
                                 let v1999 : unit = ()
+                                run_target_args' *)
                                 
 #if FABLE_COMPILER || WASM || CONTRACT
                                 
@@ -22208,7 +22750,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                                 let _run_target_args'_v1999 = v2015 
                                 #endif
                                 let v2018 : Ref<Str> = _run_target_args'_v1999 
+                                (* run_target_args'
                                 let v2023 : unit = ()
+                                run_target_args' *)
                                 
 #if FABLE_COMPILER || WASM || CONTRACT
                                 
@@ -22283,7 +22827,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2083 : bool = v1253.l9
                         let v2084 : (bool -> string) = _.ToString()
                         let v2085 : string = v2084 v2083
+                        (* run_target_args'
                         let v2088 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22319,7 +22865,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2088 = v2104 
                         #endif
                         let v2107 : Ref<Str> = _run_target_args'_v2088 
+                        (* run_target_args'
                         let v2112 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22377,7 +22925,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2155 : std_string_String = v1253.l3
                         let v2156 : string = "fable_library_rust::String_::fromString($0)"
                         let v2157 : string = Fable.Core.RustInterop.emitRustExpr v2155 v2156 
+                        (* run_target_args'
                         let v2158 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22413,7 +22963,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2158 = v2174 
                         #endif
                         let v2177 : Ref<Str> = _run_target_args'_v2158 
+                        (* run_target_args'
                         let v2182 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22471,7 +23023,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2225 : std_string_String = v1253.l4
                         let v2226 : string = "fable_library_rust::String_::fromString($0)"
                         let v2227 : string = Fable.Core.RustInterop.emitRustExpr v2225 v2226 
+                        (* run_target_args'
                         let v2228 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22507,7 +23061,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2228 = v2244 
                         #endif
                         let v2247 : Ref<Str> = _run_target_args'_v2228 
+                        (* run_target_args'
                         let v2252 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22565,7 +23121,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2295 : std_string_String = v1253.l0
                         let v2296 : string = "fable_library_rust::String_::fromString($0)"
                         let v2297 : string = Fable.Core.RustInterop.emitRustExpr v2295 v2296 
+                        (* run_target_args'
                         let v2298 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22601,7 +23159,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2298 = v2314 
                         #endif
                         let v2317 : Ref<Str> = _run_target_args'_v2298 
+                        (* run_target_args'
                         let v2322 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22733,7 +23293,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2439 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v2440 : string = " " + v2439 + v1258 + ""
                         let v2441 : string = "Account"
+                        (* run_target_args'
                         let v2442 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22769,7 +23331,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2442 = v2458 
                         #endif
                         let v2461 : Ref<Str> = _run_target_args'_v2442 
+                        (* run_target_args'
                         let v2466 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22826,7 +23390,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2508 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v2509 : string = " " + v2508 + v1258 + ""
                         let v2510 : string = "Block Timestamp"
+                        (* run_target_args'
                         let v2511 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22862,7 +23428,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2511 = v2527 
                         #endif
                         let v2530 : Ref<Str> = _run_target_args'_v2511 
+                        (* run_target_args'
                         let v2535 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22918,7 +23486,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2576 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v2577 : string = " " + v2576 + v1258 + ""
                         let v2578 : string = "Predecessor"
+                        (* run_target_args'
                         let v2579 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -22954,7 +23524,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2579 = v2595 
                         #endif
                         let v2598 : Ref<Str> = _run_target_args'_v2579 
+                        (* run_target_args'
                         let v2603 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23010,7 +23582,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2644 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v2645 : string = " " + v2644 + v1258 + ""
                         let v2646 : string = "Receiver"
+                        (* run_target_args'
                         let v2647 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23046,7 +23620,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2647 = v2663 
                         #endif
                         let v2666 : Ref<Str> = _run_target_args'_v2647 
+                        (* run_target_args'
                         let v2671 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23102,7 +23678,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2712 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v2713 : string = " " + v2712 + v1258 + ""
                         let v2714 : string = "Action"
+                        (* run_target_args'
                         let v2715 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23138,7 +23716,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2715 = v2731 
                         #endif
                         let v2734 : Ref<Str> = _run_target_args'_v2715 
+                        (* run_target_args'
                         let v2739 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23194,7 +23774,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2780 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v2781 : string = " " + v2780 + v1258 + ""
                         let v2782 : string = "Deposit"
+                        (* run_target_args'
                         let v2783 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23230,7 +23812,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2783 = v2799 
                         #endif
                         let v2802 : Ref<Str> = _run_target_args'_v2783 
+                        (* run_target_args'
                         let v2807 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23286,7 +23870,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2848 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v2849 : string = " " + v2848 + v1258 + ""
                         let v2850 : string = "Fee"
+                        (* run_target_args'
                         let v2851 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23322,7 +23908,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2851 = v2867 
                         #endif
                         let v2870 : Ref<Str> = _run_target_args'_v2851 
+                        (* run_target_args'
                         let v2875 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23378,7 +23966,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v2916 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v2917 : string = " " + v2916 + v1258 + ""
                         let v2918 : string = "Block Height"
+                        (* run_target_args'
                         let v2919 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23414,7 +24004,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2919 = v2935 
                         #endif
                         let v2938 : Ref<Str> = _run_target_args'_v2919 
+                        (* run_target_args'
                         let v2943 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23478,7 +24070,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                             else
                                 let v2989 : string = "Logs"
                                 v2989
+                        (* run_target_args'
                         let v2991 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23514,7 +24108,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v2991 = v3007 
                         #endif
                         let v3010 : Ref<Str> = _run_target_args'_v2991 
+                        (* run_target_args'
                         let v3015 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23570,7 +24166,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v3056 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v3057 : string = " " + v3056 + v1258 + ""
                         let v3058 : string = "Outcome Status"
+                        (* run_target_args'
                         let v3059 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23606,7 +24204,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v3059 = v3075 
                         #endif
                         let v3078 : Ref<Str> = _run_target_args'_v3059 
+                        (* run_target_args'
                         let v3083 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23662,7 +24262,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v3124 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v3125 : string = " " + v3124 + v1258 + ""
                         let v3126 : string = "Hash"
+                        (* run_target_args'
                         let v3127 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23698,7 +24300,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v3127 = v3143 
                         #endif
                         let v3146 : Ref<Str> = _run_target_args'_v3127 
+                        (* run_target_args'
                         let v3151 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23754,7 +24358,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v3192 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v3193 : string = " " + v3192 + v1258 + ""
                         let v3194 : string = "Block Hash"
+                        (* run_target_args'
                         let v3195 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23790,7 +24396,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v3195 = v3211 
                         #endif
                         let v3214 : Ref<Str> = _run_target_args'_v3195 
+                        (* run_target_args'
                         let v3219 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23846,7 +24454,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let v3260 : string = "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
                         let v3261 : string = " " + v3260 + v1258 + ""
                         let v3262 : string = "Receipt ID"
+                        (* run_target_args'
                         let v3263 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -23882,7 +24492,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                         let _run_target_args'_v3263 = v3279 
                         #endif
                         let v3282 : Ref<Str> = _run_target_args'_v3263 
+                        (* run_target_args'
                         let v3287 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -24405,7 +25017,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                     let v3794 : string = "leptos::prelude::IntoAny::into_any($0)"
                     let v3795 : leptos_prelude_AnyView_ = Fable.Core.RustInterop.emitRustExpr v3793 v3794 
                     let v3796 : string = "Loading..."
+                    (* run_target_args'
                     let v3797 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -24441,7 +25055,9 @@ and closure260 (v0 : Heap2, v1 : leptos_prelude_ArcMemo<Result<(struct (string *
                     let _run_target_args'_v3797 = v3813 
                     #endif
                     let v3816 : Ref<Str> = _run_target_args'_v3797 
+                    (* run_target_args'
                     let v3821 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -24542,7 +25158,9 @@ and method282 () : (unit -> string) =
     closure339()
 and closure341 () () : leptos_dom_Fragment =
     let v0 : string = "Transactions"
+    (* run_target_args'
     let v1 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -24578,7 +25196,9 @@ and closure341 () () : leptos_dom_Fragment =
     let _run_target_args'_v1 = v17 
     #endif
     let v20 : Ref<Str> = _run_target_args'_v1 
+    (* run_target_args'
     let v25 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -24633,7 +25253,9 @@ and closure343 () () : string =
 and closure342 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint * Heap5) []) option, std_string_String>>) () : leptos_dom_Fragment =
     let v1 : string = $"leptos::prelude::ArcMemo::get(&$0)"
     let v2 : Result<(struct (string * unativeint * Heap5) []) option, std_string_String> = Fable.Core.RustInterop.emitRustExpr v0 v1 
+    (* run_target_args'
     let v3 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -24681,7 +25303,9 @@ and closure342 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint 
     let v36 : string = "class=move || \"[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] \".to_owned() + &v35(())"
     let v37 : string = ""
     let v38 : string = " " + v36 + v37 + ""
+    (* run_target_args'
     let v39 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -24717,7 +25341,9 @@ and closure342 (v0 : leptos_prelude_ArcMemo<Result<(struct (string * unativeint 
     let _run_target_args'_v39 = v55 
     #endif
     let v58 : Ref<Str> = _run_target_args'_v39 
+    (* run_target_args'
     let v63 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -24903,7 +25529,9 @@ and closure349 (v0 : leptos_prelude_ArcMemo<string>) () : std_string_String =
     let v2 : string = Fable.Core.RustInterop.emitRustExpr v0 v1 
     let v3 : string = "settings"
     let v4 : string = v2 + "#/" + v3 + ""
+    (* run_target_args'
     let v5 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -24939,7 +25567,9 @@ and closure349 (v0 : leptos_prelude_ArcMemo<string>) () : std_string_String =
     let _run_target_args'_v5 = v21 
     #endif
     let v24 : Ref<Str> = _run_target_args'_v5 
+    (* run_target_args'
     let v29 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -25008,7 +25638,9 @@ and closure352 (v0 : leptos_prelude_ArcMemo<string>) () : std_string_String =
     let v2 : string = Fable.Core.RustInterop.emitRustExpr v0 v1 
     let v3 : string = "transactions"
     let v4 : string = v2 + "#/" + v3 + ""
+    (* run_target_args'
     let v5 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -25044,7 +25676,9 @@ and closure352 (v0 : leptos_prelude_ArcMemo<string>) () : std_string_String =
     let _run_target_args'_v5 = v21 
     #endif
     let v24 : Ref<Str> = _run_target_args'_v5 
+    (* run_target_args'
     let v29 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -25113,7 +25747,9 @@ and closure355 (v0 : leptos_prelude_ArcMemo<string>) () : std_string_String =
     let v2 : string = Fable.Core.RustInterop.emitRustExpr v0 v1 
     let v3 : string = "lists"
     let v4 : string = v2 + "#/" + v3 + ""
+    (* run_target_args'
     let v5 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -25149,7 +25785,9 @@ and closure355 (v0 : leptos_prelude_ArcMemo<string>) () : std_string_String =
     let _run_target_args'_v5 = v21 
     #endif
     let v24 : Ref<Str> = _run_target_args'_v5 
+    (* run_target_args'
     let v29 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -25218,7 +25856,9 @@ and closure358 (v0 : leptos_prelude_ArcMemo<string>) () : std_string_String =
     let v2 : string = Fable.Core.RustInterop.emitRustExpr v0 v1 
     let v3 : string = "dice"
     let v4 : string = v2 + "#/" + v3 + ""
+    (* run_target_args'
     let v5 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -25254,7 +25894,9 @@ and closure358 (v0 : leptos_prelude_ArcMemo<string>) () : std_string_String =
     let _run_target_args'_v5 = v21 
     #endif
     let v24 : Ref<Str> = _run_target_args'_v5 
+    (* run_target_args'
     let v29 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -25363,7 +26005,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v34 : string = "v33.await"
     let v35 : Result<rexie_Rexie, rexie_Error> = Fable.Core.RustInterop.emitRustExpr () v34 
     let v36 : (rexie_Error -> std_string_String) = method6()
+    (* run_target_args'
     let v37 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -25405,7 +26049,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let x = v48 //
     let v54 : _ = x
     let v55 : unit = ()
+    (* run_target_args'
     let v56 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -25445,7 +26091,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v70 : std_pin_Pin<Box<Dyn<std_future_Future<Result<rexie_Rexie, std_string_String>>>>> = Fable.Core.RustInterop.emitRustExpr () v69 
     let v71 : string = "v70.await"
     let v72 : Result<rexie_Rexie, std_string_String> = Fable.Core.RustInterop.emitRustExpr () v71 
+    (* run_target_args'
     let v73 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -25495,7 +26143,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let x = v90 //
     let v100 : _ = x
     let v101 : unit = ()
+    (* run_target_args'
     let v102 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -25609,7 +26259,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v200 : bool = Fable.Core.RustInterop.emitRustExpr () v199 
             let v201 : string = $"value"
             let v202 : string = Fable.Core.RustInterop.emitRustExpr () v201 
+            (* run_target_args'
             let v203 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -25645,7 +26297,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v203 = v219 
             #endif
             let v222 : Ref<Str> = _run_target_args'_v203 
+            (* run_target_args'
             let v227 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -25696,7 +26350,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v262 : string = "$0.transaction(&v260, rexie::TransactionMode::ReadOnly)"
             let v263 : Result<rexie_Transaction, rexie_Error> = Fable.Core.RustInterop.emitRustExpr v261 v262 
             let v264 : (rexie_Error -> std_string_String) = method12()
+            (* run_target_args'
             let v265 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -25735,7 +26391,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v279 : string = "$0?"
             let v280 : rexie_Transaction = Fable.Core.RustInterop.emitRustExpr v276 v279 
             let v281 : string = method13()
+            (* run_target_args'
             let v282 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -25774,7 +26432,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v306 : string = "v280.store($0)"
             let v307 : Result<rexie_Store, rexie_Error> = Fable.Core.RustInterop.emitRustExpr v301 v306 
             let v308 : (rexie_Error -> std_string_String) = method14()
+            (* run_target_args'
             let v309 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -25813,7 +26473,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v323 : string = "$0?"
             let v324 : rexie_Store = Fable.Core.RustInterop.emitRustExpr v320 v323 
             let v325 : string = method15()
+            (* run_target_args'
             let v326 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -25856,7 +26518,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v354 : string = "v353.await"
             let v355 : Result<wasm_bindgen_JsValue option, rexie_Error> = Fable.Core.RustInterop.emitRustExpr () v354 
             let v356 : (rexie_Error -> std_string_String) = method16()
+            (* run_target_args'
             let v357 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -25907,7 +26571,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                     let v392 : string = "serde_wasm_bindgen::from_value(v391)"
                     let v393 : Result<serde_json_Value option, serde_wasm_bindgen_Error> = Fable.Core.RustInterop.emitRustExpr () v392 
                     let v394 : (serde_wasm_bindgen_Error -> std_string_String) = method19()
+                    (* run_target_args'
                     let v395 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -25957,7 +26623,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                         let v430 : string = "serde_json::from_value(v429)"
                         let v431 : Result<Vec<uint8>, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr () v430 
                         let v432 : (serde_json_Error -> std_string_String) = method22()
+                        (* run_target_args'
                         let v433 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -26010,7 +26678,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                         let v461 : string = "borsh::BorshDeserialize::deserialize(&mut v458)"
                         let v462 : Result<Heap3 option, borsh_io_Error> = Fable.Core.RustInterop.emitRustExpr () v461 
                         let v463 : (borsh_io_Error -> std_string_String) = method23()
+                        (* run_target_args'
                         let v464 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -26062,7 +26732,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let x = v494 //
             let v496 : _ = x
             let v497 : unit = ()
+            (* run_target_args'
             let v498 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -26141,7 +26813,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let x = v574 //
     let v576 : _ = x
     let v577 : unit = ()
+    (* run_target_args'
     let v578 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -26232,7 +26906,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                         | _ ->
                             let v665 : web_sys_Storage = method34(v636)
                             let v666 : string = method35()
+                            (* run_target_args'
                             let v667 : unit = ()
+                            run_target_args' *)
                             
 #if FABLE_COMPILER || WASM || CONTRACT
                             
@@ -26328,7 +27004,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                     | _ ->
                         let v853 : web_sys_Storage = method34(v636)
                         let v854 : string = method35()
+                        (* run_target_args'
                         let v855 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -26545,7 +27223,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v1177 : string = "serde_wasm_bindgen::to_value(&v1176).unwrap()"
             let v1178 : wasm_bindgen_JsValue = Fable.Core.RustInterop.emitRustExpr () v1177 
             let v1179 : string = method43()
+            (* run_target_args'
             let v1180 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -26594,7 +27274,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let x = v1212 //
             let v1214 : _ = x
             let v1215 : unit = ()
+            (* run_target_args'
             let v1216 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -26634,7 +27316,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v1230 : std_pin_Pin<Box<Dyn<std_future_Future<Result<unit, rexie_Error>>>>> = Fable.Core.RustInterop.emitRustExpr () v1229 
             let v1231 : string = "v1230.await"
             let v1232 : Result<unit, rexie_Error> = Fable.Core.RustInterop.emitRustExpr () v1231 
+            (* run_target_args'
             let v1233 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -26668,7 +27352,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let x = () //
     let v1243 : _ = x
     let v1244 : unit = ()
+    (* run_target_args'
     let v1245 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -26759,7 +27445,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v1311 : string = $"leptos::prelude::ArcMemo::get(&$0)"
     let v1312 : std_collections_HashMap<std_string_String, leptos_prelude_ArcRwSignal<bool>> = Fable.Core.RustInterop.emitRustExpr v1117 v1311 
     let v1313 : string = "dark_mode_key"
+    (* run_target_args'
     let v1314 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -26795,7 +27483,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let _run_target_args'_v1314 = v1330 
     #endif
     let v1333 : Ref<Str> = _run_target_args'_v1314 
+    (* run_target_args'
     let v1338 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -26894,7 +27584,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                         let v1439 : bool = Fable.Core.RustInterop.emitRustExpr struct (v1263, v1304) v1438 
                         let v1440 : web_sys_Storage = method47(v1437)
                         let v1441 : string = method48()
+                        (* run_target_args'
                         let v1442 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -27018,7 +27710,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                 let v1546 : string = "#"
                 let v1547 : bool = v1542.Contains v1546 
                 if v1547 then
+                    (* run_target_args'
                     let v1550 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -27067,7 +27761,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v1580 : string = $"leptos::prelude::ArcRwSignal::get_untracked(&$0)"
             let v1581 : Heap1 = Fable.Core.RustInterop.emitRustExpr v1579 v1580 
             let v1582 : leptos_prelude_ArcRwSignal<std_string_String> = v1581.l2
+            (* run_target_args'
             let v1583 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27103,7 +27799,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v1583 = v1599 
             #endif
             let v1602 : Ref<Str> = _run_target_args'_v1583 
+            (* run_target_args'
             let v1607 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27170,7 +27868,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v1658 : (leptos_router_Url -> US20) = method53()
     let v1659 : (std_string_String -> US20) = method54()
     let v1660 : US20 = match v1657 with Ok x -> v1658 x | Error x -> v1659 x
+    (* run_target_args'
     let v1661 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -27295,7 +27995,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                     US18_1(v1761)
                 | US21_0(v1760) -> (* Some *)
                     v1760
+            (* run_target_args'
             let v1765 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27429,7 +28131,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v1892 : string = "*/ //"
             let v1893 : bool = Fable.Core.RustInterop.emitRustExpr () v1892 
             let v1894 : string = "2.0"
+            (* run_target_args'
             let v1895 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27465,7 +28169,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v1895 = v1911 
             #endif
             let v1914 : Ref<Str> = _run_target_args'_v1895 
+            (* run_target_args'
             let v1919 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27502,7 +28208,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             #endif
             let v1938 : std_string_String = _run_target_args'_v1919 
             let v1943 : string = "dontcare"
+            (* run_target_args'
             let v1944 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27538,7 +28246,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v1944 = v1960 
             #endif
             let v1963 : Ref<Str> = _run_target_args'_v1944 
+            (* run_target_args'
             let v1968 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27575,7 +28285,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             #endif
             let v1987 : std_string_String = _run_target_args'_v1968 
             let v1992 : string = "EXPERIMENTAL_tx_status"
+            (* run_target_args'
             let v1993 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27611,7 +28323,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v1993 = v2009 
             #endif
             let v2012 : Ref<Str> = _run_target_args'_v1993 
+            (* run_target_args'
             let v2017 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27648,7 +28362,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             #endif
             let v2036 : std_string_String = _run_target_args'_v2017 
             let v2041 : string = "9JgptZpFQGtUvusnoF9ysVqHXD8fXCri8mFxPTMnt3kS"
+            (* run_target_args'
             let v2042 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27684,7 +28400,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v2042 = v2058 
             #endif
             let v2061 : Ref<Str> = _run_target_args'_v2042 
+            (* run_target_args'
             let v2066 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27721,7 +28439,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             #endif
             let v2085 : std_string_String = _run_target_args'_v2066 
             let v2090 : string = "bowen"
+            (* run_target_args'
             let v2091 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27757,7 +28477,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v2091 = v2107 
             #endif
             let v2110 : Ref<Str> = _run_target_args'_v2091 
+            (* run_target_args'
             let v2115 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27799,7 +28521,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v2142 : string = "crate::model::near::rpc::RpcInput { jsonrpc: $0, id: $1, method: $2, params: v2141 }"
             let v2143 : crate_model_near_rpc_RpcInput = Fable.Core.RustInterop.emitRustExpr struct (v1938, v1987, v2036) v2142 
             let v2144 : string = method167()
+            (* run_target_args'
             let v2145 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27835,7 +28559,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v2145 = v2161 
             #endif
             let v2164 : Ref<Str> = _run_target_args'_v2145 
+            (* run_target_args'
             let v2169 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27882,7 +28608,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v2201 : string = "v2200.await"
             let v2202 : Result<reqwest_Response, reqwest_Error> = Fable.Core.RustInterop.emitRustExpr () v2201 
             let v2203 : (reqwest_Error -> std_string_String) = method95()
+            (* run_target_args'
             let v2204 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27925,7 +28653,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v2222 : string = "v2221.await"
             let v2223 : Result<std_string_String, reqwest_Error> = Fable.Core.RustInterop.emitRustExpr () v2222 
             let v2224 : (reqwest_Error -> std_string_String) = method95()
+            (* run_target_args'
             let v2225 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -27982,7 +28712,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                         let v2256 : string = "fable_library_rust::String_::fromString($0)"
                         let v2257 : string = Fable.Core.RustInterop.emitRustExpr v2255 v2256 
                         let v2258 : string = method41(v2257)
+                        (* run_target_args'
                         let v2259 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -28021,7 +28753,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                         let v2283 : string = "serde_json::from_str(&$0)"
                         let v2284 : Result<crate_model_near_rpc_RpcResponse, serde_json_Error> = Fable.Core.RustInterop.emitRustExpr v2278 v2283 
                         let v2285 : (serde_json_Error -> std_string_String) = method42()
+                        (* run_target_args'
                         let v2286 : unit = ()
+                        run_target_args' *)
                         
 #if FABLE_COMPILER || WASM || CONTRACT
                         
@@ -28108,7 +28842,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let x = v2562 //
             let v2572 : _ = x
             let v2573 : unit = ()
+            (* run_target_args'
             let v2574 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -28220,7 +28956,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v2659 : string = "class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\""
             let v2660 : string = " " + v2659 + v51 + ""
             let v2661 : string = v2658 ()
+            (* run_target_args'
             let v2662 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -28256,7 +28994,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v2662 = v2678 
             #endif
             let v2681 : Ref<Str> = _run_target_args'_v2662 
+            (* run_target_args'
             let v2686 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -28506,7 +29246,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v2921 : string = "class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\""
             let v2922 : string = " " + v2921 + v51 + ""
             let v2923 : string = v2920 ()
+            (* run_target_args'
             let v2924 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -28542,7 +29284,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v2924 = v2940 
             #endif
             let v2943 : Ref<Str> = _run_target_args'_v2924 
+            (* run_target_args'
             let v2948 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -28760,7 +29504,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v3150 : string = "$0.unwrap()"
             let v3151 : Heap2 = Fable.Core.RustInterop.emitRustExpr v3149 v3150 
             let v3152 : string = "???"
+            (* run_target_args'
             let v3153 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -28796,7 +29542,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v3153 = v3169 
             #endif
             let v3172 : Ref<Str> = _run_target_args'_v3153 
+            (* run_target_args'
             let v3177 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -29012,7 +29760,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v4078 : string = "class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\""
             let v4079 : string = " " + v4078 + v51 + ""
             let v4080 : string = v4077 ()
+            (* run_target_args'
             let v4081 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -29048,7 +29798,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v4081 = v4097 
             #endif
             let v4100 : Ref<Str> = _run_target_args'_v4081 
+            (* run_target_args'
             let v4105 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -29296,7 +30048,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v4338 : string = "class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\""
             let v4339 : string = " " + v4338 + v51 + ""
             let v4340 : string = v4337 ()
+            (* run_target_args'
             let v4341 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -29332,7 +30086,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v4341 = v4357 
             #endif
             let v4360 : Ref<Str> = _run_target_args'_v4341 
+            (* run_target_args'
             let v4365 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -29585,7 +30341,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                     let v4601 : string = "class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\""
                     let v4602 : string = " " + v4601 + v51 + ""
                     let v4603 : string = v4600 ()
+                    (* run_target_args'
                     let v4604 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -29621,7 +30379,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                     let _run_target_args'_v4604 = v4620 
                     #endif
                     let v4623 : Ref<Str> = _run_target_args'_v4604 
+                    (* run_target_args'
                     let v4628 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -30041,7 +30801,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v3412 : string = "class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\""
             let v3413 : string = " " + v3412 + v51 + ""
             let v3414 : string = v3411 ()
+            (* run_target_args'
             let v3415 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -30077,7 +30839,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let _run_target_args'_v3415 = v3431 
             #endif
             let v3434 : Ref<Str> = _run_target_args'_v3415 
+            (* run_target_args'
             let v3439 : unit = ()
+            run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
@@ -30334,7 +31098,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                     let v3679 : string = "class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\""
                     let v3680 : string = " " + v3679 + v51 + ""
                     let v3681 : string = v3678 ()
+                    (* run_target_args'
                     let v3682 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -30370,7 +31136,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
                     let _run_target_args'_v3682 = v3698 
                     #endif
                     let v3701 : Ref<Str> = _run_target_args'_v3682 
+                    (* run_target_args'
                     let v3706 : unit = ()
+                    run_target_args' *)
                     
 #if FABLE_COMPILER || WASM || CONTRACT
                     
@@ -30642,7 +31410,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v4886 : string = " " + v4884 + v51 + ""
     let v4887 : string = " " + v4885 + v4886 + ""
     let v4888 : string = "Tab"
+    (* run_target_args'
     let v4889 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -30678,7 +31448,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let _run_target_args'_v4889 = v4905 
     #endif
     let v4908 : Ref<Str> = _run_target_args'_v4889 
+    (* run_target_args'
     let v4913 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -30740,7 +31512,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v4960 : string = "selected=v4959()"
     let v4961 : string = " " + v4960 + v51 + ""
     let v4962 : string = "Settings"
+    (* run_target_args'
     let v4963 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -30776,7 +31550,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let _run_target_args'_v4963 = v4979 
     #endif
     let v4982 : Ref<Str> = _run_target_args'_v4963 
+    (* run_target_args'
     let v4987 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -30834,7 +31610,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v5030 : string = "selected=v5029()"
     let v5031 : string = " " + v5030 + v51 + ""
     let v5032 : string = "Transactions"
+    (* run_target_args'
     let v5033 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -30870,7 +31648,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let _run_target_args'_v5033 = v5049 
     #endif
     let v5052 : Ref<Str> = _run_target_args'_v5033 
+    (* run_target_args'
     let v5057 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -30927,7 +31707,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v5099 : string = "selected=v5098()"
     let v5100 : string = " " + v5099 + v51 + ""
     let v5101 : string = "Lists"
+    (* run_target_args'
     let v5102 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -30963,7 +31745,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let _run_target_args'_v5102 = v5118 
     #endif
     let v5121 : Ref<Str> = _run_target_args'_v5102 
+    (* run_target_args'
     let v5126 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -31020,7 +31804,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v5168 : string = "selected=v5167()"
     let v5169 : string = " " + v5168 + v51 + ""
     let v5170 : string = "Dice"
+    (* run_target_args'
     let v5171 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -31056,7 +31842,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let _run_target_args'_v5171 = v5187 
     #endif
     let v5190 : Ref<Str> = _run_target_args'_v5171 
+    (* run_target_args'
     let v5195 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -31255,7 +32043,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v5378 : string = " " + v5375 + v5377 + ""
     let v5379 : string = "leptos::prelude::AnyView::from($0)"
     let v5380 : leptos_prelude_AnyView_ = Fable.Core.RustInterop.emitRustExpr v5364 v5379 
+    (* run_target_args'
     let v5381 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -31291,7 +32081,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let _run_target_args'_v5381 = v5397 
     #endif
     let v5400 : Ref<Str> = _run_target_args'_v5381 
+    (* run_target_args'
     let v5405 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -31421,7 +32213,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v5519 : string = " " + v5516 + v5518 + ""
     let v5520 : string = "leptos::prelude::AnyView::from($0)"
     let v5521 : leptos_prelude_AnyView_ = Fable.Core.RustInterop.emitRustExpr v5505 v5520 
+    (* run_target_args'
     let v5522 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -31457,7 +32251,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let _run_target_args'_v5522 = v5538 
     #endif
     let v5541 : Ref<Str> = _run_target_args'_v5522 
+    (* run_target_args'
     let v5546 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -31656,7 +32452,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v5729 : string = " " + v5726 + v5728 + ""
     let v5730 : string = "leptos::prelude::AnyView::from($0)"
     let v5731 : leptos_prelude_AnyView_ = Fable.Core.RustInterop.emitRustExpr v5715 v5730 
+    (* run_target_args'
     let v5732 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -31692,7 +32490,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let _run_target_args'_v5732 = v5748 
     #endif
     let v5751 : Ref<Str> = _run_target_args'_v5732 
+    (* run_target_args'
     let v5756 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -31943,7 +32743,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v5991 : string = " " + v5988 + v5990 + ""
     let v5992 : string = "leptos::prelude::AnyView::from($0)"
     let v5993 : leptos_prelude_AnyView_ = Fable.Core.RustInterop.emitRustExpr v5977 v5992 
+    (* run_target_args'
     let v5994 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -31979,7 +32781,9 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let _run_target_args'_v5994 = v6010 
     #endif
     let v6013 : Ref<Str> = _run_target_args'_v5994 
+    (* run_target_args'
     let v6018 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32239,7 +33043,9 @@ and method293 (v0 : (int32 -> leptos_prelude_View<leptos_dom_html_HtmlElement<le
 and closure4 () () : Vec<leptos_prelude_View<leptos_router_NestedRoute>> =
     let v0 : (int32 -> leptos_prelude_View<leptos_dom_html_HtmlElement<leptos_html_Div>>) = method5()
     let v1 : string = ""
+    (* run_target_args'
     let v2 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32275,7 +33081,9 @@ and closure4 () () : Vec<leptos_prelude_View<leptos_router_NestedRoute>> =
     let _run_target_args'_v2 = v18 
     #endif
     let v21 : Ref<Str> = _run_target_args'_v2 
+    (* run_target_args'
     let v26 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32325,7 +33133,9 @@ and closure4 () () : Vec<leptos_prelude_View<leptos_router_NestedRoute>> =
     let v61 : string = "leptos::IntoView::into_view(leptos::prelude::view! { " + v60 + " })"
     let v62 : leptos_prelude_View<leptos_router_NestedRoute> = Fable.Core.RustInterop.emitRustExpr () v61 
     let v63 : string = "/"
+    (* run_target_args'
     let v64 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32361,7 +33171,9 @@ and closure4 () () : Vec<leptos_prelude_View<leptos_router_NestedRoute>> =
     let _run_target_args'_v64 = v80 
     #endif
     let v83 : Ref<Str> = _run_target_args'_v64 
+    (* run_target_args'
     let v88 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32409,7 +33221,9 @@ and closure4 () () : Vec<leptos_prelude_View<leptos_router_NestedRoute>> =
     let v121 : string = "leptos::IntoView::into_view(leptos::prelude::view! { " + v120 + " })"
     let v122 : leptos_prelude_View<leptos_router_NestedRoute> = Fable.Core.RustInterop.emitRustExpr () v121 
     let v123 : string = "/*"
+    (* run_target_args'
     let v124 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32445,7 +33259,9 @@ and closure4 () () : Vec<leptos_prelude_View<leptos_router_NestedRoute>> =
     let _run_target_args'_v124 = v140 
     #endif
     let v143 : Ref<Str> = _run_target_args'_v124 
+    (* run_target_args'
     let v148 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32493,7 +33309,9 @@ and closure4 () () : Vec<leptos_prelude_View<leptos_router_NestedRoute>> =
     let v181 : string = "leptos::IntoView::into_view(leptos::prelude::view! { " + v180 + " })"
     let v182 : leptos_prelude_View<leptos_router_NestedRoute> = Fable.Core.RustInterop.emitRustExpr () v181 
     let v183 : string = "*"
+    (* run_target_args'
     let v184 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32529,7 +33347,9 @@ and closure4 () () : Vec<leptos_prelude_View<leptos_router_NestedRoute>> =
     let _run_target_args'_v184 = v200 
     #endif
     let v203 : Ref<Str> = _run_target_args'_v184 
+    (* run_target_args'
     let v208 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32600,7 +33420,9 @@ and closure3 () () : leptos_dom_Fragment =
     let v0 : (unit -> Vec<leptos_prelude_View<leptos_router_NestedRoute>>) = method4()
     let v1 : (unit -> Vec<leptos_prelude_View<leptos_router_NestedRoute>>) = method294(v0)
     let v2 : string = "leptos.routes / fallback"
+    (* run_target_args'
     let v3 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32636,7 +33458,9 @@ and closure3 () () : leptos_dom_Fragment =
     let _run_target_args'_v3 = v19 
     #endif
     let v22 : Ref<Str> = _run_target_args'_v3 
+    (* run_target_args'
     let v27 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32704,7 +33528,9 @@ and closure2 () () : Impl<leptos_IntoView> =
     let v7 : string = $"leptos::prelude::ArcRwSignal::new($0)"
     let v8 : leptos_prelude_ArcRwSignal<bool> = Fable.Core.RustInterop.emitRustExpr false v7 
     let v9 : string = ""
+    (* run_target_args'
     let v10 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32740,7 +33566,9 @@ and closure2 () () : Impl<leptos_IntoView> =
     let _run_target_args'_v10 = v26 
     #endif
     let v29 : Ref<Str> = _run_target_args'_v10 
+    (* run_target_args'
     let v34 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32779,7 +33607,9 @@ and closure2 () () : Impl<leptos_IntoView> =
     let v58 : string = $"leptos::prelude::ArcRwSignal::new($0)"
     let v59 : leptos_prelude_ArcRwSignal<std_string_String> = Fable.Core.RustInterop.emitRustExpr v53 v58 
     let v60 : string = "i574n.near"
+    (* run_target_args'
     let v61 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32815,7 +33645,9 @@ and closure2 () () : Impl<leptos_IntoView> =
     let _run_target_args'_v61 = v77 
     #endif
     let v80 : Ref<Str> = _run_target_args'_v61 
+    (* run_target_args'
     let v85 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32853,7 +33685,9 @@ and closure2 () () : Impl<leptos_IntoView> =
     let v104 : std_string_String = _run_target_args'_v85 
     let v109 : (bool * std_string_String) = true, v104 
     let v110 : string = "luckier.near"
+    (* run_target_args'
     let v111 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32889,7 +33723,9 @@ and closure2 () () : Impl<leptos_IntoView> =
     let _run_target_args'_v111 = v127 
     #endif
     let v130 : Ref<Str> = _run_target_args'_v111 
+    (* run_target_args'
     let v135 : unit = ()
+    run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
@@ -32987,7 +33823,9 @@ and closure0 () (v0 : (string [])) : int32 =
     match v21 with
     | US0_0(v31) -> (* Some *)
         let v32 : string = method1()
+        (* run_target_args'
         let v33 : unit = ()
+        run_target_args' *)
         
 #if FABLE_COMPILER || WASM || CONTRACT
         
