@@ -6,7 +6,7 @@ param(
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
 . ../../deps/polyglot/scripts/core.ps1
-. ../../deps/polyglot/lib/spiral/lib.ps1
+. ../../deps/polyglot/deps/spiral/lib/spiral/lib.ps1
 
 
 $projectName = "dice_fsharp"
@@ -37,9 +37,10 @@ if (!($path | Test-Path)) {
 $target = "$projectName.rs"
 Write-Output "dice/lib/fsharp/build.ps1 / path: $path / $target"
 (Get-Content $path) `
-    -replace "`"../../../../../../../../../../../../polyglot/lib", "`"../../deps/polyglot/lib" `
-    -replace "`"../../../lib", "`"../../deps/polyglot/lib" `
-    -replace "`"../../../../../lib", "`"../../deps/polyglot/lib" `
+    -replace "`"../../../../../../../../../../../../polyglot/lib", "`"../../deps/polyglot/deps/spiral/lib" `
+    -replace "`"../../../lib", "`"../../deps/polyglot/deps/spiral/lib" `
+    -replace "`"../../../../../lib", "`"../../deps/polyglot/deps/spiral/lib" `
+    -replace "`"../../../../../deps/spiral", "`"../../deps/polyglot/deps/spiral" `
     -replace "`"./lib", "`"../../deps/polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     | FixRust `

@@ -7,7 +7,7 @@ param(
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
 . ../deps/polyglot/scripts/core.ps1
-. ../deps/polyglot/lib/spiral/lib.ps1
+. ../deps/polyglot/deps/spiral/lib/spiral/lib.ps1
 
 
 $projectName = "dice_contract"
@@ -37,9 +37,10 @@ if (!($path | Test-Path)) {
 }
 Write-Output "dice/contract/build.ps1 / path: $path"
 (Get-Content $path) `
-    -replace "`"../../../lib", "`"../deps/polyglot/lib" `
+    -replace "`"../../../lib", "`"../deps/polyglot/deps/spiral/lib" `
     -replace "`"./lib", "`"../deps/polyglot/lib" `
-    -replace "`"../../../../../lib", "`"../deps/polyglot/lib" `
+    -replace "`"../../../../../lib", "`"../deps/polyglot/deps/spiral/lib" `
+    -replace "`"../../../../../deps/spiral", "`"../deps/polyglot/deps/spiral" `
     -replace "`"../../../deps", "`"../deps" `
     -replace "`"../../../../../../../../../../../../polyglot", "`"../deps/polyglot" `
     -replace ".fsx`"]", ".rs`"]" `

@@ -3,7 +3,7 @@ pub mod js;
 pub mod model;
 pub mod state;
 
-#[path = "../../deps/polyglot/lib/spiral/lib_spiral_wasm.rs"]
+#[path = "../../deps/polyglot/deps/spiral/lib/spiral/lib_spiral_wasm.rs"]
 pub mod lib_spiral;
 pub use lib_spiral::*;
 
