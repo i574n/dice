@@ -27,18 +27,47 @@ $targetDir = GetTargetDir $projectName
 { BuildFable $targetDir $projectName "ts" } | Invoke-Block
 { BuildFable $targetDir $projectName "py" } | Invoke-Block
 
-(Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
+$path = "$targetDir/$projectName.rs"
+if (!($path | Test-Path)) {
+    $path = "$targetDir/target/rs/$projectName.rs"
+}
+if (!($path | Test-Path)) {
+    $path = "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs"
+}
+$target = "$projectName.rs"
+Write-Output "dice/lib/fsharp/build.ps1 / path: $path / $target"
+(Get-Content $path) `
     -replace "`"../../../../../../../../../../../../polyglot/lib", "`"../../deps/polyglot/lib" `
     -replace "`"../../../lib", "`"../../deps/polyglot/lib" `
+    -replace "`"../../../../../lib", "`"../../deps/polyglot/lib" `
+    -replace "`"./lib", "`"../../deps/polyglot/lib" `
     -replace ".fsx`"]", ".rs`"]" `
     | FixRust `
-    | Set-Content "$projectName.rs"
+    | Set-Content $target
 
-(Get-Content "$targetDir/target/ts/polyglot/target/Builder/$projectName/$projectName.ts") `
+$path = "$targetDir/$projectName.ts"
+if (!($path | Test-Path)) {
+    $path = "$targetDir/target/ts/$projectName.ts"
+}
+if (!($path | Test-Path)) {
+    $path = "$targetDir/target/ts/polyglot/target/Builder/$projectName/$projectName.ts"
+}
+$target = "$projectName.ts"
+Write-Output "dice/lib/fsharp/build.ps1 / path: $path / $target"
+(Get-Content $path) `
     | FixTypeScript `
-    | Set-Content "$projectName.ts"
+    | Set-Content $target
 
-Copy-Item "$targetDir/target/py/polyglot/target/Builder/$projectName/$projectName.py" "$projectName.py" -Force
+$path = "$targetDir/$projectName.py"
+if (!($path | Test-Path)) {
+    $path = "$targetDir/target/py/$projectName.py"
+}
+if (!($path | Test-Path)) {
+    $path = "$targetDir/target/py/polyglot/target/Builder/$projectName/$projectName.py"
+}
+$target = "$projectName.py"
+Write-Output "dice/lib/fsharp/build.ps1 / path: $path / $target"
+Copy-Item $path $target -Force
 
 cargo fmt --
 
