@@ -3,16 +3,20 @@ param(
     $SkipNotebook,
     $ScriptDir = $PSScriptRoot
 )
-Set-Location $ScriptDir
+$ScriptDir | Set-Location
 $ErrorActionPreference = "Stop"
 . ../deps/polyglot/scripts/core.ps1
 . ../deps/polyglot/deps/spiral/lib/spiral/lib.ps1
 
+$ResolvedScriptDir = ResolveLink $ScriptDir
+$ResolvedScriptDir | Set-Location
+
+Write-Output "dice/lib/build.ps1 / ScriptDir: $ScriptDir / ResolvedScriptDir: $ResolvedScriptDir"
 
 $projectName = "dice"
 
 if (!$fast -and !$SkipNotebook) {
-    { . apps/spiral/dist/Supervisor$(_exe) --execute-command "deps/spiral/workspace/target/release/spiral$(_exe) dib --path $ScriptDir/$projectName.dib" } | Invoke-Block -Retries 3 -Location ../deps/polyglot
+    { . apps/spiral/dist/Supervisor$(_exe) --execute-command "deps/spiral/workspace/target/release/spiral$(_exe) dib --path $ResolvedScriptDir/$projectName.dib" } | Invoke-Block -Retries 3 -Location ../deps/polyglot
 }
 
 { . ../deps/polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" spi } | Invoke-Block
