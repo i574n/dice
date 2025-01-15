@@ -1,14 +1,14 @@
 from __future__ import annotations
-from collections.abc import Callable
-import sys
-from typing import (Any, TypeVar)
-from lib.fsharp.common import (trace, TraceLevel)
 from fable_modules.fable_library.list import (is_empty, head, tail, FSharpList, length, try_item, cons, initialize, empty)
 from fable_modules.fable_library.option import (to_array, value as value_1)
 from fable_modules.fable_library.seq import (cache, unfold, iterate, item as item_1, map)
 from fable_modules.fable_library.string_ import (to_console, printf)
 from fable_modules.fable_library.types import Array
 from fable_modules.fable_library.util import (IEnumerable_1, randint)
+from collections.abc import Callable
+import sys
+from typing import (Any, TypeVar)
+from lib.fsharp.common import (trace, TraceLevel)
 
 __A = TypeVar("__A")
 
