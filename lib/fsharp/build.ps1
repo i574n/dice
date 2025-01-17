@@ -57,6 +57,7 @@ $target = "$projectName.ts"
 Write-Output "dice/lib/fsharp/build.ps1 / path: $path / $target"
 (Get-Content $path) `
     | FixTypeScript `
+    | FixTypeScriptExternal `
     | Set-Content $target
 
 $path = "$targetDir/$projectName.py"
