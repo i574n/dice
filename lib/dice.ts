@@ -567,12 +567,12 @@ export function closure2(v0_1: UH0_$union, unitVar: void): UH0_$union {
 }
 
 export function method0(v0_1: int64, v1_1: UH0_$union, v2_1: UH0_$union): UH0_$union {
-    if (v1_1.tag === /* UH0_1 */ 1) {
+    if ((v1_1.tag as int32) === /* UH0_1 */ 1) {
         return v2_1;
     }
     else {
-        const v3_1: uint8 = v1_1.fields[0];
-        const v6: UH0_$union = method0(v0_1, v1_1.fields[1](), v2_1);
+        const v3_1 = v1_1.fields[0] as any;
+        const v6: UH0_$union = method0(v0_1, (v1_1.fields[1] as any)(), v2_1);
         const v11: int64 = toInt64(op_Addition(toInt64(op_Modulus(toInt64(op_Addition(toInt64(op_Subtraction(toInt64(fromUInt8(v3_1)), 1n)), v0_1)), v0_1)), 1n));
         return UH0_UH0_0(toUInt8(v11) & 0xFF, (): UH0_$union => closure2(v6, undefined));
     }
@@ -590,12 +590,12 @@ export function method1(v0_1_mut: UH1_$union, v1_1_mut: UH1_$union): UH1_$union 
     method1:
     while (true) {
         const v0_1: UH1_$union = v0_1_mut, v1_1: UH1_$union = v1_1_mut;
-        if (v0_1.tag === /* UH1_0 */ 0) {
+        if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
             return v1_1;
         }
         else {
-            v0_1_mut = v0_1.fields[1];
-            v1_1_mut = UH1_UH1_1(v0_1.fields[0], v1_1);
+            v0_1_mut = (v0_1.fields[1] as any);
+            v1_1_mut = UH1_UH1_1(v0_1.fields[0] as any, v1_1);
             continue method1;
         }
         break;
@@ -603,11 +603,11 @@ export function method1(v0_1_mut: UH1_$union, v1_1_mut: UH1_$union): UH1_$union 
 }
 
 export function method2(v0_1: UH1_$union, v1_1: UH1_$union): UH1_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return v1_1;
     }
     else {
-        return UH1_UH1_1(v0_1.fields[0], method2(v0_1.fields[1], v1_1));
+        return UH1_UH1_1(v0_1.fields[0] as any, method2(v0_1.fields[1] as any, v1_1));
     }
 }
 
@@ -616,12 +616,12 @@ export function closure4(v0_1: UH0_$union, unitVar: void): UH0_$union {
 }
 
 export function method3(v0_1: UH1_$union, v1_1: UH0_$union): UH0_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return v1_1;
     }
     else {
-        const v2_1: uint8 = v0_1.fields[0];
-        const v4_1: UH0_$union = method3(v0_1.fields[1], v1_1);
+        const v2_1 = v0_1.fields[0] as any;
+        const v4_1: UH0_$union = method3(v0_1.fields[1] as any, v1_1);
         return UH0_UH0_0(v2_1, (): UH0_$union => closure4(v4_1, undefined));
     }
 }
@@ -632,14 +632,14 @@ export function closure5(v0_1: UH0_$union, unitVar: void): UH0_$union {
 
 export function closure6(v0_1: UH0_$union, v1_1: Mut0, unitVar: void): UH0_$union {
     const v2_1: US0_$union = v1_1.l0;
-    if (v2_1.tag === /* US0_0 */ 0) {
-        const v5: UH0_$union = v2_1.fields[0]();
-        const v12: UH0_$union = (v5.tag === /* UH0_1 */ 1) ? UH0_UH0_1() : UH0_UH0_0(v5.fields[0], method4(v0_1, v5.fields[1]));
+    if ((v2_1.tag as int32) === /* US0_0 */ 0) {
+        const v5: UH0_$union = (v2_1.fields[0] as any)();
+        const v12: UH0_$union = ((v5.tag as int32) === /* UH0_1 */ 1) ? UH0_UH0_1() : UH0_UH0_0(v5.fields[0] as any, method4(v0_1, v5.fields[1] as any));
         v1_1.l0 = US0_US0_1(v12);
         return v12;
     }
     else {
-        return v2_1.fields[0];
+        return v2_1.fields[0] as any;
     }
 }
 
@@ -672,7 +672,7 @@ export function method8(): [US3_$union, US4_$union] {
     let v13: US3_$union, v20: US3_$union, v27: US3_$union, v34: US3_$union;
     const v1_1: string = method9("TRACE_LEVEL");
     const v6: US3_$union = ("Verbose" === v1_1) ? US3_US3_0(US2_US2_0()) : US3_US3_1();
-    return [(v6.tag === /* US3_0 */ 0) ? US3_US3_0(v6.fields[0]) : ((v13 = (("Debug" === v1_1) ? US3_US3_0(US2_US2_1()) : US3_US3_1()), (v13.tag === /* US3_0 */ 0) ? US3_US3_0(v13.fields[0]) : ((v20 = (("Info" === v1_1) ? US3_US3_0(US2_US2_2()) : US3_US3_1()), (v20.tag === /* US3_0 */ 0) ? US3_US3_0(v20.fields[0]) : ((v27 = (("Warning" === v1_1) ? US3_US3_0(US2_US2_3()) : US3_US3_1()), (v27.tag === /* US3_0 */ 0) ? US3_US3_0(v27.fields[0]) : ((v34 = (("Critical" === v1_1) ? US3_US3_0(US2_US2_4()) : US3_US3_1()), (v34.tag === /* US3_0 */ 0) ? US3_US3_0(v34.fields[0]) : US3_US3_1())))))))), (method9("AUTOMATION") !== "True") ? US4_US4_1() : US4_US4_0(toInt64(fromInt64(getTicks(now()))))] as [US3_$union, US4_$union];
+    return [((v6.tag as int32) === /* US3_0 */ 0) ? US3_US3_0(v6.fields[0] as any) : ((v13 = (("Debug" === v1_1) ? US3_US3_0(US2_US2_1()) : US3_US3_1()), ((v13.tag as int32) === /* US3_0 */ 0) ? US3_US3_0(v13.fields[0] as any) : ((v20 = (("Info" === v1_1) ? US3_US3_0(US2_US2_2()) : US3_US3_1()), ((v20.tag as int32) === /* US3_0 */ 0) ? US3_US3_0(v20.fields[0] as any) : ((v27 = (("Warning" === v1_1) ? US3_US3_0(US2_US2_3()) : US3_US3_1()), ((v27.tag as int32) === /* US3_0 */ 0) ? US3_US3_0(v27.fields[0] as any) : ((v34 = (("Critical" === v1_1) ? US3_US3_0(US2_US2_4()) : US3_US3_1()), ((v34.tag as int32) === /* US3_0 */ 0) ? US3_US3_0(v34.fields[0] as any) : US3_US3_1())))))))), (method9("AUTOMATION") !== "True") ? US4_US4_1() : US4_US4_0(toInt64(fromInt64(getTicks(now()))))] as [US3_$union, US4_$union];
 }
 
 export function closure11(unitVar: void, v0_1: string): void {
@@ -685,7 +685,7 @@ export function method7(v0_1: US2_$union): [Mut1, Mut3, Mut4, Mut5, Mut6, Option
     const v131: US3_$union = _run_target_args$0027_v1[0];
     return [new Mut1(1n), new Mut3((v: string): void => {
         closure11(undefined, v);
-    }), new Mut4(true), new Mut5(""), new Mut6((v131.tag === /* US3_0 */ 0) ? v131.fields[0] : v0_1), (v132.tag === /* US4_0 */ 0) ? v132.fields[0] : undefined] as [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>];
+    }), new Mut4(true), new Mut5(""), new Mut6(((v131.tag as int32) === /* US3_0 */ 0) ? (v131.fields[0] as any) : v0_1), ((v132.tag as int32) === /* US4_0 */ 0) ? (v132.fields[0] as any) : undefined] as [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>];
 }
 
 export function closure9(unitVar: void, unitVar_1: void): void {
@@ -732,8 +732,8 @@ export function method16(): string {
 export function method13(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>): string {
     const v321: US4_$union = defaultArg(map<int64, US4_$union>(method14(), v5), US4_US4_1());
     let v418: Date;
-    if (v321.tag === /* US4_0 */ 0) {
-        const v325: int64 = v321.fields[0];
+    if ((v321.tag as int32) === /* US4_0 */ 0) {
+        const v325 = v321.fields[0] as any;
         const v378: number = fromTicks(toInt64(op_Subtraction(toInt64(fromInt64(getTicks(now()))), v325)));
         v418 = create(1, 1, 1, hours(v378), minutes(v378), seconds(v378), milliseconds(v378));
     }
@@ -882,12 +882,12 @@ export function method25(v0_1_mut: int64, v1_1_mut: UH0_$union): US1_$union {
     method25:
     while (true) {
         const v0_1: int64 = v0_1_mut, v1_1: UH0_$union = v1_1_mut;
-        if (v1_1.tag === /* UH0_1 */ 1) {
+        if ((v1_1.tag as int32) === /* UH0_1 */ 1) {
             return US1_US1_1();
         }
         else {
-            const v3_1: (() => UH0_$union) = v1_1.fields[1];
-            const v2_1: uint8 = v1_1.fields[0];
+            const v3_1 = v1_1.fields[1] as any;
+            const v2_1 = v1_1.fields[0] as any;
             if (compare_1(v0_1, 0n) <= 0) {
                 return US1_US1_0(v2_1);
             }
@@ -936,12 +936,12 @@ export function method5(v0_1_mut: (() => UH0_$union), v1_1_mut: Mut1, v2_1_mut: 
         const v7: int64 = v3_1.l0;
         const v8: US1_$union = v4_1.l0;
         let v18: any;
-        closure8(v5, v6, v7, (v8.tag === /* US1_0 */ 0) ? v8.fields[0] : undefined, undefined);
+        closure8(v5, v6, v7, ((v8.tag as int32) === /* US1_0 */ 0) ? (v8.fields[0] as any) : undefined, undefined);
         v18 = undefined;
         const v61: UH0_$union = v0_1();
         const v63: US1_$union = method25(v1_1.l0, v61);
-        if (v63.tag === /* US1_0 */ 0) {
-            const v64: uint8 = v63.fields[0];
+        if ((v63.tag as int32) === /* US1_0 */ 0) {
+            const v64 = v63.fields[0] as any;
             const v66: int64 = toInt64(op_Addition(v1_1.l0, 1n));
             v1_1.l0 = v66;
             v4_1.l0 = US1_US1_0(v64);
@@ -1404,15 +1404,15 @@ export function method35(v0_1_mut: int8, v1_1_mut: UH2_$union): US9_$union {
     method35:
     while (true) {
         const v0_1: int8 = v0_1_mut, v1_1: UH2_$union = v1_1_mut;
-        if (v1_1.tag === /* UH2_1 */ 1) {
+        if ((v1_1.tag as int32) === /* UH2_1 */ 1) {
             return US9_US9_1();
         }
         else if (v0_1 <= 0) {
-            return US9_US9_0(v1_1.fields[0]);
+            return US9_US9_0(v1_1.fields[0] as any);
         }
         else {
             v0_1_mut = (v0_1 - 1);
-            v1_1_mut = v1_1.fields[1]();
+            v1_1_mut = (v1_1.fields[1] as any)();
             continue method35;
         }
         break;
@@ -1572,17 +1572,17 @@ export function method32(v0_1_mut: int8, v1_1_mut: UH1_$union, v2_1_mut: uint64)
             v7 = undefined;
             return US8_US8_0(v4_1, v1_1);
         }
-        else if (v1_1.tag === /* UH1_0 */ 0) {
+        else if ((v1_1.tag as int32) === /* UH1_0 */ 0) {
             return US8_US8_1();
         }
         else {
-            const v50: UH1_$union = v1_1.fields[1];
-            const v49: uint8 = v1_1.fields[0];
+            const v50 = v1_1.fields[1] as any;
+            const v49 = v1_1.fields[0] as any;
             if (v49 > 1) {
                 const v55: US9_$union = method35(v0_1, UH2_UH2_0(1n, (): UH2_$union => closure23(undefined, undefined)));
                 let v59: uint64;
-                if (v55.tag === /* US9_0 */ 0) {
-                    v59 = v55.fields[0];
+                if ((v55.tag as int32) === /* US9_0 */ 0) {
+                    v59 = (v55.fields[0] as any);
                 }
                 else {
                     throw new Error("Option does not have a value.");
@@ -1629,9 +1629,9 @@ export function method41(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: u
         }
         else {
             const v11: US8_$union = method32(v3_1, v4_1, 0n);
-            if (v11.tag === /* US8_0 */ 0) {
-                const v13: UH1_$union = v11.fields[1];
-                const v12: uint64 = v11.fields[0];
+            if ((v11.tag as int32) === /* US8_0 */ 0) {
+                const v13 = v11.fields[1] as any;
+                const v12 = v11.fields[0] as any;
                 if (compare_1(v12, v2_1) <= 0) {
                     return v12;
                 }
@@ -1678,9 +1678,9 @@ export function method31(v0_1_mut: (() => uint8), v1_1_mut: boolean, v2_1_mut: u
         }
         else {
             const v13: US8_$union = method32(v3_1, v4_1, 0n);
-            if (v13.tag === /* US8_0 */ 0) {
-                const v15: UH1_$union = v13.fields[1];
-                const v14: uint64 = v13.fields[0];
+            if ((v13.tag as int32) === /* US8_0 */ 0) {
+                const v15 = v13.fields[1] as any;
+                const v14 = v13.fields[0] as any;
                 if (compare_1(v14, v2_1) <= 0) {
                     return v14;
                 }
@@ -1730,12 +1730,12 @@ export function method42(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
     method42:
     while (true) {
         const v0_1: UH1_$union = v0_1_mut, v1_1: int8 = v1_1_mut;
-        if (v0_1.tag === /* UH1_0 */ 0) {
+        if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
             return v1_1 | 0;
         }
         else {
-            const v2_1: uint8 = v0_1.fields[0];
-            v0_1_mut = v0_1.fields[1];
+            const v2_1 = v0_1.fields[0] as any;
+            v0_1_mut = (v0_1.fields[1] as any);
             v1_1_mut = (v1_1 + 1);
             continue method42;
         }
@@ -1746,16 +1746,16 @@ export function method42(v0_1_mut: UH1_$union, v1_1_mut: int8): int8 {
 export function closure90(v0_1: uint64, v1_1: UH1_$union): Option<uint64> {
     const v6: US8_$union = method32(method42(v1_1, 0) - 1, v1_1, 0n);
     let v16: US9_$union;
-    if (v6.tag === /* US8_0 */ 0) {
-        const v8: UH1_$union = v6.fields[1];
-        const v7: uint64 = v6.fields[0];
+    if ((v6.tag as int32) === /* US8_0 */ 0) {
+        const v8 = v6.fields[1] as any;
+        const v7 = v6.fields[0] as any;
         v16 = (((compare_1(v7, 1n) >= 0) && (compare_1(v7, v0_1) <= 0)) ? US9_US9_0(v7) : US9_US9_1());
     }
     else {
         v16 = US9_US9_1();
     }
-    if (v16.tag === /* US9_0 */ 0) {
-        return v16.fields[0];
+    if ((v16.tag as int32) === /* US9_0 */ 0) {
+        return v16.fields[0] as any;
     }
     else {
         return undefined;
@@ -2538,12 +2538,12 @@ export function closure118(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method94(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v7: int64 = toInt64(fromUInt8(v3_1 - 1));
             let v10: any;
@@ -2582,12 +2582,12 @@ export function closure119(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method92(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 6n));
             let v11: any;
@@ -2626,12 +2626,12 @@ export function closure120(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method90(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 36n));
             let v11: any;
@@ -2670,12 +2670,12 @@ export function closure121(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method88(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 216n));
             let v11: any;
@@ -2714,12 +2714,12 @@ export function closure122(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method86(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 1296n));
             let v11: any;
@@ -2758,12 +2758,12 @@ export function closure123(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method84(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 7776n));
             let v11: any;
@@ -2802,12 +2802,12 @@ export function closure124(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method82(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 46656n));
             let v11: any;
@@ -2846,12 +2846,12 @@ export function closure125(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method80(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 279936n));
             let v11: any;
@@ -2890,12 +2890,12 @@ export function closure126(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method78(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 1679616n));
             let v11: any;
@@ -2934,12 +2934,12 @@ export function closure127(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method76(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 10077696n));
             let v11: any;
@@ -2978,12 +2978,12 @@ export function closure128(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method74(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 60466176n));
             let v11: any;
@@ -3022,12 +3022,12 @@ export function closure129(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method72(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 362797056n));
             let v11: any;
@@ -3066,12 +3066,12 @@ export function closure130(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method70(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 2176782336n));
             let v11: any;
@@ -3110,12 +3110,12 @@ export function closure131(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method68(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 13060694016n));
             let v11: any;
@@ -3154,12 +3154,12 @@ export function closure132(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method66(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 78364164096n));
             let v11: any;
@@ -3198,12 +3198,12 @@ export function closure133(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method64(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 470184984576n));
             let v11: any;
@@ -3242,12 +3242,12 @@ export function closure134(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method62(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 2821109907456n));
             let v11: any;
@@ -3286,12 +3286,12 @@ export function closure135(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method60(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 16926659444736n));
             let v11: any;
@@ -3330,12 +3330,12 @@ export function closure136(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method58(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 101559956668416n));
             let v11: any;
@@ -3374,12 +3374,12 @@ export function closure137(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method56(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 609359740010496n));
             let v11: any;
@@ -3418,12 +3418,12 @@ export function closure138(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method54(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 3656158440062976n));
             let v11: any;
@@ -3462,12 +3462,12 @@ export function closure139(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method52(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 21936950640377856n));
             let v11: any;
@@ -3506,12 +3506,12 @@ export function closure140(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method50(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 131621703842267136n));
             let v11: any;
@@ -3550,12 +3550,12 @@ export function closure141(v0_1: int64, v1_1: uint8, unitVar: void): void {
 }
 
 export function method47(v0_1: UH1_$union, v1_1: int64): US10_$union {
-    if (v0_1.tag === /* UH1_0 */ 0) {
+    if ((v0_1.tag as int32) === /* UH1_0 */ 0) {
         return US10_US10_1();
     }
     else {
-        const v4_1: UH1_$union = v0_1.fields[1];
-        const v3_1: uint8 = v0_1.fields[0];
+        const v4_1 = v0_1.fields[1] as any;
+        const v3_1 = v0_1.fields[0] as any;
         if (v3_1 > 1) {
             const v8: int64 = toInt64(op_Multiply(toInt64(fromUInt8(v3_1 - 1)), 789730223053602816n));
             let v11: any;
@@ -3583,9 +3583,9 @@ export function method45(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
         }
         else {
             const v8: US10_$union = method47(v0_1, 0n);
-            if (v8.tag === /* US10_0 */ 0) {
-                const v9: int64 = v8.fields[0];
-                const v10: UH1_$union = v8.fields[1];
+            if ((v8.tag as int32) === /* US10_0 */ 0) {
+                const v9 = v8.fields[0] as any;
+                const v10 = v8.fields[1] as any;
                 if (compare_1(v9, 9223372036854775807n) <= 0) {
                     return v9;
                 }
