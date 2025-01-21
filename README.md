@@ -4,26 +4,6 @@
 
 [![깃허브 코드스페이스](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=756477988)
 
-## Build
-
-```ps1
-pwsh scripts/init.ps1
-pwsh scripts/build.ps1
-```
-
-## Links
-
-### Code and Documentation
-
-- Smart Contract Dice Rolls History (Rust WASM frontend, display of on-chain data using NEAR Protocol queried from their Public API)
-<https://i574n.github.io/dice/ui/dist>
-
-- Repository File Tree
-<https://i574n.github.io/dice>
-
-- Dice Core Code
-<https://i574n.github.io/dice/lib/dice.dib.html>
-
 ---
 
 **\* Temporary README drafted with ChatGPT.**
@@ -43,6 +23,28 @@ pwsh scripts/build.ps1
     - [Rust and Spiral](#rust-and-spiral)
     - [UI Evolution](#ui-evolution)
     - [Lessons Learned and Path Forward](#lessons-learned-and-path-forward)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Build
+
+```ps1
+pwsh scripts/init.ps1
+pwsh scripts/build.ps1
+```
+
+## Links
+
+### Code and Documentation
+
+- Smart Contract Dice Rolls History (Rust WASM frontend, display of on-chain data using NEAR Protocol queried from their Public API)
+<https://i574n.github.io/dice/ui/dist>
+
+- Repository File Tree
+<https://i574n.github.io/dice>
+
+- Dice Core Code
+<https://i574n.github.io/dice/lib/dice.dib.html>
 
 ## Updates
 
@@ -113,6 +115,14 @@ In conclusion, the development of the UI component, while challenging, has been 
 
 This assessment, while highlighting the hurdles we've faced, also stands as a testament to the progress we've made and the unwavering dedication of our team to excellence. We look forward to sharing our continued journey with the community on GitHub and beyond.
 
+## Contributing
+
+Contributions are welcome! Please see the [CONTRIBUTING.md](https://github.com/i574n/.github/blob/main/CONTRIBUTING.md) for guidelines.
+
+## License
+
+This project is licensed under the AGPLv3 License. See the [LICENSE](https://github.com/i574n/dice/blob/main/LICENSE) file for details.
+
 ---
 
-[![Star History Chart](https://api.star-history.com/svg?repos=i574n/dice&type=Timeline)](https://star-history.com/#i574n/dice&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=i574n/dice&type=Timeline)]
