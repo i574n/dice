@@ -2021,7 +2021,7 @@ and closure72 (v0 : US27, v1 : int32) struct (v2 : string, v3 : US23, v4 : strin
     let v8 : bool = Fable.Core.RustInterop.emitRustExpr () v7 
     let v9 : string = "*/ async move { /*"
     let v10 : bool = Fable.Core.RustInterop.emitRustExpr () v9 
-    let v11 : string = "*/ //"
+    let v11 : string = "*/ ()"
     let v12 : bool = Fable.Core.RustInterop.emitRustExpr () v11 
     let v58 : US29 =
         match v0 with
@@ -3408,7 +3408,7 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let v12 : bool = Fable.Core.RustInterop.emitRustExpr () v11 
     let v13 : string = "*/ async move { /*"
     let v14 : bool = Fable.Core.RustInterop.emitRustExpr () v13 
-    let v15 : string = "*/ //"
+    let v15 : string = "*/ ()"
     let v16 : bool = Fable.Core.RustInterop.emitRustExpr () v15 
     let v17 : string = "state_core.use_database (2) / database new_local_resource"
     let v18 : string = @$"true; leptos::logging::log!(""{{}}"", $0)"
@@ -3420,7 +3420,7 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let v24 : bool = Fable.Core.RustInterop.emitRustExpr () v23 
     let v25 : string = "*/ async { /*"
     let v26 : bool = Fable.Core.RustInterop.emitRustExpr () v25 
-    let v27 : string = "*/ //"
+    let v27 : string = "*/ ()"
     let v28 : bool = Fable.Core.RustInterop.emitRustExpr () v27 
     let v29 : string = "Box::pin(rexie::Rexie::builder(\"database\").version(1).add_object_store(rexie::ObjectStore::new(\"store\")).build())"
     let v30 : std_pin_Pin<Box<Dyn<std_future_Future<Result<rexie_Rexie, rexie_Error>>>>> = Fable.Core.RustInterop.emitRustExpr () v29 
@@ -3639,7 +3639,7 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let v144 : bool = Fable.Core.RustInterop.emitRustExpr () v143 
     let v145 : string = "*/ async move { /*"
     let v146 : bool = Fable.Core.RustInterop.emitRustExpr () v145 
-    let v147 : string = "*/ //"
+    let v147 : string = "*/ ()"
     let v148 : bool = Fable.Core.RustInterop.emitRustExpr () v147 
     let v149 : string = $"%A{v140}"
     let v152 : string = $"%A{v142}"
@@ -3678,7 +3678,7 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let v202 : bool = Fable.Core.RustInterop.emitRustExpr () v201 
             let v203 : string = "*/ async { /*"
             let v204 : bool = Fable.Core.RustInterop.emitRustExpr () v203 
-            let v205 : string = "*/ //"
+            let v205 : string = "*/ ()"
             let v206 : bool = Fable.Core.RustInterop.emitRustExpr () v205 
             let v207 : string = "store"
             let v208 : (string []) = [|v207|]
@@ -4386,7 +4386,7 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let v654 : bool = Fable.Core.RustInterop.emitRustExpr () v653 
     let v655 : string = "*/ async move { /*"
     let v656 : bool = Fable.Core.RustInterop.emitRustExpr () v655 
-    let v657 : string = "*/ //"
+    let v657 : string = "*/ ()"
     let v658 : bool = Fable.Core.RustInterop.emitRustExpr () v657 
     let v659 : (Result<Vec<Heap4 option>, std_string_String> -> US26) = method82()
     let v660 : US26 option = v644 |> Option.map v659 
@@ -4503,7 +4503,7 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
     let v774 : bool = Fable.Core.RustInterop.emitRustExpr () v773 
     let v775 : string = "*/ async move { /*"
     let v776 : bool = Fable.Core.RustInterop.emitRustExpr () v775 
-    let v777 : string = "*/ //"
+    let v777 : string = "*/ ()"
     let v778 : bool = Fable.Core.RustInterop.emitRustExpr () v777 
     let v779 : string = "Box::pin($0)"
     let v780 : std_pin_Pin<Box<leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * bool * bool)>>>> = Fable.Core.RustInterop.emitRustExpr v0 v779 
@@ -4539,7 +4539,7 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let v825 : bool = Fable.Core.RustInterop.emitRustExpr () v824 
             let v826 : string = "*/ async move { /*"
             let v827 : bool = Fable.Core.RustInterop.emitRustExpr () v826 
-            let v828 : string = "*/ //"
+            let v828 : string = "*/ ()"
             let v829 : bool = Fable.Core.RustInterop.emitRustExpr () v828 
             let v830 : string = "state_core.use_requests (11) / set_state_data_action / database=Some(_) / url: " + v819 + ""
             let v831 : string = @$"true; leptos::logging::log!(""{{}}"", $0)"
@@ -4554,7 +4554,7 @@ and method78 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * b
             let v842 : bool = Fable.Core.RustInterop.emitRustExpr () v841 
             let v843 : string = "*/ async move { /*"
             let v844 : bool = Fable.Core.RustInterop.emitRustExpr () v843 
-            let v845 : string = "*/ //"
+            let v845 : string = "*/ ()"
             let v846 : bool = Fable.Core.RustInterop.emitRustExpr () v845 
             let v847 : string = "true; let mut data = Vec::new()"
             let v848 : bool = Fable.Core.RustInterop.emitRustExpr () v847 
@@ -6741,7 +6741,7 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let v12 : bool = Fable.Core.RustInterop.emitRustExpr () v11 
     let v13 : string = "*/ async move { /*"
     let v14 : bool = Fable.Core.RustInterop.emitRustExpr () v13 
-    let v15 : string = "*/ //"
+    let v15 : string = "*/ ()"
     let v16 : bool = Fable.Core.RustInterop.emitRustExpr () v15 
     let v17 : string = "state_core.use_database (2) / database new_local_resource"
     let v18 : string = @$"true; leptos::logging::log!(""{{}}"", $0)"
@@ -6753,7 +6753,7 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let v24 : bool = Fable.Core.RustInterop.emitRustExpr () v23 
     let v25 : string = "*/ async { /*"
     let v26 : bool = Fable.Core.RustInterop.emitRustExpr () v25 
-    let v27 : string = "*/ //"
+    let v27 : string = "*/ ()"
     let v28 : bool = Fable.Core.RustInterop.emitRustExpr () v27 
     let v29 : string = "Box::pin(rexie::Rexie::builder(\"database\").version(1).add_object_store(rexie::ObjectStore::new(\"store\")).build())"
     let v30 : std_pin_Pin<Box<Dyn<std_future_Future<Result<rexie_Rexie, rexie_Error>>>>> = Fable.Core.RustInterop.emitRustExpr () v29 
@@ -6972,7 +6972,7 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let v144 : bool = Fable.Core.RustInterop.emitRustExpr () v143 
     let v145 : string = "*/ async move { /*"
     let v146 : bool = Fable.Core.RustInterop.emitRustExpr () v145 
-    let v147 : string = "*/ //"
+    let v147 : string = "*/ ()"
     let v148 : bool = Fable.Core.RustInterop.emitRustExpr () v147 
     let v149 : string = $"%A{v140}"
     let v152 : string = $"%A{v142}"
@@ -7011,7 +7011,7 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v202 : bool = Fable.Core.RustInterop.emitRustExpr () v201 
             let v203 : string = "*/ async { /*"
             let v204 : bool = Fable.Core.RustInterop.emitRustExpr () v203 
-            let v205 : string = "*/ //"
+            let v205 : string = "*/ ()"
             let v206 : bool = Fable.Core.RustInterop.emitRustExpr () v205 
             let v207 : string = "store"
             let v208 : (string []) = [|v207|]
@@ -7719,7 +7719,7 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let v654 : bool = Fable.Core.RustInterop.emitRustExpr () v653 
     let v655 : string = "*/ async move { /*"
     let v656 : bool = Fable.Core.RustInterop.emitRustExpr () v655 
-    let v657 : string = "*/ //"
+    let v657 : string = "*/ ()"
     let v658 : bool = Fable.Core.RustInterop.emitRustExpr () v657 
     let v659 : (Result<Vec<Heap4 option>, std_string_String> -> US26) = method82()
     let v660 : US26 option = v644 |> Option.map v659 
@@ -7836,7 +7836,7 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
     let v774 : bool = Fable.Core.RustInterop.emitRustExpr () v773 
     let v775 : string = "*/ async move { /*"
     let v776 : bool = Fable.Core.RustInterop.emitRustExpr () v775 
-    let v777 : string = "*/ //"
+    let v777 : string = "*/ ()"
     let v778 : bool = Fable.Core.RustInterop.emitRustExpr () v777 
     let v779 : string = "Box::pin($0)"
     let v780 : std_pin_Pin<Box<leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * bool * bool)>>>> = Fable.Core.RustInterop.emitRustExpr v0 v779 
@@ -7872,7 +7872,7 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v825 : bool = Fable.Core.RustInterop.emitRustExpr () v824 
             let v826 : string = "*/ async move { /*"
             let v827 : bool = Fable.Core.RustInterop.emitRustExpr () v826 
-            let v828 : string = "*/ //"
+            let v828 : string = "*/ ()"
             let v829 : bool = Fable.Core.RustInterop.emitRustExpr () v828 
             let v830 : string = "state_core.use_requests (11) / set_state_data_action / database=Some(_) / url: " + v819 + ""
             let v831 : string = @$"true; leptos::logging::log!(""{{}}"", $0)"
@@ -7887,7 +7887,7 @@ and method159 (v0 : leptos_prelude_ArcMemo<Vec<struct (string * US23 * string * 
             let v842 : bool = Fable.Core.RustInterop.emitRustExpr () v841 
             let v843 : string = "*/ async move { /*"
             let v844 : bool = Fable.Core.RustInterop.emitRustExpr () v843 
-            let v845 : string = "*/ //"
+            let v845 : string = "*/ ()"
             let v846 : bool = Fable.Core.RustInterop.emitRustExpr () v845 
             let v847 : string = "true; let mut data = Vec::new()"
             let v848 : bool = Fable.Core.RustInterop.emitRustExpr () v847 
@@ -25986,7 +25986,7 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v15 : bool = Fable.Core.RustInterop.emitRustExpr () v14 
     let v16 : string = "*/ async move { /*"
     let v17 : bool = Fable.Core.RustInterop.emitRustExpr () v16 
-    let v18 : string = "*/ //"
+    let v18 : string = "*/ ()"
     let v19 : bool = Fable.Core.RustInterop.emitRustExpr () v18 
     let v20 : string = "state_core.use_database (2) / database new_local_resource"
     let v21 : string = @$"true; leptos::logging::log!(""{{}}"", $0)"
@@ -25998,7 +25998,7 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v27 : bool = Fable.Core.RustInterop.emitRustExpr () v26 
     let v28 : string = "*/ async { /*"
     let v29 : bool = Fable.Core.RustInterop.emitRustExpr () v28 
-    let v30 : string = "*/ //"
+    let v30 : string = "*/ ()"
     let v31 : bool = Fable.Core.RustInterop.emitRustExpr () v30 
     let v32 : string = "Box::pin(rexie::Rexie::builder(\"database\").version(1).add_object_store(rexie::ObjectStore::new(\"store\")).build())"
     let v33 : std_pin_Pin<Box<Dyn<std_future_Future<Result<rexie_Rexie, rexie_Error>>>>> = Fable.Core.RustInterop.emitRustExpr () v32 
@@ -26215,7 +26215,7 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v145 : bool = Fable.Core.RustInterop.emitRustExpr () v144 
     let v146 : string = "*/ async move { /*"
     let v147 : bool = Fable.Core.RustInterop.emitRustExpr () v146 
-    let v148 : string = "*/ //"
+    let v148 : string = "*/ ()"
     let v149 : bool = Fable.Core.RustInterop.emitRustExpr () v148 
     let v150 : string = $"%A{v143}"
     let v153 : string = "state_core.use_core_database (2) / core_state_heap new_local_resource / database: " + v150 + ""
@@ -26248,7 +26248,7 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v189 : bool = Fable.Core.RustInterop.emitRustExpr () v188 
             let v190 : string = "*/ async { /*"
             let v191 : bool = Fable.Core.RustInterop.emitRustExpr () v190 
-            let v192 : string = "*/ //"
+            let v192 : string = "*/ ()"
             let v193 : bool = Fable.Core.RustInterop.emitRustExpr () v192 
             let v194 : string = "store"
             let v195 : (string []) = [|v194|]
@@ -27190,7 +27190,7 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
     let v1149 : bool = Fable.Core.RustInterop.emitRustExpr () v1148 
     let v1150 : string = "*/ async move { /*"
     let v1151 : bool = Fable.Core.RustInterop.emitRustExpr () v1150 
-    let v1152 : string = "*/ //"
+    let v1152 : string = "*/ ()"
     let v1153 : bool = Fable.Core.RustInterop.emitRustExpr () v1152 
     let v1241 : bool =
         match v1144 with
@@ -27212,7 +27212,7 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v1166 : bool = Fable.Core.RustInterop.emitRustExpr () v1165 
             let v1167 : string = "*/ async move { /*"
             let v1168 : bool = Fable.Core.RustInterop.emitRustExpr () v1167 
-            let v1169 : string = "*/ //"
+            let v1169 : string = "*/ ()"
             let v1170 : bool = Fable.Core.RustInterop.emitRustExpr () v1169 
             let v1171 : string = "true; let mut data = Vec::new()"
             let v1172 : bool = Fable.Core.RustInterop.emitRustExpr () v1171 
@@ -28128,7 +28128,7 @@ and closure5 () (v0 : int32) : leptos_prelude_View<leptos_dom_html_HtmlElement<l
             let v1889 : bool = Fable.Core.RustInterop.emitRustExpr () v1888 
             let v1890 : string = "*/ async move { /*"
             let v1891 : bool = Fable.Core.RustInterop.emitRustExpr () v1890 
-            let v1892 : string = "*/ //"
+            let v1892 : string = "*/ ()"
             let v1893 : bool = Fable.Core.RustInterop.emitRustExpr () v1892 
             let v1894 : string = "2.0"
             (* run_target_args'

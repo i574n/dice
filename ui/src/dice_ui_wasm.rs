@@ -2718,7 +2718,7 @@ mod module_9c940d83 {
                 async move {
                     /*;
                     let v12: bool = */
- //;
+                    ();
                     let v58: Dice_ui::US29 = match &v0_1 {
                         Dice_ui::US27::US27_0(v0_1_0_0) => {
                             let v13: Dice_ui::US28 = match &v0_1 {
@@ -4065,7 +4065,7 @@ mod module_9c940d83 {
                     async move {
                         /*;
                         let v16: bool = */
- //;
+                        ();
                         let v19: bool = true;
                         leptos::logging::log!(
                             "{}",
@@ -4080,7 +4080,7 @@ mod module_9c940d83 {
                             async {
                                 /*;
                                 let v28: bool = */
- //;
+                                ();
                                 let v29: string =
                 string("Box::pin(rexie::Rexie::builder(\"database\").version(1).add_object_store(rexie::ObjectStore::new(\"store\")).build())");
                                 let v30: std::pin::Pin<
@@ -4200,7 +4200,7 @@ mod module_9c940d83 {
                     async move {
                         /*;
                         let v148: bool = */
- //;
+                        ();
                         let v149: string = sprintf!("{:?}", v140.clone());
                         let v157: string =
                 append((append((append((append(string("state_core.use_requests (3) / state_data_resource new_local_resource / request : "),
@@ -4254,7 +4254,7 @@ mod module_9c940d83 {
                                     async {
                                         /*;
                                         let v206: bool = */
- //;
+                                        ();
                                         let v208: Array<string> = new_array(&[string("store")]);
                                         let v210: Vec<string> = v208.to_vec();
                                         let v213: bool = true;
@@ -4615,7 +4615,7 @@ mod module_9c940d83 {
                     async move {
                         /*;
                         let v658: bool = */
- //;
+                        ();
                         let v672: Dice_ui::US26 =
                             defaultValue(Dice_ui::US26::US26_1, map(Dice_ui::method82(), v644));
                         let v714: Dice_ui::US27 = match &v672 {
@@ -4761,7 +4761,7 @@ mod module_9c940d83 {
                     async move {
                         /*;
                         let v778: bool = */
- //;
+                        ();
                         let v780: std::pin::Pin<
                             Box<
                                 leptos::prelude::ArcMemo<
@@ -4805,7 +4805,7 @@ mod module_9c940d83 {
                                     async move {
                                         /*;
                                         let v829: bool = */
- //;
+                                        ();
                                         let v830: string =
                         append((append(string("state_core.use_requests (11) / set_state_data_action / database=Some(_) / url: "),
                                        (v819.clone()))), string(""));
@@ -4839,7 +4839,7 @@ mod module_9c940d83 {
                                             async move {
                                                 /*;
                                                 let v846: bool = */
- //;
+                                                ();
                                                 let v848: bool = true;
                                                 let mut data = Vec::new();
                                                 let v850: bool = true;
@@ -9473,7 +9473,7 @@ mod module_9c940d83 {
                     async move {
                         /*;
                         let v16: bool = */
- //;
+                        ();
                         let v19: bool = true;
                         leptos::logging::log!(
                             "{}",
@@ -9488,7 +9488,7 @@ mod module_9c940d83 {
                             async {
                                 /*;
                                 let v28: bool = */
- //;
+                                ();
                                 let v29: string =
                 string("Box::pin(rexie::Rexie::builder(\"database\").version(1).add_object_store(rexie::ObjectStore::new(\"store\")).build())");
                                 let v30: std::pin::Pin<
@@ -9608,7 +9608,7 @@ mod module_9c940d83 {
                     async move {
                         /*;
                         let v148: bool = */
- //;
+                        ();
                         let v149: string = sprintf!("{:?}", v140.clone());
                         let v157: string =
                 append((append((append((append(string("state_core.use_requests (3) / state_data_resource new_local_resource / request : "),
@@ -9662,7 +9662,7 @@ mod module_9c940d83 {
                                     async {
                                         /*;
                                         let v206: bool = */
- //;
+                                        ();
                                         let v208: Array<string> = new_array(&[string("store")]);
                                         let v210: Vec<string> = v208.to_vec();
                                         let v213: bool = true;
@@ -10023,7 +10023,7 @@ mod module_9c940d83 {
                     async move {
                         /*;
                         let v658: bool = */
- //;
+                        ();
                         let v672: Dice_ui::US26 =
                             defaultValue(Dice_ui::US26::US26_1, map(Dice_ui::method82(), v644));
                         let v714: Dice_ui::US27 = match &v672 {
@@ -10169,7 +10169,7 @@ mod module_9c940d83 {
                     async move {
                         /*;
                         let v778: bool = */
- //;
+                        ();
                         let v780: std::pin::Pin<
                             Box<
                                 leptos::prelude::ArcMemo<
@@ -10213,7 +10213,7 @@ mod module_9c940d83 {
                                     async move {
                                         /*;
                                         let v829: bool = */
- //;
+                                        ();
                                         let v830: string =
                         append((append(string("state_core.use_requests (11) / set_state_data_action / database=Some(_) / url: "),
                                        (v819.clone()))), string(""));
@@ -10247,7 +10247,7 @@ mod module_9c940d83 {
                                             async move {
                                                 /*;
                                                 let v846: bool = */
- //;
+                                                ();
                                                 let v848: bool = true;
                                                 let mut data = Vec::new();
                                                 let v850: bool = true;
@@ -25072,7 +25072,7 @@ mod module_9c940d83 {
                     async move {
                         /*;
                         let v19: bool = */
- //;
+                        ();
                         let v22: bool = true;
                         leptos::logging::log!(
                             "{}",
@@ -25087,7 +25087,7 @@ mod module_9c940d83 {
                             async {
                                 /*;
                                 let v31: bool = */
- //;
+                                ();
                                 let v32: string =
                 string("Box::pin(rexie::Rexie::builder(\"database\").version(1).add_object_store(rexie::ObjectStore::new(\"store\")).build())");
                                 let v33: std::pin::Pin<
@@ -25199,7 +25199,7 @@ mod module_9c940d83 {
                     async move {
                         /*;
                         let v149: bool = */
- //;
+                        ();
                         let v153: string =
                 append((append(string("state_core.use_core_database (2) / core_state_heap new_local_resource / database: "),
                                sprintf!("{:?}", v143.clone()))), string(""));
@@ -25229,7 +25229,7 @@ mod module_9c940d83 {
                                     async {
                                         /*;
                                         let v193: bool = */
- //;
+                                        ();
                                         let v195: Array<string> = new_array(&[string("store")]);
                                         let v197: Vec<string> = v195.to_vec();
                                         let v200: bool = true;
@@ -25827,7 +25827,7 @@ mod module_9c940d83 {
                     async move {
                         /*;
                         let v1153: bool = */
- //;
+                        ();
                         let v1241: bool = match &v1144 {
                             Dice_ui::US2::US2_0(v1144_0_0) => {
                                 let v1155: string =
@@ -25851,7 +25851,7 @@ mod module_9c940d83 {
                                     async move {
                                         /*;
                                         let v1170: bool = */
- //;
+                                        ();
                                         let v1172: bool = true;
                                         let mut data = Vec::new();
                                         let v1174: bool = true;
@@ -26552,7 +26552,7 @@ mod module_9c940d83 {
                             async move {
                                 /*;
                                 let v1893: bool = */
- //;
+                                ();
                                 let v1899: &str = &*string("2.0");
                                 let v1923: std::string::String = String::from(v1899);
                                 let v1948: &str = &*string("dontcare");
