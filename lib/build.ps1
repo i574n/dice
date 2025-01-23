@@ -30,8 +30,6 @@ $builderArgs = @("$projectName.fsx", $runtime, "--packages", "Fable.Core", "--mo
 $targetDir = GetTargetDir $projectName
 
 { BuildFable $targetDir $projectName "rs" } | Invoke-Block
-{ BuildFable $targetDir $projectName "ts" } | Invoke-Block
-{ BuildFable $targetDir $projectName "py" } | Invoke-Block
 
 $Path = "$targetDir/target/rs/$projectName.rs"
 if (!($Path | Test-Path)) {
@@ -49,8 +47,11 @@ Write-Output "dice/lib/build.ps1 / Path: $Path / Target: $Target"
     | FixRust `
     | Set-Content $Target
 
+{ BuildFable $targetDir $projectName "ts" } | Invoke-Block
+
 $Path = "$targetDir/target/ts/$projectName.ts"
 if (!($Path | Test-Path)) {
+    { ls } | Invoke-Block -Location "$targetDir/target/ts"
     $Path = "$targetDir/target/ts/polyglot/target/Builder/$projectName/$projectName.ts"
 }
 $Target = "$projectName.ts"
@@ -59,6 +60,8 @@ Write-Output "dice/lib/build.ps1 / Path: $Path / Target: $Target"
     | FixTypeScript `
     | FixTypeScriptExternal `
     | Set-Content $Target
+
+{ BuildFable $targetDir $projectName "py" } | Invoke-Block
 
 $Path = "$targetDir/target/py/$projectName.py"
 if (!($Path | Test-Path)) {
