@@ -25,7 +25,7 @@ mod module_9c940d83 {
         use fable_library_rust::NativeArray_::new_empty;
         use fable_library_rust::NativeArray_::new_init;
         use fable_library_rust::NativeArray_::Array;
-        use fable_library_rust::Native_::getZero;
+        use fable_library_rust::Native_::getNull;
         use fable_library_rust::Native_::on_startup;
         use fable_library_rust::Native_::Any;
         use fable_library_rust::Native_::Func0;
@@ -1218,7 +1218,7 @@ mod module_9c940d83 {
                 /*;
                 {
                     let v7: */
-                std::sync::Arc<rexie::Rexie>, /* = getZero();
+                std::sync::Arc<rexie::Rexie>, /* = fable_library_rust::Native_::getZero();
                                                */
             >
         {
@@ -17100,7 +17100,7 @@ mod module_9c940d83 {
                             &v442.l3.clone(),
                             |x: &mut /*;
                              let v446: */
-                             LrcPtr<Dice_ui::Heap0> /* = getZero();
+                             LrcPtr<Dice_ui::Heap0> /* = fable_library_rust::Native_::getZero();
                                                     let v451: bool =
                                                         */| {
                                 *x = Func1::new({
@@ -17117,7 +17117,7 @@ mod module_9c940d83 {
                             &v4,
                             |x: &mut /*;
                              let v454: */
-                             i32 /* = getZero();
+                             i32 /* = fable_library_rust::Native_::getZero();
                                  let v459: bool =
                                      */| {
                                 *x = Func1::new(move |v_3: i32| Dice_ui::closure201((), v_3))(
@@ -17346,7 +17346,7 @@ mod module_9c940d83 {
                 &v6.l0.clone(),
                 |x: &mut /*;
                  let v10: */
-                 bool /* = getZero();
+                 bool /* = fable_library_rust::Native_::getZero();
                       let v15: bool =
                           */| {
                     *x = Func1::new(move |v: bool| Dice_ui::closure230((), v))(x.clone())
@@ -17698,7 +17698,7 @@ mod module_9c940d83 {
                 &v6.l1.clone(),
                 |x: &mut /*;
                  let v10: */
-                 bool /* = getZero();
+                 bool /* = fable_library_rust::Native_::getZero();
                       let v15: bool =
                           */| {
                     *x = Func1::new(move |v: bool| Dice_ui::closure230((), v))(x.clone())
@@ -18498,7 +18498,7 @@ mod module_9c940d83 {
                 &v0_1,
                 |x: &mut /*;
                  let v3: */
-                 bool /* = getZero();
+                 bool /* = fable_library_rust::Native_::getZero();
                       let v8: bool =
                           */| {
                     *x = Func1::new(move |v: bool| Dice_ui::closure230((), v))(x.clone())
@@ -18586,7 +18586,7 @@ mod module_9c940d83 {
                 &v6.l3.clone(),
                 |x: &mut /*;
                  let v10: */
-                 LrcPtr<Dice_ui::Heap0> /* = getZero();
+                 LrcPtr<Dice_ui::Heap0> /* = fable_library_rust::Native_::getZero();
                                         let v15: bool =
                                             */| {
                     *x = Func1::new(move |v: LrcPtr<Dice_ui::Heap0>| Dice_ui::closure265((), v))(
@@ -25712,7 +25712,7 @@ mod module_9c940d83 {
                                 &v1052.l0.clone(),
                                 |x: &mut /*;
                                  let v1056: */
-                                 bool /* = getZero();
+                                 bool /* = fable_library_rust::Native_::getZero();
                                       let v1061: bool =
                                           */| {
                                     *x = Func1::new({
@@ -25731,7 +25731,7 @@ mod module_9c940d83 {
                                 &v1066.l1.clone(),
                                 |x: &mut /*;
                                  let v1070: */
-                                 bool /* = getZero();
+                                 bool /* = fable_library_rust::Native_::getZero();
                                       let v1075: bool =
                                           */| {
                                     *x = Func1::new({
@@ -25750,7 +25750,8 @@ mod module_9c940d83 {
                                 &v1080.l2.clone(),
                                 |x: &mut /*;
                                  let v1084: */
-                                 std::string::String /* = getZero();
+                                 std::string::String /* =
+                                                         fable_library_rust::Native_::getZero::<()>();
                                                      let v1089: bool =
                                                          */| {
                                     *x = Func1::new({
@@ -25772,7 +25773,7 @@ mod module_9c940d83 {
                                 |x: &mut /*;
                                  let v1098: */
                                  LrcPtr<Dice_ui::Heap0> /* =
-                                                            getZero::<()>();
+                                                            fable_library_rust::Native_::getZero::<()>();
                                                         let v1103: bool =
                                                             */| {
                                     *x = Func1::new({
@@ -26020,7 +26021,7 @@ mod module_9c940d83 {
                             &patternInput.1.clone(),
                             |x: &mut /*;
                              let v1399: */
-                             bool /* = getZero();
+                             bool /* = fable_library_rust::Native_::getZero();
                                   let v1404: bool =
                                       */| {
                                 *x = Func1::new(move |v_6: bool| Dice_ui::closure39((), v_6))(
@@ -27704,7 +27705,8 @@ mod module_9c940d83 {
                             &v3934.l3.clone(),
                             |x: &mut /*;
                              let v3938: */
-                             LrcPtr<Dice_ui::Heap0> /* = getZero();
+                             LrcPtr<Dice_ui::Heap0> /* =
+                                                        fable_library_rust::Native_::getZero::<()>();
                                                     let v3943: bool =
                                                         */| {
                                 *x = Func1::new({
@@ -27720,7 +27722,7 @@ mod module_9c940d83 {
                             &v3920.clone(),
                             |x: &mut /*;
                              let v3946: */
-                             i32 /* = getZero();
+                             i32 /* = fable_library_rust::Native_::getZero();
                                  let v3951: bool =
                                      */| {
                                 *x = Func1::new(move |v_11: i32| Dice_ui::closure201((), v_11))(

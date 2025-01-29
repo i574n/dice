@@ -13,6 +13,8 @@ from lib.fsharp.common import (trace, TraceLevel)
 __A = TypeVar("__A")
 
 def sixth_power_sequence(__unit: None=None) -> IEnumerable_1[int]:
+    """## sixthPowerSequence
+    """
     def generator(state: int) -> tuple[int, int] | None:
         return (state, state * 6)
 
@@ -20,6 +22,8 @@ def sixth_power_sequence(__unit: None=None) -> IEnumerable_1[int]:
 
 
 def accumulate_dice_rolls(log_mut: Callable[[str], None] | None, rolls_mut: FSharpList[int], power_mut: int, acc_mut: int) -> tuple[int, FSharpList[int]] | None:
+    """## accumulateDiceRolls
+    """
     while True:
         (log, rolls, power, acc) = (log_mut, rolls_mut, power_mut, acc_mut)
         if power < 0:
@@ -61,6 +65,8 @@ def accumulate_dice_rolls(log_mut: Callable[[str], None] | None, rolls_mut: FSha
 
 
 def roll_within_bounds(log: Callable[[str], None] | None, max: int, rolls: FSharpList[int]) -> int | None:
+    """## rollWithinBounds
+    """
     match_value: tuple[int, FSharpList[int]] | None = accumulate_dice_rolls(log, rolls, length(rolls) - 1, 0)
     (pattern_matching_result, result_1) = (None, None)
     if match_value is not None:
@@ -94,10 +100,14 @@ def roll_dice(__unit: None=None) -> int:
 
 
 def rotate_number(max: int, n: int) -> int:
+    """## rotateNumber
+    """
     return (((n - 1) + max) % max) + 1
 
 
 def rotate_numbers(max: int, items: IEnumerable_1[int]) -> IEnumerable_1[int]:
+    """## rotateNumbers
+    """
     def mapping(n: int, max: Any=max, items: Any=items) -> int:
         return rotate_number(max, n)
 
@@ -105,6 +115,8 @@ def rotate_numbers(max: int, items: IEnumerable_1[int]) -> IEnumerable_1[int]:
 
 
 def create_sequential_roller(list_1: FSharpList[Any]) -> Callable[[], __A]:
+    """## createSequentialRoller
+    """
     current_index: int = 0
     def _arrow285(__unit: None=None, list_1: Any=list_1) -> __A:
         nonlocal current_index
@@ -122,6 +134,8 @@ def create_sequential_roller(list_1: FSharpList[Any]) -> Callable[[], __A]:
 
 
 def roll_progressively(log: Callable[[str], None] | None, roll: Callable[[], int], reroll: bool, max: int) -> int:
+    """## rollProgressively
+    """
     def _arrow286(__unit: None=None, log: Any=log, roll: Any=roll, reroll: Any=reroll, max: Any=max) -> int:
         max_1: int = max or 0
         def loop(n_mut: int, p_mut: int) -> int:
@@ -196,6 +210,8 @@ def roll_progressively(log: Callable[[str], None] | None, roll: Callable[[], int
 
 
 def main(args: Array[str]) -> int:
+    """## main
+    """
     def _arrow289(__unit: None=None, args: Any=args) -> Callable[[str], None]:
         clo: Callable[[str], None] = to_console(printf("%s"))
         def _arrow288(arg: str) -> None:

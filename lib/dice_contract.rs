@@ -22,7 +22,7 @@ mod module_7c9aa503 {
         use fable_library_rust::Map_::ofSeq;
         use fable_library_rust::NativeArray_::new_array;
         use fable_library_rust::NativeArray_::Array;
-        use fable_library_rust::Native_::getZero;
+        use fable_library_rust::Native_::getNull;
         use fable_library_rust::Native_::unbox;
         use fable_library_rust::Native_::Any;
         use fable_library_rust::Native_::Func0;
@@ -556,8 +556,8 @@ mod module_7c9aa503 {
                 if (Dice::method9(string("AUTOMATION"))) != string("True") {
                     Dice::US4::US4_1
                 } else {
-                    let v58: DateTime = unbox::<DateTime>(&getZero());
-                    Dice::US4::US4_0(unbox::<i64>(&getZero()))
+                    let v58: DateTime = unbox::<DateTime>(fable_library_rust::Native_::getZero());
+                    Dice::US4::US4_0(unbox::<i64>(fable_library_rust::Native_::getZero()))
                 },
             )
         }

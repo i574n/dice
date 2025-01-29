@@ -23,7 +23,7 @@ mod module_aadd22c3 {
         use fable_library_rust::Map_::ofSeq;
         use fable_library_rust::NativeArray_::new_array;
         use fable_library_rust::NativeArray_::Array;
-        use fable_library_rust::Native_::getZero;
+        use fable_library_rust::Native_::getNull;
         use fable_library_rust::Native_::on_startup;
         use fable_library_rust::Native_::unbox;
         use fable_library_rust::Native_::Any;
@@ -417,8 +417,8 @@ mod module_aadd22c3 {
                 if (Dice_contract::method3(string("AUTOMATION"))) != string("True") {
                     Dice_contract::US2::US2_1
                 } else {
-                    let v58: DateTime = unbox::<DateTime>(&getZero());
-                    Dice_contract::US2::US2_0(unbox::<i64>(&getZero()))
+                    let v58: DateTime = unbox::<DateTime>(fable_library_rust::Native_::getZero());
+                    Dice_contract::US2::US2_0(unbox::<i64>(fable_library_rust::Native_::getZero()))
                 },
             )
         }
@@ -3315,7 +3315,7 @@ mod module_aadd22c3 {
             {
                 let v18: */
             (u32, near_sdk::store::vec::Vector<u8>), /* =
-                                                         getZero::<()>();
+                                                         fable_library_rust::Native_::getZero::<()>();
                                                      */
         );
         impl From<OldState> for State {
@@ -3334,7 +3334,7 @@ mod module_aadd22c3 {
                 {
                     let v32: bool = true; /*;
                                           let v33: */
-                    () /* = getZero();
+                    () /* = fable_library_rust::Native_::getZero();
                     let v37: bool = true; */;
                     let v39: string = string("b\"seeds\"");
                     let v40: &[u8] = b"seeds";
