@@ -33,13 +33,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - run: pwsh scripts/init.ps1
-
-      - run: pwsh scripts/build.ps1
-
-      - run: pwsh scripts/publish.ps1
-
-      - run: pwsh dist/scripts/publish-bin.ps1
+      - run: pwsh scripts/workflow.ps1
 
       - uses: actions/upload-artifact@v4
         with:
