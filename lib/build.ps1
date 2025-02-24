@@ -57,7 +57,6 @@ if (!$SkipTypeScript) {
 
     $Path = "$targetDir/target/ts/$projectName.ts"
     if (!($Path | Test-Path)) {
-        { ls } | Invoke-Block -Location "$targetDir/target/ts"
         $Path = "$targetDir/target/ts/polyglot/target/Builder/$projectName/$projectName.ts"
     }
     $Target = "$projectName.ts"

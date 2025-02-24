@@ -62,10 +62,10 @@ if (!$fast) {
     Remove-Item $targetDir/trunk -Recurse -Force -ErrorAction Ignore
     Remove-Item ./dist -Recurse -Force -ErrorAction Ignore
 
-    { ~/.bun/bin/bun install --frozen-lockfile } | Invoke-Block
+    { . $(Search-Command bun) install --frozen-lockfile } | Invoke-Block
 }
 
-{ ~/.bun/bin/bun --bun build-css } | Invoke-Block
+{ . $(Search-Command bun) --bun build-css } | Invoke-Block
 
 Write-Output "trunk:"
 
@@ -83,7 +83,7 @@ $jsFile = ($html | Select-String -Pattern "import init, \* as bindings from '\./
 | Set-Content "$targetDir/trunk/$jsFile"
 
 Write-Output "rna:"
-{ ~/.bun/bin/bunx --bun @chialab/rna build --bundle --minify --assetNames "[name]" $path --output dist --target es2022 } | Invoke-Block
+{ . $(Search-Command bunx) --bun @chialab/rna build --bundle --minify --assetNames "[name]" $path --output dist --target es2022 } | Invoke-Block
 
 $path = "dist/index.html"
 
@@ -92,8 +92,8 @@ Copy-Item dist/popup.html dist/index.html -Force
 Copy-Item public/manifest.json dist/manifest.json -Force
 
 if (!$fast) {
-    { ~/.bun/bin/bun install --frozen-lockfile } | Invoke-Block -Location e2e
-    { ~/.bun/bin/bun test:e2e } | Invoke-Block -Location e2e
+    { . $(Search-Command bun) install --frozen-lockfile } | Invoke-Block -Location e2e
+    { . $(Search-Command bun) test:e2e } | Invoke-Block -Location e2e
 }
 
 if ($env:CI) {
