@@ -19,7 +19,7 @@ Write-Output "dice/lib/build.ps1 / ScriptDir: $ScriptDir / ResolvedScriptDir: $R
 $projectName = "dice"
 
 if (!$fast -and !$SkipNotebook) {
-    { . deps/spiral/workspace/target/release/spiral$(_exe) dib --path $ResolvedScriptDir/$projectName.dib } | Invoke-Block -Retries 3 -Location ../deps/polyglot
+    { . deps/spiral/workspace/target/release/spiral$(_exe) dib --path "$ResolvedScriptDir/$projectName.dib" } | Invoke-Block -Retries 3 -Location ../deps/polyglot
 }
 
 { . ../deps/polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" spi } | Invoke-Block
