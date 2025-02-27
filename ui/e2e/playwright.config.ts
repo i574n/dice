@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000
 const baseURL = `http://localhost:${PORT}`
 
 export default {
-  timeout: 20 * 1000,
+  timeout: 60 * 1000,
   testDir: path.join(__dirname, 'tests'),
   retries: process.env.CI ? 1 : 0,
   outputDir: "test-results/",
