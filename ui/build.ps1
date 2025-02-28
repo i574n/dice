@@ -96,6 +96,8 @@ if (!$fast) {
     { . $(Search-Command bun) test:e2e } | Invoke-Block -Location e2e
 }
 
+Write-Output "dice/ui/build.ps1 / `$targetDir = $targetDir / `$projectName: $projectName / `$env:CI:$env:CI"
+
 if ($env:CI) {
     Remove-Item $targetDir -Recurse -Force -ErrorAction Ignore
 }
