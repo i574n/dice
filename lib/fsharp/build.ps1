@@ -77,7 +77,7 @@ if (!$fast) {
     { cargo run --release } | Invoke-Block
 }
 
-Write-Output "dice/lib/fsharp/build.ps1 / `$targetDir = $targetDir / `$projectName: $projectName / `$env:CI:$env:CI"
+Write-Output "dice/lib/fsharp/build.ps1 / `$targetDir = $targetDir / `$projectName: $projectName / `$env:CI:'$env:CI'"
 
 if ($env:CI) {
     Remove-Item $targetDir -Recurse -Force -ErrorAction Ignore
