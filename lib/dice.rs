@@ -248,6 +248,7 @@ mod module_7c9aa503 {
             US6_2(Dice::US5),
             US6_3(Dice::US5),
             US6_4(Dice::US5),
+            US6_5(Dice::US5),
         }
         impl core::fmt::Display for US6 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
@@ -459,19 +460,19 @@ mod module_7c9aa503 {
             Func1::new(move |v: string| Dice::closure10((), v))
         }
         pub fn method9(v0_1: string) -> string {
-            let v2_1: string = Dice::method10(v0_1);
-            let v4_1: Result<std::string::String, std::env::VarError> = std::env::var(&*v2_1);
-            let v6: bool = true;
-            let _result_map_ = v4_1.map(|x| {
+            let v6: string = Dice::method10(v0_1);
+            let v8: Result<std::string::String, std::env::VarError> = std::env::var(&*v6);
+            let v10: bool = true;
+            let _result_map_ = v8.map(|x| {
                 //;
-                let v8: std::string::String = x;
-                let v10: string = fable_library_rust::String_::fromString(v8);
-                let v12: bool = true;
-                v10
+                let v12: std::string::String = x;
+                let v14: string = fable_library_rust::String_::fromString(v12);
+                let v16: bool = true;
+                v14
             });
-            let v14: Result<string, std::env::VarError> = _result_map_;
-            let v15: string = Dice::method11();
-            v14.unwrap_or(v15)
+            let v18: Result<string, std::env::VarError> = _result_map_;
+            let v19: string = Dice::method11();
+            v18.unwrap_or(v19)
         }
         pub fn method8() -> (Dice::US3, Dice::US4) {
             let v1_1: string = Dice::method9(string("TRACE_LEVEL"));
@@ -581,10 +582,10 @@ mod module_7c9aa503 {
             Option<i64>,
         ) {
             let patternInput: (Dice::US3, Dice::US4) = Dice::method8();
-            let _run_target_args__v1: (Dice::US3, Dice::US4) =
+            let _run_target_args__v3: (Dice::US3, Dice::US4) =
                 (patternInput.0.clone(), patternInput.1.clone());
-            let v132: Dice::US4 = _run_target_args__v1.1.clone();
-            let v131: Dice::US3 = _run_target_args__v1.0.clone();
+            let v173: Dice::US4 = _run_target_args__v3.1.clone();
+            let v172: Dice::US3 = _run_target_args__v3.0.clone();
             (
                 LrcPtr::new(Dice::Mut1 {
                     l0: MutCell::new(1_i64),
@@ -599,8 +600,8 @@ mod module_7c9aa503 {
                     l0: MutCell::new(string("")),
                 }),
                 LrcPtr::new(Dice::Mut6 {
-                    l0: MutCell::new(match &v131 {
-                        Dice::US3::US3_0(v131_0_0) => match &v131 {
+                    l0: MutCell::new(match &v172 {
+                        Dice::US3::US3_0(v172_0_0) => match &v172 {
                             Dice::US3::US3_0(x) => x.clone(),
                             _ => unreachable!(),
                         }
@@ -608,8 +609,8 @@ mod module_7c9aa503 {
                         _ => v0_1.clone(),
                     }),
                 }),
-                match &v132 {
-                    Dice::US4::US4_0(v132_0_0) => Some(match &v132 {
+                match &v173 {
+                    Dice::US4::US4_0(v173_0_0) => Some(match &v173 {
                         Dice::US4::US4_0(x) => x.clone(),
                         _ => unreachable!(),
                     }),
@@ -651,7 +652,7 @@ mod module_7c9aa503 {
                 LrcPtr<Dice::Mut6>,
                 Option<i64>,
             ) = Dice::TraceState::trace_state().get().clone().unwrap();
-            let v35: Dice::US2 = (patternInput.4.clone()).l0.get().clone();
+            let v42: Dice::US2 = (patternInput.4.clone()).l0.get().clone();
             if ((patternInput.2.clone()).l0.get().clone()) == false {
                 false
             } else {
@@ -665,7 +666,7 @@ mod module_7c9aa503 {
                         LrcPtr::new((Dice::US2::US2_4, 4_i32)),
                     ])))),
                 )) >= (find(
-                    v35,
+                    v42,
                     ofSeq(ofList(ofArray(new_array(&[
                         LrcPtr::new((Dice::US2::US2_0, 0_i32)),
                         LrcPtr::new((Dice::US2::US2_1, 1_i32)),
@@ -696,14 +697,14 @@ mod module_7c9aa503 {
             v4_1: LrcPtr<Dice::Mut6>,
             v5: Option<i64>,
         ) -> string {
-            let v20: Dice::US4 = defaultValue(Dice::US4::US4_1, map(Dice::method14(), v5));
-            let v117: DateTime = match &v20 {
-                Dice::US4::US4_0(v20_0_0) => {
-                    let v77: TimeSpan = TimeSpan::new_ticks(
+            let v182: Dice::US4 = defaultValue(Dice::US4::US4_1, map(Dice::method14(), v5));
+            let v300: DateTime = match &v182 {
+                Dice::US4::US4_0(v182_0_0) => {
+                    let v252: TimeSpan = TimeSpan::new_ticks(
                         ({
                             let _arg: DateTime = DateTime::now();
                             _arg.ticks()
-                        }) - (match &v20 {
+                        }) - (match &v182 {
                             Dice::US4::US4_0(x) => x.clone(),
                             _ => unreachable!(),
                         }),
@@ -712,21 +713,21 @@ mod module_7c9aa503 {
                         1_i32,
                         1_i32,
                         1_i32,
-                        v77.hours(),
-                        v77.minutes(),
-                        v77.seconds(),
-                        v77.milliseconds(),
+                        v252.hours(),
+                        v252.minutes(),
+                        v252.seconds(),
+                        v252.milliseconds(),
                     )
                 }
                 _ => DateTime::now(),
             };
-            let v118: string = Dice::method15();
-            let provider: string = if (v118.clone()) == string("") {
+            let v302: string = Dice::method15();
+            let provider: string = if (v302.clone()) == string("") {
                 string("M-d-y hh:mm:ss tt")
             } else {
-                v118
+                v302
             };
-            v117.toString(provider)
+            v300.toString(provider)
         }
         pub fn method19() -> string {
             string("")
@@ -740,7 +741,7 @@ mod module_7c9aa503 {
             let v2_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v8: () = {
+            let v9: () = {
                 Dice::closure13(v2_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
@@ -750,82 +751,82 @@ mod module_7c9aa503 {
             string("\u{001b}[0m")
         }
         pub fn method17() -> string {
-            let v6: string = Dice::method18(getCharAt(toLower(string("Debug")), 0_i32));
-            let v9: &str = inline_colorization::color_bright_blue;
-            let v12: &str = &*v6;
-            let v35: &str = inline_colorization::color_reset;
-            let v37: std::string::String = format!("{}{}{}", v9, v12, v35);
-            fable_library_rust::String_::fromString(v37)
+            let v7: string = Dice::method18(getCharAt(toLower(string("Debug")), 0_i32));
+            let v14: &str = inline_colorization::color_bright_blue;
+            let v21: &str = &*v7;
+            let v49: &str = inline_colorization::color_reset;
+            let v51: std::string::String = format!("{}{}{}", v14, v21, v49);
+            fable_library_rust::String_::fromString(v51)
         }
         pub fn method22(v0_1: i64, v1_1: i64, v2_1: i64, v3_1: string) -> string {
             let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice::closure13(v5.clone(), string("{ "), ());
                 ()
             };
-            let v21: () = {
+            let v23: () = {
                 Dice::closure13(v5.clone(), string("current_index"), ());
                 ()
             };
-            let v30: () = {
+            let v33: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v38: () = {
+            let v42: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v47: () = {
+            let v52: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v56: () = {
+            let v62: () = {
                 Dice::closure13(v5.clone(), string("acc"), ());
                 ()
             };
-            let v64: () = {
+            let v71: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
-                ()
-            };
-            let v72: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v80: () = {
-                Dice::closure13(v5.clone(), string("; "), ());
+                Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v89: () = {
-                Dice::closure13(v5.clone(), string("len"), ());
-                ()
-            };
-            let v97: () = {
-                Dice::closure13(v5.clone(), string(" = "), ());
-                ()
-            };
-            let v105: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v122: () = {
-                Dice::closure13(v5.clone(), string("last_item"), ());
+            let v99: () = {
+                Dice::closure13(v5.clone(), string("len"), ());
                 ()
             };
-            let v130: () = {
+            let v108: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v138: () = {
+            let v117: () = {
+                Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v126: () = {
+                Dice::closure13(v5.clone(), string("; "), ());
+                ()
+            };
+            let v136: () = {
+                Dice::closure13(v5.clone(), string("last_item"), ());
+                ()
+            };
+            let v145: () = {
+                Dice::closure13(v5.clone(), string(" = "), ());
+                ()
+            };
+            let v154: () = {
                 Dice::closure13(v5.clone(), v3_1, ());
                 ()
             };
-            let v147: () = {
+            let v164: () = {
                 Dice::closure13(v5.clone(), string(" }"), ());
                 ()
             };
@@ -889,7 +890,7 @@ mod module_7c9aa503 {
                 LrcPtr<Dice::Mut6>,
                 Option<i64>,
             ) = Dice::TraceState::trace_state().get().clone().unwrap();
-            let v37: () = {
+            let v44: () = {
                 Dice::closure14(patternInput.0.clone(), ());
                 ()
             };
@@ -910,20 +911,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v27: Option<i64> = patternInput.5.clone();
-                let v26: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v25: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v24: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v23: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v22: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v34: Option<i64> = patternInput.5.clone();
+                let v33: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v32: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v31: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v30: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v29: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method21(
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    v27.clone(),
-                    Dice::method13(v22, v23, v24, v25, v26, v27),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    v34.clone(),
+                    Dice::method13(v29, v30, v31, v32, v33, v34),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -992,20 +993,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v23: Option<i64> = patternInput.5.clone();
-                let v22: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v21: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v20: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v19: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v18: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v30: Option<i64> = patternInput.5.clone();
+                let v29: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v28: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v27: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v26: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v25: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method26(
-                    v18.clone(),
-                    v19.clone(),
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    Dice::method13(v18, v19, v20, v21, v22, v23),
+                    v25.clone(),
+                    v26.clone(),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    Dice::method13(v25, v26, v27, v28, v29, v30),
                     Dice::method17(),
                 ))
             };
@@ -1028,7 +1029,7 @@ mod module_7c9aa503 {
                     let v6: i64 = v2_1.l0.get().clone();
                     let v7: i64 = v3_1.l0.get().clone();
                     let v8: Dice::US1 = v4_1.l0.get().clone();
-                    let v18: () = {
+                    let v19: () = {
                         Dice::closure8(
                             v5,
                             v6,
@@ -1044,40 +1045,40 @@ mod module_7c9aa503 {
                         );
                         ()
                     };
-                    let v61: LrcPtr<Dice::UH0> = v0_1();
-                    let v63: Dice::US1 = Dice::method25(v1_1.l0.get().clone(), v61);
-                    match &v63 {
-                        Dice::US1::US1_0(v63_0_0) => {
-                            let v64: u8 = match &v63 {
+                    let v70: LrcPtr<Dice::UH0> = v0_1();
+                    let v72: Dice::US1 = Dice::method25(v1_1.l0.get().clone(), v70);
+                    match &v72 {
+                        Dice::US1::US1_0(v72_0_0) => {
+                            let v73: u8 = match &v72 {
                                 Dice::US1::US1_0(x) => x.clone(),
                                 _ => unreachable!(),
                             };
-                            let v66: i64 = (v1_1.l0.get().clone()) + 1_i64;
-                            v1_1.l0.set(v66);
-                            v4_1.l0.set(Dice::US1::US1_0(v64));
-                            v64
+                            let v75: i64 = (v1_1.l0.get().clone()) + 1_i64;
+                            v1_1.l0.set(v75);
+                            v4_1.l0.set(Dice::US1::US1_0(v73));
+                            v73
                         }
                         _ => {
-                            let v70: () = {
+                            let v79: () = {
                                 Dice::closure17((), ());
                                 ()
                             };
                             if (v3_1.l0.get().clone()) == -1_i64 {
-                                let v112: i64 = v1_1.l0.get().clone();
-                                v3_1.l0.set(v112);
+                                let v128: i64 = v1_1.l0.get().clone();
+                                v3_1.l0.set(v128);
                                 ()
                             }
                             {
-                                let v118: i64 =
+                                let v134: i64 =
                                     if (v2_1.l0.get().clone()) >= (v3_1.l0.get().clone()) {
                                         1_i64
                                     } else {
                                         (v2_1.l0.get().clone()) + 1_i64
                                     };
-                                v2_1.l0.set(v118);
+                                v2_1.l0.set(v134);
                                 {
-                                    let v120: i64 = (v2_1.l0.get().clone()) - 1_i64;
-                                    v1_1.l0.set(v120);
+                                    let v136: i64 = (v2_1.l0.get().clone()) - 1_i64;
+                                    v1_1.l0.set(v136);
                                     v4_1.l0.set(Dice::US1::US1_1);
                                     {
                                         let v0_1_temp = v0_1.get().clone();
@@ -1158,55 +1159,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v11: () = {
+            let v12: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v20: () = {
+            let v22: () = {
                 Dice::closure13(v4_1.clone(), string("max"), ());
                 ()
             };
-            let v29: () = {
+            let v32: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v37: () = {
+            let v41: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v46: () = {
+            let v51: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v55: () = {
+            let v61: () = {
                 Dice::closure13(v4_1.clone(), string("p"), ());
                 ()
             };
-            let v63: () = {
+            let v70: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v79: () = {
-                Dice::closure13(v4_1.clone(), string("; "), ());
+                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v88: () = {
+                Dice::closure13(v4_1.clone(), string("; "), ());
+                ()
+            };
+            let v98: () = {
                 Dice::closure13(v4_1.clone(), string("n"), ());
                 ()
             };
-            let v96: () = {
+            let v107: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v104: () = {
+            let v116: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v113: () = {
+            let v126: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -1249,20 +1250,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method29(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v2_1,
@@ -1298,7 +1299,7 @@ mod module_7c9aa503 {
                         v1_1.get().clone()
                     }
                 } else {
-                    let v53: () = {
+                    let v60: () = {
                         Dice::closure21(
                             v0_1.get().clone(),
                             v1_1.get().clone(),
@@ -1315,55 +1316,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v11: () = {
+            let v12: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v20: () = {
+            let v22: () = {
                 Dice::closure13(v4_1.clone(), string("power"), ());
                 ()
             };
-            let v29: () = {
+            let v32: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v37: () = {
+            let v41: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v46: () = {
+            let v51: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v55: () = {
+            let v61: () = {
                 Dice::closure13(v4_1.clone(), string("acc"), ());
                 ()
             };
-            let v63: () = {
+            let v70: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v79: () = {
-                Dice::closure13(v4_1.clone(), string("; "), ());
+                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v88: () = {
+                Dice::closure13(v4_1.clone(), string("; "), ());
+                ()
+            };
+            let v98: () = {
                 Dice::closure13(v4_1.clone(), string("result"), ());
                 ()
             };
-            let v96: () = {
+            let v107: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v104: () = {
+            let v116: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v113: () = {
+            let v126: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -1406,20 +1407,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method33(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v1_1,
                     v0_1,
@@ -1832,71 +1833,71 @@ mod module_7c9aa503 {
             let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice::closure13(v5.clone(), string("{ "), ());
                 ()
             };
-            let v21: () = {
+            let v23: () = {
                 Dice::closure13(v5.clone(), string("power"), ());
                 ()
             };
-            let v30: () = {
+            let v33: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v38: () = {
+            let v42: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v47: () = {
+            let v52: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v56: () = {
+            let v62: () = {
                 Dice::closure13(v5.clone(), string("acc"), ());
                 ()
             };
-            let v64: () = {
+            let v71: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
-                ()
-            };
-            let v72: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v80: () = {
-                Dice::closure13(v5.clone(), string("; "), ());
+                Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v89: () = {
-                Dice::closure13(v5.clone(), string("roll"), ());
-                ()
-            };
-            let v97: () = {
-                Dice::closure13(v5.clone(), string(" = "), ());
-                ()
-            };
-            let v105: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v122: () = {
-                Dice::closure13(v5.clone(), string("value"), ());
+            let v99: () = {
+                Dice::closure13(v5.clone(), string("roll"), ());
                 ()
             };
-            let v130: () = {
+            let v108: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v138: () = {
+            let v117: () = {
+                Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v126: () = {
+                Dice::closure13(v5.clone(), string("; "), ());
+                ()
+            };
+            let v136: () = {
+                Dice::closure13(v5.clone(), string("value"), ());
+                ()
+            };
+            let v145: () = {
+                Dice::closure13(v5.clone(), string(" = "), ());
+                ()
+            };
+            let v154: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v3_1), ());
                 ()
             };
-            let v147: () = {
+            let v164: () = {
                 Dice::closure13(v5.clone(), string(" }"), ());
                 ()
             };
@@ -1940,20 +1941,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v27: Option<i64> = patternInput.5.clone();
-                let v26: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v25: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v24: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v23: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v22: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v34: Option<i64> = patternInput.5.clone();
+                let v33: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v32: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v31: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v30: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v29: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method36(
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    v27.clone(),
-                    Dice::method13(v22, v23, v24, v25, v26, v27),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    v34.clone(),
+                    Dice::method13(v29, v30, v31, v32, v33, v34),
                     Dice::method17(),
                     v1_1,
                     v0_1,
@@ -1966,55 +1967,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v11: () = {
+            let v12: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v20: () = {
+            let v22: () = {
                 Dice::closure13(v4_1.clone(), string("power"), ());
                 ()
             };
-            let v29: () = {
+            let v32: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v37: () = {
+            let v41: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v46: () = {
+            let v51: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v55: () = {
+            let v61: () = {
                 Dice::closure13(v4_1.clone(), string("acc"), ());
                 ()
             };
-            let v63: () = {
+            let v70: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v79: () = {
-                Dice::closure13(v4_1.clone(), string("; "), ());
+                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v88: () = {
+                Dice::closure13(v4_1.clone(), string("; "), ());
+                ()
+            };
+            let v98: () = {
                 Dice::closure13(v4_1.clone(), string("roll"), ());
                 ()
             };
-            let v96: () = {
+            let v107: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v104: () = {
+            let v116: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v113: () = {
+            let v126: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -2057,20 +2058,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method38(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v1_1,
                     v0_1,
@@ -2094,63 +2095,63 @@ mod module_7c9aa503 {
                     match v1_1.get().clone().as_ref() {
                         Dice::UH1::UH1_0 => Dice::US8::US8_1,
                         Dice::UH1::UH1_1(v1_1_1_0, v1_1_1_1) => {
-                            let v50: LrcPtr<Dice::UH1> = match v1_1.get().clone().as_ref() {
+                            let v57: LrcPtr<Dice::UH1> = match v1_1.get().clone().as_ref() {
                                 Dice::UH1::UH1_1(_, x) => x.clone(),
                                 _ => unreachable!(),
                             }
                             .clone();
-                            let v49: u8 = match v1_1.get().clone().as_ref() {
+                            let v56: u8 = match v1_1.get().clone().as_ref() {
                                 Dice::UH1::UH1_1(x, _) => x.clone(),
                                 _ => unreachable!(),
                             };
-                            if (v49) > 1_u8 {
-                                let v55: Dice::US9 = Dice::method35(
+                            if (v56) > 1_u8 {
+                                let v62: Dice::US9 = Dice::method35(
                                     v0_1.get().clone(),
                                     LrcPtr::new(Dice::UH2::UH2_0(
                                         1_u64,
                                         Func0::new(move || Dice::closure23((), ())),
                                     )),
                                 );
-                                let v62: u64 = (((v49) - 1_u8) as u64)
-                                    * (match &v55 {
-                                        Dice::US9::US9_0(v55_0_0) => match &v55 {
+                                let v69: u64 = (((v56) - 1_u8) as u64)
+                                    * (match &v62 {
+                                        Dice::US9::US9_0(v62_0_0) => match &v62 {
                                             Dice::US9::US9_0(x) => x.clone(),
                                             _ => unreachable!(),
                                         },
                                         _ => panic!("{}", string("Option does not have a value."),),
                                     });
-                                let v65: () = {
+                                let v72: () = {
                                     Dice::closure87(
                                         v2_1.get().clone(),
                                         v0_1.get().clone(),
-                                        v49,
-                                        v62,
+                                        v56,
+                                        v69,
                                         (),
                                     );
                                     ()
                                 };
                                 {
                                     let v0_1_temp: i8 = (v0_1.get().clone()) - 1_i8;
-                                    let v1_1_temp: LrcPtr<Dice::UH1> = v50;
-                                    let v2_1_temp: u64 = (v2_1.get().clone()) + (v62);
+                                    let v1_1_temp: LrcPtr<Dice::UH1> = v57;
+                                    let v2_1_temp: u64 = (v2_1.get().clone()) + (v69);
                                     v0_1.set(v0_1_temp);
                                     v1_1.set(v1_1_temp);
                                     v2_1.set(v2_1_temp);
                                     continue '_method32;
                                 }
                             } else {
-                                let v110: () = {
+                                let v124: () = {
                                     Dice::closure88(
                                         v2_1.get().clone(),
                                         v0_1.get().clone(),
-                                        v49,
+                                        v56,
                                         (),
                                     );
                                     ()
                                 };
                                 {
                                     let v0_1_temp: i8 = (v0_1.get().clone()) - 1_i8;
-                                    let v1_1_temp: LrcPtr<Dice::UH1> = v50.clone();
+                                    let v1_1_temp: LrcPtr<Dice::UH1> = v57.clone();
                                     let v2_1_temp: u64 = v2_1.get().clone();
                                     v0_1.set(v0_1_temp);
                                     v1_1.set(v1_1_temp);
@@ -2431,55 +2432,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v11: () = {
+            let v12: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v20: () = {
+            let v22: () = {
                 Dice::closure13(v4_1.clone(), string("max"), ());
                 ()
             };
-            let v29: () = {
+            let v32: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v37: () = {
+            let v41: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v46: () = {
+            let v51: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v55: () = {
+            let v61: () = {
                 Dice::closure13(v4_1.clone(), string("p"), ());
                 ()
             };
-            let v63: () = {
+            let v70: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v79: () = {
-                Dice::closure13(v4_1.clone(), string("; "), ());
+                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v88: () = {
+                Dice::closure13(v4_1.clone(), string("; "), ());
+                ()
+            };
+            let v98: () = {
                 Dice::closure13(v4_1.clone(), string("n"), ());
                 ()
             };
-            let v96: () = {
+            let v107: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v104: () = {
+            let v116: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v113: () = {
+            let v126: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -2519,20 +2520,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v23: Option<i64> = patternInput.5.clone();
-                let v22: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v21: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v20: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v19: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v18: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v30: Option<i64> = patternInput.5.clone();
+                let v29: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v28: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v27: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v26: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v25: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method43(
-                    v18.clone(),
-                    v19.clone(),
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    Dice::method13(v18, v19, v20, v21, v22, v23),
+                    v25.clone(),
+                    v26.clone(),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    Dice::method13(v25, v26, v27, v28, v29, v30),
                     Dice::method17(),
                 ))
             };
@@ -2544,71 +2545,71 @@ mod module_7c9aa503 {
             let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice::closure13(v5.clone(), string("{ "), ());
                 ()
             };
-            let v21: () = {
+            let v23: () = {
                 Dice::closure13(v5.clone(), string("power"), ());
                 ()
             };
-            let v30: () = {
+            let v33: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v38: () = {
+            let v42: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v47: () = {
+            let v52: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v56: () = {
+            let v62: () = {
                 Dice::closure13(v5.clone(), string("acc"), ());
                 ()
             };
-            let v64: () = {
+            let v71: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
-                ()
-            };
-            let v72: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v80: () = {
-                Dice::closure13(v5.clone(), string("; "), ());
+                Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v89: () = {
-                Dice::closure13(v5.clone(), string("roll"), ());
-                ()
-            };
-            let v97: () = {
-                Dice::closure13(v5.clone(), string(" = "), ());
-                ()
-            };
-            let v105: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v122: () = {
-                Dice::closure13(v5.clone(), string("value"), ());
+            let v99: () = {
+                Dice::closure13(v5.clone(), string("roll"), ());
                 ()
             };
-            let v130: () = {
+            let v108: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v138: () = {
+            let v117: () = {
+                Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
+                ()
+            };
+            let v126: () = {
+                Dice::closure13(v5.clone(), string("; "), ());
+                ()
+            };
+            let v136: () = {
+                Dice::closure13(v5.clone(), string("value"), ());
+                ()
+            };
+            let v145: () = {
+                Dice::closure13(v5.clone(), string(" = "), ());
+                ()
+            };
+            let v154: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v3_1), ());
                 ()
             };
-            let v147: () = {
+            let v164: () = {
                 Dice::closure13(v5.clone(), string(" }"), ());
                 ()
             };
@@ -2651,20 +2652,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method48(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -2709,20 +2710,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method51(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -2767,20 +2768,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method53(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -2825,20 +2826,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method55(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -2883,20 +2884,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method57(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -2941,20 +2942,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method59(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -2999,20 +3000,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method61(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3057,20 +3058,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method63(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3115,20 +3116,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method65(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3173,20 +3174,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method67(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3231,20 +3232,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method69(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3289,20 +3290,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method71(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3347,20 +3348,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method73(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3405,20 +3406,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method75(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3463,20 +3464,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method77(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3521,20 +3522,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method79(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3579,20 +3580,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method81(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3637,20 +3638,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method83(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3695,20 +3696,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method85(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3753,20 +3754,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method87(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3811,20 +3812,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method89(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3869,20 +3870,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method91(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3927,20 +3928,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method93(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -3985,20 +3986,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v33: Option<i64> = patternInput.5.clone();
+                let v32: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v31: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v30: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v29: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v28: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method95(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    v33.clone(),
+                    Dice::method13(v28, v29, v30, v31, v32, v33),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -4010,55 +4011,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v11: () = {
+            let v12: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v20: () = {
+            let v22: () = {
                 Dice::closure13(v4_1.clone(), string("power"), ());
                 ()
             };
-            let v29: () = {
+            let v32: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v37: () = {
+            let v41: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v46: () = {
+            let v51: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v55: () = {
+            let v61: () = {
                 Dice::closure13(v4_1.clone(), string("acc"), ());
                 ()
             };
-            let v63: () = {
+            let v70: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v79: () = {
-                Dice::closure13(v4_1.clone(), string("; "), ());
+                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v88: () = {
+                Dice::closure13(v4_1.clone(), string("; "), ());
+                ()
+            };
+            let v98: () = {
                 Dice::closure13(v4_1.clone(), string("result"), ());
                 ()
             };
-            let v96: () = {
+            let v107: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v104: () = {
+            let v116: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v113: () = {
+            let v126: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -4100,20 +4101,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method97(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -4132,55 +4133,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v11: () = {
+            let v12: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v20: () = {
+            let v22: () = {
                 Dice::closure13(v4_1.clone(), string("power"), ());
                 ()
             };
-            let v29: () = {
+            let v32: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v37: () = {
+            let v41: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v46: () = {
+            let v51: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v55: () = {
+            let v61: () = {
                 Dice::closure13(v4_1.clone(), string("acc"), ());
                 ()
             };
-            let v63: () = {
+            let v70: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v79: () = {
-                Dice::closure13(v4_1.clone(), string("; "), ());
+                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
             let v88: () = {
+                Dice::closure13(v4_1.clone(), string("; "), ());
+                ()
+            };
+            let v98: () = {
                 Dice::closure13(v4_1.clone(), string("roll"), ());
                 ()
             };
-            let v96: () = {
+            let v107: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v104: () = {
+            let v116: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v113: () = {
+            let v126: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -4222,20 +4223,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method99(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -4263,7 +4264,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method96(v4_1.clone(), (v1_1) + (v7))
                     } else {
-                        let v54: () = {
+                        let v61: () = {
                             Dice::closure118(v1_1, v3_1, ());
                             ()
                         };
@@ -4308,20 +4309,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method101(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -4349,7 +4350,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method94(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure119(v1_1, v3_1, ());
                             ()
                         };
@@ -4394,20 +4395,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method102(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -4435,7 +4436,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method92(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure120(v1_1, v3_1, ());
                             ()
                         };
@@ -4480,20 +4481,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method103(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -4521,7 +4522,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method90(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure121(v1_1, v3_1, ());
                             ()
                         };
@@ -4566,20 +4567,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method104(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -4607,7 +4608,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method88(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure122(v1_1, v3_1, ());
                             ()
                         };
@@ -4652,20 +4653,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method105(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -4693,7 +4694,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method86(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure123(v1_1, v3_1, ());
                             ()
                         };
@@ -4738,20 +4739,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method106(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -4779,7 +4780,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method84(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure124(v1_1, v3_1, ());
                             ()
                         };
@@ -4824,20 +4825,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method107(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -4865,7 +4866,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method82(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure125(v1_1, v3_1, ());
                             ()
                         };
@@ -4910,20 +4911,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method108(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -4951,7 +4952,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method80(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure126(v1_1, v3_1, ());
                             ()
                         };
@@ -4996,20 +4997,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method109(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5037,7 +5038,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method78(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure127(v1_1, v3_1, ());
                             ()
                         };
@@ -5082,20 +5083,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method110(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5123,7 +5124,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method76(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure128(v1_1, v3_1, ());
                             ()
                         };
@@ -5168,20 +5169,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method111(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5209,7 +5210,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method74(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure129(v1_1, v3_1, ());
                             ()
                         };
@@ -5254,20 +5255,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method112(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5295,7 +5296,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method72(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure130(v1_1, v3_1, ());
                             ()
                         };
@@ -5340,20 +5341,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method113(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5381,7 +5382,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method70(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure131(v1_1, v3_1, ());
                             ()
                         };
@@ -5426,20 +5427,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method114(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5467,7 +5468,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method68(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure132(v1_1, v3_1, ());
                             ()
                         };
@@ -5512,20 +5513,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method115(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5553,7 +5554,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method66(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure133(v1_1, v3_1, ());
                             ()
                         };
@@ -5598,20 +5599,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method116(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5639,7 +5640,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method64(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure134(v1_1, v3_1, ());
                             ()
                         };
@@ -5684,20 +5685,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method117(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5725,7 +5726,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method62(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure135(v1_1, v3_1, ());
                             ()
                         };
@@ -5770,20 +5771,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method118(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5811,7 +5812,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method60(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure136(v1_1, v3_1, ());
                             ()
                         };
@@ -5856,20 +5857,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method119(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5897,7 +5898,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method58(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure137(v1_1, v3_1, ());
                             ()
                         };
@@ -5942,20 +5943,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method120(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -5983,7 +5984,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method56(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure138(v1_1, v3_1, ());
                             ()
                         };
@@ -6028,20 +6029,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method121(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -6069,7 +6070,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method54(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure139(v1_1, v3_1, ());
                             ()
                         };
@@ -6114,20 +6115,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method122(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -6155,7 +6156,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method52(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure140(v1_1, v3_1, ());
                             ()
                         };
@@ -6200,20 +6201,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v32: Option<i64> = patternInput.5.clone();
+                let v31: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v30: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v29: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v28: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v27: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method123(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    v32.clone(),
+                    Dice::method13(v27, v28, v29, v30, v31, v32),
                     Dice::method17(),
                     v0_1,
                     v1_1,
@@ -6241,7 +6242,7 @@ mod module_7c9aa503 {
                         };
                         Dice::method50(v4_1.clone(), (v1_1) + (v8))
                     } else {
-                        let v55: () = {
+                        let v62: () = {
                             Dice::closure141(v1_1, v3_1, ());
                             ()
                         };
@@ -6336,23 +6337,23 @@ mod module_7c9aa503 {
             let v2_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v9: () = {
+            let v10: () = {
                 Dice::closure13(v2_1.clone(), string("{ "), ());
                 ()
             };
-            let v18: () = {
+            let v20: () = {
                 Dice::closure13(v2_1.clone(), string("result"), ());
                 ()
             };
-            let v27: () = {
+            let v30: () = {
                 Dice::closure13(v2_1.clone(), string(" = "), ());
                 ()
             };
-            let v35: () = {
+            let v39: () = {
                 Dice::closure13(v2_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v44: () = {
+            let v49: () = {
                 Dice::closure13(v2_1.clone(), string(" }"), ());
                 ()
             };
@@ -6393,20 +6394,20 @@ mod module_7c9aa503 {
                     LrcPtr<Dice::Mut6>,
                     Option<i64>,
                 ) = Dice::TraceState::trace_state().get().clone().unwrap();
-                let v24: Option<i64> = patternInput.5.clone();
-                let v23: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v22: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v21: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v20: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v19: LrcPtr<Dice::Mut1> = patternInput.0.clone();
+                let v31: Option<i64> = patternInput.5.clone();
+                let v30: LrcPtr<Dice::Mut6> = patternInput.4.clone();
+                let v29: LrcPtr<Dice::Mut5> = patternInput.3.clone();
+                let v28: LrcPtr<Dice::Mut4> = patternInput.2.clone();
+                let v27: LrcPtr<Dice::Mut3> = patternInput.1.clone();
+                let v26: LrcPtr<Dice::Mut1> = patternInput.0.clone();
                 Dice::method24(Dice::method124(
-                    v19.clone(),
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    Dice::method13(v19, v20, v21, v22, v23, v24),
+                    v26.clone(),
+                    v27.clone(),
+                    v28.clone(),
+                    v29.clone(),
+                    v30.clone(),
+                    v31.clone(),
+                    Dice::method13(v26, v27, v28, v29, v30, v31),
                     Dice::method17(),
                     v0_1,
                 ))
@@ -6417,7 +6418,7 @@ mod module_7c9aa503 {
                 Dice::closure92((), ());
                 ()
             };
-            let v48: () = {
+            let v55: () = {
                 Dice::closure142(Dice::method45(LrcPtr::new(Dice::UH1::UH1_0), 0_i8), ());
                 ()
             };

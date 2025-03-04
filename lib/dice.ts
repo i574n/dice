@@ -370,13 +370,15 @@ export type US6_$union =
     | US6<2>
     | US6<3>
     | US6<4>
+    | US6<5>
 
 export type US6_$cases = {
     0: ["US6_0", [US5_$union]],
     1: ["US6_1", [US5_$union]],
     2: ["US6_2", [US5_$union]],
     3: ["US6_3", [US5_$union]],
-    4: ["US6_4", [US5_$union]]
+    4: ["US6_4", [US5_$union]],
+    5: ["US6_5", [US5_$union]]
 }
 
 export function US6_US6_0(f0_0: US5_$union) {
@@ -399,17 +401,21 @@ export function US6_US6_4(f4_0: US5_$union) {
     return new US6<4>(4, [f4_0]);
 }
 
+export function US6_US6_5(f5_0: US5_$union) {
+    return new US6<5>(5, [f5_0]);
+}
+
 export class US6<Tag extends keyof US6_$cases> extends Union<Tag, US6_$cases[Tag][0]> {
     constructor(readonly tag: Tag, readonly fields: US6_$cases[Tag][1]) {
         super();
     }
     cases() {
-        return ["US6_0", "US6_1", "US6_2", "US6_3", "US6_4"];
+        return ["US6_0", "US6_1", "US6_2", "US6_3", "US6_4", "US6_5"];
     }
 }
 
 export function US6_$reflection(): TypeInfo {
-    return union_type("Dice.US6", [], US6, () => [[["f0_0", US5_$reflection()]], [["f1_0", US5_$reflection()]], [["f2_0", US5_$reflection()]], [["f3_0", US5_$reflection()]], [["f4_0", US5_$reflection()]]]);
+    return union_type("Dice.US6", [], US6, () => [[["f0_0", US5_$reflection()]], [["f1_0", US5_$reflection()]], [["f2_0", US5_$reflection()]], [["f3_0", US5_$reflection()]], [["f4_0", US5_$reflection()]], [["f5_0", US5_$reflection()]]]);
 }
 
 export type US7_$union = 
@@ -680,12 +686,12 @@ export function closure11(unitVar: void, v0_1: string): void {
 
 export function method7(v0_1: US2_$union): [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] {
     const patternInput: [US3_$union, US4_$union] = method8();
-    const _run_target_args$0027_v1 = [patternInput[0], patternInput[1]] as [US3_$union, US4_$union];
-    const v132: US4_$union = _run_target_args$0027_v1[1];
-    const v131: US3_$union = _run_target_args$0027_v1[0];
+    const _run_target_args$0027_v3 = [patternInput[0], patternInput[1]] as [US3_$union, US4_$union];
+    const v173: US4_$union = _run_target_args$0027_v3[1];
+    const v172: US3_$union = _run_target_args$0027_v3[0];
     return [new Mut1(1n), new Mut3((v: string): void => {
         closure11(undefined, v);
-    }), new Mut4(true), new Mut5(""), new Mut6(((v131.tag as int32) === /* US3_0 */ 0) ? (v131.fields[0] as any) : v0_1), ((v132.tag as int32) === /* US4_0 */ 0) ? (v132.fields[0] as any) : undefined] as [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>];
+    }), new Mut4(true), new Mut5(""), new Mut6(((v172.tag as int32) === /* US3_0 */ 0) ? (v172.fields[0] as any) : v0_1), ((v173.tag as int32) === /* US4_0 */ 0) ? (v173.fields[0] as any) : undefined] as [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>];
 }
 
 export function closure9(unitVar: void, unitVar_1: void): void {
@@ -700,14 +706,14 @@ export function method6(v0_1: US2_$union): boolean {
     closure9(undefined, undefined);
     v3_1 = undefined;
     const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    const v35: US2_$union = patternInput[4].l0;
+    const v42: US2_$union = patternInput[4].l0;
     if (patternInput[2].l0 === false) {
         return false;
     }
     else {
         return find<US2_$union, int32>(v0_1, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
             Compare: compare,
-        })) >= find<US2_$union, int32>(v35, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
+        })) >= find<US2_$union, int32>(v42, ofSeq([[US2_US2_0(), 0] as [US2_$union, int32], [US2_US2_1(), 1] as [US2_$union, int32], [US2_US2_2(), 2] as [US2_$union, int32], [US2_US2_3(), 3] as [US2_$union, int32], [US2_US2_4(), 4] as [US2_$union, int32]], {
             Compare: compare,
         }));
     }
@@ -730,18 +736,18 @@ export function method16(): string {
 }
 
 export function method13(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>): string {
-    const v321: US4_$union = defaultArg(map<int64, US4_$union>(method14(), v5), US4_US4_1());
-    let v418: Date;
-    if ((v321.tag as int32) === /* US4_0 */ 0) {
-        const v325 = v321.fields[0] as any;
-        const v378: number = fromTicks(toInt64(op_Subtraction(toInt64(fromInt64(getTicks(now()))), v325)));
-        v418 = create(1, 1, 1, hours(v378), minutes(v378), seconds(v378), milliseconds(v378));
+    const v541: US4_$union = defaultArg(map<int64, US4_$union>(method14(), v5), US4_US4_1());
+    let v659: Date;
+    if ((v541.tag as int32) === /* US4_0 */ 0) {
+        const v545 = v541.fields[0] as any;
+        const v611: number = fromTicks(toInt64(op_Subtraction(toInt64(fromInt64(getTicks(now()))), v545)));
+        v659 = create(1, 1, 1, hours(v611), minutes(v611), seconds(v611), milliseconds(v611));
     }
     else {
-        v418 = now();
+        v659 = now();
     }
-    const v419: string = method16();
-    return toString(v418, (v419 === "") ? "M-d-y hh:mm:ss tt" : v419);
+    const v661: string = method16();
+    return toString(v659, (v661 === "") ? "M-d-y hh:mm:ss tt" : v661);
 }
 
 export function method19(): string {
@@ -755,9 +761,9 @@ export function closure13(v0_1: Mut5, v1_1: string, unitVar: void): void {
 
 export function method18(v0_1: string): string {
     const v2_1: Mut5 = new Mut5(method19());
-    let v8: any;
+    let v9: any;
     closure13(v2_1, `${v0_1}`, undefined);
-    v8 = undefined;
+    v9 = undefined;
     return v2_1.l0;
 }
 
@@ -766,63 +772,63 @@ export function method20(): string {
 }
 
 export function method17(): string {
-    const v2_1: string = "Debug".toLocaleLowerCase();
-    return ("\u001b[94m" + method18(v2_1[0])) + method20();
+    const v3_1: string = "Debug".toLocaleLowerCase();
+    return ("\u001b[94m" + method18(v3_1[0])) + method20();
 }
 
 export function method22(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: string): string {
     const v5: Mut5 = new Mut5(method19());
-    let v12: any;
+    let v13: any;
     closure13(v5, "{ ", undefined);
-    v12 = undefined;
-    let v21: any;
+    v13 = undefined;
+    let v23: any;
     closure13(v5, "current_index", undefined);
-    v21 = undefined;
-    let v30: any;
+    v23 = undefined;
+    let v33: any;
     closure13(v5, " = ", undefined);
-    v30 = undefined;
-    let v38: any;
+    v33 = undefined;
+    let v42: any;
     closure13(v5, `${v0_1}`, undefined);
-    v38 = undefined;
-    let v47: any;
+    v42 = undefined;
+    let v52: any;
     closure13(v5, "; ", undefined);
-    v47 = undefined;
-    let v56: any;
+    v52 = undefined;
+    let v62: any;
     closure13(v5, "acc", undefined);
-    v56 = undefined;
-    let v64: any;
+    v62 = undefined;
+    let v71: any;
     closure13(v5, " = ", undefined);
-    v64 = undefined;
-    let v72: any;
-    closure13(v5, `${v1_1}`, undefined);
-    v72 = undefined;
+    v71 = undefined;
     let v80: any;
-    closure13(v5, "; ", undefined);
+    closure13(v5, `${v1_1}`, undefined);
     v80 = undefined;
     let v89: any;
-    closure13(v5, "len", undefined);
-    v89 = undefined;
-    let v97: any;
-    closure13(v5, " = ", undefined);
-    v97 = undefined;
-    let v105: any;
-    closure13(v5, `${v2_1}`, undefined);
-    v105 = undefined;
-    let v113: any;
     closure13(v5, "; ", undefined);
-    v113 = undefined;
-    let v122: any;
-    closure13(v5, "last_item", undefined);
-    v122 = undefined;
-    let v130: any;
+    v89 = undefined;
+    let v99: any;
+    closure13(v5, "len", undefined);
+    v99 = undefined;
+    let v108: any;
     closure13(v5, " = ", undefined);
-    v130 = undefined;
-    let v138: any;
+    v108 = undefined;
+    let v117: any;
+    closure13(v5, `${v2_1}`, undefined);
+    v117 = undefined;
+    let v126: any;
+    closure13(v5, "; ", undefined);
+    v126 = undefined;
+    let v136: any;
+    closure13(v5, "last_item", undefined);
+    v136 = undefined;
+    let v145: any;
+    closure13(v5, " = ", undefined);
+    v145 = undefined;
+    let v154: any;
     closure13(v5, v3_1, undefined);
-    v138 = undefined;
-    let v147: any;
+    v154 = undefined;
+    let v164: any;
     closure13(v5, " }", undefined);
-    v147 = undefined;
+    v164 = undefined;
     return v5.l0;
 }
 
@@ -855,9 +861,9 @@ export function method24(v0_1: string): void {
     closure9(undefined, undefined);
     v3_1 = undefined;
     const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-    let v37: any;
+    let v44: any;
     closure14(patternInput[0], undefined);
-    v37 = undefined;
+    v44 = undefined;
     closure15(undefined, v0_1);
     patternInput[1].l0(v0_1);
 }
@@ -868,13 +874,13 @@ export function closure8(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: Option<uin
         closure9(undefined, undefined);
         v8 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v27: Option<int64> = patternInput[5];
-        const v26: Mut6 = patternInput[4];
-        const v25: Mut5 = patternInput[3];
-        const v24: Mut4 = patternInput[2];
-        const v23: Mut3 = patternInput[1];
-        const v22: Mut1 = patternInput[0];
-        method24(method21(v22, v23, v24, v25, v26, v27, method13(v22, v23, v24, v25, v26, v27), method17(), v0_1, v1_1, v2_1, toText(interpolate("%A%P()", [v3_1]))));
+        const v34: Option<int64> = patternInput[5];
+        const v33: Mut6 = patternInput[4];
+        const v32: Mut5 = patternInput[3];
+        const v31: Mut4 = patternInput[2];
+        const v30: Mut3 = patternInput[1];
+        const v29: Mut1 = patternInput[0];
+        method24(method21(v29, v30, v31, v32, v33, v34, method13(v29, v30, v31, v32, v33, v34), method17(), v0_1, v1_1, v2_1, toText(interpolate("%A%P()", [v3_1]))));
     }
 }
 
@@ -917,13 +923,13 @@ export function closure17(unitVar: void, unitVar_1: void): void {
         closure9(undefined, undefined);
         v4_1 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v23: Option<int64> = patternInput[5];
-        const v22: Mut6 = patternInput[4];
-        const v21: Mut5 = patternInput[3];
-        const v20: Mut4 = patternInput[2];
-        const v19: Mut3 = patternInput[1];
-        const v18: Mut1 = patternInput[0];
-        method24(method26(v18, v19, v20, v21, v22, v23, method13(v18, v19, v20, v21, v22, v23), method17()));
+        const v30: Option<int64> = patternInput[5];
+        const v29: Mut6 = patternInput[4];
+        const v28: Mut5 = patternInput[3];
+        const v27: Mut4 = patternInput[2];
+        const v26: Mut3 = patternInput[1];
+        const v25: Mut1 = patternInput[0];
+        method24(method26(v25, v26, v27, v28, v29, v30, method13(v25, v26, v27, v28, v29, v30), method17()));
     }
 }
 
@@ -935,30 +941,30 @@ export function method5(v0_1_mut: (() => UH0_$union), v1_1_mut: Mut1, v2_1_mut: 
         const v6: int64 = v2_1.l0;
         const v7: int64 = v3_1.l0;
         const v8: US1_$union = v4_1.l0;
-        let v18: any;
+        let v19: any;
         closure8(v5, v6, v7, ((v8.tag as int32) === /* US1_0 */ 0) ? (v8.fields[0] as any) : undefined, undefined);
-        v18 = undefined;
-        const v61: UH0_$union = v0_1();
-        const v63: US1_$union = method25(v1_1.l0, v61);
-        if ((v63.tag as int32) === /* US1_0 */ 0) {
-            const v64 = v63.fields[0] as any;
-            const v66: int64 = toInt64(op_Addition(v1_1.l0, 1n));
-            v1_1.l0 = v66;
-            v4_1.l0 = US1_US1_0(v64);
-            return v64;
+        v19 = undefined;
+        const v70: UH0_$union = v0_1();
+        const v72: US1_$union = method25(v1_1.l0, v70);
+        if ((v72.tag as int32) === /* US1_0 */ 0) {
+            const v73 = v72.fields[0] as any;
+            const v75: int64 = toInt64(op_Addition(v1_1.l0, 1n));
+            v1_1.l0 = v75;
+            v4_1.l0 = US1_US1_0(v73);
+            return v73;
         }
         else {
-            let v70: any;
+            let v79: any;
             closure17(undefined, undefined);
-            v70 = undefined;
+            v79 = undefined;
             if (equals(v3_1.l0, -1n)) {
-                const v112: int64 = v1_1.l0;
-                v3_1.l0 = v112;
+                const v128: int64 = v1_1.l0;
+                v3_1.l0 = v128;
             }
-            const v118: int64 = (compare_1(v2_1.l0, v3_1.l0) >= 0) ? (1n) : toInt64(op_Addition(v2_1.l0, 1n));
-            v2_1.l0 = v118;
-            const v120: int64 = toInt64(op_Subtraction(v2_1.l0, 1n));
-            v1_1.l0 = v120;
+            const v134: int64 = (compare_1(v2_1.l0, v3_1.l0) >= 0) ? (1n) : toInt64(op_Addition(v2_1.l0, 1n));
+            v2_1.l0 = v134;
+            const v136: int64 = toInt64(op_Subtraction(v2_1.l0, 1n));
+            v1_1.l0 = v136;
             v4_1.l0 = US1_US1_1();
             v0_1_mut = v0_1;
             v1_1_mut = v1_1;
@@ -987,45 +993,45 @@ export function closure3(unitVar: void, v0_1: UH1_$union): (() => uint8) {
 
 export function method30(v0_1: uint64, v1_1: uint64, v2_1: int8): string {
     const v4_1: Mut5 = new Mut5(method19());
-    let v11: any;
+    let v12: any;
     closure13(v4_1, "{ ", undefined);
-    v11 = undefined;
-    let v20: any;
+    v12 = undefined;
+    let v22: any;
     closure13(v4_1, "max", undefined);
-    v20 = undefined;
-    let v29: any;
+    v22 = undefined;
+    let v32: any;
     closure13(v4_1, " = ", undefined);
-    v29 = undefined;
-    let v37: any;
+    v32 = undefined;
+    let v41: any;
     closure13(v4_1, `${v0_1}`, undefined);
-    v37 = undefined;
-    let v46: any;
+    v41 = undefined;
+    let v51: any;
     closure13(v4_1, "; ", undefined);
-    v46 = undefined;
-    let v55: any;
+    v51 = undefined;
+    let v61: any;
     closure13(v4_1, "p", undefined);
-    v55 = undefined;
-    let v63: any;
+    v61 = undefined;
+    let v70: any;
     closure13(v4_1, " = ", undefined);
-    v63 = undefined;
-    let v71: any;
-    closure13(v4_1, `${v1_1}`, undefined);
-    v71 = undefined;
+    v70 = undefined;
     let v79: any;
-    closure13(v4_1, "; ", undefined);
+    closure13(v4_1, `${v1_1}`, undefined);
     v79 = undefined;
     let v88: any;
-    closure13(v4_1, "n", undefined);
+    closure13(v4_1, "; ", undefined);
     v88 = undefined;
-    let v96: any;
+    let v98: any;
+    closure13(v4_1, "n", undefined);
+    v98 = undefined;
+    let v107: any;
     closure13(v4_1, " = ", undefined);
-    v96 = undefined;
-    let v104: any;
+    v107 = undefined;
+    let v116: any;
     closure13(v4_1, `${v2_1}`, undefined);
-    v104 = undefined;
-    let v113: any;
+    v116 = undefined;
+    let v126: any;
     closure13(v4_1, " }", undefined);
-    v113 = undefined;
+    v126 = undefined;
     return v4_1.l0;
 }
 
@@ -1040,13 +1046,13 @@ export function closure21(v0_1: uint64, v1_1: int8, v2_1: uint64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method29(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v2_1, v1_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method29(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v2_1, v1_1));
     }
 }
 
@@ -1070,9 +1076,9 @@ export function method28(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64): in
             }
         }
         else {
-            let v53: any;
+            let v60: any;
             closure21(v0_1, v1_1, v2_1, undefined);
-            v53 = undefined;
+            v60 = undefined;
             return v1_1 | 0;
         }
         break;
@@ -1081,45 +1087,45 @@ export function method28(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64): in
 
 export function method34(v0_1: int8, v1_1: uint64, v2_1: uint64): string {
     const v4_1: Mut5 = new Mut5(method19());
-    let v11: any;
+    let v12: any;
     closure13(v4_1, "{ ", undefined);
-    v11 = undefined;
-    let v20: any;
+    v12 = undefined;
+    let v22: any;
     closure13(v4_1, "power", undefined);
-    v20 = undefined;
-    let v29: any;
+    v22 = undefined;
+    let v32: any;
     closure13(v4_1, " = ", undefined);
-    v29 = undefined;
-    let v37: any;
+    v32 = undefined;
+    let v41: any;
     closure13(v4_1, `${v0_1}`, undefined);
-    v37 = undefined;
-    let v46: any;
+    v41 = undefined;
+    let v51: any;
     closure13(v4_1, "; ", undefined);
-    v46 = undefined;
-    let v55: any;
+    v51 = undefined;
+    let v61: any;
     closure13(v4_1, "acc", undefined);
-    v55 = undefined;
-    let v63: any;
+    v61 = undefined;
+    let v70: any;
     closure13(v4_1, " = ", undefined);
-    v63 = undefined;
-    let v71: any;
-    closure13(v4_1, `${v1_1}`, undefined);
-    v71 = undefined;
+    v70 = undefined;
     let v79: any;
-    closure13(v4_1, "; ", undefined);
+    closure13(v4_1, `${v1_1}`, undefined);
     v79 = undefined;
     let v88: any;
-    closure13(v4_1, "result", undefined);
+    closure13(v4_1, "; ", undefined);
     v88 = undefined;
-    let v96: any;
+    let v98: any;
+    closure13(v4_1, "result", undefined);
+    v98 = undefined;
+    let v107: any;
     closure13(v4_1, " = ", undefined);
-    v96 = undefined;
-    let v104: any;
+    v107 = undefined;
+    let v116: any;
     closure13(v4_1, `${v2_1}`, undefined);
-    v104 = undefined;
-    let v113: any;
+    v116 = undefined;
+    let v126: any;
     closure13(v4_1, " }", undefined);
-    v113 = undefined;
+    v126 = undefined;
     return v4_1.l0;
 }
 
@@ -1134,13 +1140,13 @@ export function closure22(v0_1: uint64, v1_1: int8, v2_1: uint64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method33(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v1_1, v0_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method33(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v1_1, v0_1, v2_1));
     }
 }
 
@@ -1421,57 +1427,57 @@ export function method35(v0_1_mut: int8, v1_1_mut: UH2_$union): US9_$union {
 
 export function method37(v0_1: int8, v1_1: uint64, v2_1: uint8, v3_1: uint64): string {
     const v5: Mut5 = new Mut5(method19());
-    let v12: any;
+    let v13: any;
     closure13(v5, "{ ", undefined);
-    v12 = undefined;
-    let v21: any;
+    v13 = undefined;
+    let v23: any;
     closure13(v5, "power", undefined);
-    v21 = undefined;
-    let v30: any;
+    v23 = undefined;
+    let v33: any;
     closure13(v5, " = ", undefined);
-    v30 = undefined;
-    let v38: any;
+    v33 = undefined;
+    let v42: any;
     closure13(v5, `${v0_1}`, undefined);
-    v38 = undefined;
-    let v47: any;
+    v42 = undefined;
+    let v52: any;
     closure13(v5, "; ", undefined);
-    v47 = undefined;
-    let v56: any;
+    v52 = undefined;
+    let v62: any;
     closure13(v5, "acc", undefined);
-    v56 = undefined;
-    let v64: any;
+    v62 = undefined;
+    let v71: any;
     closure13(v5, " = ", undefined);
-    v64 = undefined;
-    let v72: any;
-    closure13(v5, `${v1_1}`, undefined);
-    v72 = undefined;
+    v71 = undefined;
     let v80: any;
-    closure13(v5, "; ", undefined);
+    closure13(v5, `${v1_1}`, undefined);
     v80 = undefined;
     let v89: any;
-    closure13(v5, "roll", undefined);
-    v89 = undefined;
-    let v97: any;
-    closure13(v5, " = ", undefined);
-    v97 = undefined;
-    let v105: any;
-    closure13(v5, `${v2_1}`, undefined);
-    v105 = undefined;
-    let v113: any;
     closure13(v5, "; ", undefined);
-    v113 = undefined;
-    let v122: any;
-    closure13(v5, "value", undefined);
-    v122 = undefined;
-    let v130: any;
+    v89 = undefined;
+    let v99: any;
+    closure13(v5, "roll", undefined);
+    v99 = undefined;
+    let v108: any;
     closure13(v5, " = ", undefined);
-    v130 = undefined;
-    let v138: any;
+    v108 = undefined;
+    let v117: any;
+    closure13(v5, `${v2_1}`, undefined);
+    v117 = undefined;
+    let v126: any;
+    closure13(v5, "; ", undefined);
+    v126 = undefined;
+    let v136: any;
+    closure13(v5, "value", undefined);
+    v136 = undefined;
+    let v145: any;
+    closure13(v5, " = ", undefined);
+    v145 = undefined;
+    let v154: any;
     closure13(v5, `${v3_1}`, undefined);
-    v138 = undefined;
-    let v147: any;
+    v154 = undefined;
+    let v164: any;
     closure13(v5, " }", undefined);
-    v147 = undefined;
+    v164 = undefined;
     return v5.l0;
 }
 
@@ -1486,57 +1492,57 @@ export function closure87(v0_1: uint64, v1_1: int8, v2_1: uint8, v3_1: uint64, u
         closure9(undefined, undefined);
         v8 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v27: Option<int64> = patternInput[5];
-        const v26: Mut6 = patternInput[4];
-        const v25: Mut5 = patternInput[3];
-        const v24: Mut4 = patternInput[2];
-        const v23: Mut3 = patternInput[1];
-        const v22: Mut1 = patternInput[0];
-        method24(method36(v22, v23, v24, v25, v26, v27, method13(v22, v23, v24, v25, v26, v27), method17(), v1_1, v0_1, v2_1, v3_1));
+        const v34: Option<int64> = patternInput[5];
+        const v33: Mut6 = patternInput[4];
+        const v32: Mut5 = patternInput[3];
+        const v31: Mut4 = patternInput[2];
+        const v30: Mut3 = patternInput[1];
+        const v29: Mut1 = patternInput[0];
+        method24(method36(v29, v30, v31, v32, v33, v34, method13(v29, v30, v31, v32, v33, v34), method17(), v1_1, v0_1, v2_1, v3_1));
     }
 }
 
 export function method39(v0_1: int8, v1_1: uint64, v2_1: uint8): string {
     const v4_1: Mut5 = new Mut5(method19());
-    let v11: any;
+    let v12: any;
     closure13(v4_1, "{ ", undefined);
-    v11 = undefined;
-    let v20: any;
+    v12 = undefined;
+    let v22: any;
     closure13(v4_1, "power", undefined);
-    v20 = undefined;
-    let v29: any;
+    v22 = undefined;
+    let v32: any;
     closure13(v4_1, " = ", undefined);
-    v29 = undefined;
-    let v37: any;
+    v32 = undefined;
+    let v41: any;
     closure13(v4_1, `${v0_1}`, undefined);
-    v37 = undefined;
-    let v46: any;
+    v41 = undefined;
+    let v51: any;
     closure13(v4_1, "; ", undefined);
-    v46 = undefined;
-    let v55: any;
+    v51 = undefined;
+    let v61: any;
     closure13(v4_1, "acc", undefined);
-    v55 = undefined;
-    let v63: any;
+    v61 = undefined;
+    let v70: any;
     closure13(v4_1, " = ", undefined);
-    v63 = undefined;
-    let v71: any;
-    closure13(v4_1, `${v1_1}`, undefined);
-    v71 = undefined;
+    v70 = undefined;
     let v79: any;
-    closure13(v4_1, "; ", undefined);
+    closure13(v4_1, `${v1_1}`, undefined);
     v79 = undefined;
     let v88: any;
-    closure13(v4_1, "roll", undefined);
+    closure13(v4_1, "; ", undefined);
     v88 = undefined;
-    let v96: any;
+    let v98: any;
+    closure13(v4_1, "roll", undefined);
+    v98 = undefined;
+    let v107: any;
     closure13(v4_1, " = ", undefined);
-    v96 = undefined;
-    let v104: any;
+    v107 = undefined;
+    let v116: any;
     closure13(v4_1, `${v2_1}`, undefined);
-    v104 = undefined;
-    let v113: any;
+    v116 = undefined;
+    let v126: any;
     closure13(v4_1, " }", undefined);
-    v113 = undefined;
+    v126 = undefined;
     return v4_1.l0;
 }
 
@@ -1551,13 +1557,13 @@ export function closure88(v0_1: uint64, v1_1: int8, v2_1: uint8, unitVar: void):
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method38(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v1_1, v0_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method38(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v1_1, v0_1, v2_1));
     }
 }
 
@@ -1576,32 +1582,32 @@ export function method32(v0_1_mut: int8, v1_1_mut: UH1_$union, v2_1_mut: uint64)
             return US8_US8_1();
         }
         else {
-            const v50 = v1_1.fields[1] as any;
-            const v49 = v1_1.fields[0] as any;
-            if (v49 > 1) {
-                const v55: US9_$union = method35(v0_1, UH2_UH2_0(1n, (): UH2_$union => closure23(undefined, undefined)));
-                let v59: uint64;
-                if ((v55.tag as int32) === /* US9_0 */ 0) {
-                    v59 = (v55.fields[0] as any);
+            const v57 = v1_1.fields[1] as any;
+            const v56 = v1_1.fields[0] as any;
+            if (v56 > 1) {
+                const v62: US9_$union = method35(v0_1, UH2_UH2_0(1n, (): UH2_$union => closure23(undefined, undefined)));
+                let v66: uint64;
+                if ((v62.tag as int32) === /* US9_0 */ 0) {
+                    v66 = (v62.fields[0] as any);
                 }
                 else {
                     throw new Error("Option does not have a value.");
                 }
-                const v62: uint64 = toUInt64(op_Multiply(toUInt64(fromUInt8(v49 - 1)), v59));
-                let v65: any;
-                closure87(v2_1, v0_1, v49, v62, undefined);
-                v65 = undefined;
+                const v69: uint64 = toUInt64(op_Multiply(toUInt64(fromUInt8(v56 - 1)), v66));
+                let v72: any;
+                closure87(v2_1, v0_1, v56, v69, undefined);
+                v72 = undefined;
                 v0_1_mut = (v0_1 - 1);
-                v1_1_mut = v50;
-                v2_1_mut = toUInt64(op_Addition(v2_1, v62));
+                v1_1_mut = v57;
+                v2_1_mut = toUInt64(op_Addition(v2_1, v69));
                 continue method32;
             }
             else {
-                let v110: any;
-                closure88(v2_1, v0_1, v49, undefined);
-                v110 = undefined;
+                let v124: any;
+                closure88(v2_1, v0_1, v56, undefined);
+                v124 = undefined;
                 v0_1_mut = (v0_1 - 1);
-                v1_1_mut = v50;
+                v1_1_mut = v57;
                 v2_1_mut = v2_1;
                 continue method32;
             }
@@ -1768,45 +1774,45 @@ export function closure89(unitVar: void, v0_1: uint64): ((arg0: UH1_$union) => O
 
 export function method44(v0_1: int64, v1_1: int64, v2_1: int8): string {
     const v4_1: Mut5 = new Mut5(method19());
-    let v11: any;
+    let v12: any;
     closure13(v4_1, "{ ", undefined);
-    v11 = undefined;
-    let v20: any;
+    v12 = undefined;
+    let v22: any;
     closure13(v4_1, "max", undefined);
-    v20 = undefined;
-    let v29: any;
+    v22 = undefined;
+    let v32: any;
     closure13(v4_1, " = ", undefined);
-    v29 = undefined;
-    let v37: any;
+    v32 = undefined;
+    let v41: any;
     closure13(v4_1, `${v0_1}`, undefined);
-    v37 = undefined;
-    let v46: any;
+    v41 = undefined;
+    let v51: any;
     closure13(v4_1, "; ", undefined);
-    v46 = undefined;
-    let v55: any;
+    v51 = undefined;
+    let v61: any;
     closure13(v4_1, "p", undefined);
-    v55 = undefined;
-    let v63: any;
+    v61 = undefined;
+    let v70: any;
     closure13(v4_1, " = ", undefined);
-    v63 = undefined;
-    let v71: any;
-    closure13(v4_1, `${v1_1}`, undefined);
-    v71 = undefined;
+    v70 = undefined;
     let v79: any;
-    closure13(v4_1, "; ", undefined);
+    closure13(v4_1, `${v1_1}`, undefined);
     v79 = undefined;
     let v88: any;
-    closure13(v4_1, "n", undefined);
+    closure13(v4_1, "; ", undefined);
     v88 = undefined;
-    let v96: any;
+    let v98: any;
+    closure13(v4_1, "n", undefined);
+    v98 = undefined;
+    let v107: any;
     closure13(v4_1, " = ", undefined);
-    v96 = undefined;
-    let v104: any;
+    v107 = undefined;
+    let v116: any;
     closure13(v4_1, `${v2_1}`, undefined);
-    v104 = undefined;
-    let v113: any;
+    v116 = undefined;
+    let v126: any;
     closure13(v4_1, " }", undefined);
-    v113 = undefined;
+    v126 = undefined;
     return v4_1.l0;
 }
 
@@ -1821,77 +1827,77 @@ export function closure92(unitVar: void, unitVar_1: void): void {
         closure9(undefined, undefined);
         v4_1 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v23: Option<int64> = patternInput[5];
-        const v22: Mut6 = patternInput[4];
-        const v21: Mut5 = patternInput[3];
-        const v20: Mut4 = patternInput[2];
-        const v19: Mut3 = patternInput[1];
-        const v18: Mut1 = patternInput[0];
-        method24(method43(v18, v19, v20, v21, v22, v23, method13(v18, v19, v20, v21, v22, v23), method17()));
+        const v30: Option<int64> = patternInput[5];
+        const v29: Mut6 = patternInput[4];
+        const v28: Mut5 = patternInput[3];
+        const v27: Mut4 = patternInput[2];
+        const v26: Mut3 = patternInput[1];
+        const v25: Mut1 = patternInput[0];
+        method24(method43(v25, v26, v27, v28, v29, v30, method13(v25, v26, v27, v28, v29, v30), method17()));
     }
 }
 
 export function method46(): uint8 {
-    const v7: any = nonSeeded();
-    const v8: int32 = ~~1 | 0;
-    const v15: int32 = ~~7 | 0;
-    const value_2: int32 = v7.Next2(v8, v15) | 0;
+    const v40: any = nonSeeded();
+    const v46: int32 = ~~1 | 0;
+    const v59: int32 = ~~7 | 0;
+    const value_2: int32 = v40.Next2(v46, v59) | 0;
     return value_2 & 0xFF;
 }
 
 export function method49(v0_1: int8, v1_1: int64, v2_1: uint8, v3_1: int64): string {
     const v5: Mut5 = new Mut5(method19());
-    let v12: any;
+    let v13: any;
     closure13(v5, "{ ", undefined);
-    v12 = undefined;
-    let v21: any;
+    v13 = undefined;
+    let v23: any;
     closure13(v5, "power", undefined);
-    v21 = undefined;
-    let v30: any;
+    v23 = undefined;
+    let v33: any;
     closure13(v5, " = ", undefined);
-    v30 = undefined;
-    let v38: any;
+    v33 = undefined;
+    let v42: any;
     closure13(v5, `${v0_1}`, undefined);
-    v38 = undefined;
-    let v47: any;
+    v42 = undefined;
+    let v52: any;
     closure13(v5, "; ", undefined);
-    v47 = undefined;
-    let v56: any;
+    v52 = undefined;
+    let v62: any;
     closure13(v5, "acc", undefined);
-    v56 = undefined;
-    let v64: any;
+    v62 = undefined;
+    let v71: any;
     closure13(v5, " = ", undefined);
-    v64 = undefined;
-    let v72: any;
-    closure13(v5, `${v1_1}`, undefined);
-    v72 = undefined;
+    v71 = undefined;
     let v80: any;
-    closure13(v5, "; ", undefined);
+    closure13(v5, `${v1_1}`, undefined);
     v80 = undefined;
     let v89: any;
-    closure13(v5, "roll", undefined);
-    v89 = undefined;
-    let v97: any;
-    closure13(v5, " = ", undefined);
-    v97 = undefined;
-    let v105: any;
-    closure13(v5, `${v2_1}`, undefined);
-    v105 = undefined;
-    let v113: any;
     closure13(v5, "; ", undefined);
-    v113 = undefined;
-    let v122: any;
-    closure13(v5, "value", undefined);
-    v122 = undefined;
-    let v130: any;
+    v89 = undefined;
+    let v99: any;
+    closure13(v5, "roll", undefined);
+    v99 = undefined;
+    let v108: any;
     closure13(v5, " = ", undefined);
-    v130 = undefined;
-    let v138: any;
+    v108 = undefined;
+    let v117: any;
+    closure13(v5, `${v2_1}`, undefined);
+    v117 = undefined;
+    let v126: any;
+    closure13(v5, "; ", undefined);
+    v126 = undefined;
+    let v136: any;
+    closure13(v5, "value", undefined);
+    v136 = undefined;
+    let v145: any;
+    closure13(v5, " = ", undefined);
+    v145 = undefined;
+    let v154: any;
     closure13(v5, `${v3_1}`, undefined);
-    v138 = undefined;
-    let v147: any;
+    v154 = undefined;
+    let v164: any;
     closure13(v5, " }", undefined);
-    v147 = undefined;
+    v164 = undefined;
     return v5.l0;
 }
 
@@ -1906,13 +1912,13 @@ export function closure93(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void):
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method48(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method48(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -1927,13 +1933,13 @@ export function closure94(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void):
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method51(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method51(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -1948,13 +1954,13 @@ export function closure95(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void):
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method53(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method53(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -1969,13 +1975,13 @@ export function closure96(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void):
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method55(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method55(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -1990,13 +1996,13 @@ export function closure97(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void):
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method57(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method57(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2011,13 +2017,13 @@ export function closure98(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void):
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method59(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method59(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2032,13 +2038,13 @@ export function closure99(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void):
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method61(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method61(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2053,13 +2059,13 @@ export function closure100(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method63(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method63(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2074,13 +2080,13 @@ export function closure101(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method65(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method65(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2095,13 +2101,13 @@ export function closure102(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method67(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method67(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2116,13 +2122,13 @@ export function closure103(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method69(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method69(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2137,13 +2143,13 @@ export function closure104(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method71(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method71(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2158,13 +2164,13 @@ export function closure105(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method73(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method73(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2179,13 +2185,13 @@ export function closure106(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method75(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method75(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2200,13 +2206,13 @@ export function closure107(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method77(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method77(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2221,13 +2227,13 @@ export function closure108(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method79(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method79(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2242,13 +2248,13 @@ export function closure109(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method81(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method81(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2263,13 +2269,13 @@ export function closure110(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method83(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method83(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2284,13 +2290,13 @@ export function closure111(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method85(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method85(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2305,13 +2311,13 @@ export function closure112(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method87(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method87(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2326,13 +2332,13 @@ export function closure113(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method89(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method89(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2347,13 +2353,13 @@ export function closure114(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method91(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method91(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2368,13 +2374,13 @@ export function closure115(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method93(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method93(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
@@ -2389,57 +2395,57 @@ export function closure116(v0_1: int64, v1_1: uint8, v2_1: int64, unitVar: void)
         closure9(undefined, undefined);
         v7 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v26: Option<int64> = patternInput[5];
-        const v25: Mut6 = patternInput[4];
-        const v24: Mut5 = patternInput[3];
-        const v23: Mut4 = patternInput[2];
-        const v22: Mut3 = patternInput[1];
-        const v21: Mut1 = patternInput[0];
-        method24(method95(v21, v22, v23, v24, v25, v26, method13(v21, v22, v23, v24, v25, v26), method17(), v0_1, v1_1, v2_1));
+        const v33: Option<int64> = patternInput[5];
+        const v32: Mut6 = patternInput[4];
+        const v31: Mut5 = patternInput[3];
+        const v30: Mut4 = patternInput[2];
+        const v29: Mut3 = patternInput[1];
+        const v28: Mut1 = patternInput[0];
+        method24(method95(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1));
     }
 }
 
 export function method98(v0_1: int8, v1_1: int64, v2_1: int64): string {
     const v4_1: Mut5 = new Mut5(method19());
-    let v11: any;
+    let v12: any;
     closure13(v4_1, "{ ", undefined);
-    v11 = undefined;
-    let v20: any;
+    v12 = undefined;
+    let v22: any;
     closure13(v4_1, "power", undefined);
-    v20 = undefined;
-    let v29: any;
+    v22 = undefined;
+    let v32: any;
     closure13(v4_1, " = ", undefined);
-    v29 = undefined;
-    let v37: any;
+    v32 = undefined;
+    let v41: any;
     closure13(v4_1, `${v0_1}`, undefined);
-    v37 = undefined;
-    let v46: any;
+    v41 = undefined;
+    let v51: any;
     closure13(v4_1, "; ", undefined);
-    v46 = undefined;
-    let v55: any;
+    v51 = undefined;
+    let v61: any;
     closure13(v4_1, "acc", undefined);
-    v55 = undefined;
-    let v63: any;
+    v61 = undefined;
+    let v70: any;
     closure13(v4_1, " = ", undefined);
-    v63 = undefined;
-    let v71: any;
-    closure13(v4_1, `${v1_1}`, undefined);
-    v71 = undefined;
+    v70 = undefined;
     let v79: any;
-    closure13(v4_1, "; ", undefined);
+    closure13(v4_1, `${v1_1}`, undefined);
     v79 = undefined;
     let v88: any;
-    closure13(v4_1, "result", undefined);
+    closure13(v4_1, "; ", undefined);
     v88 = undefined;
-    let v96: any;
+    let v98: any;
+    closure13(v4_1, "result", undefined);
+    v98 = undefined;
+    let v107: any;
     closure13(v4_1, " = ", undefined);
-    v96 = undefined;
-    let v104: any;
+    v107 = undefined;
+    let v116: any;
     closure13(v4_1, `${v2_1}`, undefined);
-    v104 = undefined;
-    let v113: any;
+    v116 = undefined;
+    let v126: any;
     closure13(v4_1, " }", undefined);
-    v113 = undefined;
+    v126 = undefined;
     return v4_1.l0;
 }
 
@@ -2454,13 +2460,13 @@ export function closure117(v0_1: int64, v1_1: int64, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method97(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method97(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2474,45 +2480,45 @@ export function method96(v0_1: UH1_$union, v1_1: int64): US10_$union {
 
 export function method100(v0_1: int8, v1_1: int64, v2_1: uint8): string {
     const v4_1: Mut5 = new Mut5(method19());
-    let v11: any;
+    let v12: any;
     closure13(v4_1, "{ ", undefined);
-    v11 = undefined;
-    let v20: any;
+    v12 = undefined;
+    let v22: any;
     closure13(v4_1, "power", undefined);
-    v20 = undefined;
-    let v29: any;
+    v22 = undefined;
+    let v32: any;
     closure13(v4_1, " = ", undefined);
-    v29 = undefined;
-    let v37: any;
+    v32 = undefined;
+    let v41: any;
     closure13(v4_1, `${v0_1}`, undefined);
-    v37 = undefined;
-    let v46: any;
+    v41 = undefined;
+    let v51: any;
     closure13(v4_1, "; ", undefined);
-    v46 = undefined;
-    let v55: any;
+    v51 = undefined;
+    let v61: any;
     closure13(v4_1, "acc", undefined);
-    v55 = undefined;
-    let v63: any;
+    v61 = undefined;
+    let v70: any;
     closure13(v4_1, " = ", undefined);
-    v63 = undefined;
-    let v71: any;
-    closure13(v4_1, `${v1_1}`, undefined);
-    v71 = undefined;
+    v70 = undefined;
     let v79: any;
-    closure13(v4_1, "; ", undefined);
+    closure13(v4_1, `${v1_1}`, undefined);
     v79 = undefined;
     let v88: any;
-    closure13(v4_1, "roll", undefined);
+    closure13(v4_1, "; ", undefined);
     v88 = undefined;
-    let v96: any;
+    let v98: any;
+    closure13(v4_1, "roll", undefined);
+    v98 = undefined;
+    let v107: any;
     closure13(v4_1, " = ", undefined);
-    v96 = undefined;
-    let v104: any;
+    v107 = undefined;
+    let v116: any;
     closure13(v4_1, `${v2_1}`, undefined);
-    v104 = undefined;
-    let v113: any;
+    v116 = undefined;
+    let v126: any;
     closure13(v4_1, " }", undefined);
-    v113 = undefined;
+    v126 = undefined;
     return v4_1.l0;
 }
 
@@ -2527,13 +2533,13 @@ export function closure118(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method99(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method99(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2552,9 +2558,9 @@ export function method94(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method96(v4_1, toInt64(op_Addition(v1_1, v7)));
         }
         else {
-            let v54: any;
+            let v61: any;
             closure118(v1_1, v3_1, undefined);
-            v54 = undefined;
+            v61 = undefined;
             return method96(v4_1, v1_1);
         }
     }
@@ -2571,13 +2577,13 @@ export function closure119(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method101(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method101(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2596,9 +2602,9 @@ export function method92(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method94(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure119(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method94(v4_1, v1_1);
         }
     }
@@ -2615,13 +2621,13 @@ export function closure120(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method102(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method102(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2640,9 +2646,9 @@ export function method90(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method92(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure120(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method92(v4_1, v1_1);
         }
     }
@@ -2659,13 +2665,13 @@ export function closure121(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method103(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method103(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2684,9 +2690,9 @@ export function method88(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method90(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure121(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method90(v4_1, v1_1);
         }
     }
@@ -2703,13 +2709,13 @@ export function closure122(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method104(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method104(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2728,9 +2734,9 @@ export function method86(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method88(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure122(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method88(v4_1, v1_1);
         }
     }
@@ -2747,13 +2753,13 @@ export function closure123(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method105(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method105(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2772,9 +2778,9 @@ export function method84(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method86(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure123(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method86(v4_1, v1_1);
         }
     }
@@ -2791,13 +2797,13 @@ export function closure124(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method106(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method106(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2816,9 +2822,9 @@ export function method82(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method84(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure124(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method84(v4_1, v1_1);
         }
     }
@@ -2835,13 +2841,13 @@ export function closure125(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method107(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method107(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2860,9 +2866,9 @@ export function method80(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method82(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure125(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method82(v4_1, v1_1);
         }
     }
@@ -2879,13 +2885,13 @@ export function closure126(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method108(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method108(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2904,9 +2910,9 @@ export function method78(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method80(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure126(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method80(v4_1, v1_1);
         }
     }
@@ -2923,13 +2929,13 @@ export function closure127(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method109(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method109(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2948,9 +2954,9 @@ export function method76(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method78(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure127(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method78(v4_1, v1_1);
         }
     }
@@ -2967,13 +2973,13 @@ export function closure128(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method110(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method110(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -2992,9 +2998,9 @@ export function method74(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method76(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure128(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method76(v4_1, v1_1);
         }
     }
@@ -3011,13 +3017,13 @@ export function closure129(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method111(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method111(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3036,9 +3042,9 @@ export function method72(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method74(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure129(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method74(v4_1, v1_1);
         }
     }
@@ -3055,13 +3061,13 @@ export function closure130(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method112(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method112(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3080,9 +3086,9 @@ export function method70(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method72(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure130(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method72(v4_1, v1_1);
         }
     }
@@ -3099,13 +3105,13 @@ export function closure131(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method113(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method113(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3124,9 +3130,9 @@ export function method68(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method70(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure131(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method70(v4_1, v1_1);
         }
     }
@@ -3143,13 +3149,13 @@ export function closure132(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method114(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method114(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3168,9 +3174,9 @@ export function method66(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method68(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure132(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method68(v4_1, v1_1);
         }
     }
@@ -3187,13 +3193,13 @@ export function closure133(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method115(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method115(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3212,9 +3218,9 @@ export function method64(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method66(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure133(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method66(v4_1, v1_1);
         }
     }
@@ -3231,13 +3237,13 @@ export function closure134(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method116(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method116(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3256,9 +3262,9 @@ export function method62(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method64(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure134(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method64(v4_1, v1_1);
         }
     }
@@ -3275,13 +3281,13 @@ export function closure135(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method117(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method117(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3300,9 +3306,9 @@ export function method60(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method62(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure135(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method62(v4_1, v1_1);
         }
     }
@@ -3319,13 +3325,13 @@ export function closure136(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method118(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method118(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3344,9 +3350,9 @@ export function method58(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method60(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure136(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method60(v4_1, v1_1);
         }
     }
@@ -3363,13 +3369,13 @@ export function closure137(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method119(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method119(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3388,9 +3394,9 @@ export function method56(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method58(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure137(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method58(v4_1, v1_1);
         }
     }
@@ -3407,13 +3413,13 @@ export function closure138(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method120(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method120(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3432,9 +3438,9 @@ export function method54(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method56(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure138(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method56(v4_1, v1_1);
         }
     }
@@ -3451,13 +3457,13 @@ export function closure139(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method121(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method121(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3476,9 +3482,9 @@ export function method52(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method54(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure139(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method54(v4_1, v1_1);
         }
     }
@@ -3495,13 +3501,13 @@ export function closure140(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method122(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method122(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3520,9 +3526,9 @@ export function method50(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method52(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure140(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method52(v4_1, v1_1);
         }
     }
@@ -3539,13 +3545,13 @@ export function closure141(v0_1: int64, v1_1: uint8, unitVar: void): void {
         closure9(undefined, undefined);
         v6 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v25: Option<int64> = patternInput[5];
-        const v24: Mut6 = patternInput[4];
-        const v23: Mut5 = patternInput[3];
-        const v22: Mut4 = patternInput[2];
-        const v21: Mut3 = patternInput[1];
-        const v20: Mut1 = patternInput[0];
-        method24(method123(v20, v21, v22, v23, v24, v25, method13(v20, v21, v22, v23, v24, v25), method17(), v0_1, v1_1));
+        const v32: Option<int64> = patternInput[5];
+        const v31: Mut6 = patternInput[4];
+        const v30: Mut5 = patternInput[3];
+        const v29: Mut4 = patternInput[2];
+        const v28: Mut3 = patternInput[1];
+        const v27: Mut1 = patternInput[0];
+        method24(method123(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1));
     }
 }
 
@@ -3564,9 +3570,9 @@ export function method47(v0_1: UH1_$union, v1_1: int64): US10_$union {
             return method50(v4_1, toInt64(op_Addition(v1_1, v8)));
         }
         else {
-            let v55: any;
+            let v62: any;
             closure141(v1_1, v3_1, undefined);
-            v55 = undefined;
+            v62 = undefined;
             return method50(v4_1, v1_1);
         }
     }
@@ -3607,21 +3613,21 @@ export function method45(v0_1_mut: UH1_$union, v1_1_mut: int8): int64 {
 
 export function method125(v0_1: int64): string {
     const v2_1: Mut5 = new Mut5(method19());
-    let v9: any;
+    let v10: any;
     closure13(v2_1, "{ ", undefined);
-    v9 = undefined;
-    let v18: any;
+    v10 = undefined;
+    let v20: any;
     closure13(v2_1, "result", undefined);
-    v18 = undefined;
-    let v27: any;
+    v20 = undefined;
+    let v30: any;
     closure13(v2_1, " = ", undefined);
-    v27 = undefined;
-    let v35: any;
+    v30 = undefined;
+    let v39: any;
     closure13(v2_1, `${v0_1}`, undefined);
-    v35 = undefined;
-    let v44: any;
+    v39 = undefined;
+    let v49: any;
     closure13(v2_1, " }", undefined);
-    v44 = undefined;
+    v49 = undefined;
     return v2_1.l0;
 }
 
@@ -3636,13 +3642,13 @@ export function closure142(v0_1: int64, unitVar: void): void {
         closure9(undefined, undefined);
         v5 = undefined;
         const patternInput: [Mut1, Mut3, Mut4, Mut5, Mut6, Option<int64>] = value_3(TraceState_trace_state());
-        const v24: Option<int64> = patternInput[5];
-        const v23: Mut6 = patternInput[4];
-        const v22: Mut5 = patternInput[3];
-        const v21: Mut4 = patternInput[2];
-        const v20: Mut3 = patternInput[1];
-        const v19: Mut1 = patternInput[0];
-        method24(method124(v19, v20, v21, v22, v23, v24, method13(v19, v20, v21, v22, v23, v24), method17(), v0_1));
+        const v31: Option<int64> = patternInput[5];
+        const v30: Mut6 = patternInput[4];
+        const v29: Mut5 = patternInput[3];
+        const v28: Mut4 = patternInput[2];
+        const v27: Mut3 = patternInput[1];
+        const v26: Mut1 = patternInput[0];
+        method24(method124(v26, v27, v28, v29, v30, v31, method13(v26, v27, v28, v29, v30, v31), method17(), v0_1));
     }
 }
 
@@ -3650,9 +3656,9 @@ export function closure91(unitVar: void, v0_1: string[]): int32 {
     let v3_1: any;
     closure92(undefined, undefined);
     v3_1 = undefined;
-    let v48: any;
+    let v55: any;
     closure142(method45(UH1_UH1_0(), 0), undefined);
-    v48 = undefined;
+    v55 = undefined;
     return 0;
 }
 
