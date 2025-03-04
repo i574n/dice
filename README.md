@@ -78,7 +78,3 @@ Contributions are welcome! Please see the [CONTRIBUTING.md](https://github.com/i
 ## License
 
 This project is licensed under the AGPLv3 License. See the [LICENSE](https://github.com/i574n/dice/blob/main/LICENSE) file for details.
-
----
-
-[![Star History Chart](https://api.star-history.com/svg?repos=i574n/dice&type=Timeline)]
