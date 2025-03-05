@@ -60,3 +60,7 @@ if (!$fast -and !$SkipTests) {
 }
 
 Write-Output "dice/contract/build.ps1 / `$targetDir = $targetDir / `$projectName: $projectName / `$env:CI:'$env:CI'"
+
+if ($env:CI) {
+    Remove-Item ../../target/wasm32-unknown-unknown/release/deps -Recurse -Force -ErrorAction Ignore
+}

@@ -100,4 +100,6 @@ Write-Output "dice/ui/build.ps1 / `$targetDir = $targetDir / `$projectName: $pro
 
 if ($env:CI) {
     Remove-Item $targetDir -Recurse -Force -ErrorAction Ignore
+
+    Remove-Item node_modules -Recurse -Force -ErrorAction Ignore
 }
