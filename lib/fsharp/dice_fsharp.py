@@ -70,11 +70,11 @@ def roll_within_bounds(log: Callable[[str], None] | None, max: int, rolls: FShar
     match_value: tuple[int, FSharpList[int]] | None = accumulate_dice_rolls(log, rolls, length(rolls) - 1, 0)
     (pattern_matching_result, result_1) = (None, None)
     if match_value is not None:
-        def _arrow284(__unit: None=None, log: Any=log, max: Any=max, rolls: Any=rolls) -> bool:
+        def _arrow282(__unit: None=None, log: Any=log, max: Any=max, rolls: Any=rolls) -> bool:
             result: int = match_value[0] or 0
             return (result <= max) if (result >= 1) else False
 
-        if _arrow284():
+        if _arrow282():
             pattern_matching_result = 0
             result_1 = match_value[0]
 
@@ -118,7 +118,7 @@ def create_sequential_roller(list_1: FSharpList[Any]) -> Callable[[], __A]:
     """## createSequentialRoller
     """
     current_index: int = 0
-    def _arrow285(__unit: None=None, list_1: Any=list_1) -> __A:
+    def _arrow283(__unit: None=None, list_1: Any=list_1) -> __A:
         nonlocal current_index
         match_value: __A | None = try_item(current_index, list_1)
         if match_value is None:
@@ -130,13 +130,13 @@ def create_sequential_roller(list_1: FSharpList[Any]) -> Callable[[], __A]:
             return item
 
 
-    return _arrow285
+    return _arrow283
 
 
 def roll_progressively(log: Callable[[str], None] | None, roll: Callable[[], int], reroll: bool, max: int) -> int:
     """## rollProgressively
     """
-    def _arrow286(__unit: None=None, log: Any=log, roll: Any=roll, reroll: Any=reroll, max: Any=max) -> int:
+    def _arrow284(__unit: None=None, log: Any=log, roll: Any=roll, reroll: Any=reroll, max: Any=max) -> int:
         max_1: int = max or 0
         def loop(n_mut: int, p_mut: int) -> int:
             while True:
@@ -157,7 +157,7 @@ def roll_progressively(log: Callable[[str], None] | None, roll: Callable[[], int
 
         return 1 if (max_1 == 1) else loop(0, 1)
 
-    power: int = (_arrow286() - 1) or 0
+    power: int = (_arrow284() - 1) or 0
     def loop_1(rolls_mut: FSharpList[int], size_mut: int, log: Any=log, roll: Any=roll, reroll: Any=reroll, max: Any=max) -> int:
         while True:
             (rolls, size) = (rolls_mut, size_mut)
@@ -191,10 +191,10 @@ def roll_progressively(log: Callable[[str], None] | None, roll: Callable[[], int
                     return result_1
 
                 elif pattern_matching_result == 1:
-                    def _arrow287(_arg: int, rolls: Any=rolls, size: Any=size) -> int:
+                    def _arrow285(_arg: int, rolls: Any=rolls, size: Any=size) -> int:
                         return roll(None)
 
-                    rolls_mut = initialize(power, _arrow287)
+                    rolls_mut = initialize(power, _arrow285)
                     size_mut = power
                     continue
 
@@ -212,24 +212,24 @@ def roll_progressively(log: Callable[[str], None] | None, roll: Callable[[], int
 def main(args: Array[str]) -> int:
     """## main
     """
-    def _arrow289(__unit: None=None, args: Any=args) -> Callable[[str], None]:
+    def _arrow287(__unit: None=None, args: Any=args) -> Callable[[str], None]:
         clo: Callable[[str], None] = to_console(printf("%s"))
-        def _arrow288(arg: str) -> None:
+        def _arrow286(arg: str) -> None:
             clo(arg)
 
-        return _arrow288
+        return _arrow286
 
-    def _arrow290(__unit: None=None, args: Any=args) -> int:
+    def _arrow288(__unit: None=None, args: Any=args) -> int:
         return roll_dice()
 
-    result: int = roll_progressively(_arrow289(), _arrow290, True, 2147483647 // 10) or 0
-    def _arrow291(__unit: None=None, args: Any=args) -> str:
+    result: int = roll_progressively(_arrow287(), _arrow288, True, 2147483647 // 10) or 0
+    def _arrow289(__unit: None=None, args: Any=args) -> str:
         return ("main / result: " + str(result)) + ""
 
-    def _arrow292(__unit: None=None, args: Any=args) -> str:
+    def _arrow290(__unit: None=None, args: Any=args) -> str:
         return ""
 
-    trace(TraceLevel(1), _arrow291, _arrow292)
+    trace(TraceLevel(1), _arrow289, _arrow290)
     return 0
 
 

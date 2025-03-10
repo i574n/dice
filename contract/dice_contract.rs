@@ -323,44 +323,49 @@ mod module_aadd22c3 {
         }
         pub fn method2() -> (Dice_contract::US1, Dice_contract::US2) {
             let v1: string = Dice_contract::method3(string("TRACE_LEVEL"));
-            let v6: Dice_contract::US1 = if string("Verbose") == (v1.clone()) {
+            let v6: string = toLower(string("Critical"));
+            let v13: string = toLower(string("Warning"));
+            let v20: string = toLower(string("Info"));
+            let v27: string = toLower(string("Debug"));
+            let v34: string = toLower(string("Verbose"));
+            let v41: Dice_contract::US1 = if string("Verbose") == (v1.clone()) {
                 Dice_contract::US1::US1_0(Dice_contract::US0::US0_0)
             } else {
                 Dice_contract::US1::US1_1
             };
             (
-                match &v6 {
-                    Dice_contract::US1::US1_0(v6_0_0) => Dice_contract::US1::US1_0(
-                        match &v6 {
+                match &v41 {
+                    Dice_contract::US1::US1_0(v41_0_0) => Dice_contract::US1::US1_0(
+                        match &v41 {
                             Dice_contract::US1::US1_0(x) => x.clone(),
                             _ => unreachable!(),
                         }
                         .clone(),
                     ),
                     _ => {
-                        let v13: Dice_contract::US1 = if string("Debug") == (v1.clone()) {
+                        let v48: Dice_contract::US1 = if string("Debug") == (v1.clone()) {
                             Dice_contract::US1::US1_0(Dice_contract::US0::US0_1)
                         } else {
                             Dice_contract::US1::US1_1
                         };
-                        match &v13 {
-                            Dice_contract::US1::US1_0(v13_0_0) => Dice_contract::US1::US1_0(
-                                match &v13 {
+                        match &v48 {
+                            Dice_contract::US1::US1_0(v48_0_0) => Dice_contract::US1::US1_0(
+                                match &v48 {
                                     Dice_contract::US1::US1_0(x) => x.clone(),
                                     _ => unreachable!(),
                                 }
                                 .clone(),
                             ),
                             _ => {
-                                let v20: Dice_contract::US1 = if string("Info") == (v1.clone()) {
+                                let v55: Dice_contract::US1 = if string("Info") == (v1.clone()) {
                                     Dice_contract::US1::US1_0(Dice_contract::US0::US0_2)
                                 } else {
                                     Dice_contract::US1::US1_1
                                 };
-                                match &v20 {
-                                    Dice_contract::US1::US1_0(v20_0_0) => {
+                                match &v55 {
+                                    Dice_contract::US1::US1_0(v55_0_0) => {
                                         Dice_contract::US1::US1_0(
-                                            match &v20 {
+                                            match &v55 {
                                                 Dice_contract::US1::US1_0(x) => x.clone(),
                                                 _ => unreachable!(),
                                             }
@@ -368,16 +373,16 @@ mod module_aadd22c3 {
                                         )
                                     }
                                     _ => {
-                                        let v27: Dice_contract::US1 =
+                                        let v62: Dice_contract::US1 =
                                             if string("Warning") == (v1.clone()) {
                                                 Dice_contract::US1::US1_0(Dice_contract::US0::US0_3)
                                             } else {
                                                 Dice_contract::US1::US1_1
                                             };
-                                        match &v27 {
-                                            Dice_contract::US1::US1_0(v27_0_0) => {
+                                        match &v62 {
+                                            Dice_contract::US1::US1_0(v62_0_0) => {
                                                 Dice_contract::US1::US1_0(
-                                                    match &v27 {
+                                                    match &v62 {
                                                         Dice_contract::US1::US1_0(x) => x.clone(),
                                                         _ => unreachable!(),
                                                     }
@@ -385,7 +390,7 @@ mod module_aadd22c3 {
                                                 )
                                             }
                                             _ => {
-                                                let v34: Dice_contract::US1 =
+                                                let v69: Dice_contract::US1 =
                                                     if string("Critical") == (v1.clone()) {
                                                         Dice_contract::US1::US1_0(
                                                             Dice_contract::US0::US0_4,
@@ -393,10 +398,10 @@ mod module_aadd22c3 {
                                                     } else {
                                                         Dice_contract::US1::US1_1
                                                     };
-                                                match &v34 {
-                                                    Dice_contract::US1::US1_0(v34_0_0) => {
+                                                match &v69 {
+                                                    Dice_contract::US1::US1_0(v69_0_0) => {
                                                         Dice_contract::US1::US1_0(
-                                                            match &v34 {
+                                                            match &v69 {
                                                                 Dice_contract::US1::US1_0(x) => {
                                                                     x.clone()
                                                                 }
@@ -405,7 +410,138 @@ mod module_aadd22c3 {
                                                             .clone(),
                                                         )
                                                     }
-                                                    _ => Dice_contract::US1::US1_1,
+                                                    _ => {
+                                                        let v76: Dice_contract::US1 =
+                                                            if (v34.clone()) == (v1.clone()) {
+                                                                Dice_contract::US1::US1_0(
+                                                                    Dice_contract::US0::US0_0,
+                                                                )
+                                                            } else {
+                                                                Dice_contract::US1::US1_1
+                                                            };
+                                                        match &v76 {
+                                                         Dice_contract::US1::US1_0(v76_0_0)
+                                                         =>
+                                                         Dice_contract::US1::US1_0(match &v76
+                                                                                       {
+                                                                                       Dice_contract::US1::US1_0(x)
+                                                                                       =>
+                                                                                       x.clone(),
+                                                                                       _
+                                                                                       =>
+                                                                                       unreachable!(),
+                                                                                   }.clone()),
+                                                         _ => {
+                                                             let v83:
+                                                                     Dice_contract::US1 =
+                                                                 if (v27.clone())
+                                                                        ==
+                                                                        (v1.clone())
+                                                                    {
+                                                                     Dice_contract::US1::US1_0(Dice_contract::US0::US0_1)
+                                                                 } else {
+                                                                     Dice_contract::US1::US1_1
+                                                                 };
+                                                             match &v83 {
+                                                                 Dice_contract::US1::US1_0(v83_0_0)
+                                                                 =>
+                                                                 Dice_contract::US1::US1_0(match &v83
+                                                                                               {
+                                                                                               Dice_contract::US1::US1_0(x)
+                                                                                               =>
+                                                                                               x.clone(),
+                                                                                               _
+                                                                                               =>
+                                                                                               unreachable!(),
+                                                                                           }.clone()),
+                                                                 _ => {
+                                                                     let v90:
+                                                                             Dice_contract::US1 =
+                                                                         if (v20.clone())
+                                                                                ==
+                                                                                (v1.clone())
+                                                                            {
+                                                                             Dice_contract::US1::US1_0(Dice_contract::US0::US0_2)
+                                                                         } else {
+                                                                             Dice_contract::US1::US1_1
+                                                                         };
+                                                                     match &v90
+                                                                         {
+                                                                         Dice_contract::US1::US1_0(v90_0_0)
+                                                                         =>
+                                                                         Dice_contract::US1::US1_0(match &v90
+                                                                                                       {
+                                                                                                       Dice_contract::US1::US1_0(x)
+                                                                                                       =>
+                                                                                                       x.clone(),
+                                                                                                       _
+                                                                                                       =>
+                                                                                                       unreachable!(),
+                                                                                                   }.clone()),
+                                                                         _ =>
+                                                                         {
+                                                                             let v97:
+                                                                                     Dice_contract::US1 =
+                                                                                 if (v13.clone())
+                                                                                        ==
+                                                                                        (v1.clone())
+                                                                                    {
+                                                                                     Dice_contract::US1::US1_0(Dice_contract::US0::US0_3)
+                                                                                 } else {
+                                                                                     Dice_contract::US1::US1_1
+                                                                                 };
+                                                                             match &v97
+                                                                                 {
+                                                                                 Dice_contract::US1::US1_0(v97_0_0)
+                                                                                 =>
+                                                                                 Dice_contract::US1::US1_0(match &v97
+                                                                                                               {
+                                                                                                               Dice_contract::US1::US1_0(x)
+                                                                                                               =>
+                                                                                                               x.clone(),
+                                                                                                               _
+                                                                                                               =>
+                                                                                                               unreachable!(),
+                                                                                                           }.clone()),
+                                                                                 _
+                                                                                 =>
+                                                                                 {
+                                                                                     let v104:
+                                                                                             Dice_contract::US1 =
+                                                                                         if (v6.clone())
+                                                                                                ==
+                                                                                                (v1.clone())
+                                                                                            {
+                                                                                             Dice_contract::US1::US1_0(Dice_contract::US0::US0_4)
+                                                                                         } else {
+                                                                                             Dice_contract::US1::US1_1
+                                                                                         };
+                                                                                     match &v104
+                                                                                         {
+                                                                                         Dice_contract::US1::US1_0(v104_0_0)
+                                                                                         =>
+                                                                                         Dice_contract::US1::US1_0(match &v104
+                                                                                                                       {
+                                                                                                                       Dice_contract::US1::US1_0(x)
+                                                                                                                       =>
+                                                                                                                       x.clone(),
+                                                                                                                       _
+                                                                                                                       =>
+                                                                                                                       unreachable!(),
+                                                                                                                   }.clone()),
+                                                                                         _
+                                                                                         =>
+                                                                                         Dice_contract::US1::US1_1,
+                                                                                     }
+                                                                                 }
+                                                                             }
+                                                                         }
+                                                                     }
+                                                                 }
+                                                             }
+                                                         }
+                                                     }
+                                                    }
                                                 }
                                             }
                                         }
@@ -418,7 +554,7 @@ mod module_aadd22c3 {
                 if (Dice_contract::method3(string("AUTOMATION"))) != string("True") {
                     Dice_contract::US2::US2_1
                 } else {
-                    let v63: DateTime = unbox::<DateTime>(fable_library_rust::Native_::getZero());
+                    let v143: DateTime = unbox::<DateTime>(fable_library_rust::Native_::getZero());
                     Dice_contract::US2::US2_0(unbox::<i64>(fable_library_rust::Native_::getZero()))
                 },
             )
@@ -608,50 +744,50 @@ mod module_aadd22c3 {
             string("\u{001b}[0m")
         }
         pub fn method11() -> string {
-            let v7: string = Dice_contract::method12(getCharAt(toLower(string("Debug")), 0_i32));
-            let v96: &str = inline_colorization::color_bright_blue;
-            let v107: &str = &*v7;
-            let v131: &str = inline_colorization::color_reset;
-            let v133: std::string::String = format!("{}{}{}", v96, v107, v131);
-            fable_library_rust::String_::fromString(v133)
+            let v8: string = Dice_contract::method12(getCharAt(toLower(string("Debug")), 0_i32));
+            let v97: &str = inline_colorization::color_bright_blue;
+            let v108: &str = &*v8;
+            let v132: &str = inline_colorization::color_reset;
+            let v134: std::string::String = format!("{}{}{}", v97, v108, v132);
+            fable_library_rust::String_::fromString(v134)
         }
         pub fn method16(v0_1: i32, v1: string) -> string {
             let v3: LrcPtr<Dice_contract::Mut3> = LrcPtr::new(Dice_contract::Mut3 {
                 l0: MutCell::new(Dice_contract::method13()),
             });
-            let v11: () = {
+            let v12: () = {
                 Dice_contract::closure6(v3.clone(), string("{ "), ());
                 ()
             };
-            let v21: () = {
+            let v23: () = {
                 Dice_contract::closure6(v3.clone(), string("seed_excess_len"), ());
                 ()
             };
-            let v31: () = {
+            let v34: () = {
                 Dice_contract::closure6(v3.clone(), string(" = "), ());
                 ()
             };
-            let v40: () = {
+            let v43: () = {
                 Dice_contract::closure6(v3.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v50: () = {
+            let v54: () = {
                 Dice_contract::closure6(v3.clone(), string("; "), ());
                 ()
             };
-            let v60: () = {
+            let v65: () = {
                 Dice_contract::closure6(v3.clone(), string("seed_excess"), ());
                 ()
             };
-            let v69: () = {
+            let v74: () = {
                 Dice_contract::closure6(v3.clone(), string(" = "), ());
                 ()
             };
-            let v78: () = {
+            let v83: () = {
                 Dice_contract::closure6(v3.clone(), v1, ());
                 ()
             };
-            let v88: () = {
+            let v94: () = {
                 Dice_contract::closure6(v3.clone(), string(" }"), ());
                 ()
             };
@@ -1038,272 +1174,272 @@ mod module_aadd22c3 {
             let v16: LrcPtr<Dice_contract::Mut3> = LrcPtr::new(Dice_contract::Mut3 {
                 l0: MutCell::new(Dice_contract::method13()),
             });
-            let v24: () = {
+            let v25: () = {
                 Dice_contract::closure6(v16.clone(), string("{ "), ());
                 ()
             };
-            let v34: () = {
+            let v36: () = {
                 Dice_contract::closure6(v16.clone(), string("max"), ());
                 ()
             };
-            let v44: () = {
+            let v47: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v53: () = {
+            let v56: () = {
                 Dice_contract::closure6(v16.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v63: () = {
+            let v67: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v73: () = {
+            let v78: () = {
                 Dice_contract::closure6(v16.clone(), string("key"), ());
                 ()
             };
-            let v82: () = {
+            let v87: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v99: std::string::String = format!("{:#?}", v1);
-            let v130: () = {
+            let v104: std::string::String = format!("{:#?}", v1);
+            let v135: () = {
                 Dice_contract::closure6(
                     v16.clone(),
-                    fable_library_rust::String_::fromString(v99),
+                    fable_library_rust::String_::fromString(v104),
                     (),
                 );
                 ()
             };
-            let v139: () = {
+            let v144: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v149: () = {
+            let v155: () = {
                 Dice_contract::closure6(v16.clone(), string("proof"), ());
                 ()
             };
-            let v158: () = {
+            let v164: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v175: std::string::String = format!("{:#?}", v2);
-            let v206: () = {
+            let v181: std::string::String = format!("{:#?}", v2);
+            let v212: () = {
                 Dice_contract::closure6(
                     v16.clone(),
-                    fable_library_rust::String_::fromString(v175),
+                    fable_library_rust::String_::fromString(v181),
                     (),
                 );
                 ()
             };
-            let v215: () = {
+            let v221: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v225: () = {
+            let v232: () = {
                 Dice_contract::closure6(v16.clone(), string("block_timestamp"), ());
                 ()
             };
-            let v234: () = {
+            let v241: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v243: () = {
+            let v250: () = {
                 Dice_contract::closure6(v16.clone(), sprintf!("{}", v3), ());
                 ()
             };
-            let v252: () = {
+            let v259: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v262: () = {
+            let v270: () = {
                 Dice_contract::closure6(v16.clone(), string("block_height"), ());
                 ()
             };
-            let v271: () = {
+            let v279: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v280: () = {
+            let v288: () = {
                 Dice_contract::closure6(v16.clone(), sprintf!("{}", v4), ());
                 ()
             };
-            let v289: () = {
+            let v297: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
-                ()
-            };
-            let v299: () = {
-                Dice_contract::closure6(v16.clone(), string("epoch_height"), ());
                 ()
             };
             let v308: () = {
-                Dice_contract::closure6(v16.clone(), string(" = "), ());
+                Dice_contract::closure6(v16.clone(), string("epoch_height"), ());
                 ()
             };
             let v317: () = {
-                Dice_contract::closure6(v16.clone(), sprintf!("{}", v5), ());
+                Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
             let v326: () = {
+                Dice_contract::closure6(v16.clone(), sprintf!("{}", v5), ());
+                ()
+            };
+            let v335: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v336: () = {
+            let v346: () = {
                 Dice_contract::closure6(v16.clone(), string("account_balance"), ());
                 ()
             };
-            let v345: () = {
+            let v355: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v354: () = {
+            let v364: () = {
                 Dice_contract::closure6(v16.clone(), v6, ());
                 ()
             };
-            let v363: () = {
+            let v373: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v373: () = {
+            let v384: () = {
                 Dice_contract::closure6(v16.clone(), string("signer_account_id"), ());
                 ()
             };
-            let v382: () = {
+            let v393: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v399: std::string::String = format!("{:#?}", v7);
-            let v430: () = {
+            let v410: std::string::String = format!("{:#?}", v7);
+            let v441: () = {
                 Dice_contract::closure6(
                     v16.clone(),
-                    fable_library_rust::String_::fromString(v399),
+                    fable_library_rust::String_::fromString(v410),
                     (),
                 );
                 ()
             };
-            let v439: () = {
+            let v450: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v449: () = {
+            let v461: () = {
                 Dice_contract::closure6(v16.clone(), string("predecessor_account_id"), ());
                 ()
             };
-            let v458: () = {
+            let v470: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v475: std::string::String = format!("{:#?}", v8);
-            let v506: () = {
+            let v487: std::string::String = format!("{:#?}", v8);
+            let v518: () = {
                 Dice_contract::closure6(
                     v16.clone(),
-                    fable_library_rust::String_::fromString(v475),
+                    fable_library_rust::String_::fromString(v487),
                     (),
                 );
                 ()
             };
-            let v515: () = {
+            let v527: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v525: () = {
+            let v538: () = {
                 Dice_contract::closure6(v16.clone(), string("seed"), ());
                 ()
             };
-            let v534: () = {
+            let v547: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v543: () = {
+            let v556: () = {
                 Dice_contract::closure6(v16.clone(), v9, ());
                 ()
             };
-            let v552: () = {
+            let v565: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v562: () = {
+            let v576: () = {
                 Dice_contract::closure6(v16.clone(), string("seeds"), ());
                 ()
             };
-            let v571: () = {
+            let v585: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v580: () = {
+            let v594: () = {
                 Dice_contract::closure6(v16.clone(), v10, ());
                 ()
             };
-            let v589: () = {
+            let v603: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v599: () = {
+            let v614: () = {
                 Dice_contract::closure6(v16.clone(), string("entropy_len"), ());
                 ()
             };
-            let v608: () = {
+            let v623: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v625: std::string::String = format!("{:#?}", v11);
-            let v656: () = {
+            let v640: std::string::String = format!("{:#?}", v11);
+            let v671: () = {
                 Dice_contract::closure6(
                     v16.clone(),
-                    fable_library_rust::String_::fromString(v625),
+                    fable_library_rust::String_::fromString(v640),
                     (),
                 );
                 ()
             };
-            let v665: () = {
+            let v680: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v675: () = {
+            let v691: () = {
                 Dice_contract::closure6(v16.clone(), string("entropy"), ());
                 ()
             };
-            let v684: () = {
+            let v700: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v693: () = {
+            let v709: () = {
                 Dice_contract::closure6(v16.clone(), v12, ());
                 ()
             };
-            let v702: () = {
+            let v718: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v712: () = {
+            let v729: () = {
                 Dice_contract::closure6(v16.clone(), string("hash_u8"), ());
                 ()
             };
-            let v721: () = {
+            let v738: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v730: () = {
+            let v747: () = {
                 Dice_contract::closure6(v16.clone(), v13, ());
                 ()
             };
-            let v739: () = {
+            let v756: () = {
                 Dice_contract::closure6(v16.clone(), string("; "), ());
                 ()
             };
-            let v749: () = {
+            let v767: () = {
                 Dice_contract::closure6(v16.clone(), string("rolls"), ());
                 ()
             };
-            let v758: () = {
+            let v776: () = {
                 Dice_contract::closure6(v16.clone(), string(" = "), ());
                 ()
             };
-            let v767: () = {
+            let v785: () = {
                 Dice_contract::closure6(v16.clone(), v14, ());
                 ()
             };
-            let v777: () = {
+            let v796: () = {
                 Dice_contract::closure6(v16.clone(), string(" }"), ());
                 ()
             };
@@ -1532,55 +1668,55 @@ mod module_aadd22c3 {
             let v4: LrcPtr<Dice_contract::Mut3> = LrcPtr::new(Dice_contract::Mut3 {
                 l0: MutCell::new(Dice_contract::method13()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice_contract::closure6(v4.clone(), string("{ "), ());
                 ()
             };
-            let v22: () = {
+            let v24: () = {
                 Dice_contract::closure6(v4.clone(), string("max"), ());
                 ()
             };
-            let v32: () = {
+            let v35: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v41: () = {
+            let v44: () = {
                 Dice_contract::closure6(v4.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v51: () = {
+            let v55: () = {
                 Dice_contract::closure6(v4.clone(), string("; "), ());
                 ()
             };
-            let v61: () = {
+            let v66: () = {
                 Dice_contract::closure6(v4.clone(), string("p"), ());
                 ()
             };
-            let v70: () = {
+            let v75: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v79: () = {
+            let v84: () = {
                 Dice_contract::closure6(v4.clone(), sprintf!("{}", v1), ());
                 ()
             };
-            let v88: () = {
+            let v93: () = {
                 Dice_contract::closure6(v4.clone(), string("; "), ());
                 ()
             };
-            let v98: () = {
+            let v104: () = {
                 Dice_contract::closure6(v4.clone(), string("n"), ());
                 ()
             };
-            let v107: () = {
+            let v113: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v116: () = {
+            let v122: () = {
                 Dice_contract::closure6(v4.clone(), sprintf!("{}", v2), ());
                 ()
             };
-            let v126: () = {
+            let v133: () = {
                 Dice_contract::closure6(v4.clone(), string(" }"), ());
                 ()
             };
@@ -1692,71 +1828,71 @@ mod module_aadd22c3 {
             let v5: LrcPtr<Dice_contract::Mut3> = LrcPtr::new(Dice_contract::Mut3 {
                 l0: MutCell::new(Dice_contract::method13()),
             });
-            let v13: () = {
+            let v14: () = {
                 Dice_contract::closure6(v5.clone(), string("{ "), ());
                 ()
             };
-            let v23: () = {
+            let v25: () = {
                 Dice_contract::closure6(v5.clone(), string("current_index"), ());
                 ()
             };
-            let v33: () = {
+            let v36: () = {
                 Dice_contract::closure6(v5.clone(), string(" = "), ());
                 ()
             };
-            let v42: () = {
+            let v45: () = {
                 Dice_contract::closure6(v5.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v52: () = {
+            let v56: () = {
                 Dice_contract::closure6(v5.clone(), string("; "), ());
                 ()
             };
-            let v62: () = {
+            let v67: () = {
                 Dice_contract::closure6(v5.clone(), string("acc"), ());
                 ()
             };
-            let v71: () = {
+            let v76: () = {
                 Dice_contract::closure6(v5.clone(), string(" = "), ());
                 ()
             };
-            let v80: () = {
+            let v85: () = {
                 Dice_contract::closure6(v5.clone(), sprintf!("{}", v1), ());
                 ()
             };
-            let v89: () = {
+            let v94: () = {
                 Dice_contract::closure6(v5.clone(), string("; "), ());
                 ()
             };
-            let v99: () = {
+            let v105: () = {
                 Dice_contract::closure6(v5.clone(), string("len"), ());
                 ()
             };
-            let v108: () = {
+            let v114: () = {
                 Dice_contract::closure6(v5.clone(), string(" = "), ());
                 ()
             };
-            let v117: () = {
+            let v123: () = {
                 Dice_contract::closure6(v5.clone(), sprintf!("{}", v2), ());
                 ()
             };
-            let v126: () = {
+            let v132: () = {
                 Dice_contract::closure6(v5.clone(), string("; "), ());
                 ()
             };
-            let v136: () = {
+            let v143: () = {
                 Dice_contract::closure6(v5.clone(), string("last_item"), ());
                 ()
             };
-            let v145: () = {
+            let v152: () = {
                 Dice_contract::closure6(v5.clone(), string(" = "), ());
                 ()
             };
-            let v154: () = {
+            let v161: () = {
                 Dice_contract::closure6(v5.clone(), v3, ());
                 ()
             };
-            let v164: () = {
+            let v172: () = {
                 Dice_contract::closure6(v5.clone(), string(" }"), ());
                 ()
             };
@@ -1998,55 +2134,55 @@ mod module_aadd22c3 {
             let v4: LrcPtr<Dice_contract::Mut3> = LrcPtr::new(Dice_contract::Mut3 {
                 l0: MutCell::new(Dice_contract::method13()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice_contract::closure6(v4.clone(), string("{ "), ());
                 ()
             };
-            let v22: () = {
+            let v24: () = {
                 Dice_contract::closure6(v4.clone(), string("power"), ());
                 ()
             };
-            let v32: () = {
+            let v35: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v41: () = {
+            let v44: () = {
                 Dice_contract::closure6(v4.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v51: () = {
+            let v55: () = {
                 Dice_contract::closure6(v4.clone(), string("; "), ());
                 ()
             };
-            let v61: () = {
+            let v66: () = {
                 Dice_contract::closure6(v4.clone(), string("acc"), ());
                 ()
             };
-            let v70: () = {
+            let v75: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v79: () = {
+            let v84: () = {
                 Dice_contract::closure6(v4.clone(), sprintf!("{}", v1), ());
                 ()
             };
-            let v88: () = {
+            let v93: () = {
                 Dice_contract::closure6(v4.clone(), string("; "), ());
                 ()
             };
-            let v98: () = {
+            let v104: () = {
                 Dice_contract::closure6(v4.clone(), string("result"), ());
                 ()
             };
-            let v107: () = {
+            let v113: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v116: () = {
+            let v122: () = {
                 Dice_contract::closure6(v4.clone(), sprintf!("{}", v2), ());
                 ()
             };
-            let v126: () = {
+            let v133: () = {
                 Dice_contract::closure6(v4.clone(), string(" }"), ());
                 ()
             };
@@ -2518,71 +2654,71 @@ mod module_aadd22c3 {
             let v5: LrcPtr<Dice_contract::Mut3> = LrcPtr::new(Dice_contract::Mut3 {
                 l0: MutCell::new(Dice_contract::method13()),
             });
-            let v13: () = {
+            let v14: () = {
                 Dice_contract::closure6(v5.clone(), string("{ "), ());
                 ()
             };
-            let v23: () = {
+            let v25: () = {
                 Dice_contract::closure6(v5.clone(), string("power"), ());
                 ()
             };
-            let v33: () = {
+            let v36: () = {
                 Dice_contract::closure6(v5.clone(), string(" = "), ());
                 ()
             };
-            let v42: () = {
+            let v45: () = {
                 Dice_contract::closure6(v5.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v52: () = {
+            let v56: () = {
                 Dice_contract::closure6(v5.clone(), string("; "), ());
                 ()
             };
-            let v62: () = {
+            let v67: () = {
                 Dice_contract::closure6(v5.clone(), string("acc"), ());
                 ()
             };
-            let v71: () = {
+            let v76: () = {
                 Dice_contract::closure6(v5.clone(), string(" = "), ());
                 ()
             };
-            let v80: () = {
+            let v85: () = {
                 Dice_contract::closure6(v5.clone(), sprintf!("{}", v1), ());
                 ()
             };
-            let v89: () = {
+            let v94: () = {
                 Dice_contract::closure6(v5.clone(), string("; "), ());
                 ()
             };
-            let v99: () = {
+            let v105: () = {
                 Dice_contract::closure6(v5.clone(), string("roll"), ());
                 ()
             };
-            let v108: () = {
+            let v114: () = {
                 Dice_contract::closure6(v5.clone(), string(" = "), ());
                 ()
             };
-            let v117: () = {
+            let v123: () = {
                 Dice_contract::closure6(v5.clone(), sprintf!("{}", v2), ());
                 ()
             };
-            let v126: () = {
+            let v132: () = {
                 Dice_contract::closure6(v5.clone(), string("; "), ());
                 ()
             };
-            let v136: () = {
+            let v143: () = {
                 Dice_contract::closure6(v5.clone(), string("value"), ());
                 ()
             };
-            let v145: () = {
+            let v152: () = {
                 Dice_contract::closure6(v5.clone(), string(" = "), ());
                 ()
             };
-            let v154: () = {
+            let v161: () = {
                 Dice_contract::closure6(v5.clone(), sprintf!("{}", v3), ());
                 ()
             };
-            let v164: () = {
+            let v172: () = {
                 Dice_contract::closure6(v5.clone(), string(" }"), ());
                 ()
             };
@@ -2655,55 +2791,55 @@ mod module_aadd22c3 {
             let v4: LrcPtr<Dice_contract::Mut3> = LrcPtr::new(Dice_contract::Mut3 {
                 l0: MutCell::new(Dice_contract::method13()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice_contract::closure6(v4.clone(), string("{ "), ());
                 ()
             };
-            let v22: () = {
+            let v24: () = {
                 Dice_contract::closure6(v4.clone(), string("power"), ());
                 ()
             };
-            let v32: () = {
+            let v35: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v41: () = {
+            let v44: () = {
                 Dice_contract::closure6(v4.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v51: () = {
+            let v55: () = {
                 Dice_contract::closure6(v4.clone(), string("; "), ());
                 ()
             };
-            let v61: () = {
+            let v66: () = {
                 Dice_contract::closure6(v4.clone(), string("acc"), ());
                 ()
             };
-            let v70: () = {
+            let v75: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v79: () = {
+            let v84: () = {
                 Dice_contract::closure6(v4.clone(), sprintf!("{}", v1), ());
                 ()
             };
-            let v88: () = {
+            let v93: () = {
                 Dice_contract::closure6(v4.clone(), string("; "), ());
                 ()
             };
-            let v98: () = {
+            let v104: () = {
                 Dice_contract::closure6(v4.clone(), string("roll"), ());
                 ()
             };
-            let v107: () = {
+            let v113: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v116: () = {
+            let v122: () = {
                 Dice_contract::closure6(v4.clone(), sprintf!("{}", v2), ());
                 ()
             };
-            let v126: () = {
+            let v133: () = {
                 Dice_contract::closure6(v4.clone(), string(" }"), ());
                 ()
             };
@@ -3144,55 +3280,55 @@ mod module_aadd22c3 {
             let v4: LrcPtr<Dice_contract::Mut3> = LrcPtr::new(Dice_contract::Mut3 {
                 l0: MutCell::new(Dice_contract::method13()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice_contract::closure6(v4.clone(), string("{ "), ());
                 ()
             };
-            let v22: () = {
+            let v24: () = {
                 Dice_contract::closure6(v4.clone(), string("max"), ());
                 ()
             };
-            let v32: () = {
+            let v35: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v41: () = {
+            let v44: () = {
                 Dice_contract::closure6(v4.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v51: () = {
+            let v55: () = {
                 Dice_contract::closure6(v4.clone(), string("; "), ());
                 ()
             };
-            let v61: () = {
+            let v66: () = {
                 Dice_contract::closure6(v4.clone(), string("rolls"), ());
                 ()
             };
-            let v70: () = {
+            let v75: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v79: () = {
+            let v84: () = {
                 Dice_contract::closure6(v4.clone(), v1, ());
                 ()
             };
-            let v88: () = {
+            let v93: () = {
                 Dice_contract::closure6(v4.clone(), string("; "), ());
                 ()
             };
-            let v98: () = {
+            let v104: () = {
                 Dice_contract::closure6(v4.clone(), string("result"), ());
                 ()
             };
-            let v107: () = {
+            let v113: () = {
                 Dice_contract::closure6(v4.clone(), string(" = "), ());
                 ()
             };
-            let v116: () = {
+            let v122: () = {
                 Dice_contract::closure6(v4.clone(), v2, ());
                 ()
             };
-            let v126: () = {
+            let v133: () = {
                 Dice_contract::closure6(v4.clone(), string(" }"), ());
                 ()
             };

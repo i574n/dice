@@ -12166,7 +12166,7 @@ mod module_9c940d83 {
                 .clone(),
                 _ => v37.clone(),
             };
-            let v827: leptos::prelude::Fragment = if (get_Count(
+            let v829: leptos::prelude::Fragment = if (get_Count(
                 fable_library_rust::NativeArray_::array_from(v40.clone()),
             ) as u64)
                 == 0_u64
@@ -12370,7 +12370,7 @@ mod module_9c940d83 {
                                                        let v378: bool = */
                             }); //;
                             let v380: Func0<()> = _func0_from_v276;
-                            let v493: string = join(
+                            let v495: string = join(
                                 string(" "),
                                 toArray(delay(Func0::new(move || {
                                     ofList(ofArray_1(new_array(&[
@@ -12396,20 +12396,20 @@ mod module_9c940d83 {
                                     ])))
                                 }))),
                             );
-                            let v504: &str = &*v493;
-                            let v537: std::string::String = String::from(v504);
-                            let v563: std::string::String = v537;
-                            let v569: string =
-                                string(" aria-label=v275 on:click=move |_| v380() class=v563");
-                            let v571: string = fable_library_rust::String_::fromString(v274);
-                            let v590: Dice_ui::US65 = defaultValue(
+                            let v506: &str = &*v495;
+                            let v539: std::string::String = String::from(v506);
+                            let v565: std::string::String = v539;
+                            let v571: string =
+                                string(" aria-label=v275 on:click=move |_| v380() class=v565");
+                            let v573: string = fable_library_rust::String_::fromString(v274);
+                            let v592: Dice_ui::US65 = defaultValue(
                                 Dice_ui::US65::US65_1,
                                 map(Dice_ui::method189(), v1.clone()),
                             );
-                            let v600: Dice_ui::US42 = match &v590 {
-                                Dice_ui::US65::US65_0(v590_0_0) => {
+                            let v602: Dice_ui::US42 = match &v592 {
+                                Dice_ui::US65::US65_0(v592_0_0) => {
                                     Dice_ui::US42::US42_0(leptos::prelude::ArcMemo::get(
-                                        &match &v590 {
+                                        &match &v592 {
                                             Dice_ui::US65::US65_0(x) => x.clone(),
                                             _ => unreachable!(),
                                         }
@@ -12418,47 +12418,47 @@ mod module_9c940d83 {
                                 }
                                 _ => Dice_ui::US42::US42_1,
                             };
-                            let v607: Dice_ui::US31 = if let Dice_ui::US42::US42_0(v600_0_0) = &v600
+                            let v609: Dice_ui::US31 = if let Dice_ui::US42::US42_0(v602_0_0) = &v602
                             {
-                                let v601: Dice_ui::US31 = v600_0_0.clone();
-                                if let Dice_ui::US31::US31_0(v601_0_0) = &v601 {
-                                    Dice_ui::US31::US31_0(v601_0_0.clone())
+                                let v603: Dice_ui::US31 = v602_0_0.clone();
+                                if let Dice_ui::US31::US31_0(v603_0_0) = &v603 {
+                                    Dice_ui::US31::US31_0(v603_0_0.clone())
                                 } else {
                                     Dice_ui::US31::US31_1
                                 }
                             } else {
                                 Dice_ui::US31::US31_1
                             };
-                            let v696: leptos::prelude::AnyView = if let Dice_ui::US31::US31_0(
-                                v607_0_0,
-                            ) = &v607
+                            let v698: leptos::prelude::AnyView = if let Dice_ui::US31::US31_0(
+                                v609_0_0,
+                            ) = &v609
                             {
-                                if (v571.clone()) == (v607_0_0.clone()) {
-                                    let v612 = {
+                                if (v573.clone()) == (v609_0_0.clone()) {
+                                    let v614 = {
                                         let clo = Func0::new(move || Dice_ui::closure177((), ()));
                                         Func1::new({
                                             let clo = clo.clone();
                                             move |arg: ()| clo()
                                         })
                                     };
-                                    let v624: string =
-                                            string(" class=move || \" \".to_owned() + &v612(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
-                                    let v634: string =
+                                    let v626: string =
+                                            string(" class=move || \" \".to_owned() + &v614(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
+                                    let v636: string =
                                             string(" stroke-linejoin=\"round\" stroke-linecap=\"round\" r=\"9\" cy=\"12\" cx=\"12\"");
-                                    let v635: string = string("vec![]");
-                                    let v636: Vec<leptos::prelude::AnyView> = vec![];
-                                    let v638: leptos::prelude::Fragment =
-                                        leptos::prelude::Fragment::new(v636);
-                                    let v640: leptos::prelude::AnyView =
-                                        leptos::prelude::AnyView::from(v638);
-                                    let v643: string = append(
+                                    let v637: string = string("vec![]");
+                                    let v638: Vec<leptos::prelude::AnyView> = vec![];
+                                    let v640: leptos::prelude::Fragment =
+                                        leptos::prelude::Fragment::new(v638);
+                                    let v642: leptos::prelude::AnyView =
+                                        leptos::prelude::AnyView::from(v640);
+                                    let v645: string = append(
                                         (append(
                                             string("leptos::prelude::view! { "),
                                             (append(
                                                 (append(
                                                     (append(
-                                                        (append(string("<circle "), (v634))),
-                                                        string(">move || { v640 }</"),
+                                                        (append(string("<circle "), (v636))),
+                                                        string(">move || { v642 }</"),
                                                     )),
                                                     string("circle"),
                                                 )),
@@ -12467,27 +12467,27 @@ mod module_9c940d83 {
                                         )),
                                         string(" }"),
                                     );
-                                    let v645: leptos::prelude::View<
+                                    let v647: leptos::prelude::View<
                                         leptos::html::HtmlElement<leptos::svg::Circle, _, _>,
-                                    > = leptos::prelude::view! { <circle  stroke-linejoin="round" stroke-linecap="round" r="9" cy="12" cx="12">move || { v640 }</circle> };
-                                    let v647: leptos::prelude::AnyView =
-                                        leptos::prelude::IntoAny::into_any(v645);
-                                    let v653: string =
+                                    > = leptos::prelude::view! { <circle  stroke-linejoin="round" stroke-linecap="round" r="9" cy="12" cx="12">move || { v642 }</circle> };
+                                    let v649: leptos::prelude::AnyView =
+                                        leptos::prelude::IntoAny::into_any(v647);
+                                    let v655: string =
                                             string(" d=\"M9 12l2 2l4 -4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"");
-                                    let v654: string = string("vec![]");
-                                    let v655: Vec<leptos::prelude::AnyView> = vec![];
-                                    let v657: leptos::prelude::Fragment =
-                                        leptos::prelude::Fragment::new(v655);
-                                    let v659: leptos::prelude::AnyView =
-                                        leptos::prelude::AnyView::from(v657);
-                                    let v662: string = append(
+                                    let v656: string = string("vec![]");
+                                    let v657: Vec<leptos::prelude::AnyView> = vec![];
+                                    let v659: leptos::prelude::Fragment =
+                                        leptos::prelude::Fragment::new(v657);
+                                    let v661: leptos::prelude::AnyView =
+                                        leptos::prelude::AnyView::from(v659);
+                                    let v664: string = append(
                                         (append(
                                             string("leptos::prelude::view! { "),
                                             (append(
                                                 (append(
                                                     (append(
-                                                        (append(string("<path "), (v653))),
-                                                        string(">move || { v659 }</"),
+                                                        (append(string("<path "), (v655))),
+                                                        string(">move || { v661 }</"),
                                                     )),
                                                     string("path"),
                                                 )),
@@ -12496,25 +12496,25 @@ mod module_9c940d83 {
                                         )),
                                         string(" }"),
                                     );
-                                    let v664: leptos::prelude::View<
+                                    let v666: leptos::prelude::View<
                                         leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                                    > = leptos::prelude::view! { <path  d="M9 12l2 2l4 -4" stroke-linejoin="round" stroke-linecap="round">move || { v659 }</path> };
-                                    let v666: leptos::prelude::AnyView =
-                                        leptos::prelude::IntoAny::into_any(v664);
-                                    let v674: string = string("vec![v647, v666]");
-                                    let v675: Vec<leptos::prelude::AnyView> = vec![v647, v666];
-                                    let v677: leptos::prelude::Fragment =
-                                        leptos::prelude::Fragment::new(v675);
-                                    let v679: leptos::prelude::AnyView =
-                                        leptos::prelude::AnyView::from(v677);
-                                    let v682: string = append(
+                                    > = leptos::prelude::view! { <path  d="M9 12l2 2l4 -4" stroke-linejoin="round" stroke-linecap="round">move || { v661 }</path> };
+                                    let v668: leptos::prelude::AnyView =
+                                        leptos::prelude::IntoAny::into_any(v666);
+                                    let v676: string = string("vec![v649, v668]");
+                                    let v677: Vec<leptos::prelude::AnyView> = vec![v649, v668];
+                                    let v679: leptos::prelude::Fragment =
+                                        leptos::prelude::Fragment::new(v677);
+                                    let v681: leptos::prelude::AnyView =
+                                        leptos::prelude::AnyView::from(v679);
+                                    let v684: string = append(
                                         (append(
                                             string("leptos::prelude::view! { "),
                                             (append(
                                                 (append(
                                                     (append(
-                                                        (append(string("<svg "), (v624))),
-                                                        string(">move || { v679 }</"),
+                                                        (append(string("<svg "), (v626))),
+                                                        string(">move || { v681 }</"),
                                                     )),
                                                     string("svg"),
                                                 )),
@@ -12523,39 +12523,39 @@ mod module_9c940d83 {
                                         )),
                                         string(" }"),
                                     );
-                                    let v684: leptos::prelude::View<
+                                    let v686: leptos::prelude::View<
                                         leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v612(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v679 }</svg> };
-                                    leptos::prelude::IntoAny::into_any(v684)
+                                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v614(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v681 }</svg> };
+                                    leptos::prelude::IntoAny::into_any(v686)
                                 } else {
-                                    let v687: string = string("vec![]");
-                                    let v688: Vec<leptos::prelude::AnyView> = vec![];
-                                    leptos::prelude::IntoAny::into_any(v688)
+                                    let v689: string = string("vec![]");
+                                    let v690: Vec<leptos::prelude::AnyView> = vec![];
+                                    leptos::prelude::IntoAny::into_any(v690)
                                 }
                             } else {
-                                let v692: string = string("vec![]");
-                                let v693: Vec<leptos::prelude::AnyView> = vec![];
-                                leptos::prelude::IntoAny::into_any(v693)
+                                let v694: string = string("vec![]");
+                                let v695: Vec<leptos::prelude::AnyView> = vec![];
+                                leptos::prelude::IntoAny::into_any(v695)
                             };
-                            let v705: &str = &*v571;
-                            let v738: std::string::String = String::from(v705);
-                            let v764: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                                leptos::prelude::IntoView::into_view(v738),
+                            let v707: &str = &*v573;
+                            let v740: std::string::String = String::from(v707);
+                            let v766: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                                leptos::prelude::IntoView::into_view(v740),
                             );
-                            let v772: string = string("vec![v696, v764]");
-                            let v773: Vec<leptos::prelude::AnyView> = vec![v696, v764];
-                            let v775: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v773);
-                            let v777: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v775);
-                            let v780: string = append(
+                            let v774: string = string("vec![v698, v766]");
+                            let v775: Vec<leptos::prelude::AnyView> = vec![v698, v766];
+                            let v777: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v775);
+                            let v779: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v777);
+                            let v782: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<button "), (v569))),
-                                                string(">move || { v777 }</"),
+                                                (append(string("<button "), (v571))),
+                                                string(">move || { v779 }</"),
                                             )),
                                             string("button"),
                                         )),
@@ -12564,50 +12564,50 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v782: leptos::prelude::View<
+                            let v784: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Button, _, _>,
-                            > = leptos::prelude::view! { <button  aria-label=v275 on:click=move |_| v380() class=v563>move || { v777 }</button> };
-                            let v784: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v782);
-                            let v788: string = string("vec![v784]");
-                            let v789: Vec<leptos::prelude::AnyView> = vec![v784];
-                            let v791: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v789);
-                            let v793: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v791);
-                            let v796: bool = true;
-                            v793 /*;
-                                 let v798: bool = */
+                            > = leptos::prelude::view! { <button  aria-label=v275 on:click=move |_| v380() class=v565>move || { v779 }</button> };
+                            let v786: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v784);
+                            let v790: string = string("vec![v786]");
+                            let v791: Vec<leptos::prelude::AnyView> = vec![v786];
+                            let v793: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v791);
+                            let v795: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v793);
+                            let v798: bool = true;
+                            v795 /*;
+                                 let v800: bool = */
                         }); //;
-                        let v800: Func1<
+                        let v802: Func1<
                             (i32, leptos::prelude::ReadSignal<std::string::String>),
                             leptos::prelude::AnyView,
                         > = _func1_from_v267;
-                        let v812: string =
-                                string("leptos::prelude::IntoAny::into_any(leptos::prelude::view! { <leptos::prelude::For  children=move |x| v804(x) let:x key=move |x| v266(x.to_owned()) each=v252 /> })");
-                        let v813: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                            leptos::prelude::view! { <leptos::prelude::For  children=move |x| v804(x) let:x key=move |x| v266(x.to_owned()) each=v252 /> },
+                        let v814: string =
+                                string("leptos::prelude::IntoAny::into_any(leptos::prelude::view! { <leptos::prelude::For  children=move |x| v806(x) let:x key=move |x| v266(x.to_owned()) each=v252 /> })");
+                        let v815: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                            leptos::prelude::view! { <leptos::prelude::For  children=move |x| v806(x) let:x key=move |x| v266(x.to_owned()) each=v252 /> },
                         );
-                        let v817: string = string("vec![v813]");
-                        let v818: Vec<leptos::prelude::AnyView> = vec![v813];
-                        leptos::prelude::Fragment::new(v818)
+                        let v819: string = string("vec![v815]");
+                        let v820: Vec<leptos::prelude::AnyView> = vec![v815];
+                        leptos::prelude::Fragment::new(v820)
                     }
                     _ => {
-                        let v821: string = string("vec![]");
-                        let v822: Vec<leptos::prelude::AnyView> = vec![];
-                        leptos::prelude::Fragment::new(v822)
+                        let v823: string = string("vec![]");
+                        let v824: Vec<leptos::prelude::AnyView> = vec![];
+                        leptos::prelude::Fragment::new(v824)
                     }
                 }
             };
-            let v829: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v827);
-            let v832: string = append(
+            let v831: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v829);
+            let v834: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
                                 (append(string("<div "), (v5))),
-                                string(">move || { v829 }</"),
+                                string(">move || { v831 }</"),
                             )),
                             string("div"),
                         )),
@@ -12616,11 +12616,11 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v834: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> = leptos::prelude::view! { <div  class="flex flex-1 flex-col p-[10px] gap-[7px] [border-left-width:1px] [border-bottom-width:1px] border-gray-200 bg-gray-100">move || { v829 }</div> };
-            let v836: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v834);
-            let v840: string = string("vec![v836]");
-            let v841: Vec<leptos::prelude::AnyView> = vec![v836];
-            leptos::prelude::Fragment::new(v841)
+            let v836: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> = leptos::prelude::view! { <div  class="flex flex-1 flex-col p-[10px] gap-[7px] [border-left-width:1px] [border-bottom-width:1px] border-gray-200 bg-gray-100">move || { v831 }</div> };
+            let v838: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v836);
+            let v842: string = string("vec![v838]");
+            let v843: Vec<leptos::prelude::AnyView> = vec![v838];
+            leptos::prelude::Fragment::new(v843)
         }
         pub fn method195(
             v0_1: Func0<leptos::prelude::Fragment>,
@@ -13140,7 +13140,7 @@ mod module_9c940d83 {
                                        let v597: bool = */
             }); //;
             let v599: Func0<()> = _func0_from_v577;
-            let v707: string = join(
+            let v709: string = join(
                 string(" "),
                 toArray(delay(Func0::new(move || {
                     ofList(ofArray_1(new_array(&[
@@ -13165,42 +13165,42 @@ mod module_9c940d83 {
                     ])))
                 }))),
             );
-            let v718: &str = &*v707;
-            let v751: std::string::String = String::from(v718);
-            let v777: std::string::String = v751;
-            let v783: string =
-                string(" on:click=move |_| v599() prop:disabled=move || v576() class=v777");
-            let v793: &str = &*string("Roll");
-            let v826: std::string::String = String::from(v793);
-            let v852: leptos::prelude::AnyView =
-                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v826));
-            let v1218: leptos::prelude::AnyView = if v575() {
-                let v857 = {
+            let v720: &str = &*v709;
+            let v753: std::string::String = String::from(v720);
+            let v779: std::string::String = v753;
+            let v785: string =
+                string(" on:click=move |_| v599() prop:disabled=move || v576() class=v779");
+            let v795: &str = &*string("Roll");
+            let v828: std::string::String = String::from(v795);
+            let v854: leptos::prelude::AnyView =
+                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v828));
+            let v1220: leptos::prelude::AnyView = if v575() {
+                let v859 = {
                     let clo_6 = Func0::new(move || Dice_ui::closure182((), ()));
                     Func1::new({
                         let clo_6 = clo_6.clone();
                         move |arg_6: ()| clo_6()
                     })
                 };
-                let v875: string =
-                        string(" class=move || \" \".to_owned() + &v857(()) xml:space=\"preserve\" style=\"enable-background:new 0 0 50 50;\" viewBox=\"0 0 24 30\" y=\"0px\" x=\"0px\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"");
-                let v887: string = string(
+                let v877: string =
+                        string(" class=move || \" \".to_owned() + &v859(()) xml:space=\"preserve\" style=\"enable-background:new 0 0 50 50;\" viewBox=\"0 0 24 30\" y=\"0px\" x=\"0px\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"");
+                let v889: string = string(
                     " opacity=\"0.2\" fill=\"#333\" height=\"10\" width=\"4\" y=\"10\" x=\"0\"",
                 );
-                let v899: string =
+                let v901: string =
                         string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0s\" values=\"0.2; 1; .2\" attributeType=\"XML\" attributeName=\"opacity\"");
-                let v900: string = string("vec![]");
-                let v901: Vec<leptos::prelude::AnyView> = vec![];
-                let v903: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v901);
-                let v905: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v903);
-                let v908: string = append(
+                let v902: string = string("vec![]");
+                let v903: Vec<leptos::prelude::AnyView> = vec![];
+                let v905: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v903);
+                let v907: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v905);
+                let v910: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<animate "), (v899))),
-                                    string(">move || { v905 }</"),
+                                    (append(string("<animate "), (v901))),
+                                    string(">move || { v907 }</"),
                                 )),
                                 string("animate"),
                             )),
@@ -13209,24 +13209,24 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v910: leptos::prelude::View<
+                let v912: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v905 }</animate> };
-                let v912: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v910);
-                let v924: string =
+                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v907 }</animate> };
+                let v914: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v912);
+                let v926: string =
                         string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0s\" values=\"10; 20; 10\" attributeType=\"XML\" attributeName=\"height\"");
-                let v925: string = string("vec![]");
-                let v926: Vec<leptos::prelude::AnyView> = vec![];
-                let v928: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v926);
-                let v930: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v928);
-                let v932: string = append(
+                let v927: string = string("vec![]");
+                let v928: Vec<leptos::prelude::AnyView> = vec![];
+                let v930: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v928);
+                let v932: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v930);
+                let v934: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<animate "), (v924))),
-                                    string(">move || { v930 }</"),
+                                    (append(string("<animate "), (v926))),
+                                    string(">move || { v932 }</"),
                                 )),
                                 string("animate"),
                             )),
@@ -13235,24 +13235,24 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v934: leptos::prelude::View<
+                let v936: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v930 }</animate> };
-                let v936: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v934);
-                let v948: string =
+                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v932 }</animate> };
+                let v938: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v936);
+                let v950: string =
                         string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0s\" values=\"10; 5; 10\" attributeType=\"XML\" attributeName=\"y\"");
-                let v949: string = string("vec![]");
-                let v950: Vec<leptos::prelude::AnyView> = vec![];
-                let v952: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v950);
-                let v954: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v952);
-                let v956: string = append(
+                let v951: string = string("vec![]");
+                let v952: Vec<leptos::prelude::AnyView> = vec![];
+                let v954: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v952);
+                let v956: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v954);
+                let v958: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<animate "), (v948))),
-                                    string(">move || { v954 }</"),
+                                    (append(string("<animate "), (v950))),
+                                    string(">move || { v956 }</"),
                                 )),
                                 string("animate"),
                             )),
@@ -13261,22 +13261,22 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v958: leptos::prelude::View<
+                let v960: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v954 }</animate> };
-                let v960: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v958);
-                let v970: string = string("vec![v912, v936, v960]");
-                let v971: Vec<leptos::prelude::AnyView> = vec![v912, v936, v960];
-                let v973: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v971);
-                let v975: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v973);
-                let v978: string = append(
+                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v956 }</animate> };
+                let v962: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v960);
+                let v972: string = string("vec![v914, v938, v962]");
+                let v973: Vec<leptos::prelude::AnyView> = vec![v914, v938, v962];
+                let v975: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v973);
+                let v977: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v975);
+                let v980: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<rect "), (v887))),
-                                    string(">move || { v975 }</"),
+                                    (append(string("<rect "), (v889))),
+                                    string(">move || { v977 }</"),
                                 )),
                                 string("rect"),
                             )),
@@ -13285,26 +13285,26 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v980: leptos::prelude::View<
+                let v982: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Rect, _, _>,
-                > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="0">move || { v975 }</rect> };
-                let v992: string = string(
+                > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="0">move || { v977 }</rect> };
+                let v994: string = string(
                     " opacity=\"0.2\" fill=\"#333\" height=\"10\" width=\"4\" y=\"10\" x=\"8\"",
                 );
-                let v1004: string =
+                let v1006: string =
                         string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.15s\" values=\"0.2; 1; .2\" attributeType=\"XML\" attributeName=\"opacity\"");
-                let v1005: string = string("vec![]");
-                let v1006: Vec<leptos::prelude::AnyView> = vec![];
-                let v1008: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1006);
-                let v1010: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1008);
-                let v1012: string = append(
+                let v1007: string = string("vec![]");
+                let v1008: Vec<leptos::prelude::AnyView> = vec![];
+                let v1010: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1008);
+                let v1012: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1010);
+                let v1014: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<animate "), (v1004))),
-                                    string(">move || { v1010 }</"),
+                                    (append(string("<animate "), (v1006))),
+                                    string(">move || { v1012 }</"),
                                 )),
                                 string("animate"),
                             )),
@@ -13313,24 +13313,24 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1014: leptos::prelude::View<
+                let v1016: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v1010 }</animate> };
-                let v1016: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1014);
-                let v1028: string =
+                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v1012 }</animate> };
+                let v1018: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1016);
+                let v1030: string =
                         string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.15s\" values=\"10; 20; 10\" attributeType=\"XML\" attributeName=\"opacity\"");
-                let v1029: string = string("vec![]");
-                let v1030: Vec<leptos::prelude::AnyView> = vec![];
-                let v1032: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1030);
-                let v1034: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1032);
-                let v1036: string = append(
+                let v1031: string = string("vec![]");
+                let v1032: Vec<leptos::prelude::AnyView> = vec![];
+                let v1034: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1032);
+                let v1036: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1034);
+                let v1038: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<animate "), (v1028))),
-                                    string(">move || { v1034 }</"),
+                                    (append(string("<animate "), (v1030))),
+                                    string(">move || { v1036 }</"),
                                 )),
                                 string("animate"),
                             )),
@@ -13339,24 +13339,24 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1038: leptos::prelude::View<
+                let v1040: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 20; 10" attributeType="XML" attributeName="opacity">move || { v1034 }</animate> };
-                let v1040: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1038);
-                let v1052: string =
+                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 20; 10" attributeType="XML" attributeName="opacity">move || { v1036 }</animate> };
+                let v1042: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1040);
+                let v1054: string =
                         string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.15s\" values=\"10; 5; 10\" attributeType=\"XML\" attributeName=\"y\"");
-                let v1053: string = string("vec![]");
-                let v1054: Vec<leptos::prelude::AnyView> = vec![];
-                let v1056: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1054);
-                let v1058: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1056);
-                let v1060: string = append(
+                let v1055: string = string("vec![]");
+                let v1056: Vec<leptos::prelude::AnyView> = vec![];
+                let v1058: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1056);
+                let v1060: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1058);
+                let v1062: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<animate "), (v1052))),
-                                    string(">move || { v1058 }</"),
+                                    (append(string("<animate "), (v1054))),
+                                    string(">move || { v1060 }</"),
                                 )),
                                 string("animate"),
                             )),
@@ -13365,22 +13365,22 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1062: leptos::prelude::View<
+                let v1064: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v1058 }</animate> };
-                let v1064: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1062);
-                let v1074: string = string("vec![v1016, v1040, v1064]");
-                let v1075: Vec<leptos::prelude::AnyView> = vec![v1016, v1040, v1064];
-                let v1077: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1075);
-                let v1079: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1077);
-                let v1081: string = append(
+                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v1060 }</animate> };
+                let v1066: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1064);
+                let v1076: string = string("vec![v1018, v1042, v1066]");
+                let v1077: Vec<leptos::prelude::AnyView> = vec![v1018, v1042, v1066];
+                let v1079: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1077);
+                let v1081: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1079);
+                let v1083: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<rect "), (v992))),
-                                    string(">move || { v1079 }</"),
+                                    (append(string("<rect "), (v994))),
+                                    string(">move || { v1081 }</"),
                                 )),
                                 string("rect"),
                             )),
@@ -13389,26 +13389,26 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1083: leptos::prelude::View<
+                let v1085: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Rect, _, _>,
-                > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="8">move || { v1079 }</rect> };
-                let v1095: string = string(
+                > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="8">move || { v1081 }</rect> };
+                let v1097: string = string(
                     " opacity=\"0.2\" fill=\"#333\" height=\"10\" width=\"4\" y=\"10\" x=\"16\"",
                 );
-                let v1107: string =
+                let v1109: string =
                         string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.3s\" values=\"0.2; 1; .2\" attributeType=\"XML\" attributeName=\"opacity\"");
-                let v1108: string = string("vec![]");
-                let v1109: Vec<leptos::prelude::AnyView> = vec![];
-                let v1111: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1109);
-                let v1113: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1111);
-                let v1115: string = append(
+                let v1110: string = string("vec![]");
+                let v1111: Vec<leptos::prelude::AnyView> = vec![];
+                let v1113: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1111);
+                let v1115: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1113);
+                let v1117: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<animate "), (v1107))),
-                                    string(">move || { v1113 }</"),
+                                    (append(string("<animate "), (v1109))),
+                                    string(">move || { v1115 }</"),
                                 )),
                                 string("animate"),
                             )),
@@ -13417,24 +13417,24 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1117: leptos::prelude::View<
+                let v1119: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v1113 }</animate> };
-                let v1119: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1117);
-                let v1131: string =
+                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v1115 }</animate> };
+                let v1121: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1119);
+                let v1133: string =
                         string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.3s\" values=\"10; 20; 10\" attributeType=\"XML\" attributeName=\"height\"");
-                let v1132: string = string("vec![]");
-                let v1133: Vec<leptos::prelude::AnyView> = vec![];
-                let v1135: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1133);
-                let v1137: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1135);
-                let v1139: string = append(
+                let v1134: string = string("vec![]");
+                let v1135: Vec<leptos::prelude::AnyView> = vec![];
+                let v1137: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1135);
+                let v1139: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1137);
+                let v1141: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<animate "), (v1131))),
-                                    string(">move || { v1137 }</"),
+                                    (append(string("<animate "), (v1133))),
+                                    string(">move || { v1139 }</"),
                                 )),
                                 string("animate"),
                             )),
@@ -13443,24 +13443,24 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1141: leptos::prelude::View<
+                let v1143: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v1137 }</animate> };
-                let v1143: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1141);
-                let v1155: string =
+                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v1139 }</animate> };
+                let v1145: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1143);
+                let v1157: string =
                         string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.3s\" values=\"10; 5; 10\" attributeType=\"XML\" attributeName=\"y\"");
-                let v1156: string = string("vec![]");
-                let v1157: Vec<leptos::prelude::AnyView> = vec![];
-                let v1159: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1157);
-                let v1161: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1159);
-                let v1163: string = append(
+                let v1158: string = string("vec![]");
+                let v1159: Vec<leptos::prelude::AnyView> = vec![];
+                let v1161: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1159);
+                let v1163: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1161);
+                let v1165: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<animate "), (v1155))),
-                                    string(">move || { v1161 }</"),
+                                    (append(string("<animate "), (v1157))),
+                                    string(">move || { v1163 }</"),
                                 )),
                                 string("animate"),
                             )),
@@ -13469,22 +13469,22 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1165: leptos::prelude::View<
+                let v1167: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v1161 }</animate> };
-                let v1167: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1165);
-                let v1177: string = string("vec![v1119, v1143, v1167]");
-                let v1178: Vec<leptos::prelude::AnyView> = vec![v1119, v1143, v1167];
-                let v1180: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1178);
-                let v1182: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1180);
-                let v1184: string = append(
+                > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v1163 }</animate> };
+                let v1169: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1167);
+                let v1179: string = string("vec![v1121, v1145, v1169]");
+                let v1180: Vec<leptos::prelude::AnyView> = vec![v1121, v1145, v1169];
+                let v1182: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1180);
+                let v1184: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1182);
+                let v1186: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<rect "), (v1095))),
-                                    string(">move || { v1182 }</"),
+                                    (append(string("<rect "), (v1097))),
+                                    string(">move || { v1184 }</"),
                                 )),
                                 string("rect"),
                             )),
@@ -13493,24 +13493,24 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1186: leptos::prelude::View<
+                let v1188: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Rect, _, _>,
-                > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="16">move || { v1182 }</rect> };
-                let v1188: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1186);
-                let v1190: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1083);
-                let v1192: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v980);
-                let v1202: string = string("vec![v1192, v1190, v1188]");
-                let v1203: Vec<leptos::prelude::AnyView> = vec![v1192, v1190, v1188];
-                let v1205: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1203);
-                let v1207: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1205);
-                let v1209: string = append(
+                > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="16">move || { v1184 }</rect> };
+                let v1190: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1188);
+                let v1192: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1085);
+                let v1194: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v982);
+                let v1204: string = string("vec![v1194, v1192, v1190]");
+                let v1205: Vec<leptos::prelude::AnyView> = vec![v1194, v1192, v1190];
+                let v1207: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1205);
+                let v1209: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1207);
+                let v1211: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<svg "), (v875))),
-                                    string(">move || { v1207 }</"),
+                                    (append(string("<svg "), (v877))),
+                                    string(">move || { v1209 }</"),
                                 )),
                                 string("svg"),
                             )),
@@ -13519,27 +13519,27 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1211: leptos::prelude::View<
+                let v1213: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v857(()) xml:space="preserve" style="enable-background:new 0 0 50 50;" viewBox="0 0 24 30" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1">move || { v1207 }</svg> };
-                leptos::prelude::IntoAny::into_any(v1211)
+                > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v859(()) xml:space="preserve" style="enable-background:new 0 0 50 50;" viewBox="0 0 24 30" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1">move || { v1209 }</svg> };
+                leptos::prelude::IntoAny::into_any(v1213)
             } else {
-                let v1214: string = string("vec![]");
-                let v1215: Vec<leptos::prelude::AnyView> = vec![];
-                leptos::prelude::IntoAny::into_any(v1215)
+                let v1216: string = string("vec![]");
+                let v1217: Vec<leptos::prelude::AnyView> = vec![];
+                leptos::prelude::IntoAny::into_any(v1217)
             };
-            let v1225: string = string("vec![v852, v1218]");
-            let v1226: Vec<leptos::prelude::AnyView> = vec![v852, v1218];
-            let v1228: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1226);
-            let v1230: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1228);
-            let v1233: string = append(
+            let v1227: string = string("vec![v854, v1220]");
+            let v1228: Vec<leptos::prelude::AnyView> = vec![v854, v1220];
+            let v1230: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1228);
+            let v1232: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1230);
+            let v1235: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<button "), (v783))),
-                                string(">move || { v1230 }</"),
+                                (append(string("<button "), (v785))),
+                                string(">move || { v1232 }</"),
                             )),
                             string("button"),
                         )),
@@ -13548,33 +13548,33 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v1235: leptos::prelude::View<
+            let v1237: leptos::prelude::View<
                 leptos::html::HtmlElement<leptos::html::Button, _, _>,
-            > = leptos::prelude::view! { <button  on:click=move |_| v599() prop:disabled=move || v576() class=v777>move || { v1230 }</button> };
-            let v1237: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1235);
-            let v1239: Option<string> = leptos::prelude::ArcMemo::get(&v2);
-            let v1258: Dice_ui::US31 =
-                defaultValue(Dice_ui::US31::US31_1, map(Dice_ui::method106(), v1239));
-            let v1437: leptos::prelude::AnyView = if let Dice_ui::US31::US31_0(v1258_0_0) = &v1258 {
-                let v1264: string =
+            > = leptos::prelude::view! { <button  on:click=move |_| v599() prop:disabled=move || v576() class=v779>move || { v1232 }</button> };
+            let v1239: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1237);
+            let v1241: Option<string> = leptos::prelude::ArcMemo::get(&v2);
+            let v1260: Dice_ui::US31 =
+                defaultValue(Dice_ui::US31::US31_1, map(Dice_ui::method106(), v1241));
+            let v1439: leptos::prelude::AnyView = if let Dice_ui::US31::US31_0(v1260_0_0) = &v1260 {
+                let v1266: string =
                     string(" class=\"flex flex-1 items-center [gap:4px] [padding:5px]\"");
-                let v1266: string = string(" class=\"[height:17px]\"");
-                let v1280: string =
+                let v1268: string = string(" class=\"[height:17px]\"");
+                let v1282: string =
                         string(" class=\"text-red-700\" stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" height=\"100%\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
-                let v1286: string =
+                let v1288: string =
                         string(" d=\"M6 18L18 6M6 6l12 12\" stroke-linejoin=\"round\" stroke-linecap=\"round\"");
-                let v1287: string = string("vec![]");
-                let v1288: Vec<leptos::prelude::AnyView> = vec![];
-                let v1290: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1288);
-                let v1292: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1290);
-                let v1294: string = append(
+                let v1289: string = string("vec![]");
+                let v1290: Vec<leptos::prelude::AnyView> = vec![];
+                let v1292: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1290);
+                let v1294: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1292);
+                let v1296: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<path "), (v1286))),
-                                    string(">move || { v1292 }</"),
+                                    (append(string("<path "), (v1288))),
+                                    string(">move || { v1294 }</"),
                                 )),
                                 string("path"),
                             )),
@@ -13583,22 +13583,22 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1296: leptos::prelude::View<
+                let v1298: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                > = leptos::prelude::view! { <path  d="M6 18L18 6M6 6l12 12" stroke-linejoin="round" stroke-linecap="round">move || { v1292 }</path> };
-                let v1298: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1296);
-                let v1302: string = string("vec![v1298]");
-                let v1303: Vec<leptos::prelude::AnyView> = vec![v1298];
-                let v1305: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1303);
-                let v1307: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1305);
-                let v1309: string = append(
+                > = leptos::prelude::view! { <path  d="M6 18L18 6M6 6l12 12" stroke-linejoin="round" stroke-linecap="round">move || { v1294 }</path> };
+                let v1300: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1298);
+                let v1304: string = string("vec![v1300]");
+                let v1305: Vec<leptos::prelude::AnyView> = vec![v1300];
+                let v1307: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1305);
+                let v1309: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1307);
+                let v1311: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<svg "), (v1280))),
-                                    string(">move || { v1307 }</"),
+                                    (append(string("<svg "), (v1282))),
+                                    string(">move || { v1309 }</"),
                                 )),
                                 string("svg"),
                             )),
@@ -13607,22 +13607,22 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1311: leptos::prelude::View<
+                let v1313: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                > = leptos::prelude::view! { <svg  class="text-red-700" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v1307 }</svg> };
-                let v1313: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1311);
-                let v1317: string = string("vec![v1313]");
-                let v1318: Vec<leptos::prelude::AnyView> = vec![v1313];
-                let v1320: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1318);
-                let v1322: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1320);
-                let v1324: string = append(
+                > = leptos::prelude::view! { <svg  class="text-red-700" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v1309 }</svg> };
+                let v1315: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1313);
+                let v1319: string = string("vec![v1315]");
+                let v1320: Vec<leptos::prelude::AnyView> = vec![v1315];
+                let v1322: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1320);
+                let v1324: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1322);
+                let v1326: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<span "), (v1266))),
-                                    string(">move || { v1322 }</"),
+                                    (append(string("<span "), (v1268))),
+                                    string(">move || { v1324 }</"),
                                 )),
                                 string("span"),
                             )),
@@ -13631,27 +13631,27 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1326: leptos::prelude::View<
+                let v1328: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                > = leptos::prelude::view! { <span  class="[height:17px]">move || { v1322 }</span> };
-                let v1328: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1326);
-                let v1330: string = string(" class=\"[overflow-y:auto] [text-wrap:wrap]\"");
-                let v1339: &str = &*v1258_0_0.clone();
-                let v1372: std::string::String = String::from(v1339);
-                let v1398: leptos::prelude::AnyView =
-                    leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v1372));
-                let v1402: string = string("vec![v1398]");
-                let v1403: Vec<leptos::prelude::AnyView> = vec![v1398];
-                let v1405: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1403);
-                let v1407: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1405);
-                let v1410: string = append(
+                > = leptos::prelude::view! { <span  class="[height:17px]">move || { v1324 }</span> };
+                let v1330: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1328);
+                let v1332: string = string(" class=\"[overflow-y:auto] [text-wrap:wrap]\"");
+                let v1341: &str = &*v1260_0_0.clone();
+                let v1374: std::string::String = String::from(v1341);
+                let v1400: leptos::prelude::AnyView =
+                    leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v1374));
+                let v1404: string = string("vec![v1400]");
+                let v1405: Vec<leptos::prelude::AnyView> = vec![v1400];
+                let v1407: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1405);
+                let v1409: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1407);
+                let v1412: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<pre "), (v1330))),
-                                    string(">move || { v1407 }</"),
+                                    (append(string("<pre "), (v1332))),
+                                    string(">move || { v1409 }</"),
                                 )),
                                 string("pre"),
                             )),
@@ -13660,22 +13660,22 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1412: leptos::prelude::View<
+                let v1414: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::html::Pre, _, _>,
-                > = leptos::prelude::view! { <pre  class="[overflow-y:auto] [text-wrap:wrap]">move || { v1407 }</pre> };
-                let v1414: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1412);
-                let v1421: string = string("vec![v1328, v1414]");
-                let v1422: Vec<leptos::prelude::AnyView> = vec![v1328, v1414];
-                let v1424: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1422);
-                let v1426: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1424);
-                let v1428: string = append(
+                > = leptos::prelude::view! { <pre  class="[overflow-y:auto] [text-wrap:wrap]">move || { v1409 }</pre> };
+                let v1416: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1414);
+                let v1423: string = string("vec![v1330, v1416]");
+                let v1424: Vec<leptos::prelude::AnyView> = vec![v1330, v1416];
+                let v1426: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1424);
+                let v1428: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1426);
+                let v1430: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<div "), (v1264))),
-                                    string(">move || { v1426 }</"),
+                                    (append(string("<div "), (v1266))),
+                                    string(">move || { v1428 }</"),
                                 )),
                                 string("div"),
                             )),
@@ -13684,27 +13684,27 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v1430: leptos::prelude::View<
+                let v1432: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                > = leptos::prelude::view! { <div  class="flex flex-1 items-center [gap:4px] [padding:5px]">move || { v1426 }</div> };
-                leptos::prelude::IntoAny::into_any(v1430)
+                > = leptos::prelude::view! { <div  class="flex flex-1 items-center [gap:4px] [padding:5px]">move || { v1428 }</div> };
+                leptos::prelude::IntoAny::into_any(v1432)
             } else {
-                let v1433: string = string("vec![]");
-                let v1434: Vec<leptos::prelude::AnyView> = vec![];
-                leptos::prelude::IntoAny::into_any(v1434)
+                let v1435: string = string("vec![]");
+                let v1436: Vec<leptos::prelude::AnyView> = vec![];
+                leptos::prelude::IntoAny::into_any(v1436)
             };
-            let v1444: string = string("vec![v1237, v1437]");
-            let v1445: Vec<leptos::prelude::AnyView> = vec![v1237, v1437];
-            let v1447: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1445);
-            let v1449: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1447);
-            let v1451: string = append(
+            let v1446: string = string("vec![v1239, v1439]");
+            let v1447: Vec<leptos::prelude::AnyView> = vec![v1239, v1439];
+            let v1449: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1447);
+            let v1451: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1449);
+            let v1453: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
                                 (append(string("<div "), (v572))),
-                                string(">move || { v1449 }</"),
+                                string(">move || { v1451 }</"),
                             )),
                             string("div"),
                         )),
@@ -13713,21 +13713,21 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v1453: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> =
-                leptos::prelude::view! { <div  class="flex">move || { v1449 }</div> };
-            let v1455: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1453);
-            let v1465: string = string("vec![v389, v570, v1455]");
-            let v1466: Vec<leptos::prelude::AnyView> = vec![v389, v570, v1455];
-            let v1468: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1466);
-            let v1470: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1468);
-            let v1472: string = append(
+            let v1455: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> =
+                leptos::prelude::view! { <div  class="flex">move || { v1451 }</div> };
+            let v1457: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1455);
+            let v1467: string = string("vec![v389, v570, v1457]");
+            let v1468: Vec<leptos::prelude::AnyView> = vec![v389, v570, v1457];
+            let v1470: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v1468);
+            let v1472: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v1470);
+            let v1474: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
                                 (append(string("<div "), (v7))),
-                                string(">move || { v1470 }</"),
+                                string(">move || { v1472 }</"),
                             )),
                             string("div"),
                         )),
@@ -13736,11 +13736,11 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v1474: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> = leptos::prelude::view! { <div  class="flex flex-col p-[10px] gap-[11px]">move || { v1470 }</div> };
-            let v1476: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1474);
-            let v1480: string = string("vec![v1476]");
-            let v1481: Vec<leptos::prelude::AnyView> = vec![v1476];
-            leptos::prelude::Fragment::new(v1481)
+            let v1476: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> = leptos::prelude::view! { <div  class="flex flex-col p-[10px] gap-[11px]">move || { v1472 }</div> };
+            let v1478: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v1476);
+            let v1482: string = string("vec![v1478]");
+            let v1483: Vec<leptos::prelude::AnyView> = vec![v1478];
+            leptos::prelude::Fragment::new(v1483)
         }
         pub fn closure183(unitVar: (), unitVar_1: ()) -> string {
             string("py-[7px]")
@@ -13953,7 +13953,7 @@ mod module_9c940d83 {
         ) -> leptos::prelude::Fragment {
             let v4: Vec<(string, Vec<(string, Dice_ui::US23, string, bool, bool)>)> =
                 leptos::prelude::ArcMemo::get(&v2);
-            let v2410: leptos::prelude::AnyView = if (get_Count(
+            let v2416: leptos::prelude::AnyView = if (get_Count(
                 fable_library_rust::NativeArray_::array_from(v4.clone()),
             ) as u64)
                 == 0_u64
@@ -14657,7 +14657,7 @@ mod module_9c940d83 {
                                     leptos::prelude::IntoAny::into_any(v1227);
                                 let v1231: string =
                                     string(" class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\"");
-                                let v1416: leptos::prelude::Fragment =
+                                let v1422: leptos::prelude::Fragment =
                                     if (get_Count(v794.l11.clone()) as u64) ==
                                            0_u64 {
                                         let v1243: &str = &*string("");
@@ -14694,103 +14694,103 @@ mod module_9c940d83 {
                                                 v1313.l1.get().clone();
                                             let v1320: std::string::String =
                                                 v1310[v1318].clone();
-                                            let v1325: Array<string> =
+                                            let v1331: Array<string> =
                                                 split(fable_library_rust::String_::fromString(v1320),
                                                       string(" / result: "),
                                                       -1_i32, 0_i32);
-                                            let v1334: Dice_ui::US31 =
+                                            let v1340: Dice_ui::US31 =
                                                 if let Dice_ui::US31::US31_1 =
                                                        &v1319 {
-                                                    if (get_Count(v1325.clone())
+                                                    if (get_Count(v1331.clone())
                                                             as u64) == 2_u64 {
-                                                        let v1330: string =
-                                                            v1325[0_i32].clone();
-                                                        Dice_ui::US31::US31_0(v1325[1_i32].clone())
+                                                        let v1336: string =
+                                                            v1331[0_i32].clone();
+                                                        Dice_ui::US31::US31_0(v1331[1_i32].clone())
                                                     } else { v1319 }
                                                 } else { v1319.clone() };
-                                            let v1335: i32 = (v1315) + 1_i32;
-                                            v1313.l0.set(v1335);
-                                            v1313.l1.set(v1334);
+                                            let v1341: i32 = (v1315) + 1_i32;
+                                            v1313.l0.set(v1341);
+                                            v1313.l1.set(v1340);
                                             ()
                                         }
                                         {
-                                            let v1336: Dice_ui::US31 =
+                                            let v1342: Dice_ui::US31 =
                                                 v1313.l1.get().clone();
-                                            let v1340: string =
-                                                match &v1336 {
-                                                    Dice_ui::US31::US31_0(v1336_0_0)
+                                            let v1346: string =
+                                                match &v1342 {
+                                                    Dice_ui::US31::US31_0(v1342_0_0)
                                                     =>
-                                                    match &v1336 {
+                                                    match &v1342 {
                                                         Dice_ui::US31::US31_0(x)
                                                         => x.clone(),
                                                         _ => unreachable!(),
                                                     }.clone(),
                                                     _ => string("?"),
                                                 };
-                                            let v1349: &str = &*v1340;
-                                            let v1382: std::string::String =
-                                                String::from(v1349);
-                                            let v1408:
+                                            let v1355: &str = &*v1346;
+                                            let v1388: std::string::String =
+                                                String::from(v1355);
+                                            let v1414:
                                                     leptos::prelude::AnyView =
-                                                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v1382));
-                                            let v1412: string =
-                                                string("vec![v1408]");
-                                            let v1413:
+                                                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v1388));
+                                            let v1418: string =
+                                                string("vec![v1414]");
+                                            let v1419:
                                                     Vec<leptos::prelude::AnyView> =
-                                                vec![v1408];
-                                            leptos::prelude::Fragment::new(v1413)
+                                                vec![v1414];
+                                            leptos::prelude::Fragment::new(v1419)
                                         }
                                     };
-                                let v1418: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v1416);
-                                let v1420: string =
+                                let v1424: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v1422);
+                                let v1426: string =
                                     append((append(string("leptos::prelude::view! { "),
                                                    (append((append((append((append(string("<td "),
                                                                                    (v1231))),
-                                                                           string(">move || { v1418 }</"))),
+                                                                           string(">move || { v1424 }</"))),
                                                                    string("td"))),
                                                            string(">"))))),
                                            string(" }"));
-                                let v1422:
+                                let v1428:
                                         leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Td, _, _>> =
-                                    leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v1418 }</td> };
-                                let v1424: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v1422);
-                                let v1426: string =
+                                    leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v1424 }</td> };
+                                let v1430: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v1428);
+                                let v1432: string =
                                     string(" class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\"");
-                                let v1430: string =
+                                let v1436: string =
                                     if v794.l9 {
                                         string("Ok")
                                     } else { string("Outcome Error") };
-                                let v1431 = Dice_ui::method177();
-                                let v1432 = Dice_ui::method178();
-                                let v1434: Dice_ui::US63 =
+                                let v1437 = Dice_ui::method177();
+                                let v1438 = Dice_ui::method178();
+                                let v1440: Dice_ui::US63 =
                                     match &v811 {
                                         Err(v811_1_0) =>
-                                        v1432(v811_1_0.clone()),
+                                        v1438(v811_1_0.clone()),
                                         Ok(v811_0_0) =>
-                                        v1431(v811_0_0.clone()),
+                                        v1437(v811_0_0.clone()),
                                     };
-                                let v1467: Dice_ui::US58 =
-                                    match &v1434 {
-                                        Dice_ui::US63::US63_0(v1434_0_0) =>
+                                let v1473: Dice_ui::US58 =
+                                    match &v1440 {
+                                        Dice_ui::US63::US63_0(v1440_0_0) =>
                                         Dice_ui::US58::US58_0(defaultValue(Dice_ui::US59::US59_1,
                                                                            map(Dice_ui::method179(),
-                                                                               v1434_0_0.clone()))),
-                                        Dice_ui::US63::US63_1(v1434_1_0) =>
-                                        Dice_ui::US58::US58_1(v1434_1_0.clone()),
+                                                                               v1440_0_0.clone()))),
+                                        Dice_ui::US63::US63_1(v1440_1_0) =>
+                                        Dice_ui::US58::US58_1(v1440_1_0.clone()),
                                     };
-                                let v1576: Dice_ui::US69 =
-                                    match &v1467 {
-                                        Dice_ui::US58::US58_0(v1467_0_0) => {
-                                            let v1468: Dice_ui::US59 =
-                                                v1467_0_0.clone();
-                                            if let Dice_ui::US59::US59_0(v1468_0_0,
-                                                                         v1468_0_1,
-                                                                         v1468_0_2,
-                                                                         v1468_0_3)
-                                                   = &v1468 {
-                                                let v1471:
+                                let v1582: Dice_ui::US69 =
+                                    match &v1473 {
+                                        Dice_ui::US58::US58_0(v1473_0_0) => {
+                                            let v1474: Dice_ui::US59 =
+                                                v1473_0_0.clone();
+                                            if let Dice_ui::US59::US59_0(v1474_0_0,
+                                                                         v1474_0_1,
+                                                                         v1474_0_2,
+                                                                         v1474_0_3)
+                                                   = &v1474 {
+                                                let v1477:
                                                         Option<(std::string::String,
                                                                 std::string::String,
                                                                 Option<(Option<std::string::String>,
@@ -14798,49 +14798,49 @@ mod module_9c940d83 {
                                                                 i32,
                                                                 std::string::String,
                                                                 std::string::String)> =
-                                                    v1468_0_2.clone();
-                                                let v1496: Dice_ui::US64 =
+                                                    v1474_0_2.clone();
+                                                let v1502: Dice_ui::US64 =
                                                     defaultValue(Dice_ui::US64::US64_1,
                                                                  map(Dice_ui::method180(),
-                                                                     v1471.clone()));
-                                                match &v1496 {
-                                                    Dice_ui::US64::US64_0(v1496_0_0,
-                                                                          v1496_0_1,
-                                                                          v1496_0_2,
-                                                                          v1496_0_3,
-                                                                          v1496_0_4,
-                                                                          v1496_0_5)
+                                                                     v1477.clone()));
+                                                match &v1502 {
+                                                    Dice_ui::US64::US64_0(v1502_0_0,
+                                                                          v1502_0_1,
+                                                                          v1502_0_2,
+                                                                          v1502_0_3,
+                                                                          v1502_0_4,
+                                                                          v1502_0_5)
                                                     => {
-                                                        let v1529:
+                                                        let v1535:
                                                                 Dice_ui::US64 =
                                                             defaultValue(Dice_ui::US64::US64_1,
                                                                          map(Dice_ui::method180(),
-                                                                             v1471.clone()));
-                                                        let v1542:
+                                                                             v1477.clone()));
+                                                        let v1548:
                                                                 Dice_ui::US31 =
-                                                            if let Dice_ui::US64::US64_0(v1529_0_0,
-                                                                                         v1529_0_1,
-                                                                                         v1529_0_2,
-                                                                                         v1529_0_3,
-                                                                                         v1529_0_4,
-                                                                                         v1529_0_5)
-                                                                   = &v1529 {
-                                                                Dice_ui::US31::US31_0(append((append((append((append((append((append((append((toString(v1529_0_0.clone())),
+                                                            if let Dice_ui::US64::US64_0(v1535_0_0,
+                                                                                         v1535_0_1,
+                                                                                         v1535_0_2,
+                                                                                         v1535_0_3,
+                                                                                         v1535_0_4,
+                                                                                         v1535_0_5)
+                                                                   = &v1535 {
+                                                                Dice_ui::US31::US31_0(append((append((append((append((append((append((append((toString(v1535_0_0.clone())),
                                                                                                                                              string(": "))),
-                                                                                                                                     (toString(v1529_0_4.clone())))),
+                                                                                                                                     (toString(v1535_0_4.clone())))),
                                                                                                                              string(" - "))),
-                                                                                                                     (toString(v1529_0_5.clone())))),
+                                                                                                                     (toString(v1535_0_5.clone())))),
                                                                                                              string(" ("))),
-                                                                                                     (toString(v1529_0_1.clone())))),
+                                                                                                     (toString(v1535_0_1.clone())))),
                                                                                              string(")")))
                                                             } else {
                                                                 Dice_ui::US31::US31_1
                                                             };
-                                                        Dice_ui::US69::US69_1(match &v1542
+                                                        Dice_ui::US69::US69_1(match &v1548
                                                                                   {
-                                                                                  Dice_ui::US31::US31_0(v1542_0_0)
+                                                                                  Dice_ui::US31::US31_0(v1548_0_0)
                                                                                   =>
-                                                                                  match &v1542
+                                                                                  match &v1548
                                                                                       {
                                                                                       Dice_ui::US31::US31_0(x)
                                                                                       =>
@@ -14859,103 +14859,103 @@ mod module_9c940d83 {
                                                     _ =>
                                                     Dice_ui::US69::US69_0(Dice_ui::method8(400_i64,
                                                                                            sprintf!("{:?}",
-                                                                                                    (v1468_0_0.clone(),
-                                                                                                     v1468_0_1.clone(),
-                                                                                                     v1471.clone(),
-                                                                                                     v1468_0_3.clone())))),
+                                                                                                    (v1474_0_0.clone(),
+                                                                                                     v1474_0_1.clone(),
+                                                                                                     v1477.clone(),
+                                                                                                     v1474_0_3.clone())))),
                                                 }
                                             } else {
                                                 Dice_ui::US69::US69_1(concat(new_array(&[string("RPC Response: "),
                                                                                          Dice_ui::method8(400_i64,
                                                                                                           sprintf!("{:?}",
-                                                                                                                   v1467.clone()))])))
+                                                                                                                   v1473.clone()))])))
                                             }
                                         }
-                                        Dice_ui::US58::US58_1(v1467_1_0) =>
-                                        Dice_ui::US69::US69_1(fable_library_rust::String_::fromString(v1467_1_0.clone())),
+                                        Dice_ui::US58::US58_1(v1473_1_0) =>
+                                        Dice_ui::US69::US69_1(fable_library_rust::String_::fromString(v1473_1_0.clone())),
                                     };
-                                let v1589: string =
-                                    concat(new_array(&[v1430, string(" / "),
-                                                       match &v1576 {
-                                                           Dice_ui::US69::US69_0(v1576_0_0)
+                                let v1595: string =
+                                    concat(new_array(&[v1436, string(" / "),
+                                                       match &v1582 {
+                                                           Dice_ui::US69::US69_0(v1582_0_0)
                                                            =>
                                                            concat(new_array(&[string("RPC Response: "),
                                                                               Dice_ui::method8(400_i64,
                                                                                                sprintf!("{:?}",
-                                                                                                        v1576_0_0.clone()))])),
-                                                           Dice_ui::US69::US69_1(v1576_1_0)
+                                                                                                        v1582_0_0.clone()))])),
+                                                           Dice_ui::US69::US69_1(v1582_1_0)
                                                            =>
                                                            concat(new_array(&[string("Error: "),
-                                                                              v1576_1_0.clone()])),
+                                                                              v1582_1_0.clone()])),
                                                        }]));
-                                let v1598: &str = &*v1589;
-                                let v1631: std::string::String =
-                                    String::from(v1598);
-                                let v1657: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v1631));
-                                let v1661: string = string("vec![v1657]");
-                                let v1662: Vec<leptos::prelude::AnyView> =
-                                    vec![v1657];
-                                let v1664: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v1662);
-                                let v1666: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v1664);
-                                let v1668: string =
+                                let v1604: &str = &*v1595;
+                                let v1637: std::string::String =
+                                    String::from(v1604);
+                                let v1663: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v1637));
+                                let v1667: string = string("vec![v1663]");
+                                let v1668: Vec<leptos::prelude::AnyView> =
+                                    vec![v1663];
+                                let v1670: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v1668);
+                                let v1672: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v1670);
+                                let v1674: string =
                                     append((append(string("leptos::prelude::view! { "),
                                                    (append((append((append((append(string("<td "),
-                                                                                   (v1426))),
-                                                                           string(">move || { v1666 }</"))),
+                                                                                   (v1432))),
+                                                                           string(">move || { v1672 }</"))),
                                                                    string("td"))),
                                                            string(">"))))),
                                            string(" }"));
-                                let v1670:
+                                let v1676:
                                         leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Td, _, _>> =
-                                    leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v1666 }</td> };
-                                let v1672: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v1670);
-                                let v1691: string =
-                                    string("vec![v962, v1050, v1138, v1229, v1424, v1672]");
-                                let v1692: Vec<leptos::prelude::AnyView> =
-                                    vec![v962, v1050, v1138, v1229, v1424, v1672];
-                                let v1694: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v1692);
-                                let v1696: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v1694);
-                                let v1698: string =
+                                    leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v1672 }</td> };
+                                let v1678: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v1676);
+                                let v1697: string =
+                                    string("vec![v962, v1050, v1138, v1229, v1430, v1678]");
+                                let v1698: Vec<leptos::prelude::AnyView> =
+                                    vec![v962, v1050, v1138, v1229, v1430, v1678];
+                                let v1700: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v1698);
+                                let v1702: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v1700);
+                                let v1704: string =
                                     append((append(string("leptos::prelude::view! { "),
                                                    (append((append((append((append(string("<tr "),
                                                                                    (v815))),
-                                                                           string(">move || { v1696 }</"))),
+                                                                           string(">move || { v1702 }</"))),
                                                                    string("tr"))),
                                                            string(">"))))),
                                            string(" }"));
-                                let v1700:
+                                let v1706:
                                         leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Tr, _, _>> =
-                                    leptos::prelude::view! { <tr  class="odd:bg-gray-50 dark:odd:bg-gray-800/50">move || { v1696 }</tr> };
-                                let v1702: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v1700);
-                                let v1704: bool =
-                                    true; v1702 }).collect::<Vec<_>>();
-                            let v1706: Vec<leptos::prelude::AnyView> = _vec_map;
-                            let v1708: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v1706);
-                            let v1712: string = string("vec![v1708]");
-                            let v1713: Vec<leptos::prelude::AnyView> = vec![v1708];
-                            let v1715: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v1713);
-                            let v1717: string =
+                                    leptos::prelude::view! { <tr  class="odd:bg-gray-50 dark:odd:bg-gray-800/50">move || { v1702 }</tr> };
+                                let v1708: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v1706);
+                                let v1710: bool =
+                                    true; v1708 }).collect::<Vec<_>>();
+                            let v1712: Vec<leptos::prelude::AnyView> = _vec_map;
+                            let v1714: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v1712);
+                            let v1718: string = string("vec![v1714]");
+                            let v1719: Vec<leptos::prelude::AnyView> = vec![v1714];
+                            let v1721: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v1719);
+                            let v1723: string =
                                     string(" class=\"flex-1 min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700\"");
-                            let v1719: string = string(" class=\"ltr:text-left rtl:text-right\"");
-                            let v1721: leptos::prelude::AnyView =
+                            let v1725: string = string(" class=\"ltr:text-left rtl:text-right\"");
+                            let v1727: leptos::prelude::AnyView =
                                 leptos::prelude::AnyView::from(v786);
-                            let v1724: string = append(
+                            let v1730: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<thead "), (v1719))),
-                                                string(">move || { v1721 }</"),
+                                                (append(string("<thead "), (v1725))),
+                                                string(">move || { v1727 }</"),
                                             )),
                                             string("thead"),
                                         )),
@@ -14964,23 +14964,23 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v1726: leptos::prelude::View<
+                            let v1732: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Thead, _, _>,
-                            > = leptos::prelude::view! { <thead  class="ltr:text-left rtl:text-right">move || { v1721 }</thead> };
-                            let v1728: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v1726);
-                            let v1730: string =
+                            > = leptos::prelude::view! { <thead  class="ltr:text-left rtl:text-right">move || { v1727 }</thead> };
+                            let v1734: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v1732);
+                            let v1736: string =
                                 string(" class=\"divide-y divide-gray-200 dark:divide-gray-700\"");
-                            let v1732: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v1715);
-                            let v1735: string = append(
+                            let v1738: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v1721);
+                            let v1741: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<tbody "), (v1730))),
-                                                string(">move || { v1732 }</"),
+                                                (append(string("<tbody "), (v1736))),
+                                                string(">move || { v1738 }</"),
                                             )),
                                             string("tbody"),
                                         )),
@@ -14989,25 +14989,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v1737: leptos::prelude::View<
+                            let v1743: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Tbody, _, _>,
-                            > = leptos::prelude::view! { <tbody  class="divide-y divide-gray-200 dark:divide-gray-700">move || { v1732 }</tbody> };
-                            let v1739: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v1737);
-                            let v1746: string = string("vec![v1728, v1739]");
-                            let v1747: Vec<leptos::prelude::AnyView> = vec![v1728, v1739];
-                            let v1749: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v1747);
-                            let v1751: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v1749);
-                            let v1754: string = append(
+                            > = leptos::prelude::view! { <tbody  class="divide-y divide-gray-200 dark:divide-gray-700">move || { v1738 }</tbody> };
+                            let v1745: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v1743);
+                            let v1752: string = string("vec![v1734, v1745]");
+                            let v1753: Vec<leptos::prelude::AnyView> = vec![v1734, v1745];
+                            let v1755: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v1753);
+                            let v1757: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v1755);
+                            let v1760: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<table "), (v1717))),
-                                                string(">move || { v1751 }</"),
+                                                (append(string("<table "), (v1723))),
+                                                string(">move || { v1757 }</"),
                                             )),
                                             string("table"),
                                         )),
@@ -15016,42 +15016,42 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v1756: leptos::prelude::View<
+                            let v1762: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Table, _, _>,
-                            > = leptos::prelude::view! { <table  class="flex-1 min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700">move || { v1751 }</table> };
-                            leptos::prelude::IntoAny::into_any(v1756)
+                            > = leptos::prelude::view! { <table  class="flex-1 min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700">move || { v1757 }</table> };
+                            leptos::prelude::IntoAny::into_any(v1762)
                         } else {
-                            let v1761: string =
+                            let v1767: string =
                                 string(" class=\"grid place-content-center py-[10vh]\"");
-                            let v1763: string =
+                            let v1769: string =
                                 string(" class=\"flex flex-1 [gap:4px] items-center\"");
-                            let v1766 = {
+                            let v1772 = {
                                 let clo = Func0::new(move || Dice_ui::closure191((), ()));
                                 Func1::new({
                                     let clo = clo.clone();
                                     move |arg: ()| clo()
                                 })
                             };
-                            let v1784: string =
-                                    string(" class=move || \" \".to_owned() + &v1766(()) xml:space=\"preserve\" style=\"enable-background:new 0 0 50 50;\" viewBox=\"0 0 24 30\" y=\"0px\" x=\"0px\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"");
-                            let v1796: string =
+                            let v1790: string =
+                                    string(" class=move || \" \".to_owned() + &v1772(()) xml:space=\"preserve\" style=\"enable-background:new 0 0 50 50;\" viewBox=\"0 0 24 30\" y=\"0px\" x=\"0px\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"");
+                            let v1802: string =
                                     string(" opacity=\"0.2\" fill=\"#333\" height=\"10\" width=\"4\" y=\"10\" x=\"0\"");
-                            let v1808: string =
+                            let v1814: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0s\" values=\"0.2; 1; .2\" attributeType=\"XML\" attributeName=\"opacity\"");
-                            let v1809: string = string("vec![]");
-                            let v1810: Vec<leptos::prelude::AnyView> = vec![];
-                            let v1812: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v1810);
-                            let v1814: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v1812);
-                            let v1817: string = append(
+                            let v1815: string = string("vec![]");
+                            let v1816: Vec<leptos::prelude::AnyView> = vec![];
+                            let v1818: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v1816);
+                            let v1820: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v1818);
+                            let v1823: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<animate "), (v1808))),
-                                                string(">move || { v1814 }</"),
+                                                (append(string("<animate "), (v1814))),
+                                                string(">move || { v1820 }</"),
                                             )),
                                             string("animate"),
                                         )),
@@ -15060,83 +15060,83 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v1819: leptos::prelude::View<
+                            let v1825: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v1814 }</animate> };
-                            let v1821: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v1819);
-                            let v1833: string =
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v1820 }</animate> };
+                            let v1827: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v1825);
+                            let v1839: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0s\" values=\"10; 20; 10\" attributeType=\"XML\" attributeName=\"height\"");
-                            let v1834: string = string("vec![]");
-                            let v1835: Vec<leptos::prelude::AnyView> = vec![];
-                            let v1837: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v1835);
-                            let v1839: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v1837);
-                            let v1841: string = append(
-                                (append(
-                                    string("leptos::prelude::view! { "),
-                                    (append(
-                                        (append(
-                                            (append(
-                                                (append(string("<animate "), (v1833))),
-                                                string(">move || { v1839 }</"),
-                                            )),
-                                            string("animate"),
-                                        )),
-                                        string(">"),
-                                    )),
-                                )),
-                                string(" }"),
-                            );
-                            let v1843: leptos::prelude::View<
-                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v1839 }</animate> };
+                            let v1840: string = string("vec![]");
+                            let v1841: Vec<leptos::prelude::AnyView> = vec![];
+                            let v1843: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v1841);
                             let v1845: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v1843);
-                            let v1857: string =
+                                leptos::prelude::AnyView::from(v1843);
+                            let v1847: string = append(
+                                (append(
+                                    string("leptos::prelude::view! { "),
+                                    (append(
+                                        (append(
+                                            (append(
+                                                (append(string("<animate "), (v1839))),
+                                                string(">move || { v1845 }</"),
+                                            )),
+                                            string("animate"),
+                                        )),
+                                        string(">"),
+                                    )),
+                                )),
+                                string(" }"),
+                            );
+                            let v1849: leptos::prelude::View<
+                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v1845 }</animate> };
+                            let v1851: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v1849);
+                            let v1863: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0s\" values=\"10; 5; 10\" attributeType=\"XML\" attributeName=\"y\"");
-                            let v1858: string = string("vec![]");
-                            let v1859: Vec<leptos::prelude::AnyView> = vec![];
-                            let v1861: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v1859);
-                            let v1863: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v1861);
-                            let v1865: string = append(
-                                (append(
-                                    string("leptos::prelude::view! { "),
-                                    (append(
-                                        (append(
-                                            (append(
-                                                (append(string("<animate "), (v1857))),
-                                                string(">move || { v1863 }</"),
-                                            )),
-                                            string("animate"),
-                                        )),
-                                        string(">"),
-                                    )),
-                                )),
-                                string(" }"),
-                            );
-                            let v1867: leptos::prelude::View<
-                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v1863 }</animate> };
+                            let v1864: string = string("vec![]");
+                            let v1865: Vec<leptos::prelude::AnyView> = vec![];
+                            let v1867: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v1865);
                             let v1869: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v1867);
-                            let v1880: string = string("vec![v1821, v1845, v1869]");
-                            let v1881: Vec<leptos::prelude::AnyView> = vec![v1821, v1845, v1869];
-                            let v1883: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v1881);
-                            let v1885: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v1883);
-                            let v1888: string = append(
+                                leptos::prelude::AnyView::from(v1867);
+                            let v1871: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<rect "), (v1796))),
-                                                string(">move || { v1885 }</"),
+                                                (append(string("<animate "), (v1863))),
+                                                string(">move || { v1869 }</"),
+                                            )),
+                                            string("animate"),
+                                        )),
+                                        string(">"),
+                                    )),
+                                )),
+                                string(" }"),
+                            );
+                            let v1873: leptos::prelude::View<
+                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v1869 }</animate> };
+                            let v1875: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v1873);
+                            let v1886: string = string("vec![v1827, v1851, v1875]");
+                            let v1887: Vec<leptos::prelude::AnyView> = vec![v1827, v1851, v1875];
+                            let v1889: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v1887);
+                            let v1891: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v1889);
+                            let v1894: string = append(
+                                (append(
+                                    string("leptos::prelude::view! { "),
+                                    (append(
+                                        (append(
+                                            (append(
+                                                (append(string("<rect "), (v1802))),
+                                                string(">move || { v1891 }</"),
                                             )),
                                             string("rect"),
                                         )),
@@ -15145,112 +15145,112 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v1890: leptos::prelude::View<
+                            let v1896: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Rect, _, _>,
-                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="0">move || { v1885 }</rect> };
-                            let v1902: string =
+                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="0">move || { v1891 }</rect> };
+                            let v1908: string =
                                     string(" opacity=\"0.2\" fill=\"#333\" height=\"10\" width=\"4\" y=\"10\" x=\"8\"");
-                            let v1914: string =
+                            let v1920: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.15s\" values=\"0.2; 1; .2\" attributeType=\"XML\" attributeName=\"opacity\"");
-                            let v1915: string = string("vec![]");
-                            let v1916: Vec<leptos::prelude::AnyView> = vec![];
-                            let v1918: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v1916);
-                            let v1920: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v1918);
-                            let v1922: string = append(
-                                (append(
-                                    string("leptos::prelude::view! { "),
-                                    (append(
-                                        (append(
-                                            (append(
-                                                (append(string("<animate "), (v1914))),
-                                                string(">move || { v1920 }</"),
-                                            )),
-                                            string("animate"),
-                                        )),
-                                        string(">"),
-                                    )),
-                                )),
-                                string(" }"),
-                            );
-                            let v1924: leptos::prelude::View<
-                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v1920 }</animate> };
+                            let v1921: string = string("vec![]");
+                            let v1922: Vec<leptos::prelude::AnyView> = vec![];
+                            let v1924: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v1922);
                             let v1926: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v1924);
-                            let v1938: string =
+                                leptos::prelude::AnyView::from(v1924);
+                            let v1928: string = append(
+                                (append(
+                                    string("leptos::prelude::view! { "),
+                                    (append(
+                                        (append(
+                                            (append(
+                                                (append(string("<animate "), (v1920))),
+                                                string(">move || { v1926 }</"),
+                                            )),
+                                            string("animate"),
+                                        )),
+                                        string(">"),
+                                    )),
+                                )),
+                                string(" }"),
+                            );
+                            let v1930: leptos::prelude::View<
+                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v1926 }</animate> };
+                            let v1932: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v1930);
+                            let v1944: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.15s\" values=\"10; 20; 10\" attributeType=\"XML\" attributeName=\"opacity\"");
-                            let v1939: string = string("vec![]");
-                            let v1940: Vec<leptos::prelude::AnyView> = vec![];
-                            let v1942: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v1940);
-                            let v1944: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v1942);
-                            let v1946: string = append(
-                                (append(
-                                    string("leptos::prelude::view! { "),
-                                    (append(
-                                        (append(
-                                            (append(
-                                                (append(string("<animate "), (v1938))),
-                                                string(">move || { v1944 }</"),
-                                            )),
-                                            string("animate"),
-                                        )),
-                                        string(">"),
-                                    )),
-                                )),
-                                string(" }"),
-                            );
-                            let v1948: leptos::prelude::View<
-                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 20; 10" attributeType="XML" attributeName="opacity">move || { v1944 }</animate> };
+                            let v1945: string = string("vec![]");
+                            let v1946: Vec<leptos::prelude::AnyView> = vec![];
+                            let v1948: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v1946);
                             let v1950: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v1948);
-                            let v1962: string =
+                                leptos::prelude::AnyView::from(v1948);
+                            let v1952: string = append(
+                                (append(
+                                    string("leptos::prelude::view! { "),
+                                    (append(
+                                        (append(
+                                            (append(
+                                                (append(string("<animate "), (v1944))),
+                                                string(">move || { v1950 }</"),
+                                            )),
+                                            string("animate"),
+                                        )),
+                                        string(">"),
+                                    )),
+                                )),
+                                string(" }"),
+                            );
+                            let v1954: leptos::prelude::View<
+                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 20; 10" attributeType="XML" attributeName="opacity">move || { v1950 }</animate> };
+                            let v1956: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v1954);
+                            let v1968: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.15s\" values=\"10; 5; 10\" attributeType=\"XML\" attributeName=\"y\"");
-                            let v1963: string = string("vec![]");
-                            let v1964: Vec<leptos::prelude::AnyView> = vec![];
-                            let v1966: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v1964);
-                            let v1968: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v1966);
-                            let v1970: string = append(
-                                (append(
-                                    string("leptos::prelude::view! { "),
-                                    (append(
-                                        (append(
-                                            (append(
-                                                (append(string("<animate "), (v1962))),
-                                                string(">move || { v1968 }</"),
-                                            )),
-                                            string("animate"),
-                                        )),
-                                        string(">"),
-                                    )),
-                                )),
-                                string(" }"),
-                            );
-                            let v1972: leptos::prelude::View<
-                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v1968 }</animate> };
+                            let v1969: string = string("vec![]");
+                            let v1970: Vec<leptos::prelude::AnyView> = vec![];
+                            let v1972: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v1970);
                             let v1974: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v1972);
-                            let v1984: string = string("vec![v1926, v1950, v1974]");
-                            let v1985: Vec<leptos::prelude::AnyView> = vec![v1926, v1950, v1974];
-                            let v1987: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v1985);
-                            let v1989: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v1987);
-                            let v1991: string = append(
+                                leptos::prelude::AnyView::from(v1972);
+                            let v1976: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<rect "), (v1902))),
-                                                string(">move || { v1989 }</"),
+                                                (append(string("<animate "), (v1968))),
+                                                string(">move || { v1974 }</"),
+                                            )),
+                                            string("animate"),
+                                        )),
+                                        string(">"),
+                                    )),
+                                )),
+                                string(" }"),
+                            );
+                            let v1978: leptos::prelude::View<
+                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v1974 }</animate> };
+                            let v1980: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v1978);
+                            let v1990: string = string("vec![v1932, v1956, v1980]");
+                            let v1991: Vec<leptos::prelude::AnyView> = vec![v1932, v1956, v1980];
+                            let v1993: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v1991);
+                            let v1995: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v1993);
+                            let v1997: string = append(
+                                (append(
+                                    string("leptos::prelude::view! { "),
+                                    (append(
+                                        (append(
+                                            (append(
+                                                (append(string("<rect "), (v1908))),
+                                                string(">move || { v1995 }</"),
                                             )),
                                             string("rect"),
                                         )),
@@ -15259,85 +15259,56 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v1993: leptos::prelude::View<
+                            let v1999: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Rect, _, _>,
-                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="8">move || { v1989 }</rect> };
-                            let v2005: string =
+                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="8">move || { v1995 }</rect> };
+                            let v2011: string =
                                     string(" opacity=\"0.2\" fill=\"#333\" height=\"10\" width=\"4\" y=\"10\" x=\"16\"");
-                            let v2017: string =
+                            let v2023: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.3s\" values=\"0.2; 1; .2\" attributeType=\"XML\" attributeName=\"opacity\"");
-                            let v2018: string = string("vec![]");
-                            let v2019: Vec<leptos::prelude::AnyView> = vec![];
-                            let v2021: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v2019);
-                            let v2023: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v2021);
-                            let v2025: string = append(
-                                (append(
-                                    string("leptos::prelude::view! { "),
-                                    (append(
-                                        (append(
-                                            (append(
-                                                (append(string("<animate "), (v2017))),
-                                                string(">move || { v2023 }</"),
-                                            )),
-                                            string("animate"),
-                                        )),
-                                        string(">"),
-                                    )),
-                                )),
-                                string(" }"),
-                            );
-                            let v2027: leptos::prelude::View<
-                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v2023 }</animate> };
+                            let v2024: string = string("vec![]");
+                            let v2025: Vec<leptos::prelude::AnyView> = vec![];
+                            let v2027: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v2025);
                             let v2029: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v2027);
-                            let v2041: string =
+                                leptos::prelude::AnyView::from(v2027);
+                            let v2031: string = append(
+                                (append(
+                                    string("leptos::prelude::view! { "),
+                                    (append(
+                                        (append(
+                                            (append(
+                                                (append(string("<animate "), (v2023))),
+                                                string(">move || { v2029 }</"),
+                                            )),
+                                            string("animate"),
+                                        )),
+                                        string(">"),
+                                    )),
+                                )),
+                                string(" }"),
+                            );
+                            let v2033: leptos::prelude::View<
+                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v2029 }</animate> };
+                            let v2035: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v2033);
+                            let v2047: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.3s\" values=\"10; 20; 10\" attributeType=\"XML\" attributeName=\"height\"");
-                            let v2042: string = string("vec![]");
-                            let v2043: Vec<leptos::prelude::AnyView> = vec![];
-                            let v2045: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v2043);
-                            let v2047: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v2045);
-                            let v2049: string = append(
-                                (append(
-                                    string("leptos::prelude::view! { "),
-                                    (append(
-                                        (append(
-                                            (append(
-                                                (append(string("<animate "), (v2041))),
-                                                string(">move || { v2047 }</"),
-                                            )),
-                                            string("animate"),
-                                        )),
-                                        string(">"),
-                                    )),
-                                )),
-                                string(" }"),
-                            );
-                            let v2051: leptos::prelude::View<
-                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v2047 }</animate> };
+                            let v2048: string = string("vec![]");
+                            let v2049: Vec<leptos::prelude::AnyView> = vec![];
+                            let v2051: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v2049);
                             let v2053: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v2051);
-                            let v2065: string =
-                                    string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.3s\" values=\"10; 5; 10\" attributeType=\"XML\" attributeName=\"y\"");
-                            let v2066: string = string("vec![]");
-                            let v2067: Vec<leptos::prelude::AnyView> = vec![];
-                            let v2069: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v2067);
-                            let v2071: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v2069);
-                            let v2073: string = append(
+                                leptos::prelude::AnyView::from(v2051);
+                            let v2055: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<animate "), (v2065))),
-                                                string(">move || { v2071 }</"),
+                                                (append(string("<animate "), (v2047))),
+                                                string(">move || { v2053 }</"),
                                             )),
                                             string("animate"),
                                         )),
@@ -15346,25 +15317,54 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v2075: leptos::prelude::View<
+                            let v2057: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v2071 }</animate> };
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v2053 }</animate> };
+                            let v2059: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v2057);
+                            let v2071: string =
+                                    string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.3s\" values=\"10; 5; 10\" attributeType=\"XML\" attributeName=\"y\"");
+                            let v2072: string = string("vec![]");
+                            let v2073: Vec<leptos::prelude::AnyView> = vec![];
+                            let v2075: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v2073);
                             let v2077: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v2075);
-                            let v2087: string = string("vec![v2029, v2053, v2077]");
-                            let v2088: Vec<leptos::prelude::AnyView> = vec![v2029, v2053, v2077];
-                            let v2090: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v2088);
-                            let v2092: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v2090);
-                            let v2094: string = append(
+                                leptos::prelude::AnyView::from(v2075);
+                            let v2079: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<rect "), (v2005))),
-                                                string(">move || { v2092 }</"),
+                                                (append(string("<animate "), (v2071))),
+                                                string(">move || { v2077 }</"),
+                                            )),
+                                            string("animate"),
+                                        )),
+                                        string(">"),
+                                    )),
+                                )),
+                                string(" }"),
+                            );
+                            let v2081: leptos::prelude::View<
+                                leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v2077 }</animate> };
+                            let v2083: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v2081);
+                            let v2093: string = string("vec![v2035, v2059, v2083]");
+                            let v2094: Vec<leptos::prelude::AnyView> = vec![v2035, v2059, v2083];
+                            let v2096: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v2094);
+                            let v2098: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v2096);
+                            let v2100: string = append(
+                                (append(
+                                    string("leptos::prelude::view! { "),
+                                    (append(
+                                        (append(
+                                            (append(
+                                                (append(string("<rect "), (v2011))),
+                                                string(">move || { v2098 }</"),
                                             )),
                                             string("rect"),
                                         )),
@@ -15373,29 +15373,29 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v2096: leptos::prelude::View<
+                            let v2102: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Rect, _, _>,
-                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="16">move || { v2092 }</rect> };
-                            let v2098: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v2096);
-                            let v2100: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v1993);
-                            let v2102: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v1890);
-                            let v2112: string = string("vec![v2102, v2100, v2098]");
-                            let v2113: Vec<leptos::prelude::AnyView> = vec![v2102, v2100, v2098];
-                            let v2115: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v2113);
-                            let v2117: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v2115);
-                            let v2120: string = append(
+                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="16">move || { v2098 }</rect> };
+                            let v2104: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v2102);
+                            let v2106: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v1999);
+                            let v2108: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v1896);
+                            let v2118: string = string("vec![v2108, v2106, v2104]");
+                            let v2119: Vec<leptos::prelude::AnyView> = vec![v2108, v2106, v2104];
+                            let v2121: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v2119);
+                            let v2123: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v2121);
+                            let v2126: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<svg "), (v1784))),
-                                                string(">move || { v2117 }</"),
+                                                (append(string("<svg "), (v1790))),
+                                                string(">move || { v2123 }</"),
                                             )),
                                             string("svg"),
                                         )),
@@ -15404,31 +15404,31 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v2122: leptos::prelude::View<
+                            let v2128: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                            > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v1766(()) xml:space="preserve" style="enable-background:new 0 0 50 50;" viewBox="0 0 24 30" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1">move || { v2117 }</svg> };
-                            let v2124: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v2122);
-                            let v2134: &str = &*string("Loading...");
-                            let v2167: std::string::String = String::from(v2134);
-                            let v2193: leptos::prelude::AnyView =
+                            > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v1772(()) xml:space="preserve" style="enable-background:new 0 0 50 50;" viewBox="0 0 24 30" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1">move || { v2123 }</svg> };
+                            let v2130: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v2128);
+                            let v2140: &str = &*string("Loading...");
+                            let v2173: std::string::String = String::from(v2140);
+                            let v2199: leptos::prelude::AnyView =
                                 leptos::prelude::IntoAny::into_any(
-                                    leptos::prelude::IntoView::into_view(v2167),
+                                    leptos::prelude::IntoView::into_view(v2173),
                                 );
-                            let v2200: string = string("vec![v2124, v2193]");
-                            let v2201: Vec<leptos::prelude::AnyView> = vec![v2124, v2193];
-                            let v2203: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v2201);
-                            let v2205: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v2203);
-                            let v2208: string = append(
+                            let v2206: string = string("vec![v2130, v2199]");
+                            let v2207: Vec<leptos::prelude::AnyView> = vec![v2130, v2199];
+                            let v2209: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v2207);
+                            let v2211: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v2209);
+                            let v2214: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v1763))),
-                                                string(">move || { v2205 }</"),
+                                                (append(string("<div "), (v1769))),
+                                                string(">move || { v2211 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -15437,25 +15437,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v2210: leptos::prelude::View<
+                            let v2216: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="flex flex-1 [gap:4px] items-center">move || { v2205 }</div> };
-                            let v2212: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v2210);
-                            let v2216: string = string("vec![v2212]");
-                            let v2217: Vec<leptos::prelude::AnyView> = vec![v2212];
-                            let v2219: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v2217);
-                            let v2221: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v2219);
-                            let v2223: string = append(
+                            > = leptos::prelude::view! { <div  class="flex flex-1 [gap:4px] items-center">move || { v2211 }</div> };
+                            let v2218: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v2216);
+                            let v2222: string = string("vec![v2218]");
+                            let v2223: Vec<leptos::prelude::AnyView> = vec![v2218];
+                            let v2225: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v2223);
+                            let v2227: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v2225);
+                            let v2229: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v1761))),
-                                                string(">move || { v2221 }</"),
+                                                (append(string("<div "), (v1767))),
+                                                string(">move || { v2227 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -15464,35 +15464,35 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v2225: leptos::prelude::View<
+                            let v2231: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="grid place-content-center py-[10vh]">move || { v2221 }</div> };
-                            leptos::prelude::IntoAny::into_any(v2225)
+                            > = leptos::prelude::view! { <div  class="grid place-content-center py-[10vh]">move || { v2227 }</div> };
+                            leptos::prelude::IntoAny::into_any(v2231)
                         }
                     }
                     Dice_ui::US46::US46_1(v221_1_0) => {
-                        let v2231: string =
+                        let v2237: string =
                             fable_library_rust::String_::fromString(v221_1_0.clone());
-                        let v2234: string =
+                        let v2240: string =
                             string(" class=\"flex flex-1 items-center [gap:4px] [padding:5px]\"");
-                        let v2236: string = string(" class=\"[height:17px]\"");
-                        let v2250: string =
-                                string(" class=\"text-red-700\" stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" height=\"100%\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
+                        let v2242: string = string(" class=\"[height:17px]\"");
                         let v2256: string =
+                                string(" class=\"text-red-700\" stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" height=\"100%\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
+                        let v2262: string =
                                 string(" d=\"M6 18L18 6M6 6l12 12\" stroke-linejoin=\"round\" stroke-linecap=\"round\"");
-                        let v2257: string = string("vec![]");
-                        let v2258: Vec<leptos::prelude::AnyView> = vec![];
-                        let v2260: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v2258);
-                        let v2262: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v2260);
-                        let v2265: string = append(
+                        let v2263: string = string("vec![]");
+                        let v2264: Vec<leptos::prelude::AnyView> = vec![];
+                        let v2266: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v2264);
+                        let v2268: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v2266);
+                        let v2271: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<path "), (v2256))),
-                                            string(">move || { v2262 }</"),
+                                            (append(string("<path "), (v2262))),
+                                            string(">move || { v2268 }</"),
                                         )),
                                         string("path"),
                                     )),
@@ -15501,24 +15501,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v2267: leptos::prelude::View<
+                        let v2273: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                        > = leptos::prelude::view! { <path  d="M6 18L18 6M6 6l12 12" stroke-linejoin="round" stroke-linecap="round">move || { v2262 }</path> };
-                        let v2269: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v2267);
-                        let v2273: string = string("vec![v2269]");
-                        let v2274: Vec<leptos::prelude::AnyView> = vec![v2269];
-                        let v2276: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v2274);
-                        let v2278: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v2276);
-                        let v2281: string = append(
+                        > = leptos::prelude::view! { <path  d="M6 18L18 6M6 6l12 12" stroke-linejoin="round" stroke-linecap="round">move || { v2268 }</path> };
+                        let v2275: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v2273);
+                        let v2279: string = string("vec![v2275]");
+                        let v2280: Vec<leptos::prelude::AnyView> = vec![v2275];
+                        let v2282: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v2280);
+                        let v2284: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v2282);
+                        let v2287: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<svg "), (v2250))),
-                                            string(">move || { v2278 }</"),
+                                            (append(string("<svg "), (v2256))),
+                                            string(">move || { v2284 }</"),
                                         )),
                                         string("svg"),
                                     )),
@@ -15527,24 +15527,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v2283: leptos::prelude::View<
+                        let v2289: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                        > = leptos::prelude::view! { <svg  class="text-red-700" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v2278 }</svg> };
-                        let v2285: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v2283);
-                        let v2289: string = string("vec![v2285]");
-                        let v2290: Vec<leptos::prelude::AnyView> = vec![v2285];
-                        let v2292: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v2290);
-                        let v2294: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v2292);
-                        let v2297: string = append(
+                        > = leptos::prelude::view! { <svg  class="text-red-700" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v2284 }</svg> };
+                        let v2291: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v2289);
+                        let v2295: string = string("vec![v2291]");
+                        let v2296: Vec<leptos::prelude::AnyView> = vec![v2291];
+                        let v2298: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v2296);
+                        let v2300: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v2298);
+                        let v2303: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<span "), (v2236))),
-                                            string(">move || { v2294 }</"),
+                                            (append(string("<span "), (v2242))),
+                                            string(">move || { v2300 }</"),
                                         )),
                                         string("span"),
                                     )),
@@ -15553,30 +15553,30 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v2299: leptos::prelude::View<
+                        let v2305: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                        > = leptos::prelude::view! { <span  class="[height:17px]">move || { v2294 }</span> };
-                        let v2301: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v2299);
-                        let v2303: string = string(" class=\"[overflow-y:auto] [text-wrap:wrap]\"");
-                        let v2312: &str = &*v2231;
-                        let v2345: std::string::String = String::from(v2312);
-                        let v2371: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                            leptos::prelude::IntoView::into_view(v2345),
+                        > = leptos::prelude::view! { <span  class="[height:17px]">move || { v2300 }</span> };
+                        let v2307: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v2305);
+                        let v2309: string = string(" class=\"[overflow-y:auto] [text-wrap:wrap]\"");
+                        let v2318: &str = &*v2237;
+                        let v2351: std::string::String = String::from(v2318);
+                        let v2377: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                            leptos::prelude::IntoView::into_view(v2351),
                         );
-                        let v2375: string = string("vec![v2371]");
-                        let v2376: Vec<leptos::prelude::AnyView> = vec![v2371];
-                        let v2378: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v2376);
-                        let v2380: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v2378);
-                        let v2383: string = append(
+                        let v2381: string = string("vec![v2377]");
+                        let v2382: Vec<leptos::prelude::AnyView> = vec![v2377];
+                        let v2384: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v2382);
+                        let v2386: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v2384);
+                        let v2389: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<pre "), (v2303))),
-                                            string(">move || { v2380 }</"),
+                                            (append(string("<pre "), (v2309))),
+                                            string(">move || { v2386 }</"),
                                         )),
                                         string("pre"),
                                     )),
@@ -15585,24 +15585,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v2385: leptos::prelude::View<
+                        let v2391: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Pre, _, _>,
-                        > = leptos::prelude::view! { <pre  class="[overflow-y:auto] [text-wrap:wrap]">move || { v2380 }</pre> };
-                        let v2387: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v2385);
-                        let v2395: string = string("vec![v2301, v2387]");
-                        let v2396: Vec<leptos::prelude::AnyView> = vec![v2301, v2387];
-                        let v2398: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v2396);
-                        let v2400: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v2398);
-                        let v2403: string = append(
+                        > = leptos::prelude::view! { <pre  class="[overflow-y:auto] [text-wrap:wrap]">move || { v2386 }</pre> };
+                        let v2393: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v2391);
+                        let v2401: string = string("vec![v2307, v2393]");
+                        let v2402: Vec<leptos::prelude::AnyView> = vec![v2307, v2393];
+                        let v2404: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v2402);
+                        let v2406: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v2404);
+                        let v2409: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<div "), (v2234))),
-                                            string(">move || { v2400 }</"),
+                                            (append(string("<div "), (v2240))),
+                                            string(">move || { v2406 }</"),
                                         )),
                                         string("div"),
                                     )),
@@ -15611,16 +15611,16 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v2405: leptos::prelude::View<
+                        let v2411: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                        > = leptos::prelude::view! { <div  class="flex flex-1 items-center [gap:4px] [padding:5px]">move || { v2400 }</div> };
-                        leptos::prelude::IntoAny::into_any(v2405)
+                        > = leptos::prelude::view! { <div  class="flex flex-1 items-center [gap:4px] [padding:5px]">move || { v2406 }</div> };
+                        leptos::prelude::IntoAny::into_any(v2411)
                     }
                 }
             };
-            let v2415: string = string("vec![v2410]");
-            let v2416: Vec<leptos::prelude::AnyView> = vec![v2410];
-            leptos::prelude::Fragment::new(v2416)
+            let v2421: string = string("vec![v2416]");
+            let v2422: Vec<leptos::prelude::AnyView> = vec![v2416];
+            leptos::prelude::Fragment::new(v2422)
         }
         pub fn closure194(
             v0_1: i32,
@@ -16731,7 +16731,7 @@ mod module_9c940d83 {
                         let v112: bool = */
                 }); //;
                 let v114: Func0<std::string::String> = _func0_from_v39;
-                let v162: string = join(
+                let v164: string = join(
                     string(" "),
                     toArray(delay(Func0::new(move || {
                         ofList(ofArray_1(new_array(&[
@@ -16744,21 +16744,21 @@ mod module_9c940d83 {
                         ])))
                     }))),
                 );
-                let v173: &str = &*v162;
-                let v206: std::string::String = String::from(v173);
-                let v232: std::string::String = v206;
-                let v236: string = string(" class=v232 for=move || v114()");
-                let v239: bool = true;
-                let v237 = Func1::new({
+                let v175: &str = &*v164;
+                let v208: std::string::String = String::from(v175);
+                let v234: std::string::String = v208;
+                let v238: string = string(" class=v234 for=move || v114()");
+                let v241: bool = true;
+                let v239 = Func1::new({
                     let v0_1 = v0_1.clone();
                     let v38 = v38.clone();
                     move |v: leptos::ev::Event| Dice_ui::closure209(v0_1.clone(), v38, v)
                 }); //;
-                let v240 = Dice_ui::method220(v35.clone());
-                let v241 = Dice_ui::method221(v38);
-                let v242: string =
+                let v242 = Dice_ui::method220(v35.clone());
+                let v243 = Dice_ui::method221(v38);
+                let v244: string =
                 string("class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\"");
-                let v254: string = append(
+                let v256: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
@@ -16766,13 +16766,13 @@ mod module_9c940d83 {
                                 string("<input "),
                                 (append(
                                     (append(
-                                        string(" prop:checked=move || v240()"),
+                                        string(" prop:checked=move || v242()"),
                                         (append(
                                             (append(
-                                                string(" on:change=move |event| v237(event)"),
+                                                string(" on:change=move |event| v239(event)"),
                                                 (append(
                                                     (append(
-                                                        string(" id=move || v241()"),
+                                                        string(" id=move || v243()"),
                                                         (append(
                                                             (append(
                                                                 string(" type=\"checkbox\""),
@@ -16780,7 +16780,7 @@ mod module_9c940d83 {
                                                                     (append(
                                                                         (append(
                                                                             string(" "),
-                                                                            (v242),
+                                                                            (v244),
                                                                         )),
                                                                         string(""),
                                                                     )),
@@ -16804,26 +16804,26 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v256: leptos::prelude::View<
+                let v258: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::html::Input, _, _>,
-                > = leptos::prelude::view! { <input  prop:checked=move || v240() on:change=move |event| v237(event) id=move || v241() type="checkbox" class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden" /> };
-                let v258: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v256);
-                let v259: string =
+                > = leptos::prelude::view! { <input  prop:checked=move || v242() on:change=move |event| v239(event) id=move || v243() type="checkbox" class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden" /> };
+                let v260: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v258);
+                let v261: string =
                 string("class=\"absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400\"");
-                let v260: string = append(
-                    (append((append(string(" "), (v259))), string(""))),
+                let v262: string = append(
+                    (append((append(string(" "), (v261))), string(""))),
                     string(""),
                 );
-                let v270: string =
-                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon");
                 let v272: string =
+                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon");
+                let v274: string =
                 string("d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\"");
-                let v276: string = append(
+                let v278: string = append(
                     (append(
                         string(" clip-rule=\"evenodd\""),
                         (append(
                             (append(
-                                (append(string(" "), (v272))),
+                                (append(string(" "), (v274))),
                                 string(" fill-rule=\"evenodd\""),
                             )),
                             string(""),
@@ -16831,18 +16831,18 @@ mod module_9c940d83 {
                     )),
                     string(""),
                 );
-                let v277: string = string("vec![]");
-                let v278: Vec<leptos::prelude::AnyView> = vec![];
-                let v280: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v278);
-                let v282: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v280);
-                let v285: string = append(
+                let v279: string = string("vec![]");
+                let v280: Vec<leptos::prelude::AnyView> = vec![];
+                let v282: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v280);
+                let v284: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v282);
+                let v287: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<path "), (v276))),
-                                    string(">move || { v282 }</"),
+                                    (append(string("<path "), (v278))),
+                                    string(">move || { v284 }</"),
                                 )),
                                 string("path"),
                             )),
@@ -16851,22 +16851,22 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v287: leptos::prelude::View<
+                let v289: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd">move || { v282 }</path> };
-                let v289: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v287);
-                let v293: string = string("vec![v289]");
-                let v294: Vec<leptos::prelude::AnyView> = vec![v289];
-                let v296: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v294);
-                let v298: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v296);
-                let v301: string = append(
+                > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd">move || { v284 }</path> };
+                let v291: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v289);
+                let v295: string = string("vec![v291]");
+                let v296: Vec<leptos::prelude::AnyView> = vec![v291];
+                let v298: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v296);
+                let v300: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v298);
+                let v303: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<svg "), (v270))),
-                                    string(">move || { v298 }</"),
+                                    (append(string("<svg "), (v272))),
+                                    string(">move || { v300 }</"),
                                 )),
                                 string("svg"),
                             )),
@@ -16875,17 +16875,17 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v303: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-unchecked-icon>move || { v298 }</svg> };
-                let v313: string =
-                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon");
+                let v305: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-unchecked-icon>move || { v300 }</svg> };
                 let v315: string =
+                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon");
+                let v317: string =
                 string("d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\"");
-                let v319: string = append(
+                let v321: string = append(
                     (append(
                         string(" clip-rule=\"evenodd\""),
                         (append(
                             (append(
-                                (append(string(" "), (v315))),
+                                (append(string(" "), (v317))),
                                 string(" fill-rule=\"evenodd\""),
                             )),
                             string(""),
@@ -16893,18 +16893,18 @@ mod module_9c940d83 {
                     )),
                     string(""),
                 );
-                let v320: string = string("vec![]");
-                let v321: Vec<leptos::prelude::AnyView> = vec![];
-                let v323: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v321);
-                let v325: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v323);
-                let v327: string = append(
+                let v322: string = string("vec![]");
+                let v323: Vec<leptos::prelude::AnyView> = vec![];
+                let v325: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v323);
+                let v327: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v325);
+                let v329: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<path "), (v319))),
-                                    string(">move || { v325 }</"),
+                                    (append(string("<path "), (v321))),
+                                    string(">move || { v327 }</"),
                                 )),
                                 string("path"),
                             )),
@@ -16913,22 +16913,22 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v329: leptos::prelude::View<
+                let v331: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd">move || { v325 }</path> };
-                let v331: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v329);
-                let v335: string = string("vec![v331]");
-                let v336: Vec<leptos::prelude::AnyView> = vec![v331];
-                let v338: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v336);
-                let v340: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v338);
-                let v342: string = append(
+                > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd">move || { v327 }</path> };
+                let v333: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v331);
+                let v337: string = string("vec![v333]");
+                let v338: Vec<leptos::prelude::AnyView> = vec![v333];
+                let v340: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v338);
+                let v342: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v340);
+                let v344: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<svg "), (v313))),
-                                    string(">move || { v340 }</"),
+                                    (append(string("<svg "), (v315))),
+                                    string(">move || { v342 }</"),
                                 )),
                                 string("svg"),
                             )),
@@ -16937,21 +16937,21 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v344: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-checked-icon>move || { v340 }</svg> };
-                let v346: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v344);
-                let v348: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v303);
-                let v356: string = string("vec![v348, v346]");
-                let v357: Vec<leptos::prelude::AnyView> = vec![v348, v346];
-                let v359: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v357);
-                let v361: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v359);
-                let v364: string = append(
+                let v346: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-checked-icon>move || { v342 }</svg> };
+                let v348: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v346);
+                let v350: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v305);
+                let v358: string = string("vec![v350, v348]");
+                let v359: Vec<leptos::prelude::AnyView> = vec![v350, v348];
+                let v361: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v359);
+                let v363: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v361);
+                let v366: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<span "), (v260))),
-                                    string(">move || { v361 }</"),
+                                    (append(string("<span "), (v262))),
+                                    string(">move || { v363 }</"),
                                 )),
                                 string("span"),
                             )),
@@ -16960,28 +16960,28 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v366: leptos::prelude::View<
+                let v368: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                > = leptos::prelude::view! { <span  class="absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400">move || { v361 }</span> };
-                let v368: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v366);
-                let v369: string =
+                > = leptos::prelude::view! { <span  class="absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400">move || { v363 }</span> };
+                let v370: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v368);
+                let v371: string =
                 string("class=\"absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300\"");
-                let v370: string = append(
-                    (append((append(string(" "), (v369))), string(""))),
+                let v372: string = append(
+                    (append((append(string(" "), (v371))), string(""))),
                     string(""),
                 );
-                let v371: string = string("vec![]");
-                let v372: Vec<leptos::prelude::AnyView> = vec![];
-                let v374: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v372);
-                let v376: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v374);
-                let v378: string = append(
+                let v373: string = string("vec![]");
+                let v374: Vec<leptos::prelude::AnyView> = vec![];
+                let v376: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v374);
+                let v378: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v376);
+                let v380: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<span "), (v370))),
-                                    string(">move || { v376 }</"),
+                                    (append(string("<span "), (v372))),
+                                    string(">move || { v378 }</"),
                                 )),
                                 string("span"),
                             )),
@@ -16990,22 +16990,22 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v380: leptos::prelude::View<
+                let v382: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                > = leptos::prelude::view! { <span  class="absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300">move || { v376 }</span> };
-                let v382: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v380);
-                let v392: string = string("vec![v258, v368, v382]");
-                let v393: Vec<leptos::prelude::AnyView> = vec![v258, v368, v382];
-                let v395: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v393);
-                let v397: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v395);
-                let v400: string = append(
+                > = leptos::prelude::view! { <span  class="absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300">move || { v378 }</span> };
+                let v384: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v382);
+                let v394: string = string("vec![v260, v370, v384]");
+                let v395: Vec<leptos::prelude::AnyView> = vec![v260, v370, v384];
+                let v397: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v395);
+                let v399: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v397);
+                let v402: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<label "), (v236))),
-                                    string(">move || { v397 }</"),
+                                    (append(string("<label "), (v238))),
+                                    string(">move || { v399 }</"),
                                 )),
                                 string("label"),
                             )),
@@ -17014,94 +17014,94 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v402: leptos::prelude::View<
+                let v404: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::html::Label, _, _>,
-                > = leptos::prelude::view! { <label  class=v232 for=move || v114()>move || { v397 }</label> };
-                let v404: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v402);
-                let v407: bool = true;
-                let _func0_from_v405 = Func0::from(move || {
+                > = leptos::prelude::view! { <label  class=v234 for=move || v114()>move || { v399 }</label> };
+                let v406: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v404);
+                let v409: bool = true;
+                let _func0_from_v407 = Func0::from(move || {
                     //;
-                    let v409: LrcPtr<(bool, std::string::String)> =
+                    let v411: LrcPtr<(bool, std::string::String)> =
                         leptos::prelude::ReadSignal::get(&v35);
-                    let v419: bool = true;
-                    v409.1.clone() /*;
-                                   let v421: bool = */
+                    let v421: bool = true;
+                    v411.1.clone() /*;
+                                   let v423: bool = */
                 }); //;
-                let v423: Func0<std::string::String> = _func0_from_v405;
-                let v426: bool = true;
-                let _func1_from_v424 = Func0::from(move || {
+                let v425: Func0<std::string::String> = _func0_from_v407;
+                let v428: bool = true;
+                let _func1_from_v426 = Func0::from(move || {
                     //;
-                    let v428: std::string::String = value;
-                    let v431: std::pin::Pin<
+                    let v430: std::string::String = value;
+                    let v433: std::pin::Pin<
                         Box<leptos::prelude::ArcRwSignal<LrcPtr<Dice_ui::Heap1>>>,
                     > = Box::pin(v0_1.l0.clone());
-                    let v433: LrcPtr<Dice_ui::Heap1> =
-                        leptos::prelude::ArcRwSignal::get_untracked(&v431);
-                    let v436: std::pin::Pin<
+                    let v435: LrcPtr<Dice_ui::Heap1> =
+                        leptos::prelude::ArcRwSignal::get_untracked(&v433);
+                    let v438: std::pin::Pin<
                         Box<leptos::prelude::ArcRwSignal<LrcPtr<Dice_ui::Heap0>>>,
-                    > = Box::pin(v433.l3.clone());
-                    let v438: LrcPtr<Dice_ui::Heap0> =
-                        leptos::prelude::ArcRwSignal::get_untracked(&v436);
-                    let v446: std::pin::Pin<
+                    > = Box::pin(v435.l3.clone());
+                    let v440: LrcPtr<Dice_ui::Heap0> =
+                        leptos::prelude::ArcRwSignal::get_untracked(&v438);
+                    let v448: std::pin::Pin<
                         Box<leptos::prelude::ArcRwSignal<LrcPtr<Dice_ui::Heap1>>>,
                     > = Box::pin(v0_1.l0.clone());
-                    let v448: LrcPtr<Dice_ui::Heap1> =
-                        leptos::prelude::ArcRwSignal::get_untracked(&v446);
-                    let v450 = Dice_ui::method222(v38, v428);
-                    let v451: Vec<LrcPtr<(bool, std::string::String)>> =
-                        Dice_ui::method208(v438.l0.clone());
-                    let v454: LrcPtr<Dice_ui::Heap0> = LrcPtr::new(Dice_ui::Heap0 {
-                        l0: v451
+                    let v450: LrcPtr<Dice_ui::Heap1> =
+                        leptos::prelude::ArcRwSignal::get_untracked(&v448);
+                    let v452 = Dice_ui::method222(v38, v430);
+                    let v453: Vec<LrcPtr<(bool, std::string::String)>> =
+                        Dice_ui::method208(v440.l0.clone());
+                    let v456: LrcPtr<Dice_ui::Heap0> = LrcPtr::new(Dice_ui::Heap0 {
+                        l0: v453
                             .iter()
                             .enumerate()
-                            .map(|(i, x)| v450(i.try_into().unwrap())(x.clone()))
+                            .map(|(i, x)| v452(i.try_into().unwrap())(x.clone()))
                             .collect::<Vec<_>>(),
-                        l1: v438.l1.clone(),
-                        l2: v438.l2,
-                        l3: v438.l3,
-                        l4: v438.l4.clone(),
+                        l1: v440.l1.clone(),
+                        l2: v440.l2,
+                        l3: v440.l3,
+                        l4: v440.l4.clone(),
                     });
-                    let v456: bool = true;
-                    leptos::prelude::ArcRwSignal::set(&v448.l3.clone(), v454); //;
-                    let v458: bool = true; /*;
-                                           let v460: bool = */
+                    let v458: bool = true;
+                    leptos::prelude::ArcRwSignal::set(&v450.l3.clone(), v456); //;
+                    let v460: bool = true; /*;
+                                           let v462: bool = */
                 }); //;
-                let v462: Func1<std::string::String, ()> = _func1_from_v424;
-                let v465 = {
+                let v464: Func1<std::string::String, ()> = _func1_from_v426;
+                let v467 = {
                     let clo = Func0::new(move || Dice_ui::closure216((), ()));
                     Func1::new({
                         let clo = clo.clone();
                         move |arg: ()| clo()
                     })
                 };
-                let v474: string =
-                string("leptos::prelude::view! { <input  on:keyup=move |event: web_sys::KeyboardEvent| v468(leptos::prelude::event_target_value(&event)) prop:value=move || v423() class=move || \"bg-gray-50 h-[31px] [font-size:.875rem] \".to_owned() + &v465(()) /> }");
-                let v476: leptos::prelude::View<
+                let v476: string =
+                string("leptos::prelude::view! { <input  on:keyup=move |event: web_sys::KeyboardEvent| v470(leptos::prelude::event_target_value(&event)) prop:value=move || v425() class=move || \"bg-gray-50 h-[31px] [font-size:.875rem] \".to_owned() + &v467(()) /> }");
+                let v478: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::html::Input, _, _>,
-                > = leptos::prelude::view! { <input  on:keyup=move |event: web_sys::KeyboardEvent| v468(leptos::prelude::event_target_value(&event)) prop:value=move || v423() class=move || "bg-gray-50 h-[31px] [font-size:.875rem] ".to_owned() + &v465(()) /> };
-                let v478: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v476);
-                let v592: leptos::prelude::AnyView = if (leptos::prelude::ArcMemo::get(&v2))
+                > = leptos::prelude::view! { <input  on:keyup=move |event: web_sys::KeyboardEvent| v470(leptos::prelude::event_target_value(&event)) prop:value=move || v425() class=move || "bg-gray-50 h-[31px] [font-size:.875rem] ".to_owned() + &v467(()) /> };
+                let v480: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v478);
+                let v594: leptos::prelude::AnyView = if (leptos::prelude::ArcMemo::get(&v2))
                     == 1_i32
                 {
-                    let v482: string = string("vec![]");
-                    let v483: Vec<leptos::prelude::AnyView> = vec![];
-                    leptos::prelude::IntoAny::into_any(v483)
+                    let v484: string = string("vec![]");
+                    let v485: Vec<leptos::prelude::AnyView> = vec![];
+                    leptos::prelude::IntoAny::into_any(v485)
                 } else {
-                    let v488: bool = true;
-                    let _func0_from_v486 = Func0::from(move || {
+                    let v490: bool = true;
+                    let _func0_from_v488 = Func0::from(move || {
                         //;
-                        let v491: std::pin::Pin<
+                        let v493: std::pin::Pin<
                             Box<leptos::prelude::ArcRwSignal<LrcPtr<Dice_ui::Heap1>>>,
                         > = Box::pin(v0_1.l0.clone());
-                        let v493: LrcPtr<Dice_ui::Heap1> =
-                            leptos::prelude::ArcRwSignal::get_untracked(&v491);
-                        let v496: bool = true;
+                        let v495: LrcPtr<Dice_ui::Heap1> =
+                            leptos::prelude::ArcRwSignal::get_untracked(&v493);
+                        let v498: bool = true;
                         leptos::prelude::ArcRwSignal::update(
-                            &v493.l3.clone(),
+                            &v495.l3.clone(),
                             |x: &mut /*;
-                             let v498: */
+                             let v500: */
                              LrcPtr<Dice_ui::Heap0> /* = fable_library_rust::Native_::getZero();
-                                                    let v503: bool =
+                                                    let v505: bool =
                                                         */| {
                                 *x = Func1::new({
                                     let v3 = v3.clone();
@@ -17112,46 +17112,46 @@ mod module_9c940d83 {
                                 })(x.clone())
                             },
                         ); //;
-                        let v505: bool = true;
+                        let v507: bool = true;
                         leptos::prelude::WriteSignal::update(
                             &v4,
                             |x: &mut /*;
-                             let v507: */
+                             let v509: */
                              i32 /* = fable_library_rust::Native_::getZero();
-                                 let v512: bool =
+                                 let v514: bool =
                                      */| {
                                 *x = Func1::new(move |v_3: i32| Dice_ui::closure201((), v_3))(
                                     x.clone(),
                                 )
                             },
                         ); //;
-                        let v514: bool = true; /*;
-                                               let v516: bool = */
+                        let v516: bool = true; /*;
+                                               let v518: bool = */
                     }); //;
-                    let v518: Func0<()> = _func0_from_v486;
-                    let v521 = {
+                    let v520: Func0<()> = _func0_from_v488;
+                    let v523 = {
                         let clo_1 = Func0::new(move || Dice_ui::closure220((), ()));
                         Func1::new({
                             let clo_1 = clo_1.clone();
                             move |arg_1: ()| clo_1()
                         })
                     };
-                    let v533: string =
-                        string(" class=move || \" \".to_owned() + &v521(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
-                    let v539: string =
+                    let v535: string =
+                        string(" class=move || \" \".to_owned() + &v523(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
+                    let v541: string =
                         string(" d=\"M6 6l12 12m0-12L6 18\" stroke-linejoin=\"round\" stroke-linecap=\"round\"");
-                    let v540: string = string("vec![]");
-                    let v541: Vec<leptos::prelude::AnyView> = vec![];
-                    let v543: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v541);
-                    let v545: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v543);
-                    let v547: string = append(
+                    let v542: string = string("vec![]");
+                    let v543: Vec<leptos::prelude::AnyView> = vec![];
+                    let v545: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v543);
+                    let v547: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v545);
+                    let v549: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<path "), (v539))),
-                                        string(">move || { v545 }</"),
+                                        (append(string("<path "), (v541))),
+                                        string(">move || { v547 }</"),
                                     )),
                                     string("path"),
                                 )),
@@ -17160,22 +17160,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v549: leptos::prelude::View<
+                    let v551: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                    > = leptos::prelude::view! { <path  d="M6 6l12 12m0-12L6 18" stroke-linejoin="round" stroke-linecap="round">move || { v545 }</path> };
-                    let v551: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v549);
-                    let v555: string = string("vec![v551]");
-                    let v556: Vec<leptos::prelude::AnyView> = vec![v551];
-                    let v558: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v556);
-                    let v560: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v558);
-                    let v562: string = append(
+                    > = leptos::prelude::view! { <path  d="M6 6l12 12m0-12L6 18" stroke-linejoin="round" stroke-linecap="round">move || { v547 }</path> };
+                    let v553: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v551);
+                    let v557: string = string("vec![v553]");
+                    let v558: Vec<leptos::prelude::AnyView> = vec![v553];
+                    let v560: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v558);
+                    let v562: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v560);
+                    let v564: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<svg "), (v533))),
-                                        string(">move || { v560 }</"),
+                                        (append(string("<svg "), (v535))),
+                                        string(">move || { v562 }</"),
                                     )),
                                     string("svg"),
                                 )),
@@ -17184,26 +17184,26 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v564: leptos::prelude::View<
+                    let v566: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v521(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v560 }</svg> };
-                    let v569 = {
+                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v523(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v562 }</svg> };
+                    let v571 = {
                         let clo_2 = Func0::new(move || Dice_ui::closure221((), ()));
                         Func1::new({
                             let clo_2 = clo_2.clone();
                             move |arg_2: ()| clo_2()
                         })
                     };
-                    let v570: string =
-                        string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] \".to_owned() + &v569(())");
-                    let v573: string = append(
+                    let v572: string =
+                        string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] \".to_owned() + &v571(())");
+                    let v575: string = append(
                         (append(
                             string(" aria-label=\"Delete\""),
                             (append(
                                 (append(
-                                    string(" on:click=move |_| v518()"),
+                                    string(" on:click=move |_| v520()"),
                                     (append(
-                                        (append((append(string(" "), (v570))), string(""))),
+                                        (append((append(string(" "), (v572))), string(""))),
                                         string(""),
                                     )),
                                 )),
@@ -17212,19 +17212,19 @@ mod module_9c940d83 {
                         )),
                         string(""),
                     );
-                    let v575: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v564);
-                    let v579: string = string("vec![v575]");
-                    let v580: Vec<leptos::prelude::AnyView> = vec![v575];
-                    let v582: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v580);
-                    let v584: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v582);
-                    let v587: string = append(
+                    let v577: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v566);
+                    let v581: string = string("vec![v577]");
+                    let v582: Vec<leptos::prelude::AnyView> = vec![v577];
+                    let v584: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v582);
+                    let v586: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v584);
+                    let v589: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<button "), (v573))),
-                                        string(">move || { v584 }</"),
+                                        (append(string("<button "), (v575))),
+                                        string(">move || { v586 }</"),
                                     )),
                                     string("button"),
                                 )),
@@ -17233,23 +17233,23 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v589: leptos::prelude::View<
+                    let v591: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Button, _, _>,
-                    > = leptos::prelude::view! { <button  aria-label="Delete" on:click=move |_| v518() class=move || "inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] ".to_owned() + &v569(())>move || { v584 }</button> };
-                    leptos::prelude::IntoAny::into_any(v589)
+                    > = leptos::prelude::view! { <button  aria-label="Delete" on:click=move |_| v520() class=move || "inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] ".to_owned() + &v571(())>move || { v586 }</button> };
+                    leptos::prelude::IntoAny::into_any(v591)
                 };
-                let v602: string = string("vec![v404, v478, v592]");
-                let v603: Vec<leptos::prelude::AnyView> = vec![v404, v478, v592];
-                let v605: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v603);
-                let v607: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v605);
-                let v610: string = append(
+                let v604: string = string("vec![v406, v480, v594]");
+                let v605: Vec<leptos::prelude::AnyView> = vec![v406, v480, v594];
+                let v607: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v605);
+                let v609: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v607);
+                let v612: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
                                     (append(string("<div "), (v37))),
-                                    string(">move || { v607 }</"),
+                                    string(">move || { v609 }</"),
                                 )),
                                 string("div"),
                             )),
@@ -17258,19 +17258,19 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v612: leptos::prelude::View<
+                let v614: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                > = leptos::prelude::view! { <div  class="flex gap-[8px] [align-items:center]">move || { v607 }</div> };
-                let v614: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v612);
-                let v618: string = string("vec![v614]");
-                let v619: Vec<leptos::prelude::AnyView> = vec![v614];
-                let v621: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v619);
-                let v623: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v621);
-                let v626: bool = true;
-                v623 /*;
-                     let v628: bool = */
+                > = leptos::prelude::view! { <div  class="flex gap-[8px] [align-items:center]">move || { v609 }</div> };
+                let v616: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v614);
+                let v620: string = string("vec![v616]");
+                let v621: Vec<leptos::prelude::AnyView> = vec![v616];
+                let v623: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v621);
+                let v625: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v623);
+                let v628: bool = true;
+                v625 /*;
+                     let v630: bool = */
             }); //;
-            let v630: Func1<
+            let v632: Func1<
                 (
                     i32,
                     i32,
@@ -17278,23 +17278,23 @@ mod module_9c940d83 {
                 ),
                 leptos::prelude::AnyView,
             > = _func1_from_v29;
-            let v642: string =
-                string("leptos::prelude::IntoAny::into_any(leptos::prelude::view! { <leptos::prelude::For  children=move |x| v634(x) let:x key=move |x| v28(x.to_owned()) each=v9 /> })");
-            let v643: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                leptos::prelude::view! { <leptos::prelude::For  children=move |x| v634(x) let:x key=move |x| v28(x.to_owned()) each=v9 /> },
+            let v644: string =
+                string("leptos::prelude::IntoAny::into_any(leptos::prelude::view! { <leptos::prelude::For  children=move |x| v636(x) let:x key=move |x| v28(x.to_owned()) each=v9 /> })");
+            let v645: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                leptos::prelude::view! { <leptos::prelude::For  children=move |x| v636(x) let:x key=move |x| v28(x.to_owned()) each=v9 /> },
             );
-            let v647: string = string("vec![v643]");
-            let v648: Vec<leptos::prelude::AnyView> = vec![v643];
-            let v650: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v648);
-            let v652: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v650);
-            let v654: string = append(
+            let v649: string = string("vec![v645]");
+            let v650: Vec<leptos::prelude::AnyView> = vec![v645];
+            let v652: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v650);
+            let v654: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v652);
+            let v656: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
                                 (append(string("<div "), (v7))),
-                                string(">move || { v652 }</"),
+                                string(">move || { v654 }</"),
                             )),
                             string("div"),
                         )),
@@ -17303,11 +17303,11 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v656: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> = leptos::prelude::view! { <div  class="flex flex-1 flex-col p-[8px] gap-[8px]">move || { v652 }</div> };
-            let v658: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v656);
-            let v662: string = string("vec![v658]");
-            let v663: Vec<leptos::prelude::AnyView> = vec![v658];
-            leptos::prelude::Fragment::new(v663)
+            let v658: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> = leptos::prelude::view! { <div  class="flex flex-1 flex-col p-[8px] gap-[8px]">move || { v654 }</div> };
+            let v660: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v658);
+            let v664: string = string("vec![v660]");
+            let v665: Vec<leptos::prelude::AnyView> = vec![v660];
+            leptos::prelude::Fragment::new(v665)
         }
         pub fn closure223(unitVar: (), unitVar_1: ()) -> string {
             string("py-[7px]")
@@ -17384,7 +17384,7 @@ mod module_9c940d83 {
                     let v74: bool = */
             }); //;
             let v76: Func0<std::string::String> = _func0_from_v1;
-            let v124: string = join(
+            let v126: string = join(
                 string(" "),
                 toArray(delay(Func0::new(move || {
                     ofList(ofArray_1(new_array(&[
@@ -17397,20 +17397,20 @@ mod module_9c940d83 {
                     ])))
                 }))),
             );
-            let v135: &str = &*v124;
-            let v168: std::string::String = String::from(v135);
-            let v194: std::string::String = v168;
-            let v199: string = string(" class=v194 for=move || v76()");
-            let v202: bool = true;
-            let v200 = Func1::new({
+            let v137: &str = &*v126;
+            let v170: std::string::String = String::from(v137);
+            let v196: std::string::String = v170;
+            let v201: string = string(" class=v196 for=move || v76()");
+            let v204: bool = true;
+            let v202 = Func1::new({
                 let v0_1 = v0_1.clone();
                 move |v: leptos::ev::Event| Dice_ui::closure229(v0_1.clone(), v)
             }); //;
-            let v203 = Dice_ui::method231(v0_1.clone());
-            let v204 = Dice_ui::method232();
-            let v205: string =
+            let v205 = Dice_ui::method231(v0_1.clone());
+            let v206 = Dice_ui::method232();
+            let v207: string =
                 string("class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\"");
-            let v217: string = append(
+            let v219: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
@@ -17418,19 +17418,19 @@ mod module_9c940d83 {
                             string("<input "),
                             (append(
                                 (append(
-                                    string(" prop:checked=move || v203()"),
+                                    string(" prop:checked=move || v205()"),
                                     (append(
                                         (append(
-                                            string(" on:change=move |event| v200(event)"),
+                                            string(" on:change=move |event| v202(event)"),
                                             (append(
                                                 (append(
-                                                    string(" id=move || v204()"),
+                                                    string(" id=move || v206()"),
                                                     (append(
                                                         (append(
                                                             string(" type=\"checkbox\""),
                                                             (append(
                                                                 (append(
-                                                                    (append(string(" "), (v205))),
+                                                                    (append(string(" "), (v207))),
                                                                     string(""),
                                                                 )),
                                                                 string(""),
@@ -17453,24 +17453,24 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v219: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Input, _, _>> = leptos::prelude::view! { <input  prop:checked=move || v203() on:change=move |event| v200(event) id=move || v204() type="checkbox" class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden" /> };
-            let v221: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v219);
-            let v222: string =
+            let v221: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Input, _, _>> = leptos::prelude::view! { <input  prop:checked=move || v205() on:change=move |event| v202(event) id=move || v206() type="checkbox" class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden" /> };
+            let v223: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v221);
+            let v224: string =
                 string("class=\"absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400\"");
-            let v223: string = append(
-                (append((append(string(" "), (v222))), string(""))),
+            let v225: string = append(
+                (append((append(string(" "), (v224))), string(""))),
                 string(""),
             );
-            let v233: string =
-                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon");
             let v235: string =
+                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon");
+            let v237: string =
                 string("d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\"");
-            let v239: string = append(
+            let v241: string = append(
                 (append(
                     string(" clip-rule=\"evenodd\""),
                     (append(
                         (append(
-                            (append(string(" "), (v235))),
+                            (append(string(" "), (v237))),
                             string(" fill-rule=\"evenodd\""),
                         )),
                         string(""),
@@ -17478,18 +17478,18 @@ mod module_9c940d83 {
                 )),
                 string(""),
             );
-            let v240: string = string("vec![]");
-            let v241: Vec<leptos::prelude::AnyView> = vec![];
-            let v243: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v241);
-            let v245: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v243);
-            let v248: string = append(
+            let v242: string = string("vec![]");
+            let v243: Vec<leptos::prelude::AnyView> = vec![];
+            let v245: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v243);
+            let v247: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v245);
+            let v250: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<path "), (v239))),
-                                string(">move || { v245 }</"),
+                                (append(string("<path "), (v241))),
+                                string(">move || { v247 }</"),
                             )),
                             string("path"),
                         )),
@@ -17498,20 +17498,20 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v250: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd">move || { v245 }</path> };
-            let v252: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v250);
-            let v256: string = string("vec![v252]");
-            let v257: Vec<leptos::prelude::AnyView> = vec![v252];
-            let v259: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v257);
-            let v261: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v259);
-            let v264: string = append(
+            let v252: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd">move || { v247 }</path> };
+            let v254: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v252);
+            let v258: string = string("vec![v254]");
+            let v259: Vec<leptos::prelude::AnyView> = vec![v254];
+            let v261: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v259);
+            let v263: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v261);
+            let v266: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<svg "), (v233))),
-                                string(">move || { v261 }</"),
+                                (append(string("<svg "), (v235))),
+                                string(">move || { v263 }</"),
                             )),
                             string("svg"),
                         )),
@@ -17520,17 +17520,17 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v266: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-unchecked-icon>move || { v261 }</svg> };
-            let v276: string =
-                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon");
+            let v268: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-unchecked-icon>move || { v263 }</svg> };
             let v278: string =
+                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon");
+            let v280: string =
                 string("d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\"");
-            let v282: string = append(
+            let v284: string = append(
                 (append(
                     string(" clip-rule=\"evenodd\""),
                     (append(
                         (append(
-                            (append(string(" "), (v278))),
+                            (append(string(" "), (v280))),
                             string(" fill-rule=\"evenodd\""),
                         )),
                         string(""),
@@ -17538,18 +17538,18 @@ mod module_9c940d83 {
                 )),
                 string(""),
             );
-            let v283: string = string("vec![]");
-            let v284: Vec<leptos::prelude::AnyView> = vec![];
-            let v286: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v284);
-            let v288: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v286);
-            let v290: string = append(
+            let v285: string = string("vec![]");
+            let v286: Vec<leptos::prelude::AnyView> = vec![];
+            let v288: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v286);
+            let v290: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v288);
+            let v292: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<path "), (v282))),
-                                string(">move || { v288 }</"),
+                                (append(string("<path "), (v284))),
+                                string(">move || { v290 }</"),
                             )),
                             string("path"),
                         )),
@@ -17558,20 +17558,20 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v292: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd">move || { v288 }</path> };
-            let v294: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v292);
-            let v298: string = string("vec![v294]");
-            let v299: Vec<leptos::prelude::AnyView> = vec![v294];
-            let v301: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v299);
-            let v303: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v301);
-            let v305: string = append(
+            let v294: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd">move || { v290 }</path> };
+            let v296: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v294);
+            let v300: string = string("vec![v296]");
+            let v301: Vec<leptos::prelude::AnyView> = vec![v296];
+            let v303: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v301);
+            let v305: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v303);
+            let v307: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<svg "), (v276))),
-                                string(">move || { v303 }</"),
+                                (append(string("<svg "), (v278))),
+                                string(">move || { v305 }</"),
                             )),
                             string("svg"),
                         )),
@@ -17580,21 +17580,21 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v307: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-checked-icon>move || { v303 }</svg> };
-            let v309: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v307);
-            let v311: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v266);
-            let v319: string = string("vec![v311, v309]");
-            let v320: Vec<leptos::prelude::AnyView> = vec![v311, v309];
-            let v322: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v320);
-            let v324: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v322);
-            let v327: string = append(
+            let v309: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-checked-icon>move || { v305 }</svg> };
+            let v311: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v309);
+            let v313: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v268);
+            let v321: string = string("vec![v313, v311]");
+            let v322: Vec<leptos::prelude::AnyView> = vec![v313, v311];
+            let v324: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v322);
+            let v326: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v324);
+            let v329: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<span "), (v223))),
-                                string(">move || { v324 }</"),
+                                (append(string("<span "), (v225))),
+                                string(">move || { v326 }</"),
                             )),
                             string("span"),
                         )),
@@ -17603,26 +17603,26 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v329: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400">move || { v324 }</span> };
-            let v331: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v329);
-            let v332: string =
+            let v331: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400">move || { v326 }</span> };
+            let v333: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v331);
+            let v334: string =
                 string("class=\"absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300\"");
-            let v333: string = append(
-                (append((append(string(" "), (v332))), string(""))),
+            let v335: string = append(
+                (append((append(string(" "), (v334))), string(""))),
                 string(""),
             );
-            let v334: string = string("vec![]");
-            let v335: Vec<leptos::prelude::AnyView> = vec![];
-            let v337: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v335);
-            let v339: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v337);
-            let v341: string = append(
+            let v336: string = string("vec![]");
+            let v337: Vec<leptos::prelude::AnyView> = vec![];
+            let v339: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v337);
+            let v341: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v339);
+            let v343: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<span "), (v333))),
-                                string(">move || { v339 }</"),
+                                (append(string("<span "), (v335))),
+                                string(">move || { v341 }</"),
                             )),
                             string("span"),
                         )),
@@ -17631,20 +17631,20 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v343: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300">move || { v339 }</span> };
-            let v345: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v343);
-            let v355: string = string("vec![v221, v331, v345]");
-            let v356: Vec<leptos::prelude::AnyView> = vec![v221, v331, v345];
-            let v358: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v356);
-            let v360: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v358);
-            let v363: string = append(
+            let v345: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300">move || { v341 }</span> };
+            let v347: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v345);
+            let v357: string = string("vec![v223, v333, v347]");
+            let v358: Vec<leptos::prelude::AnyView> = vec![v223, v333, v347];
+            let v360: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v358);
+            let v362: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v360);
+            let v365: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<label "), (v199))),
-                                string(">move || { v360 }</"),
+                                (append(string("<label "), (v201))),
+                                string(">move || { v362 }</"),
                             )),
                             string("label"),
                         )),
@@ -17653,11 +17653,11 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v365: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Label, _, _>> = leptos::prelude::view! { <label  class=v194 for=move || v76()>move || { v360 }</label> };
-            let v367: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v365);
-            let v371: string = string("vec![v367]");
-            let v372: Vec<leptos::prelude::AnyView> = vec![v367];
-            leptos::prelude::Fragment::new(v372)
+            let v367: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Label, _, _>> = leptos::prelude::view! { <label  class=v196 for=move || v76()>move || { v362 }</label> };
+            let v369: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v367);
+            let v373: string = string("vec![v369]");
+            let v374: Vec<leptos::prelude::AnyView> = vec![v369];
+            leptos::prelude::Fragment::new(v374)
         }
         pub fn method230(v0_1: LrcPtr<Dice_ui::Heap2>) -> Func0<leptos::prelude::Fragment> {
             Func0::new({
@@ -17736,7 +17736,7 @@ mod module_9c940d83 {
                     let v74: bool = */
             }); //;
             let v76: Func0<std::string::String> = _func0_from_v1;
-            let v124: string = join(
+            let v126: string = join(
                 string(" "),
                 toArray(delay(Func0::new(move || {
                     ofList(ofArray_1(new_array(&[
@@ -17749,20 +17749,20 @@ mod module_9c940d83 {
                     ])))
                 }))),
             );
-            let v135: &str = &*v124;
-            let v168: std::string::String = String::from(v135);
-            let v194: std::string::String = v168;
-            let v199: string = string(" class=v194 for=move || v76()");
-            let v202: bool = true;
-            let v200 = Func1::new({
+            let v137: &str = &*v126;
+            let v170: std::string::String = String::from(v137);
+            let v196: std::string::String = v170;
+            let v201: string = string(" class=v196 for=move || v76()");
+            let v204: bool = true;
+            let v202 = Func1::new({
                 let v0_1 = v0_1.clone();
                 move |v: leptos::ev::Event| Dice_ui::closure239(v0_1.clone(), v)
             }); //;
-            let v203 = Dice_ui::method235(v0_1.clone());
-            let v204 = Dice_ui::method236();
-            let v205: string =
+            let v205 = Dice_ui::method235(v0_1.clone());
+            let v206 = Dice_ui::method236();
+            let v207: string =
                 string("class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\"");
-            let v217: string = append(
+            let v219: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
@@ -17770,19 +17770,19 @@ mod module_9c940d83 {
                             string("<input "),
                             (append(
                                 (append(
-                                    string(" prop:checked=move || v203()"),
+                                    string(" prop:checked=move || v205()"),
                                     (append(
                                         (append(
-                                            string(" on:change=move |event| v200(event)"),
+                                            string(" on:change=move |event| v202(event)"),
                                             (append(
                                                 (append(
-                                                    string(" id=move || v204()"),
+                                                    string(" id=move || v206()"),
                                                     (append(
                                                         (append(
                                                             string(" type=\"checkbox\""),
                                                             (append(
                                                                 (append(
-                                                                    (append(string(" "), (v205))),
+                                                                    (append(string(" "), (v207))),
                                                                     string(""),
                                                                 )),
                                                                 string(""),
@@ -17805,24 +17805,24 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v219: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Input, _, _>> = leptos::prelude::view! { <input  prop:checked=move || v203() on:change=move |event| v200(event) id=move || v204() type="checkbox" class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden" /> };
-            let v221: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v219);
-            let v222: string =
+            let v221: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Input, _, _>> = leptos::prelude::view! { <input  prop:checked=move || v205() on:change=move |event| v202(event) id=move || v206() type="checkbox" class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden" /> };
+            let v223: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v221);
+            let v224: string =
                 string("class=\"absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400\"");
-            let v223: string = append(
-                (append((append(string(" "), (v222))), string(""))),
+            let v225: string = append(
+                (append((append(string(" "), (v224))), string(""))),
                 string(""),
             );
-            let v233: string =
-                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon");
             let v235: string =
+                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon");
+            let v237: string =
                 string("d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\"");
-            let v239: string = append(
+            let v241: string = append(
                 (append(
                     string(" clip-rule=\"evenodd\""),
                     (append(
                         (append(
-                            (append(string(" "), (v235))),
+                            (append(string(" "), (v237))),
                             string(" fill-rule=\"evenodd\""),
                         )),
                         string(""),
@@ -17830,18 +17830,18 @@ mod module_9c940d83 {
                 )),
                 string(""),
             );
-            let v240: string = string("vec![]");
-            let v241: Vec<leptos::prelude::AnyView> = vec![];
-            let v243: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v241);
-            let v245: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v243);
-            let v248: string = append(
+            let v242: string = string("vec![]");
+            let v243: Vec<leptos::prelude::AnyView> = vec![];
+            let v245: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v243);
+            let v247: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v245);
+            let v250: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<path "), (v239))),
-                                string(">move || { v245 }</"),
+                                (append(string("<path "), (v241))),
+                                string(">move || { v247 }</"),
                             )),
                             string("path"),
                         )),
@@ -17850,20 +17850,20 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v250: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd">move || { v245 }</path> };
-            let v252: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v250);
-            let v256: string = string("vec![v252]");
-            let v257: Vec<leptos::prelude::AnyView> = vec![v252];
-            let v259: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v257);
-            let v261: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v259);
-            let v264: string = append(
+            let v252: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd">move || { v247 }</path> };
+            let v254: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v252);
+            let v258: string = string("vec![v254]");
+            let v259: Vec<leptos::prelude::AnyView> = vec![v254];
+            let v261: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v259);
+            let v263: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v261);
+            let v266: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<svg "), (v233))),
-                                string(">move || { v261 }</"),
+                                (append(string("<svg "), (v235))),
+                                string(">move || { v263 }</"),
                             )),
                             string("svg"),
                         )),
@@ -17872,17 +17872,17 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v266: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-unchecked-icon>move || { v261 }</svg> };
-            let v276: string =
-                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon");
+            let v268: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-unchecked-icon>move || { v263 }</svg> };
             let v278: string =
+                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon");
+            let v280: string =
                 string("d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\"");
-            let v282: string = append(
+            let v284: string = append(
                 (append(
                     string(" clip-rule=\"evenodd\""),
                     (append(
                         (append(
-                            (append(string(" "), (v278))),
+                            (append(string(" "), (v280))),
                             string(" fill-rule=\"evenodd\""),
                         )),
                         string(""),
@@ -17890,18 +17890,18 @@ mod module_9c940d83 {
                 )),
                 string(""),
             );
-            let v283: string = string("vec![]");
-            let v284: Vec<leptos::prelude::AnyView> = vec![];
-            let v286: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v284);
-            let v288: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v286);
-            let v290: string = append(
+            let v285: string = string("vec![]");
+            let v286: Vec<leptos::prelude::AnyView> = vec![];
+            let v288: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v286);
+            let v290: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v288);
+            let v292: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<path "), (v282))),
-                                string(">move || { v288 }</"),
+                                (append(string("<path "), (v284))),
+                                string(">move || { v290 }</"),
                             )),
                             string("path"),
                         )),
@@ -17910,20 +17910,20 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v292: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd">move || { v288 }</path> };
-            let v294: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v292);
-            let v298: string = string("vec![v294]");
-            let v299: Vec<leptos::prelude::AnyView> = vec![v294];
-            let v301: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v299);
-            let v303: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v301);
-            let v305: string = append(
+            let v294: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd">move || { v290 }</path> };
+            let v296: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v294);
+            let v300: string = string("vec![v296]");
+            let v301: Vec<leptos::prelude::AnyView> = vec![v296];
+            let v303: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v301);
+            let v305: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v303);
+            let v307: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<svg "), (v276))),
-                                string(">move || { v303 }</"),
+                                (append(string("<svg "), (v278))),
+                                string(">move || { v305 }</"),
                             )),
                             string("svg"),
                         )),
@@ -17932,21 +17932,21 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v307: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-checked-icon>move || { v303 }</svg> };
-            let v309: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v307);
-            let v311: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v266);
-            let v319: string = string("vec![v311, v309]");
-            let v320: Vec<leptos::prelude::AnyView> = vec![v311, v309];
-            let v322: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v320);
-            let v324: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v322);
-            let v327: string = append(
+            let v309: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-checked-icon>move || { v305 }</svg> };
+            let v311: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v309);
+            let v313: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v268);
+            let v321: string = string("vec![v313, v311]");
+            let v322: Vec<leptos::prelude::AnyView> = vec![v313, v311];
+            let v324: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v322);
+            let v326: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v324);
+            let v329: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<span "), (v223))),
-                                string(">move || { v324 }</"),
+                                (append(string("<span "), (v225))),
+                                string(">move || { v326 }</"),
                             )),
                             string("span"),
                         )),
@@ -17955,26 +17955,26 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v329: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400">move || { v324 }</span> };
-            let v331: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v329);
-            let v332: string =
+            let v331: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400">move || { v326 }</span> };
+            let v333: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v331);
+            let v334: string =
                 string("class=\"absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300\"");
-            let v333: string = append(
-                (append((append(string(" "), (v332))), string(""))),
+            let v335: string = append(
+                (append((append(string(" "), (v334))), string(""))),
                 string(""),
             );
-            let v334: string = string("vec![]");
-            let v335: Vec<leptos::prelude::AnyView> = vec![];
-            let v337: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v335);
-            let v339: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v337);
-            let v341: string = append(
+            let v336: string = string("vec![]");
+            let v337: Vec<leptos::prelude::AnyView> = vec![];
+            let v339: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v337);
+            let v341: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v339);
+            let v343: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<span "), (v333))),
-                                string(">move || { v339 }</"),
+                                (append(string("<span "), (v335))),
+                                string(">move || { v341 }</"),
                             )),
                             string("span"),
                         )),
@@ -17983,20 +17983,20 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v343: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300">move || { v339 }</span> };
-            let v345: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v343);
-            let v355: string = string("vec![v221, v331, v345]");
-            let v356: Vec<leptos::prelude::AnyView> = vec![v221, v331, v345];
-            let v358: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v356);
-            let v360: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v358);
-            let v363: string = append(
+            let v345: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300">move || { v341 }</span> };
+            let v347: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v345);
+            let v357: string = string("vec![v223, v333, v347]");
+            let v358: Vec<leptos::prelude::AnyView> = vec![v223, v333, v347];
+            let v360: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v358);
+            let v362: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v360);
+            let v365: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<label "), (v199))),
-                                string(">move || { v360 }</"),
+                                (append(string("<label "), (v201))),
+                                string(">move || { v362 }</"),
                             )),
                             string("label"),
                         )),
@@ -18005,11 +18005,11 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v365: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Label, _, _>> = leptos::prelude::view! { <label  class=v194 for=move || v76()>move || { v360 }</label> };
-            let v367: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v365);
-            let v371: string = string("vec![v367]");
-            let v372: Vec<leptos::prelude::AnyView> = vec![v367];
-            leptos::prelude::Fragment::new(v372)
+            let v367: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Label, _, _>> = leptos::prelude::view! { <label  class=v196 for=move || v76()>move || { v362 }</label> };
+            let v369: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v367);
+            let v373: string = string("vec![v369]");
+            let v374: Vec<leptos::prelude::AnyView> = vec![v369];
+            leptos::prelude::Fragment::new(v374)
         }
         pub fn method234(v0_1: LrcPtr<Dice_ui::Heap2>) -> Func0<leptos::prelude::Fragment> {
             Func0::new({
@@ -18630,7 +18630,7 @@ mod module_9c940d83 {
                     let v74: bool = */
             }); //;
             let v76: Func0<std::string::String> = _func0_from_v1;
-            let v124: string = join(
+            let v126: string = join(
                 string(" "),
                 toArray(delay(Func0::new(move || {
                     ofList(ofArray_1(new_array(&[
@@ -18643,20 +18643,20 @@ mod module_9c940d83 {
                     ])))
                 }))),
             );
-            let v135: &str = &*v124;
-            let v168: std::string::String = String::from(v135);
-            let v194: std::string::String = v168;
-            let v199: string = string(" class=v194 for=move || v76()");
-            let v202: bool = true;
-            let v200 = Func1::new({
+            let v137: &str = &*v126;
+            let v170: std::string::String = String::from(v137);
+            let v196: std::string::String = v170;
+            let v201: string = string(" class=v196 for=move || v76()");
+            let v204: bool = true;
+            let v202 = Func1::new({
                 let v0_1 = v0_1.clone();
                 move |v: leptos::ev::Event| Dice_ui::closure264(v0_1.clone(), v)
             }); //;
-            let v203 = Dice_ui::method246(v0_1.clone());
-            let v204 = Dice_ui::method247();
-            let v205: string =
+            let v205 = Dice_ui::method246(v0_1.clone());
+            let v206 = Dice_ui::method247();
+            let v207: string =
                 string("class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\"");
-            let v217: string = append(
+            let v219: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
@@ -18664,19 +18664,19 @@ mod module_9c940d83 {
                             string("<input "),
                             (append(
                                 (append(
-                                    string(" prop:checked=move || v203()"),
+                                    string(" prop:checked=move || v205()"),
                                     (append(
                                         (append(
-                                            string(" on:change=move |event| v200(event)"),
+                                            string(" on:change=move |event| v202(event)"),
                                             (append(
                                                 (append(
-                                                    string(" id=move || v204()"),
+                                                    string(" id=move || v206()"),
                                                     (append(
                                                         (append(
                                                             string(" type=\"checkbox\""),
                                                             (append(
                                                                 (append(
-                                                                    (append(string(" "), (v205))),
+                                                                    (append(string(" "), (v207))),
                                                                     string(""),
                                                                 )),
                                                                 string(""),
@@ -18699,24 +18699,24 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v219: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Input, _, _>> = leptos::prelude::view! { <input  prop:checked=move || v203() on:change=move |event| v200(event) id=move || v204() type="checkbox" class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden" /> };
-            let v221: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v219);
-            let v222: string =
+            let v221: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Input, _, _>> = leptos::prelude::view! { <input  prop:checked=move || v205() on:change=move |event| v202(event) id=move || v206() type="checkbox" class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden" /> };
+            let v223: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v221);
+            let v224: string =
                 string("class=\"absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400\"");
-            let v223: string = append(
-                (append((append(string(" "), (v222))), string(""))),
+            let v225: string = append(
+                (append((append(string(" "), (v224))), string(""))),
                 string(""),
             );
-            let v233: string =
-                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon");
             let v235: string =
+                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon");
+            let v237: string =
                 string("d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\"");
-            let v239: string = append(
+            let v241: string = append(
                 (append(
                     string(" clip-rule=\"evenodd\""),
                     (append(
                         (append(
-                            (append(string(" "), (v235))),
+                            (append(string(" "), (v237))),
                             string(" fill-rule=\"evenodd\""),
                         )),
                         string(""),
@@ -18724,18 +18724,18 @@ mod module_9c940d83 {
                 )),
                 string(""),
             );
-            let v240: string = string("vec![]");
-            let v241: Vec<leptos::prelude::AnyView> = vec![];
-            let v243: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v241);
-            let v245: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v243);
-            let v248: string = append(
+            let v242: string = string("vec![]");
+            let v243: Vec<leptos::prelude::AnyView> = vec![];
+            let v245: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v243);
+            let v247: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v245);
+            let v250: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<path "), (v239))),
-                                string(">move || { v245 }</"),
+                                (append(string("<path "), (v241))),
+                                string(">move || { v247 }</"),
                             )),
                             string("path"),
                         )),
@@ -18744,20 +18744,20 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v250: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd">move || { v245 }</path> };
-            let v252: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v250);
-            let v256: string = string("vec![v252]");
-            let v257: Vec<leptos::prelude::AnyView> = vec![v252];
-            let v259: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v257);
-            let v261: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v259);
-            let v264: string = append(
+            let v252: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd">move || { v247 }</path> };
+            let v254: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v252);
+            let v258: string = string("vec![v254]");
+            let v259: Vec<leptos::prelude::AnyView> = vec![v254];
+            let v261: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v259);
+            let v263: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v261);
+            let v266: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<svg "), (v233))),
-                                string(">move || { v261 }</"),
+                                (append(string("<svg "), (v235))),
+                                string(">move || { v263 }</"),
                             )),
                             string("svg"),
                         )),
@@ -18766,17 +18766,17 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v266: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-unchecked-icon>move || { v261 }</svg> };
-            let v276: string =
-                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon");
+            let v268: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-unchecked-icon>move || { v263 }</svg> };
             let v278: string =
+                string(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon");
+            let v280: string =
                 string("d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\"");
-            let v282: string = append(
+            let v284: string = append(
                 (append(
                     string(" clip-rule=\"evenodd\""),
                     (append(
                         (append(
-                            (append(string(" "), (v278))),
+                            (append(string(" "), (v280))),
                             string(" fill-rule=\"evenodd\""),
                         )),
                         string(""),
@@ -18784,18 +18784,18 @@ mod module_9c940d83 {
                 )),
                 string(""),
             );
-            let v283: string = string("vec![]");
-            let v284: Vec<leptos::prelude::AnyView> = vec![];
-            let v286: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v284);
-            let v288: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v286);
-            let v290: string = append(
+            let v285: string = string("vec![]");
+            let v286: Vec<leptos::prelude::AnyView> = vec![];
+            let v288: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v286);
+            let v290: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v288);
+            let v292: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<path "), (v282))),
-                                string(">move || { v288 }</"),
+                                (append(string("<path "), (v284))),
+                                string(">move || { v290 }</"),
                             )),
                             string("path"),
                         )),
@@ -18804,20 +18804,20 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v292: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd">move || { v288 }</path> };
-            let v294: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v292);
-            let v298: string = string("vec![v294]");
-            let v299: Vec<leptos::prelude::AnyView> = vec![v294];
-            let v301: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v299);
-            let v303: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v301);
-            let v305: string = append(
+            let v294: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd">move || { v290 }</path> };
+            let v296: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v294);
+            let v300: string = string("vec![v296]");
+            let v301: Vec<leptos::prelude::AnyView> = vec![v296];
+            let v303: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v301);
+            let v305: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v303);
+            let v307: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<svg "), (v276))),
-                                string(">move || { v303 }</"),
+                                (append(string("<svg "), (v278))),
+                                string(">move || { v305 }</"),
                             )),
                             string("svg"),
                         )),
@@ -18826,21 +18826,21 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v307: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-checked-icon>move || { v303 }</svg> };
-            let v309: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v307);
-            let v311: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v266);
-            let v319: string = string("vec![v311, v309]");
-            let v320: Vec<leptos::prelude::AnyView> = vec![v311, v309];
-            let v322: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v320);
-            let v324: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v322);
-            let v327: string = append(
+            let v309: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-checked-icon>move || { v305 }</svg> };
+            let v311: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v309);
+            let v313: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v268);
+            let v321: string = string("vec![v313, v311]");
+            let v322: Vec<leptos::prelude::AnyView> = vec![v313, v311];
+            let v324: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v322);
+            let v326: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v324);
+            let v329: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<span "), (v223))),
-                                string(">move || { v324 }</"),
+                                (append(string("<span "), (v225))),
+                                string(">move || { v326 }</"),
                             )),
                             string("span"),
                         )),
@@ -18849,26 +18849,26 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v329: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400">move || { v324 }</span> };
-            let v331: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v329);
-            let v332: string =
+            let v331: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400">move || { v326 }</span> };
+            let v333: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v331);
+            let v334: string =
                 string("class=\"absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300\"");
-            let v333: string = append(
-                (append((append(string(" "), (v332))), string(""))),
+            let v335: string = append(
+                (append((append(string(" "), (v334))), string(""))),
                 string(""),
             );
-            let v334: string = string("vec![]");
-            let v335: Vec<leptos::prelude::AnyView> = vec![];
-            let v337: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v335);
-            let v339: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v337);
-            let v341: string = append(
+            let v336: string = string("vec![]");
+            let v337: Vec<leptos::prelude::AnyView> = vec![];
+            let v339: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v337);
+            let v341: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v339);
+            let v343: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<span "), (v333))),
-                                string(">move || { v339 }</"),
+                                (append(string("<span "), (v335))),
+                                string(">move || { v341 }</"),
                             )),
                             string("span"),
                         )),
@@ -18877,20 +18877,20 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v343: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300">move || { v339 }</span> };
-            let v345: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v343);
-            let v355: string = string("vec![v221, v331, v345]");
-            let v356: Vec<leptos::prelude::AnyView> = vec![v221, v331, v345];
-            let v358: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v356);
-            let v360: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v358);
-            let v363: string = append(
+            let v345: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300">move || { v341 }</span> };
+            let v347: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v345);
+            let v357: string = string("vec![v223, v333, v347]");
+            let v358: Vec<leptos::prelude::AnyView> = vec![v223, v333, v347];
+            let v360: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v358);
+            let v362: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v360);
+            let v365: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<label "), (v199))),
-                                string(">move || { v360 }</"),
+                                (append(string("<label "), (v201))),
+                                string(">move || { v362 }</"),
                             )),
                             string("label"),
                         )),
@@ -18899,11 +18899,11 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v365: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Label, _, _>> = leptos::prelude::view! { <label  class=v194 for=move || v76()>move || { v360 }</label> };
-            let v367: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v365);
-            let v371: string = string("vec![v367]");
-            let v372: Vec<leptos::prelude::AnyView> = vec![v367];
-            leptos::prelude::Fragment::new(v372)
+            let v367: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Label, _, _>> = leptos::prelude::view! { <label  class=v196 for=move || v76()>move || { v362 }</label> };
+            let v369: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v367);
+            let v373: string = string("vec![v369]");
+            let v374: Vec<leptos::prelude::AnyView> = vec![v369];
+            leptos::prelude::Fragment::new(v374)
         }
         pub fn method245(v0_1: LrcPtr<Dice_ui::Heap2>) -> Func0<leptos::prelude::Fragment> {
             Func0::new({
@@ -20380,40 +20380,40 @@ mod module_9c940d83 {
                 .collect::<Vec<_>>();
             let v34: LrcPtr<dyn IEnumerable_1<string>> =
                 ofArray(fable_library_rust::NativeArray_::array_from(v30.clone()));
-            let v47: string = replace(
+            let v48: string = replace(
                 join(Dice_ui::method279(), toArray(v34)),
                 string("\\n"),
                 string("\n"),
             );
-            let v50 = {
+            let v51 = {
                 let clo = Func0::new(move || Dice_ui::closure333((), ()));
                 Func1::new({
                     let clo = clo.clone();
                     move |arg: ()| clo()
                 })
             };
-            let v51: string =
-                string("class=move || \"[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] \".to_owned() + &v50(())");
-            let v53: string = append(
-                (append((append(string(" "), (v51))), string(""))),
+            let v52: string =
+                string("class=move || \"[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] \".to_owned() + &v51(())");
+            let v54: string = append(
+                (append((append(string(" "), (v52))), string(""))),
                 string(""),
             );
-            let v62: &str = &*v47;
-            let v95: std::string::String = String::from(v62);
-            let v121: leptos::prelude::AnyView =
-                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v95));
-            let v125: string = string("vec![v121]");
-            let v126: Vec<leptos::prelude::AnyView> = vec![v121];
-            let v128: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v126);
-            let v130: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v128);
-            let v133: string = append(
+            let v63: &str = &*v48;
+            let v96: std::string::String = String::from(v63);
+            let v122: leptos::prelude::AnyView =
+                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v96));
+            let v126: string = string("vec![v122]");
+            let v127: Vec<leptos::prelude::AnyView> = vec![v122];
+            let v129: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v127);
+            let v131: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v129);
+            let v134: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<pre "), (v53))),
-                                string(">move || { v130 }</"),
+                                (append(string("<pre "), (v54))),
+                                string(">move || { v131 }</"),
                             )),
                             string("pre"),
                         )),
@@ -20422,11 +20422,11 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v135: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Pre, _, _>> = leptos::prelude::view! { <pre  class=move || "[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] ".to_owned() + &v50(())>move || { v130 }</pre> };
-            let v137: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v135);
-            let v141: string = string("vec![v137]");
-            let v142: Vec<leptos::prelude::AnyView> = vec![v137];
-            leptos::prelude::Fragment::new(v142)
+            let v136: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Pre, _, _>> = leptos::prelude::view! { <pre  class=move || "[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] ".to_owned() + &v51(())>move || { v131 }</pre> };
+            let v138: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v136);
+            let v142: string = string("vec![v138]");
+            let v143: Vec<leptos::prelude::AnyView> = vec![v138];
+            leptos::prelude::Fragment::new(v143)
         }
         pub fn method277(
             v0_1: std::string::String,
@@ -20749,7 +20749,7 @@ mod module_9c940d83 {
             };
             let v146: Vec<(string, Vec<(string, Dice_ui::US23, string, bool, bool)>)> =
                 leptos::prelude::ArcMemo::get(&v2);
-            let v4588: leptos::prelude::AnyView = if (get_Count(
+            let v4589: leptos::prelude::AnyView = if (get_Count(
                 fable_library_rust::NativeArray_::array_from(v146.clone()),
             ) as u64)
                 == 0_u64
@@ -23180,7 +23180,7 @@ mod module_9c940d83 {
                                         leptos::prelude::IntoAny::into_any(v2056);
                                     let v2060: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500 [overflow:auto]\"");
-                                    let v2272: leptos::prelude::Fragment =
+                                    let v2273: leptos::prelude::Fragment =
                                         if (get_Count(v1280.l11.clone()) as
                                                 u64) == 0_u64 {
                                             let v2072: &str = &*string("");
@@ -23224,12 +23224,12 @@ mod module_9c940d83 {
                                             let v2162:
                                                     LrcPtr<dyn IEnumerable_1<string>> =
                                                 ofArray(fable_library_rust::NativeArray_::array_from(v2158.clone()));
-                                            let v2175: string =
+                                            let v2176: string =
                                                 replace(join(Dice_ui::method279(),
                                                              toArray(v2162)),
                                                         string("\\n"),
                                                         string("\n"));
-                                            let v2178 =
+                                            let v2179 =
                                                 {
                                                     let clo_60 =
                                                         Func0::new(move ||
@@ -23245,255 +23245,255 @@ mod module_9c940d83 {
                                                                        clo_60()
                                                                })
                                                 };
-                                            let v2179: string =
-                                                string("class=move || \"[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] \".to_owned() + &v2178(())");
                                             let v2180: string =
+                                                string("class=move || \"[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] \".to_owned() + &v2179(())");
+                                            let v2181: string =
                                                 append((append((append(string(" "),
-                                                                       (v2179))),
+                                                                       (v2180))),
                                                                string(""))),
                                                        string(""));
-                                            let v2189: &str = &*v2175;
-                                            let v2222: std::string::String =
-                                                String::from(v2189);
-                                            let v2248:
+                                            let v2190: &str = &*v2176;
+                                            let v2223: std::string::String =
+                                                String::from(v2190);
+                                            let v2249:
                                                     leptos::prelude::AnyView =
-                                                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v2222));
-                                            let v2252: string =
-                                                string("vec![v2248]");
-                                            let v2253:
+                                                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v2223));
+                                            let v2253: string =
+                                                string("vec![v2249]");
+                                            let v2254:
                                                     Vec<leptos::prelude::AnyView> =
-                                                vec![v2248];
-                                            let v2255:
+                                                vec![v2249];
+                                            let v2256:
                                                     leptos::prelude::Fragment =
-                                                leptos::prelude::Fragment::new(v2253);
-                                            let v2257:
+                                                leptos::prelude::Fragment::new(v2254);
+                                            let v2258:
                                                     leptos::prelude::AnyView =
-                                                leptos::prelude::AnyView::from(v2255);
-                                            let v2260: string =
+                                                leptos::prelude::AnyView::from(v2256);
+                                            let v2261: string =
                                                 append((append(string("leptos::prelude::view! { "),
                                                                (append((append((append((append(string("<pre "),
-                                                                                               (v2180))),
-                                                                                       string(">move || { v2257 }</"))),
+                                                                                               (v2181))),
+                                                                                       string(">move || { v2258 }</"))),
                                                                                string("pre"))),
                                                                        string(">"))))),
                                                        string(" }"));
-                                            let v2262:
+                                            let v2263:
                                                     leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Pre, _, _>> =
-                                                leptos::prelude::view! { <pre  class=move || "[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] ".to_owned() + &v2178(())>move || { v2257 }</pre> };
-                                            let v2264:
+                                                leptos::prelude::view! { <pre  class=move || "[padding:1px] [font-size:12px] [line-height:12px] [text-wrap:pretty] ".to_owned() + &v2179(())>move || { v2258 }</pre> };
+                                            let v2265:
                                                     leptos::prelude::AnyView =
-                                                leptos::prelude::IntoAny::into_any(v2262);
-                                            let v2268: string =
-                                                string("vec![v2264]");
-                                            let v2269:
+                                                leptos::prelude::IntoAny::into_any(v2263);
+                                            let v2269: string =
+                                                string("vec![v2265]");
+                                            let v2270:
                                                     Vec<leptos::prelude::AnyView> =
-                                                vec![v2264];
-                                            leptos::prelude::Fragment::new(v2269)
+                                                vec![v2265];
+                                            leptos::prelude::Fragment::new(v2270)
                                         };
-                                    let v2274: leptos::prelude::AnyView =
-                                        leptos::prelude::AnyView::from(v2272);
-                                    let v2276: string =
+                                    let v2275: leptos::prelude::AnyView =
+                                        leptos::prelude::AnyView::from(v2273);
+                                    let v2277: string =
                                         append((append(string("leptos::prelude::view! { "),
                                                        (append((append((append((append(string("<td "),
                                                                                        (v2060))),
-                                                                               string(">move || { v2274 }</"))),
+                                                                               string(">move || { v2275 }</"))),
                                                                        string("td"))),
                                                                string(">"))))),
                                                string(" }"));
-                                    let v2278:
+                                    let v2279:
                                             leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Td, _, _>> =
-                                        leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500 [overflow:auto]">move || { v2274 }</td> };
-                                    let v2280: leptos::prelude::AnyView =
-                                        leptos::prelude::IntoAny::into_any(v2278);
-                                    let v2282: string =
+                                        leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500 [overflow:auto]">move || { v2275 }</td> };
+                                    let v2281: leptos::prelude::AnyView =
+                                        leptos::prelude::IntoAny::into_any(v2279);
+                                    let v2283: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\"");
-                                    let v2286: string = ofBoolean(v1280.l9);
-                                    let v2297: &str = &*v2286;
-                                    let v2330: std::string::String =
-                                        String::from(v2297);
-                                    let v2356: leptos::prelude::AnyView =
-                                        leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v2330));
-                                    let v2360: string = string("vec![v2356]");
-                                    let v2361: Vec<leptos::prelude::AnyView> =
-                                        vec![v2356];
-                                    let v2363: leptos::prelude::Fragment =
-                                        leptos::prelude::Fragment::new(v2361);
-                                    let v2365: leptos::prelude::AnyView =
-                                        leptos::prelude::AnyView::from(v2363);
-                                    let v2367: string =
+                                    let v2287: string = ofBoolean(v1280.l9);
+                                    let v2298: &str = &*v2287;
+                                    let v2331: std::string::String =
+                                        String::from(v2298);
+                                    let v2357: leptos::prelude::AnyView =
+                                        leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v2331));
+                                    let v2361: string = string("vec![v2357]");
+                                    let v2362: Vec<leptos::prelude::AnyView> =
+                                        vec![v2357];
+                                    let v2364: leptos::prelude::Fragment =
+                                        leptos::prelude::Fragment::new(v2362);
+                                    let v2366: leptos::prelude::AnyView =
+                                        leptos::prelude::AnyView::from(v2364);
+                                    let v2368: string =
                                         append((append(string("leptos::prelude::view! { "),
                                                        (append((append((append((append(string("<td "),
-                                                                                       (v2282))),
-                                                                               string(">move || { v2365 }</"))),
+                                                                                       (v2283))),
+                                                                               string(">move || { v2366 }</"))),
                                                                        string("td"))),
                                                                string(">"))))),
                                                string(" }"));
-                                    let v2369:
+                                    let v2370:
                                             leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Td, _, _>> =
-                                        leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v2365 }</td> };
-                                    let v2371: leptos::prelude::AnyView =
-                                        leptos::prelude::IntoAny::into_any(v2369);
-                                    let v2373: string =
+                                        leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v2366 }</td> };
+                                    let v2372: leptos::prelude::AnyView =
+                                        leptos::prelude::IntoAny::into_any(v2370);
+                                    let v2374: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\"");
-                                    let v2376: string =
+                                    let v2377: string =
                                         fable_library_rust::String_::fromString(v1280.l3.clone());
-                                    let v2385: &str = &*v2376;
-                                    let v2418: std::string::String =
-                                        String::from(v2385);
-                                    let v2444: leptos::prelude::AnyView =
-                                        leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v2418));
-                                    let v2448: string = string("vec![v2444]");
-                                    let v2449: Vec<leptos::prelude::AnyView> =
-                                        vec![v2444];
-                                    let v2451: leptos::prelude::Fragment =
-                                        leptos::prelude::Fragment::new(v2449);
-                                    let v2453: leptos::prelude::AnyView =
-                                        leptos::prelude::AnyView::from(v2451);
-                                    let v2455: string =
+                                    let v2386: &str = &*v2377;
+                                    let v2419: std::string::String =
+                                        String::from(v2386);
+                                    let v2445: leptos::prelude::AnyView =
+                                        leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v2419));
+                                    let v2449: string = string("vec![v2445]");
+                                    let v2450: Vec<leptos::prelude::AnyView> =
+                                        vec![v2445];
+                                    let v2452: leptos::prelude::Fragment =
+                                        leptos::prelude::Fragment::new(v2450);
+                                    let v2454: leptos::prelude::AnyView =
+                                        leptos::prelude::AnyView::from(v2452);
+                                    let v2456: string =
                                         append((append(string("leptos::prelude::view! { "),
                                                        (append((append((append((append(string("<td "),
-                                                                                       (v2373))),
-                                                                               string(">move || { v2453 }</"))),
+                                                                                       (v2374))),
+                                                                               string(">move || { v2454 }</"))),
                                                                        string("td"))),
                                                                string(">"))))),
                                                string(" }"));
-                                    let v2457:
+                                    let v2458:
                                             leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Td, _, _>> =
-                                        leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v2453 }</td> };
-                                    let v2459: leptos::prelude::AnyView =
-                                        leptos::prelude::IntoAny::into_any(v2457);
-                                    let v2461: string =
+                                        leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v2454 }</td> };
+                                    let v2460: leptos::prelude::AnyView =
+                                        leptos::prelude::IntoAny::into_any(v2458);
+                                    let v2462: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\"");
-                                    let v2464: string =
+                                    let v2465: string =
                                         fable_library_rust::String_::fromString(v1280.l4.clone());
-                                    let v2473: &str = &*v2464;
-                                    let v2506: std::string::String =
-                                        String::from(v2473);
-                                    let v2532: leptos::prelude::AnyView =
-                                        leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v2506));
-                                    let v2536: string = string("vec![v2532]");
-                                    let v2537: Vec<leptos::prelude::AnyView> =
-                                        vec![v2532];
-                                    let v2539: leptos::prelude::Fragment =
-                                        leptos::prelude::Fragment::new(v2537);
-                                    let v2541: leptos::prelude::AnyView =
-                                        leptos::prelude::AnyView::from(v2539);
-                                    let v2543: string =
+                                    let v2474: &str = &*v2465;
+                                    let v2507: std::string::String =
+                                        String::from(v2474);
+                                    let v2533: leptos::prelude::AnyView =
+                                        leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v2507));
+                                    let v2537: string = string("vec![v2533]");
+                                    let v2538: Vec<leptos::prelude::AnyView> =
+                                        vec![v2533];
+                                    let v2540: leptos::prelude::Fragment =
+                                        leptos::prelude::Fragment::new(v2538);
+                                    let v2542: leptos::prelude::AnyView =
+                                        leptos::prelude::AnyView::from(v2540);
+                                    let v2544: string =
                                         append((append(string("leptos::prelude::view! { "),
                                                        (append((append((append((append(string("<td "),
-                                                                                       (v2461))),
-                                                                               string(">move || { v2541 }</"))),
+                                                                                       (v2462))),
+                                                                               string(">move || { v2542 }</"))),
                                                                        string("td"))),
                                                                string(">"))))),
                                                string(" }"));
-                                    let v2545:
+                                    let v2546:
                                             leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Td, _, _>> =
-                                        leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v2541 }</td> };
-                                    let v2547: leptos::prelude::AnyView =
-                                        leptos::prelude::IntoAny::into_any(v2545);
-                                    let v2549: string =
+                                        leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v2542 }</td> };
+                                    let v2548: leptos::prelude::AnyView =
+                                        leptos::prelude::IntoAny::into_any(v2546);
+                                    let v2550: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\"");
-                                    let v2552: string =
+                                    let v2553: string =
                                         fable_library_rust::String_::fromString(v1280.l0.clone());
-                                    let v2561: &str = &*v2552;
-                                    let v2594: std::string::String =
-                                        String::from(v2561);
-                                    let v2620: leptos::prelude::AnyView =
-                                        leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v2594));
-                                    let v2624: string = string("vec![v2620]");
-                                    let v2625: Vec<leptos::prelude::AnyView> =
-                                        vec![v2620];
-                                    let v2627: leptos::prelude::Fragment =
-                                        leptos::prelude::Fragment::new(v2625);
-                                    let v2629: leptos::prelude::AnyView =
-                                        leptos::prelude::AnyView::from(v2627);
-                                    let v2631: string =
+                                    let v2562: &str = &*v2553;
+                                    let v2595: std::string::String =
+                                        String::from(v2562);
+                                    let v2621: leptos::prelude::AnyView =
+                                        leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v2595));
+                                    let v2625: string = string("vec![v2621]");
+                                    let v2626: Vec<leptos::prelude::AnyView> =
+                                        vec![v2621];
+                                    let v2628: leptos::prelude::Fragment =
+                                        leptos::prelude::Fragment::new(v2626);
+                                    let v2630: leptos::prelude::AnyView =
+                                        leptos::prelude::AnyView::from(v2628);
+                                    let v2632: string =
                                         append((append(string("leptos::prelude::view! { "),
                                                        (append((append((append((append(string("<td "),
-                                                                                       (v2549))),
-                                                                               string(">move || { v2629 }</"))),
+                                                                                       (v2550))),
+                                                                               string(">move || { v2630 }</"))),
                                                                        string("td"))),
                                                                string(">"))))),
                                                string(" }"));
-                                    let v2633:
+                                    let v2634:
                                             leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Td, _, _>> =
-                                        leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v2629 }</td> };
-                                    let v2635: leptos::prelude::AnyView =
-                                        leptos::prelude::IntoAny::into_any(v2633);
-                                    let v2675: string =
-                                        string("vec![v1372, v1518, v1606, v1694, v1785, v1876, v1967, v2058, v2280, v2371, v2459, v2547, v2635]");
-                                    let v2676: Vec<leptos::prelude::AnyView> =
-                                        vec![v1372, v1518, v1606, v1694, v1785, v1876, v1967, v2058, v2280, v2371, v2459, v2547, v2635];
-                                    let v2678: leptos::prelude::Fragment =
-                                        leptos::prelude::Fragment::new(v2676);
-                                    let v2680: leptos::prelude::AnyView =
-                                        leptos::prelude::AnyView::from(v2678);
-                                    let v2683: string =
+                                        leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">move || { v2630 }</td> };
+                                    let v2636: leptos::prelude::AnyView =
+                                        leptos::prelude::IntoAny::into_any(v2634);
+                                    let v2676: string =
+                                        string("vec![v1372, v1518, v1606, v1694, v1785, v1876, v1967, v2058, v2281, v2372, v2460, v2548, v2636]");
+                                    let v2677: Vec<leptos::prelude::AnyView> =
+                                        vec![v1372, v1518, v1606, v1694, v1785, v1876, v1967, v2058, v2281, v2372, v2460, v2548, v2636];
+                                    let v2679: leptos::prelude::Fragment =
+                                        leptos::prelude::Fragment::new(v2677);
+                                    let v2681: leptos::prelude::AnyView =
+                                        leptos::prelude::AnyView::from(v2679);
+                                    let v2684: string =
                                         append((append(string("leptos::prelude::view! { "),
                                                        (append((append((append((append(string("<tr "),
                                                                                        (v1286))),
-                                                                               string(">move || { v2680 }</"))),
+                                                                               string(">move || { v2681 }</"))),
                                                                        string("tr"))),
                                                                string(">"))))),
                                                string(" }"));
-                                    let v2685:
+                                    let v2686:
                                             leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Tr, _, _>> =
-                                        leptos::prelude::view! { <tr  class="odd:bg-gray-50 dark:odd:bg-gray-800/50">move || { v2680 }</tr> };
-                                    let v2687: bool =
-                                        true; v2685 }).collect::<Vec<_>>();
-                                let v2689: Vec<
+                                        leptos::prelude::view! { <tr  class="odd:bg-gray-50 dark:odd:bg-gray-800/50">move || { v2681 }</tr> };
+                                    let v2688: bool =
+                                        true; v2686 }).collect::<Vec<_>>();
+                                let v2690: Vec<
                                     leptos::prelude::View<
                                         leptos::html::HtmlElement<leptos::html::Tr, _, _>,
                                     >,
                                 > = _vec_map;
-                                let v2691: bool = true;
-                                let _vec_map: Vec<_> = v2689
+                                let v2692: bool = true;
+                                let _vec_map: Vec<_> = v2690
                                     .into_iter()
                                     .map(|x| {
                                         //;
-                                        let v2693: leptos::prelude::View<
+                                        let v2694: leptos::prelude::View<
                                             leptos::html::HtmlElement<leptos::html::Tr, _, _>,
                                         > = x;
-                                        let v2695: leptos::prelude::AnyView =
-                                            leptos::prelude::IntoAny::into_any(v2693);
-                                        let v2697: bool = true;
-                                        v2695
+                                        let v2696: leptos::prelude::AnyView =
+                                            leptos::prelude::IntoAny::into_any(v2694);
+                                        let v2698: bool = true;
+                                        v2696
                                     })
                                     .collect::<Vec<_>>();
-                                let v2699: Vec<leptos::prelude::AnyView> = _vec_map;
-                                let v2701: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v2699);
-                                let v2705: string = string("vec![v2701]");
-                                let v2706: Vec<leptos::prelude::AnyView> = vec![v2701];
-                                let v2708: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v2706);
-                                let v2711: bool = true;
+                                let v2700: Vec<leptos::prelude::AnyView> = _vec_map;
+                                let v2702: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v2700);
+                                let v2706: string = string("vec![v2702]");
+                                let v2707: Vec<leptos::prelude::AnyView> = vec![v2702];
+                                let v2709: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v2707);
+                                let v2712: bool = true;
                                 leptos::logging::log!(
                                     "{}",
                                     string("transaction.tr_head_render (1)")
                                 );
-                                let v2713: string =
+                                let v2714: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v2723: &str = &*string("Account");
-                                let v2756: std::string::String = String::from(v2723);
-                                let v2782: leptos::prelude::AnyView =
+                                let v2724: &str = &*string("Account");
+                                let v2757: std::string::String = String::from(v2724);
+                                let v2783: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v2756),
+                                        leptos::prelude::IntoView::into_view(v2757),
                                     );
-                                let v2786: string = string("vec![v2782]");
-                                let v2787: Vec<leptos::prelude::AnyView> = vec![v2782];
-                                let v2789: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v2787);
-                                let v2791: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v2789);
-                                let v2794: string = append(
+                                let v2787: string = string("vec![v2783]");
+                                let v2788: Vec<leptos::prelude::AnyView> = vec![v2783];
+                                let v2790: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v2788);
+                                let v2792: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v2790);
+                                let v2795: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v2713))),
-                                                    string(">move || { v2791 }</"),
+                                                    (append(string("<th "), (v2714))),
+                                                    string(">move || { v2792 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23502,33 +23502,33 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v2796: leptos::prelude::View<
+                                let v2797: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v2791 }</th> };
-                                let v2798: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v2796);
-                                let v2800: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v2792 }</th> };
+                                let v2799: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v2797);
+                                let v2801: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v2810: &str = &*string("Block Timestamp");
-                                let v2843: std::string::String = String::from(v2810);
-                                let v2869: leptos::prelude::AnyView =
+                                let v2811: &str = &*string("Block Timestamp");
+                                let v2844: std::string::String = String::from(v2811);
+                                let v2870: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v2843),
+                                        leptos::prelude::IntoView::into_view(v2844),
                                     );
-                                let v2873: string = string("vec![v2869]");
-                                let v2874: Vec<leptos::prelude::AnyView> = vec![v2869];
-                                let v2876: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v2874);
-                                let v2878: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v2876);
-                                let v2880: string = append(
+                                let v2874: string = string("vec![v2870]");
+                                let v2875: Vec<leptos::prelude::AnyView> = vec![v2870];
+                                let v2877: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v2875);
+                                let v2879: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v2877);
+                                let v2881: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v2800))),
-                                                    string(">move || { v2878 }</"),
+                                                    (append(string("<th "), (v2801))),
+                                                    string(">move || { v2879 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23537,33 +23537,33 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v2882: leptos::prelude::View<
+                                let v2883: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v2878 }</th> };
-                                let v2884: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v2882);
-                                let v2886: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v2879 }</th> };
+                                let v2885: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v2883);
+                                let v2887: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v2896: &str = &*string("Predecessor");
-                                let v2929: std::string::String = String::from(v2896);
-                                let v2955: leptos::prelude::AnyView =
+                                let v2897: &str = &*string("Predecessor");
+                                let v2930: std::string::String = String::from(v2897);
+                                let v2956: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v2929),
+                                        leptos::prelude::IntoView::into_view(v2930),
                                     );
-                                let v2959: string = string("vec![v2955]");
-                                let v2960: Vec<leptos::prelude::AnyView> = vec![v2955];
-                                let v2962: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v2960);
-                                let v2964: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v2962);
-                                let v2966: string = append(
+                                let v2960: string = string("vec![v2956]");
+                                let v2961: Vec<leptos::prelude::AnyView> = vec![v2956];
+                                let v2963: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v2961);
+                                let v2965: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v2963);
+                                let v2967: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v2886))),
-                                                    string(">move || { v2964 }</"),
+                                                    (append(string("<th "), (v2887))),
+                                                    string(">move || { v2965 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23572,33 +23572,33 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v2968: leptos::prelude::View<
+                                let v2969: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v2964 }</th> };
-                                let v2970: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v2968);
-                                let v2972: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v2965 }</th> };
+                                let v2971: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v2969);
+                                let v2973: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v2982: &str = &*string("Receiver");
-                                let v3015: std::string::String = String::from(v2982);
-                                let v3041: leptos::prelude::AnyView =
+                                let v2983: &str = &*string("Receiver");
+                                let v3016: std::string::String = String::from(v2983);
+                                let v3042: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v3015),
+                                        leptos::prelude::IntoView::into_view(v3016),
                                     );
-                                let v3045: string = string("vec![v3041]");
-                                let v3046: Vec<leptos::prelude::AnyView> = vec![v3041];
-                                let v3048: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3046);
-                                let v3050: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3048);
-                                let v3052: string = append(
+                                let v3046: string = string("vec![v3042]");
+                                let v3047: Vec<leptos::prelude::AnyView> = vec![v3042];
+                                let v3049: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3047);
+                                let v3051: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3049);
+                                let v3053: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v2972))),
-                                                    string(">move || { v3050 }</"),
+                                                    (append(string("<th "), (v2973))),
+                                                    string(">move || { v3051 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23607,33 +23607,33 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3054: leptos::prelude::View<
+                                let v3055: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3050 }</th> };
-                                let v3056: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3054);
-                                let v3058: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3051 }</th> };
+                                let v3057: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3055);
+                                let v3059: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v3068: &str = &*string("Action");
-                                let v3101: std::string::String = String::from(v3068);
-                                let v3127: leptos::prelude::AnyView =
+                                let v3069: &str = &*string("Action");
+                                let v3102: std::string::String = String::from(v3069);
+                                let v3128: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v3101),
+                                        leptos::prelude::IntoView::into_view(v3102),
                                     );
-                                let v3131: string = string("vec![v3127]");
-                                let v3132: Vec<leptos::prelude::AnyView> = vec![v3127];
-                                let v3134: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3132);
-                                let v3136: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3134);
-                                let v3138: string = append(
+                                let v3132: string = string("vec![v3128]");
+                                let v3133: Vec<leptos::prelude::AnyView> = vec![v3128];
+                                let v3135: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3133);
+                                let v3137: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3135);
+                                let v3139: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v3058))),
-                                                    string(">move || { v3136 }</"),
+                                                    (append(string("<th "), (v3059))),
+                                                    string(">move || { v3137 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23642,33 +23642,33 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3140: leptos::prelude::View<
+                                let v3141: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3136 }</th> };
-                                let v3142: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3140);
-                                let v3144: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3137 }</th> };
+                                let v3143: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3141);
+                                let v3145: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v3154: &str = &*string("Deposit");
-                                let v3187: std::string::String = String::from(v3154);
-                                let v3213: leptos::prelude::AnyView =
+                                let v3155: &str = &*string("Deposit");
+                                let v3188: std::string::String = String::from(v3155);
+                                let v3214: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v3187),
+                                        leptos::prelude::IntoView::into_view(v3188),
                                     );
-                                let v3217: string = string("vec![v3213]");
-                                let v3218: Vec<leptos::prelude::AnyView> = vec![v3213];
-                                let v3220: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3218);
-                                let v3222: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3220);
-                                let v3224: string = append(
+                                let v3218: string = string("vec![v3214]");
+                                let v3219: Vec<leptos::prelude::AnyView> = vec![v3214];
+                                let v3221: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3219);
+                                let v3223: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3221);
+                                let v3225: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v3144))),
-                                                    string(">move || { v3222 }</"),
+                                                    (append(string("<th "), (v3145))),
+                                                    string(">move || { v3223 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23677,33 +23677,33 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3226: leptos::prelude::View<
+                                let v3227: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3222 }</th> };
-                                let v3228: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3226);
-                                let v3230: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3223 }</th> };
+                                let v3229: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3227);
+                                let v3231: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v3240: &str = &*string("Fee");
-                                let v3273: std::string::String = String::from(v3240);
-                                let v3299: leptos::prelude::AnyView =
+                                let v3241: &str = &*string("Fee");
+                                let v3274: std::string::String = String::from(v3241);
+                                let v3300: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v3273),
+                                        leptos::prelude::IntoView::into_view(v3274),
                                     );
-                                let v3303: string = string("vec![v3299]");
-                                let v3304: Vec<leptos::prelude::AnyView> = vec![v3299];
-                                let v3306: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3304);
-                                let v3308: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3306);
-                                let v3310: string = append(
+                                let v3304: string = string("vec![v3300]");
+                                let v3305: Vec<leptos::prelude::AnyView> = vec![v3300];
+                                let v3307: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3305);
+                                let v3309: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3307);
+                                let v3311: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v3230))),
-                                                    string(">move || { v3308 }</"),
+                                                    (append(string("<th "), (v3231))),
+                                                    string(">move || { v3309 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23712,33 +23712,33 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3312: leptos::prelude::View<
+                                let v3313: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3308 }</th> };
-                                let v3314: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3312);
-                                let v3316: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3309 }</th> };
+                                let v3315: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3313);
+                                let v3317: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v3326: &str = &*string("Block Height");
-                                let v3359: std::string::String = String::from(v3326);
-                                let v3385: leptos::prelude::AnyView =
+                                let v3327: &str = &*string("Block Height");
+                                let v3360: std::string::String = String::from(v3327);
+                                let v3386: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v3359),
+                                        leptos::prelude::IntoView::into_view(v3360),
                                     );
-                                let v3389: string = string("vec![v3385]");
-                                let v3390: Vec<leptos::prelude::AnyView> = vec![v3385];
-                                let v3392: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3390);
-                                let v3394: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3392);
-                                let v3396: string = append(
+                                let v3390: string = string("vec![v3386]");
+                                let v3391: Vec<leptos::prelude::AnyView> = vec![v3386];
+                                let v3393: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3391);
+                                let v3395: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3393);
+                                let v3397: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v3316))),
-                                                    string(">move || { v3394 }</"),
+                                                    (append(string("<th "), (v3317))),
+                                                    string(">move || { v3395 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23747,38 +23747,38 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3398: leptos::prelude::View<
+                                let v3399: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3394 }</th> };
-                                let v3400: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3398);
-                                let v3402: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3395 }</th> };
+                                let v3401: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3399);
+                                let v3403: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v3407: string = if false == (Dice_ui::method280(v365, 0_i32)) {
+                                let v3408: string = if false == (Dice_ui::method280(v365, 0_i32)) {
                                     string("")
                                 } else {
                                     string("Logs")
                                 };
-                                let v3416: &str = &*v3407;
-                                let v3449: std::string::String = String::from(v3416);
-                                let v3475: leptos::prelude::AnyView =
+                                let v3417: &str = &*v3408;
+                                let v3450: std::string::String = String::from(v3417);
+                                let v3476: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v3449),
+                                        leptos::prelude::IntoView::into_view(v3450),
                                     );
-                                let v3479: string = string("vec![v3475]");
-                                let v3480: Vec<leptos::prelude::AnyView> = vec![v3475];
-                                let v3482: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3480);
-                                let v3484: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3482);
-                                let v3486: string = append(
+                                let v3480: string = string("vec![v3476]");
+                                let v3481: Vec<leptos::prelude::AnyView> = vec![v3476];
+                                let v3483: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3481);
+                                let v3485: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3483);
+                                let v3487: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v3402))),
-                                                    string(">move || { v3484 }</"),
+                                                    (append(string("<th "), (v3403))),
+                                                    string(">move || { v3485 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23787,33 +23787,33 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3488: leptos::prelude::View<
+                                let v3489: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3484 }</th> };
-                                let v3490: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3488);
-                                let v3492: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3485 }</th> };
+                                let v3491: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3489);
+                                let v3493: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v3502: &str = &*string("Outcome Status");
-                                let v3535: std::string::String = String::from(v3502);
-                                let v3561: leptos::prelude::AnyView =
+                                let v3503: &str = &*string("Outcome Status");
+                                let v3536: std::string::String = String::from(v3503);
+                                let v3562: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v3535),
+                                        leptos::prelude::IntoView::into_view(v3536),
                                     );
-                                let v3565: string = string("vec![v3561]");
-                                let v3566: Vec<leptos::prelude::AnyView> = vec![v3561];
-                                let v3568: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3566);
-                                let v3570: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3568);
-                                let v3572: string = append(
+                                let v3566: string = string("vec![v3562]");
+                                let v3567: Vec<leptos::prelude::AnyView> = vec![v3562];
+                                let v3569: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3567);
+                                let v3571: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3569);
+                                let v3573: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v3492))),
-                                                    string(">move || { v3570 }</"),
+                                                    (append(string("<th "), (v3493))),
+                                                    string(">move || { v3571 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23822,33 +23822,33 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3574: leptos::prelude::View<
+                                let v3575: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3570 }</th> };
-                                let v3576: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3574);
-                                let v3578: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3571 }</th> };
+                                let v3577: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3575);
+                                let v3579: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v3588: &str = &*string("Hash");
-                                let v3621: std::string::String = String::from(v3588);
-                                let v3647: leptos::prelude::AnyView =
+                                let v3589: &str = &*string("Hash");
+                                let v3622: std::string::String = String::from(v3589);
+                                let v3648: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v3621),
+                                        leptos::prelude::IntoView::into_view(v3622),
                                     );
-                                let v3651: string = string("vec![v3647]");
-                                let v3652: Vec<leptos::prelude::AnyView> = vec![v3647];
-                                let v3654: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3652);
-                                let v3656: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3654);
-                                let v3658: string = append(
+                                let v3652: string = string("vec![v3648]");
+                                let v3653: Vec<leptos::prelude::AnyView> = vec![v3648];
+                                let v3655: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3653);
+                                let v3657: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3655);
+                                let v3659: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v3578))),
-                                                    string(">move || { v3656 }</"),
+                                                    (append(string("<th "), (v3579))),
+                                                    string(">move || { v3657 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23857,33 +23857,33 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3660: leptos::prelude::View<
+                                let v3661: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3656 }</th> };
-                                let v3662: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3660);
-                                let v3664: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3657 }</th> };
+                                let v3663: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3661);
+                                let v3665: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v3674: &str = &*string("Block Hash");
-                                let v3707: std::string::String = String::from(v3674);
-                                let v3733: leptos::prelude::AnyView =
+                                let v3675: &str = &*string("Block Hash");
+                                let v3708: std::string::String = String::from(v3675);
+                                let v3734: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v3707),
+                                        leptos::prelude::IntoView::into_view(v3708),
                                     );
-                                let v3737: string = string("vec![v3733]");
-                                let v3738: Vec<leptos::prelude::AnyView> = vec![v3733];
-                                let v3740: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3738);
-                                let v3742: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3740);
-                                let v3744: string = append(
+                                let v3738: string = string("vec![v3734]");
+                                let v3739: Vec<leptos::prelude::AnyView> = vec![v3734];
+                                let v3741: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3739);
+                                let v3743: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3741);
+                                let v3745: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v3664))),
-                                                    string(">move || { v3742 }</"),
+                                                    (append(string("<th "), (v3665))),
+                                                    string(">move || { v3743 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23892,33 +23892,33 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3746: leptos::prelude::View<
+                                let v3747: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3742 }</th> };
-                                let v3748: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3746);
-                                let v3750: string =
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3743 }</th> };
+                                let v3749: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3747);
+                                let v3751: string =
                                         string(" class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\"");
-                                let v3760: &str = &*string("Receipt ID");
-                                let v3793: std::string::String = String::from(v3760);
-                                let v3819: leptos::prelude::AnyView =
+                                let v3761: &str = &*string("Receipt ID");
+                                let v3794: std::string::String = String::from(v3761);
+                                let v3820: leptos::prelude::AnyView =
                                     leptos::prelude::IntoAny::into_any(
-                                        leptos::prelude::IntoView::into_view(v3793),
+                                        leptos::prelude::IntoView::into_view(v3794),
                                     );
-                                let v3823: string = string("vec![v3819]");
-                                let v3824: Vec<leptos::prelude::AnyView> = vec![v3819];
-                                let v3826: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3824);
-                                let v3828: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3826);
-                                let v3830: string = append(
+                                let v3824: string = string("vec![v3820]");
+                                let v3825: Vec<leptos::prelude::AnyView> = vec![v3820];
+                                let v3827: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3825);
+                                let v3829: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3827);
+                                let v3831: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<th "), (v3750))),
-                                                    string(">move || { v3828 }</"),
+                                                    (append(string("<th "), (v3751))),
+                                                    string(">move || { v3829 }</"),
                                                 )),
                                                 string("th"),
                                             )),
@@ -23927,47 +23927,47 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3832: leptos::prelude::View<
+                                let v3833: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Th, _, _>,
-                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3828 }</th> };
-                                let v3834: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3832);
-                                let v3874: string =
-                                        string("vec![v2798, v2884, v2970, v3056, v3142, v3228, v3314, v3400, v3490, v3576, v3662, v3748, v3834]");
-                                let v3875: Vec<leptos::prelude::AnyView> = vec![
-                                    v2798, v2884, v2970, v3056, v3142, v3228, v3314, v3400, v3490,
-                                    v3576, v3662, v3748, v3834,
+                                > = leptos::prelude::view! { <th  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">move || { v3829 }</th> };
+                                let v3835: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3833);
+                                let v3875: string =
+                                        string("vec![v2799, v2885, v2971, v3057, v3143, v3229, v3315, v3401, v3491, v3577, v3663, v3749, v3835]");
+                                let v3876: Vec<leptos::prelude::AnyView> = vec![
+                                    v2799, v2885, v2971, v3057, v3143, v3229, v3315, v3401, v3491,
+                                    v3577, v3663, v3749, v3835,
                                 ];
-                                let v3877: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3875);
-                                let v3879: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3877);
-                                let v3881: string = string(
-                                    "leptos::prelude::view! { <tr >move || { v3879 }</tr> }",
+                                let v3878: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3876);
+                                let v3880: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3878);
+                                let v3882: string = string(
+                                    "leptos::prelude::view! { <tr >move || { v3880 }</tr> }",
                                 );
-                                let v3883: leptos::prelude::View<
+                                let v3884: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Tr, _, _>,
-                                > = leptos::prelude::view! { <tr >move || { v3879 }</tr> };
-                                let v3885: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3883);
-                                let v3889: string = string("vec![v3885]");
-                                let v3890: Vec<leptos::prelude::AnyView> = vec![v3885];
-                                let v3892: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3890);
-                                let v3894: string =
+                                > = leptos::prelude::view! { <tr >move || { v3880 }</tr> };
+                                let v3886: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3884);
+                                let v3890: string = string("vec![v3886]");
+                                let v3891: Vec<leptos::prelude::AnyView> = vec![v3886];
+                                let v3893: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3891);
+                                let v3895: string =
                                         string(" class=\"flex-1 min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700\"");
-                                let v3896: string =
+                                let v3897: string =
                                     string(" class=\"ltr:text-left rtl:text-right\"");
-                                let v3898: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3892);
-                                let v3901: string = append(
+                                let v3899: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3893);
+                                let v3902: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<thead "), (v3896))),
-                                                    string(">move || { v3898 }</"),
+                                                    (append(string("<thead "), (v3897))),
+                                                    string(">move || { v3899 }</"),
                                                 )),
                                                 string("thead"),
                                             )),
@@ -23976,24 +23976,24 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3903: leptos::prelude::View<
+                                let v3904: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Thead, _, _>,
-                                > = leptos::prelude::view! { <thead  class="ltr:text-left rtl:text-right">move || { v3898 }</thead> };
-                                let v3905: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3903);
-                                let v3907: string = string(
+                                > = leptos::prelude::view! { <thead  class="ltr:text-left rtl:text-right">move || { v3899 }</thead> };
+                                let v3906: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3904);
+                                let v3908: string = string(
                                     " class=\"divide-y divide-gray-200 dark:divide-gray-700\"",
                                 );
-                                let v3909: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v2708);
-                                let v3912: string = append(
+                                let v3910: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v2709);
+                                let v3913: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<tbody "), (v3907))),
-                                                    string(">move || { v3909 }</"),
+                                                    (append(string("<tbody "), (v3908))),
+                                                    string(">move || { v3910 }</"),
                                                 )),
                                                 string("tbody"),
                                             )),
@@ -24002,25 +24002,25 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3914: leptos::prelude::View<
+                                let v3915: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Tbody, _, _>,
-                                > = leptos::prelude::view! { <tbody  class="divide-y divide-gray-200 dark:divide-gray-700">move || { v3909 }</tbody> };
-                                let v3916: leptos::prelude::AnyView =
-                                    leptos::prelude::IntoAny::into_any(v3914);
-                                let v3923: string = string("vec![v3905, v3916]");
-                                let v3924: Vec<leptos::prelude::AnyView> = vec![v3905, v3916];
-                                let v3926: leptos::prelude::Fragment =
-                                    leptos::prelude::Fragment::new(v3924);
-                                let v3928: leptos::prelude::AnyView =
-                                    leptos::prelude::AnyView::from(v3926);
-                                let v3931: string = append(
+                                > = leptos::prelude::view! { <tbody  class="divide-y divide-gray-200 dark:divide-gray-700">move || { v3910 }</tbody> };
+                                let v3917: leptos::prelude::AnyView =
+                                    leptos::prelude::IntoAny::into_any(v3915);
+                                let v3924: string = string("vec![v3906, v3917]");
+                                let v3925: Vec<leptos::prelude::AnyView> = vec![v3906, v3917];
+                                let v3927: leptos::prelude::Fragment =
+                                    leptos::prelude::Fragment::new(v3925);
+                                let v3929: leptos::prelude::AnyView =
+                                    leptos::prelude::AnyView::from(v3927);
+                                let v3932: string = append(
                                     (append(
                                         string("leptos::prelude::view! { "),
                                         (append(
                                             (append(
                                                 (append(
-                                                    (append(string("<table "), (v3894))),
-                                                    string(">move || { v3928 }</"),
+                                                    (append(string("<table "), (v3895))),
+                                                    string(">move || { v3929 }</"),
                                                 )),
                                                 string("table"),
                                             )),
@@ -24029,43 +24029,43 @@ mod module_9c940d83 {
                                     )),
                                     string(" }"),
                                 );
-                                let v3933: leptos::prelude::View<
+                                let v3934: leptos::prelude::View<
                                     leptos::html::HtmlElement<leptos::html::Table, _, _>,
-                                > = leptos::prelude::view! { <table  class="flex-1 min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700">move || { v3928 }</table> };
-                                leptos::prelude::IntoAny::into_any(v3933)
+                                > = leptos::prelude::view! { <table  class="flex-1 min-w-full divide-y-2 divide-gray-200 text-sm dark:divide-gray-700">move || { v3929 }</table> };
+                                leptos::prelude::IntoAny::into_any(v3934)
                             }
                         } else {
-                            let v3939: string =
+                            let v3940: string =
                                 string(" class=\"grid place-content-center py-[10vh]\"");
-                            let v3941: string =
+                            let v3942: string =
                                 string(" class=\"flex flex-1 [gap:4px] items-center\"");
-                            let v3944 = {
+                            let v3945 = {
                                 let clo_61 = Func0::new(move || Dice_ui::closure191((), ()));
                                 Func1::new({
                                     let clo_61 = clo_61.clone();
                                     move |arg_61: ()| clo_61()
                                 })
                             };
-                            let v3962: string =
-                                    string(" class=move || \" \".to_owned() + &v3944(()) xml:space=\"preserve\" style=\"enable-background:new 0 0 50 50;\" viewBox=\"0 0 24 30\" y=\"0px\" x=\"0px\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"");
-                            let v3974: string =
+                            let v3963: string =
+                                    string(" class=move || \" \".to_owned() + &v3945(()) xml:space=\"preserve\" style=\"enable-background:new 0 0 50 50;\" viewBox=\"0 0 24 30\" y=\"0px\" x=\"0px\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"");
+                            let v3975: string =
                                     string(" opacity=\"0.2\" fill=\"#333\" height=\"10\" width=\"4\" y=\"10\" x=\"0\"");
-                            let v3986: string =
+                            let v3987: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0s\" values=\"0.2; 1; .2\" attributeType=\"XML\" attributeName=\"opacity\"");
-                            let v3987: string = string("vec![]");
-                            let v3988: Vec<leptos::prelude::AnyView> = vec![];
-                            let v3990: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v3988);
-                            let v3992: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v3990);
-                            let v3995: string = append(
+                            let v3988: string = string("vec![]");
+                            let v3989: Vec<leptos::prelude::AnyView> = vec![];
+                            let v3991: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v3989);
+                            let v3993: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v3991);
+                            let v3996: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<animate "), (v3986))),
-                                                string(">move || { v3992 }</"),
+                                                (append(string("<animate "), (v3987))),
+                                                string(">move || { v3993 }</"),
                                             )),
                                             string("animate"),
                                         )),
@@ -24074,27 +24074,27 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v3997: leptos::prelude::View<
+                            let v3998: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v3992 }</animate> };
-                            let v3999: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v3997);
-                            let v4011: string =
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v3993 }</animate> };
+                            let v4000: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v3998);
+                            let v4012: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0s\" values=\"10; 20; 10\" attributeType=\"XML\" attributeName=\"height\"");
-                            let v4012: string = string("vec![]");
-                            let v4013: Vec<leptos::prelude::AnyView> = vec![];
-                            let v4015: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4013);
-                            let v4017: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4015);
-                            let v4019: string = append(
+                            let v4013: string = string("vec![]");
+                            let v4014: Vec<leptos::prelude::AnyView> = vec![];
+                            let v4016: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4014);
+                            let v4018: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4016);
+                            let v4020: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<animate "), (v4011))),
-                                                string(">move || { v4017 }</"),
+                                                (append(string("<animate "), (v4012))),
+                                                string(">move || { v4018 }</"),
                                             )),
                                             string("animate"),
                                         )),
@@ -24103,27 +24103,27 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4021: leptos::prelude::View<
+                            let v4022: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v4017 }</animate> };
-                            let v4023: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4021);
-                            let v4035: string =
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v4018 }</animate> };
+                            let v4024: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4022);
+                            let v4036: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0s\" values=\"10; 5; 10\" attributeType=\"XML\" attributeName=\"y\"");
-                            let v4036: string = string("vec![]");
-                            let v4037: Vec<leptos::prelude::AnyView> = vec![];
-                            let v4039: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4037);
-                            let v4041: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4039);
-                            let v4043: string = append(
+                            let v4037: string = string("vec![]");
+                            let v4038: Vec<leptos::prelude::AnyView> = vec![];
+                            let v4040: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4038);
+                            let v4042: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4040);
+                            let v4044: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<animate "), (v4035))),
-                                                string(">move || { v4041 }</"),
+                                                (append(string("<animate "), (v4036))),
+                                                string(">move || { v4042 }</"),
                                             )),
                                             string("animate"),
                                         )),
@@ -24132,25 +24132,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4045: leptos::prelude::View<
+                            let v4046: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v4041 }</animate> };
-                            let v4047: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4045);
-                            let v4058: string = string("vec![v3999, v4023, v4047]");
-                            let v4059: Vec<leptos::prelude::AnyView> = vec![v3999, v4023, v4047];
-                            let v4061: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4059);
-                            let v4063: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4061);
-                            let v4066: string = append(
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v4042 }</animate> };
+                            let v4048: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4046);
+                            let v4059: string = string("vec![v4000, v4024, v4048]");
+                            let v4060: Vec<leptos::prelude::AnyView> = vec![v4000, v4024, v4048];
+                            let v4062: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4060);
+                            let v4064: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4062);
+                            let v4067: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<rect "), (v3974))),
-                                                string(">move || { v4063 }</"),
+                                                (append(string("<rect "), (v3975))),
+                                                string(">move || { v4064 }</"),
                                             )),
                                             string("rect"),
                                         )),
@@ -24159,27 +24159,27 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4068: leptos::prelude::View<
+                            let v4069: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Rect, _, _>,
-                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="0">move || { v4063 }</rect> };
-                            let v4080: string =
+                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="0">move || { v4064 }</rect> };
+                            let v4081: string =
                                     string(" opacity=\"0.2\" fill=\"#333\" height=\"10\" width=\"4\" y=\"10\" x=\"8\"");
-                            let v4092: string =
+                            let v4093: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.15s\" values=\"0.2; 1; .2\" attributeType=\"XML\" attributeName=\"opacity\"");
-                            let v4093: string = string("vec![]");
-                            let v4094: Vec<leptos::prelude::AnyView> = vec![];
-                            let v4096: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4094);
-                            let v4098: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4096);
-                            let v4100: string = append(
+                            let v4094: string = string("vec![]");
+                            let v4095: Vec<leptos::prelude::AnyView> = vec![];
+                            let v4097: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4095);
+                            let v4099: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4097);
+                            let v4101: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<animate "), (v4092))),
-                                                string(">move || { v4098 }</"),
+                                                (append(string("<animate "), (v4093))),
+                                                string(">move || { v4099 }</"),
                                             )),
                                             string("animate"),
                                         )),
@@ -24188,27 +24188,27 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4102: leptos::prelude::View<
+                            let v4103: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v4098 }</animate> };
-                            let v4104: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4102);
-                            let v4116: string =
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v4099 }</animate> };
+                            let v4105: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4103);
+                            let v4117: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.15s\" values=\"10; 20; 10\" attributeType=\"XML\" attributeName=\"opacity\"");
-                            let v4117: string = string("vec![]");
-                            let v4118: Vec<leptos::prelude::AnyView> = vec![];
-                            let v4120: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4118);
-                            let v4122: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4120);
-                            let v4124: string = append(
+                            let v4118: string = string("vec![]");
+                            let v4119: Vec<leptos::prelude::AnyView> = vec![];
+                            let v4121: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4119);
+                            let v4123: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4121);
+                            let v4125: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<animate "), (v4116))),
-                                                string(">move || { v4122 }</"),
+                                                (append(string("<animate "), (v4117))),
+                                                string(">move || { v4123 }</"),
                                             )),
                                             string("animate"),
                                         )),
@@ -24217,27 +24217,27 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4126: leptos::prelude::View<
+                            let v4127: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 20; 10" attributeType="XML" attributeName="opacity">move || { v4122 }</animate> };
-                            let v4128: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4126);
-                            let v4140: string =
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 20; 10" attributeType="XML" attributeName="opacity">move || { v4123 }</animate> };
+                            let v4129: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4127);
+                            let v4141: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.15s\" values=\"10; 5; 10\" attributeType=\"XML\" attributeName=\"y\"");
-                            let v4141: string = string("vec![]");
-                            let v4142: Vec<leptos::prelude::AnyView> = vec![];
-                            let v4144: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4142);
-                            let v4146: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4144);
-                            let v4148: string = append(
+                            let v4142: string = string("vec![]");
+                            let v4143: Vec<leptos::prelude::AnyView> = vec![];
+                            let v4145: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4143);
+                            let v4147: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4145);
+                            let v4149: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<animate "), (v4140))),
-                                                string(">move || { v4146 }</"),
+                                                (append(string("<animate "), (v4141))),
+                                                string(">move || { v4147 }</"),
                                             )),
                                             string("animate"),
                                         )),
@@ -24246,25 +24246,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4150: leptos::prelude::View<
+                            let v4151: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v4146 }</animate> };
-                            let v4152: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4150);
-                            let v4162: string = string("vec![v4104, v4128, v4152]");
-                            let v4163: Vec<leptos::prelude::AnyView> = vec![v4104, v4128, v4152];
-                            let v4165: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4163);
-                            let v4167: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4165);
-                            let v4169: string = append(
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.15s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v4147 }</animate> };
+                            let v4153: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4151);
+                            let v4163: string = string("vec![v4105, v4129, v4153]");
+                            let v4164: Vec<leptos::prelude::AnyView> = vec![v4105, v4129, v4153];
+                            let v4166: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4164);
+                            let v4168: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4166);
+                            let v4170: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<rect "), (v4080))),
-                                                string(">move || { v4167 }</"),
+                                                (append(string("<rect "), (v4081))),
+                                                string(">move || { v4168 }</"),
                                             )),
                                             string("rect"),
                                         )),
@@ -24273,27 +24273,27 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4171: leptos::prelude::View<
+                            let v4172: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Rect, _, _>,
-                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="8">move || { v4167 }</rect> };
-                            let v4183: string =
+                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="8">move || { v4168 }</rect> };
+                            let v4184: string =
                                     string(" opacity=\"0.2\" fill=\"#333\" height=\"10\" width=\"4\" y=\"10\" x=\"16\"");
-                            let v4195: string =
+                            let v4196: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.3s\" values=\"0.2; 1; .2\" attributeType=\"XML\" attributeName=\"opacity\"");
-                            let v4196: string = string("vec![]");
-                            let v4197: Vec<leptos::prelude::AnyView> = vec![];
-                            let v4199: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4197);
-                            let v4201: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4199);
-                            let v4203: string = append(
+                            let v4197: string = string("vec![]");
+                            let v4198: Vec<leptos::prelude::AnyView> = vec![];
+                            let v4200: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4198);
+                            let v4202: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4200);
+                            let v4204: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<animate "), (v4195))),
-                                                string(">move || { v4201 }</"),
+                                                (append(string("<animate "), (v4196))),
+                                                string(">move || { v4202 }</"),
                                             )),
                                             string("animate"),
                                         )),
@@ -24302,27 +24302,27 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4205: leptos::prelude::View<
+                            let v4206: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v4201 }</animate> };
-                            let v4207: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4205);
-                            let v4219: string =
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="0.2; 1; .2" attributeType="XML" attributeName="opacity">move || { v4202 }</animate> };
+                            let v4208: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4206);
+                            let v4220: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.3s\" values=\"10; 20; 10\" attributeType=\"XML\" attributeName=\"height\"");
-                            let v4220: string = string("vec![]");
-                            let v4221: Vec<leptos::prelude::AnyView> = vec![];
-                            let v4223: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4221);
-                            let v4225: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4223);
-                            let v4227: string = append(
+                            let v4221: string = string("vec![]");
+                            let v4222: Vec<leptos::prelude::AnyView> = vec![];
+                            let v4224: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4222);
+                            let v4226: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4224);
+                            let v4228: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<animate "), (v4219))),
-                                                string(">move || { v4225 }</"),
+                                                (append(string("<animate "), (v4220))),
+                                                string(">move || { v4226 }</"),
                                             )),
                                             string("animate"),
                                         )),
@@ -24331,27 +24331,27 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4229: leptos::prelude::View<
+                            let v4230: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v4225 }</animate> };
-                            let v4231: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4229);
-                            let v4243: string =
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 20; 10" attributeType="XML" attributeName="height">move || { v4226 }</animate> };
+                            let v4232: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4230);
+                            let v4244: string =
                                     string(" repeatCount=\"indefinite\" dur=\"0.6s\" begin=\"0.3s\" values=\"10; 5; 10\" attributeType=\"XML\" attributeName=\"y\"");
-                            let v4244: string = string("vec![]");
-                            let v4245: Vec<leptos::prelude::AnyView> = vec![];
-                            let v4247: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4245);
-                            let v4249: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4247);
-                            let v4251: string = append(
+                            let v4245: string = string("vec![]");
+                            let v4246: Vec<leptos::prelude::AnyView> = vec![];
+                            let v4248: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4246);
+                            let v4250: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4248);
+                            let v4252: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<animate "), (v4243))),
-                                                string(">move || { v4249 }</"),
+                                                (append(string("<animate "), (v4244))),
+                                                string(">move || { v4250 }</"),
                                             )),
                                             string("animate"),
                                         )),
@@ -24360,25 +24360,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4253: leptos::prelude::View<
+                            let v4254: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Animate, _, _>,
-                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v4249 }</animate> };
-                            let v4255: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4253);
-                            let v4265: string = string("vec![v4207, v4231, v4255]");
-                            let v4266: Vec<leptos::prelude::AnyView> = vec![v4207, v4231, v4255];
-                            let v4268: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4266);
-                            let v4270: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4268);
-                            let v4272: string = append(
+                            > = leptos::prelude::view! { <animate  repeatCount="indefinite" dur="0.6s" begin="0.3s" values="10; 5; 10" attributeType="XML" attributeName="y">move || { v4250 }</animate> };
+                            let v4256: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4254);
+                            let v4266: string = string("vec![v4208, v4232, v4256]");
+                            let v4267: Vec<leptos::prelude::AnyView> = vec![v4208, v4232, v4256];
+                            let v4269: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4267);
+                            let v4271: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4269);
+                            let v4273: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<rect "), (v4183))),
-                                                string(">move || { v4270 }</"),
+                                                (append(string("<rect "), (v4184))),
+                                                string(">move || { v4271 }</"),
                                             )),
                                             string("rect"),
                                         )),
@@ -24387,29 +24387,29 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4274: leptos::prelude::View<
+                            let v4275: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Rect, _, _>,
-                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="16">move || { v4270 }</rect> };
-                            let v4276: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4274);
-                            let v4278: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4171);
-                            let v4280: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4068);
-                            let v4290: string = string("vec![v4280, v4278, v4276]");
-                            let v4291: Vec<leptos::prelude::AnyView> = vec![v4280, v4278, v4276];
-                            let v4293: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4291);
-                            let v4295: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4293);
-                            let v4298: string = append(
+                            > = leptos::prelude::view! { <rect  opacity="0.2" fill="#333" height="10" width="4" y="10" x="16">move || { v4271 }</rect> };
+                            let v4277: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4275);
+                            let v4279: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4172);
+                            let v4281: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4069);
+                            let v4291: string = string("vec![v4281, v4279, v4277]");
+                            let v4292: Vec<leptos::prelude::AnyView> = vec![v4281, v4279, v4277];
+                            let v4294: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4292);
+                            let v4296: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4294);
+                            let v4299: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<svg "), (v3962))),
-                                                string(">move || { v4295 }</"),
+                                                (append(string("<svg "), (v3963))),
+                                                string(">move || { v4296 }</"),
                                             )),
                                             string("svg"),
                                         )),
@@ -24418,31 +24418,31 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4300: leptos::prelude::View<
+                            let v4301: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                            > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v3944(()) xml:space="preserve" style="enable-background:new 0 0 50 50;" viewBox="0 0 24 30" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1">move || { v4295 }</svg> };
-                            let v4302: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4300);
-                            let v4312: &str = &*string("Loading...");
-                            let v4345: std::string::String = String::from(v4312);
-                            let v4371: leptos::prelude::AnyView =
+                            > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v3945(()) xml:space="preserve" style="enable-background:new 0 0 50 50;" viewBox="0 0 24 30" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1">move || { v4296 }</svg> };
+                            let v4303: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4301);
+                            let v4313: &str = &*string("Loading...");
+                            let v4346: std::string::String = String::from(v4313);
+                            let v4372: leptos::prelude::AnyView =
                                 leptos::prelude::IntoAny::into_any(
-                                    leptos::prelude::IntoView::into_view(v4345),
+                                    leptos::prelude::IntoView::into_view(v4346),
                                 );
-                            let v4378: string = string("vec![v4302, v4371]");
-                            let v4379: Vec<leptos::prelude::AnyView> = vec![v4302, v4371];
-                            let v4381: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4379);
-                            let v4383: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4381);
-                            let v4386: string = append(
+                            let v4379: string = string("vec![v4303, v4372]");
+                            let v4380: Vec<leptos::prelude::AnyView> = vec![v4303, v4372];
+                            let v4382: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4380);
+                            let v4384: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4382);
+                            let v4387: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v3941))),
-                                                string(">move || { v4383 }</"),
+                                                (append(string("<div "), (v3942))),
+                                                string(">move || { v4384 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -24451,25 +24451,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4388: leptos::prelude::View<
+                            let v4389: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="flex flex-1 [gap:4px] items-center">move || { v4383 }</div> };
-                            let v4390: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4388);
-                            let v4394: string = string("vec![v4390]");
-                            let v4395: Vec<leptos::prelude::AnyView> = vec![v4390];
-                            let v4397: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4395);
-                            let v4399: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4397);
-                            let v4401: string = append(
+                            > = leptos::prelude::view! { <div  class="flex flex-1 [gap:4px] items-center">move || { v4384 }</div> };
+                            let v4391: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4389);
+                            let v4395: string = string("vec![v4391]");
+                            let v4396: Vec<leptos::prelude::AnyView> = vec![v4391];
+                            let v4398: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4396);
+                            let v4400: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4398);
+                            let v4402: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v3939))),
-                                                string(">move || { v4399 }</"),
+                                                (append(string("<div "), (v3940))),
+                                                string(">move || { v4400 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -24478,35 +24478,35 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4403: leptos::prelude::View<
+                            let v4404: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="grid place-content-center py-[10vh]">move || { v4399 }</div> };
-                            leptos::prelude::IntoAny::into_any(v4403)
+                            > = leptos::prelude::view! { <div  class="grid place-content-center py-[10vh]">move || { v4400 }</div> };
+                            leptos::prelude::IntoAny::into_any(v4404)
                         }
                     }
                     Dice_ui::US46::US46_1(v363_1_0) => {
-                        let v4409: string =
+                        let v4410: string =
                             fable_library_rust::String_::fromString(v363_1_0.clone());
-                        let v4412: string =
+                        let v4413: string =
                             string(" class=\"flex flex-1 items-center [gap:4px] [padding:5px]\"");
-                        let v4414: string = string(" class=\"[height:17px]\"");
-                        let v4428: string =
+                        let v4415: string = string(" class=\"[height:17px]\"");
+                        let v4429: string =
                                 string(" class=\"text-red-700\" stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" height=\"100%\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
-                        let v4434: string =
+                        let v4435: string =
                                 string(" d=\"M6 18L18 6M6 6l12 12\" stroke-linejoin=\"round\" stroke-linecap=\"round\"");
-                        let v4435: string = string("vec![]");
-                        let v4436: Vec<leptos::prelude::AnyView> = vec![];
-                        let v4438: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4436);
-                        let v4440: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4438);
-                        let v4443: string = append(
+                        let v4436: string = string("vec![]");
+                        let v4437: Vec<leptos::prelude::AnyView> = vec![];
+                        let v4439: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4437);
+                        let v4441: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4439);
+                        let v4444: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<path "), (v4434))),
-                                            string(">move || { v4440 }</"),
+                                            (append(string("<path "), (v4435))),
+                                            string(">move || { v4441 }</"),
                                         )),
                                         string("path"),
                                     )),
@@ -24515,24 +24515,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4445: leptos::prelude::View<
+                        let v4446: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                        > = leptos::prelude::view! { <path  d="M6 18L18 6M6 6l12 12" stroke-linejoin="round" stroke-linecap="round">move || { v4440 }</path> };
-                        let v4447: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4445);
-                        let v4451: string = string("vec![v4447]");
-                        let v4452: Vec<leptos::prelude::AnyView> = vec![v4447];
-                        let v4454: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4452);
-                        let v4456: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4454);
-                        let v4459: string = append(
+                        > = leptos::prelude::view! { <path  d="M6 18L18 6M6 6l12 12" stroke-linejoin="round" stroke-linecap="round">move || { v4441 }</path> };
+                        let v4448: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4446);
+                        let v4452: string = string("vec![v4448]");
+                        let v4453: Vec<leptos::prelude::AnyView> = vec![v4448];
+                        let v4455: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4453);
+                        let v4457: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4455);
+                        let v4460: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<svg "), (v4428))),
-                                            string(">move || { v4456 }</"),
+                                            (append(string("<svg "), (v4429))),
+                                            string(">move || { v4457 }</"),
                                         )),
                                         string("svg"),
                                     )),
@@ -24541,24 +24541,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4461: leptos::prelude::View<
+                        let v4462: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                        > = leptos::prelude::view! { <svg  class="text-red-700" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v4456 }</svg> };
-                        let v4463: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4461);
-                        let v4467: string = string("vec![v4463]");
-                        let v4468: Vec<leptos::prelude::AnyView> = vec![v4463];
-                        let v4470: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4468);
-                        let v4472: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4470);
-                        let v4475: string = append(
+                        > = leptos::prelude::view! { <svg  class="text-red-700" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v4457 }</svg> };
+                        let v4464: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4462);
+                        let v4468: string = string("vec![v4464]");
+                        let v4469: Vec<leptos::prelude::AnyView> = vec![v4464];
+                        let v4471: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4469);
+                        let v4473: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4471);
+                        let v4476: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<span "), (v4414))),
-                                            string(">move || { v4472 }</"),
+                                            (append(string("<span "), (v4415))),
+                                            string(">move || { v4473 }</"),
                                         )),
                                         string("span"),
                                     )),
@@ -24567,30 +24567,30 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4477: leptos::prelude::View<
+                        let v4478: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                        > = leptos::prelude::view! { <span  class="[height:17px]">move || { v4472 }</span> };
-                        let v4479: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4477);
-                        let v4481: string = string(" class=\"[overflow-y:auto] [text-wrap:wrap]\"");
-                        let v4490: &str = &*v4409;
-                        let v4523: std::string::String = String::from(v4490);
-                        let v4549: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                            leptos::prelude::IntoView::into_view(v4523),
+                        > = leptos::prelude::view! { <span  class="[height:17px]">move || { v4473 }</span> };
+                        let v4480: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4478);
+                        let v4482: string = string(" class=\"[overflow-y:auto] [text-wrap:wrap]\"");
+                        let v4491: &str = &*v4410;
+                        let v4524: std::string::String = String::from(v4491);
+                        let v4550: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                            leptos::prelude::IntoView::into_view(v4524),
                         );
-                        let v4553: string = string("vec![v4549]");
-                        let v4554: Vec<leptos::prelude::AnyView> = vec![v4549];
-                        let v4556: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4554);
-                        let v4558: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4556);
-                        let v4561: string = append(
+                        let v4554: string = string("vec![v4550]");
+                        let v4555: Vec<leptos::prelude::AnyView> = vec![v4550];
+                        let v4557: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4555);
+                        let v4559: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4557);
+                        let v4562: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<pre "), (v4481))),
-                                            string(">move || { v4558 }</"),
+                                            (append(string("<pre "), (v4482))),
+                                            string(">move || { v4559 }</"),
                                         )),
                                         string("pre"),
                                     )),
@@ -24599,24 +24599,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4563: leptos::prelude::View<
+                        let v4564: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Pre, _, _>,
-                        > = leptos::prelude::view! { <pre  class="[overflow-y:auto] [text-wrap:wrap]">move || { v4558 }</pre> };
-                        let v4565: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4563);
-                        let v4573: string = string("vec![v4479, v4565]");
-                        let v4574: Vec<leptos::prelude::AnyView> = vec![v4479, v4565];
-                        let v4576: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4574);
-                        let v4578: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4576);
-                        let v4581: string = append(
+                        > = leptos::prelude::view! { <pre  class="[overflow-y:auto] [text-wrap:wrap]">move || { v4559 }</pre> };
+                        let v4566: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4564);
+                        let v4574: string = string("vec![v4480, v4566]");
+                        let v4575: Vec<leptos::prelude::AnyView> = vec![v4480, v4566];
+                        let v4577: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4575);
+                        let v4579: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4577);
+                        let v4582: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<div "), (v4412))),
-                                            string(">move || { v4578 }</"),
+                                            (append(string("<div "), (v4413))),
+                                            string(">move || { v4579 }</"),
                                         )),
                                         string("div"),
                                     )),
@@ -24625,16 +24625,16 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4583: leptos::prelude::View<
+                        let v4584: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                        > = leptos::prelude::view! { <div  class="flex flex-1 items-center [gap:4px] [padding:5px]">move || { v4578 }</div> };
-                        leptos::prelude::IntoAny::into_any(v4583)
+                        > = leptos::prelude::view! { <div  class="flex flex-1 items-center [gap:4px] [padding:5px]">move || { v4579 }</div> };
+                        leptos::prelude::IntoAny::into_any(v4584)
                     }
                 }
             };
-            let v4597: string = string("vec![v144, v4588]");
-            let v4598: Vec<leptos::prelude::AnyView> = vec![v144, v4588];
-            leptos::prelude::Fragment::new(v4598)
+            let v4598: string = string("vec![v144, v4589]");
+            let v4599: Vec<leptos::prelude::AnyView> = vec![v144, v4589];
+            leptos::prelude::Fragment::new(v4599)
         }
         pub fn closure337(unitVar: (), unitVar_1: ()) -> string {
             string("py-[7px]")
@@ -26131,7 +26131,7 @@ mod module_9c940d83 {
                 );
                 let v1770: bool = true;
                 leptos::logging::log!("{}", v1768);
-                let v1903: bool = if (v1760) == false {
+                let v1904: bool = if (v1760) == false {
                     let v1772: std::string::String = Dice_ui::method51(v1764);
                     if v1772 == "" {
                         let v1777: std::pin::Pin<
@@ -26152,68 +26152,68 @@ mod module_9c940d83 {
                         let v1787: bool = true;
                         leptos::logging::log!("{}", v1785);
                         if contains(v1784.clone(), string("#")) {
-                            let v1801: &str = &*v1784;
-                            v1739(v1801, Default::default());
+                            let v1802: &str = &*v1784;
+                            v1739(v1802, Default::default());
                             ()
                         }
                     }
                     {
-                        let v1828: bool = true;
+                        let v1829: bool = true;
                         leptos::prelude::WriteSignal::set(&patternInput_2.1.clone(), true); //;
                         true
                     }
                 } else {
-                    let v1831: std::pin::Pin<
+                    let v1832: std::pin::Pin<
                         Box<leptos::prelude::ArcRwSignal<LrcPtr<Dice_ui::Heap1>>>,
                     > = Box::pin(v1748.l0.clone());
-                    let v1833: LrcPtr<Dice_ui::Heap1> =
-                        leptos::prelude::ArcRwSignal::get_untracked(&v1831);
-                    let v1843: &str = &*v1767;
-                    let v1876: std::string::String = String::from(v1843);
-                    let v1902: bool = true;
-                    leptos::prelude::ArcRwSignal::set(&v1833.l2.clone(), v1876); //;
+                    let v1834: LrcPtr<Dice_ui::Heap1> =
+                        leptos::prelude::ArcRwSignal::get_untracked(&v1832);
+                    let v1844: &str = &*v1767;
+                    let v1877: std::string::String = String::from(v1844);
+                    let v1903: bool = true;
+                    leptos::prelude::ArcRwSignal::set(&v1834.l2.clone(), v1877); //;
                     false
                 };
-                let v1905: bool = true; /*;
-                                        let v1907: bool = */
+                let v1906: bool = true; /*;
+                                        let v1908: bool = */
             }); //;
-            let v1909: Func0<()> = _func0_from_v1756;
-            let v1911: bool = true;
-            leptos::prelude::Effect::new(move |_| v1909());
-            let v1914: bool = true;
-            let _func0_from_v1912 = Func0::from(move || {
+            let v1910: Func0<()> = _func0_from_v1756;
+            let v1912: bool = true;
+            leptos::prelude::Effect::new(move |_| v1910());
+            let v1915: bool = true;
+            let _func0_from_v1913 = Func0::from(move || {
                 //;
-                let v1916: leptos::prelude::Memo<std::string::String> = v1737.hash;
-                let v1919: std::string::String =
-                    Dice_ui::method52(leptos::prelude::Memo::get(&v1916));
-                let v1921: Option<&str> = v1919.strip_prefix('#');
-                let v1922: string = string("r#\"\"#");
-                let v1923: &str = r#""#;
-                let v1925: &str = v1921.unwrap_or(v1923);
-                let v1927: Result<leptos_router::location::Url, std::string::String> =
-                    leptos_router::location::Url::try_from(v1925);
-                let v1928 = Dice_ui::method53();
-                let v1929 = Dice_ui::method54();
-                let v1931: Dice_ui::US20 = match &v1927 {
-                    Err(v1927_1_0) => v1929(v1927_1_0.clone()),
-                    Ok(v1927_0_0) => v1928(v1927_0_0.clone()),
+                let v1917: leptos::prelude::Memo<std::string::String> = v1737.hash;
+                let v1920: std::string::String =
+                    Dice_ui::method52(leptos::prelude::Memo::get(&v1917));
+                let v1922: Option<&str> = v1920.strip_prefix('#');
+                let v1923: string = string("r#\"\"#");
+                let v1924: &str = r#""#;
+                let v1926: &str = v1922.unwrap_or(v1924);
+                let v1928: Result<leptos_router::location::Url, std::string::String> =
+                    leptos_router::location::Url::try_from(v1926);
+                let v1929 = Dice_ui::method53();
+                let v1930 = Dice_ui::method54();
+                let v1932: Dice_ui::US20 = match &v1928 {
+                    Err(v1928_1_0) => v1930(v1928_1_0.clone()),
+                    Ok(v1928_0_0) => v1929(v1928_0_0.clone()),
                 };
-                let v1944: std::string::String = format!("{:#?}", v1931.clone());
-                let v1973: string = append(
+                let v1945: std::string::String = format!("{:#?}", v1932.clone());
+                let v1974: string = append(
                     (append(
                         string("content.render () / effect 2 / hash_url: "),
-                        (fable_library_rust::String_::fromString(v1944)),
+                        (fable_library_rust::String_::fromString(v1945)),
                     )),
                     string(""),
                 );
-                let v1975: bool = true;
-                leptos::logging::log!("{}", v1973);
-                let v2100: bool = match &v1931 {
-                    Dice_ui::US20::US20_0(v1931_0_0) => {
-                        let v1976: leptos_router::location::Url = v1931_0_0.clone();
-                        let v1978: std::string::String = v1976.clone().pathname;
-                        let v1991: Dice_ui::US21 = if startsWith3(
-                            fable_library_rust::String_::fromString(v1978),
+                let v1976: bool = true;
+                leptos::logging::log!("{}", v1974);
+                let v2101: bool = match &v1932 {
+                    Dice_ui::US20::US20_0(v1932_0_0) => {
+                        let v1977: leptos_router::location::Url = v1932_0_0.clone();
+                        let v1979: std::string::String = v1977.clone().pathname;
+                        let v1992: Dice_ui::US21 = if startsWith3(
+                            fable_library_rust::String_::fromString(v1979),
                             string("/dice"),
                             false,
                         ) {
@@ -26221,18 +26221,18 @@ mod module_9c940d83 {
                         } else {
                             Dice_ui::US21::US21_1
                         };
-                        let v2009: Dice_ui::US21 = match &v1991 {
-                            Dice_ui::US21::US21_0(v1991_0_0) => Dice_ui::US21::US21_0(
-                                match &v1991 {
+                        let v2010: Dice_ui::US21 = match &v1992 {
+                            Dice_ui::US21::US21_0(v1992_0_0) => Dice_ui::US21::US21_0(
+                                match &v1992 {
                                     Dice_ui::US21::US21_0(x) => x.clone(),
                                     _ => unreachable!(),
                                 }
                                 .clone(),
                             ),
                             _ => {
-                                let v1995: std::string::String = v1976.clone().pathname;
+                                let v1996: std::string::String = v1977.clone().pathname;
                                 if startsWith3(
-                                    fable_library_rust::String_::fromString(v1995),
+                                    fable_library_rust::String_::fromString(v1996),
                                     string("/lists"),
                                     false,
                                 ) {
@@ -26242,18 +26242,18 @@ mod module_9c940d83 {
                                 }
                             }
                         };
-                        let v2027: Dice_ui::US21 = match &v2009 {
-                            Dice_ui::US21::US21_0(v2009_0_0) => Dice_ui::US21::US21_0(
-                                match &v2009 {
+                        let v2028: Dice_ui::US21 = match &v2010 {
+                            Dice_ui::US21::US21_0(v2010_0_0) => Dice_ui::US21::US21_0(
+                                match &v2010 {
                                     Dice_ui::US21::US21_0(x) => x.clone(),
                                     _ => unreachable!(),
                                 }
                                 .clone(),
                             ),
                             _ => {
-                                let v2013: std::string::String = v1976.clone().pathname;
+                                let v2014: std::string::String = v1977.clone().pathname;
                                 if startsWith3(
-                                    fable_library_rust::String_::fromString(v2013),
+                                    fable_library_rust::String_::fromString(v2014),
                                     string("/transactions"),
                                     false,
                                 ) {
@@ -26263,18 +26263,18 @@ mod module_9c940d83 {
                                 }
                             }
                         };
-                        let v2045: Dice_ui::US21 = match &v2027 {
-                            Dice_ui::US21::US21_0(v2027_0_0) => Dice_ui::US21::US21_0(
-                                match &v2027 {
+                        let v2046: Dice_ui::US21 = match &v2028 {
+                            Dice_ui::US21::US21_0(v2028_0_0) => Dice_ui::US21::US21_0(
+                                match &v2028 {
                                     Dice_ui::US21::US21_0(x) => x.clone(),
                                     _ => unreachable!(),
                                 }
                                 .clone(),
                             ),
                             _ => {
-                                let v2031: std::string::String = v1976.clone().pathname;
+                                let v2032: std::string::String = v1977.clone().pathname;
                                 if startsWith3(
-                                    fable_library_rust::String_::fromString(v2031),
+                                    fable_library_rust::String_::fromString(v2032),
                                     string("/settings"),
                                     false,
                                 ) {
@@ -26284,105 +26284,105 @@ mod module_9c940d83 {
                                 }
                             }
                         };
-                        let v2050: Dice_ui::US18 = match &v2045 {
-                            Dice_ui::US21::US21_0(v2045_0_0) => match &v2045 {
+                        let v2051: Dice_ui::US18 = match &v2046 {
+                            Dice_ui::US21::US21_0(v2046_0_0) => match &v2046 {
                                 Dice_ui::US21::US21_0(x) => x.clone(),
                                 _ => unreachable!(),
                             }
                             .clone(),
                             _ => Dice_ui::US18::US18_1(Dice_ui::US19::US19_0),
                         };
-                        let v2061: std::string::String = format!("{:#?}", v2050.clone());
-                        let v2090: string = append(
+                        let v2062: std::string::String = format!("{:#?}", v2051.clone());
+                        let v2091: string = append(
                             (append(
                                 string("content.render () / effect 2 / new_tab: "),
-                                (fable_library_rust::String_::fromString(v2061)),
+                                (fable_library_rust::String_::fromString(v2062)),
                             )),
                             string(""),
                         );
-                        let v2092: bool = true;
-                        leptos::logging::log!("{}", v2090);
-                        let v2094: bool = true;
-                        leptos::prelude::WriteSignal::set(&patternInput_1.1.clone(), v2050); //;
+                        let v2093: bool = true;
+                        leptos::logging::log!("{}", v2091);
+                        let v2095: bool = true;
+                        leptos::prelude::WriteSignal::set(&patternInput_1.1.clone(), v2051); //;
                         true
                     }
-                    Dice_ui::US20::US20_1(v1931_1_0) => {
-                        let v2096: string = append(
+                    Dice_ui::US20::US20_1(v1932_1_0) => {
+                        let v2097: string = append(
                             (append(
                                 string("content.render () / effect 2 / hash_url error: "),
-                                (toString(v1931_1_0.clone())),
+                                (toString(v1932_1_0.clone())),
                             )),
                             string(""),
                         );
-                        let v2098: bool = true;
-                        leptos::logging::log!("{}", v2096);
+                        let v2099: bool = true;
+                        leptos::logging::log!("{}", v2097);
                         false
                     }
                 };
-                let v2102: bool = true; /*;
-                                        let v2104: bool = */
+                let v2103: bool = true; /*;
+                                        let v2105: bool = */
             }); //;
-            let v2106: Func0<()> = _func0_from_v1912;
-            let v2108: bool = true;
-            leptos::prelude::Effect::new(move |_| v2106());
-            let v2110: string = string(" class=\"flex flex-1 max-[100px]:[overflow-x:auto]\"");
-            let v2111: string =
+            let v2107: Func0<()> = _func0_from_v1913;
+            let v2109: bool = true;
+            leptos::prelude::Effect::new(move |_| v2107());
+            let v2111: string = string(" class=\"flex flex-1 max-[100px]:[overflow-x:auto]\"");
+            let v2112: string =
                 string("class=\"flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] [height:100vh] [max-height:100dvh] [max-height:-webkit-fill-available] max-[60px]:[min-height:600px] bg-gray-50 text-gray-700 text-sm\"");
-            let v2112: string = append(
-                (append((append(string(" "), (v2111))), string(""))),
+            let v2113: string = append(
+                (append((append(string(" "), (v2112))), string(""))),
                 string(""),
             );
-            let v2114: string = string(" class=\"flex flex-1 flex-col [overflow:hidden]\"");
-            let v2116: Dice_ui::US18 = leptos::prelude::ReadSignal::get(&v1751.clone());
-            let v5435: Dice_ui::US22 = match &v2116 {
-                Dice_ui::US18::US18_1(v2116_1_0) => {
-                    let v2120: bool = true;
+            let v2115: string = string(" class=\"flex flex-1 flex-col [overflow:hidden]\"");
+            let v2117: Dice_ui::US18 = leptos::prelude::ReadSignal::get(&v1751.clone());
+            let v5436: Dice_ui::US22 = match &v2117 {
+                Dice_ui::US18::US18_1(v2117_1_0) => {
+                    let v2121: bool = true;
                     leptos::logging::log!("{}", string("dice_view.render (1)"));
-                    let v2122: Option<LrcPtr<Dice_ui::Heap2>> =
+                    let v2123: Option<LrcPtr<Dice_ui::Heap2>> =
                         leptos::context::use_context::<std::sync::Arc<Heap2>>();
-                    let v2124: LrcPtr<Dice_ui::Heap2> = v2122.unwrap();
-                    let v2127: bool = true;
+                    let v2125: LrcPtr<Dice_ui::Heap2> = v2123.unwrap();
+                    let v2128: bool = true;
                     leptos::logging::log!("{}", string("use_transactions.render (1)"));
-                    let v2130: leptos::prelude::ArcMemo<Vec<string>> =
+                    let v2131: leptos::prelude::ArcMemo<Vec<string>> =
                         leptos::prelude::ArcMemo::new(move |_| {
                             Func0::new({
-                                let v2124 = v2124.clone();
-                                move || Dice_ui::closure44(v2124.clone(), ())
+                                let v2125 = v2125.clone();
+                                move || Dice_ui::closure44(v2125.clone(), ())
                             })()
                         });
-                    let v2133: leptos::prelude::ArcMemo<
+                    let v2134: leptos::prelude::ArcMemo<
                         Array<(string, Dice_ui::US23, string, bool, bool)>,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v2130 = v2130.clone();
-                            move || Dice_ui::closure46(v2130.clone(), ())
+                            let v2131 = v2131.clone();
+                            move || Dice_ui::closure46(v2131.clone(), ())
                         })()
                     });
-                    let v2136: leptos::prelude::ArcMemo<
+                    let v2137: leptos::prelude::ArcMemo<
                         Vec<(string, Vec<(string, Dice_ui::US23, string, bool, bool)>)>,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v2124 = v2124.clone();
-                            let v2130 = v2130.clone();
-                            move || Dice_ui::closure48(v2124.clone(), v2130.clone(), ())
+                            let v2125 = v2125.clone();
+                            let v2131 = v2131.clone();
+                            move || Dice_ui::closure48(v2125.clone(), v2131.clone(), ())
                         })()
                     });
-                    let v2139: leptos::prelude::ArcMemo<
+                    let v2140: leptos::prelude::ArcMemo<
                         Vec<(string, Dice_ui::US23, string, bool, bool)>,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v2136 = v2136.clone();
-                            move || Dice_ui::closure51(v2136.clone(), ())
+                            let v2137 = v2137.clone();
+                            move || Dice_ui::closure51(v2137.clone(), ())
                         })()
                     });
-                    let v2142: leptos::prelude::ArcMemo<Array<string>> =
+                    let v2143: leptos::prelude::ArcMemo<Array<string>> =
                         leptos::prelude::ArcMemo::new(move |_| {
                             Func0::new({
-                                let v2136 = v2136.clone();
-                                move || Dice_ui::closure55(v2136.clone(), ())
+                                let v2137 = v2137.clone();
+                                move || Dice_ui::closure55(v2137.clone(), ())
                             })()
                         });
-                    let v2144: leptos::prelude::ArcMemo<
+                    let v2145: leptos::prelude::ArcMemo<
                         Vec<
                             Result<
                                 Option<
@@ -26405,47 +26405,47 @@ mod module_9c940d83 {
                             >,
                         >,
                     > = Dice_ui::method78(
-                        v2139,
+                        v2140,
                         Func1::new(move |v_7: crate::model::near::nearblocks::Root| {
                             Dice_ui::closure60((), v_7)
                         }),
                     );
-                    let v2151: string = Dice_ui::method8(
+                    let v2152: string = Dice_ui::method8(
                         200_i64,
                         append(
                             (append(
                                 string("use_transactions.render (7) / root func0 / result: "),
-                                sprintf!("{:?}", v2144.clone()),
+                                sprintf!("{:?}", v2145.clone()),
                             )),
                             string(""),
                         ),
                     );
-                    let v2153: bool = true;
-                    leptos::logging::log!("{}", v2151);
-                    let v2156: leptos::prelude::ArcMemo<
+                    let v2154: bool = true;
+                    leptos::logging::log!("{}", v2152);
+                    let v2157: leptos::prelude::ArcMemo<
                         Result<
                             Option<Array<(string, usize, LrcPtr<Dice_ui::Heap5>)>>,
                             std::string::String,
                         >,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v2142 = v2142.clone();
-                            let v2144 = v2144.clone();
-                            move || Dice_ui::closure90(v2142.clone(), v2144.clone(), ())
+                            let v2143 = v2143.clone();
+                            let v2145 = v2145.clone();
+                            move || Dice_ui::closure90(v2143.clone(), v2145.clone(), ())
                         })()
                     });
-                    let v2159: leptos::prelude::ArcMemo<
+                    let v2160: leptos::prelude::ArcMemo<
                         Result<
                             Option<Array<(string, Dice_ui::US23, string, bool, bool)>>,
                             std::string::String,
                         >,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v2156 = v2156.clone();
-                            move || Dice_ui::closure107(v2156.clone(), ())
+                            let v2157 = v2157.clone();
+                            move || Dice_ui::closure107(v2157.clone(), ())
                         })()
                     });
-                    let v2164: leptos::prelude::ArcMemo<
+                    let v2165: leptos::prelude::ArcMemo<
                         Vec<
                             Result<
                                 Option<(
@@ -26512,81 +26512,81 @@ mod module_9c940d83 {
                     > = Dice_ui::method159(
                         leptos::prelude::ArcMemo::new(move |_| {
                             Func0::new({
-                                let v2159 = v2159.clone();
-                                move || Dice_ui::closure115(v2159.clone(), ())
+                                let v2160 = v2160.clone();
+                                move || Dice_ui::closure115(v2160.clone(), ())
                             })()
                         }),
                         Func1::new(move |v_8: crate::model::near::rpc::RpcResponse| {
                             Dice_ui::closure119((), v_8)
                         }),
                     );
-                    let v2171: string = Dice_ui::method8(
+                    let v2172: string = Dice_ui::method8(
                         200_i64,
                         append(
                             (append(
                                 string(
                                     "use_transactions.render (12) / rpc_response func0 / result: ",
                                 ),
-                                sprintf!("{:?}", v2164.clone()),
+                                sprintf!("{:?}", v2165.clone()),
                             )),
                             string(""),
                         ),
                     );
-                    let v2173: bool = true;
-                    leptos::logging::log!("{}", v2171);
-                    let v2176: bool = true;
-                    let _func1_from_v2174 = Func1::from(move |value| {
+                    let v2174: bool = true;
+                    leptos::logging::log!("{}", v2172);
+                    let v2177: bool = true;
+                    let _func1_from_v2175 = Func1::from(move |value| {
                         //;
-                        let v2183: string = append(
+                        let v2184: string = append(
                             (append(
                                 string("dice_view.render (2) / set_max_action / value: "),
                                 sprintf!("{:?}", value),
                             )),
                             string(""),
                         );
-                        let v2185: bool = true;
-                        leptos::logging::log!("{}", v2183);
-                        let v2187: bool = true;
+                        let v2186: bool = true;
+                        leptos::logging::log!("{}", v2184);
+                        let v2188: bool = true;
                         let __future_init = Box::pin(
                             /*;
-                            let v2189: bool = */
+                            let v2190: bool = */
                             async move {
                                 /*;
-                                let v2191: bool = */
+                                let v2192: bool = */
                                 ();
-                                let v2201: &str = &*string("2.0");
-                                let v2234: std::string::String = String::from(v2201);
-                                let v2268: &str = &*string("dontcare");
-                                let v2301: std::string::String = String::from(v2268);
-                                let v2335: &str = &*string("EXPERIMENTAL_tx_status");
-                                let v2368: std::string::String = String::from(v2335);
-                                let v2402: &str =
+                                let v2202: &str = &*string("2.0");
+                                let v2235: std::string::String = String::from(v2202);
+                                let v2269: &str = &*string("dontcare");
+                                let v2302: std::string::String = String::from(v2269);
+                                let v2336: &str = &*string("EXPERIMENTAL_tx_status");
+                                let v2369: std::string::String = String::from(v2336);
+                                let v2403: &str =
                                     &*string("9JgptZpFQGtUvusnoF9ysVqHXD8fXCri8mFxPTMnt3kS");
-                                let v2435: std::string::String = String::from(v2402);
-                                let v2469: &str = &*string("bowen");
-                                let v2527: Array<std::string::String> =
-                                    new_array(&[v2435, String::from(v2469)]);
-                                let v2529: Vec<std::string::String> = v2527.to_vec();
-                                let v2531: crate::model::near::rpc::RpcInput =
+                                let v2436: std::string::String = String::from(v2403);
+                                let v2470: &str = &*string("bowen");
+                                let v2528: Array<std::string::String> =
+                                    new_array(&[v2436, String::from(v2470)]);
+                                let v2530: Vec<std::string::String> = v2528.to_vec();
+                                let v2532: crate::model::near::rpc::RpcInput =
                                     crate::model::near::rpc::RpcInput {
-                                        jsonrpc: v2234,
-                                        id: v2301,
-                                        method: v2368,
-                                        params: v2529,
+                                        jsonrpc: v2235,
+                                        id: v2302,
+                                        method: v2369,
+                                        params: v2530,
                                     };
-                                let v2532: string = Dice_ui::method167();
-                                let v2541: &str = &*v2532;
-                                let v2599: std::string::String =
-                                    Dice_ui::method92(String::from(v2541));
-                                let v2601: reqwest_wasm::RequestBuilder =
+                                let v2533: string = Dice_ui::method167();
+                                let v2542: &str = &*v2533;
+                                let v2600: std::string::String =
+                                    Dice_ui::method92(String::from(v2542));
+                                let v2602: reqwest_wasm::RequestBuilder =
                                     reqwest_wasm::Client::builder()
                                         .build()
                                         .map_err(|err| err.to_string())?
-                                        .post(v2599);
-                                let v2604: reqwest_wasm::RequestBuilder = Dice_ui::method94(
-                                    reqwest_wasm::RequestBuilder::json(v2601, &v2531),
+                                        .post(v2600);
+                                let v2605: reqwest_wasm::RequestBuilder = Dice_ui::method94(
+                                    reqwest_wasm::RequestBuilder::json(v2602, &v2532),
                                 );
-                                let v2606: std::pin::Pin<
+                                let v2607: std::pin::Pin<
                                     Box<
                                         dyn std::future::Future<
                                             Output = Result<
@@ -26595,14 +26595,14 @@ mod module_9c940d83 {
                                             >,
                                         >,
                                     >,
-                                > = Box::pin(reqwest_wasm::RequestBuilder::send(v2604));
-                                let v2608: Result<reqwest_wasm::Response, reqwest_wasm::Error> =
-                                    v2606.await;
-                                let v2609 = Dice_ui::method95();
-                                let v2615: Result<reqwest_wasm::Response, std::string::String> =
-                                    v2608.map_err(|x| v2609(x));
-                                let v2626: reqwest_wasm::Response = v2615?;
-                                let v2628: std::pin::Pin<
+                                > = Box::pin(reqwest_wasm::RequestBuilder::send(v2605));
+                                let v2609: Result<reqwest_wasm::Response, reqwest_wasm::Error> =
+                                    v2607.await;
+                                let v2610 = Dice_ui::method95();
+                                let v2616: Result<reqwest_wasm::Response, std::string::String> =
+                                    v2609.map_err(|x| v2610(x));
+                                let v2627: reqwest_wasm::Response = v2616?;
+                                let v2629: std::pin::Pin<
                                     Box<
                                         dyn std::future::Future<
                                             Output = Result<
@@ -26611,66 +26611,66 @@ mod module_9c940d83 {
                                             >,
                                         >,
                                     >,
-                                > = Box::pin(reqwest_wasm::Response::text(v2626));
-                                let v2630: Result<std::string::String, reqwest_wasm::Error> =
-                                    v2628.await;
-                                let v2631 = Dice_ui::method95();
-                                let v2637: Result<std::string::String, std::string::String> =
-                                    v2630.map_err(|x| v2631(x));
-                                let v2652: Result<Dice_ui::US14, std::string::String> =
+                                > = Box::pin(reqwest_wasm::Response::text(v2627));
+                                let v2631: Result<std::string::String, reqwest_wasm::Error> =
+                                    v2629.await;
+                                let v2632 = Dice_ui::method95();
+                                let v2638: Result<std::string::String, std::string::String> =
+                                    v2631.map_err(|x| v2632(x));
+                                let v2653: Result<Dice_ui::US14, std::string::String> =
                                     Ok::<Dice_ui::US14, std::string::String>(
-                                        Dice_ui::US14::US14_0(v2637?),
+                                        Dice_ui::US14::US14_0(v2638?),
                                     );
-                                let v2662: string =
+                                let v2663: string =
                             Dice_ui::method8(200_i64,
                                              append((append(string("dice_view.render (x) / roll_action new_arc_action / result1 / result: "),
                                                             sprintf!("{:?}",
-                                                                     v2652.clone()))),
+                                                                     v2653.clone()))),
                                                     string("")));
-                                let v2664: bool = true;
-                                leptos::logging::log!("{}", v2662);
-                                let v2665 = Dice_ui::method168();
-                                let v2666 = Dice_ui::method169();
-                                let v2668: Dice_ui::US57 = match &v2652 {
-                                    Err(v2652_1_0) => v2666(v2652_1_0.clone()),
-                                    Ok(v2652_0_0) => v2665(v2652_0_0.clone()),
+                                let v2665: bool = true;
+                                leptos::logging::log!("{}", v2663);
+                                let v2666 = Dice_ui::method168();
+                                let v2667 = Dice_ui::method169();
+                                let v2669: Dice_ui::US57 = match &v2653 {
+                                    Err(v2653_1_0) => v2667(v2653_1_0.clone()),
+                                    Ok(v2653_0_0) => v2666(v2653_0_0.clone()),
                                 };
-                                let v2999: Dice_ui::US58 = if let Dice_ui::US57::US57_0(v2668_0_0) =
-                                    &v2668
+                                let v3000: Dice_ui::US58 = if let Dice_ui::US57::US57_0(v2669_0_0) =
+                                    &v2669
                                 {
-                                    let v2671: Dice_ui::US14 = v2668_0_0.clone();
-                                    if let Dice_ui::US14::US14_0(v2671_0_0) = &v2671 {
-                                        let v2675: string = Dice_ui::method41(
+                                    let v2672: Dice_ui::US14 = v2669_0_0.clone();
+                                    if let Dice_ui::US14::US14_0(v2672_0_0) = &v2672 {
+                                        let v2676: string = Dice_ui::method41(
                                             fable_library_rust::String_::fromString(
-                                                v2671_0_0.clone(),
+                                                v2672_0_0.clone(),
                                             ),
                                         );
-                                        let v2684: &str = &*v2675;
-                                        let v2710: Result<
+                                        let v2685: &str = &*v2676;
+                                        let v2711: Result<
                                             crate::model::near::rpc::RpcResponse,
                                             serde_json::Error,
-                                        > = serde_json::from_str(&v2684);
-                                        let v2711 = Dice_ui::method42();
-                                        let v2724: Result<
+                                        > = serde_json::from_str(&v2685);
+                                        let v2712 = Dice_ui::method42();
+                                        let v2725: Result<
                                             crate::model::near::rpc::RpcResponse,
                                             std::string::String,
-                                        > = v2710.map_err(|x| v2711(x));
-                                        let v2727 = Dice_ui::method170();
-                                        let v2728 = Dice_ui::method171();
-                                        let v2730: Dice_ui::US60 = match &v2724 {
-                                            Err(v2724_1_0) => v2728(v2724_1_0.clone()),
-                                            Ok(v2724_0_0) => v2727(v2724_0_0.clone()),
+                                        > = v2711.map_err(|x| v2712(x));
+                                        let v2728 = Dice_ui::method170();
+                                        let v2729 = Dice_ui::method171();
+                                        let v2731: Dice_ui::US60 = match &v2725 {
+                                            Err(v2725_1_0) => v2729(v2725_1_0.clone()),
+                                            Ok(v2725_0_0) => v2728(v2725_0_0.clone()),
                                         };
-                                        let v2983: Dice_ui::US61 = match &v2730 {
-                                            Dice_ui::US60::US60_0(v2730_0_0) => {
-                                                let v2733: crate::model::near::rpc::RpcResponse =
-                                                    v2730_0_0.clone();
-                                                let v2735: std::string::String =
-                                                    v2733.clone().jsonrpc;
-                                                let v2737: Option<
+                                        let v2984: Dice_ui::US61 = match &v2731 {
+                                            Dice_ui::US60::US60_0(v2731_0_0) => {
+                                                let v2734: crate::model::near::rpc::RpcResponse =
+                                                    v2731_0_0.clone();
+                                                let v2736: std::string::String =
+                                                    v2734.clone().jsonrpc;
+                                                let v2738: Option<
                                                     crate::model::near::rpc::TransactionStatus,
-                                                > = v2733.clone().result;
-                                                let v2741: Option<(
+                                                > = v2734.clone().result;
+                                                let v2742: Option<(
                                                     Array<(
                                                         std::string::String,
                                                         Array<
@@ -26715,35 +26715,35 @@ mod module_9c940d83 {
                                                             std::string::String,
                                                         )>,
                                                     )>,
-                                                )> = map(Dice_ui::method150(), v2737);
-                                                let v2930: Option<
+                                                )> = map(Dice_ui::method150(), v2738);
+                                                let v2931: Option<
                                                     crate::model::near::rpc::RpcError,
-                                                > = v2733.clone().error;
+                                                > = v2734.clone().error;
                                                 Dice_ui::US61::US61_0(
-                                                    v2735,
-                                                    v2741,
-                                                    map(Dice_ui::method157(), v2930),
-                                                    v2733.id,
+                                                    v2736,
+                                                    v2742,
+                                                    map(Dice_ui::method157(), v2931),
+                                                    v2734.id,
                                                 )
                                             }
-                                            Dice_ui::US60::US60_1(v2730_1_0) => {
-                                                Dice_ui::US61::US61_1(v2730_1_0.clone())
+                                            Dice_ui::US60::US60_1(v2731_1_0) => {
+                                                Dice_ui::US61::US61_1(v2731_1_0.clone())
                                             }
                                         };
-                                        match &v2983 {
+                                        match &v2984 {
                                             Dice_ui::US61::US61_0(
-                                                v2983_0_0,
-                                                v2983_0_1,
-                                                v2983_0_2,
-                                                v2983_0_3,
+                                                v2984_0_0,
+                                                v2984_0_1,
+                                                v2984_0_2,
+                                                v2984_0_3,
                                             ) => Dice_ui::US58::US58_0(Dice_ui::US59::US59_0(
-                                                v2983_0_0.clone(),
-                                                v2983_0_1.clone(),
-                                                v2983_0_2.clone(),
-                                                v2983_0_3.clone(),
+                                                v2984_0_0.clone(),
+                                                v2984_0_1.clone(),
+                                                v2984_0_2.clone(),
+                                                v2984_0_3.clone(),
                                             )),
-                                            Dice_ui::US61::US61_1(v2983_1_0) => {
-                                                Dice_ui::US58::US58_1(v2983_1_0.clone())
+                                            Dice_ui::US61::US61_1(v2984_1_0) => {
+                                                Dice_ui::US58::US58_1(v2984_1_0.clone())
                                             }
                                         }
                                     } else {
@@ -26752,53 +26752,53 @@ mod module_9c940d83 {
                                 } else {
                                     Dice_ui::US58::US58_0(Dice_ui::US59::US59_1)
                                 };
-                                let v3011: Result<Dice_ui::US59, std::string::String> = match &v2999
+                                let v3012: Result<Dice_ui::US59, std::string::String> = match &v3000
                                 {
-                                    Dice_ui::US58::US58_0(v2999_0_0) => {
-                                        Ok::<Dice_ui::US59, std::string::String>(v2999_0_0.clone())
+                                    Dice_ui::US58::US58_0(v3000_0_0) => {
+                                        Ok::<Dice_ui::US59, std::string::String>(v3000_0_0.clone())
                                     }
-                                    Dice_ui::US58::US58_1(v2999_1_0) => {
-                                        Err::<Dice_ui::US59, std::string::String>(v2999_1_0.clone())
+                                    Dice_ui::US58::US58_1(v3000_1_0) => {
+                                        Err::<Dice_ui::US59, std::string::String>(v3000_1_0.clone())
                                     }
                                 };
-                                let v3018: string =
+                                let v3019: string =
                             Dice_ui::method8(200_i64,
                                              append((append(string("dice_view.render (x) / roll_action new_arc_action / result2 / result: "),
                                                             sprintf!("{:?}",
-                                                                     v3011.clone()))),
+                                                                     v3012.clone()))),
                                                     string("")));
-                                let v3020: bool = true;
-                                leptos::logging::log!("{}", v3018);
-                                let v3021: string = string("}");
-                                let v3028: bool = true;
-                                let _fix_closure_v3023 = v3011;
-                                let v3033: string = append(
+                                let v3021: bool = true;
+                                leptos::logging::log!("{}", v3019);
+                                let v3022: string = string("}");
+                                let v3029: bool = true;
+                                let _fix_closure_v3024 = v3012;
+                                let v3034: string = append(
                                     (append(
                                         (append(
-                                            (append(string("true; _fix_closure_v3023 "), (v3021))),
+                                            (append(string("true; _fix_closure_v3024 "), (v3022))),
                                             string("); "),
                                         )),
                                         string(""),
                                     )),
                                     string(" // rust.fix_closure\'"),
                                 );
-                                let v3034: bool = true;
-                                _fix_closure_v3023
+                                let v3035: bool = true;
+                                _fix_closure_v3024
                             },
                         ); // rust.fix_closure';
-                        let v3036 = __future_init;
-                        let v3038: std::pin::Pin<
+                        let v3037 = __future_init;
+                        let v3039: std::pin::Pin<
                             Box<
                                 dyn std::future::Future<
                                     Output = Result<Dice_ui::US59, std::string::String>,
                                 >,
                             >,
-                        > = v3036;
-                        let v3041: bool = true;
-                        v3038 /*;
-                              let v3043: bool = */
+                        > = v3037;
+                        let v3042: bool = true;
+                        v3039 /*;
+                              let v3044: bool = */
                     }); //;
-                    let v3045: Func1<
+                    let v3046: Func1<
                         LrcPtr<Dice_ui::Heap6>,
                         std::pin::Pin<
                             Box<
@@ -26807,19 +26807,19 @@ mod module_9c940d83 {
                                 >,
                             >,
                         >,
-                    > = _func1_from_v2174;
-                    let v3048: leptos::prelude::ArcAction<
+                    > = _func1_from_v2175;
+                    let v3049: leptos::prelude::ArcAction<
                         LrcPtr<Dice_ui::Heap6>,
                         Result<Dice_ui::US59, std::string::String>,
                     > = leptos::prelude::ArcAction::new(move |value: &std::sync::Arc<Heap6>| {
                         Func1::new({
-                            let v3045 = v3045.clone();
+                            let v3046 = v3046.clone();
                             move |v_9: LrcPtr<Dice_ui::Heap6>| {
-                                Dice_ui::closure141(v3045.clone(), v_9)
+                                Dice_ui::closure141(v3046.clone(), v_9)
                             }
                         })(value.clone())
                     });
-                    let v3051: leptos::prelude::ArcMemo<
+                    let v3052: leptos::prelude::ArcMemo<
                         Result<
                             Option<(
                                 std::string::String,
@@ -26883,25 +26883,25 @@ mod module_9c940d83 {
                         >,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v3048 = v3048.clone();
-                            move || Dice_ui::closure142(v3048.clone(), ())
+                            let v3049 = v3049.clone();
+                            move || Dice_ui::closure142(v3049.clone(), ())
                         })()
                     });
-                    let v3054: leptos::prelude::ArcMemo<Option<string>> =
+                    let v3055: leptos::prelude::ArcMemo<Option<string>> =
                         leptos::prelude::ArcMemo::new(move |_| {
                             Func0::new({
-                                let v3051 = v3051.clone();
-                                move || Dice_ui::closure147(v3051.clone(), ())
+                                let v3052 = v3052.clone();
+                                move || Dice_ui::closure147(v3052.clone(), ())
                             })()
                         });
-                    let v3057: leptos::prelude::ArcMemo<Dice_ui::US31> =
+                    let v3058: leptos::prelude::ArcMemo<Dice_ui::US31> =
                         leptos::prelude::ArcMemo::new(move |_| {
                             Func0::new({
-                                let v2124 = v2124.clone();
-                                move || Dice_ui::closure152(v2124.clone(), ())
+                                let v2125 = v2125.clone();
+                                move || Dice_ui::closure152(v2125.clone(), ())
                             })()
                         });
-                    let v3060: leptos::prelude::ArcMemo<
+                    let v3061: leptos::prelude::ArcMemo<
                         Vec<
                             LrcPtr<(
                                 i32,
@@ -26913,55 +26913,55 @@ mod module_9c940d83 {
                         >,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v2124 = v2124.clone();
-                            move || Dice_ui::closure153(v2124.clone(), ())
+                            let v2125 = v2125.clone();
+                            move || Dice_ui::closure153(v2125.clone(), ())
                         })()
                     });
-                    let v3063: leptos::prelude::ArcMemo<
+                    let v3064: leptos::prelude::ArcMemo<
                         Vec<(i32, leptos::prelude::ReadSignal<std::string::String>)>,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v3060 = v3060.clone();
-                            move || Dice_ui::closure158(v3060.clone(), ())
+                            let v3061 = v3061.clone();
+                            move || Dice_ui::closure158(v3061.clone(), ())
                         })()
                     });
-                    let v3064: string = string("vec![]");
-                    let v3065: Vec<leptos::prelude::AnyView> = vec![];
-                    let v3067: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3065);
-                    let v3069: string = string(" class=\"flex flex-col [position:relative]\"");
-                    fn v3071() -> string {
+                    let v3065: string = string("vec![]");
+                    let v3066: Vec<leptos::prelude::AnyView> = vec![];
+                    let v3068: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3066);
+                    let v3070: string = string(" class=\"flex flex-col [position:relative]\"");
+                    fn v3072() -> string {
                         Dice_ui::closure161((), ())
                     }
-                    let v3072 = {
-                        let clo = Func0::from(v3071);
+                    let v3073 = {
+                        let clo = Func0::from(v3072);
                         Func1::new({
                             let clo = clo.clone();
                             move |arg: ()| clo()
                         })
                     };
-                    fn v3074() -> bool {
+                    fn v3075() -> bool {
                         Dice_ui::closure162((), ())
                     }
-                    let v3075 = {
-                        let clo_1 = Func0::from(v3074);
+                    let v3076 = {
+                        let clo_1 = Func0::from(v3075);
                         Func1::new({
                             let clo_1 = clo_1.clone();
                             move |arg_1: ()| clo_1()
                         })
                     };
-                    let v3077: string = string(" class=\"[position:absolute] [right:0] [top:0]\"");
-                    let v3081: string = string("vec![v3067]");
-                    let v3082: Vec<leptos::prelude::AnyView> = vec![v3067];
-                    let v3084: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3082);
-                    let v3086: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3084);
-                    let v3089: string = append(
+                    let v3078: string = string(" class=\"[position:absolute] [right:0] [top:0]\"");
+                    let v3082: string = string("vec![v3068]");
+                    let v3083: Vec<leptos::prelude::AnyView> = vec![v3068];
+                    let v3085: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3083);
+                    let v3087: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3085);
+                    let v3090: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v3077))),
-                                        string(">move || { v3086 }</"),
+                                        (append(string("<div "), (v3078))),
+                                        string(">move || { v3087 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -26970,64 +26970,64 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3091: leptos::prelude::View<
+                    let v3092: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v3086 }</div> };
-                    let v3093: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3091);
-                    let v3094: string =
-                            string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v3072(())");
-                    let v3097: string = append(
+                    > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v3087 }</div> };
+                    let v3094: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3092);
+                    let v3095: string =
+                            string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v3073(())");
+                    let v3098: string = append(
                         (append(
-                            string(" open=move || v3075(())"),
+                            string(" open=move || v3076(())"),
                             (append(
-                                (append((append(string(" "), (v3094))), string(""))),
+                                (append((append(string(" "), (v3095))), string(""))),
                                 string(""),
                             )),
                         )),
                         string(""),
                     );
-                    let v3100 = {
+                    let v3101 = {
                         let clo_2 = Func0::new(move || Dice_ui::closure163((), ()));
                         Func1::new({
                             let clo_2 = clo_2.clone();
                             move |arg_2: ()| clo_2()
                         })
                     };
-                    let v3103 = {
+                    let v3104 = {
                         let clo_3 = Func0::new(move || Dice_ui::closure164((), ()));
                         Func1::new({
                             let clo_3 = clo_3.clone();
                             move |arg_3: ()| clo_3()
                         })
                     };
-                    let v3104: string =
-                            string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v3103(()) + \" \" + &v3100(())");
-                    let v3105: string = append(
-                        (append((append(string(" "), (v3104))), string(""))),
+                    let v3105: string =
+                            string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v3104(()) + \" \" + &v3101(())");
+                    let v3106: string = append(
+                        (append((append(string(" "), (v3105))), string(""))),
                         string(""),
                     );
-                    let v3107: string = string(" class=\"flex items-center gap-2\"");
-                    let v3110: string = string(
+                    let v3108: string = string(" class=\"flex items-center gap-2\"");
+                    let v3111: string = string(
                         " class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\"",
                     );
-                    let v3111: string = (Dice_ui::method187())();
-                    let v3120: &str = &*v3111;
-                    let v3153: std::string::String = String::from(v3120);
-                    let v3179: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                        leptos::prelude::IntoView::into_view(v3153),
+                    let v3112: string = (Dice_ui::method187())();
+                    let v3121: &str = &*v3112;
+                    let v3154: std::string::String = String::from(v3121);
+                    let v3180: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                        leptos::prelude::IntoView::into_view(v3154),
                     );
-                    let v3183: string = string("vec![v3179]");
-                    let v3184: Vec<leptos::prelude::AnyView> = vec![v3179];
-                    let v3186: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3184);
-                    let v3188: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3186);
-                    let v3191: string = append(
+                    let v3184: string = string("vec![v3180]");
+                    let v3185: Vec<leptos::prelude::AnyView> = vec![v3180];
+                    let v3187: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3185);
+                    let v3189: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3187);
+                    let v3192: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<span "), (v3110))),
-                                        string(">move || { v3188 }</"),
+                                        (append(string("<span "), (v3111))),
+                                        string(">move || { v3189 }</"),
                                     )),
                                     string("span"),
                                 )),
@@ -27036,22 +27036,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3193: leptos::prelude::View<
+                    let v3194: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                    > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v3188 }</span> };
-                    let v3195: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3193);
-                    let v3199: string = string("vec![v3195]");
-                    let v3200: Vec<leptos::prelude::AnyView> = vec![v3195];
-                    let v3202: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3200);
-                    let v3204: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3202);
-                    let v3206: string = append(
+                    > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v3189 }</span> };
+                    let v3196: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3194);
+                    let v3200: string = string("vec![v3196]");
+                    let v3201: Vec<leptos::prelude::AnyView> = vec![v3196];
+                    let v3203: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3201);
+                    let v3205: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3203);
+                    let v3207: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v3107))),
-                                        string(">move || { v3204 }</"),
+                                        (append(string("<div "), (v3108))),
+                                        string(">move || { v3205 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -27060,32 +27060,32 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3208: leptos::prelude::View<
+                    let v3209: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v3204 }</div> };
-                    let v3210: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3208);
-                    let v3212: string =
+                    > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v3205 }</div> };
+                    let v3211: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3209);
+                    let v3213: string =
                         string(" class=\"shrink-0 transition duration-300 pt-[2px]\"");
-                    fn v3214() -> string {
+                    fn v3215() -> string {
                         Dice_ui::closure166((), ())
                     }
-                    let v3215 = {
-                        let clo_4 = Func0::from(v3214);
+                    let v3216 = {
+                        let clo_4 = Func0::from(v3215);
                         Func1::new({
                             let clo_4 = clo_4.clone();
                             move |arg_4: ()| clo_4()
                         })
                     };
-                    let v3223: string =
-                            string(" class=move || \" \".to_owned() + &v3215(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
-                    let v3225: string =
+                    let v3224: string =
+                            string(" class=move || \" \".to_owned() + &v3216(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
+                    let v3226: string =
                             string("d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\"");
-                    let v3229: string = append(
+                    let v3230: string = append(
                         (append(
                             string(" clip-rule=\"evenodd\""),
                             (append(
                                 (append(
-                                    (append(string(" "), (v3225))),
+                                    (append(string(" "), (v3226))),
                                     string(" fill-rule=\"evenodd\""),
                                 )),
                                 string(""),
@@ -27093,18 +27093,18 @@ mod module_9c940d83 {
                         )),
                         string(""),
                     );
-                    let v3230: string = string("vec![]");
-                    let v3231: Vec<leptos::prelude::AnyView> = vec![];
-                    let v3233: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3231);
-                    let v3235: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3233);
-                    let v3238: string = append(
+                    let v3231: string = string("vec![]");
+                    let v3232: Vec<leptos::prelude::AnyView> = vec![];
+                    let v3234: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3232);
+                    let v3236: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3234);
+                    let v3239: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<path "), (v3229))),
-                                        string(">move || { v3235 }</"),
+                                        (append(string("<path "), (v3230))),
+                                        string(">move || { v3236 }</"),
                                     )),
                                     string("path"),
                                 )),
@@ -27113,22 +27113,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3240: leptos::prelude::View<
+                    let v3241: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                    > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v3235 }</path> };
-                    let v3242: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3240);
-                    let v3246: string = string("vec![v3242]");
-                    let v3247: Vec<leptos::prelude::AnyView> = vec![v3242];
-                    let v3249: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3247);
-                    let v3251: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3249);
-                    let v3254: string = append(
+                    > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v3236 }</path> };
+                    let v3243: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3241);
+                    let v3247: string = string("vec![v3243]");
+                    let v3248: Vec<leptos::prelude::AnyView> = vec![v3243];
+                    let v3250: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3248);
+                    let v3252: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3250);
+                    let v3255: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<svg "), (v3223))),
-                                        string(">move || { v3251 }</"),
+                                        (append(string("<svg "), (v3224))),
+                                        string(">move || { v3252 }</"),
                                     )),
                                     string("svg"),
                                 )),
@@ -27137,22 +27137,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3256: leptos::prelude::View<
+                    let v3257: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v3215(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v3251 }</svg> };
-                    let v3258: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3256);
-                    let v3262: string = string("vec![v3258]");
-                    let v3263: Vec<leptos::prelude::AnyView> = vec![v3258];
-                    let v3265: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3263);
-                    let v3267: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3265);
-                    let v3269: string = append(
+                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v3216(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v3252 }</svg> };
+                    let v3259: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3257);
+                    let v3263: string = string("vec![v3259]");
+                    let v3264: Vec<leptos::prelude::AnyView> = vec![v3259];
+                    let v3266: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3264);
+                    let v3268: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3266);
+                    let v3270: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<span "), (v3212))),
-                                        string(">move || { v3267 }</"),
+                                        (append(string("<span "), (v3213))),
+                                        string(">move || { v3268 }</"),
                                     )),
                                     string("span"),
                                 )),
@@ -27161,22 +27161,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3271: leptos::prelude::View<
+                    let v3272: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                    > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v3267 }</span> };
-                    let v3273: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3271);
-                    let v3281: string = string("vec![v3210, v3273]");
-                    let v3282: Vec<leptos::prelude::AnyView> = vec![v3210, v3273];
-                    let v3284: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3282);
-                    let v3286: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3284);
-                    let v3289: string = append(
+                    > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v3268 }</span> };
+                    let v3274: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3272);
+                    let v3282: string = string("vec![v3211, v3274]");
+                    let v3283: Vec<leptos::prelude::AnyView> = vec![v3211, v3274];
+                    let v3285: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3283);
+                    let v3287: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3285);
+                    let v3290: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<summary "), (v3105))),
-                                        string(">move || { v3286 }</"),
+                                        (append(string("<summary "), (v3106))),
+                                        string(">move || { v3287 }</"),
                                     )),
                                     string("summary"),
                                 )),
@@ -27185,41 +27185,41 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3291: leptos::prelude::View<
+                    let v3292: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Summary, _, _>,
-                    > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v3103(()) + " " + &v3100(())>move || { v3286 }</summary> };
-                    let v3293: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3291);
-                    let v3295: string = string(" class=\"flex flex-1 flex-col\"");
-                    let v3299: Func0<leptos::prelude::Fragment> =
+                    > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v3104(()) + " " + &v3101(())>move || { v3287 }</summary> };
+                    let v3294: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3292);
+                    let v3296: string = string(" class=\"flex flex-1 flex-col\"");
+                    let v3300: Func0<leptos::prelude::Fragment> =
                         Dice_ui::method195(Func0::new(move || {
                             Func0::new({
-                                let v2124 = v2124.clone();
-                                let v3048 = v3048.clone();
-                                let v3054 = v3054.clone();
-                                let v3057 = v3057.clone();
-                                let v3063 = v3063.clone();
+                                let v2125 = v2125.clone();
+                                let v3049 = v3049.clone();
+                                let v3055 = v3055.clone();
+                                let v3058 = v3058.clone();
+                                let v3064 = v3064.clone();
                                 move || {
                                     Dice_ui::closure167(
-                                        v2124.clone(),
-                                        v3048.clone(),
-                                        v3054.clone(),
-                                        v3057.clone(),
-                                        v3063.clone(),
+                                        v2125.clone(),
+                                        v3049.clone(),
+                                        v3055.clone(),
+                                        v3058.clone(),
+                                        v3064.clone(),
                                         (),
                                     )
                                 }
                             })()
                         }));
-                    let v3301: leptos::prelude::Fragment = (move || v3299())();
-                    let v3303: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3301);
-                    let v3305: string = append(
+                    let v3302: leptos::prelude::Fragment = (move || v3300())();
+                    let v3304: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3302);
+                    let v3306: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v3295))),
-                                        string(">move || { v3303 }</"),
+                                        (append(string("<div "), (v3296))),
+                                        string(">move || { v3304 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -27228,22 +27228,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3307: leptos::prelude::View<
+                    let v3308: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v3303 }</div> };
-                    let v3309: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3307);
-                    let v3316: string = string("vec![v3293, v3309]");
-                    let v3317: Vec<leptos::prelude::AnyView> = vec![v3293, v3309];
-                    let v3319: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3317);
-                    let v3321: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3319);
-                    let v3324: string = append(
+                    > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v3304 }</div> };
+                    let v3310: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3308);
+                    let v3317: string = string("vec![v3294, v3310]");
+                    let v3318: Vec<leptos::prelude::AnyView> = vec![v3294, v3310];
+                    let v3320: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3318);
+                    let v3322: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3320);
+                    let v3325: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<details "), (v3097))),
-                                        string(">move || { v3321 }</"),
+                                        (append(string("<details "), (v3098))),
+                                        string(">move || { v3322 }</"),
                                     )),
                                     string("details"),
                                 )),
@@ -27252,22 +27252,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3326: leptos::prelude::View<
+                    let v3327: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Details, _, _>,
-                    > = leptos::prelude::view! { <details  open=move || v3075(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v3072(())>move || { v3321 }</details> };
-                    let v3328: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3326);
-                    let v3335: string = string("vec![v3093, v3328]");
-                    let v3336: Vec<leptos::prelude::AnyView> = vec![v3093, v3328];
-                    let v3338: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3336);
-                    let v3340: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3338);
-                    let v3342: string = append(
+                    > = leptos::prelude::view! { <details  open=move || v3076(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v3073(())>move || { v3322 }</details> };
+                    let v3329: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3327);
+                    let v3336: string = string("vec![v3094, v3329]");
+                    let v3337: Vec<leptos::prelude::AnyView> = vec![v3094, v3329];
+                    let v3339: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3337);
+                    let v3341: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3339);
+                    let v3343: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v3069))),
-                                        string(">move || { v3340 }</"),
+                                        (append(string("<div "), (v3070))),
+                                        string(">move || { v3341 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -27276,41 +27276,41 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3344: leptos::prelude::View<
+                    let v3345: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v3340 }</div> };
-                    let v3346: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3344);
-                    let v3347: string = string("vec![]");
-                    let v3348: Vec<leptos::prelude::AnyView> = vec![];
-                    let v3350: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3348);
-                    let v3352: string = string(" class=\"flex flex-col [position:relative]\"");
-                    let v3354 = {
-                        let clo_5 = Func0::from(v3071);
+                    > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v3341 }</div> };
+                    let v3347: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3345);
+                    let v3348: string = string("vec![]");
+                    let v3349: Vec<leptos::prelude::AnyView> = vec![];
+                    let v3351: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3349);
+                    let v3353: string = string(" class=\"flex flex-col [position:relative]\"");
+                    let v3355 = {
+                        let clo_5 = Func0::from(v3072);
                         Func1::new({
                             let clo_5 = clo_5.clone();
                             move |arg_5: ()| clo_5()
                         })
                     };
-                    let v3356 = {
-                        let clo_6 = Func0::from(v3074);
+                    let v3357 = {
+                        let clo_6 = Func0::from(v3075);
                         Func1::new({
                             let clo_6 = clo_6.clone();
                             move |arg_6: ()| clo_6()
                         })
                     };
-                    let v3358: string = string(" class=\"[position:absolute] [right:0] [top:0]\"");
-                    let v3362: string = string("vec![v3350]");
-                    let v3363: Vec<leptos::prelude::AnyView> = vec![v3350];
-                    let v3365: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3363);
-                    let v3367: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3365);
-                    let v3369: string = append(
+                    let v3359: string = string(" class=\"[position:absolute] [right:0] [top:0]\"");
+                    let v3363: string = string("vec![v3351]");
+                    let v3364: Vec<leptos::prelude::AnyView> = vec![v3351];
+                    let v3366: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3364);
+                    let v3368: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3366);
+                    let v3370: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v3358))),
-                                        string(">move || { v3367 }</"),
+                                        (append(string("<div "), (v3359))),
+                                        string(">move || { v3368 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -27319,64 +27319,64 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3371: leptos::prelude::View<
+                    let v3372: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v3367 }</div> };
-                    let v3373: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3371);
-                    let v3374: string =
-                            string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v3354(())");
-                    let v3377: string = append(
+                    > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v3368 }</div> };
+                    let v3374: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3372);
+                    let v3375: string =
+                            string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v3355(())");
+                    let v3378: string = append(
                         (append(
-                            string(" open=move || v3356(())"),
+                            string(" open=move || v3357(())"),
                             (append(
-                                (append((append(string(" "), (v3374))), string(""))),
+                                (append((append(string(" "), (v3375))), string(""))),
                                 string(""),
                             )),
                         )),
                         string(""),
                     );
-                    let v3380 = {
+                    let v3381 = {
                         let clo_7 = Func0::new(move || Dice_ui::closure183((), ()));
                         Func1::new({
                             let clo_7 = clo_7.clone();
                             move |arg_7: ()| clo_7()
                         })
                     };
-                    let v3383 = {
+                    let v3384 = {
                         let clo_8 = Func0::new(move || Dice_ui::closure184((), ()));
                         Func1::new({
                             let clo_8 = clo_8.clone();
                             move |arg_8: ()| clo_8()
                         })
                     };
-                    let v3384: string =
-                            string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v3383(()) + \" \" + &v3380(())");
-                    let v3385: string = append(
-                        (append((append(string(" "), (v3384))), string(""))),
+                    let v3385: string =
+                            string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v3384(()) + \" \" + &v3381(())");
+                    let v3386: string = append(
+                        (append((append(string(" "), (v3385))), string(""))),
                         string(""),
                     );
-                    let v3387: string = string(" class=\"flex items-center gap-2\"");
-                    let v3390: string = string(
+                    let v3388: string = string(" class=\"flex items-center gap-2\"");
+                    let v3391: string = string(
                         " class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\"",
                     );
-                    let v3391: string = (Dice_ui::method198())();
-                    let v3400: &str = &*v3391;
-                    let v3433: std::string::String = String::from(v3400);
-                    let v3459: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                        leptos::prelude::IntoView::into_view(v3433),
+                    let v3392: string = (Dice_ui::method198())();
+                    let v3401: &str = &*v3392;
+                    let v3434: std::string::String = String::from(v3401);
+                    let v3460: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                        leptos::prelude::IntoView::into_view(v3434),
                     );
-                    let v3463: string = string("vec![v3459]");
-                    let v3464: Vec<leptos::prelude::AnyView> = vec![v3459];
-                    let v3466: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3464);
-                    let v3468: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3466);
-                    let v3470: string = append(
+                    let v3464: string = string("vec![v3460]");
+                    let v3465: Vec<leptos::prelude::AnyView> = vec![v3460];
+                    let v3467: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3465);
+                    let v3469: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3467);
+                    let v3471: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<span "), (v3390))),
-                                        string(">move || { v3468 }</"),
+                                        (append(string("<span "), (v3391))),
+                                        string(">move || { v3469 }</"),
                                     )),
                                     string("span"),
                                 )),
@@ -27385,22 +27385,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3472: leptos::prelude::View<
+                    let v3473: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                    > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v3468 }</span> };
-                    let v3474: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3472);
-                    let v3478: string = string("vec![v3474]");
-                    let v3479: Vec<leptos::prelude::AnyView> = vec![v3474];
-                    let v3481: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3479);
-                    let v3483: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3481);
-                    let v3485: string = append(
+                    > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v3469 }</span> };
+                    let v3475: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3473);
+                    let v3479: string = string("vec![v3475]");
+                    let v3480: Vec<leptos::prelude::AnyView> = vec![v3475];
+                    let v3482: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3480);
+                    let v3484: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3482);
+                    let v3486: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v3387))),
-                                        string(">move || { v3483 }</"),
+                                        (append(string("<div "), (v3388))),
+                                        string(">move || { v3484 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -27409,29 +27409,29 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3487: leptos::prelude::View<
+                    let v3488: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v3483 }</div> };
-                    let v3489: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3487);
-                    let v3491: string =
+                    > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v3484 }</div> };
+                    let v3490: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3488);
+                    let v3492: string =
                         string(" class=\"shrink-0 transition duration-300 pt-[2px]\"");
-                    let v3493 = {
-                        let clo_9 = Func0::from(v3214);
+                    let v3494 = {
+                        let clo_9 = Func0::from(v3215);
                         Func1::new({
                             let clo_9 = clo_9.clone();
                             move |arg_9: ()| clo_9()
                         })
                     };
-                    let v3501: string =
-                            string(" class=move || \" \".to_owned() + &v3493(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
-                    let v3503: string =
+                    let v3502: string =
+                            string(" class=move || \" \".to_owned() + &v3494(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
+                    let v3504: string =
                             string("d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\"");
-                    let v3507: string = append(
+                    let v3508: string = append(
                         (append(
                             string(" clip-rule=\"evenodd\""),
                             (append(
                                 (append(
-                                    (append(string(" "), (v3503))),
+                                    (append(string(" "), (v3504))),
                                     string(" fill-rule=\"evenodd\""),
                                 )),
                                 string(""),
@@ -27439,18 +27439,18 @@ mod module_9c940d83 {
                         )),
                         string(""),
                     );
-                    let v3508: string = string("vec![]");
-                    let v3509: Vec<leptos::prelude::AnyView> = vec![];
-                    let v3511: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3509);
-                    let v3513: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3511);
-                    let v3515: string = append(
+                    let v3509: string = string("vec![]");
+                    let v3510: Vec<leptos::prelude::AnyView> = vec![];
+                    let v3512: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3510);
+                    let v3514: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3512);
+                    let v3516: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<path "), (v3507))),
-                                        string(">move || { v3513 }</"),
+                                        (append(string("<path "), (v3508))),
+                                        string(">move || { v3514 }</"),
                                     )),
                                     string("path"),
                                 )),
@@ -27459,22 +27459,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3517: leptos::prelude::View<
+                    let v3518: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                    > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v3513 }</path> };
-                    let v3519: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3517);
-                    let v3523: string = string("vec![v3519]");
-                    let v3524: Vec<leptos::prelude::AnyView> = vec![v3519];
-                    let v3526: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3524);
-                    let v3528: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3526);
-                    let v3530: string = append(
+                    > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v3514 }</path> };
+                    let v3520: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3518);
+                    let v3524: string = string("vec![v3520]");
+                    let v3525: Vec<leptos::prelude::AnyView> = vec![v3520];
+                    let v3527: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3525);
+                    let v3529: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3527);
+                    let v3531: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<svg "), (v3501))),
-                                        string(">move || { v3528 }</"),
+                                        (append(string("<svg "), (v3502))),
+                                        string(">move || { v3529 }</"),
                                     )),
                                     string("svg"),
                                 )),
@@ -27483,22 +27483,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3532: leptos::prelude::View<
+                    let v3533: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v3493(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v3528 }</svg> };
-                    let v3534: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3532);
-                    let v3538: string = string("vec![v3534]");
-                    let v3539: Vec<leptos::prelude::AnyView> = vec![v3534];
-                    let v3541: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3539);
-                    let v3543: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3541);
-                    let v3545: string = append(
+                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v3494(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v3529 }</svg> };
+                    let v3535: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3533);
+                    let v3539: string = string("vec![v3535]");
+                    let v3540: Vec<leptos::prelude::AnyView> = vec![v3535];
+                    let v3542: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3540);
+                    let v3544: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3542);
+                    let v3546: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<span "), (v3491))),
-                                        string(">move || { v3543 }</"),
+                                        (append(string("<span "), (v3492))),
+                                        string(">move || { v3544 }</"),
                                     )),
                                     string("span"),
                                 )),
@@ -27507,22 +27507,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3547: leptos::prelude::View<
+                    let v3548: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                    > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v3543 }</span> };
-                    let v3549: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3547);
-                    let v3556: string = string("vec![v3489, v3549]");
-                    let v3557: Vec<leptos::prelude::AnyView> = vec![v3489, v3549];
-                    let v3559: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3557);
-                    let v3561: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3559);
-                    let v3563: string = append(
+                    > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v3544 }</span> };
+                    let v3550: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3548);
+                    let v3557: string = string("vec![v3490, v3550]");
+                    let v3558: Vec<leptos::prelude::AnyView> = vec![v3490, v3550];
+                    let v3560: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3558);
+                    let v3562: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3560);
+                    let v3564: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<summary "), (v3385))),
-                                        string(">move || { v3561 }</"),
+                                        (append(string("<summary "), (v3386))),
+                                        string(">move || { v3562 }</"),
                                     )),
                                     string("summary"),
                                 )),
@@ -27531,37 +27531,37 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3565: leptos::prelude::View<
+                    let v3566: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Summary, _, _>,
-                    > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v3383(()) + " " + &v3380(())>move || { v3561 }</summary> };
-                    let v3567: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3565);
-                    let v3569: string = string(" class=\"flex flex-1 flex-col\"");
-                    let v3573: Func0<leptos::prelude::Fragment> =
+                    > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v3384(()) + " " + &v3381(())>move || { v3562 }</summary> };
+                    let v3568: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3566);
+                    let v3570: string = string(" class=\"flex flex-1 flex-col\"");
+                    let v3574: Func0<leptos::prelude::Fragment> =
                         Dice_ui::method195(Func0::new(move || {
                             Func0::new({
-                                let v2136 = v2136.clone();
-                                let v2156 = v2156.clone();
-                                let v2164 = v2164.clone();
+                                let v2137 = v2137.clone();
+                                let v2157 = v2157.clone();
+                                let v2165 = v2165.clone();
                                 move || {
                                     Dice_ui::closure186(
-                                        v2164.clone(),
-                                        v2156.clone(),
-                                        v2136.clone(),
+                                        v2165.clone(),
+                                        v2157.clone(),
+                                        v2137.clone(),
                                         (),
                                     )
                                 }
                             })()
                         }));
-                    let v3575: leptos::prelude::Fragment = (move || v3573())();
-                    let v3577: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3575);
-                    let v3579: string = append(
+                    let v3576: leptos::prelude::Fragment = (move || v3574())();
+                    let v3578: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3576);
+                    let v3580: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v3569))),
-                                        string(">move || { v3577 }</"),
+                                        (append(string("<div "), (v3570))),
+                                        string(">move || { v3578 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -27570,22 +27570,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3581: leptos::prelude::View<
+                    let v3582: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v3577 }</div> };
-                    let v3583: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3581);
-                    let v3590: string = string("vec![v3567, v3583]");
-                    let v3591: Vec<leptos::prelude::AnyView> = vec![v3567, v3583];
-                    let v3593: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3591);
-                    let v3595: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3593);
-                    let v3597: string = append(
+                    > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v3578 }</div> };
+                    let v3584: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3582);
+                    let v3591: string = string("vec![v3568, v3584]");
+                    let v3592: Vec<leptos::prelude::AnyView> = vec![v3568, v3584];
+                    let v3594: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3592);
+                    let v3596: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3594);
+                    let v3598: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<details "), (v3377))),
-                                        string(">move || { v3595 }</"),
+                                        (append(string("<details "), (v3378))),
+                                        string(">move || { v3596 }</"),
                                     )),
                                     string("details"),
                                 )),
@@ -27594,22 +27594,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3599: leptos::prelude::View<
+                    let v3600: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Details, _, _>,
-                    > = leptos::prelude::view! { <details  open=move || v3356(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v3354(())>move || { v3595 }</details> };
-                    let v3601: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3599);
-                    let v3608: string = string("vec![v3373, v3601]");
-                    let v3609: Vec<leptos::prelude::AnyView> = vec![v3373, v3601];
-                    let v3611: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3609);
-                    let v3613: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3611);
-                    let v3615: string = append(
+                    > = leptos::prelude::view! { <details  open=move || v3357(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v3355(())>move || { v3596 }</details> };
+                    let v3602: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3600);
+                    let v3609: string = string("vec![v3374, v3602]");
+                    let v3610: Vec<leptos::prelude::AnyView> = vec![v3374, v3602];
+                    let v3612: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v3610);
+                    let v3614: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3612);
+                    let v3616: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v3352))),
-                                        string(">move || { v3613 }</"),
+                                        (append(string("<div "), (v3353))),
+                                        string(">move || { v3614 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -27618,36 +27618,36 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v3617: leptos::prelude::View<
+                    let v3618: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v3613 }</div> };
-                    let v3619: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3617);
-                    let v3626: string = string("vec![v3346, v3619]");
-                    let v3627: Vec<leptos::prelude::AnyView> = vec![v3346, v3619];
-                    Dice_ui::US22::US22_0(leptos::prelude::Fragment::new(v3627))
+                    > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v3614 }</div> };
+                    let v3620: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v3618);
+                    let v3627: string = string("vec![v3347, v3620]");
+                    let v3628: Vec<leptos::prelude::AnyView> = vec![v3347, v3620];
+                    Dice_ui::US22::US22_0(leptos::prelude::Fragment::new(v3628))
                 }
                 Dice_ui::US18::US18_2 => {
-                    let v3633: bool = true;
+                    let v3634: bool = true;
                     leptos::logging::log!("{}", string("lists_view.render ()"));
-                    let v3635: Option<LrcPtr<Dice_ui::Heap2>> =
+                    let v3636: Option<LrcPtr<Dice_ui::Heap2>> =
                         leptos::context::use_context::<std::sync::Arc<Heap2>>();
-                    let v3637: LrcPtr<Dice_ui::Heap2> = v3635.unwrap();
-                    let v3647: &str = &*string("???");
-                    let v3680: std::string::String = String::from(v3647);
-                    let v3706: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                        leptos::prelude::IntoView::into_view(v3680),
+                    let v3638: LrcPtr<Dice_ui::Heap2> = v3636.unwrap();
+                    let v3648: &str = &*string("???");
+                    let v3681: std::string::String = String::from(v3648);
+                    let v3707: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                        leptos::prelude::IntoView::into_view(v3681),
                     );
-                    let v3710: string = string("vec![v3706]");
-                    let v3711: Vec<leptos::prelude::AnyView> = vec![v3706];
-                    Dice_ui::US22::US22_0(leptos::prelude::Fragment::new(v3711))
+                    let v3711: string = string("vec![v3707]");
+                    let v3712: Vec<leptos::prelude::AnyView> = vec![v3707];
+                    Dice_ui::US22::US22_0(leptos::prelude::Fragment::new(v3712))
                 }
                 Dice_ui::US18::US18_4 => {
-                    let v4452: bool = true;
+                    let v4453: bool = true;
                     leptos::logging::log!("{}", string("settings_view.render ()"));
-                    let v4454: Option<LrcPtr<Dice_ui::Heap2>> =
+                    let v4455: Option<LrcPtr<Dice_ui::Heap2>> =
                         leptos::context::use_context::<std::sync::Arc<Heap2>>();
-                    let v4456: LrcPtr<Dice_ui::Heap2> = v4454.unwrap();
-                    let v4459: leptos::prelude::ArcMemo<
+                    let v4457: LrcPtr<Dice_ui::Heap2> = v4455.unwrap();
+                    let v4460: leptos::prelude::ArcMemo<
                         Vec<
                             LrcPtr<(
                                 i32,
@@ -27663,16 +27663,16 @@ mod module_9c940d83 {
                         >,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v4456 = v4456.clone();
-                            move || Dice_ui::closure192(v4456.clone(), ())
+                            let v4457 = v4457.clone();
+                            move || Dice_ui::closure192(v4457.clone(), ())
                         })()
                     });
                     let patternInput_3: (
                         leptos::prelude::ReadSignal<i32>,
                         leptos::prelude::WriteSignal<i32>,
                     ) = leptos::prelude::signal(0_i32);
-                    let v4462: leptos::prelude::WriteSignal<i32> = patternInput_3.1.clone();
-                    let v4465: leptos::prelude::ArcMemo<
+                    let v4463: leptos::prelude::WriteSignal<i32> = patternInput_3.1.clone();
+                    let v4466: leptos::prelude::ArcMemo<
                         Vec<(
                             i32,
                             i32,
@@ -27681,83 +27681,83 @@ mod module_9c940d83 {
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
                             let patternInput_3 = patternInput_3.clone();
-                            let v4459 = v4459.clone();
-                            move || Dice_ui::closure195(v4459.clone(), patternInput_3.0.clone(), ())
+                            let v4460 = v4460.clone();
+                            move || Dice_ui::closure195(v4460.clone(), patternInput_3.0.clone(), ())
                         })()
                     });
-                    let v4468: leptos::prelude::ArcMemo<i32> =
+                    let v4469: leptos::prelude::ArcMemo<i32> =
                         leptos::prelude::ArcMemo::new(move |_| {
                             Func0::new({
-                                let v4465 = v4465.clone();
-                                move || Dice_ui::closure198(v4465.clone(), ())
+                                let v4466 = v4466.clone();
+                                move || Dice_ui::closure198(v4466.clone(), ())
                             })()
                         });
-                    let v4471: bool = true;
-                    let _func0_from_v4469 = Func0::from(move || {
+                    let v4472: bool = true;
+                    let _func0_from_v4470 = Func0::from(move || {
                         //;
-                        let v4474: std::pin::Pin<
+                        let v4475: std::pin::Pin<
                             Box<leptos::prelude::ArcRwSignal<LrcPtr<Dice_ui::Heap1>>>,
-                        > = Box::pin(v4456.l0.clone());
-                        let v4476: LrcPtr<Dice_ui::Heap1> =
-                            leptos::prelude::ArcRwSignal::get_untracked(&v4474);
-                        let v4479: bool = true;
+                        > = Box::pin(v4457.l0.clone());
+                        let v4477: LrcPtr<Dice_ui::Heap1> =
+                            leptos::prelude::ArcRwSignal::get_untracked(&v4475);
+                        let v4480: bool = true;
                         leptos::prelude::ArcRwSignal::update(
-                            &v4476.l3.clone(),
+                            &v4477.l3.clone(),
                             |x: &mut /*;
-                             let v4481: */
+                             let v4482: */
                              LrcPtr<Dice_ui::Heap0> /* =
                                                         fable_library_rust::Native_::getZero::<()>();
-                                                    let v4486: bool =
+                                                    let v4487: bool =
                                                         */| {
                                 *x = Func1::new({
-                                    let v4459 = v4459.clone();
+                                    let v4460 = v4460.clone();
                                     move |v_10: LrcPtr<Dice_ui::Heap0>| {
-                                        Dice_ui::closure199(v4459.clone(), v_10)
+                                        Dice_ui::closure199(v4460.clone(), v_10)
                                     }
                                 })(x.clone())
                             },
                         ); //;
-                        let v4488: bool = true;
+                        let v4489: bool = true;
                         leptos::prelude::WriteSignal::update(
-                            &v4462.clone(),
+                            &v4463.clone(),
                             |x: &mut /*;
-                             let v4490: */
+                             let v4491: */
                              i32 /* = fable_library_rust::Native_::getZero();
-                                 let v4495: bool =
+                                 let v4496: bool =
                                      */| {
                                 *x = Func1::new(move |v_11: i32| Dice_ui::closure201((), v_11))(
                                     x.clone(),
                                 )
                             },
                         ); //;
-                        let v4497: bool = true; /*;
-                                                let v4499: bool = */
+                        let v4498: bool = true; /*;
+                                                let v4500: bool = */
                     }); //;
-                    let v4501: Func0<()> = _func0_from_v4469;
-                    let v4504 = {
+                    let v4502: Func0<()> = _func0_from_v4470;
+                    let v4505 = {
                         let clo_10 = Func0::new(move || Dice_ui::closure202((), ()));
                         Func1::new({
                             let clo_10 = clo_10.clone();
                             move |arg_10: ()| clo_10()
                         })
                     };
-                    let v4516: string =
-                            string(" class=move || \" \".to_owned() + &v4504(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
-                    let v4522: string = string(
+                    let v4517: string =
+                            string(" class=move || \" \".to_owned() + &v4505(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
+                    let v4523: string = string(
                         " d=\"M12 6v12m6-6H6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"",
                     );
-                    let v4523: string = string("vec![]");
-                    let v4524: Vec<leptos::prelude::AnyView> = vec![];
-                    let v4526: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4524);
-                    let v4528: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4526);
-                    let v4531: string = append(
+                    let v4524: string = string("vec![]");
+                    let v4525: Vec<leptos::prelude::AnyView> = vec![];
+                    let v4527: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4525);
+                    let v4529: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4527);
+                    let v4532: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<path "), (v4522))),
-                                        string(">move || { v4528 }</"),
+                                        (append(string("<path "), (v4523))),
+                                        string(">move || { v4529 }</"),
                                     )),
                                     string("path"),
                                 )),
@@ -27766,22 +27766,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4533: leptos::prelude::View<
+                    let v4534: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                    > = leptos::prelude::view! { <path  d="M12 6v12m6-6H6" stroke-linejoin="round" stroke-linecap="round">move || { v4528 }</path> };
-                    let v4535: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4533);
-                    let v4539: string = string("vec![v4535]");
-                    let v4540: Vec<leptos::prelude::AnyView> = vec![v4535];
-                    let v4542: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4540);
-                    let v4544: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4542);
-                    let v4547: string = append(
+                    > = leptos::prelude::view! { <path  d="M12 6v12m6-6H6" stroke-linejoin="round" stroke-linecap="round">move || { v4529 }</path> };
+                    let v4536: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4534);
+                    let v4540: string = string("vec![v4536]");
+                    let v4541: Vec<leptos::prelude::AnyView> = vec![v4536];
+                    let v4543: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4541);
+                    let v4545: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4543);
+                    let v4548: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<svg "), (v4516))),
-                                        string(">move || { v4544 }</"),
+                                        (append(string("<svg "), (v4517))),
+                                        string(">move || { v4545 }</"),
                                     )),
                                     string("svg"),
                                 )),
@@ -27790,26 +27790,26 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4549: leptos::prelude::View<
+                    let v4550: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v4504(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v4544 }</svg> };
-                    let v4554 = {
+                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v4505(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v4545 }</svg> };
+                    let v4555 = {
                         let clo_11 = Func0::new(move || Dice_ui::closure203((), ()));
                         Func1::new({
                             let clo_11 = clo_11.clone();
                             move |arg_11: ()| clo_11()
                         })
                     };
-                    let v4555: string =
-                            string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] \".to_owned() + &v4554(())");
-                    let v4558: string = append(
+                    let v4556: string =
+                            string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] \".to_owned() + &v4555(())");
+                    let v4559: string = append(
                         (append(
                             string(" aria-label=\"Add\""),
                             (append(
                                 (append(
-                                    string(" on:click=move |_| v4501()"),
+                                    string(" on:click=move |_| v4502()"),
                                     (append(
-                                        (append((append(string(" "), (v4555))), string(""))),
+                                        (append((append(string(" "), (v4556))), string(""))),
                                         string(""),
                                     )),
                                 )),
@@ -27818,19 +27818,19 @@ mod module_9c940d83 {
                         )),
                         string(""),
                     );
-                    let v4560: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4549);
-                    let v4564: string = string("vec![v4560]");
-                    let v4565: Vec<leptos::prelude::AnyView> = vec![v4560];
-                    let v4567: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4565);
-                    let v4569: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4567);
-                    let v4572: string = append(
+                    let v4561: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4550);
+                    let v4565: string = string("vec![v4561]");
+                    let v4566: Vec<leptos::prelude::AnyView> = vec![v4561];
+                    let v4568: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4566);
+                    let v4570: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4568);
+                    let v4573: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<button "), (v4558))),
-                                        string(">move || { v4569 }</"),
+                                        (append(string("<button "), (v4559))),
+                                        string(">move || { v4570 }</"),
                                     )),
                                     string("button"),
                                 )),
@@ -27839,47 +27839,47 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4574: leptos::prelude::View<
+                    let v4575: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Button, _, _>,
-                    > = leptos::prelude::view! { <button  aria-label="Add" on:click=move |_| v4501() class=move || "inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] ".to_owned() + &v4554(())>move || { v4569 }</button> };
-                    let v4576: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4574);
-                    let v4577: string = string("vec![]");
-                    let v4578: Vec<leptos::prelude::AnyView> = vec![];
-                    let v4580: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4578);
-                    let v4582: string = string(" class=\"flex flex-col [position:relative]\"");
-                    fn v4584() -> string {
+                    > = leptos::prelude::view! { <button  aria-label="Add" on:click=move |_| v4502() class=move || "inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] ".to_owned() + &v4555(())>move || { v4570 }</button> };
+                    let v4577: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4575);
+                    let v4578: string = string("vec![]");
+                    let v4579: Vec<leptos::prelude::AnyView> = vec![];
+                    let v4581: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4579);
+                    let v4583: string = string(" class=\"flex flex-col [position:relative]\"");
+                    fn v4585() -> string {
                         Dice_ui::closure161((), ())
                     }
-                    let v4585 = {
-                        let clo_12 = Func0::from(v4584);
+                    let v4586 = {
+                        let clo_12 = Func0::from(v4585);
                         Func1::new({
                             let clo_12 = clo_12.clone();
                             move |arg_12: ()| clo_12()
                         })
                     };
-                    fn v4587() -> bool {
+                    fn v4588() -> bool {
                         Dice_ui::closure162((), ())
                     }
-                    let v4588 = {
-                        let clo_13 = Func0::from(v4587);
+                    let v4589 = {
+                        let clo_13 = Func0::from(v4588);
                         Func1::new({
                             let clo_13 = clo_13.clone();
                             move |arg_13: ()| clo_13()
                         })
                     };
-                    let v4590: string = string(" class=\"[position:absolute] [right:0] [top:0]\"");
-                    let v4594: string = string("vec![v4576]");
-                    let v4595: Vec<leptos::prelude::AnyView> = vec![v4576];
-                    let v4597: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4595);
-                    let v4599: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4597);
-                    let v4602: string = append(
+                    let v4591: string = string(" class=\"[position:absolute] [right:0] [top:0]\"");
+                    let v4595: string = string("vec![v4577]");
+                    let v4596: Vec<leptos::prelude::AnyView> = vec![v4577];
+                    let v4598: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4596);
+                    let v4600: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4598);
+                    let v4603: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v4590))),
-                                        string(">move || { v4599 }</"),
+                                        (append(string("<div "), (v4591))),
+                                        string(">move || { v4600 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -27888,67 +27888,67 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4604: leptos::prelude::View<
+                    let v4605: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v4599 }</div> };
-                    let v4606: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4604);
-                    let v4607: string =
-                            string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v4585(())");
-                    let v4610: string = append(
+                    > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v4600 }</div> };
+                    let v4607: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4605);
+                    let v4608: string =
+                            string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v4586(())");
+                    let v4611: string = append(
                         (append(
-                            string(" open=move || v4588(())"),
+                            string(" open=move || v4589(())"),
                             (append(
-                                (append((append(string(" "), (v4607))), string(""))),
+                                (append((append(string(" "), (v4608))), string(""))),
                                 string(""),
                             )),
                         )),
                         string(""),
                     );
-                    let v4613 = {
+                    let v4614 = {
                         let clo_14 = Func0::new(move || Dice_ui::closure204((), ()));
                         Func1::new({
                             let clo_14 = clo_14.clone();
                             move |arg_14: ()| clo_14()
                         })
                     };
-                    let v4616 = {
+                    let v4617 = {
                         let clo_15 = Func0::new({
-                            let v4576 = v4576.clone();
-                            move || Dice_ui::closure205(v4576.clone(), ())
+                            let v4577 = v4577.clone();
+                            move || Dice_ui::closure205(v4577.clone(), ())
                         });
                         Func1::new({
                             let clo_15 = clo_15.clone();
                             move |arg_15: ()| clo_15()
                         })
                     };
-                    let v4617: string =
-                            string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v4616(()) + \" \" + &v4613(())");
-                    let v4618: string = append(
-                        (append((append(string(" "), (v4617))), string(""))),
+                    let v4618: string =
+                            string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v4617(()) + \" \" + &v4614(())");
+                    let v4619: string = append(
+                        (append((append(string(" "), (v4618))), string(""))),
                         string(""),
                     );
-                    let v4620: string = string(" class=\"flex items-center gap-2\"");
-                    let v4623: string = string(
+                    let v4621: string = string(" class=\"flex items-center gap-2\"");
+                    let v4624: string = string(
                         " class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\"",
                     );
-                    let v4624: string = (Dice_ui::method214(v4576.clone()))();
-                    let v4633: &str = &*v4624;
-                    let v4666: std::string::String = String::from(v4633);
-                    let v4692: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                        leptos::prelude::IntoView::into_view(v4666),
+                    let v4625: string = (Dice_ui::method214(v4577.clone()))();
+                    let v4634: &str = &*v4625;
+                    let v4667: std::string::String = String::from(v4634);
+                    let v4693: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                        leptos::prelude::IntoView::into_view(v4667),
                     );
-                    let v4696: string = string("vec![v4692]");
-                    let v4697: Vec<leptos::prelude::AnyView> = vec![v4692];
-                    let v4699: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4697);
-                    let v4701: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4699);
-                    let v4704: string = append(
+                    let v4697: string = string("vec![v4693]");
+                    let v4698: Vec<leptos::prelude::AnyView> = vec![v4693];
+                    let v4700: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4698);
+                    let v4702: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4700);
+                    let v4705: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<span "), (v4623))),
-                                        string(">move || { v4701 }</"),
+                                        (append(string("<span "), (v4624))),
+                                        string(">move || { v4702 }</"),
                                     )),
                                     string("span"),
                                 )),
@@ -27957,22 +27957,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4706: leptos::prelude::View<
+                    let v4707: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                    > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v4701 }</span> };
-                    let v4708: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4706);
-                    let v4712: string = string("vec![v4708]");
-                    let v4713: Vec<leptos::prelude::AnyView> = vec![v4708];
-                    let v4715: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4713);
-                    let v4717: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4715);
-                    let v4719: string = append(
+                    > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v4702 }</span> };
+                    let v4709: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4707);
+                    let v4713: string = string("vec![v4709]");
+                    let v4714: Vec<leptos::prelude::AnyView> = vec![v4709];
+                    let v4716: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4714);
+                    let v4718: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4716);
+                    let v4720: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v4620))),
-                                        string(">move || { v4717 }</"),
+                                        (append(string("<div "), (v4621))),
+                                        string(">move || { v4718 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -27981,32 +27981,32 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4721: leptos::prelude::View<
+                    let v4722: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v4717 }</div> };
-                    let v4723: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4721);
-                    let v4725: string =
+                    > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v4718 }</div> };
+                    let v4724: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4722);
+                    let v4726: string =
                         string(" class=\"shrink-0 transition duration-300 pt-[2px]\"");
-                    fn v4727() -> string {
+                    fn v4728() -> string {
                         Dice_ui::closure166((), ())
                     }
-                    let v4728 = {
-                        let clo_16 = Func0::from(v4727);
+                    let v4729 = {
+                        let clo_16 = Func0::from(v4728);
                         Func1::new({
                             let clo_16 = clo_16.clone();
                             move |arg_16: ()| clo_16()
                         })
                     };
-                    let v4736: string =
-                            string(" class=move || \" \".to_owned() + &v4728(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
-                    let v4738: string =
+                    let v4737: string =
+                            string(" class=move || \" \".to_owned() + &v4729(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
+                    let v4739: string =
                             string("d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\"");
-                    let v4742: string = append(
+                    let v4743: string = append(
                         (append(
                             string(" clip-rule=\"evenodd\""),
                             (append(
                                 (append(
-                                    (append(string(" "), (v4738))),
+                                    (append(string(" "), (v4739))),
                                     string(" fill-rule=\"evenodd\""),
                                 )),
                                 string(""),
@@ -28014,18 +28014,18 @@ mod module_9c940d83 {
                         )),
                         string(""),
                     );
-                    let v4743: string = string("vec![]");
-                    let v4744: Vec<leptos::prelude::AnyView> = vec![];
-                    let v4746: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4744);
-                    let v4748: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4746);
-                    let v4750: string = append(
+                    let v4744: string = string("vec![]");
+                    let v4745: Vec<leptos::prelude::AnyView> = vec![];
+                    let v4747: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4745);
+                    let v4749: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4747);
+                    let v4751: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<path "), (v4742))),
-                                        string(">move || { v4748 }</"),
+                                        (append(string("<path "), (v4743))),
+                                        string(">move || { v4749 }</"),
                                     )),
                                     string("path"),
                                 )),
@@ -28034,22 +28034,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4752: leptos::prelude::View<
+                    let v4753: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                    > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v4748 }</path> };
-                    let v4754: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4752);
-                    let v4758: string = string("vec![v4754]");
-                    let v4759: Vec<leptos::prelude::AnyView> = vec![v4754];
-                    let v4761: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4759);
-                    let v4763: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4761);
-                    let v4765: string = append(
+                    > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v4749 }</path> };
+                    let v4755: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4753);
+                    let v4759: string = string("vec![v4755]");
+                    let v4760: Vec<leptos::prelude::AnyView> = vec![v4755];
+                    let v4762: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4760);
+                    let v4764: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4762);
+                    let v4766: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<svg "), (v4736))),
-                                        string(">move || { v4763 }</"),
+                                        (append(string("<svg "), (v4737))),
+                                        string(">move || { v4764 }</"),
                                     )),
                                     string("svg"),
                                 )),
@@ -28058,22 +28058,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4767: leptos::prelude::View<
+                    let v4768: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v4728(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v4763 }</svg> };
-                    let v4769: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4767);
-                    let v4773: string = string("vec![v4769]");
-                    let v4774: Vec<leptos::prelude::AnyView> = vec![v4769];
-                    let v4776: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4774);
-                    let v4778: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4776);
-                    let v4780: string = append(
+                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v4729(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v4764 }</svg> };
+                    let v4770: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4768);
+                    let v4774: string = string("vec![v4770]");
+                    let v4775: Vec<leptos::prelude::AnyView> = vec![v4770];
+                    let v4777: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4775);
+                    let v4779: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4777);
+                    let v4781: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<span "), (v4725))),
-                                        string(">move || { v4778 }</"),
+                                        (append(string("<span "), (v4726))),
+                                        string(">move || { v4779 }</"),
                                     )),
                                     string("span"),
                                 )),
@@ -28082,22 +28082,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4782: leptos::prelude::View<
+                    let v4783: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                    > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v4778 }</span> };
-                    let v4784: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4782);
-                    let v4792: string = string("vec![v4723, v4784]");
-                    let v4793: Vec<leptos::prelude::AnyView> = vec![v4723, v4784];
-                    let v4795: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4793);
-                    let v4797: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4795);
-                    let v4800: string = append(
+                    > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v4779 }</span> };
+                    let v4785: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4783);
+                    let v4793: string = string("vec![v4724, v4785]");
+                    let v4794: Vec<leptos::prelude::AnyView> = vec![v4724, v4785];
+                    let v4796: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4794);
+                    let v4798: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4796);
+                    let v4801: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<summary "), (v4618))),
-                                        string(">move || { v4797 }</"),
+                                        (append(string("<summary "), (v4619))),
+                                        string(">move || { v4798 }</"),
                                     )),
                                     string("summary"),
                                 )),
@@ -28106,41 +28106,41 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4802: leptos::prelude::View<
+                    let v4803: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Summary, _, _>,
-                    > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v4616(()) + " " + &v4613(())>move || { v4797 }</summary> };
-                    let v4804: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4802);
-                    let v4806: string = string(" class=\"flex flex-1 flex-col\"");
-                    let v4810: Func0<leptos::prelude::Fragment> =
+                    > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v4617(()) + " " + &v4614(())>move || { v4798 }</summary> };
+                    let v4805: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4803);
+                    let v4807: string = string(" class=\"flex flex-1 flex-col\"");
+                    let v4811: Func0<leptos::prelude::Fragment> =
                         Dice_ui::method195(Func0::new(move || {
                             Func0::new({
-                                let v4456 = v4456.clone();
-                                let v4459 = v4459.clone();
-                                let v4462 = v4462.clone();
-                                let v4465 = v4465.clone();
-                                let v4468 = v4468.clone();
+                                let v4457 = v4457.clone();
+                                let v4460 = v4460.clone();
+                                let v4463 = v4463.clone();
+                                let v4466 = v4466.clone();
+                                let v4469 = v4469.clone();
                                 move || {
                                     Dice_ui::closure207(
-                                        v4456.clone(),
-                                        v4465.clone(),
-                                        v4468.clone(),
-                                        v4459.clone(),
-                                        v4462.clone(),
+                                        v4457.clone(),
+                                        v4466.clone(),
+                                        v4469.clone(),
+                                        v4460.clone(),
+                                        v4463.clone(),
                                         (),
                                     )
                                 }
                             })()
                         }));
-                    let v4812: leptos::prelude::Fragment = (move || v4810())();
-                    let v4814: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4812);
-                    let v4816: string = append(
+                    let v4813: leptos::prelude::Fragment = (move || v4811())();
+                    let v4815: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4813);
+                    let v4817: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v4806))),
-                                        string(">move || { v4814 }</"),
+                                        (append(string("<div "), (v4807))),
+                                        string(">move || { v4815 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -28149,22 +28149,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4818: leptos::prelude::View<
+                    let v4819: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v4814 }</div> };
-                    let v4820: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4818);
-                    let v4827: string = string("vec![v4804, v4820]");
-                    let v4828: Vec<leptos::prelude::AnyView> = vec![v4804, v4820];
-                    let v4830: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4828);
-                    let v4832: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4830);
-                    let v4835: string = append(
+                    > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v4815 }</div> };
+                    let v4821: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4819);
+                    let v4828: string = string("vec![v4805, v4821]");
+                    let v4829: Vec<leptos::prelude::AnyView> = vec![v4805, v4821];
+                    let v4831: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4829);
+                    let v4833: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4831);
+                    let v4836: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<details "), (v4610))),
-                                        string(">move || { v4832 }</"),
+                                        (append(string("<details "), (v4611))),
+                                        string(">move || { v4833 }</"),
                                     )),
                                     string("details"),
                                 )),
@@ -28173,22 +28173,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4837: leptos::prelude::View<
+                    let v4838: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Details, _, _>,
-                    > = leptos::prelude::view! { <details  open=move || v4588(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v4585(())>move || { v4832 }</details> };
-                    let v4839: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4837);
-                    let v4846: string = string("vec![v4606, v4839]");
-                    let v4847: Vec<leptos::prelude::AnyView> = vec![v4606, v4839];
-                    let v4849: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4847);
-                    let v4851: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4849);
-                    let v4853: string = append(
+                    > = leptos::prelude::view! { <details  open=move || v4589(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v4586(())>move || { v4833 }</details> };
+                    let v4840: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4838);
+                    let v4847: string = string("vec![v4607, v4840]");
+                    let v4848: Vec<leptos::prelude::AnyView> = vec![v4607, v4840];
+                    let v4850: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4848);
+                    let v4852: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4850);
+                    let v4854: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v4582))),
-                                        string(">move || { v4851 }</"),
+                                        (append(string("<div "), (v4583))),
+                                        string(">move || { v4852 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -28197,41 +28197,41 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4855: leptos::prelude::View<
+                    let v4856: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v4851 }</div> };
-                    let v4857: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4855);
-                    let v4858: string = string("vec![]");
-                    let v4859: Vec<leptos::prelude::AnyView> = vec![];
-                    let v4861: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4859);
-                    let v4863: string = string(" class=\"flex flex-col [position:relative]\"");
-                    let v4865 = {
-                        let clo_17 = Func0::from(v4584);
+                    > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v4852 }</div> };
+                    let v4858: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4856);
+                    let v4859: string = string("vec![]");
+                    let v4860: Vec<leptos::prelude::AnyView> = vec![];
+                    let v4862: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4860);
+                    let v4864: string = string(" class=\"flex flex-col [position:relative]\"");
+                    let v4866 = {
+                        let clo_17 = Func0::from(v4585);
                         Func1::new({
                             let clo_17 = clo_17.clone();
                             move |arg_17: ()| clo_17()
                         })
                     };
-                    let v4867 = {
-                        let clo_18 = Func0::from(v4587);
+                    let v4868 = {
+                        let clo_18 = Func0::from(v4588);
                         Func1::new({
                             let clo_18 = clo_18.clone();
                             move |arg_18: ()| clo_18()
                         })
                     };
-                    let v4869: string = string(" class=\"[position:absolute] [right:0] [top:0]\"");
-                    let v4873: string = string("vec![v4861]");
-                    let v4874: Vec<leptos::prelude::AnyView> = vec![v4861];
-                    let v4876: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4874);
-                    let v4878: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4876);
-                    let v4880: string = append(
+                    let v4870: string = string(" class=\"[position:absolute] [right:0] [top:0]\"");
+                    let v4874: string = string("vec![v4862]");
+                    let v4875: Vec<leptos::prelude::AnyView> = vec![v4862];
+                    let v4877: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4875);
+                    let v4879: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4877);
+                    let v4881: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v4869))),
-                                        string(">move || { v4878 }</"),
+                                        (append(string("<div "), (v4870))),
+                                        string(">move || { v4879 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -28240,64 +28240,64 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4882: leptos::prelude::View<
+                    let v4883: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v4878 }</div> };
-                    let v4884: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4882);
-                    let v4885: string =
-                            string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v4865(())");
-                    let v4888: string = append(
+                    > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v4879 }</div> };
+                    let v4885: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4883);
+                    let v4886: string =
+                            string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v4866(())");
+                    let v4889: string = append(
                         (append(
-                            string(" open=move || v4867(())"),
+                            string(" open=move || v4868(())"),
                             (append(
-                                (append((append(string(" "), (v4885))), string(""))),
+                                (append((append(string(" "), (v4886))), string(""))),
                                 string(""),
                             )),
                         )),
                         string(""),
                     );
-                    let v4891 = {
+                    let v4892 = {
                         let clo_19 = Func0::new(move || Dice_ui::closure223((), ()));
                         Func1::new({
                             let clo_19 = clo_19.clone();
                             move |arg_19: ()| clo_19()
                         })
                     };
-                    let v4894 = {
+                    let v4895 = {
                         let clo_20 = Func0::new(move || Dice_ui::closure224((), ()));
                         Func1::new({
                             let clo_20 = clo_20.clone();
                             move |arg_20: ()| clo_20()
                         })
                     };
-                    let v4895: string =
-                            string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v4894(()) + \" \" + &v4891(())");
-                    let v4896: string = append(
-                        (append((append(string(" "), (v4895))), string(""))),
+                    let v4896: string =
+                            string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v4895(()) + \" \" + &v4892(())");
+                    let v4897: string = append(
+                        (append((append(string(" "), (v4896))), string(""))),
                         string(""),
                     );
-                    let v4898: string = string(" class=\"flex items-center gap-2\"");
-                    let v4901: string = string(
+                    let v4899: string = string(" class=\"flex items-center gap-2\"");
+                    let v4902: string = string(
                         " class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\"",
                     );
-                    let v4902: string = (Dice_ui::method228())();
-                    let v4911: &str = &*v4902;
-                    let v4944: std::string::String = String::from(v4911);
-                    let v4970: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                        leptos::prelude::IntoView::into_view(v4944),
+                    let v4903: string = (Dice_ui::method228())();
+                    let v4912: &str = &*v4903;
+                    let v4945: std::string::String = String::from(v4912);
+                    let v4971: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                        leptos::prelude::IntoView::into_view(v4945),
                     );
-                    let v4974: string = string("vec![v4970]");
-                    let v4975: Vec<leptos::prelude::AnyView> = vec![v4970];
-                    let v4977: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4975);
-                    let v4979: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4977);
-                    let v4981: string = append(
+                    let v4975: string = string("vec![v4971]");
+                    let v4976: Vec<leptos::prelude::AnyView> = vec![v4971];
+                    let v4978: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4976);
+                    let v4980: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4978);
+                    let v4982: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<span "), (v4901))),
-                                        string(">move || { v4979 }</"),
+                                        (append(string("<span "), (v4902))),
+                                        string(">move || { v4980 }</"),
                                     )),
                                     string("span"),
                                 )),
@@ -28306,22 +28306,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4983: leptos::prelude::View<
+                    let v4984: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                    > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v4979 }</span> };
-                    let v4985: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4983);
-                    let v4989: string = string("vec![v4985]");
-                    let v4990: Vec<leptos::prelude::AnyView> = vec![v4985];
-                    let v4992: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4990);
-                    let v4994: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4992);
-                    let v4996: string = append(
+                    > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v4980 }</span> };
+                    let v4986: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4984);
+                    let v4990: string = string("vec![v4986]");
+                    let v4991: Vec<leptos::prelude::AnyView> = vec![v4986];
+                    let v4993: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v4991);
+                    let v4995: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4993);
+                    let v4997: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v4898))),
-                                        string(">move || { v4994 }</"),
+                                        (append(string("<div "), (v4899))),
+                                        string(">move || { v4995 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -28330,29 +28330,29 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v4998: leptos::prelude::View<
+                    let v4999: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v4994 }</div> };
-                    let v5000: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4998);
-                    let v5002: string =
+                    > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v4995 }</div> };
+                    let v5001: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v4999);
+                    let v5003: string =
                         string(" class=\"shrink-0 transition duration-300 pt-[2px]\"");
-                    let v5004 = {
-                        let clo_21 = Func0::from(v4727);
+                    let v5005 = {
+                        let clo_21 = Func0::from(v4728);
                         Func1::new({
                             let clo_21 = clo_21.clone();
                             move |arg_21: ()| clo_21()
                         })
                     };
-                    let v5012: string =
-                            string(" class=move || \" \".to_owned() + &v5004(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
-                    let v5014: string =
+                    let v5013: string =
+                            string(" class=move || \" \".to_owned() + &v5005(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
+                    let v5015: string =
                             string("d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\"");
-                    let v5018: string = append(
+                    let v5019: string = append(
                         (append(
                             string(" clip-rule=\"evenodd\""),
                             (append(
                                 (append(
-                                    (append(string(" "), (v5014))),
+                                    (append(string(" "), (v5015))),
                                     string(" fill-rule=\"evenodd\""),
                                 )),
                                 string(""),
@@ -28360,18 +28360,18 @@ mod module_9c940d83 {
                         )),
                         string(""),
                     );
-                    let v5019: string = string("vec![]");
-                    let v5020: Vec<leptos::prelude::AnyView> = vec![];
-                    let v5022: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5020);
-                    let v5024: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5022);
-                    let v5026: string = append(
+                    let v5020: string = string("vec![]");
+                    let v5021: Vec<leptos::prelude::AnyView> = vec![];
+                    let v5023: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5021);
+                    let v5025: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5023);
+                    let v5027: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<path "), (v5018))),
-                                        string(">move || { v5024 }</"),
+                                        (append(string("<path "), (v5019))),
+                                        string(">move || { v5025 }</"),
                                     )),
                                     string("path"),
                                 )),
@@ -28380,22 +28380,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v5028: leptos::prelude::View<
+                    let v5029: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                    > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v5024 }</path> };
-                    let v5030: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5028);
-                    let v5034: string = string("vec![v5030]");
-                    let v5035: Vec<leptos::prelude::AnyView> = vec![v5030];
-                    let v5037: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5035);
-                    let v5039: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5037);
-                    let v5041: string = append(
+                    > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v5025 }</path> };
+                    let v5031: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5029);
+                    let v5035: string = string("vec![v5031]");
+                    let v5036: Vec<leptos::prelude::AnyView> = vec![v5031];
+                    let v5038: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5036);
+                    let v5040: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5038);
+                    let v5042: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<svg "), (v5012))),
-                                        string(">move || { v5039 }</"),
+                                        (append(string("<svg "), (v5013))),
+                                        string(">move || { v5040 }</"),
                                     )),
                                     string("svg"),
                                 )),
@@ -28404,22 +28404,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v5043: leptos::prelude::View<
+                    let v5044: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v5004(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v5039 }</svg> };
-                    let v5045: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5043);
-                    let v5049: string = string("vec![v5045]");
-                    let v5050: Vec<leptos::prelude::AnyView> = vec![v5045];
-                    let v5052: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5050);
-                    let v5054: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5052);
-                    let v5056: string = append(
+                    > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v5005(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v5040 }</svg> };
+                    let v5046: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5044);
+                    let v5050: string = string("vec![v5046]");
+                    let v5051: Vec<leptos::prelude::AnyView> = vec![v5046];
+                    let v5053: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5051);
+                    let v5055: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5053);
+                    let v5057: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<span "), (v5002))),
-                                        string(">move || { v5054 }</"),
+                                        (append(string("<span "), (v5003))),
+                                        string(">move || { v5055 }</"),
                                     )),
                                     string("span"),
                                 )),
@@ -28428,22 +28428,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v5058: leptos::prelude::View<
+                    let v5059: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                    > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v5054 }</span> };
-                    let v5060: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5058);
-                    let v5067: string = string("vec![v5000, v5060]");
-                    let v5068: Vec<leptos::prelude::AnyView> = vec![v5000, v5060];
-                    let v5070: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5068);
-                    let v5072: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5070);
-                    let v5074: string = append(
+                    > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v5055 }</span> };
+                    let v5061: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5059);
+                    let v5068: string = string("vec![v5001, v5061]");
+                    let v5069: Vec<leptos::prelude::AnyView> = vec![v5001, v5061];
+                    let v5071: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5069);
+                    let v5073: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5071);
+                    let v5075: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<summary "), (v4896))),
-                                        string(">move || { v5072 }</"),
+                                        (append(string("<summary "), (v4897))),
+                                        string(">move || { v5073 }</"),
                                     )),
                                     string("summary"),
                                 )),
@@ -28452,28 +28452,28 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v5076: leptos::prelude::View<
+                    let v5077: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Summary, _, _>,
-                    > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v4894(()) + " " + &v4891(())>move || { v5072 }</summary> };
-                    let v5078: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5076);
-                    let v5080: string = string(" class=\"flex flex-1 flex-col\"");
-                    let v5084: Func0<leptos::prelude::Fragment> =
+                    > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v4895(()) + " " + &v4892(())>move || { v5073 }</summary> };
+                    let v5079: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5077);
+                    let v5081: string = string(" class=\"flex flex-1 flex-col\"");
+                    let v5085: Func0<leptos::prelude::Fragment> =
                         Dice_ui::method195(Func0::new(move || {
                             Func0::new({
-                                let v4456 = v4456.clone();
-                                move || Dice_ui::closure226(v4456.clone(), ())
+                                let v4457 = v4457.clone();
+                                move || Dice_ui::closure226(v4457.clone(), ())
                             })()
                         }));
-                    let v5086: leptos::prelude::Fragment = (move || v5084())();
-                    let v5088: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5086);
-                    let v5090: string = append(
+                    let v5087: leptos::prelude::Fragment = (move || v5085())();
+                    let v5089: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5087);
+                    let v5091: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v5080))),
-                                        string(">move || { v5088 }</"),
+                                        (append(string("<div "), (v5081))),
+                                        string(">move || { v5089 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -28482,22 +28482,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v5092: leptos::prelude::View<
+                    let v5093: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v5088 }</div> };
-                    let v5094: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5092);
-                    let v5101: string = string("vec![v5078, v5094]");
-                    let v5102: Vec<leptos::prelude::AnyView> = vec![v5078, v5094];
-                    let v5104: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5102);
-                    let v5106: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5104);
-                    let v5108: string = append(
+                    > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v5089 }</div> };
+                    let v5095: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5093);
+                    let v5102: string = string("vec![v5079, v5095]");
+                    let v5103: Vec<leptos::prelude::AnyView> = vec![v5079, v5095];
+                    let v5105: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5103);
+                    let v5107: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5105);
+                    let v5109: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<details "), (v4888))),
-                                        string(">move || { v5106 }</"),
+                                        (append(string("<details "), (v4889))),
+                                        string(">move || { v5107 }</"),
                                     )),
                                     string("details"),
                                 )),
@@ -28506,22 +28506,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v5110: leptos::prelude::View<
+                    let v5111: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Details, _, _>,
-                    > = leptos::prelude::view! { <details  open=move || v4867(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v4865(())>move || { v5106 }</details> };
-                    let v5112: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5110);
-                    let v5119: string = string("vec![v4884, v5112]");
-                    let v5120: Vec<leptos::prelude::AnyView> = vec![v4884, v5112];
-                    let v5122: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5120);
-                    let v5124: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5122);
-                    let v5126: string = append(
+                    > = leptos::prelude::view! { <details  open=move || v4868(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v4866(())>move || { v5107 }</details> };
+                    let v5113: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5111);
+                    let v5120: string = string("vec![v4885, v5113]");
+                    let v5121: Vec<leptos::prelude::AnyView> = vec![v4885, v5113];
+                    let v5123: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5121);
+                    let v5125: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5123);
+                    let v5127: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v4863))),
-                                        string(">move || { v5124 }</"),
+                                        (append(string("<div "), (v4864))),
+                                        string(">move || { v5125 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -28530,52 +28530,52 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v5128: leptos::prelude::View<
+                    let v5129: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v5124 }</div> };
-                    let v5130: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5128);
-                    let v5133: std::pin::Pin<
+                    > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v5125 }</div> };
+                    let v5131: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5129);
+                    let v5134: std::pin::Pin<
                         Box<leptos::prelude::ArcRwSignal<LrcPtr<Dice_ui::Heap1>>>,
-                    > = Box::pin(v4456.l0.clone());
-                    let v5135: LrcPtr<Dice_ui::Heap1> =
-                        leptos::prelude::ArcRwSignal::get_untracked(&v5133);
-                    let v5416: leptos::prelude::AnyView = if leptos::prelude::ArcRwSignal::get(
-                        &v5135.l1.clone(),
+                    > = Box::pin(v4457.l0.clone());
+                    let v5136: LrcPtr<Dice_ui::Heap1> =
+                        leptos::prelude::ArcRwSignal::get_untracked(&v5134);
+                    let v5417: leptos::prelude::AnyView = if leptos::prelude::ArcRwSignal::get(
+                        &v5136.l1.clone(),
                     ) {
-                        let v5139: string = string("vec![]");
-                        let v5140: Vec<leptos::prelude::AnyView> = vec![];
-                        let v5142: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v5140);
-                        let v5144: string = string(" class=\"flex flex-col [position:relative]\"");
-                        let v5146 = {
-                            let clo_22 = Func0::from(v4584);
+                        let v5140: string = string("vec![]");
+                        let v5141: Vec<leptos::prelude::AnyView> = vec![];
+                        let v5143: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v5141);
+                        let v5145: string = string(" class=\"flex flex-col [position:relative]\"");
+                        let v5147 = {
+                            let clo_22 = Func0::from(v4585);
                             Func1::new({
                                 let clo_22 = clo_22.clone();
                                 move |arg_22: ()| clo_22()
                             })
                         };
-                        let v5148 = {
-                            let clo_23 = Func0::from(v4587);
+                        let v5149 = {
+                            let clo_23 = Func0::from(v4588);
                             Func1::new({
                                 let clo_23 = clo_23.clone();
                                 move |arg_23: ()| clo_23()
                             })
                         };
-                        let v5150: string =
+                        let v5151: string =
                             string(" class=\"[position:absolute] [right:0] [top:0]\"");
-                        let v5154: string = string("vec![v5142]");
-                        let v5155: Vec<leptos::prelude::AnyView> = vec![v5142];
-                        let v5157: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v5155);
-                        let v5159: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5157);
-                        let v5161: string = append(
+                        let v5155: string = string("vec![v5143]");
+                        let v5156: Vec<leptos::prelude::AnyView> = vec![v5143];
+                        let v5158: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v5156);
+                        let v5160: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5158);
+                        let v5162: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<div "), (v5150))),
-                                            string(">move || { v5159 }</"),
+                                            (append(string("<div "), (v5151))),
+                                            string(">move || { v5160 }</"),
                                         )),
                                         string("div"),
                                     )),
@@ -28584,66 +28584,66 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v5163: leptos::prelude::View<
+                        let v5164: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                        > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v5159 }</div> };
-                        let v5165: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v5163);
-                        let v5166: string =
-                                    string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v5146(())");
-                        let v5169: string = append(
+                        > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v5160 }</div> };
+                        let v5166: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v5164);
+                        let v5167: string =
+                                    string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v5147(())");
+                        let v5170: string = append(
                             (append(
-                                string(" open=move || v5148(())"),
+                                string(" open=move || v5149(())"),
                                 (append(
-                                    (append((append(string(" "), (v5166))), string(""))),
+                                    (append((append(string(" "), (v5167))), string(""))),
                                     string(""),
                                 )),
                             )),
                             string(""),
                         );
-                        let v5172 = {
+                        let v5173 = {
                             let clo_24 = Func0::new(move || Dice_ui::closure243((), ()));
                             Func1::new({
                                 let clo_24 = clo_24.clone();
                                 move |arg_24: ()| clo_24()
                             })
                         };
-                        let v5175 = {
+                        let v5176 = {
                             let clo_25 = Func0::new(move || Dice_ui::closure244((), ()));
                             Func1::new({
                                 let clo_25 = clo_25.clone();
                                 move |arg_25: ()| clo_25()
                             })
                         };
-                        let v5176: string =
-                                    string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v5175(()) + \" \" + &v5172(())");
-                        let v5177: string = append(
-                            (append((append(string(" "), (v5176))), string(""))),
+                        let v5177: string =
+                                    string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v5176(()) + \" \" + &v5173(())");
+                        let v5178: string = append(
+                            (append((append(string(" "), (v5177))), string(""))),
                             string(""),
                         );
-                        let v5179: string = string(" class=\"flex items-center gap-2\"");
-                        let v5182: string = string(
+                        let v5180: string = string(" class=\"flex items-center gap-2\"");
+                        let v5183: string = string(
                             " class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\"",
                         );
-                        let v5183: string = (Dice_ui::method237())();
-                        let v5192: &str = &*v5183;
-                        let v5225: std::string::String = String::from(v5192);
-                        let v5251: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                            leptos::prelude::IntoView::into_view(v5225),
+                        let v5184: string = (Dice_ui::method237())();
+                        let v5193: &str = &*v5184;
+                        let v5226: std::string::String = String::from(v5193);
+                        let v5252: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                            leptos::prelude::IntoView::into_view(v5226),
                         );
-                        let v5255: string = string("vec![v5251]");
-                        let v5256: Vec<leptos::prelude::AnyView> = vec![v5251];
-                        let v5258: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v5256);
-                        let v5260: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5258);
-                        let v5262: string = append(
+                        let v5256: string = string("vec![v5252]");
+                        let v5257: Vec<leptos::prelude::AnyView> = vec![v5252];
+                        let v5259: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v5257);
+                        let v5261: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5259);
+                        let v5263: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<span "), (v5182))),
-                                            string(">move || { v5260 }</"),
+                                            (append(string("<span "), (v5183))),
+                                            string(">move || { v5261 }</"),
                                         )),
                                         string("span"),
                                     )),
@@ -28652,24 +28652,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v5264: leptos::prelude::View<
+                        let v5265: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                        > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v5260 }</span> };
-                        let v5266: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v5264);
-                        let v5270: string = string("vec![v5266]");
-                        let v5271: Vec<leptos::prelude::AnyView> = vec![v5266];
-                        let v5273: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v5271);
-                        let v5275: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5273);
-                        let v5277: string = append(
+                        > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v5261 }</span> };
+                        let v5267: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v5265);
+                        let v5271: string = string("vec![v5267]");
+                        let v5272: Vec<leptos::prelude::AnyView> = vec![v5267];
+                        let v5274: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v5272);
+                        let v5276: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5274);
+                        let v5278: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<div "), (v5179))),
-                                            string(">move || { v5275 }</"),
+                                            (append(string("<div "), (v5180))),
+                                            string(">move || { v5276 }</"),
                                         )),
                                         string("div"),
                                     )),
@@ -28678,30 +28678,30 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v5279: leptos::prelude::View<
+                        let v5280: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                        > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v5275 }</div> };
-                        let v5281: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v5279);
-                        let v5283: string =
+                        > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v5276 }</div> };
+                        let v5282: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v5280);
+                        let v5284: string =
                             string(" class=\"shrink-0 transition duration-300 pt-[2px]\"");
-                        let v5285 = {
-                            let clo_26 = Func0::from(v4727);
+                        let v5286 = {
+                            let clo_26 = Func0::from(v4728);
                             Func1::new({
                                 let clo_26 = clo_26.clone();
                                 move |arg_26: ()| clo_26()
                             })
                         };
-                        let v5293: string =
-                                    string(" class=move || \" \".to_owned() + &v5285(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
-                        let v5295: string =
+                        let v5294: string =
+                                    string(" class=move || \" \".to_owned() + &v5286(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
+                        let v5296: string =
                                     string("d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\"");
-                        let v5299: string = append(
+                        let v5300: string = append(
                             (append(
                                 string(" clip-rule=\"evenodd\""),
                                 (append(
                                     (append(
-                                        (append(string(" "), (v5295))),
+                                        (append(string(" "), (v5296))),
                                         string(" fill-rule=\"evenodd\""),
                                     )),
                                     string(""),
@@ -28709,19 +28709,19 @@ mod module_9c940d83 {
                             )),
                             string(""),
                         );
-                        let v5300: string = string("vec![]");
-                        let v5301: Vec<leptos::prelude::AnyView> = vec![];
-                        let v5303: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v5301);
-                        let v5305: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5303);
-                        let v5307: string = append(
+                        let v5301: string = string("vec![]");
+                        let v5302: Vec<leptos::prelude::AnyView> = vec![];
+                        let v5304: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v5302);
+                        let v5306: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5304);
+                        let v5308: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<path "), (v5299))),
-                                            string(">move || { v5305 }</"),
+                                            (append(string("<path "), (v5300))),
+                                            string(">move || { v5306 }</"),
                                         )),
                                         string("path"),
                                     )),
@@ -28730,24 +28730,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v5309: leptos::prelude::View<
+                        let v5310: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                        > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v5305 }</path> };
-                        let v5311: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v5309);
-                        let v5315: string = string("vec![v5311]");
-                        let v5316: Vec<leptos::prelude::AnyView> = vec![v5311];
-                        let v5318: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v5316);
-                        let v5320: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5318);
-                        let v5322: string = append(
+                        > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v5306 }</path> };
+                        let v5312: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v5310);
+                        let v5316: string = string("vec![v5312]");
+                        let v5317: Vec<leptos::prelude::AnyView> = vec![v5312];
+                        let v5319: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v5317);
+                        let v5321: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5319);
+                        let v5323: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<svg "), (v5293))),
-                                            string(">move || { v5320 }</"),
+                                            (append(string("<svg "), (v5294))),
+                                            string(">move || { v5321 }</"),
                                         )),
                                         string("svg"),
                                     )),
@@ -28756,24 +28756,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v5324: leptos::prelude::View<
+                        let v5325: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                        > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v5285(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v5320 }</svg> };
-                        let v5326: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v5324);
-                        let v5330: string = string("vec![v5326]");
-                        let v5331: Vec<leptos::prelude::AnyView> = vec![v5326];
-                        let v5333: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v5331);
-                        let v5335: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5333);
-                        let v5337: string = append(
+                        > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v5286(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v5321 }</svg> };
+                        let v5327: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v5325);
+                        let v5331: string = string("vec![v5327]");
+                        let v5332: Vec<leptos::prelude::AnyView> = vec![v5327];
+                        let v5334: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v5332);
+                        let v5336: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5334);
+                        let v5338: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<span "), (v5283))),
-                                            string(">move || { v5335 }</"),
+                                            (append(string("<span "), (v5284))),
+                                            string(">move || { v5336 }</"),
                                         )),
                                         string("span"),
                                     )),
@@ -28782,24 +28782,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v5339: leptos::prelude::View<
+                        let v5340: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                        > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v5335 }</span> };
-                        let v5341: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v5339);
-                        let v5348: string = string("vec![v5281, v5341]");
-                        let v5349: Vec<leptos::prelude::AnyView> = vec![v5281, v5341];
-                        let v5351: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v5349);
-                        let v5353: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5351);
-                        let v5355: string = append(
+                        > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v5336 }</span> };
+                        let v5342: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v5340);
+                        let v5349: string = string("vec![v5282, v5342]");
+                        let v5350: Vec<leptos::prelude::AnyView> = vec![v5282, v5342];
+                        let v5352: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v5350);
+                        let v5354: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5352);
+                        let v5356: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<summary "), (v5177))),
-                                            string(">move || { v5353 }</"),
+                                            (append(string("<summary "), (v5178))),
+                                            string(">move || { v5354 }</"),
                                         )),
                                         string("summary"),
                                     )),
@@ -28808,26 +28808,26 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v5357: leptos::prelude::View<
+                        let v5358: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Summary, _, _>,
-                        > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v5175(()) + " " + &v5172(())>move || { v5353 }</summary> };
-                        let v5359: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v5357);
-                        let v5361: string = string(" class=\"flex flex-1 flex-col\"");
-                        let v5365: Func0<leptos::prelude::Fragment> =
+                        > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v5176(()) + " " + &v5173(())>move || { v5354 }</summary> };
+                        let v5360: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v5358);
+                        let v5362: string = string(" class=\"flex flex-1 flex-col\"");
+                        let v5366: Func0<leptos::prelude::Fragment> =
                             Dice_ui::method195(Func0::new(move || {
                                 Func0::new(move || Dice_ui::closure246((), ()))()
                             }));
-                        let v5367: leptos::prelude::Fragment = (move || v5365())();
-                        let v5369: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5367);
-                        let v5371: string = append(
+                        let v5368: leptos::prelude::Fragment = (move || v5366())();
+                        let v5370: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5368);
+                        let v5372: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<div "), (v5361))),
-                                            string(">move || { v5369 }</"),
+                                            (append(string("<div "), (v5362))),
+                                            string(">move || { v5370 }</"),
                                         )),
                                         string("div"),
                                     )),
@@ -28836,24 +28836,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v5373: leptos::prelude::View<
+                        let v5374: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                        > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v5369 }</div> };
-                        let v5375: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v5373);
-                        let v5382: string = string("vec![v5359, v5375]");
-                        let v5383: Vec<leptos::prelude::AnyView> = vec![v5359, v5375];
-                        let v5385: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v5383);
-                        let v5387: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5385);
-                        let v5389: string = append(
+                        > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v5370 }</div> };
+                        let v5376: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v5374);
+                        let v5383: string = string("vec![v5360, v5376]");
+                        let v5384: Vec<leptos::prelude::AnyView> = vec![v5360, v5376];
+                        let v5386: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v5384);
+                        let v5388: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5386);
+                        let v5390: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<details "), (v5169))),
-                                            string(">move || { v5387 }</"),
+                                            (append(string("<details "), (v5170))),
+                                            string(">move || { v5388 }</"),
                                         )),
                                         string("details"),
                                     )),
@@ -28862,24 +28862,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v5391: leptos::prelude::View<
+                        let v5392: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Details, _, _>,
-                        > = leptos::prelude::view! { <details  open=move || v5148(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v5146(())>move || { v5387 }</details> };
-                        let v5393: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v5391);
-                        let v5400: string = string("vec![v5165, v5393]");
-                        let v5401: Vec<leptos::prelude::AnyView> = vec![v5165, v5393];
-                        let v5403: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v5401);
-                        let v5405: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5403);
-                        let v5407: string = append(
+                        > = leptos::prelude::view! { <details  open=move || v5149(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v5147(())>move || { v5388 }</details> };
+                        let v5394: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v5392);
+                        let v5401: string = string("vec![v5166, v5394]");
+                        let v5402: Vec<leptos::prelude::AnyView> = vec![v5166, v5394];
+                        let v5404: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v5402);
+                        let v5406: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5404);
+                        let v5408: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<div "), (v5144))),
-                                            string(">move || { v5405 }</"),
+                                            (append(string("<div "), (v5145))),
+                                            string(">move || { v5406 }</"),
                                         )),
                                         string("div"),
                                     )),
@@ -28888,67 +28888,67 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v5409: leptos::prelude::View<
+                        let v5410: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                        > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v5405 }</div> };
-                        leptos::prelude::IntoAny::into_any(v5409)
+                        > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v5406 }</div> };
+                        leptos::prelude::IntoAny::into_any(v5410)
                     } else {
-                        let v5412: string = string("vec![]");
-                        let v5413: Vec<leptos::prelude::AnyView> = vec![];
-                        leptos::prelude::IntoAny::into_any(v5413)
+                        let v5413: string = string("vec![]");
+                        let v5414: Vec<leptos::prelude::AnyView> = vec![];
+                        leptos::prelude::IntoAny::into_any(v5414)
                     };
-                    let v5426: string = string("vec![v4857, v5130, v5416]");
-                    let v5427: Vec<leptos::prelude::AnyView> = vec![v4857, v5130, v5416];
-                    Dice_ui::US22::US22_0(leptos::prelude::Fragment::new(v5427))
+                    let v5427: string = string("vec![v4858, v5131, v5417]");
+                    let v5428: Vec<leptos::prelude::AnyView> = vec![v4858, v5131, v5417];
+                    Dice_ui::US22::US22_0(leptos::prelude::Fragment::new(v5428))
                 }
                 Dice_ui::US18::US18_3 => {
-                    let v3717: bool = true;
+                    let v3718: bool = true;
                     leptos::logging::log!("{}", string("transactions_view.render (1)"));
-                    let v3719: Option<LrcPtr<Dice_ui::Heap2>> =
+                    let v3720: Option<LrcPtr<Dice_ui::Heap2>> =
                         leptos::context::use_context::<std::sync::Arc<Heap2>>();
-                    let v3721: LrcPtr<Dice_ui::Heap2> = v3719.unwrap();
-                    let v3724: bool = true;
+                    let v3722: LrcPtr<Dice_ui::Heap2> = v3720.unwrap();
+                    let v3725: bool = true;
                     leptos::logging::log!("{}", string("use_transactions.render (1)"));
-                    let v3727: leptos::prelude::ArcMemo<Vec<string>> =
+                    let v3728: leptos::prelude::ArcMemo<Vec<string>> =
                         leptos::prelude::ArcMemo::new(move |_| {
                             Func0::new({
-                                let v3721 = v3721.clone();
-                                move || Dice_ui::closure44(v3721.clone(), ())
+                                let v3722 = v3722.clone();
+                                move || Dice_ui::closure44(v3722.clone(), ())
                             })()
                         });
-                    let v3730: leptos::prelude::ArcMemo<
+                    let v3731: leptos::prelude::ArcMemo<
                         Array<(string, Dice_ui::US23, string, bool, bool)>,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v3727 = v3727.clone();
-                            move || Dice_ui::closure46(v3727.clone(), ())
+                            let v3728 = v3728.clone();
+                            move || Dice_ui::closure46(v3728.clone(), ())
                         })()
                     });
-                    let v3733: leptos::prelude::ArcMemo<
+                    let v3734: leptos::prelude::ArcMemo<
                         Vec<(string, Vec<(string, Dice_ui::US23, string, bool, bool)>)>,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v3721 = v3721.clone();
-                            let v3727 = v3727.clone();
-                            move || Dice_ui::closure48(v3721.clone(), v3727.clone(), ())
+                            let v3722 = v3722.clone();
+                            let v3728 = v3728.clone();
+                            move || Dice_ui::closure48(v3722.clone(), v3728.clone(), ())
                         })()
                     });
-                    let v3736: leptos::prelude::ArcMemo<
+                    let v3737: leptos::prelude::ArcMemo<
                         Vec<(string, Dice_ui::US23, string, bool, bool)>,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v3733 = v3733.clone();
-                            move || Dice_ui::closure51(v3733.clone(), ())
+                            let v3734 = v3734.clone();
+                            move || Dice_ui::closure51(v3734.clone(), ())
                         })()
                     });
-                    let v3739: leptos::prelude::ArcMemo<Array<string>> =
+                    let v3740: leptos::prelude::ArcMemo<Array<string>> =
                         leptos::prelude::ArcMemo::new(move |_| {
                             Func0::new({
-                                let v3733 = v3733.clone();
-                                move || Dice_ui::closure55(v3733.clone(), ())
+                                let v3734 = v3734.clone();
+                                move || Dice_ui::closure55(v3734.clone(), ())
                             })()
                         });
-                    let v3741: leptos::prelude::ArcMemo<
+                    let v3742: leptos::prelude::ArcMemo<
                         Vec<
                             Result<
                                 Option<
@@ -28971,47 +28971,47 @@ mod module_9c940d83 {
                             >,
                         >,
                     > = Dice_ui::method78(
-                        v3736,
+                        v3737,
                         Func1::new(move |v_12: crate::model::near::nearblocks::Root| {
                             Dice_ui::closure60((), v_12)
                         }),
                     );
-                    let v3748: string = Dice_ui::method8(
+                    let v3749: string = Dice_ui::method8(
                         200_i64,
                         append(
                             (append(
                                 string("use_transactions.render (7) / root func0 / result: "),
-                                sprintf!("{:?}", v3741.clone()),
+                                sprintf!("{:?}", v3742.clone()),
                             )),
                             string(""),
                         ),
                     );
-                    let v3750: bool = true;
-                    leptos::logging::log!("{}", v3748);
-                    let v3753: leptos::prelude::ArcMemo<
+                    let v3751: bool = true;
+                    leptos::logging::log!("{}", v3749);
+                    let v3754: leptos::prelude::ArcMemo<
                         Result<
                             Option<Array<(string, usize, LrcPtr<Dice_ui::Heap5>)>>,
                             std::string::String,
                         >,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v3739 = v3739.clone();
-                            let v3741 = v3741.clone();
-                            move || Dice_ui::closure90(v3739.clone(), v3741.clone(), ())
+                            let v3740 = v3740.clone();
+                            let v3742 = v3742.clone();
+                            move || Dice_ui::closure90(v3740.clone(), v3742.clone(), ())
                         })()
                     });
-                    let v3756: leptos::prelude::ArcMemo<
+                    let v3757: leptos::prelude::ArcMemo<
                         Result<
                             Option<Array<(string, Dice_ui::US23, string, bool, bool)>>,
                             std::string::String,
                         >,
                     > = leptos::prelude::ArcMemo::new(move |_| {
                         Func0::new({
-                            let v3753 = v3753.clone();
-                            move || Dice_ui::closure107(v3753.clone(), ())
+                            let v3754 = v3754.clone();
+                            move || Dice_ui::closure107(v3754.clone(), ())
                         })()
                     });
-                    let v3768: string = Dice_ui::method8(
+                    let v3769: string = Dice_ui::method8(
                         200_i64,
                         append(
                             (append(
@@ -29023,8 +29023,8 @@ mod module_9c940d83 {
                                     Dice_ui::method159(
                                         leptos::prelude::ArcMemo::new(move |_| {
                                             Func0::new({
-                                                let v3756 = v3756.clone();
-                                                move || Dice_ui::closure115(v3756.clone(), ())
+                                                let v3757 = v3757.clone();
+                                                move || Dice_ui::closure115(v3757.clone(), ())
                                             })()
                                         }),
                                         Func1::new(
@@ -29038,49 +29038,49 @@ mod module_9c940d83 {
                             string(""),
                         ),
                     );
-                    let v3770: bool = true;
-                    leptos::logging::log!("{}", v3768);
+                    let v3771: bool = true;
+                    leptos::logging::log!("{}", v3769);
                     let patternInput_4: (
                         leptos::prelude::ReadSignal<bool>,
                         leptos::prelude::WriteSignal<bool>,
                     ) = leptos::prelude::signal(false);
-                    let v3772: leptos::prelude::ReadSignal<bool> = patternInput_4.0.clone();
-                    let v3774 = Func0::new({
+                    let v3773: leptos::prelude::ReadSignal<bool> = patternInput_4.0.clone();
+                    let v3775 = Func0::new({
                         let patternInput_4 = patternInput_4.clone();
                         move || Dice_ui::closure254(patternInput_4.1.clone(), ())
                     });
                     {
-                        let v3778 = {
+                        let v3779 = {
                             let clo_27 = Func0::new(move || Dice_ui::closure255((), ()));
                             Func1::new({
                                 let clo_27 = clo_27.clone();
                                 move |arg_27: ()| clo_27()
                             })
                         };
-                        let v3790: string =
-                                string(" class=move || \" \".to_owned() + &v3778(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
-                        let v3793: string =
+                        let v3791: string =
+                                string(" class=move || \" \".to_owned() + &v3779(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
+                        let v3794: string =
                                 string("d=\"M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z\"");
-                        let v3796: string = append(
+                        let v3797: string = append(
                             (append(
-                                (append(string(" "), (v3793))),
+                                (append(string(" "), (v3794))),
                                 string(" stroke-linejoin=\"round\" stroke-linecap=\"round\""),
                             )),
                             string(""),
                         );
-                        let v3797: string = string("vec![]");
-                        let v3798: Vec<leptos::prelude::AnyView> = vec![];
-                        let v3800: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v3798);
-                        let v3802: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3800);
-                        let v3805: string = append(
+                        let v3798: string = string("vec![]");
+                        let v3799: Vec<leptos::prelude::AnyView> = vec![];
+                        let v3801: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v3799);
+                        let v3803: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3801);
+                        let v3806: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<path "), (v3796))),
-                                            string(">move || { v3802 }</"),
+                                            (append(string("<path "), (v3797))),
+                                            string(">move || { v3803 }</"),
                                         )),
                                         string("path"),
                                     )),
@@ -29089,26 +29089,26 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v3807: leptos::prelude::View<
+                        let v3808: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                        > = leptos::prelude::view! { <path  d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" stroke-linejoin="round" stroke-linecap="round">move || { v3802 }</path> };
-                        let v3809: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v3807);
-                        let v3815: string =
+                        > = leptos::prelude::view! { <path  d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" stroke-linejoin="round" stroke-linecap="round">move || { v3803 }</path> };
+                        let v3810: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v3808);
+                        let v3816: string =
                                 string(" d=\"M15 12a3 3 0 11-6 0 3 3 0 016 0z\" stroke-linejoin=\"round\" stroke-linecap=\"round\"");
-                        let v3816: string = string("vec![]");
-                        let v3817: Vec<leptos::prelude::AnyView> = vec![];
-                        let v3819: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v3817);
-                        let v3821: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3819);
-                        let v3823: string = append(
+                        let v3817: string = string("vec![]");
+                        let v3818: Vec<leptos::prelude::AnyView> = vec![];
+                        let v3820: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v3818);
+                        let v3822: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3820);
+                        let v3824: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<path "), (v3815))),
-                                            string(">move || { v3821 }</"),
+                                            (append(string("<path "), (v3816))),
+                                            string(">move || { v3822 }</"),
                                         )),
                                         string("path"),
                                     )),
@@ -29117,24 +29117,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v3825: leptos::prelude::View<
+                        let v3826: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                        > = leptos::prelude::view! { <path  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linejoin="round" stroke-linecap="round">move || { v3821 }</path> };
-                        let v3827: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v3825);
-                        let v3835: string = string("vec![v3809, v3827]");
-                        let v3836: Vec<leptos::prelude::AnyView> = vec![v3809, v3827];
-                        let v3838: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v3836);
-                        let v3840: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3838);
-                        let v3843: string = append(
+                        > = leptos::prelude::view! { <path  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linejoin="round" stroke-linecap="round">move || { v3822 }</path> };
+                        let v3828: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v3826);
+                        let v3836: string = string("vec![v3810, v3828]");
+                        let v3837: Vec<leptos::prelude::AnyView> = vec![v3810, v3828];
+                        let v3839: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v3837);
+                        let v3841: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3839);
+                        let v3844: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<svg "), (v3790))),
-                                            string(">move || { v3840 }</"),
+                                            (append(string("<svg "), (v3791))),
+                                            string(">move || { v3841 }</"),
                                         )),
                                         string("svg"),
                                     )),
@@ -29143,29 +29143,29 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v3845: leptos::prelude::View<
+                        let v3846: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                        > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v3778(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v3840 }</svg> };
-                        let v3850 = {
+                        > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v3779(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v3841 }</svg> };
+                        let v3851 = {
                             let clo_28 = Func0::new({
-                                let v3772 = v3772.clone();
-                                move || Dice_ui::closure256(v3772.clone(), ())
+                                let v3773 = v3773.clone();
+                                move || Dice_ui::closure256(v3773.clone(), ())
                             });
                             Func1::new({
                                 let clo_28 = clo_28.clone();
                                 move |arg_28: ()| clo_28()
                             })
                         };
-                        let v3851: string =
-                                string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] \".to_owned() + &v3850(())");
-                        let v3854: string = append(
+                        let v3852: string =
+                                string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] \".to_owned() + &v3851(())");
+                        let v3855: string = append(
                             (append(
                                 string(" aria-label=\"Settings\""),
                                 (append(
                                     (append(
-                                        string(" on:click=move |_| v3774()"),
+                                        string(" on:click=move |_| v3775()"),
                                         (append(
-                                            (append((append(string(" "), (v3851))), string(""))),
+                                            (append((append(string(" "), (v3852))), string(""))),
                                             string(""),
                                         )),
                                     )),
@@ -29174,21 +29174,21 @@ mod module_9c940d83 {
                             )),
                             string(""),
                         );
-                        let v3856: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v3845);
-                        let v3860: string = string("vec![v3856]");
-                        let v3861: Vec<leptos::prelude::AnyView> = vec![v3856];
-                        let v3863: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v3861);
-                        let v3865: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3863);
-                        let v3868: string = append(
+                        let v3857: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v3846);
+                        let v3861: string = string("vec![v3857]");
+                        let v3862: Vec<leptos::prelude::AnyView> = vec![v3857];
+                        let v3864: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v3862);
+                        let v3866: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3864);
+                        let v3869: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<button "), (v3854))),
-                                            string(">move || { v3865 }</"),
+                                            (append(string("<button "), (v3855))),
+                                            string(">move || { v3866 }</"),
                                         )),
                                         string("button"),
                                     )),
@@ -29197,51 +29197,51 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v3870: leptos::prelude::View<
+                        let v3871: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Button, _, _>,
-                        > = leptos::prelude::view! { <button  aria-label="Settings" on:click=move |_| v3774() class=move || "inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] ".to_owned() + &v3850(())>move || { v3865 }</button> };
-                        let v3872: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v3870);
-                        let v3873: string = string("vec![]");
-                        let v3874: Vec<leptos::prelude::AnyView> = vec![];
-                        let v3876: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v3874);
-                        let v3878: string = string(" class=\"flex flex-col [position:relative]\"");
-                        fn v3880() -> string {
+                        > = leptos::prelude::view! { <button  aria-label="Settings" on:click=move |_| v3775() class=move || "inline-flex shrink-0 items-center [justify-content:center] pb-[8px] pt-[8px] px-[12px] ".to_owned() + &v3851(())>move || { v3866 }</button> };
+                        let v3873: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v3871);
+                        let v3874: string = string("vec![]");
+                        let v3875: Vec<leptos::prelude::AnyView> = vec![];
+                        let v3877: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v3875);
+                        let v3879: string = string(" class=\"flex flex-col [position:relative]\"");
+                        fn v3881() -> string {
                             Dice_ui::closure161((), ())
                         }
-                        let v3881 = {
-                            let clo_29 = Func0::from(v3880);
+                        let v3882 = {
+                            let clo_29 = Func0::from(v3881);
                             Func1::new({
                                 let clo_29 = clo_29.clone();
                                 move |arg_29: ()| clo_29()
                             })
                         };
-                        fn v3883() -> bool {
+                        fn v3884() -> bool {
                             Dice_ui::closure162((), ())
                         }
-                        let v3884 = {
-                            let clo_30 = Func0::from(v3883);
+                        let v3885 = {
+                            let clo_30 = Func0::from(v3884);
                             Func1::new({
                                 let clo_30 = clo_30.clone();
                                 move |arg_30: ()| clo_30()
                             })
                         };
-                        let v3886: string =
+                        let v3887: string =
                             string(" class=\"[position:absolute] [right:0] [top:0]\"");
-                        let v3890: string = string("vec![v3872]");
-                        let v3891: Vec<leptos::prelude::AnyView> = vec![v3872];
-                        let v3893: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v3891);
-                        let v3895: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3893);
-                        let v3898: string = append(
+                        let v3891: string = string("vec![v3873]");
+                        let v3892: Vec<leptos::prelude::AnyView> = vec![v3873];
+                        let v3894: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v3892);
+                        let v3896: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3894);
+                        let v3899: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<div "), (v3886))),
-                                            string(">move || { v3895 }</"),
+                                            (append(string("<div "), (v3887))),
+                                            string(">move || { v3896 }</"),
                                         )),
                                         string("div"),
                                     )),
@@ -29250,69 +29250,69 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v3900: leptos::prelude::View<
+                        let v3901: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                        > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v3895 }</div> };
-                        let v3902: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v3900);
-                        let v3903: string =
-                                string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v3881(())");
-                        let v3906: string = append(
+                        > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v3896 }</div> };
+                        let v3903: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v3901);
+                        let v3904: string =
+                                string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v3882(())");
+                        let v3907: string = append(
                             (append(
-                                string(" open=move || v3884(())"),
+                                string(" open=move || v3885(())"),
                                 (append(
-                                    (append((append(string(" "), (v3903))), string(""))),
+                                    (append((append(string(" "), (v3904))), string(""))),
                                     string(""),
                                 )),
                             )),
                             string(""),
                         );
-                        let v3909 = {
+                        let v3910 = {
                             let clo_31 = Func0::new(move || Dice_ui::closure257((), ()));
                             Func1::new({
                                 let clo_31 = clo_31.clone();
                                 move |arg_31: ()| clo_31()
                             })
                         };
-                        let v3912 = {
+                        let v3913 = {
                             let clo_32 = Func0::new({
-                                let v3872 = v3872.clone();
-                                move || Dice_ui::closure258(v3872.clone(), ())
+                                let v3873 = v3873.clone();
+                                move || Dice_ui::closure258(v3873.clone(), ())
                             });
                             Func1::new({
                                 let clo_32 = clo_32.clone();
                                 move |arg_32: ()| clo_32()
                             })
                         };
-                        let v3913: string =
-                                string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v3912(()) + \" \" + &v3909(())");
-                        let v3914: string = append(
-                            (append((append(string(" "), (v3913))), string(""))),
+                        let v3914: string =
+                                string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v3913(()) + \" \" + &v3910(())");
+                        let v3915: string = append(
+                            (append((append(string(" "), (v3914))), string(""))),
                             string(""),
                         );
-                        let v3916: string = string(" class=\"flex items-center gap-2\"");
-                        let v3919: string = string(
+                        let v3917: string = string(" class=\"flex items-center gap-2\"");
+                        let v3920: string = string(
                             " class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\"",
                         );
-                        let v3920: string = (Dice_ui::method243(v3872.clone()))();
-                        let v3929: &str = &*v3920;
-                        let v3962: std::string::String = String::from(v3929);
-                        let v3988: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                            leptos::prelude::IntoView::into_view(v3962),
+                        let v3921: string = (Dice_ui::method243(v3873.clone()))();
+                        let v3930: &str = &*v3921;
+                        let v3963: std::string::String = String::from(v3930);
+                        let v3989: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                            leptos::prelude::IntoView::into_view(v3963),
                         );
-                        let v3992: string = string("vec![v3988]");
-                        let v3993: Vec<leptos::prelude::AnyView> = vec![v3988];
-                        let v3995: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v3993);
-                        let v3997: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3995);
-                        let v4000: string = append(
+                        let v3993: string = string("vec![v3989]");
+                        let v3994: Vec<leptos::prelude::AnyView> = vec![v3989];
+                        let v3996: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v3994);
+                        let v3998: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v3996);
+                        let v4001: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<span "), (v3919))),
-                                            string(">move || { v3997 }</"),
+                                            (append(string("<span "), (v3920))),
+                                            string(">move || { v3998 }</"),
                                         )),
                                         string("span"),
                                     )),
@@ -29321,24 +29321,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4002: leptos::prelude::View<
+                        let v4003: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                        > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v3997 }</span> };
-                        let v4004: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4002);
-                        let v4008: string = string("vec![v4004]");
-                        let v4009: Vec<leptos::prelude::AnyView> = vec![v4004];
-                        let v4011: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4009);
-                        let v4013: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4011);
-                        let v4015: string = append(
+                        > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v3998 }</span> };
+                        let v4005: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4003);
+                        let v4009: string = string("vec![v4005]");
+                        let v4010: Vec<leptos::prelude::AnyView> = vec![v4005];
+                        let v4012: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4010);
+                        let v4014: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4012);
+                        let v4016: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<div "), (v3916))),
-                                            string(">move || { v4013 }</"),
+                                            (append(string("<div "), (v3917))),
+                                            string(">move || { v4014 }</"),
                                         )),
                                         string("div"),
                                     )),
@@ -29347,33 +29347,33 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4017: leptos::prelude::View<
+                        let v4018: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                        > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v4013 }</div> };
-                        let v4019: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4017);
-                        let v4021: string =
+                        > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v4014 }</div> };
+                        let v4020: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4018);
+                        let v4022: string =
                             string(" class=\"shrink-0 transition duration-300 pt-[2px]\"");
-                        fn v4023() -> string {
+                        fn v4024() -> string {
                             Dice_ui::closure166((), ())
                         }
-                        let v4024 = {
-                            let clo_33 = Func0::from(v4023);
+                        let v4025 = {
+                            let clo_33 = Func0::from(v4024);
                             Func1::new({
                                 let clo_33 = clo_33.clone();
                                 move |arg_33: ()| clo_33()
                             })
                         };
-                        let v4032: string =
-                                string(" class=move || \" \".to_owned() + &v4024(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
-                        let v4034: string =
+                        let v4033: string =
+                                string(" class=move || \" \".to_owned() + &v4025(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
+                        let v4035: string =
                                 string("d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\"");
-                        let v4038: string = append(
+                        let v4039: string = append(
                             (append(
                                 string(" clip-rule=\"evenodd\""),
                                 (append(
                                     (append(
-                                        (append(string(" "), (v4034))),
+                                        (append(string(" "), (v4035))),
                                         string(" fill-rule=\"evenodd\""),
                                     )),
                                     string(""),
@@ -29381,19 +29381,19 @@ mod module_9c940d83 {
                             )),
                             string(""),
                         );
-                        let v4039: string = string("vec![]");
-                        let v4040: Vec<leptos::prelude::AnyView> = vec![];
-                        let v4042: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4040);
-                        let v4044: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4042);
-                        let v4046: string = append(
+                        let v4040: string = string("vec![]");
+                        let v4041: Vec<leptos::prelude::AnyView> = vec![];
+                        let v4043: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4041);
+                        let v4045: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4043);
+                        let v4047: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<path "), (v4038))),
-                                            string(">move || { v4044 }</"),
+                                            (append(string("<path "), (v4039))),
+                                            string(">move || { v4045 }</"),
                                         )),
                                         string("path"),
                                     )),
@@ -29402,24 +29402,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4048: leptos::prelude::View<
+                        let v4049: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                        > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v4044 }</path> };
-                        let v4050: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4048);
-                        let v4054: string = string("vec![v4050]");
-                        let v4055: Vec<leptos::prelude::AnyView> = vec![v4050];
-                        let v4057: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4055);
-                        let v4059: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4057);
-                        let v4061: string = append(
+                        > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v4045 }</path> };
+                        let v4051: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4049);
+                        let v4055: string = string("vec![v4051]");
+                        let v4056: Vec<leptos::prelude::AnyView> = vec![v4051];
+                        let v4058: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4056);
+                        let v4060: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4058);
+                        let v4062: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<svg "), (v4032))),
-                                            string(">move || { v4059 }</"),
+                                            (append(string("<svg "), (v4033))),
+                                            string(">move || { v4060 }</"),
                                         )),
                                         string("svg"),
                                     )),
@@ -29428,24 +29428,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4063: leptos::prelude::View<
+                        let v4064: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                        > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v4024(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v4059 }</svg> };
-                        let v4065: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4063);
-                        let v4069: string = string("vec![v4065]");
-                        let v4070: Vec<leptos::prelude::AnyView> = vec![v4065];
-                        let v4072: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4070);
-                        let v4074: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4072);
-                        let v4076: string = append(
+                        > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v4025(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v4060 }</svg> };
+                        let v4066: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4064);
+                        let v4070: string = string("vec![v4066]");
+                        let v4071: Vec<leptos::prelude::AnyView> = vec![v4066];
+                        let v4073: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4071);
+                        let v4075: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4073);
+                        let v4077: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<span "), (v4021))),
-                                            string(">move || { v4074 }</"),
+                                            (append(string("<span "), (v4022))),
+                                            string(">move || { v4075 }</"),
                                         )),
                                         string("span"),
                                     )),
@@ -29454,24 +29454,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4078: leptos::prelude::View<
+                        let v4079: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                        > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v4074 }</span> };
-                        let v4080: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4078);
-                        let v4087: string = string("vec![v4019, v4080]");
-                        let v4088: Vec<leptos::prelude::AnyView> = vec![v4019, v4080];
-                        let v4090: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4088);
-                        let v4092: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4090);
-                        let v4095: string = append(
+                        > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v4075 }</span> };
+                        let v4081: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4079);
+                        let v4088: string = string("vec![v4020, v4081]");
+                        let v4089: Vec<leptos::prelude::AnyView> = vec![v4020, v4081];
+                        let v4091: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4089);
+                        let v4093: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4091);
+                        let v4096: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<summary "), (v3914))),
-                                            string(">move || { v4092 }</"),
+                                            (append(string("<summary "), (v3915))),
+                                            string(">move || { v4093 }</"),
                                         )),
                                         string("summary"),
                                     )),
@@ -29480,40 +29480,40 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4097: leptos::prelude::View<
+                        let v4098: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Summary, _, _>,
-                        > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v3912(()) + " " + &v3909(())>move || { v4092 }</summary> };
-                        let v4099: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4097);
-                        let v4101: string = string(" class=\"flex flex-1 flex-col\"");
-                        let v4105: Func0<leptos::prelude::Fragment> =
+                        > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v3913(()) + " " + &v3910(())>move || { v4093 }</summary> };
+                        let v4100: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4098);
+                        let v4102: string = string(" class=\"flex flex-1 flex-col\"");
+                        let v4106: Func0<leptos::prelude::Fragment> =
                             Dice_ui::method195(Func0::new(move || {
                                 Func0::new({
-                                    let v3721 = v3721.clone();
-                                    let v3733 = v3733.clone();
-                                    let v3753 = v3753.clone();
-                                    let v3772 = v3772.clone();
+                                    let v3722 = v3722.clone();
+                                    let v3734 = v3734.clone();
+                                    let v3754 = v3754.clone();
+                                    let v3773 = v3773.clone();
                                     move || {
                                         Dice_ui::closure260(
-                                            v3721.clone(),
-                                            v3753.clone(),
-                                            v3733.clone(),
-                                            v3772.clone(),
+                                            v3722.clone(),
+                                            v3754.clone(),
+                                            v3734.clone(),
+                                            v3773.clone(),
                                             (),
                                         )
                                     }
                                 })()
                             }));
-                        let v4107: leptos::prelude::Fragment = (move || v4105())();
-                        let v4109: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4107);
-                        let v4111: string = append(
+                        let v4108: leptos::prelude::Fragment = (move || v4106())();
+                        let v4110: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4108);
+                        let v4112: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<div "), (v4101))),
-                                            string(">move || { v4109 }</"),
+                                            (append(string("<div "), (v4102))),
+                                            string(">move || { v4110 }</"),
                                         )),
                                         string("div"),
                                     )),
@@ -29522,24 +29522,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4113: leptos::prelude::View<
+                        let v4114: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                        > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v4109 }</div> };
-                        let v4115: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4113);
-                        let v4122: string = string("vec![v4099, v4115]");
-                        let v4123: Vec<leptos::prelude::AnyView> = vec![v4099, v4115];
-                        let v4125: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4123);
-                        let v4127: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4125);
-                        let v4130: string = append(
+                        > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v4110 }</div> };
+                        let v4116: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4114);
+                        let v4123: string = string("vec![v4100, v4116]");
+                        let v4124: Vec<leptos::prelude::AnyView> = vec![v4100, v4116];
+                        let v4126: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4124);
+                        let v4128: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4126);
+                        let v4131: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<details "), (v3906))),
-                                            string(">move || { v4127 }</"),
+                                            (append(string("<details "), (v3907))),
+                                            string(">move || { v4128 }</"),
                                         )),
                                         string("details"),
                                     )),
@@ -29548,24 +29548,24 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4132: leptos::prelude::View<
+                        let v4133: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Details, _, _>,
-                        > = leptos::prelude::view! { <details  open=move || v3884(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v3881(())>move || { v4127 }</details> };
-                        let v4134: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4132);
-                        let v4141: string = string("vec![v3902, v4134]");
-                        let v4142: Vec<leptos::prelude::AnyView> = vec![v3902, v4134];
-                        let v4144: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v4142);
-                        let v4146: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4144);
-                        let v4148: string = append(
+                        > = leptos::prelude::view! { <details  open=move || v3885(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v3882(())>move || { v4128 }</details> };
+                        let v4135: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4133);
+                        let v4142: string = string("vec![v3903, v4135]");
+                        let v4143: Vec<leptos::prelude::AnyView> = vec![v3903, v4135];
+                        let v4145: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v4143);
+                        let v4147: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v4145);
+                        let v4149: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<div "), (v3878))),
-                                            string(">move || { v4146 }</"),
+                                            (append(string("<div "), (v3879))),
+                                            string(">move || { v4147 }</"),
                                         )),
                                         string("div"),
                                     )),
@@ -29574,55 +29574,55 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v4150: leptos::prelude::View<
+                        let v4151: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                        > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v4146 }</div> };
-                        let v4152: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v4150);
-                        let v4155: std::pin::Pin<
+                        > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v4147 }</div> };
+                        let v4153: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v4151);
+                        let v4156: std::pin::Pin<
                             Box<leptos::prelude::ArcRwSignal<LrcPtr<Dice_ui::Heap1>>>,
-                        > = Box::pin(v3721.l0.clone());
-                        let v4157: LrcPtr<Dice_ui::Heap1> =
-                            leptos::prelude::ArcRwSignal::get_untracked(&v4155);
-                        let v4438: leptos::prelude::AnyView = if leptos::prelude::ArcRwSignal::get(
-                            &v4157.l1.clone(),
+                        > = Box::pin(v3722.l0.clone());
+                        let v4158: LrcPtr<Dice_ui::Heap1> =
+                            leptos::prelude::ArcRwSignal::get_untracked(&v4156);
+                        let v4439: leptos::prelude::AnyView = if leptos::prelude::ArcRwSignal::get(
+                            &v4158.l1.clone(),
                         ) {
-                            let v4161: string = string("vec![]");
-                            let v4162: Vec<leptos::prelude::AnyView> = vec![];
-                            let v4164: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4162);
-                            let v4166: string =
+                            let v4162: string = string("vec![]");
+                            let v4163: Vec<leptos::prelude::AnyView> = vec![];
+                            let v4165: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4163);
+                            let v4167: string =
                                 string(" class=\"flex flex-col [position:relative]\"");
-                            let v4168 = {
-                                let clo_34 = Func0::from(v3880);
+                            let v4169 = {
+                                let clo_34 = Func0::from(v3881);
                                 Func1::new({
                                     let clo_34 = clo_34.clone();
                                     move |arg_34: ()| clo_34()
                                 })
                             };
-                            let v4170 = {
-                                let clo_35 = Func0::from(v3883);
+                            let v4171 = {
+                                let clo_35 = Func0::from(v3884);
                                 Func1::new({
                                     let clo_35 = clo_35.clone();
                                     move |arg_35: ()| clo_35()
                                 })
                             };
-                            let v4172: string =
+                            let v4173: string =
                                 string(" class=\"[position:absolute] [right:0] [top:0]\"");
-                            let v4176: string = string("vec![v4164]");
-                            let v4177: Vec<leptos::prelude::AnyView> = vec![v4164];
-                            let v4179: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4177);
-                            let v4181: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4179);
-                            let v4183: string = append(
+                            let v4177: string = string("vec![v4165]");
+                            let v4178: Vec<leptos::prelude::AnyView> = vec![v4165];
+                            let v4180: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4178);
+                            let v4182: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4180);
+                            let v4184: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v4172))),
-                                                string(">move || { v4181 }</"),
+                                                (append(string("<div "), (v4173))),
+                                                string(">move || { v4182 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -29631,67 +29631,67 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4185: leptos::prelude::View<
+                            let v4186: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v4181 }</div> };
-                            let v4187: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4185);
-                            let v4188: string =
-                                        string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v4168(())");
-                            let v4191: string = append(
+                            > = leptos::prelude::view! { <div  class="[position:absolute] [right:0] [top:0]">move || { v4182 }</div> };
+                            let v4188: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4186);
+                            let v4189: string =
+                                        string("class=move || \"flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 \".to_owned() + &v4169(())");
+                            let v4192: string = append(
                                 (append(
-                                    string(" open=move || v4170(())"),
+                                    string(" open=move || v4171(())"),
                                     (append(
-                                        (append((append(string(" "), (v4188))), string(""))),
+                                        (append((append(string(" "), (v4189))), string(""))),
                                         string(""),
                                     )),
                                 )),
                                 string(""),
                             );
-                            let v4194 = {
+                            let v4195 = {
                                 let clo_36 = Func0::new(move || Dice_ui::closure337((), ()));
                                 Func1::new({
                                     let clo_36 = clo_36.clone();
                                     move |arg_36: ()| clo_36()
                                 })
                             };
-                            let v4197 = {
+                            let v4198 = {
                                 let clo_37 = Func0::new(move || Dice_ui::closure338((), ()));
                                 Func1::new({
                                     let clo_37 = clo_37.clone();
                                     move |arg_37: ()| clo_37()
                                 })
                             };
-                            let v4198: string =
-                                        string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v4197(()) + \" \" + &v4194(())");
-                            let v4199: string = append(
-                                (append((append(string(" "), (v4198))), string(""))),
+                            let v4199: string =
+                                        string("class=move || \"flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 \".to_owned() + v4198(()) + \" \" + &v4195(())");
+                            let v4200: string = append(
+                                (append((append(string(" "), (v4199))), string(""))),
                                 string(""),
                             );
-                            let v4201: string = string(" class=\"flex items-center gap-2\"");
-                            let v4204: string =
+                            let v4202: string = string(" class=\"flex items-center gap-2\"");
+                            let v4205: string =
                                         string(" class=\"[font-size:14px] [line-height:21px] [padding-right:11px]\"");
-                            let v4205: string = (Dice_ui::method282())();
-                            let v4214: &str = &*v4205;
-                            let v4247: std::string::String = String::from(v4214);
-                            let v4273: leptos::prelude::AnyView =
+                            let v4206: string = (Dice_ui::method282())();
+                            let v4215: &str = &*v4206;
+                            let v4248: std::string::String = String::from(v4215);
+                            let v4274: leptos::prelude::AnyView =
                                 leptos::prelude::IntoAny::into_any(
-                                    leptos::prelude::IntoView::into_view(v4247),
+                                    leptos::prelude::IntoView::into_view(v4248),
                                 );
-                            let v4277: string = string("vec![v4273]");
-                            let v4278: Vec<leptos::prelude::AnyView> = vec![v4273];
-                            let v4280: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4278);
-                            let v4282: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4280);
-                            let v4284: string = append(
+                            let v4278: string = string("vec![v4274]");
+                            let v4279: Vec<leptos::prelude::AnyView> = vec![v4274];
+                            let v4281: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4279);
+                            let v4283: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4281);
+                            let v4285: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<span "), (v4204))),
-                                                string(">move || { v4282 }</"),
+                                                (append(string("<span "), (v4205))),
+                                                string(">move || { v4283 }</"),
                                             )),
                                             string("span"),
                                         )),
@@ -29700,25 +29700,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4286: leptos::prelude::View<
+                            let v4287: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                            > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v4282 }</span> };
-                            let v4288: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4286);
-                            let v4292: string = string("vec![v4288]");
-                            let v4293: Vec<leptos::prelude::AnyView> = vec![v4288];
-                            let v4295: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4293);
-                            let v4297: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4295);
-                            let v4299: string = append(
+                            > = leptos::prelude::view! { <span  class="[font-size:14px] [line-height:21px] [padding-right:11px]">move || { v4283 }</span> };
+                            let v4289: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4287);
+                            let v4293: string = string("vec![v4289]");
+                            let v4294: Vec<leptos::prelude::AnyView> = vec![v4289];
+                            let v4296: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4294);
+                            let v4298: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4296);
+                            let v4300: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v4201))),
-                                                string(">move || { v4297 }</"),
+                                                (append(string("<div "), (v4202))),
+                                                string(">move || { v4298 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -29727,30 +29727,30 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4301: leptos::prelude::View<
+                            let v4302: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v4297 }</div> };
-                            let v4303: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4301);
-                            let v4305: string =
+                            > = leptos::prelude::view! { <div  class="flex items-center gap-2">move || { v4298 }</div> };
+                            let v4304: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4302);
+                            let v4306: string =
                                 string(" class=\"shrink-0 transition duration-300 pt-[2px]\"");
-                            let v4307 = {
-                                let clo_38 = Func0::from(v4023);
+                            let v4308 = {
+                                let clo_38 = Func0::from(v4024);
                                 Func1::new({
                                     let clo_38 = clo_38.clone();
                                     move |arg_38: ()| clo_38()
                                 })
                             };
-                            let v4315: string =
-                                        string(" class=move || \" \".to_owned() + &v4307(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
-                            let v4317: string =
+                            let v4316: string =
+                                        string(" class=move || \" \".to_owned() + &v4308(()) fill=\"currentColor\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"");
+                            let v4318: string =
                                         string("d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\"");
-                            let v4321: string = append(
+                            let v4322: string = append(
                                 (append(
                                     string(" clip-rule=\"evenodd\""),
                                     (append(
                                         (append(
-                                            (append(string(" "), (v4317))),
+                                            (append(string(" "), (v4318))),
                                             string(" fill-rule=\"evenodd\""),
                                         )),
                                         string(""),
@@ -29758,20 +29758,20 @@ mod module_9c940d83 {
                                 )),
                                 string(""),
                             );
-                            let v4322: string = string("vec![]");
-                            let v4323: Vec<leptos::prelude::AnyView> = vec![];
-                            let v4325: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4323);
-                            let v4327: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4325);
-                            let v4329: string = append(
+                            let v4323: string = string("vec![]");
+                            let v4324: Vec<leptos::prelude::AnyView> = vec![];
+                            let v4326: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4324);
+                            let v4328: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4326);
+                            let v4330: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<path "), (v4321))),
-                                                string(">move || { v4327 }</"),
+                                                (append(string("<path "), (v4322))),
+                                                string(">move || { v4328 }</"),
                                             )),
                                             string("path"),
                                         )),
@@ -29780,25 +29780,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4331: leptos::prelude::View<
+                            let v4332: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                            > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v4327 }</path> };
-                            let v4333: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4331);
-                            let v4337: string = string("vec![v4333]");
-                            let v4338: Vec<leptos::prelude::AnyView> = vec![v4333];
-                            let v4340: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4338);
-                            let v4342: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4340);
-                            let v4344: string = append(
+                            > = leptos::prelude::view! { <path  clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd">move || { v4328 }</path> };
+                            let v4334: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4332);
+                            let v4338: string = string("vec![v4334]");
+                            let v4339: Vec<leptos::prelude::AnyView> = vec![v4334];
+                            let v4341: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4339);
+                            let v4343: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4341);
+                            let v4345: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<svg "), (v4315))),
-                                                string(">move || { v4342 }</"),
+                                                (append(string("<svg "), (v4316))),
+                                                string(">move || { v4343 }</"),
                                             )),
                                             string("svg"),
                                         )),
@@ -29807,25 +29807,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4346: leptos::prelude::View<
+                            let v4347: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                            > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v4307(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v4342 }</svg> };
-                            let v4348: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4346);
-                            let v4352: string = string("vec![v4348]");
-                            let v4353: Vec<leptos::prelude::AnyView> = vec![v4348];
-                            let v4355: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4353);
-                            let v4357: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4355);
-                            let v4359: string = append(
+                            > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v4308(()) fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">move || { v4343 }</svg> };
+                            let v4349: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4347);
+                            let v4353: string = string("vec![v4349]");
+                            let v4354: Vec<leptos::prelude::AnyView> = vec![v4349];
+                            let v4356: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4354);
+                            let v4358: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4356);
+                            let v4360: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<span "), (v4305))),
-                                                string(">move || { v4357 }</"),
+                                                (append(string("<span "), (v4306))),
+                                                string(">move || { v4358 }</"),
                                             )),
                                             string("span"),
                                         )),
@@ -29834,25 +29834,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4361: leptos::prelude::View<
+                            let v4362: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Span, _, _>,
-                            > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v4357 }</span> };
-                            let v4363: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4361);
-                            let v4370: string = string("vec![v4303, v4363]");
-                            let v4371: Vec<leptos::prelude::AnyView> = vec![v4303, v4363];
-                            let v4373: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4371);
-                            let v4375: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4373);
-                            let v4377: string = append(
+                            > = leptos::prelude::view! { <span  class="shrink-0 transition duration-300 pt-[2px]">move || { v4358 }</span> };
+                            let v4364: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4362);
+                            let v4371: string = string("vec![v4304, v4364]");
+                            let v4372: Vec<leptos::prelude::AnyView> = vec![v4304, v4364];
+                            let v4374: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4372);
+                            let v4376: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4374);
+                            let v4378: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<summary "), (v4199))),
-                                                string(">move || { v4375 }</"),
+                                                (append(string("<summary "), (v4200))),
+                                                string(">move || { v4376 }</"),
                                             )),
                                             string("summary"),
                                         )),
@@ -29861,30 +29861,30 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4379: leptos::prelude::View<
+                            let v4380: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Summary, _, _>,
-                            > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v4197(()) + " " + &v4194(())>move || { v4375 }</summary> };
-                            let v4381: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4379);
-                            let v4383: string = string(" class=\"flex flex-1 flex-col\"");
-                            let v4387: Func0<leptos::prelude::Fragment> =
+                            > = leptos::prelude::view! { <summary  class=move || "flex flex-1 items-center justify-between px-4 cursor-pointer text-gray-600 hover:text-gray-700 bg-gray-300 hover:bg-gray-200 ".to_owned() + v4198(()) + " " + &v4195(())>move || { v4376 }</summary> };
+                            let v4382: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4380);
+                            let v4384: string = string(" class=\"flex flex-1 flex-col\"");
+                            let v4388: Func0<leptos::prelude::Fragment> =
                                 Dice_ui::method195(Func0::new(move || {
                                     Func0::new({
-                                        let v3753 = v3753.clone();
-                                        move || Dice_ui::closure340(v3753.clone(), ())
+                                        let v3754 = v3754.clone();
+                                        move || Dice_ui::closure340(v3754.clone(), ())
                                     })()
                                 }));
-                            let v4389: leptos::prelude::Fragment = (move || v4387())();
-                            let v4391: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4389);
-                            let v4393: string = append(
+                            let v4390: leptos::prelude::Fragment = (move || v4388())();
+                            let v4392: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4390);
+                            let v4394: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v4383))),
-                                                string(">move || { v4391 }</"),
+                                                (append(string("<div "), (v4384))),
+                                                string(">move || { v4392 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -29893,25 +29893,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4395: leptos::prelude::View<
+                            let v4396: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v4391 }</div> };
-                            let v4397: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4395);
-                            let v4404: string = string("vec![v4381, v4397]");
-                            let v4405: Vec<leptos::prelude::AnyView> = vec![v4381, v4397];
-                            let v4407: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4405);
-                            let v4409: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4407);
-                            let v4411: string = append(
+                            > = leptos::prelude::view! { <div  class="flex flex-1 flex-col">move || { v4392 }</div> };
+                            let v4398: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4396);
+                            let v4405: string = string("vec![v4382, v4398]");
+                            let v4406: Vec<leptos::prelude::AnyView> = vec![v4382, v4398];
+                            let v4408: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4406);
+                            let v4410: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4408);
+                            let v4412: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<details "), (v4191))),
-                                                string(">move || { v4409 }</"),
+                                                (append(string("<details "), (v4192))),
+                                                string(">move || { v4410 }</"),
                                             )),
                                             string("details"),
                                         )),
@@ -29920,25 +29920,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4413: leptos::prelude::View<
+                            let v4414: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Details, _, _>,
-                            > = leptos::prelude::view! { <details  open=move || v4170(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v4168(())>move || { v4409 }</details> };
-                            let v4415: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v4413);
-                            let v4422: string = string("vec![v4187, v4415]");
-                            let v4423: Vec<leptos::prelude::AnyView> = vec![v4187, v4415];
-                            let v4425: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v4423);
-                            let v4427: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v4425);
-                            let v4429: string = append(
+                            > = leptos::prelude::view! { <details  open=move || v4171(()) class=move || "flex flex-1 [&_summary::-webkit-details-marker]:hidden [&>summary>span]:open:-rotate-180 ".to_owned() + &v4169(())>move || { v4410 }</details> };
+                            let v4416: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v4414);
+                            let v4423: string = string("vec![v4188, v4416]");
+                            let v4424: Vec<leptos::prelude::AnyView> = vec![v4188, v4416];
+                            let v4426: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v4424);
+                            let v4428: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v4426);
+                            let v4430: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v4166))),
-                                                string(">move || { v4427 }</"),
+                                                (append(string("<div "), (v4167))),
+                                                string(">move || { v4428 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -29947,40 +29947,40 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v4431: leptos::prelude::View<
+                            let v4432: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v4427 }</div> };
-                            leptos::prelude::IntoAny::into_any(v4431)
+                            > = leptos::prelude::view! { <div  class="flex flex-col [position:relative]">move || { v4428 }</div> };
+                            leptos::prelude::IntoAny::into_any(v4432)
                         } else {
-                            let v4434: string = string("vec![]");
-                            let v4435: Vec<leptos::prelude::AnyView> = vec![];
-                            leptos::prelude::IntoAny::into_any(v4435)
+                            let v4435: string = string("vec![]");
+                            let v4436: Vec<leptos::prelude::AnyView> = vec![];
+                            leptos::prelude::IntoAny::into_any(v4436)
                         };
-                        let v4445: string = string("vec![v4152, v4438]");
-                        let v4446: Vec<leptos::prelude::AnyView> = vec![v4152, v4438];
-                        Dice_ui::US22::US22_0(leptos::prelude::Fragment::new(v4446))
+                        let v4446: string = string("vec![v4153, v4439]");
+                        let v4447: Vec<leptos::prelude::AnyView> = vec![v4153, v4439];
+                        Dice_ui::US22::US22_0(leptos::prelude::Fragment::new(v4447))
                     }
                 }
                 _ => Dice_ui::US22::US22_1,
             };
-            let v5453: leptos::prelude::AnyView = match &v5435 {
-                Dice_ui::US22::US22_0(v5435_0_0) => {
-                    let v5438: string = string(" class=\"flex flex-1 flex-col [overflow-y:auto]\"");
-                    let v5440: leptos::prelude::AnyView = leptos::prelude::AnyView::from(
-                        match &v5435 {
+            let v5454: leptos::prelude::AnyView = match &v5436 {
+                Dice_ui::US22::US22_0(v5436_0_0) => {
+                    let v5439: string = string(" class=\"flex flex-1 flex-col [overflow-y:auto]\"");
+                    let v5441: leptos::prelude::AnyView = leptos::prelude::AnyView::from(
+                        match &v5436 {
                             Dice_ui::US22::US22_0(x) => x.clone(),
                             _ => unreachable!(),
                         }
                         .clone(),
                     );
-                    let v5443: string = append(
+                    let v5444: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<div "), (v5438))),
-                                        string(">move || { v5440 }</"),
+                                        (append(string("<div "), (v5439))),
+                                        string(">move || { v5441 }</"),
                                     )),
                                     string("div"),
                                 )),
@@ -29989,29 +29989,29 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v5445: leptos::prelude::View<
+                    let v5446: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                    > = leptos::prelude::view! { <div  class="flex flex-1 flex-col [overflow-y:auto]">move || { v5440 }</div> };
-                    leptos::prelude::IntoAny::into_any(v5445)
+                    > = leptos::prelude::view! { <div  class="flex flex-1 flex-col [overflow-y:auto]">move || { v5441 }</div> };
+                    leptos::prelude::IntoAny::into_any(v5446)
                 }
                 _ => {
-                    let v5448: string = string("vec![]");
-                    let v5449: Vec<leptos::prelude::AnyView> = vec![];
-                    leptos::prelude::IntoAny::into_any(v5449)
+                    let v5449: string = string("vec![]");
+                    let v5450: Vec<leptos::prelude::AnyView> = vec![];
+                    leptos::prelude::IntoAny::into_any(v5450)
                 }
             };
-            let v5457: string = string("vec![v5453]");
-            let v5458: Vec<leptos::prelude::AnyView> = vec![v5453];
-            let v5460: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5458);
-            let v5462: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5460);
-            let v5465: string = append(
+            let v5458: string = string("vec![v5454]");
+            let v5459: Vec<leptos::prelude::AnyView> = vec![v5454];
+            let v5461: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5459);
+            let v5463: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5461);
+            let v5466: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<main "), (v2114))),
-                                string(">move || { v5462 }</"),
+                                (append(string("<main "), (v2115))),
+                                string(">move || { v5463 }</"),
                             )),
                             string("main"),
                         )),
@@ -30020,37 +30020,37 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v5467: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Main, _, _>> = leptos::prelude::view! { <main  class="flex flex-1 flex-col [overflow:hidden]">move || { v5462 }</main> };
-            let v5469: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5467);
-            let v5471: string = string(" class=\"flex\"");
-            let v5474: bool = true;
+            let v5468: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Main, _, _>> = leptos::prelude::view! { <main  class="flex flex-1 flex-col [overflow:hidden]">move || { v5463 }</main> };
+            let v5470: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5468);
+            let v5472: string = string(" class=\"flex\"");
+            let v5475: bool = true;
             leptos::logging::log!("{}", string("menu_tabs.render ()"));
-            let v5476: leptos_router::location::Location = leptos_router::hooks::use_location();
-            let v5479: leptos::prelude::ArcMemo<string> =
+            let v5477: leptos_router::location::Location = leptos_router::hooks::use_location();
+            let v5480: leptos::prelude::ArcMemo<string> =
                 leptos::prelude::ArcMemo::new(move |_| {
                     Func0::new({
-                        let v5476 = v5476.clone();
-                        move || Dice_ui::closure41(v5476.clone(), ())
+                        let v5477 = v5477.clone();
+                        move || Dice_ui::closure41(v5477.clone(), ())
                     })()
                 });
-            let v5481: string = string(" class=\"hidden\"");
-            let v5485: string = string(" class=\"sr-only\" for=\"Tab\"");
-            let v5495: &str = &*string("Tab");
-            let v5528: std::string::String = String::from(v5495);
-            let v5554: leptos::prelude::AnyView =
-                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v5528));
-            let v5558: string = string("vec![v5554]");
-            let v5559: Vec<leptos::prelude::AnyView> = vec![v5554];
-            let v5561: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5559);
-            let v5563: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5561);
-            let v5566: string = append(
+            let v5482: string = string(" class=\"hidden\"");
+            let v5486: string = string(" class=\"sr-only\" for=\"Tab\"");
+            let v5496: &str = &*string("Tab");
+            let v5529: std::string::String = String::from(v5496);
+            let v5555: leptos::prelude::AnyView =
+                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v5529));
+            let v5559: string = string("vec![v5555]");
+            let v5560: Vec<leptos::prelude::AnyView> = vec![v5555];
+            let v5562: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5560);
+            let v5564: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5562);
+            let v5567: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<label "), (v5485))),
-                                string(">move || { v5563 }</"),
+                                (append(string("<label "), (v5486))),
+                                string(">move || { v5564 }</"),
                             )),
                             string("label"),
                         )),
@@ -30059,27 +30059,27 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v5568: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Label, _, _>> = leptos::prelude::view! { <label  class="sr-only" for="Tab">move || { v5563 }</label> };
-            let v5570: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5568);
-            let v5574: string = string(" class=\"w-full rounded-md border-gray-200\" id=\"Tab\"");
-            let v5575 = Dice_ui::method285(v1751.clone());
-            let v5577: string = string(" selected=v5575()");
-            let v5587: &str = &*string("Settings");
-            let v5620: std::string::String = String::from(v5587);
-            let v5646: leptos::prelude::AnyView =
-                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v5620));
-            let v5650: string = string("vec![v5646]");
-            let v5651: Vec<leptos::prelude::AnyView> = vec![v5646];
-            let v5653: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5651);
-            let v5655: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5653);
-            let v5658: string = append(
+            let v5569: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Label, _, _>> = leptos::prelude::view! { <label  class="sr-only" for="Tab">move || { v5564 }</label> };
+            let v5571: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5569);
+            let v5575: string = string(" class=\"w-full rounded-md border-gray-200\" id=\"Tab\"");
+            let v5576 = Dice_ui::method285(v1751.clone());
+            let v5578: string = string(" selected=v5576()");
+            let v5588: &str = &*string("Settings");
+            let v5621: std::string::String = String::from(v5588);
+            let v5647: leptos::prelude::AnyView =
+                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v5621));
+            let v5651: string = string("vec![v5647]");
+            let v5652: Vec<leptos::prelude::AnyView> = vec![v5647];
+            let v5654: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5652);
+            let v5656: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5654);
+            let v5659: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<option "), (v5577))),
-                                string(">move || { v5655 }</"),
+                                (append(string("<option "), (v5578))),
+                                string(">move || { v5656 }</"),
                             )),
                             string("option"),
                         )),
@@ -30088,28 +30088,28 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v5660: leptos::prelude::View<
+            let v5661: leptos::prelude::View<
                 leptos::html::HtmlElement<leptos::html::Option_, _, _>,
-            > = leptos::prelude::view! { <option  selected=v5575()>move || { v5655 }</option> };
-            let v5662: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5660);
-            let v5663 = Dice_ui::method286(v1751.clone());
-            let v5665: string = string(" selected=v5663()");
-            let v5675: &str = &*string("Transactions");
-            let v5708: std::string::String = String::from(v5675);
-            let v5734: leptos::prelude::AnyView =
-                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v5708));
-            let v5738: string = string("vec![v5734]");
-            let v5739: Vec<leptos::prelude::AnyView> = vec![v5734];
-            let v5741: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5739);
-            let v5743: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5741);
-            let v5745: string = append(
+            > = leptos::prelude::view! { <option  selected=v5576()>move || { v5656 }</option> };
+            let v5663: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5661);
+            let v5664 = Dice_ui::method286(v1751.clone());
+            let v5666: string = string(" selected=v5664()");
+            let v5676: &str = &*string("Transactions");
+            let v5709: std::string::String = String::from(v5676);
+            let v5735: leptos::prelude::AnyView =
+                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v5709));
+            let v5739: string = string("vec![v5735]");
+            let v5740: Vec<leptos::prelude::AnyView> = vec![v5735];
+            let v5742: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5740);
+            let v5744: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5742);
+            let v5746: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<option "), (v5665))),
-                                string(">move || { v5743 }</"),
+                                (append(string("<option "), (v5666))),
+                                string(">move || { v5744 }</"),
                             )),
                             string("option"),
                         )),
@@ -30118,28 +30118,28 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v5747: leptos::prelude::View<
+            let v5748: leptos::prelude::View<
                 leptos::html::HtmlElement<leptos::html::Option_, _, _>,
-            > = leptos::prelude::view! { <option  selected=v5663()>move || { v5743 }</option> };
-            let v5749: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5747);
-            let v5750 = Dice_ui::method287(v1751.clone());
-            let v5752: string = string(" selected=v5750()");
-            let v5762: &str = &*string("Lists");
-            let v5795: std::string::String = String::from(v5762);
-            let v5821: leptos::prelude::AnyView =
-                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v5795));
-            let v5825: string = string("vec![v5821]");
-            let v5826: Vec<leptos::prelude::AnyView> = vec![v5821];
-            let v5828: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5826);
-            let v5830: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5828);
-            let v5832: string = append(
+            > = leptos::prelude::view! { <option  selected=v5664()>move || { v5744 }</option> };
+            let v5750: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5748);
+            let v5751 = Dice_ui::method287(v1751.clone());
+            let v5753: string = string(" selected=v5751()");
+            let v5763: &str = &*string("Lists");
+            let v5796: std::string::String = String::from(v5763);
+            let v5822: leptos::prelude::AnyView =
+                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v5796));
+            let v5826: string = string("vec![v5822]");
+            let v5827: Vec<leptos::prelude::AnyView> = vec![v5822];
+            let v5829: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5827);
+            let v5831: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5829);
+            let v5833: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<option "), (v5752))),
-                                string(">move || { v5830 }</"),
+                                (append(string("<option "), (v5753))),
+                                string(">move || { v5831 }</"),
                             )),
                             string("option"),
                         )),
@@ -30148,28 +30148,28 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v5834: leptos::prelude::View<
+            let v5835: leptos::prelude::View<
                 leptos::html::HtmlElement<leptos::html::Option_, _, _>,
-            > = leptos::prelude::view! { <option  selected=v5750()>move || { v5830 }</option> };
-            let v5836: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5834);
-            let v5837 = Dice_ui::method288(v1751.clone());
-            let v5839: string = string(" selected=v5837()");
-            let v5849: &str = &*string("Dice");
-            let v5882: std::string::String = String::from(v5849);
-            let v5908: leptos::prelude::AnyView =
-                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v5882));
-            let v5912: string = string("vec![v5908]");
-            let v5913: Vec<leptos::prelude::AnyView> = vec![v5908];
-            let v5915: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5913);
-            let v5917: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5915);
-            let v5919: string = append(
+            > = leptos::prelude::view! { <option  selected=v5751()>move || { v5831 }</option> };
+            let v5837: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5835);
+            let v5838 = Dice_ui::method288(v1751.clone());
+            let v5840: string = string(" selected=v5838()");
+            let v5850: &str = &*string("Dice");
+            let v5883: std::string::String = String::from(v5850);
+            let v5909: leptos::prelude::AnyView =
+                leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v5883));
+            let v5913: string = string("vec![v5909]");
+            let v5914: Vec<leptos::prelude::AnyView> = vec![v5909];
+            let v5916: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5914);
+            let v5918: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5916);
+            let v5920: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<option "), (v5839))),
-                                string(">move || { v5917 }</"),
+                                (append(string("<option "), (v5840))),
+                                string(">move || { v5918 }</"),
                             )),
                             string("option"),
                         )),
@@ -30178,22 +30178,22 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v5921: leptos::prelude::View<
+            let v5922: leptos::prelude::View<
                 leptos::html::HtmlElement<leptos::html::Option_, _, _>,
-            > = leptos::prelude::view! { <option  selected=v5837()>move || { v5917 }</option> };
-            let v5923: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5921);
-            let v5937: string = string("vec![v5923, v5836, v5749, v5662]");
-            let v5938: Vec<leptos::prelude::AnyView> = vec![v5923, v5836, v5749, v5662];
-            let v5940: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5938);
-            let v5942: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5940);
-            let v5945: string = append(
+            > = leptos::prelude::view! { <option  selected=v5838()>move || { v5918 }</option> };
+            let v5924: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5922);
+            let v5938: string = string("vec![v5924, v5837, v5750, v5663]");
+            let v5939: Vec<leptos::prelude::AnyView> = vec![v5924, v5837, v5750, v5663];
+            let v5941: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5939);
+            let v5943: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5941);
+            let v5946: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<select "), (v5574))),
-                                string(">move || { v5942 }</"),
+                                (append(string("<select "), (v5575))),
+                                string(">move || { v5943 }</"),
                             )),
                             string("select"),
                         )),
@@ -30202,22 +30202,22 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v5947: leptos::prelude::View<
+            let v5948: leptos::prelude::View<
                 leptos::html::HtmlElement<leptos::html::Select, _, _>,
-            > = leptos::prelude::view! { <select  class="w-full rounded-md border-gray-200" id="Tab">move || { v5942 }</select> };
-            let v5949: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5947);
-            let v5956: string = string("vec![v5570, v5949]");
-            let v5957: Vec<leptos::prelude::AnyView> = vec![v5570, v5949];
-            let v5959: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5957);
-            let v5961: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5959);
-            let v5964: string = append(
+            > = leptos::prelude::view! { <select  class="w-full rounded-md border-gray-200" id="Tab">move || { v5943 }</select> };
+            let v5950: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v5948);
+            let v5957: string = string("vec![v5571, v5950]");
+            let v5958: Vec<leptos::prelude::AnyView> = vec![v5571, v5950];
+            let v5960: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5958);
+            let v5962: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5960);
+            let v5965: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<div "), (v5481))),
-                                string(">move || { v5961 }</"),
+                                (append(string("<div "), (v5482))),
+                                string(">move || { v5962 }</"),
                             )),
                             string("div"),
                         )),
@@ -30226,56 +30226,56 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v5966: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> =
-                leptos::prelude::view! { <div  class="hidden">move || { v5961 }</div> };
-            let v5968: string =
+            let v5967: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> =
+                leptos::prelude::view! { <div  class="hidden">move || { v5962 }</div> };
+            let v5969: string =
                 string(" class=\"flex flex-1 [overflow-x:auto] [overflow-y:hidden]\"");
-            let v5970: string = string(" class=\"flex flex-1 border-t border-gray-200\"");
-            let v5971: string =
+            let v5971: string = string(" class=\"flex flex-1 border-t border-gray-200\"");
+            let v5972: string =
                 string("class=\"-mb-px flex [flex-flow:wrap] [flex-grow:1] [flex-shrink:0] gap-[3px] [overflow-wrap:anywhere]\"");
-            let v5974: string = append(
+            let v5975: string = append(
                 (append(
                     string(" aria-label=\"Tabs\""),
                     (append(
-                        (append((append(string(" "), (v5971))), string(""))),
+                        (append((append(string(" "), (v5972))), string(""))),
                         string(""),
                     )),
                 )),
                 string(""),
             );
-            fn v5976() -> string {
+            fn v5977() -> string {
                 Dice_ui::closure348((), ())
             }
-            let v5977 = {
-                let clo_39 = Func0::from(v5976);
+            let v5978 = {
+                let clo_39 = Func0::from(v5977);
                 Func1::new({
                     let clo_39 = clo_39.clone();
                     move |arg_39: ()| clo_39()
                 })
             };
-            let v5989: string =
-                string(" class=move || \" \".to_owned() + &v5977(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
-            let v5992: string =
+            let v5990: string =
+                string(" class=move || \" \".to_owned() + &v5978(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
+            let v5993: string =
                 string("d=\"M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z\"");
-            let v5995: string = append(
+            let v5996: string = append(
                 (append(
-                    (append(string(" "), (v5992))),
+                    (append(string(" "), (v5993))),
                     string(" stroke-linejoin=\"round\" stroke-linecap=\"round\""),
                 )),
                 string(""),
             );
-            let v5996: string = string("vec![]");
-            let v5997: Vec<leptos::prelude::AnyView> = vec![];
-            let v5999: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5997);
-            let v6001: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v5999);
-            let v6004: string = append(
+            let v5997: string = string("vec![]");
+            let v5998: Vec<leptos::prelude::AnyView> = vec![];
+            let v6000: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v5998);
+            let v6002: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6000);
+            let v6005: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<path "), (v5995))),
-                                string(">move || { v6001 }</"),
+                                (append(string("<path "), (v5996))),
+                                string(">move || { v6002 }</"),
                             )),
                             string("path"),
                         )),
@@ -30284,22 +30284,22 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v6006: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" stroke-linejoin="round" stroke-linecap="round">move || { v6001 }</path> };
-            let v6008: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6006);
-            let v6014: string =
+            let v6007: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" stroke-linejoin="round" stroke-linecap="round">move || { v6002 }</path> };
+            let v6009: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6007);
+            let v6015: string =
                 string(" d=\"M15 12a3 3 0 11-6 0 3 3 0 016 0z\" stroke-linejoin=\"round\" stroke-linecap=\"round\"");
-            let v6015: string = string("vec![]");
-            let v6016: Vec<leptos::prelude::AnyView> = vec![];
-            let v6018: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6016);
-            let v6020: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6018);
-            let v6022: string = append(
+            let v6016: string = string("vec![]");
+            let v6017: Vec<leptos::prelude::AnyView> = vec![];
+            let v6019: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6017);
+            let v6021: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6019);
+            let v6023: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<path "), (v6014))),
-                                string(">move || { v6020 }</"),
+                                (append(string("<path "), (v6015))),
+                                string(">move || { v6021 }</"),
                             )),
                             string("path"),
                         )),
@@ -30308,20 +30308,20 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v6024: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linejoin="round" stroke-linecap="round">move || { v6020 }</path> };
-            let v6026: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6024);
-            let v6033: string = string("vec![v6008, v6026]");
-            let v6034: Vec<leptos::prelude::AnyView> = vec![v6008, v6026];
-            let v6036: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6034);
-            let v6038: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6036);
-            let v6041: string = append(
+            let v6025: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linejoin="round" stroke-linecap="round">move || { v6021 }</path> };
+            let v6027: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6025);
+            let v6034: string = string("vec![v6009, v6027]");
+            let v6035: Vec<leptos::prelude::AnyView> = vec![v6009, v6027];
+            let v6037: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6035);
+            let v6039: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6037);
+            let v6042: string = append(
                 (append(
                     string("leptos::prelude::view! { "),
                     (append(
                         (append(
                             (append(
-                                (append(string("<svg "), (v5989))),
-                                string(">move || { v6038 }</"),
+                                (append(string("<svg "), (v5990))),
+                                string(">move || { v6039 }</"),
                             )),
                             string("svg"),
                         )),
@@ -30330,17 +30330,17 @@ mod module_9c940d83 {
                 )),
                 string(" }"),
             );
-            let v6043: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v5977(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v6038 }</svg> };
-            let v6045: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6043);
-            let v6049: string = string("vec![v6045]");
-            let v6050: Vec<leptos::prelude::AnyView> = vec![v6045];
-            let v6052: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6050);
-            let v6053 = Func0::new({
-                let v5479 = v5479.clone();
-                move || Dice_ui::closure349(v5479.clone(), ())
+            let v6044: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v5978(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v6039 }</svg> };
+            let v6046: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6044);
+            let v6050: string = string("vec![v6046]");
+            let v6051: Vec<leptos::prelude::AnyView> = vec![v6046];
+            let v6053: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6051);
+            let v6054 = Func0::new({
+                let v5480 = v5480.clone();
+                move || Dice_ui::closure349(v5480.clone(), ())
             });
             {
-                let v6057 = {
+                let v6058 = {
                     let clo_40 = Func0::new({
                         let v1751 = v1751.clone();
                         move || Dice_ui::closure350(v1751.clone(), ())
@@ -30350,7 +30350,7 @@ mod module_9c940d83 {
                         move |arg_40: ()| clo_40()
                     })
                 };
-                let v6060 = {
+                let v6061 = {
                     let clo_41 = Func0::new({
                         let v1751 = v1751.clone();
                         move || Dice_ui::closure351(v1751.clone(), ())
@@ -30360,38 +30360,38 @@ mod module_9c940d83 {
                         move |arg_41: ()| clo_41()
                     })
                 };
-                let v6062: string =
-                    string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium \".to_owned() + v6060(())");
-                let v6066: string = append(
+                let v6063: string =
+                    string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium \".to_owned() + v6061(())");
+                let v6067: string = append(
                     (append(
-                        string(" aria-current=move || if v6057(()) { \"page\" } else { \"\" }"),
+                        string(" aria-current=move || if v6058(()) { \"page\" } else { \"\" }"),
                         (append(
                             (append(
-                                (append(string(" "), (v6062))),
-                                string(" href=move || v6053()"),
+                                (append(string(" "), (v6063))),
+                                string(" href=move || v6054()"),
                             )),
                             string(""),
                         )),
                     )),
                     string(""),
                 );
-                let v6068: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6052);
-                let v6077: &str = &*string("Settings");
-                let v6110: std::string::String = String::from(v6077);
-                let v6136: leptos::prelude::AnyView =
-                    leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v6110));
-                let v6143: string = string("vec![v6068, v6136]");
-                let v6144: Vec<leptos::prelude::AnyView> = vec![v6068, v6136];
-                let v6146: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6144);
-                let v6148: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6146);
-                let v6151: string = append(
+                let v6069: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6053);
+                let v6078: &str = &*string("Settings");
+                let v6111: std::string::String = String::from(v6078);
+                let v6137: leptos::prelude::AnyView =
+                    leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v6111));
+                let v6144: string = string("vec![v6069, v6137]");
+                let v6145: Vec<leptos::prelude::AnyView> = vec![v6069, v6137];
+                let v6147: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6145);
+                let v6149: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6147);
+                let v6152: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<a "), (v6066))),
-                                    string(">move || { v6148 }</"),
+                                    (append(string("<a "), (v6067))),
+                                    string(">move || { v6149 }</"),
                                 )),
                                 string("a"),
                             )),
@@ -30400,31 +30400,31 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v6153: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::A, _, _>> = leptos::prelude::view! { <a  aria-current=move || if v6057(()) { "page" } else { "" } class=move || "inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium ".to_owned() + v6060(()) href=move || v6053()>move || { v6148 }</a> };
-                let v6155: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6153);
-                let v6157 = {
-                    let clo_42 = Func0::from(v5976);
+                let v6154: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::A, _, _>> = leptos::prelude::view! { <a  aria-current=move || if v6058(()) { "page" } else { "" } class=move || "inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium ".to_owned() + v6061(()) href=move || v6054()>move || { v6149 }</a> };
+                let v6156: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6154);
+                let v6158 = {
+                    let clo_42 = Func0::from(v5977);
                     Func1::new({
                         let clo_42 = clo_42.clone();
                         move |arg_42: ()| clo_42()
                     })
                 };
-                let v6171: string =
-                    string(" class=move || \"text-gray-700 \".to_owned() + &v6157(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" height=\"100%\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
-                let v6177: string =
+                let v6172: string =
+                    string(" class=move || \"text-gray-700 \".to_owned() + &v6158(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" height=\"100%\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
+                let v6178: string =
                     string(" d=\"M4 12h16m-7-7l7 7-7 7m-2-14l-7 7 7 7\" stroke-linejoin=\"round\" stroke-linecap=\"round\"");
-                let v6178: string = string("vec![]");
-                let v6179: Vec<leptos::prelude::AnyView> = vec![];
-                let v6181: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6179);
-                let v6183: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6181);
-                let v6185: string = append(
+                let v6179: string = string("vec![]");
+                let v6180: Vec<leptos::prelude::AnyView> = vec![];
+                let v6182: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6180);
+                let v6184: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6182);
+                let v6186: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<path "), (v6177))),
-                                    string(">move || { v6183 }</"),
+                                    (append(string("<path "), (v6178))),
+                                    string(">move || { v6184 }</"),
                                 )),
                                 string("path"),
                             )),
@@ -30433,22 +30433,22 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v6187: leptos::prelude::View<
+                let v6188: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                > = leptos::prelude::view! { <path  d="M4 12h16m-7-7l7 7-7 7m-2-14l-7 7 7 7" stroke-linejoin="round" stroke-linecap="round">move || { v6183 }</path> };
-                let v6189: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6187);
-                let v6193: string = string("vec![v6189]");
-                let v6194: Vec<leptos::prelude::AnyView> = vec![v6189];
-                let v6196: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6194);
-                let v6198: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6196);
-                let v6200: string = append(
+                > = leptos::prelude::view! { <path  d="M4 12h16m-7-7l7 7-7 7m-2-14l-7 7 7 7" stroke-linejoin="round" stroke-linecap="round">move || { v6184 }</path> };
+                let v6190: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6188);
+                let v6194: string = string("vec![v6190]");
+                let v6195: Vec<leptos::prelude::AnyView> = vec![v6190];
+                let v6197: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6195);
+                let v6199: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6197);
+                let v6201: string = append(
                     (append(
                         string("leptos::prelude::view! { "),
                         (append(
                             (append(
                                 (append(
-                                    (append(string("<svg "), (v6171))),
-                                    string(">move || { v6198 }</"),
+                                    (append(string("<svg "), (v6172))),
+                                    string(">move || { v6199 }</"),
                                 )),
                                 string("svg"),
                             )),
@@ -30457,19 +30457,19 @@ mod module_9c940d83 {
                     )),
                     string(" }"),
                 );
-                let v6202: leptos::prelude::View<
+                let v6203: leptos::prelude::View<
                     leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                > = leptos::prelude::view! { <svg  class=move || "text-gray-700 ".to_owned() + &v6157(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v6198 }</svg> };
-                let v6204: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6202);
-                let v6208: string = string("vec![v6204]");
-                let v6209: Vec<leptos::prelude::AnyView> = vec![v6204];
-                let v6211: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6209);
-                let v6212 = Func0::new({
-                    let v5479 = v5479.clone();
-                    move || Dice_ui::closure352(v5479.clone(), ())
+                > = leptos::prelude::view! { <svg  class=move || "text-gray-700 ".to_owned() + &v6158(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v6199 }</svg> };
+                let v6205: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6203);
+                let v6209: string = string("vec![v6205]");
+                let v6210: Vec<leptos::prelude::AnyView> = vec![v6205];
+                let v6212: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6210);
+                let v6213 = Func0::new({
+                    let v5480 = v5480.clone();
+                    move || Dice_ui::closure352(v5480.clone(), ())
                 });
                 {
-                    let v6216 = {
+                    let v6217 = {
                         let clo_43 = Func0::new({
                             let v1751 = v1751.clone();
                             move || Dice_ui::closure353(v1751.clone(), ())
@@ -30479,7 +30479,7 @@ mod module_9c940d83 {
                             move |arg_43: ()| clo_43()
                         })
                     };
-                    let v6219 = {
+                    let v6220 = {
                         let clo_44 = Func0::new({
                             let v1751 = v1751.clone();
                             move || Dice_ui::closure354(v1751.clone(), ())
@@ -30489,39 +30489,39 @@ mod module_9c940d83 {
                             move |arg_44: ()| clo_44()
                         })
                     };
-                    let v6221: string =
-                        string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium \".to_owned() + v6219(())");
-                    let v6225: string = append(
+                    let v6222: string =
+                        string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium \".to_owned() + v6220(())");
+                    let v6226: string = append(
                         (append(
-                            string(" aria-current=move || if v6216(()) { \"page\" } else { \"\" }"),
+                            string(" aria-current=move || if v6217(()) { \"page\" } else { \"\" }"),
                             (append(
                                 (append(
-                                    (append(string(" "), (v6221))),
-                                    string(" href=move || v6212()"),
+                                    (append(string(" "), (v6222))),
+                                    string(" href=move || v6213()"),
                                 )),
                                 string(""),
                             )),
                         )),
                         string(""),
                     );
-                    let v6227: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6211);
-                    let v6236: &str = &*string("Transactions");
-                    let v6269: std::string::String = String::from(v6236);
-                    let v6295: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                        leptos::prelude::IntoView::into_view(v6269),
+                    let v6228: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6212);
+                    let v6237: &str = &*string("Transactions");
+                    let v6270: std::string::String = String::from(v6237);
+                    let v6296: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                        leptos::prelude::IntoView::into_view(v6270),
                     );
-                    let v6302: string = string("vec![v6227, v6295]");
-                    let v6303: Vec<leptos::prelude::AnyView> = vec![v6227, v6295];
-                    let v6305: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6303);
-                    let v6307: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6305);
-                    let v6309: string = append(
+                    let v6303: string = string("vec![v6228, v6296]");
+                    let v6304: Vec<leptos::prelude::AnyView> = vec![v6228, v6296];
+                    let v6306: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6304);
+                    let v6308: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6306);
+                    let v6310: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<a "), (v6225))),
-                                        string(">move || { v6307 }</"),
+                                        (append(string("<a "), (v6226))),
+                                        string(">move || { v6308 }</"),
                                     )),
                                     string("a"),
                                 )),
@@ -30530,33 +30530,33 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v6311: leptos::prelude::View<
+                    let v6312: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::html::A, _, _>,
-                    > = leptos::prelude::view! { <a  aria-current=move || if v6216(()) { "page" } else { "" } class=move || "inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium ".to_owned() + v6219(()) href=move || v6212()>move || { v6307 }</a> };
-                    let v6313: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6311);
-                    let v6315 = {
-                        let clo_45 = Func0::from(v5976);
+                    > = leptos::prelude::view! { <a  aria-current=move || if v6217(()) { "page" } else { "" } class=move || "inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium ".to_owned() + v6220(()) href=move || v6213()>move || { v6308 }</a> };
+                    let v6314: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6312);
+                    let v6316 = {
+                        let clo_45 = Func0::from(v5977);
                         Func1::new({
                             let clo_45 = clo_45.clone();
                             move |arg_45: ()| clo_45()
                         })
                     };
-                    let v6329: string =
-                        string(" class=move || \"text-gray-700 \".to_owned() + &v6315(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" height=\"100%\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
-                    let v6335: string =
+                    let v6330: string =
+                        string(" class=move || \"text-gray-700 \".to_owned() + &v6316(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" height=\"100%\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
+                    let v6336: string =
                         string(" d=\"M4.75 6.75h14.5M4.75 12h14.5M4.75 17.25h14.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"");
-                    let v6336: string = string("vec![]");
-                    let v6337: Vec<leptos::prelude::AnyView> = vec![];
-                    let v6339: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6337);
-                    let v6341: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6339);
-                    let v6343: string = append(
+                    let v6337: string = string("vec![]");
+                    let v6338: Vec<leptos::prelude::AnyView> = vec![];
+                    let v6340: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6338);
+                    let v6342: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6340);
+                    let v6344: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<path "), (v6335))),
-                                        string(">move || { v6341 }</"),
+                                        (append(string("<path "), (v6336))),
+                                        string(">move || { v6342 }</"),
                                     )),
                                     string("path"),
                                 )),
@@ -30565,24 +30565,24 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v6345: leptos::prelude::View<
+                    let v6346: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Path, _, _>,
-                    > = leptos::prelude::view! { <path  d="M4.75 6.75h14.5M4.75 12h14.5M4.75 17.25h14.5" stroke-linejoin="round" stroke-linecap="round">move || { v6341 }</path> };
-                    let v6347: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6345);
-                    let v6355: string =
+                    > = leptos::prelude::view! { <path  d="M4.75 6.75h14.5M4.75 12h14.5M4.75 17.25h14.5" stroke-linejoin="round" stroke-linecap="round">move || { v6342 }</path> };
+                    let v6348: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6346);
+                    let v6356: string =
                         string(" fill=\"currentColor\" r=\"1\" cy=\"6.75\" cx=\"3\"");
-                    let v6356: string = string("vec![]");
-                    let v6357: Vec<leptos::prelude::AnyView> = vec![];
-                    let v6359: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6357);
-                    let v6361: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6359);
-                    let v6364: string = append(
+                    let v6357: string = string("vec![]");
+                    let v6358: Vec<leptos::prelude::AnyView> = vec![];
+                    let v6360: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6358);
+                    let v6362: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6360);
+                    let v6365: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<circle "), (v6355))),
-                                        string(">move || { v6361 }</"),
+                                        (append(string("<circle "), (v6356))),
+                                        string(">move || { v6362 }</"),
                                     )),
                                     string("circle"),
                                 )),
@@ -30591,23 +30591,23 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v6366: leptos::prelude::View<
+                    let v6367: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Circle, _, _>,
-                    > = leptos::prelude::view! { <circle  fill="currentColor" r="1" cy="6.75" cx="3">move || { v6361 }</circle> };
-                    let v6368: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6366);
-                    let v6376: string = string(" fill=\"currentColor\" r=\"1\" cy=\"12\" cx=\"3\"");
-                    let v6377: string = string("vec![]");
-                    let v6378: Vec<leptos::prelude::AnyView> = vec![];
-                    let v6380: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6378);
-                    let v6382: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6380);
-                    let v6384: string = append(
+                    > = leptos::prelude::view! { <circle  fill="currentColor" r="1" cy="6.75" cx="3">move || { v6362 }</circle> };
+                    let v6369: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6367);
+                    let v6377: string = string(" fill=\"currentColor\" r=\"1\" cy=\"12\" cx=\"3\"");
+                    let v6378: string = string("vec![]");
+                    let v6379: Vec<leptos::prelude::AnyView> = vec![];
+                    let v6381: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6379);
+                    let v6383: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6381);
+                    let v6385: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<circle "), (v6376))),
-                                        string(">move || { v6382 }</"),
+                                        (append(string("<circle "), (v6377))),
+                                        string(">move || { v6383 }</"),
                                     )),
                                     string("circle"),
                                 )),
@@ -30616,24 +30616,24 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v6386: leptos::prelude::View<
+                    let v6387: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Circle, _, _>,
-                    > = leptos::prelude::view! { <circle  fill="currentColor" r="1" cy="12" cx="3">move || { v6382 }</circle> };
-                    let v6388: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6386);
-                    let v6396: string =
+                    > = leptos::prelude::view! { <circle  fill="currentColor" r="1" cy="12" cx="3">move || { v6383 }</circle> };
+                    let v6389: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6387);
+                    let v6397: string =
                         string(" fill=\"currentColor\" r=\"1\" cy=\"17.25\" cx=\"3\"");
-                    let v6397: string = string("vec![]");
-                    let v6398: Vec<leptos::prelude::AnyView> = vec![];
-                    let v6400: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6398);
-                    let v6402: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6400);
-                    let v6404: string = append(
+                    let v6398: string = string("vec![]");
+                    let v6399: Vec<leptos::prelude::AnyView> = vec![];
+                    let v6401: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6399);
+                    let v6403: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6401);
+                    let v6405: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<circle "), (v6396))),
-                                        string(">move || { v6402 }</"),
+                                        (append(string("<circle "), (v6397))),
+                                        string(">move || { v6403 }</"),
                                     )),
                                     string("circle"),
                                 )),
@@ -30642,22 +30642,22 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v6406: leptos::prelude::View<
+                    let v6407: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Circle, _, _>,
-                    > = leptos::prelude::view! { <circle  fill="currentColor" r="1" cy="17.25" cx="3">move || { v6402 }</circle> };
-                    let v6408: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6406);
-                    let v6421: string = string("vec![v6347, v6368, v6388, v6408]");
-                    let v6422: Vec<leptos::prelude::AnyView> = vec![v6347, v6368, v6388, v6408];
-                    let v6424: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6422);
-                    let v6426: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6424);
-                    let v6428: string = append(
+                    > = leptos::prelude::view! { <circle  fill="currentColor" r="1" cy="17.25" cx="3">move || { v6403 }</circle> };
+                    let v6409: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6407);
+                    let v6422: string = string("vec![v6348, v6369, v6389, v6409]");
+                    let v6423: Vec<leptos::prelude::AnyView> = vec![v6348, v6369, v6389, v6409];
+                    let v6425: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6423);
+                    let v6427: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6425);
+                    let v6429: string = append(
                         (append(
                             string("leptos::prelude::view! { "),
                             (append(
                                 (append(
                                     (append(
-                                        (append(string("<svg "), (v6329))),
-                                        string(">move || { v6426 }</"),
+                                        (append(string("<svg "), (v6330))),
+                                        string(">move || { v6427 }</"),
                                     )),
                                     string("svg"),
                                 )),
@@ -30666,19 +30666,19 @@ mod module_9c940d83 {
                         )),
                         string(" }"),
                     );
-                    let v6430: leptos::prelude::View<
+                    let v6431: leptos::prelude::View<
                         leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                    > = leptos::prelude::view! { <svg  class=move || "text-gray-700 ".to_owned() + &v6315(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v6426 }</svg> };
-                    let v6432: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6430);
-                    let v6436: string = string("vec![v6432]");
-                    let v6437: Vec<leptos::prelude::AnyView> = vec![v6432];
-                    let v6439: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6437);
-                    let v6440 = Func0::new({
-                        let v5479 = v5479.clone();
-                        move || Dice_ui::closure355(v5479.clone(), ())
+                    > = leptos::prelude::view! { <svg  class=move || "text-gray-700 ".to_owned() + &v6316(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v6427 }</svg> };
+                    let v6433: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v6431);
+                    let v6437: string = string("vec![v6433]");
+                    let v6438: Vec<leptos::prelude::AnyView> = vec![v6433];
+                    let v6440: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v6438);
+                    let v6441 = Func0::new({
+                        let v5480 = v5480.clone();
+                        move || Dice_ui::closure355(v5480.clone(), ())
                     });
                     {
-                        let v6444 = {
+                        let v6445 = {
                             let clo_46 = Func0::new({
                                 let v1751 = v1751.clone();
                                 move || Dice_ui::closure356(v1751.clone(), ())
@@ -30688,7 +30688,7 @@ mod module_9c940d83 {
                                 move |arg_46: ()| clo_46()
                             })
                         };
-                        let v6447 = {
+                        let v6448 = {
                             let clo_47 = Func0::new({
                                 let v1751 = v1751.clone();
                                 move || Dice_ui::closure357(v1751.clone(), ())
@@ -30698,42 +30698,42 @@ mod module_9c940d83 {
                                 move |arg_47: ()| clo_47()
                             })
                         };
-                        let v6449: string =
-                            string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium \".to_owned() + v6447(())");
-                        let v6453: string = append(
+                        let v6450: string =
+                            string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium \".to_owned() + v6448(())");
+                        let v6454: string = append(
                             (append(
                                 string(
-                                    " aria-current=move || if v6444(()) { \"page\" } else { \"\" }",
+                                    " aria-current=move || if v6445(()) { \"page\" } else { \"\" }",
                                 ),
                                 (append(
                                     (append(
-                                        (append(string(" "), (v6449))),
-                                        string(" href=move || v6440()"),
+                                        (append(string(" "), (v6450))),
+                                        string(" href=move || v6441()"),
                                     )),
                                     string(""),
                                 )),
                             )),
                             string(""),
                         );
-                        let v6455: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6439);
-                        let v6464: &str = &*string("Lists");
-                        let v6497: std::string::String = String::from(v6464);
-                        let v6523: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
-                            leptos::prelude::IntoView::into_view(v6497),
+                        let v6456: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6440);
+                        let v6465: &str = &*string("Lists");
+                        let v6498: std::string::String = String::from(v6465);
+                        let v6524: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(
+                            leptos::prelude::IntoView::into_view(v6498),
                         );
-                        let v6530: string = string("vec![v6455, v6523]");
-                        let v6531: Vec<leptos::prelude::AnyView> = vec![v6455, v6523];
-                        let v6533: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v6531);
-                        let v6535: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6533);
-                        let v6537: string = append(
+                        let v6531: string = string("vec![v6456, v6524]");
+                        let v6532: Vec<leptos::prelude::AnyView> = vec![v6456, v6524];
+                        let v6534: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v6532);
+                        let v6536: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6534);
+                        let v6538: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<a "), (v6453))),
-                                            string(">move || { v6535 }</"),
+                                            (append(string("<a "), (v6454))),
+                                            string(">move || { v6536 }</"),
                                         )),
                                         string("a"),
                                     )),
@@ -30742,35 +30742,35 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v6539: leptos::prelude::View<
+                        let v6540: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::html::A, _, _>,
-                        > = leptos::prelude::view! { <a  aria-current=move || if v6444(()) { "page" } else { "" } class=move || "inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium ".to_owned() + v6447(()) href=move || v6440()>move || { v6535 }</a> };
-                        let v6541: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v6539);
-                        let v6543 = {
-                            let clo_48 = Func0::from(v5976);
+                        > = leptos::prelude::view! { <a  aria-current=move || if v6445(()) { "page" } else { "" } class=move || "inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium ".to_owned() + v6448(()) href=move || v6441()>move || { v6536 }</a> };
+                        let v6542: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v6540);
+                        let v6544 = {
+                            let clo_48 = Func0::from(v5977);
                             Func1::new({
                                 let clo_48 = clo_48.clone();
                                 move |arg_48: ()| clo_48()
                             })
                         };
-                        let v6555: string =
-                            string(" class=move || \" \".to_owned() + &v6543(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
-                        let v6569: string =
+                        let v6556: string =
+                            string(" class=move || \" \".to_owned() + &v6544(()) stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"");
+                        let v6570: string =
                             string(" stroke-linejoin=\"round\" stroke-linecap=\"round\" rx=\"2\" height=\"18\" width=\"18\" y=\"3\" x=\"3\"");
-                        let v6570: string = string("vec![]");
-                        let v6571: Vec<leptos::prelude::AnyView> = vec![];
-                        let v6573: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v6571);
-                        let v6575: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6573);
-                        let v6578: string = append(
+                        let v6571: string = string("vec![]");
+                        let v6572: Vec<leptos::prelude::AnyView> = vec![];
+                        let v6574: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v6572);
+                        let v6576: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6574);
+                        let v6579: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<rect "), (v6569))),
-                                            string(">move || { v6575 }</"),
+                                            (append(string("<rect "), (v6570))),
+                                            string(">move || { v6576 }</"),
                                         )),
                                         string("rect"),
                                     )),
@@ -30779,26 +30779,26 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v6580: leptos::prelude::View<
+                        let v6581: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Rect, _, _>,
-                        > = leptos::prelude::view! { <rect  stroke-linejoin="round" stroke-linecap="round" rx="2" height="18" width="18" y="3" x="3">move || { v6575 }</rect> };
-                        let v6582: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v6580);
-                        let v6590: string =
+                        > = leptos::prelude::view! { <rect  stroke-linejoin="round" stroke-linecap="round" rx="2" height="18" width="18" y="3" x="3">move || { v6576 }</rect> };
+                        let v6583: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v6581);
+                        let v6591: string =
                             string(" fill=\"currentColor\" r=\"1.5\" cy=\"7.5\" cx=\"7.5\"");
-                        let v6591: string = string("vec![]");
-                        let v6592: Vec<leptos::prelude::AnyView> = vec![];
-                        let v6594: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v6592);
-                        let v6596: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6594);
-                        let v6598: string = append(
+                        let v6592: string = string("vec![]");
+                        let v6593: Vec<leptos::prelude::AnyView> = vec![];
+                        let v6595: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v6593);
+                        let v6597: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6595);
+                        let v6599: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<circle "), (v6590))),
-                                            string(">move || { v6596 }</"),
+                                            (append(string("<circle "), (v6591))),
+                                            string(">move || { v6597 }</"),
                                         )),
                                         string("circle"),
                                     )),
@@ -30807,26 +30807,26 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v6600: leptos::prelude::View<
+                        let v6601: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Circle, _, _>,
-                        > = leptos::prelude::view! { <circle  fill="currentColor" r="1.5" cy="7.5" cx="7.5">move || { v6596 }</circle> };
-                        let v6602: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v6600);
-                        let v6610: string =
+                        > = leptos::prelude::view! { <circle  fill="currentColor" r="1.5" cy="7.5" cx="7.5">move || { v6597 }</circle> };
+                        let v6603: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v6601);
+                        let v6611: string =
                             string(" fill=\"currentColor\" r=\"1.5\" cy=\"7.5\" cx=\"16.5\"");
-                        let v6611: string = string("vec![]");
-                        let v6612: Vec<leptos::prelude::AnyView> = vec![];
-                        let v6614: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v6612);
-                        let v6616: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6614);
-                        let v6618: string = append(
+                        let v6612: string = string("vec![]");
+                        let v6613: Vec<leptos::prelude::AnyView> = vec![];
+                        let v6615: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v6613);
+                        let v6617: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6615);
+                        let v6619: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<circle "), (v6610))),
-                                            string(">move || { v6616 }</"),
+                                            (append(string("<circle "), (v6611))),
+                                            string(">move || { v6617 }</"),
                                         )),
                                         string("circle"),
                                     )),
@@ -30835,26 +30835,26 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v6620: leptos::prelude::View<
+                        let v6621: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Circle, _, _>,
-                        > = leptos::prelude::view! { <circle  fill="currentColor" r="1.5" cy="7.5" cx="16.5">move || { v6616 }</circle> };
-                        let v6622: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v6620);
-                        let v6630: string =
+                        > = leptos::prelude::view! { <circle  fill="currentColor" r="1.5" cy="7.5" cx="16.5">move || { v6617 }</circle> };
+                        let v6623: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v6621);
+                        let v6631: string =
                             string(" fill=\"currentColor\" r=\"1.5\" cy=\"12\" cx=\"12\"");
-                        let v6631: string = string("vec![]");
-                        let v6632: Vec<leptos::prelude::AnyView> = vec![];
-                        let v6634: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v6632);
-                        let v6636: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6634);
-                        let v6638: string = append(
+                        let v6632: string = string("vec![]");
+                        let v6633: Vec<leptos::prelude::AnyView> = vec![];
+                        let v6635: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v6633);
+                        let v6637: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6635);
+                        let v6639: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<circle "), (v6630))),
-                                            string(">move || { v6636 }</"),
+                                            (append(string("<circle "), (v6631))),
+                                            string(">move || { v6637 }</"),
                                         )),
                                         string("circle"),
                                     )),
@@ -30863,26 +30863,26 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v6640: leptos::prelude::View<
+                        let v6641: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Circle, _, _>,
-                        > = leptos::prelude::view! { <circle  fill="currentColor" r="1.5" cy="12" cx="12">move || { v6636 }</circle> };
-                        let v6642: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v6640);
-                        let v6650: string =
+                        > = leptos::prelude::view! { <circle  fill="currentColor" r="1.5" cy="12" cx="12">move || { v6637 }</circle> };
+                        let v6643: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v6641);
+                        let v6651: string =
                             string(" fill=\"currentColor\" r=\"1.5\" cy=\"16.5\" cx=\"7.5\"");
-                        let v6651: string = string("vec![]");
-                        let v6652: Vec<leptos::prelude::AnyView> = vec![];
-                        let v6654: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v6652);
-                        let v6656: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6654);
-                        let v6658: string = append(
+                        let v6652: string = string("vec![]");
+                        let v6653: Vec<leptos::prelude::AnyView> = vec![];
+                        let v6655: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v6653);
+                        let v6657: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6655);
+                        let v6659: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<circle "), (v6650))),
-                                            string(">move || { v6656 }</"),
+                                            (append(string("<circle "), (v6651))),
+                                            string(">move || { v6657 }</"),
                                         )),
                                         string("circle"),
                                     )),
@@ -30891,26 +30891,26 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v6660: leptos::prelude::View<
+                        let v6661: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Circle, _, _>,
-                        > = leptos::prelude::view! { <circle  fill="currentColor" r="1.5" cy="16.5" cx="7.5">move || { v6656 }</circle> };
-                        let v6662: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v6660);
-                        let v6670: string =
+                        > = leptos::prelude::view! { <circle  fill="currentColor" r="1.5" cy="16.5" cx="7.5">move || { v6657 }</circle> };
+                        let v6663: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v6661);
+                        let v6671: string =
                             string(" fill=\"currentColor\" r=\"1.5\" cy=\"16.5\" cx=\"16.5\"");
-                        let v6671: string = string("vec![]");
-                        let v6672: Vec<leptos::prelude::AnyView> = vec![];
-                        let v6674: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v6672);
-                        let v6676: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6674);
-                        let v6678: string = append(
+                        let v6672: string = string("vec![]");
+                        let v6673: Vec<leptos::prelude::AnyView> = vec![];
+                        let v6675: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v6673);
+                        let v6677: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6675);
+                        let v6679: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<circle "), (v6670))),
-                                            string(">move || { v6676 }</"),
+                                            (append(string("<circle "), (v6671))),
+                                            string(">move || { v6677 }</"),
                                         )),
                                         string("circle"),
                                     )),
@@ -30919,26 +30919,26 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v6680: leptos::prelude::View<
+                        let v6681: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Circle, _, _>,
-                        > = leptos::prelude::view! { <circle  fill="currentColor" r="1.5" cy="16.5" cx="16.5">move || { v6676 }</circle> };
-                        let v6682: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v6680);
-                        let v6701: string =
-                            string("vec![v6582, v6602, v6622, v6642, v6662, v6682]");
-                        let v6702: Vec<leptos::prelude::AnyView> =
-                            vec![v6582, v6602, v6622, v6642, v6662, v6682];
-                        let v6704: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v6702);
-                        let v6706: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6704);
-                        let v6708: string = append(
+                        > = leptos::prelude::view! { <circle  fill="currentColor" r="1.5" cy="16.5" cx="16.5">move || { v6677 }</circle> };
+                        let v6683: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v6681);
+                        let v6702: string =
+                            string("vec![v6583, v6603, v6623, v6643, v6663, v6683]");
+                        let v6703: Vec<leptos::prelude::AnyView> =
+                            vec![v6583, v6603, v6623, v6643, v6663, v6683];
+                        let v6705: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v6703);
+                        let v6707: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v6705);
+                        let v6709: string = append(
                             (append(
                                 string("leptos::prelude::view! { "),
                                 (append(
                                     (append(
                                         (append(
-                                            (append(string("<svg "), (v6555))),
-                                            string(">move || { v6706 }</"),
+                                            (append(string("<svg "), (v6556))),
+                                            string(">move || { v6707 }</"),
                                         )),
                                         string("svg"),
                                     )),
@@ -30947,21 +30947,21 @@ mod module_9c940d83 {
                             )),
                             string(" }"),
                         );
-                        let v6710: leptos::prelude::View<
+                        let v6711: leptos::prelude::View<
                             leptos::html::HtmlElement<leptos::svg::Svg, _, _>,
-                        > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v6543(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v6706 }</svg> };
-                        let v6712: leptos::prelude::AnyView =
-                            leptos::prelude::IntoAny::into_any(v6710);
-                        let v6716: string = string("vec![v6712]");
-                        let v6717: Vec<leptos::prelude::AnyView> = vec![v6712];
-                        let v6719: leptos::prelude::Fragment =
-                            leptos::prelude::Fragment::new(v6717);
-                        let v6720 = Func0::new({
-                            let v5479 = v5479.clone();
-                            move || Dice_ui::closure358(v5479.clone(), ())
+                        > = leptos::prelude::view! { <svg  class=move || " ".to_owned() + &v6544(()) stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">move || { v6707 }</svg> };
+                        let v6713: leptos::prelude::AnyView =
+                            leptos::prelude::IntoAny::into_any(v6711);
+                        let v6717: string = string("vec![v6713]");
+                        let v6718: Vec<leptos::prelude::AnyView> = vec![v6713];
+                        let v6720: leptos::prelude::Fragment =
+                            leptos::prelude::Fragment::new(v6718);
+                        let v6721 = Func0::new({
+                            let v5480 = v5480.clone();
+                            move || Dice_ui::closure358(v5480.clone(), ())
                         });
                         {
-                            let v6724 = {
+                            let v6725 = {
                                 let clo_49 = Func0::new({
                                     let v1751 = v1751.clone();
                                     move || Dice_ui::closure359(v1751.clone(), ())
@@ -30971,7 +30971,7 @@ mod module_9c940d83 {
                                     move |arg_49: ()| clo_49()
                                 })
                             };
-                            let v6727 = {
+                            let v6728 = {
                                 let clo_50 = Func0::new({
                                     let v1751 = v1751.clone();
                                     move || Dice_ui::closure360(v1751.clone(), ())
@@ -30981,37 +30981,37 @@ mod module_9c940d83 {
                                     move |arg_50: ()| clo_50()
                                 })
                             };
-                            let v6729: string =
-                                string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium \".to_owned() + v6727(())");
-                            let v6733: string =
-                                append((append(string(" aria-current=move || if v6724(()) { \"page\" } else { \"\" }"),
+                            let v6730: string =
+                                string("class=move || \"inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium \".to_owned() + v6728(())");
+                            let v6734: string =
+                                append((append(string(" aria-current=move || if v6725(()) { \"page\" } else { \"\" }"),
                                                (append((append((append(string(" "),
-                                                                       (v6729))),
-                                                               string(" href=move || v6720()"))),
+                                                                       (v6730))),
+                                                               string(" href=move || v6721()"))),
                                                        string(""))))),
                                        string(""));
-                            let v6735: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v6719);
-                            let v6744: &str = &*string("Dice");
-                            let v6777: std::string::String = String::from(v6744);
-                            let v6803: leptos::prelude::AnyView =
+                            let v6736: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v6720);
+                            let v6745: &str = &*string("Dice");
+                            let v6778: std::string::String = String::from(v6745);
+                            let v6804: leptos::prelude::AnyView =
                                 leptos::prelude::IntoAny::into_any(
-                                    leptos::prelude::IntoView::into_view(v6777),
+                                    leptos::prelude::IntoView::into_view(v6778),
                                 );
-                            let v6810: string = string("vec![v6735, v6803]");
-                            let v6811: Vec<leptos::prelude::AnyView> = vec![v6735, v6803];
-                            let v6813: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v6811);
-                            let v6815: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v6813);
-                            let v6817: string = append(
+                            let v6811: string = string("vec![v6736, v6804]");
+                            let v6812: Vec<leptos::prelude::AnyView> = vec![v6736, v6804];
+                            let v6814: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v6812);
+                            let v6816: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v6814);
+                            let v6818: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<a "), (v6733))),
-                                                string(">move || { v6815 }</"),
+                                                (append(string("<a "), (v6734))),
+                                                string(">move || { v6816 }</"),
                                             )),
                                             string("a"),
                                         )),
@@ -31020,26 +31020,26 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v6819: leptos::prelude::View<
+                            let v6820: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::A, _, _>,
-                            > = leptos::prelude::view! { <a  aria-current=move || if v6724(()) { "page" } else { "" } class=move || "inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium ".to_owned() + v6727(()) href=move || v6720()>move || { v6815 }</a> };
-                            let v6821: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v6819);
-                            let v6834: string = string("vec![v6821, v6541, v6313, v6155]");
-                            let v6835: Vec<leptos::prelude::AnyView> =
-                                vec![v6821, v6541, v6313, v6155];
-                            let v6837: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v6835);
-                            let v6839: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v6837);
-                            let v6842: string = append(
+                            > = leptos::prelude::view! { <a  aria-current=move || if v6725(()) { "page" } else { "" } class=move || "inline-flex shrink-0 items-center [justify-content:center] flex-1 gap-2 border-t-2 [white-space:nowrap] mb-[11px] pt-[8px] pr-[15px] pl-[15px] text-sm font-medium ".to_owned() + v6728(()) href=move || v6721()>move || { v6816 }</a> };
+                            let v6822: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v6820);
+                            let v6835: string = string("vec![v6822, v6542, v6314, v6156]");
+                            let v6836: Vec<leptos::prelude::AnyView> =
+                                vec![v6822, v6542, v6314, v6156];
+                            let v6838: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v6836);
+                            let v6840: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v6838);
+                            let v6843: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<nav "), (v5974))),
-                                                string(">move || { v6839 }</"),
+                                                (append(string("<nav "), (v5975))),
+                                                string(">move || { v6840 }</"),
                                             )),
                                             string("nav"),
                                         )),
@@ -31048,25 +31048,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v6844: leptos::prelude::View<
+                            let v6845: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Nav, _, _>,
-                            > = leptos::prelude::view! { <nav  aria-label="Tabs" class="-mb-px flex [flex-flow:wrap] [flex-grow:1] [flex-shrink:0] gap-[3px] [overflow-wrap:anywhere]">move || { v6839 }</nav> };
-                            let v6846: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v6844);
-                            let v6850: string = string("vec![v6846]");
-                            let v6851: Vec<leptos::prelude::AnyView> = vec![v6846];
-                            let v6853: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v6851);
-                            let v6855: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v6853);
-                            let v6857: string = append(
+                            > = leptos::prelude::view! { <nav  aria-label="Tabs" class="-mb-px flex [flex-flow:wrap] [flex-grow:1] [flex-shrink:0] gap-[3px] [overflow-wrap:anywhere]">move || { v6840 }</nav> };
+                            let v6847: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v6845);
+                            let v6851: string = string("vec![v6847]");
+                            let v6852: Vec<leptos::prelude::AnyView> = vec![v6847];
+                            let v6854: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v6852);
+                            let v6856: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v6854);
+                            let v6858: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v5970))),
-                                                string(">move || { v6855 }</"),
+                                                (append(string("<div "), (v5971))),
+                                                string(">move || { v6856 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -31075,25 +31075,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v6859: leptos::prelude::View<
+                            let v6860: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="flex flex-1 border-t border-gray-200">move || { v6855 }</div> };
-                            let v6861: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v6859);
-                            let v6865: string = string("vec![v6861]");
-                            let v6866: Vec<leptos::prelude::AnyView> = vec![v6861];
-                            let v6868: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v6866);
-                            let v6870: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v6868);
-                            let v6872: string = append(
+                            > = leptos::prelude::view! { <div  class="flex flex-1 border-t border-gray-200">move || { v6856 }</div> };
+                            let v6862: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v6860);
+                            let v6866: string = string("vec![v6862]");
+                            let v6867: Vec<leptos::prelude::AnyView> = vec![v6862];
+                            let v6869: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v6867);
+                            let v6871: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v6869);
+                            let v6873: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v5968))),
-                                                string(">move || { v6870 }</"),
+                                                (append(string("<div "), (v5969))),
+                                                string(">move || { v6871 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -31102,27 +31102,27 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v6874: leptos::prelude::View<
+                            let v6875: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="flex flex-1 [overflow-x:auto] [overflow-y:hidden]">move || { v6870 }</div> };
-                            let v6876: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v6874);
-                            let v6878: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v5966);
-                            let v6885: string = string("vec![v6878, v6876]");
-                            let v6886: Vec<leptos::prelude::AnyView> = vec![v6878, v6876];
-                            let v6888: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v6886);
-                            let v6890: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v6888);
-                            let v6892: string = append(
+                            > = leptos::prelude::view! { <div  class="flex flex-1 [overflow-x:auto] [overflow-y:hidden]">move || { v6871 }</div> };
+                            let v6877: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v6875);
+                            let v6879: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v5967);
+                            let v6886: string = string("vec![v6879, v6877]");
+                            let v6887: Vec<leptos::prelude::AnyView> = vec![v6879, v6877];
+                            let v6889: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v6887);
+                            let v6891: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v6889);
+                            let v6893: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v5471))),
-                                                string(">move || { v6890 }</"),
+                                                (append(string("<div "), (v5472))),
+                                                string(">move || { v6891 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -31131,25 +31131,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v6894: leptos::prelude::View<
+                            let v6895: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="flex">move || { v6890 }</div> };
-                            let v6896: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v6894);
-                            let v6903: string = string("vec![v5469, v6896]");
-                            let v6904: Vec<leptos::prelude::AnyView> = vec![v5469, v6896];
-                            let v6906: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v6904);
-                            let v6908: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v6906);
-                            let v6910: string = append(
+                            > = leptos::prelude::view! { <div  class="flex">move || { v6891 }</div> };
+                            let v6897: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v6895);
+                            let v6904: string = string("vec![v5470, v6897]");
+                            let v6905: Vec<leptos::prelude::AnyView> = vec![v5470, v6897];
+                            let v6907: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v6905);
+                            let v6909: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v6907);
+                            let v6911: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v2112))),
-                                                string(">move || { v6908 }</"),
+                                                (append(string("<div "), (v2113))),
+                                                string(">move || { v6909 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -31158,25 +31158,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v6912: leptos::prelude::View<
+                            let v6913: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] [height:100vh] [max-height:100dvh] [max-height:-webkit-fill-available] max-[60px]:[min-height:600px] bg-gray-50 text-gray-700 text-sm">move || { v6908 }</div> };
-                            let v6914: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v6912);
-                            let v6918: string = string("vec![v6914]");
-                            let v6919: Vec<leptos::prelude::AnyView> = vec![v6914];
-                            let v6921: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v6919);
-                            let v6923: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v6921);
-                            let v6925: string = append(
+                            > = leptos::prelude::view! { <div  class="flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] [height:100vh] [max-height:100dvh] [max-height:-webkit-fill-available] max-[60px]:[min-height:600px] bg-gray-50 text-gray-700 text-sm">move || { v6909 }</div> };
+                            let v6915: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v6913);
+                            let v6919: string = string("vec![v6915]");
+                            let v6920: Vec<leptos::prelude::AnyView> = vec![v6915];
+                            let v6922: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v6920);
+                            let v6924: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v6922);
+                            let v6926: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
-                                                (append(string("<div "), (v2110))),
-                                                string(">move || { v6923 }</"),
+                                                (append(string("<div "), (v2111))),
+                                                string(">move || { v6924 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -31185,25 +31185,25 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            let v6927: leptos::prelude::View<
+                            let v6928: leptos::prelude::View<
                                 leptos::html::HtmlElement<leptos::html::Div, _, _>,
-                            > = leptos::prelude::view! { <div  class="flex flex-1 max-[100px]:[overflow-x:auto]">move || { v6923 }</div> };
-                            let v6929: leptos::prelude::AnyView =
-                                leptos::prelude::IntoAny::into_any(v6927);
-                            let v6933: string = string("vec![v6929]");
-                            let v6934: Vec<leptos::prelude::AnyView> = vec![v6929];
-                            let v6936: leptos::prelude::Fragment =
-                                leptos::prelude::Fragment::new(v6934);
-                            let v6938: leptos::prelude::AnyView =
-                                leptos::prelude::AnyView::from(v6936);
-                            let v6940: string = append(
+                            > = leptos::prelude::view! { <div  class="flex flex-1 max-[100px]:[overflow-x:auto]">move || { v6924 }</div> };
+                            let v6930: leptos::prelude::AnyView =
+                                leptos::prelude::IntoAny::into_any(v6928);
+                            let v6934: string = string("vec![v6930]");
+                            let v6935: Vec<leptos::prelude::AnyView> = vec![v6930];
+                            let v6937: leptos::prelude::Fragment =
+                                leptos::prelude::Fragment::new(v6935);
+                            let v6939: leptos::prelude::AnyView =
+                                leptos::prelude::AnyView::from(v6937);
+                            let v6941: string = append(
                                 (append(
                                     string("leptos::prelude::view! { "),
                                     (append(
                                         (append(
                                             (append(
                                                 (append(string("<div "), (v1732))),
-                                                string(">move || { v6938 }</"),
+                                                string(">move || { v6939 }</"),
                                             )),
                                             string("div"),
                                         )),
@@ -31212,7 +31212,7 @@ mod module_9c940d83 {
                                 )),
                                 string(" }"),
                             );
-                            leptos::prelude::view! { <div  class:dark={move || v1728()} class="flex flex-1">move || { v6938 }</div> }
+                            leptos::prelude::view! { <div  class:dark={move || v1728()} class="flex flex-1">move || { v6939 }</div> }
                         }
                     }
                 }

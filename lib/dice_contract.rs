@@ -472,79 +472,213 @@ mod module_7c9aa503 {
         }
         pub fn method8() -> (Dice::US3, Dice::US4) {
             let v1_1: string = Dice::method9(string("TRACE_LEVEL"));
-            let v6: Dice::US3 = if string("Verbose") == (v1_1.clone()) {
+            let v6: string = toLower(string("Critical"));
+            let v13: string = toLower(string("Warning"));
+            let v20: string = toLower(string("Info"));
+            let v27: string = toLower(string("Debug"));
+            let v34: string = toLower(string("Verbose"));
+            let v41: Dice::US3 = if string("Verbose") == (v1_1.clone()) {
                 Dice::US3::US3_0(Dice::US2::US2_0)
             } else {
                 Dice::US3::US3_1
             };
             (
-                match &v6 {
-                    Dice::US3::US3_0(v6_0_0) => Dice::US3::US3_0(
-                        match &v6 {
+                match &v41 {
+                    Dice::US3::US3_0(v41_0_0) => Dice::US3::US3_0(
+                        match &v41 {
                             Dice::US3::US3_0(x) => x.clone(),
                             _ => unreachable!(),
                         }
                         .clone(),
                     ),
                     _ => {
-                        let v13: Dice::US3 = if string("Debug") == (v1_1.clone()) {
+                        let v48: Dice::US3 = if string("Debug") == (v1_1.clone()) {
                             Dice::US3::US3_0(Dice::US2::US2_1)
                         } else {
                             Dice::US3::US3_1
                         };
-                        match &v13 {
-                            Dice::US3::US3_0(v13_0_0) => Dice::US3::US3_0(
-                                match &v13 {
+                        match &v48 {
+                            Dice::US3::US3_0(v48_0_0) => Dice::US3::US3_0(
+                                match &v48 {
                                     Dice::US3::US3_0(x) => x.clone(),
                                     _ => unreachable!(),
                                 }
                                 .clone(),
                             ),
                             _ => {
-                                let v20: Dice::US3 = if string("Info") == (v1_1.clone()) {
+                                let v55: Dice::US3 = if string("Info") == (v1_1.clone()) {
                                     Dice::US3::US3_0(Dice::US2::US2_2)
                                 } else {
                                     Dice::US3::US3_1
                                 };
-                                match &v20 {
-                                    Dice::US3::US3_0(v20_0_0) => Dice::US3::US3_0(
-                                        match &v20 {
+                                match &v55 {
+                                    Dice::US3::US3_0(v55_0_0) => Dice::US3::US3_0(
+                                        match &v55 {
                                             Dice::US3::US3_0(x) => x.clone(),
                                             _ => unreachable!(),
                                         }
                                         .clone(),
                                     ),
                                     _ => {
-                                        let v27: Dice::US3 = if string("Warning") == (v1_1.clone())
+                                        let v62: Dice::US3 = if string("Warning") == (v1_1.clone())
                                         {
                                             Dice::US3::US3_0(Dice::US2::US2_3)
                                         } else {
                                             Dice::US3::US3_1
                                         };
-                                        match &v27 {
-                                            Dice::US3::US3_0(v27_0_0) => Dice::US3::US3_0(
-                                                match &v27 {
+                                        match &v62 {
+                                            Dice::US3::US3_0(v62_0_0) => Dice::US3::US3_0(
+                                                match &v62 {
                                                     Dice::US3::US3_0(x) => x.clone(),
                                                     _ => unreachable!(),
                                                 }
                                                 .clone(),
                                             ),
                                             _ => {
-                                                let v34: Dice::US3 =
+                                                let v69: Dice::US3 =
                                                     if string("Critical") == (v1_1.clone()) {
                                                         Dice::US3::US3_0(Dice::US2::US2_4)
                                                     } else {
                                                         Dice::US3::US3_1
                                                     };
-                                                match &v34 {
-                                                    Dice::US3::US3_0(v34_0_0) => Dice::US3::US3_0(
-                                                        match &v34 {
+                                                match &v69 {
+                                                    Dice::US3::US3_0(v69_0_0) => Dice::US3::US3_0(
+                                                        match &v69 {
                                                             Dice::US3::US3_0(x) => x.clone(),
                                                             _ => unreachable!(),
                                                         }
                                                         .clone(),
                                                     ),
-                                                    _ => Dice::US3::US3_1,
+                                                    _ => {
+                                                        let v76: Dice::US3 =
+                                                            if (v34.clone()) == (v1_1.clone()) {
+                                                                Dice::US3::US3_0(Dice::US2::US2_0)
+                                                            } else {
+                                                                Dice::US3::US3_1
+                                                            };
+                                                        match &v76 {
+                                                            Dice::US3::US3_0(v76_0_0) => {
+                                                                Dice::US3::US3_0(
+                                                                    match &v76 {
+                                                                        Dice::US3::US3_0(x) => {
+                                                                            x.clone()
+                                                                        }
+                                                                        _ => unreachable!(),
+                                                                    }
+                                                                    .clone(),
+                                                                )
+                                                            }
+                                                            _ => {
+                                                                let v83: Dice::US3 = if (v27
+                                                                    .clone())
+                                                                    == (v1_1.clone())
+                                                                {
+                                                                    Dice::US3::US3_0(
+                                                                        Dice::US2::US2_1,
+                                                                    )
+                                                                } else {
+                                                                    Dice::US3::US3_1
+                                                                };
+                                                                match &v83 {
+                                                                 Dice::US3::US3_0(v83_0_0)
+                                                                 =>
+                                                                 Dice::US3::US3_0(match &v83
+                                                                                      {
+                                                                                      Dice::US3::US3_0(x)
+                                                                                      =>
+                                                                                      x.clone(),
+                                                                                      _
+                                                                                      =>
+                                                                                      unreachable!(),
+                                                                                  }.clone()),
+                                                                 _ => {
+                                                                     let v90:
+                                                                             Dice::US3 =
+                                                                         if (v20.clone())
+                                                                                ==
+                                                                                (v1_1.clone())
+                                                                            {
+                                                                             Dice::US3::US3_0(Dice::US2::US2_2)
+                                                                         } else {
+                                                                             Dice::US3::US3_1
+                                                                         };
+                                                                     match &v90
+                                                                         {
+                                                                         Dice::US3::US3_0(v90_0_0)
+                                                                         =>
+                                                                         Dice::US3::US3_0(match &v90
+                                                                                              {
+                                                                                              Dice::US3::US3_0(x)
+                                                                                              =>
+                                                                                              x.clone(),
+                                                                                              _
+                                                                                              =>
+                                                                                              unreachable!(),
+                                                                                          }.clone()),
+                                                                         _ =>
+                                                                         {
+                                                                             let v97:
+                                                                                     Dice::US3 =
+                                                                                 if (v13.clone())
+                                                                                        ==
+                                                                                        (v1_1.clone())
+                                                                                    {
+                                                                                     Dice::US3::US3_0(Dice::US2::US2_3)
+                                                                                 } else {
+                                                                                     Dice::US3::US3_1
+                                                                                 };
+                                                                             match &v97
+                                                                                 {
+                                                                                 Dice::US3::US3_0(v97_0_0)
+                                                                                 =>
+                                                                                 Dice::US3::US3_0(match &v97
+                                                                                                      {
+                                                                                                      Dice::US3::US3_0(x)
+                                                                                                      =>
+                                                                                                      x.clone(),
+                                                                                                      _
+                                                                                                      =>
+                                                                                                      unreachable!(),
+                                                                                                  }.clone()),
+                                                                                 _
+                                                                                 =>
+                                                                                 {
+                                                                                     let v104:
+                                                                                             Dice::US3 =
+                                                                                         if (v6.clone())
+                                                                                                ==
+                                                                                                (v1_1.clone())
+                                                                                            {
+                                                                                             Dice::US3::US3_0(Dice::US2::US2_4)
+                                                                                         } else {
+                                                                                             Dice::US3::US3_1
+                                                                                         };
+                                                                                     match &v104
+                                                                                         {
+                                                                                         Dice::US3::US3_0(v104_0_0)
+                                                                                         =>
+                                                                                         Dice::US3::US3_0(match &v104
+                                                                                                              {
+                                                                                                              Dice::US3::US3_0(x)
+                                                                                                              =>
+                                                                                                              x.clone(),
+                                                                                                              _
+                                                                                                              =>
+                                                                                                              unreachable!(),
+                                                                                                          }.clone()),
+                                                                                         _
+                                                                                         =>
+                                                                                         Dice::US3::US3_1,
+                                                                                     }
+                                                                                 }
+                                                                             }
+                                                                         }
+                                                                     }
+                                                                 }
+                                                             }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
@@ -557,7 +691,7 @@ mod module_7c9aa503 {
                 if (Dice::method9(string("AUTOMATION"))) != string("True") {
                     Dice::US4::US4_1
                 } else {
-                    let v63: DateTime = unbox::<DateTime>(fable_library_rust::Native_::getZero());
+                    let v143: DateTime = unbox::<DateTime>(fable_library_rust::Native_::getZero());
                     Dice::US4::US4_0(unbox::<i64>(fable_library_rust::Native_::getZero()))
                 },
             )
@@ -739,82 +873,82 @@ mod module_7c9aa503 {
             string("\u{001b}[0m")
         }
         pub fn method17() -> string {
-            let v7: string = Dice::method18(getCharAt(toLower(string("Debug")), 0_i32));
-            let v96: &str = inline_colorization::color_bright_blue;
-            let v107: &str = &*v7;
-            let v131: &str = inline_colorization::color_reset;
-            let v133: std::string::String = format!("{}{}{}", v96, v107, v131);
-            fable_library_rust::String_::fromString(v133)
+            let v8: string = Dice::method18(getCharAt(toLower(string("Debug")), 0_i32));
+            let v97: &str = inline_colorization::color_bright_blue;
+            let v108: &str = &*v8;
+            let v132: &str = inline_colorization::color_reset;
+            let v134: std::string::String = format!("{}{}{}", v97, v108, v132);
+            fable_library_rust::String_::fromString(v134)
         }
         pub fn method22(v0_1: i64, v1_1: i64, v2_1: i64, v3_1: string) -> string {
             let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v13: () = {
+            let v14: () = {
                 Dice::closure13(v5.clone(), string("{ "), ());
                 ()
             };
-            let v23: () = {
+            let v25: () = {
                 Dice::closure13(v5.clone(), string("current_index"), ());
                 ()
             };
-            let v33: () = {
+            let v36: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v42: () = {
+            let v45: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v52: () = {
+            let v56: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v62: () = {
+            let v67: () = {
                 Dice::closure13(v5.clone(), string("acc"), ());
                 ()
             };
-            let v71: () = {
+            let v76: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v80: () = {
+            let v85: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
-            let v89: () = {
+            let v94: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v99: () = {
+            let v105: () = {
                 Dice::closure13(v5.clone(), string("len"), ());
                 ()
             };
-            let v108: () = {
+            let v114: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v117: () = {
+            let v123: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v126: () = {
+            let v132: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v136: () = {
+            let v143: () = {
                 Dice::closure13(v5.clone(), string("last_item"), ());
                 ()
             };
-            let v145: () = {
+            let v152: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v154: () = {
+            let v161: () = {
                 Dice::closure13(v5.clone(), v3_1, ());
                 ()
             };
-            let v164: () = {
+            let v172: () = {
                 Dice::closure13(v5.clone(), string(" }"), ());
                 ()
             };
@@ -1201,55 +1335,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v22: () = {
+            let v24: () = {
                 Dice::closure13(v4_1.clone(), string("max"), ());
                 ()
             };
-            let v32: () = {
+            let v35: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v41: () = {
+            let v44: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v51: () = {
+            let v55: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v61: () = {
+            let v66: () = {
                 Dice::closure13(v4_1.clone(), string("p"), ());
                 ()
             };
-            let v70: () = {
+            let v75: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v79: () = {
+            let v84: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
-            let v88: () = {
+            let v93: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v98: () = {
+            let v104: () = {
                 Dice::closure13(v4_1.clone(), string("n"), ());
                 ()
             };
-            let v107: () = {
+            let v113: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v116: () = {
+            let v122: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v126: () = {
+            let v133: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -1358,55 +1492,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v22: () = {
+            let v24: () = {
                 Dice::closure13(v4_1.clone(), string("power"), ());
                 ()
             };
-            let v32: () = {
+            let v35: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v41: () = {
+            let v44: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v51: () = {
+            let v55: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v61: () = {
+            let v66: () = {
                 Dice::closure13(v4_1.clone(), string("acc"), ());
                 ()
             };
-            let v70: () = {
+            let v75: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v79: () = {
+            let v84: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
-            let v88: () = {
+            let v93: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v98: () = {
+            let v104: () = {
                 Dice::closure13(v4_1.clone(), string("result"), ());
                 ()
             };
-            let v107: () = {
+            let v113: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v116: () = {
+            let v122: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v126: () = {
+            let v133: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -1875,71 +2009,71 @@ mod module_7c9aa503 {
             let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v13: () = {
+            let v14: () = {
                 Dice::closure13(v5.clone(), string("{ "), ());
                 ()
             };
-            let v23: () = {
+            let v25: () = {
                 Dice::closure13(v5.clone(), string("power"), ());
                 ()
             };
-            let v33: () = {
+            let v36: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v42: () = {
+            let v45: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v52: () = {
+            let v56: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v62: () = {
+            let v67: () = {
                 Dice::closure13(v5.clone(), string("acc"), ());
                 ()
             };
-            let v71: () = {
+            let v76: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v80: () = {
+            let v85: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
-            let v89: () = {
+            let v94: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v99: () = {
+            let v105: () = {
                 Dice::closure13(v5.clone(), string("roll"), ());
                 ()
             };
-            let v108: () = {
+            let v114: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v117: () = {
+            let v123: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v126: () = {
+            let v132: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v136: () = {
+            let v143: () = {
                 Dice::closure13(v5.clone(), string("value"), ());
                 ()
             };
-            let v145: () = {
+            let v152: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v154: () = {
+            let v161: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v3_1), ());
                 ()
             };
-            let v164: () = {
+            let v172: () = {
                 Dice::closure13(v5.clone(), string(" }"), ());
                 ()
             };
@@ -2009,55 +2143,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v22: () = {
+            let v24: () = {
                 Dice::closure13(v4_1.clone(), string("power"), ());
                 ()
             };
-            let v32: () = {
+            let v35: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v41: () = {
+            let v44: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v51: () = {
+            let v55: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v61: () = {
+            let v66: () = {
                 Dice::closure13(v4_1.clone(), string("acc"), ());
                 ()
             };
-            let v70: () = {
+            let v75: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v79: () = {
+            let v84: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
-            let v88: () = {
+            let v93: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v98: () = {
+            let v104: () = {
                 Dice::closure13(v4_1.clone(), string("roll"), ());
                 ()
             };
-            let v107: () = {
+            let v113: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v116: () = {
+            let v122: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v126: () = {
+            let v133: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -2474,55 +2608,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v22: () = {
+            let v24: () = {
                 Dice::closure13(v4_1.clone(), string("max"), ());
                 ()
             };
-            let v32: () = {
+            let v35: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v41: () = {
+            let v44: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v51: () = {
+            let v55: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v61: () = {
+            let v66: () = {
                 Dice::closure13(v4_1.clone(), string("p"), ());
                 ()
             };
-            let v70: () = {
+            let v75: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v79: () = {
+            let v84: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
-            let v88: () = {
+            let v93: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v98: () = {
+            let v104: () = {
                 Dice::closure13(v4_1.clone(), string("n"), ());
                 ()
             };
-            let v107: () = {
+            let v113: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v116: () = {
+            let v122: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v126: () = {
+            let v133: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -2587,71 +2721,71 @@ mod module_7c9aa503 {
             let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v13: () = {
+            let v14: () = {
                 Dice::closure13(v5.clone(), string("{ "), ());
                 ()
             };
-            let v23: () = {
+            let v25: () = {
                 Dice::closure13(v5.clone(), string("power"), ());
                 ()
             };
-            let v33: () = {
+            let v36: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v42: () = {
+            let v45: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v52: () = {
+            let v56: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v62: () = {
+            let v67: () = {
                 Dice::closure13(v5.clone(), string("acc"), ());
                 ()
             };
-            let v71: () = {
+            let v76: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v80: () = {
+            let v85: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
-            let v89: () = {
+            let v94: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v99: () = {
+            let v105: () = {
                 Dice::closure13(v5.clone(), string("roll"), ());
                 ()
             };
-            let v108: () = {
+            let v114: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v117: () = {
+            let v123: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v126: () = {
+            let v132: () = {
                 Dice::closure13(v5.clone(), string("; "), ());
                 ()
             };
-            let v136: () = {
+            let v143: () = {
                 Dice::closure13(v5.clone(), string("value"), ());
                 ()
             };
-            let v145: () = {
+            let v152: () = {
                 Dice::closure13(v5.clone(), string(" = "), ());
                 ()
             };
-            let v154: () = {
+            let v161: () = {
                 Dice::closure13(v5.clone(), sprintf!("{}", v3_1), ());
                 ()
             };
-            let v164: () = {
+            let v172: () = {
                 Dice::closure13(v5.clone(), string(" }"), ());
                 ()
             };
@@ -4053,55 +4187,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v22: () = {
+            let v24: () = {
                 Dice::closure13(v4_1.clone(), string("power"), ());
                 ()
             };
-            let v32: () = {
+            let v35: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v41: () = {
+            let v44: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v51: () = {
+            let v55: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v61: () = {
+            let v66: () = {
                 Dice::closure13(v4_1.clone(), string("acc"), ());
                 ()
             };
-            let v70: () = {
+            let v75: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v79: () = {
+            let v84: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
-            let v88: () = {
+            let v93: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v98: () = {
+            let v104: () = {
                 Dice::closure13(v4_1.clone(), string("result"), ());
                 ()
             };
-            let v107: () = {
+            let v113: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v116: () = {
+            let v122: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v126: () = {
+            let v133: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -4175,55 +4309,55 @@ mod module_7c9aa503 {
             let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v12: () = {
+            let v13: () = {
                 Dice::closure13(v4_1.clone(), string("{ "), ());
                 ()
             };
-            let v22: () = {
+            let v24: () = {
                 Dice::closure13(v4_1.clone(), string("power"), ());
                 ()
             };
-            let v32: () = {
+            let v35: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v41: () = {
+            let v44: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v51: () = {
+            let v55: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v61: () = {
+            let v66: () = {
                 Dice::closure13(v4_1.clone(), string("acc"), ());
                 ()
             };
-            let v70: () = {
+            let v75: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v79: () = {
+            let v84: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
                 ()
             };
-            let v88: () = {
+            let v93: () = {
                 Dice::closure13(v4_1.clone(), string("; "), ());
                 ()
             };
-            let v98: () = {
+            let v104: () = {
                 Dice::closure13(v4_1.clone(), string("roll"), ());
                 ()
             };
-            let v107: () = {
+            let v113: () = {
                 Dice::closure13(v4_1.clone(), string(" = "), ());
                 ()
             };
-            let v116: () = {
+            let v122: () = {
                 Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
                 ()
             };
-            let v126: () = {
+            let v133: () = {
                 Dice::closure13(v4_1.clone(), string(" }"), ());
                 ()
             };
@@ -6379,23 +6513,23 @@ mod module_7c9aa503 {
             let v2_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
                 l0: MutCell::new(Dice::method19()),
             });
-            let v10: () = {
+            let v11: () = {
                 Dice::closure13(v2_1.clone(), string("{ "), ());
                 ()
             };
-            let v20: () = {
+            let v22: () = {
                 Dice::closure13(v2_1.clone(), string("result"), ());
                 ()
             };
-            let v30: () = {
+            let v33: () = {
                 Dice::closure13(v2_1.clone(), string(" = "), ());
                 ()
             };
-            let v39: () = {
+            let v42: () = {
                 Dice::closure13(v2_1.clone(), sprintf!("{}", v0_1), ());
                 ()
             };
-            let v49: () = {
+            let v53: () = {
                 Dice::closure13(v2_1.clone(), string(" }"), ());
                 ()
             };
