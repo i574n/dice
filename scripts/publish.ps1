@@ -14,6 +14,7 @@ rsync -av `
     --exclude '.history' `
     --exclude '.vscode' `
     --exclude 'bin' `
+    --exclude 'build' `
     --exclude 'deps' `
     --exclude 'fable_modules' `
     --exclude 'node_modules' `
