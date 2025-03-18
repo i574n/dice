@@ -833,23 +833,23 @@ mod module_7c9aa503 {
             v4_1: LrcPtr<Dice::Mut6>,
             v5: Option<i64>,
         ) -> string {
-            let v491: u64 = near_sdk::env::block_timestamp();
-            let v510: Dice::US4 = defaultValue(Dice::US4::US4_1, map(Dice::method14(), v5));
-            let v523: u64 = (match &v510 {
-                Dice::US4::US4_0(v510_0_0) => {
-                    (v491)
-                        - (match &v510 {
+            let v509: u64 = near_sdk::env::block_timestamp();
+            let v534: Dice::US4 = defaultValue(Dice::US4::US4_1, map(Dice::method14(), v5));
+            let v547: u64 = (match &v534 {
+                Dice::US4::US4_0(v534_0_0) => {
+                    (v509)
+                        - (match &v534 {
                             Dice::US4::US4_0(x) => x.clone(),
                             _ => unreachable!(),
                         } as u64)
                 }
-                _ => v491,
+                _ => v509,
             }) / 1000000000_u64;
-            let v524: u64 = (v523) % 60_u64;
-            let v526: u64 = ((v523) / 60_u64) % 60_u64;
-            let v528: u64 = ((v523) / 3600_u64) % 24_u64;
-            let v530: std::string::String = format!("{:02}:{:02}:{:02}", v528, v526, v524);
-            fable_library_rust::String_::fromString(v530)
+            let v548: u64 = (v547) % 60_u64;
+            let v550: u64 = ((v547) / 60_u64) % 60_u64;
+            let v552: u64 = ((v547) / 3600_u64) % 24_u64;
+            let v554: std::string::String = format!("{:02}:{:02}:{:02}", v552, v550, v548);
+            fable_library_rust::String_::fromString(v554)
         }
         pub fn method19() -> string {
             string("")
@@ -1205,7 +1205,7 @@ mod module_7c9aa503 {
                     let v6: i64 = v2_1.l0.get().clone();
                     let v7: i64 = v3_1.l0.get().clone();
                     let v8: Dice::US1 = v4_1.l0.get().clone();
-                    let v19: () = {
+                    let v22: () = {
                         Dice::closure8(
                             v5,
                             v6,
@@ -1221,40 +1221,40 @@ mod module_7c9aa503 {
                         );
                         ()
                     };
-                    let v70: LrcPtr<Dice::UH0> = v0_1();
-                    let v72: Dice::US1 = Dice::method25(v1_1.l0.get().clone(), v70);
-                    match &v72 {
-                        Dice::US1::US1_0(v72_0_0) => {
-                            let v73: u8 = match &v72 {
+                    let v73: LrcPtr<Dice::UH0> = v0_1();
+                    let v75: Dice::US1 = Dice::method25(v1_1.l0.get().clone(), v73);
+                    match &v75 {
+                        Dice::US1::US1_0(v75_0_0) => {
+                            let v76: u8 = match &v75 {
                                 Dice::US1::US1_0(x) => x.clone(),
                                 _ => unreachable!(),
                             };
-                            let v75: i64 = (v1_1.l0.get().clone()) + 1_i64;
-                            v1_1.l0.set(v75);
-                            v4_1.l0.set(Dice::US1::US1_0(v73));
-                            v73
+                            let v78: i64 = (v1_1.l0.get().clone()) + 1_i64;
+                            v1_1.l0.set(v78);
+                            v4_1.l0.set(Dice::US1::US1_0(v76));
+                            v76
                         }
                         _ => {
-                            let v79: () = {
+                            let v82: () = {
                                 Dice::closure17((), ());
                                 ()
                             };
                             if (v3_1.l0.get().clone()) == -1_i64 {
-                                let v128: i64 = v1_1.l0.get().clone();
-                                v3_1.l0.set(v128);
+                                let v131: i64 = v1_1.l0.get().clone();
+                                v3_1.l0.set(v131);
                                 ()
                             }
                             {
-                                let v134: i64 =
+                                let v137: i64 =
                                     if (v2_1.l0.get().clone()) >= (v3_1.l0.get().clone()) {
                                         1_i64
                                     } else {
                                         (v2_1.l0.get().clone()) + 1_i64
                                     };
-                                v2_1.l0.set(v134);
+                                v2_1.l0.set(v137);
                                 {
-                                    let v136: i64 = (v2_1.l0.get().clone()) - 1_i64;
-                                    v1_1.l0.set(v136);
+                                    let v139: i64 = (v2_1.l0.get().clone()) - 1_i64;
+                                    v1_1.l0.set(v139);
                                     v4_1.l0.set(Dice::US1::US1_1);
                                     {
                                         let v0_1_temp = v0_1.get().clone();

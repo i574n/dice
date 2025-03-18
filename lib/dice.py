@@ -469,9 +469,9 @@ def method9(v0_1: str) -> str:
     else: 
         v47 = value_3(_v41)
 
-    v68: US7 = default_arg(map(method12(), v47), US7(1))
-    if v68.tag == 0:
-        return v68.fields[0]
+    v74: US7 = default_arg(map(method12(), v47), US7(1))
+    if v74.tag == 0:
+        return v74.fields[0]
 
     else: 
         return ""
@@ -607,17 +607,17 @@ def method16(__unit: None=None) -> str:
 
 
 def method13(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None=None) -> str:
-    v712: US4 = default_arg(map(method14(), v5), US4(1))
-    v830: Any
-    if v712.tag == 0:
-        v782: Any = create(op_subtraction(from_value(ticks_1(now()), False), v712.fields[0]))
-        v830 = create_1(1, 1, 1, hours(v782), minutes(v782), seconds(v782), milliseconds(v782))
+    v748: US4 = default_arg(map(method14(), v5), US4(1))
+    v866: Any
+    if v748.tag == 0:
+        v818: Any = create(op_subtraction(from_value(ticks_1(now()), False), v748.fields[0]))
+        v866 = create_1(1, 1, 1, hours(v818), minutes(v818), seconds(v818), milliseconds(v818))
 
     else: 
-        v830 = now()
+        v866 = now()
 
-    v832: str = method16()
-    return to_string(v830, "M-d-y hh:mm:ss tt" if (v832 == "") else v832)
+    v868: str = method16()
+    return to_string(v866, "M-d-y hh:mm:ss tt" if (v868 == "") else v868)
 
 
 def method19(__unit: None=None) -> str:
@@ -804,30 +804,30 @@ def method5(v0_1_mut: Callable[[], UH0], v1_1_mut: Mut1, v2_1_mut: Mut1, v3_1_mu
         v6: int64 = v2_1.l0
         v7: int64 = v3_1.l0
         v8: US1 = v4_1.l0
-        v19: None
+        v22: None
         closure8(v5, v6, v7, v8.fields[0] if (v8.tag == 0) else None, None)
-        v19 = None
-        v70: UH0 = v0_1(None)
-        v72: US1 = method25(v1_1.l0, v70)
-        if v72.tag == 0:
-            v73: uint8 = v72.fields[0]
-            v75: int64 = op_addition(v1_1.l0, int64(1))
-            v1_1.l0 = v75
-            v4_1.l0 = US1(0, v73)
-            return v73
+        v22 = None
+        v73: UH0 = v0_1(None)
+        v75: US1 = method25(v1_1.l0, v73)
+        if v75.tag == 0:
+            v76: uint8 = v75.fields[0]
+            v78: int64 = op_addition(v1_1.l0, int64(1))
+            v1_1.l0 = v78
+            v4_1.l0 = US1(0, v76)
+            return v76
 
         else: 
-            v79: None
+            v82: None
             closure17(None, None)
-            v79 = None
+            v82 = None
             if v3_1.l0 == int64(-1):
-                v128: int64 = v1_1.l0
-                v3_1.l0 = v128
+                v131: int64 = v1_1.l0
+                v3_1.l0 = v131
 
-            v134: int64 = int64(1) if (v2_1.l0 >= v3_1.l0) else op_addition(v2_1.l0, int64(1))
-            v2_1.l0 = v134
-            v136: int64 = op_subtraction(v2_1.l0, int64(1))
-            v1_1.l0 = v136
+            v137: int64 = int64(1) if (v2_1.l0 >= v3_1.l0) else op_addition(v2_1.l0, int64(1))
+            v2_1.l0 = v137
+            v139: int64 = op_subtraction(v2_1.l0, int64(1))
+            v1_1.l0 = v139
             v4_1.l0 = US1(1)
             v0_1_mut = v0_1
             v1_1_mut = v1_1

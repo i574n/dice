@@ -70,11 +70,11 @@ def roll_within_bounds(log: Callable[[str], None] | None, max: int, rolls: FShar
     match_value: tuple[int, FSharpList[int]] | None = accumulate_dice_rolls(log, rolls, length(rolls) - 1, 0)
     (pattern_matching_result, result_1) = (None, None)
     if match_value is not None:
-        def _arrow282(__unit: None=None, log: Any=log, max: Any=max, rolls: Any=rolls) -> bool:
+        def _arrow281(__unit: None=None, log: Any=log, max: Any=max, rolls: Any=rolls) -> bool:
             result: int = match_value[0] or 0
             return (result <= max) if (result >= 1) else False
 
-        if _arrow282():
+        if _arrow281():
             pattern_matching_result = 0
             result_1 = match_value[0]
 

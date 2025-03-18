@@ -741,18 +741,18 @@ export function method16(): string {
 }
 
 export function method13(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>): string {
-    const v551: US4_$union = defaultArg(map<int64, US4_$union>(method14(), v5), US4_US4_1());
-    let v669: Date;
-    if ((v551.tag as int32) === /* US4_0 */ 0) {
-        const v555 = v551.fields[0] as any;
-        const v621: number = fromTicks(toInt64(op_Subtraction(toInt64(fromInt64(getTicks(now()))), v555)));
-        v669 = create(1, 1, 1, hours(v621), minutes(v621), seconds(v621), milliseconds(v621));
+    const v581: US4_$union = defaultArg(map<int64, US4_$union>(method14(), v5), US4_US4_1());
+    let v699: Date;
+    if ((v581.tag as int32) === /* US4_0 */ 0) {
+        const v585 = v581.fields[0] as any;
+        const v651: number = fromTicks(toInt64(op_Subtraction(toInt64(fromInt64(getTicks(now()))), v585)));
+        v699 = create(1, 1, 1, hours(v651), minutes(v651), seconds(v651), milliseconds(v651));
     }
     else {
-        v669 = now();
+        v699 = now();
     }
-    const v671: string = method16();
-    return toString(v669, (v671 === "") ? "M-d-y hh:mm:ss tt" : v671);
+    const v701: string = method16();
+    return toString(v699, (v701 === "") ? "M-d-y hh:mm:ss tt" : v701);
 }
 
 export function method19(): string {
@@ -946,30 +946,30 @@ export function method5(v0_1_mut: (() => UH0_$union), v1_1_mut: Mut1, v2_1_mut: 
         const v6: int64 = v2_1.l0;
         const v7: int64 = v3_1.l0;
         const v8: US1_$union = v4_1.l0;
-        let v19: any;
+        let v22: any;
         closure8(v5, v6, v7, ((v8.tag as int32) === /* US1_0 */ 0) ? (v8.fields[0] as any) : undefined, undefined);
-        v19 = undefined;
-        const v70: UH0_$union = v0_1();
-        const v72: US1_$union = method25(v1_1.l0, v70);
-        if ((v72.tag as int32) === /* US1_0 */ 0) {
-            const v73 = v72.fields[0] as any;
-            const v75: int64 = toInt64(op_Addition(v1_1.l0, 1n));
-            v1_1.l0 = v75;
-            v4_1.l0 = US1_US1_0(v73);
-            return v73;
+        v22 = undefined;
+        const v73: UH0_$union = v0_1();
+        const v75: US1_$union = method25(v1_1.l0, v73);
+        if ((v75.tag as int32) === /* US1_0 */ 0) {
+            const v76 = v75.fields[0] as any;
+            const v78: int64 = toInt64(op_Addition(v1_1.l0, 1n));
+            v1_1.l0 = v78;
+            v4_1.l0 = US1_US1_0(v76);
+            return v76;
         }
         else {
-            let v79: any;
+            let v82: any;
             closure17(undefined, undefined);
-            v79 = undefined;
+            v82 = undefined;
             if (equals(v3_1.l0, -1n)) {
-                const v128: int64 = v1_1.l0;
-                v3_1.l0 = v128;
+                const v131: int64 = v1_1.l0;
+                v3_1.l0 = v131;
             }
-            const v134: int64 = (compare_1(v2_1.l0, v3_1.l0) >= 0) ? (1n) : toInt64(op_Addition(v2_1.l0, 1n));
-            v2_1.l0 = v134;
-            const v136: int64 = toInt64(op_Subtraction(v2_1.l0, 1n));
-            v1_1.l0 = v136;
+            const v137: int64 = (compare_1(v2_1.l0, v3_1.l0) >= 0) ? (1n) : toInt64(op_Addition(v2_1.l0, 1n));
+            v2_1.l0 = v137;
+            const v139: int64 = toInt64(op_Subtraction(v2_1.l0, 1n));
+            v1_1.l0 = v139;
             v4_1.l0 = US1_US1_1();
             v0_1_mut = v0_1;
             v1_1_mut = v1_1;
