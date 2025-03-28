@@ -1,3 +1,5 @@
+cargo-features = ["edition2024"]
+
 [package]
 name = "dice_contract_lib"
 version.workspace = true
