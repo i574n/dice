@@ -355,8 +355,9 @@ let run () =
 
 #!fsharp
 
-#r @"../../../../../../../.nuget/packages/fscheck/3.0.1/lib/netstandard2.0/FsCheck.dll"
+#r @"../../../../../../../.nuget/packages/fscheck/3.1.0/lib/netstandard2.0/FsCheck.dll"
 #r @"../../../../../../../.nuget/packages/expecto.fscheck/11.0.0-alpha8/lib/net6.0/Expecto.FsCheck3.dll"
+#r @"../../../../../../../.nuget/packages/mono.cecil/0.11.6/lib/netstandard2.0/Mono.Cecil.dll"
 
 #!fsharp
 

@@ -9,7 +9,7 @@ from fable_modules.fable_library.reflection import (TypeInfo, uint8_type, unit_t
 from fable_modules.fable_library.string_ import (trim_end, trim_start, to_text, interpolate)
 from fable_modules.fable_library.time_span import (create, hours, minutes, seconds, milliseconds)
 from fable_modules.fable_library.types import (int64, Array, Union, Record, uint8, uint64, int8)
-from fable_modules.fable_library.util import (create_atom, to_enumerable, compare, randint)
+from fable_modules.fable_library.util import (create_atom, to_enumerable, compare, int64_to_string, randint)
 from collections.abc import Callable
 from dataclasses import dataclass
 import os
@@ -457,21 +457,21 @@ def method12(__unit: None=None) -> Callable[[str], US7]:
 
 
 def method9(v0_1: str) -> str:
-    v34: IOsEnviron = os
-    v36: Any = v34.environ
-    _v41: (str | None) | None = None
-    x: str | None = v36.get(v0_1)
-    _v41 = some(x)
-    v47: str | None
-    if _v41 is None:
-        raise Exception("optionm\'.of_obj / _v41=None")
+    v31: IOsEnviron = os
+    v33: Any = v31.environ
+    _v38: (str | None) | None = None
+    x: str | None = v33.get(v0_1)
+    _v38 = some(x)
+    v44: str | None
+    if _v38 is None:
+        raise Exception("optionm\'.of_obj / _v38=None")
 
     else: 
-        v47 = value_3(_v41)
+        v44 = value_3(_v38)
 
-    v74: US7 = default_arg(map(method12(), v47), US7(1))
-    if v74.tag == 0:
-        return v74.fields[0]
+    v71: US7 = default_arg(map(method12(), v44), US7(1))
+    if v71.tag == 0:
+        return v71.fields[0]
 
     else: 
         return ""
@@ -564,11 +564,11 @@ def closure9(unit_var: None, unit_var_1: None) -> None:
 
 
 def method6(v0_1: US2) -> bool:
-    v3_1: None
+    v17: None
     closure9(None, None)
-    v3_1 = None
+    v17 = None
     pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v42: US2 = pattern_input[4].l0
+    v56: US2 = pattern_input[4].l0
     if pattern_input[2].l0 == False:
         return False
 
@@ -583,7 +583,7 @@ def method6(v0_1: US2) -> bool:
             def Compare(self) -> Callable[[US2, US2], int]:
                 return compare
 
-        return find(v0_1, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr449())) >= find(v42, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr450()))
+        return find(v0_1, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr449())) >= find(v56, of_seq(to_enumerable([(US2(0), 0), (US2(1), 1), (US2(2), 2), (US2(3), 3), (US2(4), 4)]), ObjectExpr450()))
 
 
 
@@ -607,108 +607,101 @@ def method16(__unit: None=None) -> str:
 
 
 def method13(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None=None) -> str:
-    v748: US4 = default_arg(map(method14(), v5), US4(1))
-    v866: Any
-    if v748.tag == 0:
-        v818: Any = create(op_subtraction(from_value(ticks_1(now()), False), v748.fields[0]))
-        v866 = create_1(1, 1, 1, hours(v818), minutes(v818), seconds(v818), milliseconds(v818))
+    v804: US4 = default_arg(map(method14(), v5), US4(1))
+    v936: Any
+    if v804.tag == 0:
+        v884: Any = create(op_subtraction(from_value(ticks_1(now()), False), v804.fields[0]))
+        v936 = create_1(1, 1, 1, hours(v884), minutes(v884), seconds(v884), milliseconds(v884))
 
     else: 
-        v866 = now()
+        v936 = now()
 
-    v868: str = method16()
-    return to_string(v866, "M-d-y hh:mm:ss tt" if (v868 == "") else v868)
+    v938: str = method16()
+    return to_string(v936, "M-d-y hh:mm:ss tt" if (v938 == "") else v938)
 
 
-def method19(__unit: None=None) -> str:
+def method18(__unit: None=None) -> str:
     return ""
 
 
 def closure13(v0_1: Mut5, v1_1: str, unit_var: None) -> None:
-    v3_1: str = v0_1.l0 + v1_1
-    v0_1.l0 = v3_1
+    v4_1: str = v0_1.l0 + v1_1
+    v0_1.l0 = v4_1
 
 
-def method18(v0_1: str) -> str:
-    v2_1: Mut5 = Mut5(method19())
-    v9: None
-    closure13(v2_1, ("" + str(v0_1)) + "", None)
-    v9 = None
-    return v2_1.l0
-
-
-def method20(__unit: None=None) -> str:
+def method19(__unit: None=None) -> str:
     return "\u001b[0m"
 
 
 def method17(__unit: None=None) -> str:
     v4_1: str = "Debug".lower()
-    return ("\u001b[94m" + method18(v4_1[0])) + method20()
+    v7: str = v4_1[0]
+    v9: Mut5 = Mut5(method18())
+    v24: None
+    closure13(v9, ("" + str(v7)) + "", None)
+    v24 = None
+    return ("\u001b[94m" + v9.l0) + method19()
 
 
-def method22(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: str) -> str:
-    v5: Mut5 = Mut5(method19())
-    v14: None
-    closure13(v5, "{ ", None)
-    v14 = None
-    v25: None
-    closure13(v5, "current_index", None)
-    v25 = None
-    v36: None
-    closure13(v5, " = ", None)
-    v36 = None
-    v45: None
-    closure13(v5, ("" + str(v0_1)) + "", None)
-    v45 = None
-    v56: None
-    closure13(v5, "; ", None)
-    v56 = None
-    v67: None
-    closure13(v5, "acc", None)
-    v67 = None
-    v76: None
-    closure13(v5, " = ", None)
-    v76 = None
-    v85: None
-    closure13(v5, ("" + str(v1_1)) + "", None)
-    v85 = None
-    v94: None
-    closure13(v5, "; ", None)
-    v94 = None
-    v105: None
-    closure13(v5, "len", None)
-    v105 = None
-    v114: None
-    closure13(v5, " = ", None)
-    v114 = None
-    v123: None
-    closure13(v5, ("" + str(v2_1)) + "", None)
-    v123 = None
-    v132: None
-    closure13(v5, "; ", None)
-    v132 = None
-    v143: None
-    closure13(v5, "last_item", None)
-    v143 = None
-    v152: None
-    closure13(v5, " = ", None)
-    v152 = None
-    v161: None
-    closure13(v5, v3_1, None)
-    v161 = None
-    v172: None
-    closure13(v5, " }", None)
-    v172 = None
-    return v5.l0
-
-
-def method23(v0_1: str) -> str:
+def method21(v0_1: str) -> str:
     return trim_end(trim_start(v0_1, *to_array(empty())), *to_array(of_array([" ", "/"])))
 
 
-def method21(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: int64, v10: int64, v11: str) -> str:
-    v12: str = method22(v8, v9, v10, v11)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.create_sequential_roller / roll") + " / ") + v12) + "")
+def method20(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: int64, v10: int64, v11: str) -> str:
+    v13: Mut5 = Mut5(method18())
+    v27: None
+    closure13(v13, "{ ", None)
+    v27 = None
+    v46: None
+    closure13(v13, "current_index", None)
+    v46 = None
+    v65: None
+    closure13(v13, " = ", None)
+    v65 = None
+    v85: None
+    closure13(v13, ("" + str(v8)) + "", None)
+    v85 = None
+    v104: None
+    closure13(v13, "; ", None)
+    v104 = None
+    v123: None
+    closure13(v13, "acc", None)
+    v123 = None
+    v140: None
+    closure13(v13, " = ", None)
+    v140 = None
+    v160: None
+    closure13(v13, ("" + str(v9)) + "", None)
+    v160 = None
+    v177: None
+    closure13(v13, "; ", None)
+    v177 = None
+    v196: None
+    closure13(v13, "len", None)
+    v196 = None
+    v213: None
+    closure13(v13, " = ", None)
+    v213 = None
+    v233: None
+    closure13(v13, ("" + str(v10)) + "", None)
+    v233 = None
+    v250: None
+    closure13(v13, "; ", None)
+    v250 = None
+    v269: None
+    closure13(v13, "last_item", None)
+    v269 = None
+    v286: None
+    closure13(v13, " = ", None)
+    v286 = None
+    v303: None
+    closure13(v13, v11, None)
+    v303 = None
+    v322: None
+    closure13(v13, " }", None)
+    v322 = None
+    v328: str = v13.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.create_sequential_roller / roll") + " / ") + v328)
 
 
 def closure14(v0_1: Mut1, unit_var: None) -> None:
@@ -721,40 +714,40 @@ def closure16(v0_1: str, unit_var: None) -> None:
 
 
 def closure15(unit_var: None, v0_1: str) -> None:
-    v3_1: None
+    v4_1: None
     closure16(v0_1, None)
-    v3_1 = None
+    v4_1 = None
 
 
-def method24(v0_1: str) -> None:
-    v3_1: None
+def method22(v0_1: str) -> None:
+    v17: None
     closure9(None, None)
-    v3_1 = None
+    v17 = None
     pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-    v44: None
+    v60: None
     closure14(pattern_input[0], None)
-    v44 = None
+    v60 = None
     closure15(None, v0_1)
     pattern_input[1].l0(v0_1)
 
 
 def closure8(v0_1: int64, v1_1: int64, v2_1: int64, v3_1: uint8 | None, unit_var: None) -> None:
     if method6(US2(1)):
-        v8: None
+        v22: None
         closure9(None, None)
-        v8 = None
+        v22 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v34: int64 | None = pattern_input[5]
-        v33: Mut6 = pattern_input[4]
-        v32: Mut5 = pattern_input[3]
-        v31: Mut4 = pattern_input[2]
-        v30: Mut3 = pattern_input[1]
-        v29: Mut1 = pattern_input[0]
-        method24(method21(v29, v30, v31, v32, v33, v34, method13(v29, v30, v31, v32, v33, v34), method17(), v0_1, v1_1, v2_1, to_text(interpolate("%A%P()", [v3_1]))))
+        v48: int64 | None = pattern_input[5]
+        v47: Mut6 = pattern_input[4]
+        v46: Mut5 = pattern_input[3]
+        v45: Mut4 = pattern_input[2]
+        v44: Mut3 = pattern_input[1]
+        v43: Mut1 = pattern_input[0]
+        method22(method20(v43, v44, v45, v46, v47, v48, method13(v43, v44, v45, v46, v47, v48), method17(), v0_1, v1_1, v2_1, to_text(interpolate("%A%P()", [v3_1]))))
 
 
 
-def method25(v0_1_mut: int64, v1_1_mut: UH0) -> US1:
+def method23(v0_1_mut: int64, v1_1_mut: UH0) -> US1:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v1_1.tag == 1:
@@ -771,29 +764,25 @@ def method25(v0_1_mut: int64, v1_1_mut: UH0) -> US1:
         break
 
 
-def method27(__unit: None=None) -> str:
-    v1_1: Mut5 = Mut5(method19())
-    return v1_1.l0
-
-
-def method26(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str) -> str:
-    v8: str = method27()
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.create_sequential_roller / roll / None") + " / ") + v8) + "")
+def method24(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str) -> str:
+    v9: Mut5 = Mut5(method18())
+    v10: str = v9.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.create_sequential_roller / roll / None") + " / ") + v10)
 
 
 def closure17(unit_var: None, unit_var_1: None) -> None:
     if method6(US2(1)):
-        v4_1: None
+        v18: None
         closure9(None, None)
-        v4_1 = None
+        v18 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v30: int64 | None = pattern_input[5]
-        v29: Mut6 = pattern_input[4]
-        v28: Mut5 = pattern_input[3]
-        v27: Mut4 = pattern_input[2]
-        v26: Mut3 = pattern_input[1]
-        v25: Mut1 = pattern_input[0]
-        method24(method26(v25, v26, v27, v28, v29, v30, method13(v25, v26, v27, v28, v29, v30), method17()))
+        v44: int64 | None = pattern_input[5]
+        v43: Mut6 = pattern_input[4]
+        v42: Mut5 = pattern_input[3]
+        v41: Mut4 = pattern_input[2]
+        v40: Mut3 = pattern_input[1]
+        v39: Mut1 = pattern_input[0]
+        method22(method24(v39, v40, v41, v42, v43, v44, method13(v39, v40, v41, v42, v43, v44), method17()))
 
 
 
@@ -804,30 +793,30 @@ def method5(v0_1_mut: Callable[[], UH0], v1_1_mut: Mut1, v2_1_mut: Mut1, v3_1_mu
         v6: int64 = v2_1.l0
         v7: int64 = v3_1.l0
         v8: US1 = v4_1.l0
-        v22: None
+        v86: None
         closure8(v5, v6, v7, v8.fields[0] if (v8.tag == 0) else None, None)
-        v22 = None
-        v73: UH0 = v0_1(None)
-        v75: US1 = method25(v1_1.l0, v73)
-        if v75.tag == 0:
-            v76: uint8 = v75.fields[0]
-            v78: int64 = op_addition(v1_1.l0, int64(1))
-            v1_1.l0 = v78
-            v4_1.l0 = US1(0, v76)
-            return v76
+        v86 = None
+        v151: UH0 = v0_1(None)
+        v153: US1 = method23(v1_1.l0, v151)
+        if v153.tag == 0:
+            v154: uint8 = v153.fields[0]
+            v156: int64 = op_addition(v1_1.l0, int64(1))
+            v1_1.l0 = v156
+            v4_1.l0 = US1(0, v154)
+            return v154
 
         else: 
-            v82: None
+            v220: None
             closure17(None, None)
-            v82 = None
+            v220 = None
             if v3_1.l0 == int64(-1):
-                v131: int64 = v1_1.l0
-                v3_1.l0 = v131
+                v283: int64 = v1_1.l0
+                v3_1.l0 = v283
 
-            v137: int64 = int64(1) if (v2_1.l0 >= v3_1.l0) else op_addition(v2_1.l0, int64(1))
-            v2_1.l0 = v137
-            v139: int64 = op_subtraction(v2_1.l0, int64(1))
-            v1_1.l0 = v139
+            v289: int64 = int64(1) if (v2_1.l0 >= v3_1.l0) else op_addition(v2_1.l0, int64(1))
+            v2_1.l0 = v289
+            v291: int64 = op_subtraction(v2_1.l0, int64(1))
+            v1_1.l0 = v291
             v4_1.l0 = US1(1)
             v0_1_mut = v0_1
             v1_1_mut = v1_1
@@ -859,72 +848,68 @@ def closure3(unit_var: None, v0_1: UH1) -> Callable[[], uint8]:
     return _arrow452
 
 
-def method30(v0_1: uint64, v1_1: uint64, v2_1: int8) -> str:
-    v4_1: Mut5 = Mut5(method19())
-    v13: None
-    closure13(v4_1, "{ ", None)
-    v13 = None
-    v24: None
-    closure13(v4_1, "max", None)
-    v24 = None
-    v35: None
-    closure13(v4_1, " = ", None)
-    v35 = None
-    v44: None
-    closure13(v4_1, ("" + str(v0_1)) + "", None)
-    v44 = None
-    v55: None
-    closure13(v4_1, "; ", None)
-    v55 = None
-    v66: None
-    closure13(v4_1, "p", None)
-    v66 = None
-    v75: None
-    closure13(v4_1, " = ", None)
-    v75 = None
+def method26(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: uint64, v9: uint64, v10: int8) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "max", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
     v84: None
-    closure13(v4_1, ("" + str(v1_1)) + "", None)
+    closure13(v12, ("" + str(v8)) + "", None)
     v84 = None
-    v93: None
-    closure13(v4_1, "; ", None)
-    v93 = None
-    v104: None
-    closure13(v4_1, "n", None)
-    v104 = None
-    v113: None
-    closure13(v4_1, " = ", None)
-    v113 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
     v122: None
-    closure13(v4_1, ("" + str(v2_1)) + "", None)
+    closure13(v12, "p", None)
     v122 = None
-    v133: None
-    closure13(v4_1, " }", None)
-    v133 = None
-    return v4_1.l0
-
-
-def method29(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: uint64, v9: uint64, v10: int8) -> str:
-    v11: str = method30(v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.calculate_dice_count") + " / ") + v11) + "")
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "n", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v232 = None
+    v251: None
+    closure13(v12, " }", None)
+    v251 = None
+    v257: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.calculate_dice_count") + " / ") + v257)
 
 
 def closure21(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method29(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v2_1, v1_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method26(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v2_1, v1_1))
 
 
 
-def method28(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64) -> int8:
+def method25(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64) -> int8:
     while True:
         (v0_1, v1_1, v2_1) = (v0_1_mut, v1_1_mut, v2_1_mut)
         if v2_1 < v0_1:
@@ -936,83 +921,79 @@ def method28(v0_1_mut: uint64, v1_1_mut: int8, v2_1_mut: uint64) -> int8:
                 continue
 
             else: 
-                v10: None
+                v70: None
                 closure21(v0_1, v1_1, v2_1, None)
-                v10 = None
+                v70 = None
                 return v1_1
 
 
         else: 
-            v60: None
+            v194: None
             closure21(v0_1, v1_1, v2_1, None)
-            v60 = None
+            v194 = None
             return v1_1
 
         break
 
 
-def method34(v0_1: int8, v1_1: uint64, v2_1: uint64) -> str:
-    v4_1: Mut5 = Mut5(method19())
-    v13: None
-    closure13(v4_1, "{ ", None)
-    v13 = None
-    v24: None
-    closure13(v4_1, "power", None)
-    v24 = None
-    v35: None
-    closure13(v4_1, " = ", None)
-    v35 = None
-    v44: None
-    closure13(v4_1, ("" + str(v0_1)) + "", None)
-    v44 = None
-    v55: None
-    closure13(v4_1, "; ", None)
-    v55 = None
-    v66: None
-    closure13(v4_1, "acc", None)
-    v66 = None
-    v75: None
-    closure13(v4_1, " = ", None)
-    v75 = None
+def method29(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
     v84: None
-    closure13(v4_1, ("" + str(v1_1)) + "", None)
+    closure13(v12, ("" + str(v8)) + "", None)
     v84 = None
-    v93: None
-    closure13(v4_1, "; ", None)
-    v93 = None
-    v104: None
-    closure13(v4_1, "result", None)
-    v104 = None
-    v113: None
-    closure13(v4_1, " = ", None)
-    v113 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
     v122: None
-    closure13(v4_1, ("" + str(v2_1)) + "", None)
+    closure13(v12, "acc", None)
     v122 = None
-    v133: None
-    closure13(v4_1, " }", None)
-    v133 = None
-    return v4_1.l0
-
-
-def method33(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint64) -> str:
-    v11: str = method34(v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "result", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v232 = None
+    v251: None
+    closure13(v12, " }", None)
+    v251 = None
+    v257: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v257)
 
 
 def closure22(v0_1: uint64, v1_1: int8, v2_1: uint64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method33(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v1_1, v0_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method29(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v1_1, v0_1, v2_1))
 
 
 
@@ -1461,7 +1442,7 @@ def closure23(unit_var: None, unit_var_1: None) -> UH2:
     return UH2(0, uint64(6), v0_1)
 
 
-def method35(v0_1_mut: int8, v1_1_mut: UH2) -> US9:
+def method30(v0_1_mut: int8, v1_1_mut: UH2) -> US9:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v1_1.tag == 1:
@@ -1478,191 +1459,183 @@ def method35(v0_1_mut: int8, v1_1_mut: UH2) -> US9:
         break
 
 
-def method37(v0_1: int8, v1_1: uint64, v2_1: uint8, v3_1: uint64) -> str:
-    v5: Mut5 = Mut5(method19())
-    v14: None
-    closure13(v5, "{ ", None)
-    v14 = None
-    v25: None
-    closure13(v5, "power", None)
-    v25 = None
-    v36: None
-    closure13(v5, " = ", None)
-    v36 = None
-    v45: None
-    closure13(v5, ("" + str(v0_1)) + "", None)
-    v45 = None
-    v56: None
-    closure13(v5, "; ", None)
-    v56 = None
-    v67: None
-    closure13(v5, "acc", None)
-    v67 = None
-    v76: None
-    closure13(v5, " = ", None)
-    v76 = None
+def method31(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint8, v11: uint64) -> str:
+    v13: Mut5 = Mut5(method18())
+    v27: None
+    closure13(v13, "{ ", None)
+    v27 = None
+    v46: None
+    closure13(v13, "power", None)
+    v46 = None
+    v65: None
+    closure13(v13, " = ", None)
+    v65 = None
     v85: None
-    closure13(v5, ("" + str(v1_1)) + "", None)
+    closure13(v13, ("" + str(v8)) + "", None)
     v85 = None
-    v94: None
-    closure13(v5, "; ", None)
-    v94 = None
-    v105: None
-    closure13(v5, "roll", None)
-    v105 = None
-    v114: None
-    closure13(v5, " = ", None)
-    v114 = None
+    v104: None
+    closure13(v13, "; ", None)
+    v104 = None
     v123: None
-    closure13(v5, ("" + str(v2_1)) + "", None)
+    closure13(v13, "acc", None)
     v123 = None
-    v132: None
-    closure13(v5, "; ", None)
-    v132 = None
-    v143: None
-    closure13(v5, "value", None)
-    v143 = None
-    v152: None
-    closure13(v5, " = ", None)
-    v152 = None
-    v161: None
-    closure13(v5, ("" + str(v3_1)) + "", None)
-    v161 = None
-    v172: None
-    closure13(v5, " }", None)
-    v172 = None
-    return v5.l0
-
-
-def method36(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint8, v11: uint64) -> str:
-    v12: str = method37(v8, v9, v10, v11)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+    v140: None
+    closure13(v13, " = ", None)
+    v140 = None
+    v160: None
+    closure13(v13, ("" + str(v9)) + "", None)
+    v160 = None
+    v177: None
+    closure13(v13, "; ", None)
+    v177 = None
+    v196: None
+    closure13(v13, "roll", None)
+    v196 = None
+    v213: None
+    closure13(v13, " = ", None)
+    v213 = None
+    v233: None
+    closure13(v13, ("" + str(v10)) + "", None)
+    v233 = None
+    v250: None
+    closure13(v13, "; ", None)
+    v250 = None
+    v269: None
+    closure13(v13, "value", None)
+    v269 = None
+    v286: None
+    closure13(v13, " = ", None)
+    v286 = None
+    v306: None
+    closure13(v13, ("" + str(v11)) + "", None)
+    v306 = None
+    v325: None
+    closure13(v13, " }", None)
+    v325 = None
+    v331: str = v13.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v331)
 
 
 def closure87(v0_1: uint64, v1_1: int8, v2_1: uint8, v3_1: uint64, unit_var: None) -> None:
     if method6(US2(1)):
-        v8: None
+        v22: None
         closure9(None, None)
-        v8 = None
+        v22 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v34: int64 | None = pattern_input[5]
-        v33: Mut6 = pattern_input[4]
-        v32: Mut5 = pattern_input[3]
-        v31: Mut4 = pattern_input[2]
-        v30: Mut3 = pattern_input[1]
-        v29: Mut1 = pattern_input[0]
-        method24(method36(v29, v30, v31, v32, v33, v34, method13(v29, v30, v31, v32, v33, v34), method17(), v1_1, v0_1, v2_1, v3_1))
+        v48: int64 | None = pattern_input[5]
+        v47: Mut6 = pattern_input[4]
+        v46: Mut5 = pattern_input[3]
+        v45: Mut4 = pattern_input[2]
+        v44: Mut3 = pattern_input[1]
+        v43: Mut1 = pattern_input[0]
+        method22(method31(v43, v44, v45, v46, v47, v48, method13(v43, v44, v45, v46, v47, v48), method17(), v1_1, v0_1, v2_1, v3_1))
 
 
 
-def method39(v0_1: int8, v1_1: uint64, v2_1: uint8) -> str:
-    v4_1: Mut5 = Mut5(method19())
-    v13: None
-    closure13(v4_1, "{ ", None)
-    v13 = None
-    v24: None
-    closure13(v4_1, "power", None)
-    v24 = None
-    v35: None
-    closure13(v4_1, " = ", None)
-    v35 = None
-    v44: None
-    closure13(v4_1, ("" + str(v0_1)) + "", None)
-    v44 = None
-    v55: None
-    closure13(v4_1, "; ", None)
-    v55 = None
-    v66: None
-    closure13(v4_1, "acc", None)
-    v66 = None
-    v75: None
-    closure13(v4_1, " = ", None)
-    v75 = None
+def method32(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint8) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
     v84: None
-    closure13(v4_1, ("" + str(v1_1)) + "", None)
+    closure13(v12, ("" + str(v8)) + "", None)
     v84 = None
-    v93: None
-    closure13(v4_1, "; ", None)
-    v93 = None
-    v104: None
-    closure13(v4_1, "roll", None)
-    v104 = None
-    v113: None
-    closure13(v4_1, " = ", None)
-    v113 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
     v122: None
-    closure13(v4_1, ("" + str(v2_1)) + "", None)
+    closure13(v12, "acc", None)
     v122 = None
-    v133: None
-    closure13(v4_1, " }", None)
-    v133 = None
-    return v4_1.l0
-
-
-def method38(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int8, v9: uint64, v10: uint8) -> str:
-    v11: str = method39(v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v232 = None
+    v251: None
+    closure13(v12, " }", None)
+    v251 = None
+    v257: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v257)
 
 
 def closure88(v0_1: uint64, v1_1: int8, v2_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method38(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v1_1, v0_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method32(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v1_1, v0_1, v2_1))
 
 
 
-def method32(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US8:
+def method28(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US8:
     while True:
         (v0_1, v1_1, v2_1) = (v0_1_mut, v1_1_mut, v2_1_mut)
         if v0_1 < int8(0):
             v4_1: uint64 = op_addition(v2_1, uint64(1))
-            v7: None
+            v67: None
             closure22(v2_1, v0_1, v4_1, None)
-            v7 = None
+            v67 = None
             return US8(0, v4_1, v1_1)
 
         elif v1_1.tag == 0:
             return US8(1)
 
         else: 
-            v57: UH1 = v1_1.fields[1]
-            v56: uint8 = v1_1.fields[0]
-            if v56 > uint8(1):
-                def v60(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> UH2:
+            v131: UH1 = v1_1.fields[1]
+            v130: uint8 = v1_1.fields[0]
+            if v130 > uint8(1):
+                def v134(__unit: None=None, v0_1: Any=v0_1, v1_1: Any=v1_1, v2_1: Any=v2_1) -> UH2:
                     return closure23(None, None)
 
-                v62: US9 = method35(v0_1, UH2(0, uint64(1), v60))
-                v66: uint64
-                if v62.tag == 0:
-                    v66 = v62.fields[0]
+                v136: US9 = method30(v0_1, UH2(0, uint64(1), v134))
+                v140: uint64
+                if v136.tag == 0:
+                    v140 = v136.fields[0]
 
                 else: 
                     raise Exception("Option does not have a value.")
 
-                v69: uint64 = op_multiply(from_integer(v56 - uint8(1), True, 4), v66)
-                v72: None
-                closure87(v2_1, v0_1, v56, v69, None)
-                v72 = None
+                v143: uint64 = op_multiply(from_integer(v130 - uint8(1), True, 4), v140)
+                v206: None
+                closure87(v2_1, v0_1, v130, v143, None)
+                v206 = None
                 v0_1_mut = v0_1 - int8(1)
-                v1_1_mut = v57
-                v2_1_mut = op_addition(v2_1, v69)
+                v1_1_mut = v131
+                v2_1_mut = op_addition(v2_1, v143)
                 continue
 
             else: 
-                v124: None
-                closure88(v2_1, v0_1, v56, None)
-                v124 = None
+                v332: None
+                closure88(v2_1, v0_1, v130, None)
+                v332 = None
                 v0_1_mut = v0_1 - int8(1)
-                v1_1_mut = v57
+                v1_1_mut = v131
                 v2_1_mut = v2_1
                 continue
 
@@ -1670,24 +1643,24 @@ def method32(v0_1_mut: int8, v1_1_mut: UH1, v2_1_mut: uint64) -> US8:
         break
 
 
-def method40(v0_1: int8, v1_1: Callable[[], uint8], v2_1: int8) -> UH1:
+def method33(v0_1: int8, v1_1: Callable[[], uint8], v2_1: int8) -> UH1:
     if v2_1 < v0_1:
-        return UH1(1, v1_1(None), method40(v0_1, v1_1, v2_1 + int8(1)))
+        return UH1(1, v1_1(None), method33(v0_1, v1_1, v2_1 + int8(1)))
 
     else: 
         return UH1(0)
 
 
 
-def method41(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1) -> uint64:
+def method34(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1) -> uint64:
     while True:
         (v0_1, v1_1, v2_1, v3_1, v4_1) = (v0_1_mut, v1_1_mut, v2_1_mut, v3_1_mut, v4_1_mut)
         v5: int8 = (v3_1 + int8(1)) or 0
         if v3_1 < v5:
-            return method31(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
+            return method27(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
 
         else: 
-            v11: US8 = method32(v3_1, v4_1, uint64(0))
+            v11: US8 = method28(v3_1, v4_1, uint64(0))
             if v11.tag == 0:
                 v12: uint64 = v11.fields[0]
                 if v12 <= v2_1:
@@ -1698,11 +1671,11 @@ def method41(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
                     v1_1_mut = v1_1
                     v2_1_mut = v2_1
                     v3_1_mut = v3_1
-                    v4_1_mut = method40(v3_1, v0_1, int8(0))
+                    v4_1_mut = method33(v3_1, v0_1, int8(0))
                     continue
 
                 else: 
-                    return method31(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
+                    return method27(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
 
 
             elif v1_1:
@@ -1710,17 +1683,17 @@ def method41(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
                 v1_1_mut = v1_1
                 v2_1_mut = v2_1
                 v3_1_mut = v3_1
-                v4_1_mut = method40(v3_1, v0_1, int8(0))
+                v4_1_mut = method33(v3_1, v0_1, int8(0))
                 continue
 
             else: 
-                return method31(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
+                return method27(v0_1, v1_1, v2_1, v3_1, UH1(1, v0_1(None), v4_1), v5)
 
 
         break
 
 
-def method31(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1, v5_mut: int8) -> uint64:
+def method27(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3_1_mut: int8, v4_1_mut: UH1, v5_mut: int8) -> uint64:
     while True:
         (v0_1, v1_1, v2_1, v3_1, v4_1, v5) = (v0_1_mut, v1_1_mut, v2_1_mut, v3_1_mut, v4_1_mut, v5_mut)
         if v5 < (v3_1 + int8(1)):
@@ -1733,14 +1706,14 @@ def method31(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
             continue
 
         else: 
-            v13: US8 = method32(v3_1, v4_1, uint64(0))
+            v13: US8 = method28(v3_1, v4_1, uint64(0))
             if v13.tag == 0:
                 v14: uint64 = v13.fields[0]
                 if v14 <= v2_1:
                     return v14
 
                 elif v1_1:
-                    return method41(v0_1, v1_1, v2_1, v3_1, method40(v3_1, v0_1, int8(0)))
+                    return method34(v0_1, v1_1, v2_1, v3_1, method33(v3_1, v0_1, int8(0)))
 
                 else: 
                     v0_1_mut = v0_1
@@ -1753,7 +1726,7 @@ def method31(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
 
 
             elif v1_1:
-                return method41(v0_1, v1_1, v2_1, v3_1, method40(v3_1, v0_1, int8(0)))
+                return method34(v0_1, v1_1, v2_1, v3_1, method33(v3_1, v0_1, int8(0)))
 
             else: 
                 v0_1_mut = v0_1
@@ -1769,7 +1742,7 @@ def method31(v0_1_mut: Callable[[], uint8], v1_1_mut: bool, v2_1_mut: uint64, v3
 
 
 def closure20(v0_1: Callable[[], uint8], v1_1: bool, v2_1: uint64) -> uint64:
-    return method31(v0_1, v1_1, v2_1, (int8(1) if (v2_1 == uint64(1)) else method28(v2_1, int8(0), uint64(1))) - int8(1), UH1(0), int8(0))
+    return method27(v0_1, v1_1, v2_1, (int8(1) if (v2_1 == uint64(1)) else method25(v2_1, int8(0), uint64(1))) - int8(1), UH1(0), int8(0))
 
 
 def closure19(v0_1: Callable[[], uint8], v1_1: bool) -> Callable[[uint64], uint64]:
@@ -1786,7 +1759,7 @@ def closure18(unit_var: None, v0_1: Callable[[], uint8]) -> Callable[[bool, uint
     return _arrow454
 
 
-def method42(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
+def method35(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v0_1.tag == 0:
@@ -1801,7 +1774,7 @@ def method42(v0_1_mut: UH1, v1_1_mut: int8) -> int8:
 
 
 def closure90(v0_1: uint64, v1_1: UH1) -> uint64 | None:
-    v6: US8 = method32(method42(v1_1, int8(0)) - int8(1), v1_1, uint64(0))
+    v6: US8 = method28(method35(v1_1, int8(0)) - int8(1), v1_1, uint64(0))
     v16: US9
     if v6.tag == 0:
         v7: uint64 = v6.fields[0]
@@ -1825,776 +1798,1956 @@ def closure89(unit_var: None, v0_1: uint64) -> Callable[[UH1], uint64 | None]:
     return _arrow455
 
 
-def method44(v0_1: int64, v1_1: int64, v2_1: int8) -> str:
-    v4_1: Mut5 = Mut5(method19())
-    v13: None
-    closure13(v4_1, "{ ", None)
-    v13 = None
-    v24: None
-    closure13(v4_1, "max", None)
-    v24 = None
-    v35: None
-    closure13(v4_1, " = ", None)
-    v35 = None
-    v44: None
-    closure13(v4_1, ("" + str(v0_1)) + "", None)
-    v44 = None
-    v55: None
-    closure13(v4_1, "; ", None)
-    v55 = None
-    v66: None
-    closure13(v4_1, "p", None)
-    v66 = None
-    v75: None
-    closure13(v4_1, " = ", None)
-    v75 = None
-    v84: None
-    closure13(v4_1, ("" + str(v1_1)) + "", None)
-    v84 = None
-    v93: None
-    closure13(v4_1, "; ", None)
-    v93 = None
-    v104: None
-    closure13(v4_1, "n", None)
-    v104 = None
-    v113: None
-    closure13(v4_1, " = ", None)
-    v113 = None
-    v122: None
-    closure13(v4_1, ("" + str(v2_1)) + "", None)
-    v122 = None
-    v133: None
-    closure13(v4_1, " }", None)
-    v133 = None
-    return v4_1.l0
-
-
-def method43(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str) -> str:
-    v11: str = method44(int64(9223372036854775807), int64(4738381338321616896), int8(24))
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.calculate_dice_count") + " / ") + v11) + "")
+def method36(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str) -> str:
+    v9: Mut5 = Mut5(method18())
+    v23: None
+    closure13(v9, "{ ", None)
+    v23 = None
+    v42: None
+    closure13(v9, "max", None)
+    v42 = None
+    v61: None
+    closure13(v9, " = ", None)
+    v61 = None
+    v81: None
+    closure13(v9, ("" + str(int64(9223372036854775807))) + "", None)
+    v81 = None
+    v100: None
+    closure13(v9, "; ", None)
+    v100 = None
+    v119: None
+    closure13(v9, "p", None)
+    v119 = None
+    v136: None
+    closure13(v9, " = ", None)
+    v136 = None
+    v156: None
+    closure13(v9, ("" + str(int64(4738381338321616896))) + "", None)
+    v156 = None
+    v173: None
+    closure13(v9, "; ", None)
+    v173 = None
+    v192: None
+    closure13(v9, "n", None)
+    v192 = None
+    v209: None
+    closure13(v9, " = ", None)
+    v209 = None
+    v229: None
+    closure13(v9, ("" + str(int8(24))) + "", None)
+    v229 = None
+    v248: None
+    closure13(v9, " }", None)
+    v248 = None
+    v254: str = v9.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.calculate_dice_count") + " / ") + v254)
 
 
 def closure92(unit_var: None, unit_var_1: None) -> None:
     if method6(US2(1)):
-        v4_1: None
+        v18: None
         closure9(None, None)
-        v4_1 = None
+        v18 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v30: int64 | None = pattern_input[5]
-        v29: Mut6 = pattern_input[4]
-        v28: Mut5 = pattern_input[3]
-        v27: Mut4 = pattern_input[2]
-        v26: Mut3 = pattern_input[1]
-        v25: Mut1 = pattern_input[0]
-        method24(method43(v25, v26, v27, v28, v29, v30, method13(v25, v26, v27, v28, v29, v30), method17()))
+        v44: int64 | None = pattern_input[5]
+        v43: Mut6 = pattern_input[4]
+        v42: Mut5 = pattern_input[3]
+        v41: Mut4 = pattern_input[2]
+        v40: Mut3 = pattern_input[1]
+        v39: Mut1 = pattern_input[0]
+        method22(method36(v39, v40, v41, v42, v43, v44, method13(v39, v40, v41, v42, v43, v44), method17()))
 
 
 
-def method46(__unit: None=None) -> uint8:
+def method38(__unit: None=None) -> uint8:
     v73: Any = {}
     value_2: int = randint(int(uint8(1)), int(uint8(7))) or 0
     return int(value_2+0x100 if value_2 < 0 else value_2) & 0xFF
 
 
-def method49(v0_1: int8, v1_1: int64, v2_1: uint8, v3_1: int64) -> str:
-    v5: Mut5 = Mut5(method19())
-    v14: None
-    closure13(v5, "{ ", None)
-    v14 = None
-    v25: None
-    closure13(v5, "power", None)
-    v25 = None
-    v36: None
-    closure13(v5, " = ", None)
-    v36 = None
+def method40(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
     v45: None
-    closure13(v5, ("" + str(v0_1)) + "", None)
+    closure13(v12, "power", None)
     v45 = None
-    v56: None
-    closure13(v5, "; ", None)
-    v56 = None
-    v67: None
-    closure13(v5, "acc", None)
-    v67 = None
-    v76: None
-    closure13(v5, " = ", None)
-    v76 = None
-    v85: None
-    closure13(v5, ("" + str(v1_1)) + "", None)
-    v85 = None
-    v94: None
-    closure13(v5, "; ", None)
-    v94 = None
-    v105: None
-    closure13(v5, "roll", None)
-    v105 = None
-    v114: None
-    closure13(v5, " = ", None)
-    v114 = None
-    v123: None
-    closure13(v5, ("" + str(v2_1)) + "", None)
-    v123 = None
-    v132: None
-    closure13(v5, "; ", None)
-    v132 = None
-    v143: None
-    closure13(v5, "value", None)
-    v143 = None
-    v152: None
-    closure13(v5, " = ", None)
-    v152 = None
-    v161: None
-    closure13(v5, ("" + str(v3_1)) + "", None)
-    v161 = None
-    v172: None
-    closure13(v5, " }", None)
-    v172 = None
-    return v5.l0
-
-
-def method48(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(23), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(23))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure93(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method48(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method40(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method51(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(22), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method42(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(22))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure94(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method51(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method42(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method53(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(21), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method44(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(21))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure95(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method53(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method44(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method55(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(20), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method46(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(20))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure96(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method55(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method46(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method57(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(19), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method48(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(19))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure97(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method57(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method48(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method59(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(18), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method50(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(18))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure98(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method59(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method50(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method61(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(17), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method52(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(17))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure99(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method61(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method52(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method63(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(16), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method54(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(16))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure100(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method63(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method54(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method65(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(15), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method56(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(15))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure101(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method65(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method56(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method67(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(14), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method58(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(14))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure102(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method67(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method58(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method69(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(13), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method60(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(13))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure103(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method69(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method60(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method71(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(12), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method62(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(12))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure104(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method71(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method62(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method73(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(11), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method64(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(11))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure105(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method73(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method64(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method75(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(10), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method66(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(10))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure106(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method75(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method66(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method77(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(9), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method68(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(9))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure107(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method77(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method68(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method79(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(8), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method70(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(8))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure108(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method79(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method70(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method81(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(7), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method72(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(7))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure109(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method81(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method72(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method83(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(6), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method74(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(6))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure110(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method83(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method74(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method85(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(5), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method76(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(5))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure111(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method85(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method76(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method87(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(4), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method78(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(4))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure112(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method87(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method78(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method89(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(3), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method80(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(3))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure113(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method89(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method80(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method91(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(2), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method82(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(2))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure114(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method91(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method82(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method93(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(1), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method84(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(1))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure115(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method93(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method84(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method95(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
-    v12: str = method49(int8(0), v8, v9, v10)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v12) + "")
+def method86(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8, v10: int64) -> str:
+    v12: Mut5 = Mut5(method18())
+    v26: None
+    closure13(v12, "{ ", None)
+    v26 = None
+    v45: None
+    closure13(v12, "power", None)
+    v45 = None
+    v64: None
+    closure13(v12, " = ", None)
+    v64 = None
+    v84: None
+    closure13(v12, ("" + str(int8(0))) + "", None)
+    v84 = None
+    v103: None
+    closure13(v12, "; ", None)
+    v103 = None
+    v122: None
+    closure13(v12, "acc", None)
+    v122 = None
+    v139: None
+    closure13(v12, " = ", None)
+    v139 = None
+    v159: None
+    closure13(v12, ("" + str(v8)) + "", None)
+    v159 = None
+    v176: None
+    closure13(v12, "; ", None)
+    v176 = None
+    v195: None
+    closure13(v12, "roll", None)
+    v195 = None
+    v212: None
+    closure13(v12, " = ", None)
+    v212 = None
+    v232: None
+    closure13(v12, ("" + str(v9)) + "", None)
+    v232 = None
+    v249: None
+    closure13(v12, "; ", None)
+    v249 = None
+    v268: None
+    closure13(v12, "value", None)
+    v268 = None
+    v285: None
+    closure13(v12, " = ", None)
+    v285 = None
+    v305: None
+    closure13(v12, ("" + str(v10)) + "", None)
+    v305 = None
+    v324: None
+    closure13(v12, " }", None)
+    v324 = None
+    v330: str = v12.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v330)
 
 
 def closure116(v0_1: int64, v1_1: uint8, v2_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v7: None
+        v21: None
         closure9(None, None)
-        v7 = None
+        v21 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v33: int64 | None = pattern_input[5]
-        v32: Mut6 = pattern_input[4]
-        v31: Mut5 = pattern_input[3]
-        v30: Mut4 = pattern_input[2]
-        v29: Mut3 = pattern_input[1]
-        v28: Mut1 = pattern_input[0]
-        method24(method95(v28, v29, v30, v31, v32, v33, method13(v28, v29, v30, v31, v32, v33), method17(), v0_1, v1_1, v2_1))
+        v47: int64 | None = pattern_input[5]
+        v46: Mut6 = pattern_input[4]
+        v45: Mut5 = pattern_input[3]
+        v44: Mut4 = pattern_input[2]
+        v43: Mut3 = pattern_input[1]
+        v42: Mut1 = pattern_input[0]
+        method22(method86(v42, v43, v44, v45, v46, v47, method13(v42, v43, v44, v45, v46, v47), method17(), v0_1, v1_1, v2_1))
 
 
 
-def method98(v0_1: int8, v1_1: int64, v2_1: int64) -> str:
-    v4_1: Mut5 = Mut5(method19())
-    v13: None
-    closure13(v4_1, "{ ", None)
-    v13 = None
-    v24: None
-    closure13(v4_1, "power", None)
-    v24 = None
-    v35: None
-    closure13(v4_1, " = ", None)
-    v35 = None
+def method88(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: int64) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
     v44: None
-    closure13(v4_1, ("" + str(v0_1)) + "", None)
+    closure13(v11, "power", None)
     v44 = None
-    v55: None
-    closure13(v4_1, "; ", None)
-    v55 = None
-    v66: None
-    closure13(v4_1, "acc", None)
-    v66 = None
-    v75: None
-    closure13(v4_1, " = ", None)
-    v75 = None
-    v84: None
-    closure13(v4_1, ("" + str(v1_1)) + "", None)
-    v84 = None
-    v93: None
-    closure13(v4_1, "; ", None)
-    v93 = None
-    v104: None
-    closure13(v4_1, "result", None)
-    v104 = None
-    v113: None
-    closure13(v4_1, " = ", None)
-    v113 = None
-    v122: None
-    closure13(v4_1, ("" + str(v2_1)) + "", None)
-    v122 = None
-    v133: None
-    closure13(v4_1, " }", None)
-    v133 = None
-    return v4_1.l0
-
-
-def method97(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: int64) -> str:
-    v11: str = method98(int8(-1), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(-1))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "result", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure117(v0_1: int64, v1_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method97(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method88(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method96(v0_1: UH1, v1_1: int64) -> US10:
+def method87(v0_1: UH1, v1_1: int64) -> US10:
     v2_1: int64 = op_addition(v1_1, int64(1))
-    v5: None
+    v65: None
     closure117(v1_1, v2_1, None)
-    v5 = None
+    v65 = None
     return US10(0, v2_1, v0_1)
 
 
-def method100(v0_1: int8, v1_1: int64, v2_1: uint8) -> str:
-    v4_1: Mut5 = Mut5(method19())
-    v13: None
-    closure13(v4_1, "{ ", None)
-    v13 = None
-    v24: None
-    closure13(v4_1, "power", None)
-    v24 = None
-    v35: None
-    closure13(v4_1, " = ", None)
-    v35 = None
+def method89(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
     v44: None
-    closure13(v4_1, ("" + str(v0_1)) + "", None)
+    closure13(v11, "power", None)
     v44 = None
-    v55: None
-    closure13(v4_1, "; ", None)
-    v55 = None
-    v66: None
-    closure13(v4_1, "acc", None)
-    v66 = None
-    v75: None
-    closure13(v4_1, " = ", None)
-    v75 = None
-    v84: None
-    closure13(v4_1, ("" + str(v1_1)) + "", None)
-    v84 = None
-    v93: None
-    closure13(v4_1, "; ", None)
-    v93 = None
-    v104: None
-    closure13(v4_1, "roll", None)
-    v104 = None
-    v113: None
-    closure13(v4_1, " = ", None)
-    v113 = None
-    v122: None
-    closure13(v4_1, ("" + str(v2_1)) + "", None)
-    v122 = None
-    v133: None
-    closure13(v4_1, " }", None)
-    v133 = None
-    return v4_1.l0
-
-
-def method99(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(0), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(0))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure118(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method99(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method89(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method94(v0_1: UH1, v1_1: int64) -> US10:
+def method85(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -2603,42 +3756,82 @@ def method94(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v7: int64 = from_integer(v3_1 - uint8(1), False, 4)
-            v10: None
+            v70: None
             closure116(v1_1, v3_1, v7, None)
-            v10 = None
-            return method96(v4_1, op_addition(v1_1, v7))
+            v70 = None
+            return method87(v4_1, op_addition(v1_1, v7))
 
         else: 
-            v61: None
+            v195: None
             closure118(v1_1, v3_1, None)
-            v61 = None
-            return method96(v4_1, v1_1)
+            v195 = None
+            return method87(v4_1, v1_1)
 
 
 
 
-def method101(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(1), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method90(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(1))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure119(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method101(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method90(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method92(v0_1: UH1, v1_1: int64) -> US10:
+def method83(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -2647,42 +3840,82 @@ def method92(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(6))
-            v11: None
+            v71: None
             closure115(v1_1, v3_1, v8, None)
-            v11 = None
-            return method94(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method85(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure119(v1_1, v3_1, None)
-            v62 = None
-            return method94(v4_1, v1_1)
+            v196 = None
+            return method85(v4_1, v1_1)
 
 
 
 
-def method102(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(2), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method91(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(2))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure120(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method102(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method91(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method90(v0_1: UH1, v1_1: int64) -> US10:
+def method81(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -2691,42 +3924,82 @@ def method90(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(36))
-            v11: None
+            v71: None
             closure114(v1_1, v3_1, v8, None)
-            v11 = None
-            return method92(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method83(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure120(v1_1, v3_1, None)
-            v62 = None
-            return method92(v4_1, v1_1)
+            v196 = None
+            return method83(v4_1, v1_1)
 
 
 
 
-def method103(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(3), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method92(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(3))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure121(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method103(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method92(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method88(v0_1: UH1, v1_1: int64) -> US10:
+def method79(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -2735,42 +4008,82 @@ def method88(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(216))
-            v11: None
+            v71: None
             closure113(v1_1, v3_1, v8, None)
-            v11 = None
-            return method90(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method81(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure121(v1_1, v3_1, None)
-            v62 = None
-            return method90(v4_1, v1_1)
+            v196 = None
+            return method81(v4_1, v1_1)
 
 
 
 
-def method104(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(4), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method93(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(4))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure122(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method104(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method93(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method86(v0_1: UH1, v1_1: int64) -> US10:
+def method77(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -2779,42 +4092,82 @@ def method86(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(1296))
-            v11: None
+            v71: None
             closure112(v1_1, v3_1, v8, None)
-            v11 = None
-            return method88(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method79(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure122(v1_1, v3_1, None)
-            v62 = None
-            return method88(v4_1, v1_1)
+            v196 = None
+            return method79(v4_1, v1_1)
 
 
 
 
-def method105(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(5), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method94(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(5))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure123(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method105(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method94(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method84(v0_1: UH1, v1_1: int64) -> US10:
+def method75(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -2823,42 +4176,82 @@ def method84(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(7776))
-            v11: None
+            v71: None
             closure111(v1_1, v3_1, v8, None)
-            v11 = None
-            return method86(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method77(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure123(v1_1, v3_1, None)
-            v62 = None
-            return method86(v4_1, v1_1)
+            v196 = None
+            return method77(v4_1, v1_1)
 
 
 
 
-def method106(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(6), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method95(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(6))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure124(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method106(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method95(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method82(v0_1: UH1, v1_1: int64) -> US10:
+def method73(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -2867,42 +4260,82 @@ def method82(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(46656))
-            v11: None
+            v71: None
             closure110(v1_1, v3_1, v8, None)
-            v11 = None
-            return method84(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method75(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure124(v1_1, v3_1, None)
-            v62 = None
-            return method84(v4_1, v1_1)
+            v196 = None
+            return method75(v4_1, v1_1)
 
 
 
 
-def method107(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(7), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method96(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(7))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure125(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method107(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method96(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method80(v0_1: UH1, v1_1: int64) -> US10:
+def method71(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -2911,42 +4344,82 @@ def method80(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(279936))
-            v11: None
+            v71: None
             closure109(v1_1, v3_1, v8, None)
-            v11 = None
-            return method82(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method73(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure125(v1_1, v3_1, None)
-            v62 = None
-            return method82(v4_1, v1_1)
+            v196 = None
+            return method73(v4_1, v1_1)
 
 
 
 
-def method108(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(8), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method97(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(8))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure126(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method108(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method97(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method78(v0_1: UH1, v1_1: int64) -> US10:
+def method69(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -2955,42 +4428,82 @@ def method78(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(1679616))
-            v11: None
+            v71: None
             closure108(v1_1, v3_1, v8, None)
-            v11 = None
-            return method80(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method71(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure126(v1_1, v3_1, None)
-            v62 = None
-            return method80(v4_1, v1_1)
+            v196 = None
+            return method71(v4_1, v1_1)
 
 
 
 
-def method109(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(9), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method98(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(9))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure127(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method109(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method98(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method76(v0_1: UH1, v1_1: int64) -> US10:
+def method67(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -2999,42 +4512,82 @@ def method76(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(10077696))
-            v11: None
+            v71: None
             closure107(v1_1, v3_1, v8, None)
-            v11 = None
-            return method78(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method69(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure127(v1_1, v3_1, None)
-            v62 = None
-            return method78(v4_1, v1_1)
+            v196 = None
+            return method69(v4_1, v1_1)
 
 
 
 
-def method110(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(10), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method99(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(10))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure128(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method110(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method99(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method74(v0_1: UH1, v1_1: int64) -> US10:
+def method65(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -3043,42 +4596,82 @@ def method74(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(60466176))
-            v11: None
+            v71: None
             closure106(v1_1, v3_1, v8, None)
-            v11 = None
-            return method76(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method67(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure128(v1_1, v3_1, None)
-            v62 = None
-            return method76(v4_1, v1_1)
+            v196 = None
+            return method67(v4_1, v1_1)
 
 
 
 
-def method111(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(11), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method100(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(11))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure129(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method111(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method100(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method72(v0_1: UH1, v1_1: int64) -> US10:
+def method63(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -3087,42 +4680,82 @@ def method72(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(362797056))
-            v11: None
+            v71: None
             closure105(v1_1, v3_1, v8, None)
-            v11 = None
-            return method74(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method65(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure129(v1_1, v3_1, None)
-            v62 = None
-            return method74(v4_1, v1_1)
+            v196 = None
+            return method65(v4_1, v1_1)
 
 
 
 
-def method112(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(12), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method101(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(12))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure130(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method112(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method101(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method70(v0_1: UH1, v1_1: int64) -> US10:
+def method61(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -3131,42 +4764,82 @@ def method70(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(2176782336))
-            v11: None
+            v71: None
             closure104(v1_1, v3_1, v8, None)
-            v11 = None
-            return method72(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method63(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure130(v1_1, v3_1, None)
-            v62 = None
-            return method72(v4_1, v1_1)
+            v196 = None
+            return method63(v4_1, v1_1)
 
 
 
 
-def method113(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(13), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method102(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(13))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure131(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method113(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method102(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method68(v0_1: UH1, v1_1: int64) -> US10:
+def method59(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -3175,42 +4848,82 @@ def method68(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(13060694016))
-            v11: None
+            v71: None
             closure103(v1_1, v3_1, v8, None)
-            v11 = None
-            return method70(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method61(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure131(v1_1, v3_1, None)
-            v62 = None
-            return method70(v4_1, v1_1)
+            v196 = None
+            return method61(v4_1, v1_1)
 
 
 
 
-def method114(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(14), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method103(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(14))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure132(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method114(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method103(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method66(v0_1: UH1, v1_1: int64) -> US10:
+def method57(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -3219,42 +4932,82 @@ def method66(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(78364164096))
-            v11: None
+            v71: None
             closure102(v1_1, v3_1, v8, None)
-            v11 = None
-            return method68(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method59(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure132(v1_1, v3_1, None)
-            v62 = None
-            return method68(v4_1, v1_1)
+            v196 = None
+            return method59(v4_1, v1_1)
 
 
 
 
-def method115(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(15), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method104(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(15))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure133(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method115(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method104(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method64(v0_1: UH1, v1_1: int64) -> US10:
+def method55(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -3263,42 +5016,82 @@ def method64(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(470184984576))
-            v11: None
+            v71: None
             closure101(v1_1, v3_1, v8, None)
-            v11 = None
-            return method66(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method57(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure133(v1_1, v3_1, None)
-            v62 = None
-            return method66(v4_1, v1_1)
+            v196 = None
+            return method57(v4_1, v1_1)
 
 
 
 
-def method116(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(16), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method105(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(16))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure134(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method116(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method105(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method62(v0_1: UH1, v1_1: int64) -> US10:
+def method53(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -3307,42 +5100,82 @@ def method62(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(2821109907456))
-            v11: None
+            v71: None
             closure100(v1_1, v3_1, v8, None)
-            v11 = None
-            return method64(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method55(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure134(v1_1, v3_1, None)
-            v62 = None
-            return method64(v4_1, v1_1)
+            v196 = None
+            return method55(v4_1, v1_1)
 
 
 
 
-def method117(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(17), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method106(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(17))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure135(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method117(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method106(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method60(v0_1: UH1, v1_1: int64) -> US10:
+def method51(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -3351,42 +5184,82 @@ def method60(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(16926659444736))
-            v11: None
+            v71: None
             closure99(v1_1, v3_1, v8, None)
-            v11 = None
-            return method62(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method53(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure135(v1_1, v3_1, None)
-            v62 = None
-            return method62(v4_1, v1_1)
+            v196 = None
+            return method53(v4_1, v1_1)
 
 
 
 
-def method118(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(18), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method107(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(18))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure136(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method118(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method107(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
-def method58(v0_1: UH1, v1_1: int64) -> US10:
+def method49(v0_1: UH1, v1_1: int64) -> US10:
     if v0_1.tag == 0:
         return US10(1)
 
@@ -3395,214 +5268,78 @@ def method58(v0_1: UH1, v1_1: int64) -> US10:
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
             v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(101559956668416))
-            v11: None
+            v71: None
             closure98(v1_1, v3_1, v8, None)
-            v11 = None
-            return method60(v4_1, op_addition(v1_1, v8))
+            v71 = None
+            return method51(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
             closure136(v1_1, v3_1, None)
-            v62 = None
-            return method60(v4_1, v1_1)
+            v196 = None
+            return method51(v4_1, v1_1)
 
 
 
 
-def method119(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(19), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
+def method108(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(19))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
 
 
 def closure137(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
     if method6(US2(1)):
-        v6: None
+        v20: None
         closure9(None, None)
-        v6 = None
+        v20 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method119(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
-
-
-
-def method56(v0_1: UH1, v1_1: int64) -> US10:
-    if v0_1.tag == 0:
-        return US10(1)
-
-    else: 
-        v4_1: UH1 = v0_1.fields[1]
-        v3_1: uint8 = v0_1.fields[0]
-        if v3_1 > uint8(1):
-            v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(609359740010496))
-            v11: None
-            closure97(v1_1, v3_1, v8, None)
-            v11 = None
-            return method58(v4_1, op_addition(v1_1, v8))
-
-        else: 
-            v62: None
-            closure137(v1_1, v3_1, None)
-            v62 = None
-            return method58(v4_1, v1_1)
-
-
-
-
-def method120(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(20), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
-
-
-def closure138(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    if method6(US2(1)):
-        v6: None
-        closure9(None, None)
-        v6 = None
-        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method120(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
-
-
-
-def method54(v0_1: UH1, v1_1: int64) -> US10:
-    if v0_1.tag == 0:
-        return US10(1)
-
-    else: 
-        v4_1: UH1 = v0_1.fields[1]
-        v3_1: uint8 = v0_1.fields[0]
-        if v3_1 > uint8(1):
-            v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(3656158440062976))
-            v11: None
-            closure96(v1_1, v3_1, v8, None)
-            v11 = None
-            return method56(v4_1, op_addition(v1_1, v8))
-
-        else: 
-            v62: None
-            closure138(v1_1, v3_1, None)
-            v62 = None
-            return method56(v4_1, v1_1)
-
-
-
-
-def method121(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(21), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
-
-
-def closure139(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    if method6(US2(1)):
-        v6: None
-        closure9(None, None)
-        v6 = None
-        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method121(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
-
-
-
-def method52(v0_1: UH1, v1_1: int64) -> US10:
-    if v0_1.tag == 0:
-        return US10(1)
-
-    else: 
-        v4_1: UH1 = v0_1.fields[1]
-        v3_1: uint8 = v0_1.fields[0]
-        if v3_1 > uint8(1):
-            v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(21936950640377856))
-            v11: None
-            closure95(v1_1, v3_1, v8, None)
-            v11 = None
-            return method54(v4_1, op_addition(v1_1, v8))
-
-        else: 
-            v62: None
-            closure139(v1_1, v3_1, None)
-            v62 = None
-            return method54(v4_1, v1_1)
-
-
-
-
-def method122(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(22), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
-
-
-def closure140(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    if method6(US2(1)):
-        v6: None
-        closure9(None, None)
-        v6 = None
-        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method122(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
-
-
-
-def method50(v0_1: UH1, v1_1: int64) -> US10:
-    if v0_1.tag == 0:
-        return US10(1)
-
-    else: 
-        v4_1: UH1 = v0_1.fields[1]
-        v3_1: uint8 = v0_1.fields[0]
-        if v3_1 > uint8(1):
-            v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(131621703842267136))
-            v11: None
-            closure94(v1_1, v3_1, v8, None)
-            v11 = None
-            return method52(v4_1, op_addition(v1_1, v8))
-
-        else: 
-            v62: None
-            closure140(v1_1, v3_1, None)
-            v62 = None
-            return method52(v4_1, v1_1)
-
-
-
-
-def method123(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
-    v11: str = method100(int8(23), v8, v9)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v11) + "")
-
-
-def closure141(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
-    if method6(US2(1)):
-        v6: None
-        closure9(None, None)
-        v6 = None
-        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v32: int64 | None = pattern_input[5]
-        v31: Mut6 = pattern_input[4]
-        v30: Mut5 = pattern_input[3]
-        v29: Mut4 = pattern_input[2]
-        v28: Mut3 = pattern_input[1]
-        v27: Mut1 = pattern_input[0]
-        method24(method123(v27, v28, v29, v30, v31, v32, method13(v27, v28, v29, v30, v31, v32), method17(), v0_1, v1_1))
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method108(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
 
 
 
@@ -3614,44 +5351,380 @@ def method47(v0_1: UH1, v1_1: int64) -> US10:
         v4_1: UH1 = v0_1.fields[1]
         v3_1: uint8 = v0_1.fields[0]
         if v3_1 > uint8(1):
-            v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(789730223053602816))
-            v11: None
-            closure93(v1_1, v3_1, v8, None)
-            v11 = None
-            return method50(v4_1, op_addition(v1_1, v8))
+            v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(609359740010496))
+            v71: None
+            closure97(v1_1, v3_1, v8, None)
+            v71 = None
+            return method49(v4_1, op_addition(v1_1, v8))
 
         else: 
-            v62: None
+            v196: None
+            closure137(v1_1, v3_1, None)
+            v196 = None
+            return method49(v4_1, v1_1)
+
+
+
+
+def method109(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(20))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
+
+
+def closure138(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
+    if method6(US2(1)):
+        v20: None
+        closure9(None, None)
+        v20 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method109(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
+
+
+
+def method45(v0_1: UH1, v1_1: int64) -> US10:
+    if v0_1.tag == 0:
+        return US10(1)
+
+    else: 
+        v4_1: UH1 = v0_1.fields[1]
+        v3_1: uint8 = v0_1.fields[0]
+        if v3_1 > uint8(1):
+            v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(3656158440062976))
+            v71: None
+            closure96(v1_1, v3_1, v8, None)
+            v71 = None
+            return method47(v4_1, op_addition(v1_1, v8))
+
+        else: 
+            v196: None
+            closure138(v1_1, v3_1, None)
+            v196 = None
+            return method47(v4_1, v1_1)
+
+
+
+
+def method110(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(21))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
+
+
+def closure139(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
+    if method6(US2(1)):
+        v20: None
+        closure9(None, None)
+        v20 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method110(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
+
+
+
+def method43(v0_1: UH1, v1_1: int64) -> US10:
+    if v0_1.tag == 0:
+        return US10(1)
+
+    else: 
+        v4_1: UH1 = v0_1.fields[1]
+        v3_1: uint8 = v0_1.fields[0]
+        if v3_1 > uint8(1):
+            v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(21936950640377856))
+            v71: None
+            closure95(v1_1, v3_1, v8, None)
+            v71 = None
+            return method45(v4_1, op_addition(v1_1, v8))
+
+        else: 
+            v196: None
+            closure139(v1_1, v3_1, None)
+            v196 = None
+            return method45(v4_1, v1_1)
+
+
+
+
+def method111(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(22))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
+
+
+def closure140(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
+    if method6(US2(1)):
+        v20: None
+        closure9(None, None)
+        v20 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method111(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
+
+
+
+def method41(v0_1: UH1, v1_1: int64) -> US10:
+    if v0_1.tag == 0:
+        return US10(1)
+
+    else: 
+        v4_1: UH1 = v0_1.fields[1]
+        v3_1: uint8 = v0_1.fields[0]
+        if v3_1 > uint8(1):
+            v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(131621703842267136))
+            v71: None
+            closure94(v1_1, v3_1, v8, None)
+            v71 = None
+            return method43(v4_1, op_addition(v1_1, v8))
+
+        else: 
+            v196: None
+            closure140(v1_1, v3_1, None)
+            v196 = None
+            return method43(v4_1, v1_1)
+
+
+
+
+def method112(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64, v9: uint8) -> str:
+    v11: Mut5 = Mut5(method18())
+    v25: None
+    closure13(v11, "{ ", None)
+    v25 = None
+    v44: None
+    closure13(v11, "power", None)
+    v44 = None
+    v63: None
+    closure13(v11, " = ", None)
+    v63 = None
+    v83: None
+    closure13(v11, ("" + str(int8(23))) + "", None)
+    v83 = None
+    v102: None
+    closure13(v11, "; ", None)
+    v102 = None
+    v121: None
+    closure13(v11, "acc", None)
+    v121 = None
+    v138: None
+    closure13(v11, " = ", None)
+    v138 = None
+    v158: None
+    closure13(v11, ("" + str(v8)) + "", None)
+    v158 = None
+    v175: None
+    closure13(v11, "; ", None)
+    v175 = None
+    v194: None
+    closure13(v11, "roll", None)
+    v194 = None
+    v211: None
+    closure13(v11, " = ", None)
+    v211 = None
+    v231: None
+    closure13(v11, ("" + str(v9)) + "", None)
+    v231 = None
+    v250: None
+    closure13(v11, " }", None)
+    v250 = None
+    v256: str = v11.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.accumulate_dice_rolls") + " / ") + v256)
+
+
+def closure141(v0_1: int64, v1_1: uint8, unit_var: None) -> None:
+    if method6(US2(1)):
+        v20: None
+        closure9(None, None)
+        v20 = None
+        pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
+        v46: int64 | None = pattern_input[5]
+        v45: Mut6 = pattern_input[4]
+        v44: Mut5 = pattern_input[3]
+        v43: Mut4 = pattern_input[2]
+        v42: Mut3 = pattern_input[1]
+        v41: Mut1 = pattern_input[0]
+        method22(method112(v41, v42, v43, v44, v45, v46, method13(v41, v42, v43, v44, v45, v46), method17(), v0_1, v1_1))
+
+
+
+def method39(v0_1: UH1, v1_1: int64) -> US10:
+    if v0_1.tag == 0:
+        return US10(1)
+
+    else: 
+        v4_1: UH1 = v0_1.fields[1]
+        v3_1: uint8 = v0_1.fields[0]
+        if v3_1 > uint8(1):
+            v8: int64 = op_multiply(from_integer(v3_1 - uint8(1), False, 4), int64(789730223053602816))
+            v71: None
+            closure93(v1_1, v3_1, v8, None)
+            v71 = None
+            return method41(v4_1, op_addition(v1_1, v8))
+
+        else: 
+            v196: None
             closure141(v1_1, v3_1, None)
-            v62 = None
-            return method50(v4_1, v1_1)
+            v196 = None
+            return method41(v4_1, v1_1)
 
 
 
 
-def method45(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
+def method37(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
     while True:
         (v0_1, v1_1) = (v0_1_mut, v1_1_mut)
         if v1_1 < int8(24):
-            v0_1_mut = UH1(1, method46(), v0_1)
+            v0_1_mut = UH1(1, method38(), v0_1)
             v1_1_mut = v1_1 + int8(1)
             continue
 
         else: 
-            v8: US10 = method47(v0_1, int64(0))
+            v8: US10 = method39(v0_1, int64(0))
             if v8.tag == 0:
                 v9: int64 = v8.fields[0]
                 if v9 <= int64(9223372036854775807):
                     return v9
 
                 else: 
-                    v0_1_mut = UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(0))))))))))))))))))))))))
+                    v0_1_mut = UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(0))))))))))))))))))))))))
                     v1_1_mut = int8(23)
                     continue
 
 
             else: 
-                v0_1_mut = UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(1, method46(), UH1(0))))))))))))))))))))))))
+                v0_1_mut = UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(1, method38(), UH1(0))))))))))))))))))))))))
                 v1_1_mut = int8(23)
                 continue
 
@@ -3659,54 +5732,50 @@ def method45(v0_1_mut: UH1, v1_1_mut: int8) -> int64:
         break
 
 
-def method125(v0_1: int64) -> str:
-    v2_1: Mut5 = Mut5(method19())
-    v11: None
-    closure13(v2_1, "{ ", None)
-    v11 = None
-    v22: None
-    closure13(v2_1, "result", None)
-    v22 = None
-    v33: None
-    closure13(v2_1, " = ", None)
-    v33 = None
-    v42: None
-    closure13(v2_1, ("" + str(v0_1)) + "", None)
-    v42 = None
-    v53: None
-    closure13(v2_1, " }", None)
-    v53 = None
-    return v2_1.l0
-
-
-def method124(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64) -> str:
-    v9: str = method125(v8)
-    return method23(((((((((("" + v6) + " ") + v7) + " #") + str(v0_1.l0)) + " ") + "dice.main") + " / ") + v9) + "")
+def method113(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None, v6: str, v7: str, v8: int64) -> str:
+    v10: Mut5 = Mut5(method18())
+    v24: None
+    closure13(v10, "{ ", None)
+    v24 = None
+    v43: None
+    closure13(v10, "result", None)
+    v43 = None
+    v62: None
+    closure13(v10, " = ", None)
+    v62 = None
+    v82: None
+    closure13(v10, ("" + str(v8)) + "", None)
+    v82 = None
+    v101: None
+    closure13(v10, " }", None)
+    v101 = None
+    v107: str = v10.l0
+    return method21((((((((v6 + " ") + v7) + " #") + int64_to_string(v0_1.l0)) + " ") + "dice.main") + " / ") + v107)
 
 
 def closure142(v0_1: int64, unit_var: None) -> None:
     if method6(US2(1)):
-        v5: None
+        v19: None
         closure9(None, None)
-        v5 = None
+        v19 = None
         pattern_input: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] = value_3(TraceState_trace_state())
-        v31: int64 | None = pattern_input[5]
-        v30: Mut6 = pattern_input[4]
-        v29: Mut5 = pattern_input[3]
-        v28: Mut4 = pattern_input[2]
-        v27: Mut3 = pattern_input[1]
-        v26: Mut1 = pattern_input[0]
-        method24(method124(v26, v27, v28, v29, v30, v31, method13(v26, v27, v28, v29, v30, v31), method17(), v0_1))
+        v45: int64 | None = pattern_input[5]
+        v44: Mut6 = pattern_input[4]
+        v43: Mut5 = pattern_input[3]
+        v42: Mut4 = pattern_input[2]
+        v41: Mut3 = pattern_input[1]
+        v40: Mut1 = pattern_input[0]
+        method22(method113(v40, v41, v42, v43, v44, v45, method13(v40, v41, v42, v43, v44, v45), method17(), v0_1))
 
 
 
 def closure91(unit_var: None, v0_1: Array[str]) -> int:
-    v3_1: None
+    v63: None
     closure92(None, None)
-    v3_1 = None
-    v55: None
-    closure142(method45(UH1(0), int8(0)), None)
-    v55 = None
+    v63 = None
+    v189: None
+    closure142(method37(UH1(0), int8(0)), None)
+    v189 = None
     return 0
 
 

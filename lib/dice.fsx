@@ -170,114 +170,114 @@ and method12 () : (string -> US7) =
     closure10()
 and method9 (v0 : string) : string =
     (* run_target_args'
-    let v5 : unit = ()
+    let v2 : unit = ()
     run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v6 : string = method10(v0)
-    let v7 : string = "std::env::var(&*$0)"
-    let v8 : Result<std_string_String, std_env_VarError> = Fable.Core.RustInterop.emitRustExpr v6 v7 
-    let v9 : string = "true; let _result_map_ = $0.map(|x| { //"
-    let v10 : bool = Fable.Core.RustInterop.emitRustExpr v8 v9 
-    let v11 : string = "x"
-    let v12 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v11 
-    let v13 : string = "fable_library_rust::String_::fromString($0)"
-    let v14 : string = Fable.Core.RustInterop.emitRustExpr v12 v13 
-    let v15 : string = "true; $0 })"
-    let v16 : bool = Fable.Core.RustInterop.emitRustExpr v14 v15 
-    let v17 : string = "_result_map_"
-    let v18 : Result<string, std_env_VarError> = Fable.Core.RustInterop.emitRustExpr () v17 
-    let v19 : string = method11()
-    let v20 : string = "$0.unwrap_or($1)"
-    let v21 : string = Fable.Core.RustInterop.emitRustExpr struct (v18, v19) v20 
-    let _run_target_args'_v5 = v21 
+    let v3 : string = method10(v0)
+    let v4 : string = "std::env::var(&*$0)"
+    let v5 : Result<std_string_String, std_env_VarError> = Fable.Core.RustInterop.emitRustExpr v3 v4 
+    let v6 : string = "true; let _result_map_ = $0.map(|x| { //"
+    let v7 : bool = Fable.Core.RustInterop.emitRustExpr v5 v6 
+    let v8 : string = "x"
+    let v9 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v8 
+    let v10 : string = "fable_library_rust::String_::fromString($0)"
+    let v11 : string = Fable.Core.RustInterop.emitRustExpr v9 v10 
+    let v12 : string = "true; $0 })"
+    let v13 : bool = Fable.Core.RustInterop.emitRustExpr v11 v12 
+    let v14 : string = "_result_map_"
+    let v15 : Result<string, std_env_VarError> = Fable.Core.RustInterop.emitRustExpr () v14 
+    let v16 : string = method11()
+    let v17 : string = "$0.unwrap_or($1)"
+    let v18 : string = Fable.Core.RustInterop.emitRustExpr struct (v15, v16) v17 
+    let _run_target_args'_v2 = v18 
     #endif
 #if FABLE_COMPILER_RUST && WASM
-    let v22 : US5 = US5_1
-    let v23 : US6 = US6_3(v22)
-    let v24 : string = $"env.get_environment_variable / target: {v23} / var: {v0}"
-    let v25 : string = failwith<string> v24
-    let _run_target_args'_v5 = v25 
+    let v19 : US5 = US5_1
+    let v20 : US6 = US6_3(v19)
+    let v21 : string = $"env.get_environment_variable / target: {v20} / var: {v0}"
+    let v22 : string = failwith<string> v21
+    let _run_target_args'_v2 = v22 
     #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-    let v26 : US5 = US5_2
-    let v27 : US6 = US6_3(v26)
-    let v28 : string = $"env.get_environment_variable / target: {v27} / var: {v0}"
-    let v29 : string = failwith<string> v28
-    let _run_target_args'_v5 = v29 
+    let v23 : US5 = US5_2
+    let v24 : US6 = US6_3(v23)
+    let v25 : string = $"env.get_environment_variable / target: {v24} / var: {v0}"
+    let v26 : string = failwith<string> v25
+    let _run_target_args'_v2 = v26 
     #endif
 #if FABLE_COMPILER_TYPESCRIPT
-    let v30 : string = "process.env[$0] ?? \"\""
-    let v31 : string = Fable.Core.JsInterop.emitJsExpr v0 v30 
-    let _run_target_args'_v5 = v31 
+    let v27 : string = "process.env[$0] ?? \"\""
+    let v28 : string = Fable.Core.JsInterop.emitJsExpr v0 v27 
+    let _run_target_args'_v2 = v28 
     #endif
 #if FABLE_COMPILER_PYTHON
-    let v33 : string = "os"
-    let v34 : IOsEnviron = Fable.Core.PyInterop.importAll v33 
-    let v35 : string = "v34.environ"
-    let v36 : obj = Fable.Core.PyInterop.emitPyExpr () v35 
-    let v40 : string = "v36.get($0)"
-    let v41 : string = Fable.Core.PyInterop.emitPyExpr v0 v40 
-    let mutable _v41 = None
+    let v30 : string = "os"
+    let v31 : IOsEnviron = Fable.Core.PyInterop.importAll v30 
+    let v32 : string = "v31.environ"
+    let v33 : obj = Fable.Core.PyInterop.emitPyExpr () v32 
+    let v37 : string = "v33.get($0)"
+    let v38 : string = Fable.Core.PyInterop.emitPyExpr v0 v37 
+    let mutable _v38 = None
     #if !FABLE_COMPILER && !WASM && !CONTRACT
-    let v45 : (string -> string option) = Option.ofObj
-    let v46 : string option = v45 v41
-    v46 
+    let v42 : (string -> string option) = Option.ofObj
+    let v43 : string option = v42 v38
+    v43 
     #else
-    Some v41 
+    Some v38 
     #endif
-    |> fun x -> _v41 <- Some x
-    let v47 : string option = match _v41 with Some x -> x | None -> failwith "optionm'.of_obj / _v41=None"
-    let v52 : (string -> US7) = method12()
-    let v53 : US7 option = v47 |> Option.map v52 
-    let v73 : US7 = US7_1
-    let v74 : US7 = v53 |> Option.defaultValue v73 
-    let v81 : string =
-        match v74 with
+    |> fun x -> _v38 <- Some x
+    let v44 : string option = match _v38 with Some x -> x | None -> failwith "optionm'.of_obj / _v38=None"
+    let v49 : (string -> US7) = method12()
+    let v50 : US7 option = v44 |> Option.map v49 
+    let v70 : US7 = US7_1
+    let v71 : US7 = v50 |> Option.defaultValue v70 
+    let v78 : string =
+        match v71 with
         | US7_1 -> (* None *)
-            let v79 : string = ""
-            v79
-        | US7_0(v78) -> (* Some *)
-            v78
-    let _run_target_args'_v5 = v81 
+            let v76 : string = ""
+            v76
+        | US7_0(v75) -> (* Some *)
+            v75
+    let _run_target_args'_v2 = v78 
     #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-    let v82 : US5 = US5_1
-    let v83 : US6 = US6_1(v82)
-    let v84 : string = $"env.get_environment_variable / target: {v83} / var: {v0}"
-    let v85 : string = failwith<string> v84
-    let _run_target_args'_v5 = v85 
+    let v79 : US5 = US5_1
+    let v80 : US6 = US6_1(v79)
+    let v81 : string = $"env.get_environment_variable / target: {v80} / var: {v0}"
+    let v82 : string = failwith<string> v81
+    let _run_target_args'_v2 = v82 
     #endif
 #else
-    let v86 : (string -> string) = System.Environment.GetEnvironmentVariable
-    let v87 : string = v86 v0
-    let mutable _v87 = None
+    let v83 : (string -> string) = System.Environment.GetEnvironmentVariable
+    let v84 : string = v83 v0
+    let mutable _v84 = None
     #if !FABLE_COMPILER && !WASM && !CONTRACT
-    let v89 : (string -> string option) = Option.ofObj
-    let v90 : string option = v89 v87
-    v90 
+    let v86 : (string -> string option) = Option.ofObj
+    let v87 : string option = v86 v84
+    v87 
     #else
-    Some v87 
+    Some v84 
     #endif
-    |> fun x -> _v87 <- Some x
-    let v91 : string option = match _v87 with Some x -> x | None -> failwith "optionm'.of_obj / _v87=None"
-    let v96 : (string -> US7) = method12()
-    let v97 : US7 option = v91 |> Option.map v96 
-    let v117 : US7 = US7_1
-    let v118 : US7 = v97 |> Option.defaultValue v117 
-    let v125 : string =
-        match v118 with
+    |> fun x -> _v84 <- Some x
+    let v88 : string option = match _v84 with Some x -> x | None -> failwith "optionm'.of_obj / _v84=None"
+    let v93 : (string -> US7) = method12()
+    let v94 : US7 option = v88 |> Option.map v93 
+    let v114 : US7 = US7_1
+    let v115 : US7 = v94 |> Option.defaultValue v114 
+    let v122 : string =
+        match v115 with
         | US7_1 -> (* None *)
-            let v123 : string = ""
-            v123
-        | US7_0(v122) -> (* Some *)
-            v122
-    let _run_target_args'_v5 = v125 
+            let v120 : string = ""
+            v120
+        | US7_0(v119) -> (* Some *)
+            v119
+    let _run_target_args'_v2 = v122 
     #endif
-    let v126 : string = _run_target_args'_v5 
-    v126
+    let v123 : string = _run_target_args'_v2 
+    v123
 and method8 () : struct (US3 * US4) =
     let v0 : string = "TRACE_LEVEL"
     let v1 : string = method9(v0)
@@ -422,89 +422,89 @@ and method8 () : struct (US3 * US4) =
     let v129 : string = method9(v128)
     let v132 : string = "True"
     let v133 : bool = v129 <> v132 
-    let v200 : US4 =
+    let v209 : US4 =
         if v133 then
             US4_1
         else
             (* run_target_args'
-            let v139 : unit = ()
+            let v143 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v140 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v139 = v140 
+            let v144 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v143 = v144 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v141 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v139 = v141 
+            let v145 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v143 = v145 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v143 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v139 = v143 
+            let v147 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v143 = v147 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v146 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v139 = v146 
+            let v150 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v143 = v150 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v147 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v139 = v147 
+            let v151 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v143 = v151 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v148 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v139 = v148 
+            let v152 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v143 = v152 
             #endif
 #else
-            let v149 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v139 = v149 
+            let v153 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v143 = v153 
             #endif
-            let v150 : System.DateTime = _run_target_args'_v139 
+            let v154 : System.DateTime = _run_target_args'_v143 
             (* run_target_args'
-            let v158 : unit = ()
+            let v165 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v159 : (System.DateTime -> int64) = _.Ticks
-            let v160 : int64 = v159 v150
-            let _run_target_args'_v158 = v160 
+            let v166 : (System.DateTime -> int64) = _.Ticks
+            let v167 : int64 = v166 v154
+            let _run_target_args'_v165 = v167 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v161 : (System.DateTime -> int64) = _.Ticks
-            let v162 : int64 = v161 v150
-            let _run_target_args'_v158 = v162 
+            let v168 : (System.DateTime -> int64) = _.Ticks
+            let v169 : int64 = v168 v154
+            let _run_target_args'_v165 = v169 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v164 : int64 = null |> unbox<int64>
-            let _run_target_args'_v158 = v164 
+            let v171 : int64 = null |> unbox<int64>
+            let _run_target_args'_v165 = v171 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v167 : (System.DateTime -> int64) = _.Ticks
-            let v168 : int64 = v167 v150
-            let _run_target_args'_v158 = v168 
+            let v174 : (System.DateTime -> int64) = _.Ticks
+            let v175 : int64 = v174 v154
+            let _run_target_args'_v165 = v175 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v169 : (System.DateTime -> int64) = _.Ticks
-            let v170 : int64 = v169 v150
-            let _run_target_args'_v158 = v170 
+            let v176 : (System.DateTime -> int64) = _.Ticks
+            let v177 : int64 = v176 v154
+            let _run_target_args'_v165 = v177 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v171 : (System.DateTime -> int64) = _.Ticks
-            let v172 : int64 = v171 v150
-            let _run_target_args'_v158 = v172 
+            let v178 : (System.DateTime -> int64) = _.Ticks
+            let v179 : int64 = v178 v154
+            let _run_target_args'_v165 = v179 
             #endif
 #else
-            let v173 : (System.DateTime -> int64) = _.Ticks
-            let v174 : int64 = v173 v150
-            let _run_target_args'_v158 = v174 
+            let v180 : (System.DateTime -> int64) = _.Ticks
+            let v181 : int64 = v180 v154
+            let _run_target_args'_v165 = v181 
             #endif
-            let v175 : int64 = _run_target_args'_v158 
-            let v196 : int64 = v175 |> int64 
-            US4_0(v196)
-    struct (v127, v200)
+            let v182 : int64 = _run_target_args'_v165 
+            let v203 : int64 = v182 |> int64 
+            US4_0(v203)
+    struct (v127, v209)
 and closure11 () (v0 : string) : unit =
     ()
 and method7 (v0 : US2) : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) =
@@ -745,20 +745,20 @@ and closure9 () () : unit =
         TraceState.trace_state <- v9 
         ()
 and method6 (v0 : US2) : bool =
-    let v1 : unit = ()
-    let v2 : (unit -> unit) = closure9()
-    let v3 : unit = (fun () -> v2 (); v1) ()
-    let struct (v24 : Mut1, v25 : Mut3, v26 : Mut4, v27 : Mut5, v28 : Mut6, v29 : int64 option) = TraceState.trace_state.Value
-    let v42 : US2 = v28.l0
-    let v43 : bool = v26.l0
-    let v44 : bool = v43 = false
-    if v44 then
+    let v15 : unit = ()
+    let v16 : (unit -> unit) = closure9()
+    let v17 : unit = (fun () -> v16 (); v15) ()
+    let struct (v38 : Mut1, v39 : Mut3, v40 : Mut4, v41 : Mut5, v42 : Mut6, v43 : int64 option) = TraceState.trace_state.Value
+    let v56 : US2 = v42.l0
+    let v57 : bool = v40.l0
+    let v58 : bool = v57 = false
+    if v58 then
         false
     else
-        let v45 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v0
-        let v46 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v42
-        let v47 : bool = v45 >= v46
-        v47
+        let v59 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v0
+        let v60 : int32 = [ US2_0, 0; US2_1, 1; US2_2, 2; US2_3, 3; US2_4, 4 ] |> Map |> Map.find v56
+        let v61 : bool = v59 >= v60
+        v61
 and closure12 () (v0 : int64) : US4 =
     US4_0(v0)
 and method14 () : (int64 -> US4) =
@@ -771,935 +771,926 @@ and method16 () : string =
     v0
 and method13 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option) : string =
     (* run_target_args'
-    let v173 : unit = ()
+    let v187 : unit = ()
     run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v176 : (int64 -> US4) = method14()
-    let v177 : US4 option = v5 |> Option.map v176 
-    let v197 : US4 = US4_1
-    let v198 : US4 = v177 |> Option.defaultValue v197 
-    let v316 : System.DateTime =
-        match v198 with
+    let v190 : (int64 -> US4) = method14()
+    let v191 : US4 option = v5 |> Option.map v190 
+    let v211 : US4 = US4_1
+    let v212 : US4 = v191 |> Option.defaultValue v211 
+    let v344 : System.DateTime =
+        match v212 with
         | US4_1 -> (* None *)
             (* run_target_args'
-            let v299 : unit = ()
+            let v327 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v300 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v299 = v300 
+            let v328 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v327 = v328 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v301 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v299 = v301 
+            let v329 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v327 = v329 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v303 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v299 = v303 
+            let v331 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v327 = v331 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v306 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v299 = v306 
+            let v334 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v327 = v334 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v307 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v299 = v307 
+            let v335 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v327 = v335 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v308 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v299 = v308 
+            let v336 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v327 = v336 
             #endif
 #else
-            let v309 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v299 = v309 
+            let v337 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v327 = v337 
             #endif
-            let v310 : System.DateTime = _run_target_args'_v299 
-            v310
-        | US4_0(v202) -> (* Some *)
+            let v338 : System.DateTime = _run_target_args'_v327 
+            v338
+        | US4_0(v216) -> (* Some *)
             (* run_target_args'
-            let v205 : unit = ()
+            let v223 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v206 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v205 = v206 
+            let v224 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v223 = v224 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v207 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v205 = v207 
+            let v225 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v223 = v225 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v209 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v205 = v209 
+            let v227 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v223 = v227 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v212 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v205 = v212 
+            let v230 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v223 = v230 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v213 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v205 = v213 
+            let v231 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v223 = v231 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v214 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v205 = v214 
+            let v232 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v223 = v232 
             #endif
 #else
-            let v215 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v205 = v215 
+            let v233 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v223 = v233 
             #endif
-            let v216 : System.DateTime = _run_target_args'_v205 
+            let v234 : System.DateTime = _run_target_args'_v223 
             (* run_target_args'
-            let v224 : unit = ()
+            let v245 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v225 : (System.DateTime -> int64) = _.Ticks
-            let v226 : int64 = v225 v216
-            let _run_target_args'_v224 = v226 
+            let v246 : (System.DateTime -> int64) = _.Ticks
+            let v247 : int64 = v246 v234
+            let _run_target_args'_v245 = v247 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v227 : (System.DateTime -> int64) = _.Ticks
-            let v228 : int64 = v227 v216
-            let _run_target_args'_v224 = v228 
+            let v248 : (System.DateTime -> int64) = _.Ticks
+            let v249 : int64 = v248 v234
+            let _run_target_args'_v245 = v249 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v230 : int64 = null |> unbox<int64>
-            let _run_target_args'_v224 = v230 
+            let v251 : int64 = null |> unbox<int64>
+            let _run_target_args'_v245 = v251 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v233 : (System.DateTime -> int64) = _.Ticks
-            let v234 : int64 = v233 v216
-            let _run_target_args'_v224 = v234 
+            let v254 : (System.DateTime -> int64) = _.Ticks
+            let v255 : int64 = v254 v234
+            let _run_target_args'_v245 = v255 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v235 : (System.DateTime -> int64) = _.Ticks
-            let v236 : int64 = v235 v216
-            let _run_target_args'_v224 = v236 
+            let v256 : (System.DateTime -> int64) = _.Ticks
+            let v257 : int64 = v256 v234
+            let _run_target_args'_v245 = v257 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v237 : (System.DateTime -> int64) = _.Ticks
-            let v238 : int64 = v237 v216
-            let _run_target_args'_v224 = v238 
+            let v258 : (System.DateTime -> int64) = _.Ticks
+            let v259 : int64 = v258 v234
+            let _run_target_args'_v245 = v259 
             #endif
 #else
-            let v239 : (System.DateTime -> int64) = _.Ticks
-            let v240 : int64 = v239 v216
-            let _run_target_args'_v224 = v240 
+            let v260 : (System.DateTime -> int64) = _.Ticks
+            let v261 : int64 = v260 v234
+            let _run_target_args'_v245 = v261 
             #endif
-            let v241 : int64 = _run_target_args'_v224 
-            let v262 : int64 = v241 |> int64 
-            let v265 : int64 = v262 - v202
-            let v268 : System.TimeSpan = v265 |> System.TimeSpan 
-            let v274 : (System.TimeSpan -> int32) = _.Hours
-            let v275 : int32 = v274 v268
-            let v279 : (System.TimeSpan -> int32) = _.Minutes
-            let v280 : int32 = v279 v268
-            let v284 : (System.TimeSpan -> int32) = _.Seconds
-            let v285 : int32 = v284 v268
-            let v289 : (System.TimeSpan -> int32) = _.Milliseconds
-            let v290 : int32 = v289 v268
-            let v294 : System.DateTime = System.DateTime (1, 1, 1, v275, v280, v285, v290)
-            v294
-    let v318 : string = method15()
-    let v322 : bool = v318 = ""
-    let v324 : string =
-        if v322 then
-            let v323 : string = "M-d-y hh:mm:ss tt"
-            v323
-        else
+            let v262 : int64 = _run_target_args'_v245 
+            let v283 : int64 = v262 |> int64 
+            let v286 : int64 = v283 - v216
+            let v292 : System.TimeSpan = v286 |> System.TimeSpan 
+            let v298 : (System.TimeSpan -> int32) = _.Hours
+            let v299 : int32 = v298 v292
+            let v303 : (System.TimeSpan -> int32) = _.Minutes
+            let v304 : int32 = v303 v292
+            let v308 : (System.TimeSpan -> int32) = _.Seconds
+            let v309 : int32 = v308 v292
+            let v313 : (System.TimeSpan -> int32) = _.Milliseconds
+            let v314 : int32 = v313 v292
+            let v318 : System.DateTime = System.DateTime (1, 1, 1, v299, v304, v309, v314)
             v318
-    let v325 : (string -> string) = v316.ToString
-    let v326 : string = v325 v324
-    let _run_target_args'_v173 = v326 
-    #endif
-#if FABLE_COMPILER_RUST && WASM
-    let v343 : (int64 -> US4) = method14()
-    let v344 : US4 option = v5 |> Option.map v343 
-    let v364 : US4 = US4_1
-    let v365 : US4 = v344 |> Option.defaultValue v364 
-    let v483 : System.DateTime =
-        match v365 with
-        | US4_1 -> (* None *)
-            (* run_target_args'
-            let v466 : unit = ()
-            run_target_args' *)
-            
-#if FABLE_COMPILER || WASM || CONTRACT
-            
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v467 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v466 = v467 
-            #endif
-#if FABLE_COMPILER_RUST && WASM
-            let v468 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v466 = v468 
-            #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-            let v470 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v466 = v470 
-            #endif
-#if FABLE_COMPILER_TYPESCRIPT
-            let v473 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v466 = v473 
-            #endif
-#if FABLE_COMPILER_PYTHON
-            let v474 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v466 = v474 
-            #endif
-#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v475 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v466 = v475 
-            #endif
-#else
-            let v476 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v466 = v476 
-            #endif
-            let v477 : System.DateTime = _run_target_args'_v466 
-            v477
-        | US4_0(v369) -> (* Some *)
-            (* run_target_args'
-            let v372 : unit = ()
-            run_target_args' *)
-            
-#if FABLE_COMPILER || WASM || CONTRACT
-            
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v373 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v372 = v373 
-            #endif
-#if FABLE_COMPILER_RUST && WASM
-            let v374 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v372 = v374 
-            #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-            let v376 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v372 = v376 
-            #endif
-#if FABLE_COMPILER_TYPESCRIPT
-            let v379 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v372 = v379 
-            #endif
-#if FABLE_COMPILER_PYTHON
-            let v380 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v372 = v380 
-            #endif
-#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v381 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v372 = v381 
-            #endif
-#else
-            let v382 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v372 = v382 
-            #endif
-            let v383 : System.DateTime = _run_target_args'_v372 
-            (* run_target_args'
-            let v391 : unit = ()
-            run_target_args' *)
-            
-#if FABLE_COMPILER || WASM || CONTRACT
-            
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v392 : (System.DateTime -> int64) = _.Ticks
-            let v393 : int64 = v392 v383
-            let _run_target_args'_v391 = v393 
-            #endif
-#if FABLE_COMPILER_RUST && WASM
-            let v394 : (System.DateTime -> int64) = _.Ticks
-            let v395 : int64 = v394 v383
-            let _run_target_args'_v391 = v395 
-            #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-            let v397 : int64 = null |> unbox<int64>
-            let _run_target_args'_v391 = v397 
-            #endif
-#if FABLE_COMPILER_TYPESCRIPT
-            let v400 : (System.DateTime -> int64) = _.Ticks
-            let v401 : int64 = v400 v383
-            let _run_target_args'_v391 = v401 
-            #endif
-#if FABLE_COMPILER_PYTHON
-            let v402 : (System.DateTime -> int64) = _.Ticks
-            let v403 : int64 = v402 v383
-            let _run_target_args'_v391 = v403 
-            #endif
-#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v404 : (System.DateTime -> int64) = _.Ticks
-            let v405 : int64 = v404 v383
-            let _run_target_args'_v391 = v405 
-            #endif
-#else
-            let v406 : (System.DateTime -> int64) = _.Ticks
-            let v407 : int64 = v406 v383
-            let _run_target_args'_v391 = v407 
-            #endif
-            let v408 : int64 = _run_target_args'_v391 
-            let v429 : int64 = v408 |> int64 
-            let v432 : int64 = v429 - v369
-            let v435 : System.TimeSpan = v432 |> System.TimeSpan 
-            let v441 : (System.TimeSpan -> int32) = _.Hours
-            let v442 : int32 = v441 v435
-            let v446 : (System.TimeSpan -> int32) = _.Minutes
-            let v447 : int32 = v446 v435
-            let v451 : (System.TimeSpan -> int32) = _.Seconds
-            let v452 : int32 = v451 v435
-            let v456 : (System.TimeSpan -> int32) = _.Milliseconds
-            let v457 : int32 = v456 v435
-            let v461 : System.DateTime = System.DateTime (1, 1, 1, v442, v447, v452, v457)
-            v461
-    let v485 : string = method15()
-    let v489 : bool = v485 = ""
-    let v491 : string =
-        if v489 then
-            let v490 : string = "M-d-y hh:mm:ss tt"
-            v490
+    let v346 : string = method15()
+    let v350 : bool = v346 = ""
+    let v352 : string =
+        if v350 then
+            let v351 : string = "M-d-y hh:mm:ss tt"
+            v351
         else
-            v485
-    let v492 : (string -> string) = v483.ToString
-    let v493 : string = v492 v491
-    let _run_target_args'_v173 = v493 
+            v346
+    let v353 : (string -> string) = v344.ToString
+    let v354 : string = v353 v352
+    let _run_target_args'_v187 = v354 
     #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-    let v508 : string = $"near_sdk::env::block_timestamp()"
-    let v509 : uint64 = Fable.Core.RustInterop.emitRustExpr () v508 
-    let v512 : (int64 -> US4) = method14()
-    let v513 : US4 option = v5 |> Option.map v512 
-    let v533 : US4 = US4_1
-    let v534 : US4 = v513 |> Option.defaultValue v533 
-    let v546 : uint64 =
-        match v534 with
-        | US4_1 -> (* None *)
-            v509
-        | US4_0(v538) -> (* Some *)
-            let v540 : (int64 -> uint64) = uint64
-            let v541 : uint64 = v540 v538
-            let v544 : uint64 = v509 - v541
-            v544
-    let v547 : uint64 = v546 / 1000000000UL
-    let v548 : uint64 = v547 % 60UL
-    let v549 : uint64 = v547 / 60UL
-    let v550 : uint64 = v549 % 60UL
-    let v551 : uint64 = v547 / 3600UL
-    let v552 : uint64 = v551 % 24UL
-    let v553 : string = $"format!(\"{{:02}}:{{:02}}:{{:02}}\", $0, $1, $2)"
-    let v554 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v552, v550, v548) v553 
-    let v555 : string = "fable_library_rust::String_::fromString($0)"
-    let v556 : string = Fable.Core.RustInterop.emitRustExpr v554 v555 
-    let _run_target_args'_v173 = v556 
-    #endif
-#if FABLE_COMPILER_TYPESCRIPT
-    let v559 : (int64 -> US4) = method14()
-    let v560 : US4 option = v5 |> Option.map v559 
-    let v580 : US4 = US4_1
-    let v581 : US4 = v560 |> Option.defaultValue v580 
-    let v699 : System.DateTime =
-        match v581 with
+#if FABLE_COMPILER_RUST && WASM
+    let v371 : (int64 -> US4) = method14()
+    let v372 : US4 option = v5 |> Option.map v371 
+    let v392 : US4 = US4_1
+    let v393 : US4 = v372 |> Option.defaultValue v392 
+    let v525 : System.DateTime =
+        match v393 with
         | US4_1 -> (* None *)
             (* run_target_args'
-            let v682 : unit = ()
+            let v508 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v683 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v682 = v683 
+            let v509 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v508 = v509 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v684 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v682 = v684 
+            let v510 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v508 = v510 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v686 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v682 = v686 
+            let v512 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v508 = v512 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v689 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v682 = v689 
+            let v515 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v508 = v515 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v690 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v682 = v690 
+            let v516 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v508 = v516 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v691 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v682 = v691 
+            let v517 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v508 = v517 
             #endif
 #else
-            let v692 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v682 = v692 
+            let v518 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v508 = v518 
             #endif
-            let v693 : System.DateTime = _run_target_args'_v682 
-            v693
-        | US4_0(v585) -> (* Some *)
+            let v519 : System.DateTime = _run_target_args'_v508 
+            v519
+        | US4_0(v397) -> (* Some *)
             (* run_target_args'
-            let v588 : unit = ()
+            let v404 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v589 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v588 = v589 
+            let v405 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v404 = v405 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v590 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v588 = v590 
+            let v406 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v404 = v406 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v592 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v588 = v592 
+            let v408 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v404 = v408 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v595 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v588 = v595 
+            let v411 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v404 = v411 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v596 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v588 = v596 
+            let v412 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v404 = v412 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v597 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v588 = v597 
+            let v413 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v404 = v413 
             #endif
 #else
-            let v598 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v588 = v598 
+            let v414 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v404 = v414 
             #endif
-            let v599 : System.DateTime = _run_target_args'_v588 
+            let v415 : System.DateTime = _run_target_args'_v404 
             (* run_target_args'
-            let v607 : unit = ()
+            let v426 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v608 : (System.DateTime -> int64) = _.Ticks
-            let v609 : int64 = v608 v599
-            let _run_target_args'_v607 = v609 
+            let v427 : (System.DateTime -> int64) = _.Ticks
+            let v428 : int64 = v427 v415
+            let _run_target_args'_v426 = v428 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v610 : (System.DateTime -> int64) = _.Ticks
-            let v611 : int64 = v610 v599
-            let _run_target_args'_v607 = v611 
+            let v429 : (System.DateTime -> int64) = _.Ticks
+            let v430 : int64 = v429 v415
+            let _run_target_args'_v426 = v430 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v613 : int64 = null |> unbox<int64>
-            let _run_target_args'_v607 = v613 
+            let v432 : int64 = null |> unbox<int64>
+            let _run_target_args'_v426 = v432 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v616 : (System.DateTime -> int64) = _.Ticks
-            let v617 : int64 = v616 v599
-            let _run_target_args'_v607 = v617 
+            let v435 : (System.DateTime -> int64) = _.Ticks
+            let v436 : int64 = v435 v415
+            let _run_target_args'_v426 = v436 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v618 : (System.DateTime -> int64) = _.Ticks
-            let v619 : int64 = v618 v599
-            let _run_target_args'_v607 = v619 
+            let v437 : (System.DateTime -> int64) = _.Ticks
+            let v438 : int64 = v437 v415
+            let _run_target_args'_v426 = v438 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v620 : (System.DateTime -> int64) = _.Ticks
-            let v621 : int64 = v620 v599
-            let _run_target_args'_v607 = v621 
+            let v439 : (System.DateTime -> int64) = _.Ticks
+            let v440 : int64 = v439 v415
+            let _run_target_args'_v426 = v440 
             #endif
 #else
-            let v622 : (System.DateTime -> int64) = _.Ticks
-            let v623 : int64 = v622 v599
-            let _run_target_args'_v607 = v623 
+            let v441 : (System.DateTime -> int64) = _.Ticks
+            let v442 : int64 = v441 v415
+            let _run_target_args'_v426 = v442 
             #endif
-            let v624 : int64 = _run_target_args'_v607 
-            let v645 : int64 = v624 |> int64 
-            let v648 : int64 = v645 - v585
-            let v651 : System.TimeSpan = v648 |> System.TimeSpan 
-            let v657 : (System.TimeSpan -> int32) = _.Hours
-            let v658 : int32 = v657 v651
-            let v662 : (System.TimeSpan -> int32) = _.Minutes
-            let v663 : int32 = v662 v651
-            let v667 : (System.TimeSpan -> int32) = _.Seconds
-            let v668 : int32 = v667 v651
-            let v672 : (System.TimeSpan -> int32) = _.Milliseconds
-            let v673 : int32 = v672 v651
-            let v677 : System.DateTime = System.DateTime (1, 1, 1, v658, v663, v668, v673)
-            v677
-    let v701 : string = method16()
-    let v705 : bool = v701 = ""
-    let v707 : string =
-        if v705 then
-            let v706 : string = "M-d-y hh:mm:ss tt"
-            v706
+            let v443 : int64 = _run_target_args'_v426 
+            let v464 : int64 = v443 |> int64 
+            let v467 : int64 = v464 - v397
+            let v473 : System.TimeSpan = v467 |> System.TimeSpan 
+            let v479 : (System.TimeSpan -> int32) = _.Hours
+            let v480 : int32 = v479 v473
+            let v484 : (System.TimeSpan -> int32) = _.Minutes
+            let v485 : int32 = v484 v473
+            let v489 : (System.TimeSpan -> int32) = _.Seconds
+            let v490 : int32 = v489 v473
+            let v494 : (System.TimeSpan -> int32) = _.Milliseconds
+            let v495 : int32 = v494 v473
+            let v499 : System.DateTime = System.DateTime (1, 1, 1, v480, v485, v490, v495)
+            v499
+    let v527 : string = method15()
+    let v531 : bool = v527 = ""
+    let v533 : string =
+        if v531 then
+            let v532 : string = "M-d-y hh:mm:ss tt"
+            v532
         else
-            v701
-    let v708 : (string -> string) = v699.ToString
-    let v709 : string = v708 v707
-    let _run_target_args'_v173 = v709 
+            v527
+    let v534 : (string -> string) = v525.ToString
+    let v535 : string = v534 v533
+    let _run_target_args'_v187 = v535 
     #endif
-#if FABLE_COMPILER_PYTHON
-    let v726 : (int64 -> US4) = method14()
-    let v727 : US4 option = v5 |> Option.map v726 
-    let v747 : US4 = US4_1
-    let v748 : US4 = v727 |> Option.defaultValue v747 
-    let v866 : System.DateTime =
-        match v748 with
+#if FABLE_COMPILER_RUST && CONTRACT
+    let v550 : string = $"near_sdk::env::block_timestamp()"
+    let v551 : uint64 = Fable.Core.RustInterop.emitRustExpr () v550 
+    let v554 : (int64 -> US4) = method14()
+    let v555 : US4 option = v5 |> Option.map v554 
+    let v575 : US4 = US4_1
+    let v576 : US4 = v555 |> Option.defaultValue v575 
+    let v588 : uint64 =
+        match v576 with
+        | US4_1 -> (* None *)
+            v551
+        | US4_0(v580) -> (* Some *)
+            let v582 : (int64 -> uint64) = uint64
+            let v583 : uint64 = v582 v580
+            let v586 : uint64 = v551 - v583
+            v586
+    let v589 : uint64 = v588 / 1000000000UL
+    let v590 : uint64 = v589 % 60UL
+    let v591 : uint64 = v589 / 60UL
+    let v592 : uint64 = v591 % 60UL
+    let v593 : uint64 = v589 / 3600UL
+    let v594 : uint64 = v593 % 24UL
+    let v595 : string = $"format!(\"{{:02}}:{{:02}}:{{:02}}\", $0, $1, $2)"
+    let v596 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v594, v592, v590) v595 
+    let v597 : string = "fable_library_rust::String_::fromString($0)"
+    let v598 : string = Fable.Core.RustInterop.emitRustExpr v596 v597 
+    let _run_target_args'_v187 = v598 
+    #endif
+#if FABLE_COMPILER_TYPESCRIPT
+    let v601 : (int64 -> US4) = method14()
+    let v602 : US4 option = v5 |> Option.map v601 
+    let v622 : US4 = US4_1
+    let v623 : US4 = v602 |> Option.defaultValue v622 
+    let v755 : System.DateTime =
+        match v623 with
         | US4_1 -> (* None *)
             (* run_target_args'
-            let v849 : unit = ()
+            let v738 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v850 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v849 = v850 
+            let v739 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v738 = v739 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v851 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v849 = v851 
+            let v740 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v738 = v740 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v853 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v849 = v853 
+            let v742 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v738 = v742 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v856 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v849 = v856 
+            let v745 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v738 = v745 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v857 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v849 = v857 
+            let v746 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v738 = v746 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v858 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v849 = v858 
+            let v747 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v738 = v747 
             #endif
 #else
-            let v859 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v849 = v859 
+            let v748 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v738 = v748 
             #endif
-            let v860 : System.DateTime = _run_target_args'_v849 
-            v860
-        | US4_0(v752) -> (* Some *)
+            let v749 : System.DateTime = _run_target_args'_v738 
+            v749
+        | US4_0(v627) -> (* Some *)
             (* run_target_args'
-            let v755 : unit = ()
+            let v634 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v756 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v755 = v756 
+            let v635 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v634 = v635 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v757 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v755 = v757 
+            let v636 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v634 = v636 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v759 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v755 = v759 
+            let v638 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v634 = v638 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v762 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v755 = v762 
+            let v641 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v634 = v641 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v763 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v755 = v763 
+            let v642 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v634 = v642 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v764 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v755 = v764 
+            let v643 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v634 = v643 
             #endif
 #else
-            let v765 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v755 = v765 
+            let v644 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v634 = v644 
             #endif
-            let v766 : System.DateTime = _run_target_args'_v755 
+            let v645 : System.DateTime = _run_target_args'_v634 
             (* run_target_args'
-            let v774 : unit = ()
+            let v656 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v775 : (System.DateTime -> int64) = _.Ticks
-            let v776 : int64 = v775 v766
-            let _run_target_args'_v774 = v776 
+            let v657 : (System.DateTime -> int64) = _.Ticks
+            let v658 : int64 = v657 v645
+            let _run_target_args'_v656 = v658 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v777 : (System.DateTime -> int64) = _.Ticks
-            let v778 : int64 = v777 v766
-            let _run_target_args'_v774 = v778 
+            let v659 : (System.DateTime -> int64) = _.Ticks
+            let v660 : int64 = v659 v645
+            let _run_target_args'_v656 = v660 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v780 : int64 = null |> unbox<int64>
-            let _run_target_args'_v774 = v780 
+            let v662 : int64 = null |> unbox<int64>
+            let _run_target_args'_v656 = v662 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v783 : (System.DateTime -> int64) = _.Ticks
-            let v784 : int64 = v783 v766
-            let _run_target_args'_v774 = v784 
+            let v665 : (System.DateTime -> int64) = _.Ticks
+            let v666 : int64 = v665 v645
+            let _run_target_args'_v656 = v666 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v785 : (System.DateTime -> int64) = _.Ticks
-            let v786 : int64 = v785 v766
-            let _run_target_args'_v774 = v786 
+            let v667 : (System.DateTime -> int64) = _.Ticks
+            let v668 : int64 = v667 v645
+            let _run_target_args'_v656 = v668 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v787 : (System.DateTime -> int64) = _.Ticks
-            let v788 : int64 = v787 v766
-            let _run_target_args'_v774 = v788 
+            let v669 : (System.DateTime -> int64) = _.Ticks
+            let v670 : int64 = v669 v645
+            let _run_target_args'_v656 = v670 
             #endif
 #else
-            let v789 : (System.DateTime -> int64) = _.Ticks
-            let v790 : int64 = v789 v766
-            let _run_target_args'_v774 = v790 
+            let v671 : (System.DateTime -> int64) = _.Ticks
+            let v672 : int64 = v671 v645
+            let _run_target_args'_v656 = v672 
             #endif
-            let v791 : int64 = _run_target_args'_v774 
-            let v812 : int64 = v791 |> int64 
-            let v815 : int64 = v812 - v752
-            let v818 : System.TimeSpan = v815 |> System.TimeSpan 
-            let v824 : (System.TimeSpan -> int32) = _.Hours
-            let v825 : int32 = v824 v818
-            let v829 : (System.TimeSpan -> int32) = _.Minutes
-            let v830 : int32 = v829 v818
-            let v834 : (System.TimeSpan -> int32) = _.Seconds
-            let v835 : int32 = v834 v818
-            let v839 : (System.TimeSpan -> int32) = _.Milliseconds
-            let v840 : int32 = v839 v818
-            let v844 : System.DateTime = System.DateTime (1, 1, 1, v825, v830, v835, v840)
-            v844
-    let v868 : string = method16()
-    let v872 : bool = v868 = ""
-    let v874 : string =
-        if v872 then
-            let v873 : string = "M-d-y hh:mm:ss tt"
-            v873
+            let v673 : int64 = _run_target_args'_v656 
+            let v694 : int64 = v673 |> int64 
+            let v697 : int64 = v694 - v627
+            let v703 : System.TimeSpan = v697 |> System.TimeSpan 
+            let v709 : (System.TimeSpan -> int32) = _.Hours
+            let v710 : int32 = v709 v703
+            let v714 : (System.TimeSpan -> int32) = _.Minutes
+            let v715 : int32 = v714 v703
+            let v719 : (System.TimeSpan -> int32) = _.Seconds
+            let v720 : int32 = v719 v703
+            let v724 : (System.TimeSpan -> int32) = _.Milliseconds
+            let v725 : int32 = v724 v703
+            let v729 : System.DateTime = System.DateTime (1, 1, 1, v710, v715, v720, v725)
+            v729
+    let v757 : string = method16()
+    let v761 : bool = v757 = ""
+    let v763 : string =
+        if v761 then
+            let v762 : string = "M-d-y hh:mm:ss tt"
+            v762
         else
-            v868
-    let v875 : (string -> string) = v866.ToString
-    let v876 : string = v875 v874
-    let _run_target_args'_v173 = v876 
+            v757
+    let v764 : (string -> string) = v755.ToString
+    let v765 : string = v764 v763
+    let _run_target_args'_v187 = v765 
     #endif
-#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-    let v893 : (int64 -> US4) = method14()
-    let v894 : US4 option = v5 |> Option.map v893 
-    let v914 : US4 = US4_1
-    let v915 : US4 = v894 |> Option.defaultValue v914 
-    let v1033 : System.DateTime =
-        match v915 with
+#if FABLE_COMPILER_PYTHON
+    let v782 : (int64 -> US4) = method14()
+    let v783 : US4 option = v5 |> Option.map v782 
+    let v803 : US4 = US4_1
+    let v804 : US4 = v783 |> Option.defaultValue v803 
+    let v936 : System.DateTime =
+        match v804 with
         | US4_1 -> (* None *)
             (* run_target_args'
-            let v1016 : unit = ()
+            let v919 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v1017 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1016 = v1017 
+            let v920 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v919 = v920 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v1018 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1016 = v1018 
+            let v921 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v919 = v921 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v1020 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v1016 = v1020 
+            let v923 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v919 = v923 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v1023 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1016 = v1023 
+            let v926 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v919 = v926 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v1024 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1016 = v1024 
+            let v927 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v919 = v927 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v1025 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1016 = v1025 
+            let v928 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v919 = v928 
             #endif
 #else
-            let v1026 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1016 = v1026 
-            #endif
-            let v1027 : System.DateTime = _run_target_args'_v1016 
-            v1027
-        | US4_0(v919) -> (* Some *)
-            (* run_target_args'
-            let v922 : unit = ()
-            run_target_args' *)
-            
-#if FABLE_COMPILER || WASM || CONTRACT
-            
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v923 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v922 = v923 
-            #endif
-#if FABLE_COMPILER_RUST && WASM
-            let v924 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v922 = v924 
-            #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-            let v926 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v922 = v926 
-            #endif
-#if FABLE_COMPILER_TYPESCRIPT
             let v929 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v922 = v929 
+            let _run_target_args'_v919 = v929 
             #endif
-#if FABLE_COMPILER_PYTHON
-            let v930 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v922 = v930 
-            #endif
-#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v931 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v922 = v931 
-            #endif
-#else
-            let v932 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v922 = v932 
-            #endif
-            let v933 : System.DateTime = _run_target_args'_v922 
+            let v930 : System.DateTime = _run_target_args'_v919 
+            v930
+        | US4_0(v808) -> (* Some *)
             (* run_target_args'
-            let v941 : unit = ()
+            let v815 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v942 : (System.DateTime -> int64) = _.Ticks
-            let v943 : int64 = v942 v933
-            let _run_target_args'_v941 = v943 
+            let v816 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v815 = v816 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v944 : (System.DateTime -> int64) = _.Ticks
-            let v945 : int64 = v944 v933
-            let _run_target_args'_v941 = v945 
+            let v817 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v815 = v817 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v947 : int64 = null |> unbox<int64>
-            let _run_target_args'_v941 = v947 
+            let v819 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v815 = v819 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v950 : (System.DateTime -> int64) = _.Ticks
-            let v951 : int64 = v950 v933
-            let _run_target_args'_v941 = v951 
+            let v822 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v815 = v822 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v952 : (System.DateTime -> int64) = _.Ticks
-            let v953 : int64 = v952 v933
-            let _run_target_args'_v941 = v953 
+            let v823 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v815 = v823 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v954 : (System.DateTime -> int64) = _.Ticks
-            let v955 : int64 = v954 v933
-            let _run_target_args'_v941 = v955 
+            let v824 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v815 = v824 
             #endif
 #else
-            let v956 : (System.DateTime -> int64) = _.Ticks
-            let v957 : int64 = v956 v933
-            let _run_target_args'_v941 = v957 
+            let v825 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v815 = v825 
             #endif
-            let v958 : int64 = _run_target_args'_v941 
-            let v979 : int64 = v958 |> int64 
-            let v982 : int64 = v979 - v919
-            let v985 : System.TimeSpan = v982 |> System.TimeSpan 
-            let v991 : (System.TimeSpan -> int32) = _.Hours
-            let v992 : int32 = v991 v985
-            let v996 : (System.TimeSpan -> int32) = _.Minutes
-            let v997 : int32 = v996 v985
-            let v1001 : (System.TimeSpan -> int32) = _.Seconds
-            let v1002 : int32 = v1001 v985
-            let v1006 : (System.TimeSpan -> int32) = _.Milliseconds
-            let v1007 : int32 = v1006 v985
-            let v1011 : System.DateTime = System.DateTime (1, 1, 1, v992, v997, v1002, v1007)
-            v1011
-    let v1035 : string = method16()
-    let v1039 : bool = v1035 = ""
-    let v1041 : string =
-        if v1039 then
-            let v1040 : string = "M-d-y hh:mm:ss tt"
-            v1040
+            let v826 : System.DateTime = _run_target_args'_v815 
+            (* run_target_args'
+            let v837 : unit = ()
+            run_target_args' *)
+            
+#if FABLE_COMPILER || WASM || CONTRACT
+            
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v838 : (System.DateTime -> int64) = _.Ticks
+            let v839 : int64 = v838 v826
+            let _run_target_args'_v837 = v839 
+            #endif
+#if FABLE_COMPILER_RUST && WASM
+            let v840 : (System.DateTime -> int64) = _.Ticks
+            let v841 : int64 = v840 v826
+            let _run_target_args'_v837 = v841 
+            #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+            let v843 : int64 = null |> unbox<int64>
+            let _run_target_args'_v837 = v843 
+            #endif
+#if FABLE_COMPILER_TYPESCRIPT
+            let v846 : (System.DateTime -> int64) = _.Ticks
+            let v847 : int64 = v846 v826
+            let _run_target_args'_v837 = v847 
+            #endif
+#if FABLE_COMPILER_PYTHON
+            let v848 : (System.DateTime -> int64) = _.Ticks
+            let v849 : int64 = v848 v826
+            let _run_target_args'_v837 = v849 
+            #endif
+#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
+            let v850 : (System.DateTime -> int64) = _.Ticks
+            let v851 : int64 = v850 v826
+            let _run_target_args'_v837 = v851 
+            #endif
+#else
+            let v852 : (System.DateTime -> int64) = _.Ticks
+            let v853 : int64 = v852 v826
+            let _run_target_args'_v837 = v853 
+            #endif
+            let v854 : int64 = _run_target_args'_v837 
+            let v875 : int64 = v854 |> int64 
+            let v878 : int64 = v875 - v808
+            let v884 : System.TimeSpan = v878 |> System.TimeSpan 
+            let v890 : (System.TimeSpan -> int32) = _.Hours
+            let v891 : int32 = v890 v884
+            let v895 : (System.TimeSpan -> int32) = _.Minutes
+            let v896 : int32 = v895 v884
+            let v900 : (System.TimeSpan -> int32) = _.Seconds
+            let v901 : int32 = v900 v884
+            let v905 : (System.TimeSpan -> int32) = _.Milliseconds
+            let v906 : int32 = v905 v884
+            let v910 : System.DateTime = System.DateTime (1, 1, 1, v891, v896, v901, v906)
+            v910
+    let v938 : string = method16()
+    let v942 : bool = v938 = ""
+    let v944 : string =
+        if v942 then
+            let v943 : string = "M-d-y hh:mm:ss tt"
+            v943
         else
-            v1035
-    let v1042 : (string -> string) = v1033.ToString
-    let v1043 : string = v1042 v1041
-    let _run_target_args'_v173 = v1043 
+            v938
+    let v945 : (string -> string) = v936.ToString
+    let v946 : string = v945 v944
+    let _run_target_args'_v187 = v946 
     #endif
-#else
-    let v1060 : (int64 -> US4) = method14()
-    let v1061 : US4 option = v5 |> Option.map v1060 
-    let v1081 : US4 = US4_1
-    let v1082 : US4 = v1061 |> Option.defaultValue v1081 
-    let v1200 : System.DateTime =
-        match v1082 with
+#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
+    let v963 : (int64 -> US4) = method14()
+    let v964 : US4 option = v5 |> Option.map v963 
+    let v984 : US4 = US4_1
+    let v985 : US4 = v964 |> Option.defaultValue v984 
+    let v1117 : System.DateTime =
+        match v985 with
         | US4_1 -> (* None *)
             (* run_target_args'
-            let v1183 : unit = ()
+            let v1100 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v1184 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1183 = v1184 
+            let v1101 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1100 = v1101 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v1185 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1183 = v1185 
+            let v1102 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1100 = v1102 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v1187 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v1183 = v1187 
+            let v1104 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v1100 = v1104 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v1190 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1183 = v1190 
+            let v1107 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1100 = v1107 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v1191 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1183 = v1191 
+            let v1108 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1100 = v1108 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v1192 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1183 = v1192 
+            let v1109 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1100 = v1109 
             #endif
 #else
-            let v1193 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1183 = v1193 
+            let v1110 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1100 = v1110 
             #endif
-            let v1194 : System.DateTime = _run_target_args'_v1183 
-            v1194
-        | US4_0(v1086) -> (* Some *)
+            let v1111 : System.DateTime = _run_target_args'_v1100 
+            v1111
+        | US4_0(v989) -> (* Some *)
             (* run_target_args'
-            let v1089 : unit = ()
+            let v996 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v1090 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1089 = v1090 
+            let v997 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v996 = v997 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v1091 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1089 = v1091 
+            let v998 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v996 = v998 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v1093 : System.DateTime = null |> unbox<System.DateTime>
-            let _run_target_args'_v1089 = v1093 
+            let v1000 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v996 = v1000 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v1096 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1089 = v1096 
+            let v1003 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v996 = v1003 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v1097 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1089 = v1097 
+            let v1004 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v996 = v1004 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v1098 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1089 = v1098 
+            let v1005 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v996 = v1005 
             #endif
 #else
-            let v1099 : System.DateTime = System.DateTime.Now
-            let _run_target_args'_v1089 = v1099 
+            let v1006 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v996 = v1006 
             #endif
-            let v1100 : System.DateTime = _run_target_args'_v1089 
+            let v1007 : System.DateTime = _run_target_args'_v996 
             (* run_target_args'
-            let v1108 : unit = ()
+            let v1018 : unit = ()
             run_target_args' *)
             
 #if FABLE_COMPILER || WASM || CONTRACT
             
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-            let v1109 : (System.DateTime -> int64) = _.Ticks
-            let v1110 : int64 = v1109 v1100
-            let _run_target_args'_v1108 = v1110 
+            let v1019 : (System.DateTime -> int64) = _.Ticks
+            let v1020 : int64 = v1019 v1007
+            let _run_target_args'_v1018 = v1020 
             #endif
 #if FABLE_COMPILER_RUST && WASM
-            let v1111 : (System.DateTime -> int64) = _.Ticks
-            let v1112 : int64 = v1111 v1100
-            let _run_target_args'_v1108 = v1112 
+            let v1021 : (System.DateTime -> int64) = _.Ticks
+            let v1022 : int64 = v1021 v1007
+            let _run_target_args'_v1018 = v1022 
             #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-            let v1114 : int64 = null |> unbox<int64>
-            let _run_target_args'_v1108 = v1114 
+            let v1024 : int64 = null |> unbox<int64>
+            let _run_target_args'_v1018 = v1024 
             #endif
 #if FABLE_COMPILER_TYPESCRIPT
-            let v1117 : (System.DateTime -> int64) = _.Ticks
-            let v1118 : int64 = v1117 v1100
-            let _run_target_args'_v1108 = v1118 
+            let v1027 : (System.DateTime -> int64) = _.Ticks
+            let v1028 : int64 = v1027 v1007
+            let _run_target_args'_v1018 = v1028 
             #endif
 #if FABLE_COMPILER_PYTHON
-            let v1119 : (System.DateTime -> int64) = _.Ticks
-            let v1120 : int64 = v1119 v1100
-            let _run_target_args'_v1108 = v1120 
+            let v1029 : (System.DateTime -> int64) = _.Ticks
+            let v1030 : int64 = v1029 v1007
+            let _run_target_args'_v1018 = v1030 
             #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-            let v1121 : (System.DateTime -> int64) = _.Ticks
-            let v1122 : int64 = v1121 v1100
-            let _run_target_args'_v1108 = v1122 
+            let v1031 : (System.DateTime -> int64) = _.Ticks
+            let v1032 : int64 = v1031 v1007
+            let _run_target_args'_v1018 = v1032 
             #endif
 #else
-            let v1123 : (System.DateTime -> int64) = _.Ticks
-            let v1124 : int64 = v1123 v1100
-            let _run_target_args'_v1108 = v1124 
+            let v1033 : (System.DateTime -> int64) = _.Ticks
+            let v1034 : int64 = v1033 v1007
+            let _run_target_args'_v1018 = v1034 
             #endif
-            let v1125 : int64 = _run_target_args'_v1108 
-            let v1146 : int64 = v1125 |> int64 
-            let v1149 : int64 = v1146 - v1086
-            let v1152 : System.TimeSpan = v1149 |> System.TimeSpan 
-            let v1158 : (System.TimeSpan -> int32) = _.Hours
-            let v1159 : int32 = v1158 v1152
-            let v1163 : (System.TimeSpan -> int32) = _.Minutes
-            let v1164 : int32 = v1163 v1152
-            let v1168 : (System.TimeSpan -> int32) = _.Seconds
-            let v1169 : int32 = v1168 v1152
-            let v1173 : (System.TimeSpan -> int32) = _.Milliseconds
-            let v1174 : int32 = v1173 v1152
-            let v1178 : System.DateTime = System.DateTime (1, 1, 1, v1159, v1164, v1169, v1174)
-            v1178
-    let v1202 : string = method16()
-    let v1206 : bool = v1202 = ""
-    let v1208 : string =
-        if v1206 then
-            let v1207 : string = "M-d-y hh:mm:ss tt"
-            v1207
+            let v1035 : int64 = _run_target_args'_v1018 
+            let v1056 : int64 = v1035 |> int64 
+            let v1059 : int64 = v1056 - v989
+            let v1065 : System.TimeSpan = v1059 |> System.TimeSpan 
+            let v1071 : (System.TimeSpan -> int32) = _.Hours
+            let v1072 : int32 = v1071 v1065
+            let v1076 : (System.TimeSpan -> int32) = _.Minutes
+            let v1077 : int32 = v1076 v1065
+            let v1081 : (System.TimeSpan -> int32) = _.Seconds
+            let v1082 : int32 = v1081 v1065
+            let v1086 : (System.TimeSpan -> int32) = _.Milliseconds
+            let v1087 : int32 = v1086 v1065
+            let v1091 : System.DateTime = System.DateTime (1, 1, 1, v1072, v1077, v1082, v1087)
+            v1091
+    let v1119 : string = method16()
+    let v1123 : bool = v1119 = ""
+    let v1125 : string =
+        if v1123 then
+            let v1124 : string = "M-d-y hh:mm:ss tt"
+            v1124
         else
-            v1202
-    let v1209 : (string -> string) = v1200.ToString
-    let v1210 : string = v1209 v1208
-    let _run_target_args'_v173 = v1210 
+            v1119
+    let v1126 : (string -> string) = v1117.ToString
+    let v1127 : string = v1126 v1125
+    let _run_target_args'_v187 = v1127 
     #endif
-    let v1225 : string = _run_target_args'_v173 
-    v1225
-and method19 () : string =
+#else
+    let v1144 : (int64 -> US4) = method14()
+    let v1145 : US4 option = v5 |> Option.map v1144 
+    let v1165 : US4 = US4_1
+    let v1166 : US4 = v1145 |> Option.defaultValue v1165 
+    let v1298 : System.DateTime =
+        match v1166 with
+        | US4_1 -> (* None *)
+            (* run_target_args'
+            let v1281 : unit = ()
+            run_target_args' *)
+            
+#if FABLE_COMPILER || WASM || CONTRACT
+            
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v1282 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1281 = v1282 
+            #endif
+#if FABLE_COMPILER_RUST && WASM
+            let v1283 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1281 = v1283 
+            #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+            let v1285 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v1281 = v1285 
+            #endif
+#if FABLE_COMPILER_TYPESCRIPT
+            let v1288 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1281 = v1288 
+            #endif
+#if FABLE_COMPILER_PYTHON
+            let v1289 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1281 = v1289 
+            #endif
+#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
+            let v1290 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1281 = v1290 
+            #endif
+#else
+            let v1291 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1281 = v1291 
+            #endif
+            let v1292 : System.DateTime = _run_target_args'_v1281 
+            v1292
+        | US4_0(v1170) -> (* Some *)
+            (* run_target_args'
+            let v1177 : unit = ()
+            run_target_args' *)
+            
+#if FABLE_COMPILER || WASM || CONTRACT
+            
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v1178 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1177 = v1178 
+            #endif
+#if FABLE_COMPILER_RUST && WASM
+            let v1179 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1177 = v1179 
+            #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+            let v1181 : System.DateTime = null |> unbox<System.DateTime>
+            let _run_target_args'_v1177 = v1181 
+            #endif
+#if FABLE_COMPILER_TYPESCRIPT
+            let v1184 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1177 = v1184 
+            #endif
+#if FABLE_COMPILER_PYTHON
+            let v1185 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1177 = v1185 
+            #endif
+#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
+            let v1186 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1177 = v1186 
+            #endif
+#else
+            let v1187 : System.DateTime = System.DateTime.Now
+            let _run_target_args'_v1177 = v1187 
+            #endif
+            let v1188 : System.DateTime = _run_target_args'_v1177 
+            (* run_target_args'
+            let v1199 : unit = ()
+            run_target_args' *)
+            
+#if FABLE_COMPILER || WASM || CONTRACT
+            
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+            let v1200 : (System.DateTime -> int64) = _.Ticks
+            let v1201 : int64 = v1200 v1188
+            let _run_target_args'_v1199 = v1201 
+            #endif
+#if FABLE_COMPILER_RUST && WASM
+            let v1202 : (System.DateTime -> int64) = _.Ticks
+            let v1203 : int64 = v1202 v1188
+            let _run_target_args'_v1199 = v1203 
+            #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+            let v1205 : int64 = null |> unbox<int64>
+            let _run_target_args'_v1199 = v1205 
+            #endif
+#if FABLE_COMPILER_TYPESCRIPT
+            let v1208 : (System.DateTime -> int64) = _.Ticks
+            let v1209 : int64 = v1208 v1188
+            let _run_target_args'_v1199 = v1209 
+            #endif
+#if FABLE_COMPILER_PYTHON
+            let v1210 : (System.DateTime -> int64) = _.Ticks
+            let v1211 : int64 = v1210 v1188
+            let _run_target_args'_v1199 = v1211 
+            #endif
+#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
+            let v1212 : (System.DateTime -> int64) = _.Ticks
+            let v1213 : int64 = v1212 v1188
+            let _run_target_args'_v1199 = v1213 
+            #endif
+#else
+            let v1214 : (System.DateTime -> int64) = _.Ticks
+            let v1215 : int64 = v1214 v1188
+            let _run_target_args'_v1199 = v1215 
+            #endif
+            let v1216 : int64 = _run_target_args'_v1199 
+            let v1237 : int64 = v1216 |> int64 
+            let v1240 : int64 = v1237 - v1170
+            let v1246 : System.TimeSpan = v1240 |> System.TimeSpan 
+            let v1252 : (System.TimeSpan -> int32) = _.Hours
+            let v1253 : int32 = v1252 v1246
+            let v1257 : (System.TimeSpan -> int32) = _.Minutes
+            let v1258 : int32 = v1257 v1246
+            let v1262 : (System.TimeSpan -> int32) = _.Seconds
+            let v1263 : int32 = v1262 v1246
+            let v1267 : (System.TimeSpan -> int32) = _.Milliseconds
+            let v1268 : int32 = v1267 v1246
+            let v1272 : System.DateTime = System.DateTime (1, 1, 1, v1253, v1258, v1263, v1268)
+            v1272
+    let v1300 : string = method16()
+    let v1304 : bool = v1300 = ""
+    let v1306 : string =
+        if v1304 then
+            let v1305 : string = "M-d-y hh:mm:ss tt"
+            v1305
+        else
+            v1300
+    let v1307 : (string -> string) = v1298.ToString
+    let v1308 : string = v1307 v1306
+    let _run_target_args'_v187 = v1308 
+    #endif
+    let v1323 : string = _run_target_args'_v187 
+    v1323
+and method18 () : string =
     let v0 : string = ""
     v0
 and closure13 (v0 : Mut5, v1 : string) () : unit =
     let v2 : string = v0.l0
-    let v3 : string = v2 + v1 
-    v0.l0 <- v3
+    let v4 : string = v2 + v1 
+    v0.l0 <- v4
     ()
-and method18 (v0 : char) : string =
-    let v1 : string = method19()
-    let v2 : Mut5 = {l0 = v1} : Mut5
-    let v4 : string = $"{v0}"
-    let v7 : unit = ()
-    let v8 : (unit -> unit) = closure13(v2, v4)
-    let v9 : unit = (fun () -> v8 (); v7) ()
-    let v12 : string = v2.l0
-    v12
-and method20 () : string =
+and method19 () : string =
     let v0 : string = "\u001b[0m"
     v0
 and method17 () : string =
@@ -1712,272 +1703,197 @@ and method17 () : string =
     let v3 : (unit -> string) = v2.ToLower
     let v4 : string = v3 ()
     let v7 : char = v4.[int 0]
-    let v8 : string = method18(v7)
+    let v8 : string = method18()
+    let v9 : Mut5 = {l0 = v8} : Mut5
+    let v14 : string = $"{v7}"
+    let v22 : unit = ()
+    let v23 : (unit -> unit) = closure13(v9, v14)
+    let v24 : unit = (fun () -> v23 (); v22) ()
+    let v30 : string = v9.l0
     (* run_target_args'
-    let v13 : unit = ()
+    let v47 : unit = ()
     run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v14 : string = "inline_colorization::color_bright_blue"
-    let v15 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v14 
+    let v48 : string = "inline_colorization::color_bright_blue"
+    let v49 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v48 
     (* run_target_args'
-    let v20 : unit = ()
-    run_target_args' *)
-    
-#if FABLE_COMPILER || WASM || CONTRACT
-    
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v21 : string = "&*$0"
-    let v22 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v8 v21 
-    let _run_target_args'_v20 = v22 
-    #endif
-#if FABLE_COMPILER_RUST && WASM
-    let v23 : string = "&*$0"
-    let v24 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v8 v23 
-    let _run_target_args'_v20 = v24 
-    #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-    let v25 : string = "&*$0"
-    let v26 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v8 v25 
-    let _run_target_args'_v20 = v26 
-    #endif
-#if FABLE_COMPILER_TYPESCRIPT
-    let v28 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v20 = v28 
-    #endif
-#if FABLE_COMPILER_PYTHON
-    let v32 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v20 = v32 
-    #endif
-#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-    let v36 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v20 = v36 
-    #endif
-#else
-    let v40 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v20 = v40 
-    #endif
-    let v43 : Ref<Str> = _run_target_args'_v20 
-    let v49 : string = "inline_colorization::color_reset"
-    let v50 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v49 
-    let v51 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
-    let v52 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v15, v43, v50) v51 
-    let v53 : string = "fable_library_rust::String_::fromString($0)"
-    let v54 : string = Fable.Core.RustInterop.emitRustExpr v52 v53 
-    let _run_target_args'_v13 = v54 
-    #endif
-#if FABLE_COMPILER_RUST && WASM
-    let v55 : string = "inline_colorization::color_bright_blue"
-    let v56 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v55 
-    (* run_target_args'
-    let v61 : unit = ()
-    run_target_args' *)
-    
-#if FABLE_COMPILER || WASM || CONTRACT
-    
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v62 : string = "&*$0"
-    let v63 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v8 v62 
-    let _run_target_args'_v61 = v63 
-    #endif
-#if FABLE_COMPILER_RUST && WASM
-    let v64 : string = "&*$0"
-    let v65 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v8 v64 
-    let _run_target_args'_v61 = v65 
-    #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-    let v66 : string = "&*$0"
-    let v67 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v8 v66 
-    let _run_target_args'_v61 = v67 
-    #endif
-#if FABLE_COMPILER_TYPESCRIPT
-    let v69 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v61 = v69 
-    #endif
-#if FABLE_COMPILER_PYTHON
-    let v73 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v61 = v73 
-    #endif
-#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-    let v77 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v61 = v77 
-    #endif
-#else
-    let v81 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v61 = v81 
-    #endif
-    let v84 : Ref<Str> = _run_target_args'_v61 
-    let v90 : string = "inline_colorization::color_reset"
-    let v91 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v90 
-    let v92 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
-    let v93 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v56, v84, v91) v92 
-    let v94 : string = "fable_library_rust::String_::fromString($0)"
-    let v95 : string = Fable.Core.RustInterop.emitRustExpr v93 v94 
-    let _run_target_args'_v13 = v95 
-    #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-    let v96 : string = "inline_colorization::color_bright_blue"
-    let v97 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v96 
-    (* run_target_args'
-    let v102 : unit = ()
-    run_target_args' *)
-    
-#if FABLE_COMPILER || WASM || CONTRACT
-    
-#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v103 : string = "&*$0"
-    let v104 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v8 v103 
-    let _run_target_args'_v102 = v104 
-    #endif
-#if FABLE_COMPILER_RUST && WASM
-    let v105 : string = "&*$0"
-    let v106 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v8 v105 
-    let _run_target_args'_v102 = v106 
-    #endif
-#if FABLE_COMPILER_RUST && CONTRACT
-    let v107 : string = "&*$0"
-    let v108 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v8 v107 
-    let _run_target_args'_v102 = v108 
-    #endif
-#if FABLE_COMPILER_TYPESCRIPT
-    let v110 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v102 = v110 
-    #endif
-#if FABLE_COMPILER_PYTHON
-    let v114 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v102 = v114 
-    #endif
-#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-    let v118 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v102 = v118 
-    #endif
-#else
-    let v122 : Ref<Str> = v8 |> unbox<Ref<Str>>
-    let _run_target_args'_v102 = v122 
-    #endif
-    let v125 : Ref<Str> = _run_target_args'_v102 
-    let v131 : string = "inline_colorization::color_reset"
-    let v132 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v131 
-    let v133 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
-    let v134 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v97, v125, v132) v133 
-    let v135 : string = "fable_library_rust::String_::fromString($0)"
-    let v136 : string = Fable.Core.RustInterop.emitRustExpr v134 v135 
-    let _run_target_args'_v13 = v136 
-    #endif
-#if FABLE_COMPILER_TYPESCRIPT
-    let v137 : string = "\u001b[94m"
-    let v138 : string = method20()
-    let v139 : string = v137 + v8 
-    let v140 : string = v139 + v138 
-    let _run_target_args'_v13 = v140 
-    #endif
-#if FABLE_COMPILER_PYTHON
-    let v141 : string = "\u001b[94m"
-    let v142 : string = method20()
-    let v143 : string = v141 + v8 
-    let v144 : string = v143 + v142 
-    let _run_target_args'_v13 = v144 
-    #endif
-#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-    let v145 : string = "\u001b[94m"
-    let v146 : string = method20()
-    let v147 : string = v145 + v8 
-    let v148 : string = v147 + v146 
-    let _run_target_args'_v13 = v148 
-    #endif
-#else
-    let v149 : string = "\u001b[94m"
-    let v150 : string = method20()
-    let v151 : string = v149 + v8 
-    let v152 : string = v151 + v150 
-    let _run_target_args'_v13 = v152 
-    #endif
-    let v153 : string = _run_target_args'_v13 
-    v153
-and method22 (v0 : int64, v1 : int64, v2 : int64, v3 : string) : string =
-    let v4 : string = method19()
-    let v5 : Mut5 = {l0 = v4} : Mut5
-    let v8 : string = "{ "
-    let v9 : string = $"{v8}"
-    let v12 : unit = ()
-    let v13 : (unit -> unit) = closure13(v5, v9)
-    let v14 : unit = (fun () -> v13 (); v12) ()
-    let v19 : string = "current_index"
-    let v20 : string = $"{v19}"
-    let v23 : unit = ()
-    let v24 : (unit -> unit) = closure13(v5, v20)
-    let v25 : unit = (fun () -> v24 (); v23) ()
-    let v30 : string = " = "
-    let v31 : string = $"{v30}"
-    let v34 : unit = ()
-    let v35 : (unit -> unit) = closure13(v5, v31)
-    let v36 : unit = (fun () -> v35 (); v34) ()
-    let v40 : string = $"{v0}"
-    let v43 : unit = ()
-    let v44 : (unit -> unit) = closure13(v5, v40)
-    let v45 : unit = (fun () -> v44 (); v43) ()
-    let v50 : string = "; "
-    let v51 : string = $"{v50}"
     let v54 : unit = ()
-    let v55 : (unit -> unit) = closure13(v5, v51)
-    let v56 : unit = (fun () -> v55 (); v54) ()
-    let v61 : string = "acc"
-    let v62 : string = $"{v61}"
-    let v65 : unit = ()
-    let v66 : (unit -> unit) = closure13(v5, v62)
-    let v67 : unit = (fun () -> v66 (); v65) ()
-    let v71 : string = $"{v30}"
-    let v74 : unit = ()
-    let v75 : (unit -> unit) = closure13(v5, v71)
-    let v76 : unit = (fun () -> v75 (); v74) ()
-    let v80 : string = $"{v1}"
-    let v83 : unit = ()
-    let v84 : (unit -> unit) = closure13(v5, v80)
-    let v85 : unit = (fun () -> v84 (); v83) ()
-    let v89 : string = $"{v50}"
-    let v92 : unit = ()
-    let v93 : (unit -> unit) = closure13(v5, v89)
-    let v94 : unit = (fun () -> v93 (); v92) ()
-    let v99 : string = "len"
-    let v100 : string = $"{v99}"
-    let v103 : unit = ()
-    let v104 : (unit -> unit) = closure13(v5, v100)
-    let v105 : unit = (fun () -> v104 (); v103) ()
-    let v109 : string = $"{v30}"
-    let v112 : unit = ()
-    let v113 : (unit -> unit) = closure13(v5, v109)
-    let v114 : unit = (fun () -> v113 (); v112) ()
-    let v118 : string = $"{v2}"
-    let v121 : unit = ()
-    let v122 : (unit -> unit) = closure13(v5, v118)
-    let v123 : unit = (fun () -> v122 (); v121) ()
-    let v127 : string = $"{v50}"
-    let v130 : unit = ()
-    let v131 : (unit -> unit) = closure13(v5, v127)
-    let v132 : unit = (fun () -> v131 (); v130) ()
-    let v137 : string = "last_item"
-    let v138 : string = $"{v137}"
-    let v141 : unit = ()
-    let v142 : (unit -> unit) = closure13(v5, v138)
-    let v143 : unit = (fun () -> v142 (); v141) ()
-    let v147 : string = $"{v30}"
-    let v150 : unit = ()
-    let v151 : (unit -> unit) = closure13(v5, v147)
-    let v152 : unit = (fun () -> v151 (); v150) ()
-    let v156 : string = $"{v3}"
-    let v159 : unit = ()
-    let v160 : (unit -> unit) = closure13(v5, v156)
-    let v161 : unit = (fun () -> v160 (); v159) ()
-    let v166 : string = " }"
-    let v167 : string = $"{v166}"
-    let v170 : unit = ()
-    let v171 : (unit -> unit) = closure13(v5, v167)
-    let v172 : unit = (fun () -> v171 (); v170) ()
-    let v175 : string = v5.l0
-    v175
-and method23 (v0 : string) : string =
+    run_target_args' *)
+    
+#if FABLE_COMPILER || WASM || CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    let v55 : string = "&*$0"
+    let v56 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v30 v55 
+    let _run_target_args'_v54 = v56 
+    #endif
+#if FABLE_COMPILER_RUST && WASM
+    let v57 : string = "&*$0"
+    let v58 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v30 v57 
+    let _run_target_args'_v54 = v58 
+    #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+    let v59 : string = "&*$0"
+    let v60 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v30 v59 
+    let _run_target_args'_v54 = v60 
+    #endif
+#if FABLE_COMPILER_TYPESCRIPT
+    let v62 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v54 = v62 
+    #endif
+#if FABLE_COMPILER_PYTHON
+    let v66 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v54 = v66 
+    #endif
+#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
+    let v70 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v54 = v70 
+    #endif
+#else
+    let v74 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v54 = v74 
+    #endif
+    let v77 : Ref<Str> = _run_target_args'_v54 
+    let v83 : string = "inline_colorization::color_reset"
+    let v84 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v83 
+    let v85 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
+    let v86 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v49, v77, v84) v85 
+    let v87 : string = "fable_library_rust::String_::fromString($0)"
+    let v88 : string = Fable.Core.RustInterop.emitRustExpr v86 v87 
+    let _run_target_args'_v47 = v88 
+    #endif
+#if FABLE_COMPILER_RUST && WASM
+    let v89 : string = "inline_colorization::color_bright_blue"
+    let v90 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v89 
+    (* run_target_args'
+    let v95 : unit = ()
+    run_target_args' *)
+    
+#if FABLE_COMPILER || WASM || CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    let v96 : string = "&*$0"
+    let v97 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v30 v96 
+    let _run_target_args'_v95 = v97 
+    #endif
+#if FABLE_COMPILER_RUST && WASM
+    let v98 : string = "&*$0"
+    let v99 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v30 v98 
+    let _run_target_args'_v95 = v99 
+    #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+    let v100 : string = "&*$0"
+    let v101 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v30 v100 
+    let _run_target_args'_v95 = v101 
+    #endif
+#if FABLE_COMPILER_TYPESCRIPT
+    let v103 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v95 = v103 
+    #endif
+#if FABLE_COMPILER_PYTHON
+    let v107 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v95 = v107 
+    #endif
+#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
+    let v111 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v95 = v111 
+    #endif
+#else
+    let v115 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v95 = v115 
+    #endif
+    let v118 : Ref<Str> = _run_target_args'_v95 
+    let v124 : string = "inline_colorization::color_reset"
+    let v125 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v124 
+    let v126 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
+    let v127 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v90, v118, v125) v126 
+    let v128 : string = "fable_library_rust::String_::fromString($0)"
+    let v129 : string = Fable.Core.RustInterop.emitRustExpr v127 v128 
+    let _run_target_args'_v47 = v129 
+    #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+    let v130 : string = "inline_colorization::color_bright_blue"
+    let v131 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v130 
+    (* run_target_args'
+    let v136 : unit = ()
+    run_target_args' *)
+    
+#if FABLE_COMPILER || WASM || CONTRACT
+    
+#if FABLE_COMPILER_RUST && !WASM && !CONTRACT
+    let v137 : string = "&*$0"
+    let v138 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v30 v137 
+    let _run_target_args'_v136 = v138 
+    #endif
+#if FABLE_COMPILER_RUST && WASM
+    let v139 : string = "&*$0"
+    let v140 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v30 v139 
+    let _run_target_args'_v136 = v140 
+    #endif
+#if FABLE_COMPILER_RUST && CONTRACT
+    let v141 : string = "&*$0"
+    let v142 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v30 v141 
+    let _run_target_args'_v136 = v142 
+    #endif
+#if FABLE_COMPILER_TYPESCRIPT
+    let v144 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v136 = v144 
+    #endif
+#if FABLE_COMPILER_PYTHON
+    let v148 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v136 = v148 
+    #endif
+#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
+    let v152 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v136 = v152 
+    #endif
+#else
+    let v156 : Ref<Str> = v30 |> unbox<Ref<Str>>
+    let _run_target_args'_v136 = v156 
+    #endif
+    let v159 : Ref<Str> = _run_target_args'_v136 
+    let v165 : string = "inline_colorization::color_reset"
+    let v166 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr () v165 
+    let v167 : string = $"format!(\"{{}}{{}}{{}}\", $0, $1, $2)"
+    let v168 : std_string_String = Fable.Core.RustInterop.emitRustExpr struct (v131, v159, v166) v167 
+    let v169 : string = "fable_library_rust::String_::fromString($0)"
+    let v170 : string = Fable.Core.RustInterop.emitRustExpr v168 v169 
+    let _run_target_args'_v47 = v170 
+    #endif
+#if FABLE_COMPILER_TYPESCRIPT
+    let v172 : string = "\u001b[94m"
+    let v176 : string = method19()
+    let v180 : string = v172 + v30 
+    let v184 : string = v180 + v176 
+    let _run_target_args'_v47 = v184 
+    #endif
+#if FABLE_COMPILER_PYTHON
+    let v188 : string = "\u001b[94m"
+    let v192 : string = method19()
+    let v196 : string = v188 + v30 
+    let v200 : string = v196 + v192 
+    let _run_target_args'_v47 = v200 
+    #endif
+#if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
+    let v204 : string = "\u001b[94m"
+    let v208 : string = method19()
+    let v212 : string = v204 + v30 
+    let v216 : string = v212 + v208 
+    let _run_target_args'_v47 = v216 
+    #endif
+#else
+    let v220 : string = "\u001b[94m"
+    let v224 : string = method19()
+    let v228 : string = v220 + v30 
+    let v232 : string = v228 + v224 
+    let _run_target_args'_v47 = v232 
+    #endif
+    let v235 : string = _run_target_args'_v47 
+    v235
+and method21 (v0 : string) : string =
     let v1 : char list = []
     let v4 : (char list -> (char [])) = List.toArray
     let v5 : (char []) = v4 v1
@@ -1989,12 +1905,102 @@ and method23 (v0 : string) : string =
     let v52 : (char []) = v51 v46
     let v55 : string = v8.TrimEnd v52 
     v55
-and method21 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : int64, v10 : int64, v11 : string) : string =
-    let v12 : string = method22(v8, v9, v10, v11)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.create_sequential_roller / roll"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+and method20 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : int64, v10 : int64, v11 : string) : string =
+    let v12 : string = method18()
+    let v13 : Mut5 = {l0 = v12} : Mut5
+    let v16 : string = "{ "
+    let v17 : string = $"{v16}"
+    let v25 : unit = ()
+    let v26 : (unit -> unit) = closure13(v13, v17)
+    let v27 : unit = (fun () -> v26 (); v25) ()
+    let v35 : string = "current_index"
+    let v36 : string = $"{v35}"
+    let v44 : unit = ()
+    let v45 : (unit -> unit) = closure13(v13, v36)
+    let v46 : unit = (fun () -> v45 (); v44) ()
+    let v54 : string = " = "
+    let v55 : string = $"{v54}"
+    let v63 : unit = ()
+    let v64 : (unit -> unit) = closure13(v13, v55)
+    let v65 : unit = (fun () -> v64 (); v63) ()
+    let v75 : string = $"{v8}"
+    let v83 : unit = ()
+    let v84 : (unit -> unit) = closure13(v13, v75)
+    let v85 : unit = (fun () -> v84 (); v83) ()
+    let v93 : string = "; "
+    let v94 : string = $"{v93}"
+    let v102 : unit = ()
+    let v103 : (unit -> unit) = closure13(v13, v94)
+    let v104 : unit = (fun () -> v103 (); v102) ()
+    let v112 : string = "acc"
+    let v113 : string = $"{v112}"
+    let v121 : unit = ()
+    let v122 : (unit -> unit) = closure13(v13, v113)
+    let v123 : unit = (fun () -> v122 (); v121) ()
+    let v130 : string = $"{v54}"
+    let v138 : unit = ()
+    let v139 : (unit -> unit) = closure13(v13, v130)
+    let v140 : unit = (fun () -> v139 (); v138) ()
+    let v150 : string = $"{v9}"
+    let v158 : unit = ()
+    let v159 : (unit -> unit) = closure13(v13, v150)
+    let v160 : unit = (fun () -> v159 (); v158) ()
+    let v167 : string = $"{v93}"
+    let v175 : unit = ()
+    let v176 : (unit -> unit) = closure13(v13, v167)
+    let v177 : unit = (fun () -> v176 (); v175) ()
+    let v185 : string = "len"
+    let v186 : string = $"{v185}"
+    let v194 : unit = ()
+    let v195 : (unit -> unit) = closure13(v13, v186)
+    let v196 : unit = (fun () -> v195 (); v194) ()
+    let v203 : string = $"{v54}"
+    let v211 : unit = ()
+    let v212 : (unit -> unit) = closure13(v13, v203)
+    let v213 : unit = (fun () -> v212 (); v211) ()
+    let v223 : string = $"{v10}"
+    let v231 : unit = ()
+    let v232 : (unit -> unit) = closure13(v13, v223)
+    let v233 : unit = (fun () -> v232 (); v231) ()
+    let v240 : string = $"{v93}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v13, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v258 : string = "last_item"
+    let v259 : string = $"{v258}"
+    let v267 : unit = ()
+    let v268 : (unit -> unit) = closure13(v13, v259)
+    let v269 : unit = (fun () -> v268 (); v267) ()
+    let v276 : string = $"{v54}"
+    let v284 : unit = ()
+    let v285 : (unit -> unit) = closure13(v13, v276)
+    let v286 : unit = (fun () -> v285 (); v284) ()
+    let v293 : string = $"{v11}"
+    let v301 : unit = ()
+    let v302 : (unit -> unit) = closure13(v13, v293)
+    let v303 : unit = (fun () -> v302 (); v301) ()
+    let v311 : string = " }"
+    let v312 : string = $"{v311}"
+    let v320 : unit = ()
+    let v321 : (unit -> unit) = closure13(v13, v312)
+    let v322 : unit = (fun () -> v321 (); v320) ()
+    let v328 : string = v13.l0
+    let v329 : int64 = v0.l0
+    let v332 : string = " "
+    let v333 : string = v6 + v332 
+    let v337 : string = v333 + v7 
+    let v342 : string = " #"
+    let v343 : string = v337 + v342 
+    let v347 : (int64 -> string) = _.ToString()
+    let v348 : string = v347 v329
+    let v352 : string = v343 + v348 
+    let v356 : string = v352 + v332 
+    let v361 : string = "dice.create_sequential_roller / roll"
+    let v362 : string = v356 + v361 
+    let v367 : string = " / "
+    let v368 : string = v362 + v367 
+    let v372 : string = v368 + v328 
+    method21(v372)
 and closure14 (v0 : Mut1) () : unit =
     let v1 : int64 = v0.l0
     let v2 : int64 = v1 + 1L
@@ -2004,163 +2010,163 @@ and closure16 (v0 : string) () : unit =
     let v1 : (string -> unit) = System.Console.WriteLine
     v1 v0
 and closure15 () (v0 : string) : unit =
-    let v1 : unit = ()
-    let v2 : (unit -> unit) = closure16(v0)
-    let v3 : unit = (fun () -> v2 (); v1) ()
+    let v2 : unit = ()
+    let v3 : (unit -> unit) = closure16(v0)
+    let v4 : unit = (fun () -> v3 (); v2) ()
     ()
-and method24 (v0 : string) : unit =
-    let v1 : unit = ()
-    let v2 : (unit -> unit) = closure9()
-    let v3 : unit = (fun () -> v2 (); v1) ()
-    let struct (v24 : Mut1, v25 : Mut3, v26 : Mut4, v27 : Mut5, v28 : Mut6, v29 : int64 option) = TraceState.trace_state.Value
-    let v42 : unit = ()
-    let v43 : (unit -> unit) = closure14(v24)
-    let v44 : unit = (fun () -> v43 (); v42) ()
-    let v47 : (string -> unit) = closure15()
+and method22 (v0 : string) : unit =
+    let v15 : unit = ()
+    let v16 : (unit -> unit) = closure9()
+    let v17 : unit = (fun () -> v16 (); v15) ()
+    let struct (v38 : Mut1, v39 : Mut3, v40 : Mut4, v41 : Mut5, v42 : Mut6, v43 : int64 option) = TraceState.trace_state.Value
+    let v58 : unit = ()
+    let v59 : (unit -> unit) = closure14(v38)
+    let v60 : unit = (fun () -> v59 (); v58) ()
+    let v63 : (string -> unit) = closure15()
     (* run_target_args'
-    let v48 : unit = ()
+    let v64 : unit = ()
     run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v49 : string = @"println!(""{}"", $0)"
-    Fable.Core.RustInterop.emitRustExpr v0 v49 
+    let v65 : string = @"println!(""{}"", $0)"
+    Fable.Core.RustInterop.emitRustExpr v0 v65 
     #endif
 #if FABLE_COMPILER_RUST && WASM
-    let v50 : string = @"println!(""{}"", $0)"
-    Fable.Core.RustInterop.emitRustExpr v0 v50 
+    let v66 : string = @"println!(""{}"", $0)"
+    Fable.Core.RustInterop.emitRustExpr v0 v66 
     #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-    let v51 : string = v27.l0
-    let v52 : bool = v51 = ""
-    let v60 : string =
-        if v52 then
+    let v67 : string = v41.l0
+    let v68 : bool = v67 = ""
+    let v83 : string =
+        if v68 then
             v0
         else
-            let v53 : bool = v0 = ""
-            if v53 then
-                let v54 : string = v27.l0
-                v54
+            let v69 : bool = v0 = ""
+            if v69 then
+                let v70 : string = v41.l0
+                v70
             else
-                let v55 : string = v27.l0
-                let v56 : string = "\n"
-                let v57 : string = v55 + v56 
-                let v58 : string = v57 + v0 
-                v58
+                let v71 : string = v41.l0
+                let v74 : string = "\n"
+                let v75 : string = v71 + v74 
+                let v79 : string = v75 + v0 
+                v79
     (* run_target_args'
-    let v65 : unit = ()
+    let v88 : unit = ()
     run_target_args' *)
     
 #if FABLE_COMPILER || WASM || CONTRACT
     
 #if FABLE_COMPILER_RUST && !WASM && !CONTRACT
-    let v66 : string = "&*$0"
-    let v67 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v60 v66 
-    let _run_target_args'_v65 = v67 
+    let v89 : string = "&*$0"
+    let v90 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v83 v89 
+    let _run_target_args'_v88 = v90 
     #endif
 #if FABLE_COMPILER_RUST && WASM
-    let v68 : string = "&*$0"
-    let v69 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v60 v68 
-    let _run_target_args'_v65 = v69 
+    let v91 : string = "&*$0"
+    let v92 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v83 v91 
+    let _run_target_args'_v88 = v92 
     #endif
 #if FABLE_COMPILER_RUST && CONTRACT
-    let v70 : string = "&*$0"
-    let v71 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v60 v70 
-    let _run_target_args'_v65 = v71 
+    let v93 : string = "&*$0"
+    let v94 : Ref<Str> = Fable.Core.RustInterop.emitRustExpr v83 v93 
+    let _run_target_args'_v88 = v94 
     #endif
 #if FABLE_COMPILER_TYPESCRIPT
-    let v73 : Ref<Str> = v60 |> unbox<Ref<Str>>
-    let _run_target_args'_v65 = v73 
+    let v96 : Ref<Str> = v83 |> unbox<Ref<Str>>
+    let _run_target_args'_v88 = v96 
     #endif
 #if FABLE_COMPILER_PYTHON
-    let v77 : Ref<Str> = v60 |> unbox<Ref<Str>>
-    let _run_target_args'_v65 = v77 
+    let v100 : Ref<Str> = v83 |> unbox<Ref<Str>>
+    let _run_target_args'_v88 = v100 
     #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-    let v81 : Ref<Str> = v60 |> unbox<Ref<Str>>
-    let _run_target_args'_v65 = v81 
+    let v104 : Ref<Str> = v83 |> unbox<Ref<Str>>
+    let _run_target_args'_v88 = v104 
     #endif
 #else
-    let v85 : Ref<Str> = v60 |> unbox<Ref<Str>>
-    let _run_target_args'_v65 = v85 
+    let v108 : Ref<Str> = v83 |> unbox<Ref<Str>>
+    let _run_target_args'_v88 = v108 
     #endif
-    let v88 : Ref<Str> = _run_target_args'_v65 
-    let v94 : string = $"$0.chars()"
-    let v95 : Mut<_> = Fable.Core.RustInterop.emitRustExpr v88 v94 
-    let v96 : string = "$0"
-    let v97 : _ = Fable.Core.RustInterop.emitRustExpr v95 v96 
-    let v98 : string = "$0.collect::<Vec<_>>()"
-    let v99 : Vec<char> = Fable.Core.RustInterop.emitRustExpr v97 v98 
-    let v100 : string = "$0.chunks(15000).map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>()).collect::<Vec<_>>()"
-    let v101 : Vec<Vec<char>> = Fable.Core.RustInterop.emitRustExpr v99 v100 
-    let v102 : string = "true; let _vec_map : Vec<_> = $0.into_iter().map(|x| { //"
-    let v103 : bool = Fable.Core.RustInterop.emitRustExpr v101 v102 
-    let v104 : string = "x"
-    let v105 : Vec<char> = Fable.Core.RustInterop.emitRustExpr () v104 
-    let v106 : string = "String::from_iter($0)"
-    let v107 : std_string_String = Fable.Core.RustInterop.emitRustExpr v105 v106 
-    let v108 : string = "true; $0 }).collect::<Vec<_>>()"
-    let v109 : bool = Fable.Core.RustInterop.emitRustExpr v107 v108 
-    let v110 : string = "_vec_map"
-    let v111 : Vec<std_string_String> = Fable.Core.RustInterop.emitRustExpr () v110 
-    let v112 : string = "$0.len()"
-    let v113 : unativeint = Fable.Core.RustInterop.emitRustExpr v111 v112 
-    let v119 : int32 = v113 |> int32 
-    let v129 : string = ""
-    let v130 : bool = v0 <> v129 
-    let v134 : bool =
-        if v130 then
-            let v133 : bool = v119 <= 1
-            v133
+    let v111 : Ref<Str> = _run_target_args'_v88 
+    let v117 : string = $"$0.chars()"
+    let v118 : Mut<_> = Fable.Core.RustInterop.emitRustExpr v111 v117 
+    let v119 : string = "$0"
+    let v120 : _ = Fable.Core.RustInterop.emitRustExpr v118 v119 
+    let v121 : string = "$0.collect::<Vec<_>>()"
+    let v122 : Vec<char> = Fable.Core.RustInterop.emitRustExpr v120 v121 
+    let v123 : string = "$0.chunks(15000).map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>()).collect::<Vec<_>>()"
+    let v124 : Vec<Vec<char>> = Fable.Core.RustInterop.emitRustExpr v122 v123 
+    let v125 : string = "true; let _vec_map : Vec<_> = $0.into_iter().map(|x| { //"
+    let v126 : bool = Fable.Core.RustInterop.emitRustExpr v124 v125 
+    let v127 : string = "x"
+    let v128 : Vec<char> = Fable.Core.RustInterop.emitRustExpr () v127 
+    let v129 : string = "String::from_iter($0)"
+    let v130 : std_string_String = Fable.Core.RustInterop.emitRustExpr v128 v129 
+    let v131 : string = "true; $0 }).collect::<Vec<_>>()"
+    let v132 : bool = Fable.Core.RustInterop.emitRustExpr v130 v131 
+    let v133 : string = "_vec_map"
+    let v134 : Vec<std_string_String> = Fable.Core.RustInterop.emitRustExpr () v133 
+    let v135 : string = "$0.len()"
+    let v136 : unativeint = Fable.Core.RustInterop.emitRustExpr v134 v135 
+    let v142 : int32 = v136 |> int32 
+    let v152 : string = ""
+    let v153 : bool = v0 <> v152 
+    let v157 : bool =
+        if v153 then
+            let v156 : bool = v142 <= 1
+            v156
         else
             false
-    if v134 then
-        v27.l0 <- v60
+    if v157 then
+        v41.l0 <- v83
         ()
     else
-        v27.l0 <- v129
-        let v135 : string = "true; $0.into_iter().for_each(|x| { //"
-        let v136 : bool = Fable.Core.RustInterop.emitRustExpr v111 v135 
-        let v137 : string = "x"
-        let v138 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v137 
-        let v139 : string = $"true; near_sdk::log!(\"{{}}\", $0)"
-        let v140 : bool = Fable.Core.RustInterop.emitRustExpr v138 v139 
-        let v141 : string = $"true"
-        let v142 : bool = Fable.Core.RustInterop.emitRustExpr () v141 
-        let v143 : string = "true; }); //"
-        let v144 : bool = Fable.Core.RustInterop.emitRustExpr () v143 
+        v41.l0 <- v152
+        let v158 : string = "true; $0.into_iter().for_each(|x| { //"
+        let v159 : bool = Fable.Core.RustInterop.emitRustExpr v134 v158 
+        let v160 : string = "x"
+        let v161 : std_string_String = Fable.Core.RustInterop.emitRustExpr () v160 
+        let v162 : string = $"true; near_sdk::log!(\"{{}}\", $0)"
+        let v163 : bool = Fable.Core.RustInterop.emitRustExpr v161 v162 
+        let v164 : string = $"true"
+        let v165 : bool = Fable.Core.RustInterop.emitRustExpr () v164 
+        let v166 : string = "true; }); //"
+        let v167 : bool = Fable.Core.RustInterop.emitRustExpr () v166 
         ()
     #endif
 #if FABLE_COMPILER_TYPESCRIPT
-    v47 v0
+    v63 v0
     #endif
 #if FABLE_COMPILER_PYTHON
-    v47 v0
+    v63 v0
     #endif
 #if !FABLE_COMPILER_RUST && !FABLE_COMPILER_TYPESCRIPT && !FABLE_COMPILER_PYTHON
-    v47 v0
+    v63 v0
     #endif
 #else
-    v47 v0
+    v63 v0
     #endif
     // run_target_args' is_unit
-    let v145 : (string -> unit) = v25.l0
-    v145 v0
+    let v168 : (string -> unit) = v39.l0
+    v168 v0
 and closure8 (v0 : int64, v1 : int64, v2 : int64, v3 : uint8 option) () : unit =
     let v4 : US2 = US2_1
     let v5 : bool = method6(v4)
     if v5 then
-        let v6 : unit = ()
-        let v7 : (unit -> unit) = closure9()
-        let v8 : unit = (fun () -> v7 (); v6) ()
-        let struct (v29 : Mut1, v30 : Mut3, v31 : Mut4, v32 : Mut5, v33 : Mut6, v34 : int64 option) = TraceState.trace_state.Value
-        let v47 : string = method13(v29, v30, v31, v32, v33, v34)
-        let v48 : string = method17()
-        let v50 : string = $"%A{v3}"
-        let v53 : string = method21(v29, v30, v31, v32, v33, v34, v47, v48, v0, v1, v2, v50)
-        method24(v53)
-and method25 (v0 : int64, v1 : UH0) : US1 =
+        let v20 : unit = ()
+        let v21 : (unit -> unit) = closure9()
+        let v22 : unit = (fun () -> v21 (); v20) ()
+        let struct (v43 : Mut1, v44 : Mut3, v45 : Mut4, v46 : Mut5, v47 : Mut6, v48 : int64 option) = TraceState.trace_state.Value
+        let v61 : string = method13(v43, v44, v45, v46, v47, v48)
+        let v62 : string = method17()
+        let v64 : string = $"%A{v3}"
+        let v67 : string = method20(v43, v44, v45, v46, v47, v48, v61, v62, v0, v1, v2, v64)
+        method22(v67)
+and method23 (v0 : int64, v1 : UH0) : US1 =
     match v1 with
     | UH0_0(v2, v3) -> (* StreamCons *)
         let v4 : bool = v0 <= 0L
@@ -2169,32 +2175,41 @@ and method25 (v0 : int64, v1 : UH0) : US1 =
         else
             let v6 : int64 = v0 - 1L
             let v7 : UH0 = v3 ()
-            method25(v6, v7)
+            method23(v6, v7)
     | UH0_1 -> (* StreamNil *)
         US1_1
-and method27 () : string =
-    let v0 : string = method19()
-    let v1 : Mut5 = {l0 = v0} : Mut5
-    let v2 : string = v1.l0
-    v2
-and method26 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string) : string =
-    let v8 : string = method27()
-    let v9 : int64 = v0.l0
-    let v11 : string = "dice.create_sequential_roller / roll / None"
-    let v12 : string = $"{v6} {v7} #{v9} %s{v11} / {v8}"
-    method23(v12)
+and method24 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string) : string =
+    let v8 : string = method18()
+    let v9 : Mut5 = {l0 = v8} : Mut5
+    let v10 : string = v9.l0
+    let v11 : int64 = v0.l0
+    let v14 : string = " "
+    let v15 : string = v6 + v14 
+    let v19 : string = v15 + v7 
+    let v24 : string = " #"
+    let v25 : string = v19 + v24 
+    let v29 : (int64 -> string) = _.ToString()
+    let v30 : string = v29 v11
+    let v34 : string = v25 + v30 
+    let v38 : string = v34 + v14 
+    let v43 : string = "dice.create_sequential_roller / roll / None"
+    let v44 : string = v38 + v43 
+    let v49 : string = " / "
+    let v50 : string = v44 + v49 
+    let v54 : string = v50 + v10 
+    method21(v54)
 and closure17 () () : unit =
     let v0 : US2 = US2_1
     let v1 : bool = method6(v0)
     if v1 then
-        let v2 : unit = ()
-        let v3 : (unit -> unit) = closure9()
-        let v4 : unit = (fun () -> v3 (); v2) ()
-        let struct (v25 : Mut1, v26 : Mut3, v27 : Mut4, v28 : Mut5, v29 : Mut6, v30 : int64 option) = TraceState.trace_state.Value
-        let v43 : string = method13(v25, v26, v27, v28, v29, v30)
-        let v44 : string = method17()
-        let v45 : string = method26(v25, v26, v27, v28, v29, v30, v43, v44)
-        method24(v45)
+        let v16 : unit = ()
+        let v17 : (unit -> unit) = closure9()
+        let v18 : unit = (fun () -> v17 (); v16) ()
+        let struct (v39 : Mut1, v40 : Mut3, v41 : Mut4, v42 : Mut5, v43 : Mut6, v44 : int64 option) = TraceState.trace_state.Value
+        let v57 : string = method13(v39, v40, v41, v42, v43, v44)
+        let v58 : string = method17()
+        let v59 : string = method24(v39, v40, v41, v42, v43, v44, v57, v58)
+        method22(v59)
 and method5 (v0 : (unit -> UH0), v1 : Mut1, v2 : Mut1, v3 : Mut1, v4 : Mut2) : uint8 =
     let v5 : int64 = v1.l0
     let v6 : int64 = v2.l0
@@ -2208,47 +2223,47 @@ and method5 (v0 : (unit -> UH0), v1 : Mut1, v2 : Mut1, v3 : Mut1, v4 : Mut2) : u
         | US1_0(v9) -> (* Some *)
             let v11 : uint8 option = Some v9 
             v11
-    let v20 : unit = ()
-    let v21 : (unit -> unit) = closure8(v5, v6, v7, v19)
-    let v22 : unit = (fun () -> v21 (); v20) ()
-    let v73 : UH0 = v0 ()
-    let v74 : int64 = v1.l0
-    let v75 : US1 = method25(v74, v73)
-    match v75 with
+    let v84 : unit = ()
+    let v85 : (unit -> unit) = closure8(v5, v6, v7, v19)
+    let v86 : unit = (fun () -> v85 (); v84) ()
+    let v151 : UH0 = v0 ()
+    let v152 : int64 = v1.l0
+    let v153 : US1 = method23(v152, v151)
+    match v153 with
     | US1_1 -> (* None *)
-        let v80 : unit = ()
-        let v81 : (unit -> unit) = closure17()
-        let v82 : unit = (fun () -> v81 (); v80) ()
-        let v129 : int64 = v3.l0
-        let v130 : bool = v129 = -1L
-        if v130 then
-            let v131 : int64 = v1.l0
-            v3.l0 <- v131
+        let v218 : unit = ()
+        let v219 : (unit -> unit) = closure17()
+        let v220 : unit = (fun () -> v219 (); v218) ()
+        let v281 : int64 = v3.l0
+        let v282 : bool = v281 = -1L
+        if v282 then
+            let v283 : int64 = v1.l0
+            v3.l0 <- v283
             ()
-        let v132 : int64 = v2.l0
-        let v133 : int64 = v3.l0
-        let v134 : bool = v132 >= v133
-        let v137 : int64 =
-            if v134 then
+        let v284 : int64 = v2.l0
+        let v285 : int64 = v3.l0
+        let v286 : bool = v284 >= v285
+        let v289 : int64 =
+            if v286 then
                 1L
             else
-                let v135 : int64 = v2.l0
-                let v136 : int64 = v135 + 1L
-                v136
-        v2.l0 <- v137
-        let v138 : int64 = v2.l0
-        let v139 : int64 = v138 - 1L
-        v1.l0 <- v139
-        let v140 : US1 = US1_1
-        v4.l0 <- v140
+                let v287 : int64 = v2.l0
+                let v288 : int64 = v287 + 1L
+                v288
+        v2.l0 <- v289
+        let v290 : int64 = v2.l0
+        let v291 : int64 = v290 - 1L
+        v1.l0 <- v291
+        let v292 : US1 = US1_1
+        v4.l0 <- v292
         method5(v0, v1, v2, v3, v4)
-    | US1_0(v76) -> (* Some *)
-        let v77 : int64 = v1.l0
-        let v78 : int64 = v77 + 1L
-        v1.l0 <- v78
-        let v79 : US1 = US1_0(v76)
-        v4.l0 <- v79
-        v76
+    | US1_0(v154) -> (* Some *)
+        let v155 : int64 = v1.l0
+        let v156 : int64 = v155 + 1L
+        v1.l0 <- v156
+        let v157 : US1 = US1_0(v154)
+        v4.l0 <- v157
+        v154
 and closure7 (v0 : (unit -> UH0), v1 : Mut1, v2 : Mut1, v3 : Mut1, v4 : Mut2) () : uint8 =
     method5(v0, v1, v2, v3, v4)
 and closure3 () (v0 : UH1) : (unit -> uint8) =
@@ -2265,188 +2280,206 @@ and closure3 () (v0 : UH1) : (unit -> uint8) =
     let v11 : US1 = US1_1
     let v12 : Mut2 = {l0 = v11} : Mut2
     closure7(v7, v8, v9, v10, v12)
-and method30 (v0 : uint64, v1 : uint64, v2 : int8) : string =
-    let v3 : string = method19()
-    let v4 : Mut5 = {l0 = v3} : Mut5
-    let v7 : string = "{ "
-    let v8 : string = $"{v7}"
-    let v11 : unit = ()
-    let v12 : (unit -> unit) = closure13(v4, v8)
-    let v13 : unit = (fun () -> v12 (); v11) ()
-    let v18 : string = "max"
-    let v19 : string = $"{v18}"
-    let v22 : unit = ()
-    let v23 : (unit -> unit) = closure13(v4, v19)
-    let v24 : unit = (fun () -> v23 (); v22) ()
-    let v29 : string = " = "
-    let v30 : string = $"{v29}"
-    let v33 : unit = ()
-    let v34 : (unit -> unit) = closure13(v4, v30)
-    let v35 : unit = (fun () -> v34 (); v33) ()
-    let v39 : string = $"{v0}"
-    let v42 : unit = ()
-    let v43 : (unit -> unit) = closure13(v4, v39)
-    let v44 : unit = (fun () -> v43 (); v42) ()
-    let v49 : string = "; "
-    let v50 : string = $"{v49}"
-    let v53 : unit = ()
-    let v54 : (unit -> unit) = closure13(v4, v50)
-    let v55 : unit = (fun () -> v54 (); v53) ()
-    let v60 : string = "p"
-    let v61 : string = $"{v60}"
-    let v64 : unit = ()
-    let v65 : (unit -> unit) = closure13(v4, v61)
-    let v66 : unit = (fun () -> v65 (); v64) ()
-    let v70 : string = $"{v29}"
-    let v73 : unit = ()
-    let v74 : (unit -> unit) = closure13(v4, v70)
-    let v75 : unit = (fun () -> v74 (); v73) ()
-    let v79 : string = $"{v1}"
+and method26 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : uint64, v9 : uint64, v10 : int8) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "max"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{v8}"
     let v82 : unit = ()
-    let v83 : (unit -> unit) = closure13(v4, v79)
+    let v83 : (unit -> unit) = closure13(v12, v74)
     let v84 : unit = (fun () -> v83 (); v82) ()
-    let v88 : string = $"{v49}"
-    let v91 : unit = ()
-    let v92 : (unit -> unit) = closure13(v4, v88)
-    let v93 : unit = (fun () -> v92 (); v91) ()
-    let v98 : string = "n"
-    let v99 : string = $"{v98}"
-    let v102 : unit = ()
-    let v103 : (unit -> unit) = closure13(v4, v99)
-    let v104 : unit = (fun () -> v103 (); v102) ()
-    let v108 : string = $"{v29}"
-    let v111 : unit = ()
-    let v112 : (unit -> unit) = closure13(v4, v108)
-    let v113 : unit = (fun () -> v112 (); v111) ()
-    let v117 : string = $"{v2}"
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "p"
+    let v112 : string = $"{v111}"
     let v120 : unit = ()
-    let v121 : (unit -> unit) = closure13(v4, v117)
+    let v121 : (unit -> unit) = closure13(v12, v112)
     let v122 : unit = (fun () -> v121 (); v120) ()
-    let v127 : string = " }"
-    let v128 : string = $"{v127}"
-    let v131 : unit = ()
-    let v132 : (unit -> unit) = closure13(v4, v128)
-    let v133 : unit = (fun () -> v132 (); v131) ()
-    let v136 : string = v4.l0
-    v136
-and method29 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : uint64, v9 : uint64, v10 : int8) : string =
-    let v11 : string = method30(v8, v9, v10)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.calculate_dice_count"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v9}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "n"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v10}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v240 : string = " }"
+    let v241 : string = $"{v240}"
+    let v249 : unit = ()
+    let v250 : (unit -> unit) = closure13(v12, v241)
+    let v251 : unit = (fun () -> v250 (); v249) ()
+    let v257 : string = v12.l0
+    let v258 : int64 = v0.l0
+    let v261 : string = " "
+    let v262 : string = v6 + v261 
+    let v266 : string = v262 + v7 
+    let v271 : string = " #"
+    let v272 : string = v266 + v271 
+    let v276 : (int64 -> string) = _.ToString()
+    let v277 : string = v276 v258
+    let v281 : string = v272 + v277 
+    let v285 : string = v281 + v261 
+    let v290 : string = "dice.calculate_dice_count"
+    let v291 : string = v285 + v290 
+    let v296 : string = " / "
+    let v297 : string = v291 + v296 
+    let v301 : string = v297 + v257 
+    method21(v301)
 and closure21 (v0 : uint64, v1 : int8, v2 : uint64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method29(v28, v29, v30, v31, v32, v33, v46, v47, v0, v2, v1)
-        method24(v48)
-and method28 (v0 : uint64, v1 : int8, v2 : uint64) : int8 =
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method26(v42, v43, v44, v45, v46, v47, v60, v61, v0, v2, v1)
+        method22(v62)
+and method25 (v0 : uint64, v1 : int8, v2 : uint64) : int8 =
     let v3 : bool = v2 < v0
     if v3 then
         let v4 : uint64 = v2 * 6UL
         let v5 : bool = v4 > v2
         if v5 then
             let v6 : int8 = v1 + 1y
-            method28(v0, v6, v4)
+            method25(v0, v6, v4)
         else
-            let v8 : unit = ()
-            let v9 : (unit -> unit) = closure21(v0, v1, v2)
-            let v10 : unit = (fun () -> v9 (); v8) ()
+            let v68 : unit = ()
+            let v69 : (unit -> unit) = closure21(v0, v1, v2)
+            let v70 : unit = (fun () -> v69 (); v68) ()
             v1
     else
-        let v58 : unit = ()
-        let v59 : (unit -> unit) = closure21(v0, v1, v2)
-        let v60 : unit = (fun () -> v59 (); v58) ()
+        let v192 : unit = ()
+        let v193 : (unit -> unit) = closure21(v0, v1, v2)
+        let v194 : unit = (fun () -> v193 (); v192) ()
         v1
-and method34 (v0 : int8, v1 : uint64, v2 : uint64) : string =
-    let v3 : string = method19()
-    let v4 : Mut5 = {l0 = v3} : Mut5
-    let v7 : string = "{ "
-    let v8 : string = $"{v7}"
-    let v11 : unit = ()
-    let v12 : (unit -> unit) = closure13(v4, v8)
-    let v13 : unit = (fun () -> v12 (); v11) ()
-    let v18 : string = "power"
-    let v19 : string = $"{v18}"
-    let v22 : unit = ()
-    let v23 : (unit -> unit) = closure13(v4, v19)
-    let v24 : unit = (fun () -> v23 (); v22) ()
-    let v29 : string = " = "
-    let v30 : string = $"{v29}"
-    let v33 : unit = ()
-    let v34 : (unit -> unit) = closure13(v4, v30)
-    let v35 : unit = (fun () -> v34 (); v33) ()
-    let v39 : string = $"{v0}"
-    let v42 : unit = ()
-    let v43 : (unit -> unit) = closure13(v4, v39)
-    let v44 : unit = (fun () -> v43 (); v42) ()
-    let v49 : string = "; "
-    let v50 : string = $"{v49}"
-    let v53 : unit = ()
-    let v54 : (unit -> unit) = closure13(v4, v50)
-    let v55 : unit = (fun () -> v54 (); v53) ()
-    let v60 : string = "acc"
-    let v61 : string = $"{v60}"
-    let v64 : unit = ()
-    let v65 : (unit -> unit) = closure13(v4, v61)
-    let v66 : unit = (fun () -> v65 (); v64) ()
-    let v70 : string = $"{v29}"
-    let v73 : unit = ()
-    let v74 : (unit -> unit) = closure13(v4, v70)
-    let v75 : unit = (fun () -> v74 (); v73) ()
-    let v79 : string = $"{v1}"
+and method29 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int8, v9 : uint64, v10 : uint64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{v8}"
     let v82 : unit = ()
-    let v83 : (unit -> unit) = closure13(v4, v79)
+    let v83 : (unit -> unit) = closure13(v12, v74)
     let v84 : unit = (fun () -> v83 (); v82) ()
-    let v88 : string = $"{v49}"
-    let v91 : unit = ()
-    let v92 : (unit -> unit) = closure13(v4, v88)
-    let v93 : unit = (fun () -> v92 (); v91) ()
-    let v98 : string = "result"
-    let v99 : string = $"{v98}"
-    let v102 : unit = ()
-    let v103 : (unit -> unit) = closure13(v4, v99)
-    let v104 : unit = (fun () -> v103 (); v102) ()
-    let v108 : string = $"{v29}"
-    let v111 : unit = ()
-    let v112 : (unit -> unit) = closure13(v4, v108)
-    let v113 : unit = (fun () -> v112 (); v111) ()
-    let v117 : string = $"{v2}"
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
     let v120 : unit = ()
-    let v121 : (unit -> unit) = closure13(v4, v117)
+    let v121 : (unit -> unit) = closure13(v12, v112)
     let v122 : unit = (fun () -> v121 (); v120) ()
-    let v127 : string = " }"
-    let v128 : string = $"{v127}"
-    let v131 : unit = ()
-    let v132 : (unit -> unit) = closure13(v4, v128)
-    let v133 : unit = (fun () -> v132 (); v131) ()
-    let v136 : string = v4.l0
-    v136
-and method33 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int8, v9 : uint64, v10 : uint64) : string =
-    let v11 : string = method34(v8, v9, v10)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v9}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "result"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v10}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v240 : string = " }"
+    let v241 : string = $"{v240}"
+    let v249 : unit = ()
+    let v250 : (unit -> unit) = closure13(v12, v241)
+    let v251 : unit = (fun () -> v250 (); v249) ()
+    let v257 : string = v12.l0
+    let v258 : int64 = v0.l0
+    let v261 : string = " "
+    let v262 : string = v6 + v261 
+    let v266 : string = v262 + v7 
+    let v271 : string = " #"
+    let v272 : string = v266 + v271 
+    let v276 : (int64 -> string) = _.ToString()
+    let v277 : string = v276 v258
+    let v281 : string = v272 + v277 
+    let v285 : string = v281 + v261 
+    let v290 : string = "dice.accumulate_dice_rolls"
+    let v291 : string = v285 + v290 
+    let v296 : string = " / "
+    let v297 : string = v291 + v296 
+    let v301 : string = v297 + v257 
+    method21(v301)
 and closure22 (v0 : uint64, v1 : int8, v2 : uint64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method33(v28, v29, v30, v31, v32, v33, v46, v47, v1, v0, v2)
-        method24(v48)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method29(v42, v43, v44, v45, v46, v47, v60, v61, v1, v0, v2)
+        method22(v62)
 and closure86 () () : UH2 =
     UH2_1
 and closure85 () () : UH2 =
@@ -2638,7 +2671,7 @@ and closure24 () () : UH2 =
 and closure23 () () : UH2 =
     let v0 : (unit -> UH2) = closure24()
     UH2_0(6UL, v0)
-and method35 (v0 : int8, v1 : UH2) : US9 =
+and method30 (v0 : int8, v1 : UH2) : US9 =
     match v1 with
     | UH2_0(v2, v3) -> (* StreamCons *)
         let v4 : bool = v0 <= 0y
@@ -2647,249 +2680,267 @@ and method35 (v0 : int8, v1 : UH2) : US9 =
         else
             let v6 : int8 = v0 - 1y
             let v7 : UH2 = v3 ()
-            method35(v6, v7)
+            method30(v6, v7)
     | UH2_1 -> (* StreamNil *)
         US9_1
-and method37 (v0 : int8, v1 : uint64, v2 : uint8, v3 : uint64) : string =
-    let v4 : string = method19()
-    let v5 : Mut5 = {l0 = v4} : Mut5
-    let v8 : string = "{ "
-    let v9 : string = $"{v8}"
-    let v12 : unit = ()
-    let v13 : (unit -> unit) = closure13(v5, v9)
-    let v14 : unit = (fun () -> v13 (); v12) ()
-    let v19 : string = "power"
-    let v20 : string = $"{v19}"
-    let v23 : unit = ()
-    let v24 : (unit -> unit) = closure13(v5, v20)
-    let v25 : unit = (fun () -> v24 (); v23) ()
-    let v30 : string = " = "
-    let v31 : string = $"{v30}"
-    let v34 : unit = ()
-    let v35 : (unit -> unit) = closure13(v5, v31)
-    let v36 : unit = (fun () -> v35 (); v34) ()
-    let v40 : string = $"{v0}"
-    let v43 : unit = ()
-    let v44 : (unit -> unit) = closure13(v5, v40)
-    let v45 : unit = (fun () -> v44 (); v43) ()
-    let v50 : string = "; "
-    let v51 : string = $"{v50}"
-    let v54 : unit = ()
-    let v55 : (unit -> unit) = closure13(v5, v51)
-    let v56 : unit = (fun () -> v55 (); v54) ()
-    let v61 : string = "acc"
-    let v62 : string = $"{v61}"
-    let v65 : unit = ()
-    let v66 : (unit -> unit) = closure13(v5, v62)
-    let v67 : unit = (fun () -> v66 (); v65) ()
-    let v71 : string = $"{v30}"
-    let v74 : unit = ()
-    let v75 : (unit -> unit) = closure13(v5, v71)
-    let v76 : unit = (fun () -> v75 (); v74) ()
-    let v80 : string = $"{v1}"
+and method31 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int8, v9 : uint64, v10 : uint8, v11 : uint64) : string =
+    let v12 : string = method18()
+    let v13 : Mut5 = {l0 = v12} : Mut5
+    let v16 : string = "{ "
+    let v17 : string = $"{v16}"
+    let v25 : unit = ()
+    let v26 : (unit -> unit) = closure13(v13, v17)
+    let v27 : unit = (fun () -> v26 (); v25) ()
+    let v35 : string = "power"
+    let v36 : string = $"{v35}"
+    let v44 : unit = ()
+    let v45 : (unit -> unit) = closure13(v13, v36)
+    let v46 : unit = (fun () -> v45 (); v44) ()
+    let v54 : string = " = "
+    let v55 : string = $"{v54}"
+    let v63 : unit = ()
+    let v64 : (unit -> unit) = closure13(v13, v55)
+    let v65 : unit = (fun () -> v64 (); v63) ()
+    let v75 : string = $"{v8}"
     let v83 : unit = ()
-    let v84 : (unit -> unit) = closure13(v5, v80)
+    let v84 : (unit -> unit) = closure13(v13, v75)
     let v85 : unit = (fun () -> v84 (); v83) ()
-    let v89 : string = $"{v50}"
-    let v92 : unit = ()
-    let v93 : (unit -> unit) = closure13(v5, v89)
-    let v94 : unit = (fun () -> v93 (); v92) ()
-    let v99 : string = "roll"
-    let v100 : string = $"{v99}"
-    let v103 : unit = ()
-    let v104 : (unit -> unit) = closure13(v5, v100)
-    let v105 : unit = (fun () -> v104 (); v103) ()
-    let v109 : string = $"{v30}"
-    let v112 : unit = ()
-    let v113 : (unit -> unit) = closure13(v5, v109)
-    let v114 : unit = (fun () -> v113 (); v112) ()
-    let v118 : string = $"{v2}"
+    let v93 : string = "; "
+    let v94 : string = $"{v93}"
+    let v102 : unit = ()
+    let v103 : (unit -> unit) = closure13(v13, v94)
+    let v104 : unit = (fun () -> v103 (); v102) ()
+    let v112 : string = "acc"
+    let v113 : string = $"{v112}"
     let v121 : unit = ()
-    let v122 : (unit -> unit) = closure13(v5, v118)
+    let v122 : (unit -> unit) = closure13(v13, v113)
     let v123 : unit = (fun () -> v122 (); v121) ()
-    let v127 : string = $"{v50}"
-    let v130 : unit = ()
-    let v131 : (unit -> unit) = closure13(v5, v127)
-    let v132 : unit = (fun () -> v131 (); v130) ()
-    let v137 : string = "value"
-    let v138 : string = $"{v137}"
-    let v141 : unit = ()
-    let v142 : (unit -> unit) = closure13(v5, v138)
-    let v143 : unit = (fun () -> v142 (); v141) ()
-    let v147 : string = $"{v30}"
-    let v150 : unit = ()
-    let v151 : (unit -> unit) = closure13(v5, v147)
-    let v152 : unit = (fun () -> v151 (); v150) ()
-    let v156 : string = $"{v3}"
-    let v159 : unit = ()
-    let v160 : (unit -> unit) = closure13(v5, v156)
-    let v161 : unit = (fun () -> v160 (); v159) ()
-    let v166 : string = " }"
-    let v167 : string = $"{v166}"
-    let v170 : unit = ()
-    let v171 : (unit -> unit) = closure13(v5, v167)
-    let v172 : unit = (fun () -> v171 (); v170) ()
-    let v175 : string = v5.l0
-    v175
-and method36 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int8, v9 : uint64, v10 : uint8, v11 : uint64) : string =
-    let v12 : string = method37(v8, v9, v10, v11)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+    let v130 : string = $"{v54}"
+    let v138 : unit = ()
+    let v139 : (unit -> unit) = closure13(v13, v130)
+    let v140 : unit = (fun () -> v139 (); v138) ()
+    let v150 : string = $"{v9}"
+    let v158 : unit = ()
+    let v159 : (unit -> unit) = closure13(v13, v150)
+    let v160 : unit = (fun () -> v159 (); v158) ()
+    let v167 : string = $"{v93}"
+    let v175 : unit = ()
+    let v176 : (unit -> unit) = closure13(v13, v167)
+    let v177 : unit = (fun () -> v176 (); v175) ()
+    let v185 : string = "roll"
+    let v186 : string = $"{v185}"
+    let v194 : unit = ()
+    let v195 : (unit -> unit) = closure13(v13, v186)
+    let v196 : unit = (fun () -> v195 (); v194) ()
+    let v203 : string = $"{v54}"
+    let v211 : unit = ()
+    let v212 : (unit -> unit) = closure13(v13, v203)
+    let v213 : unit = (fun () -> v212 (); v211) ()
+    let v223 : string = $"{v10}"
+    let v231 : unit = ()
+    let v232 : (unit -> unit) = closure13(v13, v223)
+    let v233 : unit = (fun () -> v232 (); v231) ()
+    let v240 : string = $"{v93}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v13, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v258 : string = "value"
+    let v259 : string = $"{v258}"
+    let v267 : unit = ()
+    let v268 : (unit -> unit) = closure13(v13, v259)
+    let v269 : unit = (fun () -> v268 (); v267) ()
+    let v276 : string = $"{v54}"
+    let v284 : unit = ()
+    let v285 : (unit -> unit) = closure13(v13, v276)
+    let v286 : unit = (fun () -> v285 (); v284) ()
+    let v296 : string = $"{v11}"
+    let v304 : unit = ()
+    let v305 : (unit -> unit) = closure13(v13, v296)
+    let v306 : unit = (fun () -> v305 (); v304) ()
+    let v314 : string = " }"
+    let v315 : string = $"{v314}"
+    let v323 : unit = ()
+    let v324 : (unit -> unit) = closure13(v13, v315)
+    let v325 : unit = (fun () -> v324 (); v323) ()
+    let v331 : string = v13.l0
+    let v332 : int64 = v0.l0
+    let v335 : string = " "
+    let v336 : string = v6 + v335 
+    let v340 : string = v336 + v7 
+    let v345 : string = " #"
+    let v346 : string = v340 + v345 
+    let v350 : (int64 -> string) = _.ToString()
+    let v351 : string = v350 v332
+    let v355 : string = v346 + v351 
+    let v359 : string = v355 + v335 
+    let v364 : string = "dice.accumulate_dice_rolls"
+    let v365 : string = v359 + v364 
+    let v370 : string = " / "
+    let v371 : string = v365 + v370 
+    let v375 : string = v371 + v331 
+    method21(v375)
 and closure87 (v0 : uint64, v1 : int8, v2 : uint8, v3 : uint64) () : unit =
     let v4 : US2 = US2_1
     let v5 : bool = method6(v4)
     if v5 then
-        let v6 : unit = ()
-        let v7 : (unit -> unit) = closure9()
-        let v8 : unit = (fun () -> v7 (); v6) ()
-        let struct (v29 : Mut1, v30 : Mut3, v31 : Mut4, v32 : Mut5, v33 : Mut6, v34 : int64 option) = TraceState.trace_state.Value
-        let v47 : string = method13(v29, v30, v31, v32, v33, v34)
-        let v48 : string = method17()
-        let v49 : string = method36(v29, v30, v31, v32, v33, v34, v47, v48, v1, v0, v2, v3)
-        method24(v49)
-and method39 (v0 : int8, v1 : uint64, v2 : uint8) : string =
-    let v3 : string = method19()
-    let v4 : Mut5 = {l0 = v3} : Mut5
-    let v7 : string = "{ "
-    let v8 : string = $"{v7}"
-    let v11 : unit = ()
-    let v12 : (unit -> unit) = closure13(v4, v8)
-    let v13 : unit = (fun () -> v12 (); v11) ()
-    let v18 : string = "power"
-    let v19 : string = $"{v18}"
-    let v22 : unit = ()
-    let v23 : (unit -> unit) = closure13(v4, v19)
-    let v24 : unit = (fun () -> v23 (); v22) ()
-    let v29 : string = " = "
-    let v30 : string = $"{v29}"
-    let v33 : unit = ()
-    let v34 : (unit -> unit) = closure13(v4, v30)
-    let v35 : unit = (fun () -> v34 (); v33) ()
-    let v39 : string = $"{v0}"
-    let v42 : unit = ()
-    let v43 : (unit -> unit) = closure13(v4, v39)
-    let v44 : unit = (fun () -> v43 (); v42) ()
-    let v49 : string = "; "
-    let v50 : string = $"{v49}"
-    let v53 : unit = ()
-    let v54 : (unit -> unit) = closure13(v4, v50)
-    let v55 : unit = (fun () -> v54 (); v53) ()
-    let v60 : string = "acc"
-    let v61 : string = $"{v60}"
-    let v64 : unit = ()
-    let v65 : (unit -> unit) = closure13(v4, v61)
-    let v66 : unit = (fun () -> v65 (); v64) ()
-    let v70 : string = $"{v29}"
-    let v73 : unit = ()
-    let v74 : (unit -> unit) = closure13(v4, v70)
-    let v75 : unit = (fun () -> v74 (); v73) ()
-    let v79 : string = $"{v1}"
+        let v20 : unit = ()
+        let v21 : (unit -> unit) = closure9()
+        let v22 : unit = (fun () -> v21 (); v20) ()
+        let struct (v43 : Mut1, v44 : Mut3, v45 : Mut4, v46 : Mut5, v47 : Mut6, v48 : int64 option) = TraceState.trace_state.Value
+        let v61 : string = method13(v43, v44, v45, v46, v47, v48)
+        let v62 : string = method17()
+        let v63 : string = method31(v43, v44, v45, v46, v47, v48, v61, v62, v1, v0, v2, v3)
+        method22(v63)
+and method32 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int8, v9 : uint64, v10 : uint8) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{v8}"
     let v82 : unit = ()
-    let v83 : (unit -> unit) = closure13(v4, v79)
+    let v83 : (unit -> unit) = closure13(v12, v74)
     let v84 : unit = (fun () -> v83 (); v82) ()
-    let v88 : string = $"{v49}"
-    let v91 : unit = ()
-    let v92 : (unit -> unit) = closure13(v4, v88)
-    let v93 : unit = (fun () -> v92 (); v91) ()
-    let v98 : string = "roll"
-    let v99 : string = $"{v98}"
-    let v102 : unit = ()
-    let v103 : (unit -> unit) = closure13(v4, v99)
-    let v104 : unit = (fun () -> v103 (); v102) ()
-    let v108 : string = $"{v29}"
-    let v111 : unit = ()
-    let v112 : (unit -> unit) = closure13(v4, v108)
-    let v113 : unit = (fun () -> v112 (); v111) ()
-    let v117 : string = $"{v2}"
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
     let v120 : unit = ()
-    let v121 : (unit -> unit) = closure13(v4, v117)
+    let v121 : (unit -> unit) = closure13(v12, v112)
     let v122 : unit = (fun () -> v121 (); v120) ()
-    let v127 : string = " }"
-    let v128 : string = $"{v127}"
-    let v131 : unit = ()
-    let v132 : (unit -> unit) = closure13(v4, v128)
-    let v133 : unit = (fun () -> v132 (); v131) ()
-    let v136 : string = v4.l0
-    v136
-and method38 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int8, v9 : uint64, v10 : uint8) : string =
-    let v11 : string = method39(v8, v9, v10)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v9}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v10}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v240 : string = " }"
+    let v241 : string = $"{v240}"
+    let v249 : unit = ()
+    let v250 : (unit -> unit) = closure13(v12, v241)
+    let v251 : unit = (fun () -> v250 (); v249) ()
+    let v257 : string = v12.l0
+    let v258 : int64 = v0.l0
+    let v261 : string = " "
+    let v262 : string = v6 + v261 
+    let v266 : string = v262 + v7 
+    let v271 : string = " #"
+    let v272 : string = v266 + v271 
+    let v276 : (int64 -> string) = _.ToString()
+    let v277 : string = v276 v258
+    let v281 : string = v272 + v277 
+    let v285 : string = v281 + v261 
+    let v290 : string = "dice.accumulate_dice_rolls"
+    let v291 : string = v285 + v290 
+    let v296 : string = " / "
+    let v297 : string = v291 + v296 
+    let v301 : string = v297 + v257 
+    method21(v301)
 and closure88 (v0 : uint64, v1 : int8, v2 : uint8) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method38(v28, v29, v30, v31, v32, v33, v46, v47, v1, v0, v2)
-        method24(v48)
-and method32 (v0 : int8, v1 : UH1, v2 : uint64) : US8 =
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method32(v42, v43, v44, v45, v46, v47, v60, v61, v1, v0, v2)
+        method22(v62)
+and method28 (v0 : int8, v1 : UH1, v2 : uint64) : US8 =
     let v3 : bool = v0 < 0y
     if v3 then
         let v4 : uint64 = v2 + 1UL
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure22(v2, v0, v4)
-        let v7 : unit = (fun () -> v6 (); v5) ()
+        let v65 : unit = ()
+        let v66 : (unit -> unit) = closure22(v2, v0, v4)
+        let v67 : unit = (fun () -> v66 (); v65) ()
         US8_0(v4, v1)
     else
         match v1 with
-        | UH1_1(v56, v57) -> (* Cons *)
-            let v58 : bool = v56 > 1uy
-            if v58 then
-                let v59 : uint64 = 1UL
-                let v60 : (unit -> UH2) = closure23()
-                let v61 : UH2 = UH2_0(v59, v60)
-                let v62 : US9 = method35(v0, v61)
-                let v66 : uint64 =
-                    match v62 with
+        | UH1_1(v130, v131) -> (* Cons *)
+            let v132 : bool = v130 > 1uy
+            if v132 then
+                let v133 : uint64 = 1UL
+                let v134 : (unit -> UH2) = closure23()
+                let v135 : UH2 = UH2_0(v133, v134)
+                let v136 : US9 = method30(v0, v135)
+                let v140 : uint64 =
+                    match v136 with
                     | US9_1 -> (* None *)
                         failwith<uint64> "Option does not have a value."
-                    | US9_0(v63) -> (* Some *)
-                        v63
-                let v67 : uint8 = v56 - 1uy
-                let v68 : uint64 = uint64 v67
-                let v69 : uint64 = v68 * v66
-                let v70 : unit = ()
-                let v71 : (unit -> unit) = closure87(v2, v0, v56, v69)
-                let v72 : unit = (fun () -> v71 (); v70) ()
-                let v119 : uint64 = v2 + v69
-                let v120 : int8 = v0 - 1y
-                method32(v120, v57, v119)
+                    | US9_0(v137) -> (* Some *)
+                        v137
+                let v141 : uint8 = v130 - 1uy
+                let v142 : uint64 = uint64 v141
+                let v143 : uint64 = v142 * v140
+                let v204 : unit = ()
+                let v205 : (unit -> unit) = closure87(v2, v0, v130, v143)
+                let v206 : unit = (fun () -> v205 (); v204) ()
+                let v267 : uint64 = v2 + v143
+                let v268 : int8 = v0 - 1y
+                method28(v268, v131, v267)
             else
-                let v122 : unit = ()
-                let v123 : (unit -> unit) = closure88(v2, v0, v56)
-                let v124 : unit = (fun () -> v123 (); v122) ()
-                let v171 : int8 = v0 - 1y
-                method32(v171, v57, v2)
+                let v330 : unit = ()
+                let v331 : (unit -> unit) = closure88(v2, v0, v130)
+                let v332 : unit = (fun () -> v331 (); v330) ()
+                let v393 : int8 = v0 - 1y
+                method28(v393, v131, v2)
         | UH1_0 -> (* Nil *)
             US8_1
-and method40 (v0 : int8, v1 : (unit -> uint8), v2 : int8) : UH1 =
+and method33 (v0 : int8, v1 : (unit -> uint8), v2 : int8) : UH1 =
     let v3 : bool = v2 < v0
     if v3 then
         let v4 : uint8 = v1 ()
         let v5 : int8 = v2 + 1y
-        let v6 : UH1 = method40(v0, v1, v5)
+        let v6 : UH1 = method33(v0, v1, v5)
         UH1_1(v4, v6)
     else
         UH1_0
-and method41 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1) : uint64 =
+and method34 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1) : uint64 =
     let v5 : int8 = v3 + 1y
     let v6 : bool = v3 < v5
     if v6 then
         let v7 : uint8 = v0 ()
         let v8 : UH1 = UH1_1(v7, v4)
-        method31(v0, v1, v2, v3, v8, v5)
+        method27(v0, v1, v2, v3, v8, v5)
     else
         let v10 : uint64 = 0UL
-        let v11 : US8 = method32(v3, v4, v10)
+        let v11 : US8 = method28(v3, v4, v10)
         match v11 with
         | US8_0(v12, v13) -> (* Some *)
             let v14 : bool = v12 <= v2
@@ -2898,32 +2949,32 @@ and method41 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1)
             else
                 if v1 then
                     let v15 : int8 = 0y
-                    let v16 : UH1 = method40(v3, v0, v15)
-                    method41(v0, v1, v2, v3, v16)
+                    let v16 : UH1 = method33(v3, v0, v15)
+                    method34(v0, v1, v2, v3, v16)
                 else
                     let v18 : uint8 = v0 ()
                     let v19 : UH1 = UH1_1(v18, v4)
-                    method31(v0, v1, v2, v3, v19, v5)
+                    method27(v0, v1, v2, v3, v19, v5)
         | _ ->
             if v1 then
                 let v23 : int8 = 0y
-                let v24 : UH1 = method40(v3, v0, v23)
-                method41(v0, v1, v2, v3, v24)
+                let v24 : UH1 = method33(v3, v0, v23)
+                method34(v0, v1, v2, v3, v24)
             else
                 let v26 : uint8 = v0 ()
                 let v27 : UH1 = UH1_1(v26, v4)
-                method31(v0, v1, v2, v3, v27, v5)
-and method31 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1, v5 : int8) : uint64 =
+                method27(v0, v1, v2, v3, v27, v5)
+and method27 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1, v5 : int8) : uint64 =
     let v6 : int8 = v3 + 1y
     let v7 : bool = v5 < v6
     if v7 then
         let v8 : uint8 = v0 ()
         let v9 : UH1 = UH1_1(v8, v4)
         let v10 : int8 = v5 + 1y
-        method31(v0, v1, v2, v3, v9, v10)
+        method27(v0, v1, v2, v3, v9, v10)
     else
         let v12 : uint64 = 0UL
-        let v13 : US8 = method32(v3, v4, v12)
+        let v13 : US8 = method28(v3, v4, v12)
         match v13 with
         | US8_0(v14, v15) -> (* Some *)
             let v16 : bool = v14 <= v2
@@ -2932,23 +2983,23 @@ and method31 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1,
             else
                 if v1 then
                     let v17 : int8 = 0y
-                    let v18 : UH1 = method40(v3, v0, v17)
-                    method41(v0, v1, v2, v3, v18)
+                    let v18 : UH1 = method33(v3, v0, v17)
+                    method34(v0, v1, v2, v3, v18)
                 else
                     let v20 : uint8 = v0 ()
                     let v21 : UH1 = UH1_1(v20, v4)
                     let v22 : int8 = v5 + 1y
-                    method31(v0, v1, v2, v3, v21, v22)
+                    method27(v0, v1, v2, v3, v21, v22)
         | _ ->
             if v1 then
                 let v26 : int8 = 0y
-                let v27 : UH1 = method40(v3, v0, v26)
-                method41(v0, v1, v2, v3, v27)
+                let v27 : UH1 = method33(v3, v0, v26)
+                method34(v0, v1, v2, v3, v27)
             else
                 let v29 : uint8 = v0 ()
                 let v30 : UH1 = UH1_1(v29, v4)
                 let v31 : int8 = v5 + 1y
-                method31(v0, v1, v2, v3, v30, v31)
+                method27(v0, v1, v2, v3, v30, v31)
 and closure20 (v0 : (unit -> uint8), v1 : bool) (v2 : uint64) : uint64 =
     let v3 : bool = v2 = 1UL
     let v7 : int8 =
@@ -2957,28 +3008,28 @@ and closure20 (v0 : (unit -> uint8), v1 : bool) (v2 : uint64) : uint64 =
         else
             let v4 : int8 = 0y
             let v5 : uint64 = 1UL
-            method28(v2, v4, v5)
+            method25(v2, v4, v5)
     let v8 : int8 = v7 - 1y
     let v9 : UH1 = UH1_0
     let v10 : int8 = 0y
-    method31(v0, v1, v2, v8, v9, v10)
+    method27(v0, v1, v2, v8, v9, v10)
 and closure19 (v0 : (unit -> uint8)) (v1 : bool) : (uint64 -> uint64) =
     closure20(v0, v1)
 and closure18 () (v0 : (unit -> uint8)) : (bool -> (uint64 -> uint64)) =
     closure19(v0)
-and method42 (v0 : UH1, v1 : int8) : int8 =
+and method35 (v0 : UH1, v1 : int8) : int8 =
     match v0 with
     | UH1_1(v2, v3) -> (* Cons *)
         let v4 : int8 = v1 + 1y
-        method42(v3, v4)
+        method35(v3, v4)
     | UH1_0 -> (* Nil *)
         v1
 and closure90 (v0 : uint64) (v1 : UH1) : uint64 option =
     let v2 : int8 = 0y
-    let v3 : int8 = method42(v1, v2)
+    let v3 : int8 = method35(v1, v2)
     let v4 : int8 = v3 - 1y
     let v5 : uint64 = 0UL
-    let v6 : US8 = method32(v4, v1, v5)
+    let v6 : US8 = method28(v4, v1, v5)
     let v16 : US9 =
         match v6 with
         | US8_0(v7, v8) -> (* Some *)
@@ -3004,92 +3055,98 @@ and closure90 (v0 : uint64) (v1 : UH1) : uint64 option =
         v19
 and closure89 () (v0 : uint64) : (UH1 -> uint64 option) =
     closure90(v0)
-and method44 (v0 : int64, v1 : int64, v2 : int8) : string =
-    let v3 : string = method19()
-    let v4 : Mut5 = {l0 = v3} : Mut5
-    let v7 : string = "{ "
-    let v8 : string = $"{v7}"
-    let v11 : unit = ()
-    let v12 : (unit -> unit) = closure13(v4, v8)
-    let v13 : unit = (fun () -> v12 (); v11) ()
-    let v18 : string = "max"
-    let v19 : string = $"{v18}"
-    let v22 : unit = ()
-    let v23 : (unit -> unit) = closure13(v4, v19)
-    let v24 : unit = (fun () -> v23 (); v22) ()
-    let v29 : string = " = "
-    let v30 : string = $"{v29}"
-    let v33 : unit = ()
-    let v34 : (unit -> unit) = closure13(v4, v30)
-    let v35 : unit = (fun () -> v34 (); v33) ()
-    let v39 : string = $"{v0}"
-    let v42 : unit = ()
-    let v43 : (unit -> unit) = closure13(v4, v39)
-    let v44 : unit = (fun () -> v43 (); v42) ()
-    let v49 : string = "; "
-    let v50 : string = $"{v49}"
-    let v53 : unit = ()
-    let v54 : (unit -> unit) = closure13(v4, v50)
-    let v55 : unit = (fun () -> v54 (); v53) ()
-    let v60 : string = "p"
-    let v61 : string = $"{v60}"
-    let v64 : unit = ()
-    let v65 : (unit -> unit) = closure13(v4, v61)
-    let v66 : unit = (fun () -> v65 (); v64) ()
-    let v70 : string = $"{v29}"
-    let v73 : unit = ()
-    let v74 : (unit -> unit) = closure13(v4, v70)
-    let v75 : unit = (fun () -> v74 (); v73) ()
-    let v79 : string = $"{v1}"
-    let v82 : unit = ()
-    let v83 : (unit -> unit) = closure13(v4, v79)
-    let v84 : unit = (fun () -> v83 (); v82) ()
-    let v88 : string = $"{v49}"
-    let v91 : unit = ()
-    let v92 : (unit -> unit) = closure13(v4, v88)
-    let v93 : unit = (fun () -> v92 (); v91) ()
-    let v98 : string = "n"
-    let v99 : string = $"{v98}"
-    let v102 : unit = ()
-    let v103 : (unit -> unit) = closure13(v4, v99)
-    let v104 : unit = (fun () -> v103 (); v102) ()
-    let v108 : string = $"{v29}"
-    let v111 : unit = ()
-    let v112 : (unit -> unit) = closure13(v4, v108)
-    let v113 : unit = (fun () -> v112 (); v111) ()
-    let v117 : string = $"{v2}"
-    let v120 : unit = ()
-    let v121 : (unit -> unit) = closure13(v4, v117)
-    let v122 : unit = (fun () -> v121 (); v120) ()
-    let v127 : string = " }"
-    let v128 : string = $"{v127}"
-    let v131 : unit = ()
-    let v132 : (unit -> unit) = closure13(v4, v128)
-    let v133 : unit = (fun () -> v132 (); v131) ()
-    let v136 : string = v4.l0
-    v136
-and method43 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string) : string =
-    let v8 : int64 = 9223372036854775807L
-    let v9 : int64 = 4738381338321616896L
-    let v10 : int8 = 24y
-    let v11 : string = method44(v8, v9, v10)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.calculate_dice_count"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method36 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string) : string =
+    let v8 : string = method18()
+    let v9 : Mut5 = {l0 = v8} : Mut5
+    let v12 : string = "{ "
+    let v13 : string = $"{v12}"
+    let v21 : unit = ()
+    let v22 : (unit -> unit) = closure13(v9, v13)
+    let v23 : unit = (fun () -> v22 (); v21) ()
+    let v31 : string = "max"
+    let v32 : string = $"{v31}"
+    let v40 : unit = ()
+    let v41 : (unit -> unit) = closure13(v9, v32)
+    let v42 : unit = (fun () -> v41 (); v40) ()
+    let v50 : string = " = "
+    let v51 : string = $"{v50}"
+    let v59 : unit = ()
+    let v60 : (unit -> unit) = closure13(v9, v51)
+    let v61 : unit = (fun () -> v60 (); v59) ()
+    let v71 : string = $"{9223372036854775807L}"
+    let v79 : unit = ()
+    let v80 : (unit -> unit) = closure13(v9, v71)
+    let v81 : unit = (fun () -> v80 (); v79) ()
+    let v89 : string = "; "
+    let v90 : string = $"{v89}"
+    let v98 : unit = ()
+    let v99 : (unit -> unit) = closure13(v9, v90)
+    let v100 : unit = (fun () -> v99 (); v98) ()
+    let v108 : string = "p"
+    let v109 : string = $"{v108}"
+    let v117 : unit = ()
+    let v118 : (unit -> unit) = closure13(v9, v109)
+    let v119 : unit = (fun () -> v118 (); v117) ()
+    let v126 : string = $"{v50}"
+    let v134 : unit = ()
+    let v135 : (unit -> unit) = closure13(v9, v126)
+    let v136 : unit = (fun () -> v135 (); v134) ()
+    let v146 : string = $"{4738381338321616896L}"
+    let v154 : unit = ()
+    let v155 : (unit -> unit) = closure13(v9, v146)
+    let v156 : unit = (fun () -> v155 (); v154) ()
+    let v163 : string = $"{v89}"
+    let v171 : unit = ()
+    let v172 : (unit -> unit) = closure13(v9, v163)
+    let v173 : unit = (fun () -> v172 (); v171) ()
+    let v181 : string = "n"
+    let v182 : string = $"{v181}"
+    let v190 : unit = ()
+    let v191 : (unit -> unit) = closure13(v9, v182)
+    let v192 : unit = (fun () -> v191 (); v190) ()
+    let v199 : string = $"{v50}"
+    let v207 : unit = ()
+    let v208 : (unit -> unit) = closure13(v9, v199)
+    let v209 : unit = (fun () -> v208 (); v207) ()
+    let v219 : string = $"{24y}"
+    let v227 : unit = ()
+    let v228 : (unit -> unit) = closure13(v9, v219)
+    let v229 : unit = (fun () -> v228 (); v227) ()
+    let v237 : string = " }"
+    let v238 : string = $"{v237}"
+    let v246 : unit = ()
+    let v247 : (unit -> unit) = closure13(v9, v238)
+    let v248 : unit = (fun () -> v247 (); v246) ()
+    let v254 : string = v9.l0
+    let v255 : int64 = v0.l0
+    let v258 : string = " "
+    let v259 : string = v6 + v258 
+    let v263 : string = v259 + v7 
+    let v268 : string = " #"
+    let v269 : string = v263 + v268 
+    let v273 : (int64 -> string) = _.ToString()
+    let v274 : string = v273 v255
+    let v278 : string = v269 + v274 
+    let v282 : string = v278 + v258 
+    let v287 : string = "dice.calculate_dice_count"
+    let v288 : string = v282 + v287 
+    let v293 : string = " / "
+    let v294 : string = v288 + v293 
+    let v298 : string = v294 + v254 
+    method21(v298)
 and closure92 () () : unit =
     let v0 : US2 = US2_1
     let v1 : bool = method6(v0)
     if v1 then
-        let v2 : unit = ()
-        let v3 : (unit -> unit) = closure9()
-        let v4 : unit = (fun () -> v3 (); v2) ()
-        let struct (v25 : Mut1, v26 : Mut3, v27 : Mut4, v28 : Mut5, v29 : Mut6, v30 : int64 option) = TraceState.trace_state.Value
-        let v43 : string = method13(v25, v26, v27, v28, v29, v30)
-        let v44 : string = method17()
-        let v45 : string = method43(v25, v26, v27, v28, v29, v30, v43, v44)
-        method24(v45)
-and method46 () : uint8 =
+        let v16 : unit = ()
+        let v17 : (unit -> unit) = closure9()
+        let v18 : unit = (fun () -> v17 (); v16) ()
+        let struct (v39 : Mut1, v40 : Mut3, v41 : Mut4, v42 : Mut5, v43 : Mut6, v44 : int64 option) = TraceState.trace_state.Value
+        let v57 : string = method13(v39, v40, v41, v42, v43, v44)
+        let v58 : string = method17()
+        let v59 : string = method36(v39, v40, v41, v42, v43, v44, v57, v58)
+        method22(v59)
+and method38 () : uint8 =
     (* run_target_args'
     let v33 : unit = ()
     run_target_args' *)
@@ -3148,754 +3205,2897 @@ and method46 () : uint8 =
     #endif
     let v171 : uint8 = _run_target_args'_v33 
     v171
-and method49 (v0 : int8, v1 : int64, v2 : uint8, v3 : int64) : string =
-    let v4 : string = method19()
-    let v5 : Mut5 = {l0 = v4} : Mut5
-    let v8 : string = "{ "
-    let v9 : string = $"{v8}"
-    let v12 : unit = ()
-    let v13 : (unit -> unit) = closure13(v5, v9)
-    let v14 : unit = (fun () -> v13 (); v12) ()
-    let v19 : string = "power"
-    let v20 : string = $"{v19}"
-    let v23 : unit = ()
-    let v24 : (unit -> unit) = closure13(v5, v20)
-    let v25 : unit = (fun () -> v24 (); v23) ()
-    let v30 : string = " = "
-    let v31 : string = $"{v30}"
-    let v34 : unit = ()
-    let v35 : (unit -> unit) = closure13(v5, v31)
-    let v36 : unit = (fun () -> v35 (); v34) ()
-    let v40 : string = $"{v0}"
+and method40 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
     let v43 : unit = ()
-    let v44 : (unit -> unit) = closure13(v5, v40)
+    let v44 : (unit -> unit) = closure13(v12, v35)
     let v45 : unit = (fun () -> v44 (); v43) ()
-    let v50 : string = "; "
-    let v51 : string = $"{v50}"
-    let v54 : unit = ()
-    let v55 : (unit -> unit) = closure13(v5, v51)
-    let v56 : unit = (fun () -> v55 (); v54) ()
-    let v61 : string = "acc"
-    let v62 : string = $"{v61}"
-    let v65 : unit = ()
-    let v66 : (unit -> unit) = closure13(v5, v62)
-    let v67 : unit = (fun () -> v66 (); v65) ()
-    let v71 : string = $"{v30}"
-    let v74 : unit = ()
-    let v75 : (unit -> unit) = closure13(v5, v71)
-    let v76 : unit = (fun () -> v75 (); v74) ()
-    let v80 : string = $"{v1}"
-    let v83 : unit = ()
-    let v84 : (unit -> unit) = closure13(v5, v80)
-    let v85 : unit = (fun () -> v84 (); v83) ()
-    let v89 : string = $"{v50}"
-    let v92 : unit = ()
-    let v93 : (unit -> unit) = closure13(v5, v89)
-    let v94 : unit = (fun () -> v93 (); v92) ()
-    let v99 : string = "roll"
-    let v100 : string = $"{v99}"
-    let v103 : unit = ()
-    let v104 : (unit -> unit) = closure13(v5, v100)
-    let v105 : unit = (fun () -> v104 (); v103) ()
-    let v109 : string = $"{v30}"
-    let v112 : unit = ()
-    let v113 : (unit -> unit) = closure13(v5, v109)
-    let v114 : unit = (fun () -> v113 (); v112) ()
-    let v118 : string = $"{v2}"
-    let v121 : unit = ()
-    let v122 : (unit -> unit) = closure13(v5, v118)
-    let v123 : unit = (fun () -> v122 (); v121) ()
-    let v127 : string = $"{v50}"
-    let v130 : unit = ()
-    let v131 : (unit -> unit) = closure13(v5, v127)
-    let v132 : unit = (fun () -> v131 (); v130) ()
-    let v137 : string = "value"
-    let v138 : string = $"{v137}"
-    let v141 : unit = ()
-    let v142 : (unit -> unit) = closure13(v5, v138)
-    let v143 : unit = (fun () -> v142 (); v141) ()
-    let v147 : string = $"{v30}"
-    let v150 : unit = ()
-    let v151 : (unit -> unit) = closure13(v5, v147)
-    let v152 : unit = (fun () -> v151 (); v150) ()
-    let v156 : string = $"{v3}"
-    let v159 : unit = ()
-    let v160 : (unit -> unit) = closure13(v5, v156)
-    let v161 : unit = (fun () -> v160 (); v159) ()
-    let v166 : string = " }"
-    let v167 : string = $"{v166}"
-    let v170 : unit = ()
-    let v171 : (unit -> unit) = closure13(v5, v167)
-    let v172 : unit = (fun () -> v171 (); v170) ()
-    let v175 : string = v5.l0
-    v175
-and method48 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 23y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{23y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure93 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method48(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method51 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 22y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method40(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method42 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{22y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure94 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method51(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method53 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 21y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method42(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method44 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{21y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure95 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method53(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method55 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 20y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method44(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method46 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{20y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure96 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method55(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method57 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 19y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method46(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method48 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{19y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure97 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method57(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method59 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 18y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method48(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method50 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{18y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure98 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method59(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method61 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 17y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method50(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method52 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{17y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure99 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method61(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method63 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 16y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method52(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method54 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{16y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure100 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method63(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method65 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 15y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method54(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method56 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{15y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure101 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method65(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method67 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 14y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method56(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method58 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{14y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure102 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method67(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method69 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 13y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method58(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method60 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{13y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure103 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method69(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method71 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 12y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method60(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method62 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{12y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure104 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method71(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method73 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 11y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method62(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method64 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{11y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure105 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method73(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method75 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 10y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method64(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method66 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{10y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure106 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method75(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method77 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 9y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method66(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method68 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{9y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure107 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method77(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method79 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 8y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method68(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method70 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{8y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure108 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method79(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method81 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 7y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method70(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method72 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{7y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure109 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method81(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method83 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 6y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method72(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method74 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{6y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure110 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method83(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method85 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 5y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method74(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method76 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{5y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure111 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method85(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method87 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 4y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method76(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method78 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{4y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure112 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method87(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method89 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 3y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method78(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method80 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{3y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure113 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method89(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method91 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 2y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method80(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method82 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{2y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure114 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method91(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method93 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 1y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method82(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method84 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{1y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure115 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method93(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method95 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
-    let v11 : int8 = 0y
-    let v12 : string = method49(v11, v8, v9, v10)
-    let v13 : int64 = v0.l0
-    let v15 : string = "dice.accumulate_dice_rolls"
-    let v16 : string = $"{v6} {v7} #{v13} %s{v15} / {v12}"
-    method23(v16)
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method84(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method86 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+    let v11 : string = method18()
+    let v12 : Mut5 = {l0 = v11} : Mut5
+    let v15 : string = "{ "
+    let v16 : string = $"{v15}"
+    let v24 : unit = ()
+    let v25 : (unit -> unit) = closure13(v12, v16)
+    let v26 : unit = (fun () -> v25 (); v24) ()
+    let v34 : string = "power"
+    let v35 : string = $"{v34}"
+    let v43 : unit = ()
+    let v44 : (unit -> unit) = closure13(v12, v35)
+    let v45 : unit = (fun () -> v44 (); v43) ()
+    let v53 : string = " = "
+    let v54 : string = $"{v53}"
+    let v62 : unit = ()
+    let v63 : (unit -> unit) = closure13(v12, v54)
+    let v64 : unit = (fun () -> v63 (); v62) ()
+    let v74 : string = $"{0y}"
+    let v82 : unit = ()
+    let v83 : (unit -> unit) = closure13(v12, v74)
+    let v84 : unit = (fun () -> v83 (); v82) ()
+    let v92 : string = "; "
+    let v93 : string = $"{v92}"
+    let v101 : unit = ()
+    let v102 : (unit -> unit) = closure13(v12, v93)
+    let v103 : unit = (fun () -> v102 (); v101) ()
+    let v111 : string = "acc"
+    let v112 : string = $"{v111}"
+    let v120 : unit = ()
+    let v121 : (unit -> unit) = closure13(v12, v112)
+    let v122 : unit = (fun () -> v121 (); v120) ()
+    let v129 : string = $"{v53}"
+    let v137 : unit = ()
+    let v138 : (unit -> unit) = closure13(v12, v129)
+    let v139 : unit = (fun () -> v138 (); v137) ()
+    let v149 : string = $"{v8}"
+    let v157 : unit = ()
+    let v158 : (unit -> unit) = closure13(v12, v149)
+    let v159 : unit = (fun () -> v158 (); v157) ()
+    let v166 : string = $"{v92}"
+    let v174 : unit = ()
+    let v175 : (unit -> unit) = closure13(v12, v166)
+    let v176 : unit = (fun () -> v175 (); v174) ()
+    let v184 : string = "roll"
+    let v185 : string = $"{v184}"
+    let v193 : unit = ()
+    let v194 : (unit -> unit) = closure13(v12, v185)
+    let v195 : unit = (fun () -> v194 (); v193) ()
+    let v202 : string = $"{v53}"
+    let v210 : unit = ()
+    let v211 : (unit -> unit) = closure13(v12, v202)
+    let v212 : unit = (fun () -> v211 (); v210) ()
+    let v222 : string = $"{v9}"
+    let v230 : unit = ()
+    let v231 : (unit -> unit) = closure13(v12, v222)
+    let v232 : unit = (fun () -> v231 (); v230) ()
+    let v239 : string = $"{v92}"
+    let v247 : unit = ()
+    let v248 : (unit -> unit) = closure13(v12, v239)
+    let v249 : unit = (fun () -> v248 (); v247) ()
+    let v257 : string = "value"
+    let v258 : string = $"{v257}"
+    let v266 : unit = ()
+    let v267 : (unit -> unit) = closure13(v12, v258)
+    let v268 : unit = (fun () -> v267 (); v266) ()
+    let v275 : string = $"{v53}"
+    let v283 : unit = ()
+    let v284 : (unit -> unit) = closure13(v12, v275)
+    let v285 : unit = (fun () -> v284 (); v283) ()
+    let v295 : string = $"{v10}"
+    let v303 : unit = ()
+    let v304 : (unit -> unit) = closure13(v12, v295)
+    let v305 : unit = (fun () -> v304 (); v303) ()
+    let v313 : string = " }"
+    let v314 : string = $"{v313}"
+    let v322 : unit = ()
+    let v323 : (unit -> unit) = closure13(v12, v314)
+    let v324 : unit = (fun () -> v323 (); v322) ()
+    let v330 : string = v12.l0
+    let v331 : int64 = v0.l0
+    let v334 : string = " "
+    let v335 : string = v6 + v334 
+    let v339 : string = v335 + v7 
+    let v344 : string = " #"
+    let v345 : string = v339 + v344 
+    let v349 : (int64 -> string) = _.ToString()
+    let v350 : string = v349 v331
+    let v354 : string = v345 + v350 
+    let v358 : string = v354 + v334 
+    let v363 : string = "dice.accumulate_dice_rolls"
+    let v364 : string = v358 + v363 
+    let v369 : string = " / "
+    let v370 : string = v364 + v369 
+    let v374 : string = v370 + v330 
+    method21(v374)
 and closure116 (v0 : int64, v1 : uint8, v2 : int64) () : unit =
     let v3 : US2 = US2_1
     let v4 : bool = method6(v3)
     if v4 then
-        let v5 : unit = ()
-        let v6 : (unit -> unit) = closure9()
-        let v7 : unit = (fun () -> v6 (); v5) ()
-        let struct (v28 : Mut1, v29 : Mut3, v30 : Mut4, v31 : Mut5, v32 : Mut6, v33 : int64 option) = TraceState.trace_state.Value
-        let v46 : string = method13(v28, v29, v30, v31, v32, v33)
-        let v47 : string = method17()
-        let v48 : string = method95(v28, v29, v30, v31, v32, v33, v46, v47, v0, v1, v2)
-        method24(v48)
-and method98 (v0 : int8, v1 : int64, v2 : int64) : string =
-    let v3 : string = method19()
-    let v4 : Mut5 = {l0 = v3} : Mut5
-    let v7 : string = "{ "
-    let v8 : string = $"{v7}"
-    let v11 : unit = ()
-    let v12 : (unit -> unit) = closure13(v4, v8)
-    let v13 : unit = (fun () -> v12 (); v11) ()
-    let v18 : string = "power"
-    let v19 : string = $"{v18}"
-    let v22 : unit = ()
-    let v23 : (unit -> unit) = closure13(v4, v19)
-    let v24 : unit = (fun () -> v23 (); v22) ()
-    let v29 : string = " = "
-    let v30 : string = $"{v29}"
-    let v33 : unit = ()
-    let v34 : (unit -> unit) = closure13(v4, v30)
-    let v35 : unit = (fun () -> v34 (); v33) ()
-    let v39 : string = $"{v0}"
+        let v19 : unit = ()
+        let v20 : (unit -> unit) = closure9()
+        let v21 : unit = (fun () -> v20 (); v19) ()
+        let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut5, v46 : Mut6, v47 : int64 option) = TraceState.trace_state.Value
+        let v60 : string = method13(v42, v43, v44, v45, v46, v47)
+        let v61 : string = method17()
+        let v62 : string = method86(v42, v43, v44, v45, v46, v47, v60, v61, v0, v1, v2)
+        method22(v62)
+and method88 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : int64) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
     let v42 : unit = ()
-    let v43 : (unit -> unit) = closure13(v4, v39)
+    let v43 : (unit -> unit) = closure13(v11, v34)
     let v44 : unit = (fun () -> v43 (); v42) ()
-    let v49 : string = "; "
-    let v50 : string = $"{v49}"
-    let v53 : unit = ()
-    let v54 : (unit -> unit) = closure13(v4, v50)
-    let v55 : unit = (fun () -> v54 (); v53) ()
-    let v60 : string = "acc"
-    let v61 : string = $"{v60}"
-    let v64 : unit = ()
-    let v65 : (unit -> unit) = closure13(v4, v61)
-    let v66 : unit = (fun () -> v65 (); v64) ()
-    let v70 : string = $"{v29}"
-    let v73 : unit = ()
-    let v74 : (unit -> unit) = closure13(v4, v70)
-    let v75 : unit = (fun () -> v74 (); v73) ()
-    let v79 : string = $"{v1}"
-    let v82 : unit = ()
-    let v83 : (unit -> unit) = closure13(v4, v79)
-    let v84 : unit = (fun () -> v83 (); v82) ()
-    let v88 : string = $"{v49}"
-    let v91 : unit = ()
-    let v92 : (unit -> unit) = closure13(v4, v88)
-    let v93 : unit = (fun () -> v92 (); v91) ()
-    let v98 : string = "result"
-    let v99 : string = $"{v98}"
-    let v102 : unit = ()
-    let v103 : (unit -> unit) = closure13(v4, v99)
-    let v104 : unit = (fun () -> v103 (); v102) ()
-    let v108 : string = $"{v29}"
-    let v111 : unit = ()
-    let v112 : (unit -> unit) = closure13(v4, v108)
-    let v113 : unit = (fun () -> v112 (); v111) ()
-    let v117 : string = $"{v2}"
-    let v120 : unit = ()
-    let v121 : (unit -> unit) = closure13(v4, v117)
-    let v122 : unit = (fun () -> v121 (); v120) ()
-    let v127 : string = " }"
-    let v128 : string = $"{v127}"
-    let v131 : unit = ()
-    let v132 : (unit -> unit) = closure13(v4, v128)
-    let v133 : unit = (fun () -> v132 (); v131) ()
-    let v136 : string = v4.l0
-    v136
-and method97 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : int64) : string =
-    let v10 : int8 = -1y
-    let v11 : string = method98(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{-1y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "result"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure117 (v0 : int64, v1 : int64) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method97(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method96 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method88(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method87 (v0 : UH1, v1 : int64) : US10 =
     let v2 : int64 = v1 + 1L
-    let v3 : unit = ()
-    let v4 : (unit -> unit) = closure117(v1, v2)
-    let v5 : unit = (fun () -> v4 (); v3) ()
+    let v63 : unit = ()
+    let v64 : (unit -> unit) = closure117(v1, v2)
+    let v65 : unit = (fun () -> v64 (); v63) ()
     US10_0(v2, v0)
-and method100 (v0 : int8, v1 : int64, v2 : uint8) : string =
-    let v3 : string = method19()
-    let v4 : Mut5 = {l0 = v3} : Mut5
-    let v7 : string = "{ "
-    let v8 : string = $"{v7}"
-    let v11 : unit = ()
-    let v12 : (unit -> unit) = closure13(v4, v8)
-    let v13 : unit = (fun () -> v12 (); v11) ()
-    let v18 : string = "power"
-    let v19 : string = $"{v18}"
-    let v22 : unit = ()
-    let v23 : (unit -> unit) = closure13(v4, v19)
-    let v24 : unit = (fun () -> v23 (); v22) ()
-    let v29 : string = " = "
-    let v30 : string = $"{v29}"
-    let v33 : unit = ()
-    let v34 : (unit -> unit) = closure13(v4, v30)
-    let v35 : unit = (fun () -> v34 (); v33) ()
-    let v39 : string = $"{v0}"
+and method89 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
     let v42 : unit = ()
-    let v43 : (unit -> unit) = closure13(v4, v39)
+    let v43 : (unit -> unit) = closure13(v11, v34)
     let v44 : unit = (fun () -> v43 (); v42) ()
-    let v49 : string = "; "
-    let v50 : string = $"{v49}"
-    let v53 : unit = ()
-    let v54 : (unit -> unit) = closure13(v4, v50)
-    let v55 : unit = (fun () -> v54 (); v53) ()
-    let v60 : string = "acc"
-    let v61 : string = $"{v60}"
-    let v64 : unit = ()
-    let v65 : (unit -> unit) = closure13(v4, v61)
-    let v66 : unit = (fun () -> v65 (); v64) ()
-    let v70 : string = $"{v29}"
-    let v73 : unit = ()
-    let v74 : (unit -> unit) = closure13(v4, v70)
-    let v75 : unit = (fun () -> v74 (); v73) ()
-    let v79 : string = $"{v1}"
-    let v82 : unit = ()
-    let v83 : (unit -> unit) = closure13(v4, v79)
-    let v84 : unit = (fun () -> v83 (); v82) ()
-    let v88 : string = $"{v49}"
-    let v91 : unit = ()
-    let v92 : (unit -> unit) = closure13(v4, v88)
-    let v93 : unit = (fun () -> v92 (); v91) ()
-    let v98 : string = "roll"
-    let v99 : string = $"{v98}"
-    let v102 : unit = ()
-    let v103 : (unit -> unit) = closure13(v4, v99)
-    let v104 : unit = (fun () -> v103 (); v102) ()
-    let v108 : string = $"{v29}"
-    let v111 : unit = ()
-    let v112 : (unit -> unit) = closure13(v4, v108)
-    let v113 : unit = (fun () -> v112 (); v111) ()
-    let v117 : string = $"{v2}"
-    let v120 : unit = ()
-    let v121 : (unit -> unit) = closure13(v4, v117)
-    let v122 : unit = (fun () -> v121 (); v120) ()
-    let v127 : string = " }"
-    let v128 : string = $"{v127}"
-    let v131 : unit = ()
-    let v132 : (unit -> unit) = closure13(v4, v128)
-    let v133 : unit = (fun () -> v132 (); v131) ()
-    let v136 : string = v4.l0
-    v136
-and method99 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 0y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{0y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure118 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method99(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method94 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method89(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method85 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : unit = ()
-            let v9 : (unit -> unit) = closure116(v1, v3, v7)
-            let v10 : unit = (fun () -> v9 (); v8) ()
-            let v57 : int64 = v1 + v7
-            method96(v4, v57)
+            let v68 : unit = ()
+            let v69 : (unit -> unit) = closure116(v1, v3, v7)
+            let v70 : unit = (fun () -> v69 (); v68) ()
+            let v131 : int64 = v1 + v7
+            method87(v4, v131)
         else
-            let v59 : unit = ()
-            let v60 : (unit -> unit) = closure118(v1, v3)
-            let v61 : unit = (fun () -> v60 (); v59) ()
-            method96(v4, v1)
+            let v193 : unit = ()
+            let v194 : (unit -> unit) = closure118(v1, v3)
+            let v195 : unit = (fun () -> v194 (); v193) ()
+            method87(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method101 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 1y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method90 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{1y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure119 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method101(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method92 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method90(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method83 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3903,38 +6103,110 @@ and method92 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 6L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure115(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method94(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure115(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method85(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure119(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method94(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure119(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method85(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method102 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 2y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method91 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{2y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure120 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method102(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method90 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method91(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method81 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3942,38 +6214,110 @@ and method90 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 36L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure114(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method92(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure114(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method83(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure120(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method92(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure120(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method83(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method103 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 3y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method92 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{3y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure121 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method103(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method88 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method92(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method79 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3981,38 +6325,110 @@ and method88 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 216L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure113(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method90(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure113(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method81(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure121(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method90(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure121(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method81(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method104 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 4y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method93 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{4y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure122 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method104(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method86 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method93(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method77 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4020,38 +6436,110 @@ and method86 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 1296L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure112(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method88(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure112(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method79(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure122(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method88(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure122(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method79(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method105 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 5y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method94 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{5y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure123 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method105(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method84 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method94(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method75 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4059,38 +6547,110 @@ and method84 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 7776L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure111(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method86(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure111(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method77(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure123(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method86(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure123(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method77(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method106 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 6y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method95 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{6y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure124 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method106(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method82 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method95(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method73 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4098,38 +6658,110 @@ and method82 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 46656L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure110(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method84(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure110(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method75(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure124(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method84(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure124(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method75(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method107 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 7y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method96 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{7y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure125 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method107(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method80 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method96(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method71 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4137,38 +6769,110 @@ and method80 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 279936L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure109(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method82(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure109(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method73(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure125(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method82(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure125(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method73(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method108 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 8y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method97 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{8y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure126 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method108(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method78 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method97(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method69 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4176,38 +6880,110 @@ and method78 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 1679616L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure108(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method80(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure108(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method71(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure126(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method80(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure126(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method71(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method109 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 9y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method98 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{9y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure127 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method109(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method76 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method98(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method67 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4215,38 +6991,110 @@ and method76 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 10077696L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure107(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method78(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure107(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method69(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure127(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method78(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure127(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method69(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method110 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 10y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method99 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{10y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure128 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method110(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method74 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method99(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method65 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4254,38 +7102,110 @@ and method74 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 60466176L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure106(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method76(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure106(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method67(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure128(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method76(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure128(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method67(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method111 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 11y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method100 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{11y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure129 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method111(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method72 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method100(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method63 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4293,38 +7213,110 @@ and method72 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 362797056L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure105(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method74(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure105(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method65(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure129(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method74(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure129(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method65(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method112 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 12y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method101 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{12y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure130 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method112(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method70 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method101(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method61 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4332,38 +7324,110 @@ and method70 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 2176782336L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure104(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method72(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure104(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method63(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure130(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method72(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure130(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method63(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method113 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 13y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method102 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{13y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure131 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method113(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method68 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method102(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method59 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4371,38 +7435,110 @@ and method68 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 13060694016L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure103(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method70(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure103(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method61(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure131(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method70(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure131(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method61(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method114 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 14y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method103 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{14y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure132 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method114(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method66 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method103(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method57 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4410,38 +7546,110 @@ and method66 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 78364164096L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure102(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method68(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure102(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method59(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure132(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method68(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure132(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method59(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method115 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 15y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method104 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{15y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure133 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method115(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method64 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method104(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method55 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4449,38 +7657,110 @@ and method64 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 470184984576L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure101(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method66(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure101(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method57(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure133(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method66(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure133(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method57(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method116 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 16y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method105 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{16y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure134 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method116(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method62 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method105(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method53 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4488,38 +7768,110 @@ and method62 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 2821109907456L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure100(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method64(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure100(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method55(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure134(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method64(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure134(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method55(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method117 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 17y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method106 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{17y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure135 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method117(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method60 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method106(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method51 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4527,38 +7879,110 @@ and method60 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 16926659444736L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure99(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method62(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure99(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method53(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure135(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method62(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure135(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method53(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method118 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 18y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method107 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{18y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure136 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method118(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method58 (v0 : UH1, v1 : int64) : US10 =
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method107(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method49 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -4566,193 +7990,109 @@ and method58 (v0 : UH1, v1 : int64) : US10 =
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
             let v8 : int64 = v7 * 101559956668416L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure98(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method60(v4, v58)
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure98(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method51(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure136(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method60(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure136(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method51(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method119 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 19y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
+and method108 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{19y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
 and closure137 (v0 : int64, v1 : uint8) () : unit =
     let v2 : US2 = US2_1
     let v3 : bool = method6(v2)
     if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method119(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method56 (v0 : UH1, v1 : int64) : US10 =
-    match v0 with
-    | UH1_1(v3, v4) -> (* Cons *)
-        let v5 : bool = v3 > 1uy
-        if v5 then
-            let v6 : uint8 = v3 - 1uy
-            let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 609359740010496L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure97(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method58(v4, v58)
-        else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure137(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method58(v4, v1)
-    | UH1_0 -> (* Nil *)
-        US10_1
-and method120 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 20y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
-and closure138 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : US2 = US2_1
-    let v3 : bool = method6(v2)
-    if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method120(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method54 (v0 : UH1, v1 : int64) : US10 =
-    match v0 with
-    | UH1_1(v3, v4) -> (* Cons *)
-        let v5 : bool = v3 > 1uy
-        if v5 then
-            let v6 : uint8 = v3 - 1uy
-            let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 3656158440062976L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure96(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method56(v4, v58)
-        else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure138(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method56(v4, v1)
-    | UH1_0 -> (* Nil *)
-        US10_1
-and method121 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 21y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
-and closure139 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : US2 = US2_1
-    let v3 : bool = method6(v2)
-    if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method121(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method52 (v0 : UH1, v1 : int64) : US10 =
-    match v0 with
-    | UH1_1(v3, v4) -> (* Cons *)
-        let v5 : bool = v3 > 1uy
-        if v5 then
-            let v6 : uint8 = v3 - 1uy
-            let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 21936950640377856L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure95(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method54(v4, v58)
-        else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure139(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method54(v4, v1)
-    | UH1_0 -> (* Nil *)
-        US10_1
-and method122 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 22y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
-and closure140 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : US2 = US2_1
-    let v3 : bool = method6(v2)
-    if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method122(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
-and method50 (v0 : UH1, v1 : int64) : US10 =
-    match v0 with
-    | UH1_1(v3, v4) -> (* Cons *)
-        let v5 : bool = v3 > 1uy
-        if v5 then
-            let v6 : uint8 = v3 - 1uy
-            let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 131621703842267136L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure94(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method52(v4, v58)
-        else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure140(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method52(v4, v1)
-    | UH1_0 -> (* Nil *)
-        US10_1
-and method123 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int8 = 23y
-    let v11 : string = method100(v10, v8, v9)
-    let v12 : int64 = v0.l0
-    let v14 : string = "dice.accumulate_dice_rolls"
-    let v15 : string = $"{v6} {v7} #{v12} %s{v14} / {v11}"
-    method23(v15)
-and closure141 (v0 : int64, v1 : uint8) () : unit =
-    let v2 : US2 = US2_1
-    let v3 : bool = method6(v2)
-    if v3 then
-        let v4 : unit = ()
-        let v5 : (unit -> unit) = closure9()
-        let v6 : unit = (fun () -> v5 (); v4) ()
-        let struct (v27 : Mut1, v28 : Mut3, v29 : Mut4, v30 : Mut5, v31 : Mut6, v32 : int64 option) = TraceState.trace_state.Value
-        let v45 : string = method13(v27, v28, v29, v30, v31, v32)
-        let v46 : string = method17()
-        let v47 : string = method123(v27, v28, v29, v30, v31, v32, v45, v46, v0, v1)
-        method24(v47)
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method108(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
 and method47 (v0 : UH1, v1 : int64) : US10 =
     match v0 with
     | UH1_1(v3, v4) -> (* Cons *)
@@ -4760,58 +8100,502 @@ and method47 (v0 : UH1, v1 : int64) : US10 =
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 789730223053602816L
-            let v9 : unit = ()
-            let v10 : (unit -> unit) = closure93(v1, v3, v8)
-            let v11 : unit = (fun () -> v10 (); v9) ()
-            let v58 : int64 = v1 + v8
-            method50(v4, v58)
+            let v8 : int64 = v7 * 609359740010496L
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure97(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method49(v4, v132)
         else
-            let v60 : unit = ()
-            let v61 : (unit -> unit) = closure141(v1, v3)
-            let v62 : unit = (fun () -> v61 (); v60) ()
-            method50(v4, v1)
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure137(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method49(v4, v1)
     | UH1_0 -> (* Nil *)
         US10_1
-and method45 (v0 : UH1, v1 : int8) : int64 =
+and method109 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{20y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
+and closure138 (v0 : int64, v1 : uint8) () : unit =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method109(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method45 (v0 : UH1, v1 : int64) : US10 =
+    match v0 with
+    | UH1_1(v3, v4) -> (* Cons *)
+        let v5 : bool = v3 > 1uy
+        if v5 then
+            let v6 : uint8 = v3 - 1uy
+            let v7 : int64 = int64 v6
+            let v8 : int64 = v7 * 3656158440062976L
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure96(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method47(v4, v132)
+        else
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure138(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method47(v4, v1)
+    | UH1_0 -> (* Nil *)
+        US10_1
+and method110 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{21y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
+and closure139 (v0 : int64, v1 : uint8) () : unit =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method110(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method43 (v0 : UH1, v1 : int64) : US10 =
+    match v0 with
+    | UH1_1(v3, v4) -> (* Cons *)
+        let v5 : bool = v3 > 1uy
+        if v5 then
+            let v6 : uint8 = v3 - 1uy
+            let v7 : int64 = int64 v6
+            let v8 : int64 = v7 * 21936950640377856L
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure95(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method45(v4, v132)
+        else
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure139(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method45(v4, v1)
+    | UH1_0 -> (* Nil *)
+        US10_1
+and method111 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{22y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
+and closure140 (v0 : int64, v1 : uint8) () : unit =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method111(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method41 (v0 : UH1, v1 : int64) : US10 =
+    match v0 with
+    | UH1_1(v3, v4) -> (* Cons *)
+        let v5 : bool = v3 > 1uy
+        if v5 then
+            let v6 : uint8 = v3 - 1uy
+            let v7 : int64 = int64 v6
+            let v8 : int64 = v7 * 131621703842267136L
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure94(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method43(v4, v132)
+        else
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure140(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method43(v4, v1)
+    | UH1_0 -> (* Nil *)
+        US10_1
+and method112 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : string = method18()
+    let v11 : Mut5 = {l0 = v10} : Mut5
+    let v14 : string = "{ "
+    let v15 : string = $"{v14}"
+    let v23 : unit = ()
+    let v24 : (unit -> unit) = closure13(v11, v15)
+    let v25 : unit = (fun () -> v24 (); v23) ()
+    let v33 : string = "power"
+    let v34 : string = $"{v33}"
+    let v42 : unit = ()
+    let v43 : (unit -> unit) = closure13(v11, v34)
+    let v44 : unit = (fun () -> v43 (); v42) ()
+    let v52 : string = " = "
+    let v53 : string = $"{v52}"
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure13(v11, v53)
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v73 : string = $"{23y}"
+    let v81 : unit = ()
+    let v82 : (unit -> unit) = closure13(v11, v73)
+    let v83 : unit = (fun () -> v82 (); v81) ()
+    let v91 : string = "; "
+    let v92 : string = $"{v91}"
+    let v100 : unit = ()
+    let v101 : (unit -> unit) = closure13(v11, v92)
+    let v102 : unit = (fun () -> v101 (); v100) ()
+    let v110 : string = "acc"
+    let v111 : string = $"{v110}"
+    let v119 : unit = ()
+    let v120 : (unit -> unit) = closure13(v11, v111)
+    let v121 : unit = (fun () -> v120 (); v119) ()
+    let v128 : string = $"{v52}"
+    let v136 : unit = ()
+    let v137 : (unit -> unit) = closure13(v11, v128)
+    let v138 : unit = (fun () -> v137 (); v136) ()
+    let v148 : string = $"{v8}"
+    let v156 : unit = ()
+    let v157 : (unit -> unit) = closure13(v11, v148)
+    let v158 : unit = (fun () -> v157 (); v156) ()
+    let v165 : string = $"{v91}"
+    let v173 : unit = ()
+    let v174 : (unit -> unit) = closure13(v11, v165)
+    let v175 : unit = (fun () -> v174 (); v173) ()
+    let v183 : string = "roll"
+    let v184 : string = $"{v183}"
+    let v192 : unit = ()
+    let v193 : (unit -> unit) = closure13(v11, v184)
+    let v194 : unit = (fun () -> v193 (); v192) ()
+    let v201 : string = $"{v52}"
+    let v209 : unit = ()
+    let v210 : (unit -> unit) = closure13(v11, v201)
+    let v211 : unit = (fun () -> v210 (); v209) ()
+    let v221 : string = $"{v9}"
+    let v229 : unit = ()
+    let v230 : (unit -> unit) = closure13(v11, v221)
+    let v231 : unit = (fun () -> v230 (); v229) ()
+    let v239 : string = " }"
+    let v240 : string = $"{v239}"
+    let v248 : unit = ()
+    let v249 : (unit -> unit) = closure13(v11, v240)
+    let v250 : unit = (fun () -> v249 (); v248) ()
+    let v256 : string = v11.l0
+    let v257 : int64 = v0.l0
+    let v260 : string = " "
+    let v261 : string = v6 + v260 
+    let v265 : string = v261 + v7 
+    let v270 : string = " #"
+    let v271 : string = v265 + v270 
+    let v275 : (int64 -> string) = _.ToString()
+    let v276 : string = v275 v257
+    let v280 : string = v271 + v276 
+    let v284 : string = v280 + v260 
+    let v289 : string = "dice.accumulate_dice_rolls"
+    let v290 : string = v284 + v289 
+    let v295 : string = " / "
+    let v296 : string = v290 + v295 
+    let v300 : string = v296 + v256 
+    method21(v300)
+and closure141 (v0 : int64, v1 : uint8) () : unit =
+    let v2 : US2 = US2_1
+    let v3 : bool = method6(v2)
+    if v3 then
+        let v18 : unit = ()
+        let v19 : (unit -> unit) = closure9()
+        let v20 : unit = (fun () -> v19 (); v18) ()
+        let struct (v41 : Mut1, v42 : Mut3, v43 : Mut4, v44 : Mut5, v45 : Mut6, v46 : int64 option) = TraceState.trace_state.Value
+        let v59 : string = method13(v41, v42, v43, v44, v45, v46)
+        let v60 : string = method17()
+        let v61 : string = method112(v41, v42, v43, v44, v45, v46, v59, v60, v0, v1)
+        method22(v61)
+and method39 (v0 : UH1, v1 : int64) : US10 =
+    match v0 with
+    | UH1_1(v3, v4) -> (* Cons *)
+        let v5 : bool = v3 > 1uy
+        if v5 then
+            let v6 : uint8 = v3 - 1uy
+            let v7 : int64 = int64 v6
+            let v8 : int64 = v7 * 789730223053602816L
+            let v69 : unit = ()
+            let v70 : (unit -> unit) = closure93(v1, v3, v8)
+            let v71 : unit = (fun () -> v70 (); v69) ()
+            let v132 : int64 = v1 + v8
+            method41(v4, v132)
+        else
+            let v194 : unit = ()
+            let v195 : (unit -> unit) = closure141(v1, v3)
+            let v196 : unit = (fun () -> v195 (); v194) ()
+            method41(v4, v1)
+    | UH1_0 -> (* Nil *)
+        US10_1
+and method37 (v0 : UH1, v1 : int8) : int64 =
     let v2 : bool = v1 < 24y
     if v2 then
-        let v3 : uint8 = method46()
+        let v3 : uint8 = method38()
         let v4 : UH1 = UH1_1(v3, v0)
         let v5 : int8 = v1 + 1y
-        method45(v4, v5)
+        method37(v4, v5)
     else
         let v7 : int64 = 0L
-        let v8 : US10 = method47(v0, v7)
+        let v8 : US10 = method39(v0, v7)
         match v8 with
         | US10_0(v9, v10) -> (* Some *)
             let v11 : bool = v9 <= 9223372036854775807L
             if v11 then
                 v9
             else
-                let v12 : uint8 = method46()
-                let v13 : uint8 = method46()
-                let v14 : uint8 = method46()
-                let v15 : uint8 = method46()
-                let v16 : uint8 = method46()
-                let v17 : uint8 = method46()
-                let v18 : uint8 = method46()
-                let v19 : uint8 = method46()
-                let v20 : uint8 = method46()
-                let v21 : uint8 = method46()
-                let v22 : uint8 = method46()
-                let v23 : uint8 = method46()
-                let v24 : uint8 = method46()
-                let v25 : uint8 = method46()
-                let v26 : uint8 = method46()
-                let v27 : uint8 = method46()
-                let v28 : uint8 = method46()
-                let v29 : uint8 = method46()
-                let v30 : uint8 = method46()
-                let v31 : uint8 = method46()
-                let v32 : uint8 = method46()
-                let v33 : uint8 = method46()
-                let v34 : uint8 = method46()
+                let v12 : uint8 = method38()
+                let v13 : uint8 = method38()
+                let v14 : uint8 = method38()
+                let v15 : uint8 = method38()
+                let v16 : uint8 = method38()
+                let v17 : uint8 = method38()
+                let v18 : uint8 = method38()
+                let v19 : uint8 = method38()
+                let v20 : uint8 = method38()
+                let v21 : uint8 = method38()
+                let v22 : uint8 = method38()
+                let v23 : uint8 = method38()
+                let v24 : uint8 = method38()
+                let v25 : uint8 = method38()
+                let v26 : uint8 = method38()
+                let v27 : uint8 = method38()
+                let v28 : uint8 = method38()
+                let v29 : uint8 = method38()
+                let v30 : uint8 = method38()
+                let v31 : uint8 = method38()
+                let v32 : uint8 = method38()
+                let v33 : uint8 = method38()
+                let v34 : uint8 = method38()
                 let v35 : UH1 = UH1_0
                 let v36 : UH1 = UH1_1(v34, v35)
                 let v37 : UH1 = UH1_1(v33, v36)
@@ -4837,31 +8621,31 @@ and method45 (v0 : UH1, v1 : int8) : int64 =
                 let v57 : UH1 = UH1_1(v13, v56)
                 let v58 : UH1 = UH1_1(v12, v57)
                 let v59 : int8 = 23y
-                method45(v58, v59)
+                method37(v58, v59)
         | _ ->
-            let v62 : uint8 = method46()
-            let v63 : uint8 = method46()
-            let v64 : uint8 = method46()
-            let v65 : uint8 = method46()
-            let v66 : uint8 = method46()
-            let v67 : uint8 = method46()
-            let v68 : uint8 = method46()
-            let v69 : uint8 = method46()
-            let v70 : uint8 = method46()
-            let v71 : uint8 = method46()
-            let v72 : uint8 = method46()
-            let v73 : uint8 = method46()
-            let v74 : uint8 = method46()
-            let v75 : uint8 = method46()
-            let v76 : uint8 = method46()
-            let v77 : uint8 = method46()
-            let v78 : uint8 = method46()
-            let v79 : uint8 = method46()
-            let v80 : uint8 = method46()
-            let v81 : uint8 = method46()
-            let v82 : uint8 = method46()
-            let v83 : uint8 = method46()
-            let v84 : uint8 = method46()
+            let v62 : uint8 = method38()
+            let v63 : uint8 = method38()
+            let v64 : uint8 = method38()
+            let v65 : uint8 = method38()
+            let v66 : uint8 = method38()
+            let v67 : uint8 = method38()
+            let v68 : uint8 = method38()
+            let v69 : uint8 = method38()
+            let v70 : uint8 = method38()
+            let v71 : uint8 = method38()
+            let v72 : uint8 = method38()
+            let v73 : uint8 = method38()
+            let v74 : uint8 = method38()
+            let v75 : uint8 = method38()
+            let v76 : uint8 = method38()
+            let v77 : uint8 = method38()
+            let v78 : uint8 = method38()
+            let v79 : uint8 = method38()
+            let v80 : uint8 = method38()
+            let v81 : uint8 = method38()
+            let v82 : uint8 = method38()
+            let v83 : uint8 = method38()
+            let v84 : uint8 = method38()
             let v85 : UH1 = UH1_0
             let v86 : UH1 = UH1_1(v84, v85)
             let v87 : UH1 = UH1_1(v83, v86)
@@ -4887,64 +8671,73 @@ and method45 (v0 : UH1, v1 : int8) : int64 =
             let v107 : UH1 = UH1_1(v63, v106)
             let v108 : UH1 = UH1_1(v62, v107)
             let v109 : int8 = 23y
-            method45(v108, v109)
-and method125 (v0 : int64) : string =
-    let v1 : string = method19()
-    let v2 : Mut5 = {l0 = v1} : Mut5
-    let v5 : string = "{ "
-    let v6 : string = $"{v5}"
-    let v9 : unit = ()
-    let v10 : (unit -> unit) = closure13(v2, v6)
-    let v11 : unit = (fun () -> v10 (); v9) ()
-    let v16 : string = "result"
-    let v17 : string = $"{v16}"
-    let v20 : unit = ()
-    let v21 : (unit -> unit) = closure13(v2, v17)
-    let v22 : unit = (fun () -> v21 (); v20) ()
-    let v27 : string = " = "
-    let v28 : string = $"{v27}"
-    let v31 : unit = ()
-    let v32 : (unit -> unit) = closure13(v2, v28)
-    let v33 : unit = (fun () -> v32 (); v31) ()
-    let v37 : string = $"{v0}"
-    let v40 : unit = ()
-    let v41 : (unit -> unit) = closure13(v2, v37)
-    let v42 : unit = (fun () -> v41 (); v40) ()
-    let v47 : string = " }"
-    let v48 : string = $"{v47}"
-    let v51 : unit = ()
-    let v52 : (unit -> unit) = closure13(v2, v48)
-    let v53 : unit = (fun () -> v52 (); v51) ()
-    let v56 : string = v2.l0
-    v56
-and method124 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64) : string =
-    let v9 : string = method125(v8)
-    let v10 : int64 = v0.l0
-    let v12 : string = "dice.main"
-    let v13 : string = $"{v6} {v7} #{v10} %s{v12} / {v9}"
-    method23(v13)
+            method37(v108, v109)
+and method113 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64) : string =
+    let v9 : string = method18()
+    let v10 : Mut5 = {l0 = v9} : Mut5
+    let v13 : string = "{ "
+    let v14 : string = $"{v13}"
+    let v22 : unit = ()
+    let v23 : (unit -> unit) = closure13(v10, v14)
+    let v24 : unit = (fun () -> v23 (); v22) ()
+    let v32 : string = "result"
+    let v33 : string = $"{v32}"
+    let v41 : unit = ()
+    let v42 : (unit -> unit) = closure13(v10, v33)
+    let v43 : unit = (fun () -> v42 (); v41) ()
+    let v51 : string = " = "
+    let v52 : string = $"{v51}"
+    let v60 : unit = ()
+    let v61 : (unit -> unit) = closure13(v10, v52)
+    let v62 : unit = (fun () -> v61 (); v60) ()
+    let v72 : string = $"{v8}"
+    let v80 : unit = ()
+    let v81 : (unit -> unit) = closure13(v10, v72)
+    let v82 : unit = (fun () -> v81 (); v80) ()
+    let v90 : string = " }"
+    let v91 : string = $"{v90}"
+    let v99 : unit = ()
+    let v100 : (unit -> unit) = closure13(v10, v91)
+    let v101 : unit = (fun () -> v100 (); v99) ()
+    let v107 : string = v10.l0
+    let v108 : int64 = v0.l0
+    let v111 : string = " "
+    let v112 : string = v6 + v111 
+    let v116 : string = v112 + v7 
+    let v121 : string = " #"
+    let v122 : string = v116 + v121 
+    let v126 : (int64 -> string) = _.ToString()
+    let v127 : string = v126 v108
+    let v131 : string = v122 + v127 
+    let v135 : string = v131 + v111 
+    let v140 : string = "dice.main"
+    let v141 : string = v135 + v140 
+    let v146 : string = " / "
+    let v147 : string = v141 + v146 
+    let v151 : string = v147 + v107 
+    method21(v151)
 and closure142 (v0 : int64) () : unit =
     let v1 : US2 = US2_1
     let v2 : bool = method6(v1)
     if v2 then
-        let v3 : unit = ()
-        let v4 : (unit -> unit) = closure9()
-        let v5 : unit = (fun () -> v4 (); v3) ()
-        let struct (v26 : Mut1, v27 : Mut3, v28 : Mut4, v29 : Mut5, v30 : Mut6, v31 : int64 option) = TraceState.trace_state.Value
-        let v44 : string = method13(v26, v27, v28, v29, v30, v31)
-        let v45 : string = method17()
-        let v46 : string = method124(v26, v27, v28, v29, v30, v31, v44, v45, v0)
-        method24(v46)
+        let v17 : unit = ()
+        let v18 : (unit -> unit) = closure9()
+        let v19 : unit = (fun () -> v18 (); v17) ()
+        let struct (v40 : Mut1, v41 : Mut3, v42 : Mut4, v43 : Mut5, v44 : Mut6, v45 : int64 option) = TraceState.trace_state.Value
+        let v58 : string = method13(v40, v41, v42, v43, v44, v45)
+        let v59 : string = method17()
+        let v60 : string = method113(v40, v41, v42, v43, v44, v45, v58, v59, v0)
+        method22(v60)
 and closure91 () (v0 : (string [])) : int32 =
-    let v1 : unit = ()
-    let v2 : (unit -> unit) = closure92()
-    let v3 : unit = (fun () -> v2 (); v1) ()
-    let v50 : UH1 = UH1_0
-    let v51 : int8 = 0y
-    let v52 : int64 = method45(v50, v51)
-    let v53 : unit = ()
-    let v54 : (unit -> unit) = closure142(v52)
-    let v55 : unit = (fun () -> v54 (); v53) ()
+    let v61 : unit = ()
+    let v62 : (unit -> unit) = closure92()
+    let v63 : unit = (fun () -> v62 (); v61) ()
+    let v124 : UH1 = UH1_0
+    let v125 : int8 = 0y
+    let v126 : int64 = method37(v124, v125)
+    let v187 : unit = ()
+    let v188 : (unit -> unit) = closure142(v126)
+    let v189 : unit = (fun () -> v188 (); v187) ()
     0
 let v0 : (int64 -> (UH0 -> UH0)) = closure0()
 let rotate_numbers x = v0 x
