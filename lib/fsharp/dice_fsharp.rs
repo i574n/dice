@@ -16,8 +16,9 @@ mod module_fc267fc3 {
         use super::*;
         pub mod DiceFSharp {
             use super::*;
-            use crate::Polyglot::Common::trace;
             use crate::Polyglot::Common::TraceLevel;
+            use crate::Polyglot::Common::trace;
+            use fable_library_rust::List_::List;
             use fable_library_rust::List_::cons;
             use fable_library_rust::List_::empty;
             use fable_library_rust::List_::head;
@@ -26,14 +27,13 @@ mod module_fc267fc3 {
             use fable_library_rust::List_::length;
             use fable_library_rust::List_::tail;
             use fable_library_rust::List_::tryItem;
-            use fable_library_rust::List_::List;
-            use fable_library_rust::NativeArray_::Array;
-            use fable_library_rust::Native_::getZero;
             use fable_library_rust::Native_::Func0;
             use fable_library_rust::Native_::Func1;
             use fable_library_rust::Native_::Func2;
             use fable_library_rust::Native_::LrcPtr;
             use fable_library_rust::Native_::MutCell;
+            use fable_library_rust::Native_::getZero;
+            use fable_library_rust::NativeArray_::Array;
             use fable_library_rust::Option_::iterate;
             use fable_library_rust::Seq_::cache;
             use fable_library_rust::Seq_::item as item_1;
@@ -95,12 +95,13 @@ mod module_fc267fc3 {
                                     ));
                                 iterate(
                                     {
-                                        let arg_1: string =
-                                                         sprintf!("accumulateDiceRolls / power: {} / acc: {} / roll: {} / value: {}",
-                                                                  power.get().clone(),
-                                                                  acc.get().clone(),
-                                                                  roll_1,
-                                                                  value);
+                                        let arg_1: string = sprintf!(
+                                            "accumulateDiceRolls / power: {} / acc: {} / roll: {} / value: {}",
+                                            power.get().clone(),
+                                            acc.get().clone(),
+                                            roll_1,
+                                            value
+                                        );
                                         Func1::new({
                                             let arg_1 = arg_1.clone();
                                             move |func_1: Func1<string, ()>| func_1(arg_1.clone())
