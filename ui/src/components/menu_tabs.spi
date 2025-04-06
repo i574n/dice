@@ -81,7 +81,7 @@ inl render tab =
                             href =
                                 fun () =>
                                     inl url = url |> leptos.signal_get
-                                    $'!url + "#/" + !id + ""'
+                                    $'!url + "\#/" + !id + ""'
                             icon =
                                 match tab' with
                                 | Dice _ => svg.dice.render class [] |> leptos.element_to_fragment

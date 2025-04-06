@@ -42,6 +42,15 @@ mod module_7c9aa503 {
         use fable_library_rust::String_::trimStartChars;
         use fable_library_rust::System::Collections::Generic::IEnumerable_1;
         use fable_library_rust::TimeSpan_::TimeSpan;
+        pub trait IOsEnviron: core::fmt::Debug + core::fmt::Display {
+            fn environ(&self) -> LrcPtr<dyn Any>;
+        }
+        impl<V: IOsEnviron + core::fmt::Debug + core::fmt::Display> IOsEnviron for LrcPtr<V> {
+            #[inline]
+            fn environ(&self) -> LrcPtr<dyn Any> {
+                (**self).environ()
+            }
+        }
         pub mod TraceState {
             use super::*;
             pub fn trace_state() -> LrcPtr<
@@ -84,15 +93,6 @@ mod module_7c9aa503 {
                         ))
                     })
                     .clone()
-            }
-        }
-        pub trait IOsEnviron: core::fmt::Debug + core::fmt::Display {
-            fn environ(&self) -> LrcPtr<dyn Any>;
-        }
-        impl<V: IOsEnviron + core::fmt::Debug + core::fmt::Display> IOsEnviron for LrcPtr<V> {
-            #[inline]
-            fn environ(&self) -> LrcPtr<dyn Any> {
-                (**self).environ()
             }
         }
         #[derive(Clone, Debug)]
@@ -250,6 +250,7 @@ mod module_7c9aa503 {
             US6_3(Dice::US5),
             US6_4(Dice::US5),
             US6_5(Dice::US5),
+            US6_6(Dice::US5),
         }
         impl core::fmt::Display for US6 {
             fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
@@ -719,8 +720,8 @@ mod module_7c9aa503 {
             let patternInput: (Dice::US3, Dice::US4) = Dice::method8();
             let _run_target_args__v3: (Dice::US3, Dice::US4) =
                 (patternInput.0.clone(), patternInput.1.clone());
-            let v173: Dice::US4 = _run_target_args__v3.1.clone();
-            let v172: Dice::US3 = _run_target_args__v3.0.clone();
+            let v185: Dice::US4 = _run_target_args__v3.1.clone();
+            let v184: Dice::US3 = _run_target_args__v3.0.clone();
             (
                 LrcPtr::new(Dice::Mut1 {
                     l0: MutCell::new(1_i64),
@@ -735,8 +736,8 @@ mod module_7c9aa503 {
                     l0: MutCell::new(string("")),
                 }),
                 LrcPtr::new(Dice::Mut6 {
-                    l0: MutCell::new(match &v172 {
-                        Dice::US3::US3_0(v172_0_0) => match &v172 {
+                    l0: MutCell::new(match &v184 {
+                        Dice::US3::US3_0(v184_0_0) => match &v184 {
                             Dice::US3::US3_0(x) => x.clone(),
                             _ => unreachable!(),
                         }
@@ -744,8 +745,8 @@ mod module_7c9aa503 {
                         _ => v0_1.clone(),
                     }),
                 }),
-                match &v173 {
-                    Dice::US4::US4_0(v173_0_0) => Some(match &v173 {
+                match &v185 {
+                    Dice::US4::US4_0(v185_0_0) => Some(match &v185 {
                         Dice::US4::US4_0(x) => x.clone(),
                         _ => unreachable!(),
                     }),
@@ -832,14 +833,14 @@ mod module_7c9aa503 {
             v4_1: LrcPtr<Dice::Mut6>,
             v5: Option<i64>,
         ) -> string {
-            let v212: Dice::US4 = defaultValue(Dice::US4::US4_1, map(Dice::method14(), v5));
-            let v344: DateTime = match &v212 {
-                Dice::US4::US4_0(v212_0_0) => {
-                    let v292: TimeSpan = TimeSpan::new_ticks(
+            let v220: Dice::US4 = defaultValue(Dice::US4::US4_1, map(Dice::method14(), v5));
+            let v360: DateTime = match &v220 {
+                Dice::US4::US4_0(v220_0_0) => {
+                    let v303: TimeSpan = TimeSpan::new_ticks(
                         ({
                             let _arg: DateTime = DateTime::now();
                             _arg.ticks()
-                        }) - (match &v212 {
+                        }) - (match &v220 {
                             Dice::US4::US4_0(x) => x.clone(),
                             _ => unreachable!(),
                         }),
@@ -848,21 +849,21 @@ mod module_7c9aa503 {
                         1_i32,
                         1_i32,
                         1_i32,
-                        v292.hours(),
-                        v292.minutes(),
-                        v292.seconds(),
-                        v292.milliseconds(),
+                        v303.hours(),
+                        v303.minutes(),
+                        v303.seconds(),
+                        v303.milliseconds(),
                     )
                 }
                 _ => DateTime::now(),
             };
-            let v346: string = Dice::method15();
-            let provider: string = if (v346.clone()) == string("") {
+            let v361: string = Dice::method15();
+            let provider: string = if (v361.clone()) == string("") {
                 string("M-d-y hh:mm:ss tt")
             } else {
-                v346
+                v361
             };
-            v344.toString(provider)
+            v360.toString(provider)
         }
         pub fn method18() -> string {
             string("")
@@ -887,9 +888,9 @@ mod module_7c9aa503 {
             let v30: string = v9.l0.get().clone();
             let v49: &str = inline_colorization::color_bright_blue;
             let v56: &str = &*v30;
-            let v84: &str = inline_colorization::color_reset;
-            let v86: std::string::String = format!("{}{}{}", v49, v56, v84);
-            fable_library_rust::String_::fromString(v86)
+            let v87: &str = inline_colorization::color_reset;
+            let v89: std::string::String = format!("{}{}{}", v49, v56, v87);
+            fable_library_rust::String_::fromString(v89)
         }
         pub fn method21(v0_1: string) -> string {
             trimEndChars(

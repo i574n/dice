@@ -26,7 +26,7 @@ console_error_panic_hook = { version = ">=0.1,<1"}
 console_log = { version = "1.0"}
 gloo-net = { version = ">=0.6,<1", features = ["http"] }
 js-sys = ">=0.3,<1"
-leptos = { version = ">=0.7,<1", features = ["csr", "nightly"] }
+leptos = { version = "0.8.0-beta", features = ["csr", "nightly"] }
 leptos_router = { version = ">=0.7,<1", features = ["nightly"] }
 log = ">=0.4,<1"
 reqwest-wasm = { version = ">=0.11,<1", features = ["json"] }
@@ -37,3 +37,4 @@ serde-wasm-bindgen = ">=0.6,<1"
 wasm-bindgen = { version = ">=0.2,<1" }
 wasm-bindgen-futures = ">=0.4,<1"
 web-sys = { version = ">=0.3,<1", features = ["Storage"] }
+getrandom = { version = ">=0.2,<1", features = ["js"], default-features = false }

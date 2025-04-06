@@ -10,7 +10,13 @@ inl accumulate_dice_rolls
     (power : i8)
     acc
     =
-    inl rec body acc power rolls =
+    // inl rec body acc power rolls =
+    inl rec body forall a {number} b {number} c {number}.
+        (acc : a)
+        (power : b)
+        (rolls : list c)
+        : option (a * list c)
+        =
         match rolls with
         | _ when power < 0 =>
             inl result = acc + 1
@@ -31,7 +37,13 @@ inl accumulate_dice_rolls
                 fun () => "dice.accumulate_dice_rolls"
                 fun () => { power acc roll }
             loop acc (power - 1) rest
-    and inl loop acc power rolls =
+    // and inl loop acc power rolls =
+    and inl loop forall a {number} b {number} c {number}.
+        (acc : a)
+        (power : b)
+        (rolls : list c)
+        : option (a * list c)
+        =
         if var_is rolls |> not
         then body acc power rolls
         else
@@ -47,8 +59,10 @@ inl roll_within_bounds max rolls =
     | _ => None
 
 /// ## calculate_dice_count
-inl calculate_dice_count max =
-    inl rec body n p =
+// inl calculate_dice_count max =
+inl calculate_dice_count forall a {number} b {number}. (max : a) : b =
+    // inl rec body n p =
+    inl rec body forall t {number}. (n : t) (p : a) : t =
         inl return () =
             trace Debug
                 fun () => "dice.calculate_dice_count"
@@ -60,7 +74,8 @@ inl calculate_dice_count max =
             then loop (n + 1) p'
             else return ()
         else return ()
-    and inl loop n p =
+    // and inl loop n p =
+    and inl loop forall t {number}. (n : t) (p : a) : t =
         if var_is max |> not
         then body n p
         else

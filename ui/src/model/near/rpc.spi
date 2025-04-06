@@ -9,79 +9,131 @@ nominal rpc_input' =
 
 nominal error_cause_info' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ErrorCauseInfo\")>] type crate_model_near_rpc_ErrorCauseInfo = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ErrorCauseInfo\")>] type crate_model_near_rpc_ErrorCauseInfo = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_ErrorCauseInfo'
     )
 
 nominal error_cause' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ErrorCause\")>] type crate_model_near_rpc_ErrorCause = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ErrorCause\")>] type crate_model_near_rpc_ErrorCause = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_ErrorCause'
     )
 
 nominal rpc_error' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::RpcError\")>] type crate_model_near_rpc_RpcError = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::RpcError\")>] type crate_model_near_rpc_RpcError = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_RpcError'
     )
 
 nominal transfer_detail' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::TransferDetail\")>] type crate_model_near_rpc_TransferDetail = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::TransferDetail\")>] type crate_model_near_rpc_TransferDetail = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_TransferDetail'
     )
 
 nominal gas_profile' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::GasProfile\")>] type crate_model_near_rpc_GasProfile = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::GasProfile\")>] type crate_model_near_rpc_GasProfile = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_GasProfile'
     )
 
 nominal metadata' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::Metadata\")>] type crate_model_near_rpc_Metadata = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::Metadata\")>] type crate_model_near_rpc_Metadata = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_Metadata'
     )
 
 nominal outcome_detail' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::OutcomeDetail\")>] type crate_model_near_rpc_OutcomeDetail = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::OutcomeDetail\")>] type crate_model_near_rpc_OutcomeDetail = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_OutcomeDetail'
     )
 
 nominal proof' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::Proof\")>] type crate_model_near_rpc_Proof = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::Proof\")>] type crate_model_near_rpc_Proof = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_Proof'
     )
 
 nominal receipts_outcome' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ReceiptsOutcome\")>] type crate_model_near_rpc_ReceiptsOutcome = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ReceiptsOutcome\")>] type crate_model_near_rpc_ReceiptsOutcome = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_ReceiptsOutcome'
     )
 
 nominal action_detail' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ActionDetail\")>] type crate_model_near_rpc_ActionDetail = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ActionDetail\")>] type crate_model_near_rpc_ActionDetail = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_ActionDetail'
     )
 
 nominal receipt_detail' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ReceiptDetail\")>] type crate_model_near_rpc_ReceiptDetail = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ReceiptDetail\")>] type crate_model_near_rpc_ReceiptDetail = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_ReceiptDetail'
     )
 
 nominal receipt' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::Receipt\")>] type crate_model_near_rpc_Receipt = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::Receipt\")>] type crate_model_near_rpc_Receipt = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_Receipt'
     )
 
 nominal transaction_status' =
     `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::TransactionStatus\")>] type crate_model_near_rpc_TransactionStatus = class end"
+        backend_switch `(()) `({}) {
+            Fsharp = (fun () =>
+                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::TransactionStatus\")>] type crate_model_near_rpc_TransactionStatus = class end"
+                        ) : () -> ()
+        }
         $'' : $'crate_model_near_rpc_TransactionStatus'
     )
 

@@ -266,7 +266,7 @@ rolls
 inl main () =
     !\($'"} //"') : ()
 
-    !\($'"#[derive( //"') : ()
+    !\($'"\#[derive( //"') : ()
     !\($'"  near_sdk::PanicOnDefault, //"') : ()
     !\($'"  borsh::BorshDeserialize, //"') : ()
     !\($'"  borsh::BorshSerialize, //"') : ()
@@ -277,9 +277,9 @@ inl main () =
     !\($'"    seeds: near_sdk::store::vec::Vector<u8>, //"') : ()
     !\($'"} //"') : ()
 
-    !\($'"#[near_sdk::near_bindgen] //"') : ()
+    !\($'"\#[near_sdk::near_bindgen] //"') : ()
 
-    !\($'"#[derive( //"') : ()
+    !\($'"\#[derive( //"') : ()
     !\($'"  near_sdk::PanicOnDefault, //"') : ()
     !\($'"  borsh::BorshDeserialize, //"') : ()
     !\($'"  borsh::BorshSerialize, //"') : ()
@@ -298,7 +298,7 @@ inl main () =
     !\($'"} //"') : ()
 
     inl new_ () =
-        !\($'"#[init] //"') : ()
+        !\($'"\#[init] //"') : ()
         !\($'"pub fn new() -> Self { // 1"') : ()
 
         (!\($'"true; /*"') : bool) |> ignore
@@ -332,7 +332,7 @@ inl main () =
         3
 
     inl contribute_seed_borsh () =
-        !\($'"pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) { //"') : ()
+        !\($'"pub fn contribute_seed_borsh(&mut self, \#[serializer(borsh)] seed: Vec<u8>) { //"') : ()
         !\($'"    self.contribute_seed(seed) //"') : ()
         !\($'"} //"') : ()
 
@@ -374,11 +374,11 @@ inl main () =
         2
 
     inl roll_within_bounds_borsh () =
-        !\($'"#[result_serializer(borsh)] //"') : ()
+        !\($'"\#[result_serializer(borsh)] //"') : ()
         !\($'"pub fn roll_within_bounds_borsh( //"') : ()
         !\($'"    &self, //"') : ()
-        !\($'"    #[serializer(borsh)] max: u64, //"') : ()
-        !\($'"    #[serializer(borsh)] rolls: Vec<u8>, //"') : ()
+        !\($'"    \#[serializer(borsh)] max: u64, //"') : ()
+        !\($'"    \#[serializer(borsh)] rolls: Vec<u8>, //"') : ()
         !\($'") -> Option<u64> { //"') : ()
         !\($'"    self.roll_within_bounds(max, rolls) //"') : ()
         !\($'"} //"') : ()
@@ -396,15 +396,17 @@ inl main () =
             roll_within_bounds_borsh
         ]
 
-    inl rec loop acc fns i =
+    // inl rec loop acc fns i =
+    inl rec loop forall i {number} j {number}. (acc : i) (fns : list (() -> i)) (i : j) : i =
         match fns with
         | [] => acc
         | x :: xs =>
-            !\($'"#[near_sdk::near_bindgen] //"') : ()
+            !\($'"\#[near_sdk::near_bindgen] //"') : ()
             !\($'"impl State { //"') : ()
             inl n = x ()
             !\($'"} /* c"') : ()
-            inl rec loop' i' =
+            // inl rec loop' i' =
+            inl rec loop' forall t {number}. (i' : t) : () =
                 if i' <> 1 // <= n
                 then (!\($'"true; */ // ???? / i: !i / i\': !i' / acc: !acc / n: !n"') : bool) |> ignore
                 else

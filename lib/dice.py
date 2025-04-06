@@ -16,13 +16,13 @@ import os
 import sys
 from typing import (Any, Protocol)
 
-TraceState_trace_state: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] | None = create_atom(None)
-
 class IOsEnviron(Protocol):
     @abstractmethod
     def environ(self) -> Any:
         ...
 
+
+TraceState_trace_state: tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None] | None = create_atom(None)
 
 def _expr424() -> TypeInfo:
     return union_type("Dice.UH0", [], UH0, lambda: [[("Item1", uint8_type), ("Item2", lambda_type(unit_type, UH0_reflection()))], []])
@@ -237,7 +237,7 @@ class US5(Union):
 US5_reflection = _expr438
 
 def _expr439() -> TypeInfo:
-    return union_type("Dice.US6", [], US6, lambda: [[("f0_0", US5_reflection())], [("f1_0", US5_reflection())], [("f2_0", US5_reflection())], [("f3_0", US5_reflection())], [("f4_0", US5_reflection())], [("f5_0", US5_reflection())]])
+    return union_type("Dice.US6", [], US6, lambda: [[("f0_0", US5_reflection())], [("f1_0", US5_reflection())], [("f2_0", US5_reflection())], [("f3_0", US5_reflection())], [("f4_0", US5_reflection())], [("f5_0", US5_reflection())], [("f6_0", US5_reflection())]])
 
 
 class US6(Union):
@@ -249,7 +249,7 @@ class US6(Union):
 
     @staticmethod
     def cases() -> list[str]:
-        return ["US6_0", "US6_1", "US6_2", "US6_3", "US6_4", "US6_5"]
+        return ["US6_0", "US6_1", "US6_2", "US6_3", "US6_4", "US6_5", "US6_6"]
 
 
 US6_reflection = _expr439
@@ -548,12 +548,12 @@ def closure11(unit_var: None, v0_1: str) -> None:
 def method7(v0_1: US2) -> tuple[Mut1, Mut3, Mut4, Mut5, Mut6, int64 | None]:
     pattern_input: tuple[US3, US4] = method8()
     _run_target_args_0027_v3: tuple[US3, US4] = (pattern_input[0], pattern_input[1])
-    v173: US4 = _run_target_args_0027_v3[1]
-    v172: US3 = _run_target_args_0027_v3[0]
-    def v179(v: str, v0_1: Any=v0_1) -> None:
+    v185: US4 = _run_target_args_0027_v3[1]
+    v184: US3 = _run_target_args_0027_v3[0]
+    def v191(v: str, v0_1: Any=v0_1) -> None:
         closure11(None, v)
 
-    return (Mut1(int64(1)), Mut3(v179), Mut4(True), Mut5(""), Mut6(v172.fields[0] if (v172.tag == 0) else v0_1), v173.fields[0] if (v173.tag == 0) else None)
+    return (Mut1(int64(1)), Mut3(v191), Mut4(True), Mut5(""), Mut6(v184.fields[0] if (v184.tag == 0) else v0_1), v185.fields[0] if (v185.tag == 0) else None)
 
 
 def closure9(unit_var: None, unit_var_1: None) -> None:
@@ -607,17 +607,17 @@ def method16(__unit: None=None) -> str:
 
 
 def method13(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: int64 | None=None) -> str:
-    v804: US4 = default_arg(map(method14(), v5), US4(1))
-    v936: Any
-    if v804.tag == 0:
-        v884: Any = create(op_subtraction(from_value(ticks_1(now()), False), v804.fields[0]))
-        v936 = create_1(1, 1, 1, hours(v884), minutes(v884), seconds(v884), milliseconds(v884))
+    v827: US4 = default_arg(map(method14(), v5), US4(1))
+    v967: Any
+    if v827.tag == 0:
+        v910: Any = create(op_subtraction(from_value(ticks_1(now()), False), v827.fields[0]))
+        v967 = create_1(1, 1, 1, hours(v910), minutes(v910), seconds(v910), milliseconds(v910))
 
     else: 
-        v936 = now()
+        v967 = now()
 
-    v938: str = method16()
-    return to_string(v936, "M-d-y hh:mm:ss tt" if (v938 == "") else v938)
+    v968: str = method16()
+    return to_string(v967, "M-d-y hh:mm:ss tt" if (v968 == "") else v968)
 
 
 def method18(__unit: None=None) -> str:
