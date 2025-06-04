@@ -14,7 +14,7 @@ members = [
 [workspace.package]
 version = "0.0.1"
 edition = "2024"
-license-file = "deps/polyglot/LICENSE"
+license-file = "LICENSE"
 repository = "https://github.com/i574n/dice"
 
 [workspace.dependencies]
