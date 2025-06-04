@@ -1603,7 +1603,7 @@ mod module_aadd22c3 {
                 .clone()
                 .unwrap();
             let v71: Dice_contract::US0 = (patternInput.4.clone()).l0.get().clone();
-            let v350: Dice_contract::US6 =
+            let v354: Dice_contract::US6 =
                 if (if ((patternInput.2.clone()).l0.get().clone()) == false {
                     false
                 } else {
@@ -1660,8 +1660,8 @@ mod module_aadd22c3 {
                     let v154: usize = v11.clone().len();
                     let v156: string = sprintf!("{:?}", v11);
                     let v160: string = sprintf!("{:?}", v12);
-                    let v167: Array<u8> = toArray(Dice_contract::method22(v13, empty::<u8>()));
-                    let v176: string = Dice_contract::method23(
+                    let v171: Array<u8> = toArray(Dice_contract::method22(v13, empty::<u8>()));
+                    let v180: string = Dice_contract::method23(
                         v117,
                         v118,
                         v119,
@@ -1684,9 +1684,9 @@ mod module_aadd22c3 {
                         v154,
                         v156,
                         v160,
-                        sprintf!("{:?}", v167.to_vec()),
+                        sprintf!("{:?}", v171.to_vec()),
                     );
-                    let v192: () = {
+                    let v196: () = {
                         v29();
                         ()
                     };
@@ -1701,73 +1701,73 @@ mod module_aadd22c3 {
                         .get()
                         .clone()
                         .unwrap();
-                    let v218: LrcPtr<Dice_contract::Mut3> = patternInput_2.3.clone();
-                    let v216: LrcPtr<Dice_contract::Mut1> = patternInput_2.1.clone();
-                    let v215: LrcPtr<Dice_contract::Mut0> = patternInput_2.0.clone();
-                    let v237: () = {
-                        Dice_contract::closure7(v215.clone(), ());
+                    let v222: LrcPtr<Dice_contract::Mut3> = patternInput_2.3.clone();
+                    let v220: LrcPtr<Dice_contract::Mut1> = patternInput_2.1.clone();
+                    let v219: LrcPtr<Dice_contract::Mut0> = patternInput_2.0.clone();
+                    let v241: () = {
+                        Dice_contract::closure7(v219.clone(), ());
                         ()
                     };
-                    let v260: string = if (v218.l0.get().clone()) == string("") {
-                        v176.clone()
+                    let v264: string = if (v222.l0.get().clone()) == string("") {
+                        v180.clone()
                     } else {
-                        if (v176.clone()) == string("") {
-                            v218.l0.get().clone()
+                        if (v180.clone()) == string("") {
+                            v222.l0.get().clone()
                         } else {
                             append(
-                                (append((v218.l0.get().clone()), string("\n"))),
-                                (v176.clone()),
+                                (append((v222.l0.get().clone()), string("\n"))),
+                                (v180.clone()),
                             )
                         }
                     };
-                    let v271: &str = &*v260.clone();
-                    let v298 = v271.chars();
-                    let v300 = v298;
-                    let v302: Vec<char> = v300.collect::<Vec<_>>();
-                    let v304: Vec<Vec<char>> = v302
+                    let v275: &str = &*v264.clone();
+                    let v302 = v275.chars();
+                    let v304 = v302;
+                    let v306: Vec<char> = v304.collect::<Vec<_>>();
+                    let v308: Vec<Vec<char>> = v306
                         .chunks(15000)
                         .map(|x| x.into_iter().map(|x| x.clone()).collect::<Vec<_>>())
                         .collect::<Vec<_>>();
-                    let v306: bool = true;
-                    let _vec_map: Vec<_> = v304
+                    let v310: bool = true;
+                    let _vec_map: Vec<_> = v308
                         .into_iter()
                         .map(|x| {
                             //;
-                            let v308: Vec<char> = x;
-                            let v310: std::string::String = String::from_iter(v308);
-                            let v312: bool = true;
-                            v310
+                            let v312: Vec<char> = x;
+                            let v314: std::string::String = String::from_iter(v312);
+                            let v316: bool = true;
+                            v314
                         })
                         .collect::<Vec<_>>();
-                    let v314: Vec<std::string::String> = _vec_map;
-                    if if (v176.clone()) != string("") {
-                        (v314.clone().len() as i32) <= 1_i32
+                    let v318: Vec<std::string::String> = _vec_map;
+                    if if (v180.clone()) != string("") {
+                        (v318.clone().len() as i32) <= 1_i32
                     } else {
                         false
                     } {
-                        v218.l0.set(v260);
+                        v222.l0.set(v264);
                         ()
                     } else {
-                        v218.l0.set(string(""));
+                        v222.l0.set(string(""));
                         {
-                            let v339: bool = true;
-                            v314.into_iter().for_each(|x| {
+                            let v343: bool = true;
+                            v318.into_iter().for_each(|x| {
                                 //;
-                                let v341: std::string::String = x;
-                                let v343: bool = true;
-                                near_sdk::log!("{}", v341);
-                                let v345: bool = true;
+                                let v345: std::string::String = x;
                                 let v347: bool = true;
+                                near_sdk::log!("{}", v345);
+                                let v349: bool = true;
+                                let v351: bool = true;
                             }); //;
                             ()
                         }
                     }
-                    (v216.l0.get().clone())(v176);
+                    (v220.l0.get().clone())(v180);
                     Dice_contract::US6::US6_0(
-                        v215,
-                        v216,
+                        v219,
+                        v220,
                         patternInput_2.2.clone(),
-                        v218,
+                        v222,
                         patternInput_2.4.clone(),
                         patternInput_2.5.clone(),
                     )
@@ -4965,7 +4965,7 @@ mod module_aadd22c3 {
                             ),
                             LrcPtr::new(Dice_contract::UH0::UH0_0),
                         );
-                        let v3144: () = {
+                        let v3148: () = {
                             Dice_contract::closure16(
                                 v1386,
                                 v1380,
@@ -4985,7 +4985,7 @@ mod module_aadd22c3 {
                             );
                             ()
                         };
-                        let v3502: LrcPtr<Dice_contract::UH1> = Dice_contract::method19(
+                        let v3510: LrcPtr<Dice_contract::UH1> = Dice_contract::method19(
                             Dice_contract::method26(
                                 v2791.clone(),
                                 Dice_contract::method25(
@@ -4995,12 +4995,12 @@ mod module_aadd22c3 {
                             ),
                             LrcPtr::new(Dice_contract::UH1::UH1_1),
                         );
-                        let v3518: u64 = Dice_contract::method31(
+                        let v3526: u64 = Dice_contract::method31(
                             Dice_contract::method27(
-                                v3502.clone(),
+                                v3510.clone(),
                                 Func0::new({
-                                    let v3502 = v3502.clone();
-                                    move || Dice_contract::closure17(v3502.clone(), ())
+                                    let v3510 = v3510.clone();
+                                    move || Dice_contract::closure17(v3510.clone(), ())
                                 }),
                             ),
                             LrcPtr::new(Dice_contract::Mut0 {
@@ -5024,19 +5024,19 @@ mod module_aadd22c3 {
                             LrcPtr::new(Dice_contract::UH0::UH0_0),
                             0_i8,
                         );
-                        let v3831: () = {
+                        let v3839: () = {
                             Dice_contract::closure89(Dice_contract::method48(), ());
                             ()
                         };
-                        v3518 //;
+                        v3526 //;
                     } //;
                 } //;
             } //;
         } /* c;
         {
-        let v4150: bool =
+        let v4158: bool =
         true; // ??? / i: 4uy / i': 1uy / acc: 6uy / n: 3uy;
-        let v4152: bool =
+        let v4160: bool =
         true; */
  // ???? / i: 4uy / i': 2uy / acc: 6uy / n: 3uy;
         #[near_sdk::near_bindgen] //;
@@ -5045,61 +5045,61 @@ mod module_aadd22c3 {
             pub fn roll_within_bounds(&self, max: u64, rolls: Vec<u8>) -> Option<u64> {
                 //;
                 {
-                    let v4157: u64 = max;
-                    let v4159: Vec<u8> = rolls;
-                    let v4163: List<u8> = ofArray(fable_library_rust::NativeArray_::array_from(
-                        v4159.clone().clone(),
+                    let v4165: u64 = max;
+                    let v4167: Vec<u8> = rolls;
+                    let v4171: List<u8> = ofArray(fable_library_rust::NativeArray_::array_from(
+                        v4167.clone().clone(),
                     ));
-                    let v4176: LrcPtr<Dice_contract::UH0> = foldBack(
+                    let v4184: LrcPtr<Dice_contract::UH0> = foldBack(
                         Func2::new(move |b0: u8, b1: LrcPtr<Dice_contract::UH0>| {
                             (Dice_contract::method18())(b0)(b1)
                         }),
-                        v4163,
+                        v4171,
                         LrcPtr::new(Dice_contract::UH0::UH0_0),
                     );
-                    let v4209: Dice_contract::US9 = Dice_contract::method38(
-                        (Dice_contract::method49(v4176.clone(), 0_i8)) - 1_i8,
-                        v4176,
+                    let v4217: Dice_contract::US9 = Dice_contract::method38(
+                        (Dice_contract::method49(v4184.clone(), 0_i8)) - 1_i8,
+                        v4184,
                         0_u64,
                     );
-                    let v4219: Dice_contract::US10 =
-                        if let Dice_contract::US9::US9_0(v4209_0_0, v4209_0_1) = &v4209 {
-                            let v4210: u64 = v4209_0_0.clone();
-                            if if (v4210) >= 1_u64 {
-                                (v4210) <= (v4157)
+                    let v4227: Dice_contract::US10 =
+                        if let Dice_contract::US9::US9_0(v4217_0_0, v4217_0_1) = &v4217 {
+                            let v4218: u64 = v4217_0_0.clone();
+                            if if (v4218) >= 1_u64 {
+                                (v4218) <= (v4165)
                             } else {
                                 false
                             } {
-                                Dice_contract::US10::US10_0(v4210)
+                                Dice_contract::US10::US10_0(v4218)
                             } else {
                                 Dice_contract::US10::US10_1
                             }
                         } else {
                             Dice_contract::US10::US10_1
                         };
-                    let v4230: Option<u64> = match &v4219 {
-                        Dice_contract::US10::US10_0(v4219_0_0) => Some(match &v4219 {
+                    let v4238: Option<u64> = match &v4227 {
+                        Dice_contract::US10::US10_0(v4227_0_0) => Some(match &v4227 {
                             Dice_contract::US10::US10_0(x) => x.clone(),
                             _ => unreachable!(),
                         }),
                         _ => None::<u64>,
                     };
-                    let v4552: () = {
-                        Dice_contract::closure90(v4157, v4159, v4230.clone(), ());
+                    let v4560: () = {
+                        Dice_contract::closure90(v4165, v4167, v4238.clone(), ());
                         ()
                     };
-                    let v5187: () = {
+                    let v5195: () = {
                         Dice_contract::closure91(Dice_contract::method52(), ());
                         ()
                     };
-                    v4230 //;
+                    v4238 //;
                 } //;
             } //;
         } /* c;
         {
-        let v5505: bool =
+        let v5513: bool =
         true; // ??? / i: 5uy / i': 1uy / acc: 9uy / n: 2uy;
-        let v5507: bool =
+        let v5515: bool =
         true; */
  // ???? / i: 5uy / i': 2uy / acc: 9uy / n: 2uy;
         #[near_sdk::near_bindgen] //;
@@ -5117,53 +5117,53 @@ mod module_aadd22c3 {
             } //;
         } /* c;
         {
-        let v5520:
+        let v5528:
         bool =
         true; // ??? / i: 6uy / i': 1uy / acc: 11uy / n: 1uy;
-        let v5522:
+        let v5530:
         bool =
         true; */
  // ???? / i: 6uy / i': 2uy / acc: 11uy / n: 1uy;
         fn _main() //;
         //;
         {
-            let v5526: bool = true;
+            let v5534: bool = true;
             {
                 (); // ?? / i': 1uy / n: 12uy;
-                let v5528: bool = true;
+                let v5536: bool = true;
                 {
                     (); // ?? / i': 2uy / n: 12uy;
-                    let v5530: bool = true;
+                    let v5538: bool = true;
                     {
                         (); // ?? / i': 3uy / n: 12uy;
-                        let v5532: bool = true;
+                        let v5540: bool = true;
                         {
                             (); // ?? / i': 4uy / n: 12uy;
-                            let v5534: bool = true;
+                            let v5542: bool = true;
                             {
                                 (); // ?? / i': 5uy / n: 12uy;
-                                let v5536: bool = true;
+                                let v5544: bool = true;
                                 {
                                     (); // ?? / i': 6uy / n: 12uy;
-                                    let v5538: bool = true;
+                                    let v5546: bool = true;
                                     {
                                         (); // ?? / i': 7uy / n: 12uy;
-                                        let v5540: bool = true;
+                                        let v5548: bool = true;
                                         {
                                             (); // ?? / i': 8uy / n: 12uy;
-                                            let v5542: bool = true;
+                                            let v5550: bool = true;
                                             {
                                                 (); // ?? / i': 9uy / n: 12uy;
-                                                let v5544: bool = true;
+                                                let v5552: bool = true;
                                                 {
                                                     (); // ?? / i': 10uy / n: 12uy;
-                                                    let v5546: bool = true;
+                                                    let v5554: bool = true;
                                                     {
                                                         (); // ?? / i': 11uy / n: 12uy;
-                                                        let v5548: bool = true;
+                                                        let v5556: bool = true;
                                                         {
                                                             (); // ?? / i': 12uy / n: 12uy;
-                                                            let v5550: bool = true;
+                                                            let v5558: bool = true;
                                                             {
                                                                 {
                                                                     (); // ? / i': 13uy / n: 12uy;
