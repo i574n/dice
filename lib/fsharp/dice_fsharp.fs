@@ -42,15 +42,15 @@ module DiceFSharp =
 
     /// ## calculateDiceCount
     let inline calculateDiceCount log max =
-        let rec loop n p =
+        let rec 루프 n p =
             if p < max
-            then loop (n + 1) (p * 6)
+            then 루프 (n + 1) (p * 6)
             else
                 log |> Option.iter ((|>) $"calculateDiceCount / max: {max} / n: {n} / p: {p}")
                 n
         if max = 1
         then 1
-        else loop 0 1
+        else 루프 0 1
 
     /// ## rollDice
 #if FABLE_COMPILER_RUST
@@ -88,15 +88,15 @@ module DiceFSharp =
     /// ## rollProgressively
     let rollProgressively log roll reroll max =
         let power = (calculateDiceCount log max) - 1
-        let rec loop rolls size =
+        let rec 루프 rolls size =
             if size < power + 1
-            then loop (roll () :: rolls) (size + 1)
+            then 루프 (roll () :: rolls) (size + 1)
             else
                 match accumulateDiceRolls log rolls power 0 with
                 | Some (result, _) when result <= max -> result
-                | _ when reroll -> loop (List.init power (fun _ -> roll ())) power
-                | _ -> loop (roll () :: rolls) (size + 1)
-        loop [] 0
+                | _ when reroll -> 루프 (List.init power (fun _ -> roll ())) power
+                | _ -> 루프 (roll () :: rolls) (size + 1)
+        루프 [] 0
 
     /// ## main
     let main args =

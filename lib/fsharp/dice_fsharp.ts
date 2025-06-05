@@ -126,16 +126,16 @@ export function createSequentialRoller<$a>(list: FSharpList<$a>): (() => $a) {
  * ## rollProgressively
  */
 export function rollProgressively(log: Option<((arg0: string) => void)>, roll: (() => int32), reroll: boolean, max: int32): int32 {
-    let max_1: int32, loop: ((arg0: int32, arg1: int32) => int32);
-    const power: int32 = (((max_1 = (max | 0), (loop = ((n_mut: int32, p_mut: int32): int32 => {
+    let max_1: int32, 루프: ((arg0: int32, arg1: int32) => int32);
+    const power: int32 = (((max_1 = (max | 0), (루프 = ((n_mut: int32, p_mut: int32): int32 => {
         let arg: string;
-        loop:
+        루프:
         while (true) {
             const n: int32 = n_mut, p: int32 = p_mut;
             if (p < max_1) {
                 n_mut = (n + 1);
                 p_mut = (p * 6);
-                continue loop;
+                continue 루프;
             }
             else {
                 iterate<((arg0: string) => void)>((arg = (`calculateDiceCount / max: ${max_1} / n: ${n} / p: ${p}`), (func: ((arg0: string) => void)): void => {
@@ -145,15 +145,15 @@ export function rollProgressively(log: Option<((arg0: string) => void)>, roll: (
             }
             break;
         }
-    }), (max_1 === 1) ? 1 : loop(0, 1)))) - 1) | 0;
-    const loop_1 = (rolls_mut: FSharpList<int32>, size_mut: int32): int32 => {
-        loop_1:
+    }), (max_1 === 1) ? 1 : 루프(0, 1)))) - 1) | 0;
+    const 루프_1 = (rolls_mut: FSharpList<int32>, size_mut: int32): int32 => {
+        루프_1:
         while (true) {
             const rolls: FSharpList<int32> = rolls_mut, size: int32 = size_mut;
             if (size < (power + 1)) {
                 rolls_mut = cons(roll(), rolls);
                 size_mut = (size + 1);
-                continue loop_1;
+                continue 루프_1;
             }
             else {
                 const matchValue: Option<[int32, FSharpList<int32>]> = accumulateDiceRolls(log, rolls, power, 0);
@@ -182,19 +182,19 @@ export function rollProgressively(log: Option<((arg0: string) => void)>, roll: (
                     case 1: {
                         rolls_mut = initialize<int32>(power, (_arg: int32): int32 => roll());
                         size_mut = power;
-                        continue loop_1;
+                        continue 루프_1;
                     }
                     default: {
                         rolls_mut = cons(roll(), rolls);
                         size_mut = (size + 1);
-                        continue loop_1;
+                        continue 루프_1;
                     }
                 }
             }
             break;
         }
     };
-    return loop_1(empty<int32>(), 0) | 0;
+    return 루프_1(empty<int32>(), 0) | 0;
 }
 
 (function (args: string[]): int32 {

@@ -62,14 +62,14 @@ inl accumulate_dice_rolls
             trace Debug
                 fun () => "dice.accumulate_dice_rolls"
                 fun () => { power acc roll value }
-            loop (acc + value) (power - 1) rest
+            루프 (acc + value) (power - 1) rest
         | roll :: rest =>
             trace Debug
                 fun () => "dice.accumulate_dice_rolls"
                 fun () => { power acc roll }
-            loop acc (power - 1) rest
-    // and inl loop acc power rolls =
-    and inl loop forall a {number} b {number} c {number}.
+            루프 acc (power - 1) rest
+    // and inl 루프 acc power rolls =
+    and inl 루프 forall a {number} b {number} c {number}.
         (acc : a)
         (power : b)
         (rolls : list c)
@@ -80,7 +80,7 @@ inl accumulate_dice_rolls
         else
             inl acc = dyn acc
             join body acc power rolls
-    loop acc power rolls
+    루프 acc power rolls
 
 #!spiral
 
@@ -154,11 +154,11 @@ inl calculate_dice_count forall a {number} b {number}. (max : a) : b =
         if p < max then
             inl p' = p * 6
             if p' > p
-            then loop (n + 1) p'
+            then 루프 (n + 1) p'
             else return ()
         else return ()
-    // and inl loop n p =
-    and inl loop forall t {number}. (n : t) (p : a) : t =
+    // and inl 루프 n p =
+    and inl 루프 forall t {number}. (n : t) (p : a) : t =
         if var_is max |> not
         then body n p
         else
@@ -167,7 +167,7 @@ inl calculate_dice_count forall a {number} b {number}. (max : a) : b =
             join body n p
     if max = 1
     then 1
-    else loop 0 1
+    else 루프 0 1
 
 #!spiral
 
@@ -232,7 +232,7 @@ inl create_sequential_roller list =
     inl acc = mut 1
     inl len = mut -1
     inl last_item = mut None
-    let rec loop () =
+    let rec 루프 () =
         fun () =>
             inl current_index = *current_index
             inl acc = *acc
@@ -257,8 +257,8 @@ inl create_sequential_roller list =
                 else *acc + 1
             current_index <- *acc - 1
             last_item <- None
-            loop ()
-    loop
+            루프 ()
+    루프
 
 #!spiral
 
@@ -278,14 +278,14 @@ am.init 50i32 (ignore >> sequential_roll)
 
 inl roll_progressively roll reroll max =
     inl power = (calculate_dice_count max) - 1
-    let rec loop rolls size =
+    let rec 루프 rolls size =
         if size < power + 1
-        then loop (roll () :: rolls) (size + 1)
+        then 루프 (roll () :: rolls) (size + 1)
         else accumulate_dice_rolls rolls power 0 |> function
             | Some (result, _) when result <= max => result
-            | _ when reroll => loop (listm.init power (fun _ => roll ())) power
-            | _ => loop (roll () :: rolls) (size + 1)
-    loop [] 0
+            | _ when reroll => 루프 (listm.init power (fun _ => roll ())) power
+            | _ => 루프 (roll () :: rolls) (size + 1)
+    루프 [] 0
 
 #!spiral
 

@@ -7945,15 +7945,15 @@ accumulateDiceRolls / power: -1 / acc: 3896
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">inline</span> <span class="n">calculateDiceCount</span> <span class="n">log</span> <span class="nb">max</span> <span class="o">=</span>
-    <span class="n">let</span> <span class="n">rec</span> <span class="n">loop</span> <span class="n">n</span> <span class="n">p</span> <span class="o">=</span>
+    <span class="n">let</span> <span class="n">rec</span> <span class="n">루프</span> <span class="n">n</span> <span class="n">p</span> <span class="o">=</span>
         <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="nb">max</span>
-        <span class="n">then</span> <span class="n">loop</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="n">then</span> <span class="n">루프</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
         <span class="k">else</span>
             <span class="n">log</span> <span class="o">|&gt;</span> <span class="n">Option</span><span class="o">.</span><span class="n">iter</span> <span class="p">((</span><span class="o">|&gt;</span><span class="p">)</span> <span class="err">$</span><span class="s2">"calculateDiceCount / max: </span><span class="si">{max}</span><span class="s2"> / n: </span><span class="si">{n}</span><span class="s2"> / p: </span><span class="si">{p}</span><span class="s2">"</span><span class="p">)</span>
             <span class="n">n</span>
     <span class="k">if</span> <span class="nb">max</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">then</span> <span class="mi">1</span>
-    <span class="k">else</span> <span class="n">loop</span> <span class="mi">0</span> <span class="mi">1</span>
+    <span class="k">else</span> <span class="n">루프</span> <span class="mi">0</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -8198,15 +8198,15 @@ accumulateDiceRolls / power: -1 / acc: 3896
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">rollProgressively</span> <span class="n">log</span> <span class="n">roll</span> <span class="n">reroll</span> <span class="nb">max</span> <span class="o">=</span>
     <span class="n">let</span> <span class="n">power</span> <span class="o">=</span> <span class="p">(</span><span class="n">calculateDiceCount</span> <span class="n">log</span> <span class="nb">max</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="n">let</span> <span class="n">rec</span> <span class="n">loop</span> <span class="n">rolls</span> <span class="n">size</span> <span class="o">=</span>
+    <span class="n">let</span> <span class="n">rec</span> <span class="n">루프</span> <span class="n">rolls</span> <span class="n">size</span> <span class="o">=</span>
         <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;</span> <span class="n">power</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="n">then</span> <span class="n">loop</span> <span class="p">(</span><span class="n">roll</span> <span class="p">()</span> <span class="p">::</span> <span class="n">rolls</span><span class="p">)</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">then</span> <span class="n">루프</span> <span class="p">(</span><span class="n">roll</span> <span class="p">()</span> <span class="p">::</span> <span class="n">rolls</span><span class="p">)</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span>
             <span class="k">match</span> <span class="n">accumulateDiceRolls</span> <span class="n">log</span> <span class="n">rolls</span> <span class="n">power</span> <span class="mi">0</span> <span class="k">with</span>
             <span class="o">|</span> <span class="n">Some</span> <span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="n">when</span> <span class="n">result</span> <span class="o">&lt;=</span> <span class="nb">max</span> <span class="o">-&gt;</span> <span class="n">result</span>
-            <span class="o">|</span> <span class="n">_</span> <span class="n">when</span> <span class="n">reroll</span> <span class="o">-&gt;</span> <span class="n">loop</span> <span class="p">(</span><span class="n">List</span><span class="o">.</span><span class="n">init</span> <span class="n">power</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">roll</span> <span class="p">()))</span> <span class="n">power</span>
-            <span class="o">|</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">loop</span> <span class="p">(</span><span class="n">roll</span> <span class="p">()</span> <span class="p">::</span> <span class="n">rolls</span><span class="p">)</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">loop</span> <span class="p">[]</span> <span class="mi">0</span>
+            <span class="o">|</span> <span class="n">_</span> <span class="n">when</span> <span class="n">reroll</span> <span class="o">-&gt;</span> <span class="n">루프</span> <span class="p">(</span><span class="n">List</span><span class="o">.</span><span class="n">init</span> <span class="n">power</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">roll</span> <span class="p">()))</span> <span class="n">power</span>
+            <span class="o">|</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">루프</span> <span class="p">(</span><span class="n">roll</span> <span class="p">()</span> <span class="p">::</span> <span class="n">rolls</span><span class="p">)</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">루프</span> <span class="p">[]</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -8604,8 +8604,8 @@ Complexidade: Simple, Duração: Medium
 Complexidade: Moderate, Duração: Medium
 Complexidade: Complex, Duração: Long
 Complexidade: Complex, Duração: Long
-<span class="ansi-white-fg">[</span><span class="ansi-white-fg">09:33:19 </span><span class="ansi-white-fg">INF</span><span class="ansi-white-fg">] </span><span class="ansi-white-fg">EXPECTO? Running tests...</span><span class="ansi-white-fg"> </span><span class="ansi-white-fg">&lt;</span><span class="ansi-white-fg">Expecto</span><span class="ansi-white-fg">&gt;</span><span class="ansi-white-fg">
-</span><span class="ansi-white-fg">[</span><span class="ansi-white-fg">09:33:24 </span><span class="ansi-white-fg">INF</span><span class="ansi-white-fg">] </span><span class="ansi-white-fg">EXPECTO! </span><span class="ansi-cyan-fg">7</span><span class="ansi-white-fg"> tests run in </span><span class="ansi-green-fg">00:00:04.9434432</span><span class="ansi-white-fg"> for </span><span class="ansi-cyan-fg">FsCheck samples</span><span class="ansi-white-fg"> – </span><span class="ansi-cyan-fg">7</span><span class="ansi-white-fg"> passed, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> ignored, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> failed, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> errored. </span><span class="ansi-cyan-fg">Success!</span><span class="ansi-white-fg"> </span><span class="ansi-white-fg">&lt;</span><span class="ansi-white-fg">Expecto</span><span class="ansi-white-fg">&gt;</span><span class="ansi-white-fg">
+<span class="ansi-white-fg">[</span><span class="ansi-white-fg">15:00:50 </span><span class="ansi-white-fg">INF</span><span class="ansi-white-fg">] </span><span class="ansi-white-fg">EXPECTO? Running tests...</span><span class="ansi-white-fg"> </span><span class="ansi-white-fg">&lt;</span><span class="ansi-white-fg">Expecto</span><span class="ansi-white-fg">&gt;</span><span class="ansi-white-fg">
+</span><span class="ansi-white-fg">[</span><span class="ansi-white-fg">15:00:55 </span><span class="ansi-white-fg">INF</span><span class="ansi-white-fg">] </span><span class="ansi-white-fg">EXPECTO! </span><span class="ansi-cyan-fg">7</span><span class="ansi-white-fg"> tests run in </span><span class="ansi-green-fg">00:00:04.9969942</span><span class="ansi-white-fg"> for </span><span class="ansi-cyan-fg">FsCheck samples</span><span class="ansi-white-fg"> – </span><span class="ansi-cyan-fg">7</span><span class="ansi-white-fg"> passed, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> ignored, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> failed, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> errored. </span><span class="ansi-cyan-fg">Success!</span><span class="ansi-white-fg"> </span><span class="ansi-white-fg">&lt;</span><span class="ansi-white-fg">Expecto</span><span class="ansi-white-fg">&gt;</span><span class="ansi-white-fg">
 </span>0
 
 </pre>

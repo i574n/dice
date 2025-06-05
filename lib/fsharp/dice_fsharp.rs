@@ -239,19 +239,19 @@ mod module_fc267fc3 {
             ) -> i32 {
                 let power: i32 = ({
                     let max_1: i32 = max;
-                    let r#loop = Func2::new({
+                    let 루프 = Func2::new({
                         let log = log.clone();
                         let max_1 = max_1.clone();
                         move |n: i32, p: i32| {
                             let n: MutCell<i32> = MutCell::new(n);
                             let p: MutCell<i32> = MutCell::new(p);
-                            '_loop: loop {
-                                break '_loop (if (p.get().clone()) < (max_1) {
+                            '_루프: loop {
+                                break '_루프 (if (p.get().clone()) < (max_1) {
                                     let n_temp: i32 = (n.get().clone()) + 1_i32;
                                     let p_temp: i32 = (p.get().clone()) * 6_i32;
                                     n.set(n_temp);
                                     p.set(p_temp);
-                                    continue '_loop;
+                                    continue '_루프;
                                 } else {
                                     iterate(
                                         {
@@ -276,10 +276,10 @@ mod module_fc267fc3 {
                     if (max_1) == 1_i32 {
                         1_i32
                     } else {
-                        r#loop(0_i32, 1_i32)
+                        루프(0_i32, 1_i32)
                     }
                 }) - 1_i32;
-                let loop_1 = Func2::new({
+                let 루프_1 = Func2::new({
                     let log = log.clone();
                     let max = max.clone();
                     let power = power.clone();
@@ -288,13 +288,13 @@ mod module_fc267fc3 {
                     move |rolls: List<i32>, size: i32| {
                         let rolls: MutCell<List<i32>> = MutCell::new(rolls.clone());
                         let size: MutCell<i32> = MutCell::new(size);
-                        '_loop_1: loop {
-                            break '_loop_1 (if (size.get().clone()) < ((power) + 1_i32) {
+                        '_루프_1: loop {
+                            break '_루프_1 (if (size.get().clone()) < ((power) + 1_i32) {
                                 let rolls_temp: List<i32> = cons(roll(), rolls.get().clone());
                                 let size_temp: i32 = (size.get().clone()) + 1_i32;
                                 rolls.set(rolls_temp);
                                 size.set(size_temp);
-                                continue '_loop_1;
+                                continue '_루프_1;
                             } else {
                                 let matchValue: Option<LrcPtr<(i32, List<i32>)>> =
                                     Dice::DiceFSharp::accumulateDiceRolls(
@@ -337,7 +337,7 @@ mod module_fc267fc3 {
                                             let size_temp: i32 = power;
                                             rolls.set(rolls_temp);
                                             size.set(size_temp);
-                                            continue '_loop_1;
+                                            continue '_루프_1;
                                         }
                                         2_i32 => {
                                             let rolls_temp: List<i32> =
@@ -345,7 +345,7 @@ mod module_fc267fc3 {
                                             let size_temp: i32 = (size.get().clone()) + 1_i32;
                                             rolls.set(rolls_temp);
                                             size.set(size_temp);
-                                            continue '_loop_1;
+                                            continue '_루프_1;
                                         }
                                         _ => unreachable!(),
                                     }
@@ -354,7 +354,7 @@ mod module_fc267fc3 {
                         }
                     }
                 });
-                loop_1(empty::<i32>(), 0_i32)
+                루프_1(empty::<i32>(), 0_i32)
             }
             ///
             /// ## main

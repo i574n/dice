@@ -104,7 +104,7 @@ inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.
 ///! rust -c
 
 inl replicate n =
-    let rec loop i acc =
+    let rec 루프 i acc =
         if i > n
         then acc
         else
@@ -113,8 +113,8 @@ inl replicate n =
                 if i' = 0
                 then i % limit.max
                 else i'
-            loop (i + 1) (i' :: acc)
-    loop 1 []
+            루프 (i + 1) (i' :: acc)
+    루프 1 []
     |> listm.rev
     |> listm'.box
     |> listm'.to_array'
@@ -396,8 +396,8 @@ inl main () =
             roll_within_bounds_borsh
         ]
 
-    // inl rec loop acc fns i =
-    inl rec loop forall i {number} j {number}. (acc : i) (fns : list (() -> i)) (i : j) : i =
+    // inl rec 루프 acc fns i =
+    inl rec 루프 forall i {number} j {number}. (acc : i) (fns : list (() -> i)) (i : j) : i =
         match fns with
         | [] => acc
         | x :: xs =>
@@ -405,16 +405,16 @@ inl main () =
             !\($'"impl State { //"') : ()
             inl n = x ()
             !\($'"} /* c"') : ()
-            // inl rec loop' i' =
-            inl rec loop' forall t {number}. (i' : t) : () =
+            // inl rec 루프' i' =
+            inl rec 루프' forall t {number}. (i' : t) : () =
                 if i' <> 1 // <= n
                 then (!\($'"true; */ // ???? / i: !i / i\': !i' / acc: !acc / n: !n"') : bool) |> ignore
                 else
                     (!\($'"true; // ??? / i: !i / i\': !i' / acc: !acc / n: !n"') : bool) |> ignore
-                    loop' (i' + 1)
-            loop' 1u8
-            loop (acc + n) xs (i + 1)
-    inl n = loop 0u8 fns 1u8
+                    루프' (i' + 1)
+            루프' 1u8
+            루프 (acc + n) xs (i + 1)
+    inl n = 루프 0u8 fns 1u8
 
 
     // !\($'"/* a"') : ()
@@ -424,15 +424,15 @@ inl main () =
     !\($'"fn _main() //"') : ()
     !\($'" //"') : ()
 
-    inl rec loop' i' =
+    inl rec 루프' i' =
         if i' <= n
         then
             (!\($'"true; { (); // ?? / i\': !i' / n: !n"') : bool) |> ignore
-            loop' (i' + 1)
+            루프' (i' + 1)
         else
             (!\($'"true; { { (); // ? / i\': !i' / n: !n"') : bool) |> ignore
             // (!\($'"true; */ // ?? / i\': !i' / n: !n"') : bool) |> ignore
-    loop' 1u8
+    루프' 1u8
 
 inl main () =
     $'!main |> ignore' : ()
