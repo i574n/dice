@@ -1,9 +1,9 @@
 param(
     $fast,
     $SkipNotebook,
-    $SkipRust,
-    $SkipTypeScript,
-    $SkipPython,
+    $SkipRs,
+    $SkipTs,
+    $SkipPy,
     $ScriptDir = $PSScriptRoot
 )
 $ScriptDir | Set-Location
@@ -32,7 +32,7 @@ $builderArgs = @("$projectName.fsx", $runtime, "--packages", "Fable.Core", "--mo
 
 $targetDir = GetTargetDir $projectName
 
-if (!$SkipRust) {
+if (!$SkipRs) {
     { BuildFable $targetDir $projectName "rs" } | Invoke-Block
 
     $Path = "$targetDir/target/rs/$projectName.rs"
@@ -52,7 +52,7 @@ if (!$SkipRust) {
         | Set-Content $Target
 }
 
-if (!$SkipTypeScript) {
+if (!$SkipTs) {
     { BuildFable $targetDir $projectName "ts" } | Invoke-Block
 
     $Path = "$targetDir/target/ts/$projectName.ts"
@@ -67,7 +67,7 @@ if (!$SkipTypeScript) {
         | Set-Content $Target
 }
 
-if (!$SkipPython) {
+if (!$SkipPy) {
     { BuildFable $targetDir $projectName "py" } | Invoke-Block
 
     $Path = "$targetDir/target/py/$projectName.py"
@@ -81,7 +81,7 @@ if (!$SkipPython) {
     { BuildFable $targetDir $projectName "rs" "CONTRACT" } | Invoke-Block
 }
 
-if (!$SkipRust) {
+if (!$SkipRs) {
     $Path = "$targetDir/target/rs/$projectName.rs"
     if (!($Path | Test-Path)) {
         $Path = "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs"
