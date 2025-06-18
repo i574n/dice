@@ -759,18 +759,18 @@ export function method15(): string {
 }
 
 export function method12(v0_1: Mut1, v1_1: Mut3, v2_1: Mut4, v3_1: Mut5, v4_1: Mut6, v5: Option<int64>): string {
-    const v641: US4_$union = defaultArg(map<int64, US4_$union>(method13(), v5), US4_US4_1());
-    let v781: Date;
-    if ((v641.tag as int32) === /* US4_0 */ 0) {
-        const v645 = v641.fields[0] as any;
-        const v724: number = fromTicks(toInt64(op_Subtraction(toInt64(fromInt64(getTicks(now()))), v645)));
-        v781 = create(1, 1, 1, hours(v724), minutes(v724), seconds(v724), milliseconds(v724));
+    const v710: US4_$union = defaultArg(map<int64, US4_$union>(method13(), v5), US4_US4_1());
+    let v864: Date;
+    if ((v710.tag as int32) === /* US4_0 */ 0) {
+        const v714 = v710.fields[0] as any;
+        const v793: number = fromTicks(toInt64(op_Subtraction(toInt64(fromInt64(getTicks(now()))), v714)));
+        v864 = create(1, 1, 1, hours(v793), minutes(v793), seconds(v793), milliseconds(v793));
     }
     else {
-        v781 = now();
+        v864 = now();
     }
-    const v782: string = method15();
-    return toString(v781, (v782 === "") ? "M-d-y hh:mm:ss tt" : v782);
+    const v865: string = method15();
+    return toString(v864, (v865 === "") ? "M-d-y hh:mm:ss tt" : v865);
 }
 
 export function method18(): string {

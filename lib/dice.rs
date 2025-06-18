@@ -812,14 +812,14 @@ mod module_7c9aa503 {
             v4_1: LrcPtr<Dice::Mut6>,
             v5: Option<i64>,
         ) -> string {
-            let v220: Dice::US4 = defaultValue(Dice::US4::US4_1, map(Dice::method13(), v5));
-            let v360: DateTime = match &v220 {
-                Dice::US4::US4_0(v220_0_0) => {
-                    let v303: TimeSpan = TimeSpan::new_ticks(
+            let v241: Dice::US4 = defaultValue(Dice::US4::US4_1, map(Dice::method13(), v5));
+            let v395: DateTime = match &v241 {
+                Dice::US4::US4_0(v241_0_0) => {
+                    let v324: TimeSpan = TimeSpan::new_ticks(
                         ({
                             let _arg: DateTime = DateTime::now();
                             _arg.ticks()
-                        }) - (match &v220 {
+                        }) - (match &v241 {
                             Dice::US4::US4_0(x) => x.clone(),
                             _ => unreachable!(),
                         }),
@@ -828,21 +828,21 @@ mod module_7c9aa503 {
                         1_i32,
                         1_i32,
                         1_i32,
-                        v303.hours(),
-                        v303.minutes(),
-                        v303.seconds(),
-                        v303.milliseconds(),
+                        v324.hours(),
+                        v324.minutes(),
+                        v324.seconds(),
+                        v324.milliseconds(),
                     )
                 }
                 _ => DateTime::now(),
             };
-            let v361: string = Dice::method14();
-            let provider: string = if (v361.clone()) == string("") {
+            let v396: string = Dice::method14();
+            let provider: string = if (v396.clone()) == string("") {
                 string("M-d-y hh:mm:ss tt")
             } else {
-                v361
+                v396
             };
-            v360.toString(provider)
+            v395.toString(provider)
         }
         pub fn method18() -> string {
             string("")

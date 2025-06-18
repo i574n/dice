@@ -814,23 +814,23 @@ mod module_7c9aa503 {
             v4_1: LrcPtr<Dice::Mut6>,
             v5: Option<i64>,
         ) -> string {
-            let v569: u64 = near_sdk::env::block_timestamp();
-            let v594: Dice::US4 = defaultValue(Dice::US4::US4_1, map(Dice::method13(), v5));
-            let v607: u64 = (match &v594 {
-                Dice::US4::US4_0(v594_0_0) => {
-                    (v569)
-                        - (match &v594 {
+            let v638: u64 = near_sdk::env::block_timestamp();
+            let v663: Dice::US4 = defaultValue(Dice::US4::US4_1, map(Dice::method13(), v5));
+            let v676: u64 = (match &v663 {
+                Dice::US4::US4_0(v663_0_0) => {
+                    (v638)
+                        - (match &v663 {
                             Dice::US4::US4_0(x) => x.clone(),
                             _ => unreachable!(),
                         } as u64)
                 }
-                _ => v569,
+                _ => v638,
             }) / 1000000000_u64;
-            let v608: u64 = (v607) % 60_u64;
-            let v610: u64 = ((v607) / 60_u64) % 60_u64;
-            let v612: u64 = ((v607) / 3600_u64) % 24_u64;
-            let v614: std::string::String = format!("{:02}:{:02}:{:02}", v612, v610, v608);
-            fable_library_rust::String_::fromString(v614)
+            let v677: u64 = (v676) % 60_u64;
+            let v679: u64 = ((v676) / 60_u64) % 60_u64;
+            let v681: u64 = ((v676) / 3600_u64) % 24_u64;
+            let v683: std::string::String = format!("{:02}:{:02}:{:02}", v681, v679, v677);
+            fable_library_rust::String_::fromString(v683)
         }
         pub fn method18() -> string {
             string("")
