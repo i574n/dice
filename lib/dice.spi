@@ -158,7 +158,7 @@ inl main () =
         rotate_numbers
 
     inl create_sequential_roller' :
-        list u8 
+        list u8
         -> (() -> u8)
         =
         create_sequential_roller

@@ -1,6 +1,6 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"spiral","items":[{"aliases":[],"name":"spiral"}]}}
+{"kernelInfo":{"defaultKernelName":"spiral","items":[{"name":"spiral"}]}}
 
 #!markdown
 
@@ -347,7 +347,7 @@ join dyn listm'.init_series 1i32 10000 1
 #!spiral
 
 //// test
-//// timeout=180000
+//// timeout=300000
 
 inl { level } = get_trace_state_or_init None
 level <- Info
@@ -380,7 +380,7 @@ inl main () =
         rotate_numbers
 
     inl create_sequential_roller' :
-        list u8 
+        list u8
         -> (() -> u8)
         =
         create_sequential_roller

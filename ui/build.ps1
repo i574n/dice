@@ -10,7 +10,7 @@ $ErrorActionPreference = "Stop"
 
 $projectName = "dice_ui"
 
-{ . ../deps/polyglot/apps/spiral/dist/Supervisor$(_exe) --build-file "src/$projectName.spi" "src/$projectName.fsx" --timeout 180000 } | Invoke-Block
+{ . ../deps/polyglot/apps/spiral/dist/Supervisor$(_exe) --build-file "src/$projectName.spi" "src/$projectName.fsx" --timeout 300000 } | Invoke-Block
 
 (Get-Content "src/$projectName.fsx") `
     -replace "and Heap2 =", "and  Heap2 =" `

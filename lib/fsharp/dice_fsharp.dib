@@ -1,6 +1,6 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"fsharp","items":[]}}
+{"kernelInfo":{"defaultKernelName":"fsharp","items":[{"name":"spiral","languageName":"Spiral","aliases":["spi","spir"]}]}}
 
 #!markdown
 
