@@ -6,8 +6,9 @@ Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
 
 
-$url = git config --get remote.origin.url
-$owner = ($url -split '/' | Select-Object -Last 1) -replace '\.git$', ''
+$url = git ls-remote --get-url
+$owner = ($url -split '/' | Select-Object -Last 1) -replace '\.git$', '' ?? $env:GITHUB_REPOSITORY_OWNER
+Write-Output "dice/init.ps1 / url: $url / owner: $owner"
 
 Set-Location (New-Item -ItemType Directory -Path "../.." -Force)
 git clone --recurse-submodules https://github.com/$owner/polyglot.git # --branch gh-pages
