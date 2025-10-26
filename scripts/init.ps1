@@ -7,8 +7,8 @@ $ErrorActionPreference = "Stop"
 
 
 $url = git ls-remote --get-url
-$owner = ($url -split '/' | Select-Object -Last 1) -replace '\.git$', '' ?? $env:GITHUB_REPOSITORY_OWNER
-Write-Output "dice/init.ps1 / url: $url / owner: $owner"
+$owner = ($url -split '/' | Select-Object -Last 2 | Select-Object -First 1) -replace '\.git$', '' ?? $env:GITHUB_REPOSITORY_OWNER
+Write-Output "init.ps1 / url: $url / owner: $owner"
 
 Set-Location (New-Item -ItemType Directory -Path "../.." -Force)
 git clone --recurse-submodules https://github.com/$owner/polyglot.git # --branch gh-pages
