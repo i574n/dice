@@ -6,7 +6,7 @@ Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
 
 
-$url = git remote get-url origin
+$url = git ls-remote --get-url origin
 $owner = ($url -split '/' | Select-Object -Last 1) -replace '\.git$', ''
 
 Set-Location (New-Item -ItemType Directory -Path "../.." -Force)
