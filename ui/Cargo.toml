@@ -26,8 +26,8 @@ console_error_panic_hook = { version = ">=0.1,<1"}
 console_log = { version = "1.0"}
 gloo-net = { version = ">=0.6,<1", features = ["http"] }
 js-sys = ">=0.3,<1"
-leptos = { version = "0.8.0-beta", features = ["csr", "nightly"] }
-leptos_router = { version = ">=0.7,<1", features = ["nightly"] }
+leptos = { version = ">=0.8.11", features = ["csr", "nightly"] }
+leptos_router = { version = ">=0.8.9,<1", features = ["nightly"] }
 log = ">=0.4,<1"
 reqwest-wasm = { version = ">=0.11,<1", features = ["json"] }
 rexie = ">=0.5,<1"
