@@ -6,8 +6,11 @@ Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
 
 
+$url = git remote get-url origin
+$owner = ($url -split '/' | Select-Object -Last 1) -replace '\.git$', ''
+
 Set-Location (New-Item -ItemType Directory -Path "../.." -Force)
-git clone --recurse-submodules https://github.com/i574n/polyglot.git # --branch gh-pages
+git clone --recurse-submodules https://github.com/$owner/polyglot.git # --branch gh-pages
 Set-Location polyglot
 git pull
 Set-Location $ScriptDir
