@@ -38,3 +38,4 @@ wasm-bindgen = { version = ">=0.2,<1" }
 wasm-bindgen-futures = ">=0.4,<1"
 web-sys = { version = ">=0.3,<1", features = ["Storage"] }
 getrandom = { version = ">=0.2,<1", features = ["js"], default-features = false }
+uuid = { version = "*", features = ["rng-getrandom"] }
