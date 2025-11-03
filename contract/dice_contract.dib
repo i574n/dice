@@ -8,16 +8,17 @@
 
 #!spiral
 
+//// test
+//// test_force
+
+open testing
+
+#!spiral
+
 //// package=../dice
 
 open rust
 open rust.rust_operators
-
-#!spiral
-
-//// test
-
-open testing
 
 #!markdown
 
