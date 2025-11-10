@@ -16,7 +16,7 @@ if (!$fast -and !$SkipNotebook) {
     { . deps/spiral/workspace/target/release/spiral$(_exe) dib --path "$ScriptDir/$projectName.dib" --retries $($fast -or !$env:CI ? 1 : 3) } | Invoke-Block -Location ../deps/polyglot
 }
 
-{ . ../deps/polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" spi } | Invoke-Block
+{ . deps/spiral/workspace/target/release/spiral$(_exe) dib-export "$ScriptDir/$projectName.dib" spi } | Invoke-Block
 
 { . ../deps/polyglot/apps/spiral/dist/Supervisor$(_exe) --build-file "$projectName.spi" "$projectName.fsx" --timeout 300000 } | Invoke-Block
 
@@ -51,7 +51,7 @@ Write-Output "dice/contract/build.ps1 / path: $path"
 
 cargo fmt --
 
-{ cargo +nightly-2024-07-14 build --release --target wasm32-unknown-unknown } | Invoke-Block -EnvironmentVariables @{ "AUTOMATION" = "False" }
+{ cargo +nightly-2024-07-14 build --timings --release --target wasm32-unknown-unknown } | Invoke-Block -EnvironmentVariables @{ "AUTOMATION" = "False" }
 New-Item dist -ItemType Directory -Force | Out-Null
 Copy-Item ../target/wasm32-unknown-unknown/release/dice_contract.wasm dist/dice.wasm -Force
 

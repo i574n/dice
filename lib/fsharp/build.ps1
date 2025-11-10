@@ -15,7 +15,7 @@ if (!$fast -and !$SkipNotebook) {
     { . ../../deps/spiral/workspace/target/release/spiral$(_exe) dib --path "$ScriptDir/$projectName.dib" } | Invoke-Block -Retries 3 -Location ../../deps/polyglot/lib/fsharp
 }
 
-{ . ../../deps/polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" fs } | Invoke-Block
+{ . ../../deps/spiral/workspace/target/release/spiral$(_exe) dib-export "$ScriptDir/$projectName.dib" fs } | Invoke-Block
 
 $runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
 $builderArgs = @("$projectName.fs", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
@@ -74,7 +74,7 @@ Copy-Item $path $target -Force
 cargo fmt --
 
 if (!$fast) {
-    { cargo run --release } | Invoke-Block
+    { cargo run --timings --release } | Invoke-Block
 }
 
 Write-Output "dice/lib/fsharp/build.ps1 / `$targetDir = $targetDir / `$projectName: $projectName / `$env:CI:'$env:CI'"
