@@ -61,7 +61,7 @@ inl render () =
                 heap { data with
                     accounts =
                         accounts
-                        |> am'.vec_retain (from_pair >> fun i, _ => i = index |> join fun x => x |> not)
+                        |> am'.vec_retain (from_pair >> fun i, _ => (i = index) |> join fun x => x |> not)
                         |> am'.vec_map' (from_pair >> snd >> fst >> leptos.signal_get)
                 }
 
@@ -148,7 +148,7 @@ inl render () =
                                                 accounts =
                                                     data.accounts
                                                     |> am'.vec_mapi fun i' pair =>
-                                                        if i' = i |> fun x => join not x
+                                                        if (i' = i) |> fun x => join not x
                                                         then pair
                                                         else
                                                             inl enabled', account' = pair |> from_pair
@@ -174,7 +174,7 @@ inl render () =
                                                 accounts =
                                                     data.accounts
                                                     |> am'.vec_mapi fun i' pair =>
-                                                        if i' = i |> fun x => join not x
+                                                        if (i' = i) |> fun x => join not x
                                                         then pair
                                                         else
                                                             inl enabled', _ = pair |> from_pair
@@ -182,7 +182,7 @@ inl render () =
                                             })
                                     |> leptos.element_to_view
 
-                                    if (accounts_count |> leptos.signal_get) = 1i32
+                                    if accounts_count |> leptos.signal_get = 1i32
                                     then [] |> leptos.view_list_to_view
                                     else delete_button i |> leptos.element_to_view
                                 ]
