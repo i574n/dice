@@ -119,12 +119,12 @@ inl replicate n =
     |> listm'.box
     |> listm'.to_array'
 
-inl max_seeds : u32 = max_seeds () |> convert
+inl max_seeds : u32 = max_seeds () |> convert.convert
 inl seeds = "" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut
 
 conv max_seeds * 1.2f64
 |> replicate
-|> am'.map_base u8
+|> am'.map_base convert.u8
 |> am'.to_vec
 |> contribute_seed seeds
 
