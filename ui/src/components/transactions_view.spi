@@ -105,7 +105,7 @@ inl render () =
                                     |> am'.to_vec
                                     |> am'.vec_map fun { account i txn } =>
                                         !txn
-                                        |> transaction.render account (i |> i64)
+                                        |> transaction.render account (i |> convert.i64)
                                         |> leptos.element_to_view
                                     |> leptos.vec_to_view
                                     |> leptos.view_to_fragment

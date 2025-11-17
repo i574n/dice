@@ -77,8 +77,8 @@ trace Verbose (fun () => "") id
 
 #!spiral
 
-inl max_seeds () : unativeint =
-    100i32 |> convert
+inl max_seeds () : convert.unativeint =
+    100i32 |> convert.convert
 
 #!markdown
 
@@ -88,9 +88,8 @@ inl max_seeds () : unativeint =
 
 inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.vec u8) : () =
     seeds |> near.vector_extend seed
-
-    inl seed_excess_len = (seeds |> rust.len |> fun x => x : u32 |> i32) - (max_seeds () |> i32)
-
+    inl seed_excess_len =
+        (seeds |> rust.len |> fun x => x : u32 |> convert.i32) - (max_seeds () |> convert.i32)
     if seed_excess_len > 0 then
         inl seed_excess : am'.vec u8 =
             !\\(seed_excess_len, $'"!seeds.drain(0..$0 as u32).collect::<Vec<_>>()"')

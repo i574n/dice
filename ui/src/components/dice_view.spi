@@ -173,7 +173,7 @@ inl render () =
                                             max =
                                                 match value |> sm'.obj_to_string with
                                                 | "" => 1
-                                                | x => x |> i32
+                                                | x => x |> convert.i32
                                         })
                                 |> leptos.element_to_view
                             ]
@@ -308,7 +308,8 @@ inl render () =
                                         |> leptos.signal_get
                                     transactions
                                     |> am'.vec_map fun { txn i } =>
-                                        inl rpc_response = rpc_responses |> am'.from_vec |> am'.index (i |> i32)
+                                        inl rpc_response =
+                                            rpc_responses |> am'.from_vec |> am'.index (i |> convert.i32)
 
                                         leptos.tr [
                                             $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
@@ -319,7 +320,7 @@ inl render () =
                                                 ] fun () =>
                                                     txn.block_timestamp
                                                     |> sm'.from_std_string
-                                                    |> i64
+                                                    |> convert.i64
                                                     |> date_time.format_timestamp
                                                     |> to_string
                                                     |> leptos.text_fragment
@@ -355,7 +356,7 @@ inl render () =
                                                     match txn.logs with
                                                     | ;[] => "" |> leptos.text_fragment
                                                     | _ =>
-                                                        ((a txn.logs : _ i32 _), None)
+                                                        ((a txn.logs : _ int _), None)
                                                         ||> am.foldBack fun x acc =>
                                                             inl logs =
                                                                 x
