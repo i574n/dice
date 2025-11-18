@@ -112,4 +112,6 @@ Write-Output "dice/lib/build.ps1 / `$targetDir = $targetDir / `$projectName: $pr
 
 if ($env:CI) {
     Remove-Item $targetDir -Recurse -Force -ErrorAction Ignore
+
+    ClearCargoTarget "../.."
 }
