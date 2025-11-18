@@ -16,7 +16,7 @@ if (!$fast -and !$SkipNotebook) {
     { . deps/spiral/workspace/target/release/spiral$(_exe) dib --path "$ScriptDir/$projectName.dib" --retries $($fast -or !$env:CI ? 1 : 3) } | Invoke-Block -Location ../deps/polyglot
 }
 
-{ . deps/spiral/workspace/target/release/spiral$(_exe) dib-export "$ScriptDir/$projectName.dib" spi } | Invoke-Block
+{ . ../../spiral/workspace/target/release/spiral$(_exe) dib-export "$ScriptDir/$projectName.dib" spi } | Invoke-Block
 
 { . ../deps/polyglot/apps/spiral/dist/Supervisor$(_exe) --build-file "$projectName.spi" "$projectName.fsx" --timeout 300000 } | Invoke-Block
 
