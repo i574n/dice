@@ -8,8 +8,7 @@
 
 #!spiral
 
-//// test
-//// test_force
+///- --test force
 
 open testing
 
@@ -38,15 +37,15 @@ type state =
 
 #!spiral
 
-//// test
-///! rust -c
+///- --test
+///> rust -c
 
 ()
 
 #!spiral
 
-//// test
-///! rust -c
+///- --test
+///> rust -c
 
 trace Verbose (fun () => "") id
 
@@ -64,8 +63,8 @@ inl new () : state =
 
 #!spiral
 
-//// test
-///! rust -c
+///- --test
+///> rust -c
 
 inl state = new ()
 trace Verbose (fun () => "dice_contract") fun () => { state = state |> sm'.format_debug }
@@ -100,8 +99,8 @@ inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.
 
 #!spiral
 
-//// test
-///! rust -c
+///- --test
+///> rust -c
 
 inl replicate n =
     let rec 루프 i acc =
@@ -203,8 +202,8 @@ inl generate_random_number
 
 #!spiral
 
-//// test
-///! rust -cd near-token
+///- --test
+///> rust -cd near-token
 
 2000
 |> generate_random_number
@@ -235,8 +234,8 @@ inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
 
 #!spiral
 
-//// test
-///! rust -c
+///- --test
+///> rust -c
 
 inl rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.to_vec
 
@@ -246,8 +245,8 @@ rolls
 
 #!spiral
 
-//// test
-///! rust -c
+///- --test
+///> rust -c
 
 inl rolls = ;[ 2; 2; 6; 4; 5 ] |> am'.to_vec
 
@@ -261,7 +260,7 @@ rolls
 
 #!spiral
 
-///! _
+///> _
 
 inl main () =
     !\($'"} //"') : ()

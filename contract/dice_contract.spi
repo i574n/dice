@@ -117,7 +117,7 @@ inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
     result
 
 /// ### main
-///! _
+///> _
 
 inl main () =
     !\($'"} //"') : ()

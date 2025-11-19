@@ -35,7 +35,7 @@ let sixthPowerSequence () =
 
 #!fsharp
 
-//// test
+///- --test
 
 sixthPowerSequence ()
 |> Seq.take 8
@@ -67,21 +67,21 @@ let rec accumulateDiceRolls log rolls power acc =
 
 #!fsharp
 
-//// test
+///- --test
 
 accumulateDiceRolls (Some (printfn "%s")) [ 6; 5; 4; 3; 2 ] 0 1000
 |> _assertEqual (Some (1006, [ 5; 4; 3; 2 ]))
 
 #!fsharp
 
-//// test
+///- --test
 
 accumulateDiceRolls (Some (printfn "%s")) [ 6; 5; 4; 3; 2 ] 1 1000
 |> _assertEqual (Some (1035, [ 4; 3; 2 ]))
 
 #!fsharp
 
-//// test
+///- --test
 
 accumulateDiceRolls (Some (printfn "%s")) [ 6; 5; 4; 3; 2 ] 2 1000
 |> _assertEqual (Some (1208, [ 3; 2 ]))
@@ -100,21 +100,21 @@ let rollWithinBounds log max rolls =
 
 #!fsharp
 
-//// test
+///- --test
 
 rollWithinBounds (Some (printfn "%s")) 2000 [ 1; 5; 4; 4; 5 ]
 |> _assertEqual (Some 995)
 
 #!fsharp
 
-//// test
+///- --test
 
 rollWithinBounds (Some (printfn "%s")) 2000 [ 2; 2; 6; 4; 5 ]
 |> _assertEqual (Some 1715)
 
 #!fsharp
 
-//// test
+///- --test
 
 rollWithinBounds (Some (printfn "%s")) 2000 [ 4; 1; 1; 2; 3 ]
 |> _assertEqual None
@@ -138,14 +138,14 @@ let inline calculateDiceCount log max =
 
 #!fsharp
 
-//// test
+///- --test
 
 calculateDiceCount (Some (printfn "%s")) 36
 |> _assertEqual 2
 
 #!fsharp
 
-//// test
+///- --test
 
 calculateDiceCount (Some (printfn "%s")) 7777
 |> _assertEqual 6
@@ -189,7 +189,7 @@ let rotateNumbers max items =
 
 #!fsharp
 
-//// test
+///- --test
 
 [ -1 .. 14 ]
 |> rotateNumbers 6
@@ -232,14 +232,14 @@ let rollProgressively log roll reroll max =
 
 #!fsharp
 
-//// test
+///- --test
 
 rollProgressively None rollDice false 1
 |> _assertEqual 1
 
 #!fsharp
 
-//// test
+///- --test
 
 let sequentialRoll = createSequentialRoller [ 5; 4; 4; 5; 1 ]
 
@@ -248,7 +248,7 @@ rollProgressively (Some (printfn "%s")) sequentialRoll false 2000
 
 #!fsharp
 
-//// test
+///- --test
 
 let sequentialRoll = createSequentialRoller [ 5; 4; 4; 5; 2 ]
 
@@ -260,19 +260,19 @@ fun () -> rollProgressively (Some (printfn "%s")) sequentialRoll false 2000 |> i
 
 #!fsharp
 
-//// ignore
+///- --ignore
 
 rollProgressively (Some (printfn "%s")) rollDice false 2000
 
 #!fsharp
 
-//// ignore
+///- --ignore
 
 rollProgressively (Some (printfn "%s")) rollDice true 2000
 
 #!fsharp
 
-//// ignore
+///- --ignore
 
 [| 1 .. 10000 |]
 |> Array.Parallel.map (fun _ -> rollProgressively None rollDice false 10)
@@ -282,7 +282,7 @@ rollProgressively (Some (printfn "%s")) rollDice true 2000
 
 #!fsharp
 
-//// ignore
+///- --ignore
 
 [| 1 .. 10000 |]
 |> Array.Parallel.map (fun _ -> rollProgressively None rollDice true 10)
@@ -292,7 +292,7 @@ rollProgressively (Some (printfn "%s")) rollDice true 2000
 
 #!fsharp
 
-//// test
+///- --test
 
 [| 1 .. 100 |]
 |> Array.Parallel.iter (fun n ->
@@ -308,7 +308,7 @@ rollProgressively (Some (printfn "%s")) rollDice true 2000
 
 #!fsharp
 
-//// ignore
+///- --ignore
 
 let inline rollMax fn max n =
     [| 1 .. n |]
@@ -333,7 +333,7 @@ let run () =
 
 #!fsharp
 
-//// ignore
+///- --ignore
 
 let run () =
     let max = 10
@@ -361,7 +361,7 @@ let run () =
 
 #!fsharp
 
-//// test
+///- --test
 
 type ValorDado =
     | Um
