@@ -29,3 +29,8 @@ EnsureSymbolicLink -Path "../deps/polyglot" -Target "../../polyglot"
 { pwsh ../../polyglot/deps/spiral/apps/spiral/build.ps1 -fast 1 -SkipFsx 1 } | Invoke-Block
 { pwsh ../../polyglot/deps/spiral/apps/wasm/build.ps1 -SkipFsx 1 } | Invoke-Block
 { pwsh ../../polyglot/apps/dir-tree-html/build.ps1 -fast 1 } | Invoke-Block
+
+if (!(Search-Command "leptosfmt")) {
+    # { cargo binstall -y --git https://github.com/bram209/leptosfmt.git --locked leptosfmt } | Invoke-Block -OnError Continue
+    { cargo binstall -y leptosfmt } | Invoke-Block -OnError Continue
+}
