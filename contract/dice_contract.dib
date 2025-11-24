@@ -8,16 +8,16 @@
 
 #!spiral
 
-///- --test static
-
-open testing
-
-#!spiral
-
-//// package=../dice
+///- --package ../dice
 
 open rust
 open rust.rust_operators
+
+#!spiral
+
+///- --test static
+
+open testing
 
 #!markdown
 

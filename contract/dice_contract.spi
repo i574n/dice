@@ -1,5 +1,5 @@
 /// # dice_contract
-//// package=../dice
+///- --package ../dice
 
 open rust
 open rust.rust_operators
