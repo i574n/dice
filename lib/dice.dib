@@ -12,6 +12,10 @@
 
 open testing
 
+#!spiral
+
+open sm'_operators
+
 #!markdown
 
 ## sixth_power_sequence
@@ -240,7 +244,7 @@ inl create_sequential_roller list =
             inl last_item = *last_item |> optionm'.box
             trace Debug
                 fun () => "dice.create_sequential_roller / roll"
-                fun () => { current_index acc len last_item = last_item |> sm'.format_debug }
+                fun () => { current_index acc len last_item = #?*last_item }
         |> fun x => x ()
         match s () |> stream.try_item *current_index with
         | Some item =>

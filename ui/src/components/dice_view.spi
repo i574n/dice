@@ -1,5 +1,6 @@
 open rust.rust_operators
 open leptos
+open sm'_operators
 
 inl render () =
     print_static "<dice_view.render>"
@@ -10,7 +11,7 @@ inl render () =
     inl { accounts_txns_requests txns rpc_responses } = hooks.use_transactions.render global_state
 
     inl roll_action = leptos.new_arc_action fun (value : heap i32) =>
-        inl value_log = value |> sm'.format_debug
+        inl value_log = #?*value
         leptos.log $'"dice_view.render (2) / set_max_action / value: " + string !value_log + ""'
         fun () =>
             inl url = "https://rpc.mainnet.near.org"

@@ -1,6 +1,7 @@
 open rust.rust_operators
 open rust
 open leptos
+open sm'_operators
 
 inl main (args : array_base string) =
     leptos.log $'"main / args: " + string !args + ""'
@@ -10,7 +11,7 @@ inl main (args : array_base string) =
 
     inl body : optionm'.option' wasm.html_element = !\($'"leptos::prelude::document().body()"')
     inl body = body |> optionm'.unbox
-    inl body_log = body |> sm'.format_debug
+    inl body_log = #?*body
 
     leptos.log $'"main / mount_to_body / body: " + string !body_log + ""'
 

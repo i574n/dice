@@ -12,6 +12,7 @@
 
 open rust
 open rust.rust_operators
+open sm'_operators
 
 #!spiral
 
@@ -67,7 +68,7 @@ inl new () : state =
 ///> rust -c
 
 inl state = new ()
-trace Verbose (fun () => "dice_contract") fun () => { state = state |> sm'.format_debug }
+trace Verbose (fun () => "dice_contract") fun () => { state = #?*state }
 trace Verbose (fun () => "") id
 
 #!markdown
@@ -94,7 +95,7 @@ inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.
             !\\(seed_excess_len, $'"!seeds.drain(0..$0 as u32).collect::<Vec<_>>()"')
         trace Debug
             fun () => "dice_contract.contribute_seed"
-            fun () => { seed_excess_len seed_excess = seed_excess |> sm'.format_debug }
+            fun () => { seed_excess_len seed_excess = #?*seed_excess }
     trace Debug (fun () => "") (join id)
 
 #!spiral
@@ -185,14 +186,14 @@ inl generate_random_number
             block_timestamp
             block_height
             epoch_height
-            account_balance = account_balance |> sm'.format_debug
+            account_balance = #?*account_balance
             signer_account_id = signer_account_id |> sm'.to_string'
             predecessor_account_id = predecessor_account_id |> sm'.to_string'
-            seed = seed |> sm'.format_debug
-            seeds = seeds |> sm'.format_debug
+            seed = #?*seed
+            seeds = #?*seeds
             entropy_len = entropy |> am'.vec_len
-            entropy = entropy |> sm'.format_debug
-            hash_u8 = hash_u8 |> sm'.format_debug
+            entropy = #?*entropy
+            hash_u8 = #?*hash_u8
             rolls = rolls_list |> listm'.box |> listm'.to_array' |> am'.to_vec |> sm'.format_debug
         }
     inl sequential_roll = rolls_list |> lib.dice.create_sequential_roller
@@ -228,7 +229,7 @@ inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
         |> optionm'.box
     trace Debug
         fun () => "dice_contract.roll_within_bounds"
-        fun () => { max rolls = rolls |> sm'.format_debug; result = result |> sm'.format_debug }
+        fun () => { max rolls = #?*rolls; result = #?*result }
     trace Debug (fun () => "") (join id)
     result
 
