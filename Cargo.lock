@@ -1575,7 +1575,7 @@ dependencies = [
  "console_log",
  "fable_library_rust",
  "futures",
- "getrandom 0.2.15",
+ "getrandom 0.3.4",
  "gloo-net",
  "inline_colorization",
  "js-sys",
