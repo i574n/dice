@@ -3,7 +3,7 @@ open leptos
 
 inl render () =
     print_static "<app.render>"
-    leptos.log $'"app.render ()"'
+    leptos.log "app.render ()"
 
     leptos.provide_meta_context ()
 
@@ -38,22 +38,11 @@ inl render () =
         real leptos.provide_context `global_state global_state
     |> fun x => x ()
 
-    inl route' path view =
-        leptos.route
-            path
-            fun () =>
-                view () |> leptos.element_to_fragment
-            fun () =>
-                [] |> leptos.view_list_to_fragment
-
-    leptos.router fun () =>
-        leptos.routes fun () =>
-            inl home_render = join home.render
-            [
-                route' "" fun () => home_render { router = 1 }
-                route' "/" fun () => home_render { router = 2 }
-                route' "/*" fun () => home_render { router = 3 }
-                route' "*" fun () => home_render { router = 4 }
-            ]
-            |> am'.new_vec
-        |> leptos.view_to_fragment
+    inl home_view (router : i32) : leptos.view = home.render { router } |> leptos.element_to_view
+    inl home_view = join home_view
+    leptos.router (
+        leptos.routes (fun () => home_view 4) [
+            leptos.route "" fun () => home_view 1
+            leptos.route "/*any" fun () => home_view 3
+        ]
+    )

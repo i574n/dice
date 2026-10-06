@@ -156,10 +156,12 @@ inl calculate_dice_count forall a {number} b {number}. (max : a) : b =
                 fun () => { max p n }
             n
         if p < max then
-            inl p' = p * 6
-            if p' > p
-            then 루프 (n + 1) p'
-            else return ()
+            // A max whose next power of 6 doesn't fit its type (above 6^24 for u64 and i64, above 6^11 for i32) is
+            // rejected: the dice sum of such a bound overflows (`p * 6` here, `(roll - 1) * coeff` in
+            // accumulate_dice_rolls).
+            if p > (limit.max : a) / 6
+            then failwith ("dice.calculate_dice_count / max: " ++# #?max ++# " is above the largest supported bound " ++# #?p)
+            else 루프 (n + 1) (p * 6)
         else return ()
     // and inl 루프 n p =
     and inl 루프 forall t {number}. (n : t) (p : a) : t =
@@ -186,6 +188,53 @@ calculate_dice_count 36i32
 
 calculate_dice_count 7777i32
 |> _assert_eq 6i32
+
+#!spiral
+
+///- --test
+
+calculate_dice_count 4738381338321616896u64
+|> _assert_eq 24i32
+
+#!spiral
+
+///- --test
+
+calculate_dice_count 362797056i32
+|> _assert_eq 11i32
+
+#!spiral
+
+///- --test
+
+fun () =>
+    (calculate_dice_count 4738381338321616897u64 : i32)
+    |> ignore
+|> _throws
+|> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 4738381338321616896")
+|> _assert_eq (Some true)
+
+#!spiral
+
+///- --test
+
+fun () =>
+    (calculate_dice_count (limit.max : i64) : i32)
+    |> ignore
+|> _throws
+|> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 4738381338321616896")
+|> _assert_eq (Some true)
+
+#!spiral
+
+///- --test
+
+fun () =>
+    (calculate_dice_count 362797057i32 : i32)
+    |> ignore
+|> _throws
+|> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 362797056")
+|> _assert_eq (Some true)
 
 #!markdown
 
@@ -320,51 +369,81 @@ roll_progressively sequential_roll false 2000i32
 
 ///- --test
 
-inl { level } = get_trace_state_or_init None
-level <- Info
+inl sequential_roll = create_sequential_roller [ 6u8; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]
 
-join dyn listm'.init_series 1i32 10000 1
-|> listm.map (fun _ => roll_progressively roll_dice false 10i32)
-|> listm'.group_by id
-|> listm.map (fun (k, v) => k, (listm.length v : i32))
-|> listm'.box
-|> listm'.to_array'
-|> fun ar =>
-    $'!ar |> Array.sortBy (fun (struct (a, b)) -> a)' : a i32 $'struct (int32 * int32)'
+roll_progressively sequential_roll false 4738381338321616896u64
+|> _assert_eq 4738381338321616896u64
 
 #!spiral
 
 ///- --test
 
-inl { level } = get_trace_state_or_init None
-level <- Info
+inl histogram (reroll : bool) : i32 =
+    inl { level } = get_trace_state_or_init None
+    level <- Info
+    let rec insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =
+        match rows with
+        | [] => [ row ]
+        | (k2, v2) :: rest =>
+            inl k, v = row
+            if k <= k2 then (k, v) :: (k2, v2) :: rest
+            else (k2, v2) :: insert row rest
+    join dyn listm'.init_series 1i32 10000 1
+    |> listm.map (fun _ => roll_progressively roll_dice reroll 10i32)
+    |> listm'.group_by id
+    |> listm.map (fun (k, v) => k, (listm.length v : i32))
+    |> listm.fold (fun acc row => insert row acc) []
+    |> listm.fold (fun acc (k, v) => if acc = "" then #?k ++# " = " ++# #?v else acc ++# "; " ++# #?k ++# " = " ++# #?v) ""
+    |> console.write_line
+    0i32
 
-join dyn listm'.init_series 1i32 10000 1
-|> listm.map (fun _ => roll_progressively roll_dice true 10i32)
-|> listm'.group_by id
-|> listm.map (fun (k, v) => k, (listm.length v : i32))
-|> listm'.box
-|> listm'.to_array'
-|> fun ar =>
-    $'!ar |> Array.sortBy (fun (struct (a, b)) -> a)' : a i32 $'struct (int32 * int32)'
+histogram false
+
+#!spiral
+
+///- --test
+
+inl histogram (reroll : bool) : i32 =
+    inl { level } = get_trace_state_or_init None
+    level <- Info
+    let rec insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =
+        match rows with
+        | [] => [ row ]
+        | (k2, v2) :: rest =>
+            inl k, v = row
+            if k <= k2 then (k, v) :: (k2, v2) :: rest
+            else (k2, v2) :: insert row rest
+    join dyn listm'.init_series 1i32 10000 1
+    |> listm.map (fun _ => roll_progressively roll_dice reroll 10i32)
+    |> listm'.group_by id
+    |> listm.map (fun (k, v) => k, (listm.length v : i32))
+    |> listm.fold (fun acc row => insert row acc) []
+    |> listm.fold (fun acc (k, v) => if acc = "" then #?k ++# " = " ++# #?v else acc ++# "; " ++# #?k ++# " = " ++# #?v) ""
+    |> console.write_line
+    0i32
+
+histogram true
 
 #!spiral
 
 ///- --test
 //// timeout=300000
 
-inl { level } = get_trace_state_or_init None
-level <- Info
+inl check_progress () : i32 =
+    inl { level } = get_trace_state_or_init None
+    level <- Info
+    join dyn listm'.init_series 1i32 100 1
+    |> listm.iter fun n =>
+        listm'.init_series 0i32 1 1
+        |> listm.iter fun reroll =>
+            join dyn listm'.init_series 1i32 3500 1
+            |> listm.map fun _ => roll_progressively roll_dice (reroll = 1) n
+            |> listm'.group_by id
+            |> listm.length
+            |> __assert_eq Silent n
+    0i32
 
-join dyn listm'.init_series 1i32 100 1
-|> listm.iter fun n =>
-    listm'.init_series 0i32 1 1
-    |> listm.iter fun reroll =>
-        join dyn listm'.init_series 1i32 3500 1
-        |> listm.map fun _ => roll_progressively roll_dice (reroll = 1) n
-        |> listm'.group_by id
-        |> listm.length
-        |> __assert_eq Silent n
+check_progress ()
 
 #!markdown
 
@@ -373,7 +452,8 @@ join dyn listm'.init_series 1i32 100 1
 #!spiral
 
 inl main (_args : array_base string) =
-    inl result = roll_progressively roll_dice true (limit.max : i64)
+    // 6^24, the largest bound an i64 supports (calculate_dice_count)
+    inl result = roll_progressively roll_dice true 4738381338321616896i64
     trace Debug
         fun () => "dice.main"
         fun () => { result }
@@ -406,8 +486,29 @@ inl main () =
             roll_within_bounds a b
             |> optionm'.box
 
-    $'let rotate_numbers x = !rotate_numbers' x' : ()
-    $'let create_sequential_roller x = !create_sequential_roller' x' : ()
-    $'let roll_progressively x = !roll_progressively' x' : ()
-    $'let roll_within_bounds x = !roll_within_bounds' x' : ()
-    $'let main args = !main args' : ()
+    backend_switch {
+        Fsharp = fun () => $'let rotate_numbers x = !rotate_numbers' x' : ()
+        Rust = fun () => ()
+        TypeScript = fun () => ()
+    } : ()
+    backend_switch {
+        Fsharp = fun () => $'let create_sequential_roller x = !create_sequential_roller' x' : ()
+        Rust = fun () => ()
+        TypeScript = fun () => ()
+    } : ()
+    backend_switch {
+        Fsharp = fun () => $'let roll_progressively x = !roll_progressively' x' : ()
+        Rust = fun () => ()
+        TypeScript = fun () => ()
+    } : ()
+    backend_switch {
+        Fsharp = fun () => $'let roll_within_bounds x = !roll_within_bounds' x' : ()
+        Rust = fun () => ()
+        TypeScript = fun () => ()
+    } : ()
+    backend_switch {
+        Fsharp = fun () => $'let main args = !main args' : ()
+        Rust = fun () => main ;[] |> ignore
+        Python = fun () => main ;[] |> ignore
+        TypeScript = fun () => main ;[] |> ignore
+    } : ()

@@ -1,147 +1,36 @@
 open rust.rust_operators
+open sm'_operators
 
 
-nominal rpc_input' =
-    `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::RpcInput\")>] type crate_model_near_rpc_RpcInput = class end"
-        $'' : $'crate_model_near_rpc_RpcInput'
-    )
+nominal rpc_input' = $'crate::model::near::rpc::RpcInput'
 
-nominal error_cause_info' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ErrorCauseInfo\")>] type crate_model_near_rpc_ErrorCauseInfo = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_ErrorCauseInfo'
-    )
+nominal error_cause_info' = $'crate::model::near::rpc::ErrorCauseInfo'
 
-nominal error_cause' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ErrorCause\")>] type crate_model_near_rpc_ErrorCause = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_ErrorCause'
-    )
+nominal error_cause' = $'crate::model::near::rpc::ErrorCause'
 
-nominal rpc_error' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::RpcError\")>] type crate_model_near_rpc_RpcError = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_RpcError'
-    )
+nominal rpc_error' = $'crate::model::near::rpc::RpcError'
 
-nominal transfer_detail' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::TransferDetail\")>] type crate_model_near_rpc_TransferDetail = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_TransferDetail'
-    )
+nominal transfer_detail' = $'crate::model::near::rpc::TransferDetail'
 
-nominal gas_profile' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::GasProfile\")>] type crate_model_near_rpc_GasProfile = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_GasProfile'
-    )
+nominal gas_profile' = $'crate::model::near::rpc::GasProfile'
 
-nominal metadata' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::Metadata\")>] type crate_model_near_rpc_Metadata = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_Metadata'
-    )
+nominal metadata' = $'crate::model::near::rpc::Metadata'
 
-nominal outcome_detail' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::OutcomeDetail\")>] type crate_model_near_rpc_OutcomeDetail = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_OutcomeDetail'
-    )
+nominal outcome_detail' = $'crate::model::near::rpc::OutcomeDetail'
 
-nominal proof' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::Proof\")>] type crate_model_near_rpc_Proof = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_Proof'
-    )
+nominal proof' = $'crate::model::near::rpc::Proof'
 
-nominal receipts_outcome' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ReceiptsOutcome\")>] type crate_model_near_rpc_ReceiptsOutcome = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_ReceiptsOutcome'
-    )
+nominal receipts_outcome' = $'crate::model::near::rpc::ReceiptsOutcome'
 
-nominal action_detail' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ActionDetail\")>] type crate_model_near_rpc_ActionDetail = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_ActionDetail'
-    )
+nominal action_detail' = $'crate::model::near::rpc::ActionDetail'
 
-nominal receipt_detail' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::ReceiptDetail\")>] type crate_model_near_rpc_ReceiptDetail = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_ReceiptDetail'
-    )
+nominal receipt_detail' = $'crate::model::near::rpc::ReceiptDetail'
 
-nominal receipt' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::Receipt\")>] type crate_model_near_rpc_Receipt = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_Receipt'
-    )
+nominal receipt' = $'crate::model::near::rpc::Receipt'
 
-nominal transaction_status' =
-    `(
-        backend_switch `(()) `({}) {
-            Fsharp = (fun () =>
-                global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::TransactionStatus\")>] type crate_model_near_rpc_TransactionStatus = class end"
-                        ) : () -> ()
-        }
-        $'' : $'crate_model_near_rpc_TransactionStatus'
-    )
+nominal transaction_status' = $'crate::model::near::rpc::TransactionStatus'
 
-nominal rpc_response' =
-    `(
-        global "[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::rpc::RpcResponse\")>] type crate_model_near_rpc_RpcResponse = class end"
-        $'' : $'crate_model_near_rpc_RpcResponse'
-    )
+nominal rpc_response' = $'crate::model::near::rpc::RpcResponse'
 
 type rpc_input =
     {
@@ -264,7 +153,8 @@ type rpc_response =
 inl format_error (error : _ rpc_error) =
     match error |> optionm'.unbox with
     | Some { cause = { name = cause_name } data name message } =>
-        ($'string !name + ": " + string !message + " - " + string !data + " (" + string !cause_name + ")"' : string)
+        inl text = sm'.from_std_string
+        text name ++# ": " ++# text message ++# " - " ++# text data ++# " (" ++# text cause_name ++# ")"
         |> Some
     | _ => None
 

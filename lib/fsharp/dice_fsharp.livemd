@@ -1,17 +1,10 @@
-#!meta
-
-{"kernelInfo":{"defaultKernelName":"fsharp","items":[{"name":"spiral","languageName":"Spiral","aliases":["spi","spir"]}]}}
-
-#!markdown
-
 # DiceFSharp (Dice)
 
-#!fsharp
+<!-- livebook:{"break_markdown":true} -->
 
-#!import ../../../polyglot/lib/fsharp/Notebooks.dib
+`#!import ../../../polyglot/lib/fsharp/Notebooks.dib`
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 // The test helpers this notebook uses, from polyglot's Testing.dib, which references Expecto by a path relative to an
@@ -41,44 +34,38 @@ let inline _assertEqual expected actual = __assertEqual true expected actual
 
 let inline __throwsC log expected actual = __expect Expecto.Expect.throwsC log expected actual
 let inline _throwsC expected actual = __throwsC true expected actual
+```
 
-#!fsharp
+`#!import ../../../polyglot/lib/fsharp/Common.fs`
 
-#!import ../../../polyglot/lib/fsharp/Common.fs
-
-#!fsharp
-
+```fsharp
 #if !INTERACTIVE
 open Polyglot
 open Lib
 #endif
 
 open Common
-
-#!markdown
+```
 
 ## sixthPowerSequence
 
-#!fsharp
-
+```fsharp
 let sixthPowerSequence () =
     1 |> Seq.unfold (fun state -> Some (state, state * 6)) |> Seq.cache
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 sixthPowerSequence ()
 |> Seq.take 8
 |> Seq.toList
 |> _assertEqual [ 1; 6; 36; 216; 1296; 7776; 46656; 279936 ]
-
-#!markdown
+```
 
 ## accumulateDiceRolls
 
-#!fsharp
-
+```fsharp
 let rec accumulateDiceRolls log rolls power acc =
     match rolls with
     | _ when power < 0 ->
@@ -95,67 +82,63 @@ let rec accumulateDiceRolls log rolls power acc =
     | roll :: rest ->
         log |> Option.iter ((|>) $"accumulateDiceRolls / power: {power} / acc: {acc} / roll: {roll}")
         accumulateDiceRolls log rest (power - 1) acc
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 accumulateDiceRolls (Some (printfn "%s")) [ 6; 5; 4; 3; 2 ] 0 1000
 |> _assertEqual (Some (1006, [ 5; 4; 3; 2 ]))
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 accumulateDiceRolls (Some (printfn "%s")) [ 6; 5; 4; 3; 2 ] 1 1000
 |> _assertEqual (Some (1035, [ 4; 3; 2 ]))
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 accumulateDiceRolls (Some (printfn "%s")) [ 6; 5; 4; 3; 2 ] 2 1000
 |> _assertEqual (Some (1208, [ 3; 2 ]))
-
-#!markdown
+```
 
 ## rollWithinBounds
 
-#!fsharp
-
+```fsharp
 let rollWithinBounds log max rolls =
     let power = List.length rolls - 1
     match accumulateDiceRolls log rolls power 0 with
     | Some (result, _) when result >= 1 && result <= max -> Some result
     | _ -> None
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 rollWithinBounds (Some (printfn "%s")) 2000 [ 1; 5; 4; 4; 5 ]
 |> _assertEqual (Some 995)
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 rollWithinBounds (Some (printfn "%s")) 2000 [ 2; 2; 6; 4; 5 ]
 |> _assertEqual (Some 1715)
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 rollWithinBounds (Some (printfn "%s")) 2000 [ 4; 1; 1; 2; 3 ]
 |> _assertEqual None
-
-#!markdown
+```
 
 ## calculateDiceCount
 
-#!fsharp
-
+```fsharp
 let inline calculateDiceCount log max =
     let rec 루프 n p =
         if p < max
@@ -166,64 +149,56 @@ let inline calculateDiceCount log max =
     if max = 1
     then 1
     else 루프 0 1
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 calculateDiceCount (Some (printfn "%s")) 36
 |> _assertEqual 2
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 calculateDiceCount (Some (printfn "%s")) 7777
 |> _assertEqual 6
-
-#!markdown
+```
 
 ## rollDice
 
-#!fsharp
-
+```fsharp
 let private random = System.Random ()
 let rollDice () =
     random.Next (1, 7)
-
-#!markdown
+```
 
 ## rotateNumber
 
-#!fsharp
-
+```fsharp
 let rotateNumber max n =
     (n - 1 + max) % max + 1
-
-#!markdown
+```
 
 ## rotateNumbers
 
-#!fsharp
-
+```fsharp
 let rotateNumbers max items =
     items |> Seq.map (rotateNumber max)
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 [ -1 .. 14 ]
 |> rotateNumbers 6
 |> Seq.toList
 |> _assertEqual [ 5; 6; 1; 2; 3; 4; 5; 6; 1; 2; 3; 4; 5; 6; 1; 2 ]
-
-#!markdown
+```
 
 ## createSequentialRoller
 
-#!fsharp
-
+```fsharp
 let createSequentialRoller list =
     let mutable currentIndex = 0
     fun () ->
@@ -233,13 +208,11 @@ let createSequentialRoller list =
             item
         | None ->
             failwith "createSequentialRoller / End of list"
-
-#!markdown
+```
 
 ## rollProgressively
 
-#!fsharp
-
+```fsharp
 let rollProgressively log roll reroll max =
     let power = (calculateDiceCount log max) - 1
     let rec 루프 rolls size =
@@ -251,25 +224,25 @@ let rollProgressively log roll reroll max =
             | _ when reroll -> 루프 (List.init power (fun _ -> roll ())) power
             | _ -> 루프 (roll () :: rolls) (size + 1)
     루프 [] 0
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 rollProgressively None rollDice false 1
 |> _assertEqual 1
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 let sequentialRoll = createSequentialRoller [ 5; 4; 4; 5; 1 ]
 
 rollProgressively (Some (printfn "%s")) sequentialRoll false 2000
 |> _assertEqual 995
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 let sequentialRoll = createSequentialRoller [ 5; 4; 4; 5; 2 ]
@@ -279,21 +252,21 @@ fun () -> rollProgressively (Some (printfn "%s")) sequentialRoll false 2000 |> i
     SpiralSm.format_exception ex
     |> _assertEqual "System.Exception: createSequentialRoller / End of list"
 )
+```
 
-#!fsharp
-
+```fsharp
 ///- --ignore
 
 rollProgressively (Some (printfn "%s")) rollDice false 2000
+```
 
-#!fsharp
-
+```fsharp
 ///- --ignore
 
 rollProgressively (Some (printfn "%s")) rollDice true 2000
+```
 
-#!fsharp
-
+```fsharp
 ///- --ignore
 
 [| 1 .. 10000 |]
@@ -301,9 +274,9 @@ rollProgressively (Some (printfn "%s")) rollDice true 2000
 |> Array.Parallel.groupBy id
 |> Array.Parallel.map (fun (k, v) -> k, v.Length)
 |> Array.Parallel.sortBy fst
+```
 
-#!fsharp
-
+```fsharp
 ///- --ignore
 
 [| 1 .. 10000 |]
@@ -311,9 +284,9 @@ rollProgressively (Some (printfn "%s")) rollDice true 2000
 |> Array.Parallel.groupBy id
 |> Array.Parallel.map (fun (k, v) -> k, v.Length)
 |> Array.Parallel.sortBy fst
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 [| 1 .. 100 |]
@@ -327,9 +300,9 @@ rollProgressively (Some (printfn "%s")) rollDice true 2000
         |> __assertEqual false n
     )
 )
+```
 
-#!fsharp
-
+```fsharp
 ///- --ignore
 
 let inline rollMax fn max n =
@@ -352,9 +325,9 @@ let run () =
     rollN max n even 0
 
 // run ()
+```
 
-#!fsharp
-
+```fsharp
 ///- --ignore
 
 let run () =
@@ -370,18 +343,16 @@ let run () =
     |> Array.Parallel.average
 
 // run ()
-
-#!markdown
+```
 
 ## FsCheck (test)
 
-#!fsharp
-
+```fsharp
 #r "nuget: FsCheck, 3.1.0"
 #r "nuget: Expecto.FsCheck, 11.0.0-alpha8"
+```
 
-#!fsharp
-
+```fsharp
 ///- --test
 
 type ValorDado =
@@ -579,14 +550,13 @@ printTaskList taskList
 
 Expecto.Tests.runTestsWithCLIArgs [] [||] properties
 |> _assertEqual 0
-
-#!markdown
+```
 
 ## main
 
-#!fsharp
-
+```fsharp
 let main args =
     let result = rollProgressively (Some (printfn "%s")) rollDice true (System.Int32.MaxValue / 10)
     trace Debug (fun () -> $"main / result: {result}") _locals
     0
+```

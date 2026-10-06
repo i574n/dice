@@ -1,47 +1,19 @@
 open rust.rust_operators
 
 
-nominal block' =
-    `(
-        global "#if FABLE_COMPILER\n[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Block\")>]\n#endif\ntype crate_model_near_nearblocks_Block = class end"
-        $'' : $'crate_model_near_nearblocks_Block'
-    )
+nominal block' = $'crate::model::near::nearblocks::Block'
 
-nominal action' =
-    `(
-        global "#if FABLE_COMPILER\n[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Action\")>]\n#endif\ntype crate_model_near_nearblocks_Action = class end"
-        $'' : $'crate_model_near_nearblocks_Action'
-    )
+nominal action' = $'crate::model::near::nearblocks::Action'
 
-nominal actions_agg' =
-    `(
-        global "#if FABLE_COMPILER\n[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::ActionsAgg\")>]\n#endif\ntype crate_model_near_nearblocks_ActionsAgg = class end"
-        $'' : $'crate_model_near_nearblocks_ActionsAgg'
-    )
+nominal actions_agg' = $'crate::model::near::nearblocks::ActionsAgg'
 
-nominal outcomes' =
-    `(
-        global "#if FABLE_COMPILER\n[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Outcomes\")>]\n#endif\ntype crate_model_near_nearblocks_Outcomes = class end"
-        $'' : $'crate_model_near_nearblocks_Outcomes'
-    )
+nominal outcomes' = $'crate::model::near::nearblocks::Outcomes'
 
-nominal outcomes_agg' =
-    `(
-        global "#if FABLE_COMPILER\n[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::OutcomesAgg\")>]\n#endif\ntype crate_model_near_nearblocks_OutcomesAgg = class end"
-        $'' : $'crate_model_near_nearblocks_OutcomesAgg'
-    )
+nominal outcomes_agg' = $'crate::model::near::nearblocks::OutcomesAgg'
 
-nominal txn' =
-    `(
-        global "#if FABLE_COMPILER\n[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Txn\")>]\n#endif\ntype crate_model_near_nearblocks_Txn = class end"
-        $'' : $'crate_model_near_nearblocks_Txn'
-    )
+nominal txn' = $'crate::model::near::nearblocks::Txn'
 
-nominal root' =
-    `(
-        global "#if FABLE_COMPILER\n[<Fable.Core.Erase; Fable.Core.Emit(\"crate::model::near::nearblocks::Root\")>]\n#endif\ntype crate_model_near_nearblocks_Root = class end"
-        $'' : $'crate_model_near_nearblocks_Root'
-    )
+nominal root' = $'crate::model::near::nearblocks::Root'
 
 
 type block =

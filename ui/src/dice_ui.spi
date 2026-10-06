@@ -3,8 +3,8 @@ open rust
 open leptos
 open sm'_operators
 
-inl main (args : array_base string) =
-    leptos.log $'"main / args: " + string !args + ""'
+inl run_main () =
+    leptos.log "main"
 
     !\($'"let _ = console_log::init_with_level(log::Level::Debug)"')
     !\($'"console_error_panic_hook::set_once()"')
@@ -13,13 +13,10 @@ inl main (args : array_base string) =
     inl body = body |> optionm'.unbox
     inl body_log = #?*body
 
-    leptos.log $'"main / mount_to_body / body: " + string !body_log + ""'
+    leptos.log ("main / mount_to_body / body: " ++# body_log)
 
     let mount () =
-        fun () =>
-            components.app.render ()
-            |> leptos.to_view_trait
-        |> leptos.mount_to_body
+        leptos.mount_to_body components.app.render
 
     match body with
     | Some body =>
@@ -39,5 +36,5 @@ inl main (args : array_base string) =
 
 inl main () =
     print_static "<dice_ui>"
-    $'let main args = !main args' : ()
+    run_main () |> ignore
     print_static "</dice_ui>"

@@ -4,7 +4,7 @@ open leptos
 
 inl render () : _ (_ leptos.div) =
     print_static "<content.render>"
-    leptos.log $'"content.render ()"'
+    leptos.log "content.render ()"
 
     inl location = leptos.use_location ()
     inl navigate = leptos.use_navigate ()
@@ -19,8 +19,11 @@ inl render () : _ (_ leptos.div) =
 
         inl hash = location |> leptos.location_hash |> leptos.signal_get
         let url = url |> leptos.signal_get
-        inl new_url_hash : string = $'$"{!url}{!hash}"'
-        leptos.log $'"content.render () / effect 1 / new_url_hash: " + !new_url_hash + " / loaded: " + string !loaded + ""'
+        inl new_url_hash = url ++# sm'.from_std_string hash
+        leptos.log (
+            "content.render () / effect 1 / new_url_hash: " ++# new_url_hash
+            ++# " / loaded: " ++# sm'.obj_to_string loaded
+        )
 
         if not loaded then
             inl hash = join hash
@@ -30,7 +33,7 @@ inl render () : _ (_ leptos.div) =
                     |> leptos.signal_get
                     |> sm'.from_std_string
 
-                leptos.log $'"content.render () / effect 1 / url_hash: " + !url_hash + ""'
+                leptos.log ("content.render () / effect 1 / url_hash: " ++# url_hash)
 
                 if url_hash |> sm'.contains "#" then
                     navigate url_hash
@@ -49,7 +52,7 @@ inl render () : _ (_ leptos.div) =
         inl hash_url = hash |> leptos.url_try_from |> resultm.unbox
 
         inl hash_url_log = hash_url |> sm'.format_pretty
-        leptos.log $'"content.render () / effect 2 / hash_url: " + !hash_url_log + ""'
+        leptos.log ("content.render () / effect 2 / hash_url: " ++# hash_url_log)
 
         match hash_url with
         | Ok hash_url =>
@@ -65,19 +68,19 @@ inl render () : _ (_ leptos.div) =
                             if hash_url
                                 |> leptos.url_pathname
                                 |> sm'.from_std_string
-                                |> sm'.starts_with $'"/" + !id + ""'
+                                |> sm'.starts_with ("/" ++# id)
                             then Some tab'
                             else None
                     None
                 |> optionm'.default_value (tabs |> listm'.item 0i32)
 
             inl tab_log = tab |> sm'.format_pretty
-            leptos.log $'"content.render () / effect 2 / new_tab: " + !tab_log + ""'
+            leptos.log ("content.render () / effect 2 / new_tab: " ++# tab_log)
 
             set_tab |> leptos.signal_set tab
             true
         | Error error =>
-            leptos.log $'"content.render () / effect 2 / hash_url error: " + string !error + ""'
+            leptos.log ("content.render () / effect 2 / hash_url error: " ++# sm'.from_std_string error)
             false
         |> ignore
 
@@ -92,20 +95,24 @@ inl render () : _ (_ leptos.div) =
                     $'"class=\\\"flex flex-1 flex-col [overflow:hidden]\\\""'
                 ] fun () =>
                     open menu_tabs
-                    match tab |> leptos.signal_get with
-                    | Dice _ => dice_view.render () |> Some
-                    | Lists => lists_view.render () |> Some
-                    | Transactions => transactions_view.render () |> Some
-                    | Settings => settings_view.render () |> Some
-                    | _ => None
-                    |> function
-                        | Some fragment =>
-                            leptos.div [
-                                $'"class=\\\"flex flex-1 flex-col [overflow-y:auto]\\\""'
-                            ] fun () =>
-                                fragment
-                            |> leptos.element_to_view
-                        | None => [] |> leptos.view_list_to_view
+                    inl wrap fragment =
+                        leptos.div [
+                            $'"class=\\\"flex flex-1 flex-col [overflow-y:auto]\\\""'
+                        ] fun () =>
+                            fragment
+                        |> leptos.element_to_view
+                    // a tag's children are built once, so the tab switch is its own reactive view, re-run when `tab`
+                    // changes (only `tab`: the view is built untracked, or every signal its render reads would rebuild
+                    // it, resources and all)
+                    leptos.reactive_view fun () =>
+                        inl tab = tab |> leptos.signal_get
+                        leptos.untrack fun () =>
+                            match tab with
+                            | Dice _ => dice_view.render () |> wrap
+                            | Lists => lists_view.render () |> wrap
+                            | Transactions => transactions_view.render () |> wrap
+                            | Settings => settings_view.render () |> wrap
+                            | _ => [] |> leptos.view_list_to_view
                     |> leptos.view_to_fragment
                 |> leptos.element_to_view
 

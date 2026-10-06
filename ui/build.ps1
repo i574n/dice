@@ -10,53 +10,28 @@ $ErrorActionPreference = "Stop"
 
 $projectName = "dice_ui"
 
-{ . ../deps/polyglot/apps/spiral/dist/Supervisor$(_exe) --build-file "src/$projectName.spi" "src/$projectName.fsx" --timeout 300000 } | Invoke-Block
-
-(Get-Content "src/$projectName.fsx") `
-    -replace "and Heap2 =", "and  Heap2 =" `
-| Set-Content "src/$projectName.fsx"
-
-$runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
-$builderArgs = @("src/$projectName.fsx", "--persist-only", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
-{ . ../deps/polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
 
 $targetDir = GetTargetDir $projectName
 
-{ BuildFable $targetDir $projectName "rs" "WASM" } | Invoke-Block
-
-$path = "$targetDir/target/rs/$projectName.rs"
-if (!(Test-Path $path)) {
-    $path = "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs"
+# Native Rust (wasm32): the src/dice_ui.spi entry (its `main` runs `run_main`; dice_ui is native Rust only) -> src/main.rs
+# (tracked) with the Spiral compiler's own Rust backend: the `dice_ui_bin` bin of the `ui` workspace member (Cargo.toml),
+# next to the hand-written near model types (src/model.rs, src/model/). `cargo check --target wasm32-unknown-unknown` and,
+# after the css step below, a trunk bundle of it are required: a failure stops the build. The bundle is the shipped one:
+# dist/ (popup.html, the extension) is bundled from $targetDir/trunk.
+if (!(BuildNativeRust "src/$projectName.spi" "src/main.rs" "dice/ui")) {
+    throw "NATIVE-RUST-FAILED dice/ui / compile"
 }
-Write-Output "dice/ui/build.ps1 / path: $path"
-(Get-Content $path) `
-    -replace "`"../../../../../../../../../../../../polyglot", "`"../../deps/polyglot" `
-    -replace "`"../../../lib", "`"../../deps/polyglot/deps/spiral/lib" `
-    -replace "`"../../../../../lib", "`"../../deps/polyglot/deps/spiral/lib" `
-    -replace "`"../../../../../deps/spiral", "`"../../deps/polyglot/deps/spiral" `
-    -replace "`"./lib", "`"../../deps/polyglot/lib" `
-    -replace ".fsx`"]", ".rs`"]" `
-    -replace ".rs`"]", "_wasm.rs`"]" `
-    -replace "pub use crate::module_", "// pub use crate::module_" `
-    -replace "pub struct Heap0 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub struct Heap0 {" `
-    -replace "pub struct Heap1 {", "#[derive(serde::Serialize)] pub struct Heap1 {" `
-    -replace "pub struct Heap2 {", "#[derive(serde::Serialize)] pub struct Heap2 {" `
-    -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap3 {" `
-    -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, PartialEq, PartialOrd, Hash, Eq)] pub struct Heap4 {" `
-    -replace "pub struct Heap5 {", "#[derive(PartialEq)] pub struct Heap5 {" `
-    -replace "pub enum US1 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub enum US1 {" `
-    -replace " US1_0,", "#[default] US1_0," `
-    | FixRust `
-| Set-Content "src/$($projectName)_wasm.rs"
-
-# -replace "pub struct Heap0 {", "#[derive(serde::Serialize)] pub struct Heap0 {" `
-# -replace "pub struct Heap1 {", "#[derive(serde::Serialize, serde::Deserialize)] pub struct Heap1 {" `
-# -replace "pub struct Heap2 {", "#[derive(serde::Serialize)] pub struct Heap2 {" `
-# -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap3 {" `
-# -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap4 {" `
-
-cargo fmt --
-leptosfmt (ResolveLink (GetFullPath "./src/$($projectName)_wasm.rs"))
+# serde/borsh/Debug derives on the generated types, and the model module.
+. ./native_derive.ps1
+$nativeMain = (Resolve-Path "src/main.rs").Path
+[IO.File]::WriteAllText($nativeMain, (Add-NativeRustDerives ([IO.File]::ReadAllText($nativeMain))) + "`npub mod model;`n")
+$nativeCheck = & { cargo check -p $projectName --bin "$($projectName)_bin" --target wasm32-unknown-unknown --message-format short 2>&1 | ForEach-Object { "$_" } }
+if ($LASTEXITCODE -ne 0) {
+    $nativeErrors = @($nativeCheck | Where-Object { $_ -match ': error' })
+    $nativeErrors | Select-Object -First 20 | ForEach-Object { Write-Output "dice/ui/build.ps1 / native check / $_" }
+    throw "NATIVE-RUST-FAILED dice/ui / cargo check exit code $LASTEXITCODE, $($nativeErrors.Count) errors"
+}
+Write-Output "dice/ui/build.ps1 / native cargo check ok"
 
 if (!$fast) {
     Remove-Item $targetDir/trunk -Recurse -Force -ErrorAction Ignore
@@ -67,20 +42,31 @@ if (!$fast) {
 
 { . $(Search-Command bun) --bun build-css } | Invoke-Block
 
-Write-Output "trunk:"
+# Native Rust wasm bundle: trunk builds the bin checked above (index.html names it) into $targetDir/trunk. The
+# wasm-bindgen CLI must be the version in the workspace lock (read from it, not pinned).
+$nativeBindgen = [regex]::Match((Get-Content ../Cargo.lock -Raw), '(?m)^name = "wasm-bindgen"\r?\nversion = "([^"]+)"').Groups[1].Value
+if (!$nativeBindgen) { throw "NATIVE-RUST-FAILED dice/ui / no wasm-bindgen version in ../Cargo.lock" }
+$trunkDir = "$targetDir/trunk"
+Remove-Item $trunkDir -Recurse -Force -ErrorAction Ignore
+{ trunk build $($fast ? $() : '--release') $($fast ? $() : '--minify') --dist="$trunkDir" --public-url="./" --no-sri } `
+    | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = $nativeBindgen }
+$nativeWasm = Get-ChildItem $trunkDir -Filter "$projectName-*_bg.wasm" -ErrorAction Ignore | Select-Object -First 1
+if (!$nativeWasm -or !(Test-Path "$trunkDir/index.html")) {
+    throw "NATIVE-RUST-FAILED dice/ui / trunk bundle: no $projectName wasm in $trunkDir"
+}
+Write-Output "NATIVE-RUST-OK dice/ui / $($nativeWasm.Name) $($nativeWasm.Length) B (wasm-bindgen $nativeBindgen)"
 
-{ trunk build $($fast ? $() : '--release') $($fast ? $() : '--minify') --dist="$targetDir/trunk" --public-url="./" --no-sri } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.93" }
-# { cargo leptos build --release } | Invoke-Block
-
-$path = "$targetDir/trunk/index.html"
+$path = "$trunkDir/index.html"
 $html = Get-Content $path -Raw
 
-$wasmFile = ($html | Select-String -Pattern "init\('\./(.*?)'\);").Matches[0].Groups[1].Value
+# wasm-bindgen >= 0.2.94 writes `init({ module_or_path: './x_bg.wasm' })`, older ones `init('./x_bg.wasm')`
+$wasmFile = ($html | Select-String -Pattern "init\((?:\{\s*module_or_path:\s*)?'\./(.*?)'\s*\}?\);").Matches[0].Groups[1].Value
 $jsFile = ($html | Select-String -Pattern "import init, \* as bindings from '\./(.*?)';").Matches[0].Groups[1].Value
+if (!$wasmFile -or !$jsFile) { throw "NATIVE-RUST-FAILED dice/ui / no init wasm or bindings js in $path" }
 
-(Get-Content "$targetDir/trunk/$jsFile" -Raw) `
+(Get-Content "$trunkDir/$jsFile" -Raw) `
     -replace "\('.*', import.meta.url\);", "('$wasmFile', import.meta.url);" `
-| Set-Content "$targetDir/trunk/$jsFile"
+| Set-Content "$trunkDir/$jsFile"
 
 Write-Output "rna:"
 { . $(Search-Command bunx) --bun @chialab/rna build --bundle --minify --assetNames "[name]" $path --output dist --target es2022 } | Invoke-Block

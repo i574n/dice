@@ -1,0 +1,733 @@
+# dice (Dice)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test static\n\nopen testing","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test static
+
+  open testing
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"open sm'_operators","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  open sm'_operators
+  """,
+  timeout: 300_000
+)
+```
+
+## sixth_power_sequence
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl sixth_power_sequence () =\n    stream.iterate_map ((*) 6) (fun x => if x <= 0 then None else Some x) 1","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl sixth_power_sequence () =
+      stream.iterate_map ((*) 6) (fun x => if x <= 0 then None else Some x) 1
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\nsixth_power_sequence ()\n|> stream.take_while (fun _ i => i <= 7i32)\n|> stream.to_list\n|> _assert_eq [ 1u64; 6; 36; 216; 1296; 7776; 46656; 279936 ]","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  sixth_power_sequence ()
+  |> stream.take_while (fun _ i => i <= 7i32)
+  |> stream.to_list
+  |> _assert_eq [ 1u64; 6; 36; 216; 1296; 7776; 46656; 279936 ]
+  """,
+  timeout: 300_000
+)
+```
+
+## accumulate_dice_rolls
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl accumulate_dice_rolls\n    (rolls : list u8)\n    (power : i8)\n    acc\n    =\n    // inl rec body acc power rolls =\n    inl rec body forall a {number} b {number} c {number}.\n        (acc : a)\n        (power : b)\n        (rolls : list c)\n        : option (a * list c)\n        =\n        match rolls with\n        | _ when power < 0 =>\n            inl result = acc + 1\n            trace Debug\n                fun () => \"dice.accumulate_dice_rolls\"\n                fun () => { power acc result }\n            Some (result, rolls)\n        | [] => None\n        | roll :: rest when roll > 1 =>\n            inl coeff = sixth_power_sequence () |> stream.item power\n            inl value = conv (roll - 1) * coeff\n            trace Debug\n                fun () => \"dice.accumulate_dice_rolls\"\n                fun () => { power acc roll value }\n            루프 (acc + value) (power - 1) rest\n        | roll :: rest =>\n            trace Debug\n                fun () => \"dice.accumulate_dice_rolls\"\n                fun () => { power acc roll }\n            루프 acc (power - 1) rest\n    // and inl 루프 acc power rolls =\n    and inl 루프 forall a {number} b {number} c {number}.\n        (acc : a)\n        (power : b)\n        (rolls : list c)\n        : option (a * list c)\n        =\n        if var_is rolls |> not\n        then body acc power rolls\n        else\n            inl acc = dyn acc\n            join body acc power rolls\n    루프 acc power rolls","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl accumulate_dice_rolls
+      (rolls : list u8)
+      (power : i8)
+      acc
+      =
+      // inl rec body acc power rolls =
+      inl rec body forall a {number} b {number} c {number}.
+          (acc : a)
+          (power : b)
+          (rolls : list c)
+          : option (a * list c)
+          =
+          match rolls with
+          | _ when power < 0 =>
+              inl result = acc + 1
+              trace Debug
+                  fun () => "dice.accumulate_dice_rolls"
+                  fun () => { power acc result }
+              Some (result, rolls)
+          | [] => None
+          | roll :: rest when roll > 1 =>
+              inl coeff = sixth_power_sequence () |> stream.item power
+              inl value = conv (roll - 1) * coeff
+              trace Debug
+                  fun () => "dice.accumulate_dice_rolls"
+                  fun () => { power acc roll value }
+              루프 (acc + value) (power - 1) rest
+          | roll :: rest =>
+              trace Debug
+                  fun () => "dice.accumulate_dice_rolls"
+                  fun () => { power acc roll }
+              루프 acc (power - 1) rest
+      // and inl 루프 acc power rolls =
+      and inl 루프 forall a {number} b {number} c {number}.
+          (acc : a)
+          (power : b)
+          (rolls : list c)
+          : option (a * list c)
+          =
+          if var_is rolls |> not
+          then body acc power rolls
+          else
+              inl acc = dyn acc
+              join body acc power rolls
+      루프 acc power rolls
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\naccumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 0 1000i32\n|> _assert_eq (Some (1006, [ 5; 4; 3; 2 ]))","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  accumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 0 1000i32
+  |> _assert_eq (Some (1006, [ 5; 4; 3; 2 ]))
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\naccumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 1 1000i32\n|> _assert_eq (Some (1035, [ 4; 3; 2 ]))","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  accumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 1 1000i32
+  |> _assert_eq (Some (1035, [ 4; 3; 2 ]))
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\naccumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 2 1000i32\n|> _assert_eq (Some (1208, [ 3; 2 ]))","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  accumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 2 1000i32
+  |> _assert_eq (Some (1208, [ 3; 2 ]))
+  """,
+  timeout: 300_000
+)
+```
+
+## roll_within_bounds
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl roll_within_bounds max rolls =\n    inl power = listm.length rolls - 1\n    match accumulate_dice_rolls rolls power 0 with\n    | Some (result, _) when result >= 1 && result <= max => Some result\n    | _ => None","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl roll_within_bounds max rolls =
+      inl power = listm.length rolls - 1
+      match accumulate_dice_rolls rolls power 0 with
+      | Some (result, _) when result >= 1 && result <= max => Some result
+      | _ => None
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\nroll_within_bounds 2000i32 [ 1; 5; 4; 4; 5 ]\n|> _assert_eq (Some 995)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  roll_within_bounds 2000i32 [ 1; 5; 4; 4; 5 ]
+  |> _assert_eq (Some 995)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\nroll_within_bounds 2000i32 [ 2; 2; 6; 4; 5 ]\n|> _assert_eq (Some 1715)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  roll_within_bounds 2000i32 [ 2; 2; 6; 4; 5 ]
+  |> _assert_eq (Some 1715)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\nroll_within_bounds 2000i32 [ 4; 1; 1; 2; 3 ]\n|> _assert_eq None","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  roll_within_bounds 2000i32 [ 4; 1; 1; 2; 3 ]
+  |> _assert_eq None
+  """,
+  timeout: 300_000
+)
+```
+
+## calculate_dice_count
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"// inl calculate_dice_count max =\ninl calculate_dice_count forall a {number} b {number}. (max : a) : b =\n    // inl rec body n p =\n    inl rec body forall t {number}. (n : t) (p : a) : t =\n        inl return () =\n            trace Debug\n                fun () => \"dice.calculate_dice_count\"\n                fun () => { max p n }\n            n\n        if p < max then\n            // A max whose next power of 6 doesn't fit its type (above 6^24 for u64 and i64, above 6^11 for i32) is\n            // rejected: the dice sum of such a bound overflows (`p * 6` here, `(roll - 1) * coeff` in\n            // accumulate_dice_rolls).\n            if p > (limit.max : a) / 6\n            then failwith (\"dice.calculate_dice_count / max: \" ++# #?max ++# \" is above the largest supported bound \" ++# #?p)\n            else 루프 (n + 1) (p * 6)\n        else return ()\n    // and inl 루프 n p =\n    and inl 루프 forall t {number}. (n : t) (p : a) : t =\n        if var_is max |> not\n        then body n p\n        else\n            inl n = dyn n\n            inl p = dyn p\n            join body n p\n    if max = 1\n    then 1\n    else 루프 0 1","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  // inl calculate_dice_count max =
+  inl calculate_dice_count forall a {number} b {number}. (max : a) : b =
+      // inl rec body n p =
+      inl rec body forall t {number}. (n : t) (p : a) : t =
+          inl return () =
+              trace Debug
+                  fun () => "dice.calculate_dice_count"
+                  fun () => { max p n }
+              n
+          if p < max then
+              // A max whose next power of 6 doesn't fit its type (above 6^24 for u64 and i64, above 6^11 for i32) is
+              // rejected: the dice sum of such a bound overflows (`p * 6` here, `(roll - 1) * coeff` in
+              // accumulate_dice_rolls).
+              if p > (limit.max : a) / 6
+              then failwith ("dice.calculate_dice_count / max: " ++# #?max ++# " is above the largest supported bound " ++# #?p)
+              else 루프 (n + 1) (p * 6)
+          else return ()
+      // and inl 루프 n p =
+      and inl 루프 forall t {number}. (n : t) (p : a) : t =
+          if var_is max |> not
+          then body n p
+          else
+              inl n = dyn n
+              inl p = dyn p
+              join body n p
+      if max = 1
+      then 1
+      else 루프 0 1
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\ncalculate_dice_count 36i32\n|> _assert_eq 2i32","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  calculate_dice_count 36i32
+  |> _assert_eq 2i32
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\ncalculate_dice_count 7777i32\n|> _assert_eq 6i32","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  calculate_dice_count 7777i32
+  |> _assert_eq 6i32
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\ncalculate_dice_count 4738381338321616896u64\n|> _assert_eq 24i32","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  calculate_dice_count 4738381338321616896u64
+  |> _assert_eq 24i32
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\ncalculate_dice_count 362797056i32\n|> _assert_eq 11i32","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  calculate_dice_count 362797056i32
+  |> _assert_eq 11i32
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\nfun () =>\n    (calculate_dice_count 4738381338321616897u64 : i32)\n    |> ignore\n|> _throws\n|> optionm.map (sm'.format_exception >> sm'.contains \"is above the largest supported bound 4738381338321616896\")\n|> _assert_eq (Some true)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  fun () =>
+      (calculate_dice_count 4738381338321616897u64 : i32)
+      |> ignore
+  |> _throws
+  |> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 4738381338321616896")
+  |> _assert_eq (Some true)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\nfun () =>\n    (calculate_dice_count (limit.max : i64) : i32)\n    |> ignore\n|> _throws\n|> optionm.map (sm'.format_exception >> sm'.contains \"is above the largest supported bound 4738381338321616896\")\n|> _assert_eq (Some true)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  fun () =>
+      (calculate_dice_count (limit.max : i64) : i32)
+      |> ignore
+  |> _throws
+  |> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 4738381338321616896")
+  |> _assert_eq (Some true)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\nfun () =>\n    (calculate_dice_count 362797057i32 : i32)\n    |> ignore\n|> _throws\n|> optionm.map (sm'.format_exception >> sm'.contains \"is above the largest supported bound 362797056\")\n|> _assert_eq (Some true)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  fun () =>
+      (calculate_dice_count 362797057i32 : i32)
+      |> ignore
+  |> _throws
+  |> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 362797056")
+  |> _assert_eq (Some true)
+  """,
+  timeout: 300_000
+)
+```
+
+## roll_dice
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"let roll_dice () : u8 =\n    random' 1 7","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  let roll_dice () : u8 =
+      random' 1 7
+  """,
+  timeout: 300_000
+)
+```
+
+## rotate_number
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl rotate_number forall t {number}. (max : i64) (n : t) : t =\n    (conv n - 1 + max) % max + 1 |> conv","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl rotate_number forall t {number}. (max : i64) (n : t) : t =
+      (conv n - 1 + max) % max + 1 |> conv
+  """,
+  timeout: 300_000
+)
+```
+
+## rotate_numbers
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl rotate_numbers max items =\n    items |> stream.map (rotate_number max)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl rotate_numbers max items =
+      items |> stream.map (rotate_number max)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\nlistm'.init_series -1 14 1i32\n|> stream.from_list\n|> rotate_numbers 6\n|> stream.to_list\n|> _assert_eq [ 5; 6; 1; 2; 3; 4; 5; 6; 1; 2; 3; 4; 5; 6; 1; 2 ]","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  listm'.init_series -1 14 1i32
+  |> stream.from_list
+  |> rotate_numbers 6
+  |> stream.to_list
+  |> _assert_eq [ 5; 6; 1; 2; 3; 4; 5; 6; 1; 2; 3; 4; 5; 6; 1; 2 ]
+  """,
+  timeout: 300_000
+)
+```
+
+## create_sequential_roller
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl create_sequential_roller list =\n    inl s = list |> listm.rev |> listm.append list |> stream.from_list |> stream.memoize\n    inl current_index = mut 0i64\n    inl acc = mut 1\n    inl len = mut -1\n    inl last_item = mut None\n    let rec 루프 () =\n        fun () =>\n            inl current_index = *current_index\n            inl acc = *acc\n            inl len = *len\n            inl last_item = *last_item |> optionm'.box\n            trace Debug\n                fun () => \"dice.create_sequential_roller / roll\"\n                fun () => { current_index acc len last_item = #?*last_item }\n        |> fun x => x ()\n        match s () |> stream.try_item *current_index with\n        | Some item =>\n            current_index <- *current_index + 1\n            last_item <- Some item\n            item\n        | None =>\n            trace Debug (fun () => \"dice.create_sequential_roller / roll / None\") id\n            if *len = -1\n            then len <- *current_index\n            acc <-\n                if *acc >= *len\n                then 1\n                else *acc + 1\n            current_index <- *acc - 1\n            last_item <- None\n            루프 ()\n    루프","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl create_sequential_roller list =
+      inl s = list |> listm.rev |> listm.append list |> stream.from_list |> stream.memoize
+      inl current_index = mut 0i64
+      inl acc = mut 1
+      inl len = mut -1
+      inl last_item = mut None
+      let rec 루프 () =
+          fun () =>
+              inl current_index = *current_index
+              inl acc = *acc
+              inl len = *len
+              inl last_item = *last_item |> optionm'.box
+              trace Debug
+                  fun () => "dice.create_sequential_roller / roll"
+                  fun () => { current_index acc len last_item = #?*last_item }
+          |> fun x => x ()
+          match s () |> stream.try_item *current_index with
+          | Some item =>
+              current_index <- *current_index + 1
+              last_item <- Some item
+              item
+          | None =>
+              trace Debug (fun () => "dice.create_sequential_roller / roll / None") id
+              if *len = -1
+              then len <- *current_index
+              acc <-
+                  if *acc >= *len
+                  then 1
+                  else *acc + 1
+              current_index <- *acc - 1
+              last_item <- None
+              루프 ()
+      루프
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\ninl sequential_roll = create_sequential_roller [ 1i32; 2; 3; 4 ]\n\nam.init 50i32 (ignore >> sequential_roll)\n|> _assert_eq (a ;[ 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;\n4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2 ] : a i32 i32)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  inl sequential_roll = create_sequential_roller [ 1i32; 2; 3; 4 ]
+
+  am.init 50i32 (ignore >> sequential_roll)
+  |> _assert_eq (a ;[ 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
+  4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2 ] : a i32 i32)
+  """,
+  timeout: 300_000
+)
+```
+
+## roll_progressively
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl roll_progressively roll reroll max =\n    inl power = (calculate_dice_count max) - 1\n    let rec 루프 rolls size =\n        if size < power + 1\n        then 루프 (roll () :: rolls) (size + 1)\n        else accumulate_dice_rolls rolls power 0 |> function\n            | Some (result, _) when result <= max => result\n            | _ when reroll => 루프 (listm.init power (fun _ => roll ())) power\n            | _ => 루프 (roll () :: rolls) (size + 1)\n    루프 [] 0","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl roll_progressively roll reroll max =
+      inl power = (calculate_dice_count max) - 1
+      let rec 루프 rolls size =
+          if size < power + 1
+          then 루프 (roll () :: rolls) (size + 1)
+          else accumulate_dice_rolls rolls power 0 |> function
+              | Some (result, _) when result <= max => result
+              | _ when reroll => 루프 (listm.init power (fun _ => roll ())) power
+              | _ => 루프 (roll () :: rolls) (size + 1)
+      루프 [] 0
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\nroll_progressively roll_dice false 1\n|> _assert_eq 1i32","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  roll_progressively roll_dice false 1
+  |> _assert_eq 1i32
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\ninl sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 1 ]\n\nroll_progressively sequential_roll false 2000i32\n|> _assert_eq 995","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  inl sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 1 ]
+
+  roll_progressively sequential_roll false 2000i32
+  |> _assert_eq 995
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\ninl sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 2 ]\n\nroll_progressively sequential_roll false 2000i32\n|> _assert_eq 1678","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  inl sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 2 ]
+
+  roll_progressively sequential_roll false 2000i32
+  |> _assert_eq 1678
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\ninl sequential_roll = create_sequential_roller [ 6u8; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]\n\nroll_progressively sequential_roll false 4738381338321616896u64\n|> _assert_eq 4738381338321616896u64","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  inl sequential_roll = create_sequential_roller [ 6u8; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]
+
+  roll_progressively sequential_roll false 4738381338321616896u64
+  |> _assert_eq 4738381338321616896u64
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\ninl histogram (reroll : bool) : i32 =\n    inl { level } = get_trace_state_or_init None\n    level <- Info\n    let rec insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =\n        match rows with\n        | [] => [ row ]\n        | (k2, v2) :: rest =>\n            inl k, v = row\n            if k <= k2 then (k, v) :: (k2, v2) :: rest\n            else (k2, v2) :: insert row rest\n    join dyn listm'.init_series 1i32 10000 1\n    |> listm.map (fun _ => roll_progressively roll_dice reroll 10i32)\n    |> listm'.group_by id\n    |> listm.map (fun (k, v) => k, (listm.length v : i32))\n    |> listm.fold (fun acc row => insert row acc) []\n    |> listm.fold (fun acc (k, v) => if acc = \"\" then #?k ++# \" = \" ++# #?v else acc ++# \"; \" ++# #?k ++# \" = \" ++# #?v) \"\"\n    |> console.write_line\n    0i32\n\nhistogram false","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  inl histogram (reroll : bool) : i32 =
+      inl { level } = get_trace_state_or_init None
+      level <- Info
+      let rec insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =
+          match rows with
+          | [] => [ row ]
+          | (k2, v2) :: rest =>
+              inl k, v = row
+              if k <= k2 then (k, v) :: (k2, v2) :: rest
+              else (k2, v2) :: insert row rest
+      join dyn listm'.init_series 1i32 10000 1
+      |> listm.map (fun _ => roll_progressively roll_dice reroll 10i32)
+      |> listm'.group_by id
+      |> listm.map (fun (k, v) => k, (listm.length v : i32))
+      |> listm.fold (fun acc row => insert row acc) []
+      |> listm.fold (fun acc (k, v) => if acc = "" then #?k ++# " = " ++# #?v else acc ++# "; " ++# #?k ++# " = " ++# #?v) ""
+      |> console.write_line
+      0i32
+
+  histogram false
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\ninl histogram (reroll : bool) : i32 =\n    inl { level } = get_trace_state_or_init None\n    level <- Info\n    let rec insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =\n        match rows with\n        | [] => [ row ]\n        | (k2, v2) :: rest =>\n            inl k, v = row\n            if k <= k2 then (k, v) :: (k2, v2) :: rest\n            else (k2, v2) :: insert row rest\n    join dyn listm'.init_series 1i32 10000 1\n    |> listm.map (fun _ => roll_progressively roll_dice reroll 10i32)\n    |> listm'.group_by id\n    |> listm.map (fun (k, v) => k, (listm.length v : i32))\n    |> listm.fold (fun acc row => insert row acc) []\n    |> listm.fold (fun acc (k, v) => if acc = \"\" then #?k ++# \" = \" ++# #?v else acc ++# \"; \" ++# #?k ++# \" = \" ++# #?v) \"\"\n    |> console.write_line\n    0i32\n\nhistogram true","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+
+  inl histogram (reroll : bool) : i32 =
+      inl { level } = get_trace_state_or_init None
+      level <- Info
+      let rec insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =
+          match rows with
+          | [] => [ row ]
+          | (k2, v2) :: rest =>
+              inl k, v = row
+              if k <= k2 then (k, v) :: (k2, v2) :: rest
+              else (k2, v2) :: insert row rest
+      join dyn listm'.init_series 1i32 10000 1
+      |> listm.map (fun _ => roll_progressively roll_dice reroll 10i32)
+      |> listm'.group_by id
+      |> listm.map (fun (k, v) => k, (listm.length v : i32))
+      |> listm.fold (fun acc row => insert row acc) []
+      |> listm.fold (fun acc (k, v) => if acc = "" then #?k ++# " = " ++# #?v else acc ++# "; " ++# #?k ++# " = " ++# #?v) ""
+      |> console.write_line
+      0i32
+
+  histogram true
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n//// timeout=300000\n\ninl check_progress () : i32 =\n    inl { level } = get_trace_state_or_init None\n    level <- Info\n    join dyn listm'.init_series 1i32 100 1\n    |> listm.iter fun n =>\n        listm'.init_series 0i32 1 1\n        |> listm.iter fun reroll =>\n            join dyn listm'.init_series 1i32 3500 1\n            |> listm.map fun _ => roll_progressively roll_dice (reroll = 1) n\n            |> listm'.group_by id\n            |> listm.length\n            |> __assert_eq Silent n\n    0i32\n\ncheck_progress ()","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+  //// timeout=300000
+
+  inl check_progress () : i32 =
+      inl { level } = get_trace_state_or_init None
+      level <- Info
+      join dyn listm'.init_series 1i32 100 1
+      |> listm.iter fun n =>
+          listm'.init_series 0i32 1 1
+          |> listm.iter fun reroll =>
+              join dyn listm'.init_series 1i32 3500 1
+              |> listm.map fun _ => roll_progressively roll_dice (reroll = 1) n
+              |> listm'.group_by id
+              |> listm.length
+              |> __assert_eq Silent n
+      0i32
+
+  check_progress ()
+  """,
+  timeout: 300_000
+)
+```
+
+## main
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl main (_args : array_base string) =\n    // 6^24, the largest bound an i64 supports (calculate_dice_count)\n    inl result = roll_progressively roll_dice true 4738381338321616896i64\n    trace Debug\n        fun () => \"dice.main\"\n        fun () => { result }\n    0i32\n\ninl main () =\n    inl rotate_numbers' : i64 -> stream.stream u8 -> stream.stream u8 =\n        rotate_numbers\n\n    inl create_sequential_roller' :\n        list u8\n        -> (() -> u8)\n        =\n        create_sequential_roller\n\n    inl roll_progressively' :\n        (() -> u8)\n        -> bool\n        -> u64\n        -> u64\n        =\n        roll_progressively\n\n    inl roll_within_bounds' :\n        u64\n        -> list u8\n        -> optionm'.option' u64\n        =\n        fun a b =>\n            roll_within_bounds a b\n            |> optionm'.box\n\n    backend_switch {\n        Fsharp = fun () => $'let rotate_numbers x = !rotate_numbers' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let create_sequential_roller x = !create_sequential_roller' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let roll_progressively x = !roll_progressively' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let roll_within_bounds x = !roll_within_bounds' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let main args = !main args' : ()\n        Rust = fun () => main ;[] |> ignore\n        Python = fun () => main ;[] |> ignore\n        TypeScript = fun () => main ;[] |> ignore\n    } : ()","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl main (_args : array_base string) =
+      // 6^24, the largest bound an i64 supports (calculate_dice_count)
+      inl result = roll_progressively roll_dice true 4738381338321616896i64
+      trace Debug
+          fun () => "dice.main"
+          fun () => { result }
+      0i32
+
+  inl main () =
+      inl rotate_numbers' : i64 -> stream.stream u8 -> stream.stream u8 =
+          rotate_numbers
+
+      inl create_sequential_roller' :
+          list u8
+          -> (() -> u8)
+          =
+          create_sequential_roller
+
+      inl roll_progressively' :
+          (() -> u8)
+          -> bool
+          -> u64
+          -> u64
+          =
+          roll_progressively
+
+      inl roll_within_bounds' :
+          u64
+          -> list u8
+          -> optionm'.option' u64
+          =
+          fun a b =>
+              roll_within_bounds a b
+              |> optionm'.box
+
+      backend_switch {
+          Fsharp = fun () => $'let rotate_numbers x = !rotate_numbers' x' : ()
+          Rust = fun () => ()
+          TypeScript = fun () => ()
+      } : ()
+      backend_switch {
+          Fsharp = fun () => $'let create_sequential_roller x = !create_sequential_roller' x' : ()
+          Rust = fun () => ()
+          TypeScript = fun () => ()
+      } : ()
+      backend_switch {
+          Fsharp = fun () => $'let roll_progressively x = !roll_progressively' x' : ()
+          Rust = fun () => ()
+          TypeScript = fun () => ()
+      } : ()
+      backend_switch {
+          Fsharp = fun () => $'let roll_within_bounds x = !roll_within_bounds' x' : ()
+          Rust = fun () => ()
+          TypeScript = fun () => ()
+      } : ()
+      backend_switch {
+          Fsharp = fun () => $'let main args = !main args' : ()
+          Rust = fun () => main ;[] |> ignore
+          Python = fun () => main ;[] |> ignore
+          TypeScript = fun () => main ;[] |> ignore
+      } : ()
+  """,
+  timeout: 300_000
+)
+```

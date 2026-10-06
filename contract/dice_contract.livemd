@@ -1,0 +1,382 @@
+# dice_contract
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --package ../dice\n\nopen rust\nopen rust.rust_operators\nopen sm'_operators","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --package ../dice
+
+  open rust
+  open rust.rust_operators
+  open sm'_operators
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test static\n\nopen testing","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test static
+
+  open testing
+  """,
+  timeout: 300_000
+)
+```
+
+## dice_contract
+
+<!-- livebook:{"break_markdown":true} -->
+
+### state
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"type state =\n    {\n        version : u32\n        seeds : near.vector u8\n    }","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  type state =
+      {
+          version : u32
+          seeds : near.vector u8
+      }
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -c\n\n()","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -c
+
+  ()
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -c\n\ntrace Verbose (fun () => \"\") id","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -c
+
+  trace Verbose (fun () => "") id
+  """,
+  timeout: 300_000
+)
+```
+
+### new
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl new () : state =\n    {\n        version = 2\n        seeds = \"seeds\" |> sm'.byte_slice |> near.new_vector\n    }","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl new () : state =
+      {
+          version = 2
+          seeds = "seeds" |> sm'.byte_slice |> near.new_vector
+      }
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -c\n\ninl state = new ()\ntrace Verbose (fun () => \"dice_contract\") fun () => { state = #?*state }\ntrace Verbose (fun () => \"\") id","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -c
+
+  inl state = new ()
+  trace Verbose (fun () => "dice_contract") fun () => { state = #?*state }
+  trace Verbose (fun () => "") id
+  """,
+  timeout: 300_000
+)
+```
+
+### max_seeds
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl max_seeds () : convert.unativeint =\n    100i32 |> convert.convert","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl max_seeds () : convert.unativeint =
+      100i32 |> convert.convert
+  """,
+  timeout: 300_000
+)
+```
+
+### contribute_seed
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.vec u8) : () =\n    seeds |> near.vector_extend seed\n    inl seed_excess_len =\n        (seeds |> rust.len |> fun x => x : u32 |> convert.i32) - (max_seeds () |> convert.i32)\n    if seed_excess_len > 0 then\n        inl seed_excess : am'.vec u8 =\n            !\\\\(seed_excess_len, $'\"!seeds.drain(0..$0 as u32).collect::<Vec<_>>()\"')\n        trace Debug\n            fun () => \"dice_contract.contribute_seed\"\n            fun () => { seed_excess_len seed_excess = #?*seed_excess }\n    trace Debug (fun () => \"\") (join id)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.vec u8) : () =
+      seeds |> near.vector_extend seed
+      inl seed_excess_len =
+          (seeds |> rust.len |> fun x => x : u32 |> convert.i32) - (max_seeds () |> convert.i32)
+      if seed_excess_len > 0 then
+          inl seed_excess : am'.vec u8 =
+              !\\(seed_excess_len, $'"!seeds.drain(0..$0 as u32).collect::<Vec<_>>()"')
+          trace Debug
+              fun () => "dice_contract.contribute_seed"
+              fun () => { seed_excess_len seed_excess = #?*seed_excess }
+      trace Debug (fun () => "") (join id)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -c\n\ninl replicate n =\n    let rec 루프 i acc =\n        if i > n\n        then acc\n        else\n            inl i' = i % 10\n            inl i' =\n                if i' = 0\n                then i % limit.max\n                else i'\n            루프 (i + 1) (i' :: acc)\n    루프 1 []\n    |> listm.rev\n    |> listm'.box\n    |> listm'.to_array'\n\ninl max_seeds : u32 = max_seeds () |> convert.convert\ninl seeds = \"\" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut\n\nconv max_seeds * 1.2f64\n|> replicate\n|> am'.map_base convert.u8\n|> am'.to_vec\n|> contribute_seed seeds\n\nseeds\n|> rust.len\n|> _assert_eq max_seeds","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -c
+
+  inl replicate n =
+      let rec 루프 i acc =
+          if i > n
+          then acc
+          else
+              inl i' = i % 10
+              inl i' =
+                  if i' = 0
+                  then i % limit.max
+                  else i'
+              루프 (i + 1) (i' :: acc)
+      루프 1 []
+      |> listm.rev
+      |> listm'.box
+      |> listm'.to_array'
+
+  inl max_seeds : u32 = max_seeds () |> convert.convert
+  inl seeds = "" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut
+
+  conv max_seeds * 1.2f64
+  |> replicate
+  |> am'.map_base convert.u8
+  |> am'.to_vec
+  |> contribute_seed seeds
+
+  seeds
+  |> rust.len
+  |> _assert_eq max_seeds
+  """,
+  timeout: 300_000
+)
+```
+
+### generate_random_number
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl generate_random_number\n    (seeds : rust.ref (rust.mut' (near.vector u8)))\n    (key : sm'.std_string)\n    (proof : sm'.std_string)\n    (max : u64)\n    : u64\n    =\n    inl seed = near.random_seed ()\n    inl epoch_height = near.epoch_height ()\n    inl block_height = near.block_height ()\n    inl block_timestamp = near.block_timestamp ()\n    inl account_balance = near.account_balance ()\n    inl signer_account_id = near.signer_account_id ()\n    inl predecessor_account_id = near.predecessor_account_id ()\n    inl entropy =\n        ;[\n            seed\n            seeds |> rust.reref |> near.vector_to_vec\n            epoch_height |> am'.to_le_bytes |> am'.to_vec'\n            block_height |> am'.to_le_bytes |> am'.to_vec'\n            block_timestamp |> am'.to_le_bytes |> am'.to_vec'\n            account_balance |> near.as_yoctonear |> am'.to_le_bytes |> am'.to_vec'\n            signer_account_id |> am'.as_bytes |> am'.to_vec''\n            predecessor_account_id |> am'.as_bytes |> am'.to_vec''\n            proof |> sm'.into_bytes\n            key |> sm'.into_bytes\n        ]\n        |> am'.to_vec\n        |> rust.concat\n    inl hash_u8 = entropy |> near.keccak512\n    hash_u8 |> contribute_seed seeds\n    inl rolls_list =\n        hash_u8\n        |> am'.from_vec_base\n        |> am'.to_list_base'\n        |> listm'.unbox\n        |> stream.from_list\n        |> lib.dice.rotate_numbers 6\n        |> stream.to_list\n    trace Debug\n        fun () => \"dice_contract.generate_random_number\"\n        fun () => {\n            max\n            key\n            proof\n            block_timestamp\n            block_height\n            epoch_height\n            account_balance = #?*account_balance\n            signer_account_id = signer_account_id |> sm'.to_string'\n            predecessor_account_id = predecessor_account_id |> sm'.to_string'\n            seed = #?*seed\n            seeds = #?*seeds\n            entropy_len = entropy |> am'.vec_len\n            entropy = #?*entropy\n            hash_u8 = #?*hash_u8\n            rolls = rolls_list |> listm'.box |> listm'.to_array' |> am'.to_vec |> sm'.format_debug\n        }\n    inl sequential_roll = rolls_list |> lib.dice.create_sequential_roller\n    inl result = lib.dice.roll_progressively sequential_roll true max\n    trace Debug (fun () => \"\") (join id)\n    result","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl generate_random_number
+      (seeds : rust.ref (rust.mut' (near.vector u8)))
+      (key : sm'.std_string)
+      (proof : sm'.std_string)
+      (max : u64)
+      : u64
+      =
+      inl seed = near.random_seed ()
+      inl epoch_height = near.epoch_height ()
+      inl block_height = near.block_height ()
+      inl block_timestamp = near.block_timestamp ()
+      inl account_balance = near.account_balance ()
+      inl signer_account_id = near.signer_account_id ()
+      inl predecessor_account_id = near.predecessor_account_id ()
+      inl entropy =
+          ;[
+              seed
+              seeds |> rust.reref |> near.vector_to_vec
+              epoch_height |> am'.to_le_bytes |> am'.to_vec'
+              block_height |> am'.to_le_bytes |> am'.to_vec'
+              block_timestamp |> am'.to_le_bytes |> am'.to_vec'
+              account_balance |> near.as_yoctonear |> am'.to_le_bytes |> am'.to_vec'
+              signer_account_id |> am'.as_bytes |> am'.to_vec''
+              predecessor_account_id |> am'.as_bytes |> am'.to_vec''
+              proof |> sm'.into_bytes
+              key |> sm'.into_bytes
+          ]
+          |> am'.to_vec
+          |> rust.concat
+      inl hash_u8 = entropy |> near.keccak512
+      hash_u8 |> contribute_seed seeds
+      inl rolls_list =
+          hash_u8
+          |> am'.from_vec_base
+          |> am'.to_list_base'
+          |> listm'.unbox
+          |> stream.from_list
+          |> lib.dice.rotate_numbers 6
+          |> stream.to_list
+      trace Debug
+          fun () => "dice_contract.generate_random_number"
+          fun () => {
+              max
+              key
+              proof
+              block_timestamp
+              block_height
+              epoch_height
+              account_balance = #?*account_balance
+              signer_account_id = signer_account_id |> sm'.to_string'
+              predecessor_account_id = predecessor_account_id |> sm'.to_string'
+              seed = #?*seed
+              seeds = #?*seeds
+              entropy_len = entropy |> am'.vec_len
+              entropy = #?*entropy
+              hash_u8 = #?*hash_u8
+              rolls = rolls_list |> listm'.box |> listm'.to_array' |> am'.to_vec |> sm'.format_debug
+          }
+      inl sequential_roll = rolls_list |> lib.dice.create_sequential_roller
+      inl result = lib.dice.roll_progressively sequential_roll true max
+      trace Debug (fun () => "") (join id)
+      result
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -cd near-token\n\n2000\n|> generate_random_number\n    (\"\" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut)\n    (\"\" |> sm'.to_std_string)\n    (\"\" |> sm'.to_std_string)\n|> _assert_gt 0","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -cd near-token
+
+  2000
+  |> generate_random_number
+      ("" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut)
+      ("" |> sm'.to_std_string)
+      ("" |> sm'.to_std_string)
+  |> _assert_gt 0
+  """,
+  timeout: 300_000
+)
+```
+
+### roll_within_bounds
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =\n    inl result =\n        rolls\n        |> am'.from_vec_base\n        |> am'.to_list_base'\n        |> listm'.unbox\n        |> lib.dice.roll_within_bounds max\n        |> optionm'.box\n    trace Debug\n        fun () => \"dice_contract.roll_within_bounds\"\n        fun () => { max rolls = #?*rolls; result = #?*result }\n    trace Debug (fun () => \"\") (join id)\n    result","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
+      inl result =
+          rolls
+          |> am'.from_vec_base
+          |> am'.to_list_base'
+          |> listm'.unbox
+          |> lib.dice.roll_within_bounds max
+          |> optionm'.box
+      trace Debug
+          fun () => "dice_contract.roll_within_bounds"
+          fun () => { max rolls = #?*rolls; result = #?*result }
+      trace Debug (fun () => "") (join id)
+      result
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -c\n\ninl rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.to_vec\n\nrolls\n|> roll_within_bounds 2000\n|> _assert_eq' (optionm'.some' 995)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -c
+
+  inl rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.to_vec
+
+  rolls
+  |> roll_within_bounds 2000
+  |> _assert_eq' (optionm'.some' 995)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -c\n\ninl rolls = ;[ 2; 2; 6; 4; 5 ] |> am'.to_vec\n\nrolls\n|> roll_within_bounds 2000\n|> _assert_eq' (optionm'.some' 1715)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -c
+
+  inl rolls = ;[ 2; 2; 6; 4; 5 ] |> am'.to_vec
+
+  rolls
+  |> roll_within_bounds 2000
+  |> _assert_eq' (optionm'.some' 1715)
+  """,
+  timeout: 300_000
+)
+```
+
+### main
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///> _\n\n// The NEAR contract (built by contract/build.ps1 with the Spiral compiler's Rust backend): each contract method's body\n// becomes a `pub fn` (`!!!!Export`, which makes the program a library crate), and the NEAR shell below (the contract's\n// state, its migration from `OldState` and the #[near_bindgen] methods) calls them.\ninl main_native () : () =\n    global \"#[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]\\npub struct OldState {\\n    version: u32,\\n    seeds: near_sdk::store::vec::Vector<u8>,\\n}\"\n    global \"#[near_sdk::near_bindgen]\\n#[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]\\npub struct State((u32, near_sdk::store::vec::Vector<u8>));\"\n    global \"impl From<OldState> for State {\\n    fn from(old_state: OldState) -> Self {\\n        Self((old_state.version + 1, old_state.seeds))\\n    }\\n}\"\n    global \"#[near_sdk::near_bindgen]\\nimpl State {\\n    #[init]\\n    pub fn new() -> Self {\\n        Self(dice_contract_new())\\n    }\\n    pub fn contribute_seed(&mut self, seed: Vec<u8>) {\\n        dice_contract_contribute_seed(&mut self.0.1, seed)\\n    }\\n    pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) {\\n        self.contribute_seed(seed)\\n    }\\n    pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 {\\n        dice_contract_generate_random_number(&mut self.0.1, key, proof, max)\\n    }\\n    pub fn roll_within_bounds(&self, max: u64, rolls: Vec<u8>) -> Option<u64> {\\n        dice_contract_roll_within_bounds(max, rolls)\\n    }\\n    #[result_serializer(borsh)]\\n    pub fn roll_within_bounds_borsh(\\n        &self,\\n        #[serializer(borsh)] max: u64,\\n        #[serializer(borsh)] rolls: Vec<u8>,\\n    ) -> Option<u64> {\\n        self.roll_within_bounds(max, rolls)\\n    }\\n}\"\n    // Every export first sets the trace level to Info: lib.dice's per-roll `Debug` traces are only formatted when enabled,\n    // and with them a sandbox generate_random_number cost 35-93 Tgas instead of ~8 (on wasm32 the native trace gathers a\n    // call's lines into one log, capped at 16 KB). An Info+ trace would be dropped (a call's flush trace is Debug); this\n    // contract has none.\n    inl quiet () : () = set_trace_level Info\n    // `new` returns the state's fields: State (the near store vector) isn't Clone, and the Rust backend clones a returned\n    // variable of a macro type.\n    !!!!Export(\"dice_contract_new\", ((fun () => inl () = quiet () in inl x = new () in x.version, x.seeds) : () -> u32 * near.vector u8))\n    !!!!Export(\"dice_contract_contribute_seed\", ((fun (seeds, seed) => inl () = quiet () in contribute_seed seeds seed) : rust.ref (rust.mut' (near.vector u8)) * am'.vec u8 -> ()))\n    !!!!Export(\"dice_contract_generate_random_number\", ((fun (seeds, key, proof, max) => inl () = quiet () in generate_random_number seeds key proof max) : rust.ref (rust.mut' (near.vector u8)) * sm'.std_string * sm'.std_string * u64 -> u64))\n    !!!!Export(\"dice_contract_roll_within_bounds\", ((fun (max, rolls) => inl () = quiet () in roll_within_bounds max rolls) : u64 * am'.vec u8 -> optionm'.option' u64))\n\n\ninl main () =\n    if rust.is_native ()\n    then main_native ()\n    else ()","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Kino.eval!(
+  ~S"""
+  ///> _
+
+  // The NEAR contract (built by contract/build.ps1 with the Spiral compiler's Rust backend): each contract method's body
+  // becomes a `pub fn` (`!!!!Export`, which makes the program a library crate), and the NEAR shell below (the contract's
+  // state, its migration from `OldState` and the #[near_bindgen] methods) calls them.
+  inl main_native () : () =
+      global "#[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]\npub struct OldState {\n    version: u32,\n    seeds: near_sdk::store::vec::Vector<u8>,\n}"
+      global "#[near_sdk::near_bindgen]\n#[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]\npub struct State((u32, near_sdk::store::vec::Vector<u8>));"
+      global "impl From<OldState> for State {\n    fn from(old_state: OldState) -> Self {\n        Self((old_state.version + 1, old_state.seeds))\n    }\n}"
+      global "#[near_sdk::near_bindgen]\nimpl State {\n    #[init]\n    pub fn new() -> Self {\n        Self(dice_contract_new())\n    }\n    pub fn contribute_seed(&mut self, seed: Vec<u8>) {\n        dice_contract_contribute_seed(&mut self.0.1, seed)\n    }\n    pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) {\n        self.contribute_seed(seed)\n    }\n    pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 {\n        dice_contract_generate_random_number(&mut self.0.1, key, proof, max)\n    }\n    pub fn roll_within_bounds(&self, max: u64, rolls: Vec<u8>) -> Option<u64> {\n        dice_contract_roll_within_bounds(max, rolls)\n    }\n    #[result_serializer(borsh)]\n    pub fn roll_within_bounds_borsh(\n        &self,\n        #[serializer(borsh)] max: u64,\n        #[serializer(borsh)] rolls: Vec<u8>,\n    ) -> Option<u64> {\n        self.roll_within_bounds(max, rolls)\n    }\n}"
+      // Every export first sets the trace level to Info: lib.dice's per-roll `Debug` traces are only formatted when enabled,
+      // and with them a sandbox generate_random_number cost 35-93 Tgas instead of ~8 (on wasm32 the native trace gathers a
+      // call's lines into one log, capped at 16 KB). An Info+ trace would be dropped (a call's flush trace is Debug); this
+      // contract has none.
+      inl quiet () : () = set_trace_level Info
+      // `new` returns the state's fields: State (the near store vector) isn't Clone, and the Rust backend clones a returned
+      // variable of a macro type.
+      !!!!Export("dice_contract_new", ((fun () => inl () = quiet () in inl x = new () in x.version, x.seeds) : () -> u32 * near.vector u8))
+      !!!!Export("dice_contract_contribute_seed", ((fun (seeds, seed) => inl () = quiet () in contribute_seed seeds seed) : rust.ref (rust.mut' (near.vector u8)) * am'.vec u8 -> ()))
+      !!!!Export("dice_contract_generate_random_number", ((fun (seeds, key, proof, max) => inl () = quiet () in generate_random_number seeds key proof max) : rust.ref (rust.mut' (near.vector u8)) * sm'.std_string * sm'.std_string * u64 -> u64))
+      !!!!Export("dice_contract_roll_within_bounds", ((fun (max, rolls) => inl () = quiet () in roll_within_bounds max rolls) : u64 * am'.vec u8 -> optionm'.option' u64))
+
+
+  inl main () =
+      if rust.is_native ()
+      then main_native ()
+      else ()
+  """,
+  timeout: 300_000
+)
+```

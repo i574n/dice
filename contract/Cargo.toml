@@ -1,9 +1,11 @@
 cargo-features = ["edition2024"]
 
+# dice_contract.rs is the Spiral compiler's native Rust output of dice_contract.spi (build.ps1 regenerates it and builds
+# this crate for wasm32).
 [package]
 name = "dice_contract"
 version.workspace = true
-edition.workspace = true
+edition = "2021"
 license-file.workspace = true
 repository.workspace = true
 
@@ -12,9 +14,6 @@ crate-type = ["cdylib"]
 path = "dice_contract.rs"
 
 [dependencies]
-inline_colorization = { workspace = true }
-fable_library_rust = { workspace = true, features = ["atomic"] }
-dice_contract_lib = { path = "../lib/contract" }
 borsh = "1.5"
 near-sdk = "=5.11.0"
 near-token = ">=0.3,<1"

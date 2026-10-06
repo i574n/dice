@@ -7,15 +7,8 @@ edition.workspace = true
 license-file.workspace = true
 repository.workspace = true
 
+# dice.rs is dice.spi's native Rust output (build.ps1 regenerates it with the Spiral compiler's Rust backend); std only.
 [dependencies]
-fable_library_rust = { workspace = true, features = ["static_do_bindings", "datetime", "guid", "threaded"] }
-inline_colorization = { workspace = true }
-regex = { workspace = true }
-chrono = { workspace = true }
-sha2 = { workspace = true }
-rand = { version = "~0.9.0-alpha.2" }
-
-[dev-dependencies]
 
 [[bin]]
 name = "dice"

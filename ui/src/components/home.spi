@@ -1,10 +1,11 @@
 open rust.rust_operators
+open sm'_operators
 open leptos
 
 inl render { router } =
     inl router : i32 = router
     print_static "<home.render>"
-    leptos.log $'"home.render () / router: " + string !router + ""'
+    leptos.log ("home.render () / router: " ++# sm'.obj_to_string router)
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
@@ -14,7 +15,7 @@ inl render { router } =
 
     leptos.div [
         $'"class=\\\"flex flex-1\\\""'
-        leptos.bool_prop "class:dark" fun () =>
+        leptos.attr_fn "class:dark" fun () =>
             leptos.signal_get_untracked global_state.core_state .dark_mode
             |> leptos.signal_get
     ] (content.render >> leptos.element_to_fragment)

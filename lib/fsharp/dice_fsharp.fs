@@ -53,18 +53,9 @@ module DiceFSharp =
         else 루프 0 1
 
     /// ## rollDice
-#if FABLE_COMPILER_RUST
-    let rollDice () : int =
-#if !WASM && !CONTRACT
-        Fable.Core.RustInterop.emitRustExpr () "rand::Rng::gen_range(&mut rand::thread_rng(), 1..7)"
-#else
-        1
-#endif
-#else
     let private random = System.Random ()
     let rollDice () =
         random.Next (1, 7)
-#endif
 
     /// ## rotateNumber
     let rotateNumber max n =
