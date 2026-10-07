@@ -451,123 +451,123 @@ def method6(v0 : 'datetime.datetime') -> 'datetime.datetime':
     return v0
 def method5(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64) -> string:
     del v0, v1, v2, v3, v4
-    v6 = None
-    v7 = v5 == v6 
-    del v6
-    if v7:
-        v8 = None
-        v12 = v8
+    v61 = None
+    v62 = v5 == v61 
+    del v61
+    if v62:
+        v63 = None
+        v67 = v63
     else:
-        v9 = v5 
-        v10 = US2_0(v9)
-        del v9
-        v11 = v10 
-        del v10
-        v12 = v11
-    del v5, v7
-    v13 = US2_1()
-    v14 = (v13 if v12 is None else v12)
-    del v12, v13
-    match v14:
+        v64 = v5 
+        v65 = US2_0(v64)
+        del v64
+        v66 = v65 
+        del v65
+        v67 = v66
+    del v5, v62
+    v68 = US2_1()
+    v69 = (v68 if v67 is None else v67)
+    del v67, v68
+    match v69:
         case US2_1(): # None
-            v59 = datetime.datetime.now()
-            v61 = v59
-        case US2_0(v15): # Some
-            v16 = datetime.datetime.now()
-            v17 = datetime.datetime.min
-            v18 = v16 - v17 
-            del v16, v17
-            v19 = v18.total_seconds() * 10000000
-            del v18
-            v20 = v19 // 10000000
-            del v19
-            v21 = f64(v20)
-            del v20
-            v22 = 10000000.0 * v21
-            del v21
-            v23 = Closure1(v22)
-            del v22
-            fn = v23 
-            del v23
-            v24 = Closure2()
-            ok = v24 
-            del v24
-            v25 = Closure3()
-            error = v25 
-            del v25
-            v26 = Closure4()
-            ex_fn = v26 
+            v114 = datetime.datetime.now()
+            v116 = v114
+        case US2_0(v70): # Some
+            v71 = datetime.datetime.now()
+            v72 = datetime.datetime.min
+            v73 = v71 - v72 
+            del v71, v72
+            v74 = v73.total_seconds() * 10000000
+            del v73
+            v75 = v74 // 10000000
+            del v74
+            v76 = f64(v75)
+            del v75
+            v77 = 10000000.0 * v76
+            del v76
+            v78 = Closure1(v77)
+            del v77
+            fn = v78 
+            del v78
+            v79 = Closure2()
+            ok = v79 
+            del v79
+            v80 = Closure3()
+            error = v80 
+            del v80
+            v81 = Closure4()
+            ex_fn = v81 
             try: x = ok(fn()) 
             except Exception as ex: x = error(ex_fn(lambda: ex))
-            v27 = x
-            match v27:
+            v82 = x
+            match v82:
                 case US4_1(_): # Error
-                    v33 = US5_1()
-                case US4_0(v28): # Ok
-                    v33 = US5_0(v28)
+                    v88 = US5_1()
+                case US4_0(v83): # Ok
+                    v88 = US5_0(v83)
                 case t:
                     raise Exception(f'Pattern matching miss. Got: {t}')
-            del v27
-            match v33:
+            del v82
+            match v88:
                 case US5_1(): # None
                     raise Exception("Option does not have a value.")
-                case US5_0(v34): # Some
-                    v37 = v34
+                case US5_0(v89): # Some
+                    v92 = v89
                 case t:
                     raise Exception(f'Pattern matching miss. Got: {t}')
-            del v33
-            v38 = Closure5(v37)
-            del v37
-            fn = v38 
-            del v38
-            v39 = Closure6()
-            ok = v39 
-            del v39
-            v40 = Closure7()
-            error = v40 
-            del v40
-            ex_fn = v26 
-            del v26
+            del v88
+            v93 = Closure5(v92)
+            del v92
+            fn = v93 
+            del v93
+            v94 = Closure6()
+            ok = v94 
+            del v94
+            v95 = Closure7()
+            error = v95 
+            del v95
+            ex_fn = v81 
+            del v81
             try: x = ok(fn()) 
             except Exception as ex: x = error(ex_fn(lambda: ex))
-            v41 = x
-            match v41:
+            v96 = x
+            match v96:
                 case US6_1(_): # Error
-                    v47 = US2_1()
-                case US6_0(v42): # Ok
-                    v47 = US2_0(v42)
+                    v102 = US2_1()
+                case US6_0(v97): # Ok
+                    v102 = US2_0(v97)
                 case t:
                     raise Exception(f'Pattern matching miss. Got: {t}')
-            del v41
-            match v47:
+            del v96
+            match v102:
                 case US2_1(): # None
                     raise Exception("Option does not have a value.")
-                case US2_0(v48): # Some
-                    v51 = v48
+                case US2_0(v103): # Some
+                    v106 = v103
                 case t:
                     raise Exception(f'Pattern matching miss. Got: {t}')
-            del v47
-            v52 = v51 - v15
-            del v15, v51
-            v53 = datetime.timedelta(v52)
-            del v52
-            v54 = v53.seconds // 3600
-            v55 = (v53.seconds // 60) % 60
-            v56 = v53.seconds % 60
-            v57 = v53.microseconds // 1000
-            del v53
-            v58 = datetime.datetime(1, 1, 1, v54, v55, v56, v57 * 1000)
-            del v54, v55, v56, v57
-            v61 = v58
+            del v102
+            v107 = v106 - v70
+            del v70, v106
+            v108 = datetime.timedelta(v107)
+            del v107
+            v109 = v108.seconds // 3600
+            v110 = (v108.seconds // 60) % 60
+            v111 = v108.seconds % 60
+            v112 = v108.microseconds // 1000
+            del v108
+            v113 = datetime.datetime(1, 1, 1, v109, v110, v111, v112 * 1000)
+            del v109, v110, v111, v112
+            v116 = v113
         case t:
             raise Exception(f'Pattern matching miss. Got: {t}')
-    del v14
-    v62 = method6(v61)
-    del v61
-    v63 = "%H:%M:%S"
-    v64 = v62.strftime(v63)
-    del v62, v63
-    return v64
+    del v69
+    v117 = method6(v116)
+    del v116
+    v118 = "%H:%M:%S"
+    v119 = v117.strftime(v118)
+    del v117, v118
+    return v119
 def method9(v0 : Mut3, v1 : string) -> None:
     v2 = v0.v0
     v3 = v2 + v1 
@@ -579,39 +579,39 @@ def method8(v0 : char) -> string:
     v1 = ""
     v2 = Mut3(v1)
     del v1
-    v3 = f"{v0}"
+    v4 = f"{v0}"
     del v0
-    method9(v2, v3)
-    del v3
-    v4 = v2.v0
+    method9(v2, v4)
+    del v4
+    v5 = v2.v0
     del v2
-    return v4
+    return v5
 def method7() -> string:
-    v0 = "\u001b[94m"
-    v1 = "Debug"
-    v2 = v1.lower()
-    del v1
-    v3 = v2[0]
+    v1 = "\u001b[94m"
+    v2 = "Debug"
+    v3 = v2.lower()
     del v2
-    v4 = method8(v3)
+    v4 = v3[0]
     del v3
-    v5 = v0 + v4 
-    del v0, v4
-    v6 = "\u001b[0m"
-    v7 = v5 + v6 
-    del v5, v6
-    return v7
+    v5 = method8(v4)
+    del v4
+    v6 = v1 + v5 
+    del v1, v5
+    v8 = "\u001b[0m"
+    v9 = v6 + v8 
+    del v6, v8
+    return v9
 def method11(v0 : i64) -> string:
     v1 = ""
     v2 = Mut3(v1)
     del v1
-    v3 = f"{v0}"
+    v4 = f"{v0}"
     del v0
-    method9(v2, v3)
-    del v3
-    v4 = v2.v0
+    method9(v2, v4)
+    del v4
+    v5 = v2.v0
     del v2
-    return v4
+    return v5
 def method13(v0 : Mut3) -> None:
     v1 = v0.v0
     v2 = "{ "
@@ -689,14 +689,14 @@ def method12(v0 : i64, v1 : i64, v2 : i8) -> string:
     method16(v4)
     method18(v4)
     method15(v4)
-    v7 = f"{v2}"
+    v8 = f"{v2}"
     del v2
-    method9(v4, v7)
-    del v7
+    method9(v4, v8)
+    del v8
     method19(v4)
-    v8 = v4.v0
+    v9 = v4.v0
     del v4
-    return v8
+    return v9
 def method21(v0 : string, v1 : i32, v2 : i32) -> i32:
     v3 = v2 >= v1
     if v3:
@@ -762,18 +762,18 @@ def method20(v0 : string) -> string:
     del v2
     v4 = v1 - 1
     del v1
-    v5 = v4 + 1
+    v6 = v4 + 1
     del v4
-    v6 = v0[v3:v5]
-    del v0, v3, v5
-    v7 = len(v6)
-    v8 = method22(v6, v7)
-    del v7
-    v9 = v8 + 1
+    v7 = v0[v3:v6]
+    del v0, v3, v6
+    v8 = len(v7)
+    v9 = method22(v7, v8)
     del v8
-    v10 = v6[0:v9]
-    del v6, v9
-    return v10
+    v11 = v9 + 1
+    del v9
+    v12 = v7[0:v11]
+    del v7, v11
+    return v12
 def method10(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6 : string, v7 : string) -> string:
     del v1, v2, v3, v4, v5
     v8 = v0.v0
@@ -789,23 +789,23 @@ def method10(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     del v7, v12
     v14 = v13 + v9 
     del v9, v13
-    v15 = "dice.calculate_dice_count"
-    v16 = v14 + v15 
-    del v14, v15
-    v17 = " / "
-    v18 = v16 + v17 
-    del v16, v17
-    v19 = 4738381338321616896
-    v20 = 4738381338321616896
-    v21 = 24
-    v22 = method12(v19, v20, v21)
-    del v19, v20, v21
-    v23 = v18 + v22 
-    del v18, v22
-    return method20(v23)
+    v17 = "dice.calculate_dice_count"
+    v18 = v14 + v17 
+    del v14, v17
+    v21 = " / "
+    v22 = v18 + v21 
+    del v18, v21
+    v23 = 4738381338321616896
+    v24 = 4738381338321616896
+    v25 = 24
+    v26 = method12(v23, v24, v25)
+    del v23, v24, v25
+    v27 = v22 + v26 
+    del v22, v26
+    return method20(v27)
 def method24() -> u8:
-    v79 = random.randrange(1, 7)
-    return v79
+    v36 = random.randrange(1, 7)
+    return v36
 def method28(v0 : Mut3) -> None:
     v1 = v0.v0
     v2 = "power"
@@ -859,21 +859,21 @@ def method27(v0 : i8, v1 : i64, v2 : u8, v3 : i64) -> string:
     method16(v5)
     method30(v5)
     method15(v5)
-    v8 = f"{v2}"
+    v9 = f"{v2}"
     del v2
-    method9(v5, v8)
-    del v8
+    method9(v5, v9)
+    del v9
     method16(v5)
     method31(v5)
     method15(v5)
-    v9 = f"{v3}"
+    v10 = f"{v3}"
     del v3
-    method9(v5, v9)
-    del v9
+    method9(v5, v10)
+    del v10
     method19(v5)
-    v10 = v5.v0
+    v11 = v5.v0
     del v5
-    return v10
+    return v11
 def method26(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6 : string, v7 : string, v8 : i64, v9 : u8, v10 : i64) -> string:
     del v1, v2, v3, v4, v5
     v11 = v0.v0
@@ -889,18 +889,18 @@ def method26(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     del v7, v15
     v17 = v16 + v12 
     del v12, v16
-    v18 = "dice.accumulate_dice_rolls"
-    v19 = v17 + v18 
-    del v17, v18
-    v20 = " / "
-    v21 = v19 + v20 
-    del v19, v20
-    v22 = 23
-    v23 = method27(v22, v8, v9, v10)
-    del v8, v9, v10, v22
-    v24 = v21 + v23 
-    del v21, v23
-    return method20(v24)
+    v20 = "dice.accumulate_dice_rolls"
+    v21 = v17 + v20 
+    del v17, v20
+    v22 = " / "
+    v23 = v21 + v22 
+    del v21, v22
+    v24 = 23
+    v25 = method27(v24, v8, v9, v10)
+    del v8, v9, v10, v24
+    v26 = v23 + v25 
+    del v23, v25
+    return method20(v26)
 def method33(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6 : string, v7 : string, v8 : i64, v9 : u8, v10 : i64) -> string:
     del v1, v2, v3, v4, v5
     v11 = v0.v0
@@ -1588,68 +1588,68 @@ def method79(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     return method20(v23)
 def method78(v0 : UH0, v1 : i64) -> US8:
     v2 = v1 + 1
-    v6 = Closure0()
-    v7 = US0_0()
-    if TraceState.trace_state is None: TraceState.trace_state = v6(v7)
-    del v7
-    v8, v9, v10, v11, v12, v13 = TraceState.trace_state
-    del v8, v9, v11, v13
-    v14 = v12.v0
-    del v12
-    match v14:
+    v3 = Closure0()
+    v4 = US0_0()
+    if TraceState.trace_state is None: TraceState.trace_state = v3(v4)
+    del v4
+    v5, v6, v7, v8, v9, v10 = TraceState.trace_state
+    del v5, v6, v8, v10
+    v11 = v9.v0
+    del v9
+    match v11:
         case US0_4(): # Critical
-            v19 = 50
+            v16 = 50
         case US0_1(): # Debug
-            v19 = 20
+            v16 = 20
         case US0_2(): # Info
-            v19 = 30
+            v16 = 30
         case US0_0(): # Verbose
-            v19 = 10
+            v16 = 10
         case US0_3(): # Warning
-            v19 = 40
+            v16 = 40
         case t:
             raise Exception(f'Pattern matching miss. Got: {t}')
-    del v14
-    v20 = v10.v0
-    del v10
+    del v11
+    v17 = v7.v0
+    del v7
+    v18 = v17 == False
+    del v17
+    if v18:
+        v20 = False
+    else:
+        v19 = 20 >= v16
+        v20 = v19
+    del v16, v18
     v21 = v20 == False
     del v20
     if v21:
-        v23 = False
+        v45 = US7_1()
     else:
-        v22 = 20 >= v19
-        v23 = v22
-    del v19, v21
-    v24 = v23 == False
-    del v23
-    if v24:
-        v48 = US7_1()
-    else:
-        v26 = US0_0()
-        if TraceState.trace_state is None: TraceState.trace_state = v6(v26)
-        del v26
-        v27, v28, v29, v30, v31, v32 = TraceState.trace_state
-        v33 = method5(v27, v28, v29, v30, v31, v32)
-        v34 = method7()
-        v35 = method79(v27, v28, v29, v30, v31, v32, v33, v34, v1, v2)
-        del v27, v28, v29, v30, v31, v32, v33, v34
-        v36 = US0_0()
-        if TraceState.trace_state is None: TraceState.trace_state = v6(v36)
-        del v36
-        v37, v38, v39, v40, v41, v42 = TraceState.trace_state
-        v43 = v37.v0
-        v44 = v43 + 1
-        del v43
-        v37.v0 = v44
-        del v44
-        v45 = Closure9()
-        v45(v35)
-        del v45
-        v46 = v38.v0
-        v46(v35)
-        del v35, v46
-        v48 = US7_0(v37, v38, v39, v40, v41, v42)
-    del v1, v6, v24, v48
+        v23 = US0_0()
+        if TraceState.trace_state is None: TraceState.trace_state = v3(v23)
+        del v23
+        v24, v25, v26, v27, v28, v29 = TraceState.trace_state
+        v30 = method5(v24, v25, v26, v27, v28, v29)
+        v31 = method7()
+        v32 = method79(v24, v25, v26, v27, v28, v29, v30, v31, v1, v2)
+        del v24, v25, v26, v27, v28, v29, v30, v31
+        v33 = US0_0()
+        if TraceState.trace_state is None: TraceState.trace_state = v3(v33)
+        del v33
+        v34, v35, v36, v37, v38, v39 = TraceState.trace_state
+        v40 = v34.v0
+        v41 = v40 + 1
+        del v40
+        v34.v0 = v41
+        del v41
+        v42 = Closure9()
+        v42(v32)
+        del v42
+        v43 = v35.v0
+        v43(v32)
+        del v32, v43
+        v45 = US7_0(v34, v35, v36, v37, v38, v39)
+    del v1, v3, v21, v45
     return US8_0(v2, v0)
 def method83(v0 : i8, v1 : i64, v2 : u8) -> string:
     v3 = ""
@@ -1717,135 +1717,135 @@ def method76(v0 : UH0, v1 : i64) -> US8:
                 v6 = v3 - 1
                 v7 = i64(v6)
                 del v6
-                v11 = Closure0()
-                v12 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v11(v12)
-                del v12
-                v13, v14, v15, v16, v17, v18 = TraceState.trace_state
-                del v13, v14, v16, v18
-                v19 = v17.v0
-                del v17
-                match v19:
+                v8 = Closure0()
+                v9 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v8(v9)
+                del v9
+                v10, v11, v12, v13, v14, v15 = TraceState.trace_state
+                del v10, v11, v13, v15
+                v16 = v14.v0
+                del v14
+                match v16:
                     case US0_4(): # Critical
-                        v24 = 50
+                        v21 = 50
                     case US0_1(): # Debug
-                        v24 = 20
+                        v21 = 20
                     case US0_2(): # Info
-                        v24 = 30
+                        v21 = 30
                     case US0_0(): # Verbose
-                        v24 = 10
+                        v21 = 10
                     case US0_3(): # Warning
-                        v24 = 40
+                        v21 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v19
-                v25 = v15.v0
-                del v15
+                del v16
+                v22 = v12.v0
+                del v12
+                v23 = v22 == False
+                del v22
+                if v23:
+                    v25 = False
+                else:
+                    v24 = 20 >= v21
+                    v25 = v24
+                del v21, v23
                 v26 = v25 == False
                 del v25
                 if v26:
-                    v28 = False
+                    v50 = US7_1()
                 else:
-                    v27 = 20 >= v24
-                    v28 = v27
-                del v24, v26
-                v29 = v28 == False
-                del v28
-                if v29:
-                    v53 = US7_1()
-                else:
-                    v31 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v11(v31)
-                    del v31
-                    v32, v33, v34, v35, v36, v37 = TraceState.trace_state
-                    v38 = method5(v32, v33, v34, v35, v36, v37)
-                    v39 = method7()
-                    v40 = method77(v32, v33, v34, v35, v36, v37, v38, v39, v1, v3, v7)
-                    del v32, v33, v34, v35, v36, v37, v38, v39
-                    v41 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v11(v41)
-                    del v41
-                    v42, v43, v44, v45, v46, v47 = TraceState.trace_state
-                    v48 = v42.v0
-                    v49 = v48 + 1
-                    del v48
-                    v42.v0 = v49
-                    del v49
-                    v50 = Closure9()
-                    v50(v40)
-                    del v50
-                    v51 = v43.v0
-                    v51(v40)
-                    del v40, v51
-                    v53 = US7_0(v42, v43, v44, v45, v46, v47)
-                del v3, v11, v29, v53
-                v54 = v1 + v7
+                    v28 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v8(v28)
+                    del v28
+                    v29, v30, v31, v32, v33, v34 = TraceState.trace_state
+                    v35 = method5(v29, v30, v31, v32, v33, v34)
+                    v36 = method7()
+                    v37 = method77(v29, v30, v31, v32, v33, v34, v35, v36, v1, v3, v7)
+                    del v29, v30, v31, v32, v33, v34, v35, v36
+                    v38 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v8(v38)
+                    del v38
+                    v39, v40, v41, v42, v43, v44 = TraceState.trace_state
+                    v45 = v39.v0
+                    v46 = v45 + 1
+                    del v45
+                    v39.v0 = v46
+                    del v46
+                    v47 = Closure9()
+                    v47(v37)
+                    del v47
+                    v48 = v40.v0
+                    v48(v37)
+                    del v37, v48
+                    v50 = US7_0(v39, v40, v41, v42, v43, v44)
+                del v3, v8, v26, v50
+                v51 = v1 + v7
                 del v1, v7
-                return method78(v4, v54)
+                return method78(v4, v51)
             else:
                 del v5
-                v59 = Closure0()
-                v60 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v59(v60)
-                del v60
-                v61, v62, v63, v64, v65, v66 = TraceState.trace_state
-                del v61, v62, v64, v66
-                v67 = v65.v0
-                del v65
-                match v67:
+                v53 = Closure0()
+                v54 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v53(v54)
+                del v54
+                v55, v56, v57, v58, v59, v60 = TraceState.trace_state
+                del v55, v56, v58, v60
+                v61 = v59.v0
+                del v59
+                match v61:
                     case US0_4(): # Critical
-                        v72 = 50
+                        v66 = 50
                     case US0_1(): # Debug
-                        v72 = 20
+                        v66 = 20
                     case US0_2(): # Info
-                        v72 = 30
+                        v66 = 30
                     case US0_0(): # Verbose
-                        v72 = 10
+                        v66 = 10
                     case US0_3(): # Warning
-                        v72 = 40
+                        v66 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v61
+                v67 = v57.v0
+                del v57
+                v68 = v67 == False
                 del v67
-                v73 = v63.v0
-                del v63
-                v74 = v73 == False
-                del v73
-                if v74:
-                    v76 = False
+                if v68:
+                    v70 = False
                 else:
-                    v75 = 20 >= v72
-                    v76 = v75
-                del v72, v74
-                v77 = v76 == False
-                del v76
-                if v77:
-                    v101 = US7_1()
+                    v69 = 20 >= v66
+                    v70 = v69
+                del v66, v68
+                v71 = v70 == False
+                del v70
+                if v71:
+                    v95 = US7_1()
                 else:
-                    v79 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v59(v79)
-                    del v79
-                    v80, v81, v82, v83, v84, v85 = TraceState.trace_state
-                    v86 = method5(v80, v81, v82, v83, v84, v85)
-                    v87 = method7()
-                    v88 = method82(v80, v81, v82, v83, v84, v85, v86, v87, v1, v3)
-                    del v80, v81, v82, v83, v84, v85, v86, v87
-                    v89 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v59(v89)
-                    del v89
-                    v90, v91, v92, v93, v94, v95 = TraceState.trace_state
-                    v96 = v90.v0
-                    v97 = v96 + 1
-                    del v96
-                    v90.v0 = v97
-                    del v97
-                    v98 = Closure9()
-                    v98(v88)
-                    del v98
-                    v99 = v91.v0
-                    v99(v88)
-                    del v88, v99
-                    v101 = US7_0(v90, v91, v92, v93, v94, v95)
-                del v3, v59, v77, v101
+                    v73 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v53(v73)
+                    del v73
+                    v74, v75, v76, v77, v78, v79 = TraceState.trace_state
+                    v80 = method5(v74, v75, v76, v77, v78, v79)
+                    v81 = method7()
+                    v82 = method82(v74, v75, v76, v77, v78, v79, v80, v81, v1, v3)
+                    del v74, v75, v76, v77, v78, v79, v80, v81
+                    v83 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v53(v83)
+                    del v83
+                    v84, v85, v86, v87, v88, v89 = TraceState.trace_state
+                    v90 = v84.v0
+                    v91 = v90 + 1
+                    del v90
+                    v84.v0 = v91
+                    del v91
+                    v92 = Closure9()
+                    v92(v82)
+                    del v92
+                    v93 = v85.v0
+                    v93(v82)
+                    del v82, v93
+                    v95 = US7_0(v84, v85, v86, v87, v88, v89)
+                del v3, v53, v71, v95
                 return method78(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -1891,135 +1891,135 @@ def method74(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 6
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method75(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method75(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method76(v4, v55)
+                return method76(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method84(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method84(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method76(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -2065,135 +2065,135 @@ def method72(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 36
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method73(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method73(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method74(v4, v55)
+                return method74(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method85(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method85(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method74(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -2239,135 +2239,135 @@ def method70(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 216
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method71(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method71(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method72(v4, v55)
+                return method72(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method86(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method86(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method72(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -2413,135 +2413,135 @@ def method68(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 1296
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method69(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method69(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method70(v4, v55)
+                return method70(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method87(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method87(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method70(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -2587,135 +2587,135 @@ def method66(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 7776
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method67(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method67(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method68(v4, v55)
+                return method68(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method88(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method88(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method68(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -2761,135 +2761,135 @@ def method64(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 46656
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method65(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method65(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method66(v4, v55)
+                return method66(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method89(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method89(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method66(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -2935,135 +2935,135 @@ def method62(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 279936
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method63(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method63(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method64(v4, v55)
+                return method64(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method90(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method90(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method64(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -3109,135 +3109,135 @@ def method60(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 1679616
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method61(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method61(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method62(v4, v55)
+                return method62(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method91(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method91(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method62(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -3283,135 +3283,135 @@ def method58(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 10077696
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method59(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method59(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method60(v4, v55)
+                return method60(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method92(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method92(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method60(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -3457,135 +3457,135 @@ def method56(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 60466176
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method57(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method57(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method58(v4, v55)
+                return method58(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method93(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method93(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method58(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -3631,135 +3631,135 @@ def method54(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 362797056
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method55(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method55(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method56(v4, v55)
+                return method56(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method94(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method94(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method56(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -3805,135 +3805,135 @@ def method52(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 2176782336
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method53(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method53(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method54(v4, v55)
+                return method54(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method95(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method95(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method54(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -3979,135 +3979,135 @@ def method50(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 13060694016
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method51(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method51(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method52(v4, v55)
+                return method52(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method96(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method96(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method52(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -4153,135 +4153,135 @@ def method48(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 78364164096
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method49(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method49(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method50(v4, v55)
+                return method50(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method97(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method97(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method50(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -4327,135 +4327,135 @@ def method46(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 470184984576
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method47(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method47(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method48(v4, v55)
+                return method48(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method98(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method98(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method48(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -4501,135 +4501,135 @@ def method44(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 2821109907456
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method45(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method45(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method46(v4, v55)
+                return method46(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method99(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method99(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method46(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -4675,135 +4675,135 @@ def method42(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 16926659444736
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method43(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method43(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method44(v4, v55)
+                return method44(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method100(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method100(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method44(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -4849,135 +4849,135 @@ def method40(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 101559956668416
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method41(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method41(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method42(v4, v55)
+                return method42(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method101(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method101(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method42(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -5023,135 +5023,135 @@ def method38(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 609359740010496
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method39(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method39(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method40(v4, v55)
+                return method40(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method102(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method102(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method40(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -5197,135 +5197,135 @@ def method36(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 3656158440062976
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method37(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method37(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method38(v4, v55)
+                return method38(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method103(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method103(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method38(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -5371,135 +5371,135 @@ def method34(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 21936950640377856
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method35(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method35(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method36(v4, v55)
+                return method36(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method104(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method104(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method36(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -5545,135 +5545,135 @@ def method32(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 131621703842267136
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method33(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method33(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method34(v4, v55)
+                return method34(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method105(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method105(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method34(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -5719,135 +5719,135 @@ def method25(v0 : UH0, v1 : i64) -> US8:
                 del v6
                 v8 = v7 * 789730223053602816
                 del v7
-                v12 = Closure0()
-                v13 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v12(v13)
-                del v13
-                v14, v15, v16, v17, v18, v19 = TraceState.trace_state
-                del v14, v15, v17, v19
-                v20 = v18.v0
-                del v18
-                match v20:
+                v9 = Closure0()
+                v10 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v9(v10)
+                del v10
+                v11, v12, v13, v14, v15, v16 = TraceState.trace_state
+                del v11, v12, v14, v16
+                v17 = v15.v0
+                del v15
+                match v17:
                     case US0_4(): # Critical
-                        v25 = 50
+                        v22 = 50
                     case US0_1(): # Debug
-                        v25 = 20
+                        v22 = 20
                     case US0_2(): # Info
-                        v25 = 30
+                        v22 = 30
                     case US0_0(): # Verbose
-                        v25 = 10
+                        v22 = 10
                     case US0_3(): # Warning
-                        v25 = 40
+                        v22 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
-                del v20
-                v26 = v16.v0
-                del v16
+                del v17
+                v23 = v13.v0
+                del v13
+                v24 = v23 == False
+                del v23
+                if v24:
+                    v26 = False
+                else:
+                    v25 = 20 >= v22
+                    v26 = v25
+                del v22, v24
                 v27 = v26 == False
                 del v26
                 if v27:
-                    v29 = False
+                    v51 = US7_1()
                 else:
-                    v28 = 20 >= v25
-                    v29 = v28
-                del v25, v27
-                v30 = v29 == False
-                del v29
-                if v30:
-                    v54 = US7_1()
-                else:
-                    v32 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v32)
-                    del v32
-                    v33, v34, v35, v36, v37, v38 = TraceState.trace_state
-                    v39 = method5(v33, v34, v35, v36, v37, v38)
-                    v40 = method7()
-                    v41 = method26(v33, v34, v35, v36, v37, v38, v39, v40, v1, v3, v8)
-                    del v33, v34, v35, v36, v37, v38, v39, v40
-                    v42 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v12(v42)
-                    del v42
-                    v43, v44, v45, v46, v47, v48 = TraceState.trace_state
-                    v49 = v43.v0
-                    v50 = v49 + 1
-                    del v49
-                    v43.v0 = v50
-                    del v50
-                    v51 = Closure9()
-                    v51(v41)
-                    del v51
-                    v52 = v44.v0
-                    v52(v41)
-                    del v41, v52
-                    v54 = US7_0(v43, v44, v45, v46, v47, v48)
-                del v3, v12, v30, v54
-                v55 = v1 + v8
+                    v29 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v29)
+                    del v29
+                    v30, v31, v32, v33, v34, v35 = TraceState.trace_state
+                    v36 = method5(v30, v31, v32, v33, v34, v35)
+                    v37 = method7()
+                    v38 = method26(v30, v31, v32, v33, v34, v35, v36, v37, v1, v3, v8)
+                    del v30, v31, v32, v33, v34, v35, v36, v37
+                    v39 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v9(v39)
+                    del v39
+                    v40, v41, v42, v43, v44, v45 = TraceState.trace_state
+                    v46 = v40.v0
+                    v47 = v46 + 1
+                    del v46
+                    v40.v0 = v47
+                    del v47
+                    v48 = Closure9()
+                    v48(v38)
+                    del v48
+                    v49 = v41.v0
+                    v49(v38)
+                    del v38, v49
+                    v51 = US7_0(v40, v41, v42, v43, v44, v45)
+                del v3, v9, v27, v51
+                v52 = v1 + v8
                 del v1, v8
-                return method32(v4, v55)
+                return method32(v4, v52)
             else:
                 del v5
-                v60 = Closure0()
-                v61 = US0_0()
-                if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
-                del v61
-                v62, v63, v64, v65, v66, v67 = TraceState.trace_state
-                del v62, v63, v65, v67
-                v68 = v66.v0
-                del v66
-                match v68:
+                v54 = Closure0()
+                v55 = US0_0()
+                if TraceState.trace_state is None: TraceState.trace_state = v54(v55)
+                del v55
+                v56, v57, v58, v59, v60, v61 = TraceState.trace_state
+                del v56, v57, v59, v61
+                v62 = v60.v0
+                del v60
+                match v62:
                     case US0_4(): # Critical
-                        v73 = 50
+                        v67 = 50
                     case US0_1(): # Debug
-                        v73 = 20
+                        v67 = 20
                     case US0_2(): # Info
-                        v73 = 30
+                        v67 = 30
                     case US0_0(): # Verbose
-                        v73 = 10
+                        v67 = 10
                     case US0_3(): # Warning
-                        v73 = 40
+                        v67 = 40
                     case t:
                         raise Exception(f'Pattern matching miss. Got: {t}')
+                del v62
+                v68 = v58.v0
+                del v58
+                v69 = v68 == False
                 del v68
-                v74 = v64.v0
-                del v64
-                v75 = v74 == False
-                del v74
-                if v75:
-                    v77 = False
+                if v69:
+                    v71 = False
                 else:
-                    v76 = 20 >= v73
-                    v77 = v76
-                del v73, v75
-                v78 = v77 == False
-                del v77
-                if v78:
-                    v102 = US7_1()
+                    v70 = 20 >= v67
+                    v71 = v70
+                del v67, v69
+                v72 = v71 == False
+                del v71
+                if v72:
+                    v96 = US7_1()
                 else:
-                    v80 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v80)
-                    del v80
-                    v81, v82, v83, v84, v85, v86 = TraceState.trace_state
-                    v87 = method5(v81, v82, v83, v84, v85, v86)
-                    v88 = method7()
-                    v89 = method106(v81, v82, v83, v84, v85, v86, v87, v88, v1, v3)
-                    del v81, v82, v83, v84, v85, v86, v87, v88
-                    v90 = US0_0()
-                    if TraceState.trace_state is None: TraceState.trace_state = v60(v90)
-                    del v90
-                    v91, v92, v93, v94, v95, v96 = TraceState.trace_state
-                    v97 = v91.v0
-                    v98 = v97 + 1
-                    del v97
-                    v91.v0 = v98
-                    del v98
-                    v99 = Closure9()
-                    v99(v89)
-                    del v99
-                    v100 = v92.v0
-                    v100(v89)
-                    del v89, v100
-                    v102 = US7_0(v91, v92, v93, v94, v95, v96)
-                del v3, v60, v78, v102
+                    v74 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v74)
+                    del v74
+                    v75, v76, v77, v78, v79, v80 = TraceState.trace_state
+                    v81 = method5(v75, v76, v77, v78, v79, v80)
+                    v82 = method7()
+                    v83 = method106(v75, v76, v77, v78, v79, v80, v81, v82, v1, v3)
+                    del v75, v76, v77, v78, v79, v80, v81, v82
+                    v84 = US0_0()
+                    if TraceState.trace_state is None: TraceState.trace_state = v54(v84)
+                    del v84
+                    v85, v86, v87, v88, v89, v90 = TraceState.trace_state
+                    v91 = v85.v0
+                    v92 = v91 + 1
+                    del v91
+                    v85.v0 = v92
+                    del v92
+                    v93 = Closure9()
+                    v93(v83)
+                    del v93
+                    v94 = v86.v0
+                    v94(v83)
+                    del v83, v94
+                    v96 = US7_0(v85, v86, v87, v88, v89, v90)
+                del v3, v54, v72, v96
                 return method32(v4, v1)
         case UH0_0(): # Nil
             del v0, v1
@@ -6054,17 +6054,17 @@ def method107(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     del v7, v13
     v15 = v14 + v10 
     del v10, v14
-    v16 = "dice.main"
-    v17 = v15 + v16 
-    del v15, v16
-    v18 = " / "
-    v19 = v17 + v18 
-    del v17, v18
-    v20 = method108(v8)
-    del v8
+    v18 = "dice.main"
+    v19 = v15 + v18 
+    del v15, v18
+    v20 = " / "
     v21 = v19 + v20 
     del v19, v20
-    return method20(v21)
+    v22 = method108(v8)
+    del v8
+    v23 = v21 + v22 
+    del v21, v22
+    return method20(v23)
 def main():
     v9 = "Python"
     None # backend.backend_switch / record_type_try_find / key: v9 
@@ -6074,133 +6074,133 @@ def main():
     del v9
     v30 = spiral_object_array()
     del v30
-    v34 = Closure0()
-    v35 = US0_0()
-    if TraceState.trace_state is None: TraceState.trace_state = v34(v35)
-    del v35
-    v36, v37, v38, v39, v40, v41 = TraceState.trace_state
-    del v36, v37, v39, v41
-    v42 = v40.v0
-    del v40
-    match v42:
+    v40 = Closure0()
+    v41 = US0_0()
+    if TraceState.trace_state is None: TraceState.trace_state = v40(v41)
+    del v41
+    v48, v49, v50, v51, v52, v53 = TraceState.trace_state
+    del v48, v49, v51, v53
+    v54 = v52.v0
+    del v52
+    match v54:
         case US0_4(): # Critical
-            v47 = 50
+            v59 = 50
         case US0_1(): # Debug
-            v47 = 20
+            v59 = 20
         case US0_2(): # Info
-            v47 = 30
+            v59 = 30
         case US0_0(): # Verbose
-            v47 = 10
+            v59 = 10
         case US0_3(): # Warning
-            v47 = 40
+            v59 = 40
         case t:
             raise Exception(f'Pattern matching miss. Got: {t}')
-    del v42
-    v48 = v38.v0
-    del v38
-    v49 = v48 == False
-    del v48
-    if v49:
-        v51 = False
+    del v54
+    v60 = v50.v0
+    del v50
+    v61 = v60 == False
+    del v60
+    if v61:
+        v63 = False
     else:
-        v50 = 20 >= v47
-        v51 = v50
-    del v47, v49
-    v52 = v51 == False
-    del v51
-    if v52:
-        v76 = US7_1()
+        v62 = 20 >= v59
+        v63 = v62
+    del v59, v61
+    v64 = v63 == False
+    del v63
+    if v64:
+        v88 = US7_1()
     else:
-        v54 = US0_0()
-        if TraceState.trace_state is None: TraceState.trace_state = v34(v54)
-        del v54
-        v55, v56, v57, v58, v59, v60 = TraceState.trace_state
-        v61 = method5(v55, v56, v57, v58, v59, v60)
-        v62 = method7()
-        v63 = method10(v55, v56, v57, v58, v59, v60, v61, v62)
-        del v55, v56, v57, v58, v59, v60, v61, v62
-        v64 = US0_0()
-        if TraceState.trace_state is None: TraceState.trace_state = v34(v64)
-        del v64
-        v65, v66, v67, v68, v69, v70 = TraceState.trace_state
-        v71 = v65.v0
-        v72 = v71 + 1
-        del v71
-        v65.v0 = v72
-        del v72
-        v73 = Closure9()
-        v73(v63)
-        del v73
-        v74 = v66.v0
-        v74(v63)
-        del v63, v74
-        v76 = US7_0(v65, v66, v67, v68, v69, v70)
-    del v52, v76
-    v77 = UH0_0()
-    v78 = 0
-    v79 = method23(v77, v78)
-    del v77, v78
-    v83 = US0_0()
-    if TraceState.trace_state is None: TraceState.trace_state = v34(v83)
-    del v83
-    v84, v85, v86, v87, v88, v89 = TraceState.trace_state
-    del v84, v85, v87, v89
-    v90 = v88.v0
-    del v88
-    match v90:
+        v66 = US0_0()
+        if TraceState.trace_state is None: TraceState.trace_state = v40(v66)
+        del v66
+        v67, v68, v69, v70, v71, v72 = TraceState.trace_state
+        v73 = method5(v67, v68, v69, v70, v71, v72)
+        v74 = method7()
+        v75 = method10(v67, v68, v69, v70, v71, v72, v73, v74)
+        del v67, v68, v69, v70, v71, v72, v73, v74
+        v76 = US0_0()
+        if TraceState.trace_state is None: TraceState.trace_state = v40(v76)
+        del v76
+        v77, v78, v79, v80, v81, v82 = TraceState.trace_state
+        v83 = v77.v0
+        v84 = v83 + 1
+        del v83
+        v77.v0 = v84
+        del v84
+        v85 = Closure9()
+        v85(v75)
+        del v85
+        v86 = v78.v0
+        v86(v75)
+        del v75, v86
+        v88 = US7_0(v77, v78, v79, v80, v81, v82)
+    del v64, v88
+    v89 = UH0_0()
+    v90 = 0
+    v91 = method23(v89, v90)
+    del v89, v90
+    v92 = US0_0()
+    if TraceState.trace_state is None: TraceState.trace_state = v40(v92)
+    del v92
+    v93, v94, v95, v96, v97, v98 = TraceState.trace_state
+    del v93, v94, v96, v98
+    v99 = v97.v0
+    del v97
+    match v99:
         case US0_4(): # Critical
-            v95 = 50
+            v104 = 50
         case US0_1(): # Debug
-            v95 = 20
+            v104 = 20
         case US0_2(): # Info
-            v95 = 30
+            v104 = 30
         case US0_0(): # Verbose
-            v95 = 10
+            v104 = 10
         case US0_3(): # Warning
-            v95 = 40
+            v104 = 40
         case t:
             raise Exception(f'Pattern matching miss. Got: {t}')
-    del v90
-    v96 = v86.v0
-    del v86
-    v97 = v96 == False
-    del v96
-    if v97:
-        v99 = False
-    else:
-        v98 = 20 >= v95
-        v99 = v98
-    del v95, v97
-    v100 = v99 == False
     del v99
-    if v100:
-        v124 = US7_1()
+    v105 = v95.v0
+    del v95
+    v106 = v105 == False
+    del v105
+    if v106:
+        v108 = False
     else:
-        v102 = US0_0()
-        if TraceState.trace_state is None: TraceState.trace_state = v34(v102)
-        del v102
-        v103, v104, v105, v106, v107, v108 = TraceState.trace_state
-        v109 = method5(v103, v104, v105, v106, v107, v108)
-        v110 = method7()
-        v111 = method107(v103, v104, v105, v106, v107, v108, v109, v110, v79)
-        del v103, v104, v105, v106, v107, v108, v109, v110
-        v112 = US0_0()
-        if TraceState.trace_state is None: TraceState.trace_state = v34(v112)
-        del v112
-        v113, v114, v115, v116, v117, v118 = TraceState.trace_state
-        v119 = v113.v0
-        v120 = v119 + 1
-        del v119
-        v113.v0 = v120
-        del v120
-        v121 = Closure9()
-        v121(v111)
+        v107 = 20 >= v104
+        v108 = v107
+    del v104, v106
+    v109 = v108 == False
+    del v108
+    if v109:
+        v133 = US7_1()
+    else:
+        v111 = US0_0()
+        if TraceState.trace_state is None: TraceState.trace_state = v40(v111)
+        del v111
+        v112, v113, v114, v115, v116, v117 = TraceState.trace_state
+        v118 = method5(v112, v113, v114, v115, v116, v117)
+        v119 = method7()
+        v120 = method107(v112, v113, v114, v115, v116, v117, v118, v119, v91)
+        del v112, v113, v114, v115, v116, v117, v118, v119
+        v121 = US0_0()
+        if TraceState.trace_state is None: TraceState.trace_state = v40(v121)
         del v121
-        v122 = v114.v0
-        v122(v111)
-        del v111, v122
-        v124 = US7_0(v113, v114, v115, v116, v117, v118)
-    del v34, v79, v100, v124
+        v122, v123, v124, v125, v126, v127 = TraceState.trace_state
+        v128 = v122.v0
+        v129 = v128 + 1
+        del v128
+        v122.v0 = v129
+        del v129
+        v130 = Closure9()
+        v130(v120)
+        del v130
+        v131 = v123.v0
+        v131(v120)
+        del v120, v131
+        v133 = US7_0(v122, v123, v124, v125, v126, v127)
+    del v40, v91, v109, v133
     return 
 
 if __name__ == '__main__': result = main(); None if result is None else print(result)

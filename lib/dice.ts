@@ -5208,130 +5208,130 @@ function method103(v0: Mut0, v1: Mut1, v2: Mut2, v3: Mut3, v4: Mut4, v5: bigint,
     return method7(v21);
 }
 export function main(): void {
-    let v264: Array<string> = [];
-    let v265: ((a0: US0) => [Mut0, Mut1, Mut2, Mut3, Mut4, bigint]) = closure0();
-    let v266: US0 = US0_0();
-    if (spiral_trace_state === undefined) spiral_trace_state = v265(v266);
-    let [v267, v268, v269, v270, v271, v272]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
-    let v273: US0 = v271.l0;
-    let v278: number;
-    switch (v273.tag) {
+    let v273: Array<string> = [];
+    let v274: ((a0: US0) => [Mut0, Mut1, Mut2, Mut3, Mut4, bigint]) = closure0();
+    let v275: US0 = US0_0();
+    if (spiral_trace_state === undefined) spiral_trace_state = v274(v275);
+    let [v276, v277, v278, v279, v280, v281]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
+    let v282: US0 = v280.l0;
+    let v287: number;
+    switch (v282.tag) {
         case 4: { // Critical
-            v278 = 50;
+            v287 = 50;
             break;
         }
         case 1: { // Debug
-            v278 = 20;
+            v287 = 20;
             break;
         }
         case 2: { // Info
-            v278 = 30;
+            v287 = 30;
             break;
         }
         case 0: { // Verbose
-            v278 = 10;
+            v287 = 10;
             break;
         }
         case 3: { // Warning
-            v278 = 40;
+            v287 = 40;
             break;
         }
         default: throw new Error("Compiler error: unreachable union case.");
     }
-    let v279: boolean = v269.l0;
-    let v280: boolean = v279 === false;
-    let v282: boolean;
-    if (v280) {
-        v282 = false;
+    let v288: boolean = v278.l0;
+    let v289: boolean = v288 === false;
+    let v291: boolean;
+    if (v289) {
+        v291 = false;
     } else {
-        let v281: boolean = 20 >= v278;
-        v282 = v281;
+        let v290: boolean = 20 >= v287;
+        v291 = v290;
     }
-    let v283: boolean = v282 === false;
-    let v307: US2;
-    if (v283) {
-        v307 = US2_1();
+    let v292: boolean = v291 === false;
+    let v316: US2;
+    if (v292) {
+        v316 = US2_1();
     } else {
-        let v285: US0 = US0_0();
-        if (spiral_trace_state === undefined) spiral_trace_state = v265(v285);
-        let [v286, v287, v288, v289, v290, v291]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
-        let v292: string = method2(v286, v287, v288, v289, v290, v291);
-        let v293: string = method3();
-        let v294: string = method6(v286, v287, v288, v289, v290, v291, v292, v293);
-        let v295: US0 = US0_0();
-        if (spiral_trace_state === undefined) spiral_trace_state = v265(v295);
-        let [v296, v297, v298, v299, v300, v301]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
-        let v302: bigint = v296.l0;
-        let v303: bigint = BigInt.asIntN(64, v302 + 1n);
-        v296.l0 = v303;
-        let v304: ((a0: string) => void) = closure2();
-        v304(v294);
-        let v305: ((a0: string) => void) = v297.l0;
-        v305(v294);
-        v307 = US2_0(v296, v297, v298, v299, v300, v301);
+        let v294: US0 = US0_0();
+        if (spiral_trace_state === undefined) spiral_trace_state = v274(v294);
+        let [v295, v296, v297, v298, v299, v300]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
+        let v301: string = method2(v295, v296, v297, v298, v299, v300);
+        let v302: string = method3();
+        let v303: string = method6(v295, v296, v297, v298, v299, v300, v301, v302);
+        let v304: US0 = US0_0();
+        if (spiral_trace_state === undefined) spiral_trace_state = v274(v304);
+        let [v305, v306, v307, v308, v309, v310]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
+        let v311: bigint = v305.l0;
+        let v312: bigint = BigInt.asIntN(64, v311 + 1n);
+        v305.l0 = v312;
+        let v313: ((a0: string) => void) = closure2();
+        v313(v303);
+        let v314: ((a0: string) => void) = v306.l0;
+        v314(v303);
+        v316 = US2_0(v305, v306, v307, v308, v309, v310);
     }
-    let v308: UH0 = UH0_0();
-    let v309: number = 0;
-    let v310: bigint = method19(v308, v309);
-    let v311: US0 = US0_0();
-    if (spiral_trace_state === undefined) spiral_trace_state = v265(v311);
-    let [v312, v313, v314, v315, v316, v317]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
-    let v318: US0 = v316.l0;
-    let v323: number;
-    switch (v318.tag) {
+    let v317: UH0 = UH0_0();
+    let v318: number = 0;
+    let v319: bigint = method19(v317, v318);
+    let v320: US0 = US0_0();
+    if (spiral_trace_state === undefined) spiral_trace_state = v274(v320);
+    let [v321, v322, v323, v324, v325, v326]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
+    let v327: US0 = v325.l0;
+    let v332: number;
+    switch (v327.tag) {
         case 4: { // Critical
-            v323 = 50;
+            v332 = 50;
             break;
         }
         case 1: { // Debug
-            v323 = 20;
+            v332 = 20;
             break;
         }
         case 2: { // Info
-            v323 = 30;
+            v332 = 30;
             break;
         }
         case 0: { // Verbose
-            v323 = 10;
+            v332 = 10;
             break;
         }
         case 3: { // Warning
-            v323 = 40;
+            v332 = 40;
             break;
         }
         default: throw new Error("Compiler error: unreachable union case.");
     }
-    let v324: boolean = v314.l0;
-    let v325: boolean = v324 === false;
-    let v327: boolean;
-    if (v325) {
-        v327 = false;
+    let v333: boolean = v323.l0;
+    let v334: boolean = v333 === false;
+    let v336: boolean;
+    if (v334) {
+        v336 = false;
     } else {
-        let v326: boolean = 20 >= v323;
-        v327 = v326;
+        let v335: boolean = 20 >= v332;
+        v336 = v335;
     }
-    let v328: boolean = v327 === false;
-    let v352: US2;
-    if (v328) {
-        v352 = US2_1();
+    let v337: boolean = v336 === false;
+    let v361: US2;
+    if (v337) {
+        v361 = US2_1();
     } else {
-        let v330: US0 = US0_0();
-        if (spiral_trace_state === undefined) spiral_trace_state = v265(v330);
-        let [v331, v332, v333, v334, v335, v336]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
-        let v337: string = method2(v331, v332, v333, v334, v335, v336);
-        let v338: string = method3();
-        let v339: string = method103(v331, v332, v333, v334, v335, v336, v337, v338, v310);
-        let v340: US0 = US0_0();
-        if (spiral_trace_state === undefined) spiral_trace_state = v265(v340);
-        let [v341, v342, v343, v344, v345, v346]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
-        let v347: bigint = v341.l0;
-        let v348: bigint = BigInt.asIntN(64, v347 + 1n);
-        v341.l0 = v348;
-        let v349: ((a0: string) => void) = closure2();
-        v349(v339);
-        let v350: ((a0: string) => void) = v342.l0;
-        v350(v339);
-        v352 = US2_0(v341, v342, v343, v344, v345, v346);
+        let v339: US0 = US0_0();
+        if (spiral_trace_state === undefined) spiral_trace_state = v274(v339);
+        let [v340, v341, v342, v343, v344, v345]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
+        let v346: string = method2(v340, v341, v342, v343, v344, v345);
+        let v347: string = method3();
+        let v348: string = method103(v340, v341, v342, v343, v344, v345, v346, v347, v319);
+        let v349: US0 = US0_0();
+        if (spiral_trace_state === undefined) spiral_trace_state = v274(v349);
+        let [v350, v351, v352, v353, v354, v355]: [Mut0, Mut1, Mut2, Mut3, Mut4, bigint] = spiral_trace_state;
+        let v356: bigint = v350.l0;
+        let v357: bigint = BigInt.asIntN(64, v356 + 1n);
+        v350.l0 = v357;
+        let v358: ((a0: string) => void) = closure2();
+        v358(v348);
+        let v359: ((a0: string) => void) = v351.l0;
+        v359(v348);
+        v361 = US2_0(v350, v351, v352, v353, v354, v355);
     }
 }
 main();

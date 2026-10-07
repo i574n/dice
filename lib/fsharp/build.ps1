@@ -11,16 +11,17 @@ $ErrorActionPreference = "Stop"
 
 $projectName = "dice_fsharp"
 
-# The notebook (F# only: its export is the .fs below, not Spiral, hence --no-spi) runs through Kino.
+# The notebook (F# only: its export is dice_fsharp.fs, not Spiral, hence --no-spi) runs through Kino.
 # The run's outputs keep the .dib route's names (<nb>.dib.ipynb, <nb>.dib.html).
+$livebook = Join-Path $ScriptDir "../../deps/polyglot/deps/spiral/apps/kino/spi/livebook_dib.ps1"
+$notebook = Join-Path $ScriptDir "$projectName.livemd"
 if (!$fast -and !$SkipNotebook) {
-    $livebook = Join-Path $ScriptDir "../../deps/polyglot/deps/spiral/apps/kino/spi/livebook_dib.ps1"
-    $notebook = Join-Path $ScriptDir "$projectName.livemd"
     $ipynb = Join-Path $ScriptDir "$projectName.dib.ipynb"
     { pwsh -NoProfile -File $livebook --path $notebook --output-path $ipynb --no-spi } | Invoke-Block -Retries 3
 }
 
-{ . ../../deps/polyglot/deps/spiral/workspace/target/release/spiral$(_exe) dib-export "$ScriptDir/$projectName.dib" fs } | Invoke-Block
+# dice_fsharp.fs: the notebook's F# module (--fs-path).
+{ pwsh -NoProfile -File $livebook --path $notebook --no-spi --fs-path "$ScriptDir/$projectName.fs" --export-only } | Invoke-Block
 
 # F# (.NET): dice_fsharp.fs with the spiral lib modules and polyglot's Common.fs, published by the Builder to dist/ and
 # run: exit code 0 and a `main / result: N` trace with N in 1..Int32.MaxValue / 10 (the bound `main` rolls up to; it

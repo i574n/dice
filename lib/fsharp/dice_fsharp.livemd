@@ -2,7 +2,7 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
-`#!import ../../../polyglot/lib/fsharp/Notebooks.dib`
+`#!import ../../../polyglot/lib/fsharp/Notebooks.livemd`
 
 ```fsharp
 ///- --test
