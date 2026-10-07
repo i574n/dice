@@ -7,7 +7,7 @@
 ```fsharp
 ///- --test
 
-// The test helpers this notebook uses, from polyglot's Testing.dib, which references Expecto by a path relative to an
+// The test helpers this notebook uses, from polyglot's Testing.livemd, which references Expecto by a path relative to an
 // old notebook runner's install directory (unresolvable on the Kino route); here Expecto comes from NuGet.
 #r "nuget: Expecto, 11.0.0-alpha8"
 

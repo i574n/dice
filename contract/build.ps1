@@ -12,11 +12,11 @@ $ErrorActionPreference = "Stop"
 
 $projectName = "dice_contract"
 
-$livebook = Join-Path $ScriptDir "../deps/polyglot/deps/spiral/apps/kino/spi/livebook_dib.ps1"
+$livebook = Join-Path $ScriptDir "../deps/polyglot/deps/spiral/apps/kino/spi/run_notebook.ps1"
 $notebook = Join-Path $ScriptDir "$projectName.livemd"
 $spi = Join-Path $ScriptDir "$projectName.spi"
-# The run's outputs keep the .dib route's names (<nb>.dib.ipynb, <nb>.dib.html): README and gh-pages link to them.
-$ipynb = Join-Path $ScriptDir "$projectName.dib.ipynb"
+# A run writes <nb>.livemd.ipynb and <nb>.livemd.html: README and gh-pages link to them.
+$ipynb = Join-Path $ScriptDir "$projectName.livemd.ipynb"
 if (!$fast -and !$SkipNotebook) {
     { pwsh -NoProfile -File $livebook --path $notebook --spi-path $spi --output-path $ipynb } | Invoke-Block -Retries $($fast -or !$env:CI ? 1 : 3)
 }
@@ -50,7 +50,7 @@ function Get-WasmExports([string] $Path) {
     }
 }
 
-# Native Rust: the dice_contract.spi entry (`main` `!!!!Export`s each contract method's Spiral body, so the program is a
+# Rust: the dice_contract.spi entry (`main` `!!!!Export`s each contract method's Spiral body, so the program is a
 # library crate, and emits the NEAR shell as `global`s: `State((u32, Vector<u8>))` with explicit borsh derives, version 2
 # and the `seeds` store prefix, the `OldState` migration and the #[near_bindgen] methods) -> the cdylib crate's lib with the
 # Spiral compiler's own Rust backend. lib/spiral's near arms call near_sdk on wasm32 (random_seed,
@@ -59,28 +59,28 @@ function Get-WasmExports([string] $Path) {
 # dependency versions.
 # dice_contract.rs (this crate's lib, Cargo.toml next to this script, a `contract` workspace member) is that output: the
 # compiler writes it next to the .spi, and the workspace's Cargo.lock pins the dependencies.
-# dist/dice.wasm is the native wasm: the NEAR sandbox tests below (or tests/build.ps1, which dice/scripts/build.ps1 runs
-# after this script's -SkipTests run) deploy and call it, and the README's deploy commands use it. A failed native
+# dist/dice.wasm is the contract wasm: the NEAR sandbox tests below (or tests/build.ps1, which dice/scripts/build.ps1 runs
+# after this script's -SkipTests run) deploy and call it, and the README's deploy commands use it. A failed
 # compile or cargo build, or a contract method missing from the wasm's exports, fails this script.
-if (!(BuildNativeRust "$ScriptDir/$projectName.spi" "$ScriptDir/$projectName.rs" "dice/contract")) {
-    throw "NATIVE-RUST-FAILED dice/contract / compile"
+if (!(BuildSpiral "$ScriptDir/$projectName.spi" "$ScriptDir/$projectName.rs" "dice/contract")) {
+    throw "RUST-FAILED dice/contract / compile"
 }
 { cargo +nightly-2024-07-14 build --release --target wasm32-unknown-unknown -p $projectName } | Invoke-Block -EnvironmentVariables @{ "AUTOMATION" = "False" }
 $cargoTargetDir = (cargo +nightly-2024-07-14 metadata --format-version 1 --no-deps | ConvertFrom-Json).target_directory
-$nativeWasm = "$cargoTargetDir/wasm32-unknown-unknown/release/$projectName.wasm"
-if (!(Test-Path $nativeWasm)) { throw "NATIVE-RUST-FAILED dice/contract / no $nativeWasm" }
-$nativeExports = @(Get-WasmExports $nativeWasm)
+$rustWasm = "$cargoTargetDir/wasm32-unknown-unknown/release/$projectName.wasm"
+if (!(Test-Path $rustWasm)) { throw "RUST-FAILED dice/contract / no $rustWasm" }
+$rustExports = @(Get-WasmExports $rustWasm)
 $contractMethods = @('new', 'contribute_seed', 'contribute_seed_borsh', 'generate_random_number', 'roll_within_bounds', 'roll_within_bounds_borsh')
-$missing = @($contractMethods | Where-Object { $_ -notin $nativeExports })
-if ($missing) { throw "NATIVE-RUST-FAILED dice/contract / the wasm doesn't export $($missing -join ', ') (exports: $($nativeExports -join ', '))" }
+$missing = @($contractMethods | Where-Object { $_ -notin $rustExports })
+if ($missing) { throw "RUST-FAILED dice/contract / the wasm doesn't export $($missing -join ', ') (exports: $($rustExports -join ', '))" }
 New-Item dist -ItemType Directory -Force | Out-Null
-Copy-Item $nativeWasm dist/dice.wasm -Force
-Write-Output "NATIVE-RUST-COMPILED dice/contract / dist/dice.wasm $((Get-Item dist/dice.wasm).Length) B / exports $($nativeExports -join ', ')"
+Copy-Item $rustWasm dist/dice.wasm -Force
+Write-Output "RUST-COMPILED dice/contract / dist/dice.wasm $((Get-Item dist/dice.wasm).Length) B / exports $($rustExports -join ', ')"
 
 if (!$fast -and !$SkipTests) {
     # tests/build.ps1 builds and runs the sandbox tests (Linux; through WSL on Windows).
     { pwsh tests/build.ps1 } | Invoke-Block
-    Write-Output "NATIVE-RUST-OK dice/contract / the NEAR sandbox tests passed on the native dist/dice.wasm"
+    Write-Output "RUST-OK dice/contract / the NEAR sandbox tests passed on dist/dice.wasm"
 }
 
 Write-Output "dice/contract/build.ps1 / `$targetDir = $targetDir / `$projectName: $projectName / `$env:CI:'$env:CI'"

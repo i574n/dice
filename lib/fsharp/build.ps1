@@ -12,23 +12,25 @@ $ErrorActionPreference = "Stop"
 $projectName = "dice_fsharp"
 
 # The notebook (F# only: its export is dice_fsharp.fs, not Spiral, hence --no-spi) runs through Kino.
-# The run's outputs keep the .dib route's names (<nb>.dib.ipynb, <nb>.dib.html).
-$livebook = Join-Path $ScriptDir "../../deps/polyglot/deps/spiral/apps/kino/spi/livebook_dib.ps1"
+# A run writes <nb>.livemd.ipynb and <nb>.livemd.html.
+$livebook = Join-Path $ScriptDir "../../deps/polyglot/deps/spiral/apps/kino/spi/run_notebook.ps1"
 $notebook = Join-Path $ScriptDir "$projectName.livemd"
 if (!$fast -and !$SkipNotebook) {
-    $ipynb = Join-Path $ScriptDir "$projectName.dib.ipynb"
+    $ipynb = Join-Path $ScriptDir "$projectName.livemd.ipynb"
     { pwsh -NoProfile -File $livebook --path $notebook --output-path $ipynb --no-spi } | Invoke-Block -Retries 3
 }
 
 # dice_fsharp.fs: the notebook's F# module (--fs-path).
 { pwsh -NoProfile -File $livebook --path $notebook --no-spi --fs-path "$ScriptDir/$projectName.fs" --export-only } | Invoke-Block
 
-# F# (.NET): dice_fsharp.fs with the spiral lib modules and polyglot's Common.fs, published by the Builder to dist/ and
-# run: exit code 0 and a `main / result: N` trace with N in 1..Int32.MaxValue / 10 (the bound `main` rolls up to; it
-# rolls random dice, so the value can't be compared exactly).
-$runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
-$builderArgs = @("$projectName.fs", $runtime, "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
-{ . ../../deps/polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
+# F# (.NET): dice_fsharp.fs with the spiral lib modules and polyglot's Common.fs, published to dist/ (lib.ps1
+# PublishFsharp) and run: exit code 0 and a `main / result: N` trace with N in 1..Int32.MaxValue / 10 (the bound
+# `main` rolls up to; it rolls random dice, so the value can't be compared exactly).
+$runtime = $fast -or $env:CI ? ($IsWindows ? "win-x64" : "linux-x64") : $null
+$modules = @(GetFsxModulePaths) + "../../deps/polyglot/lib/fsharp/Common.fs"
+if (!(PublishFsharp "$projectName.fs" -Modules $modules -Runtime $runtime)) {
+    throw "FSHARP-FAILED dice/lib/fsharp / dotnet publish"
+}
 
 $output = & "dist/$projectName$(_exe)" 2>&1 | ForEach-Object { "$_" }
 $exitCode = $LASTEXITCODE

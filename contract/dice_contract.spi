@@ -142,6 +142,6 @@ inl main_native () : () =
 
 
 inl main () =
-    if rust.is_native ()
+    if is_rust ()
     then main_native ()
     else ()
