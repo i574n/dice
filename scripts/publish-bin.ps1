@@ -35,4 +35,4 @@ if ($Error.Count -gt 0) {
     exit 1
 }
 
-{ . ../deps/polyglot/apps/dir-tree-html/dist/DirTreeHtml$(_exe) --dir . --html index.html } | Invoke-Block
+{ . ../deps/polyglot/deps/spiral/apps/dir-tree-html/dist/DirTreeHtml$(_exe) --dir . --html index.html } | Invoke-Block
