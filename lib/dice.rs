@@ -1,4 +1,4 @@
-#![allow(unused_mut, unused_variables, unused_imports, unused_parens, unused_braces, unused_assignments, dead_code, non_snake_case, non_camel_case_types, unreachable_patterns, unreachable_code, while_true)]
+#![allow(unused_mut, unused_variables, unused_imports, unused_parens, unused_braces, unused_assignments, dead_code, non_snake_case, non_camel_case_types, unreachable_code, while_true)]
 use std::cell::RefCell;
 use std::rc::Rc;
 fn spiral_trace_hold<T: Clone>(fresh: &std::rc::Rc<dyn Fn() -> T>) -> T {
@@ -180,9 +180,9 @@ fn method0(mut v0: US0) -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut
     let mut v28: Rc<RefCell<Mut5>> = Rc::new(RefCell::new(Mut5 { l0: 0i32, l1: v27.clone() }));
     while method2(v26, v28.clone()) {
         let mut v30: i32 = v28.borrow().l0.clone();
-        let mut v31: i32 = -(v30);
-        let mut v32: i32 = v31 + v26;
-        let mut v33: i32 = v32 - 1i32;
+        let mut v31: i32 = v30.wrapping_neg();
+        let mut v32: i32 = v31.wrapping_add(v26);
+        let mut v33: i32 = v32.wrapping_sub(1i32);
         let mut v34: US1 = v28.borrow().l1.clone();
         let (mut v35, mut v36): (Rc<str>, US0) = v25.clone().borrow()[v33 as usize].clone();
         let mut v43: US1 = match &v34 {
@@ -198,9 +198,8 @@ fn method0(mut v0: US0) -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut
                 let mut v37: US0 = v37.clone();
                 v34.clone()
             }
-            _ => unreachable!(),
         };
-        let mut v44: i32 = v30 + 1i32;
+        let mut v44: i32 = v30.wrapping_add(1i32);
         v28.borrow_mut().l0 = v44;
         v28.borrow_mut().l1 = v43.clone();
         ()
@@ -220,7 +219,6 @@ fn method0(mut v0: US0) -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut
             let mut v52: US0 = v52.clone();
             v52.clone()
         }
-        _ => unreachable!(),
     };
     let mut v55: Rc<RefCell<Mut4>> = Rc::new(RefCell::new(Mut4 { l0: v54.clone() }));
     let mut v56: Option<i64> = None;
@@ -244,7 +242,7 @@ fn closure2() -> Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCel
 }
 fn method3(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>) -> Rc<str> {
     let mut v6: u64 = { #[cfg(target_arch = "wasm32")] let (h, m, s) = { let secs = near_sdk::env::block_timestamp() / 1_000_000_000; ((secs / 3600) % 24, (secs / 60) % 60, secs % 60) }; #[cfg(all(windows, not(target_arch = "wasm32")))] let (h, m, s) = { #[repr(C)] struct St([u16; 8]); unsafe extern "system" { fn GetLocalTime(t: *mut St); } let mut t = St([0; 8]); unsafe { GetLocalTime(&mut t) }; (t.0[4] as u64, t.0[5] as u64, t.0[6] as u64) }; #[cfg(all(unix, not(target_arch = "wasm32")))] let (h, m, s) = { #[repr(C, align(8))] struct Tm([i32; 16]); unsafe extern "C" { fn localtime_r(t: *const std::os::raw::c_long, tm: *mut Tm) -> *mut Tm; } let secs = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0) as std::os::raw::c_long; let mut tm = Tm([0; 16]); unsafe { localtime_r(&secs, &mut tm) }; (tm.0[2] as u64, tm.0[1] as u64, tm.0[0] as u64) }; #[cfg(not(any(windows, unix, target_arch = "wasm32")))] let (h, m, s) = { let secs = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0); ((secs / 3600) % 24, (secs / 60) % 60, secs % 60) }; h * 3600 + m * 60 + s };
-    let mut v7: u64 = v6 / 3600u64;
+    let mut v7: u64 = v6.wrapping_div(3600u64);
     let mut v8: bool = v7 < 10u64;
     let mut v11: Rc<str> = if v8 {
         let mut v9: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("0"); } LIT.with(|lit| lit.clone()) };
@@ -257,8 +255,8 @@ fn method3(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefC
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v11, v12));
     let mut v14: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(":"); } LIT.with(|lit| lit.clone()) };
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
-    let mut v16: u64 = v6 / 60u64;
-    let mut v17: u64 = v16 % 60u64;
+    let mut v16: u64 = v6.wrapping_div(60u64);
+    let mut v17: u64 = v16.wrapping_rem(60u64);
     let mut v18: bool = v17 < 10u64;
     let mut v21: Rc<str> = if v18 {
         let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("0"); } LIT.with(|lit| lit.clone()) };
@@ -271,7 +269,7 @@ fn method3(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefC
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v22));
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v23));
     let mut v25: Rc<str> = Rc::<str>::from(format!("{}{}", v24, v14));
-    let mut v26: u64 = v6 % 60u64;
+    let mut v26: u64 = v6.wrapping_rem(60u64);
     let mut v27: bool = v26 < 10u64;
     let mut v30: Rc<str> = if v27 {
         let mut v28: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("0"); } LIT.with(|lit| lit.clone()) };
@@ -340,7 +338,7 @@ fn method9(mut v0: Rc<str>, mut v1: i32, mut v2: i32) -> i32 {
                 }
             };
             if v11 {
-                let mut v12: i32 = v2 + 1i32;
+                let mut v12: i32 = v2.wrapping_add(1i32);
                 (v0, v1, v2) = (v0.clone(), v1, v12);
                 continue;
             } else {
@@ -355,7 +353,7 @@ fn method10(mut v0: Rc<str>, mut v1: i32) -> i32 {
         if v2 {
             return -1i32;
         } else {
-            let mut v3: i32 = v1 - 1i32;
+            let mut v3: i32 = v1.wrapping_sub(1i32);
             let mut v4: u8 = v0.clone().as_bytes()[v3 as usize];
             let mut v5: bool = v4 == b' ';
             let mut v7: bool = if v5 {
@@ -377,7 +375,7 @@ fn method8(mut v0: Rc<str>) -> Rc<str> {
     let mut v1: i32 = (v0.clone().len() as i32);
     let mut v2: i32 = 0i32;
     let mut v3: i32 = method9(v0.clone(), v1, v2);
-    let mut v4: i32 = v1 - 1i32;
+    let mut v4: i32 = v1.wrapping_sub(1i32);
     let mut v5: Rc<str> = string_slice(&v0.clone(), v3 as i64, v4 as i64);
     let mut v6: i32 = (v5.clone().len() as i32);
     let mut v7: i32 = method10(v5.clone(), v6);
@@ -554,7 +552,7 @@ fn method47(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     method8(v23.clone())
 }
 fn method46(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
-    let mut v2: i64 = v1 + 1i64;
+    let mut v2: i64 = v1.wrapping_add(1i64);
     let mut v4: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
     { let _ = spiral_trace_hold(&v4); };
     let mut v6: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -576,7 +574,6 @@ fn method46(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         US0::US0_3 => { // Warning
             40i32
         }
-        _ => unreachable!(),
     };
     let mut v19: bool = v9.borrow().l0.clone();
     let mut v20: bool = v19 == false;
@@ -598,7 +595,7 @@ fn method46(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         { let _ = spiral_trace_hold(&v4); };
         let (mut v38, mut v39, mut v40, mut v41, mut v42, mut v43): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v6) };
         let mut v44: i64 = v38.borrow().l0.clone();
-        let mut v45: i64 = v44 + 1i64;
+        let mut v45: i64 = v44.wrapping_add(1i64);
         v38.borrow_mut().l0 = v45;
         let mut v46: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
         let mut v47: bool = cfg!(target_arch = "wasm32");
@@ -747,11 +744,11 @@ fn method56(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method45(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
                 let mut v9: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v9); };
@@ -774,7 +771,6 @@ fn method45(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v24: bool = v14.borrow().l0.clone();
                 let mut v25: bool = v24 == false;
@@ -796,7 +792,7 @@ fn method45(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v9); };
                     let (mut v43, mut v44, mut v45, mut v46, mut v47, mut v48): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v11) };
                     let mut v49: i64 = v43.borrow().l0.clone();
-                    let mut v50: i64 = v49 + 1i64;
+                    let mut v50: i64 = v49.wrapping_add(1i64);
                     v43.borrow_mut().l0 = v50;
                     let mut v51: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v52: bool = cfg!(target_arch = "wasm32");
@@ -843,7 +839,7 @@ fn method45(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v71(v40.clone());
                     US2::US2_0(v43.clone(), v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone())
                 };
-                let mut v74: i64 = v1 + v7;
+                let mut v74: i64 = v1.wrapping_add(v7);
                 method46(v4.clone(), v74)
             } else {
                 let mut v77: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -867,7 +863,6 @@ fn method45(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v92: bool = v82.borrow().l0.clone();
                 let mut v93: bool = v92 == false;
@@ -889,7 +884,7 @@ fn method45(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v77); };
                     let (mut v111, mut v112, mut v113, mut v114, mut v115, mut v116): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v79) };
                     let mut v117: i64 = v111.borrow().l0.clone();
-                    let mut v118: i64 = v117 + 1i64;
+                    let mut v118: i64 = v117.wrapping_add(1i64);
                     v111.borrow_mut().l0 = v118;
                     let mut v119: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v120: bool = cfg!(target_arch = "wasm32");
@@ -942,7 +937,6 @@ fn method45(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method58(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -982,13 +976,13 @@ fn method59(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method44(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 6i64;
+                let mut v8: i64 = v7.wrapping_mul(6i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -1010,7 +1004,6 @@ fn method44(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -1032,7 +1025,7 @@ fn method44(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -1079,7 +1072,7 @@ fn method44(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method45(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -1103,7 +1096,6 @@ fn method44(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -1125,7 +1117,7 @@ fn method44(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -1178,7 +1170,6 @@ fn method44(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method60(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -1218,13 +1209,13 @@ fn method61(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method43(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 36i64;
+                let mut v8: i64 = v7.wrapping_mul(36i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -1246,7 +1237,6 @@ fn method43(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -1268,7 +1258,7 @@ fn method43(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -1315,7 +1305,7 @@ fn method43(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method44(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -1339,7 +1329,6 @@ fn method43(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -1361,7 +1350,7 @@ fn method43(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -1414,7 +1403,6 @@ fn method43(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method62(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -1454,13 +1442,13 @@ fn method63(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method42(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 216i64;
+                let mut v8: i64 = v7.wrapping_mul(216i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -1482,7 +1470,6 @@ fn method42(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -1504,7 +1491,7 @@ fn method42(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -1551,7 +1538,7 @@ fn method42(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method43(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -1575,7 +1562,6 @@ fn method42(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -1597,7 +1583,7 @@ fn method42(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -1650,7 +1636,6 @@ fn method42(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method64(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -1690,13 +1675,13 @@ fn method65(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method41(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 1296i64;
+                let mut v8: i64 = v7.wrapping_mul(1296i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -1718,7 +1703,6 @@ fn method41(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -1740,7 +1724,7 @@ fn method41(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -1787,7 +1771,7 @@ fn method41(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method42(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -1811,7 +1795,6 @@ fn method41(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -1833,7 +1816,7 @@ fn method41(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -1886,7 +1869,6 @@ fn method41(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method66(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -1926,13 +1908,13 @@ fn method67(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method40(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 7776i64;
+                let mut v8: i64 = v7.wrapping_mul(7776i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -1954,7 +1936,6 @@ fn method40(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -1976,7 +1957,7 @@ fn method40(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -2023,7 +2004,7 @@ fn method40(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method41(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -2047,7 +2028,6 @@ fn method40(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -2069,7 +2049,7 @@ fn method40(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -2122,7 +2102,6 @@ fn method40(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method68(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -2162,13 +2141,13 @@ fn method69(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 46656i64;
+                let mut v8: i64 = v7.wrapping_mul(46656i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -2190,7 +2169,6 @@ fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -2212,7 +2190,7 @@ fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -2259,7 +2237,7 @@ fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method40(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -2283,7 +2261,6 @@ fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -2305,7 +2282,7 @@ fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -2358,7 +2335,6 @@ fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method70(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -2398,13 +2374,13 @@ fn method71(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 279936i64;
+                let mut v8: i64 = v7.wrapping_mul(279936i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -2426,7 +2402,6 @@ fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -2448,7 +2423,7 @@ fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -2495,7 +2470,7 @@ fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method39(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -2519,7 +2494,6 @@ fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -2541,7 +2515,7 @@ fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -2594,7 +2568,6 @@ fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method72(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -2634,13 +2607,13 @@ fn method73(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 1679616i64;
+                let mut v8: i64 = v7.wrapping_mul(1679616i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -2662,7 +2635,6 @@ fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -2684,7 +2656,7 @@ fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -2731,7 +2703,7 @@ fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method38(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -2755,7 +2727,6 @@ fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -2777,7 +2748,7 @@ fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -2830,7 +2801,6 @@ fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method74(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -2870,13 +2840,13 @@ fn method75(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 10077696i64;
+                let mut v8: i64 = v7.wrapping_mul(10077696i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -2898,7 +2868,6 @@ fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -2920,7 +2889,7 @@ fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -2967,7 +2936,7 @@ fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method37(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -2991,7 +2960,6 @@ fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -3013,7 +2981,7 @@ fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -3066,7 +3034,6 @@ fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method76(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -3106,13 +3073,13 @@ fn method77(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 60466176i64;
+                let mut v8: i64 = v7.wrapping_mul(60466176i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -3134,7 +3101,6 @@ fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -3156,7 +3122,7 @@ fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -3203,7 +3169,7 @@ fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method36(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -3227,7 +3193,6 @@ fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -3249,7 +3214,7 @@ fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -3302,7 +3267,6 @@ fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method78(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -3342,13 +3306,13 @@ fn method79(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 362797056i64;
+                let mut v8: i64 = v7.wrapping_mul(362797056i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -3370,7 +3334,6 @@ fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -3392,7 +3355,7 @@ fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -3439,7 +3402,7 @@ fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method35(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -3463,7 +3426,6 @@ fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -3485,7 +3447,7 @@ fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -3538,7 +3500,6 @@ fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method80(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -3578,13 +3539,13 @@ fn method81(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 2176782336i64;
+                let mut v8: i64 = v7.wrapping_mul(2176782336i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -3606,7 +3567,6 @@ fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -3628,7 +3588,7 @@ fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -3675,7 +3635,7 @@ fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method34(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -3699,7 +3659,6 @@ fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -3721,7 +3680,7 @@ fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -3774,7 +3733,6 @@ fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method82(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -3814,13 +3772,13 @@ fn method83(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 13060694016i64;
+                let mut v8: i64 = v7.wrapping_mul(13060694016i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -3842,7 +3800,6 @@ fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -3864,7 +3821,7 @@ fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -3911,7 +3868,7 @@ fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method33(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -3935,7 +3892,6 @@ fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -3957,7 +3913,7 @@ fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -4010,7 +3966,6 @@ fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method84(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -4050,13 +4005,13 @@ fn method85(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 78364164096i64;
+                let mut v8: i64 = v7.wrapping_mul(78364164096i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -4078,7 +4033,6 @@ fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -4100,7 +4054,7 @@ fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -4147,7 +4101,7 @@ fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method32(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -4171,7 +4125,6 @@ fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -4193,7 +4146,7 @@ fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -4246,7 +4199,6 @@ fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method86(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -4286,13 +4238,13 @@ fn method87(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 470184984576i64;
+                let mut v8: i64 = v7.wrapping_mul(470184984576i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -4314,7 +4266,6 @@ fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -4336,7 +4287,7 @@ fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -4383,7 +4334,7 @@ fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method31(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -4407,7 +4358,6 @@ fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -4429,7 +4379,7 @@ fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -4482,7 +4432,6 @@ fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method88(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -4522,13 +4471,13 @@ fn method89(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 2821109907456i64;
+                let mut v8: i64 = v7.wrapping_mul(2821109907456i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -4550,7 +4499,6 @@ fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -4572,7 +4520,7 @@ fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -4619,7 +4567,7 @@ fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method30(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -4643,7 +4591,6 @@ fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -4665,7 +4612,7 @@ fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -4718,7 +4665,6 @@ fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method90(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -4758,13 +4704,13 @@ fn method91(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 16926659444736i64;
+                let mut v8: i64 = v7.wrapping_mul(16926659444736i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -4786,7 +4732,6 @@ fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -4808,7 +4753,7 @@ fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -4855,7 +4800,7 @@ fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method29(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -4879,7 +4824,6 @@ fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -4901,7 +4845,7 @@ fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -4954,7 +4898,6 @@ fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method92(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -4994,13 +4937,13 @@ fn method93(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 101559956668416i64;
+                let mut v8: i64 = v7.wrapping_mul(101559956668416i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -5022,7 +4965,6 @@ fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -5044,7 +4986,7 @@ fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -5091,7 +5033,7 @@ fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method28(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -5115,7 +5057,6 @@ fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -5137,7 +5078,7 @@ fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -5190,7 +5131,6 @@ fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method94(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -5230,13 +5170,13 @@ fn method95(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 609359740010496i64;
+                let mut v8: i64 = v7.wrapping_mul(609359740010496i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -5258,7 +5198,6 @@ fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -5280,7 +5219,7 @@ fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -5327,7 +5266,7 @@ fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method27(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -5351,7 +5290,6 @@ fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -5373,7 +5311,7 @@ fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -5426,7 +5364,6 @@ fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method96(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -5466,13 +5403,13 @@ fn method97(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 3656158440062976i64;
+                let mut v8: i64 = v7.wrapping_mul(3656158440062976i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -5494,7 +5431,6 @@ fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -5516,7 +5452,7 @@ fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -5563,7 +5499,7 @@ fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method26(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -5587,7 +5523,6 @@ fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -5609,7 +5544,7 @@ fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -5662,7 +5597,6 @@ fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method98(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -5702,13 +5636,13 @@ fn method99(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
 fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 21936950640377856i64;
+                let mut v8: i64 = v7.wrapping_mul(21936950640377856i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -5730,7 +5664,6 @@ fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -5752,7 +5685,7 @@ fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -5799,7 +5732,7 @@ fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method25(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -5823,7 +5756,6 @@ fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -5845,7 +5777,7 @@ fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -5898,7 +5830,6 @@ fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method100(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -5938,13 +5869,13 @@ fn method101(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
 fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 131621703842267136i64;
+                let mut v8: i64 = v7.wrapping_mul(131621703842267136i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -5966,7 +5897,6 @@ fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -5988,7 +5918,7 @@ fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -6035,7 +5965,7 @@ fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method24(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -6059,7 +5989,6 @@ fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -6081,7 +6010,7 @@ fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -6134,7 +6063,6 @@ fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method102(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
@@ -6174,13 +6102,13 @@ fn method103(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
 fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
         UH0::UH0_1(v3, v4) => { // Cons
-            let mut v3: u8 = v3.clone();
+            let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
             if v5 {
-                let mut v6: u8 = v3 - 1u8;
+                let mut v6: u8 = v3.wrapping_sub(1u8);
                 let mut v7: i64 = (v6 as i64);
-                let mut v8: i64 = v7 * 789730223053602816i64;
+                let mut v8: i64 = v7.wrapping_mul(789730223053602816i64);
                 let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
                 { let _ = spiral_trace_hold(&v10); };
                 let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
@@ -6202,7 +6130,6 @@ fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v25: bool = v15.borrow().l0.clone();
                 let mut v26: bool = v25 == false;
@@ -6224,7 +6151,7 @@ fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v10); };
                     let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                     let mut v50: i64 = v44.borrow().l0.clone();
-                    let mut v51: i64 = v50 + 1i64;
+                    let mut v51: i64 = v50.wrapping_add(1i64);
                     v44.borrow_mut().l0 = v51;
                     let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v53: bool = cfg!(target_arch = "wasm32");
@@ -6271,7 +6198,7 @@ fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     v72(v41.clone());
                     US2::US2_0(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
                 };
-                let mut v75: i64 = v1 + v8;
+                let mut v75: i64 = v1.wrapping_add(v8);
                 method23(v4.clone(), v75)
             } else {
                 let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
@@ -6295,7 +6222,6 @@ fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     US0::US0_3 => { // Warning
                         40i32
                     }
-                    _ => unreachable!(),
                 };
                 let mut v93: bool = v83.borrow().l0.clone();
                 let mut v94: bool = v93 == false;
@@ -6317,7 +6243,7 @@ fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                     { let _ = spiral_trace_hold(&v78); };
                     let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                     let mut v118: i64 = v112.borrow().l0.clone();
-                    let mut v119: i64 = v118 + 1i64;
+                    let mut v119: i64 = v118.wrapping_add(1i64);
                     v112.borrow_mut().l0 = v119;
                     let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
                     let mut v121: bool = cfg!(target_arch = "wasm32");
@@ -6370,7 +6296,6 @@ fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
         UH0::UH0_0 => { // Nil
             US3::US3_1
         }
-        _ => unreachable!(),
     }
 }
 fn method20(mut v0: Rc<UH0>, mut v1: i8) -> i64 {
@@ -6379,7 +6304,7 @@ fn method20(mut v0: Rc<UH0>, mut v1: i8) -> i64 {
         if v2 {
             let mut v3: u8 = method21();
             let mut v4: Rc<UH0> = Rc::new(UH0::UH0_1(v3, v0.clone()));
-            let mut v5: i8 = v1 + 1i8;
+            let mut v5: i8 = v1.wrapping_add(1i8);
             (v0, v1) = (v4.clone(), v5);
             continue;
         } else {
@@ -6387,7 +6312,7 @@ fn method20(mut v0: Rc<UH0>, mut v1: i8) -> i64 {
             let mut v8: US3 = method22(v0.clone(), v7);
             match &v8 {
                 US3::US3_0(v9, v10) => { // Some
-                    let mut v9: i64 = v9.clone();
+                    let mut v9: i64 = *v9;
                     let mut v10: Rc<UH0> = v10.clone();
                     let mut v11: bool = v9 <= 4738381338321616896i64;
                     if v11 {
@@ -6552,7 +6477,6 @@ fn spiral_main() -> i32 {
         US0::US0_3 => { // Warning
             40i32
         }
-        _ => unreachable!(),
     };
     let mut v155: bool = v145.borrow().l0.clone();
     let mut v156: bool = v155 == false;
@@ -6574,7 +6498,7 @@ fn spiral_main() -> i32 {
         { let _ = spiral_trace_hold(&v140); };
         let (mut v174, mut v175, mut v176, mut v177, mut v178, mut v179): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v142) };
         let mut v180: i64 = v174.borrow().l0.clone();
-        let mut v181: i64 = v180 + 1i64;
+        let mut v181: i64 = v180.wrapping_add(1i64);
         v174.borrow_mut().l0 = v181;
         let mut v182: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
         let mut v183: bool = cfg!(target_arch = "wasm32");
@@ -6643,7 +6567,6 @@ fn spiral_main() -> i32 {
         US0::US0_3 => { // Warning
             40i32
         }
-        _ => unreachable!(),
     };
     let mut v222: bool = v212.borrow().l0.clone();
     let mut v223: bool = v222 == false;
@@ -6665,7 +6588,7 @@ fn spiral_main() -> i32 {
         { let _ = spiral_trace_hold(&v140); };
         let (mut v241, mut v242, mut v243, mut v244, mut v245, mut v246): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v142) };
         let mut v247: i64 = v241.borrow().l0.clone();
-        let mut v248: i64 = v247 + 1i64;
+        let mut v248: i64 = v247.wrapping_add(1i64);
         v241.borrow_mut().l0 = v248;
         let mut v249: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
         let mut v250: bool = cfg!(target_arch = "wasm32");
