@@ -7,7 +7,6 @@ edition.workspace = true
 license-file.workspace = true
 repository.workspace = true
 
-# dice.rs is dice.spi's native Rust output (build.ps1 regenerates it with the Spiral compiler's Rust backend); std only.
 [dependencies]
 
 [[bin]]

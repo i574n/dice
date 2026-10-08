@@ -44,16 +44,6 @@ inl render (global_state : state.global_state) =
         |> fun x => x : _ i32 _
         |> leptos.log_format fun log => "use_transactions.render (3) / accounts_metadata new_arc_memo / result: " ++# log
 
-    // inl root' :
-    //     leptos.memo (am'.vec (
-    //         resultm.result'
-    //             (optionm'.option' model.near.nearblocks.root)
-    //             sm'.std_string
-    //         )
-    //     )
-    //     =
-    //     state_core.use_requests accounts_metadata_requests model.near.nearblocks.root_unbox
-    //     |> leptos.log_format fun log => "use_transactions.render (3.1) / root func0 / result: " ++# log
 
 
     inl accounts_txns_requests = leptos.new_arc_memo fun () =>

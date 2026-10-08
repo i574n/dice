@@ -12,7 +12,7 @@ $domain = ($url -split '/' | Select-Object -Last 3 | Select-Object -First 1) ?? 
 Write-Output "init.ps1 / url: $url / owner: $owner / domain: $domain"
 
 Set-Location (New-Item -ItemType Directory -Path "../.." -Force)
-git clone --recurse-submodules https://$domain/$owner/polyglot.git # --branch gh-pages
+git clone --recurse-submodules https://$domain/$owner/polyglot.git
 Set-Location polyglot
 git pull
 Set-Location $ScriptDir

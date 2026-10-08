@@ -39,7 +39,6 @@ inl render () =
                 right_element = Some settings_button
             }
             fun () => :>[
-                // reactive: the settings panel and the list follow their signals
                 leptos.reactive_view fun () =>
                     if settings_visible |> leptos.signal_get
                     then

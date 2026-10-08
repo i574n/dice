@@ -56,7 +56,7 @@ Spiral.Kino.eval!(
 
 ## accumulate_dice_rolls
 
-<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl accumulate_dice_rolls\n    (rolls : list u8)\n    (power : i8)\n    acc\n    =\n    // inl rec body acc power rolls =\n    inl rec body forall a {number} b {number} c {number}.\n        (acc : a)\n        (power : b)\n        (rolls : list c)\n        : option (a * list c)\n        =\n        match rolls with\n        | _ when power < 0 =>\n            inl result = acc + 1\n            trace Debug\n                fun () => \"dice.accumulate_dice_rolls\"\n                fun () => { power acc result }\n            Some (result, rolls)\n        | [] => None\n        | roll :: rest when roll > 1 =>\n            inl coeff = sixth_power_sequence () |> stream.item power\n            inl value = conv (roll - 1) * coeff\n            trace Debug\n                fun () => \"dice.accumulate_dice_rolls\"\n                fun () => { power acc roll value }\n            루프 (acc + value) (power - 1) rest\n        | roll :: rest =>\n            trace Debug\n                fun () => \"dice.accumulate_dice_rolls\"\n                fun () => { power acc roll }\n            루프 acc (power - 1) rest\n    // and inl 루프 acc power rolls =\n    and inl 루프 forall a {number} b {number} c {number}.\n        (acc : a)\n        (power : b)\n        (rolls : list c)\n        : option (a * list c)\n        =\n        if var_is rolls |> not\n        then body acc power rolls\n        else\n            inl acc = dyn acc\n            join body acc power rolls\n    루프 acc power rolls","print_code":false},"livebook_object":"smart_cell"} -->
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl accumulate_dice_rolls\n    (rolls : list u8)\n    (power : i8)\n    acc\n    =\n    inl rec body forall a {number} b {number} c {number}.\n        (acc : a)\n        (power : b)\n        (rolls : list c)\n        : option (a * list c)\n        =\n        match rolls with\n        | _ when power < 0 =>\n            inl result = acc + 1\n            trace Debug\n                fun () => \"dice.accumulate_dice_rolls\"\n                fun () => { power acc result }\n            Some (result, rolls)\n        | [] => None\n        | roll :: rest when roll > 1 =>\n            inl coeff = sixth_power_sequence () |> stream.item power\n            inl value = conv (roll - 1) * coeff\n            trace Debug\n                fun () => \"dice.accumulate_dice_rolls\"\n                fun () => { power acc roll value }\n            루프 (acc + value) (power - 1) rest\n        | roll :: rest =>\n            trace Debug\n                fun () => \"dice.accumulate_dice_rolls\"\n                fun () => { power acc roll }\n            루프 acc (power - 1) rest\n    and inl 루프 forall a {number} b {number} c {number}.\n        (acc : a)\n        (power : b)\n        (rolls : list c)\n        : option (a * list c)\n        =\n        if var_is rolls |> not\n        then body acc power rolls\n        else\n            inl acc = dyn acc\n            join body acc power rolls\n    루프 acc power rolls","print_code":false},"livebook_object":"smart_cell"} -->
 
 ```elixir
 Spiral.Kino.eval!(
@@ -66,7 +66,6 @@ Spiral.Kino.eval!(
       (power : i8)
       acc
       =
-      // inl rec body acc power rolls =
       inl rec body forall a {number} b {number} c {number}.
           (acc : a)
           (power : b)
@@ -93,7 +92,6 @@ Spiral.Kino.eval!(
                   fun () => "dice.accumulate_dice_rolls"
                   fun () => { power acc roll }
               루프 acc (power - 1) rest
-      // and inl 루프 acc power rolls =
       and inl 루프 forall a {number} b {number} c {number}.
           (acc : a)
           (power : b)
@@ -214,14 +212,12 @@ Spiral.Kino.eval!(
 
 ## calculate_dice_count
 
-<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"// inl calculate_dice_count max =\ninl calculate_dice_count forall a {number} b {number}. (max : a) : b =\n    // inl rec body n p =\n    inl rec body forall t {number}. (n : t) (p : a) : t =\n        inl return () =\n            trace Debug\n                fun () => \"dice.calculate_dice_count\"\n                fun () => { max p n }\n            n\n        if p < max then\n            // A max whose next power of 6 doesn't fit its type (above 6^24 for u64 and i64, above 6^11 for i32) is\n            // rejected: the dice sum of such a bound overflows (`p * 6` here, `(roll - 1) * coeff` in\n            // accumulate_dice_rolls).\n            if p > (limit.max : a) / 6\n            then failwith (\"dice.calculate_dice_count / max: \" ++# #?max ++# \" is above the largest supported bound \" ++# #?p)\n            else 루프 (n + 1) (p * 6)\n        else return ()\n    // and inl 루프 n p =\n    and inl 루프 forall t {number}. (n : t) (p : a) : t =\n        if var_is max |> not\n        then body n p\n        else\n            inl n = dyn n\n            inl p = dyn p\n            join body n p\n    if max = 1\n    then 1\n    else 루프 0 1","print_code":false},"livebook_object":"smart_cell"} -->
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl calculate_dice_count forall a {number} b {number}. (max : a) : b =\n    inl rec body forall t {number}. (n : t) (p : a) : t =\n        inl return () =\n            trace Debug\n                fun () => \"dice.calculate_dice_count\"\n                fun () => { max p n }\n            n\n        if p < max then\n            if p > (limit.max : a) / 6\n            then failwith (\"dice.calculate_dice_count / max: \" ++# #?max ++# \" is above the largest supported bound \" ++# #?p)\n            else 루프 (n + 1) (p * 6)\n        else return ()\n    and inl 루프 forall t {number}. (n : t) (p : a) : t =\n        if var_is max |> not\n        then body n p\n        else\n            inl n = dyn n\n            inl p = dyn p\n            join body n p\n    if max = 1\n    then 1\n    else 루프 0 1","print_code":false},"livebook_object":"smart_cell"} -->
 
 ```elixir
 Spiral.Kino.eval!(
   ~S"""
-  // inl calculate_dice_count max =
   inl calculate_dice_count forall a {number} b {number}. (max : a) : b =
-      // inl rec body n p =
       inl rec body forall t {number}. (n : t) (p : a) : t =
           inl return () =
               trace Debug
@@ -229,14 +225,10 @@ Spiral.Kino.eval!(
                   fun () => { max p n }
               n
           if p < max then
-              // A max whose next power of 6 doesn't fit its type (above 6^24 for u64 and i64, above 6^11 for i32) is
-              // rejected: the dice sum of such a bound overflows (`p * 6` here, `(roll - 1) * coeff` in
-              // accumulate_dice_rolls).
               if p > (limit.max : a) / 6
               then failwith ("dice.calculate_dice_count / max: " ++# #?max ++# " is above the largest supported bound " ++# #?p)
               else 루프 (n + 1) (p * 6)
           else return ()
-      // and inl 루프 n p =
       and inl 루프 forall t {number}. (n : t) (p : a) : t =
           if var_is max |> not
           then body n p
@@ -631,13 +623,12 @@ Spiral.Kino.eval!(
 )
 ```
 
-<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n//// timeout=300000\n\ninl check_progress () : i32 =\n    inl { level } = get_trace_state_or_init None\n    level <- Info\n    join dyn listm'.init_series 1i32 100 1\n    |> listm.iter fun n =>\n        listm'.init_series 0i32 1 1\n        |> listm.iter fun reroll =>\n            join dyn listm'.init_series 1i32 3500 1\n            |> listm.map fun _ => roll_progressively roll_dice (reroll = 1) n\n            |> listm'.group_by id\n            |> listm.length\n            |> __assert_eq Silent n\n    0i32\n\ncheck_progress ()","print_code":false},"livebook_object":"smart_cell"} -->
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"///- --test\n\ninl check_progress () : i32 =\n    inl { level } = get_trace_state_or_init None\n    level <- Info\n    join dyn listm'.init_series 1i32 100 1\n    |> listm.iter fun n =>\n        listm'.init_series 0i32 1 1\n        |> listm.iter fun reroll =>\n            join dyn listm'.init_series 1i32 3500 1\n            |> listm.map fun _ => roll_progressively roll_dice (reroll = 1) n\n            |> listm'.group_by id\n            |> listm.length\n            |> __assert_eq Silent n\n    0i32\n\ncheck_progress ()","print_code":false},"livebook_object":"smart_cell"} -->
 
 ```elixir
 Spiral.Kino.eval!(
   ~S"""
   ///- --test
-  //// timeout=300000
 
   inl check_progress () : i32 =
       inl { level } = get_trace_state_or_init None
@@ -661,13 +652,12 @@ Spiral.Kino.eval!(
 
 ## main
 
-<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl main (_args : array_base string) =\n    // 6^24, the largest bound an i64 supports (calculate_dice_count)\n    inl result = roll_progressively roll_dice true 4738381338321616896i64\n    trace Debug\n        fun () => \"dice.main\"\n        fun () => { result }\n    0i32\n\ninl main () =\n    inl rotate_numbers' : i64 -> stream.stream u8 -> stream.stream u8 =\n        rotate_numbers\n\n    inl create_sequential_roller' :\n        list u8\n        -> (() -> u8)\n        =\n        create_sequential_roller\n\n    inl roll_progressively' :\n        (() -> u8)\n        -> bool\n        -> u64\n        -> u64\n        =\n        roll_progressively\n\n    inl roll_within_bounds' :\n        u64\n        -> list u8\n        -> optionm'.option' u64\n        =\n        fun a b =>\n            roll_within_bounds a b\n            |> optionm'.box\n\n    backend_switch {\n        Fsharp = fun () => $'let rotate_numbers x = !rotate_numbers' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let create_sequential_roller x = !create_sequential_roller' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let roll_progressively x = !roll_progressively' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let roll_within_bounds x = !roll_within_bounds' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let main args = !main args' : ()\n        Rust = fun () => main ;[] |> ignore\n        Python = fun () => main ;[] |> ignore\n        TypeScript = fun () => main ;[] |> ignore\n    } : ()","print_code":false},"livebook_object":"smart_cell"} -->
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Kino.SmartCell","attrs":{"timeout":300,"source":"inl main (_args : array_base string) =\n    inl result = roll_progressively roll_dice true 4738381338321616896i64\n    trace Debug\n        fun () => \"dice.main\"\n        fun () => { result }\n    0i32\n\ninl main () =\n    inl rotate_numbers' : i64 -> stream.stream u8 -> stream.stream u8 =\n        rotate_numbers\n\n    inl create_sequential_roller' :\n        list u8\n        -> (() -> u8)\n        =\n        create_sequential_roller\n\n    inl roll_progressively' :\n        (() -> u8)\n        -> bool\n        -> u64\n        -> u64\n        =\n        roll_progressively\n\n    inl roll_within_bounds' :\n        u64\n        -> list u8\n        -> optionm'.option' u64\n        =\n        fun a b =>\n            roll_within_bounds a b\n            |> optionm'.box\n\n    backend_switch {\n        Fsharp = fun () => $'let rotate_numbers x = !rotate_numbers' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let create_sequential_roller x = !create_sequential_roller' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let roll_progressively x = !roll_progressively' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let roll_within_bounds x = !roll_within_bounds' x' : ()\n        Rust = fun () => ()\n        TypeScript = fun () => ()\n    } : ()\n    backend_switch {\n        Fsharp = fun () => $'let main args = !main args' : ()\n        Rust = fun () => main ;[] |> ignore\n        Python = fun () => main ;[] |> ignore\n        TypeScript = fun () => main ;[] |> ignore\n    } : ()","print_code":false},"livebook_object":"smart_cell"} -->
 
 ```elixir
 Spiral.Kino.eval!(
   ~S"""
   inl main (_args : array_base string) =
-      // 6^24, the largest bound an i64 supports (calculate_dice_count)
       inl result = roll_progressively roll_dice true 4738381338321616896i64
       trace Debug
           fun () => "dice.main"

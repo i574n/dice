@@ -11,7 +11,6 @@ inl accumulate_dice_rolls
     (power : i8)
     acc
     =
-    // inl rec body acc power rolls =
     inl rec body forall a {number} b {number} c {number}.
         (acc : a)
         (power : b)
@@ -38,7 +37,6 @@ inl accumulate_dice_rolls
                 fun () => "dice.accumulate_dice_rolls"
                 fun () => { power acc roll }
             루프 acc (power - 1) rest
-    // and inl 루프 acc power rolls =
     and inl 루프 forall a {number} b {number} c {number}.
         (acc : a)
         (power : b)
@@ -60,9 +58,7 @@ inl roll_within_bounds max rolls =
     | _ => None
 
 /// ## calculate_dice_count
-// inl calculate_dice_count max =
 inl calculate_dice_count forall a {number} b {number}. (max : a) : b =
-    // inl rec body n p =
     inl rec body forall t {number}. (n : t) (p : a) : t =
         inl return () =
             trace Debug
@@ -70,14 +66,10 @@ inl calculate_dice_count forall a {number} b {number}. (max : a) : b =
                 fun () => { max p n }
             n
         if p < max then
-            // A max whose next power of 6 doesn't fit its type (above 6^24 for u64 and i64, above 6^11 for i32) is
-            // rejected: the dice sum of such a bound overflows (`p * 6` here, `(roll - 1) * coeff` in
-            // accumulate_dice_rolls).
             if p > (limit.max : a) / 6
             then failwith ("dice.calculate_dice_count / max: " ++# #?max ++# " is above the largest supported bound " ++# #?p)
             else 루프 (n + 1) (p * 6)
         else return ()
-    // and inl 루프 n p =
     and inl 루프 forall t {number}. (n : t) (p : a) : t =
         if var_is max |> not
         then body n p
@@ -150,7 +142,6 @@ inl roll_progressively roll reroll max =
 
 /// ## main
 inl main (_args : array_base string) =
-    // 6^24, the largest bound an i64 supports (calculate_dice_count)
     inl result = roll_progressively roll_dice true 4738381338321616896i64
     trace Debug
         fun () => "dice.main"

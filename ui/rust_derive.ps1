@@ -1,9 +1,3 @@
-# Derives for the Rust backend's heap structs and unions (dot-source, then `$text = Add-RustDerives $text`).
-# The Rust backend's type numbers change with the program and it derives only Clone on unions, so this pass derives
-# (instead of a regex list of fixed type names) every trait a type's fields allow: a type
-# gets a trait when each identifier in its field types is in that trait's allow list (std containers, primitives,
-# leptos signals, ...) or names another of the generated types that gets it too (a greatest fixed point, so
-# recursive unions qualify). `MutN` (behind RefCell, mutated in place) and anything with a closure get only what they had.
 function Add-RustDerives([string] $text) {
     $base = 'bool i8 i16 i32 i64 i128 u8 u16 u32 u64 u128 usize isize f32 f64 char std string String str rc Rc Option Vec collections HashMap BTreeMap Result' -split ' '
     $signals = 'leptos prelude ArcRwSignal RwSignal ReadSignal ArcReadSignal ArcMemo Memo' -split ' '
@@ -14,7 +8,6 @@ function Add-RustDerives([string] $text) {
         'borsh::BorshSerialize'       = $base
         'borsh::BorshDeserialize'     = $base
     }
-    # Clone: every generated type whose fields are Clone (unions already derive it; Rc<dyn Fn> is Clone).
     $nonClone = 'Fragment AnyView View RequestBuilder Rexie Box Pin MutexGuard Command Child ChildStdin ChildStdout ChildStderr File JoinHandle' -split ' '
     $nl = if ($text.Contains("`r`n")) { "`r`n" } else { "`n" }
     $types = [ordered]@{}
@@ -39,7 +32,6 @@ function Add-RustDerives([string] $text) {
         while ($changed) {
             $changed = $false
             foreach ($k in @($ok)) {
-                # a borrowed field (`&str`) has no owned (de)serialization: such a type keeps only Clone
                 $good = $trait -eq 'Clone' -or !$types[$k].fields.Contains('&')
                 foreach ($id in $idents[$k]) {
                     if (!$good) { break }

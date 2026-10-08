@@ -195,7 +195,6 @@ inl render () =
                                         roll_action |> leptos.arc_action_dispatch max
                                 |> leptos.element_to_view
 
-                                // native: reactive (follows the roll result)
                                 leptos.reactive_view fun () =>
                                     match error_message |> leptos.signal_get |> optionm'.unbox with
                                     | Some error_message =>
@@ -215,7 +214,6 @@ inl render () =
                 summary_class = fun () => "py-[7px]"
             }
             fun () => :>[
-                // native: reactive (re-rendered when the selected accounts, transactions or rpc responses change)
                 leptos.reactive_view fun () =>
                     match accounts_txns_requests |> leptos.signal_get |> am'.from_vec with
                     | (a ;[] : _ i32 _) =>

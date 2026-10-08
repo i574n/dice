@@ -7,8 +7,6 @@ edition.workspace = true
 license-file.workspace = true
 repository.workspace = true
 
-# The app: src/main.rs is src/dice_ui.spi's native Rust output (build.ps1 regenerates it with the Spiral compiler's Rust
-# backend), plus the hand-written near model types (src/model.rs, src/model/; also the lib target).
 [lib]
 path = "src/lib.rs"
 

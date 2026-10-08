@@ -1,7 +1,5 @@
 cargo-features = ["edition2024"]
 
-# dice_contract.rs is the Spiral compiler's native Rust output of dice_contract.spi (build.ps1 regenerates it and builds
-# this crate for wasm32).
 [package]
 name = "dice_contract"
 version.workspace = true
