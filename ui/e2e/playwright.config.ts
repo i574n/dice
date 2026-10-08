@@ -15,7 +15,7 @@ export default {
 
   webServer: [
     {
-      command: `cd ${__dirname}/../dist && pwsh -c "$job = Start-Job { & ~/.bun/bin/bunx --bun ssl-serve --ssl }; Start-Sleep 60; Stop-Job $job | Out-Null; Receive-Job $job -Wait -AutoRemoveJob"`,
+      command: `cd ${__dirname}/../dist && pwsh -NoProfile -c "Start-Job -Name ssl-serve { & ~/.bun/bin/bunx --bun ssl-serve --ssl } | Out-Null; Start-Sleep 60; Stop-Job -Name ssl-serve; Receive-Job -Name ssl-serve -Wait -AutoRemoveJob"`,
       url: baseURL,
       timeout: 60 * 1000,
       ignoreHTTPSErrors: true,
