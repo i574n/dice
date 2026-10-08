@@ -37,7 +37,6 @@ fn string_slice(value: &str, from: i64, to: i64) -> Rc<str> {
     let length = bytes.len() as i64;
     if from < 0 || from > length || to < from - 1 || to >= length { std::process::abort(); }
     if to < from { return { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) }; }
-    // A slice that starts or ends inside a code point fails like the C and Delphi backends (abort / Halt(3)).
     if (bytes[from as usize] & 0xC0) == 0x80 || (to + 1 < length && (bytes[(to + 1) as usize] & 0xC0) == 0x80) { std::process::exit(3); }
     let slice = &bytes[from as usize..(to + 1) as usize];
     match std::str::from_utf8(slice) { Ok(text) => Rc::<str>::from(text), Err(error) => Rc::<str>::from(std::str::from_utf8(&slice[..error.valid_up_to()]).unwrap_or("")) }
@@ -119,7 +118,7 @@ impl US3 {
         }
     }
 }
-fn method1(mut v0: Rc<str>) -> Rc<str> {
+fn get_environment_variable_1(mut v0: Rc<str>) -> Rc<str> {
     let mut v1: Rc<str> = Rc::<str>::from(std::env::var(&*v0).unwrap_or_default());
     v1.clone()
 }
@@ -131,12 +130,11 @@ fn method2(mut v0: i32, mut v1: Rc<RefCell<Mut5>>) -> bool {
 fn closure1() -> Rc<dyn Fn(Rc<str>) -> ()> {
     thread_local!{ static CLOSURE: Rc<dyn Fn(Rc<str>) -> ()> = Rc::new(move |mut v0: Rc<str>| -> () {
         ()
-    }); }
-    CLOSURE.with(|closure| closure.clone())
+    }); } CLOSURE.with(|closure| closure.clone())
 }
-fn method0(mut v0: US0) -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) {
+fn new_trace_state_0(mut v0: US0) -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) {
     let mut v1: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("TRACE_LEVEL"); } LIT.with(|lit| lit.clone()) };
-    let mut v2: Rc<str> = method1(v1.clone());
+    let mut v2: Rc<str> = get_environment_variable_1(v1.clone());
     ;
     ;
     ;
@@ -186,7 +184,7 @@ fn method0(mut v0: US0) -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut
         let mut v34: US1 = v28.borrow().l1.clone();
         let (mut v35, mut v36): (Rc<str>, US0) = v25.clone().borrow()[v33 as usize].clone();
         let mut v43: US1 = match &v34 {
-            US1::US1_1 => { // None
+            US1::US1_1 => {
                 let mut v38: bool = v35 == v2 ;
                 if v38 {
                     US1::US1_0(v36.clone())
@@ -194,7 +192,7 @@ fn method0(mut v0: US0) -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut
                     US1::US1_1
                 }
             }
-            US1::US1_0(v37) => { // Some
+            US1::US1_0(v37) => {
                 let mut v37: US0 = v37.clone();
                 v34.clone()
             }
@@ -212,10 +210,10 @@ fn method0(mut v0: US0) -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut
     let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
     let mut v51: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v50.clone() }));
     let mut v54: US0 = match &v45 {
-        US1::US1_1 => { // None
+        US1::US1_1 => {
             v0.clone()
         }
-        US1::US1_0(v52) => { // Some
+        US1::US1_0(v52) => {
             let mut v52: US0 = v52.clone();
             v52.clone()
         }
@@ -227,18 +225,16 @@ fn method0(mut v0: US0) -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut
 fn closure0() -> Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> {
     thread_local!{ static CLOSURE: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = Rc::new(move || -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) {
         let mut v0: US0 = US0::US0_0;
-        let (mut v1, mut v2, mut v3, mut v4, mut v5, mut v6): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = method0(v0.clone());
+        let (mut v1, mut v2, mut v3, mut v4, mut v5, mut v6): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = new_trace_state_0(v0.clone());
         (v1.clone(), v2.clone(), v3.clone(), v4.clone(), v5.clone(), v6.clone())
-    }); }
-    CLOSURE.with(|closure| closure.clone())
+    }); } CLOSURE.with(|closure| closure.clone())
 }
 fn closure2() -> Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> {
     thread_local!{ static CLOSURE: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = Rc::new(move || -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) {
         let mut v0: US0 = US0::US0_0;
-        let (mut v1, mut v2, mut v3, mut v4, mut v5, mut v6): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = method0(v0.clone());
+        let (mut v1, mut v2, mut v3, mut v4, mut v5, mut v6): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = new_trace_state_0(v0.clone());
         (v1.clone(), v2.clone(), v3.clone(), v4.clone(), v5.clone(), v6.clone())
-    }); }
-    CLOSURE.with(|closure| closure.clone())
+    }); } CLOSURE.with(|closure| closure.clone())
 }
 fn method3(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>) -> Rc<str> {
     let mut v6: u64 = { #[cfg(target_arch = "wasm32")] let (h, m, s) = { let secs = near_sdk::env::block_timestamp() / 1_000_000_000; ((secs / 3600) % 24, (secs / 60) % 60, secs % 60) }; #[cfg(all(windows, not(target_arch = "wasm32")))] let (h, m, s) = { #[repr(C)] struct St([u16; 8]); unsafe extern "system" { fn GetLocalTime(t: *mut St); } let mut t = St([0; 8]); unsafe { GetLocalTime(&mut t) }; (t.0[4] as u64, t.0[5] as u64, t.0[6] as u64) }; #[cfg(all(unix, not(target_arch = "wasm32")))] let (h, m, s) = { #[repr(C, align(8))] struct Tm([i32; 16]); unsafe extern "C" { fn localtime_r(t: *const std::os::raw::c_long, tm: *mut Tm) -> *mut Tm; } let secs = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0) as std::os::raw::c_long; let mut tm = Tm([0; 16]); unsafe { localtime_r(&secs, &mut tm) }; (tm.0[2] as u64, tm.0[1] as u64, tm.0[0] as u64) }; #[cfg(not(any(windows, unix, target_arch = "wasm32")))] let (h, m, s) = { let secs = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0); ((secs / 3600) % 24, (secs / 60) % 60, secs % 60) }; h * 3600 + m * 60 + s };
@@ -289,7 +285,7 @@ fn method6(mut v0: Rc<RefCell<Mut3>>, mut v1: Rc<str>) -> () {
     v0.borrow_mut().l0 = v3.clone();
     ()
 }
-fn method5(mut v0: u8) -> Rc<str> {
+fn format_real_5(mut v0: u8) -> Rc<str> {
     let mut v1: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
     let mut v2: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v1.clone() }));
     let mut v3: Rc<str> = Rc::<str>::from(format!("{}", v0 as char));
@@ -307,7 +303,7 @@ fn method4() -> Rc<str> {
     let mut v1: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Debug"); } LIT.with(|lit| lit.clone()) };
     let mut v2: Rc<str> = Rc::<str>::from(v1.to_lowercase());
     let mut v3: u8 = v2.clone().as_bytes()[0i32 as usize];
-    let mut v4: Rc<str> = method5(v3);
+    let mut v4: Rc<str> = format_real_5(v3);
     let mut v5: Rc<str> = Rc::<str>::from(format!("{}{}", v0, v4));
     let mut v6: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("[0m"); } LIT.with(|lit| lit.clone()) };
     let mut v7: Rc<str> = Rc::<str>::from(format!("{}{}", v5, v6));
@@ -382,7 +378,7 @@ fn method8(mut v0: Rc<str>) -> Rc<str> {
     let mut v8: Rc<str> = string_slice(&v5.clone(), 0i32 as i64, v7 as i64);
     v8.clone()
 }
-fn method11(mut v0: i64) -> Rc<str> {
+fn format_real_11(mut v0: i64) -> Rc<str> {
     let mut v1: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
     let mut v2: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v1.clone() }));
     let mut v3: Rc<str> = Rc::<str>::from(format!("{}", v0));
@@ -439,7 +435,7 @@ fn method19(mut v0: Rc<RefCell<Mut3>>) -> () {
     v0.borrow_mut().l0 = v3.clone();
     ()
 }
-fn method12(mut v0: i64, mut v1: i64, mut v2: i8) -> Rc<str> {
+fn format_real_12(mut v0: i64, mut v1: i64, mut v2: i8) -> Rc<str> {
     let mut v3: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
     let mut v4: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v3.clone() }));
     method13(v4.clone());
@@ -465,7 +461,7 @@ fn method7(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefC
     let mut v8: i64 = v0.borrow().l0.clone();
     let mut v9: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v10: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v9));
-    let mut v11: Rc<str> = method11(v8);
+    let mut v11: Rc<str> = format_real_11(v8);
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v10, v11));
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v7));
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v9));
@@ -476,7 +472,7 @@ fn method7(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefC
     let mut v19: i64 = 4738381338321616896i64;
     let mut v20: i64 = 4738381338321616896i64;
     let mut v21: i8 = 24i8;
-    let mut v22: Rc<str> = method12(v19, v20, v21);
+    let mut v22: Rc<str> = format_real_12(v19, v20, v21);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v22));
     method8(v23.clone())
 }
@@ -484,10 +480,9 @@ fn closure3() -> Rc<dyn Fn(Rc<str>) -> ()> {
     thread_local!{ static CLOSURE: Rc<dyn Fn(Rc<str>) -> ()> = Rc::new(move |mut v0: Rc<str>| -> () {
         println!("{}", v0);
         ()
-    }); }
-    CLOSURE.with(|closure| closure.clone())
+    }); } CLOSURE.with(|closure| closure.clone())
 }
-fn method21() -> u8 {
+fn roll_dice_21() -> u8 {
     let mut v1: u8 = { use std::sync::atomic::{AtomicU64, Ordering}; use std::hash::{BuildHasher, Hasher}; static SPIRAL_NATIVE_RNG: AtomicU64 = AtomicU64::new(0); let mut x = SPIRAL_NATIVE_RNG.load(Ordering::Relaxed); if x == 0 { let mut h = std::collections::hash_map::RandomState::new().build_hasher(); h.write_u128(std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_nanos()).unwrap_or(0)); x = h.finish() | 1; } x ^= x << 13; x ^= x >> 7; x ^= x << 17; SPIRAL_NATIVE_RNG.store(x, Ordering::Relaxed); let span = (7u8 as i128) - (1u8 as i128); let n = if span <= 0 { 0 } else { (x as i128) % span }; ((1u8 as i128) + n) as _ };
     v1
 }
@@ -512,7 +507,7 @@ fn method51(mut v0: Rc<RefCell<Mut3>>) -> () {
     v0.borrow_mut().l0 = v3.clone();
     ()
 }
-fn method48(mut v0: i8, mut v1: i64, mut v2: i64) -> Rc<str> {
+fn format_real_48(mut v0: i8, mut v1: i64, mut v2: i64) -> Rc<str> {
     let mut v3: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
     let mut v4: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v3.clone() }));
     method13(v4.clone());
@@ -538,7 +533,7 @@ fn method47(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -547,7 +542,7 @@ fn method47(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = -1i8;
-    let mut v22: Rc<str> = method48(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_48(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
@@ -559,19 +554,19 @@ fn method46(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     let (mut v7, mut v8, mut v9, mut v10, mut v11, mut v12): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v6) };
     let mut v13: US0 = v11.borrow().l0.clone();
     let mut v18: i32 = match &v13 {
-        US0::US0_4 => { // Critical
+        US0::US0_4 => {
             50i32
         }
-        US0::US0_1 => { // Debug
+        US0::US0_1 => {
             20i32
         }
-        US0::US0_2 => { // Info
+        US0::US0_2 => {
             30i32
         }
-        US0::US0_0 => { // Verbose
+        US0::US0_0 => {
             10i32
         }
-        US0::US0_3 => { // Warning
+        US0::US0_3 => {
             40i32
         }
     };
@@ -658,7 +653,7 @@ fn method55(mut v0: Rc<RefCell<Mut3>>) -> () {
     v0.borrow_mut().l0 = v3.clone();
     ()
 }
-fn method53(mut v0: i8, mut v1: i64, mut v2: u8, mut v3: i64) -> Rc<str> {
+fn format_real_53(mut v0: i8, mut v1: i64, mut v2: u8, mut v3: i64) -> Rc<str> {
     let mut v4: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
     let mut v5: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v4.clone() }));
     method13(v5.clone());
@@ -689,7 +684,7 @@ fn method52(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -698,11 +693,11 @@ fn method52(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 0i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
-fn method57(mut v0: i8, mut v1: i64, mut v2: u8) -> Rc<str> {
+fn format_real_57(mut v0: i8, mut v1: i64, mut v2: u8) -> Rc<str> {
     let mut v3: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
     let mut v4: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v3.clone() }));
     method13(v4.clone());
@@ -728,7 +723,7 @@ fn method56(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -737,13 +732,13 @@ fn method56(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 0i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method45(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -756,19 +751,19 @@ fn method45(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v12, mut v13, mut v14, mut v15, mut v16, mut v17): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v11) };
                 let mut v18: US0 = v16.borrow().l0.clone();
                 let mut v23: i32 = match &v18 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -848,19 +843,19 @@ fn method45(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v80, mut v81, mut v82, mut v83, mut v84, mut v85): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v79) };
                 let mut v86: US0 = v84.borrow().l0.clone();
                 let mut v91: i32 = match &v86 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -934,7 +929,7 @@ fn method45(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method46(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -943,7 +938,7 @@ fn method58(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -952,7 +947,7 @@ fn method58(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 1i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -960,7 +955,7 @@ fn method59(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -969,13 +964,13 @@ fn method59(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 1i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method44(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -989,19 +984,19 @@ fn method44(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -1081,19 +1076,19 @@ fn method44(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -1167,7 +1162,7 @@ fn method44(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method45(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -1176,7 +1171,7 @@ fn method60(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -1185,7 +1180,7 @@ fn method60(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 2i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -1193,7 +1188,7 @@ fn method61(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -1202,13 +1197,13 @@ fn method61(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 2i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method43(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -1222,19 +1217,19 @@ fn method43(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -1314,19 +1309,19 @@ fn method43(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -1400,7 +1395,7 @@ fn method43(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method44(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -1409,7 +1404,7 @@ fn method62(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -1418,7 +1413,7 @@ fn method62(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 3i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -1426,7 +1421,7 @@ fn method63(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -1435,13 +1430,13 @@ fn method63(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 3i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method42(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -1455,19 +1450,19 @@ fn method42(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -1547,19 +1542,19 @@ fn method42(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -1633,7 +1628,7 @@ fn method42(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method43(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -1642,7 +1637,7 @@ fn method64(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -1651,7 +1646,7 @@ fn method64(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 4i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -1659,7 +1654,7 @@ fn method65(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -1668,13 +1663,13 @@ fn method65(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 4i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method41(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -1688,19 +1683,19 @@ fn method41(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -1780,19 +1775,19 @@ fn method41(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -1866,7 +1861,7 @@ fn method41(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method42(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -1875,7 +1870,7 @@ fn method66(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -1884,7 +1879,7 @@ fn method66(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 5i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -1892,7 +1887,7 @@ fn method67(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -1901,13 +1896,13 @@ fn method67(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 5i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method40(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -1921,19 +1916,19 @@ fn method40(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -2013,19 +2008,19 @@ fn method40(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -2099,7 +2094,7 @@ fn method40(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method41(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -2108,7 +2103,7 @@ fn method68(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -2117,7 +2112,7 @@ fn method68(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 6i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -2125,7 +2120,7 @@ fn method69(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -2134,13 +2129,13 @@ fn method69(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 6i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -2154,19 +2149,19 @@ fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -2246,19 +2241,19 @@ fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -2332,7 +2327,7 @@ fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method40(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -2341,7 +2336,7 @@ fn method70(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -2350,7 +2345,7 @@ fn method70(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 7i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -2358,7 +2353,7 @@ fn method71(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -2367,13 +2362,13 @@ fn method71(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 7i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -2387,19 +2382,19 @@ fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -2479,19 +2474,19 @@ fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -2565,7 +2560,7 @@ fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method39(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -2574,7 +2569,7 @@ fn method72(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -2583,7 +2578,7 @@ fn method72(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 8i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -2591,7 +2586,7 @@ fn method73(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -2600,13 +2595,13 @@ fn method73(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 8i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -2620,19 +2615,19 @@ fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -2712,19 +2707,19 @@ fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -2798,7 +2793,7 @@ fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method38(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -2807,7 +2802,7 @@ fn method74(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -2816,7 +2811,7 @@ fn method74(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 9i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -2824,7 +2819,7 @@ fn method75(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -2833,13 +2828,13 @@ fn method75(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 9i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -2853,19 +2848,19 @@ fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -2945,19 +2940,19 @@ fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -3031,7 +3026,7 @@ fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method37(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -3040,7 +3035,7 @@ fn method76(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -3049,7 +3044,7 @@ fn method76(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 10i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -3057,7 +3052,7 @@ fn method77(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -3066,13 +3061,13 @@ fn method77(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 10i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -3086,19 +3081,19 @@ fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -3178,19 +3173,19 @@ fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -3264,7 +3259,7 @@ fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method36(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -3273,7 +3268,7 @@ fn method78(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -3282,7 +3277,7 @@ fn method78(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 11i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -3290,7 +3285,7 @@ fn method79(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -3299,13 +3294,13 @@ fn method79(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 11i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -3319,19 +3314,19 @@ fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -3411,19 +3406,19 @@ fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -3497,7 +3492,7 @@ fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method35(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -3506,7 +3501,7 @@ fn method80(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -3515,7 +3510,7 @@ fn method80(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 12i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -3523,7 +3518,7 @@ fn method81(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -3532,13 +3527,13 @@ fn method81(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 12i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -3552,19 +3547,19 @@ fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -3644,19 +3639,19 @@ fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -3730,7 +3725,7 @@ fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method34(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -3739,7 +3734,7 @@ fn method82(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -3748,7 +3743,7 @@ fn method82(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 13i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -3756,7 +3751,7 @@ fn method83(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -3765,13 +3760,13 @@ fn method83(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 13i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -3785,19 +3780,19 @@ fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -3877,19 +3872,19 @@ fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -3963,7 +3958,7 @@ fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method33(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -3972,7 +3967,7 @@ fn method84(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -3981,7 +3976,7 @@ fn method84(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 14i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -3989,7 +3984,7 @@ fn method85(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -3998,13 +3993,13 @@ fn method85(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 14i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -4018,19 +4013,19 @@ fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -4110,19 +4105,19 @@ fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -4196,7 +4191,7 @@ fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method32(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -4205,7 +4200,7 @@ fn method86(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -4214,7 +4209,7 @@ fn method86(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 15i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -4222,7 +4217,7 @@ fn method87(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -4231,13 +4226,13 @@ fn method87(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 15i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -4251,19 +4246,19 @@ fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -4343,19 +4338,19 @@ fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -4429,7 +4424,7 @@ fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method31(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -4438,7 +4433,7 @@ fn method88(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -4447,7 +4442,7 @@ fn method88(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 16i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -4455,7 +4450,7 @@ fn method89(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -4464,13 +4459,13 @@ fn method89(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 16i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -4484,19 +4479,19 @@ fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -4576,19 +4571,19 @@ fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -4662,7 +4657,7 @@ fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method30(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -4671,7 +4666,7 @@ fn method90(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -4680,7 +4675,7 @@ fn method90(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 17i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -4688,7 +4683,7 @@ fn method91(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -4697,13 +4692,13 @@ fn method91(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 17i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -4717,19 +4712,19 @@ fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -4809,19 +4804,19 @@ fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -4895,7 +4890,7 @@ fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method29(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -4904,7 +4899,7 @@ fn method92(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -4913,7 +4908,7 @@ fn method92(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 18i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -4921,7 +4916,7 @@ fn method93(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -4930,13 +4925,13 @@ fn method93(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 18i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -4950,19 +4945,19 @@ fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -5042,19 +5037,19 @@ fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -5128,7 +5123,7 @@ fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method28(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -5137,7 +5132,7 @@ fn method94(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -5146,7 +5141,7 @@ fn method94(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 19i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -5154,7 +5149,7 @@ fn method95(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -5163,13 +5158,13 @@ fn method95(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 19i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -5183,19 +5178,19 @@ fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -5275,19 +5270,19 @@ fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -5361,7 +5356,7 @@ fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method27(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -5370,7 +5365,7 @@ fn method96(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -5379,7 +5374,7 @@ fn method96(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 20i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -5387,7 +5382,7 @@ fn method97(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -5396,13 +5391,13 @@ fn method97(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 20i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -5416,19 +5411,19 @@ fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -5508,19 +5503,19 @@ fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -5594,7 +5589,7 @@ fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method26(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -5603,7 +5598,7 @@ fn method98(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -5612,7 +5607,7 @@ fn method98(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 21i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -5620,7 +5615,7 @@ fn method99(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -5629,13 +5624,13 @@ fn method99(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Ref
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 21i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -5649,19 +5644,19 @@ fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -5741,19 +5736,19 @@ fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -5827,7 +5822,7 @@ fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method25(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -5836,7 +5831,7 @@ fn method100(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -5845,7 +5840,7 @@ fn method100(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 22i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -5853,7 +5848,7 @@ fn method101(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -5862,13 +5857,13 @@ fn method101(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 22i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -5882,19 +5877,19 @@ fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -5974,19 +5969,19 @@ fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -6060,7 +6055,7 @@ fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method24(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -6069,7 +6064,7 @@ fn method102(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
     let mut v11: i64 = v0.borrow().l0.clone();
     let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
-    let mut v14: Rc<str> = method11(v11);
+    let mut v14: Rc<str> = format_real_11(v11);
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
@@ -6078,7 +6073,7 @@ fn method102(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
     let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     let mut v22: i8 = 23i8;
-    let mut v23: Rc<str> = method53(v22, v8, v9, v10);
+    let mut v23: Rc<str> = format_real_53(v22, v8, v9, v10);
     let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v23));
     method8(v24.clone())
 }
@@ -6086,7 +6081,7 @@ fn method103(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
     let mut v10: i64 = v0.borrow().l0.clone();
     let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
-    let mut v13: Rc<str> = method11(v10);
+    let mut v13: Rc<str> = format_real_11(v10);
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
     let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
@@ -6095,13 +6090,13 @@ fn method103(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
     let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
     let mut v21: i8 = 23i8;
-    let mut v22: Rc<str> = method57(v21, v8, v9);
+    let mut v22: Rc<str> = format_real_57(v21, v8, v9);
     let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v22));
     method8(v23.clone())
 }
 fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
     match &*v0 {
-        UH0::UH0_1(v3, v4) => { // Cons
+        UH0::UH0_1(v3, v4) => {
             let mut v3: u8 = *v3;
             let mut v4: Rc<UH0> = v4.clone();
             let mut v5: bool = v3 > 1u8;
@@ -6115,19 +6110,19 @@ fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
                 let mut v19: US0 = v17.borrow().l0.clone();
                 let mut v24: i32 = match &v19 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -6207,19 +6202,19 @@ fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
                 let mut v87: US0 = v85.borrow().l0.clone();
                 let mut v92: i32 = match &v87 {
-                    US0::US0_4 => { // Critical
+                    US0::US0_4 => {
                         50i32
                     }
-                    US0::US0_1 => { // Debug
+                    US0::US0_1 => {
                         20i32
                     }
-                    US0::US0_2 => { // Info
+                    US0::US0_2 => {
                         30i32
                     }
-                    US0::US0_0 => { // Verbose
+                    US0::US0_0 => {
                         10i32
                     }
-                    US0::US0_3 => { // Warning
+                    US0::US0_3 => {
                         40i32
                     }
                 };
@@ -6293,7 +6288,7 @@ fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
                 method23(v4.clone(), v1)
             }
         }
-        UH0::UH0_0 => { // Nil
+        UH0::UH0_0 => {
             US3::US3_1
         }
     }
@@ -6302,7 +6297,7 @@ fn method20(mut v0: Rc<UH0>, mut v1: i8) -> i64 {
     loop {
         let mut v2: bool = v1 < 24i8;
         if v2 {
-            let mut v3: u8 = method21();
+            let mut v3: u8 = roll_dice_21();
             let mut v4: Rc<UH0> = Rc::new(UH0::UH0_1(v3, v0.clone()));
             let mut v5: i8 = v1.wrapping_add(1i8);
             (v0, v1) = (v4.clone(), v5);
@@ -6311,36 +6306,36 @@ fn method20(mut v0: Rc<UH0>, mut v1: i8) -> i64 {
             let mut v7: i64 = 0i64;
             let mut v8: US3 = method22(v0.clone(), v7);
             match &v8 {
-                US3::US3_0(v9, v10) => { // Some
+                US3::US3_0(v9, v10) => {
                     let mut v9: i64 = *v9;
                     let mut v10: Rc<UH0> = v10.clone();
                     let mut v11: bool = v9 <= 4738381338321616896i64;
                     if v11 {
                         return v9;
                     } else {
-                        let mut v12: u8 = method21();
-                        let mut v13: u8 = method21();
-                        let mut v14: u8 = method21();
-                        let mut v15: u8 = method21();
-                        let mut v16: u8 = method21();
-                        let mut v17: u8 = method21();
-                        let mut v18: u8 = method21();
-                        let mut v19: u8 = method21();
-                        let mut v20: u8 = method21();
-                        let mut v21: u8 = method21();
-                        let mut v22: u8 = method21();
-                        let mut v23: u8 = method21();
-                        let mut v24: u8 = method21();
-                        let mut v25: u8 = method21();
-                        let mut v26: u8 = method21();
-                        let mut v27: u8 = method21();
-                        let mut v28: u8 = method21();
-                        let mut v29: u8 = method21();
-                        let mut v30: u8 = method21();
-                        let mut v31: u8 = method21();
-                        let mut v32: u8 = method21();
-                        let mut v33: u8 = method21();
-                        let mut v34: u8 = method21();
+                        let mut v12: u8 = roll_dice_21();
+                        let mut v13: u8 = roll_dice_21();
+                        let mut v14: u8 = roll_dice_21();
+                        let mut v15: u8 = roll_dice_21();
+                        let mut v16: u8 = roll_dice_21();
+                        let mut v17: u8 = roll_dice_21();
+                        let mut v18: u8 = roll_dice_21();
+                        let mut v19: u8 = roll_dice_21();
+                        let mut v20: u8 = roll_dice_21();
+                        let mut v21: u8 = roll_dice_21();
+                        let mut v22: u8 = roll_dice_21();
+                        let mut v23: u8 = roll_dice_21();
+                        let mut v24: u8 = roll_dice_21();
+                        let mut v25: u8 = roll_dice_21();
+                        let mut v26: u8 = roll_dice_21();
+                        let mut v27: u8 = roll_dice_21();
+                        let mut v28: u8 = roll_dice_21();
+                        let mut v29: u8 = roll_dice_21();
+                        let mut v30: u8 = roll_dice_21();
+                        let mut v31: u8 = roll_dice_21();
+                        let mut v32: u8 = roll_dice_21();
+                        let mut v33: u8 = roll_dice_21();
+                        let mut v34: u8 = roll_dice_21();
                         let mut v35: Rc<UH0> = { thread_local!{ static CASE: Rc<UH0> = Rc::new(UH0::UH0_0); } CASE.with(|case| case.clone()) };
                         let mut v36: Rc<UH0> = Rc::new(UH0::UH0_1(v34, v35.clone()));
                         let mut v37: Rc<UH0> = Rc::new(UH0::UH0_1(v33, v36.clone()));
@@ -6371,29 +6366,29 @@ fn method20(mut v0: Rc<UH0>, mut v1: i8) -> i64 {
                     }
                 }
                 _ => {
-                    let mut v62: u8 = method21();
-                    let mut v63: u8 = method21();
-                    let mut v64: u8 = method21();
-                    let mut v65: u8 = method21();
-                    let mut v66: u8 = method21();
-                    let mut v67: u8 = method21();
-                    let mut v68: u8 = method21();
-                    let mut v69: u8 = method21();
-                    let mut v70: u8 = method21();
-                    let mut v71: u8 = method21();
-                    let mut v72: u8 = method21();
-                    let mut v73: u8 = method21();
-                    let mut v74: u8 = method21();
-                    let mut v75: u8 = method21();
-                    let mut v76: u8 = method21();
-                    let mut v77: u8 = method21();
-                    let mut v78: u8 = method21();
-                    let mut v79: u8 = method21();
-                    let mut v80: u8 = method21();
-                    let mut v81: u8 = method21();
-                    let mut v82: u8 = method21();
-                    let mut v83: u8 = method21();
-                    let mut v84: u8 = method21();
+                    let mut v62: u8 = roll_dice_21();
+                    let mut v63: u8 = roll_dice_21();
+                    let mut v64: u8 = roll_dice_21();
+                    let mut v65: u8 = roll_dice_21();
+                    let mut v66: u8 = roll_dice_21();
+                    let mut v67: u8 = roll_dice_21();
+                    let mut v68: u8 = roll_dice_21();
+                    let mut v69: u8 = roll_dice_21();
+                    let mut v70: u8 = roll_dice_21();
+                    let mut v71: u8 = roll_dice_21();
+                    let mut v72: u8 = roll_dice_21();
+                    let mut v73: u8 = roll_dice_21();
+                    let mut v74: u8 = roll_dice_21();
+                    let mut v75: u8 = roll_dice_21();
+                    let mut v76: u8 = roll_dice_21();
+                    let mut v77: u8 = roll_dice_21();
+                    let mut v78: u8 = roll_dice_21();
+                    let mut v79: u8 = roll_dice_21();
+                    let mut v80: u8 = roll_dice_21();
+                    let mut v81: u8 = roll_dice_21();
+                    let mut v82: u8 = roll_dice_21();
+                    let mut v83: u8 = roll_dice_21();
+                    let mut v84: u8 = roll_dice_21();
                     let mut v85: Rc<UH0> = { thread_local!{ static CASE: Rc<UH0> = Rc::new(UH0::UH0_0); } CASE.with(|case| case.clone()) };
                     let mut v86: Rc<UH0> = Rc::new(UH0::UH0_1(v84, v85.clone()));
                     let mut v87: Rc<UH0> = Rc::new(UH0::UH0_1(v83, v86.clone()));
@@ -6426,7 +6421,7 @@ fn method20(mut v0: Rc<UH0>, mut v1: i8) -> i64 {
         }
     }
 }
-fn method105(mut v0: i64) -> Rc<str> {
+fn format_real_105(mut v0: i64) -> Rc<str> {
     let mut v1: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
     let mut v2: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v1.clone() }));
     method13(v2.clone());
@@ -6442,7 +6437,7 @@ fn method104(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
     let mut v9: i64 = v0.borrow().l0.clone();
     let mut v10: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
     let mut v11: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v10));
-    let mut v12: Rc<str> = method11(v9);
+    let mut v12: Rc<str> = format_real_11(v9);
     let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v11, v12));
     let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v7));
     let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v10));
@@ -6450,199 +6445,194 @@ fn method104(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<Re
     let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v16));
     let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
     let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
-    let mut v20: Rc<str> = method105(v8);
+    let mut v20: Rc<str> = format_real_105(v8);
     let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
     method8(v21.clone())
 }
 fn spiral_main() -> i32 {
-    let mut v138: Rc<RefCell<Vec<Rc<str>>>> = Rc::new(RefCell::new(vec![]));
-    let mut v140: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
-    { let _ = spiral_trace_hold(&v140); };
-    let mut v142: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
-    let (mut v143, mut v144, mut v145, mut v146, mut v147, mut v148): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v142) };
-    let mut v149: US0 = v147.borrow().l0.clone();
-    let mut v154: i32 = match &v149 {
-        US0::US0_4 => { // Critical
+    let mut v158: Rc<RefCell<Vec<Rc<str>>>> = Rc::new(RefCell::new(vec![]));
+    let mut v160: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure0();
+    { let _ = spiral_trace_hold(&v160); };
+    let mut v162: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = closure2();
+    let (mut v163, mut v164, mut v165, mut v166, mut v167, mut v168): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v162) };
+    let mut v169: US0 = v167.borrow().l0.clone();
+    let mut v174: i32 = match &v169 {
+        US0::US0_4 => {
             50i32
         }
-        US0::US0_1 => { // Debug
+        US0::US0_1 => {
             20i32
         }
-        US0::US0_2 => { // Info
+        US0::US0_2 => {
             30i32
         }
-        US0::US0_0 => { // Verbose
+        US0::US0_0 => {
             10i32
         }
-        US0::US0_3 => { // Warning
+        US0::US0_3 => {
             40i32
         }
     };
-    let mut v155: bool = v145.borrow().l0.clone();
-    let mut v156: bool = v155 == false;
-    let mut v158: bool = if v156 {
+    let mut v175: bool = v165.borrow().l0.clone();
+    let mut v176: bool = v175 == false;
+    let mut v178: bool = if v176 {
         false
     } else {
-        let mut v157: bool = 20i32 >= v154;
-        v157
+        let mut v177: bool = 20i32 >= v174;
+        v177
     };
-    let mut v159: bool = v158 == false;
-    let mut v204: US2 = if v159 {
+    let mut v179: bool = v178 == false;
+    let mut v224: US2 = if v179 {
         US2::US2_1
     } else {
-        { let _ = spiral_trace_hold(&v140); };
-        let (mut v163, mut v164, mut v165, mut v166, mut v167, mut v168): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v142) };
-        let mut v169: Rc<str> = method3(v163.clone(), v164.clone(), v165.clone(), v166.clone(), v167.clone(), v168.clone());
-        let mut v170: Rc<str> = method4();
-        let mut v171: Rc<str> = method7(v163.clone(), v164.clone(), v165.clone(), v166.clone(), v167.clone(), v168.clone(), v169.clone(), v170.clone());
-        { let _ = spiral_trace_hold(&v140); };
-        let (mut v174, mut v175, mut v176, mut v177, mut v178, mut v179): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v142) };
-        let mut v180: i64 = v174.borrow().l0.clone();
-        let mut v181: i64 = v180.wrapping_add(1i64);
-        v174.borrow_mut().l0 = v181;
-        let mut v182: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
-        let mut v183: bool = cfg!(target_arch = "wasm32");
-        if v183 {
-            let mut v184: Rc<str> = v177.borrow().l0.clone();
-            let mut v185: bool = v184.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-            let mut v193: Rc<str> = if v185 {
-                v171.clone()
+        { let _ = spiral_trace_hold(&v160); };
+        let (mut v183, mut v184, mut v185, mut v186, mut v187, mut v188): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v162) };
+        let mut v189: Rc<str> = method3(v183.clone(), v184.clone(), v185.clone(), v186.clone(), v187.clone(), v188.clone());
+        let mut v190: Rc<str> = method4();
+        let mut v191: Rc<str> = method7(v183.clone(), v184.clone(), v185.clone(), v186.clone(), v187.clone(), v188.clone(), v189.clone(), v190.clone());
+        { let _ = spiral_trace_hold(&v160); };
+        let (mut v194, mut v195, mut v196, mut v197, mut v198, mut v199): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v162) };
+        let mut v200: i64 = v194.borrow().l0.clone();
+        let mut v201: i64 = v200.wrapping_add(1i64);
+        v194.borrow_mut().l0 = v201;
+        let mut v202: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+        let mut v203: bool = cfg!(target_arch = "wasm32");
+        if v203 {
+            let mut v204: Rc<str> = v197.borrow().l0.clone();
+            let mut v205: bool = v204.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+            let mut v213: Rc<str> = if v205 {
+                v191.clone()
             } else {
-                let mut v186: bool = v171.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-                if v186 {
-                    let mut v187: Rc<str> = v177.borrow().l0.clone();
-                    v187.clone()
+                let mut v206: bool = v191.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                if v206 {
+                    let mut v207: Rc<str> = v197.borrow().l0.clone();
+                    v207.clone()
                 } else {
-                    let mut v188: Rc<str> = v177.borrow().l0.clone();
-                    let mut v189: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
-                    let mut v190: Rc<str> = Rc::<str>::from(format!("{}{}", v188, v189));
-                    let mut v191: Rc<str> = Rc::<str>::from(format!("{}{}", v190, v171));
-                    v191.clone()
+                    let mut v208: Rc<str> = v197.borrow().l0.clone();
+                    let mut v209: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                    let mut v210: Rc<str> = Rc::<str>::from(format!("{}{}", v208, v209));
+                    let mut v211: Rc<str> = Rc::<str>::from(format!("{}{}", v210, v191));
+                    v211.clone()
                 }
             };
-            let mut v195: i32 = ((v193.chars().count() + 14999) / 15000) as i32;
-            let mut v196: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-            let mut v197: bool = v171 != v196 ;
-            let mut v199: bool = if v197 {
-                let mut v198: bool = v195 <= 1i32;
-                v198
+            let mut v215: i32 = ((v213.chars().count() + 14999) / 15000) as i32;
+            let mut v216: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+            let mut v217: bool = v191 != v216 ;
+            let mut v219: bool = if v217 {
+                let mut v218: bool = v215 <= 1i32;
+                v218
             } else {
                 false
             };
-            if v199 {
-                v177.borrow_mut().l0 = v193.clone();
+            if v219 {
+                v197.borrow_mut().l0 = v213.clone();
                 ()
             } else {
-                v177.borrow_mut().l0 = v196.clone();
-                { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v193); };
+                v197.borrow_mut().l0 = v216.clone();
+                { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v213); };
                 ()
             }
         } else {
-            println!("{}", v171);
+            println!("{}", v191);
             ()
         };
-        let mut v202: Rc<dyn Fn(Rc<str>) -> ()> = v175.borrow().l0.clone();
-        v202(v171.clone());
-        US2::US2_0(v174.clone(), v175.clone(), v176.clone(), v177.clone(), v178.clone(), v179.clone())
+        let mut v222: Rc<dyn Fn(Rc<str>) -> ()> = v195.borrow().l0.clone();
+        v222(v191.clone());
+        US2::US2_0(v194.clone(), v195.clone(), v196.clone(), v197.clone(), v198.clone(), v199.clone())
     };
-    let mut v205: Rc<UH0> = { thread_local!{ static CASE: Rc<UH0> = Rc::new(UH0::UH0_0); } CASE.with(|case| case.clone()) };
-    let mut v206: i8 = 0i8;
-    let mut v207: i64 = method20(v205.clone(), v206);
-    { let _ = spiral_trace_hold(&v140); };
-    let (mut v210, mut v211, mut v212, mut v213, mut v214, mut v215): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v142) };
-    let mut v216: US0 = v214.borrow().l0.clone();
-    let mut v221: i32 = match &v216 {
-        US0::US0_4 => { // Critical
+    let mut v225: Rc<UH0> = { thread_local!{ static CASE: Rc<UH0> = Rc::new(UH0::UH0_0); } CASE.with(|case| case.clone()) };
+    let mut v226: i8 = 0i8;
+    let mut v227: i64 = method20(v225.clone(), v226);
+    { let _ = spiral_trace_hold(&v160); };
+    let (mut v230, mut v231, mut v232, mut v233, mut v234, mut v235): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v162) };
+    let mut v236: US0 = v234.borrow().l0.clone();
+    let mut v241: i32 = match &v236 {
+        US0::US0_4 => {
             50i32
         }
-        US0::US0_1 => { // Debug
+        US0::US0_1 => {
             20i32
         }
-        US0::US0_2 => { // Info
+        US0::US0_2 => {
             30i32
         }
-        US0::US0_0 => { // Verbose
+        US0::US0_0 => {
             10i32
         }
-        US0::US0_3 => { // Warning
+        US0::US0_3 => {
             40i32
         }
     };
-    let mut v222: bool = v212.borrow().l0.clone();
-    let mut v223: bool = v222 == false;
-    let mut v225: bool = if v223 {
+    let mut v242: bool = v232.borrow().l0.clone();
+    let mut v243: bool = v242 == false;
+    let mut v245: bool = if v243 {
         false
     } else {
-        let mut v224: bool = 20i32 >= v221;
-        v224
+        let mut v244: bool = 20i32 >= v241;
+        v244
     };
-    let mut v226: bool = v225 == false;
-    let mut v271: US2 = if v226 {
+    let mut v246: bool = v245 == false;
+    let mut v291: US2 = if v246 {
         US2::US2_1
     } else {
-        { let _ = spiral_trace_hold(&v140); };
-        let (mut v230, mut v231, mut v232, mut v233, mut v234, mut v235): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v142) };
-        let mut v236: Rc<str> = method3(v230.clone(), v231.clone(), v232.clone(), v233.clone(), v234.clone(), v235.clone());
-        let mut v237: Rc<str> = method4();
-        let mut v238: Rc<str> = method104(v230.clone(), v231.clone(), v232.clone(), v233.clone(), v234.clone(), v235.clone(), v236.clone(), v237.clone(), v207);
-        { let _ = spiral_trace_hold(&v140); };
-        let (mut v241, mut v242, mut v243, mut v244, mut v245, mut v246): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v142) };
-        let mut v247: i64 = v241.borrow().l0.clone();
-        let mut v248: i64 = v247.wrapping_add(1i64);
-        v241.borrow_mut().l0 = v248;
-        let mut v249: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
-        let mut v250: bool = cfg!(target_arch = "wasm32");
-        if v250 {
-            let mut v251: Rc<str> = v244.borrow().l0.clone();
-            let mut v252: bool = v251.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-            let mut v260: Rc<str> = if v252 {
-                v238.clone()
+        { let _ = spiral_trace_hold(&v160); };
+        let (mut v250, mut v251, mut v252, mut v253, mut v254, mut v255): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v162) };
+        let mut v256: Rc<str> = method3(v250.clone(), v251.clone(), v252.clone(), v253.clone(), v254.clone(), v255.clone());
+        let mut v257: Rc<str> = method4();
+        let mut v258: Rc<str> = method104(v250.clone(), v251.clone(), v252.clone(), v253.clone(), v254.clone(), v255.clone(), v256.clone(), v257.clone(), v227);
+        { let _ = spiral_trace_hold(&v160); };
+        let (mut v261, mut v262, mut v263, mut v264, mut v265, mut v266): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v162) };
+        let mut v267: i64 = v261.borrow().l0.clone();
+        let mut v268: i64 = v267.wrapping_add(1i64);
+        v261.borrow_mut().l0 = v268;
+        let mut v269: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+        let mut v270: bool = cfg!(target_arch = "wasm32");
+        if v270 {
+            let mut v271: Rc<str> = v264.borrow().l0.clone();
+            let mut v272: bool = v271.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+            let mut v280: Rc<str> = if v272 {
+                v258.clone()
             } else {
-                let mut v253: bool = v238.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-                if v253 {
-                    let mut v254: Rc<str> = v244.borrow().l0.clone();
-                    v254.clone()
+                let mut v273: bool = v258.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                if v273 {
+                    let mut v274: Rc<str> = v264.borrow().l0.clone();
+                    v274.clone()
                 } else {
-                    let mut v255: Rc<str> = v244.borrow().l0.clone();
-                    let mut v256: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
-                    let mut v257: Rc<str> = Rc::<str>::from(format!("{}{}", v255, v256));
-                    let mut v258: Rc<str> = Rc::<str>::from(format!("{}{}", v257, v238));
-                    v258.clone()
+                    let mut v275: Rc<str> = v264.borrow().l0.clone();
+                    let mut v276: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                    let mut v277: Rc<str> = Rc::<str>::from(format!("{}{}", v275, v276));
+                    let mut v278: Rc<str> = Rc::<str>::from(format!("{}{}", v277, v258));
+                    v278.clone()
                 }
             };
-            let mut v262: i32 = ((v260.chars().count() + 14999) / 15000) as i32;
-            let mut v263: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-            let mut v264: bool = v238 != v263 ;
-            let mut v266: bool = if v264 {
-                let mut v265: bool = v262 <= 1i32;
-                v265
+            let mut v282: i32 = ((v280.chars().count() + 14999) / 15000) as i32;
+            let mut v283: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+            let mut v284: bool = v258 != v283 ;
+            let mut v286: bool = if v284 {
+                let mut v285: bool = v282 <= 1i32;
+                v285
             } else {
                 false
             };
-            if v266 {
-                v244.borrow_mut().l0 = v260.clone();
+            if v286 {
+                v264.borrow_mut().l0 = v280.clone();
                 ()
             } else {
-                v244.borrow_mut().l0 = v263.clone();
-                { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v260); };
+                v264.borrow_mut().l0 = v283.clone();
+                { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v280); };
                 ()
             }
         } else {
-            println!("{}", v238);
+            println!("{}", v258);
             ()
         };
-        let mut v269: Rc<dyn Fn(Rc<str>) -> ()> = v242.borrow().l0.clone();
-        v269(v238.clone());
-        US2::US2_0(v241.clone(), v242.clone(), v243.clone(), v244.clone(), v245.clone(), v246.clone())
+        let mut v289: Rc<dyn Fn(Rc<str>) -> ()> = v262.borrow().l0.clone();
+        v289(v258.clone());
+        US2::US2_0(v261.clone(), v262.clone(), v263.clone(), v264.clone(), v265.clone(), v266.clone())
     };
     0
 }
-#[cfg(not(target_arch = "wasm32"))]
-fn main() {
+fn main() { #[cfg(target_arch = "wasm32")] { spiral_main(); return; }
     let main = std::thread::Builder::new().stack_size(1 << 30).spawn(spiral_main).unwrap();
     std::process::exit(match main.join() { Ok(code) => code, Err(_) => 101 });
-}
-#[cfg(target_arch = "wasm32")]
-fn main() {
-    spiral_main();
 }

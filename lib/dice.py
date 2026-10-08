@@ -139,7 +139,7 @@ def Closure8():
     return inner
 def Closure0():
     def inner(v0 : US0) -> Tuple[Mut0, Mut1, Mut2, Mut3, Mut4, i64]:
-        v1, v2, v3, v4, v5, v6 = method0(v0)
+        v1, v2, v3, v4, v5, v6 = new_trace_state_0(v0)
         return v1, v2, v3, v4, v5, v6
     return inner
 class US7_0(NamedTuple): # Some
@@ -171,7 +171,7 @@ class US8_0(NamedTuple): # Some
 class US8_1(NamedTuple): # None
     tag = 1
 US8 = Union[US8_0, US8_1]
-def method2(v0 : string) -> string:
+def get_environment_variable_2(v0 : string) -> string:
     v1 = os.environ
     v2 = v1.get(v0)
     del v0, v1
@@ -227,7 +227,7 @@ def method4(v0 : i32, v1 : Mut5) -> bool:
     return v3
 def method1() -> Tuple[US1, US2]:
     v0 = "TRACE_LEVEL"
-    v1 = method2(v0)
+    v1 = get_environment_variable_2(v0)
     del v0
     v2 = "Critical"
     v3 = v2.lower()
@@ -332,7 +332,7 @@ def method1() -> Tuple[US1, US2]:
     v56 = v39.v1
     del v39
     v57 = "AUTOMATION"
-    v58 = method2(v57)
+    v58 = get_environment_variable_2(v57)
     del v57
     v59 = "True"
     v60 = v58 != v59 
@@ -417,7 +417,7 @@ def method1() -> Tuple[US1, US2]:
         v99 = US2_0(v97)
     del v60
     return v56, v99
-def method0(v0 : US0) -> Tuple[Mut0, Mut1, Mut2, Mut3, Mut4, i64]:
+def new_trace_state_0(v0 : US0) -> Tuple[Mut0, Mut1, Mut2, Mut3, Mut4, i64]:
     v1, v2 = method1()
     v3 = Mut0(1)
     v4 = Closure8()
@@ -577,7 +577,7 @@ def method9(v0 : Mut3, v1 : string) -> None:
     v0.v0 = v3
     del v0, v3
     return 
-def method8(v0 : char) -> string:
+def format_real_8(v0 : char) -> string:
     v1 = ""
     v2 = Mut3(v1)
     del v1
@@ -595,7 +595,7 @@ def method7() -> string:
     del v2
     v4 = v3[0]
     del v3
-    v5 = method8(v4)
+    v5 = format_real_8(v4)
     del v4
     v6 = v1 + v5 
     del v1, v5
@@ -684,7 +684,7 @@ def method11(v0 : string) -> string:
     v12 = v7[0:v11]
     del v7, v11
     return v12
-def method14(v0 : i64) -> string:
+def format_real_14(v0 : i64) -> string:
     v1 = ""
     v2 = Mut3(v1)
     del v1
@@ -751,7 +751,7 @@ def method22(v0 : Mut3) -> None:
     v0.v0 = v3
     del v0, v3
     return 
-def method15(v0 : i64, v1 : i64, v2 : i8) -> string:
+def format_real_15(v0 : i64, v1 : i64, v2 : i8) -> string:
     v3 = ""
     v4 = Mut3(v3)
     del v3
@@ -787,7 +787,7 @@ def method10(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v9 = " "
     v10 = v6 + v9 
     del v6
-    v11 = method14(v8)
+    v11 = format_real_14(v8)
     del v8
     v12 = v10 + v11 
     del v10, v11
@@ -804,12 +804,12 @@ def method10(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v23 = 4738381338321616896
     v24 = 4738381338321616896
     v25 = 24
-    v26 = method15(v23, v24, v25)
+    v26 = format_real_15(v23, v24, v25)
     del v23, v24, v25
     v27 = v22 + v26 
     del v22, v26
     return method11(v27)
-def method24() -> u8:
+def roll_dice_24() -> u8:
     v36 = random.randrange(1, 7)
     return v36
 def method52(v0 : Mut3) -> None:
@@ -836,7 +836,7 @@ def method54(v0 : Mut3) -> None:
     v0.v0 = v3
     del v0, v3
     return 
-def method51(v0 : i8, v1 : i64, v2 : i64) -> string:
+def format_real_51(v0 : i8, v1 : i64, v2 : i64) -> string:
     v3 = ""
     v4 = Mut3(v3)
     del v3
@@ -872,7 +872,7 @@ def method50(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -887,7 +887,7 @@ def method50(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = -1
-    v22 = method51(v21, v8, v9)
+    v22 = format_real_51(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -973,7 +973,7 @@ def method58(v0 : Mut3) -> None:
     v0.v0 = v3
     del v0, v3
     return 
-def method56(v0 : i8, v1 : i64, v2 : u8, v3 : i64) -> string:
+def format_real_56(v0 : i8, v1 : i64, v2 : u8, v3 : i64) -> string:
     v4 = ""
     v5 = Mut3(v4)
     del v4
@@ -1016,7 +1016,7 @@ def method55(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -1031,12 +1031,12 @@ def method55(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 0
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
     return method11(v24)
-def method60(v0 : i8, v1 : i64, v2 : u8) -> string:
+def format_real_60(v0 : i8, v1 : i64, v2 : u8) -> string:
     v3 = ""
     v4 = Mut3(v3)
     del v3
@@ -1072,7 +1072,7 @@ def method59(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -1087,7 +1087,7 @@ def method59(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 0
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -1244,7 +1244,7 @@ def method61(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -1259,7 +1259,7 @@ def method61(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 1
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -1271,7 +1271,7 @@ def method62(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -1286,7 +1286,7 @@ def method62(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 1
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -1445,7 +1445,7 @@ def method63(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -1460,7 +1460,7 @@ def method63(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 2
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -1472,7 +1472,7 @@ def method64(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -1487,7 +1487,7 @@ def method64(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 2
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -1646,7 +1646,7 @@ def method65(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -1661,7 +1661,7 @@ def method65(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 3
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -1673,7 +1673,7 @@ def method66(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -1688,7 +1688,7 @@ def method66(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 3
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -1847,7 +1847,7 @@ def method67(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -1862,7 +1862,7 @@ def method67(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 4
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -1874,7 +1874,7 @@ def method68(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -1889,7 +1889,7 @@ def method68(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 4
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -2048,7 +2048,7 @@ def method69(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -2063,7 +2063,7 @@ def method69(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 5
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -2075,7 +2075,7 @@ def method70(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -2090,7 +2090,7 @@ def method70(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 5
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -2249,7 +2249,7 @@ def method71(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -2264,7 +2264,7 @@ def method71(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 6
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -2276,7 +2276,7 @@ def method72(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -2291,7 +2291,7 @@ def method72(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 6
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -2450,7 +2450,7 @@ def method73(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -2465,7 +2465,7 @@ def method73(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 7
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -2477,7 +2477,7 @@ def method74(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -2492,7 +2492,7 @@ def method74(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 7
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -2651,7 +2651,7 @@ def method75(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -2666,7 +2666,7 @@ def method75(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 8
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -2678,7 +2678,7 @@ def method76(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -2693,7 +2693,7 @@ def method76(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 8
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -2852,7 +2852,7 @@ def method77(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -2867,7 +2867,7 @@ def method77(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 9
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -2879,7 +2879,7 @@ def method78(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -2894,7 +2894,7 @@ def method78(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 9
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -3053,7 +3053,7 @@ def method79(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -3068,7 +3068,7 @@ def method79(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 10
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -3080,7 +3080,7 @@ def method80(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -3095,7 +3095,7 @@ def method80(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 10
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -3254,7 +3254,7 @@ def method81(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -3269,7 +3269,7 @@ def method81(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 11
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -3281,7 +3281,7 @@ def method82(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -3296,7 +3296,7 @@ def method82(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 11
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -3455,7 +3455,7 @@ def method83(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -3470,7 +3470,7 @@ def method83(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 12
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -3482,7 +3482,7 @@ def method84(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -3497,7 +3497,7 @@ def method84(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 12
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -3656,7 +3656,7 @@ def method85(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -3671,7 +3671,7 @@ def method85(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 13
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -3683,7 +3683,7 @@ def method86(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -3698,7 +3698,7 @@ def method86(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 13
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -3857,7 +3857,7 @@ def method87(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -3872,7 +3872,7 @@ def method87(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 14
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -3884,7 +3884,7 @@ def method88(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -3899,7 +3899,7 @@ def method88(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 14
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -4058,7 +4058,7 @@ def method89(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -4073,7 +4073,7 @@ def method89(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 15
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -4085,7 +4085,7 @@ def method90(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -4100,7 +4100,7 @@ def method90(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 15
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -4259,7 +4259,7 @@ def method91(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -4274,7 +4274,7 @@ def method91(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 16
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -4286,7 +4286,7 @@ def method92(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -4301,7 +4301,7 @@ def method92(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 16
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -4460,7 +4460,7 @@ def method93(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -4475,7 +4475,7 @@ def method93(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 17
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -4487,7 +4487,7 @@ def method94(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -4502,7 +4502,7 @@ def method94(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 17
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -4661,7 +4661,7 @@ def method95(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -4676,7 +4676,7 @@ def method95(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 18
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -4688,7 +4688,7 @@ def method96(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -4703,7 +4703,7 @@ def method96(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 18
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -4862,7 +4862,7 @@ def method97(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -4877,7 +4877,7 @@ def method97(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 19
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -4889,7 +4889,7 @@ def method98(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -4904,7 +4904,7 @@ def method98(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v20 = v18 + v19 
     del v18, v19
     v21 = 19
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -5063,7 +5063,7 @@ def method99(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -5078,7 +5078,7 @@ def method99(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v6
     v21 = v19 + v20 
     del v19, v20
     v22 = 20
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -5090,7 +5090,7 @@ def method100(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -5105,7 +5105,7 @@ def method100(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v20 = v18 + v19 
     del v18, v19
     v21 = 20
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -5264,7 +5264,7 @@ def method101(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -5279,7 +5279,7 @@ def method101(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v21 = v19 + v20 
     del v19, v20
     v22 = 21
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -5291,7 +5291,7 @@ def method102(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -5306,7 +5306,7 @@ def method102(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v20 = v18 + v19 
     del v18, v19
     v21 = 21
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -5465,7 +5465,7 @@ def method103(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -5480,7 +5480,7 @@ def method103(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v21 = v19 + v20 
     del v19, v20
     v22 = 22
-    v23 = method56(v22, v8, v9, v10)
+    v23 = format_real_56(v22, v8, v9, v10)
     del v8, v9, v10, v22
     v24 = v21 + v23 
     del v21, v23
@@ -5492,7 +5492,7 @@ def method104(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -5507,7 +5507,7 @@ def method104(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v20 = v18 + v19 
     del v18, v19
     v21 = 22
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -5666,7 +5666,7 @@ def method105(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v12 = " "
     v13 = v6 + v12 
     del v6
-    v14 = method14(v11)
+    v14 = format_real_14(v11)
     del v11
     v15 = v13 + v14 
     del v13, v14
@@ -5681,7 +5681,7 @@ def method105(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v23 = v21 + v22 
     del v21, v22
     v24 = 23
-    v25 = method56(v24, v8, v9, v10)
+    v25 = format_real_56(v24, v8, v9, v10)
     del v8, v9, v10, v24
     v26 = v23 + v25 
     del v23, v25
@@ -5693,7 +5693,7 @@ def method106(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v11 = " "
     v12 = v6 + v11 
     del v6
-    v13 = method14(v10)
+    v13 = format_real_14(v10)
     del v10
     v14 = v12 + v13 
     del v12, v13
@@ -5708,7 +5708,7 @@ def method106(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v20 = v18 + v19 
     del v18, v19
     v21 = 23
-    v22 = method60(v21, v8, v9)
+    v22 = format_real_60(v21, v8, v9)
     del v8, v9, v21
     v23 = v20 + v22 
     del v20, v22
@@ -5865,7 +5865,7 @@ def method23(v0 : UH0, v1 : i8) -> i64:
         v2 = v1 < 24
         if v2:
             del v2
-            v3 = method24()
+            v3 = roll_dice_24()
             v4 = UH0_1(v3, v0)
             del v0, v3
             v5 = v1 + 1
@@ -5886,29 +5886,29 @@ def method23(v0 : UH0, v1 : i8) -> i64:
                         return v9
                     else:
                         del v9, v11
-                        v12 = method24()
-                        v13 = method24()
-                        v14 = method24()
-                        v15 = method24()
-                        v16 = method24()
-                        v17 = method24()
-                        v18 = method24()
-                        v19 = method24()
-                        v20 = method24()
-                        v21 = method24()
-                        v22 = method24()
-                        v23 = method24()
-                        v24 = method24()
-                        v25 = method24()
-                        v26 = method24()
-                        v27 = method24()
-                        v28 = method24()
-                        v29 = method24()
-                        v30 = method24()
-                        v31 = method24()
-                        v32 = method24()
-                        v33 = method24()
-                        v34 = method24()
+                        v12 = roll_dice_24()
+                        v13 = roll_dice_24()
+                        v14 = roll_dice_24()
+                        v15 = roll_dice_24()
+                        v16 = roll_dice_24()
+                        v17 = roll_dice_24()
+                        v18 = roll_dice_24()
+                        v19 = roll_dice_24()
+                        v20 = roll_dice_24()
+                        v21 = roll_dice_24()
+                        v22 = roll_dice_24()
+                        v23 = roll_dice_24()
+                        v24 = roll_dice_24()
+                        v25 = roll_dice_24()
+                        v26 = roll_dice_24()
+                        v27 = roll_dice_24()
+                        v28 = roll_dice_24()
+                        v29 = roll_dice_24()
+                        v30 = roll_dice_24()
+                        v31 = roll_dice_24()
+                        v32 = roll_dice_24()
+                        v33 = roll_dice_24()
+                        v34 = roll_dice_24()
                         v35 = UH0_0()
                         v36 = UH0_1(v34, v35)
                         del v34, v35
@@ -5961,29 +5961,29 @@ def method23(v0 : UH0, v1 : i8) -> i64:
                         continue
                 case t:
                     del v8
-                    v62 = method24()
-                    v63 = method24()
-                    v64 = method24()
-                    v65 = method24()
-                    v66 = method24()
-                    v67 = method24()
-                    v68 = method24()
-                    v69 = method24()
-                    v70 = method24()
-                    v71 = method24()
-                    v72 = method24()
-                    v73 = method24()
-                    v74 = method24()
-                    v75 = method24()
-                    v76 = method24()
-                    v77 = method24()
-                    v78 = method24()
-                    v79 = method24()
-                    v80 = method24()
-                    v81 = method24()
-                    v82 = method24()
-                    v83 = method24()
-                    v84 = method24()
+                    v62 = roll_dice_24()
+                    v63 = roll_dice_24()
+                    v64 = roll_dice_24()
+                    v65 = roll_dice_24()
+                    v66 = roll_dice_24()
+                    v67 = roll_dice_24()
+                    v68 = roll_dice_24()
+                    v69 = roll_dice_24()
+                    v70 = roll_dice_24()
+                    v71 = roll_dice_24()
+                    v72 = roll_dice_24()
+                    v73 = roll_dice_24()
+                    v74 = roll_dice_24()
+                    v75 = roll_dice_24()
+                    v76 = roll_dice_24()
+                    v77 = roll_dice_24()
+                    v78 = roll_dice_24()
+                    v79 = roll_dice_24()
+                    v80 = roll_dice_24()
+                    v81 = roll_dice_24()
+                    v82 = roll_dice_24()
+                    v83 = roll_dice_24()
+                    v84 = roll_dice_24()
                     v85 = UH0_0()
                     v86 = UH0_1(v84, v85)
                     del v84, v85
@@ -6034,7 +6034,7 @@ def method23(v0 : UH0, v1 : i8) -> i64:
                     v109 = 23
                     v0, v1 = v108, v109
                     continue
-def method108(v0 : i64) -> string:
+def format_real_108(v0 : i64) -> string:
     v1 = ""
     v2 = Mut3(v1)
     del v1
@@ -6056,7 +6056,7 @@ def method107(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v10 = " "
     v11 = v6 + v10 
     del v6
-    v12 = method14(v9)
+    v12 = format_real_14(v9)
     del v9
     v13 = v11 + v12 
     del v11, v12
@@ -6070,7 +6070,7 @@ def method107(v0 : Mut0, v1 : Mut1, v2 : Mut2, v3 : Mut3, v4 : Mut4, v5 : i64, v
     v20 = " / "
     v21 = v19 + v20 
     del v19, v20
-    v22 = method108(v8)
+    v22 = format_real_108(v8)
     del v8
     v23 = v21 + v22 
     del v21, v22
@@ -6082,135 +6082,135 @@ def main():
     None # backend.backend_switch / record_type_try_find / key: v9 
     None # backend.backend_switch / record_type_try_find / key: v9 
     del v9
-    v35 = spiral_object_array()
-    del v35
-    v45 = Closure0()
-    v46 = US0_0()
-    if TraceState.trace_state is None: TraceState.trace_state = v45(v46)
-    del v46
-    v53, v54, v55, v56, v57, v58 = TraceState.trace_state
-    del v53, v54, v56, v58
-    v59 = v57.v0
-    del v57
-    match v59:
+    v50 = spiral_object_array()
+    del v50
+    v60 = Closure0()
+    v61 = US0_0()
+    if TraceState.trace_state is None: TraceState.trace_state = v60(v61)
+    del v61
+    v68, v69, v70, v71, v72, v73 = TraceState.trace_state
+    del v68, v69, v71, v73
+    v74 = v72.v0
+    del v72
+    match v74:
         case US0_4(): # Critical
-            v64 = 50
+            v79 = 50
         case US0_1(): # Debug
-            v64 = 20
+            v79 = 20
         case US0_2(): # Info
-            v64 = 30
+            v79 = 30
         case US0_0(): # Verbose
-            v64 = 10
+            v79 = 10
         case US0_3(): # Warning
-            v64 = 40
+            v79 = 40
         case t:
             raise Exception(f'Pattern matching miss. Got: {t}')
-    del v59
-    v65 = v55.v0
-    del v55
-    v66 = v65 == False
-    del v65
-    if v66:
-        v68 = False
+    del v74
+    v80 = v70.v0
+    del v70
+    v81 = v80 == False
+    del v80
+    if v81:
+        v83 = False
     else:
-        v67 = 20 >= v64
-        v68 = v67
-    del v64, v66
-    v69 = v68 == False
-    del v68
-    if v69:
-        v93 = US7_1()
+        v82 = 20 >= v79
+        v83 = v82
+    del v79, v81
+    v84 = v83 == False
+    del v83
+    if v84:
+        v108 = US7_1()
     else:
-        v71 = US0_0()
-        if TraceState.trace_state is None: TraceState.trace_state = v45(v71)
-        del v71
-        v72, v73, v74, v75, v76, v77 = TraceState.trace_state
-        v78 = method5(v72, v73, v74, v75, v76, v77)
-        v79 = method7()
-        v80 = method10(v72, v73, v74, v75, v76, v77, v78, v79)
-        del v72, v73, v74, v75, v76, v77, v78, v79
-        v81 = US0_0()
-        if TraceState.trace_state is None: TraceState.trace_state = v45(v81)
-        del v81
-        v82, v83, v84, v85, v86, v87 = TraceState.trace_state
-        v88 = v82.v0
-        v89 = v88 + 1
-        del v88
-        v82.v0 = v89
-        del v89
-        v90 = Closure9()
-        v90(v80)
-        del v90
-        v91 = v83.v0
-        v91(v80)
-        del v80, v91
-        v93 = US7_0(v82, v83, v84, v85, v86, v87)
-    del v69, v93
-    v94 = UH0_0()
-    v95 = 0
-    v96 = method23(v94, v95)
-    del v94, v95
-    v97 = US0_0()
-    if TraceState.trace_state is None: TraceState.trace_state = v45(v97)
-    del v97
-    v98, v99, v100, v101, v102, v103 = TraceState.trace_state
-    del v98, v99, v101, v103
-    v104 = v102.v0
-    del v102
-    match v104:
+        v86 = US0_0()
+        if TraceState.trace_state is None: TraceState.trace_state = v60(v86)
+        del v86
+        v87, v88, v89, v90, v91, v92 = TraceState.trace_state
+        v93 = method5(v87, v88, v89, v90, v91, v92)
+        v94 = method7()
+        v95 = method10(v87, v88, v89, v90, v91, v92, v93, v94)
+        del v87, v88, v89, v90, v91, v92, v93, v94
+        v96 = US0_0()
+        if TraceState.trace_state is None: TraceState.trace_state = v60(v96)
+        del v96
+        v97, v98, v99, v100, v101, v102 = TraceState.trace_state
+        v103 = v97.v0
+        v104 = v103 + 1
+        del v103
+        v97.v0 = v104
+        del v104
+        v105 = Closure9()
+        v105(v95)
+        del v105
+        v106 = v98.v0
+        v106(v95)
+        del v95, v106
+        v108 = US7_0(v97, v98, v99, v100, v101, v102)
+    del v84, v108
+    v109 = UH0_0()
+    v110 = 0
+    v111 = method23(v109, v110)
+    del v109, v110
+    v112 = US0_0()
+    if TraceState.trace_state is None: TraceState.trace_state = v60(v112)
+    del v112
+    v113, v114, v115, v116, v117, v118 = TraceState.trace_state
+    del v113, v114, v116, v118
+    v119 = v117.v0
+    del v117
+    match v119:
         case US0_4(): # Critical
-            v109 = 50
+            v124 = 50
         case US0_1(): # Debug
-            v109 = 20
+            v124 = 20
         case US0_2(): # Info
-            v109 = 30
+            v124 = 30
         case US0_0(): # Verbose
-            v109 = 10
+            v124 = 10
         case US0_3(): # Warning
-            v109 = 40
+            v124 = 40
         case t:
             raise Exception(f'Pattern matching miss. Got: {t}')
-    del v104
-    v110 = v100.v0
-    del v100
-    v111 = v110 == False
-    del v110
-    if v111:
-        v113 = False
+    del v119
+    v125 = v115.v0
+    del v115
+    v126 = v125 == False
+    del v125
+    if v126:
+        v128 = False
     else:
-        v112 = 20 >= v109
-        v113 = v112
-    del v109, v111
-    v114 = v113 == False
-    del v113
-    if v114:
-        v138 = US7_1()
+        v127 = 20 >= v124
+        v128 = v127
+    del v124, v126
+    v129 = v128 == False
+    del v128
+    if v129:
+        v153 = US7_1()
     else:
-        v116 = US0_0()
-        if TraceState.trace_state is None: TraceState.trace_state = v45(v116)
-        del v116
-        v117, v118, v119, v120, v121, v122 = TraceState.trace_state
-        v123 = method5(v117, v118, v119, v120, v121, v122)
-        v124 = method7()
-        v125 = method107(v117, v118, v119, v120, v121, v122, v123, v124, v96)
-        del v117, v118, v119, v120, v121, v122, v123, v124
-        v126 = US0_0()
-        if TraceState.trace_state is None: TraceState.trace_state = v45(v126)
-        del v126
-        v127, v128, v129, v130, v131, v132 = TraceState.trace_state
-        v133 = v127.v0
-        v134 = v133 + 1
-        del v133
-        v127.v0 = v134
-        del v134
-        v135 = Closure9()
-        v135(v125)
-        del v135
-        v136 = v128.v0
-        v136(v125)
-        del v125, v136
-        v138 = US7_0(v127, v128, v129, v130, v131, v132)
-    del v45, v96, v114, v138
+        v131 = US0_0()
+        if TraceState.trace_state is None: TraceState.trace_state = v60(v131)
+        del v131
+        v132, v133, v134, v135, v136, v137 = TraceState.trace_state
+        v138 = method5(v132, v133, v134, v135, v136, v137)
+        v139 = method7()
+        v140 = method107(v132, v133, v134, v135, v136, v137, v138, v139, v111)
+        del v132, v133, v134, v135, v136, v137, v138, v139
+        v141 = US0_0()
+        if TraceState.trace_state is None: TraceState.trace_state = v60(v141)
+        del v141
+        v142, v143, v144, v145, v146, v147 = TraceState.trace_state
+        v148 = v142.v0
+        v149 = v148 + 1
+        del v148
+        v142.v0 = v149
+        del v149
+        v150 = Closure9()
+        v150(v140)
+        del v150
+        v151 = v143.v0
+        v151(v140)
+        del v140, v151
+        v153 = US7_0(v142, v143, v144, v145, v146, v147)
+    del v60, v111, v129, v153
     return 
 
 if __name__ == '__main__': result = main(); None if result is None else print(result)

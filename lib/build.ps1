@@ -43,8 +43,7 @@ function Assert-DiceRun([string] $Tag, [string] $Kind, [string[]] $Output, [int]
 }
 
 $runtime = $fast -or $env:CI ? ($IsWindows ? "win-x64" : "linux-x64") : $null
-$modules = @(GetFsxModulePaths) + "../deps/polyglot/lib/fsharp/Common.fs"
-if (!(PublishFsharp "$projectName.fsx" -Modules $modules -Runtime $runtime)) {
+if (!(PublishFsharp "$projectName.fsx" -Runtime $runtime)) {
     throw "FSHARP-FAILED dice/lib / dotnet publish"
 }
 $fsharpOutput = & "dist/$projectName$(_exe)" 2>&1 | ForEach-Object { "$_" }

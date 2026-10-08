@@ -21,7 +21,7 @@ if (!$fast -and !$SkipNotebook) {
 { pwsh -NoProfile -File $livebook --path $notebook --no-spi --fs-path "$ScriptDir/$projectName.fs" --export-only } | Invoke-Block
 
 $runtime = $fast -or $env:CI ? ($IsWindows ? "win-x64" : "linux-x64") : $null
-$modules = @(GetFsxModulePaths) + "../../deps/polyglot/lib/fsharp/Common.fs"
+$modules = @(GetFsharpRuntimePaths) + "../../deps/polyglot/lib/fsharp/Common.fs"
 if (!(PublishFsharp "$projectName.fs" -Modules $modules -Runtime $runtime)) {
     throw "FSHARP-FAILED dice/lib/fsharp / dotnet publish"
 }
