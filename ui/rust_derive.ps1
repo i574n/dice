@@ -19,7 +19,7 @@ function Add-RustDerives([string] $text) {
     }
     $idents = @{}
     foreach ($k in $types.Keys) {
-        $ids = [regex]::Matches(($types[$k].fields -replace '\bl\d+:', '' -replace '\b(U[SH]\d+)_\d+\b', ''), '[A-Za-z_][A-Za-z0-9_]*') | ForEach-Object Value
+        $ids = [regex]::Matches(($types[$k].fields -replace '\bl\d+:', '' -replace '\b(U[SH]\d+)_[A-Za-z0-9_]+\b', ''), '[A-Za-z_][A-Za-z0-9_]*') | ForEach-Object Value
         $idents[$k] = @($ids | Sort-Object -Unique)
     }
     $isGenerated = { param($id) $id -match '^(Heap|US|UH|Mut)\d+$' }
