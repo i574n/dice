@@ -73,4 +73,4 @@ Get-ChildItem -Path ../dist -Recurse -Force | Where-Object { $_.Name.StartsWith(
     Rename-Item -Path $_.FullName -NewName "_$($_.Name.Substring(1))"
 }
 
-{ . ../deps/polyglot/deps/spiral/apps/dir-tree-html/dist/DirTreeHtml$(_exe) --dir ../dist --html ../dist/index.html } | Invoke-Block
+{ & (pwsh ../deps/polyglot/deps/spiral/scripts/dir-tree-html.ps1 | Select-Object -Last 1) --dir ../dist --html ../dist/index.html } | Invoke-Block
