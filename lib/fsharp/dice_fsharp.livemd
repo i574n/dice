@@ -321,7 +321,6 @@ let run () =
     let even = (n / max) |> int
 
     rollN max n even 0
-
 ```
 
 ```fsharp
@@ -338,7 +337,6 @@ let run () =
         float roll
     )
     |> Array.Parallel.average
-
 ```
 
 ## FsCheck (test)
