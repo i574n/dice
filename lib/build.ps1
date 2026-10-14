@@ -18,14 +18,10 @@ Write-Output "dice/lib/build.ps1 / ScriptDir: $ScriptDir / ResolvedScriptDir: $R
 $projectName = "dice"
 
 $livebook = Join-Path $ResolvedScriptDir "../deps/polyglot/deps/spiral/apps/kino/spi/run_notebook.ps1"
-$notebook = Join-Path $ResolvedScriptDir "$projectName.livemd"
 $spi = Join-Path $ResolvedScriptDir "$projectName.spi"
-$ipynb = Join-Path $ResolvedScriptDir "$projectName.livemd.ipynb"
+$ipynb = Join-Path $ResolvedScriptDir "$projectName.spi.ipynb"
 if (!$fast -and !$SkipNotebook) {
-    { pwsh -NoProfile -File $livebook --path $notebook --spi-path $spi --output-path $ipynb } | Invoke-Block -Retries 3
-}
-else {
-    { pwsh -NoProfile -File $livebook --path $notebook --spi-path $spi --export-only } | Invoke-Block
+    { pwsh -NoProfile -File $livebook --path $spi --output-path $ipynb } | Invoke-Block -Retries 3
 }
 
 if (!(BuildSpiral "$projectName.spi" "$projectName.fsx" "dice/lib" -Backend Fsharp)) {

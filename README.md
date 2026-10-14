@@ -58,10 +58,10 @@ Dice Sample
 <td>
 
 - Dice library  
-<https://i574n.github.io/dice/lib/dice.livemd.html>
+<https://i574n.github.io/dice/lib/dice.spi.html>
 
 - Dice smart contract notebook (Rust, NEAR Protocol)  
-<https://i574n.github.io/dice/contract/dice_contract.livemd.html>
+<https://i574n.github.io/dice/contract/dice_contract.spi.html>
 
 - Rolls on-chain history UI (Rust WASM frontend)  
 <https://i574n.github.io/dice/ui/dist>

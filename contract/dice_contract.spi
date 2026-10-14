@@ -5,6 +5,9 @@ open rust
 open rust.rust_operators
 open sm'_operators
 
+test dice_contract static =
+    open testing
+
 /// ## dice_contract
 
 /// ### state
@@ -14,12 +17,26 @@ type state =
         seeds : near.vector u8
     }
 
+///> rust -c
+test state =
+    ()
+
+///> rust -c
+test state_2 =
+    trace Verbose (fun () => "") id
+
 /// ### new
 inl new () : state =
     {
         version = 2
         seeds = "seeds" |> sm'.byte_slice |> near.new_vector
     }
+
+///> rust -c
+test new =
+    inl state = new ()
+    trace Verbose (fun () => "dice_contract") fun () => { state = #?*state }
+    trace Verbose (fun () => "") id
 
 /// ### max_seeds
 inl max_seeds () : convert.unativeint =
@@ -37,6 +54,37 @@ inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.
             fun () => "dice_contract.contribute_seed"
             fun () => { seed_excess_len seed_excess = #?*seed_excess }
     trace Debug (fun () => "") (join id)
+
+///> rust -c
+test contribute_seed =
+    inl replicate n =
+        let rec 루프 i acc =
+            if i > n
+            then acc
+            else
+                inl i' = i % 10
+                inl i' =
+                    if i' = 0
+                    then i % limit.max
+                    else i'
+                루프 (i + 1) (i' :: acc)
+        루프 1 []
+        |> listm.rev
+        |> listm'.box
+        |> listm'.to_array'
+
+    inl max_seeds : u32 = max_seeds () |> convert.convert
+    inl seeds = "" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut
+
+    conv max_seeds * 1.2f64
+    |> replicate
+    |> am'.map_base convert.u8
+    |> am'.to_vec
+    |> contribute_seed seeds
+
+    seeds
+    |> rust.len
+    |> _assert_eq max_seeds
 
 /// ### generate_random_number
 inl generate_random_number
@@ -102,6 +150,15 @@ inl generate_random_number
     trace Debug (fun () => "") (join id)
     result
 
+///> rust -cd near-token
+test generate_random_number =
+    2000
+    |> generate_random_number
+        ("" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut)
+        ("" |> sm'.to_std_string)
+        ("" |> sm'.to_std_string)
+    |> _assert_gt 0
+
 /// ### roll_within_bounds
 inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
     inl result =
@@ -116,6 +173,22 @@ inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
         fun () => { max rolls = #?*rolls; result = #?*result }
     trace Debug (fun () => "") (join id)
     result
+
+///> rust -c
+test roll_within_bounds =
+    inl rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.to_vec
+
+    rolls
+    |> roll_within_bounds 2000
+    |> _assert_eq' (optionm'.some' 995)
+
+///> rust -c
+test roll_within_bounds_2 =
+    inl rolls = ;[ 2; 2; 6; 4; 5 ] |> am'.to_vec
+
+    rolls
+    |> roll_within_bounds 2000
+    |> _assert_eq' (optionm'.some' 1715)
 
 /// ### main
 ///> _
