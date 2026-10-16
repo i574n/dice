@@ -130,6 +130,7 @@ test calculate_dice_count_4 =
     calculate_dice_count 362797056i32
     |> _assert_eq 11i32
 
+///> rust
 test calculate_dice_count_5 =
     fun () =>
         (calculate_dice_count 4738381338321616897u64 : i32)
@@ -138,6 +139,7 @@ test calculate_dice_count_5 =
     |> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 4738381338321616896")
     |> _assert_eq (Some true)
 
+///> rust
 test calculate_dice_count_6 =
     fun () =>
         (calculate_dice_count (limit.max : i64) : i32)
@@ -146,6 +148,7 @@ test calculate_dice_count_6 =
     |> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 4738381338321616896")
     |> _assert_eq (Some true)
 
+///> rust
 test calculate_dice_count_7 =
     fun () =>
         (calculate_dice_count 362797057i32 : i32)
