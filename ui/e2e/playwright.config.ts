@@ -1,12 +1,12 @@
 import { PlaywrightTestConfig, devices } from "@playwright/test"
 import * as path from "path"
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 5000
 
-const baseURL = `http://localhost:${PORT}`
+const baseURL = `https://localhost:${PORT}`
 
 export default {
-  timeout: 20 * 1000,
+  timeout: 60 * 1000,
   testDir: path.join(__dirname, 'tests'),
   retries: process.env.CI ? 1 : 0,
   outputDir: "test-results/",
@@ -15,9 +15,10 @@ export default {
 
   webServer: [
     {
-      command: `cd ${__dirname}/../dist && pwsh -c "~/.bun/bin/bunx --bun serve"`,
+      command: `cd ${__dirname}/../dist && pwsh -NoProfile -c "Start-Job -Name ssl-serve { & ~/.bun/bin/bunx --bun ssl-serve --ssl } | Out-Null; Start-Sleep 60; Stop-Job -Name ssl-serve; Receive-Job -Name ssl-serve -Wait -AutoRemoveJob"`,
       url: baseURL,
-      timeout: 40 * 1000,
+      timeout: 60 * 1000,
+      ignoreHTTPSErrors: true,
       reuseExistingServer: false, // !process.env.CI,
     },
   ],

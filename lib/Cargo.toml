@@ -1,3 +1,5 @@
+cargo-features = ["edition2024"]
+
 [package]
 name = "dice_lib"
 version.workspace = true
@@ -6,14 +8,6 @@ license-file.workspace = true
 repository.workspace = true
 
 [dependencies]
-fable_library_rust = { workspace = true, features = ["static_do_bindings", "datetime", "guid", "threaded"] }
-inline_colorization = { workspace = true }
-regex = { workspace = true }
-chrono = { workspace = true }
-rand = { version = "~0.9.0-alpha.2" }
-sha2 = "~0.11.0-pre.4"
-
-[dev-dependencies]
 
 [[bin]]
 name = "dice"

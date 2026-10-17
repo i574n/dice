@@ -6,44 +6,39 @@ param(
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
 . ../../deps/polyglot/scripts/core.ps1
-. ../../deps/polyglot/lib/spiral/lib.ps1
+. ../../deps/polyglot/deps/spiral/lib/spiral/lib.ps1
 
 
 $projectName = "dice_fsharp"
 
+$livebook = Join-Path $ScriptDir "../../deps/polyglot/deps/spiral/apps/kino/spi/run_notebook.ps1"
+$notebook = Join-Path $ScriptDir "$projectName.livemd"
 if (!$fast -and !$SkipNotebook) {
-    { . ../../apps/spiral/dist/Supervisor$(_exe) --execute-command "../../workspace/target/release/spiral_builder$(_exe) dib --path $ScriptDir/$projectName.dib" } | Invoke-Block -Retries 3 -Location ../../deps/polyglot/lib/fsharp
+    $ipynb = Join-Path $ScriptDir "$projectName.livemd.ipynb"
+    { pwsh -NoProfile -File $livebook --path $notebook --output-path $ipynb --no-spi } | Invoke-Block -Retries 3
 }
 
-{ . ../../deps/polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" fs } | Invoke-Block
+{ pwsh -NoProfile -File $livebook --path $notebook --no-spi --fs-path "$ScriptDir/$projectName.fs" --export-only } | Invoke-Block
 
-$runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
-$builderArgs = @("$projectName.fs", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
-{ . ../../deps/polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
+$runtime = $fast -or $env:CI ? ($IsWindows ? "win-x64" : "linux-x64") : $null
+$modules = @(GetFsharpRuntimePaths) + "../../deps/polyglot/lib/fsharp/Common.fs"
+if (!(PublishFsharp "$projectName.fs" -Modules $modules -Runtime $runtime)) {
+    throw "FSHARP-FAILED dice/lib/fsharp / dotnet publish"
+}
+
+$output = & "dist/$projectName$(_exe)" 2>&1 | ForEach-Object { "$_" }
+$exitCode = $LASTEXITCODE
+$output | ForEach-Object { Write-Output "dice/lib/fsharp/build.ps1 / run / $_" }
+$maxResult = [int]::MaxValue / 10
+$result = $output | ForEach-Object { if ($_ -match '\bmain / result: (-?\d+)') { $Matches[1] } } | Select-Object -Last 1
+if ($exitCode -ne 0 -or !$result -or [decimal]$result -lt 1 -or [decimal]$result -gt $maxResult) {
+    throw "FSHARP-FAILED dice/lib/fsharp / run exit code $exitCode, result '$result': expected a main trace with a result in 1..$maxResult"
+}
+Write-Output "FSHARP-OK dice/lib/fsharp / result $result"
 
 $targetDir = GetTargetDir $projectName
 
-{ BuildFable $targetDir $projectName "rs" } | Invoke-Block
-{ BuildFable $targetDir $projectName "ts" } | Invoke-Block
-{ BuildFable $targetDir $projectName "py" } | Invoke-Block
-
-(Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
-    -replace "../../../lib", "../../deps/polyglot/lib" `
-    -replace ".fsx`"]", ".rs`"]" `
-    | FixRust `
-    | Set-Content "$projectName.rs"
-
-(Get-Content "$targetDir/target/ts/polyglot/target/Builder/$projectName/$projectName.ts") `
-    | FixTypeScript `
-    | Set-Content "$projectName.ts"
-
-Copy-Item "$targetDir/target/py/polyglot/target/Builder/$projectName/$projectName.py" "$projectName.py" -Force
-
-cargo fmt --
-
-if (!$fast) {
-    { cargo run --release } | Invoke-Block
-}
+Write-Output "dice/lib/fsharp/build.ps1 / `$targetDir = $targetDir / `$projectName: $projectName / `$env:CI:'$env:CI'"
 
 if ($env:CI) {
     Remove-Item $targetDir -Recurse -Force -ErrorAction Ignore

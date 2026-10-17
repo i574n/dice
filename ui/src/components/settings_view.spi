@@ -1,32 +1,33 @@
 open rust.rust_operators
+open rust
 open sm'_operators
 open leptos
 
-inl global_state_log_render () : _ leptos.pre =
-    leptos.log $'"settings_view.global_state_log_render ()"'
+inl global_state_log_render () : _ (_ leptos.pre) =
+    leptos.log "settings_view.global_state_log_render ()"
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
-    inl global_state_json = leptos.create_memo fun () =>
-        leptos.log $'"settings_view.global_state_log_render () / global_state_json memo"'
+    inl global_state_json = leptos.new_arc_memo fun () =>
+        leptos.log "settings_view.global_state_log_render () / global_state_json memo"
 
-        inl global_state = join global_state
+        inl global_state = global_state |> rust.clone
         inl json : resultm.result' sm'.std_string sm'.std_string =
             !\($'"serde_json::to_string_pretty(&!global_state).map_err(|x| x.to_string())"')
         match json |> resultm.unbox with
         | Ok json => json |> sm'.from_std_string
-        | Error error => $'"Error: " + string !error + ""'
+        | Error error => "Error: " ++# sm'.from_std_string error
 
     global_state_json |> leptos.signal_get |> ui.text_block_pre.render fun () => ""
 
 inl render () =
     print_static "<settings_view.render>"
-    leptos.log $'"settings_view.render ()"'
+    leptos.log "settings_view.render ()"
 
     inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
     inl accounts =
-        leptos.create_memo fun () =>
+        leptos.new_arc_memo fun () =>
             leptos.signal_get_untracked global_state.core_state .data
             |> leptos.signal_get
             |> fun data =>
@@ -39,7 +40,7 @@ inl render () =
     inl edit_count, set_edit_count = leptos.create_signal 0i32
 
     inl accounts_data =
-        leptos.create_memo fun () =>
+        leptos.new_arc_memo fun () =>
             inl edit_count = edit_count |> leptos.signal_get
             accounts
             |> leptos.signal_get
@@ -48,67 +49,61 @@ inl render () =
                 (edit_count, i), x |> fst
 
     inl accounts_count =
-        leptos.create_memo fun () =>
+        leptos.new_arc_memo fun () =>
             accounts_data |> leptos.signal_get |> am'.from_vec |> length : i32
 
     inl delete_button index =
         inl on_click () =
-            fun () =>
-                leptos.signal_get_untracked global_state.core_state .data
-                |> leptos.signal_update fun data =>
-                    inl data = !data
-                    inl accounts = accounts |> leptos.signal_get
-                    heap { data with
-                        accounts =
-                            accounts
-                            |> am'.vec_retain (from_pair >> fun i, _ => i = index |> join fun x => x |> not)
-                            |> am'.vec_map' (from_pair >> snd >> fst >> leptos.signal_get)
-                    }
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_update fun data =>
+                inl data = !data
+                inl accounts = accounts |> leptos.signal_get
+                heap { data with
+                    accounts =
+                        accounts
+                        |> am'.vec_retain (from_pair >> fun i, _ => (i = index) |> join fun x => x |> not)
+                        |> am'.vec_map' (from_pair >> snd >> fst >> leptos.signal_get)
+                }
 
-                set_edit_count |> leptos.signal_update ((+) 1)
-            |> leptos.batch
-        !\\(on_click, $'"let !on_click = $0"')
+            set_edit_count |> leptos.signal_update ((+) 1)
 
         ui.icon_button.render
             (svg.cross.render (fun () => "h-5 w-5") [])
-            fun () => " pr-[7px] pl-[5px]" |> sm'.to_std_string
+            fun () => " pr-[7px] pl-[5px]"
             [
-                $'"on:click=move |_| !on_click()"'
+                leptos.on_click on_click
                 $'"aria-label=\\\"Delete\\\""'
             ]
 
     inl add_button () =
         inl on_click () =
-            fun () =>
-                leptos.signal_get_untracked global_state.core_state .data
-                |> leptos.signal_update fun data =>
-                    inl data = !data
-                    inl accounts = accounts |> leptos.signal_get
-                    inl accounts_count = accounts |> am'.from_vec |> length
-                    heap { data with
-                        accounts =
-                            accounts
-                            |> am'.vec_push (
-                                new_pair
-                                    accounts_count
-                                    (new_pair false ("" |> sm'.to_std_string) |> leptos.create_signal)
-                            )
-                            |> am'.vec_map' (from_pair >> snd >> fst >> leptos.signal_get)
-                    }
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_update fun data =>
+                inl data = !data
+                inl accounts = accounts |> leptos.signal_get
+                inl accounts_count = accounts |> am'.from_vec |> length
+                heap { data with
+                    accounts =
+                        accounts
+                        |> am'.vec_push (
+                            new_pair
+                                accounts_count
+                                (new_pair false ("" |> sm'.to_std_string) |> leptos.create_signal)
+                        )
+                        |> am'.vec_map' (from_pair >> snd >> fst >> leptos.signal_get)
+                }
+            set_edit_count |> leptos.signal_update ((+) 1)
 
-                set_edit_count |> leptos.signal_update ((+) 1)
-            |> leptos.batch
-        !\\(on_click, $'"let !on_click = $0"')
 
         ui.icon_button.render
             (svg.plus.render (fun () => "h-5 w-5") [])
-            fun () => " bg-gray-300 hover:bg-gray-200" |> sm'.to_std_string
+            fun () => " bg-gray-300 hover:bg-gray-200"
             [
-                $'"on:click=move |_| !on_click()"'
+                leptos.on_click on_click
                 $'"aria-label=\\\"Add\\\""'
             ]
 
-    ;[
+    :>[
         ui.accordion.render
             fun props => { props with
                 title = fun () => "Accounts"
@@ -122,17 +117,17 @@ inl render () =
                     leptos.for
                         accounts_data
                         fun pair =>
-                            inl i, _ = pair
-                            i
+                            inl (a, b), _ = pair
+                            new_pair a b
                         fun pair =>
                             inl (_, i), account = pair
                             leptos.div [
                                 $'"class=\\\"flex gap-[8px] [align-items:center]\\\""'
                             ] fun () =>
                                 inl i = join i
-                                :>(;[
+                                :>[
                                     ui.toggle.render
-                                        fun () => $'"account-" + string !i + ""'
+                                        fun () => "account-" ++# sm'.obj_to_string i
                                         fun () =>
                                             account
                                             |> leptos.signal_get
@@ -149,7 +144,7 @@ inl render () =
                                                 accounts =
                                                     data.accounts
                                                     |> am'.vec_mapi fun i' pair =>
-                                                        if i' = i |> fun x => join not x
+                                                        if (i' = i) |> fun x => join not x
                                                         then pair
                                                         else
                                                             inl enabled', account' = pair |> from_pair
@@ -175,7 +170,7 @@ inl render () =
                                                 accounts =
                                                     data.accounts
                                                     |> am'.vec_mapi fun i' pair =>
-                                                        if i' = i |> fun x => join not x
+                                                        if (i' = i) |> fun x => join not x
                                                         then pair
                                                         else
                                                             inl enabled', _ = pair |> from_pair
@@ -183,10 +178,10 @@ inl render () =
                                             })
                                     |> leptos.element_to_view
 
-                                    if (accounts_count |> leptos.signal_get) = 1i32
-                                    then ;[] |> leptos.views_to_view
+                                    if accounts_count |> leptos.signal_get = 1i32
+                                    then [] |> leptos.view_list_to_view
                                     else delete_button i |> leptos.element_to_view
-                                ])
+                                ]
                             |> leptos.element_to_fragment
                     |> leptos.view_to_fragment
                 |> leptos.element_to_fragment
@@ -201,7 +196,7 @@ inl render () =
                 leptos.div [
                     $'"class=\\\"flex flex-1 flex-col p-[11px] gap-[11px]\\\""'
                 ] fun () =>
-                    :>(;[
+                    :>[
                         ui.grid_pair.render
                             fun props => { props with
                                 class = fun () => "items-center p-0"
@@ -233,7 +228,7 @@ inl render () =
                                         leptos.signal_get_untracked global_state.core_state .debug
                                         |> leptos.signal_update not
                                     |> leptos.element_to_fragment
-                    ])
+                    ]
                 |> leptos.element_to_fragment
         |> leptos.element_to_view
 
@@ -250,6 +245,5 @@ inl render () =
                         fun () => global_state_log_render () |> leptos.element_to_fragment
                     |> leptos.element_to_fragment
             |> leptos.element_to_view
-        else ;[] |> leptos.views_to_view
+        else [] |> leptos.view_list_to_view
     ]
-    |> leptos.view_array_to_fragment

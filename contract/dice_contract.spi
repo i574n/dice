@@ -1,8 +1,12 @@
 /// # dice_contract
-//// package=../dice
+///- --package ../dice
 
 open rust
 open rust.rust_operators
+open sm'_operators
+
+test dice_contract static =
+    open testing
 
 /// ## dice_contract
 
@@ -13,6 +17,14 @@ type state =
         seeds : near.vector u8
     }
 
+///> rust -c
+test state =
+    ()
+
+///> rust -c
+test state_2 =
+    trace Verbose (fun () => "") id
+
 /// ### new
 inl new () : state =
     {
@@ -20,23 +32,59 @@ inl new () : state =
         seeds = "seeds" |> sm'.byte_slice |> near.new_vector
     }
 
+///> rust -c
+test new =
+    inl state = new ()
+    trace Verbose (fun () => "dice_contract") fun () => { state = #?*state }
+    trace Verbose (fun () => "") id
+
 /// ### max_seeds
-inl max_seeds () : unativeint =
-    100i32 |> convert
+inl max_seeds () : convert.unativeint =
+    100i32 |> convert.convert
 
 /// ### contribute_seed
 inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.vec u8) : () =
     seeds |> near.vector_extend seed
-
-    inl seed_excess_len = (seeds |> rust.len |> fun x => x : u32 |> i32) - (max_seeds () |> i32)
-
+    inl seed_excess_len =
+        (seeds |> rust.len |> fun x => x : u32 |> convert.i32) - (max_seeds () |> convert.i32)
     if seed_excess_len > 0 then
         inl seed_excess : am'.vec u8 =
             !\\(seed_excess_len, $'"!seeds.drain(0..$0 as u32).collect::<Vec<_>>()"')
         trace Debug
             fun () => "dice_contract.contribute_seed"
-            fun () => { seed_excess_len seed_excess = seed_excess |> sm'.format_debug }
+            fun () => { seed_excess_len seed_excess = #?*seed_excess }
     trace Debug (fun () => "") (join id)
+
+///> rust -c
+test contribute_seed =
+    inl replicate n =
+        let rec 루프 i acc =
+            if i > n
+            then acc
+            else
+                inl i' = i % 10
+                inl i' =
+                    if i' = 0
+                    then i % limit.max
+                    else i'
+                루프 (i + 1) (i' :: acc)
+        루프 1 []
+        |> listm.rev
+        |> listm'.box
+        |> listm'.to_array'
+
+    inl max_seeds : u32 = max_seeds () |> convert.convert
+    inl seeds = "" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut
+
+    conv max_seeds * 1.2f64
+    |> replicate
+    |> am'.map_base convert.u8
+    |> am'.to_vec
+    |> contribute_seed seeds
+
+    seeds
+    |> rust.len
+    |> _assert_eq max_seeds
 
 /// ### generate_random_number
 inl generate_random_number
@@ -87,20 +135,29 @@ inl generate_random_number
             block_timestamp
             block_height
             epoch_height
-            account_balance = account_balance |> sm'.format_debug
-            signer_account_id = signer_account_id |> sm'.to_string
-            predecessor_account_id = predecessor_account_id |> sm'.to_string
-            seed = seed |> sm'.format_debug
-            seeds = seeds |> sm'.format_debug
+            account_balance = #?*account_balance
+            signer_account_id = signer_account_id |> sm'.to_string'
+            predecessor_account_id = predecessor_account_id |> sm'.to_string'
+            seed = #?*seed
+            seeds = #?*seeds
             entropy_len = entropy |> am'.vec_len
-            entropy = entropy |> sm'.format_debug
-            hash_u8 = hash_u8 |> sm'.format_debug
+            entropy = #?*entropy
+            hash_u8 = #?*hash_u8
             rolls = rolls_list |> listm'.box |> listm'.to_array' |> am'.to_vec |> sm'.format_debug
         }
     inl sequential_roll = rolls_list |> lib.dice.create_sequential_roller
     inl result = lib.dice.roll_progressively sequential_roll true max
     trace Debug (fun () => "") (join id)
     result
+
+///> rust -cd near-token
+test generate_random_number =
+    2000
+    |> generate_random_number
+        ("" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut)
+        ("" |> sm'.to_std_string)
+        ("" |> sm'.to_std_string)
+    |> _assert_gt 0
 
 /// ### roll_within_bounds
 inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
@@ -113,181 +170,42 @@ inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
         |> optionm'.box
     trace Debug
         fun () => "dice_contract.roll_within_bounds"
-        fun () => { max rolls = rolls |> sm'.format_debug; result = result |> sm'.format_debug }
+        fun () => { max rolls = #?*rolls; result = #?*result }
     trace Debug (fun () => "") (join id)
     result
 
+///> rust -c
+test roll_within_bounds =
+    inl rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.to_vec
+
+    rolls
+    |> roll_within_bounds 2000
+    |> _assert_eq' (optionm'.some' 995)
+
+///> rust -c
+test roll_within_bounds_2 =
+    inl rolls = ;[ 2; 2; 6; 4; 5 ] |> am'.to_vec
+
+    rolls
+    |> roll_within_bounds 2000
+    |> _assert_eq' (optionm'.some' 1715)
+
 /// ### main
-///! _
+///> _
+
+inl main_native () : () =
+    global "#[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]\npub struct OldState {\n    version: u32,\n    seeds: near_sdk::store::vec::Vector<u8>,\n}"
+    global "#[near_sdk::near_bindgen]\n#[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]\npub struct State((u32, near_sdk::store::vec::Vector<u8>));"
+    global "impl From<OldState> for State {\n    fn from(old_state: OldState) -> Self {\n        Self((old_state.version + 1, old_state.seeds))\n    }\n}"
+    global "#[near_sdk::near_bindgen]\nimpl State {\n    #[init]\n    pub fn new() -> Self {\n        Self(dice_contract_new())\n    }\n    pub fn contribute_seed(&mut self, seed: Vec<u8>) {\n        dice_contract_contribute_seed(&mut self.0.1, seed)\n    }\n    pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) {\n        self.contribute_seed(seed)\n    }\n    pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 {\n        dice_contract_generate_random_number(&mut self.0.1, key, proof, max)\n    }\n    pub fn roll_within_bounds(&self, max: u64, rolls: Vec<u8>) -> Option<u64> {\n        dice_contract_roll_within_bounds(max, rolls)\n    }\n    #[result_serializer(borsh)]\n    pub fn roll_within_bounds_borsh(\n        &self,\n        #[serializer(borsh)] max: u64,\n        #[serializer(borsh)] rolls: Vec<u8>,\n    ) -> Option<u64> {\n        self.roll_within_bounds(max, rolls)\n    }\n}"
+    inl quiet () : () = set_trace_level Info
+    !!!!Export("dice_contract_new", ((fun () => inl () = quiet () in inl x = new () in x.version, x.seeds) : () -> u32 * near.vector u8))
+    !!!!Export("dice_contract_contribute_seed", ((fun (seeds, seed) => inl () = quiet () in contribute_seed seeds seed) : rust.ref (rust.mut' (near.vector u8)) * am'.vec u8 -> ()))
+    !!!!Export("dice_contract_generate_random_number", ((fun (seeds, key, proof, max) => inl () = quiet () in generate_random_number seeds key proof max) : rust.ref (rust.mut' (near.vector u8)) * sm'.std_string * sm'.std_string * u64 -> u64))
+    !!!!Export("dice_contract_roll_within_bounds", ((fun (max, rolls) => inl () = quiet () in roll_within_bounds max rolls) : u64 * am'.vec u8 -> optionm'.option' u64))
+
 
 inl main () =
-    !\($'"} //"') : ()
-
-    !\($'"#[derive( //"') : ()
-    !\($'"  near_sdk::PanicOnDefault, //"') : ()
-    !\($'"  borsh::BorshDeserialize, //"') : ()
-    !\($'"  borsh::BorshSerialize, //"') : ()
-    !\($'")] //"') : ()
-
-    !\($'"pub struct OldState { //"') : ()
-    !\($'"    version: u32, //"') : ()
-    !\($'"    seeds: near_sdk::store::vec::Vector<u8>, //"') : ()
-    !\($'"} //"') : ()
-
-    !\($'"#[near_sdk::near_bindgen] //"') : ()
-
-    !\($'"#[derive( //"') : ()
-    !\($'"  near_sdk::PanicOnDefault, //"') : ()
-    !\($'"  borsh::BorshDeserialize, //"') : ()
-    !\($'"  borsh::BorshSerialize, //"') : ()
-    !\($'")] //"') : ()
-
-    !\($'"pub struct State ( //"') : ()
-
-    !\($'"/*"') : ()
-    (null () : rust.type_emit state) |> ignore
-    !\($'"*/ )"') : ()
-
-    !\($'"impl From<OldState> for State { //"') : ()
-    !\($'"    fn from(old_state: OldState) -> Self { //"') : ()
-    !\($'"        Self((old_state.version + 1, old_state.seeds)) //"') : ()
-    !\($'"    } //"') : ()
-    !\($'"} //"') : ()
-
-    inl new_ () =
-        !\($'"#[init] //"') : ()
-        !\($'"pub fn new() -> Self { // 1"') : ()
-
-        (!\($'"true; /*"') : bool) |> ignore
-
-        (null () : rust.type_emit ()) |> ignore
-
-        (!\($'"true; */"') : bool) |> ignore
-
-        inl result = new ()
-        $'let _result = !result in _result |> (fun x -> Fable.Core.RustInterop.emitRustExpr x $"Self($0) // x") // 2' : ()
-
-        !\($'"} // 2."') : ()
-
-        !\($'"} // 1."') : ()
-
-        2
-
-    inl contribute_seed () =
-        !\($'"pub fn contribute_seed(&mut self, seed: Vec<u8>) { //"') : ()
-        inl seeds : rust.ref (rust.mut' (near.vector u8)) = !\($'$"&mut self.0.1"')
-        inl seed : am'.vec u8 = !\($'$"seed"')
-
-        seed |> contribute_seed seeds
-
-        !\($'"} //"') : ()
-
-        !\($'"} //"') : ()
-
-        !\($'"} //"') : ()
-
-        3
-
-    inl contribute_seed_borsh () =
-        !\($'"pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) { //"') : ()
-        !\($'"    self.contribute_seed(seed) //"') : ()
-        !\($'"} //"') : ()
-
-        1
-
-    inl generate_random_number () =
-        !\($'"pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 { //"') : ()
-
-        inl key : sm'.std_string = !\($'$"key"')
-        inl proof : sm'.std_string = !\($'$"proof"')
-        inl max : u64 = !\($'$"max"')
-
-        inl seeds : rust.ref (rust.mut' (near.vector u8)) = !\($'$"&mut self.0.1"')
-
-        inl result = generate_random_number seeds key proof max
-
-        !\($'"!result //"') : ()
-
-        !\($'"} //"') : ()
-
-        !\($'"} //"') : ()
-
-        !\($'"} //"') : ()
-
-        3
-
-    inl roll_within_bounds () =
-        !\($'"pub fn roll_within_bounds(&self, max: u64, rolls: Vec<u8>) -> Option<u64> { //"') : ()
-        inl max : u64 = !\($'$"max"')
-        inl rolls : am'.vec u8 = !\($'$"rolls"')
-        inl result = roll_within_bounds max rolls
-
-        !\\(result, $'"$0 //"') : ()
-
-        !\($'"} //"') : ()
-
-        !\($'"} //"') : ()
-
-        2
-
-    inl roll_within_bounds_borsh () =
-        !\($'"#[result_serializer(borsh)] //"') : ()
-        !\($'"pub fn roll_within_bounds_borsh( //"') : ()
-        !\($'"    &self, //"') : ()
-        !\($'"    #[serializer(borsh)] max: u64, //"') : ()
-        !\($'"    #[serializer(borsh)] rolls: Vec<u8>, //"') : ()
-        !\($'") -> Option<u64> { //"') : ()
-        !\($'"    self.roll_within_bounds(max, rolls) //"') : ()
-        !\($'"} //"') : ()
-
-        1
-
-
-    inl fns =
-        [
-            new_
-            contribute_seed
-            contribute_seed_borsh
-            generate_random_number
-            roll_within_bounds
-            roll_within_bounds_borsh
-        ]
-
-    inl rec loop acc fns i =
-        match fns with
-        | [] => acc
-        | x :: xs =>
-            !\($'"#[near_sdk::near_bindgen] //"') : ()
-            !\($'"impl State { //"') : ()
-            inl n = x ()
-            !\($'"} /* c"') : ()
-            inl rec loop' i' =
-                if i' <> 1 // <= n
-                then (!\($'"true; */ // ???? / i: !i / i\': !i' / acc: !acc / n: !n"') : bool) |> ignore
-                else
-                    (!\($'"true; // ??? / i: !i / i\': !i' / acc: !acc / n: !n"') : bool) |> ignore
-                    loop' (i' + 1)
-            loop' 1u8
-            loop (acc + n) xs (i + 1)
-    inl n = loop 0u8 fns 1u8
-
-
-    // !\($'"/* a"') : ()
-
-    // !\($'"} // b"') : ()
-
-    !\($'"fn _main() //"') : ()
-    !\($'" //"') : ()
-
-    inl rec loop' i' =
-        if i' <= n
-        then
-            (!\($'"true; { (); // ?? / i\': !i' / n: !n"') : bool) |> ignore
-            loop' (i' + 1)
-        else
-            (!\($'"true; { { (); // ? / i\': !i' / n: !n"') : bool) |> ignore
-            // (!\($'"true; */ // ?? / i\': !i' / n: !n"') : bool) |> ignore
-    loop' 1u8
-
-inl main () =
-    $'!main |> ignore' : ()
+    if is_rust ()
+    then main_native ()
+    else ()

@@ -1,35 +1,24 @@
-cargo-features = ["profile-rustflags"]
+cargo-features = ["profile-rustflags", "edition2024"]
 
 [workspace]
 resolver = "2"
 members = [
+    "lib",
     "contract",
     "contract/tests",
-    "lib/fsharp",
-    "lib",
-    "lib/contract",
     "ui"
 ]
 
 [workspace.package]
 version = "0.0.1"
-edition = "2021"
-license-file = "deps/polyglot/LICENSE"
+edition = "2024"
+license-file = "LICENSE"
 repository = "https://github.com/i574n/dice"
 
 [workspace.dependencies]
-fable_library_rust = { path = "deps/polyglot/lib/rust/fable/fable_modules/fable-library-rust", default-features = false, features = [] }
-inline_colorization = ">=0.1,<1"
 chrono = ">=0.4,<1"
 regex = "1.10"
-tokio = { version = "1.39" }
 futures = ">=0.3,<1"
-
-[[workspace.metadata.leptos]]
-name = "dice_ui"
-bin-package = "dice_ui"
-lib-package = "dice_ui"
-output-name = "ui"
 
 [profile.dev]
 incremental = true

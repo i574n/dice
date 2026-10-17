@@ -1,7 +1,8 @@
 * text=auto eol=lf
 
-yarn.lock merge=ours
 package-lock.json merge=ours
+bun.lockb merge=ours
+Cargo.lock merge=ours
 
-*.dib.ipynb linguist-generated
-*.dib.html linguist-generated
+*.livemd.ipynb linguist-generated
+*.livemd.html linguist-generated

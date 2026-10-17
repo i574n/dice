@@ -7,11 +7,10 @@ $ErrorActionPreference = "Stop"
 . ../deps/polyglot/scripts/core.ps1
 
 
-# npx -y tailwindcss -i input.css -o target/tailwind.css
-
 if (!$fast) {
-    ~/.bun/bin/bunx --bun ssl-serve --ssl dist
+    . $(Search-Command bunx) --bun ssl-serve --ssl dist
 } else {
-    $targetDir = "../deps/polyglot/target/polyglot/builder/dice_ui"
-    { trunk serve --dist="$targetDir/trunk" } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.89" }
+    . ../deps/polyglot/deps/spiral/lib/spiral/lib.ps1
+    $rustBindgen = [regex]::Match((Get-Content ../Cargo.lock -Raw), '(?m)^name = "wasm-bindgen"\r?\nversion = "([^"]+)"').Groups[1].Value
+    { trunk serve --dist="$(GetTargetDir dice_ui)/trunk-serve" --no-sri } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = $rustBindgen }
 }

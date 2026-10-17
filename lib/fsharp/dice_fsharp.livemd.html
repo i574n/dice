@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>dice_fsharp.dib</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>dice_fsharp.livemd</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7327,6 +7327,7 @@ a.anchor-link {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7346,7 +7347,12 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
+    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
+    if(elkUrl) {
+      const elkLayouts = (await import(elkUrl)).default;
+      mermaid.registerLayoutLoaders(elkLayouts);
+    }
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -7443,7 +7449,8 @@ a.anchor-link {
      * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
      */
     function cleanMermaidSvg(svg) {
-      return svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      return `${SVG_XML_HEADER}${svg}`;
     }
 
 
@@ -7469,6 +7476,285 @@ a.anchor-link {
       }
       return `<${tag} ${rest}>`;
     }
+
+
+  /**
+   * Named HTML entities with their decimal equivalent codes.
+   *
+   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
+   * */
+  const HTML_ENTITIES = `<!ENTITY Aacute "&#193;">
+<!ENTITY aacute "&#225;">
+<!ENTITY Acirc "&#194;">
+<!ENTITY acirc "&#226;">
+<!ENTITY acute "&#180;">
+<!ENTITY AElig "&#198;">
+<!ENTITY aelig "&#230;">
+<!ENTITY Agrave "&#192;">
+<!ENTITY agrave "&#224;">
+<!ENTITY alefsym "&#8501;">
+<!ENTITY Alpha "&#913;">
+<!ENTITY alpha "&#945;">
+<!ENTITY amp "&#38;">
+<!ENTITY and "&#8869;">
+<!ENTITY ang "&#8736;">
+<!ENTITY Aring "&#197;">
+<!ENTITY aring "&#229;">
+<!ENTITY asymp "&#8776;">
+<!ENTITY Atilde "&#195;">
+<!ENTITY atilde "&#227;">
+<!ENTITY Auml "&#196;">
+<!ENTITY auml "&#228;">
+<!ENTITY bdquo "&#8222;">
+<!ENTITY Beta "&#914;">
+<!ENTITY beta "&#946;">
+<!ENTITY brvbar "&#166;">
+<!ENTITY bull "&#8226;">
+<!ENTITY cap "&#8745;">
+<!ENTITY Ccedil "&#199;">
+<!ENTITY ccedil "&#231;">
+<!ENTITY cedil "&#184;">
+<!ENTITY cent "&#162;">
+<!ENTITY Chi "&#935;">
+<!ENTITY chi "&#967;">
+<!ENTITY circ "&#710;">
+<!ENTITY clubs "&#9827;">
+<!ENTITY cong "&#8773;">
+<!ENTITY copy "&#169;">
+<!ENTITY crarr "&#8629;">
+<!ENTITY cup "&#8746;">
+<!ENTITY curren "&#164;">
+<!ENTITY dagger "&#8224;">
+<!ENTITY Dagger "&#8225;">
+<!ENTITY darr "&#8595;">
+<!ENTITY dArr "&#8659;">
+<!ENTITY deg "&#176;">
+<!ENTITY Delta "&#916;">
+<!ENTITY delta "&#948;">
+<!ENTITY diams "&#9830;">
+<!ENTITY divide "&#247;">
+<!ENTITY Eacute "&#201;">
+<!ENTITY eacute "&#233;">
+<!ENTITY Ecirc "&#202;">
+<!ENTITY ecirc "&#234;">
+<!ENTITY Egrave "&#200;">
+<!ENTITY egrave "&#232;">
+<!ENTITY empty "&#8709;">
+<!ENTITY emsp "&#8195;">
+<!ENTITY ensp "&#8194;">
+<!ENTITY epsilon "&#949;">
+<!ENTITY Epsilon "&#917;">
+<!ENTITY equiv "&#8801;">
+<!ENTITY Eta "&#919;">
+<!ENTITY eta "&#951;">
+<!ENTITY ETH "&#208;">
+<!ENTITY eth "&#240;">
+<!ENTITY Euml "&#203;">
+<!ENTITY euml "&#235;">
+<!ENTITY exist "&#8707;">
+<!ENTITY fnof "&#402;">
+<!ENTITY forall "&#8704;">
+<!ENTITY frac12 "&#189;">
+<!ENTITY frac14 "&#188;">
+<!ENTITY frac34 "&#190;">
+<!ENTITY frasl "&#8260;">
+<!ENTITY Gamma "&#915;">
+<!ENTITY gamma "&#947;">
+<!ENTITY ge "&#8805;">
+<!ENTITY gt "&#62;">
+<!ENTITY harr "&#8596;">
+<!ENTITY hArr "&#8660;">
+<!ENTITY hearts "&#9829;">
+<!ENTITY hellip "&#8230;">
+<!ENTITY Iacute "&#205;">
+<!ENTITY iacute "&#237;">
+<!ENTITY Icirc "&#206;">
+<!ENTITY icirc "&#238;">
+<!ENTITY iexcl "&#161;">
+<!ENTITY Igrave "&#204;">
+<!ENTITY igrave "&#236;">
+<!ENTITY image "&#8465;">
+<!ENTITY infin "&#8734;">
+<!ENTITY int "&#8747;">
+<!ENTITY Iota "&#921;">
+<!ENTITY iota "&#953;">
+<!ENTITY iquest "&#191;">
+<!ENTITY isin "&#8712;">
+<!ENTITY Iuml "&#207;">
+<!ENTITY iuml "&#239;">
+<!ENTITY Kappa "&#922;">
+<!ENTITY kappa "&#954;">
+<!ENTITY Lambda "&#923;">
+<!ENTITY lambda "&#955;">
+<!ENTITY lang "&#9001;">
+<!ENTITY laquo "&#171;">
+<!ENTITY larr "&#8592;">
+<!ENTITY lArr "&#8656;">
+<!ENTITY lceil "&#8968;">
+<!ENTITY ldquo "&#8220;">
+<!ENTITY le "&#8804;">
+<!ENTITY lfloor "&#8970;">
+<!ENTITY lowast "&#8727;">
+<!ENTITY loz "&#9674;">
+<!ENTITY lrm "&#8206;">
+<!ENTITY lsaquo "&#8249;">
+<!ENTITY lsquo "&#8216;">
+<!ENTITY lt "&#60;">
+<!ENTITY macr "&#175;">
+<!ENTITY mdash "&#8212;">
+<!ENTITY micro "&#181;">
+<!ENTITY middot "&#183;">
+<!ENTITY minus "&#8722;">
+<!ENTITY Mu "&#924;">
+<!ENTITY mu "&#956;">
+<!ENTITY nabla "&#8711;">
+<!ENTITY nbsp "&#160;">
+<!ENTITY ndash "&#8211;">
+<!ENTITY ne "&#8800;">
+<!ENTITY ni "&#8715;">
+<!ENTITY not "&#172;">
+<!ENTITY notin "&#8713;">
+<!ENTITY nsub "&#8836;">
+<!ENTITY Ntilde "&#209;">
+<!ENTITY ntilde "&#241;">
+<!ENTITY Nu "&#925;">
+<!ENTITY nu "&#957;">
+<!ENTITY Oacute "&#211;">
+<!ENTITY oacute "&#243;">
+<!ENTITY Ocirc "&#212;">
+<!ENTITY ocirc "&#244;">
+<!ENTITY OElig "&#338;">
+<!ENTITY oelig "&#339;">
+<!ENTITY Ograve "&#210;">
+<!ENTITY ograve "&#242;">
+<!ENTITY oline "&#8254;">
+<!ENTITY Omega "&#937;">
+<!ENTITY omega "&#969;">
+<!ENTITY Omicron "&#927;">
+<!ENTITY omicron "&#959;">
+<!ENTITY oplus "&#8853;">
+<!ENTITY or "&#8870;">
+<!ENTITY ordf "&#170;">
+<!ENTITY ordm "&#186;">
+<!ENTITY Oslash "&#216;">
+<!ENTITY oslash "&#248;">
+<!ENTITY Otilde "&#213;">
+<!ENTITY otilde "&#245;">
+<!ENTITY otimes "&#8855;">
+<!ENTITY Ouml "&#214;">
+<!ENTITY ouml "&#246;">
+<!ENTITY para "&#182;">
+<!ENTITY part "&#8706;">
+<!ENTITY permil "&#8240;">
+<!ENTITY perp "&#8869;">
+<!ENTITY Phi "&#934;">
+<!ENTITY phi "&#966;">
+<!ENTITY Pi "&#928;">
+<!ENTITY pi "&#960;">
+<!ENTITY piv "&#982;">
+<!ENTITY plusmn "&#177;">
+<!ENTITY pound "&#163;">
+<!ENTITY prime "&#8242;">
+<!ENTITY Prime "&#8243;">
+<!ENTITY prod "&#8719;">
+<!ENTITY prop "&#8733;">
+<!ENTITY Psi "&#936;">
+<!ENTITY psi "&#968;">
+<!ENTITY quot "&#34;">
+<!ENTITY radic "&#8730;">
+<!ENTITY rang "&#9002;">
+<!ENTITY raquo "&#187;">
+<!ENTITY rarr "&#8594;">
+<!ENTITY rArr "&#8658;">
+<!ENTITY rceil "&#8969;">
+<!ENTITY rdquo "&#8221;">
+<!ENTITY real "&#8476;">
+<!ENTITY reg "&#174;">
+<!ENTITY rfloor "&#8971;">
+<!ENTITY Rho "&#929;">
+<!ENTITY rho "&#961;">
+<!ENTITY rlm "&#8207;">
+<!ENTITY rsaquo "&#8250;">
+<!ENTITY rsquo "&#8217;">
+<!ENTITY sbquo "&#8218;">
+<!ENTITY Scaron "&#352;">
+<!ENTITY scaron "&#353;">
+<!ENTITY sdot "&#8901;">
+<!ENTITY sect "&#167;">
+<!ENTITY shy "&#173;">
+<!ENTITY Sigma "&#931;">
+<!ENTITY sigma "&#963;">
+<!ENTITY sigmaf "&#962;">
+<!ENTITY sim "&#8764;">
+<!ENTITY spades "&#9824;">
+<!ENTITY sub "&#8834;">
+<!ENTITY sube "&#8838;">
+<!ENTITY sum "&#8721;">
+<!ENTITY sup "&#8835;">
+<!ENTITY sup1 "&#185;">
+<!ENTITY sup2 "&#178;">
+<!ENTITY sup3 "&#179;">
+<!ENTITY supe "&#8839;">
+<!ENTITY szlig "&#223;">
+<!ENTITY Tau "&#932;">
+<!ENTITY tau "&#964;">
+<!ENTITY there4 "&#8756;">
+<!ENTITY Theta "&#920;">
+<!ENTITY theta "&#952;">
+<!ENTITY thetasym "&#977;">
+<!ENTITY thinsp "&#8201;">
+<!ENTITY THORN "&#222;">
+<!ENTITY thorn "&#254;">
+<!ENTITY tilde "&#732;">
+<!ENTITY times "&#215;">
+<!ENTITY trade "&#8482;">
+<!ENTITY Uacute "&#218;">
+<!ENTITY uacute "&#250;">
+<!ENTITY uarr "&#8593;">
+<!ENTITY uArr "&#8657;">
+<!ENTITY Ucirc "&#219;">
+<!ENTITY ucirc "&#251;">
+<!ENTITY Ugrave "&#217;">
+<!ENTITY ugrave "&#249;">
+<!ENTITY uml "&#168;">
+<!ENTITY upsih "&#978;">
+<!ENTITY Upsilon "&#933;">
+<!ENTITY upsilon "&#965;">
+<!ENTITY Uuml "&#220;">
+<!ENTITY uuml "&#252;">
+<!ENTITY weierp "&#8472;">
+<!ENTITY Xi "&#926;">
+<!ENTITY xi "&#958;">
+<!ENTITY Yacute "&#221;">
+<!ENTITY yacute "&#253;">
+<!ENTITY yen "&#165;">
+<!ENTITY Yuml "&#376;">
+<!ENTITY yuml "&#255;">
+<!ENTITY Zeta "&#918;">
+<!ENTITY zeta "&#950;">
+<!ENTITY zwj "&#8205;">
+<!ENTITY zwnj "&#8204;">`.replace(/\n/g, ' ');
+
+  /**
+   * A reasonably strict xml declaration.
+   */
+  const XML_DECL = '<?xml version="1.0" standalone="no"?>';
+
+  /**
+   * The beginning of the XML doctype declaration.
+   */
+  const DOCTYPE_START = `<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
+
+  /**
+   * The end of the XML docype declaration.
+   */
+  const DOCTYPE_END = ']>';
+
+  /**
+   * A full header for an SVG XML document.
+   */
+  const SVG_XML_HEADER = `${XML_DECL}
+    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
 
     void Promise.all([...diagrams].map(renderOneMarmaid));
   });
@@ -7540,11 +7826,10 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="ch">#!import ../../../polyglot/lib/fsharp/Notebooks.dib</span>
-<span class="c1">#!import ../../../polyglot/lib/fsharp/Testing.dib</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="ch">#!import ../../../polyglot/lib/fsharp/Notebooks.livemd</span>
 </pre></div>
 </div>
 </div>
@@ -7555,10 +7840,36 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="ch">#!import ../../../polyglot/lib/fsharp/Common.fs</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
+
+<span class="c1">#r "nuget: Expecto, 11.0.0-alpha8"</span>
+
+<span class="nb">type</span> <span class="n">AssertExceptionFormatter</span> <span class="p">(</span><span class="n">ex</span><span class="p">)</span> <span class="o">=</span>
+    <span class="n">member</span> <span class="n">_</span><span class="o">.</span><span class="n">Text</span> <span class="o">=</span>
+        <span class="n">ex</span><span class="o">.</span><span class="n">ToString</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">Replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\u001b</span><span class="s2">[32m"</span><span class="p">,</span> <span class="s2">"&lt;span style=</span><span class="se">\"</span><span class="s2">color: green;</span><span class="se">\"</span><span class="s2">&gt;"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">Replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\u001b</span><span class="s2">[39m"</span><span class="p">,</span> <span class="s2">"&lt;/span&gt;"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">Replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\u001b</span><span class="s2">[31m"</span><span class="p">,</span> <span class="s2">"&lt;span style=</span><span class="se">\"</span><span class="s2">color: red;</span><span class="se">\"</span><span class="s2">&gt;"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">Replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"&lt;br/&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">Formatter</span><span class="o">.</span><span class="n">Register</span><span class="o">&lt;</span><span class="n">AssertExceptionFormatter</span><span class="o">&gt;</span> <span class="p">((</span><span class="n">fun</span> <span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="n">AssertExceptionFormatter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">Text</span><span class="p">),</span> <span class="s2">"text/html"</span><span class="p">)</span>
+
+<span class="n">let</span> <span class="n">inline</span> <span class="n">__expect</span> <span class="n">fn</span> <span class="n">log</span> <span class="n">expected</span> <span class="n">actual</span> <span class="o">=</span>
+    <span class="k">if</span> <span class="n">log</span> <span class="n">then</span> <span class="n">printfn</span> <span class="err">$</span><span class="s2">"{actual.ToDisplayString ()}"</span>
+    <span class="k">try</span>
+        <span class="s2">"Testing.__expect"</span> <span class="o">|&gt;</span> <span class="n">fn</span> <span class="n">actual</span> <span class="n">expected</span>
+    <span class="k">with</span> <span class="p">:</span><span class="err">?</span> <span class="n">Expecto</span><span class="o">.</span><span class="n">AssertException</span> <span class="k">as</span> <span class="n">ex</span> <span class="o">-&gt;</span>
+        <span class="n">AssertExceptionFormatter</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span><span class="o">.</span><span class="n">Display</span> <span class="p">()</span> <span class="o">|&gt;</span> <span class="n">ignore</span>
+        <span class="n">failwith</span> <span class="p">(</span><span class="n">ex</span><span class="o">.</span><span class="n">GetType</span><span class="p">()</span><span class="o">.</span><span class="n">FullName</span><span class="p">)</span>
+
+<span class="n">let</span> <span class="n">inline</span> <span class="n">__assertEqual</span> <span class="n">log</span> <span class="n">expected</span> <span class="n">actual</span> <span class="o">=</span> <span class="n">__expect</span> <span class="n">Expecto</span><span class="o">.</span><span class="n">Expect</span><span class="o">.</span><span class="n">equal</span> <span class="n">log</span> <span class="n">expected</span> <span class="n">actual</span>
+<span class="n">let</span> <span class="n">inline</span> <span class="n">_assertEqual</span> <span class="n">expected</span> <span class="n">actual</span> <span class="o">=</span> <span class="n">__assertEqual</span> <span class="n">true</span> <span class="n">expected</span> <span class="n">actual</span>
+
+<span class="n">let</span> <span class="n">inline</span> <span class="n">__throwsC</span> <span class="n">log</span> <span class="n">expected</span> <span class="n">actual</span> <span class="o">=</span> <span class="n">__expect</span> <span class="n">Expecto</span><span class="o">.</span><span class="n">Expect</span><span class="o">.</span><span class="n">throwsC</span> <span class="n">log</span> <span class="n">expected</span> <span class="n">actual</span>
+<span class="n">let</span> <span class="n">inline</span> <span class="n">_throwsC</span> <span class="n">expected</span> <span class="n">actual</span> <span class="o">=</span> <span class="n">__throwsC</span> <span class="n">true</span> <span class="n">expected</span> <span class="n">actual</span>
 </pre></div>
 </div>
 </div>
@@ -7569,7 +7880,21 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="ch">#!import ../../../polyglot/lib/fsharp/Common.fs</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#if !INTERACTIVE</span>
@@ -7584,7 +7909,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7594,12 +7919,12 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">sixthPowerSequence</span> <span class="p">()</span> <span class="o">=</span>
@@ -7609,15 +7934,15 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">sixthPowerSequence</span> <span class="p">()</span>
 <span class="o">|&gt;</span> <span class="n">Seq</span><span class="o">.</span><span class="n">take</span> <span class="mi">8</span>
@@ -7635,15 +7960,13 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>[1; 6; 36; 216; 1296; 7776; 46656; 279936]
-
-</pre>
+<pre>[1; 6; 36; 216; 1296; 7776; 46656; 279936]</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7653,12 +7976,12 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=10">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">rec</span> <span class="n">accumulateDiceRolls</span> <span class="n">log</span> <span class="n">rolls</span> <span class="n">power</span> <span class="n">acc</span> <span class="o">=</span>
@@ -7682,15 +8005,15 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=10">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=11">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">accumulateDiceRolls</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="n">printfn</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">"</span><span class="p">))</span> <span class="p">[</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]</span> <span class="mi">0</span> <span class="mi">1000</span>
 <span class="o">|&gt;</span> <span class="n">_assertEqual</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="mi">1006</span><span class="p">,</span> <span class="p">[</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]))</span>
@@ -7708,22 +8031,20 @@ a.anchor-link {
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>accumulateDiceRolls / power: 0 / acc: 1000 / roll: 6 / value: 5
 accumulateDiceRolls / power: -1 / acc: 1005
-Some (1006, [5; 4; 3; 2])
-
-</pre>
+Some (1006, [5; 4; 3; 2])</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=11">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=12">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">accumulateDiceRolls</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="n">printfn</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">"</span><span class="p">))</span> <span class="p">[</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]</span> <span class="mi">1</span> <span class="mi">1000</span>
 <span class="o">|&gt;</span> <span class="n">_assertEqual</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="mi">1035</span><span class="p">,</span> <span class="p">[</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]))</span>
@@ -7742,22 +8063,20 @@ Some (1006, [5; 4; 3; 2])
 <pre>accumulateDiceRolls / power: 1 / acc: 1000 / roll: 6 / value: 30
 accumulateDiceRolls / power: 0 / acc: 1030 / roll: 5 / value: 4
 accumulateDiceRolls / power: -1 / acc: 1034
-Some (1035, [4; 3; 2])
-
-</pre>
+Some (1035, [4; 3; 2])</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=12">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=13">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">accumulateDiceRolls</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="n">printfn</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">"</span><span class="p">))</span> <span class="p">[</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]</span> <span class="mi">2</span> <span class="mi">1000</span>
 <span class="o">|&gt;</span> <span class="n">_assertEqual</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="mi">1208</span><span class="p">,</span> <span class="p">[</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]))</span>
@@ -7777,15 +8096,13 @@ Some (1035, [4; 3; 2])
 accumulateDiceRolls / power: 1 / acc: 1180 / roll: 5 / value: 24
 accumulateDiceRolls / power: 0 / acc: 1204 / roll: 4 / value: 3
 accumulateDiceRolls / power: -1 / acc: 1207
-Some (1208, [3; 2])
-
-</pre>
+Some (1208, [3; 2])</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=13">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=14">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7795,12 +8112,12 @@ Some (1208, [3; 2])
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=14">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=15">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">rollWithinBounds</span> <span class="n">log</span> <span class="nb">max</span> <span class="n">rolls</span> <span class="o">=</span>
@@ -7813,15 +8130,15 @@ Some (1208, [3; 2])
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=15">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=16">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">rollWithinBounds</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="n">printfn</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">"</span><span class="p">))</span> <span class="mi">2000</span> <span class="p">[</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span> <span class="p">]</span>
 <span class="o">|&gt;</span> <span class="n">_assertEqual</span> <span class="p">(</span><span class="n">Some</span> <span class="mi">995</span><span class="p">)</span>
@@ -7843,22 +8160,20 @@ accumulateDiceRolls / power: 2 / acc: 864 / roll: 4 / value: 108
 accumulateDiceRolls / power: 1 / acc: 972 / roll: 4 / value: 18
 accumulateDiceRolls / power: 0 / acc: 990 / roll: 5 / value: 4
 accumulateDiceRolls / power: -1 / acc: 994
-Some 995
-
-</pre>
+Some 995</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=16">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=17">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">rollWithinBounds</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="n">printfn</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">"</span><span class="p">))</span> <span class="mi">2000</span> <span class="p">[</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span> <span class="p">]</span>
 <span class="o">|&gt;</span> <span class="n">_assertEqual</span> <span class="p">(</span><span class="n">Some</span> <span class="mi">1715</span><span class="p">)</span>
@@ -7880,22 +8195,20 @@ accumulateDiceRolls / power: 2 / acc: 1512 / roll: 6 / value: 180
 accumulateDiceRolls / power: 1 / acc: 1692 / roll: 4 / value: 18
 accumulateDiceRolls / power: 0 / acc: 1710 / roll: 5 / value: 4
 accumulateDiceRolls / power: -1 / acc: 1714
-Some 1715
-
-</pre>
+Some 1715</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=17">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=18">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">rollWithinBounds</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="n">printfn</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">"</span><span class="p">))</span> <span class="mi">2000</span> <span class="p">[</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span> <span class="p">]</span>
 <span class="o">|&gt;</span> <span class="n">_assertEqual</span> <span class="kc">None</span>
@@ -7917,15 +8230,13 @@ accumulateDiceRolls / power: 2 / acc: 3888 / roll: 1
 accumulateDiceRolls / power: 1 / acc: 3888 / roll: 2 / value: 6
 accumulateDiceRolls / power: 0 / acc: 3894 / roll: 3 / value: 2
 accumulateDiceRolls / power: -1 / acc: 3896
-&lt;null&gt;
-
-</pre>
+&lt;null&gt;</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=18">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7935,38 +8246,38 @@ accumulateDiceRolls / power: -1 / acc: 3896
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=19">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=20">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">inline</span> <span class="n">calculateDiceCount</span> <span class="n">log</span> <span class="nb">max</span> <span class="o">=</span>
-    <span class="n">let</span> <span class="n">rec</span> <span class="n">loop</span> <span class="n">n</span> <span class="n">p</span> <span class="o">=</span>
+    <span class="n">let</span> <span class="n">rec</span> <span class="n">루프</span> <span class="n">n</span> <span class="n">p</span> <span class="o">=</span>
         <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="nb">max</span>
-        <span class="n">then</span> <span class="n">loop</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="n">then</span> <span class="n">루프</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
         <span class="k">else</span>
             <span class="n">log</span> <span class="o">|&gt;</span> <span class="n">Option</span><span class="o">.</span><span class="n">iter</span> <span class="p">((</span><span class="o">|&gt;</span><span class="p">)</span> <span class="err">$</span><span class="s2">"calculateDiceCount / max: </span><span class="si">{max}</span><span class="s2"> / n: </span><span class="si">{n}</span><span class="s2"> / p: </span><span class="si">{p}</span><span class="s2">"</span><span class="p">)</span>
             <span class="n">n</span>
     <span class="k">if</span> <span class="nb">max</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">then</span> <span class="mi">1</span>
-    <span class="k">else</span> <span class="n">loop</span> <span class="mi">0</span> <span class="mi">1</span>
+    <span class="k">else</span> <span class="n">루프</span> <span class="mi">0</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=20">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=21">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">calculateDiceCount</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="n">printfn</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">"</span><span class="p">))</span> <span class="mi">36</span>
 <span class="o">|&gt;</span> <span class="n">_assertEqual</span> <span class="mi">2</span>
@@ -7983,22 +8294,20 @@ accumulateDiceRolls / power: -1 / acc: 3896
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>calculateDiceCount / max: 36 / n: 2 / p: 36
-2
-
-</pre>
+2</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=21">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=22">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">calculateDiceCount</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="n">printfn</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">"</span><span class="p">))</span> <span class="mi">7777</span>
 <span class="o">|&gt;</span> <span class="n">_assertEqual</span> <span class="mi">6</span>
@@ -8015,15 +8324,13 @@ accumulateDiceRolls / power: -1 / acc: 3896
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>calculateDiceCount / max: 7777 / n: 6 / p: 46656
-6
-
-</pre>
+6</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=22">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=23">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8033,33 +8340,24 @@ accumulateDiceRolls / power: -1 / acc: 3896
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=23">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=24">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#if FABLE_COMPILER_RUST</span>
-<span class="n">let</span> <span class="n">rollDice</span> <span class="p">()</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">=</span>
-<span class="c1">#if !WASM &amp;&amp; !CONTRACT</span>
-    <span class="n">Fable</span><span class="o">.</span><span class="n">Core</span><span class="o">.</span><span class="n">RustInterop</span><span class="o">.</span><span class="n">emitRustExpr</span> <span class="p">()</span> <span class="s2">"rand::Rng::gen_range(&amp;mut rand::thread_rng(), 1..7)"</span>
-<span class="c1">#else</span>
-    <span class="mi">1</span>
-<span class="c1">#endif</span>
-<span class="c1">#else</span>
-<span class="n">let</span> <span class="n">private</span> <span class="n">random</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="n">Random</span> <span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">private</span> <span class="n">random</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="n">Random</span> <span class="p">()</span>
 <span class="n">let</span> <span class="n">rollDice</span> <span class="p">()</span> <span class="o">=</span>
     <span class="n">random</span><span class="o">.</span><span class="n">Next</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-<span class="c1">#endif</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=24">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=25">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8069,12 +8367,12 @@ accumulateDiceRolls / power: -1 / acc: 3896
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=25">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=26">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">rotateNumber</span> <span class="nb">max</span> <span class="n">n</span> <span class="o">=</span>
@@ -8085,7 +8383,7 @@ accumulateDiceRolls / power: -1 / acc: 3896
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=26">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=27">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8095,12 +8393,12 @@ accumulateDiceRolls / power: -1 / acc: 3896
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=27">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=28">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">rotateNumbers</span> <span class="nb">max</span> <span class="n">items</span> <span class="o">=</span>
@@ -8110,15 +8408,15 @@ accumulateDiceRolls / power: -1 / acc: 3896
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=28">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=29">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="p">[</span> <span class="o">-</span><span class="mi">1</span> <span class="o">..</span> <span class="mi">14</span> <span class="p">]</span>
 <span class="o">|&gt;</span> <span class="n">rotateNumbers</span> <span class="mi">6</span>
@@ -8136,15 +8434,13 @@ accumulateDiceRolls / power: -1 / acc: 3896
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>[5; 6; 1; 2; 3; 4; 5; 6; 1; 2; 3; 4; 5; 6; 1; 2]
-
-</pre>
+<pre>[5; 6; 1; 2; 3; 4; 5; 6; 1; 2; 3; 4; 5; 6; 1; 2]</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=29">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=30">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8154,12 +8450,12 @@ accumulateDiceRolls / power: -1 / acc: 3896
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=30">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=31">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">createSequentialRoller</span> <span class="nb">list</span> <span class="o">=</span>
@@ -8177,7 +8473,7 @@ accumulateDiceRolls / power: -1 / acc: 3896
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=31">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=32">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8187,39 +8483,39 @@ accumulateDiceRolls / power: -1 / acc: 3896
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=32">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=33">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">rollProgressively</span> <span class="n">log</span> <span class="n">roll</span> <span class="n">reroll</span> <span class="nb">max</span> <span class="o">=</span>
     <span class="n">let</span> <span class="n">power</span> <span class="o">=</span> <span class="p">(</span><span class="n">calculateDiceCount</span> <span class="n">log</span> <span class="nb">max</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="n">let</span> <span class="n">rec</span> <span class="n">loop</span> <span class="n">rolls</span> <span class="n">size</span> <span class="o">=</span>
+    <span class="n">let</span> <span class="n">rec</span> <span class="n">루프</span> <span class="n">rolls</span> <span class="n">size</span> <span class="o">=</span>
         <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;</span> <span class="n">power</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="n">then</span> <span class="n">loop</span> <span class="p">(</span><span class="n">roll</span> <span class="p">()</span> <span class="p">::</span> <span class="n">rolls</span><span class="p">)</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">then</span> <span class="n">루프</span> <span class="p">(</span><span class="n">roll</span> <span class="p">()</span> <span class="p">::</span> <span class="n">rolls</span><span class="p">)</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span>
             <span class="k">match</span> <span class="n">accumulateDiceRolls</span> <span class="n">log</span> <span class="n">rolls</span> <span class="n">power</span> <span class="mi">0</span> <span class="k">with</span>
             <span class="o">|</span> <span class="n">Some</span> <span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="n">when</span> <span class="n">result</span> <span class="o">&lt;=</span> <span class="nb">max</span> <span class="o">-&gt;</span> <span class="n">result</span>
-            <span class="o">|</span> <span class="n">_</span> <span class="n">when</span> <span class="n">reroll</span> <span class="o">-&gt;</span> <span class="n">loop</span> <span class="p">(</span><span class="n">List</span><span class="o">.</span><span class="n">init</span> <span class="n">power</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">roll</span> <span class="p">()))</span> <span class="n">power</span>
-            <span class="o">|</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">loop</span> <span class="p">(</span><span class="n">roll</span> <span class="p">()</span> <span class="p">::</span> <span class="n">rolls</span><span class="p">)</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">loop</span> <span class="p">[]</span> <span class="mi">0</span>
+            <span class="o">|</span> <span class="n">_</span> <span class="n">when</span> <span class="n">reroll</span> <span class="o">-&gt;</span> <span class="n">루프</span> <span class="p">(</span><span class="n">List</span><span class="o">.</span><span class="n">init</span> <span class="n">power</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">roll</span> <span class="p">()))</span> <span class="n">power</span>
+            <span class="o">|</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">루프</span> <span class="p">(</span><span class="n">roll</span> <span class="p">()</span> <span class="p">::</span> <span class="n">rolls</span><span class="p">)</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">루프</span> <span class="p">[]</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=33">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=34">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">rollProgressively</span> <span class="kc">None</span> <span class="n">rollDice</span> <span class="n">false</span> <span class="mi">1</span>
 <span class="o">|&gt;</span> <span class="n">_assertEqual</span> <span class="mi">1</span>
@@ -8235,22 +8531,20 @@ accumulateDiceRolls / power: -1 / acc: 3896
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>1
-
-</pre>
+<pre>1</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=34">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=35">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">let</span> <span class="n">sequentialRoll</span> <span class="o">=</span> <span class="n">createSequentialRoller</span> <span class="p">[</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">1</span> <span class="p">]</span>
 
@@ -8275,22 +8569,20 @@ accumulateDiceRolls / power: 2 / acc: 864 / roll: 4 / value: 108
 accumulateDiceRolls / power: 1 / acc: 972 / roll: 4 / value: 18
 accumulateDiceRolls / power: 0 / acc: 990 / roll: 5 / value: 4
 accumulateDiceRolls / power: -1 / acc: 994
-995
-
-</pre>
+995</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=35">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=36">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="n">let</span> <span class="n">sequentialRoll</span> <span class="o">=</span> <span class="n">createSequentialRoller</span> <span class="p">[</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]</span>
 
@@ -8311,7 +8603,7 @@ accumulateDiceRolls / power: -1 / acc: 994
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;fun:it@5-13&gt;
+<pre>&lt;fun:it@624-10&gt;
 
 calculateDiceCount / max: 2000 / n: 5 / p: 7776
 accumulateDiceRolls / power: 4 / acc: 0 / roll: 2 / value: 1296
@@ -8320,14 +8612,12 @@ accumulateDiceRolls / power: 2 / acc: 2160 / roll: 4 / value: 108
 accumulateDiceRolls / power: 1 / acc: 2268 / roll: 4 / value: 18
 accumulateDiceRolls / power: 0 / acc: 2286 / roll: 5 / value: 4
 accumulateDiceRolls / power: -1 / acc: 2290
-"System.Exception: createSequentialRoller / End of list"
-
-</pre>
+"System.Exception: createSequentialRoller / End of list"</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=36">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=37">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8335,7 +8625,79 @@ accumulateDiceRolls / power: -1 / acc: 2290
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">ignore</span>
+
+<span class="n">rollProgressively</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="n">printfn</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">"</span><span class="p">))</span> <span class="n">rollDice</span> <span class="n">false</span> <span class="mi">2000</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=38">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">ignore</span>
+
+<span class="n">rollProgressively</span> <span class="p">(</span><span class="n">Some</span> <span class="p">(</span><span class="n">printfn</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">"</span><span class="p">))</span> <span class="n">rollDice</span> <span class="n">true</span> <span class="mi">2000</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=39">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">ignore</span>
+
+<span class="p">[</span><span class="o">|</span> <span class="mi">1</span> <span class="o">..</span> <span class="mi">10000</span> <span class="o">|</span><span class="p">]</span>
+<span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">rollProgressively</span> <span class="kc">None</span> <span class="n">rollDice</span> <span class="n">false</span> <span class="mi">10</span><span class="p">)</span>
+<span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">groupBy</span> <span class="nb">id</span>
+<span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">Length</span><span class="p">)</span>
+<span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">sortBy</span> <span class="n">fst</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=40">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">ignore</span>
+
+<span class="p">[</span><span class="o">|</span> <span class="mi">1</span> <span class="o">..</span> <span class="mi">10000</span> <span class="o">|</span><span class="p">]</span>
+<span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">rollProgressively</span> <span class="kc">None</span> <span class="n">rollDice</span> <span class="n">true</span> <span class="mi">10</span><span class="p">)</span>
+<span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">groupBy</span> <span class="nb">id</span>
+<span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">Length</span><span class="p">)</span>
+<span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">sortBy</span> <span class="n">fst</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=41">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="p">[</span><span class="o">|</span> <span class="mi">1</span> <span class="o">..</span> <span class="mi">100</span> <span class="o">|</span><span class="p">]</span>
 <span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">iter</span> <span class="p">(</span><span class="n">fun</span> <span class="n">n</span> <span class="o">-&gt;</span>
@@ -8353,8 +8715,67 @@ accumulateDiceRolls / power: -1 / acc: 2290
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=42">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=37">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">ignore</span>
+
+<span class="n">let</span> <span class="n">inline</span> <span class="n">rollMax</span> <span class="n">fn</span> <span class="nb">max</span> <span class="n">n</span> <span class="o">=</span>
+    <span class="p">[</span><span class="o">|</span> <span class="mi">1</span> <span class="o">..</span> <span class="n">n</span> <span class="o">|</span><span class="p">]</span>
+    <span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="n">fn</span> <span class="nb">max</span><span class="p">)</span>
+    <span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">groupBy</span> <span class="nb">id</span>
+    <span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">v</span><span class="o">.</span><span class="n">Length</span><span class="p">)</span>
+
+<span class="n">let</span> <span class="n">rec</span> <span class="n">rollN</span> <span class="nb">max</span> <span class="n">n</span> <span class="n">even</span> <span class="n">current</span> <span class="o">=</span>
+    <span class="n">let</span> <span class="n">roll</span> <span class="o">=</span> <span class="n">rollMax</span> <span class="p">(</span><span class="n">rollProgressively</span> <span class="kc">None</span> <span class="n">rollDice</span> <span class="n">true</span><span class="p">)</span> <span class="nb">max</span> <span class="n">n</span>
+    <span class="k">if</span> <span class="n">roll</span> <span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">forall</span> <span class="p">((</span><span class="o">=</span><span class="p">)</span> <span class="n">even</span><span class="p">)</span>
+    <span class="n">then</span> <span class="n">current</span>
+    <span class="k">else</span> <span class="n">rollN</span> <span class="nb">max</span> <span class="n">n</span> <span class="n">even</span> <span class="p">(</span><span class="n">current</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">let</span> <span class="n">run</span> <span class="p">()</span> <span class="o">=</span>
+    <span class="n">let</span> <span class="nb">max</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">let</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">let</span> <span class="n">even</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="nb">max</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="nb">int</span>
+
+    <span class="n">rollN</span> <span class="nb">max</span> <span class="n">n</span> <span class="n">even</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=43">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">ignore</span>
+
+<span class="n">let</span> <span class="n">run</span> <span class="p">()</span> <span class="o">=</span>
+    <span class="n">let</span> <span class="nb">max</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">let</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">let</span> <span class="n">even</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="nb">max</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="nb">int</span>
+    <span class="p">[</span><span class="o">|</span> <span class="mi">1</span> <span class="o">..</span> <span class="mi">100</span> <span class="o">|</span><span class="p">]</span>
+    <span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="n">fun</span> <span class="n">i</span> <span class="o">-&gt;</span>
+        <span class="n">let</span> <span class="n">roll</span> <span class="o">=</span> <span class="n">rollN</span> <span class="nb">max</span> <span class="n">n</span> <span class="n">even</span> <span class="mi">0</span>
+        <span class="n">printfn</span> <span class="err">$</span><span class="s2">"i: </span><span class="si">{i}</span><span class="s2"> / roll: </span><span class="si">{roll}</span><span class="s2">"</span>
+        <span class="nb">float</span> <span class="n">roll</span>
+    <span class="p">)</span>
+    <span class="o">|&gt;</span> <span class="n">Array</span><span class="o">.</span><span class="n">Parallel</span><span class="o">.</span><span class="n">average</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=44">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8364,30 +8785,30 @@ accumulateDiceRolls / power: -1 / acc: 2290
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=38">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=45">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#r @"../../../../../../../.nuget/packages/fscheck/3.0.0-rc3/lib/netstandard2.0/FsCheck.dll"</span>
-<span class="c1">#r @"../../../../../../../.nuget/packages/expecto.fscheck/10.2.1-fscheck3/lib/net6.0/Expecto.FsCheck3.dll"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#r "nuget: FsCheck, 3.1.0"</span>
+<span class="c1">#r "nuget: Expecto.FsCheck, 11.0.0-alpha8"</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=39">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=46">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">////</span> <span class="n">test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">///-</span> <span class="o">--</span><span class="n">test</span>
 
 <span class="nb">type</span> <span class="n">ValorDado</span> <span class="o">=</span>
     <span class="o">|</span> <span class="n">Um</span>
@@ -8602,17 +9023,15 @@ Complexidade: Simple, Duração: Medium
 Complexidade: Moderate, Duração: Medium
 Complexidade: Complex, Duração: Long
 Complexidade: Complex, Duração: Long
-<span class="ansi-white-fg">[</span><span class="ansi-white-fg">23:58:04 </span><span class="ansi-white-fg">INF</span><span class="ansi-white-fg">] </span><span class="ansi-white-fg">EXPECTO? Running tests...</span><span class="ansi-white-fg"> </span><span class="ansi-white-fg">&lt;</span><span class="ansi-white-fg">Expecto</span><span class="ansi-white-fg">&gt;</span><span class="ansi-white-fg">
-</span><span class="ansi-white-fg">[</span><span class="ansi-white-fg">23:58:08 </span><span class="ansi-white-fg">INF</span><span class="ansi-white-fg">] </span><span class="ansi-white-fg">EXPECTO! </span><span class="ansi-cyan-fg">7</span><span class="ansi-white-fg"> tests run in </span><span class="ansi-green-fg">00:00:04.3520369</span><span class="ansi-white-fg"> for </span><span class="ansi-cyan-fg">FsCheck samples</span><span class="ansi-white-fg"> – </span><span class="ansi-cyan-fg">7</span><span class="ansi-white-fg"> passed, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> ignored, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> failed, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> errored. </span><span class="ansi-cyan-fg">Success!</span><span class="ansi-white-fg"> </span><span class="ansi-white-fg">&lt;</span><span class="ansi-white-fg">Expecto</span><span class="ansi-white-fg">&gt;</span><span class="ansi-white-fg">
-</span>0
-
-</pre>
+<span class="ansi-white-fg">[</span><span class="ansi-white-fg">02:39:59 </span><span class="ansi-white-fg">INF</span><span class="ansi-white-fg">] </span><span class="ansi-white-fg">EXPECTO? Running tests...</span><span class="ansi-white-fg"> </span><span class="ansi-white-fg">&lt;</span><span class="ansi-white-fg">Expecto</span><span class="ansi-white-fg">&gt;</span><span class="ansi-white-fg">
+</span><span class="ansi-white-fg">[</span><span class="ansi-white-fg">02:40:02 </span><span class="ansi-white-fg">INF</span><span class="ansi-white-fg">] </span><span class="ansi-white-fg">EXPECTO! </span><span class="ansi-cyan-fg">7</span><span class="ansi-white-fg"> tests run in </span><span class="ansi-green-fg">00:00:03.5912731</span><span class="ansi-white-fg"> for </span><span class="ansi-cyan-fg">FsCheck samples</span><span class="ansi-white-fg"> – </span><span class="ansi-cyan-fg">7</span><span class="ansi-white-fg"> passed, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> ignored, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> failed, </span><span class="ansi-cyan-fg">0</span><span class="ansi-white-fg"> errored. </span><span class="ansi-cyan-fg">Success!</span><span class="ansi-white-fg"> </span><span class="ansi-white-fg">&lt;</span><span class="ansi-white-fg">Expecto</span><span class="ansi-white-fg">&gt;</span><span class="ansi-white-fg">
+</span>0</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=40">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=47">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8622,12 +9041,12 @@ Complexidade: Complex, Duração: Long
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=41">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=48">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">main</span> <span class="n">args</span> <span class="o">=</span>
@@ -8643,4 +9062,3 @@ Complexidade: Complex, Duração: Long
 </main>
 </body>
 </html>
-

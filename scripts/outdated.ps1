@@ -25,15 +25,12 @@ function CheckJson {
     )
     $json = [IO.Path]::GetFullPath("$ScriptDir/$json").Replace("\", "/")
     Write-Output "`nCheckJson / json: $json"
-    { ~/.bun/bin/bun --bun --cwd $json outdated-pre } | Invoke-Block -OnError Continue
+    { . $(Search-Command bun) --bun --cwd $json outdated-pre } | Invoke-Block -OnError Continue
 }
 
 
 CheckToml "../Cargo.toml" `-w
 
-CheckToml "../lib/Cargo.toml"
-CheckToml "../lib/contract/Cargo.toml"
-CheckToml "../lib/fsharp/Cargo.toml"
 CheckToml "../contract/Cargo.toml"
 CheckToml "../contract/tests/Cargo.toml"
 CheckToml "../ui/Cargo.toml"

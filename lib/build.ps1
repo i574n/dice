@@ -1,61 +1,84 @@
 param(
     $fast,
     $SkipNotebook,
+    $SkipTs,
+    $SkipPy,
     $ScriptDir = $PSScriptRoot
 )
-Set-Location $ScriptDir
+$ScriptDir | Set-Location
 $ErrorActionPreference = "Stop"
 . ../deps/polyglot/scripts/core.ps1
-. ../deps/polyglot/lib/spiral/lib.ps1
+. ../deps/polyglot/deps/spiral/lib/spiral/lib.ps1
 
+$ResolvedScriptDir = ResolveLink $ScriptDir
+$ResolvedScriptDir | Set-Location
+
+Write-Output "dice/lib/build.ps1 / ScriptDir: $ScriptDir / ResolvedScriptDir: $ResolvedScriptDir"
 
 $projectName = "dice"
 
+$livebook = Join-Path $ResolvedScriptDir "../deps/polyglot/deps/spiral/apps/kino/spi/run_notebook.ps1"
+$spi = Join-Path $ResolvedScriptDir "$projectName.spi"
+$ipynb = Join-Path $ResolvedScriptDir "$projectName.spi.ipynb"
 if (!$fast -and !$SkipNotebook) {
-    { . apps/spiral/dist/Supervisor$(_exe) --execute-command "workspace/target/release/spiral_builder$(_exe) dib --path $ScriptDir/$projectName.dib" } | Invoke-Block -Retries 3 -Location ../deps/polyglot
+    { pwsh -NoProfile -File $livebook --path $spi --output-path $ipynb } | Invoke-Block -Retries 3
 }
 
-{ . ../deps/polyglot/apps/parser/dist/DibParser$(_exe) "$projectName.dib" spi } | Invoke-Block
+if (!(BuildSpiral "$projectName.spi" "$projectName.fsx" "dice/lib" -Backend Fsharp)) {
+    throw "FSHARP-FAILED dice/lib / compile"
+}
 
-{ . ../deps/polyglot/apps/spiral/dist/Supervisor$(_exe) --build-file "$projectName.spi" "$projectName.fsx" --timeout 60000 } | Invoke-Block
+$maxResult = [decimal]4738381338321616896
+function Assert-DiceRun([string] $Tag, [string] $Kind, [string[]] $Output, [int] $ExitCode) {
+    $Output | ForEach-Object { Write-Output "dice/lib/build.ps1 / $Kind run / $_" }
+    $result = $Output | ForEach-Object { if ($_ -match 'dice\.main / \{ result = (-?\d+) \}') { $Matches[1] } } | Select-Object -Last 1
+    if ($ExitCode -ne 0 -or !$result -or [decimal]$result -lt 1 -or [decimal]$result -gt $maxResult) {
+        throw "$Tag-FAILED dice/lib / run exit code $ExitCode, result '$result': expected a dice.main trace with a result in 1..$maxResult"
+    }
+    Write-Output "$Tag-OK dice/lib / result $result"
+}
 
-$runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
-$builderArgs = @("$projectName.fsx", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
-{ . ../deps/polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
+$runtime = $fast -or $env:CI ? ($IsWindows ? "win-x64" : "linux-x64") : $null
+if (!(PublishFsharp "$projectName.fsx" -Runtime $runtime)) {
+    throw "FSHARP-FAILED dice/lib / dotnet publish"
+}
+$fsharpOutput = & "dist/$projectName$(_exe)" 2>&1 | ForEach-Object { "$_" }
+Assert-DiceRun "FSHARP" "F#" $fsharpOutput $LASTEXITCODE
 
 $targetDir = GetTargetDir $projectName
 
-{ BuildFable $targetDir $projectName "rs" } | Invoke-Block
-{ BuildFable $targetDir $projectName "ts" } | Invoke-Block
-{ BuildFable $targetDir $projectName "py" } | Invoke-Block
-
-(Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
-    -replace "../../../lib", "../deps/polyglot/lib" `
-    -replace ".fsx`"]", ".rs`"]" `
-    | FixRust `
-    | Set-Content "$projectName.rs"
-
-(Get-Content "$targetDir/target/ts/polyglot/target/Builder/$projectName/$projectName.ts") `
-    | FixTypeScript `
-    | Set-Content "$projectName.ts"
-
-Copy-Item "$targetDir/target/py/polyglot/target/Builder/$projectName/$projectName.py" "$projectName.py" -Force
-
-{ BuildFable $targetDir $projectName "rs" "CONTRACT" } | Invoke-Block
-(Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
-    -replace "../../../lib", "../deps/polyglot/lib" `
-    -replace ".fsx`"]", ".rs`"]" `
-    -replace ".rs`"]", "_contract.rs`"]" `
-    | FixRust `
-    | Set-Content "$($projectName)_contract.rs"
-
-cargo fmt --
-{ cargo fmt -- } | Invoke-Block -Location contract
-
-if (!$fast) {
-    { cargo run --release } | Invoke-Block
+if (!(BuildSpiral "$projectName.spi" "$projectName.rs" "dice/lib")) {
+    throw "RUST-FAILED dice/lib / compile"
 }
+{ cargo +nightly-2025-11-01 build --release -p dice_lib } | Invoke-Block
+$cargoTarget = (cargo metadata --format-version 1 --no-deps | ConvertFrom-Json).target_directory
+$rustOutput = & "$cargoTarget/release/$projectName$(_exe)" 2>&1 | ForEach-Object { "$_" }
+Assert-DiceRun "RUST" "Rust" $rustOutput $LASTEXITCODE
+
+if (!$SkipTs) {
+    if (!(BuildSpiral "$projectName.spi" "$projectName.ts" "dice/lib" -Backend "TypeScript")) {
+        throw "TYPESCRIPT-FAILED dice/lib / compile"
+    }
+    $tsFable = @(Select-String -Path "$projectName.ts" -Pattern 'Fable\.' | ForEach-Object { "$($_.LineNumber): $($_.Line.Trim())" })
+    if ($tsFable) {
+        throw "TYPESCRIPT-FAILED dice/lib / $projectName.ts contains Fable text: $($tsFable | Select-Object -First 5)"
+    }
+    $tsOutput = & (Search-Command bun) run "$projectName.ts" 2>&1 | ForEach-Object { "$_" }
+    Assert-DiceRun "TYPESCRIPT" "TypeScript" $tsOutput $LASTEXITCODE
+}
+
+if (!$SkipPy) {
+    if (!(BuildSpiral "$projectName.spi" "$projectName.py" "dice/lib" -Backend "Python + Cuda")) {
+        throw "PYTHON-FAILED dice/lib / compile"
+    }
+    $pyOutput = & ($IsWindows ? "python" : "python3") "$projectName.py" 2>&1 | ForEach-Object { "$_" }
+    Assert-DiceRun "PYTHON" "Python" $pyOutput $LASTEXITCODE
+}
+
+Write-Output "dice/lib/build.ps1 / `$targetDir = $targetDir / `$projectName: $projectName / `$env:CI:'$env:CI'"
 
 if ($env:CI) {
     Remove-Item $targetDir -Recurse -Force -ErrorAction Ignore
+
+    ClearCargoTarget "../.."
 }

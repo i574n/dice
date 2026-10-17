@@ -1,24 +1,22 @@
 open rust.rust_operators
 open rust
 open leptos
+open sm'_operators
 
-inl main (args : array_base string) =
-    leptos.log $'"main / args: " + string !args + ""'
+inl run_main () =
+    leptos.log "main"
 
     !\($'"let _ = console_log::init_with_level(log::Level::Debug)"')
     !\($'"console_error_panic_hook::set_once()"')
 
-    inl body : optionm'.option' wasm.html_element = !\($'"leptos::document().body()"')
+    inl body : optionm'.option' wasm.html_element = !\($'"leptos::prelude::document().body()"')
     inl body = body |> optionm'.unbox
-    inl body_log = body |> sm'.format_debug
+    inl body_log = #?*body
 
-    leptos.log $'"main / mount_to_body / body: " + string !body_log + ""'
+    leptos.log ("main / mount_to_body / body: " ++# body_log)
 
     let mount () =
-        fun () =>
-            components.app.render ()
-            |> leptos.to_view_trait
-        |> leptos.mount_to_body
+        leptos.mount_to_body components.app.render
 
     match body with
     | Some body =>
@@ -30,7 +28,7 @@ inl main (args : array_base string) =
         inl fn_closure = fn |> wasm.closure_wrap
         inl fn = fn_closure |> wasm.closure_as_ref |> wasm.unchecked_ref
 
-        !\($'"leptos::document().add_event_listener_with_callback(\\\"DOMContentLoaded\\\", !fn).unwrap()"')
+        !\($'"leptos::prelude::document().add_event_listener_with_callback(\\\"DOMContentLoaded\\\", !fn).unwrap()"')
 
         fn_closure |> wasm.closure_forget
 
@@ -38,5 +36,5 @@ inl main (args : array_base string) =
 
 inl main () =
     print_static "<dice_ui>"
-    $'let main args = !main args' : ()
+    run_main () |> ignore
     print_static "</dice_ui>"

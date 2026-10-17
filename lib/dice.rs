@@ -1,6454 +1,7869 @@
-#![allow(dead_code)]
-#![allow(non_camel_case_types)]
-#![allow(non_snake_case)]
-#![allow(non_upper_case_globals)]
-#![allow(unreachable_code)]
-#![allow(unused_attributes)]
-#![allow(unused_imports)]
-#![allow(unused_macros)]
-#![allow(unused_parens)]
-#![allow(unused_variables)]
-use fable_library_rust::NativeArray_::array_from;
-use fable_library_rust::String_::fromString;
-mod module_1d76f080 {
-    pub mod Dice {
-        use super::*;
-        use fable_library_rust::DateTime_::DateTime;
-        use fable_library_rust::Interfaces_::System::Collections::Generic::IEnumerable_1;
-        use fable_library_rust::List_::empty;
-        use fable_library_rust::List_::ofArray;
-        use fable_library_rust::List_::toArray;
-        use fable_library_rust::Map_::find;
-        use fable_library_rust::Map_::ofSeq;
-        use fable_library_rust::NativeArray_::new_array;
-        use fable_library_rust::NativeArray_::Array;
-        use fable_library_rust::Native_::Any;
-        use fable_library_rust::Native_::Func0;
-        use fable_library_rust::Native_::Func1;
-        use fable_library_rust::Native_::LrcPtr;
-        use fable_library_rust::Native_::MutCell;
-        use fable_library_rust::Native_::OnceInit;
-        use fable_library_rust::Option_::defaultValue;
-        use fable_library_rust::Option_::getValue;
-        use fable_library_rust::Option_::map;
-        use fable_library_rust::Seq_::ofList;
-        use fable_library_rust::String_::append;
-        use fable_library_rust::String_::getCharAt;
-        use fable_library_rust::String_::printfn;
-        use fable_library_rust::String_::sprintf;
-        use fable_library_rust::String_::string;
-        use fable_library_rust::String_::toLower;
-        use fable_library_rust::String_::trimEndChars;
-        use fable_library_rust::String_::trimStartChars;
-        use fable_library_rust::TimeSpan_::TimeSpan;
-        pub mod TraceState {
-            use super::*;
-            pub fn trace_state() -> LrcPtr<
-                MutCell<
-                    Option<(
-                        LrcPtr<Dice::Mut1>,
-                        LrcPtr<Dice::Mut3>,
-                        LrcPtr<Dice::Mut4>,
-                        LrcPtr<Dice::Mut5>,
-                        LrcPtr<Dice::Mut6>,
-                        Option<i64>,
-                    )>,
-                >,
-            > {
-                static trace_state: OnceInit<
-                    LrcPtr<
-                        MutCell<
-                            Option<(
-                                LrcPtr<Dice::Mut1>,
-                                LrcPtr<Dice::Mut3>,
-                                LrcPtr<Dice::Mut4>,
-                                LrcPtr<Dice::Mut5>,
-                                LrcPtr<Dice::Mut6>,
-                                Option<i64>,
-                            )>,
-                        >,
-                    >,
-                > = OnceInit::new();
-                trace_state
-                    .get_or_init(|| {
-                        LrcPtr::new(MutCell::new(
-                            None::<(
-                                LrcPtr<Dice::Mut1>,
-                                LrcPtr<Dice::Mut3>,
-                                LrcPtr<Dice::Mut4>,
-                                LrcPtr<Dice::Mut5>,
-                                LrcPtr<Dice::Mut6>,
-                                Option<i64>,
-                            )>,
-                        ))
-                    })
-                    .clone()
+#![allow(unused_mut, unused_variables, unused_imports, unused_parens, unused_braces, unused_assignments, dead_code, non_snake_case, non_camel_case_types, unreachable_code, while_true)]
+use std::cell::RefCell;
+use std::rc::Rc;
+fn spiral_trace_hold<T: Clone>(fresh: &std::rc::Rc<dyn Fn() -> T>) -> T {
+    use std::sync::OnceLock;
+    static SLOT: OnceLock<usize> = OnceLock::new();
+    let raw = *SLOT.get_or_init(|| Box::into_raw(Box::new((*fresh)())) as usize);
+    unsafe { (*(raw as *const T)).clone() }
+}
+#[cfg(target_arch = "wasm32")]
+fn spiral_trace_near_log(text: &str) {
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    static LOGGED: AtomicUsize = AtomicUsize::new(0);
+    let cs: Vec<char> = text.chars().collect();
+    for c in cs.chunks(15000) {
+        let s: String = c.iter().collect();
+        let used = LOGGED.load(Ordering::Relaxed);
+        let budget = 16000usize.saturating_sub(used);
+        if budget < 13 {
+            break;
+        }
+        let s = if s.len() <= budget {
+            s
+        } else {
+            let mut end = budget - 12;
+            while !s.is_char_boundary(end) {
+                end -= 1;
             }
-        }
-        pub trait IOsEnviron {
-            fn environ(&self) -> LrcPtr<dyn Any>;
-        }
-        impl<V: IOsEnviron + Clone + 'static> IOsEnviron for LrcPtr<V> {
-            #[inline]
-            fn environ(&self) -> LrcPtr<dyn Any> {
-                (**self).environ()
-            }
-        }
-        #[derive(Clone, Debug)]
-        pub enum UH0 {
-            UH0_0(u8, Func0<LrcPtr<Dice::UH0>>),
-            UH0_1,
-        }
-        impl core::fmt::Display for Dice::UH0 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub enum UH1 {
-            UH1_0,
-            UH1_1(u8, LrcPtr<Dice::UH1>),
-        }
-        impl core::fmt::Display for Dice::UH1 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug)]
-        pub enum US0 {
-            US0_0(Func0<LrcPtr<Dice::UH0>>),
-            US0_1(LrcPtr<Dice::UH0>),
-        }
-        impl core::fmt::Display for Dice::US0 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug)]
-        pub struct Mut0 {
-            pub l0: MutCell<Dice::US0>,
-        }
-        impl core::fmt::Display for Dice::Mut0 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug, Default, PartialEq, PartialOrd, Hash, Eq)]
-        pub struct Mut1 {
-            pub l0: MutCell<i64>,
-        }
-        impl core::fmt::Display for Dice::Mut1 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub enum US1 {
-            US1_0(u8),
-            US1_1,
-        }
-        impl core::fmt::Display for Dice::US1 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub struct Mut2 {
-            pub l0: MutCell<Dice::US1>,
-        }
-        impl core::fmt::Display for Dice::Mut2 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub enum US2 {
-            US2_0,
-            US2_1,
-            US2_2,
-            US2_3,
-            US2_4,
-        }
-        impl core::fmt::Display for Dice::US2 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug)]
-        pub struct Mut3 {
-            pub l0: MutCell<Func1<string, ()>>,
-        }
-        impl core::fmt::Display for Dice::Mut3 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug, Default, PartialEq, PartialOrd, Hash, Eq)]
-        pub struct Mut4 {
-            pub l0: MutCell<bool>,
-        }
-        impl core::fmt::Display for Dice::Mut4 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug, Default, PartialEq, PartialOrd, Hash, Eq)]
-        pub struct Mut5 {
-            pub l0: MutCell<string>,
-        }
-        impl core::fmt::Display for Dice::Mut5 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub struct Mut6 {
-            pub l0: MutCell<Dice::US2>,
-        }
-        impl core::fmt::Display for Dice::Mut6 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub enum US3 {
-            US3_0(string),
-            US3_1,
-        }
-        impl core::fmt::Display for Dice::US3 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub enum US4 {
-            US4_0(Dice::US2),
-            US4_1,
-        }
-        impl core::fmt::Display for Dice::US4 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub enum US5 {
-            US5_0(i64),
-            US5_1,
-        }
-        impl core::fmt::Display for Dice::US5 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub enum US6 {
-            US6_0(u64, LrcPtr<Dice::UH1>),
-            US6_1,
-        }
-        impl core::fmt::Display for Dice::US6 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug)]
-        pub enum UH2 {
-            UH2_0(u64, Func0<LrcPtr<Dice::UH2>>),
-            UH2_1,
-        }
-        impl core::fmt::Display for Dice::UH2 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub enum US7 {
-            US7_0(u64),
-            US7_1,
-        }
-        impl core::fmt::Display for Dice::US7 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        #[derive(Clone, Debug, PartialEq, PartialOrd, Hash, Eq)]
-        pub enum US8 {
-            US8_0(i64, LrcPtr<Dice::UH1>),
-            US8_1,
-        }
-        impl core::fmt::Display for Dice::US8 {
-            fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-                write!(f, "{}", core::any::type_name::<Self>())
-            }
-        }
-        pub fn closure2(v0_1: LrcPtr<Dice::UH0>, unitVar: ()) -> LrcPtr<Dice::UH0> {
-            v0_1
-        }
-        pub fn method0(
-            v0_1: i64,
-            v1_1: LrcPtr<Dice::UH0>,
-            v2_1: LrcPtr<Dice::UH0>,
-        ) -> LrcPtr<Dice::UH0> {
-            match v1_1.as_ref() {
-                Dice::UH0::UH0_1 => v2_1.clone(),
-                Dice::UH0::UH0_0(v1_1_0_0, v1_1_0_1) => {
-                    let v6: LrcPtr<Dice::UH0> = Dice::method0(v0_1, (v1_1_0_1)(), v2_1.clone());
-                    LrcPtr::new(Dice::UH0::UH0_0(
-                        ((v1_1_0_0.clone() as i64 - 1_i64 + v0_1) % v0_1 + 1_i64) as u8,
-                        Func0::new({
-                            let v6 = v6.clone();
-                            move || Dice::closure2(v6.clone(), ())
-                        }),
-                    ))
-                }
-            }
-        }
-        pub fn closure1(v0_1: i64, v1_1: LrcPtr<Dice::UH0>) -> LrcPtr<Dice::UH0> {
-            Dice::method0(v0_1, v1_1, LrcPtr::new(Dice::UH0::UH0_1))
-        }
-        pub fn closure0(unitVar: (), v0_1: i64) -> Func1<LrcPtr<Dice::UH0>, LrcPtr<Dice::UH0>> {
-            Func1::new({
-                let v0_1 = v0_1.clone();
-                move |v: LrcPtr<Dice::UH0>| Dice::closure1(v0_1, v)
-            })
-        }
-        pub fn method1(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH1>) -> LrcPtr<Dice::UH1> {
-            let v0_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v0_1.clone());
-            let v1_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v1_1.clone());
-            '_method1: loop {
-                break '_method1 (match v0_1.get().clone().as_ref() {
-                    Dice::UH1::UH1_0 => v1_1.get().clone(),
-                    Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                        let v0_1_temp: LrcPtr<Dice::UH1> = match v0_1.get().clone().as_ref() {
-                            Dice::UH1::UH1_1(_, x) => x.clone(),
-                            _ => unreachable!(),
-                        };
-                        let v1_1_temp: LrcPtr<Dice::UH1> = LrcPtr::new(Dice::UH1::UH1_1(
-                            match v0_1.get().clone().as_ref() {
-                                Dice::UH1::UH1_1(x, _) => x.clone(),
-                                _ => unreachable!(),
-                            },
-                            v1_1.get().clone(),
-                        ));
-                        v0_1.set(v0_1_temp);
-                        v1_1.set(v1_1_temp);
-                        continue '_method1;
-                    }
-                });
-            }
-        }
-        pub fn method2(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH1>) -> LrcPtr<Dice::UH1> {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => v1_1.clone(),
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => LrcPtr::new(Dice::UH1::UH1_1(
-                    match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    },
-                    Dice::method2(
-                        match v0_1.as_ref() {
-                            Dice::UH1::UH1_1(_, x) => x.clone(),
-                            _ => unreachable!(),
-                        },
-                        v1_1.clone(),
-                    ),
-                )),
-            }
-        }
-        pub fn closure4(v0_1: LrcPtr<Dice::UH0>, unitVar: ()) -> LrcPtr<Dice::UH0> {
-            v0_1
-        }
-        pub fn method3(v0_1: LrcPtr<Dice::UH1>, v1_1: LrcPtr<Dice::UH0>) -> LrcPtr<Dice::UH0> {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => v1_1.clone(),
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH0> = Dice::method3(
-                        match v0_1.as_ref() {
-                            Dice::UH1::UH1_1(_, x) => x.clone(),
-                            _ => unreachable!(),
-                        },
-                        v1_1.clone(),
-                    );
-                    LrcPtr::new(Dice::UH0::UH0_0(
-                        match v0_1.as_ref() {
-                            Dice::UH1::UH1_1(x, _) => x.clone(),
-                            _ => unreachable!(),
-                        },
-                        Func0::new({
-                            let v4_1 = v4_1.clone();
-                            move || Dice::closure4(v4_1.clone(), ())
-                        }),
-                    ))
-                }
-            }
-        }
-        pub fn closure5(v0_1: LrcPtr<Dice::UH0>, unitVar: ()) -> LrcPtr<Dice::UH0> {
-            v0_1
-        }
-        pub fn closure6(
-            v0_1: LrcPtr<Dice::UH0>,
-            v1_1: LrcPtr<Dice::Mut0>,
-            unitVar: (),
-        ) -> LrcPtr<Dice::UH0> {
-            let v2_1: Dice::US0 = v1_1.l0.get().clone();
-            match &v2_1 {
-                Dice::US0::US0_0(v2_1_0_0) => {
-                    let v5: LrcPtr<Dice::UH0> = (v2_1_0_0)();
-                    let v12: LrcPtr<Dice::UH0> = match v5.as_ref() {
-                        Dice::UH0::UH0_1 => LrcPtr::new(Dice::UH0::UH0_1),
-                        Dice::UH0::UH0_0(v5_0_0, v5_0_1) => LrcPtr::new(Dice::UH0::UH0_0(
-                            v5_0_0.clone(),
-                            Dice::method4(v0_1, v5_0_1.clone()),
-                        )),
-                    };
-                    v1_1.l0.set(Dice::US0::US0_1(v12.clone()));
-                    v12
-                }
-                Dice::US0::US0_1(v2_1_1_0) => v2_1_1_0.clone(),
-            }
-        }
-        pub fn method4(
-            v0_1: LrcPtr<Dice::UH0>,
-            v1_1: Func0<LrcPtr<Dice::UH0>>,
-        ) -> Func0<LrcPtr<Dice::UH0>> {
-            let v3_1: LrcPtr<Dice::Mut0> = LrcPtr::new(Dice::Mut0 {
-                l0: MutCell::new(Dice::US0::US0_0(v1_1)),
-            });
-            Func0::new({
-                let v0_1 = v0_1.clone();
-                let v3_1 = v3_1.clone();
-                move || Dice::closure6(v0_1.clone(), v3_1.clone(), ())
-            })
-        }
-        pub fn method8() -> string {
-            string("TRACE_LEVEL")
-        }
-        pub fn method10() -> string {
-            string("")
-        }
-        pub fn closure10(unitVar: (), v0_1: string) -> Dice::US3 {
-            Dice::US3::US3_0(v0_1)
-        }
-        pub fn method11() -> Func1<string, Dice::US3> {
-            Func1::new(move |v: string| Dice::closure10((), v))
-        }
-        pub fn method9(v0_1: string) -> string {
-            let v3_1: Result<std::string::String, std::env::VarError> = std::env::var(&*v0_1);
-            let v5: bool = true;
-            let _result_map_ = v3_1.map(|x| {
-                //;
-                let v7: std::string::String = x;
-                let v9: string = fable_library_rust::String_::fromString(v7);
-                let v11: bool = true;
-                v9
-            });
-            let v13: Result<string, std::env::VarError> = _result_map_;
-            let v14: string = Dice::method10();
-            v13.unwrap_or(v14)
-        }
-        pub fn method12() -> string {
-            string("AUTOMATION")
-        }
-        pub fn closure11(unitVar: (), v0_1: string) {
-            ();
-        }
-        pub fn method7(
-            v0_1: Dice::US2,
-        ) -> (
-            LrcPtr<Dice::Mut1>,
-            LrcPtr<Dice::Mut3>,
-            LrcPtr<Dice::Mut4>,
-            LrcPtr<Dice::Mut5>,
-            LrcPtr<Dice::Mut6>,
-            Option<i64>,
-        ) {
-            let v3_1: string = Dice::method9(Dice::method8());
-            let v8: Dice::US4 = if string("Verbose") == v3_1.clone() {
-                Dice::US4::US4_0(Dice::US2::US2_0)
-            } else {
-                Dice::US4::US4_1
-            };
-            let _v1: (Dice::US4, Dice::US5) = (
-                match &v8 {
-                    Dice::US4::US4_0(v8_0_0) => Dice::US4::US4_0(match &v8 {
-                        Dice::US4::US4_0(x) => x.clone(),
-                        _ => unreachable!(),
-                    }),
-                    _ => {
-                        let v15: Dice::US4 = if string("Debug") == v3_1.clone() {
-                            Dice::US4::US4_0(Dice::US2::US2_1)
-                        } else {
-                            Dice::US4::US4_1
-                        };
-                        match &v15 {
-                            Dice::US4::US4_0(v15_0_0) => Dice::US4::US4_0(match &v15 {
-                                Dice::US4::US4_0(x) => x.clone(),
-                                _ => unreachable!(),
-                            }),
-                            _ => {
-                                let v22: Dice::US4 = if string("Info") == v3_1.clone() {
-                                    Dice::US4::US4_0(Dice::US2::US2_2)
-                                } else {
-                                    Dice::US4::US4_1
-                                };
-                                match &v22 {
-                                    Dice::US4::US4_0(v22_0_0) => Dice::US4::US4_0(match &v22 {
-                                        Dice::US4::US4_0(x) => x.clone(),
-                                        _ => unreachable!(),
-                                    }),
-                                    _ => {
-                                        let v29: Dice::US4 = if string("Warning") == v3_1.clone() {
-                                            Dice::US4::US4_0(Dice::US2::US2_3)
-                                        } else {
-                                            Dice::US4::US4_1
-                                        };
-                                        match &v29 {
-                                            Dice::US4::US4_0(v29_0_0) => {
-                                                Dice::US4::US4_0(match &v29 {
-                                                    Dice::US4::US4_0(x) => x.clone(),
-                                                    _ => unreachable!(),
-                                                })
-                                            }
-                                            _ => {
-                                                let v36: Dice::US4 =
-                                                    if string("Critical") == v3_1.clone() {
-                                                        Dice::US4::US4_0(Dice::US2::US2_4)
-                                                    } else {
-                                                        Dice::US4::US4_1
-                                                    };
-                                                match &v36 {
-                                                    Dice::US4::US4_0(v36_0_0) => {
-                                                        Dice::US4::US4_0(match &v36 {
-                                                            Dice::US4::US4_0(x) => x.clone(),
-                                                            _ => unreachable!(),
-                                                        })
-                                                    }
-                                                    _ => Dice::US4::US4_1,
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                if Dice::method9(Dice::method12()) == string("True") {
-                    Dice::US5::US5_0({
-                        let _arg: DateTime = DateTime::now();
-                        _arg.ticks()
-                    })
-                } else {
-                    Dice::US5::US5_1
-                },
-            );
-            let v352: Dice::US5 = _v1.1.clone();
-            let v351: Dice::US4 = _v1.0.clone();
-            (
-                LrcPtr::new(Dice::Mut1 {
-                    l0: MutCell::new(1_i64),
-                }),
-                LrcPtr::new(Dice::Mut3 {
-                    l0: MutCell::new(Func1::new(move |v: string| Dice::closure11((), v))),
-                }),
-                LrcPtr::new(Dice::Mut4 {
-                    l0: MutCell::new(true),
-                }),
-                LrcPtr::new(Dice::Mut5 {
-                    l0: MutCell::new(string("")),
-                }),
-                LrcPtr::new(Dice::Mut6 {
-                    l0: MutCell::new(match &v351 {
-                        Dice::US4::US4_0(v351_0_0) => match &v351 {
-                            Dice::US4::US4_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        },
-                        _ => v0_1,
-                    }),
-                }),
-                match &v352 {
-                    Dice::US5::US5_0(v352_0_0) => Some(match &v352 {
-                        Dice::US5::US5_0(x) => x.clone(),
-                        _ => unreachable!(),
-                    }),
-                    _ => None::<i64>,
-                },
-            )
-        }
-        pub fn closure9(unitVar: (), unitVar_1: ()) {
-            if Dice::TraceState::trace_state().get().clone().is_none() {
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = Dice::method7(Dice::US2::US2_0);
-                Dice::TraceState::trace_state().set(Some((
-                    patternInput.0.clone(),
-                    patternInput.1.clone(),
-                    patternInput.2.clone(),
-                    patternInput.3.clone(),
-                    patternInput.4.clone(),
-                    patternInput.5.clone(),
-                )));
-                ()
-            };
-        }
-        pub fn method6(v0_1: Dice::US2) -> bool {
-            let v3_1: () = {
-                Dice::closure9((), ());
-                ()
-            };
-            let patternInput: (
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                LrcPtr<Dice::Mut5>,
-                LrcPtr<Dice::Mut6>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v35: Dice::US2 = (patternInput.4.clone()).l0.get().clone();
-            if (patternInput.2.clone()).l0.get().clone() == false {
-                false
-            } else {
-                find(
-                    v0_1,
-                    ofSeq(ofList(ofArray(new_array(&[
-                        LrcPtr::new((Dice::US2::US2_0, 0_i32)),
-                        LrcPtr::new((Dice::US2::US2_1, 1_i32)),
-                        LrcPtr::new((Dice::US2::US2_2, 2_i32)),
-                        LrcPtr::new((Dice::US2::US2_3, 3_i32)),
-                        LrcPtr::new((Dice::US2::US2_4, 4_i32)),
-                    ])))),
-                ) >= find(
-                    v35,
-                    ofSeq(ofList(ofArray(new_array(&[
-                        LrcPtr::new((Dice::US2::US2_0, 0_i32)),
-                        LrcPtr::new((Dice::US2::US2_1, 1_i32)),
-                        LrcPtr::new((Dice::US2::US2_2, 2_i32)),
-                        LrcPtr::new((Dice::US2::US2_3, 3_i32)),
-                        LrcPtr::new((Dice::US2::US2_4, 4_i32)),
-                    ])))),
-                )
-            }
-        }
-        pub fn closure12(unitVar: (), v0_1: i64) -> Dice::US5 {
-            Dice::US5::US5_0(v0_1)
-        }
-        pub fn method14() -> Func1<i64, Dice::US5> {
-            Func1::new(move |v: i64| Dice::closure12((), v))
-        }
-        pub fn method15() -> string {
-            string("hh:mm:ss")
-        }
-        pub fn method16() -> string {
-            string("HH:mm:ss")
-        }
-        pub fn method13(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-        ) -> string {
-            let v20: Dice::US5 = defaultValue(Dice::US5::US5_1, map(Dice::method14(), v5));
-            let v60: DateTime = match &v20 {
-                Dice::US5::US5_0(v20_0_0) => {
-                    let v34: TimeSpan = TimeSpan::new_ticks(
-                        {
-                            let _arg: DateTime = DateTime::now();
-                            _arg.ticks()
-                        } - match &v20 {
-                            Dice::US5::US5_0(x) => x.clone(),
-                            _ => unreachable!(),
-                        },
-                    );
-                    DateTime::new_ymdhms_milli(
-                        1_i32,
-                        1_i32,
-                        1_i32,
-                        v34.hours(),
-                        v34.minutes(),
-                        v34.seconds(),
-                        v34.milliseconds(),
-                    )
-                }
-                _ => DateTime::now(),
-            };
-            let provider: string = Dice::method15();
-            v60.toString(provider)
-        }
-        pub fn method19() -> string {
-            string("")
-        }
-        pub fn closure13(v0_1: LrcPtr<Dice::Mut5>, v1_1: string, unitVar: ()) {
-            let v3_1: string = append(v0_1.l0.get().clone(), v1_1);
-            v0_1.l0.set(v3_1);
-            ()
-        }
-        pub fn method18(v0_1: char) -> string {
-            let v2_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            let v8: () = {
-                Dice::closure13(v2_1.clone(), sprintf!("{}", v0_1), ());
-                ()
-            };
-            v2_1.l0.get().clone()
-        }
-        pub fn method20() -> string {
-            string("\u{001b}[0m")
-        }
-        pub fn method17() -> string {
-            let v6: string = Dice::method18(getCharAt(toLower(string("Debug")), 0_i32));
-            let v9: &str = inline_colorization::color_bright_blue;
-            let v12: &str = &*v6;
-            let v32: &str = inline_colorization::color_reset;
-            let v34: std::string::String = format!("{}{}{}", v9, v12, v32);
-            fable_library_rust::String_::fromString(v34)
-        }
-        pub fn method22(v0_1: i64, v1_1: i64, v2_1: i64, v3_1: string) -> string {
-            let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            let v12: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("{ ")), ());
-                ()
-            };
-            let v21: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("current_index")), ());
-                ()
-            };
-            let v30: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v38: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v0_1), ());
-                ()
-            };
-            let v47: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v56: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("acc")), ());
-                ()
-            };
-            let v64: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v72: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
-                ()
-            };
-            let v80: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v89: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("len")), ());
-                ()
-            };
-            let v97: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v105: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v122: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("last_item")), ());
-                ()
-            };
-            let v130: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v138: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v3_1), ());
-                ()
-            };
-            let v147: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" }")), ());
-                ()
-            };
-            v5.l0.get().clone()
-        }
-        pub fn method23(v0_1: string) -> string {
-            trimEndChars(
-                trimStartChars(v0_1, toArray(empty::<char>())),
-                toArray(ofArray(new_array(&[' ', '/']))),
-            )
-        }
-        pub fn method21(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: i64,
-            v10: i64,
-            v11: string,
-        ) -> string {
-            let v12: string = Dice::method22(v8, v9, v10, v11);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.create_sequential_roller / roll"),
-                v12
-            ))
-        }
-        pub fn closure14(v0_1: LrcPtr<Dice::Mut1>, unitVar: ()) {
-            let v2_1: i64 = v0_1.l0.get().clone() + 1_i64;
-            v0_1.l0.set(v2_1);
-            ()
-        }
-        pub fn closure16(v0_1: string, unitVar: ()) {
-            printfn!("{0}", v0_1);
-        }
-        pub fn closure15(unitVar: (), v0_1: string) {
-            let v3_1: () = {
-                Dice::closure16(v0_1, ());
-                ()
-            };
-            ()
-        }
-        pub fn method24(v0_1: string) {
-            let v3_1: () = {
-                Dice::closure9((), ());
-                ()
-            };
-            let patternInput: (
-                LrcPtr<Dice::Mut1>,
-                LrcPtr<Dice::Mut3>,
-                LrcPtr<Dice::Mut4>,
-                LrcPtr<Dice::Mut5>,
-                LrcPtr<Dice::Mut6>,
-                Option<i64>,
-            ) = getValue(Dice::TraceState::trace_state().get().clone());
-            let v37: () = {
-                Dice::closure14(patternInput.0.clone(), ());
-                ()
-            };
-            println!("{}", v0_1.clone());
-            ();
-            ((patternInput.1.clone()).l0.get().clone())(v0_1)
-        }
-        pub fn closure8(v0_1: i64, v1_1: i64, v2_1: i64, v3_1: Option<u8>, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v8: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v27: Option<i64> = patternInput.5.clone();
-                let v26: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v25: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v24: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v23: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v22: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method21(
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    v27.clone(),
-                    Dice::method13(v22, v23, v24, v25, v26, v27),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                    sprintf!("{:?}", v3_1),
-                ))
-            };
-        }
-        pub fn method25(v0_1: i64, v1_1: LrcPtr<Dice::UH0>) -> Dice::US1 {
-            let v0_1: MutCell<i64> = MutCell::new(v0_1);
-            let v1_1: MutCell<LrcPtr<Dice::UH0>> = MutCell::new(v1_1.clone());
-            '_method25: loop {
-                break '_method25 (match v1_1.get().clone().as_ref() {
-                    Dice::UH0::UH0_1 => Dice::US1::US1_1,
-                    Dice::UH0::UH0_0(v1_1_0_0, v1_1_0_1) => {
-                        if v0_1.get().clone() <= 0_i64 {
-                            Dice::US1::US1_0(v1_1_0_0.clone())
-                        } else {
-                            let v0_1_temp: i64 = v0_1.get().clone() - 1_i64;
-                            let v1_1_temp: LrcPtr<Dice::UH0> = (v1_1_0_1)();
-                            v0_1.set(v0_1_temp);
-                            v1_1.set(v1_1_temp);
-                            continue '_method25;
-                        }
-                    }
-                });
-            }
-        }
-        pub fn method27() -> string {
-            let v1_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            v1_1.l0.get().clone()
-        }
-        pub fn method26(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-        ) -> string {
-            let v8: string = Dice::method27();
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.create_sequential_roller / roll / None"),
-                v8
-            ))
-        }
-        pub fn closure17(unitVar: (), unitVar_1: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v4_1: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v23: Option<i64> = patternInput.5.clone();
-                let v22: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v21: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v20: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v19: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v18: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method26(
-                    v18.clone(),
-                    v19.clone(),
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    Dice::method13(v18, v19, v20, v21, v22, v23),
-                    Dice::method17(),
-                ))
-            };
-        }
-        pub fn method5(
-            v0_1: Func0<LrcPtr<Dice::UH0>>,
-            v1_1: LrcPtr<Dice::Mut1>,
-            v2_1: LrcPtr<Dice::Mut1>,
-            v3_1: LrcPtr<Dice::Mut1>,
-            v4_1: LrcPtr<Dice::Mut2>,
-        ) -> u8 {
-            let v0_1 = MutCell::new(v0_1.clone());
-            let v1_1: MutCell<LrcPtr<Dice::Mut1>> = MutCell::new(v1_1.clone());
-            let v2_1: MutCell<LrcPtr<Dice::Mut1>> = MutCell::new(v2_1.clone());
-            let v3_1: MutCell<LrcPtr<Dice::Mut1>> = MutCell::new(v3_1.clone());
-            let v4_1: MutCell<LrcPtr<Dice::Mut2>> = MutCell::new(v4_1.clone());
-            '_method5: loop {
-                break '_method5 ({
-                    let v5: i64 = v1_1.l0.get().clone();
-                    let v6: i64 = v2_1.l0.get().clone();
-                    let v7: i64 = v3_1.l0.get().clone();
-                    let v8: Dice::US1 = v4_1.l0.get().clone();
-                    let v18: () = {
-                        Dice::closure8(
-                            v5,
-                            v6,
-                            v7,
-                            match &v8 {
-                                Dice::US1::US1_0(v8_0_0) => Some(match &v8 {
-                                    Dice::US1::US1_0(x) => x.clone(),
-                                    _ => unreachable!(),
-                                }),
-                                _ => None::<u8>,
-                            },
-                            (),
-                        );
-                        ()
-                    };
-                    let v61: LrcPtr<Dice::UH0> = v0_1();
-                    let v63: Dice::US1 = Dice::method25(v1_1.l0.get().clone(), v61);
-                    match &v63 {
-                        Dice::US1::US1_0(v63_0_0) => {
-                            let v64: u8 = match &v63 {
-                                Dice::US1::US1_0(x) => x.clone(),
-                                _ => unreachable!(),
-                            };
-                            let v66: i64 = v1_1.l0.get().clone() + 1_i64;
-                            v1_1.l0.set(v66);
-                            v4_1.l0.set(Dice::US1::US1_0(v64));
-                            v64
-                        }
-                        _ => {
-                            let v70: () = {
-                                Dice::closure17((), ());
-                                ()
-                            };
-                            if v3_1.l0.get().clone() == -1_i64 {
-                                let v112: i64 = v1_1.l0.get().clone();
-                                v3_1.l0.set(v112);
-                                ()
-                            }
-                            {
-                                let v118: i64 = if v2_1.l0.get().clone() >= v3_1.l0.get().clone() {
-                                    1_i64
-                                } else {
-                                    v2_1.l0.get().clone() + 1_i64
-                                };
-                                v2_1.l0.set(v118);
-                                {
-                                    let v120: i64 = v2_1.l0.get().clone() - 1_i64;
-                                    v1_1.l0.set(v120);
-                                    v4_1.l0.set(Dice::US1::US1_1);
-                                    {
-                                        let v0_1_temp = v0_1.get().clone();
-                                        let v1_1_temp: LrcPtr<Dice::Mut1> = v1_1.get().clone();
-                                        let v2_1_temp: LrcPtr<Dice::Mut1> = v2_1.get().clone();
-                                        let v3_1_temp: LrcPtr<Dice::Mut1> = v3_1.get().clone();
-                                        let v4_1_temp: LrcPtr<Dice::Mut2> = v4_1.get().clone();
-                                        v0_1.set(v0_1_temp);
-                                        v1_1.set(v1_1_temp);
-                                        v2_1.set(v2_1_temp);
-                                        v3_1.set(v3_1_temp);
-                                        v4_1.set(v4_1_temp);
-                                        continue '_method5;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-        pub fn closure7(
-            v0_1: Func0<LrcPtr<Dice::UH0>>,
-            v1_1: LrcPtr<Dice::Mut1>,
-            v2_1: LrcPtr<Dice::Mut1>,
-            v3_1: LrcPtr<Dice::Mut1>,
-            v4_1: LrcPtr<Dice::Mut2>,
-            unitVar: (),
-        ) -> u8 {
-            Dice::method5(v0_1, v1_1, v2_1, v3_1, v4_1)
-        }
-        pub fn closure3(unitVar: (), v0_1: LrcPtr<Dice::UH1>) -> Func0<u8> {
-            let v5: LrcPtr<Dice::UH0> = Dice::method3(
-                Dice::method2(
-                    v0_1.clone(),
-                    Dice::method1(v0_1, LrcPtr::new(Dice::UH1::UH1_0)),
-                ),
-                LrcPtr::new(Dice::UH0::UH0_1),
-            );
-            let v7 = Dice::method4(
-                v5.clone(),
-                Func0::new({
-                    let v5 = v5.clone();
-                    move || Dice::closure5(v5.clone(), ())
-                }),
-            );
-            let v8: LrcPtr<Dice::Mut1> = LrcPtr::new(Dice::Mut1 {
-                l0: MutCell::new(0_i64),
-            });
-            let v9: LrcPtr<Dice::Mut1> = LrcPtr::new(Dice::Mut1 {
-                l0: MutCell::new(1_i64),
-            });
-            let v10: LrcPtr<Dice::Mut1> = LrcPtr::new(Dice::Mut1 {
-                l0: MutCell::new(-1_i64),
-            });
-            let v12: LrcPtr<Dice::Mut2> = LrcPtr::new(Dice::Mut2 {
-                l0: MutCell::new(Dice::US1::US1_1),
-            });
-            Func0::new({
-                let v10 = v10.clone();
-                let v12 = v12.clone();
-                let v7 = v7.clone();
-                let v8 = v8.clone();
-                let v9 = v9.clone();
-                move || {
-                    Dice::closure7(
-                        v7.clone(),
-                        v8.clone(),
-                        v9.clone(),
-                        v10.clone(),
-                        v12.clone(),
-                        (),
-                    )
-                }
-            })
-        }
-        pub fn method30(v0_1: u64, v1_1: u64, v2_1: i8) -> string {
-            let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            let v11: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
-                ()
-            };
-            let v20: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("max")), ());
-                ()
-            };
-            let v29: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v37: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
-                ()
-            };
-            let v46: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v55: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("p")), ());
-                ()
-            };
-            let v63: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
-                ()
-            };
-            let v79: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v88: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("n")), ());
-                ()
-            };
-            let v96: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v104: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" }")), ());
-                ()
-            };
-            v4_1.l0.get().clone()
-        }
-        pub fn method29(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: u64,
-            v9: u64,
-            v10: i8,
-        ) -> string {
-            let v11: string = Dice::method30(v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.calculate_dice_count"),
-                v11
-            ))
-        }
-        pub fn closure21(v0_1: u64, v1_1: i8, v2_1: u64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method29(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v2_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method28(v0_1: u64, v1_1: i8, v2_1: u64) -> i8 {
-            let v0_1: MutCell<u64> = MutCell::new(v0_1);
-            let v1_1: MutCell<i8> = MutCell::new(v1_1);
-            let v2_1: MutCell<u64> = MutCell::new(v2_1);
-            '_method28: loop {
-                break '_method28 (if v2_1.get().clone() < v0_1.get().clone() {
-                    let v4_1: u64 = v2_1.get().clone() * 6_u64;
-                    if v4_1 > v2_1.get().clone() {
-                        let v0_1_temp: u64 = v0_1.get().clone();
-                        let v1_1_temp: i8 = v1_1.get().clone() + 1_i8;
-                        let v2_1_temp: u64 = v4_1;
-                        v0_1.set(v0_1_temp);
-                        v1_1.set(v1_1_temp);
-                        v2_1.set(v2_1_temp);
-                        continue '_method28;
-                    } else {
-                        let v10: () = {
-                            Dice::closure21(
-                                v0_1.get().clone(),
-                                v1_1.get().clone(),
-                                v2_1.get().clone(),
-                                (),
-                            );
-                            ()
-                        };
-                        v1_1.get().clone()
-                    }
-                } else {
-                    let v53: () = {
-                        Dice::closure21(
-                            v0_1.get().clone(),
-                            v1_1.get().clone(),
-                            v2_1.get().clone(),
-                            (),
-                        );
-                        ()
-                    };
-                    v1_1.get().clone()
-                });
-            }
-        }
-        pub fn method34(v0_1: i8, v1_1: u64, v2_1: u64) -> string {
-            let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            let v11: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
-                ()
-            };
-            let v20: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("power")), ());
-                ()
-            };
-            let v29: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v37: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
-                ()
-            };
-            let v46: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v55: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("acc")), ());
-                ()
-            };
-            let v63: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
-                ()
-            };
-            let v79: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v88: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("result")), ());
-                ()
-            };
-            let v96: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v104: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" }")), ());
-                ()
-            };
-            v4_1.l0.get().clone()
-        }
-        pub fn method33(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i8,
-            v9: u64,
-            v10: u64,
-        ) -> string {
-            let v11: string = Dice::method34(v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure22(v0_1: u64, v1_1: i8, v2_1: u64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method33(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v1_1,
-                    v0_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn closure86(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_1)
-        }
-        pub fn closure85(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                9223372036854775808_u64,
-                Func0::new(move || Dice::closure86((), ())),
-            ))
-        }
-        pub fn closure84(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                4611686018427387904_u64,
-                Func0::new(move || Dice::closure85((), ())),
-            ))
-        }
-        pub fn closure83(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                6917529027641081856_u64,
-                Func0::new(move || Dice::closure84((), ())),
-            ))
-        }
-        pub fn closure82(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                1152921504606846976_u64,
-                Func0::new(move || Dice::closure83((), ())),
-            ))
-        }
-        pub fn closure81(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                15564440312192434176_u64,
-                Func0::new(move || Dice::closure82((), ())),
-            ))
-        }
-        pub fn closure80(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                11817445422220181504_u64,
-                Func0::new(move || Dice::closure81((), ())),
-            ))
-        }
-        pub fn closure79(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                5044031582654955520_u64,
-                Func0::new(move || Dice::closure80((), ())),
-            ))
-        }
-        pub fn closure78(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                6989586621679009792_u64,
-                Func0::new(move || Dice::closure79((), ())),
-            ))
-        }
-        pub fn closure77(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                16537217831704461312_u64,
-                Func0::new(move || Dice::closure78((), ())),
-            ))
-        }
-        pub fn closure76(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                11979575008805519360_u64,
-                Func0::new(move || Dice::closure77((), ())),
-            ))
-        }
-        pub fn closure75(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                14294425217273954304_u64,
-                Func0::new(move || Dice::closure76((), ())),
-            ))
-        }
-        pub fn closure74(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                2382404202878992384_u64,
-                Func0::new(move || Dice::closure75((), ())),
-            ))
-        }
-        pub fn closure73(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                6545982058383015936_u64,
-                Func0::new(move || Dice::closure74((), ())),
-            ))
-        }
-        pub fn closure72(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                10314369046585278464_u64,
-                Func0::new(move || Dice::closure73((), ())),
-            ))
-        }
-        pub fn closure71(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                4793518853382471680_u64,
-                Func0::new(move || Dice::closure72((), ())),
-            ))
-        }
-        pub fn closure70(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                3873377154515337216_u64,
-                Func0::new(move || Dice::closure71((), ())),
-            ))
-        }
-        pub fn closure69(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                645562859085889536_u64,
-                Func0::new(move || Dice::closure70((), ())),
-            ))
-        }
-        pub fn closure68(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                107593809847648256_u64,
-                Func0::new(move || Dice::closure69((), ())),
-            ))
-        }
-        pub fn closure67(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                3092389647259533312_u64,
-                Func0::new(move || Dice::closure68((), ())),
-            ))
-        }
-        pub fn closure66(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                9738770311398031360_u64,
-                Func0::new(move || Dice::closure67((), ())),
-            ))
-        }
-        pub fn closure65(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                16995415113324298240_u64,
-                Func0::new(move || Dice::closure66((), ())),
-            ))
-        }
-        pub fn closure64(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                8981483876790566912_u64,
-                Func0::new(move || Dice::closure65((), ())),
-            ))
-        }
-        pub fn closure63(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                13794743361938128896_u64,
-                Func0::new(move || Dice::closure64((), ())),
-            ))
-        }
-        pub fn closure62(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                2299123893656354816_u64,
-                Func0::new(move || Dice::closure63((), ())),
-            ))
-        }
-        pub fn closure61(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                3457644661227651072_u64,
-                Func0::new(move || Dice::closure62((), ())),
-            ))
-        }
-        pub fn closure60(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                576274110204608512_u64,
-                Func0::new(move || Dice::closure61((), ())),
-            ))
-        }
-        pub fn closure59(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                6244960376270618624_u64,
-                Func0::new(move || Dice::closure60((), ())),
-            ))
-        }
-        pub fn closure58(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                13338656111851470848_u64,
-                Func0::new(move || Dice::closure59((), ())),
-            ))
-        }
-        pub fn closure57(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                14520938734448279552_u64,
-                Func0::new(move || Dice::closure58((), ())),
-            ))
-        }
-        pub fn closure56(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                14717985838214414336_u64,
-                Func0::new(move || Dice::closure57((), ())),
-            ))
-        }
-        pub fn closure55(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                5527454985320660992_u64,
-                Func0::new(move || Dice::closure56((), ())),
-            ))
-        }
-        pub fn closure54(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                16293529225644736512_u64,
-                Func0::new(move || Dice::closure55((), ())),
-            ))
-        }
-        pub fn closure53(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                11938960241128898560_u64,
-                Func0::new(move || Dice::closure54((), ())),
-            ))
-        }
-        pub fn closure52(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                8138741398091333632_u64,
-                Func0::new(move || Dice::closure53((), ())),
-            ))
-        }
-        pub fn closure51(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                7505371590918406144_u64,
-                Func0::new(move || Dice::closure52((), ())),
-            ))
-        }
-        pub fn closure50(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                16623181993244360704_u64,
-                Func0::new(move || Dice::closure51((), ())),
-            ))
-        }
-        pub fn closure49(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                8919445023443910656_u64,
-                Func0::new(move || Dice::closure50((), ())),
-            ))
-        }
-        pub fn closure48(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                4561031516192243712_u64,
-                Func0::new(move || Dice::closure49((), ())),
-            ))
-        }
-        pub fn closure47(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                9983543956220149760_u64,
-                Func0::new(move || Dice::closure48((), ())),
-            ))
-        }
-        pub fn closure46(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                4738381338321616896_u64,
-                Func0::new(move || Dice::closure47((), ())),
-            ))
-        }
-        pub fn closure45(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                789730223053602816_u64,
-                Func0::new(move || Dice::closure46((), ())),
-            ))
-        }
-        pub fn closure44(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                131621703842267136_u64,
-                Func0::new(move || Dice::closure45((), ())),
-            ))
-        }
-        pub fn closure43(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                21936950640377856_u64,
-                Func0::new(move || Dice::closure44((), ())),
-            ))
-        }
-        pub fn closure42(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                3656158440062976_u64,
-                Func0::new(move || Dice::closure43((), ())),
-            ))
-        }
-        pub fn closure41(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                609359740010496_u64,
-                Func0::new(move || Dice::closure42((), ())),
-            ))
-        }
-        pub fn closure40(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                101559956668416_u64,
-                Func0::new(move || Dice::closure41((), ())),
-            ))
-        }
-        pub fn closure39(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                16926659444736_u64,
-                Func0::new(move || Dice::closure40((), ())),
-            ))
-        }
-        pub fn closure38(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                2821109907456_u64,
-                Func0::new(move || Dice::closure39((), ())),
-            ))
-        }
-        pub fn closure37(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                470184984576_u64,
-                Func0::new(move || Dice::closure38((), ())),
-            ))
-        }
-        pub fn closure36(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                78364164096_u64,
-                Func0::new(move || Dice::closure37((), ())),
-            ))
-        }
-        pub fn closure35(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                13060694016_u64,
-                Func0::new(move || Dice::closure36((), ())),
-            ))
-        }
-        pub fn closure34(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                2176782336_u64,
-                Func0::new(move || Dice::closure35((), ())),
-            ))
-        }
-        pub fn closure33(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                362797056_u64,
-                Func0::new(move || Dice::closure34((), ())),
-            ))
-        }
-        pub fn closure32(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                60466176_u64,
-                Func0::new(move || Dice::closure33((), ())),
-            ))
-        }
-        pub fn closure31(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                10077696_u64,
-                Func0::new(move || Dice::closure32((), ())),
-            ))
-        }
-        pub fn closure30(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                1679616_u64,
-                Func0::new(move || Dice::closure31((), ())),
-            ))
-        }
-        pub fn closure29(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                279936_u64,
-                Func0::new(move || Dice::closure30((), ())),
-            ))
-        }
-        pub fn closure28(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                46656_u64,
-                Func0::new(move || Dice::closure29((), ())),
-            ))
-        }
-        pub fn closure27(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                7776_u64,
-                Func0::new(move || Dice::closure28((), ())),
-            ))
-        }
-        pub fn closure26(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                1296_u64,
-                Func0::new(move || Dice::closure27((), ())),
-            ))
-        }
-        pub fn closure25(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                216_u64,
-                Func0::new(move || Dice::closure26((), ())),
-            ))
-        }
-        pub fn closure24(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                36_u64,
-                Func0::new(move || Dice::closure25((), ())),
-            ))
-        }
-        pub fn closure23(unitVar: (), unitVar_1: ()) -> LrcPtr<Dice::UH2> {
-            LrcPtr::new(Dice::UH2::UH2_0(
-                6_u64,
-                Func0::new(move || Dice::closure24((), ())),
-            ))
-        }
-        pub fn method35(v0_1: i8, v1_1: LrcPtr<Dice::UH2>) -> Dice::US7 {
-            let v0_1: MutCell<i8> = MutCell::new(v0_1);
-            let v1_1: MutCell<LrcPtr<Dice::UH2>> = MutCell::new(v1_1.clone());
-            '_method35: loop {
-                break '_method35 (match v1_1.get().clone().as_ref() {
-                    Dice::UH2::UH2_1 => Dice::US7::US7_1,
-                    Dice::UH2::UH2_0(v1_1_0_0, v1_1_0_1) => {
-                        if v0_1.get().clone() <= 0_i8 {
-                            Dice::US7::US7_0(v1_1_0_0.clone())
-                        } else {
-                            let v0_1_temp: i8 = v0_1.get().clone() - 1_i8;
-                            let v1_1_temp: LrcPtr<Dice::UH2> = (v1_1_0_1)();
-                            v0_1.set(v0_1_temp);
-                            v1_1.set(v1_1_temp);
-                            continue '_method35;
-                        }
-                    }
-                });
-            }
-        }
-        pub fn method37(v0_1: i8, v1_1: u64, v2_1: u8, v3_1: u64) -> string {
-            let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            let v12: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("{ ")), ());
-                ()
-            };
-            let v21: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("power")), ());
-                ()
-            };
-            let v30: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v38: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v0_1), ());
-                ()
-            };
-            let v47: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v56: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("acc")), ());
-                ()
-            };
-            let v64: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v72: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
-                ()
-            };
-            let v80: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v89: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("roll")), ());
-                ()
-            };
-            let v97: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v105: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v122: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("value")), ());
-                ()
-            };
-            let v130: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v138: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v3_1), ());
-                ()
-            };
-            let v147: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" }")), ());
-                ()
-            };
-            v5.l0.get().clone()
-        }
-        pub fn method36(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i8,
-            v9: u64,
-            v10: u8,
-            v11: u64,
-        ) -> string {
-            let v12: string = Dice::method37(v8, v9, v10, v11);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure87(v0_1: u64, v1_1: i8, v2_1: u8, v3_1: u64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v8: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v27: Option<i64> = patternInput.5.clone();
-                let v26: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v25: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v24: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v23: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v22: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method36(
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    v27.clone(),
-                    Dice::method13(v22, v23, v24, v25, v26, v27),
-                    Dice::method17(),
-                    v1_1,
-                    v0_1,
-                    v2_1,
-                    v3_1,
-                ))
-            };
-        }
-        pub fn method39(v0_1: i8, v1_1: u64, v2_1: u8) -> string {
-            let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            let v11: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
-                ()
-            };
-            let v20: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("power")), ());
-                ()
-            };
-            let v29: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v37: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
-                ()
-            };
-            let v46: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v55: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("acc")), ());
-                ()
-            };
-            let v63: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
-                ()
-            };
-            let v79: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v88: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("roll")), ());
-                ()
-            };
-            let v96: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v104: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" }")), ());
-                ()
-            };
-            v4_1.l0.get().clone()
-        }
-        pub fn method38(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i8,
-            v9: u64,
-            v10: u8,
-        ) -> string {
-            let v11: string = Dice::method39(v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure88(v0_1: u64, v1_1: i8, v2_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method38(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v1_1,
-                    v0_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method32(v0_1: i8, v1_1: LrcPtr<Dice::UH1>, v2_1: u64) -> Dice::US6 {
-            let v0_1: MutCell<i8> = MutCell::new(v0_1);
-            let v1_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v1_1.clone());
-            let v2_1: MutCell<u64> = MutCell::new(v2_1);
-            '_method32: loop {
-                break '_method32 (if v0_1.get().clone() < 0_i8 {
-                    let v4_1: u64 = v2_1.get().clone() + 1_u64;
-                    let v7: () = {
-                        Dice::closure22(v2_1.get().clone(), v0_1.get().clone(), v4_1, ());
-                        ()
-                    };
-                    Dice::US6::US6_0(v4_1, v1_1.get().clone())
-                } else {
-                    match v1_1.get().clone().as_ref() {
-                        Dice::UH1::UH1_0 => Dice::US6::US6_1,
-                        Dice::UH1::UH1_1(v1_1_1_0, v1_1_1_1) => {
-                            let v50: LrcPtr<Dice::UH1> = match v1_1.get().clone().as_ref() {
-                                Dice::UH1::UH1_1(_, x) => x.clone(),
-                                _ => unreachable!(),
-                            };
-                            let v49: u8 = match v1_1.get().clone().as_ref() {
-                                Dice::UH1::UH1_1(x, _) => x.clone(),
-                                _ => unreachable!(),
-                            };
-                            if v49 > 1_u8 {
-                                let v55: Dice::US7 = Dice::method35(
-                                    v0_1.get().clone(),
-                                    LrcPtr::new(Dice::UH2::UH2_0(
-                                        1_u64,
-                                        Func0::new(move || Dice::closure23((), ())),
-                                    )),
-                                );
-                                let v62: u64 = (v49 - 1_u8) as u64
-                                    * match &v55 {
-                                        Dice::US7::US7_0(v55_0_0) => match &v55 {
-                                            Dice::US7::US7_0(x) => x.clone(),
-                                            _ => unreachable!(),
-                                        },
-                                        _ => panic!("{}", string("Option does not have a value."),),
-                                    };
-                                let v65: () = {
-                                    Dice::closure87(
-                                        v2_1.get().clone(),
-                                        v0_1.get().clone(),
-                                        v49,
-                                        v62,
-                                        (),
-                                    );
-                                    ()
-                                };
-                                {
-                                    let v0_1_temp: i8 = v0_1.get().clone() - 1_i8;
-                                    let v1_1_temp: LrcPtr<Dice::UH1> = v50;
-                                    let v2_1_temp: u64 = v2_1.get().clone() + v62;
-                                    v0_1.set(v0_1_temp);
-                                    v1_1.set(v1_1_temp);
-                                    v2_1.set(v2_1_temp);
-                                    continue '_method32;
-                                }
-                            } else {
-                                let v110: () = {
-                                    Dice::closure88(
-                                        v2_1.get().clone(),
-                                        v0_1.get().clone(),
-                                        v49,
-                                        (),
-                                    );
-                                    ()
-                                };
-                                {
-                                    let v0_1_temp: i8 = v0_1.get().clone() - 1_i8;
-                                    let v1_1_temp: LrcPtr<Dice::UH1> = v50.clone();
-                                    let v2_1_temp: u64 = v2_1.get().clone();
-                                    v0_1.set(v0_1_temp);
-                                    v1_1.set(v1_1_temp);
-                                    v2_1.set(v2_1_temp);
-                                    continue '_method32;
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-        pub fn method40(v0_1: i8, v1_1: Func0<u8>, v2_1: i8) -> LrcPtr<Dice::UH1> {
-            if v2_1 < v0_1 {
-                LrcPtr::new(Dice::UH1::UH1_1(
-                    v1_1(),
-                    Dice::method40(v0_1, v1_1, v2_1 + 1_i8),
-                ))
-            } else {
-                LrcPtr::new(Dice::UH1::UH1_0)
-            }
-        }
-        pub fn method41(
-            v0_1: Func0<u8>,
-            v1_1: bool,
-            v2_1: u64,
-            v3_1: i8,
-            v4_1: LrcPtr<Dice::UH1>,
-        ) -> u64 {
-            let v0_1 = MutCell::new(v0_1.clone());
-            let v1_1: MutCell<bool> = MutCell::new(v1_1);
-            let v2_1: MutCell<u64> = MutCell::new(v2_1);
-            let v3_1: MutCell<i8> = MutCell::new(v3_1);
-            let v4_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v4_1.clone());
-            '_method41: loop {
-                break '_method41 ({
-                    let v5: i8 = v3_1.get().clone() + 1_i8;
-                    if v3_1.get().clone() < v5 {
-                        Dice::method31(
-                            v0_1.get().clone(),
-                            v1_1.get().clone(),
-                            v2_1.get().clone(),
-                            v3_1.get().clone(),
-                            LrcPtr::new(Dice::UH1::UH1_1(v0_1(), v4_1.get().clone())),
-                            v5,
-                        )
-                    } else {
-                        let v11: Dice::US6 =
-                            Dice::method32(v3_1.get().clone(), v4_1.get().clone(), 0_u64);
-                        if let Dice::US6::US6_0(v11_0_0, v11_0_1) = &v11 {
-                            let v12: u64 = match &v11 {
-                                Dice::US6::US6_0(x, _) => x.clone(),
-                                _ => unreachable!(),
-                            };
-                            if v12 <= v2_1.get().clone() {
-                                v12
-                            } else {
-                                if v1_1.get().clone() {
-                                    let v0_1_temp = v0_1.get().clone();
-                                    let v1_1_temp: bool = v1_1.get().clone();
-                                    let v2_1_temp: u64 = v2_1.get().clone();
-                                    let v3_1_temp: i8 = v3_1.get().clone();
-                                    let v4_1_temp: LrcPtr<Dice::UH1> = Dice::method40(
-                                        v3_1.get().clone(),
-                                        v0_1.get().clone(),
-                                        0_i8,
-                                    );
-                                    v0_1.set(v0_1_temp);
-                                    v1_1.set(v1_1_temp);
-                                    v2_1.set(v2_1_temp);
-                                    v3_1.set(v3_1_temp);
-                                    v4_1.set(v4_1_temp);
-                                    continue '_method41;
-                                } else {
-                                    Dice::method31(
-                                        v0_1.get().clone(),
-                                        v1_1.get().clone(),
-                                        v2_1.get().clone(),
-                                        v3_1.get().clone(),
-                                        LrcPtr::new(Dice::UH1::UH1_1(v0_1(), v4_1.get().clone())),
-                                        v5,
-                                    )
-                                }
-                            }
-                        } else {
-                            if v1_1.get().clone() {
-                                let v0_1_temp = v0_1.get().clone();
-                                let v1_1_temp: bool = v1_1.get().clone();
-                                let v2_1_temp: u64 = v2_1.get().clone();
-                                let v3_1_temp: i8 = v3_1.get().clone();
-                                let v4_1_temp: LrcPtr<Dice::UH1> =
-                                    Dice::method40(v3_1.get().clone(), v0_1.get().clone(), 0_i8);
-                                v0_1.set(v0_1_temp);
-                                v1_1.set(v1_1_temp);
-                                v2_1.set(v2_1_temp);
-                                v3_1.set(v3_1_temp);
-                                v4_1.set(v4_1_temp);
-                                continue '_method41;
-                            } else {
-                                Dice::method31(
-                                    v0_1.get().clone(),
-                                    v1_1.get().clone(),
-                                    v2_1.get().clone(),
-                                    v3_1.get().clone(),
-                                    LrcPtr::new(Dice::UH1::UH1_1(v0_1(), v4_1.get().clone())),
-                                    v5,
-                                )
-                            }
-                        }
-                    }
-                });
-            }
-        }
-        pub fn method31(
-            v0_1: Func0<u8>,
-            v1_1: bool,
-            v2_1: u64,
-            v3_1: i8,
-            v4_1: LrcPtr<Dice::UH1>,
-            v5: i8,
-        ) -> u64 {
-            let v0_1 = MutCell::new(v0_1.clone());
-            let v1_1: MutCell<bool> = MutCell::new(v1_1);
-            let v2_1: MutCell<u64> = MutCell::new(v2_1);
-            let v3_1: MutCell<i8> = MutCell::new(v3_1);
-            let v4_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v4_1.clone());
-            let v5: MutCell<i8> = MutCell::new(v5);
-            '_method31: loop {
-                break '_method31 (if v5.get().clone() < v3_1.get().clone() + 1_i8 {
-                    let v0_1_temp = v0_1.get().clone();
-                    let v1_1_temp: bool = v1_1.get().clone();
-                    let v2_1_temp: u64 = v2_1.get().clone();
-                    let v3_1_temp: i8 = v3_1.get().clone();
-                    let v4_1_temp: LrcPtr<Dice::UH1> =
-                        LrcPtr::new(Dice::UH1::UH1_1(v0_1(), v4_1.get().clone()));
-                    let v5_temp: i8 = v5.get().clone() + 1_i8;
-                    v0_1.set(v0_1_temp);
-                    v1_1.set(v1_1_temp);
-                    v2_1.set(v2_1_temp);
-                    v3_1.set(v3_1_temp);
-                    v4_1.set(v4_1_temp);
-                    v5.set(v5_temp);
-                    continue '_method31;
-                } else {
-                    let v13: Dice::US6 =
-                        Dice::method32(v3_1.get().clone(), v4_1.get().clone(), 0_u64);
-                    if let Dice::US6::US6_0(v13_0_0, v13_0_1) = &v13 {
-                        let v14: u64 = match &v13 {
-                            Dice::US6::US6_0(x, _) => x.clone(),
-                            _ => unreachable!(),
-                        };
-                        if v14 <= v2_1.get().clone() {
-                            v14
-                        } else {
-                            if v1_1.get().clone() {
-                                Dice::method41(
-                                    v0_1.get().clone(),
-                                    v1_1.get().clone(),
-                                    v2_1.get().clone(),
-                                    v3_1.get().clone(),
-                                    Dice::method40(v3_1.get().clone(), v0_1.get().clone(), 0_i8),
-                                )
-                            } else {
-                                let v0_1_temp = v0_1.get().clone();
-                                let v1_1_temp: bool = v1_1.get().clone();
-                                let v2_1_temp: u64 = v2_1.get().clone();
-                                let v3_1_temp: i8 = v3_1.get().clone();
-                                let v4_1_temp: LrcPtr<Dice::UH1> =
-                                    LrcPtr::new(Dice::UH1::UH1_1(v0_1(), v4_1.get().clone()));
-                                let v5_temp: i8 = v5.get().clone() + 1_i8;
-                                v0_1.set(v0_1_temp);
-                                v1_1.set(v1_1_temp);
-                                v2_1.set(v2_1_temp);
-                                v3_1.set(v3_1_temp);
-                                v4_1.set(v4_1_temp);
-                                v5.set(v5_temp);
-                                continue '_method31;
-                            }
-                        }
-                    } else {
-                        if v1_1.get().clone() {
-                            Dice::method41(
-                                v0_1.get().clone(),
-                                v1_1.get().clone(),
-                                v2_1.get().clone(),
-                                v3_1.get().clone(),
-                                Dice::method40(v3_1.get().clone(), v0_1.get().clone(), 0_i8),
-                            )
-                        } else {
-                            let v0_1_temp = v0_1.get().clone();
-                            let v1_1_temp: bool = v1_1.get().clone();
-                            let v2_1_temp: u64 = v2_1.get().clone();
-                            let v3_1_temp: i8 = v3_1.get().clone();
-                            let v4_1_temp: LrcPtr<Dice::UH1> =
-                                LrcPtr::new(Dice::UH1::UH1_1(v0_1(), v4_1.get().clone()));
-                            let v5_temp: i8 = v5.get().clone() + 1_i8;
-                            v0_1.set(v0_1_temp);
-                            v1_1.set(v1_1_temp);
-                            v2_1.set(v2_1_temp);
-                            v3_1.set(v3_1_temp);
-                            v4_1.set(v4_1_temp);
-                            v5.set(v5_temp);
-                            continue '_method31;
-                        }
-                    }
-                });
-            }
-        }
-        pub fn closure20(v0_1: Func0<u8>, v1_1: bool, v2_1: u64) -> u64 {
-            Dice::method31(
-                v0_1,
-                v1_1,
-                v2_1,
-                (if v2_1 == 1_u64 {
-                    1_i8
-                } else {
-                    Dice::method28(v2_1, 0_i8, 1_u64)
-                }) - 1_i8,
-                LrcPtr::new(Dice::UH1::UH1_0),
-                0_i8,
-            )
-        }
-        pub fn closure19(v0_1: Func0<u8>, v1_1: bool) -> Func1<u64, u64> {
-            Func1::new({
-                let v0_1 = v0_1.clone();
-                let v1_1 = v1_1.clone();
-                move |v: u64| Dice::closure20(v0_1.clone(), v1_1, v)
-            })
-        }
-        pub fn closure18(unitVar: (), v0_1: Func0<u8>) -> Func1<bool, Func1<u64, u64>> {
-            Func1::new({
-                let v0_1 = v0_1.clone();
-                move |v: bool| Dice::closure19(v0_1.clone(), v)
-            })
-        }
-        pub fn method42(v0_1: LrcPtr<Dice::UH1>, v1_1: i8) -> i8 {
-            let v0_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v0_1.clone());
-            let v1_1: MutCell<i8> = MutCell::new(v1_1);
-            '_method42: loop {
-                break '_method42 (match v0_1.get().clone().as_ref() {
-                    Dice::UH1::UH1_0 => v1_1.get().clone(),
-                    Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                        let v0_1_temp: LrcPtr<Dice::UH1> = match v0_1.get().clone().as_ref() {
-                            Dice::UH1::UH1_1(_, x) => x.clone(),
-                            _ => unreachable!(),
-                        };
-                        let v1_1_temp: i8 = v1_1.get().clone() + 1_i8;
-                        v0_1.set(v0_1_temp);
-                        v1_1.set(v1_1_temp);
-                        continue '_method42;
-                    }
-                });
-            }
-        }
-        pub fn closure90(v0_1: u64, v1_1: LrcPtr<Dice::UH1>) -> Option<u64> {
-            let v6: Dice::US6 =
-                Dice::method32(Dice::method42(v1_1.clone(), 0_i8) - 1_i8, v1_1, 0_u64);
-            let v16: Dice::US7 = if let Dice::US6::US6_0(v6_0_0, v6_0_1) = &v6 {
-                let v7: u64 = match &v6 {
-                    Dice::US6::US6_0(x, _) => x.clone(),
-                    _ => unreachable!(),
-                };
-                if if v7 >= 1_u64 { v7 <= v0_1 } else { false } {
-                    Dice::US7::US7_0(v7)
-                } else {
-                    Dice::US7::US7_1
-                }
-            } else {
-                Dice::US7::US7_1
-            };
-            match &v16 {
-                Dice::US7::US7_0(v16_0_0) => Some(match &v16 {
-                    Dice::US7::US7_0(x) => x.clone(),
-                    _ => unreachable!(),
-                }),
-                _ => None::<u64>,
-            }
-        }
-        pub fn closure89(unitVar: (), v0_1: u64) -> Func1<LrcPtr<Dice::UH1>, Option<u64>> {
-            Func1::new({
-                let v0_1 = v0_1.clone();
-                move |v: LrcPtr<Dice::UH1>| Dice::closure90(v0_1, v)
-            })
-        }
-        pub fn method44(v0_1: i64, v1_1: i64, v2_1: i8) -> string {
-            let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            let v11: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
-                ()
-            };
-            let v20: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("max")), ());
-                ()
-            };
-            let v29: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v37: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
-                ()
-            };
-            let v46: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v55: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("p")), ());
-                ()
-            };
-            let v63: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
-                ()
-            };
-            let v79: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v88: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("n")), ());
-                ()
-            };
-            let v96: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v104: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" }")), ());
-                ()
-            };
-            v4_1.l0.get().clone()
-        }
-        pub fn method43(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-        ) -> string {
-            let v11: string = Dice::method44(i64::MAX, 4738381338321616896_i64, 24_i8);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.calculate_dice_count"),
-                v11
-            ))
-        }
-        pub fn closure92(unitVar: (), unitVar_1: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v4_1: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v23: Option<i64> = patternInput.5.clone();
-                let v22: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v21: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v20: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v19: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v18: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method43(
-                    v18.clone(),
-                    v19.clone(),
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    Dice::method13(v18, v19, v20, v21, v22, v23),
-                    Dice::method17(),
-                ))
-            };
-        }
-        pub fn method46() -> u8 {
-            rand::Rng::gen_range(&mut rand::thread_rng(), 1_u8..7_u8)
-        }
-        pub fn method49(v0_1: i8, v1_1: i64, v2_1: u8, v3_1: i64) -> string {
-            let v5: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            let v12: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("{ ")), ());
-                ()
-            };
-            let v21: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("power")), ());
-                ()
-            };
-            let v30: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v38: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v0_1), ());
-                ()
-            };
-            let v47: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v56: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("acc")), ());
-                ()
-            };
-            let v64: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v72: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v1_1), ());
-                ()
-            };
-            let v80: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v89: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("roll")), ());
-                ()
-            };
-            let v97: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v105: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v122: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string("value")), ());
-                ()
-            };
-            let v130: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v138: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", v3_1), ());
-                ()
-            };
-            let v147: () = {
-                Dice::closure13(v5.clone(), sprintf!("{}", string(" }")), ());
-                ()
-            };
-            v5.l0.get().clone()
-        }
-        pub fn method48(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(23_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure93(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method48(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method51(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(22_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure94(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method51(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method53(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(21_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure95(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method53(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method55(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(20_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure96(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method55(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method57(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(19_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure97(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method57(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method59(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(18_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure98(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method59(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method61(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(17_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure99(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method61(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method63(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(16_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure100(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method63(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method65(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(15_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure101(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method65(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method67(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(14_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure102(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method67(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method69(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(13_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure103(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method69(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method71(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(12_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure104(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method71(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method73(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(11_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure105(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method73(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method75(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(10_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure106(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method75(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method77(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(9_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure107(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method77(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method79(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(8_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure108(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method79(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method81(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(7_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure109(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method81(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method83(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(6_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure110(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method83(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method85(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(5_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure111(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method85(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method87(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(4_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure112(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method87(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method89(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(3_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure113(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method89(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method91(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(2_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure114(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method91(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method93(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(1_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure115(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method93(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method95(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-            v10: i64,
-        ) -> string {
-            let v12: string = Dice::method49(0_i8, v8, v9, v10);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v12
-            ))
-        }
-        pub fn closure116(v0_1: i64, v1_1: u8, v2_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v7: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v26: Option<i64> = patternInput.5.clone();
-                let v25: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v24: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v23: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v22: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v21: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method95(
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    v26.clone(),
-                    Dice::method13(v21, v22, v23, v24, v25, v26),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                    v2_1,
-                ))
-            };
-        }
-        pub fn method98(v0_1: i8, v1_1: i64, v2_1: i64) -> string {
-            let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            let v11: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
-                ()
-            };
-            let v20: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("power")), ());
-                ()
-            };
-            let v29: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v37: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
-                ()
-            };
-            let v46: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v55: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("acc")), ());
-                ()
-            };
-            let v63: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
-                ()
-            };
-            let v79: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v88: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("result")), ());
-                ()
-            };
-            let v96: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v104: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" }")), ());
-                ()
-            };
-            v4_1.l0.get().clone()
-        }
-        pub fn method97(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: i64,
-        ) -> string {
-            let v11: string = Dice::method98(-1_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure117(v0_1: i64, v1_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method97(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method96(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            let v2_1: i64 = v1_1 + 1_i64;
-            let v5: () = {
-                Dice::closure117(v1_1, v2_1, ());
-                ()
-            };
-            Dice::US8::US8_0(v2_1, v0_1)
-        }
-        pub fn method100(v0_1: i8, v1_1: i64, v2_1: u8) -> string {
-            let v4_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            let v11: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("{ ")), ());
-                ()
-            };
-            let v20: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("power")), ());
-                ()
-            };
-            let v29: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v37: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v0_1), ());
-                ()
-            };
-            let v46: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v55: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("acc")), ());
-                ()
-            };
-            let v63: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v71: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v1_1), ());
-                ()
-            };
-            let v79: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("; ")), ());
-                ()
-            };
-            let v88: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string("roll")), ());
-                ()
-            };
-            let v96: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v104: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", v2_1), ());
-                ()
-            };
-            let v113: () = {
-                Dice::closure13(v4_1.clone(), sprintf!("{}", string(" }")), ());
-                ()
-            };
-            v4_1.l0.get().clone()
-        }
-        pub fn method99(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(0_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure118(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method99(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method94(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v7: i64 = (v3_1 - 1_u8) as i64;
-                        let v10: () = {
-                            Dice::closure116(v1_1, v3_1, v7, ());
-                            ()
-                        };
-                        Dice::method96(v4_1.clone(), v1_1 + v7)
-                    } else {
-                        let v54: () = {
-                            Dice::closure118(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method96(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method101(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(1_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure119(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method101(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method92(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 6_i64;
-                        let v11: () = {
-                            Dice::closure115(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method94(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure119(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method94(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method102(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(2_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure120(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method102(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method90(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 36_i64;
-                        let v11: () = {
-                            Dice::closure114(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method92(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure120(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method92(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method103(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(3_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure121(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method103(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method88(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 216_i64;
-                        let v11: () = {
-                            Dice::closure113(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method90(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure121(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method90(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method104(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(4_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure122(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method104(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method86(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 1296_i64;
-                        let v11: () = {
-                            Dice::closure112(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method88(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure122(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method88(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method105(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(5_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure123(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method105(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method84(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 7776_i64;
-                        let v11: () = {
-                            Dice::closure111(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method86(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure123(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method86(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method106(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(6_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure124(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method106(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method82(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 46656_i64;
-                        let v11: () = {
-                            Dice::closure110(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method84(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure124(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method84(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method107(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(7_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure125(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method107(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method80(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 279936_i64;
-                        let v11: () = {
-                            Dice::closure109(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method82(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure125(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method82(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method108(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(8_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure126(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method108(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method78(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 1679616_i64;
-                        let v11: () = {
-                            Dice::closure108(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method80(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure126(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method80(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method109(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(9_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure127(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method109(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method76(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 10077696_i64;
-                        let v11: () = {
-                            Dice::closure107(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method78(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure127(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method78(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method110(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(10_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure128(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method110(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method74(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 60466176_i64;
-                        let v11: () = {
-                            Dice::closure106(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method76(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure128(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method76(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method111(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(11_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure129(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method111(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method72(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 362797056_i64;
-                        let v11: () = {
-                            Dice::closure105(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method74(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure129(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method74(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method112(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(12_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure130(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method112(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method70(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 2176782336_i64;
-                        let v11: () = {
-                            Dice::closure104(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method72(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure130(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method72(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method113(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(13_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure131(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method113(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method68(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 13060694016_i64;
-                        let v11: () = {
-                            Dice::closure103(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method70(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure131(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method70(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method114(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(14_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure132(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method114(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method66(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 78364164096_i64;
-                        let v11: () = {
-                            Dice::closure102(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method68(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure132(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method68(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method115(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(15_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure133(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method115(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method64(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 470184984576_i64;
-                        let v11: () = {
-                            Dice::closure101(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method66(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure133(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method66(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method116(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(16_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure134(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method116(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method62(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 2821109907456_i64;
-                        let v11: () = {
-                            Dice::closure100(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method64(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure134(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method64(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method117(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(17_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure135(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method117(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method60(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 16926659444736_i64;
-                        let v11: () = {
-                            Dice::closure99(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method62(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure135(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method62(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method118(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(18_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure136(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method118(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method58(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 101559956668416_i64;
-                        let v11: () = {
-                            Dice::closure98(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method60(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure136(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method60(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method119(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(19_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure137(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method119(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method56(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 609359740010496_i64;
-                        let v11: () = {
-                            Dice::closure97(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method58(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure137(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method58(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method120(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(20_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure138(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method120(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method54(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 3656158440062976_i64;
-                        let v11: () = {
-                            Dice::closure96(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method56(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure138(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method56(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method121(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(21_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure139(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method121(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method52(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 21936950640377856_i64;
-                        let v11: () = {
-                            Dice::closure95(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method54(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure139(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method54(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method122(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(22_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure140(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method122(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method50(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 131621703842267136_i64;
-                        let v11: () = {
-                            Dice::closure94(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method52(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure140(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method52(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method123(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-            v9: u8,
-        ) -> string {
-            let v11: string = Dice::method100(23_i8, v8, v9);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.accumulate_dice_rolls"),
-                v11
-            ))
-        }
-        pub fn closure141(v0_1: i64, v1_1: u8, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v6: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v25: Option<i64> = patternInput.5.clone();
-                let v24: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v23: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v22: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v21: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v20: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method123(
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    v25.clone(),
-                    Dice::method13(v20, v21, v22, v23, v24, v25),
-                    Dice::method17(),
-                    v0_1,
-                    v1_1,
-                ))
-            };
-        }
-        pub fn method47(v0_1: LrcPtr<Dice::UH1>, v1_1: i64) -> Dice::US8 {
-            match v0_1.as_ref() {
-                Dice::UH1::UH1_0 => Dice::US8::US8_1,
-                Dice::UH1::UH1_1(v0_1_1_0, v0_1_1_1) => {
-                    let v4_1: LrcPtr<Dice::UH1> = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(_, x) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    let v3_1: u8 = match v0_1.as_ref() {
-                        Dice::UH1::UH1_1(x, _) => x.clone(),
-                        _ => unreachable!(),
-                    };
-                    if v3_1 > 1_u8 {
-                        let v8: i64 = (v3_1 - 1_u8) as i64 * 789730223053602816_i64;
-                        let v11: () = {
-                            Dice::closure93(v1_1, v3_1, v8, ());
-                            ()
-                        };
-                        Dice::method50(v4_1.clone(), v1_1 + v8)
-                    } else {
-                        let v55: () = {
-                            Dice::closure141(v1_1, v3_1, ());
-                            ()
-                        };
-                        Dice::method50(v4_1, v1_1)
-                    }
-                }
-            }
-        }
-        pub fn method45(v0_1: LrcPtr<Dice::UH1>, v1_1: i8) -> i64 {
-            let v0_1: MutCell<LrcPtr<Dice::UH1>> = MutCell::new(v0_1.clone());
-            let v1_1: MutCell<i8> = MutCell::new(v1_1);
-            '_method45: loop {
-                break '_method45 (if v1_1.get().clone() < 24_i8 {
-                    let v0_1_temp: LrcPtr<Dice::UH1> =
-                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(), v0_1.get().clone()));
-                    let v1_1_temp: i8 = v1_1.get().clone() + 1_i8;
-                    v0_1.set(v0_1_temp);
-                    v1_1.set(v1_1_temp);
-                    continue '_method45;
-                } else {
-                    let v8: Dice::US8 = Dice::method47(v0_1.get().clone(), 0_i64);
-                    if let Dice::US8::US8_0(v8_0_0, v8_0_1) = &v8 {
-                        let v9: i64 = match &v8 {
-                            Dice::US8::US8_0(x, _) => x.clone(),
-                            _ => unreachable!(),
-                        };
-                        if v9 <= i64::MAX {
-                            v9
-                        } else {
-                            let v0_1_temp: LrcPtr<Dice::UH1> =
-                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_0)))))))))))))))))))))))))))))))))))))))))))))));
-                            let v1_1_temp: i8 = 23_i8;
-                            v0_1.set(v0_1_temp);
-                            v1_1.set(v1_1_temp);
-                            continue '_method45;
-                        }
-                    } else {
-                        let v0_1_temp: LrcPtr<Dice::UH1> =
-                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                             LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                          LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                       LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                    LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                 LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                              LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                           LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   LrcPtr::new(Dice::UH1::UH1_1(Dice::method46(),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                LrcPtr::new(Dice::UH1::UH1_0)))))))))))))))))))))))))))))))))))))))))))))));
-                        let v1_1_temp: i8 = 23_i8;
-                        v0_1.set(v0_1_temp);
-                        v1_1.set(v1_1_temp);
-                        continue '_method45;
-                    }
-                });
-            }
-        }
-        pub fn method125(v0_1: i64) -> string {
-            let v2_1: LrcPtr<Dice::Mut5> = LrcPtr::new(Dice::Mut5 {
-                l0: MutCell::new(Dice::method19()),
-            });
-            let v9: () = {
-                Dice::closure13(v2_1.clone(), sprintf!("{}", string("{ ")), ());
-                ()
-            };
-            let v18: () = {
-                Dice::closure13(v2_1.clone(), sprintf!("{}", string("result")), ());
-                ()
-            };
-            let v27: () = {
-                Dice::closure13(v2_1.clone(), sprintf!("{}", string(" = ")), ());
-                ()
-            };
-            let v35: () = {
-                Dice::closure13(v2_1.clone(), sprintf!("{}", v0_1), ());
-                ()
-            };
-            let v44: () = {
-                Dice::closure13(v2_1.clone(), sprintf!("{}", string(" }")), ());
-                ()
-            };
-            v2_1.l0.get().clone()
-        }
-        pub fn method124(
-            v0_1: LrcPtr<Dice::Mut1>,
-            v1_1: LrcPtr<Dice::Mut3>,
-            v2_1: LrcPtr<Dice::Mut4>,
-            v3_1: LrcPtr<Dice::Mut5>,
-            v4_1: LrcPtr<Dice::Mut6>,
-            v5: Option<i64>,
-            v6: string,
-            v7: string,
-            v8: i64,
-        ) -> string {
-            let v9: string = Dice::method125(v8);
-            Dice::method23(sprintf!(
-                "{} {} #{} {} / {}",
-                v6,
-                v7,
-                v0_1.l0.get().clone(),
-                string("dice.main"),
-                v9
-            ))
-        }
-        pub fn closure142(v0_1: i64, unitVar: ()) {
-            if Dice::method6(Dice::US2::US2_1) {
-                let v5: () = {
-                    Dice::closure9((), ());
-                    ()
-                };
-                let patternInput: (
-                    LrcPtr<Dice::Mut1>,
-                    LrcPtr<Dice::Mut3>,
-                    LrcPtr<Dice::Mut4>,
-                    LrcPtr<Dice::Mut5>,
-                    LrcPtr<Dice::Mut6>,
-                    Option<i64>,
-                ) = getValue(Dice::TraceState::trace_state().get().clone());
-                let v24: Option<i64> = patternInput.5.clone();
-                let v23: LrcPtr<Dice::Mut6> = patternInput.4.clone();
-                let v22: LrcPtr<Dice::Mut5> = patternInput.3.clone();
-                let v21: LrcPtr<Dice::Mut4> = patternInput.2.clone();
-                let v20: LrcPtr<Dice::Mut3> = patternInput.1.clone();
-                let v19: LrcPtr<Dice::Mut1> = patternInput.0.clone();
-                Dice::method24(Dice::method124(
-                    v19.clone(),
-                    v20.clone(),
-                    v21.clone(),
-                    v22.clone(),
-                    v23.clone(),
-                    v24.clone(),
-                    Dice::method13(v19, v20, v21, v22, v23, v24),
-                    Dice::method17(),
-                    v0_1,
-                ))
-            };
-        }
-        pub fn closure91(unitVar: (), v0_1: Array<string>) -> i32 {
-            let v3_1: () = {
-                Dice::closure92((), ());
-                ()
-            };
-            let v48: () = {
-                Dice::closure142(Dice::method45(LrcPtr::new(Dice::UH1::UH1_0), 0_i8), ());
-                ()
-            };
-            0_i32
-        }
-        pub fn v0() -> Func1<i64, Func1<LrcPtr<Dice::UH0>, LrcPtr<Dice::UH0>>> {
-            static v0: OnceInit<Func1<i64, Func1<LrcPtr<Dice::UH0>, LrcPtr<Dice::UH0>>>> =
-                OnceInit::new();
-            v0.get_or_init(|| Func1::new(move |v: i64| Dice::closure0((), v)))
-                .clone()
-        }
-        pub fn rotate_numbers(x: i64) -> Func1<LrcPtr<Dice::UH0>, LrcPtr<Dice::UH0>> {
-            (Dice::v0())(x)
-        }
-        pub fn v1() -> Func1<LrcPtr<Dice::UH1>, Func0<u8>> {
-            static v1: OnceInit<Func1<LrcPtr<Dice::UH1>, Func0<u8>>> = OnceInit::new();
-            v1.get_or_init(|| Func1::new(move |v: LrcPtr<Dice::UH1>| Dice::closure3((), v)))
-                .clone()
-        }
-        pub fn create_sequential_roller(x: LrcPtr<Dice::UH1>) -> Func0<u8> {
-            (Dice::v1())(x)
-        }
-        pub fn v2() -> Func1<Func0<u8>, Func1<bool, Func1<u64, u64>>> {
-            static v2: OnceInit<Func1<Func0<u8>, Func1<bool, Func1<u64, u64>>>> = OnceInit::new();
-            v2.get_or_init(|| Func1::new(move |v: Func0<u8>| Dice::closure18((), v)))
-                .clone()
-        }
-        pub fn roll_progressively(x: Func0<u8>) -> Func1<bool, Func1<u64, u64>> {
-            (Dice::v2())(x)
-        }
-        pub fn v3() -> Func1<u64, Func1<LrcPtr<Dice::UH1>, Option<u64>>> {
-            static v3: OnceInit<Func1<u64, Func1<LrcPtr<Dice::UH1>, Option<u64>>>> =
-                OnceInit::new();
-            v3.get_or_init(|| Func1::new(move |v: u64| Dice::closure89((), v)))
-                .clone()
-        }
-        pub fn roll_within_bounds(x: u64) -> Func1<LrcPtr<Dice::UH1>, Option<u64>> {
-            (Dice::v3())(x)
-        }
-        pub fn v4() -> Func1<Array<string>, i32> {
-            static v4: OnceInit<Func1<Array<string>, i32>> = OnceInit::new();
-            v4.get_or_init(|| Func1::new(move |v: Array<string>| Dice::closure91((), v)))
-                .clone()
-        }
-        pub fn main(args: Array<string>) -> i32 {
-            (Dice::v4())(args)
+            format!("{} [truncated]", &s[..end])
+        };
+        LOGGED.store(used + s.len(), Ordering::Relaxed);
+        near_sdk::env::log_str(&s);
+    }
+}
+fn string_slice(value: &str, from: i64, to: i64) -> Rc<str> {
+    let bytes = value.as_bytes();
+    let length = bytes.len() as i64;
+    if from < 0 || from > length || to < from - 1 || to >= length { std::process::abort(); }
+    if to < from { return { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) }; }
+    if (bytes[from as usize] & 0xC0) == 0x80 || (to + 1 < length && (bytes[(to + 1) as usize] & 0xC0) == 0x80) { std::process::exit(3); }
+    let slice = &bytes[from as usize..(to + 1) as usize];
+    match std::str::from_utf8(slice) { Ok(text) => Rc::<str>::from(text), Err(error) => Rc::<str>::from(std::str::from_utf8(&slice[..error.valid_up_to()]).unwrap_or("")) }
+}
+struct Mut0 { l0: i64 }
+impl Default for Mut0 {
+    fn default() -> Self {
+        Mut0 { l0: <i64>::default() }
+    }
+}
+struct Mut1 { l0: Rc<dyn Fn(Rc<str>) -> ()> }
+impl Default for Mut1 {
+    fn default() -> Self {
+        Mut1 { l0: { let f: Rc<dyn Fn(Rc<str>) -> ()> = Rc::new(|mut v0: Rc<str>| -> () { () }); f } }
+    }
+}
+struct Mut2 { l0: bool }
+impl Default for Mut2 {
+    fn default() -> Self {
+        Mut2 { l0: <bool>::default() }
+    }
+}
+struct Mut3 { l0: Rc<str> }
+impl Default for Mut3 {
+    fn default() -> Self {
+        Mut3 { l0: { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) } }
+    }
+}
+#[derive(Clone)]
+enum US0 {
+    US0_Verbose,
+    US0_Debug,
+    US0_Info,
+    US0_Warning,
+    US0_Critical,
+}
+impl US0 {
+    fn tag(&self) -> i32 {
+        match self {
+            US0::US0_Verbose => 0,
+            US0::US0_Debug => 1,
+            US0::US0_Info => 2,
+            US0::US0_Warning => 3,
+            US0::US0_Critical => 4,
         }
     }
 }
-pub use module_1d76f080::*;
-#[path = "../deps/polyglot/lib/fsharp/Common.rs"]
-mod module_6140596b;
-pub use module_6140596b::*;
-#[path = "../deps/polyglot/lib/spiral/async_.rs"]
-mod module_daedefb8;
-pub use module_daedefb8::*;
-#[path = "../deps/polyglot/lib/spiral/common.rs"]
-mod module_70286a4c;
-pub use module_70286a4c::*;
-#[path = "../deps/polyglot/lib/spiral/crypto.rs"]
-mod module_4a98a962;
-pub use module_4a98a962::*;
-#[path = "../deps/polyglot/lib/spiral/date_time.rs"]
-mod module_94ca555f;
-pub use module_94ca555f::*;
-#[path = "../deps/polyglot/lib/spiral/file_system.rs"]
-mod module_b697ea1d;
-pub use module_b697ea1d::*;
-#[path = "../deps/polyglot/lib/spiral/lib.rs"]
-mod module_ed8da8a6;
-pub use module_ed8da8a6::*;
-#[path = "../deps/polyglot/lib/spiral/networking.rs"]
-mod module_9dd8007f;
-pub use module_9dd8007f::*;
-#[path = "../deps/polyglot/lib/spiral/platform.rs"]
-mod module_4c4781e;
-pub use module_4c4781e::*;
-#[path = "../deps/polyglot/lib/spiral/runtime.rs"]
-mod module_c40559dd;
-pub use module_c40559dd::*;
-#[path = "../deps/polyglot/lib/spiral/sm.rs"]
-mod module_fc92da1f;
-pub use module_fc92da1f::*;
-#[path = "../deps/polyglot/lib/spiral/threading.rs"]
-mod module_af40e92f;
-pub use module_af40e92f::*;
-#[path = "../deps/polyglot/lib/spiral/trace.rs"]
-mod module_981750e0;
-pub use module_981750e0::*;
-pub mod Polyglot {
-    pub use crate::module_6140596b::Polyglot::*;
+impl Default for US0 {
+    fn default() -> Self {
+        US0::US0_Verbose
+    }
 }
-pub fn main() {
-    let args = std::env::args().skip(1).map(fromString).collect();
-    Dice::main(array_from(args));
+struct Mut4 { l0: US0 }
+impl Default for Mut4 {
+    fn default() -> Self {
+        Mut4 { l0: <US0>::default() }
+    }
+}
+#[derive(Clone)]
+enum US1 {
+    US1_Some(US0),
+    US1_None,
+}
+impl US1 {
+    fn tag(&self) -> i32 {
+        match self {
+            US1::US1_Some(..) => 0,
+            US1::US1_None => 1,
+        }
+    }
+}
+impl Default for US1 {
+    fn default() -> Self {
+        US1::US1_Some(<US0>::default())
+    }
+}
+struct Mut5 { l0: i32, l1: US1 }
+impl Default for Mut5 {
+    fn default() -> Self {
+        Mut5 { l0: <i32>::default(), l1: <US1>::default() }
+    }
+}
+#[derive(Clone)]
+enum US2 {
+    US2_Some(Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>),
+    US2_None,
+}
+impl US2 {
+    fn tag(&self) -> i32 {
+        match self {
+            US2::US2_Some(..) => 0,
+            US2::US2_None => 1,
+        }
+    }
+}
+#[derive(Clone)]
+enum UH0 {
+    UH0_Nil,
+    UH0_Cons(u8, Rc<UH0>),
+}
+impl UH0 {
+    fn tag(&self) -> i32 {
+        match self {
+            UH0::UH0_Nil => 0,
+            UH0::UH0_Cons(..) => 1,
+        }
+    }
+}
+impl Default for UH0 {
+    fn default() -> Self {
+        UH0::UH0_Nil
+    }
+}
+#[derive(Clone)]
+enum US3 {
+    US3_Some(i64, Rc<UH0>),
+    US3_None,
+}
+impl US3 {
+    fn tag(&self) -> i32 {
+        match self {
+            US3::US3_Some(..) => 0,
+            US3::US3_None => 1,
+        }
+    }
+}
+impl Default for US3 {
+    fn default() -> Self {
+        US3::US3_Some(<i64>::default(), <Rc<UH0>>::default())
+    }
+}
+fn get_environment_variable_1(mut v0: Rc<str>) -> Rc<str> {
+    let mut v1: Rc<str> = Rc::<str>::from(std::env::var(&*v0).unwrap_or_default());
+    v1.clone()
+}
+fn method2(mut v0: i32, mut v1: Rc<RefCell<Mut5>>) -> bool {
+    let mut v2: i32 = v1.borrow().l0.clone();
+    let mut v3: bool = v2 < v0;
+    v3
+}
+fn closure1() -> Rc<dyn Fn(Rc<str>) -> ()> {
+    thread_local!{ static CLOSURE: Rc<dyn Fn(Rc<str>) -> ()> = Rc::new(move |mut v0: Rc<str>| -> () {
+        ()
+    }); } CLOSURE.with(|closure| closure.clone())
+}
+fn new_trace_state_0(mut v0: US0) -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) {
+    let mut v1: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("TRACE_LEVEL"); } LIT.with(|lit| lit.clone()) };
+    let mut v2: Rc<str> = get_environment_variable_1(v1.clone());
+    ;
+    ;
+    ;
+    ;
+    ;
+    let mut v3: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Critical"); } LIT.with(|lit| lit.clone()) };
+    let mut v4: Rc<str> = Rc::<str>::from(v3.to_lowercase());
+    let mut v5: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Warning"); } LIT.with(|lit| lit.clone()) };
+    let mut v6: Rc<str> = Rc::<str>::from(v5.to_lowercase());
+    let mut v7: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Info"); } LIT.with(|lit| lit.clone()) };
+    let mut v8: Rc<str> = Rc::<str>::from(v7.to_lowercase());
+    let mut v9: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Debug"); } LIT.with(|lit| lit.clone()) };
+    let mut v10: Rc<str> = Rc::<str>::from(v9.to_lowercase());
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Verbose"); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(v11.to_lowercase());
+    let mut v13: Rc<RefCell<Vec<(Rc<str>, US0)>>> = Rc::new(RefCell::new(Vec::new()));
+    let mut v14: US0 = US0::US0_Verbose;
+    v13.borrow_mut().push((v11.clone(), v14.clone()));
+    let mut v15: US0 = US0::US0_Debug;
+    v13.borrow_mut().push((v9.clone(), v15.clone()));
+    let mut v16: US0 = US0::US0_Info;
+    v13.borrow_mut().push((v7.clone(), v16.clone()));
+    let mut v17: US0 = US0::US0_Warning;
+    v13.borrow_mut().push((v5.clone(), v17.clone()));
+    let mut v18: US0 = US0::US0_Critical;
+    v13.borrow_mut().push((v3.clone(), v18.clone()));
+    let mut v19: US0 = US0::US0_Verbose;
+    v13.borrow_mut().push((v12.clone(), v19.clone()));
+    let mut v20: US0 = US0::US0_Debug;
+    v13.borrow_mut().push((v10.clone(), v20.clone()));
+    let mut v21: US0 = US0::US0_Info;
+    v13.borrow_mut().push((v8.clone(), v21.clone()));
+    let mut v22: US0 = US0::US0_Warning;
+    v13.borrow_mut().push((v6.clone(), v22.clone()));
+    let mut v23: US0 = US0::US0_Critical;
+    v13.borrow_mut().push((v4.clone(), v23.clone()));
+    let mut v24: Rc<Vec<(Rc<str>, US0)>> = Rc::new(v13.borrow().clone());
+    let mut v25: Rc<RefCell<Vec<(Rc<str>, US0)>>> = Rc::new(RefCell::new((v24).as_ref().clone()));
+    let mut v26: i32 = (v25.clone().borrow().len() as i32);
+    let mut v27: US1 = US1::US1_None;
+    let mut v28: Rc<RefCell<Mut5>> = Rc::new(RefCell::new(Mut5 { l0: 0i32, l1: v27.clone() }));
+    while method2(v26, v28.clone()) {
+        let mut v30: i32 = v28.borrow().l0.clone();
+        let mut v31: i32 = v30.wrapping_neg();
+        let mut v32: i32 = v31.wrapping_add(v26);
+        let mut v33: i32 = v32.wrapping_sub(1i32);
+        let mut v34: US1 = v28.borrow().l1.clone();
+        let (mut v35, mut v36): (Rc<str>, US0) = v25.clone().borrow()[v33 as usize].clone();
+        let mut v43: US1 = match &v34 {
+            US1::US1_None => {
+                let mut v38: bool = v35 == v2 ;
+                if v38 {
+                    US1::US1_Some(v36.clone())
+                } else {
+                    US1::US1_None
+                }
+            }
+            US1::US1_Some(v37) => {
+                let mut v37: US0 = v37.clone();
+                v34.clone()
+            }
+        };
+        let mut v44: i32 = v30.wrapping_add(1i32);
+        v28.borrow_mut().l0 = v44;
+        v28.borrow_mut().l1 = v43.clone();
+        ()
+    };
+    let mut v45: US1 = v28.borrow().l1.clone();
+    let mut v46: Rc<RefCell<Mut0>> = Rc::new(RefCell::new(Mut0 { l0: 1i64 }));
+    let mut v47: Rc<dyn Fn(Rc<str>) -> ()> = closure1();
+    let mut v48: Rc<RefCell<Mut1>> = Rc::new(RefCell::new(Mut1 { l0: v47.clone() }));
+    let mut v49: Rc<RefCell<Mut2>> = Rc::new(RefCell::new(Mut2 { l0: true }));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v50.clone() }));
+    let mut v54: US0 = match &v45 {
+        US1::US1_None => {
+            v0.clone()
+        }
+        US1::US1_Some(v52) => {
+            let mut v52: US0 = v52.clone();
+            v52.clone()
+        }
+    };
+    let mut v55: Rc<RefCell<Mut4>> = Rc::new(RefCell::new(Mut4 { l0: v54.clone() }));
+    let mut v56: Option<i64> = None;
+    (v46.clone(), v48.clone(), v49.clone(), v51.clone(), v55.clone(), v56.clone())
+}
+fn fresh_c0() -> Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> {
+    thread_local!{ static CLOSURE: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = Rc::new(move || -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) {
+        let mut v0: US0 = US0::US0_Verbose;
+        let (mut v1, mut v2, mut v3, mut v4, mut v5, mut v6): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = new_trace_state_0(v0.clone());
+        (v1.clone(), v2.clone(), v3.clone(), v4.clone(), v5.clone(), v6.clone())
+    }); } CLOSURE.with(|closure| closure.clone())
+}
+fn fresh_c2() -> Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> {
+    thread_local!{ static CLOSURE: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = Rc::new(move || -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) {
+        let mut v0: US0 = US0::US0_Verbose;
+        let (mut v1, mut v2, mut v3, mut v4, mut v5, mut v6): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = new_trace_state_0(v0.clone());
+        (v1.clone(), v2.clone(), v3.clone(), v4.clone(), v5.clone(), v6.clone())
+    }); } CLOSURE.with(|closure| closure.clone())
+}
+fn method3(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>) -> Rc<str> {
+    let mut v6: u64 = { #[cfg(target_arch = "wasm32")] let (h, m, s) = { let secs = near_sdk::env::block_timestamp() / 1_000_000_000; ((secs / 3600) % 24, (secs / 60) % 60, secs % 60) }; #[cfg(all(windows, not(target_arch = "wasm32")))] let (h, m, s) = { #[repr(C)] struct St([u16; 8]); unsafe extern "system" { fn GetLocalTime(t: *mut St); } let mut t = St([0; 8]); unsafe { GetLocalTime(&mut t) }; (t.0[4] as u64, t.0[5] as u64, t.0[6] as u64) }; #[cfg(all(unix, not(target_arch = "wasm32")))] let (h, m, s) = { #[repr(C, align(8))] struct Tm([i32; 16]); unsafe extern "C" { fn localtime_r(t: *const std::os::raw::c_long, tm: *mut Tm) -> *mut Tm; } let secs = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0) as std::os::raw::c_long; let mut tm = Tm([0; 16]); unsafe { localtime_r(&secs, &mut tm) }; (tm.0[2] as u64, tm.0[1] as u64, tm.0[0] as u64) }; #[cfg(not(any(windows, unix, target_arch = "wasm32")))] let (h, m, s) = { let secs = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0); ((secs / 3600) % 24, (secs / 60) % 60, secs % 60) }; h * 3600 + m * 60 + s };
+    let mut v7: u64 = v6.wrapping_div(3600u64);
+    let mut v8: bool = v7 < 10u64;
+    let mut v11: Rc<str> = if v8 {
+        let mut v9: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("0"); } LIT.with(|lit| lit.clone()) };
+        v9.clone()
+    } else {
+        let mut v10: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+        v10.clone()
+    };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{:?}", v7));
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v11, v12));
+    let mut v14: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(":"); } LIT.with(|lit| lit.clone()) };
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: u64 = v6.wrapping_div(60u64);
+    let mut v17: u64 = v16.wrapping_rem(60u64);
+    let mut v18: bool = v17 < 10u64;
+    let mut v21: Rc<str> = if v18 {
+        let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("0"); } LIT.with(|lit| lit.clone()) };
+        v19.clone()
+    } else {
+        let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+        v20.clone()
+    };
+    let mut v22: Rc<str> = Rc::<str>::from(format!("{:?}", v17));
+    let mut v23: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v22));
+    let mut v24: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v23));
+    let mut v25: Rc<str> = Rc::<str>::from(format!("{}{}", v24, v14));
+    let mut v26: u64 = v6.wrapping_rem(60u64);
+    let mut v27: bool = v26 < 10u64;
+    let mut v30: Rc<str> = if v27 {
+        let mut v28: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("0"); } LIT.with(|lit| lit.clone()) };
+        v28.clone()
+    } else {
+        let mut v29: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+        v29.clone()
+    };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{:?}", v26));
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v25, v32));
+    v33.clone()
+}
+fn method6(mut v0: Rc<RefCell<Mut3>>, mut v1: Rc<str>) -> () {
+    let mut v2: Rc<str> = v0.borrow().l0.clone();
+    let mut v3: Rc<str> = Rc::<str>::from(format!("{}{}", v2, v1));
+    v0.borrow_mut().l0 = v3.clone();
+    ()
+}
+fn format_real_5(mut v0: u8) -> Rc<str> {
+    let mut v1: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v2: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v1.clone() }));
+    let mut v3: Rc<str> = Rc::<str>::from(format!("{}", v0 as char));
+    method6(v2.clone(), v3.clone());
+    let mut v4: Rc<str> = v2.borrow().l0.clone();
+    v4.clone()
+}
+fn method4() -> Rc<str> {
+    let mut v0: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("[94m"); } LIT.with(|lit| lit.clone()) };
+    ;
+    ;
+    ;
+    ;
+    ;
+    let mut v1: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Debug"); } LIT.with(|lit| lit.clone()) };
+    let mut v2: Rc<str> = Rc::<str>::from(v1.to_lowercase());
+    let mut v3: u8 = v2.clone().as_bytes()[0i32 as usize];
+    let mut v4: Rc<str> = format_real_5(v3);
+    let mut v5: Rc<str> = Rc::<str>::from(format!("{}{}", v0, v4));
+    let mut v6: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("[0m"); } LIT.with(|lit| lit.clone()) };
+    let mut v7: Rc<str> = Rc::<str>::from(format!("{}{}", v5, v6));
+    v7.clone()
+}
+fn method9(mut v0: Rc<str>, mut v1: i32, mut v2: i32) -> i32 {
+    loop {
+        let mut v3: bool = v2 >= v1;
+        if v3 {
+            return v1;
+        } else {
+            let mut v4: u8 = v0.clone().as_bytes()[v2 as usize];
+            let mut v5: bool = v4 == b' ';
+            let mut v11: bool = if v5 {
+                true
+            } else {
+                let mut v6: bool = v4 == b'\t';
+                if v6 {
+                    true
+                } else {
+                    let mut v7: bool = v4 == b'\r';
+                    if v7 {
+                        true
+                    } else {
+                        let mut v8: bool = v4 == b'\n';
+                        v8
+                    }
+                }
+            };
+            if v11 {
+                let mut v12: i32 = v2.wrapping_add(1i32);
+                (v0, v1, v2) = (v0.clone(), v1, v12);
+                continue;
+            } else {
+                return v2;
+            }
+        }
+    }
+}
+fn method10(mut v0: Rc<str>, mut v1: i32) -> i32 {
+    loop {
+        let mut v2: bool = v1 <= 0i32;
+        if v2 {
+            return -1i32;
+        } else {
+            let mut v3: i32 = v1.wrapping_sub(1i32);
+            let mut v4: u8 = v0.clone().as_bytes()[v3 as usize];
+            let mut v5: bool = v4 == b' ';
+            let mut v7: bool = if v5 {
+                true
+            } else {
+                let mut v6: bool = v4 == b'/';
+                v6
+            };
+            if v7 {
+                (v0, v1) = (v0.clone(), v3);
+                continue;
+            } else {
+                return v3;
+            }
+        }
+    }
+}
+fn method8(mut v0: Rc<str>) -> Rc<str> {
+    let mut v1: i32 = (v0.clone().len() as i32);
+    let mut v2: i32 = 0i32;
+    let mut v3: i32 = method9(v0.clone(), v1, v2);
+    let mut v4: i32 = v1.wrapping_sub(1i32);
+    let mut v5: Rc<str> = string_slice(&v0.clone(), v3 as i64, v4 as i64);
+    let mut v6: i32 = (v5.clone().len() as i32);
+    let mut v7: i32 = method10(v5.clone(), v6);
+    let mut v8: Rc<str> = string_slice(&v5.clone(), 0i32 as i64, v7 as i64);
+    v8.clone()
+}
+fn format_real_11(mut v0: i64) -> Rc<str> {
+    let mut v1: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v2: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v1.clone() }));
+    let mut v3: Rc<str> = Rc::<str>::from(format!("{}", v0));
+    method6(v2.clone(), v3.clone());
+    let mut v4: Rc<str> = v2.borrow().l0.clone();
+    v4.clone()
+}
+fn format_real_12(mut v0: i8) -> Rc<str> {
+    let mut v1: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v2: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v1.clone() }));
+    let mut v3: Rc<str> = Rc::<str>::from(format!("{}", v0));
+    method6(v2.clone(), v3.clone());
+    let mut v4: Rc<str> = v2.borrow().l0.clone();
+    v4.clone()
+}
+fn method7(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>) -> Rc<str> {
+    let mut v8: i64 = v0.borrow().l0.clone();
+    let mut v9: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v10: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v9));
+    let mut v11: Rc<str> = format_real_11(v8);
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v10, v11));
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v7));
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v9));
+    let mut v15: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.calculate_dice_count"); } LIT.with(|lit| lit.clone()) };
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v15));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("max"); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("max"); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("max = "); } LIT.with(|lit| lit.clone()) };
+    let mut v25: i64 = 4738381338321616896i64;
+    let mut v26: Rc<str> = format_real_11(v25);
+    let mut v27: Rc<str> = Rc::<str>::from(format!("{}{}", v24, v26));
+    let mut v28: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("p"); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v23));
+    let mut v33: i64 = 4738381338321616896i64;
+    let mut v34: Rc<str> = format_real_11(v33);
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v34));
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v28));
+    let mut v37: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("n"); } LIT.with(|lit| lit.clone()) };
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v37));
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v23));
+    let mut v40: i8 = 24i8;
+    let mut v41: Rc<str> = format_real_12(v40);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v46));
+    method8(v47.clone())
+}
+fn closure3() -> Rc<dyn Fn(Rc<str>) -> ()> {
+    thread_local!{ static CLOSURE: Rc<dyn Fn(Rc<str>) -> ()> = Rc::new(move |mut v0: Rc<str>| -> () {
+        println!("{}", v0);
+        ()
+    }); } CLOSURE.with(|closure| closure.clone())
+}
+fn roll_dice_14() -> u8 {
+    let mut v1: u8 = { use std::sync::atomic::{AtomicU64, Ordering}; use std::hash::{BuildHasher, Hasher}; static SPIRAL_NATIVE_RNG: AtomicU64 = AtomicU64::new(0); let mut x = SPIRAL_NATIVE_RNG.load(Ordering::Relaxed); if x == 0 { let mut h = std::collections::hash_map::RandomState::new().build_hasher(); h.write_u128(std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_nanos()).unwrap_or(0)); x = h.finish() | 1; } x ^= x << 13; x ^= x >> 7; x ^= x << 17; SPIRAL_NATIVE_RNG.store(x, Ordering::Relaxed); let span = (7u8 as i128) - (1u8 as i128); let n = if span <= 0 { 0 } else { (x as i128) % span }; ((1u8 as i128) + n) as _ };
+    v1
+}
+fn method40(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: i64) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = -1i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("result"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_11(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method39(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    let mut v2: i64 = v1.wrapping_add(1i64);
+    let mut v4: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+    { let _ = spiral_trace_hold(&v4); };
+    let mut v6: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+    let (mut v7, mut v8, mut v9, mut v10, mut v11, mut v12): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v6) };
+    let mut v13: US0 = v11.borrow().l0.clone();
+    let mut v18: i32 = match &v13 {
+        US0::US0_Critical => {
+            50i32
+        }
+        US0::US0_Debug => {
+            20i32
+        }
+        US0::US0_Info => {
+            30i32
+        }
+        US0::US0_Verbose => {
+            10i32
+        }
+        US0::US0_Warning => {
+            40i32
+        }
+    };
+    let mut v19: bool = v9.borrow().l0.clone();
+    let mut v20: bool = v19 == false;
+    let mut v22: bool = if v20 {
+        false
+    } else {
+        let mut v21: bool = 20i32 >= v18;
+        v21
+    };
+    let mut v23: bool = v22 == false;
+    let mut v68: US2 = if v23 {
+        US2::US2_None
+    } else {
+        { let _ = spiral_trace_hold(&v4); };
+        let (mut v27, mut v28, mut v29, mut v30, mut v31, mut v32): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v6) };
+        let mut v33: Rc<str> = method3(v27.clone(), v28.clone(), v29.clone(), v30.clone(), v31.clone(), v32.clone());
+        let mut v34: Rc<str> = method4();
+        let mut v35: Rc<str> = method40(v27.clone(), v28.clone(), v29.clone(), v30.clone(), v31.clone(), v32.clone(), v33.clone(), v34.clone(), v1, v2);
+        { let _ = spiral_trace_hold(&v4); };
+        let (mut v38, mut v39, mut v40, mut v41, mut v42, mut v43): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v6) };
+        let mut v44: i64 = v38.borrow().l0.clone();
+        let mut v45: i64 = v44.wrapping_add(1i64);
+        v38.borrow_mut().l0 = v45;
+        let mut v46: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+        let mut v47: bool = cfg!(target_arch = "wasm32");
+        if v47 {
+            let mut v48: Rc<str> = v41.borrow().l0.clone();
+            let mut v49: bool = v48.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+            let mut v57: Rc<str> = if v49 {
+                v35.clone()
+            } else {
+                let mut v50: bool = v35.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                if v50 {
+                    let mut v51: Rc<str> = v41.borrow().l0.clone();
+                    v51.clone()
+                } else {
+                    let mut v52: Rc<str> = v41.borrow().l0.clone();
+                    let mut v53: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v52, v53));
+                    let mut v55: Rc<str> = Rc::<str>::from(format!("{}{}", v54, v35));
+                    v55.clone()
+                }
+            };
+            let mut v59: i32 = ((v57.chars().count() + 14999) / 15000) as i32;
+            let mut v60: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+            let mut v61: bool = v35 != v60 ;
+            let mut v63: bool = if v61 {
+                let mut v62: bool = v59 <= 1i32;
+                v62
+            } else {
+                false
+            };
+            if v63 {
+                v41.borrow_mut().l0 = v57.clone();
+                ()
+            } else {
+                v41.borrow_mut().l0 = v60.clone();
+                { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v57); };
+                ()
+            }
+        } else {
+            println!("{}", v35);
+            ()
+        };
+        let mut v66: Rc<dyn Fn(Rc<str>) -> ()> = v39.borrow().l0.clone();
+        v66(v35.clone());
+        US2::US2_Some(v38.clone(), v39.clone(), v40.clone(), v41.clone(), v42.clone(), v43.clone())
+    };
+    US3::US3_Some(v2, v0.clone())
+}
+fn format_real_42(mut v0: u8) -> Rc<str> {
+    let mut v1: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v2: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v1.clone() }));
+    let mut v3: Rc<str> = Rc::<str>::from(format!("{}", v0));
+    method6(v2.clone(), v3.clone());
+    let mut v4: Rc<str> = v2.borrow().l0.clone();
+    v4.clone()
+}
+fn method41(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 0i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method43(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 0i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method38(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v9: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v9); };
+                let mut v11: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v12, mut v13, mut v14, mut v15, mut v16, mut v17): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v11) };
+                let mut v18: US0 = v16.borrow().l0.clone();
+                let mut v23: i32 = match &v18 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v24: bool = v14.borrow().l0.clone();
+                let mut v25: bool = v24 == false;
+                let mut v27: bool = if v25 {
+                    false
+                } else {
+                    let mut v26: bool = 20i32 >= v23;
+                    v26
+                };
+                let mut v28: bool = v27 == false;
+                let mut v73: US2 = if v28 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v9); };
+                    let (mut v32, mut v33, mut v34, mut v35, mut v36, mut v37): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v11) };
+                    let mut v38: Rc<str> = method3(v32.clone(), v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone());
+                    let mut v39: Rc<str> = method4();
+                    let mut v40: Rc<str> = method41(v32.clone(), v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v1, v3, v7);
+                    { let _ = spiral_trace_hold(&v9); };
+                    let (mut v43, mut v44, mut v45, mut v46, mut v47, mut v48): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v11) };
+                    let mut v49: i64 = v43.borrow().l0.clone();
+                    let mut v50: i64 = v49.wrapping_add(1i64);
+                    v43.borrow_mut().l0 = v50;
+                    let mut v51: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v52: bool = cfg!(target_arch = "wasm32");
+                    if v52 {
+                        let mut v53: Rc<str> = v46.borrow().l0.clone();
+                        let mut v54: bool = v53.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v62: Rc<str> = if v54 {
+                            v40.clone()
+                        } else {
+                            let mut v55: bool = v40.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v55 {
+                                let mut v56: Rc<str> = v46.borrow().l0.clone();
+                                v56.clone()
+                            } else {
+                                let mut v57: Rc<str> = v46.borrow().l0.clone();
+                                let mut v58: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v59: Rc<str> = Rc::<str>::from(format!("{}{}", v57, v58));
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v59, v40));
+                                v60.clone()
+                            }
+                        };
+                        let mut v64: i32 = ((v62.chars().count() + 14999) / 15000) as i32;
+                        let mut v65: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v66: bool = v40 != v65 ;
+                        let mut v68: bool = if v66 {
+                            let mut v67: bool = v64 <= 1i32;
+                            v67
+                        } else {
+                            false
+                        };
+                        if v68 {
+                            v46.borrow_mut().l0 = v62.clone();
+                            ()
+                        } else {
+                            v46.borrow_mut().l0 = v65.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v62); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v40);
+                        ()
+                    };
+                    let mut v71: Rc<dyn Fn(Rc<str>) -> ()> = v44.borrow().l0.clone();
+                    v71(v40.clone());
+                    US2::US2_Some(v43.clone(), v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone())
+                };
+                let mut v74: i64 = v1.wrapping_add(v7);
+                method39(v4.clone(), v74)
+            } else {
+                let mut v77: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v77); };
+                let mut v79: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v80, mut v81, mut v82, mut v83, mut v84, mut v85): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v79) };
+                let mut v86: US0 = v84.borrow().l0.clone();
+                let mut v91: i32 = match &v86 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v92: bool = v82.borrow().l0.clone();
+                let mut v93: bool = v92 == false;
+                let mut v95: bool = if v93 {
+                    false
+                } else {
+                    let mut v94: bool = 20i32 >= v91;
+                    v94
+                };
+                let mut v96: bool = v95 == false;
+                let mut v141: US2 = if v96 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v77); };
+                    let (mut v100, mut v101, mut v102, mut v103, mut v104, mut v105): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v79) };
+                    let mut v106: Rc<str> = method3(v100.clone(), v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone());
+                    let mut v107: Rc<str> = method4();
+                    let mut v108: Rc<str> = method43(v100.clone(), v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v77); };
+                    let (mut v111, mut v112, mut v113, mut v114, mut v115, mut v116): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v79) };
+                    let mut v117: i64 = v111.borrow().l0.clone();
+                    let mut v118: i64 = v117.wrapping_add(1i64);
+                    v111.borrow_mut().l0 = v118;
+                    let mut v119: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v120: bool = cfg!(target_arch = "wasm32");
+                    if v120 {
+                        let mut v121: Rc<str> = v114.borrow().l0.clone();
+                        let mut v122: bool = v121.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v130: Rc<str> = if v122 {
+                            v108.clone()
+                        } else {
+                            let mut v123: bool = v108.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v123 {
+                                let mut v124: Rc<str> = v114.borrow().l0.clone();
+                                v124.clone()
+                            } else {
+                                let mut v125: Rc<str> = v114.borrow().l0.clone();
+                                let mut v126: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v127: Rc<str> = Rc::<str>::from(format!("{}{}", v125, v126));
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v127, v108));
+                                v128.clone()
+                            }
+                        };
+                        let mut v132: i32 = ((v130.chars().count() + 14999) / 15000) as i32;
+                        let mut v133: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v134: bool = v108 != v133 ;
+                        let mut v136: bool = if v134 {
+                            let mut v135: bool = v132 <= 1i32;
+                            v135
+                        } else {
+                            false
+                        };
+                        if v136 {
+                            v114.borrow_mut().l0 = v130.clone();
+                            ()
+                        } else {
+                            v114.borrow_mut().l0 = v133.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v130); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v108);
+                        ()
+                    };
+                    let mut v139: Rc<dyn Fn(Rc<str>) -> ()> = v112.borrow().l0.clone();
+                    v139(v108.clone());
+                    US2::US2_Some(v111.clone(), v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone())
+                };
+                method39(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method44(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 1i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method45(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 1i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method37(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(6i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method44(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method38(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method45(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method38(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method46(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 2i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method47(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 2i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method36(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(36i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method46(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method37(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method47(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method37(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method48(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 3i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method49(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 3i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method35(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(216i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method48(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method36(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method49(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method36(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method50(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 4i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method51(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 4i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method34(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(1296i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method50(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method35(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method51(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method35(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method52(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 5i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method53(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 5i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method33(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(7776i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method52(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method34(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method53(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method34(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method54(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 6i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method55(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 6i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method32(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(46656i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method54(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method33(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method55(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method33(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method56(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 7i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method57(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 7i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method31(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(279936i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method56(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method32(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method57(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method32(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method58(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 8i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method59(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 8i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method30(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(1679616i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method58(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method31(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method59(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method31(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method60(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 9i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method61(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 9i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method29(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(10077696i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method60(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method30(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method61(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method30(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method62(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 10i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method63(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 10i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method28(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(60466176i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method62(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method29(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method63(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method29(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method64(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 11i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method65(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 11i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method27(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(362797056i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method64(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method28(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method65(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method28(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method66(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 12i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method67(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 12i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method26(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(2176782336i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method66(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method27(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method67(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method27(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method68(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 13i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method69(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 13i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method25(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(13060694016i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method68(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method26(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method69(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method26(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method70(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 14i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method71(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 14i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method24(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(78364164096i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method70(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method25(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method71(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method25(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method72(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 15i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method73(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 15i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method23(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(470184984576i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method72(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method24(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method73(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method24(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method74(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 16i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method75(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 16i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method22(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(2821109907456i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method74(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method23(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method75(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method23(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method76(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 17i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method77(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 17i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method21(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(16926659444736i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method76(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method22(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method77(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method22(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method78(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 18i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method79(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 18i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method20(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(101559956668416i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method78(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method21(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method79(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method21(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method80(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 19i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method81(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 19i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method19(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(609359740010496i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method80(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method20(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method81(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method20(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method82(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 20i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method83(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 20i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method18(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(3656158440062976i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method82(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method19(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method83(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method19(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method84(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 21i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method85(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 21i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method17(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(21936950640377856i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method84(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method18(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method85(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method18(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method86(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 22i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method87(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 22i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method16(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(131621703842267136i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method86(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method17(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method87(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method17(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method88(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8, mut v10: i64) -> Rc<str> {
+    let mut v11: i64 = v0.borrow().l0.clone();
+    let mut v12: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v12));
+    let mut v14: Rc<str> = format_real_11(v11);
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v14));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v7));
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v12));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v20));
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v28: i8 = 23i8;
+    let mut v29: Rc<str> = format_real_12(v28);
+    let mut v30: Rc<str> = Rc::<str>::from(format!("{}{}", v27, v29));
+    let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v30, v31));
+    let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v32, v33));
+    let mut v35: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v26));
+    let mut v36: Rc<str> = format_real_11(v8);
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v35, v36));
+    let mut v38: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v31));
+    let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v38, v39));
+    let mut v41: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v26));
+    let mut v42: Rc<str> = format_real_42(v9);
+    let mut v43: Rc<str> = Rc::<str>::from(format!("{}{}", v41, v42));
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v31));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("value"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v46, v26));
+    let mut v48: Rc<str> = format_real_11(v10);
+    let mut v49: Rc<str> = Rc::<str>::from(format!("{}{}", v47, v48));
+    let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v51: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v49));
+    let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v51, v52));
+    let mut v54: Rc<str> = Rc::<str>::from(format!("{}{}", v21, v53));
+    method8(v54.clone())
+}
+fn method89(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64, mut v9: u8) -> Rc<str> {
+    let mut v10: i64 = v0.borrow().l0.clone();
+    let mut v11: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v12: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v11));
+    let mut v13: Rc<str> = format_real_11(v10);
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v12, v13));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v7));
+    let mut v16: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v11));
+    let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.accumulate_dice_rolls"); } LIT.with(|lit| lit.clone()) };
+    let mut v18: Rc<str> = Rc::<str>::from(format!("{}{}", v16, v17));
+    let mut v19: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v20: Rc<str> = Rc::<str>::from(format!("{}{}", v18, v19));
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power"); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("power = "); } LIT.with(|lit| lit.clone()) };
+    let mut v27: i8 = 23i8;
+    let mut v28: Rc<str> = format_real_12(v27);
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v26, v28));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("acc"); } LIT.with(|lit| lit.clone()) };
+    let mut v33: Rc<str> = Rc::<str>::from(format!("{}{}", v31, v32));
+    let mut v34: Rc<str> = Rc::<str>::from(format!("{}{}", v33, v25));
+    let mut v35: Rc<str> = format_real_11(v8);
+    let mut v36: Rc<str> = Rc::<str>::from(format!("{}{}", v34, v35));
+    let mut v37: Rc<str> = Rc::<str>::from(format!("{}{}", v36, v30));
+    let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("roll"); } LIT.with(|lit| lit.clone()) };
+    let mut v39: Rc<str> = Rc::<str>::from(format!("{}{}", v37, v38));
+    let mut v40: Rc<str> = Rc::<str>::from(format!("{}{}", v39, v25));
+    let mut v41: Rc<str> = format_real_42(v9);
+    let mut v42: Rc<str> = Rc::<str>::from(format!("{}{}", v40, v41));
+    let mut v43: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v44: Rc<str> = Rc::<str>::from(format!("{}{}", v43, v42));
+    let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v46: Rc<str> = Rc::<str>::from(format!("{}{}", v44, v45));
+    let mut v47: Rc<str> = Rc::<str>::from(format!("{}{}", v20, v46));
+    method8(v47.clone())
+}
+fn method15(mut v0: Rc<UH0>, mut v1: i64) -> US3 {
+    match &*v0 {
+        UH0::UH0_Cons(v3, v4) => {
+            let mut v3: u8 = *v3;
+            let mut v4: Rc<UH0> = v4.clone();
+            let mut v5: bool = v3 > 1u8;
+            if v5 {
+                let mut v6: u8 = v3.wrapping_sub(1u8);
+                let mut v7: i64 = (v6 as i64);
+                let mut v8: i64 = v7.wrapping_mul(789730223053602816i64);
+                let mut v10: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v10); };
+                let mut v12: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v13, mut v14, mut v15, mut v16, mut v17, mut v18): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                let mut v19: US0 = v17.borrow().l0.clone();
+                let mut v24: i32 = match &v19 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v25: bool = v15.borrow().l0.clone();
+                let mut v26: bool = v25 == false;
+                let mut v28: bool = if v26 {
+                    false
+                } else {
+                    let mut v27: bool = 20i32 >= v24;
+                    v27
+                };
+                let mut v29: bool = v28 == false;
+                let mut v74: US2 = if v29 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v33, mut v34, mut v35, mut v36, mut v37, mut v38): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v39: Rc<str> = method3(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone());
+                    let mut v40: Rc<str> = method4();
+                    let mut v41: Rc<str> = method88(v33.clone(), v34.clone(), v35.clone(), v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v1, v3, v8);
+                    { let _ = spiral_trace_hold(&v10); };
+                    let (mut v44, mut v45, mut v46, mut v47, mut v48, mut v49): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v12) };
+                    let mut v50: i64 = v44.borrow().l0.clone();
+                    let mut v51: i64 = v50.wrapping_add(1i64);
+                    v44.borrow_mut().l0 = v51;
+                    let mut v52: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v53: bool = cfg!(target_arch = "wasm32");
+                    if v53 {
+                        let mut v54: Rc<str> = v47.borrow().l0.clone();
+                        let mut v55: bool = v54.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v63: Rc<str> = if v55 {
+                            v41.clone()
+                        } else {
+                            let mut v56: bool = v41.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v56 {
+                                let mut v57: Rc<str> = v47.borrow().l0.clone();
+                                v57.clone()
+                            } else {
+                                let mut v58: Rc<str> = v47.borrow().l0.clone();
+                                let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v60: Rc<str> = Rc::<str>::from(format!("{}{}", v58, v59));
+                                let mut v61: Rc<str> = Rc::<str>::from(format!("{}{}", v60, v41));
+                                v61.clone()
+                            }
+                        };
+                        let mut v65: i32 = ((v63.chars().count() + 14999) / 15000) as i32;
+                        let mut v66: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v67: bool = v41 != v66 ;
+                        let mut v69: bool = if v67 {
+                            let mut v68: bool = v65 <= 1i32;
+                            v68
+                        } else {
+                            false
+                        };
+                        if v69 {
+                            v47.borrow_mut().l0 = v63.clone();
+                            ()
+                        } else {
+                            v47.borrow_mut().l0 = v66.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v63); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v41);
+                        ()
+                    };
+                    let mut v72: Rc<dyn Fn(Rc<str>) -> ()> = v45.borrow().l0.clone();
+                    v72(v41.clone());
+                    US2::US2_Some(v44.clone(), v45.clone(), v46.clone(), v47.clone(), v48.clone(), v49.clone())
+                };
+                let mut v75: i64 = v1.wrapping_add(v8);
+                method16(v4.clone(), v75)
+            } else {
+                let mut v78: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+                { let _ = spiral_trace_hold(&v78); };
+                let mut v80: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+                let (mut v81, mut v82, mut v83, mut v84, mut v85, mut v86): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                let mut v87: US0 = v85.borrow().l0.clone();
+                let mut v92: i32 = match &v87 {
+                    US0::US0_Critical => {
+                        50i32
+                    }
+                    US0::US0_Debug => {
+                        20i32
+                    }
+                    US0::US0_Info => {
+                        30i32
+                    }
+                    US0::US0_Verbose => {
+                        10i32
+                    }
+                    US0::US0_Warning => {
+                        40i32
+                    }
+                };
+                let mut v93: bool = v83.borrow().l0.clone();
+                let mut v94: bool = v93 == false;
+                let mut v96: bool = if v94 {
+                    false
+                } else {
+                    let mut v95: bool = 20i32 >= v92;
+                    v95
+                };
+                let mut v97: bool = v96 == false;
+                let mut v142: US2 = if v97 {
+                    US2::US2_None
+                } else {
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v101, mut v102, mut v103, mut v104, mut v105, mut v106): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v107: Rc<str> = method3(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone());
+                    let mut v108: Rc<str> = method4();
+                    let mut v109: Rc<str> = method89(v101.clone(), v102.clone(), v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone(), v1, v3);
+                    { let _ = spiral_trace_hold(&v78); };
+                    let (mut v112, mut v113, mut v114, mut v115, mut v116, mut v117): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v80) };
+                    let mut v118: i64 = v112.borrow().l0.clone();
+                    let mut v119: i64 = v118.wrapping_add(1i64);
+                    v112.borrow_mut().l0 = v119;
+                    let mut v120: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+                    let mut v121: bool = cfg!(target_arch = "wasm32");
+                    if v121 {
+                        let mut v122: Rc<str> = v115.borrow().l0.clone();
+                        let mut v123: bool = v122.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v131: Rc<str> = if v123 {
+                            v109.clone()
+                        } else {
+                            let mut v124: bool = v109.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                            if v124 {
+                                let mut v125: Rc<str> = v115.borrow().l0.clone();
+                                v125.clone()
+                            } else {
+                                let mut v126: Rc<str> = v115.borrow().l0.clone();
+                                let mut v127: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                                let mut v128: Rc<str> = Rc::<str>::from(format!("{}{}", v126, v127));
+                                let mut v129: Rc<str> = Rc::<str>::from(format!("{}{}", v128, v109));
+                                v129.clone()
+                            }
+                        };
+                        let mut v133: i32 = ((v131.chars().count() + 14999) / 15000) as i32;
+                        let mut v134: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                        let mut v135: bool = v109 != v134 ;
+                        let mut v137: bool = if v135 {
+                            let mut v136: bool = v133 <= 1i32;
+                            v136
+                        } else {
+                            false
+                        };
+                        if v137 {
+                            v115.borrow_mut().l0 = v131.clone();
+                            ()
+                        } else {
+                            v115.borrow_mut().l0 = v134.clone();
+                            { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v131); };
+                            ()
+                        }
+                    } else {
+                        println!("{}", v109);
+                        ()
+                    };
+                    let mut v140: Rc<dyn Fn(Rc<str>) -> ()> = v113.borrow().l0.clone();
+                    v140(v109.clone());
+                    US2::US2_Some(v112.clone(), v113.clone(), v114.clone(), v115.clone(), v116.clone(), v117.clone())
+                };
+                method16(v4.clone(), v1)
+            }
+        }
+        UH0::UH0_Nil => {
+            US3::US3_None
+        }
+    }
+}
+fn method13(mut v0: Rc<UH0>, mut v1: i8) -> i64 {
+    loop {
+        let mut v2: bool = v1 < 24i8;
+        if v2 {
+            let mut v3: u8 = roll_dice_14();
+            let mut v4: Rc<UH0> = Rc::new(UH0::UH0_Cons(v3, v0.clone()));
+            let mut v5: i8 = v1.wrapping_add(1i8);
+            (v0, v1) = (v4.clone(), v5);
+            continue;
+        } else {
+            let mut v7: i64 = 0i64;
+            let mut v8: US3 = method15(v0.clone(), v7);
+            match &v8 {
+                US3::US3_Some(v9, v10) => {
+                    let mut v9: i64 = *v9;
+                    let mut v10: Rc<UH0> = v10.clone();
+                    let mut v11: bool = v9 <= 4738381338321616896i64;
+                    if v11 {
+                        return v9;
+                    } else {
+                        let mut v12: u8 = roll_dice_14();
+                        let mut v13: u8 = roll_dice_14();
+                        let mut v14: u8 = roll_dice_14();
+                        let mut v15: u8 = roll_dice_14();
+                        let mut v16: u8 = roll_dice_14();
+                        let mut v17: u8 = roll_dice_14();
+                        let mut v18: u8 = roll_dice_14();
+                        let mut v19: u8 = roll_dice_14();
+                        let mut v20: u8 = roll_dice_14();
+                        let mut v21: u8 = roll_dice_14();
+                        let mut v22: u8 = roll_dice_14();
+                        let mut v23: u8 = roll_dice_14();
+                        let mut v24: u8 = roll_dice_14();
+                        let mut v25: u8 = roll_dice_14();
+                        let mut v26: u8 = roll_dice_14();
+                        let mut v27: u8 = roll_dice_14();
+                        let mut v28: u8 = roll_dice_14();
+                        let mut v29: u8 = roll_dice_14();
+                        let mut v30: u8 = roll_dice_14();
+                        let mut v31: u8 = roll_dice_14();
+                        let mut v32: u8 = roll_dice_14();
+                        let mut v33: u8 = roll_dice_14();
+                        let mut v34: u8 = roll_dice_14();
+                        let mut v35: Rc<UH0> = { thread_local!{ static CASE: Rc<UH0> = Rc::new(UH0::UH0_Nil); } CASE.with(|case| case.clone()) };
+                        let mut v36: Rc<UH0> = Rc::new(UH0::UH0_Cons(v34, v35.clone()));
+                        let mut v37: Rc<UH0> = Rc::new(UH0::UH0_Cons(v33, v36.clone()));
+                        let mut v38: Rc<UH0> = Rc::new(UH0::UH0_Cons(v32, v37.clone()));
+                        let mut v39: Rc<UH0> = Rc::new(UH0::UH0_Cons(v31, v38.clone()));
+                        let mut v40: Rc<UH0> = Rc::new(UH0::UH0_Cons(v30, v39.clone()));
+                        let mut v41: Rc<UH0> = Rc::new(UH0::UH0_Cons(v29, v40.clone()));
+                        let mut v42: Rc<UH0> = Rc::new(UH0::UH0_Cons(v28, v41.clone()));
+                        let mut v43: Rc<UH0> = Rc::new(UH0::UH0_Cons(v27, v42.clone()));
+                        let mut v44: Rc<UH0> = Rc::new(UH0::UH0_Cons(v26, v43.clone()));
+                        let mut v45: Rc<UH0> = Rc::new(UH0::UH0_Cons(v25, v44.clone()));
+                        let mut v46: Rc<UH0> = Rc::new(UH0::UH0_Cons(v24, v45.clone()));
+                        let mut v47: Rc<UH0> = Rc::new(UH0::UH0_Cons(v23, v46.clone()));
+                        let mut v48: Rc<UH0> = Rc::new(UH0::UH0_Cons(v22, v47.clone()));
+                        let mut v49: Rc<UH0> = Rc::new(UH0::UH0_Cons(v21, v48.clone()));
+                        let mut v50: Rc<UH0> = Rc::new(UH0::UH0_Cons(v20, v49.clone()));
+                        let mut v51: Rc<UH0> = Rc::new(UH0::UH0_Cons(v19, v50.clone()));
+                        let mut v52: Rc<UH0> = Rc::new(UH0::UH0_Cons(v18, v51.clone()));
+                        let mut v53: Rc<UH0> = Rc::new(UH0::UH0_Cons(v17, v52.clone()));
+                        let mut v54: Rc<UH0> = Rc::new(UH0::UH0_Cons(v16, v53.clone()));
+                        let mut v55: Rc<UH0> = Rc::new(UH0::UH0_Cons(v15, v54.clone()));
+                        let mut v56: Rc<UH0> = Rc::new(UH0::UH0_Cons(v14, v55.clone()));
+                        let mut v57: Rc<UH0> = Rc::new(UH0::UH0_Cons(v13, v56.clone()));
+                        let mut v58: Rc<UH0> = Rc::new(UH0::UH0_Cons(v12, v57.clone()));
+                        let mut v59: i8 = 23i8;
+                        (v0, v1) = (v58.clone(), v59);
+                        continue;
+                    }
+                }
+                _ => {
+                    let mut v62: u8 = roll_dice_14();
+                    let mut v63: u8 = roll_dice_14();
+                    let mut v64: u8 = roll_dice_14();
+                    let mut v65: u8 = roll_dice_14();
+                    let mut v66: u8 = roll_dice_14();
+                    let mut v67: u8 = roll_dice_14();
+                    let mut v68: u8 = roll_dice_14();
+                    let mut v69: u8 = roll_dice_14();
+                    let mut v70: u8 = roll_dice_14();
+                    let mut v71: u8 = roll_dice_14();
+                    let mut v72: u8 = roll_dice_14();
+                    let mut v73: u8 = roll_dice_14();
+                    let mut v74: u8 = roll_dice_14();
+                    let mut v75: u8 = roll_dice_14();
+                    let mut v76: u8 = roll_dice_14();
+                    let mut v77: u8 = roll_dice_14();
+                    let mut v78: u8 = roll_dice_14();
+                    let mut v79: u8 = roll_dice_14();
+                    let mut v80: u8 = roll_dice_14();
+                    let mut v81: u8 = roll_dice_14();
+                    let mut v82: u8 = roll_dice_14();
+                    let mut v83: u8 = roll_dice_14();
+                    let mut v84: u8 = roll_dice_14();
+                    let mut v85: Rc<UH0> = { thread_local!{ static CASE: Rc<UH0> = Rc::new(UH0::UH0_Nil); } CASE.with(|case| case.clone()) };
+                    let mut v86: Rc<UH0> = Rc::new(UH0::UH0_Cons(v84, v85.clone()));
+                    let mut v87: Rc<UH0> = Rc::new(UH0::UH0_Cons(v83, v86.clone()));
+                    let mut v88: Rc<UH0> = Rc::new(UH0::UH0_Cons(v82, v87.clone()));
+                    let mut v89: Rc<UH0> = Rc::new(UH0::UH0_Cons(v81, v88.clone()));
+                    let mut v90: Rc<UH0> = Rc::new(UH0::UH0_Cons(v80, v89.clone()));
+                    let mut v91: Rc<UH0> = Rc::new(UH0::UH0_Cons(v79, v90.clone()));
+                    let mut v92: Rc<UH0> = Rc::new(UH0::UH0_Cons(v78, v91.clone()));
+                    let mut v93: Rc<UH0> = Rc::new(UH0::UH0_Cons(v77, v92.clone()));
+                    let mut v94: Rc<UH0> = Rc::new(UH0::UH0_Cons(v76, v93.clone()));
+                    let mut v95: Rc<UH0> = Rc::new(UH0::UH0_Cons(v75, v94.clone()));
+                    let mut v96: Rc<UH0> = Rc::new(UH0::UH0_Cons(v74, v95.clone()));
+                    let mut v97: Rc<UH0> = Rc::new(UH0::UH0_Cons(v73, v96.clone()));
+                    let mut v98: Rc<UH0> = Rc::new(UH0::UH0_Cons(v72, v97.clone()));
+                    let mut v99: Rc<UH0> = Rc::new(UH0::UH0_Cons(v71, v98.clone()));
+                    let mut v100: Rc<UH0> = Rc::new(UH0::UH0_Cons(v70, v99.clone()));
+                    let mut v101: Rc<UH0> = Rc::new(UH0::UH0_Cons(v69, v100.clone()));
+                    let mut v102: Rc<UH0> = Rc::new(UH0::UH0_Cons(v68, v101.clone()));
+                    let mut v103: Rc<UH0> = Rc::new(UH0::UH0_Cons(v67, v102.clone()));
+                    let mut v104: Rc<UH0> = Rc::new(UH0::UH0_Cons(v66, v103.clone()));
+                    let mut v105: Rc<UH0> = Rc::new(UH0::UH0_Cons(v65, v104.clone()));
+                    let mut v106: Rc<UH0> = Rc::new(UH0::UH0_Cons(v64, v105.clone()));
+                    let mut v107: Rc<UH0> = Rc::new(UH0::UH0_Cons(v63, v106.clone()));
+                    let mut v108: Rc<UH0> = Rc::new(UH0::UH0_Cons(v62, v107.clone()));
+                    let mut v109: i8 = 23i8;
+                    (v0, v1) = (v108.clone(), v109);
+                    continue;
+                }
+            }
+        }
+    }
+}
+fn method90(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<str>, mut v7: Rc<str>, mut v8: i64) -> Rc<str> {
+    let mut v9: i64 = v0.borrow().l0.clone();
+    let mut v10: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" "); } LIT.with(|lit| lit.clone()) };
+    let mut v11: Rc<str> = Rc::<str>::from(format!("{}{}", v6, v10));
+    let mut v12: Rc<str> = format_real_11(v9);
+    let mut v13: Rc<str> = Rc::<str>::from(format!("{}{}", v11, v12));
+    let mut v14: Rc<str> = Rc::<str>::from(format!("{}{}", v13, v7));
+    let mut v15: Rc<str> = Rc::<str>::from(format!("{}{}", v14, v10));
+    let mut v16: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("dice.main"); } LIT.with(|lit| lit.clone()) };
+    let mut v17: Rc<str> = Rc::<str>::from(format!("{}{}", v15, v16));
+    let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+    let mut v19: Rc<str> = Rc::<str>::from(format!("{}{}", v17, v18));
+    let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+    let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("result"); } LIT.with(|lit| lit.clone()) };
+    let mut v23: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("result"); } LIT.with(|lit| lit.clone()) };
+    let mut v24: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+    let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("result = "); } LIT.with(|lit| lit.clone()) };
+    let mut v26: Rc<str> = format_real_11(v8);
+    let mut v27: Rc<str> = Rc::<str>::from(format!("{}{}", v25, v26));
+    let mut v28: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+    let mut v29: Rc<str> = Rc::<str>::from(format!("{}{}", v28, v27));
+    let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+    let mut v31: Rc<str> = Rc::<str>::from(format!("{}{}", v29, v30));
+    let mut v32: Rc<str> = Rc::<str>::from(format!("{}{}", v19, v31));
+    method8(v32.clone())
+}
+fn spiral_main() -> i32 {
+    let mut v2: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c0();
+    { let _ = spiral_trace_hold(&v2); };
+    let mut v4: Rc<dyn Fn() -> (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>)> = fresh_c2();
+    let (mut v5, mut v6, mut v7, mut v8, mut v9, mut v10): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v4) };
+    let mut v11: US0 = v9.borrow().l0.clone();
+    let mut v16: i32 = match &v11 {
+        US0::US0_Critical => {
+            50i32
+        }
+        US0::US0_Debug => {
+            20i32
+        }
+        US0::US0_Info => {
+            30i32
+        }
+        US0::US0_Verbose => {
+            10i32
+        }
+        US0::US0_Warning => {
+            40i32
+        }
+    };
+    let mut v17: bool = v7.borrow().l0.clone();
+    let mut v18: bool = v17 == false;
+    let mut v20: bool = if v18 {
+        false
+    } else {
+        let mut v19: bool = 20i32 >= v16;
+        v19
+    };
+    let mut v21: bool = v20 == false;
+    let mut v66: US2 = if v21 {
+        US2::US2_None
+    } else {
+        { let _ = spiral_trace_hold(&v2); };
+        let (mut v25, mut v26, mut v27, mut v28, mut v29, mut v30): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v4) };
+        let mut v31: Rc<str> = method3(v25.clone(), v26.clone(), v27.clone(), v28.clone(), v29.clone(), v30.clone());
+        let mut v32: Rc<str> = method4();
+        let mut v33: Rc<str> = method7(v25.clone(), v26.clone(), v27.clone(), v28.clone(), v29.clone(), v30.clone(), v31.clone(), v32.clone());
+        { let _ = spiral_trace_hold(&v2); };
+        let (mut v36, mut v37, mut v38, mut v39, mut v40, mut v41): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v4) };
+        let mut v42: i64 = v36.borrow().l0.clone();
+        let mut v43: i64 = v42.wrapping_add(1i64);
+        v36.borrow_mut().l0 = v43;
+        let mut v44: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+        let mut v45: bool = cfg!(target_arch = "wasm32");
+        if v45 {
+            let mut v46: Rc<str> = v39.borrow().l0.clone();
+            let mut v47: bool = v46.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+            let mut v55: Rc<str> = if v47 {
+                v33.clone()
+            } else {
+                let mut v48: bool = v33.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                if v48 {
+                    let mut v49: Rc<str> = v39.borrow().l0.clone();
+                    v49.clone()
+                } else {
+                    let mut v50: Rc<str> = v39.borrow().l0.clone();
+                    let mut v51: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                    let mut v52: Rc<str> = Rc::<str>::from(format!("{}{}", v50, v51));
+                    let mut v53: Rc<str> = Rc::<str>::from(format!("{}{}", v52, v33));
+                    v53.clone()
+                }
+            };
+            let mut v57: i32 = ((v55.chars().count() + 14999) / 15000) as i32;
+            let mut v58: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+            let mut v59: bool = v33 != v58 ;
+            let mut v61: bool = if v59 {
+                let mut v60: bool = v57 <= 1i32;
+                v60
+            } else {
+                false
+            };
+            if v61 {
+                v39.borrow_mut().l0 = v55.clone();
+                ()
+            } else {
+                v39.borrow_mut().l0 = v58.clone();
+                { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v55); };
+                ()
+            }
+        } else {
+            println!("{}", v33);
+            ()
+        };
+        let mut v64: Rc<dyn Fn(Rc<str>) -> ()> = v37.borrow().l0.clone();
+        v64(v33.clone());
+        US2::US2_Some(v36.clone(), v37.clone(), v38.clone(), v39.clone(), v40.clone(), v41.clone())
+    };
+    let mut v67: Rc<UH0> = { thread_local!{ static CASE: Rc<UH0> = Rc::new(UH0::UH0_Nil); } CASE.with(|case| case.clone()) };
+    let mut v68: i8 = 0i8;
+    let mut v69: i64 = method13(v67.clone(), v68);
+    { let _ = spiral_trace_hold(&v2); };
+    let (mut v72, mut v73, mut v74, mut v75, mut v76, mut v77): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v4) };
+    let mut v78: US0 = v76.borrow().l0.clone();
+    let mut v83: i32 = match &v78 {
+        US0::US0_Critical => {
+            50i32
+        }
+        US0::US0_Debug => {
+            20i32
+        }
+        US0::US0_Info => {
+            30i32
+        }
+        US0::US0_Verbose => {
+            10i32
+        }
+        US0::US0_Warning => {
+            40i32
+        }
+    };
+    let mut v84: bool = v74.borrow().l0.clone();
+    let mut v85: bool = v84 == false;
+    let mut v87: bool = if v85 {
+        false
+    } else {
+        let mut v86: bool = 20i32 >= v83;
+        v86
+    };
+    let mut v88: bool = v87 == false;
+    let mut v133: US2 = if v88 {
+        US2::US2_None
+    } else {
+        { let _ = spiral_trace_hold(&v2); };
+        let (mut v92, mut v93, mut v94, mut v95, mut v96, mut v97): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v4) };
+        let mut v98: Rc<str> = method3(v92.clone(), v93.clone(), v94.clone(), v95.clone(), v96.clone(), v97.clone());
+        let mut v99: Rc<str> = method4();
+        let mut v100: Rc<str> = method90(v92.clone(), v93.clone(), v94.clone(), v95.clone(), v96.clone(), v97.clone(), v98.clone(), v99.clone(), v69);
+        { let _ = spiral_trace_hold(&v2); };
+        let (mut v103, mut v104, mut v105, mut v106, mut v107, mut v108): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = { spiral_trace_hold(&v4) };
+        let mut v109: i64 = v103.borrow().l0.clone();
+        let mut v110: i64 = v109.wrapping_add(1i64);
+        v103.borrow_mut().l0 = v110;
+        let mut v111: Rc<dyn Fn(Rc<str>) -> ()> = closure3();
+        let mut v112: bool = cfg!(target_arch = "wasm32");
+        if v112 {
+            let mut v113: Rc<str> = v106.borrow().l0.clone();
+            let mut v114: bool = v113.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+            let mut v122: Rc<str> = if v114 {
+                v100.clone()
+            } else {
+                let mut v115: bool = v100.clone() == { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                if v115 {
+                    let mut v116: Rc<str> = v106.borrow().l0.clone();
+                    v116.clone()
+                } else {
+                    let mut v117: Rc<str> = v106.borrow().l0.clone();
+                    let mut v118: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("\n"); } LIT.with(|lit| lit.clone()) };
+                    let mut v119: Rc<str> = Rc::<str>::from(format!("{}{}", v117, v118));
+                    let mut v120: Rc<str> = Rc::<str>::from(format!("{}{}", v119, v100));
+                    v120.clone()
+                }
+            };
+            let mut v124: i32 = ((v122.chars().count() + 14999) / 15000) as i32;
+            let mut v125: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+            let mut v126: bool = v100 != v125 ;
+            let mut v128: bool = if v126 {
+                let mut v127: bool = v124 <= 1i32;
+                v127
+            } else {
+                false
+            };
+            if v128 {
+                v106.borrow_mut().l0 = v122.clone();
+                ()
+            } else {
+                v106.borrow_mut().l0 = v125.clone();
+                { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v122); };
+                ()
+            }
+        } else {
+            println!("{}", v100);
+            ()
+        };
+        let mut v131: Rc<dyn Fn(Rc<str>) -> ()> = v104.borrow().l0.clone();
+        v131(v100.clone());
+        US2::US2_Some(v103.clone(), v104.clone(), v105.clone(), v106.clone(), v107.clone(), v108.clone())
+    };
+    0
+}
+fn main() { #[cfg(target_arch = "wasm32")] { spiral_main(); return; }
+    let main = std::thread::Builder::new().stack_size(1 << 30).spawn(spiral_main).unwrap();
+    std::process::exit(match main.join() { Ok(code) => code, Err(_) => 101 });
 }

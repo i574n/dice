@@ -1,3 +1,5 @@
+cargo-features = ["edition2024"]
+
 [package]
 name = "dice_ui"
 version.workspace = true
@@ -5,30 +7,26 @@ edition.workspace = true
 license-file.workspace = true
 repository.workspace = true
 
+[lib]
+path = "src/lib.rs"
+
 [[bin]]
 name = "dice_ui_bin"
 path = "src/main.rs"
 
-[lib]
-crate-type = ["cdylib", "rlib"]
-
 [dependencies]
-fable_library_rust = { workspace = true, features = ["static_do_bindings", "datetime", "guid", "threaded"] }
-inline_colorization = { workspace = true }
 chrono = { workspace = true }
 regex = { workspace = true }
-tokio = { workspace = true }
 futures = { workspace = true }
-tokio-stream = ">=0.1,<1"
 base64 = ">=0.22,<1"
 borsh = { version = "1.5", features = ["derive", "rc"] }
 console_error_panic_hook = { version = ">=0.1,<1"}
 console_log = { version = "1.0"}
 gloo-net = { version = ">=0.6,<1", features = ["http"] }
 js-sys = ">=0.3,<1"
-leptos = { version = ">=0.6,<1", features = ["csr", "nightly"] }
-leptos_meta = { version = ">=0.6,<1", features = ["csr", "nightly"] }
-leptos_router = { version = ">=0.6,<1", features = ["csr", "nightly"] }
+leptos = { version = ">=0.8.11", features = ["csr", "nightly"] }
+leptos_router = { version = ">=0.8.9,<1", features = ["nightly"] }
+leptos_meta = { version = ">=0.8,<1" }
 log = ">=0.4,<1"
 reqwest-wasm = { version = ">=0.11,<1", features = ["json"] }
 rexie = ">=0.5,<1"
@@ -38,3 +36,5 @@ serde-wasm-bindgen = ">=0.6,<1"
 wasm-bindgen = { version = ">=0.2,<1" }
 wasm-bindgen-futures = ">=0.4,<1"
 web-sys = { version = ">=0.3,<1", features = ["Storage"] }
+getrandom = { version = ">=0.3,<1", features = ["wasm_js"], default-features = false }
+uuid = { version = "*", features = ["rng-getrandom"] }

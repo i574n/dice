@@ -5,76 +5,62 @@ param(
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
 . ../deps/polyglot/scripts/core.ps1
-. ../deps/polyglot/lib/spiral/lib.ps1
+. ../deps/polyglot/deps/spiral/lib/spiral/lib.ps1
 
 
 $projectName = "dice_ui"
 
-{ . ../deps/polyglot/apps/spiral/dist/Supervisor$(_exe) --build-file "src/$projectName.spi" "src/$projectName.fsx" --timeout 20000 } | Invoke-Block
-
-(Get-Content "src/$projectName.fsx") `
-    -replace "and Heap2 =", "and  Heap2 =" `
-| Set-Content "src/$projectName.fsx"
-
-$runtime = $fast -or $env:CI ? @("--runtime", ($IsWindows ? "win-x64" : "linux-x64")) : @()
-$builderArgs = @("src/$projectName.fsx", "--persist-only", $runtime, "--packages", "Fable.Core", "--modules", @(GetFsxModules), "lib/fsharp/Common.fs")
-{ . ../deps/polyglot/apps/builder/dist/Builder$(_exe) @builderArgs } | Invoke-Block
 
 $targetDir = GetTargetDir $projectName
 
-{ BuildFable $targetDir $projectName "rs" "WASM" } | Invoke-Block
-
-(Get-Content "$targetDir/target/rs/polyglot/target/Builder/$projectName/$projectName.rs") `
-    -replace "../../../lib", "../../deps/polyglot/lib" `
-    -replace ".fsx`"]", ".rs`"]" `
-    -replace ".rs`"]", "_wasm.rs`"]" `
-    -replace "pub use crate::module_", "// pub use crate::module_" `
-    -replace "pub struct Heap0 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub struct Heap0 {" `
-    -replace "pub struct Heap1 {", "#[derive(serde::Serialize)] pub struct Heap1 {" `
-    -replace "pub struct Heap2 {", "#[derive(serde::Serialize)] pub struct Heap2 {" `
-    -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap3 {" `
-    -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, PartialEq, PartialOrd, Hash, Eq)] pub struct Heap4 {" `
-    -replace "pub struct Heap5 {", "#[derive(PartialEq)] pub struct Heap5 {" `
-    -replace "pub enum US1 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize, Default)] pub enum US1 {" `
-    -replace " US1_0,", "#[default] US1_0," `
-    | FixRust `
-| Set-Content "src/$($projectName)_wasm.rs"
-
-# -replace "pub struct Heap0 {", "#[derive(serde::Serialize)] pub struct Heap0 {" `
-# -replace "pub struct Heap1 {", "#[derive(serde::Serialize, serde::Deserialize)] pub struct Heap1 {" `
-# -replace "pub struct Heap2 {", "#[derive(serde::Serialize)] pub struct Heap2 {" `
-# -replace "pub struct Heap3 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap3 {" `
-# -replace "pub struct Heap4 {", "#[derive(serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)] pub struct Heap4 {" `
-
-cargo fmt --
-leptosfmt (Resolve-Path "./src/$($projectName)_wasm.rs").Path
+if (!(BuildSpiral "src/$projectName.spi" "src/main.rs" "dice/ui")) {
+    throw "RUST-FAILED dice/ui / compile"
+}
+. ./rust_derive.ps1
+$rustMain = (Resolve-Path "src/main.rs").Path
+[IO.File]::WriteAllText($rustMain, (Add-RustDerives ([IO.File]::ReadAllText($rustMain))) + "`npub mod model;`n")
+$rustCheck = & { cargo check -p $projectName --bin "$($projectName)_bin" --target wasm32-unknown-unknown --message-format short 2>&1 | ForEach-Object { "$_" } }
+if ($LASTEXITCODE -ne 0) {
+    $rustErrors = @($rustCheck | Where-Object { $_ -match ': error' })
+    $rustErrors | Select-Object -First 20 | ForEach-Object { Write-Output "dice/ui/build.ps1 / cargo check / $_" }
+    throw "RUST-FAILED dice/ui / cargo check exit code $LASTEXITCODE, $($rustErrors.Count) errors"
+}
+Write-Output "dice/ui/build.ps1 / cargo check ok"
 
 if (!$fast) {
     Remove-Item $targetDir/trunk -Recurse -Force -ErrorAction Ignore
     Remove-Item ./dist -Recurse -Force -ErrorAction Ignore
 
-    { ~/.bun/bin/bun install --frozen-lockfile } | Invoke-Block
+    { . $(Search-Command bun) install --frozen-lockfile } | Invoke-Block
 }
 
-{ ~/.bun/bin/bun --bun build-css } | Invoke-Block
+{ . $(Search-Command bun) --bun build-css } | Invoke-Block
 
-Write-Output "trunk:"
+$rustBindgen = [regex]::Match((Get-Content ../Cargo.lock -Raw), '(?m)^name = "wasm-bindgen"\r?\nversion = "([^"]+)"').Groups[1].Value
+if (!$rustBindgen) { throw "RUST-FAILED dice/ui / no wasm-bindgen version in ../Cargo.lock" }
+$trunkDir = "$targetDir/trunk"
+Remove-Item $trunkDir -Recurse -Force -ErrorAction Ignore
+{ trunk build $($fast ? $() : '--release') $($fast ? $() : '--minify') --dist="$trunkDir" --public-url="./" --no-sri } `
+    | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = $rustBindgen }
+$rustWasm = Get-ChildItem $trunkDir -Filter "$projectName-*_bg.wasm" -ErrorAction Ignore | Select-Object -First 1
+if (!$rustWasm -or !(Test-Path "$trunkDir/index.html")) {
+    throw "RUST-FAILED dice/ui / trunk bundle: no $projectName wasm in $trunkDir"
+}
+Write-Output "RUST-OK dice/ui / $($rustWasm.Name) $($rustWasm.Length) B (wasm-bindgen $rustBindgen)"
 
-{ trunk build $($fast ? $() : '--release') --dist="$targetDir/trunk" --public-url="./" --no-sri } | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = "0.2.93" }
-# { cargo leptos build --release } | Invoke-Block
-
-$path = "$targetDir/trunk/index.html"
+$path = "$trunkDir/index.html"
 $html = Get-Content $path -Raw
 
-$wasmFile = ($html | Select-String -Pattern "init\('\./(.*?)'\);").Matches[0].Groups[1].Value
+$wasmFile = ($html | Select-String -Pattern "init\((?:\{\s*module_or_path:\s*)?'\./(.*?)'\s*\}?\);").Matches[0].Groups[1].Value
 $jsFile = ($html | Select-String -Pattern "import init, \* as bindings from '\./(.*?)';").Matches[0].Groups[1].Value
+if (!$wasmFile -or !$jsFile) { throw "RUST-FAILED dice/ui / no init wasm or bindings js in $path" }
 
-(Get-Content "$targetDir/trunk/$jsFile" -Raw) `
+(Get-Content "$trunkDir/$jsFile" -Raw) `
     -replace "\('.*', import.meta.url\);", "('$wasmFile', import.meta.url);" `
-| Set-Content "$targetDir/trunk/$jsFile"
+| Set-Content "$trunkDir/$jsFile"
 
 Write-Output "rna:"
-{ ~/.bun/bin/bunx --bun @chialab/rna build --bundle --minify --assetNames "[name]" $path --output dist --target es2022 } | Invoke-Block
+{ . $(Search-Command bunx) --bun @chialab/rna build --bundle --minify --assetNames "[name]" $path --output dist --target es2022 } | Invoke-Block
 
 $path = "dist/index.html"
 
@@ -83,10 +69,16 @@ Copy-Item dist/popup.html dist/index.html -Force
 Copy-Item public/manifest.json dist/manifest.json -Force
 
 if (!$fast) {
-    { ~/.bun/bin/bun install --frozen-lockfile } | Invoke-Block -Location e2e
-    { ~/.bun/bin/bun test:e2e } | Invoke-Block -Location e2e
+    { . $(Search-Command bun) install --frozen-lockfile } | Invoke-Block -Location e2e
+    { . $(Search-Command bun) test:e2e } | Invoke-Block -Location e2e
 }
+
+Write-Output "dice/ui/build.ps1 / `$targetDir = $targetDir / `$projectName: $projectName / `$env:CI:'$env:CI'"
 
 if ($env:CI) {
     Remove-Item $targetDir -Recurse -Force -ErrorAction Ignore
+
+    Remove-Item node_modules -Recurse -Force -ErrorAction Ignore
+
+    ClearCargoTarget "../.."
 }
