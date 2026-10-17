@@ -9,9 +9,13 @@ $ErrorActionPreference = "Stop"
 
 { pwsh ../lib/build.ps1 -fast $($fast ?? '') } | Invoke-Block
 
-{ pwsh ../contract/build.ps1 -SkipTests 1 } | Invoke-Block
+$nearSandboxRunsHere = $IsLinux
 
-{ pwsh ../contract/tests/build.ps1 } | Invoke-Block -Retries 3
+if ($nearSandboxRunsHere) {
+    { pwsh ../contract/build.ps1 -SkipTests 1 } | Invoke-Block
+
+    { pwsh ../contract/tests/build.ps1 } | Invoke-Block -Retries 3
+}
 
 { pwsh ../lib/fsharp/build.ps1 } | Invoke-Block
 
