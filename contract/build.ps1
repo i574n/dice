@@ -12,7 +12,7 @@ $ErrorActionPreference = "Stop"
 
 $projectName = "dice_contract"
 
-$livebook = Join-Path $ScriptDir "../deps/polyglot/deps/spiral/apps/kino/spi/run_notebook.ps1"
+$livebook = Join-Path $ScriptDir "../deps/polyglot/deps/spiral/apps/cells/spi/run_notebook.ps1"
 $spi = Join-Path $ScriptDir "$projectName.spi"
 $ipynb = Join-Path $ScriptDir "$projectName.spi.ipynb"
 if (!$fast -and !$SkipNotebook) {
