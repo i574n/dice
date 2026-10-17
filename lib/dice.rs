@@ -42,29 +42,9 @@ fn string_slice(value: &str, from: i64, to: i64) -> Rc<str> {
     match std::str::from_utf8(slice) { Ok(text) => Rc::<str>::from(text), Err(error) => Rc::<str>::from(std::str::from_utf8(&slice[..error.valid_up_to()]).unwrap_or("")) }
 }
 struct Mut0 { l0: i64 }
-impl Default for Mut0 {
-    fn default() -> Self {
-        Mut0 { l0: <i64>::default() }
-    }
-}
 struct Mut1 { l0: Rc<dyn Fn(Rc<str>) -> ()> }
-impl Default for Mut1 {
-    fn default() -> Self {
-        Mut1 { l0: { let f: Rc<dyn Fn(Rc<str>) -> ()> = Rc::new(|mut v0: Rc<str>| -> () { () }); f } }
-    }
-}
 struct Mut2 { l0: bool }
-impl Default for Mut2 {
-    fn default() -> Self {
-        Mut2 { l0: <bool>::default() }
-    }
-}
 struct Mut3 { l0: Rc<str> }
-impl Default for Mut3 {
-    fn default() -> Self {
-        Mut3 { l0: { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) } }
-    }
-}
 #[derive(Clone)]
 enum US0 {
     US0_Verbose,
@@ -73,100 +53,27 @@ enum US0 {
     US0_Warning,
     US0_Critical,
 }
-impl US0 {
-    fn tag(&self) -> i32 {
-        match self {
-            US0::US0_Verbose => 0,
-            US0::US0_Debug => 1,
-            US0::US0_Info => 2,
-            US0::US0_Warning => 3,
-            US0::US0_Critical => 4,
-        }
-    }
-}
-impl Default for US0 {
-    fn default() -> Self {
-        US0::US0_Verbose
-    }
-}
 struct Mut4 { l0: US0 }
-impl Default for Mut4 {
-    fn default() -> Self {
-        Mut4 { l0: <US0>::default() }
-    }
-}
 #[derive(Clone)]
 enum US1 {
     US1_Some(US0),
     US1_None,
 }
-impl US1 {
-    fn tag(&self) -> i32 {
-        match self {
-            US1::US1_Some(..) => 0,
-            US1::US1_None => 1,
-        }
-    }
-}
-impl Default for US1 {
-    fn default() -> Self {
-        US1::US1_Some(<US0>::default())
-    }
-}
 struct Mut5 { l0: i32, l1: US1 }
-impl Default for Mut5 {
-    fn default() -> Self {
-        Mut5 { l0: <i32>::default(), l1: <US1>::default() }
-    }
-}
 #[derive(Clone)]
 enum US2 {
     US2_Some(Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>),
     US2_None,
-}
-impl US2 {
-    fn tag(&self) -> i32 {
-        match self {
-            US2::US2_Some(..) => 0,
-            US2::US2_None => 1,
-        }
-    }
 }
 #[derive(Clone)]
 enum UH0 {
     UH0_Nil,
     UH0_Cons(u8, Rc<UH0>),
 }
-impl UH0 {
-    fn tag(&self) -> i32 {
-        match self {
-            UH0::UH0_Nil => 0,
-            UH0::UH0_Cons(..) => 1,
-        }
-    }
-}
-impl Default for UH0 {
-    fn default() -> Self {
-        UH0::UH0_Nil
-    }
-}
 #[derive(Clone)]
 enum US3 {
     US3_Some(i64, Rc<UH0>),
     US3_None,
-}
-impl US3 {
-    fn tag(&self) -> i32 {
-        match self {
-            US3::US3_Some(..) => 0,
-            US3::US3_None => 1,
-        }
-    }
-}
-impl Default for US3 {
-    fn default() -> Self {
-        US3::US3_Some(<i64>::default(), <Rc<UH0>>::default())
-    }
 }
 fn get_environment_variable_1(mut v0: Rc<str>) -> Rc<str> {
     let mut v1: Rc<str> = Rc::<str>::from(std::env::var(&*v0).unwrap_or_default());
@@ -7865,5 +7772,5 @@ fn spiral_main() -> i32 {
 }
 fn main() { #[cfg(target_arch = "wasm32")] { spiral_main(); return; }
     let main = std::thread::Builder::new().stack_size(1 << 30).spawn(spiral_main).unwrap();
-    std::process::exit(match main.join() { Ok(code) => code, Err(_) => 101 });
+    std::process::exit(match main.join() { Ok(code) => code, Err(_) => 1 });
 }

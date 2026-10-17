@@ -1510,7 +1510,7 @@ async function __wbg_init(module_or_path) {
     }
 
     if (module_or_path === undefined) {
-        module_or_path = new URL('dice_ui-19cec33b733f2056_bg.wasm', import.meta.url);
+        module_or_path = new URL('dice_ui-270eb92b5c0df64_bg.wasm', import.meta.url);
     }
     const imports = __wbg_get_imports();
 

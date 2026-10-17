@@ -26,31 +26,10 @@ enum US0 {
     US0_Some(web_sys::HtmlElement),
     US0_None,
 }
-impl US0 {
-    fn tag(&self) -> i32 {
-        match self {
-            US0::US0_Some(..) => 0,
-            US0::US0_None => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US1 {
     US1_Details,
     US1_Table,
-}
-impl US1 {
-    fn tag(&self) -> i32 {
-        match self {
-            US1::US1_Details => 0,
-            US1::US1_Table => 1,
-        }
-    }
-}
-impl Default for US1 {
-    fn default() -> Self {
-        US1::US1_Details
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 struct Heap0 { l0: Vec<(bool, std::string::String)>, l1: Option<std::string::String>, l2: i32, l3: i32, l4: US1 }
@@ -65,229 +44,84 @@ enum US2 {
     US2_Some(Rc<Heap3>),
     US2_None,
 }
-impl US2 {
-    fn tag(&self) -> i32 {
-        match self {
-            US2::US2_Some(..) => 0,
-            US2::US2_None => 1,
-        }
-    }
-}
 #[derive(Clone)]
 enum US3 {
     US3_Some(std::sync::Arc<rexie::Rexie>),
     US3_None,
-}
-impl US3 {
-    fn tag(&self) -> i32 {
-        match self {
-            US3::US3_Some(..) => 0,
-            US3::US3_None => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US4 {
     US4_Some(Option<Rc<Heap3>>),
     US4_None,
 }
-impl US4 {
-    fn tag(&self) -> i32 {
-        match self {
-            US4::US4_Some(..) => 0,
-            US4::US4_None => 1,
-        }
-    }
-}
 #[derive(Clone)]
 enum US5 {
     US5_Some(wasm_bindgen::JsValue),
     US5_None,
-}
-impl US5 {
-    fn tag(&self) -> i32 {
-        match self {
-            US5::US5_Some(..) => 0,
-            US5::US5_None => 1,
-        }
-    }
 }
 #[derive(Clone)]
 enum US6 {
     US6_Some(serde_json::Value),
     US6_None,
 }
-impl US6 {
-    fn tag(&self) -> i32 {
-        match self {
-            US6::US6_Some(..) => 0,
-            US6::US6_None => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US7 {
     US7_Ok(Option<Option<Rc<Heap3>>>),
     US7_Error(std::string::String),
-}
-impl US7 {
-    fn tag(&self) -> i32 {
-        match self {
-            US7::US7_Ok(..) => 0,
-            US7::US7_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US8 {
     US8_Some(US2),
     US8_None,
 }
-impl US8 {
-    fn tag(&self) -> i32 {
-        match self {
-            US8::US8_Some(..) => 0,
-            US8::US8_None => 1,
-        }
-    }
-}
 #[derive(Clone)]
 enum US9 {
     US9_Ok(Option<web_sys::Storage>),
     US9_Error(wasm_bindgen::JsValue),
-}
-impl US9 {
-    fn tag(&self) -> i32 {
-        match self {
-            US9::US9_Ok(..) => 0,
-            US9::US9_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone)]
 enum US11 {
     US11_Some(web_sys::Storage),
     US11_None,
 }
-impl US11 {
-    fn tag(&self) -> i32 {
-        match self {
-            US11::US11_Some(..) => 0,
-            US11::US11_None => 1,
-        }
-    }
-}
 #[derive(Clone)]
 enum US10 {
     US10_Ok(US11),
     US10_Error(wasm_bindgen::JsValue),
-}
-impl US10 {
-    fn tag(&self) -> i32 {
-        match self {
-            US10::US10_Ok(..) => 0,
-            US10::US10_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone)]
 enum US12 {
     US12_Ok(Option<std::string::String>),
     US12_Error(wasm_bindgen::JsValue),
 }
-impl US12 {
-    fn tag(&self) -> i32 {
-        match self {
-            US12::US12_Ok(..) => 0,
-            US12::US12_Error(..) => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US14 {
     US14_Some(std::string::String),
     US14_None,
-}
-impl US14 {
-    fn tag(&self) -> i32 {
-        match self {
-            US14::US14_Some(..) => 0,
-            US14::US14_None => 1,
-        }
-    }
 }
 #[derive(Clone)]
 enum US13 {
     US13_Ok(US14),
     US13_Error(wasm_bindgen::JsValue),
 }
-impl US13 {
-    fn tag(&self) -> i32 {
-        match self {
-            US13::US13_Ok(..) => 0,
-            US13::US13_Error(..) => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US15 {
     US15_Some(US14),
     US15_None,
-}
-impl US15 {
-    fn tag(&self) -> i32 {
-        match self {
-            US15::US15_Some(..) => 0,
-            US15::US15_None => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US16 {
     US16_Some(leptos::prelude::ArcRwSignal<bool>),
     US16_None,
 }
-impl US16 {
-    fn tag(&self) -> i32 {
-        match self {
-            US16::US16_Some(..) => 0,
-            US16::US16_None => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US17 {
     US17_Some(bool),
     US17_None,
 }
-impl US17 {
-    fn tag(&self) -> i32 {
-        match self {
-            US17::US17_Some(..) => 0,
-            US17::US17_None => 1,
-        }
-    }
-}
-impl Default for US17 {
-    fn default() -> Self {
-        US17::US17_Some(<bool>::default())
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US19 {
     US19_Dice_,
-}
-impl US19 {
-    fn tag(&self) -> i32 {
-        match self {
-            US19::US19_Dice_ => 0,
-        }
-    }
-}
-impl Default for US19 {
-    fn default() -> Self {
-        US19::US19_Dice_
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US18 {
@@ -297,124 +131,33 @@ enum US18 {
     US18_Transactions,
     US18_Settings,
 }
-impl US18 {
-    fn tag(&self) -> i32 {
-        match self {
-            US18::US18_Blank => 0,
-            US18::US18_Dice(..) => 1,
-            US18::US18_Lists => 2,
-            US18::US18_Transactions => 3,
-            US18::US18_Settings => 4,
-        }
-    }
-}
-impl Default for US18 {
-    fn default() -> Self {
-        US18::US18_Blank
-    }
-}
 #[derive(Clone, Debug)]
 enum US20 {
     US20_Ok(leptos_router::location::Url),
     US20_Error(std::string::String),
-}
-impl US20 {
-    fn tag(&self) -> i32 {
-        match self {
-            US20::US20_Ok(..) => 0,
-            US20::US20_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US21 {
     US21_Some(US18),
     US21_None,
 }
-impl US21 {
-    fn tag(&self) -> i32 {
-        match self {
-            US21::US21_Some(..) => 0,
-            US21::US21_None => 1,
-        }
-    }
-}
-impl Default for US21 {
-    fn default() -> Self {
-        US21::US21_Some(<US18>::default())
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US22 {
     US22_Get,
     US22_Post,
 }
-impl US22 {
-    fn tag(&self) -> i32 {
-        match self {
-            US22::US22_Get => 0,
-            US22::US22_Post => 1,
-        }
-    }
-}
-impl Default for US22 {
-    fn default() -> Self {
-        US22::US22_Get
-    }
-}
 struct Mut0 { l0: u64 }
-impl Default for Mut0 {
-    fn default() -> Self {
-        Mut0 { l0: <u64>::default() }
-    }
-}
 struct Mut1 { l0: Rc<str> }
-impl Default for Mut1 {
-    fn default() -> Self {
-        Mut1 { l0: { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) } }
-    }
-}
 struct Mut2 { l0: i32 }
-impl Default for Mut2 {
-    fn default() -> Self {
-        Mut2 { l0: <i32>::default() }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum UH0 {
     UH0_Nil,
     UH0_Cons(Vec<(Rc<str>, US22, Rc<str>, bool, bool)>, Rc<UH0>),
 }
-impl UH0 {
-    fn tag(&self) -> i32 {
-        match self {
-            UH0::UH0_Nil => 0,
-            UH0::UH0_Cons(..) => 1,
-        }
-    }
-}
-impl Default for UH0 {
-    fn default() -> Self {
-        UH0::UH0_Nil
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum UH1 {
     UH1_Nil,
     UH1_Cons(Vec<Rc<str>>, Rc<UH1>),
-}
-impl UH1 {
-    fn tag(&self) -> i32 {
-        match self {
-            UH1::UH1_Nil => 0,
-            UH1::UH1_Cons(..) => 1,
-        }
-    }
-}
-impl Default for UH1 {
-    fn default() -> Self {
-        UH1::UH1_Nil
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 struct Heap4 { l0: std::string::String }
@@ -423,282 +166,95 @@ enum US23 {
     US23_Ok(Vec<Option<Rc<Heap4>>>),
     US23_Error(std::string::String),
 }
-impl US23 {
-    fn tag(&self) -> i32 {
-        match self {
-            US23::US23_Ok(..) => 0,
-            US23::US23_Error(..) => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US24 {
     US24_Some(Rc<Heap4>),
     US24_None,
-}
-impl US24 {
-    fn tag(&self) -> i32 {
-        match self {
-            US24::US24_Some(..) => 0,
-            US24::US24_None => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US25 {
     US25_Some(Result<Vec<Option<Rc<Heap4>>>, std::string::String>),
     US25_None,
 }
-impl US25 {
-    fn tag(&self) -> i32 {
-        match self {
-            US25::US25_Some(..) => 0,
-            US25::US25_None => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US27 {
     US27_Ok(Vec<US24>),
     US27_Error(std::string::String),
-}
-impl US27 {
-    fn tag(&self) -> i32 {
-        match self {
-            US27::US27_Ok(..) => 0,
-            US27::US27_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US26 {
     US26_Some(US27),
     US26_None,
 }
-impl US26 {
-    fn tag(&self) -> i32 {
-        match self {
-            US26::US26_Some(..) => 0,
-            US26::US26_None => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US30 {
     US30_Some(Rc<str>),
     US30_None,
-}
-impl US30 {
-    fn tag(&self) -> i32 {
-        match self {
-            US30::US30_Some(..) => 0,
-            US30::US30_None => 1,
-        }
-    }
-}
-impl Default for US30 {
-    fn default() -> Self {
-        US30::US30_Some({ thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) })
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US29 {
     US29_Ok(US30),
     US29_Error(std::string::String),
 }
-impl US29 {
-    fn tag(&self) -> i32 {
-        match self {
-            US29::US29_Ok(..) => 0,
-            US29::US29_Error(..) => 1,
-        }
-    }
-}
-impl Default for US29 {
-    fn default() -> Self {
-        US29::US29_Ok(<US30>::default())
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US28 {
     US28_Some(US29),
     US28_None,
-}
-impl US28 {
-    fn tag(&self) -> i32 {
-        match self {
-            US28::US28_Some(..) => 0,
-            US28::US28_None => 1,
-        }
-    }
-}
-impl Default for US28 {
-    fn default() -> Self {
-        US28::US28_Some(<US29>::default())
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US31 {
     US31_Some(US24),
     US31_None,
 }
-impl US31 {
-    fn tag(&self) -> i32 {
-        match self {
-            US31::US31_Some(..) => 0,
-            US31::US31_None => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US32 {
     US32_Ok(Option<Rc<str>>),
     US32_Error(std::string::String),
-}
-impl US32 {
-    fn tag(&self) -> i32 {
-        match self {
-            US32::US32_Ok(..) => 0,
-            US32::US32_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US33 {
     US33_Ok,
     US33_Error(std::string::String),
 }
-impl US33 {
-    fn tag(&self) -> i32 {
-        match self {
-            US33::US33_Ok => 0,
-            US33::US33_Error(..) => 1,
-        }
-    }
-}
-impl Default for US33 {
-    fn default() -> Self {
-        US33::US33_Ok
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US35 {
     US35_Ok(Rc<RefCell<Vec<US24>>>),
     US35_Error(std::string::String),
-}
-impl US35 {
-    fn tag(&self) -> i32 {
-        match self {
-            US35::US35_Ok(..) => 0,
-            US35::US35_Error(..) => 1,
-        }
-    }
-}
-impl Default for US35 {
-    fn default() -> Self {
-        US35::US35_Ok(<Rc<RefCell<Vec<US24>>>>::default())
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US34 {
     US34_Some(US35),
     US34_None,
 }
-impl US34 {
-    fn tag(&self) -> i32 {
-        match self {
-            US34::US34_Some(..) => 0,
-            US34::US34_None => 1,
-        }
-    }
-}
-impl Default for US34 {
-    fn default() -> Self {
-        US34::US34_Some(<US35>::default())
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US36 {
     US36_Some(Result<Vec<Option<Rc<str>>>, std::string::String>),
     US36_None,
-}
-impl US36 {
-    fn tag(&self) -> i32 {
-        match self {
-            US36::US36_Some(..) => 0,
-            US36::US36_None => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US38 {
     US38_Ok(Vec<Option<Rc<str>>>),
     US38_Error(std::string::String),
 }
-impl US38 {
-    fn tag(&self) -> i32 {
-        match self {
-            US38::US38_Ok(..) => 0,
-            US38::US38_Error(..) => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US37 {
     US37_Some(US38),
     US37_None,
-}
-impl US37 {
-    fn tag(&self) -> i32 {
-        match self {
-            US37::US37_Some(..) => 0,
-            US37::US37_None => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US40 {
     US40_Ok(Vec<US30>),
     US40_Error(std::string::String),
 }
-impl US40 {
-    fn tag(&self) -> i32 {
-        match self {
-            US40::US40_Ok(..) => 0,
-            US40::US40_Error(..) => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US39 {
     US39_Some(US40),
     US39_None,
 }
-impl US39 {
-    fn tag(&self) -> i32 {
-        match self {
-            US39::US39_Some(..) => 0,
-            US39::US39_None => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US41 {
     US41_Some(US30),
     US41_None,
-}
-impl US41 {
-    fn tag(&self) -> i32 {
-        match self {
-            US41::US41_Some(..) => 0,
-            US41::US41_None => 1,
-        }
-    }
-}
-impl Default for US41 {
-    fn default() -> Self {
-        US41::US41_Some(<US30>::default())
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 struct Heap5 { l0: std::string::String, l1: std::string::String, l2: std::string::String, l3: std::string::String, l4: std::string::String, l5: std::string::String, l6: u32, l7: Rc<RefCell<Vec<(std::string::String, Option<std::string::String>)>>>, l8: f64, l9: bool, l10: f64, l11: Rc<RefCell<Vec<std::string::String>>> }
@@ -707,441 +263,149 @@ enum US42 {
     US42_Ok(Option<Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, u32, Rc<RefCell<Vec<(std::string::String, Option<std::string::String>)>>>, f64, bool, f64, Rc<RefCell<Vec<std::string::String>>>)>>>>),
     US42_Error(std::string::String),
 }
-impl US42 {
-    fn tag(&self) -> i32 {
-        match self {
-            US42::US42_Ok(..) => 0,
-            US42::US42_Error(..) => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US44 {
     US44_Some(Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, u32, Rc<RefCell<Vec<(std::string::String, Option<std::string::String>)>>>, f64, bool, f64, Rc<RefCell<Vec<std::string::String>>>)>>>),
     US44_None,
-}
-impl US44 {
-    fn tag(&self) -> i32 {
-        match self {
-            US44::US44_Some(..) => 0,
-            US44::US44_None => 1,
-        }
-    }
-}
-impl Default for US44 {
-    fn default() -> Self {
-        US44::US44_Some(<Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, u32, Rc<RefCell<Vec<(std::string::String, Option<std::string::String>)>>>, f64, bool, f64, Rc<RefCell<Vec<std::string::String>>>)>>>>::default())
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US43 {
     US43_Ok(US44),
     US43_Error(std::string::String),
 }
-impl US43 {
-    fn tag(&self) -> i32 {
-        match self {
-            US43::US43_Ok(..) => 0,
-            US43::US43_Error(..) => 1,
-        }
-    }
-}
-impl Default for US43 {
-    fn default() -> Self {
-        US43::US43_Ok(<US44>::default())
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US46 {
     US46_Some(Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>),
     US46_None,
-}
-impl US46 {
-    fn tag(&self) -> i32 {
-        match self {
-            US46::US46_Some(..) => 0,
-            US46::US46_None => 1,
-        }
-    }
-}
-impl Default for US46 {
-    fn default() -> Self {
-        US46::US46_Some(<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>::default())
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US45 {
     US45_Ok(US46),
     US45_Error(std::string::String),
 }
-impl US45 {
-    fn tag(&self) -> i32 {
-        match self {
-            US45::US45_Ok(..) => 0,
-            US45::US45_Error(..) => 1,
-        }
-    }
-}
-impl Default for US45 {
-    fn default() -> Self {
-        US45::US45_Ok(<US46>::default())
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US48 {
     US48_Some(Vec<(Rc<str>, usize, Rc<Heap5>)>),
     US48_None,
-}
-impl US48 {
-    fn tag(&self) -> i32 {
-        match self {
-            US48::US48_Some(..) => 0,
-            US48::US48_None => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US47 {
     US47_Ok(US48),
     US47_Error(std::string::String),
 }
-impl US47 {
-    fn tag(&self) -> i32 {
-        match self {
-            US47::US47_Ok(..) => 0,
-            US47::US47_Error(..) => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US49 {
     US49_Ok(Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>),
     US49_Error(std::string::String),
-}
-impl US49 {
-    fn tag(&self) -> i32 {
-        match self {
-            US49::US49_Ok(..) => 0,
-            US49::US49_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum UH2 {
     UH2_Nil,
     UH2_Cons(Result<Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>, std::string::String>, Rc<UH2>),
 }
-impl UH2 {
-    fn tag(&self) -> i32 {
-        match self {
-            UH2::UH2_Nil => 0,
-            UH2::UH2_Cons(..) => 1,
-        }
-    }
-}
-impl Default for UH2 {
-    fn default() -> Self {
-        UH2::UH2_Nil
-    }
-}
 struct Mut3 { l0: i32, l1: Rc<UH2> }
-impl Default for Mut3 {
-    fn default() -> Self {
-        Mut3 { l0: <i32>::default(), l1: <Rc<UH2>>::default() }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US50 {
     US50_Ok(Vec<(Rc<str>, usize, Rc<Heap5>)>),
     US50_Error(std::string::String),
-}
-impl US50 {
-    fn tag(&self) -> i32 {
-        match self {
-            US50::US50_Ok(..) => 0,
-            US50::US50_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US51 {
     US51_Ok(Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>),
     US51_Error(std::string::String),
 }
-impl US51 {
-    fn tag(&self) -> i32 {
-        match self {
-            US51::US51_Ok(..) => 0,
-            US51::US51_Error(..) => 1,
-        }
-    }
-}
-impl Default for US51 {
-    fn default() -> Self {
-        US51::US51_Ok(<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>::default())
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US52 {
     US52_Ok(Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>),
     US52_Error(std::string::String),
-}
-impl US52 {
-    fn tag(&self) -> i32 {
-        match self {
-            US52::US52_Ok(..) => 0,
-            US52::US52_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US54 {
     US54_Some(Rc<RefCell<Vec<(Rc<str>, US22, Rc<str>, bool, bool)>>>),
     US54_None,
 }
-impl US54 {
-    fn tag(&self) -> i32 {
-        match self {
-            US54::US54_Some(..) => 0,
-            US54::US54_None => 1,
-        }
-    }
-}
-impl Default for US54 {
-    fn default() -> Self {
-        US54::US54_Some(<Rc<RefCell<Vec<(Rc<str>, US22, Rc<str>, bool, bool)>>>>::default())
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US53 {
     US53_Ok(US54),
     US53_Error(std::string::String),
-}
-impl US53 {
-    fn tag(&self) -> i32 {
-        match self {
-            US53::US53_Ok(..) => 0,
-            US53::US53_Error(..) => 1,
-        }
-    }
-}
-impl Default for US53 {
-    fn default() -> Self {
-        US53::US53_Ok(<US54>::default())
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US55 {
     US55_Ok(Option<Rc<RefCell<Vec<(Rc<str>, US22, Rc<str>, bool, bool)>>>>),
     US55_Error(std::string::String),
 }
-impl US55 {
-    fn tag(&self) -> i32 {
-        match self {
-            US55::US55_Ok(..) => 0,
-            US55::US55_Error(..) => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 struct Heap6 { l0: i32 }
-impl Default for Heap6 {
-    fn default() -> Self {
-        Heap6 { l0: <i32>::default() }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US56 {
     US56_Some(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>),
     US56_None,
-}
-impl US56 {
-    fn tag(&self) -> i32 {
-        match self {
-            US56::US56_Some(..) => 0,
-            US56::US56_None => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US57 {
     US57_Ok(US14),
     US57_Error(std::string::String),
 }
-impl US57 {
-    fn tag(&self) -> i32 {
-        match self {
-            US57::US57_Ok(..) => 0,
-            US57::US57_Error(..) => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US58 {
     US58_Ok(US56),
     US58_Error(std::string::String),
-}
-impl US58 {
-    fn tag(&self) -> i32 {
-        match self {
-            US58::US58_Ok(..) => 0,
-            US58::US58_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone)]
 enum US59 {
     US59_Ok(crate::model::near::rpc::RpcResponse),
     US59_Error(std::string::String),
 }
-impl US59 {
-    fn tag(&self) -> i32 {
-        match self {
-            US59::US59_Ok(..) => 0,
-            US59::US59_Error(..) => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US60 {
     US60_Ok(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>),
     US60_Error(std::string::String),
-}
-impl US60 {
-    fn tag(&self) -> i32 {
-        match self {
-            US60::US60_Ok(..) => 0,
-            US60::US60_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US61 {
     US61_Some(US58),
     US61_None,
 }
-impl US61 {
-    fn tag(&self) -> i32 {
-        match self {
-            US61::US61_Some(..) => 0,
-            US61::US61_None => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US62 {
     US62_Ok(Option<(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>)>),
     US62_Error(std::string::String),
-}
-impl US62 {
-    fn tag(&self) -> i32 {
-        match self {
-            US62::US62_Ok(..) => 0,
-            US62::US62_Error(..) => 1,
-        }
-    }
 }
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US63 {
     US63_Some(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String),
     US63_None,
 }
-impl US63 {
-    fn tag(&self) -> i32 {
-        match self {
-            US63::US63_Some(..) => 0,
-            US63::US63_None => 1,
-        }
-    }
-}
 #[derive(Clone, Debug)]
 enum US64 {
     US64_Some(leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper::SendWrapper<US30>>),
     US64_None,
-}
-impl US64 {
-    fn tag(&self) -> i32 {
-        match self {
-            US64::US64_Some(..) => 0,
-            US64::US64_None => 1,
-        }
-    }
 }
 #[derive(Clone, Debug)]
 enum US65 {
     US65_Some(leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper::SendWrapper<Vec<(i32, leptos::prelude::ReadSignal<std::string::String>)>>>),
     US65_None,
 }
-impl US65 {
-    fn tag(&self) -> i32 {
-        match self {
-            US65::US65_Some(..) => 0,
-            US65::US65_None => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize)]
 enum US66 {
     US66_Some(Vec<(i32, leptos::prelude::ReadSignal<std::string::String>)>),
     US66_None,
-}
-impl US66 {
-    fn tag(&self) -> i32 {
-        match self {
-            US66::US66_Some(..) => 0,
-            US66::US66_None => 1,
-        }
-    }
 }
 #[derive(Clone)]
 enum US67 {
     US67_Some(chrono::DateTime<chrono::Utc>),
     US67_None,
 }
-impl US67 {
-    fn tag(&self) -> i32 {
-        match self {
-            US67::US67_Some(..) => 0,
-            US67::US67_None => 1,
-        }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US68 {
     US68_Ok(Rc<str>),
     US68_Error(Rc<str>),
 }
-impl US68 {
-    fn tag(&self) -> i32 {
-        match self {
-            US68::US68_Ok(..) => 0,
-            US68::US68_Error(..) => 1,
-        }
-    }
-}
-impl Default for US68 {
-    fn default() -> Self {
-        US68::US68_Ok({ thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) })
-    }
-}
 struct Mut4 { l0: i32, l1: US30 }
-impl Default for Mut4 {
-    fn default() -> Self {
-        Mut4 { l0: <i32>::default(), l1: <US30>::default() }
-    }
-}
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US69 {
     US69_Ok(std::string::String),
     US69_Error(std::string::String),
-}
-impl US69 {
-    fn tag(&self) -> i32 {
-        match self {
-            US69::US69_Ok(..) => 0,
-            US69::US69_Error(..) => 1,
-        }
-    }
 }
 fn method0(mut v0: Option<web_sys::HtmlElement>) -> Option<web_sys::HtmlElement> {
     v0.clone()
@@ -17017,7 +16281,7 @@ fn spiral_main() -> i32 {
 }
 fn main() { #[cfg(target_arch = "wasm32")] { spiral_main(); return; }
     let main = std::thread::Builder::new().stack_size(1 << 30).spawn(spiral_main).unwrap();
-    std::process::exit(match main.join() { Ok(code) => code, Err(_) => 101 });
+    std::process::exit(match main.join() { Ok(code) => code, Err(_) => 1 });
 }
 
 pub mod model;
