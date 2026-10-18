@@ -194,46 +194,54 @@ test roll_within_bounds_2 =
 ///> _
 
 inl main_native () : () =
-    global """#[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]
-pub struct OldState {
-    version: u32,
-    seeds: near_sdk::store::vec::Vector<u8>,
-}"""
-    global """#[near_sdk::near_bindgen]
-#[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]
-pub struct State((u32, near_sdk::store::vec::Vector<u8>));"""
-    global """impl From<OldState> for State {
-    fn from(old_state: OldState) -> Self {
-        Self((old_state.version + 1, old_state.seeds))
-    }
-}"""
-    global """#[near_sdk::near_bindgen]
-impl State {
-    #[init]
-    pub fn new() -> Self {
-        Self(dice_contract_new())
-    }
-    pub fn contribute_seed(&mut self, seed: Vec<u8>) {
-        dice_contract_contribute_seed(&mut self.0.1, seed)
-    }
-    pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) {
-        self.contribute_seed(seed)
-    }
-    pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 {
-        dice_contract_generate_random_number(&mut self.0.1, key, proof, max)
-    }
-    pub fn roll_within_bounds(&self, max: u64, rolls: Vec<u8>) -> Option<u64> {
-        dice_contract_roll_within_bounds(max, rolls)
-    }
-    #[result_serializer(borsh)]
-    pub fn roll_within_bounds_borsh(
-        &self,
-        #[serializer(borsh)] max: u64,
-        #[serializer(borsh)] rolls: Vec<u8>,
-    ) -> Option<u64> {
-        self.roll_within_bounds(max, rolls)
-    }
-}"""
+    global """
+        #[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]
+        pub struct OldState {
+            version: u32,
+            seeds: near_sdk::store::vec::Vector<u8>,
+        }
+        """
+    global """
+        #[near_sdk::near_bindgen]
+        #[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]
+        pub struct State((u32, near_sdk::store::vec::Vector<u8>));
+        """
+    global """
+        impl From<OldState> for State {
+            fn from(old_state: OldState) -> Self {
+                Self((old_state.version + 1, old_state.seeds))
+            }
+        }
+        """
+    global """
+        #[near_sdk::near_bindgen]
+        impl State {
+            #[init]
+            pub fn new() -> Self {
+                Self(dice_contract_new())
+            }
+            pub fn contribute_seed(&mut self, seed: Vec<u8>) {
+                dice_contract_contribute_seed(&mut self.0.1, seed)
+            }
+            pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) {
+                self.contribute_seed(seed)
+            }
+            pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 {
+                dice_contract_generate_random_number(&mut self.0.1, key, proof, max)
+            }
+            pub fn roll_within_bounds(&self, max: u64, rolls: Vec<u8>) -> Option<u64> {
+                dice_contract_roll_within_bounds(max, rolls)
+            }
+            #[result_serializer(borsh)]
+            pub fn roll_within_bounds_borsh(
+                &self,
+                #[serializer(borsh)] max: u64,
+                #[serializer(borsh)] rolls: Vec<u8>,
+            ) -> Option<u64> {
+                self.roll_within_bounds(max, rolls)
+            }
+        }
+        """
     inl quiet () : () = set_trace_level Info
     !!!!Export("dice_contract_new", ((fun () => inl () = quiet () in inl x = new () in x.version, x.seeds) : () -> u32 * near.vector u8))
     !!!!Export("dice_contract_contribute_seed", ((fun (seeds, seed) => inl () = quiet () in contribute_seed seeds seed) : rust.ref (rust.mut' (near.vector u8)) * am'.vec u8 -> ()))
