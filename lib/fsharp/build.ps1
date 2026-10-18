@@ -11,7 +11,7 @@ $ErrorActionPreference = "Stop"
 
 $projectName = "dice_fsharp"
 
-$livebook = Join-Path $ScriptDir "../../deps/polyglot/deps/spiral/apps/kino/spi/run_notebook.ps1"
+$livebook = Join-Path $ScriptDir "../../deps/polyglot/deps/spiral/apps/cells/spi/run_notebook.ps1"
 $notebook = Join-Path $ScriptDir "$projectName.livemd"
 if (!$fast -and !$SkipNotebook) {
     $ipynb = Join-Path $ScriptDir "$projectName.livemd.ipynb"
