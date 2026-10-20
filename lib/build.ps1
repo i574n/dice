@@ -50,7 +50,7 @@ $targetDir = GetTargetDir $projectName
 if (!(BuildSpiral "$projectName.spi" "$projectName.rs" "dice/lib")) {
     throw "RUST-FAILED dice/lib / compile"
 }
-{ cargo +nightly-2025-11-01 build --release -p dice_lib } | Invoke-Block
+{ cargo +nightly-2026-10-18 build --release -p dice_lib } | Invoke-Block
 $cargoTarget = (cargo metadata --format-version 1 --no-deps | ConvertFrom-Json).target_directory
 $rustOutput = & "$cargoTarget/release/$projectName$(_exe)" 2>&1 | ForEach-Object { "$_" }
 Assert-DiceRun "RUST" "Rust" $rustOutput $LASTEXITCODE

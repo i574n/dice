@@ -81,7 +81,7 @@ inl render () =
 
                 leptos.reactive_view fun () =>
                     match accounts_txns_requests |> leptos.signal_get |> am'.from_vec with
-                    | (a ;[] : _ i32 _) =>
+                    | (array ;[] : array _) =>
                         "No account selected"
                         |> ui.error_label.render
                         |> leptos.element_to_view

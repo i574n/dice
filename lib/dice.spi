@@ -214,9 +214,9 @@ inl create_sequential_roller list =
 test create_sequential_roller =
     inl sequential_roll = create_sequential_roller [ 1i32; 2; 3; 4 ]
 
-    am.init 50i32 (ignore >> sequential_roll)
-    |> _assert_eq (a ;[ 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
-    4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2 ] : a i32 i32)
+    arraym.init 50i32 (ignore >> sequential_roll)
+    |> _assert_eq (;[ 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
+    4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2 ] : array i32)
 
 /// ## roll_progressively
 inl roll_progressively roll reroll max =
@@ -370,7 +370,7 @@ inl main () =
     } : ()
     backend_switch {
         Fsharp = fun () => $'let main args = !main args' : ()
-        Rust = fun () => main ;[] |> ignore
-        Python = fun () => main ;[] |> ignore
-        TypeScript = fun () => main ;[] |> ignore
+        Rust = fun () => main (;[] |> am'.base) |> ignore
+        Python = fun () => main (;[] |> am'.base) |> ignore
+        TypeScript = fun () => main (;[] |> am'.base) |> ignore
     } : ()

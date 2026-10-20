@@ -154,10 +154,10 @@ and get_environment_variable_8 (v0 : string) : string =
         v10
     | US5_Some(v9) -> (* Some *)
         v9
-and method10 (v0 : int32, v1 : Mut7) : bool =
-    let v2 : int32 = v1.l0
-    let v3 : bool = v2 < v0
-    v3
+and method10 (v0 : Mut7) : bool =
+    let v1 : int32 = v0.l0
+    let v2 : bool = v1 > 0
+    v2
 and method7 () : struct (US3 * US4) =
     let v0 : string = "TRACE_LEVEL"
     let v1 : string = get_environment_variable_8(v0)
@@ -206,41 +206,38 @@ and method7 () : struct (US3 * US4) =
     let v39 : (struct (string * US2) []) = v38 v37
     let v40 : int32 = v39.Length
     let v41 : US3 = US3_None
-    let v42 : Mut7 = {l0 = 0; l1 = v41} : Mut7
-    while method10(v40, v42) do
+    let v42 : Mut7 = {l0 = v40; l1 = v41} : Mut7
+    while method10(v42) do
         let v44 : int32 = v42.l0
-        let v45 : int32 =  -v44
-        let v46 : int32 = v45 + v40
-        let v47 : int32 = v46 - 1
-        let v48 : US3 = v42.l1
-        let struct (v49 : string, v50 : US2) = v39.[int v47]
-        let v57 : US3 =
-            match v48 with
+        let v45 : int32 = v44 - 1
+        let v46 : US3 = v42.l1
+        let struct (v47 : string, v48 : US2) = v39.[int v45]
+        let v55 : US3 =
+            match v46 with
             | US3_None -> (* None *)
-                let v52 : bool = v49 = v1 
-                if v52 then
-                    US3_Some(v50)
+                let v50 : bool = v47 = v1 
+                if v50 then
+                    US3_Some(v48)
                 else
                     US3_None
-            | US3_Some(v51) -> (* Some *)
-                v48
-        let v58 : int32 = v44 + 1
-        v42.l0 <- v58
-        v42.l1 <- v57
+            | US3_Some(v49) -> (* Some *)
+                v46
+        v42.l0 <- v45
+        v42.l1 <- v55
         ()
-    let v59 : US3 = v42.l1
-    let v60 : string = "AUTOMATION"
-    let v61 : string = get_environment_variable_8(v60)
-    let v62 : string = "True"
-    let v63 : bool = v61 <> v62 
-    let v68 : US4 =
-        if v63 then
+    let v56 : US3 = v42.l1
+    let v57 : string = "AUTOMATION"
+    let v58 : string = get_environment_variable_8(v57)
+    let v59 : string = "True"
+    let v60 : bool = v58 <> v59 
+    let v65 : US4 =
+        if v60 then
             US4_None
         else
-            let v65 : System.DateTime = System.DateTime.Now
-            let v66 : int64 = (v65.Ticks - 621355968000000000L) / 10L
-            US4_Some(v66)
-    struct (v59, v68)
+            let v62 : System.DateTime = System.DateTime.Now
+            let v63 : int64 = (v62.Ticks - 621355968000000000L) / 10L
+            US4_Some(v63)
+    struct (v56, v65)
 and closure9 () (v0 : string) : unit =
     ()
 and new_trace_state_6 (v0 : US2) : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) =
@@ -1356,39 +1353,6 @@ and method37 (v0 : int8, v1 : (unit -> uint8), v2 : int8) : UH1 =
         UH1_Cons(v4, v6)
     else
         UH1_Nil
-and method38 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1) : uint64 =
-    let v5 : int8 = v3 + 1y
-    let v6 : bool = v3 < v5
-    if v6 then
-        let v7 : uint8 = v0 ()
-        let v8 : UH1 = UH1_Cons(v7, v4)
-        method30(v0, v1, v2, v3, v8, v5)
-    else
-        let v10 : uint64 = 0UL
-        let v11 : US7 = method31(v3, v4, v10)
-        match v11 with
-        | US7_Some(v12, v13) -> (* Some *)
-            let v14 : bool = v12 <= v2
-            if v14 then
-                v12
-            else
-                if v1 then
-                    let v15 : int8 = 0y
-                    let v16 : UH1 = method37(v3, v0, v15)
-                    method38(v0, v1, v2, v3, v16)
-                else
-                    let v18 : uint8 = v0 ()
-                    let v19 : UH1 = UH1_Cons(v18, v4)
-                    method30(v0, v1, v2, v3, v19, v5)
-        | _ ->
-            if v1 then
-                let v23 : int8 = 0y
-                let v24 : UH1 = method37(v3, v0, v23)
-                method38(v0, v1, v2, v3, v24)
-            else
-                let v26 : uint8 = v0 ()
-                let v27 : UH1 = UH1_Cons(v26, v4)
-                method30(v0, v1, v2, v3, v27, v5)
 and method30 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1, v5 : int8) : uint64 =
     let v6 : int8 = v3 + 1y
     let v7 : bool = v5 < v6
@@ -1409,7 +1373,7 @@ and method30 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1,
                 if v1 then
                     let v17 : int8 = 0y
                     let v18 : UH1 = method37(v3, v0, v17)
-                    method38(v0, v1, v2, v3, v18)
+                    method30(v0, v1, v2, v3, v18, v3)
                 else
                     let v20 : uint8 = v0 ()
                     let v21 : UH1 = UH1_Cons(v20, v4)
@@ -1419,7 +1383,7 @@ and method30 (v0 : (unit -> uint8), v1 : bool, v2 : uint64, v3 : int8, v4 : UH1,
             if v1 then
                 let v26 : int8 = 0y
                 let v27 : UH1 = method37(v3, v0, v26)
-                method38(v0, v1, v2, v3, v27)
+                method30(v0, v1, v2, v3, v27, v3)
             else
                 let v29 : uint8 = v0 ()
                 let v30 : UH1 = UH1_Cons(v29, v4)
@@ -1442,16 +1406,16 @@ and closure13 (v0 : (unit -> uint8)) (v1 : bool) : (uint64 -> uint64) =
     closure14(v0, v1)
 and closure12 () (v0 : (unit -> uint8)) : (bool -> (uint64 -> uint64)) =
     closure13(v0)
-and method39 (v0 : UH1, v1 : int8) : int8 =
+and method38 (v0 : UH1, v1 : int8) : int8 =
     match v0 with
     | UH1_Cons(v2, v3) -> (* Cons *)
         let v4 : int8 = v1 + 1y
-        method39(v3, v4)
+        method38(v3, v4)
     | UH1_Nil -> (* Nil *)
         v1
 and closure80 (v0 : uint64) (v1 : UH1) : uint64 option =
     let v2 : int8 = 0y
-    let v3 : int8 = method39(v1, v2)
+    let v3 : int8 = method38(v1, v2)
     let v4 : int8 = v3 - 1y
     let v5 : uint64 = 0UL
     let v6 : US7 = method31(v4, v1, v5)
@@ -1480,7 +1444,7 @@ and closure80 (v0 : uint64) (v1 : UH1) : uint64 option =
         v18
 and roll_within_bounds__c79 () (v0 : uint64) : (UH1 -> uint64 option) =
     closure80(v0)
-and method40 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string) : string =
+and method39 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string) : string =
     let v8 : int64 = v0.l0
     let v9 : string = " "
     let v10 : string = v6 + v9 
@@ -1531,7 +1495,7 @@ and closure84 () (v0 : (unit -> exn)) : exn =
     v0 ()
 and error_c85 () (v0 : exn) : US9 =
     US9_Error(v0)
-and method43 () : US9 =
+and method42 () : US9 =
     let v0 : (unit -> int32) = closure82()
     let v1 : (int32 -> US9) = ok_c83()
     let v2 : ((unit -> exn) -> exn) = closure84()
@@ -1541,7 +1505,7 @@ and method43 () : US9 =
 and closure86 () () : int32 =
     let v0 : int32 = 7uy |> int32 
     v0
-and method44 () : US9 =
+and method43 () : US9 =
     let v0 : (unit -> int32) = closure86()
     let v1 : (int32 -> US9) = ok_c83()
     let v2 : ((unit -> exn) -> exn) = closure84()
@@ -1555,17 +1519,17 @@ and ok_c88 () (v0 : uint8) : US11 =
     US11_Ok(v0)
 and error_c89 () (v0 : exn) : US11 =
     US11_Error(v0)
-and method45 (v0 : int32) : US11 =
+and method44 (v0 : int32) : US11 =
     let v1 : (unit -> uint8) = closure87(v0)
     let v2 : (uint8 -> US11) = ok_c88()
     let v3 : ((unit -> exn) -> exn) = closure84()
     let v4 : (exn -> US11) = error_c89()
     let v5 : US11 = try v1 () |> v2 with ex -> (fun () -> ex) |> v3 |> v4 
     v5
-and roll_dice_42 () : uint8 =
+and roll_dice_41 () : uint8 =
     let v0 : (unit -> System.Random) = System.Random 
     let v1 : System.Random = v0 ()
-    let v2 : US9 = method43()
+    let v2 : US9 = method42()
     let v8 : US10 =
         match v2 with
         | US9_Error(v5) -> (* Error *)
@@ -1578,7 +1542,7 @@ and roll_dice_42 () : uint8 =
             failwith<int32> "Option does not have a value."
         | US10_Some(v9) -> (* Some *)
             v9
-    let v13 : US9 = method44()
+    let v13 : US9 = method43()
     let v19 : US10 =
         match v13 with
         | US9_Error(v16) -> (* Error *)
@@ -1592,7 +1556,7 @@ and roll_dice_42 () : uint8 =
         | US10_Some(v20) -> (* Some *)
             v20
     let v24 : int32 = v1.Next (v12, v23)
-    let v25 : US11 = method45(v24)
+    let v25 : US11 = method44(v24)
     let v31 : US1 =
         match v25 with
         | US11_Error(v28) -> (* Error *)
@@ -1604,7 +1568,7 @@ and roll_dice_42 () : uint8 =
         failwith<uint8> "Option does not have a value."
     | US1_Some(v32) -> (* Some *)
         v32
-and method47 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method46 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -1650,7 +1614,7 @@ and method47 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method49 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method48 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -1696,7 +1660,7 @@ and method49 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method51 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method50 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -1742,7 +1706,7 @@ and method51 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method53 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method52 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -1788,7 +1752,7 @@ and method53 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method55 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method54 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -1834,7 +1798,7 @@ and method55 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method57 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method56 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -1880,7 +1844,7 @@ and method57 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method59 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method58 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -1926,7 +1890,7 @@ and method59 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method61 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method60 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -1972,7 +1936,7 @@ and method61 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method63 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method62 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2018,7 +1982,7 @@ and method63 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method65 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method64 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2064,7 +2028,7 @@ and method65 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method67 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method66 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2110,7 +2074,7 @@ and method67 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method69 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method68 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2156,7 +2120,7 @@ and method69 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method71 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method70 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2202,7 +2166,7 @@ and method71 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method73 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method72 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2248,7 +2212,7 @@ and method73 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method75 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method74 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2294,7 +2258,7 @@ and method75 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method77 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method76 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2340,7 +2304,7 @@ and method77 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method79 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method78 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2386,7 +2350,7 @@ and method79 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method81 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method80 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2432,7 +2396,7 @@ and method81 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method83 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method82 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2478,7 +2442,7 @@ and method83 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method85 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method84 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2524,7 +2488,7 @@ and method85 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method87 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method86 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2570,7 +2534,7 @@ and method87 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method89 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method88 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2616,7 +2580,7 @@ and method89 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method91 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method90 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2662,7 +2626,7 @@ and method91 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method93 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
+and method92 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8, v10 : int64) : string =
     let v11 : int64 = v0.l0
     let v12 : string = " "
     let v13 : string = v6 + v12 
@@ -2708,7 +2672,7 @@ and method93 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v53 : string = v51 + v52 
     let v54 : string = v21 + v53 
     method20(v54)
-and method95 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : int64) : string =
+and method94 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : int64) : string =
     let v10 : int64 = v0.l0
     let v11 : string = " "
     let v12 : string = v6 + v11 
@@ -2748,7 +2712,7 @@ and method95 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method94 (v0 : UH1, v1 : int64) : US12 =
+and method93 (v0 : UH1, v1 : int64) : US12 =
     let v2 : int64 = v1 + 1L
     let v3 : bool = TraceState.trace_state.IsNone
     if v3 then
@@ -2794,7 +2758,7 @@ and method94 (v0 : UH1, v1 : int64) : US12 =
             let struct (v39 : Mut1, v40 : Mut3, v41 : Mut4, v42 : Mut5, v43 : Mut6, v44 : int64 option) = TraceState.trace_state.Value
             let v45 : string = method11(v39, v40, v41, v42, v43, v44)
             let v46 : string = method14()
-            let v47 : string = method95(v39, v40, v41, v42, v43, v44, v45, v46, v1, v2)
+            let v47 : string = method94(v39, v40, v41, v42, v43, v44, v45, v46, v1, v2)
             let v48 : bool = TraceState.trace_state.IsNone
             if v48 then
                 let v49 : US2 = US2_Verbose
@@ -2812,7 +2776,7 @@ and method94 (v0 : UH1, v1 : int64) : US12 =
             v66 v47
             US6_Some(v57, v58, v59, v60, v61, v62)
     US12_Some(v2, v0)
-and method96 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+and method95 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
     let v10 : int64 = v0.l0
     let v11 : string = " "
     let v12 : string = v6 + v11 
@@ -2852,7 +2816,7 @@ and method96 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method92 (v0 : UH1, v1 : int64) : US12 =
+and method91 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -2903,7 +2867,7 @@ and method92 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v44 : Mut1, v45 : Mut3, v46 : Mut4, v47 : Mut5, v48 : Mut6, v49 : int64 option) = TraceState.trace_state.Value
                     let v50 : string = method11(v44, v45, v46, v47, v48, v49)
                     let v51 : string = method14()
-                    let v52 : string = method93(v44, v45, v46, v47, v48, v49, v50, v51, v1, v3, v7)
+                    let v52 : string = method92(v44, v45, v46, v47, v48, v49, v50, v51, v1, v3, v7)
                     let v53 : bool = TraceState.trace_state.IsNone
                     if v53 then
                         let v54 : US2 = US2_Verbose
@@ -2921,7 +2885,7 @@ and method92 (v0 : UH1, v1 : int64) : US12 =
                     v71 v52
                     US6_Some(v62, v63, v64, v65, v66, v67)
             let v74 : int64 = v1 + v7
-            method94(v4, v74)
+            method93(v4, v74)
         else
             let v76 : bool = TraceState.trace_state.IsNone
             if v76 then
@@ -2967,7 +2931,7 @@ and method92 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v112 : Mut1, v113 : Mut3, v114 : Mut4, v115 : Mut5, v116 : Mut6, v117 : int64 option) = TraceState.trace_state.Value
                     let v118 : string = method11(v112, v113, v114, v115, v116, v117)
                     let v119 : string = method14()
-                    let v120 : string = method96(v112, v113, v114, v115, v116, v117, v118, v119, v1, v3)
+                    let v120 : string = method95(v112, v113, v114, v115, v116, v117, v118, v119, v1, v3)
                     let v121 : bool = TraceState.trace_state.IsNone
                     if v121 then
                         let v122 : US2 = US2_Verbose
@@ -2984,10 +2948,10 @@ and method92 (v0 : UH1, v1 : int64) : US12 =
                     let v139 : (string -> unit) = v131.l0
                     v139 v120
                     US6_Some(v130, v131, v132, v133, v134, v135)
-            method94(v4, v1)
+            method93(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
-and method97 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+and method96 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
     let v10 : int64 = v0.l0
     let v11 : string = " "
     let v12 : string = v6 + v11 
@@ -3027,7 +2991,7 @@ and method97 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method90 (v0 : UH1, v1 : int64) : US12 =
+and method89 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
@@ -3079,7 +3043,7 @@ and method90 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method91(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method90(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -3097,7 +3061,183 @@ and method90 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method92(v4, v75)
+            method91(v4, v75)
+        else
+            let v77 : bool = TraceState.trace_state.IsNone
+            if v77 then
+                let v78 : US2 = US2_Verbose
+                let struct (v79 : Mut1, v80 : Mut3, v81 : Mut4, v82 : Mut5, v83 : Mut6, v84 : int64 option) = new_trace_state_6(v78)
+                let v85 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v79, v80, v81, v82, v83, v84) 
+                TraceState.trace_state <- v85 
+                ()
+            let struct (v86 : Mut1, v87 : Mut3, v88 : Mut4, v89 : Mut5, v90 : Mut6, v91 : int64 option) = TraceState.trace_state.Value
+            let v92 : US2 = v90.l0
+            let v97 : int32 =
+                match v92 with
+                | US2_Critical -> (* Critical *)
+                    50
+                | US2_Debug -> (* Debug *)
+                    20
+                | US2_Info -> (* Info *)
+                    30
+                | US2_Verbose -> (* Verbose *)
+                    10
+                | US2_Warning -> (* Warning *)
+                    40
+            let v98 : bool = v88.l0
+            let v99 : bool = v98 = false
+            let v101 : bool =
+                if v99 then
+                    false
+                else
+                    let v100 : bool = 20 >= v97
+                    v100
+            let v102 : bool = v101 = false
+            let v142 : US6 =
+                if v102 then
+                    US6_None
+                else
+                    let v104 : bool = TraceState.trace_state.IsNone
+                    if v104 then
+                        let v105 : US2 = US2_Verbose
+                        let struct (v106 : Mut1, v107 : Mut3, v108 : Mut4, v109 : Mut5, v110 : Mut6, v111 : int64 option) = new_trace_state_6(v105)
+                        let v112 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v106, v107, v108, v109, v110, v111) 
+                        TraceState.trace_state <- v112 
+                        ()
+                    let struct (v113 : Mut1, v114 : Mut3, v115 : Mut4, v116 : Mut5, v117 : Mut6, v118 : int64 option) = TraceState.trace_state.Value
+                    let v119 : string = method11(v113, v114, v115, v116, v117, v118)
+                    let v120 : string = method14()
+                    let v121 : string = method96(v113, v114, v115, v116, v117, v118, v119, v120, v1, v3)
+                    let v122 : bool = TraceState.trace_state.IsNone
+                    if v122 then
+                        let v123 : US2 = US2_Verbose
+                        let struct (v124 : Mut1, v125 : Mut3, v126 : Mut4, v127 : Mut5, v128 : Mut6, v129 : int64 option) = new_trace_state_6(v123)
+                        let v130 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v124, v125, v126, v127, v128, v129) 
+                        TraceState.trace_state <- v130 
+                        ()
+                    let struct (v131 : Mut1, v132 : Mut3, v133 : Mut4, v134 : Mut5, v135 : Mut6, v136 : int64 option) = TraceState.trace_state.Value
+                    let v137 : int64 = v131.l0
+                    let v138 : int64 = v137 + 1L
+                    v131.l0 <- v138
+                    let v139 : (string -> unit) = closure11()
+                    v139 v121
+                    let v140 : (string -> unit) = v132.l0
+                    v140 v121
+                    US6_Some(v131, v132, v133, v134, v135, v136)
+            method91(v4, v1)
+    | UH1_Nil -> (* Nil *)
+        US12_None
+and method97 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
+    let v10 : int64 = v0.l0
+    let v11 : string = " "
+    let v12 : string = v6 + v11 
+    let v13 : string = format_real_19(v10)
+    let v14 : string = v12 + v13 
+    let v15 : string = v14 + v7 
+    let v16 : string = v15 + v11 
+    let v17 : string = "dice.accumulate_dice_rolls"
+    let v18 : string = v16 + v17 
+    let v19 : string = " / "
+    let v20 : string = v18 + v19 
+    let v21 : string = ""
+    let v22 : string = v21 + v21 
+    let v23 : string = "power"
+    let v24 : string = v22 + v23 
+    let v25 : string = " = "
+    let v26 : string = v24 + v25 
+    let v27 : int8 = 2y
+    let v28 : string = format_real_29(v27)
+    let v29 : string = v26 + v28 
+    let v30 : string = "; "
+    let v31 : string = v29 + v30 
+    let v32 : string = "acc"
+    let v33 : string = v31 + v32 
+    let v34 : string = v33 + v25 
+    let v35 : string = format_real_19(v8)
+    let v36 : string = v34 + v35 
+    let v37 : string = v36 + v30 
+    let v38 : string = "roll"
+    let v39 : string = v37 + v38 
+    let v40 : string = v39 + v25 
+    let v41 : string = format_real_35(v9)
+    let v42 : string = v40 + v41 
+    let v43 : string = "{ "
+    let v44 : string = v43 + v42 
+    let v45 : string = " }"
+    let v46 : string = v44 + v45 
+    let v47 : string = v20 + v46 
+    method20(v47)
+and method87 (v0 : UH1, v1 : int64) : US12 =
+    match v0 with
+    | UH1_Cons(v3, v4) -> (* Cons *)
+        let v5 : bool = v3 > 1uy
+        if v5 then
+            let v6 : uint8 = v3 - 1uy
+            let v7 : int64 = int64 v6
+            let v8 : int64 = v7 * 36L
+            let v9 : bool = TraceState.trace_state.IsNone
+            if v9 then
+                let v10 : US2 = US2_Verbose
+                let struct (v11 : Mut1, v12 : Mut3, v13 : Mut4, v14 : Mut5, v15 : Mut6, v16 : int64 option) = new_trace_state_6(v10)
+                let v17 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v11, v12, v13, v14, v15, v16) 
+                TraceState.trace_state <- v17 
+                ()
+            let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
+            let v24 : US2 = v22.l0
+            let v29 : int32 =
+                match v24 with
+                | US2_Critical -> (* Critical *)
+                    50
+                | US2_Debug -> (* Debug *)
+                    20
+                | US2_Info -> (* Info *)
+                    30
+                | US2_Verbose -> (* Verbose *)
+                    10
+                | US2_Warning -> (* Warning *)
+                    40
+            let v30 : bool = v20.l0
+            let v31 : bool = v30 = false
+            let v33 : bool =
+                if v31 then
+                    false
+                else
+                    let v32 : bool = 20 >= v29
+                    v32
+            let v34 : bool = v33 = false
+            let v74 : US6 =
+                if v34 then
+                    US6_None
+                else
+                    let v36 : bool = TraceState.trace_state.IsNone
+                    if v36 then
+                        let v37 : US2 = US2_Verbose
+                        let struct (v38 : Mut1, v39 : Mut3, v40 : Mut4, v41 : Mut5, v42 : Mut6, v43 : int64 option) = new_trace_state_6(v37)
+                        let v44 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v38, v39, v40, v41, v42, v43) 
+                        TraceState.trace_state <- v44 
+                        ()
+                    let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
+                    let v51 : string = method11(v45, v46, v47, v48, v49, v50)
+                    let v52 : string = method14()
+                    let v53 : string = method88(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v54 : bool = TraceState.trace_state.IsNone
+                    if v54 then
+                        let v55 : US2 = US2_Verbose
+                        let struct (v56 : Mut1, v57 : Mut3, v58 : Mut4, v59 : Mut5, v60 : Mut6, v61 : int64 option) = new_trace_state_6(v55)
+                        let v62 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v56, v57, v58, v59, v60, v61) 
+                        TraceState.trace_state <- v62 
+                        ()
+                    let struct (v63 : Mut1, v64 : Mut3, v65 : Mut4, v66 : Mut5, v67 : Mut6, v68 : int64 option) = TraceState.trace_state.Value
+                    let v69 : int64 = v63.l0
+                    let v70 : int64 = v69 + 1L
+                    v63.l0 <- v70
+                    let v71 : (string -> unit) = closure11()
+                    v71 v53
+                    let v72 : (string -> unit) = v64.l0
+                    v72 v53
+                    US6_Some(v63, v64, v65, v66, v67, v68)
+            let v75 : int64 = v1 + v8
+            method89(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -3160,7 +3300,7 @@ and method90 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method92(v4, v1)
+            method89(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method98 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -3181,7 +3321,7 @@ and method98 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 2y
+    let v27 : int8 = 3y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -3203,14 +3343,14 @@ and method98 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method88 (v0 : UH1, v1 : int64) : US12 =
+and method85 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 36L
+            let v8 : int64 = v7 * 216L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -3255,7 +3395,7 @@ and method88 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method89(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method86(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -3273,7 +3413,7 @@ and method88 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method90(v4, v75)
+            method87(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -3336,7 +3476,7 @@ and method88 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method90(v4, v1)
+            method87(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method99 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -3357,7 +3497,7 @@ and method99 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 3y
+    let v27 : int8 = 4y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -3379,14 +3519,14 @@ and method99 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method86 (v0 : UH1, v1 : int64) : US12 =
+and method83 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 216L
+            let v8 : int64 = v7 * 1296L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -3431,7 +3571,7 @@ and method86 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method87(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method84(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -3449,7 +3589,7 @@ and method86 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method88(v4, v75)
+            method85(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -3512,7 +3652,7 @@ and method86 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method88(v4, v1)
+            method85(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method100 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -3533,7 +3673,7 @@ and method100 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 4y
+    let v27 : int8 = 5y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -3555,14 +3695,14 @@ and method100 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method84 (v0 : UH1, v1 : int64) : US12 =
+and method81 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 1296L
+            let v8 : int64 = v7 * 7776L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -3607,7 +3747,7 @@ and method84 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method85(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method82(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -3625,7 +3765,7 @@ and method84 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method86(v4, v75)
+            method83(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -3688,7 +3828,7 @@ and method84 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method86(v4, v1)
+            method83(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method101 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -3709,7 +3849,7 @@ and method101 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 5y
+    let v27 : int8 = 6y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -3731,14 +3871,14 @@ and method101 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method82 (v0 : UH1, v1 : int64) : US12 =
+and method79 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 7776L
+            let v8 : int64 = v7 * 46656L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -3783,7 +3923,7 @@ and method82 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method83(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method80(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -3801,7 +3941,7 @@ and method82 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method84(v4, v75)
+            method81(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -3864,7 +4004,7 @@ and method82 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method84(v4, v1)
+            method81(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method102 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -3885,7 +4025,7 @@ and method102 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 6y
+    let v27 : int8 = 7y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -3907,14 +4047,14 @@ and method102 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method80 (v0 : UH1, v1 : int64) : US12 =
+and method77 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 46656L
+            let v8 : int64 = v7 * 279936L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -3959,7 +4099,7 @@ and method80 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method81(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method78(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -3977,7 +4117,7 @@ and method80 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method82(v4, v75)
+            method79(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -4040,7 +4180,7 @@ and method80 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method82(v4, v1)
+            method79(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method103 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -4061,7 +4201,7 @@ and method103 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 7y
+    let v27 : int8 = 8y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -4083,14 +4223,14 @@ and method103 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method78 (v0 : UH1, v1 : int64) : US12 =
+and method75 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 279936L
+            let v8 : int64 = v7 * 1679616L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -4135,7 +4275,7 @@ and method78 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method79(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method76(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -4153,7 +4293,7 @@ and method78 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method80(v4, v75)
+            method77(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -4216,7 +4356,7 @@ and method78 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method80(v4, v1)
+            method77(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method104 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -4237,7 +4377,7 @@ and method104 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 8y
+    let v27 : int8 = 9y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -4259,14 +4399,14 @@ and method104 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method76 (v0 : UH1, v1 : int64) : US12 =
+and method73 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 1679616L
+            let v8 : int64 = v7 * 10077696L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -4311,7 +4451,7 @@ and method76 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method77(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method74(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -4329,7 +4469,7 @@ and method76 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method78(v4, v75)
+            method75(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -4392,7 +4532,7 @@ and method76 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method78(v4, v1)
+            method75(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method105 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -4413,7 +4553,7 @@ and method105 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 9y
+    let v27 : int8 = 10y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -4435,14 +4575,14 @@ and method105 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method74 (v0 : UH1, v1 : int64) : US12 =
+and method71 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 10077696L
+            let v8 : int64 = v7 * 60466176L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -4487,7 +4627,7 @@ and method74 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method75(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method72(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -4505,7 +4645,7 @@ and method74 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method76(v4, v75)
+            method73(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -4568,7 +4708,7 @@ and method74 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method76(v4, v1)
+            method73(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method106 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -4589,7 +4729,7 @@ and method106 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 10y
+    let v27 : int8 = 11y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -4611,14 +4751,14 @@ and method106 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method72 (v0 : UH1, v1 : int64) : US12 =
+and method69 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 60466176L
+            let v8 : int64 = v7 * 362797056L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -4663,7 +4803,7 @@ and method72 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method73(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method70(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -4681,7 +4821,7 @@ and method72 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method74(v4, v75)
+            method71(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -4744,7 +4884,7 @@ and method72 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method74(v4, v1)
+            method71(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method107 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -4765,7 +4905,7 @@ and method107 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 11y
+    let v27 : int8 = 12y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -4787,14 +4927,14 @@ and method107 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method70 (v0 : UH1, v1 : int64) : US12 =
+and method67 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 362797056L
+            let v8 : int64 = v7 * 2176782336L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -4839,7 +4979,7 @@ and method70 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method71(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method68(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -4857,7 +4997,7 @@ and method70 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method72(v4, v75)
+            method69(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -4920,7 +5060,7 @@ and method70 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method72(v4, v1)
+            method69(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method108 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -4941,7 +5081,7 @@ and method108 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 12y
+    let v27 : int8 = 13y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -4963,14 +5103,14 @@ and method108 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method68 (v0 : UH1, v1 : int64) : US12 =
+and method65 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 2176782336L
+            let v8 : int64 = v7 * 13060694016L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -5015,7 +5155,7 @@ and method68 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method69(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method66(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -5033,7 +5173,7 @@ and method68 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method70(v4, v75)
+            method67(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -5096,7 +5236,7 @@ and method68 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method70(v4, v1)
+            method67(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method109 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -5117,7 +5257,7 @@ and method109 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 13y
+    let v27 : int8 = 14y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -5139,14 +5279,14 @@ and method109 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method66 (v0 : UH1, v1 : int64) : US12 =
+and method63 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 13060694016L
+            let v8 : int64 = v7 * 78364164096L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -5191,7 +5331,7 @@ and method66 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method67(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method64(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -5209,7 +5349,7 @@ and method66 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method68(v4, v75)
+            method65(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -5272,7 +5412,7 @@ and method66 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method68(v4, v1)
+            method65(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method110 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -5293,7 +5433,7 @@ and method110 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 14y
+    let v27 : int8 = 15y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -5315,14 +5455,14 @@ and method110 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method64 (v0 : UH1, v1 : int64) : US12 =
+and method61 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 78364164096L
+            let v8 : int64 = v7 * 470184984576L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -5367,7 +5507,7 @@ and method64 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method65(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method62(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -5385,7 +5525,7 @@ and method64 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method66(v4, v75)
+            method63(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -5448,7 +5588,7 @@ and method64 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method66(v4, v1)
+            method63(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method111 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -5469,7 +5609,7 @@ and method111 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 15y
+    let v27 : int8 = 16y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -5491,14 +5631,14 @@ and method111 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method62 (v0 : UH1, v1 : int64) : US12 =
+and method59 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 470184984576L
+            let v8 : int64 = v7 * 2821109907456L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -5543,7 +5683,7 @@ and method62 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method63(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method60(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -5561,7 +5701,7 @@ and method62 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method64(v4, v75)
+            method61(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -5624,7 +5764,7 @@ and method62 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method64(v4, v1)
+            method61(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method112 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -5645,7 +5785,7 @@ and method112 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 16y
+    let v27 : int8 = 17y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -5667,14 +5807,14 @@ and method112 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method60 (v0 : UH1, v1 : int64) : US12 =
+and method57 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 2821109907456L
+            let v8 : int64 = v7 * 16926659444736L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -5719,7 +5859,7 @@ and method60 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method61(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method58(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -5737,7 +5877,7 @@ and method60 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method62(v4, v75)
+            method59(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -5800,7 +5940,7 @@ and method60 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method62(v4, v1)
+            method59(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method113 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -5821,7 +5961,7 @@ and method113 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 17y
+    let v27 : int8 = 18y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -5843,14 +5983,14 @@ and method113 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method58 (v0 : UH1, v1 : int64) : US12 =
+and method55 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 16926659444736L
+            let v8 : int64 = v7 * 101559956668416L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -5895,7 +6035,7 @@ and method58 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method59(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method56(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -5913,7 +6053,7 @@ and method58 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method60(v4, v75)
+            method57(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -5976,7 +6116,7 @@ and method58 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method60(v4, v1)
+            method57(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method114 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -5997,7 +6137,7 @@ and method114 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 18y
+    let v27 : int8 = 19y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -6019,14 +6159,14 @@ and method114 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method56 (v0 : UH1, v1 : int64) : US12 =
+and method53 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 101559956668416L
+            let v8 : int64 = v7 * 609359740010496L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -6071,7 +6211,7 @@ and method56 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method57(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method54(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -6089,7 +6229,7 @@ and method56 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method58(v4, v75)
+            method55(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -6152,7 +6292,7 @@ and method56 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method58(v4, v1)
+            method55(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method115 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -6173,7 +6313,7 @@ and method115 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 19y
+    let v27 : int8 = 20y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -6195,14 +6335,14 @@ and method115 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method54 (v0 : UH1, v1 : int64) : US12 =
+and method51 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 609359740010496L
+            let v8 : int64 = v7 * 3656158440062976L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -6247,7 +6387,7 @@ and method54 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method55(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method52(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -6265,7 +6405,7 @@ and method54 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method56(v4, v75)
+            method53(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -6328,7 +6468,7 @@ and method54 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method56(v4, v1)
+            method53(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method116 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -6349,7 +6489,7 @@ and method116 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 20y
+    let v27 : int8 = 21y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -6371,14 +6511,14 @@ and method116 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method52 (v0 : UH1, v1 : int64) : US12 =
+and method49 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 3656158440062976L
+            let v8 : int64 = v7 * 21936950640377856L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -6423,7 +6563,7 @@ and method52 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method53(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method50(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -6441,7 +6581,7 @@ and method52 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method54(v4, v75)
+            method51(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -6504,7 +6644,7 @@ and method52 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method54(v4, v1)
+            method51(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method117 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -6525,7 +6665,7 @@ and method117 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 21y
+    let v27 : int8 = 22y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -6547,14 +6687,14 @@ and method117 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method50 (v0 : UH1, v1 : int64) : US12 =
+and method47 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 21936950640377856L
+            let v8 : int64 = v7 * 131621703842267136L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -6599,7 +6739,7 @@ and method50 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method51(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method48(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -6617,7 +6757,7 @@ and method50 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method52(v4, v75)
+            method49(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -6680,7 +6820,7 @@ and method50 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method52(v4, v1)
+            method49(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
 and method118 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
@@ -6701,7 +6841,7 @@ and method118 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v24 : string = v22 + v23 
     let v25 : string = " = "
     let v26 : string = v24 + v25 
-    let v27 : int8 = 22y
+    let v27 : int8 = 23y
     let v28 : string = format_real_29(v27)
     let v29 : string = v26 + v28 
     let v30 : string = "; "
@@ -6723,14 +6863,14 @@ and method118 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64
     let v46 : string = v44 + v45 
     let v47 : string = v20 + v46 
     method20(v47)
-and method48 (v0 : UH1, v1 : int64) : US12 =
+and method45 (v0 : UH1, v1 : int64) : US12 =
     match v0 with
     | UH1_Cons(v3, v4) -> (* Cons *)
         let v5 : bool = v3 > 1uy
         if v5 then
             let v6 : uint8 = v3 - 1uy
             let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 131621703842267136L
+            let v8 : int64 = v7 * 789730223053602816L
             let v9 : bool = TraceState.trace_state.IsNone
             if v9 then
                 let v10 : US2 = US2_Verbose
@@ -6775,7 +6915,7 @@ and method48 (v0 : UH1, v1 : int64) : US12 =
                     let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
                     let v51 : string = method11(v45, v46, v47, v48, v49, v50)
                     let v52 : string = method14()
-                    let v53 : string = method49(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
+                    let v53 : string = method46(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
                     let v54 : bool = TraceState.trace_state.IsNone
                     if v54 then
                         let v55 : US2 = US2_Verbose
@@ -6793,7 +6933,7 @@ and method48 (v0 : UH1, v1 : int64) : US12 =
                     v72 v53
                     US6_Some(v63, v64, v65, v66, v67, v68)
             let v75 : int64 = v1 + v8
-            method50(v4, v75)
+            method47(v4, v75)
         else
             let v77 : bool = TraceState.trace_state.IsNone
             if v77 then
@@ -6856,224 +6996,48 @@ and method48 (v0 : UH1, v1 : int64) : US12 =
                     let v140 : (string -> unit) = v132.l0
                     v140 v121
                     US6_Some(v131, v132, v133, v134, v135, v136)
-            method50(v4, v1)
+            method47(v4, v1)
     | UH1_Nil -> (* Nil *)
         US12_None
-and method119 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64, v9 : uint8) : string =
-    let v10 : int64 = v0.l0
-    let v11 : string = " "
-    let v12 : string = v6 + v11 
-    let v13 : string = format_real_19(v10)
-    let v14 : string = v12 + v13 
-    let v15 : string = v14 + v7 
-    let v16 : string = v15 + v11 
-    let v17 : string = "dice.accumulate_dice_rolls"
-    let v18 : string = v16 + v17 
-    let v19 : string = " / "
-    let v20 : string = v18 + v19 
-    let v21 : string = ""
-    let v22 : string = v21 + v21 
-    let v23 : string = "power"
-    let v24 : string = v22 + v23 
-    let v25 : string = " = "
-    let v26 : string = v24 + v25 
-    let v27 : int8 = 23y
-    let v28 : string = format_real_29(v27)
-    let v29 : string = v26 + v28 
-    let v30 : string = "; "
-    let v31 : string = v29 + v30 
-    let v32 : string = "acc"
-    let v33 : string = v31 + v32 
-    let v34 : string = v33 + v25 
-    let v35 : string = format_real_19(v8)
-    let v36 : string = v34 + v35 
-    let v37 : string = v36 + v30 
-    let v38 : string = "roll"
-    let v39 : string = v37 + v38 
-    let v40 : string = v39 + v25 
-    let v41 : string = format_real_35(v9)
-    let v42 : string = v40 + v41 
-    let v43 : string = "{ "
-    let v44 : string = v43 + v42 
-    let v45 : string = " }"
-    let v46 : string = v44 + v45 
-    let v47 : string = v20 + v46 
-    method20(v47)
-and method46 (v0 : UH1, v1 : int64) : US12 =
-    match v0 with
-    | UH1_Cons(v3, v4) -> (* Cons *)
-        let v5 : bool = v3 > 1uy
-        if v5 then
-            let v6 : uint8 = v3 - 1uy
-            let v7 : int64 = int64 v6
-            let v8 : int64 = v7 * 789730223053602816L
-            let v9 : bool = TraceState.trace_state.IsNone
-            if v9 then
-                let v10 : US2 = US2_Verbose
-                let struct (v11 : Mut1, v12 : Mut3, v13 : Mut4, v14 : Mut5, v15 : Mut6, v16 : int64 option) = new_trace_state_6(v10)
-                let v17 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v11, v12, v13, v14, v15, v16) 
-                TraceState.trace_state <- v17 
-                ()
-            let struct (v18 : Mut1, v19 : Mut3, v20 : Mut4, v21 : Mut5, v22 : Mut6, v23 : int64 option) = TraceState.trace_state.Value
-            let v24 : US2 = v22.l0
-            let v29 : int32 =
-                match v24 with
-                | US2_Critical -> (* Critical *)
-                    50
-                | US2_Debug -> (* Debug *)
-                    20
-                | US2_Info -> (* Info *)
-                    30
-                | US2_Verbose -> (* Verbose *)
-                    10
-                | US2_Warning -> (* Warning *)
-                    40
-            let v30 : bool = v20.l0
-            let v31 : bool = v30 = false
-            let v33 : bool =
-                if v31 then
-                    false
-                else
-                    let v32 : bool = 20 >= v29
-                    v32
-            let v34 : bool = v33 = false
-            let v74 : US6 =
-                if v34 then
-                    US6_None
-                else
-                    let v36 : bool = TraceState.trace_state.IsNone
-                    if v36 then
-                        let v37 : US2 = US2_Verbose
-                        let struct (v38 : Mut1, v39 : Mut3, v40 : Mut4, v41 : Mut5, v42 : Mut6, v43 : int64 option) = new_trace_state_6(v37)
-                        let v44 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v38, v39, v40, v41, v42, v43) 
-                        TraceState.trace_state <- v44 
-                        ()
-                    let struct (v45 : Mut1, v46 : Mut3, v47 : Mut4, v48 : Mut5, v49 : Mut6, v50 : int64 option) = TraceState.trace_state.Value
-                    let v51 : string = method11(v45, v46, v47, v48, v49, v50)
-                    let v52 : string = method14()
-                    let v53 : string = method47(v45, v46, v47, v48, v49, v50, v51, v52, v1, v3, v8)
-                    let v54 : bool = TraceState.trace_state.IsNone
-                    if v54 then
-                        let v55 : US2 = US2_Verbose
-                        let struct (v56 : Mut1, v57 : Mut3, v58 : Mut4, v59 : Mut5, v60 : Mut6, v61 : int64 option) = new_trace_state_6(v55)
-                        let v62 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v56, v57, v58, v59, v60, v61) 
-                        TraceState.trace_state <- v62 
-                        ()
-                    let struct (v63 : Mut1, v64 : Mut3, v65 : Mut4, v66 : Mut5, v67 : Mut6, v68 : int64 option) = TraceState.trace_state.Value
-                    let v69 : int64 = v63.l0
-                    let v70 : int64 = v69 + 1L
-                    v63.l0 <- v70
-                    let v71 : (string -> unit) = closure11()
-                    v71 v53
-                    let v72 : (string -> unit) = v64.l0
-                    v72 v53
-                    US6_Some(v63, v64, v65, v66, v67, v68)
-            let v75 : int64 = v1 + v8
-            method48(v4, v75)
-        else
-            let v77 : bool = TraceState.trace_state.IsNone
-            if v77 then
-                let v78 : US2 = US2_Verbose
-                let struct (v79 : Mut1, v80 : Mut3, v81 : Mut4, v82 : Mut5, v83 : Mut6, v84 : int64 option) = new_trace_state_6(v78)
-                let v85 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v79, v80, v81, v82, v83, v84) 
-                TraceState.trace_state <- v85 
-                ()
-            let struct (v86 : Mut1, v87 : Mut3, v88 : Mut4, v89 : Mut5, v90 : Mut6, v91 : int64 option) = TraceState.trace_state.Value
-            let v92 : US2 = v90.l0
-            let v97 : int32 =
-                match v92 with
-                | US2_Critical -> (* Critical *)
-                    50
-                | US2_Debug -> (* Debug *)
-                    20
-                | US2_Info -> (* Info *)
-                    30
-                | US2_Verbose -> (* Verbose *)
-                    10
-                | US2_Warning -> (* Warning *)
-                    40
-            let v98 : bool = v88.l0
-            let v99 : bool = v98 = false
-            let v101 : bool =
-                if v99 then
-                    false
-                else
-                    let v100 : bool = 20 >= v97
-                    v100
-            let v102 : bool = v101 = false
-            let v142 : US6 =
-                if v102 then
-                    US6_None
-                else
-                    let v104 : bool = TraceState.trace_state.IsNone
-                    if v104 then
-                        let v105 : US2 = US2_Verbose
-                        let struct (v106 : Mut1, v107 : Mut3, v108 : Mut4, v109 : Mut5, v110 : Mut6, v111 : int64 option) = new_trace_state_6(v105)
-                        let v112 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v106, v107, v108, v109, v110, v111) 
-                        TraceState.trace_state <- v112 
-                        ()
-                    let struct (v113 : Mut1, v114 : Mut3, v115 : Mut4, v116 : Mut5, v117 : Mut6, v118 : int64 option) = TraceState.trace_state.Value
-                    let v119 : string = method11(v113, v114, v115, v116, v117, v118)
-                    let v120 : string = method14()
-                    let v121 : string = method119(v113, v114, v115, v116, v117, v118, v119, v120, v1, v3)
-                    let v122 : bool = TraceState.trace_state.IsNone
-                    if v122 then
-                        let v123 : US2 = US2_Verbose
-                        let struct (v124 : Mut1, v125 : Mut3, v126 : Mut4, v127 : Mut5, v128 : Mut6, v129 : int64 option) = new_trace_state_6(v123)
-                        let v130 : struct (Mut1 * Mut3 * Mut4 * Mut5 * Mut6 * int64 option) option = Some struct (v124, v125, v126, v127, v128, v129) 
-                        TraceState.trace_state <- v130 
-                        ()
-                    let struct (v131 : Mut1, v132 : Mut3, v133 : Mut4, v134 : Mut5, v135 : Mut6, v136 : int64 option) = TraceState.trace_state.Value
-                    let v137 : int64 = v131.l0
-                    let v138 : int64 = v137 + 1L
-                    v131.l0 <- v138
-                    let v139 : (string -> unit) = closure11()
-                    v139 v121
-                    let v140 : (string -> unit) = v132.l0
-                    v140 v121
-                    US6_Some(v131, v132, v133, v134, v135, v136)
-            method48(v4, v1)
-    | UH1_Nil -> (* Nil *)
-        US12_None
-and method41 (v0 : UH1, v1 : int8) : int64 =
+and method40 (v0 : UH1, v1 : int8) : int64 =
     let v2 : bool = v1 < 24y
     if v2 then
-        let v3 : uint8 = roll_dice_42()
+        let v3 : uint8 = roll_dice_41()
         let v4 : UH1 = UH1_Cons(v3, v0)
         let v5 : int8 = v1 + 1y
-        method41(v4, v5)
+        method40(v4, v5)
     else
         let v7 : int64 = 0L
-        let v8 : US12 = method46(v0, v7)
+        let v8 : US12 = method45(v0, v7)
         match v8 with
         | US12_Some(v9, v10) -> (* Some *)
             let v11 : bool = v9 <= 4738381338321616896L
             if v11 then
                 v9
             else
-                let v12 : uint8 = roll_dice_42()
-                let v13 : uint8 = roll_dice_42()
-                let v14 : uint8 = roll_dice_42()
-                let v15 : uint8 = roll_dice_42()
-                let v16 : uint8 = roll_dice_42()
-                let v17 : uint8 = roll_dice_42()
-                let v18 : uint8 = roll_dice_42()
-                let v19 : uint8 = roll_dice_42()
-                let v20 : uint8 = roll_dice_42()
-                let v21 : uint8 = roll_dice_42()
-                let v22 : uint8 = roll_dice_42()
-                let v23 : uint8 = roll_dice_42()
-                let v24 : uint8 = roll_dice_42()
-                let v25 : uint8 = roll_dice_42()
-                let v26 : uint8 = roll_dice_42()
-                let v27 : uint8 = roll_dice_42()
-                let v28 : uint8 = roll_dice_42()
-                let v29 : uint8 = roll_dice_42()
-                let v30 : uint8 = roll_dice_42()
-                let v31 : uint8 = roll_dice_42()
-                let v32 : uint8 = roll_dice_42()
-                let v33 : uint8 = roll_dice_42()
-                let v34 : uint8 = roll_dice_42()
+                let v12 : uint8 = roll_dice_41()
+                let v13 : uint8 = roll_dice_41()
+                let v14 : uint8 = roll_dice_41()
+                let v15 : uint8 = roll_dice_41()
+                let v16 : uint8 = roll_dice_41()
+                let v17 : uint8 = roll_dice_41()
+                let v18 : uint8 = roll_dice_41()
+                let v19 : uint8 = roll_dice_41()
+                let v20 : uint8 = roll_dice_41()
+                let v21 : uint8 = roll_dice_41()
+                let v22 : uint8 = roll_dice_41()
+                let v23 : uint8 = roll_dice_41()
+                let v24 : uint8 = roll_dice_41()
+                let v25 : uint8 = roll_dice_41()
+                let v26 : uint8 = roll_dice_41()
+                let v27 : uint8 = roll_dice_41()
+                let v28 : uint8 = roll_dice_41()
+                let v29 : uint8 = roll_dice_41()
+                let v30 : uint8 = roll_dice_41()
+                let v31 : uint8 = roll_dice_41()
+                let v32 : uint8 = roll_dice_41()
+                let v33 : uint8 = roll_dice_41()
+                let v34 : uint8 = roll_dice_41()
                 let v35 : UH1 = UH1_Nil
                 let v36 : UH1 = UH1_Cons(v34, v35)
                 let v37 : UH1 = UH1_Cons(v33, v36)
@@ -7099,31 +7063,31 @@ and method41 (v0 : UH1, v1 : int8) : int64 =
                 let v57 : UH1 = UH1_Cons(v13, v56)
                 let v58 : UH1 = UH1_Cons(v12, v57)
                 let v59 : int8 = 23y
-                method41(v58, v59)
+                method40(v58, v59)
         | _ ->
-            let v62 : uint8 = roll_dice_42()
-            let v63 : uint8 = roll_dice_42()
-            let v64 : uint8 = roll_dice_42()
-            let v65 : uint8 = roll_dice_42()
-            let v66 : uint8 = roll_dice_42()
-            let v67 : uint8 = roll_dice_42()
-            let v68 : uint8 = roll_dice_42()
-            let v69 : uint8 = roll_dice_42()
-            let v70 : uint8 = roll_dice_42()
-            let v71 : uint8 = roll_dice_42()
-            let v72 : uint8 = roll_dice_42()
-            let v73 : uint8 = roll_dice_42()
-            let v74 : uint8 = roll_dice_42()
-            let v75 : uint8 = roll_dice_42()
-            let v76 : uint8 = roll_dice_42()
-            let v77 : uint8 = roll_dice_42()
-            let v78 : uint8 = roll_dice_42()
-            let v79 : uint8 = roll_dice_42()
-            let v80 : uint8 = roll_dice_42()
-            let v81 : uint8 = roll_dice_42()
-            let v82 : uint8 = roll_dice_42()
-            let v83 : uint8 = roll_dice_42()
-            let v84 : uint8 = roll_dice_42()
+            let v62 : uint8 = roll_dice_41()
+            let v63 : uint8 = roll_dice_41()
+            let v64 : uint8 = roll_dice_41()
+            let v65 : uint8 = roll_dice_41()
+            let v66 : uint8 = roll_dice_41()
+            let v67 : uint8 = roll_dice_41()
+            let v68 : uint8 = roll_dice_41()
+            let v69 : uint8 = roll_dice_41()
+            let v70 : uint8 = roll_dice_41()
+            let v71 : uint8 = roll_dice_41()
+            let v72 : uint8 = roll_dice_41()
+            let v73 : uint8 = roll_dice_41()
+            let v74 : uint8 = roll_dice_41()
+            let v75 : uint8 = roll_dice_41()
+            let v76 : uint8 = roll_dice_41()
+            let v77 : uint8 = roll_dice_41()
+            let v78 : uint8 = roll_dice_41()
+            let v79 : uint8 = roll_dice_41()
+            let v80 : uint8 = roll_dice_41()
+            let v81 : uint8 = roll_dice_41()
+            let v82 : uint8 = roll_dice_41()
+            let v83 : uint8 = roll_dice_41()
+            let v84 : uint8 = roll_dice_41()
             let v85 : UH1 = UH1_Nil
             let v86 : UH1 = UH1_Cons(v84, v85)
             let v87 : UH1 = UH1_Cons(v83, v86)
@@ -7149,8 +7113,8 @@ and method41 (v0 : UH1, v1 : int8) : int64 =
             let v107 : UH1 = UH1_Cons(v63, v106)
             let v108 : UH1 = UH1_Cons(v62, v107)
             let v109 : int8 = 23y
-            method41(v108, v109)
-and method120 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64) : string =
+            method40(v108, v109)
+and method119 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut5, v4 : Mut6, v5 : int64 option, v6 : string, v7 : string, v8 : int64) : string =
     let v9 : int64 = v0.l0
     let v10 : string = " "
     let v11 : string = v6 + v10 
@@ -7221,7 +7185,7 @@ and closure81 () (v0 : (string [])) : int32 =
             let struct (v37 : Mut1, v38 : Mut3, v39 : Mut4, v40 : Mut5, v41 : Mut6, v42 : int64 option) = TraceState.trace_state.Value
             let v43 : string = method11(v37, v38, v39, v40, v41, v42)
             let v44 : string = method14()
-            let v45 : string = method40(v37, v38, v39, v40, v41, v42, v43, v44)
+            let v45 : string = method39(v37, v38, v39, v40, v41, v42, v43, v44)
             let v46 : bool = TraceState.trace_state.IsNone
             if v46 then
                 let v47 : US2 = US2_Verbose
@@ -7240,7 +7204,7 @@ and closure81 () (v0 : (string [])) : int32 =
             US6_Some(v55, v56, v57, v58, v59, v60)
     let v67 : UH1 = UH1_Nil
     let v68 : int8 = 0y
-    let v69 : int64 = method41(v67, v68)
+    let v69 : int64 = method40(v67, v68)
     let v70 : bool = TraceState.trace_state.IsNone
     if v70 then
         let v71 : US2 = US2_Verbose
@@ -7285,7 +7249,7 @@ and closure81 () (v0 : (string [])) : int32 =
             let struct (v106 : Mut1, v107 : Mut3, v108 : Mut4, v109 : Mut5, v110 : Mut6, v111 : int64 option) = TraceState.trace_state.Value
             let v112 : string = method11(v106, v107, v108, v109, v110, v111)
             let v113 : string = method14()
-            let v114 : string = method120(v106, v107, v108, v109, v110, v111, v112, v113, v69)
+            let v114 : string = method119(v106, v107, v108, v109, v110, v111, v112, v113, v69)
             let v115 : bool = TraceState.trace_state.IsNone
             if v115 then
                 let v116 : US2 = US2_Verbose

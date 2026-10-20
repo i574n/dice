@@ -216,7 +216,7 @@ inl render () =
             fun () => :>[
                 leptos.reactive_view fun () =>
                     match accounts_txns_requests |> leptos.signal_get |> am'.from_vec with
-                    | (a ;[] : _ i32 _) =>
+                    | (array ;[] : array _) =>
                         "No account selected"
                         |> ui.error_label.render
                         |> leptos.element_to_view
@@ -251,7 +251,7 @@ inl render () =
                                                         method = Some "generate_random_number"
                                                     } = transaction
                                                 |> am'.from_vec
-                                                |> fun (x : _ i32 _) => length x > 0
+                                                |> fun (x : array _) => length x > 0
                                             inl is_receiver =
                                                 account = (txn.receiver_account_id |> sm'.from_std_string)
                                             is_call && is_receiver
@@ -355,8 +355,8 @@ inl render () =
                                                         match txn.logs with
                                                         | ;[] => "" |> leptos.text_fragment
                                                         | _ =>
-                                                            ((a txn.logs : _ int _), None)
-                                                            ||> am.foldBack fun x acc =>
+                                                            ((array txn.logs : array _), None)
+                                                            ||> arraym.foldBack fun x acc =>
                                                                 inl logs =
                                                                     x
                                                                     |> sm'.from_std_string

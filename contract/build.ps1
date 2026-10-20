@@ -47,6 +47,9 @@ function Get-WasmExports([string] $Path) {
 if (!(BuildSpiral "$ScriptDir/$projectName.spi" "$ScriptDir/$projectName.rs" "dice/contract")) {
     throw "RUST-FAILED dice/contract / compile"
 }
+# TODO: RUST-NIGHTLY-EVERYWHERE the last pin below 2026-10-18: nearcore 1.79 rejects the post-1.82 wasm features of a
+#     prebuilt std; nightly-2026-10-18 + -Z build-std=std,panic_abort + -C target-cpu=mvp builds (10-19) once rust-lld
+#     gets --allow-undefined or near-sys >= 0.2.14 (wasm_import_module env) is locked; lab near-mvp.ps1 tries both
 { cargo +nightly-2024-07-14 build --release --target wasm32-unknown-unknown -p $projectName } | Invoke-Block -EnvironmentVariables @{ "AUTOMATION" = "False" }
 $cargoTargetDir = (cargo +nightly-2024-07-14 metadata --format-version 1 --no-deps | ConvertFrom-Json).target_directory
 $rustWasm = "$cargoTargetDir/wasm32-unknown-unknown/release/$projectName.wasm"

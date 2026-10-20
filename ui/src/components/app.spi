@@ -19,7 +19,7 @@ inl render () =
                             leptos.new_arc_rw_signal <|
                                 heap {
                                     accounts =
-                                        ;[
+                                        am'.base ;[
                                             new_pair true ("i574n.near" |> sm'.to_std_string)
                                             new_pair true ("luckier.near" |> sm'.to_std_string)
                                         ]

@@ -124,14 +124,14 @@ inl txn_unbox (x : txn') : txn =
         !\\(x, $'"$0.actions"')
         |> am'.vec_map' action_unbox
         |> am'.from_vec
-        |> fun (a x : _ i32 _) => join x
+        |> fun (array x : array _) => join x
     inl actions_agg = !\\(x, $'"$0.actions_agg"') |> actions_agg_unbox
     inl outcomes = !\\(x, $'"$0.outcomes"') |> outcomes_unbox
     inl outcomes_agg = !\\(x, $'"$0.outcomes_agg"') |> outcomes_agg_unbox
     inl logs =
         !\\(x, $'"$0.logs"')
-        |> optionm'.map (am'.from_vec >> fun (a x : _ i32 _) => x)
-        |> optionm'.default_value' ;[]
+        |> optionm'.map (am'.from_vec >> fun (array x : array _) => x)
+        |> optionm'.default_value' (;[] |> am'.base)
     { receipt_id; predecessor_account_id; receiver_account_id; transaction_hash; included_in_block_hash; block_timestamp; block; actions; actions_agg; outcomes; outcomes_agg; logs }
 
 inl root_unbox (x : root') : root =
@@ -139,5 +139,5 @@ inl root_unbox (x : root') : root =
         !\\(x, $'"$0.txns"')
         |> am'.vec_map' txn_unbox
         |> am'.from_vec
-        |> fun (a x : _ i32 _) => join x
+        |> fun (array x : array _) => join x
     { txns }

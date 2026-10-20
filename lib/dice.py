@@ -181,12 +181,12 @@ def method3(v0 : 'list', v1 : i32, v2 : cp.ndarray, v3 : i32) -> cp.ndarray:
             del v3
             v0, v1, v2, v3 = v0, v1, v2, v7
             continue
-def method4(v0 : i32, v1 : Mut5) -> bool:
-    v2 = v1.v0
+def method4(v0 : Mut5) -> bool:
+    v1 = v0.v0
+    del v0
+    v2 = v1 > 0
     del v1
-    v3 = v2 < v0
-    del v0, v2
-    return v3
+    return v2
 def method1() -> Tuple[US1, US2]:
     v0 = "TRACE_LEVEL"
     v1 = get_environment_variable_2(v0)
@@ -259,55 +259,49 @@ def method1() -> Tuple[US1, US2]:
     del v32, v33, v34, v35
     v37 = v36.size
     v38 = US1_None()
-    v39 = Mut5(0, v38)
-    del v38
-    while method4(v37, v39):
+    v39 = Mut5(v37, v38)
+    del v37, v38
+    while method4(v39):
         v41 = v39.v0
-        v42 = spiral_wrap(-v41, 32, True)
-        v43 = spiral_wrap(v42 + v37, 32, True)
-        del v42
-        v44 = spiral_wrap(v43 - 1, 32, True)
-        del v43
-        v45 = v39.v1
-        v46, v47 = spiral_array_index(v36, v44)
-        del v44
-        match v45:
+        v42 = spiral_wrap(v41 - 1, 32, True)
+        del v41
+        v43 = v39.v1
+        v44, v45 = spiral_array_index(v36, v42)
+        match v43:
             case US1_None(): # None
-                v49 = v46 == v1 
-                if v49:
-                    del v49
-                    v54 = US1_Some(v47)
+                v47 = v44 == v1 
+                if v47:
+                    del v47
+                    v52 = US1_Some(v45)
                 else:
-                    del v49
-                    v54 = US1_None()
+                    del v47
+                    v52 = US1_None()
             case US1_Some(_): # Some
-                v54 = v45
+                v52 = v43
             case t:
                 raise Exception(f'Pattern matching miss. Got: {t}')
-        del v45, v46, v47
-        v55 = spiral_wrap(v41 + 1, 32, True)
-        del v41
-        v39.v0 = v55
-        v39.v1 = v54
-        del v54, v55
-    del v1, v36, v37
-    v56 = v39.v1
+        del v43, v44, v45
+        v39.v0 = v42
+        v39.v1 = v52
+        del v42, v52
+    del v1, v36
+    v53 = v39.v1
     del v39
-    v57 = "AUTOMATION"
-    v58 = get_environment_variable_2(v57)
-    del v57
-    v59 = "True"
-    v60 = v58 != v59 
-    del v58, v59
-    if v60:
-        v65 = US2_None()
+    v54 = "AUTOMATION"
+    v55 = get_environment_variable_2(v54)
+    del v54
+    v56 = "True"
+    v57 = v55 != v56 
+    del v55, v56
+    if v57:
+        v62 = US2_None()
     else:
-        v62 = datetime.datetime.now()
-        v63 = (v62.replace(tzinfo=None) - datetime.datetime(1970, 1, 1)) // datetime.timedelta(microseconds=1)
-        del v62
-        v65 = US2_Some(v63)
-    del v60
-    return v56, v65
+        v59 = datetime.datetime.now()
+        v60 = (v59.replace(tzinfo=None) - datetime.datetime(1970, 1, 1)) // datetime.timedelta(microseconds=1)
+        del v59
+        v62 = US2_Some(v60)
+    del v57
+    return v53, v62
 def new_trace_state_0(v0 : US0) -> Tuple[Mut0, Mut1, Mut2, Mut3, Mut4, i64]:
     v1, v2 = method1()
     v3 = Mut0(1)

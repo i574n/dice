@@ -4284,10 +4284,10 @@ fn closure123() -> Rc<dyn Fn((US49)) -> Result<Option<Vec<(Rc<str>, usize, Rc<He
 fn method152(mut v0: Vec<Result<Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>, std::string::String>>) -> Vec<Result<Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>, std::string::String>> {
     v0.clone()
 }
-fn method153(mut v0: i32, mut v1: Rc<RefCell<Mut3>>) -> bool {
-    let mut v2: i32 = v1.borrow().l0.clone();
-    let mut v3: bool = v2 < v0;
-    v3
+fn method153(mut v0: Rc<RefCell<Mut3>>) -> bool {
+    let mut v1: i32 = v0.borrow().l0.clone();
+    let mut v2: bool = v1 > 0i32;
+    v2
 }
 fn ok_c124() -> Rc<dyn Fn(Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>) -> US49> {
     thread_local!{ static CLOSURE: Rc<dyn Fn(Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>) -> US49> = Rc::new(move |mut v0: Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>| -> US49 {
@@ -4433,7 +4433,7 @@ fn closure111(mut v0: leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper
         let mut v21: Rc<RefCell<Vec<US43>>> = Rc::new(RefCell::new(v20));
         let mut v22: i32 = (v21.clone().borrow().len() as i32);
         let mut v23: bool = v19 == v22;
-        let mut v92: US45 = if v23 {
+        let mut v89: US45 = if v23 {
             let mut v24: US46 = US46::US46_None;
             US45::US45_Ok(v24.clone())
         } else {
@@ -4451,110 +4451,107 @@ fn closure111(mut v0: leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper
             let mut v40: Rc<RefCell<Vec<Result<Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>, std::string::String>>>> = Rc::new(RefCell::new(v39));
             let mut v41: i32 = (v40.clone().borrow().len() as i32);
             let mut v42: Rc<UH2> = { thread_local!{ static CASE: Rc<UH2> = Rc::new(UH2::UH2_Nil); } CASE.with(|case| case.clone()) };
-            let mut v43: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: 0i32, l1: v42.clone() }));
-            while method153(v41, v43.clone()) {
+            let mut v43: Rc<RefCell<Mut3>> = Rc::new(RefCell::new(Mut3 { l0: v41, l1: v42.clone() }));
+            while method153(v43.clone()) {
                 let mut v45: i32 = v43.borrow().l0.clone();
-                let mut v46: i32 = v45.wrapping_neg();
-                let mut v47: i32 = v46.wrapping_add(v41);
-                let mut v48: i32 = v47.wrapping_sub(1i32);
-                let mut v49: Rc<UH2> = v43.borrow().l1.clone();
-                let mut v50: Result<Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>, std::string::String> = v40.clone().borrow()[v48 as usize].clone();
-                let mut v51: i32 = v45.wrapping_add(1i32);
-                let mut v52: Rc<UH2> = Rc::new(UH2::UH2_Cons(v50.clone(), v49.clone()));
-                v43.borrow_mut().l0 = v51;
-                v43.borrow_mut().l1 = v52.clone();
+                let mut v46: i32 = v45.wrapping_sub(1i32);
+                let mut v47: Rc<UH2> = v43.borrow().l1.clone();
+                let mut v48: Result<Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>, std::string::String> = v40.clone().borrow()[v46 as usize].clone();
+                let mut v49: Rc<UH2> = Rc::new(UH2::UH2_Cons(v48.clone(), v47.clone()));
+                v43.borrow_mut().l0 = v46;
+                v43.borrow_mut().l1 = v49.clone();
                 ()
             };
-            let mut v53: Rc<UH2> = v43.borrow().l1.clone();
-            let mut v54: US50 = US50::US50_Ok(v38.clone());
-            let mut v55: US50 = method154(v53.clone(), v54.clone());
-            let mut v69: US50 = match &v55 {
-                US50::US50_Error(v66) => {
-                    let mut v66: std::string::String = v66.clone();
-                    US50::US50_Error(v66.clone())
+            let mut v50: Rc<UH2> = v43.borrow().l1.clone();
+            let mut v51: US50 = US50::US50_Ok(v38.clone());
+            let mut v52: US50 = method154(v50.clone(), v51.clone());
+            let mut v66: US50 = match &v52 {
+                US50::US50_Error(v63) => {
+                    let mut v63: std::string::String = v63.clone();
+                    US50::US50_Error(v63.clone())
                 }
-                US50::US50_Ok(v56) => {
-                    let mut v56: Vec<(Rc<str>, usize, Rc<Heap5>)> = v56.clone();
-                    let mut v57: Vec<(Rc<str>, usize, Rc<Heap5>)> = method160(v56.clone());
-                    let mut v58: Rc<dyn Fn(((Rc<str>, usize, Rc<Heap5>))) -> std::string::String> = method161();
-                    let mut v60: bool = true; let mut v57 = v57;
-                    let mut v62: bool = true; v57.sort_by_key(|x| v58(x.clone()));
-                    let mut v64: Vec<(Rc<str>, usize, Rc<Heap5>)> = v57;
-                    US50::US50_Ok(v64.clone())
-                }
-            };
-            let mut v84: US51 = match &v69 {
-                US50::US50_Error(v81) => {
-                    let mut v81: std::string::String = v81.clone();
-                    US51::US51_Error(v81.clone())
-                }
-                US50::US50_Ok(v70) => {
-                    let mut v70: Vec<(Rc<str>, usize, Rc<Heap5>)> = v70.clone();
-                    let mut v71: Vec<(Rc<str>, usize, Rc<Heap5>)> = method162(v70.clone());
-                    let mut v73: bool = true; let mut v71 = v71;
-                    let mut v75: bool = true; v71.reverse();
-                    let mut v77: Vec<(Rc<str>, usize, Rc<Heap5>)> = v71;
-                    let mut v78: Vec<(Rc<str>, usize, Rc<Heap5>)> = method163(v77.clone());
-                    let mut v79: Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>> = Rc::new(RefCell::new(v78));
-                    US51::US51_Ok(v79.clone())
+                US50::US50_Ok(v53) => {
+                    let mut v53: Vec<(Rc<str>, usize, Rc<Heap5>)> = v53.clone();
+                    let mut v54: Vec<(Rc<str>, usize, Rc<Heap5>)> = method160(v53.clone());
+                    let mut v55: Rc<dyn Fn(((Rc<str>, usize, Rc<Heap5>))) -> std::string::String> = method161();
+                    let mut v57: bool = true; let mut v54 = v54;
+                    let mut v59: bool = true; v54.sort_by_key(|x| v55(x.clone()));
+                    let mut v61: Vec<(Rc<str>, usize, Rc<Heap5>)> = v54;
+                    US50::US50_Ok(v61.clone())
                 }
             };
-            match &v84 {
-                US51::US51_Error(v88) => {
-                    let mut v88: std::string::String = v88.clone();
-                    US45::US45_Error(v88.clone())
+            let mut v81: US51 = match &v66 {
+                US50::US50_Error(v78) => {
+                    let mut v78: std::string::String = v78.clone();
+                    US51::US51_Error(v78.clone())
                 }
-                US51::US51_Ok(v85) => {
-                    let mut v85: Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>> = v85.clone();
-                    let mut v86: US46 = US46::US46_Some(v85.clone());
-                    US45::US45_Ok(v86.clone())
+                US50::US50_Ok(v67) => {
+                    let mut v67: Vec<(Rc<str>, usize, Rc<Heap5>)> = v67.clone();
+                    let mut v68: Vec<(Rc<str>, usize, Rc<Heap5>)> = method162(v67.clone());
+                    let mut v70: bool = true; let mut v68 = v68;
+                    let mut v72: bool = true; v68.reverse();
+                    let mut v74: Vec<(Rc<str>, usize, Rc<Heap5>)> = v68;
+                    let mut v75: Vec<(Rc<str>, usize, Rc<Heap5>)> = method163(v74.clone());
+                    let mut v76: Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>> = Rc::new(RefCell::new(v75));
+                    US51::US51_Ok(v76.clone())
+                }
+            };
+            match &v81 {
+                US51::US51_Error(v85) => {
+                    let mut v85: std::string::String = v85.clone();
+                    US45::US45_Error(v85.clone())
+                }
+                US51::US51_Ok(v82) => {
+                    let mut v82: Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>> = v82.clone();
+                    let mut v83: US46 = US46::US46_Some(v82.clone());
+                    US45::US45_Ok(v83.clone())
                 }
             }
         };
-        let mut v103: US52 = match &v92 {
-            US45::US45_Error(v100) => {
-                let mut v100: std::string::String = v100.clone();
-                US52::US52_Error(v100.clone())
+        let mut v100: US52 = match &v89 {
+            US45::US45_Error(v97) => {
+                let mut v97: std::string::String = v97.clone();
+                US52::US52_Error(v97.clone())
             }
-            US45::US45_Ok(v93) => {
-                let mut v93: US46 = v93.clone();
-                let mut v98: Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>> = match &v93 {
+            US45::US45_Ok(v90) => {
+                let mut v90: US46 = v90.clone();
+                let mut v95: Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>> = match &v90 {
                     US46::US46_None => {
-                        let mut v96: Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>> = None;
-                        v96.clone()
+                        let mut v93: Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>> = None;
+                        v93.clone()
                     }
-                    US46::US46_Some(v94) => {
-                        let mut v94: Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>> = v94.clone();
-                        let mut v95: Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>> = Some(v94.clone());
-                        v95.clone()
+                    US46::US46_Some(v91) => {
+                        let mut v91: Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>> = v91.clone();
+                        let mut v92: Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>> = Some(v91.clone());
+                        v92.clone()
                     }
                 };
-                US52::US52_Ok(v98.clone())
+                US52::US52_Ok(v95.clone())
             }
         };
-        let mut v109: Result<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String> = match &v103 {
-            US52::US52_Error(v106) => {
-                let mut v106: std::string::String = v106.clone();
-                let mut v107: Result<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String> = Err::<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String>(v106);
-                v107.clone()
+        let mut v106: Result<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String> = match &v100 {
+            US52::US52_Error(v103) => {
+                let mut v103: std::string::String = v103.clone();
+                let mut v104: Result<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String> = Err::<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String>(v103);
+                v104.clone()
             }
-            US52::US52_Ok(v104) => {
-                let mut v104: Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>> = v104.clone();
-                let mut v105: Result<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String> = Ok::<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String>(v104);
-                v105.clone()
+            US52::US52_Ok(v101) => {
+                let mut v101: Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>> = v101.clone();
+                let mut v102: Result<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String> = Ok::<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String>(v101);
+                v102.clone()
             }
         };
-        let mut v110: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<Result<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String>>") } } (&&W(&v109)).s() });
-        let mut v111: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("use_transactions.render (9) / txns new_arc_memo / result: "); } LIT.with(|lit| lit.clone()) };
-        let mut v112: Rc<str> = Rc::<str>::from(format!("{}{}", v111, v110));
-        let mut v113: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / loading: "); } LIT.with(|lit| lit.clone()) };
-        let mut v114: Rc<str> = Rc::<str>::from(format!("{}{}", v112, v113));
-        let mut v115: Rc<str> = Rc::<str>::from(format!("{:?}", v23));
-        let mut v116: Rc<str> = Rc::<str>::from(format!("{}{}", v114, v115));
-        let mut v117: i64 = 200i64;
-        let mut v118: Rc<str> = ellipsis_end_9(v117, v116.clone());
-        leptos::logging::log!("{}", v118);
-        v109.clone()
+        let mut v107: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<Result<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String>>") } } (&&W(&v106)).s() });
+        let mut v108: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("use_transactions.render (9) / txns new_arc_memo / result: "); } LIT.with(|lit| lit.clone()) };
+        let mut v109: Rc<str> = Rc::<str>::from(format!("{}{}", v108, v107));
+        let mut v110: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / loading: "); } LIT.with(|lit| lit.clone()) };
+        let mut v111: Rc<str> = Rc::<str>::from(format!("{}{}", v109, v110));
+        let mut v112: Rc<str> = Rc::<str>::from(format!("{:?}", v23));
+        let mut v113: Rc<str> = Rc::<str>::from(format!("{}{}", v111, v112));
+        let mut v114: i64 = 200i64;
+        let mut v115: Rc<str> = ellipsis_end_9(v114, v113.clone());
+        leptos::logging::log!("{}", v115);
+        v106.clone()
     })
 }
 fn method144(mut v0: leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper::SendWrapper<Rc<RefCell<Vec<Rc<str>>>>>>, mut v1: leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper::SendWrapper<Vec<Result<Option<Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, u32, Rc<RefCell<Vec<(std::string::String, Option<std::string::String>)>>>, f64, bool, f64, Rc<RefCell<Vec<std::string::String>>>)>>>>, std::string::String>>>>) -> Rc<dyn Fn() -> Result<Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>, std::string::String>> {
@@ -7070,10 +7067,10 @@ fn closure224() -> Rc<dyn Fn((chrono::DateTime<chrono::Utc>)) -> US67> {
         US67::US67_Some(v1.clone())
     }); } CLOSURE.with(|closure| closure.clone())
 }
-fn method228(mut v0: i32, mut v1: Rc<RefCell<Mut4>>) -> bool {
-    let mut v2: i32 = v1.borrow().l0.clone();
-    let mut v3: bool = v2 < v0;
-    v3
+fn method228(mut v0: Rc<RefCell<Mut4>>) -> bool {
+    let mut v1: i32 = v0.borrow().l0.clone();
+    let mut v2: bool = v1 > 0i32;
+    v2
 }
 fn method230(mut v0: Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>) -> Rc<str> {
     let mut v1: u64 = (v0.clone().borrow().len() as u64);
@@ -7822,7 +7819,7 @@ fn closure223(mut v0: Vec<Result<Option<(std::string::String, Option<(Rc<RefCell
         let mut v137: Rc<RefCell<Vec<std::string::String>>> = v4.l11.clone();
         let mut v138: u64 = (v137.clone().borrow().len() as u64);
         let mut v139: bool = v138 == 0u64;
-        let mut v186: leptos::prelude::Fragment = if v139 {
+        let mut v183: leptos::prelude::Fragment = if v139 {
             let mut v141: &str = &*v63;
             let mut v143: std::string::String = String::from(v141);
             let mut v145: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v143));
@@ -7834,405 +7831,402 @@ fn closure223(mut v0: Vec<Result<Option<(std::string::String, Option<(Rc<RefCell
             let mut v149: Rc<RefCell<Vec<std::string::String>>> = v4.l11.clone();
             let mut v150: i32 = (v149.clone().borrow().len() as i32);
             let mut v151: US30 = US30::US30_None;
-            let mut v152: Rc<RefCell<Mut4>> = Rc::new(RefCell::new(Mut4 { l0: 0i32, l1: v151.clone() }));
-            while method228(v150, v152.clone()) {
+            let mut v152: Rc<RefCell<Mut4>> = Rc::new(RefCell::new(Mut4 { l0: v150, l1: v151.clone() }));
+            while method228(v152.clone()) {
                 let mut v154: i32 = v152.borrow().l0.clone();
-                let mut v155: i32 = v154.wrapping_neg();
-                let mut v156: i32 = v155.wrapping_add(v150);
-                let mut v157: i32 = v156.wrapping_sub(1i32);
-                let mut v158: US30 = v152.borrow().l1.clone();
-                let mut v159: std::string::String = v149.clone().borrow()[v157 as usize].clone();
-                let mut v161: Rc<str> = Rc::<str>::from(String::as_str(&v159));
-                let mut v162: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / result: "); } LIT.with(|lit| lit.clone()) };
-                let mut v163: Rc<RefCell<Vec<Rc<str>>>> = Rc::new(RefCell::new(v161.split(&*v162).map(|x| Rc::<str>::from(x)).collect::<Vec<Rc<str>>>()));
-                let mut v170: US30 = match &v158 {
+                let mut v155: i32 = v154.wrapping_sub(1i32);
+                let mut v156: US30 = v152.borrow().l1.clone();
+                let mut v157: std::string::String = v149.clone().borrow()[v155 as usize].clone();
+                let mut v159: Rc<str> = Rc::<str>::from(String::as_str(&v157));
+                let mut v160: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / result: "); } LIT.with(|lit| lit.clone()) };
+                let mut v161: Rc<RefCell<Vec<Rc<str>>>> = Rc::new(RefCell::new(v159.split(&*v160).map(|x| Rc::<str>::from(x)).collect::<Vec<Rc<str>>>()));
+                let mut v168: US30 = match &v156 {
                     US30::US30_None => {
-                        let mut v164: u64 = (v163.clone().borrow().len() as u64);
-                        let mut v165: bool = v164 == 2u64;
-                        if v165 {
-                            let mut v166: Rc<str> = v163.clone().borrow()[0i32 as usize].clone();
-                            let mut v167: Rc<str> = v163.clone().borrow()[1i32 as usize].clone();
-                            US30::US30_Some(v167.clone())
+                        let mut v162: u64 = (v161.clone().borrow().len() as u64);
+                        let mut v163: bool = v162 == 2u64;
+                        if v163 {
+                            let mut v164: Rc<str> = v161.clone().borrow()[0i32 as usize].clone();
+                            let mut v165: Rc<str> = v161.clone().borrow()[1i32 as usize].clone();
+                            US30::US30_Some(v165.clone())
                         } else {
-                            v158.clone()
+                            v156.clone()
                         }
                     }
                     _ => {
-                        v158.clone()
+                        v156.clone()
                     }
                 };
-                let mut v171: i32 = v154.wrapping_add(1i32);
-                v152.borrow_mut().l0 = v171;
-                v152.borrow_mut().l1 = v170.clone();
+                v152.borrow_mut().l0 = v155;
+                v152.borrow_mut().l1 = v168.clone();
                 ()
             };
-            let mut v172: US30 = v152.borrow().l1.clone();
-            let mut v176: Rc<str> = match &v172 {
+            let mut v169: US30 = v152.borrow().l1.clone();
+            let mut v173: Rc<str> = match &v169 {
                 US30::US30_None => {
-                    let mut v174: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("?"); } LIT.with(|lit| lit.clone()) };
-                    v174.clone()
+                    let mut v171: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("?"); } LIT.with(|lit| lit.clone()) };
+                    v171.clone()
                 }
-                US30::US30_Some(v173) => {
-                    let mut v173: Rc<str> = v173.clone();
-                    v173.clone()
+                US30::US30_Some(v170) => {
+                    let mut v170: Rc<str> = v170.clone();
+                    v170.clone()
                 }
             };
-            let mut v178: &str = &*v176;
-            let mut v180: std::string::String = String::from(v178);
-            let mut v182: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v180));
-            let mut v183: Vec<leptos::prelude::AnyView> = Vec::new();
-            v183.push(v182);
-            let mut v185: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v183);
-            v185
+            let mut v175: &str = &*v173;
+            let mut v177: std::string::String = String::from(v175);
+            let mut v179: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v177));
+            let mut v180: Vec<leptos::prelude::AnyView> = Vec::new();
+            v180.push(v179);
+            let mut v182: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v180);
+            v182
         };
-        let mut v188: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v186);
-        let mut v189: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v188 }"); } LIT.with(|lit| lit.clone()) };
-        let mut v190: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""); } LIT.with(|lit| lit.clone()) };
-        let mut v191: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<td  class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\">{ v188 }</td>"); } LIT.with(|lit| lit.clone()) };
-        let mut v193: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Td, _, _>> = leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">{ v188 }</td> };
-        let mut v195: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v193);
-        let mut v196: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""); } LIT.with(|lit| lit.clone()) };
-        let mut v197: bool = v4.l9.clone();
-        let mut v200: Rc<str> = if v197 {
-            let mut v198: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Ok"); } LIT.with(|lit| lit.clone()) };
-            v198.clone()
+        let mut v185: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v183);
+        let mut v186: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v185 }"); } LIT.with(|lit| lit.clone()) };
+        let mut v187: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""); } LIT.with(|lit| lit.clone()) };
+        let mut v188: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<td  class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\">{ v185 }</td>"); } LIT.with(|lit| lit.clone()) };
+        let mut v190: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Td, _, _>> = leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">{ v185 }</td> };
+        let mut v192: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v190);
+        let mut v193: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""); } LIT.with(|lit| lit.clone()) };
+        let mut v194: bool = v4.l9.clone();
+        let mut v197: Rc<str> = if v194 {
+            let mut v195: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Ok"); } LIT.with(|lit| lit.clone()) };
+            v195.clone()
         } else {
-            let mut v199: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Outcome Error"); } LIT.with(|lit| lit.clone()) };
-            v199.clone()
+            let mut v196: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Outcome Error"); } LIT.with(|lit| lit.clone()) };
+            v196.clone()
         };
-        let mut v201: Rc<dyn Fn(Option<(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>)>) -> US62> = method208();
-        let mut v202: Rc<dyn Fn(std::string::String) -> US62> = method209();
-        let mut v203: US62 = match v8 { Ok(x) => v201(x), Err(e) => v202(e) };
-        let mut v214: US58 = match &v203 {
-            US62::US62_Error(v211) => {
-                let mut v211: std::string::String = v211.clone();
-                US58::US58_Error(v211.clone())
+        let mut v198: Rc<dyn Fn(Option<(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>)>) -> US62> = method208();
+        let mut v199: Rc<dyn Fn(std::string::String) -> US62> = method209();
+        let mut v200: US62 = match v8 { Ok(x) => v198(x), Err(e) => v199(e) };
+        let mut v211: US58 = match &v200 {
+            US62::US62_Error(v208) => {
+                let mut v208: std::string::String = v208.clone();
+                US58::US58_Error(v208.clone())
             }
-            US62::US62_Ok(v204) => {
-                let mut v204: Option<(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>)> = v204.clone();
-                let mut v205: Option<(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>)> = method210(v204.clone());
-                let mut v206: Rc<dyn Fn(((std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>))) -> US56> = closure177();
-                let mut v207: Option<US56> = v205.map(|x| v206(x));
-                let mut v208: US56 = US56::US56_None;
-                let mut v209: US56 = v207.unwrap_or(v208);
-                US58::US58_Ok(v209.clone())
+            US62::US62_Ok(v201) => {
+                let mut v201: Option<(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>)> = v201.clone();
+                let mut v202: Option<(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>)> = method210(v201.clone());
+                let mut v203: Rc<dyn Fn(((std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>))) -> US56> = closure177();
+                let mut v204: Option<US56> = v202.map(|x| v203(x));
+                let mut v205: US56 = US56::US56_None;
+                let mut v206: US56 = v204.unwrap_or(v205);
+                US58::US58_Ok(v206.clone())
             }
         };
-        let mut v447: US68 = match &v214 {
-            US58::US58_Error(v442) => {
-                let mut v442: std::string::String = v442.clone();
-                let mut v444: Rc<str> = Rc::<str>::from(String::as_str(&v442));
-                US68::US68_Error(v444.clone())
+        let mut v444: US68 = match &v211 {
+            US58::US58_Error(v439) => {
+                let mut v439: std::string::String = v439.clone();
+                let mut v441: Rc<str> = Rc::<str>::from(String::as_str(&v439));
+                US68::US68_Error(v441.clone())
             }
-            US58::US58_Ok(v215) => {
-                let mut v215: US56 = v215.clone();
-                match &v215 {
-                    US56::US56_Some(v216, v217, v218, v219) => {
-                        let mut v216: std::string::String = v216.clone();
-                        let mut v217: Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)> = v217.clone();
-                        let mut v218: Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)> = v218.clone();
-                        let mut v219: Option<std::string::String> = v219.clone();
-                        let mut v220: Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)> = method211(v218.clone());
-                        let mut v221: Rc<dyn Fn(((std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String))) -> US63> = closure178();
-                        let mut v222: Option<US63> = v220.map(|x| v221(x));
-                        let mut v223: US63 = US63::US63_None;
-                        let mut v224: US63 = v222.unwrap_or(v223);
-                        match &v224 {
+            US58::US58_Ok(v212) => {
+                let mut v212: US56 = v212.clone();
+                match &v212 {
+                    US56::US56_Some(v213, v214, v215, v216) => {
+                        let mut v213: std::string::String = v213.clone();
+                        let mut v214: Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)> = v214.clone();
+                        let mut v215: Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)> = v215.clone();
+                        let mut v216: Option<std::string::String> = v216.clone();
+                        let mut v217: Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)> = method211(v215.clone());
+                        let mut v218: Rc<dyn Fn(((std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String))) -> US63> = closure178();
+                        let mut v219: Option<US63> = v217.map(|x| v218(x));
+                        let mut v220: US63 = US63::US63_None;
+                        let mut v221: US63 = v219.unwrap_or(v220);
+                        match &v221 {
                             US63::US63_None => {
-                                let mut v270: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-                                let mut v271: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("jsonrpc"); } LIT.with(|lit| lit.clone()) };
-                                let mut v272: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("jsonrpc"); } LIT.with(|lit| lit.clone()) };
-                                let mut v273: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
-                                let mut v274: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("jsonrpc = "); } LIT.with(|lit| lit.clone()) };
-                                let mut v275: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v216)).s() });
-                                let mut v276: Rc<str> = Rc::<str>::from(format!("{}{}", v274, v275));
-                                let mut v277: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
-                                let mut v278: Rc<str> = Rc::<str>::from(format!("{}{}", v276, v277));
-                                let mut v279: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("result"); } LIT.with(|lit| lit.clone()) };
-                                let mut v280: Rc<str> = Rc::<str>::from(format!("{}{}", v278, v279));
-                                let mut v281: Rc<str> = Rc::<str>::from(format!("{}{}", v280, v273));
-                                let mut v282: Rc<RefCell<Vec<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>>> = Rc::new(RefCell::new(v217.clone().into_iter().collect::<Vec<_>>()));
-                                let mut v283: u64 = (v282.clone().borrow().len() as u64);
-                                let mut v284: bool = v283 == 0u64;
-                                let mut v306: Rc<str> = if v284 {
-                                    let mut v285: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
-                                    v285.clone()
+                                let mut v267: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                                let mut v268: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("jsonrpc"); } LIT.with(|lit| lit.clone()) };
+                                let mut v269: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("jsonrpc"); } LIT.with(|lit| lit.clone()) };
+                                let mut v270: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" = "); } LIT.with(|lit| lit.clone()) };
+                                let mut v271: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("jsonrpc = "); } LIT.with(|lit| lit.clone()) };
+                                let mut v272: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v213)).s() });
+                                let mut v273: Rc<str> = Rc::<str>::from(format!("{}{}", v271, v272));
+                                let mut v274: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("; "); } LIT.with(|lit| lit.clone()) };
+                                let mut v275: Rc<str> = Rc::<str>::from(format!("{}{}", v273, v274));
+                                let mut v276: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("result"); } LIT.with(|lit| lit.clone()) };
+                                let mut v277: Rc<str> = Rc::<str>::from(format!("{}{}", v275, v276));
+                                let mut v278: Rc<str> = Rc::<str>::from(format!("{}{}", v277, v270));
+                                let mut v279: Rc<RefCell<Vec<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>>> = Rc::new(RefCell::new(v214.clone().into_iter().collect::<Vec<_>>()));
+                                let mut v280: u64 = (v279.clone().borrow().len() as u64);
+                                let mut v281: bool = v280 == 0u64;
+                                let mut v303: Rc<str> = if v281 {
+                                    let mut v282: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
+                                    v282.clone()
                                 } else {
-                                    let (mut v286, mut v287): (Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>) = v282.clone().borrow()[0u64 as usize].clone();
-                                    let mut v288: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-                                    let mut v289: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("receipts"); } LIT.with(|lit| lit.clone()) };
-                                    let mut v290: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("receipts"); } LIT.with(|lit| lit.clone()) };
-                                    let mut v291: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("receipts = "); } LIT.with(|lit| lit.clone()) };
-                                    let mut v292: Rc<str> = method229(v286.clone());
+                                    let (mut v283, mut v284): (Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>) = v279.clone().borrow()[0u64 as usize].clone();
+                                    let mut v285: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                                    let mut v286: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("receipts"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v287: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("receipts"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v288: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("receipts = "); } LIT.with(|lit| lit.clone()) };
+                                    let mut v289: Rc<str> = method229(v283.clone());
+                                    let mut v290: Rc<str> = Rc::<str>::from(format!("{}{}", v288, v289));
+                                    let mut v291: Rc<str> = Rc::<str>::from(format!("{}{}", v290, v274));
+                                    let mut v292: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("receipts_outcome"); } LIT.with(|lit| lit.clone()) };
                                     let mut v293: Rc<str> = Rc::<str>::from(format!("{}{}", v291, v292));
-                                    let mut v294: Rc<str> = Rc::<str>::from(format!("{}{}", v293, v277));
-                                    let mut v295: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("receipts_outcome"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v294: Rc<str> = Rc::<str>::from(format!("{}{}", v293, v270));
+                                    let mut v295: Rc<str> = method232(v284.clone());
                                     let mut v296: Rc<str> = Rc::<str>::from(format!("{}{}", v294, v295));
-                                    let mut v297: Rc<str> = Rc::<str>::from(format!("{}{}", v296, v273));
-                                    let mut v298: Rc<str> = method232(v287.clone());
-                                    let mut v299: Rc<str> = Rc::<str>::from(format!("{}{}", v297, v298));
-                                    let mut v300: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
-                                    let mut v301: Rc<str> = Rc::<str>::from(format!("{}{}", v300, v299));
-                                    let mut v302: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
-                                    let mut v303: Rc<str> = Rc::<str>::from(format!("{}{}", v301, v302));
-                                    let mut v304: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
-                                    let mut v305: Rc<str> = Rc::<str>::from(format!("{}{}", v304, v303));
-                                    v305.clone()
+                                    let mut v297: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+                                    let mut v298: Rc<str> = Rc::<str>::from(format!("{}{}", v297, v296));
+                                    let mut v299: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v300: Rc<str> = Rc::<str>::from(format!("{}{}", v298, v299));
+                                    let mut v301: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
+                                    let mut v302: Rc<str> = Rc::<str>::from(format!("{}{}", v301, v300));
+                                    v302.clone()
                                 };
-                                let mut v307: Rc<str> = Rc::<str>::from(format!("{}{}", v281, v306));
-                                let mut v308: Rc<str> = Rc::<str>::from(format!("{}{}", v307, v277));
-                                let mut v309: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("error"); } LIT.with(|lit| lit.clone()) };
-                                let mut v310: Rc<str> = Rc::<str>::from(format!("{}{}", v308, v309));
-                                let mut v311: Rc<str> = Rc::<str>::from(format!("{}{}", v310, v273));
-                                let mut v312: Rc<RefCell<Vec<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>>> = Rc::new(RefCell::new(v218.clone().into_iter().collect::<Vec<_>>()));
-                                let mut v313: u64 = (v312.clone().borrow().len() as u64);
-                                let mut v314: bool = v313 == 0u64;
-                                let mut v410: Rc<str> = if v314 {
-                                    let mut v315: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
-                                    v315.clone()
+                                let mut v304: Rc<str> = Rc::<str>::from(format!("{}{}", v278, v303));
+                                let mut v305: Rc<str> = Rc::<str>::from(format!("{}{}", v304, v274));
+                                let mut v306: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("error"); } LIT.with(|lit| lit.clone()) };
+                                let mut v307: Rc<str> = Rc::<str>::from(format!("{}{}", v305, v306));
+                                let mut v308: Rc<str> = Rc::<str>::from(format!("{}{}", v307, v270));
+                                let mut v309: Rc<RefCell<Vec<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>>> = Rc::new(RefCell::new(v215.clone().into_iter().collect::<Vec<_>>()));
+                                let mut v310: u64 = (v309.clone().borrow().len() as u64);
+                                let mut v311: bool = v310 == 0u64;
+                                let mut v407: Rc<str> = if v311 {
+                                    let mut v312: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
+                                    v312.clone()
                                 } else {
-                                    let (mut v316, mut v317, mut v318, mut v319, mut v320, mut v321): (std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String) = v312.clone().borrow()[0u64 as usize].clone();
-                                    let mut v322: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-                                    let mut v323: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("name"); } LIT.with(|lit| lit.clone()) };
-                                    let mut v324: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("name"); } LIT.with(|lit| lit.clone()) };
-                                    let mut v325: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("name = "); } LIT.with(|lit| lit.clone()) };
-                                    let mut v326: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v316)).s() });
+                                    let (mut v313, mut v314, mut v315, mut v316, mut v317, mut v318): (std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String) = v309.clone().borrow()[0u64 as usize].clone();
+                                    let mut v319: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                                    let mut v320: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("name"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v321: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("name"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v322: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("name = "); } LIT.with(|lit| lit.clone()) };
+                                    let mut v323: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v313)).s() });
+                                    let mut v324: Rc<str> = Rc::<str>::from(format!("{}{}", v322, v323));
+                                    let mut v325: Rc<str> = Rc::<str>::from(format!("{}{}", v324, v274));
+                                    let mut v326: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("cause"); } LIT.with(|lit| lit.clone()) };
                                     let mut v327: Rc<str> = Rc::<str>::from(format!("{}{}", v325, v326));
-                                    let mut v328: Rc<str> = Rc::<str>::from(format!("{}{}", v327, v277));
-                                    let mut v329: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("cause"); } LIT.with(|lit| lit.clone()) };
-                                    let mut v330: Rc<str> = Rc::<str>::from(format!("{}{}", v328, v329));
-                                    let mut v331: Rc<str> = Rc::<str>::from(format!("{}{}", v330, v273));
-                                    let mut v332: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-                                    let mut v333: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("name"); } LIT.with(|lit| lit.clone()) };
-                                    let mut v334: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("name = "); } LIT.with(|lit| lit.clone()) };
-                                    let mut v335: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v317)).s() });
+                                    let mut v328: Rc<str> = Rc::<str>::from(format!("{}{}", v327, v270));
+                                    let mut v329: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                                    let mut v330: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("name"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v331: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("name = "); } LIT.with(|lit| lit.clone()) };
+                                    let mut v332: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v314)).s() });
+                                    let mut v333: Rc<str> = Rc::<str>::from(format!("{}{}", v331, v332));
+                                    let mut v334: Rc<str> = Rc::<str>::from(format!("{}{}", v333, v274));
+                                    let mut v335: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("info"); } LIT.with(|lit| lit.clone()) };
                                     let mut v336: Rc<str> = Rc::<str>::from(format!("{}{}", v334, v335));
-                                    let mut v337: Rc<str> = Rc::<str>::from(format!("{}{}", v336, v277));
-                                    let mut v338: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("info"); } LIT.with(|lit| lit.clone()) };
-                                    let mut v339: Rc<str> = Rc::<str>::from(format!("{}{}", v337, v338));
-                                    let mut v340: Rc<str> = Rc::<str>::from(format!("{}{}", v339, v273));
-                                    let mut v341: Rc<RefCell<Vec<(Option<std::string::String>, Option<std::string::String>)>>> = Rc::new(RefCell::new(v318.clone().into_iter().collect::<Vec<_>>()));
-                                    let mut v342: u64 = (v341.clone().borrow().len() as u64);
-                                    let mut v343: bool = v342 == 0u64;
-                                    let mut v381: Rc<str> = if v343 {
-                                        let mut v344: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
-                                        v344.clone()
+                                    let mut v337: Rc<str> = Rc::<str>::from(format!("{}{}", v336, v270));
+                                    let mut v338: Rc<RefCell<Vec<(Option<std::string::String>, Option<std::string::String>)>>> = Rc::new(RefCell::new(v315.clone().into_iter().collect::<Vec<_>>()));
+                                    let mut v339: u64 = (v338.clone().borrow().len() as u64);
+                                    let mut v340: bool = v339 == 0u64;
+                                    let mut v378: Rc<str> = if v340 {
+                                        let mut v341: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
+                                        v341.clone()
                                     } else {
-                                        let (mut v345, mut v346): (Option<std::string::String>, Option<std::string::String>) = v341.clone().borrow()[0u64 as usize].clone();
-                                        let mut v347: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-                                        let mut v348: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("error_message"); } LIT.with(|lit| lit.clone()) };
-                                        let mut v349: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("error_message"); } LIT.with(|lit| lit.clone()) };
-                                        let mut v350: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("error_message = "); } LIT.with(|lit| lit.clone()) };
-                                        let mut v351: Rc<RefCell<Vec<std::string::String>>> = Rc::new(RefCell::new(v345.clone().into_iter().collect::<Vec<_>>()));
-                                        let mut v352: u64 = (v351.clone().borrow().len() as u64);
-                                        let mut v353: bool = v352 == 0u64;
-                                        let mut v359: Rc<str> = if v353 {
-                                            let mut v354: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
-                                            v354.clone()
+                                        let (mut v342, mut v343): (Option<std::string::String>, Option<std::string::String>) = v338.clone().borrow()[0u64 as usize].clone();
+                                        let mut v344: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                                        let mut v345: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("error_message"); } LIT.with(|lit| lit.clone()) };
+                                        let mut v346: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("error_message"); } LIT.with(|lit| lit.clone()) };
+                                        let mut v347: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("error_message = "); } LIT.with(|lit| lit.clone()) };
+                                        let mut v348: Rc<RefCell<Vec<std::string::String>>> = Rc::new(RefCell::new(v342.clone().into_iter().collect::<Vec<_>>()));
+                                        let mut v349: u64 = (v348.clone().borrow().len() as u64);
+                                        let mut v350: bool = v349 == 0u64;
+                                        let mut v356: Rc<str> = if v350 {
+                                            let mut v351: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
+                                            v351.clone()
                                         } else {
-                                            let mut v355: std::string::String = v351.clone().borrow()[0u64 as usize].clone();
-                                            let mut v356: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v355)).s() });
-                                            let mut v357: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
-                                            let mut v358: Rc<str> = Rc::<str>::from(format!("{}{}", v357, v356));
-                                            v358.clone()
+                                            let mut v352: std::string::String = v348.clone().borrow()[0u64 as usize].clone();
+                                            let mut v353: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v352)).s() });
+                                            let mut v354: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
+                                            let mut v355: Rc<str> = Rc::<str>::from(format!("{}{}", v354, v353));
+                                            v355.clone()
                                         };
-                                        let mut v360: Rc<str> = Rc::<str>::from(format!("{}{}", v350, v359));
-                                        let mut v361: Rc<str> = Rc::<str>::from(format!("{}{}", v360, v277));
-                                        let mut v362: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("requested_transaction_hash"); } LIT.with(|lit| lit.clone()) };
-                                        let mut v363: Rc<str> = Rc::<str>::from(format!("{}{}", v361, v362));
-                                        let mut v364: Rc<str> = Rc::<str>::from(format!("{}{}", v363, v273));
-                                        let mut v365: Rc<RefCell<Vec<std::string::String>>> = Rc::new(RefCell::new(v346.clone().into_iter().collect::<Vec<_>>()));
-                                        let mut v366: u64 = (v365.clone().borrow().len() as u64);
-                                        let mut v367: bool = v366 == 0u64;
-                                        let mut v373: Rc<str> = if v367 {
-                                            let mut v368: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
-                                            v368.clone()
+                                        let mut v357: Rc<str> = Rc::<str>::from(format!("{}{}", v347, v356));
+                                        let mut v358: Rc<str> = Rc::<str>::from(format!("{}{}", v357, v274));
+                                        let mut v359: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("requested_transaction_hash"); } LIT.with(|lit| lit.clone()) };
+                                        let mut v360: Rc<str> = Rc::<str>::from(format!("{}{}", v358, v359));
+                                        let mut v361: Rc<str> = Rc::<str>::from(format!("{}{}", v360, v270));
+                                        let mut v362: Rc<RefCell<Vec<std::string::String>>> = Rc::new(RefCell::new(v343.clone().into_iter().collect::<Vec<_>>()));
+                                        let mut v363: u64 = (v362.clone().borrow().len() as u64);
+                                        let mut v364: bool = v363 == 0u64;
+                                        let mut v370: Rc<str> = if v364 {
+                                            let mut v365: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
+                                            v365.clone()
                                         } else {
-                                            let mut v369: std::string::String = v365.clone().borrow()[0u64 as usize].clone();
-                                            let mut v370: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v369)).s() });
-                                            let mut v371: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
-                                            let mut v372: Rc<str> = Rc::<str>::from(format!("{}{}", v371, v370));
-                                            v372.clone()
+                                            let mut v366: std::string::String = v362.clone().borrow()[0u64 as usize].clone();
+                                            let mut v367: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v366)).s() });
+                                            let mut v368: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
+                                            let mut v369: Rc<str> = Rc::<str>::from(format!("{}{}", v368, v367));
+                                            v369.clone()
                                         };
-                                        let mut v374: Rc<str> = Rc::<str>::from(format!("{}{}", v364, v373));
-                                        let mut v375: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
-                                        let mut v376: Rc<str> = Rc::<str>::from(format!("{}{}", v375, v374));
-                                        let mut v377: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
-                                        let mut v378: Rc<str> = Rc::<str>::from(format!("{}{}", v376, v377));
-                                        let mut v379: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
-                                        let mut v380: Rc<str> = Rc::<str>::from(format!("{}{}", v379, v378));
-                                        v380.clone()
+                                        let mut v371: Rc<str> = Rc::<str>::from(format!("{}{}", v361, v370));
+                                        let mut v372: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+                                        let mut v373: Rc<str> = Rc::<str>::from(format!("{}{}", v372, v371));
+                                        let mut v374: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+                                        let mut v375: Rc<str> = Rc::<str>::from(format!("{}{}", v373, v374));
+                                        let mut v376: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
+                                        let mut v377: Rc<str> = Rc::<str>::from(format!("{}{}", v376, v375));
+                                        v377.clone()
                                     };
-                                    let mut v382: Rc<str> = Rc::<str>::from(format!("{}{}", v340, v381));
-                                    let mut v383: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
-                                    let mut v384: Rc<str> = Rc::<str>::from(format!("{}{}", v383, v382));
-                                    let mut v385: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
-                                    let mut v386: Rc<str> = Rc::<str>::from(format!("{}{}", v384, v385));
-                                    let mut v387: Rc<str> = Rc::<str>::from(format!("{}{}", v331, v386));
-                                    let mut v388: Rc<str> = Rc::<str>::from(format!("{}{}", v387, v277));
-                                    let mut v389: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("code"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v379: Rc<str> = Rc::<str>::from(format!("{}{}", v337, v378));
+                                    let mut v380: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+                                    let mut v381: Rc<str> = Rc::<str>::from(format!("{}{}", v380, v379));
+                                    let mut v382: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v383: Rc<str> = Rc::<str>::from(format!("{}{}", v381, v382));
+                                    let mut v384: Rc<str> = Rc::<str>::from(format!("{}{}", v328, v383));
+                                    let mut v385: Rc<str> = Rc::<str>::from(format!("{}{}", v384, v274));
+                                    let mut v386: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("code"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v387: Rc<str> = Rc::<str>::from(format!("{}{}", v385, v386));
+                                    let mut v388: Rc<str> = Rc::<str>::from(format!("{}{}", v387, v270));
+                                    let mut v389: Rc<str> = Rc::<str>::from(format!("{:?}", v316));
                                     let mut v390: Rc<str> = Rc::<str>::from(format!("{}{}", v388, v389));
-                                    let mut v391: Rc<str> = Rc::<str>::from(format!("{}{}", v390, v273));
-                                    let mut v392: Rc<str> = Rc::<str>::from(format!("{:?}", v319));
+                                    let mut v391: Rc<str> = Rc::<str>::from(format!("{}{}", v390, v274));
+                                    let mut v392: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("message"); } LIT.with(|lit| lit.clone()) };
                                     let mut v393: Rc<str> = Rc::<str>::from(format!("{}{}", v391, v392));
-                                    let mut v394: Rc<str> = Rc::<str>::from(format!("{}{}", v393, v277));
-                                    let mut v395: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("message"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v394: Rc<str> = Rc::<str>::from(format!("{}{}", v393, v270));
+                                    let mut v395: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v317)).s() });
                                     let mut v396: Rc<str> = Rc::<str>::from(format!("{}{}", v394, v395));
-                                    let mut v397: Rc<str> = Rc::<str>::from(format!("{}{}", v396, v273));
-                                    let mut v398: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v320)).s() });
+                                    let mut v397: Rc<str> = Rc::<str>::from(format!("{}{}", v396, v274));
+                                    let mut v398: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("data"); } LIT.with(|lit| lit.clone()) };
                                     let mut v399: Rc<str> = Rc::<str>::from(format!("{}{}", v397, v398));
-                                    let mut v400: Rc<str> = Rc::<str>::from(format!("{}{}", v399, v277));
-                                    let mut v401: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("data"); } LIT.with(|lit| lit.clone()) };
+                                    let mut v400: Rc<str> = Rc::<str>::from(format!("{}{}", v399, v270));
+                                    let mut v401: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v318)).s() });
                                     let mut v402: Rc<str> = Rc::<str>::from(format!("{}{}", v400, v401));
-                                    let mut v403: Rc<str> = Rc::<str>::from(format!("{}{}", v402, v273));
-                                    let mut v404: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v321)).s() });
-                                    let mut v405: Rc<str> = Rc::<str>::from(format!("{}{}", v403, v404));
-                                    let mut v406: Rc<str> = Rc::<str>::from(format!("{}{}", v383, v405));
-                                    let mut v407: Rc<str> = Rc::<str>::from(format!("{}{}", v406, v385));
-                                    let mut v408: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
-                                    let mut v409: Rc<str> = Rc::<str>::from(format!("{}{}", v408, v407));
-                                    v409.clone()
+                                    let mut v403: Rc<str> = Rc::<str>::from(format!("{}{}", v380, v402));
+                                    let mut v404: Rc<str> = Rc::<str>::from(format!("{}{}", v403, v382));
+                                    let mut v405: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
+                                    let mut v406: Rc<str> = Rc::<str>::from(format!("{}{}", v405, v404));
+                                    v406.clone()
                                 };
-                                let mut v411: Rc<str> = Rc::<str>::from(format!("{}{}", v311, v410));
-                                let mut v412: Rc<str> = Rc::<str>::from(format!("{}{}", v411, v277));
-                                let mut v413: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("id"); } LIT.with(|lit| lit.clone()) };
-                                let mut v414: Rc<str> = Rc::<str>::from(format!("{}{}", v412, v413));
-                                let mut v415: Rc<str> = Rc::<str>::from(format!("{}{}", v414, v273));
-                                let mut v416: Rc<RefCell<Vec<std::string::String>>> = Rc::new(RefCell::new(v219.clone().into_iter().collect::<Vec<_>>()));
-                                let mut v417: u64 = (v416.clone().borrow().len() as u64);
-                                let mut v418: bool = v417 == 0u64;
-                                let mut v424: Rc<str> = if v418 {
-                                    let mut v419: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
-                                    v419.clone()
+                                let mut v408: Rc<str> = Rc::<str>::from(format!("{}{}", v308, v407));
+                                let mut v409: Rc<str> = Rc::<str>::from(format!("{}{}", v408, v274));
+                                let mut v410: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("id"); } LIT.with(|lit| lit.clone()) };
+                                let mut v411: Rc<str> = Rc::<str>::from(format!("{}{}", v409, v410));
+                                let mut v412: Rc<str> = Rc::<str>::from(format!("{}{}", v411, v270));
+                                let mut v413: Rc<RefCell<Vec<std::string::String>>> = Rc::new(RefCell::new(v216.clone().into_iter().collect::<Vec<_>>()));
+                                let mut v414: u64 = (v413.clone().borrow().len() as u64);
+                                let mut v415: bool = v414 == 0u64;
+                                let mut v421: Rc<str> = if v415 {
+                                    let mut v416: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("None"); } LIT.with(|lit| lit.clone()) };
+                                    v416.clone()
                                 } else {
-                                    let mut v420: std::string::String = v416.clone().borrow()[0u64 as usize].clone();
-                                    let mut v421: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v420)).s() });
-                                    let mut v422: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
-                                    let mut v423: Rc<str> = Rc::<str>::from(format!("{}{}", v422, v421));
-                                    v423.clone()
+                                    let mut v417: std::string::String = v413.clone().borrow()[0u64 as usize].clone();
+                                    let mut v418: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<std::string::String>") } } (&&W(&v417)).s() });
+                                    let mut v419: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Some "); } LIT.with(|lit| lit.clone()) };
+                                    let mut v420: Rc<str> = Rc::<str>::from(format!("{}{}", v419, v418));
+                                    v420.clone()
                                 };
-                                let mut v425: Rc<str> = Rc::<str>::from(format!("{}{}", v415, v424));
-                                let mut v426: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
-                                let mut v427: Rc<str> = Rc::<str>::from(format!("{}{}", v426, v425));
-                                let mut v428: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
-                                let mut v429: Rc<str> = Rc::<str>::from(format!("{}{}", v427, v428));
-                                let mut v430: i64 = 400i64;
-                                let mut v431: Rc<str> = ellipsis_end_9(v430, v429.clone());
-                                US68::US68_Ok(v431.clone())
+                                let mut v422: Rc<str> = Rc::<str>::from(format!("{}{}", v412, v421));
+                                let mut v423: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ "); } LIT.with(|lit| lit.clone()) };
+                                let mut v424: Rc<str> = Rc::<str>::from(format!("{}{}", v423, v422));
+                                let mut v425: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" }"); } LIT.with(|lit| lit.clone()) };
+                                let mut v426: Rc<str> = Rc::<str>::from(format!("{}{}", v424, v425));
+                                let mut v427: i64 = 400i64;
+                                let mut v428: Rc<str> = ellipsis_end_9(v427, v426.clone());
+                                US68::US68_Ok(v428.clone())
                             }
-                            US63::US63_Some(v225, v226, v227, v228, v229, v230) => {
-                                let mut v225: std::string::String = v225.clone();
+                            US63::US63_Some(v222, v223, v224, v225, v226, v227) => {
+                                let mut v222: std::string::String = v222.clone();
+                                let mut v223: std::string::String = v223.clone();
+                                let mut v224: Option<(Option<std::string::String>, Option<std::string::String>)> = v224.clone();
+                                let mut v225: i32 = *v225;
                                 let mut v226: std::string::String = v226.clone();
-                                let mut v227: Option<(Option<std::string::String>, Option<std::string::String>)> = v227.clone();
-                                let mut v228: i32 = *v228;
-                                let mut v229: std::string::String = v229.clone();
-                                let mut v230: std::string::String = v230.clone();
-                                let mut v231: Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)> = method211(v218.clone());
-                                let mut v232: Option<US63> = v231.map(|x| v221(x));
-                                let mut v233: US63 = US63::US63_None;
-                                let mut v234: US63 = v232.unwrap_or(v233);
-                                let mut v262: US30 = match &v234 {
-                                    US63::US63_Some(v235, v236, v237, v238, v239, v240) => {
-                                        let mut v235: std::string::String = v235.clone();
+                                let mut v227: std::string::String = v227.clone();
+                                let mut v228: Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)> = method211(v215.clone());
+                                let mut v229: Option<US63> = v228.map(|x| v218(x));
+                                let mut v230: US63 = US63::US63_None;
+                                let mut v231: US63 = v229.unwrap_or(v230);
+                                let mut v259: US30 = match &v231 {
+                                    US63::US63_Some(v232, v233, v234, v235, v236, v237) => {
+                                        let mut v232: std::string::String = v232.clone();
+                                        let mut v233: std::string::String = v233.clone();
+                                        let mut v234: Option<(Option<std::string::String>, Option<std::string::String>)> = v234.clone();
+                                        let mut v235: i32 = *v235;
                                         let mut v236: std::string::String = v236.clone();
-                                        let mut v237: Option<(Option<std::string::String>, Option<std::string::String>)> = v237.clone();
-                                        let mut v238: i32 = *v238;
-                                        let mut v239: std::string::String = v239.clone();
-                                        let mut v240: std::string::String = v240.clone();
-                                        let mut v242: Rc<str> = Rc::<str>::from(String::as_str(&v235));
-                                        let mut v243: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(": "); } LIT.with(|lit| lit.clone()) };
-                                        let mut v244: Rc<str> = Rc::<str>::from(format!("{}{}", v242, v243));
-                                        let mut v246: Rc<str> = Rc::<str>::from(String::as_str(&v239));
-                                        let mut v247: Rc<str> = Rc::<str>::from(format!("{}{}", v244, v246));
-                                        let mut v248: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" - "); } LIT.with(|lit| lit.clone()) };
-                                        let mut v249: Rc<str> = Rc::<str>::from(format!("{}{}", v247, v248));
-                                        let mut v251: Rc<str> = Rc::<str>::from(String::as_str(&v240));
-                                        let mut v252: Rc<str> = Rc::<str>::from(format!("{}{}", v249, v251));
-                                        let mut v253: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" ("); } LIT.with(|lit| lit.clone()) };
-                                        let mut v254: Rc<str> = Rc::<str>::from(format!("{}{}", v252, v253));
-                                        let mut v256: Rc<str> = Rc::<str>::from(String::as_str(&v236));
-                                        let mut v257: Rc<str> = Rc::<str>::from(format!("{}{}", v254, v256));
-                                        let mut v258: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(")"); } LIT.with(|lit| lit.clone()) };
-                                        let mut v259: Rc<str> = Rc::<str>::from(format!("{}{}", v257, v258));
-                                        US30::US30_Some(v259.clone())
+                                        let mut v237: std::string::String = v237.clone();
+                                        let mut v239: Rc<str> = Rc::<str>::from(String::as_str(&v232));
+                                        let mut v240: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(": "); } LIT.with(|lit| lit.clone()) };
+                                        let mut v241: Rc<str> = Rc::<str>::from(format!("{}{}", v239, v240));
+                                        let mut v243: Rc<str> = Rc::<str>::from(String::as_str(&v236));
+                                        let mut v244: Rc<str> = Rc::<str>::from(format!("{}{}", v241, v243));
+                                        let mut v245: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" - "); } LIT.with(|lit| lit.clone()) };
+                                        let mut v246: Rc<str> = Rc::<str>::from(format!("{}{}", v244, v245));
+                                        let mut v248: Rc<str> = Rc::<str>::from(String::as_str(&v237));
+                                        let mut v249: Rc<str> = Rc::<str>::from(format!("{}{}", v246, v248));
+                                        let mut v250: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" ("); } LIT.with(|lit| lit.clone()) };
+                                        let mut v251: Rc<str> = Rc::<str>::from(format!("{}{}", v249, v250));
+                                        let mut v253: Rc<str> = Rc::<str>::from(String::as_str(&v233));
+                                        let mut v254: Rc<str> = Rc::<str>::from(format!("{}{}", v251, v253));
+                                        let mut v255: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(")"); } LIT.with(|lit| lit.clone()) };
+                                        let mut v256: Rc<str> = Rc::<str>::from(format!("{}{}", v254, v255));
+                                        US30::US30_Some(v256.clone())
                                     }
                                     _ => {
                                         US30::US30_None
                                     }
                                 };
-                                let mut v268: Rc<str> = match &v262 {
+                                let mut v265: Rc<str> = match &v259 {
                                     US30::US30_None => {
-                                        let mut v264: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<()>"); } LIT.with(|lit| lit.clone()) };
-                                        let mut v265: i64 = 400i64;
-                                        ellipsis_end_9(v265, v264.clone())
+                                        let mut v261: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<()>"); } LIT.with(|lit| lit.clone()) };
+                                        let mut v262: i64 = 400i64;
+                                        ellipsis_end_9(v262, v261.clone())
                                     }
-                                    US30::US30_Some(v263) => {
-                                        let mut v263: Rc<str> = v263.clone();
-                                        v263.clone()
+                                    US30::US30_Some(v260) => {
+                                        let mut v260: Rc<str> = v260.clone();
+                                        v260.clone()
                                     }
                                 };
-                                US68::US68_Error(v268.clone())
+                                US68::US68_Error(v265.clone())
                             }
                         }
                     }
                     _ => {
-                        let mut v435: Rc<str> = method235(v214.clone());
-                        let mut v436: i64 = 400i64;
-                        let mut v437: Rc<str> = ellipsis_end_9(v436, v435.clone());
-                        let mut v438: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("RPC Response: "); } LIT.with(|lit| lit.clone()) };
-                        let mut v439: Rc<str> = Rc::<str>::from(format!("{}{}", v438, v437));
-                        US68::US68_Error(v439.clone())
+                        let mut v432: Rc<str> = method235(v211.clone());
+                        let mut v433: i64 = 400i64;
+                        let mut v434: Rc<str> = ellipsis_end_9(v433, v432.clone());
+                        let mut v435: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("RPC Response: "); } LIT.with(|lit| lit.clone()) };
+                        let mut v436: Rc<str> = Rc::<str>::from(format!("{}{}", v435, v434));
+                        US68::US68_Error(v436.clone())
                     }
                 }
             }
         };
-        let mut v457: Rc<str> = match &v447 {
-            US68::US68_Error(v453) => {
-                let mut v453: Rc<str> = v453.clone();
-                let mut v454: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Error: "); } LIT.with(|lit| lit.clone()) };
-                let mut v455: Rc<str> = Rc::<str>::from(format!("{}{}", v454, v453));
-                v455.clone()
-            }
-            US68::US68_Ok(v448) => {
-                let mut v448: Rc<str> = v448.clone();
-                let mut v449: i64 = 400i64;
-                let mut v450: Rc<str> = ellipsis_end_9(v449, v448.clone());
-                let mut v451: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("RPC Response: "); } LIT.with(|lit| lit.clone()) };
+        let mut v454: Rc<str> = match &v444 {
+            US68::US68_Error(v450) => {
+                let mut v450: Rc<str> = v450.clone();
+                let mut v451: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("Error: "); } LIT.with(|lit| lit.clone()) };
                 let mut v452: Rc<str> = Rc::<str>::from(format!("{}{}", v451, v450));
                 v452.clone()
             }
+            US68::US68_Ok(v445) => {
+                let mut v445: Rc<str> = v445.clone();
+                let mut v446: i64 = 400i64;
+                let mut v447: Rc<str> = ellipsis_end_9(v446, v445.clone());
+                let mut v448: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("RPC Response: "); } LIT.with(|lit| lit.clone()) };
+                let mut v449: Rc<str> = Rc::<str>::from(format!("{}{}", v448, v447));
+                v449.clone()
+            }
         };
-        let mut v458: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
-        let mut v459: Rc<str> = Rc::<str>::from(format!("{}{}", v200, v458));
-        let mut v460: Rc<str> = Rc::<str>::from(format!("{}{}", v459, v457));
-        let mut v462: &str = &*v460;
-        let mut v464: std::string::String = String::from(v462);
-        let mut v466: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v464));
-        let mut v467: Vec<leptos::prelude::AnyView> = Vec::new();
-        v467.push(v466);
-        let mut v469: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v467);
-        let mut v471: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v469);
-        let mut v472: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v471 }"); } LIT.with(|lit| lit.clone()) };
-        let mut v473: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""); } LIT.with(|lit| lit.clone()) };
-        let mut v474: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<td  class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\">{ v471 }</td>"); } LIT.with(|lit| lit.clone()) };
-        let mut v476: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Td, _, _>> = leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">{ v471 }</td> };
-        let mut v478: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v476);
-        let mut v479: Vec<leptos::prelude::AnyView> = Vec::new();
-        v479.push(v70);
-        v479.push(v92);
-        v479.push(v114);
-        v479.push(v135);
-        v479.push(v195);
-        v479.push(v478);
-        let mut v481: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v479);
-        let mut v483: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v481);
-        let mut v484: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v483 }"); } LIT.with(|lit| lit.clone()) };
-        let mut v485: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"odd:bg-gray-50 dark:odd:bg-gray-800/50\""); } LIT.with(|lit| lit.clone()) };
-        let mut v486: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("tr"); } LIT.with(|lit| lit.clone()) };
-        let mut v487: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<tr  class=\"odd:bg-gray-50 dark:odd:bg-gray-800/50\">{ v483 }</tr>"); } LIT.with(|lit| lit.clone()) };
-        let mut v489: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Tr, _, _>> = leptos::prelude::view! { <tr  class="odd:bg-gray-50 dark:odd:bg-gray-800/50">{ v483 }</tr> };
-        let mut v491: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v489);
-        v491
+        let mut v455: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" / "); } LIT.with(|lit| lit.clone()) };
+        let mut v456: Rc<str> = Rc::<str>::from(format!("{}{}", v197, v455));
+        let mut v457: Rc<str> = Rc::<str>::from(format!("{}{}", v456, v454));
+        let mut v459: &str = &*v457;
+        let mut v461: std::string::String = String::from(v459);
+        let mut v463: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(leptos::prelude::IntoView::into_view(v461));
+        let mut v464: Vec<leptos::prelude::AnyView> = Vec::new();
+        v464.push(v463);
+        let mut v466: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v464);
+        let mut v468: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v466);
+        let mut v469: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v468 }"); } LIT.with(|lit| lit.clone()) };
+        let mut v470: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""); } LIT.with(|lit| lit.clone()) };
+        let mut v471: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<td  class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\">{ v468 }</td>"); } LIT.with(|lit| lit.clone()) };
+        let mut v473: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Td, _, _>> = leptos::prelude::view! { <td  class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500">{ v468 }</td> };
+        let mut v475: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v473);
+        let mut v476: Vec<leptos::prelude::AnyView> = Vec::new();
+        v476.push(v70);
+        v476.push(v92);
+        v476.push(v114);
+        v476.push(v135);
+        v476.push(v192);
+        v476.push(v475);
+        let mut v478: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v476);
+        let mut v480: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v478);
+        let mut v481: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v480 }"); } LIT.with(|lit| lit.clone()) };
+        let mut v482: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"odd:bg-gray-50 dark:odd:bg-gray-800/50\""); } LIT.with(|lit| lit.clone()) };
+        let mut v483: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("tr"); } LIT.with(|lit| lit.clone()) };
+        let mut v484: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<tr  class=\"odd:bg-gray-50 dark:odd:bg-gray-800/50\">{ v480 }</tr>"); } LIT.with(|lit| lit.clone()) };
+        let mut v486: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Tr, _, _>> = leptos::prelude::view! { <tr  class="odd:bg-gray-50 dark:odd:bg-gray-800/50">{ v480 }</tr> };
+        let mut v488: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v486);
+        v488
     })
 }
 fn closure225() -> Rc<dyn Fn() -> std::string::String> {
@@ -9338,235 +9332,235 @@ fn closure262() -> Rc<dyn Fn() -> std::string::String> {
         v6.clone()
     }); } CLOSURE.with(|closure| closure.clone())
 }
-fn closure246(mut v0: Rc<Heap2>, mut v1: leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper::SendWrapper<i32>>, mut v2: leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper::SendWrapper<Vec<(i32, (leptos::prelude::ReadSignal<(bool, std::string::String)>, leptos::prelude::WriteSignal<(bool, std::string::String)>))>>>, mut v3: leptos::prelude::WriteSignal<i32>) -> Rc<dyn Fn(leptos::__reexports::send_wrapper::SendWrapper<(i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>)>) -> leptos::prelude::AnyView> {
-    Rc::new(move |mut v4: leptos::__reexports::send_wrapper::SendWrapper<(i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>)>| -> leptos::prelude::AnyView {
-        let (mut v5, mut v6, mut v7): (i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>) = (*v4).clone();
-        let mut v8: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"flex gap-[8px] [align-items:center]\""); } LIT.with(|lit| lit.clone()) };
-        let mut v9: i32 = method249(v6);
-        let mut v11: Rc<dyn Fn() -> std::string::String> = id_c247(v9);
-        let mut v12: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v11.clone());
-        let mut v13: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("for"); } LIT.with(|lit| lit.clone()) };
-        let mut v14: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("for={ move || (*v12)() }"); } LIT.with(|lit| lit.clone()) };
-        let mut v15: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"block relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]\""); } LIT.with(|lit| lit.clone()) };
-        let mut v16: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
-        let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("type=\"checkbox\""); } LIT.with(|lit| lit.clone()) };
-        let mut v19: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v11);
-        let mut v20: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("id"); } LIT.with(|lit| lit.clone()) };
-        let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("id={ move || (*v19)() }"); } LIT.with(|lit| lit.clone()) };
-        let mut v23: Rc<dyn Fn(leptos::ev::Event) -> ()> = closure248(v0.clone(), v9);
-        let mut v24: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn(leptos::ev::Event) -> ()>> = leptos::__reexports::send_wrapper::SendWrapper::new(v23);
-        let mut v25: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("change"); } LIT.with(|lit| lit.clone()) };
-        let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("on:change={ move |event| (*v24)(event) }"); } LIT.with(|lit| lit.clone()) };
-        let mut v28: Rc<dyn Fn() -> bool> = closure251(v7.clone());
-        let mut v29: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> bool>> = leptos::__reexports::send_wrapper::SendWrapper::new(v28);
-        let mut v30: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("prop:checked"); } LIT.with(|lit| lit.clone()) };
-        let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("prop:checked={ move || (*v29)() }"); } LIT.with(|lit| lit.clone()) };
-        let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-        let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
-        let mut v34: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" type=\"checkbox\" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
-        let mut v35: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" id={ move || (*v19)() } type=\"checkbox\" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
-        let mut v36: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" on:change={ move |event| (*v24)(event) } id={ move || (*v19)() } type=\"checkbox\" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
-        let mut v37: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" prop:checked={ move || (*v29)() } on:change={ move |event| (*v24)(event) } id={ move || (*v19)() } type=\"checkbox\" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
-        let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("input"); } LIT.with(|lit| lit.clone()) };
-        let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<input  prop:checked={ move || (*v29)() } on:change={ move |event| (*v24)(event) } id={ move || (*v19)() } type=\"checkbox\" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\" />"); } LIT.with(|lit| lit.clone()) };
-        let mut v41: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Input, _, _>> = leptos::prelude::view! { <input  prop:checked={ move || (*v29)() } on:change={ move |event| (*v24)(event) } id={ move || (*v19)() } type="checkbox" class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden" /> };
-        let mut v43: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v41);
-        let mut v44: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400\""); } LIT.with(|lit| lit.clone()) };
-        let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v46: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
-        let mut v47: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"h-4 w-4\""); } LIT.with(|lit| lit.clone()) };
-        let mut v48: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("viewBox=\"0 0 20 20\""); } LIT.with(|lit| lit.clone()) };
-        let mut v49: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("fill=\"currentColor\""); } LIT.with(|lit| lit.clone()) };
-        let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
-        let mut v51: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\""); } LIT.with(|lit| lit.clone()) };
-        let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("clip-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
-        let mut v53: Vec<leptos::prelude::AnyView> = Vec::new();
-        let mut v55: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v53);
-        let mut v57: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v55);
-        let mut v58: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v57 }"); } LIT.with(|lit| lit.clone()) };
-        let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
-        let mut v60: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
-        let mut v61: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" clip-rule=\"evenodd\" d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
-        let mut v62: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("path"); } LIT.with(|lit| lit.clone()) };
-        let mut v63: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<path  clip-rule=\"evenodd\" d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\" fill-rule=\"evenodd\">{ v57 }</path>"); } LIT.with(|lit| lit.clone()) };
-        let mut v65: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd">{ v57 }</path> };
-        let mut v67: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v65);
-        let mut v68: Vec<leptos::prelude::AnyView> = Vec::new();
-        v68.push(v67);
-        let mut v70: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v68);
-        let mut v72: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v70);
-        let mut v73: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v72 }"); } LIT.with(|lit| lit.clone()) };
-        let mut v74: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v75: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v76: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v77: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v78: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v79: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("svg"); } LIT.with(|lit| lit.clone()) };
-        let mut v80: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<svg  fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon>{ v72 }</svg>"); } LIT.with(|lit| lit.clone()) };
-        let mut v82: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-unchecked-icon>{ v72 }</svg> };
-        let mut v83: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("data-checked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v84: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
-        let mut v85: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"hidden h-4 w-4\""); } LIT.with(|lit| lit.clone()) };
-        let mut v86: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("viewBox=\"0 0 20 20\""); } LIT.with(|lit| lit.clone()) };
-        let mut v87: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("fill=\"currentColor\""); } LIT.with(|lit| lit.clone()) };
-        let mut v88: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
-        let mut v89: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\""); } LIT.with(|lit| lit.clone()) };
-        let mut v90: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("clip-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
-        let mut v91: Vec<leptos::prelude::AnyView> = Vec::new();
-        let mut v93: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v91);
-        let mut v95: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v93);
-        let mut v96: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v95 }"); } LIT.with(|lit| lit.clone()) };
-        let mut v97: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
-        let mut v98: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
-        let mut v99: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" clip-rule=\"evenodd\" d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
-        let mut v100: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<path  clip-rule=\"evenodd\" d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\" fill-rule=\"evenodd\">{ v95 }</path>"); } LIT.with(|lit| lit.clone()) };
-        let mut v102: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd">{ v95 }</path> };
-        let mut v104: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v102);
-        let mut v105: Vec<leptos::prelude::AnyView> = Vec::new();
-        v105.push(v104);
-        let mut v107: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v105);
-        let mut v109: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v107);
-        let mut v110: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v109 }"); } LIT.with(|lit| lit.clone()) };
-        let mut v111: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" data-checked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v112: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v113: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v114: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v115: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon"); } LIT.with(|lit| lit.clone()) };
-        let mut v116: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<svg  fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon>{ v109 }</svg>"); } LIT.with(|lit| lit.clone()) };
-        let mut v118: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-checked-icon>{ v109 }</svg> };
-        let mut v120: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v118);
-        let mut v122: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v82);
-        let mut v123: Vec<leptos::prelude::AnyView> = Vec::new();
-        v123.push(v122);
-        v123.push(v120);
-        let mut v125: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v123);
-        let mut v127: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v125);
-        let mut v128: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v127 }"); } LIT.with(|lit| lit.clone()) };
-        let mut v129: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400\""); } LIT.with(|lit| lit.clone()) };
-        let mut v130: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("span"); } LIT.with(|lit| lit.clone()) };
-        let mut v131: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<span  class=\"absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400\">{ v127 }</span>"); } LIT.with(|lit| lit.clone()) };
-        let mut v133: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400">{ v127 }</span> };
-        let mut v135: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v133);
-        let mut v136: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300\""); } LIT.with(|lit| lit.clone()) };
-        let mut v137: Vec<leptos::prelude::AnyView> = Vec::new();
-        let mut v139: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v137);
-        let mut v141: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v139);
-        let mut v142: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v141 }"); } LIT.with(|lit| lit.clone()) };
-        let mut v143: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300\""); } LIT.with(|lit| lit.clone()) };
-        let mut v144: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<span  class=\"absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300\">{ v141 }</span>"); } LIT.with(|lit| lit.clone()) };
-        let mut v146: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300">{ v141 }</span> };
-        let mut v148: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v146);
-        let mut v149: Vec<leptos::prelude::AnyView> = Vec::new();
-        v149.push(v43);
-        v149.push(v135);
-        v149.push(v148);
-        let mut v151: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v149);
-        let mut v153: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v151);
-        let mut v154: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v153 }"); } LIT.with(|lit| lit.clone()) };
-        let mut v155: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" for={ move || (*v12)() }"); } LIT.with(|lit| lit.clone()) };
-        let mut v156: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"block relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]\" for={ move || (*v12)() }"); } LIT.with(|lit| lit.clone()) };
-        let mut v157: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("label"); } LIT.with(|lit| lit.clone()) };
-        let mut v158: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<label  class=\"block relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]\" for={ move || (*v12)() }>{ v153 }</label>"); } LIT.with(|lit| lit.clone()) };
-        let mut v160: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Label, _, _>> = leptos::prelude::view! { <label  class="block relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]" for={ move || (*v12)() }>{ v153 }</label> };
-        let mut v162: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v160);
-        let mut v164: Rc<dyn Fn() -> std::string::String> = closure252();
-        let mut v165: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v164);
-        let mut v166: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class"); } LIT.with(|lit| lit.clone()) };
-        let mut v167: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class={ move || (*v165)() }"); } LIT.with(|lit| lit.clone()) };
-        let mut v169: Rc<dyn Fn() -> std::string::String> = closure253(v7.clone());
-        let mut v170: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v169);
-        let mut v171: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("prop:value"); } LIT.with(|lit| lit.clone()) };
-        let mut v172: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("prop:value={ move || (*v170)() }"); } LIT.with(|lit| lit.clone()) };
-        let mut v174: Rc<dyn Fn(web_sys::KeyboardEvent) -> ()> = closure254(v0.clone(), v9);
-        let mut v175: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn(web_sys::KeyboardEvent) -> ()>> = leptos::__reexports::send_wrapper::SendWrapper::new(v174);
-        let mut v176: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("keyup"); } LIT.with(|lit| lit.clone()) };
-        let mut v177: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("on:keyup={ move |event| (*v175)(event) }"); } LIT.with(|lit| lit.clone()) };
-        let mut v178: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class={ move || (*v165)() }"); } LIT.with(|lit| lit.clone()) };
-        let mut v179: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" prop:value={ move || (*v170)() } class={ move || (*v165)() }"); } LIT.with(|lit| lit.clone()) };
-        let mut v180: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" on:keyup={ move |event| (*v175)(event) } prop:value={ move || (*v170)() } class={ move || (*v165)() }"); } LIT.with(|lit| lit.clone()) };
-        let mut v181: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<input  on:keyup={ move |event| (*v175)(event) } prop:value={ move || (*v170)() } class={ move || (*v165)() } />"); } LIT.with(|lit| lit.clone()) };
-        let mut v183: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Input, _, _>> = leptos::prelude::view! { <input  on:keyup={ move |event| (*v175)(event) } prop:value={ move || (*v170)() } class={ move || (*v165)() } /> };
-        let mut v185: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v183);
-        let mut v186: i32 = leptos::prelude::Get::get(&v1).take();
-        let mut v187: bool = v186 == 1i32;
-        let mut v258: leptos::prelude::AnyView = if v187 {
-            let mut v188: Vec<leptos::prelude::AnyView> = Vec::new();
-            let mut v190: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v188);
-            v190
+fn closure246(mut v0: Rc<Heap2>, mut v1: leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper::SendWrapper<i32>>, mut v2: Rc<Heap2>, mut v3: leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper::SendWrapper<Vec<(i32, (leptos::prelude::ReadSignal<(bool, std::string::String)>, leptos::prelude::WriteSignal<(bool, std::string::String)>))>>>, mut v4: leptos::prelude::WriteSignal<i32>) -> Rc<dyn Fn(leptos::__reexports::send_wrapper::SendWrapper<(i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>)>) -> leptos::prelude::AnyView> {
+    Rc::new(move |mut v5: leptos::__reexports::send_wrapper::SendWrapper<(i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>)>| -> leptos::prelude::AnyView {
+        let (mut v6, mut v7, mut v8): (i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>) = (*v5).clone();
+        let mut v9: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"flex gap-[8px] [align-items:center]\""); } LIT.with(|lit| lit.clone()) };
+        let mut v10: i32 = method249(v7);
+        let mut v12: Rc<dyn Fn() -> std::string::String> = id_c247(v10);
+        let mut v13: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v12.clone());
+        let mut v14: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("for"); } LIT.with(|lit| lit.clone()) };
+        let mut v15: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("for={ move || (*v13)() }"); } LIT.with(|lit| lit.clone()) };
+        let mut v16: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"block relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]\""); } LIT.with(|lit| lit.clone()) };
+        let mut v17: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
+        let mut v18: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("type=\"checkbox\""); } LIT.with(|lit| lit.clone()) };
+        let mut v20: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v12);
+        let mut v21: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("id"); } LIT.with(|lit| lit.clone()) };
+        let mut v22: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("id={ move || (*v20)() }"); } LIT.with(|lit| lit.clone()) };
+        let mut v24: Rc<dyn Fn(leptos::ev::Event) -> ()> = closure248(v0.clone(), v10);
+        let mut v25: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn(leptos::ev::Event) -> ()>> = leptos::__reexports::send_wrapper::SendWrapper::new(v24);
+        let mut v26: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("change"); } LIT.with(|lit| lit.clone()) };
+        let mut v27: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("on:change={ move |event| (*v25)(event) }"); } LIT.with(|lit| lit.clone()) };
+        let mut v29: Rc<dyn Fn() -> bool> = closure251(v8.clone());
+        let mut v30: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> bool>> = leptos::__reexports::send_wrapper::SendWrapper::new(v29);
+        let mut v31: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("prop:checked"); } LIT.with(|lit| lit.clone()) };
+        let mut v32: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("prop:checked={ move || (*v30)() }"); } LIT.with(|lit| lit.clone()) };
+        let mut v33: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+        let mut v34: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
+        let mut v35: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" type=\"checkbox\" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
+        let mut v36: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" id={ move || (*v20)() } type=\"checkbox\" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
+        let mut v37: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" on:change={ move |event| (*v25)(event) } id={ move || (*v20)() } type=\"checkbox\" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
+        let mut v38: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" prop:checked={ move || (*v30)() } on:change={ move |event| (*v25)(event) } id={ move || (*v20)() } type=\"checkbox\" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\""); } LIT.with(|lit| lit.clone()) };
+        let mut v39: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("input"); } LIT.with(|lit| lit.clone()) };
+        let mut v40: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<input  prop:checked={ move || (*v30)() } on:change={ move |event| (*v25)(event) } id={ move || (*v20)() } type=\"checkbox\" class=\"peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden\" />"); } LIT.with(|lit| lit.clone()) };
+        let mut v42: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Input, _, _>> = leptos::prelude::view! { <input  prop:checked={ move || (*v30)() } on:change={ move |event| (*v25)(event) } id={ move || (*v20)() } type="checkbox" class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden" /> };
+        let mut v44: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v42);
+        let mut v45: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400\""); } LIT.with(|lit| lit.clone()) };
+        let mut v46: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v47: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
+        let mut v48: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"h-4 w-4\""); } LIT.with(|lit| lit.clone()) };
+        let mut v49: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("viewBox=\"0 0 20 20\""); } LIT.with(|lit| lit.clone()) };
+        let mut v50: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("fill=\"currentColor\""); } LIT.with(|lit| lit.clone()) };
+        let mut v51: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
+        let mut v52: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\""); } LIT.with(|lit| lit.clone()) };
+        let mut v53: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("clip-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
+        let mut v54: Vec<leptos::prelude::AnyView> = Vec::new();
+        let mut v56: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v54);
+        let mut v58: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v56);
+        let mut v59: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v58 }"); } LIT.with(|lit| lit.clone()) };
+        let mut v60: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
+        let mut v61: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
+        let mut v62: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" clip-rule=\"evenodd\" d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
+        let mut v63: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("path"); } LIT.with(|lit| lit.clone()) };
+        let mut v64: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<path  clip-rule=\"evenodd\" d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\" fill-rule=\"evenodd\">{ v58 }</path>"); } LIT.with(|lit| lit.clone()) };
+        let mut v66: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd">{ v58 }</path> };
+        let mut v68: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v66);
+        let mut v69: Vec<leptos::prelude::AnyView> = Vec::new();
+        v69.push(v68);
+        let mut v71: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v69);
+        let mut v73: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v71);
+        let mut v74: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v73 }"); } LIT.with(|lit| lit.clone()) };
+        let mut v75: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v76: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v77: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v78: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v79: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v80: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("svg"); } LIT.with(|lit| lit.clone()) };
+        let mut v81: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<svg  fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-unchecked-icon>{ v73 }</svg>"); } LIT.with(|lit| lit.clone()) };
+        let mut v83: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-unchecked-icon>{ v73 }</svg> };
+        let mut v84: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("data-checked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v85: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
+        let mut v86: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"hidden h-4 w-4\""); } LIT.with(|lit| lit.clone()) };
+        let mut v87: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("viewBox=\"0 0 20 20\""); } LIT.with(|lit| lit.clone()) };
+        let mut v88: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("fill=\"currentColor\""); } LIT.with(|lit| lit.clone()) };
+        let mut v89: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
+        let mut v90: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\""); } LIT.with(|lit| lit.clone()) };
+        let mut v91: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("clip-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
+        let mut v92: Vec<leptos::prelude::AnyView> = Vec::new();
+        let mut v94: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v92);
+        let mut v96: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v94);
+        let mut v97: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v96 }"); } LIT.with(|lit| lit.clone()) };
+        let mut v98: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
+        let mut v99: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
+        let mut v100: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" clip-rule=\"evenodd\" d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\" fill-rule=\"evenodd\""); } LIT.with(|lit| lit.clone()) };
+        let mut v101: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<path  clip-rule=\"evenodd\" d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\" fill-rule=\"evenodd\">{ v96 }</path>"); } LIT.with(|lit| lit.clone()) };
+        let mut v103: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd">{ v96 }</path> };
+        let mut v105: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v103);
+        let mut v106: Vec<leptos::prelude::AnyView> = Vec::new();
+        v106.push(v105);
+        let mut v108: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v106);
+        let mut v110: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v108);
+        let mut v111: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v110 }"); } LIT.with(|lit| lit.clone()) };
+        let mut v112: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" data-checked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v113: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v114: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v115: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v116: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon"); } LIT.with(|lit| lit.clone()) };
+        let mut v117: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<svg  fill=\"currentColor\" viewBox=\"0 0 20 20\" class=\"hidden h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" data-checked-icon>{ v110 }</svg>"); } LIT.with(|lit| lit.clone()) };
+        let mut v119: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  fill="currentColor" viewBox="0 0 20 20" class="hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" data-checked-icon>{ v110 }</svg> };
+        let mut v121: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v119);
+        let mut v123: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v83);
+        let mut v124: Vec<leptos::prelude::AnyView> = Vec::new();
+        v124.push(v123);
+        v124.push(v121);
+        let mut v126: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v124);
+        let mut v128: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v126);
+        let mut v129: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v128 }"); } LIT.with(|lit| lit.clone()) };
+        let mut v130: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400\""); } LIT.with(|lit| lit.clone()) };
+        let mut v131: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("span"); } LIT.with(|lit| lit.clone()) };
+        let mut v132: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<span  class=\"absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400\">{ v128 }</span>"); } LIT.with(|lit| lit.clone()) };
+        let mut v134: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white dark:bg-gray-400 peer-checked:bg-white text-gray-200 transition-all peer-checked:start-6 peer-checked:text-gray-400">{ v128 }</span> };
+        let mut v136: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v134);
+        let mut v137: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class=\"absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300\""); } LIT.with(|lit| lit.clone()) };
+        let mut v138: Vec<leptos::prelude::AnyView> = Vec::new();
+        let mut v140: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v138);
+        let mut v142: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v140);
+        let mut v143: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v142 }"); } LIT.with(|lit| lit.clone()) };
+        let mut v144: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300\""); } LIT.with(|lit| lit.clone()) };
+        let mut v145: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<span  class=\"absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300\">{ v142 }</span>"); } LIT.with(|lit| lit.clone()) };
+        let mut v147: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Span, _, _>> = leptos::prelude::view! { <span  class="absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-200 transition peer-checked:bg-gray-300">{ v142 }</span> };
+        let mut v149: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v147);
+        let mut v150: Vec<leptos::prelude::AnyView> = Vec::new();
+        v150.push(v44);
+        v150.push(v136);
+        v150.push(v149);
+        let mut v152: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v150);
+        let mut v154: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v152);
+        let mut v155: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v154 }"); } LIT.with(|lit| lit.clone()) };
+        let mut v156: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" for={ move || (*v13)() }"); } LIT.with(|lit| lit.clone()) };
+        let mut v157: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"block relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]\" for={ move || (*v13)() }"); } LIT.with(|lit| lit.clone()) };
+        let mut v158: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("label"); } LIT.with(|lit| lit.clone()) };
+        let mut v159: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<label  class=\"block relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]\" for={ move || (*v13)() }>{ v154 }</label>"); } LIT.with(|lit| lit.clone()) };
+        let mut v161: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Label, _, _>> = leptos::prelude::view! { <label  class="block relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]" for={ move || (*v13)() }>{ v154 }</label> };
+        let mut v163: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v161);
+        let mut v165: Rc<dyn Fn() -> std::string::String> = closure252();
+        let mut v166: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v165);
+        let mut v167: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class"); } LIT.with(|lit| lit.clone()) };
+        let mut v168: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class={ move || (*v166)() }"); } LIT.with(|lit| lit.clone()) };
+        let mut v170: Rc<dyn Fn() -> std::string::String> = closure253(v8.clone());
+        let mut v171: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v170);
+        let mut v172: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("prop:value"); } LIT.with(|lit| lit.clone()) };
+        let mut v173: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("prop:value={ move || (*v171)() }"); } LIT.with(|lit| lit.clone()) };
+        let mut v175: Rc<dyn Fn(web_sys::KeyboardEvent) -> ()> = closure254(v0.clone(), v10);
+        let mut v176: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn(web_sys::KeyboardEvent) -> ()>> = leptos::__reexports::send_wrapper::SendWrapper::new(v175);
+        let mut v177: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("keyup"); } LIT.with(|lit| lit.clone()) };
+        let mut v178: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("on:keyup={ move |event| (*v176)(event) }"); } LIT.with(|lit| lit.clone()) };
+        let mut v179: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class={ move || (*v166)() }"); } LIT.with(|lit| lit.clone()) };
+        let mut v180: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" prop:value={ move || (*v171)() } class={ move || (*v166)() }"); } LIT.with(|lit| lit.clone()) };
+        let mut v181: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" on:keyup={ move |event| (*v176)(event) } prop:value={ move || (*v171)() } class={ move || (*v166)() }"); } LIT.with(|lit| lit.clone()) };
+        let mut v182: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<input  on:keyup={ move |event| (*v176)(event) } prop:value={ move || (*v171)() } class={ move || (*v166)() } />"); } LIT.with(|lit| lit.clone()) };
+        let mut v184: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Input, _, _>> = leptos::prelude::view! { <input  on:keyup={ move |event| (*v176)(event) } prop:value={ move || (*v171)() } class={ move || (*v166)() } /> };
+        let mut v186: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v184);
+        let mut v187: i32 = leptos::prelude::Get::get(&v1).take();
+        let mut v188: bool = v187 == 1i32;
+        let mut v259: leptos::prelude::AnyView = if v188 {
+            let mut v189: Vec<leptos::prelude::AnyView> = Vec::new();
+            let mut v191: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v189);
+            v191
         } else {
-            let mut v191: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
-            let mut v192: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("fill=\"none\""); } LIT.with(|lit| lit.clone()) };
-            let mut v193: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("viewBox=\"0 0 24 24\""); } LIT.with(|lit| lit.clone()) };
-            let mut v194: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("stroke-width=\"1.5\""); } LIT.with(|lit| lit.clone()) };
-            let mut v195: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("stroke=\"currentColor\""); } LIT.with(|lit| lit.clone()) };
-            let mut v197: Rc<dyn Fn() -> std::string::String> = closure257();
-            let mut v198: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v197);
-            let mut v199: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class={ move || (*v198)() }"); } LIT.with(|lit| lit.clone()) };
-            let mut v200: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("stroke-linecap=\"round\""); } LIT.with(|lit| lit.clone()) };
-            let mut v201: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("stroke-linejoin=\"round\""); } LIT.with(|lit| lit.clone()) };
-            let mut v202: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("d=\"M6 6l12 12m0-12L6 18\""); } LIT.with(|lit| lit.clone()) };
-            let mut v203: Vec<leptos::prelude::AnyView> = Vec::new();
-            let mut v205: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v203);
-            let mut v207: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v205);
-            let mut v208: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v207 }"); } LIT.with(|lit| lit.clone()) };
-            let mut v209: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" stroke-linecap=\"round\""); } LIT.with(|lit| lit.clone()) };
-            let mut v210: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" stroke-linejoin=\"round\" stroke-linecap=\"round\""); } LIT.with(|lit| lit.clone()) };
-            let mut v211: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" d=\"M6 6l12 12m0-12L6 18\" stroke-linejoin=\"round\" stroke-linecap=\"round\""); } LIT.with(|lit| lit.clone()) };
-            let mut v212: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<path  d=\"M6 6l12 12m0-12L6 18\" stroke-linejoin=\"round\" stroke-linecap=\"round\">{ v207 }</path>"); } LIT.with(|lit| lit.clone()) };
-            let mut v214: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  d="M6 6l12 12m0-12L6 18" stroke-linejoin="round" stroke-linecap="round">{ v207 }</path> };
-            let mut v216: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v214);
-            let mut v217: Vec<leptos::prelude::AnyView> = Vec::new();
-            v217.push(v216);
-            let mut v219: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v217);
-            let mut v221: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v219);
-            let mut v222: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v221 }"); } LIT.with(|lit| lit.clone()) };
-            let mut v223: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
-            let mut v224: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
-            let mut v225: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
-            let mut v226: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
-            let mut v227: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
-            let mut v228: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class={ move || (*v198)() } stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
-            let mut v229: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<svg  class={ move || (*v198)() } stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">{ v221 }</svg>"); } LIT.with(|lit| lit.clone()) };
-            let mut v231: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  class={ move || (*v198)() } stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">{ v221 }</svg> };
-            let mut v233: Rc<dyn Fn() -> ()> = on_click_c258(v0.clone(), v2.clone(), v3.clone(), v9);
-            let mut v234: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> ()>> = leptos::__reexports::send_wrapper::SendWrapper::new(v233);
-            let mut v235: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("on:click={ move |_| (*v234)() }"); } LIT.with(|lit| lit.clone()) };
-            let mut v236: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("aria-label=\"Delete\""); } LIT.with(|lit| lit.clone()) };
-            let mut v238: Rc<dyn Fn() -> std::string::String> = closure262();
-            let mut v239: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v238);
-            let mut v240: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class={ move || (*v239)() }"); } LIT.with(|lit| lit.clone()) };
-            let mut v242: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v231);
-            let mut v243: Vec<leptos::prelude::AnyView> = Vec::new();
-            v243.push(v242);
-            let mut v245: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v243);
-            let mut v247: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v245);
-            let mut v248: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v247 }"); } LIT.with(|lit| lit.clone()) };
-            let mut v249: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class={ move || (*v239)() }"); } LIT.with(|lit| lit.clone()) };
-            let mut v250: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" on:click={ move |_| (*v234)() } class={ move || (*v239)() }"); } LIT.with(|lit| lit.clone()) };
-            let mut v251: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" aria-label=\"Delete\" on:click={ move |_| (*v234)() } class={ move || (*v239)() }"); } LIT.with(|lit| lit.clone()) };
-            let mut v252: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("button"); } LIT.with(|lit| lit.clone()) };
-            let mut v253: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<button  aria-label=\"Delete\" on:click={ move |_| (*v234)() } class={ move || (*v239)() }>{ v247 }</button>"); } LIT.with(|lit| lit.clone()) };
-            let mut v255: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Button, _, _>> = leptos::prelude::view! { <button  aria-label="Delete" on:click={ move |_| (*v234)() } class={ move || (*v239)() }>{ v247 }</button> };
-            let mut v257: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v255);
-            v257
+            let mut v192: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
+            let mut v193: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("fill=\"none\""); } LIT.with(|lit| lit.clone()) };
+            let mut v194: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("viewBox=\"0 0 24 24\""); } LIT.with(|lit| lit.clone()) };
+            let mut v195: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("stroke-width=\"1.5\""); } LIT.with(|lit| lit.clone()) };
+            let mut v196: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("stroke=\"currentColor\""); } LIT.with(|lit| lit.clone()) };
+            let mut v198: Rc<dyn Fn() -> std::string::String> = closure257();
+            let mut v199: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v198);
+            let mut v200: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class={ move || (*v199)() }"); } LIT.with(|lit| lit.clone()) };
+            let mut v201: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("stroke-linecap=\"round\""); } LIT.with(|lit| lit.clone()) };
+            let mut v202: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("stroke-linejoin=\"round\""); } LIT.with(|lit| lit.clone()) };
+            let mut v203: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("d=\"M6 6l12 12m0-12L6 18\""); } LIT.with(|lit| lit.clone()) };
+            let mut v204: Vec<leptos::prelude::AnyView> = Vec::new();
+            let mut v206: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v204);
+            let mut v208: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v206);
+            let mut v209: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v208 }"); } LIT.with(|lit| lit.clone()) };
+            let mut v210: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" stroke-linecap=\"round\""); } LIT.with(|lit| lit.clone()) };
+            let mut v211: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" stroke-linejoin=\"round\" stroke-linecap=\"round\""); } LIT.with(|lit| lit.clone()) };
+            let mut v212: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" d=\"M6 6l12 12m0-12L6 18\" stroke-linejoin=\"round\" stroke-linecap=\"round\""); } LIT.with(|lit| lit.clone()) };
+            let mut v213: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<path  d=\"M6 6l12 12m0-12L6 18\" stroke-linejoin=\"round\" stroke-linecap=\"round\">{ v208 }</path>"); } LIT.with(|lit| lit.clone()) };
+            let mut v215: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Path, _, _>> = leptos::prelude::view! { <path  d="M6 6l12 12m0-12L6 18" stroke-linejoin="round" stroke-linecap="round">{ v208 }</path> };
+            let mut v217: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v215);
+            let mut v218: Vec<leptos::prelude::AnyView> = Vec::new();
+            v218.push(v217);
+            let mut v220: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v218);
+            let mut v222: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v220);
+            let mut v223: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v222 }"); } LIT.with(|lit| lit.clone()) };
+            let mut v224: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
+            let mut v225: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
+            let mut v226: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
+            let mut v227: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
+            let mut v228: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
+            let mut v229: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class={ move || (*v199)() } stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\""); } LIT.with(|lit| lit.clone()) };
+            let mut v230: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<svg  class={ move || (*v199)() } stroke=\"currentColor\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">{ v222 }</svg>"); } LIT.with(|lit| lit.clone()) };
+            let mut v232: leptos::prelude::View<leptos::html::HtmlElement<leptos::svg::Svg, _, _>> = leptos::prelude::view! { <svg  class={ move || (*v199)() } stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">{ v222 }</svg> };
+            let mut v234: Rc<dyn Fn() -> ()> = on_click_c258(v2.clone(), v3.clone(), v4.clone(), v10);
+            let mut v235: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> ()>> = leptos::__reexports::send_wrapper::SendWrapper::new(v234);
+            let mut v236: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("on:click={ move |_| (*v235)() }"); } LIT.with(|lit| lit.clone()) };
+            let mut v237: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("aria-label=\"Delete\""); } LIT.with(|lit| lit.clone()) };
+            let mut v239: Rc<dyn Fn() -> std::string::String> = closure262();
+            let mut v240: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> std::string::String>> = leptos::__reexports::send_wrapper::SendWrapper::new(v239);
+            let mut v241: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("class={ move || (*v240)() }"); } LIT.with(|lit| lit.clone()) };
+            let mut v243: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v232);
+            let mut v244: Vec<leptos::prelude::AnyView> = Vec::new();
+            v244.push(v243);
+            let mut v246: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v244);
+            let mut v248: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v246);
+            let mut v249: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v248 }"); } LIT.with(|lit| lit.clone()) };
+            let mut v250: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class={ move || (*v240)() }"); } LIT.with(|lit| lit.clone()) };
+            let mut v251: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" on:click={ move |_| (*v235)() } class={ move || (*v240)() }"); } LIT.with(|lit| lit.clone()) };
+            let mut v252: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" aria-label=\"Delete\" on:click={ move |_| (*v235)() } class={ move || (*v240)() }"); } LIT.with(|lit| lit.clone()) };
+            let mut v253: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("button"); } LIT.with(|lit| lit.clone()) };
+            let mut v254: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<button  aria-label=\"Delete\" on:click={ move |_| (*v235)() } class={ move || (*v240)() }>{ v248 }</button>"); } LIT.with(|lit| lit.clone()) };
+            let mut v256: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Button, _, _>> = leptos::prelude::view! { <button  aria-label="Delete" on:click={ move |_| (*v235)() } class={ move || (*v240)() }>{ v248 }</button> };
+            let mut v258: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v256);
+            v258
         };
-        let mut v259: Vec<leptos::prelude::AnyView> = Vec::new();
-        v259.push(v162);
-        v259.push(v185);
-        v259.push(v258);
-        let mut v261: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v259);
-        let mut v263: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v261);
-        let mut v264: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v263 }"); } LIT.with(|lit| lit.clone()) };
-        let mut v265: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"flex gap-[8px] [align-items:center]\""); } LIT.with(|lit| lit.clone()) };
-        let mut v266: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("div"); } LIT.with(|lit| lit.clone()) };
-        let mut v267: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<div  class=\"flex gap-[8px] [align-items:center]\">{ v263 }</div>"); } LIT.with(|lit| lit.clone()) };
-        let mut v269: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> = leptos::prelude::view! { <div  class="flex gap-[8px] [align-items:center]">{ v263 }</div> };
-        let mut v271: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v269);
-        let mut v272: Vec<leptos::prelude::AnyView> = Vec::new();
-        v272.push(v271);
-        let mut v274: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v272);
-        let mut v276: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v274);
-        v276
+        let mut v260: Vec<leptos::prelude::AnyView> = Vec::new();
+        v260.push(v163);
+        v260.push(v186);
+        v260.push(v259);
+        let mut v262: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v260);
+        let mut v264: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v262);
+        let mut v265: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("{ v264 }"); } LIT.with(|lit| lit.clone()) };
+        let mut v266: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(" class=\"flex gap-[8px] [align-items:center]\""); } LIT.with(|lit| lit.clone()) };
+        let mut v267: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("div"); } LIT.with(|lit| lit.clone()) };
+        let mut v268: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("<div  class=\"flex gap-[8px] [align-items:center]\">{ v264 }</div>"); } LIT.with(|lit| lit.clone()) };
+        let mut v270: leptos::prelude::View<leptos::html::HtmlElement<leptos::html::Div, _, _>> = leptos::prelude::view! { <div  class="flex gap-[8px] [align-items:center]">{ v264 }</div> };
+        let mut v272: leptos::prelude::AnyView = leptos::prelude::IntoAny::into_any(v270);
+        let mut v273: Vec<leptos::prelude::AnyView> = Vec::new();
+        v273.push(v272);
+        let mut v275: leptos::prelude::Fragment = leptos::prelude::Fragment::new(v273);
+        let mut v277: leptos::prelude::AnyView = leptos::prelude::AnyView::from(v275);
+        v277
     })
 }
 fn closure263() -> Rc<dyn Fn() -> std::string::String> {
@@ -14231,7 +14225,7 @@ fn closure49(mut v0: US18) -> Rc<dyn Fn() -> leptos::prelude::AnyView> {
                 let mut v1688: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn() -> Vec<(i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>)>>> = leptos::__reexports::send_wrapper::SendWrapper::new(v1687);
                 let mut v1690: Rc<dyn Fn(leptos::__reexports::send_wrapper::SendWrapper<(i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>)>) -> (i32, i32)> = closure245();
                 let mut v1691: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn(leptos::__reexports::send_wrapper::SendWrapper<(i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>)>) -> (i32, i32)>> = leptos::__reexports::send_wrapper::SendWrapper::new(v1690);
-                let mut v1693: Rc<dyn Fn(leptos::__reexports::send_wrapper::SendWrapper<(i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>)>) -> leptos::prelude::AnyView> = closure246(v1467.clone(), v1485.clone(), v1472.clone(), v1475.clone());
+                let mut v1693: Rc<dyn Fn(leptos::__reexports::send_wrapper::SendWrapper<(i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>)>) -> leptos::prelude::AnyView> = closure246(v1467.clone(), v1485.clone(), v1467.clone(), v1472.clone(), v1475.clone());
                 let mut v1694: leptos::__reexports::send_wrapper::SendWrapper<Rc<dyn Fn(leptos::__reexports::send_wrapper::SendWrapper<(i32, i32, leptos::prelude::ReadSignal<(bool, std::string::String)>)>) -> leptos::prelude::AnyView>> = leptos::__reexports::send_wrapper::SendWrapper::new(v1693);
                 let mut v1695: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("each={ move || (*v1688)().into_iter().map(leptos::__reexports::send_wrapper::SendWrapper::new).collect::<Vec<_>>() }"); } LIT.with(|lit| lit.clone()) };
                 let mut v1696: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from("key={ move |x: &leptos::__reexports::send_wrapper::SendWrapper<_>| (*v1691)(x.clone()) }"); } LIT.with(|lit| lit.clone()) };
