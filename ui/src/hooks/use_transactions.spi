@@ -41,7 +41,7 @@ inl render (global_state : state.global_state) =
                 }
             request
         |> am'.from_vec
-        |> fun x => x : _ i32 _
+        |> fun x => x : array _
         |> leptos.log_format fun log => "use_transactions.render (3) / accounts_metadata new_arc_memo / result: " ++# log
 
 
@@ -57,8 +57,8 @@ inl render (global_state : state.global_state) =
             inl per_page = 25i32
             inl requests =
                 join
-                    am.init data.transactions_pages id
-                    |> fun (a x) => x
+                    arraym.init data.transactions_pages id
+                    |> fun (array x) => x
                     |> am'.to_vec
                 |> am'.vec_map' fun i =>
                     inl page = i + 1
@@ -126,7 +126,7 @@ inl render (global_state : state.global_state) =
                     | Ok (None) => true
                     | _ => false
                 |> am'.from_vec
-                |> fun x => length x = length (root |> am'.from_vec : _ i32 _)
+                |> fun x => length x = length (root |> am'.from_vec : array _)
 
             if loading
             then Ok None
@@ -140,9 +140,9 @@ inl render (global_state : state.global_state) =
                     |> resultm.map fun result =>
                         result
                         |> optionm.map fun result =>
-                            (a result.txns : _ i32 _)
+                            (array result.txns : array _)
                             |> iter.enumerate
-                            |> fun (a x : _ i32 _) => x
+                            |> fun (array x : array _) => x
                             |> am'.to_vec
                             |> am'.vec_map' fun i', x' => { account i = i |> convert.convert; txn = heap x' }
                 |> am'.vec_map' (resultm.map optionm'.box)
@@ -150,7 +150,7 @@ inl render (global_state : state.global_state) =
                 |> am'.vec_collect_option
                 |> resultm.map (am'.vec_sort_by_key fun { txn } => txn.block_timestamp)
                 |> resultm.map (am'.vec_reverse >> am'.from_vec)
-                |> resultm.map fun (a x : _ i32 _) => x |> Some
+                |> resultm.map fun (array x : array _) => x |> Some
             |> resultm.map optionm'.box
             |> resultm.box
             |> leptos.log_format fun log =>
@@ -198,7 +198,7 @@ inl render (global_state : state.global_state) =
                     |> am'.vec_collect_into
                     |> resultm.try'
                     |> am'.from_vec
-                    |> fun (a x : _ i32 _) => x
+                    |> fun (array x : array _) => x
                     |> Some
                     |> Ok
                 | Error error => Error error
@@ -214,7 +214,7 @@ inl render (global_state : state.global_state) =
         |> resultm.map optionm'.unbox
         |> function
             | Ok (Some x) => x
-            | _ => ;[]
+            | _ => ;[] |> am'.base
         |> am'.to_vec
         |> leptos.log_format fun log => "use_transactions.render (11) / rpc_requests' new_arc_memo / result: " ++# log
 

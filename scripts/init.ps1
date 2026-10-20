@@ -19,6 +19,8 @@ Set-Location $ScriptDir
 
 . ../../polyglot/scripts/core.ps1
 
+# TODO: SPIRAL-INDEPENDENT dice still reaches spiral through polyglot (deps/polyglot/deps/spiral, polyglot core.ps1);
+#     lab/SPIRAL-INDEPENDENT/rewrite-deps.ps1 moves 22 files of dice + alphabet to deps/spiral, Common.fs keeps polyglot
 EnsureSymbolicLink -Path "../deps/polyglot" -Target "../../polyglot"
 
 { pwsh ../../polyglot/scripts/init.ps1 -fast $($fast ?? '') } | Invoke-Block

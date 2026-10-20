@@ -114,6 +114,7 @@ inl generate_random_number
             proof |> sm'.into_bytes
             key |> sm'.into_bytes
         ]
+        |> am'.base
         |> am'.to_vec
         |> rust.concat
     inl hash_u8 = entropy |> near.keccak512
@@ -176,7 +177,7 @@ inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
 
 ///> rust -c
 test roll_within_bounds =
-    inl rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.to_vec
+    inl rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.base |> am'.to_vec
 
     rolls
     |> roll_within_bounds 2000
@@ -184,7 +185,7 @@ test roll_within_bounds =
 
 ///> rust -c
 test roll_within_bounds_2 =
-    inl rolls = ;[ 2; 2; 6; 4; 5 ] |> am'.to_vec
+    inl rolls = ;[ 2; 2; 6; 4; 5 ] |> am'.base |> am'.to_vec
 
     rolls
     |> roll_within_bounds 2000

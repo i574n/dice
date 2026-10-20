@@ -100,10 +100,10 @@ inl tr_head_render (transactions : array_base hooks.use_transactions.account_tra
             leptos.th [
                 $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
             ] fun () =>
-                (a transactions : _ i32 _)
-                |> am.exists' fun { txn } =>
-                    (a txn.logs : _ i32 _)
-                    |> am.exists' fun log =>
+                (array transactions : array _)
+                |> arraym.exists' fun { txn } =>
+                    (array txn.logs : array _)
+                    |> arraym.exists' fun log =>
                         (log |> sm'.from_std_string |> sm.length) > 0i32
                 |> function
                     | false => ""
@@ -224,7 +224,7 @@ inl tr_render ({ account txn } : hooks.use_transactions.account_transaction) =
                     |> am'.to_vec
                     |> am'.vec_map' sm'.from_std_string
                     |> am'.from_vec
-                    |> fun x => x : _ i32 _
+                    |> fun x => x : array _
                     |> seq.of_array
                     |> sm'.concat "\n"
                     |> sm'.replace "\\n" "\n"
@@ -448,7 +448,7 @@ inl render account (index : i64) (transaction : txn) : _ (_ leptos.div) =
                             |> am'.to_vec
                             |> am'.vec_map' sm'.from_std_string
                             |> am'.from_vec
-                            |> fun x => x : _ i32 _
+                            |> fun x => x : array _
                             |> seq.of_array
                             |> sm'.concat "\n"
                             |> sm'.replace "\\n" "\n"
