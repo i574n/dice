@@ -100,7 +100,10 @@ inl calculate_dice_count forall a {number} b {number}. (max : a) : b =
             n
         if p < max then
             if p > (limit.max : a) / 6
-            then failwith ("dice.calculate_dice_count / max: " ++# #?max ++# " is above the largest supported bound " ++# #?p)
+            then
+                failwith (
+                    "dice.calculate_dice_count / max: " ++# #?max ++# " is above the largest supported bound " ++# #?p
+                )
             else 루프 (n + 1) (p * 6)
         else return ()
     and inl 루프 forall t {number}. (n : t) (p : a) : t =
@@ -247,7 +250,8 @@ test roll_progressively_3 =
     |> _assert_eq 1678
 
 test roll_progressively_4 =
-    inl sequential_roll = create_sequential_roller [ 6u8; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]
+    inl sequential_roll =
+        create_sequential_roller [ 6u8; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]
 
     roll_progressively sequential_roll false 4738381338321616896u64
     |> _assert_eq 4738381338321616896u64
@@ -268,7 +272,9 @@ test roll_progressively_5 =
         |> listm'.group_by id
         |> listm.map (fun (k, v) => k, (listm.length v : i32))
         |> listm.fold (fun acc row => insert row acc) []
-        |> listm.fold (fun acc (k, v) => if acc = "" then #?k ++# " = " ++# #?v else acc ++# "; " ++# #?k ++# " = " ++# #?v) ""
+        |> listm.fold fun acc (k, v) =>
+                if acc = "" then #?k ++# " = " ++# #?v else acc ++# "; " ++# #?k ++# " = " ++# #?v
+            ""
         |> console.write_line
         0i32
 
@@ -290,7 +296,9 @@ test roll_progressively_6 =
         |> listm'.group_by id
         |> listm.map (fun (k, v) => k, (listm.length v : i32))
         |> listm.fold (fun acc row => insert row acc) []
-        |> listm.fold (fun acc (k, v) => if acc = "" then #?k ++# " = " ++# #?v else acc ++# "; " ++# #?k ++# " = " ++# #?v) ""
+        |> listm.fold fun acc (k, v) =>
+                if acc = "" then #?k ++# " = " ++# #?v else acc ++# "; " ++# #?k ++# " = " ++# #?v
+            ""
         |> console.write_line
         0i32
 

@@ -14,6 +14,10 @@ path = "src/lib.rs"
 name = "dice_ui_bin"
 path = "src/main.rs"
 
+[package.metadata.spiral]
+entry = "src/dice_ui.spi"
+output = "src/main.rs"
+
 [dependencies]
 chrono = { workspace = true }
 regex = { workspace = true }

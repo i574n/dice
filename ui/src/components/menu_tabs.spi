@@ -70,7 +70,8 @@ inl render tab =
                 $'"class=\\\"flex flex-1 border-t border-gray-200\\\""'
             ] fun () =>
                 leptos.nav [
-                    $'"class=\\\"-mb-px flex [flex-flow:wrap] [flex-grow:1] [flex-shrink:0] gap-[3px] [overflow-wrap:anywhere]\\\""'
+                    $'"class=\\\"-mb-px flex [flex-flow:wrap] [flex-grow:1] [flex-shrink:0] gap-[3px] \
+                        [overflow-wrap:anywhere]\\\""'
                     $'"aria-label=\\\"Tabs\\\""'
                 ] fun () =>
                     tabs ()

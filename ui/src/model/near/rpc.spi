@@ -160,10 +160,12 @@ inl format_error (error : _ rpc_error) =
 
 inl rpc_input_box ({ jsonrpc id method params } : rpc_input) : rpc_input' =
     inl params = params |> am'.base |> am'.to_vec
-    !\\((jsonrpc, id, method), $'"crate::model::near::rpc::RpcInput { jsonrpc: $0, id: $1, method: $2, params: !params }"')
+    !\\((jsonrpc, id, method), $'"crate::model::near::rpc::RpcInput { jsonrpc: $0, id: $1, method: $2, \
+        params: !params }"')
 
 inl error_cause_info_box ({ error_message requested_transaction_hash } : error_cause_info) : error_cause_info' =
-    !\($'"crate::model::near::rpc::ErrorCauseInfo { error_message: !error_message, requested_transaction_hash: !requested_transaction_hash }"')
+    !\($'"crate::model::near::rpc::ErrorCauseInfo { error_message: !error_message, \
+        requested_transaction_hash: !requested_transaction_hash }"')
 
 inl error_cause_box ({ name info } : error_cause) : error_cause' =
     inl info = info |> optionm'.map'' error_cause_info_box
@@ -171,10 +173,12 @@ inl error_cause_box ({ name info } : error_cause) : error_cause' =
 
 inl rpc_error_box ({ name cause code message data } : rpc_error) : rpc_error' =
     inl cause = cause |> error_cause_box
-    !\($'"crate::model::near::rpc::RpcError { name: !name, cause: !cause, code: !code, message: !message, data: !data }"')
+    !\($'"crate::model::near::rpc::RpcError { name: !name, cause: !cause, code: !code, message: !message, \
+        data: !data }"')
 
 inl transfer_detail_box ({ deposit args gas method_name } : transfer_detail) : transfer_detail' =
-    !\($'"crate::model::near::rpc::TransferDetail { deposit: !deposit, args: !args, gas: !gas, method_name: !method_name }"')
+    !\($'"crate::model::near::rpc::TransferDetail { deposit: !deposit, args: !args, gas: !gas, \
+        method_name: !method_name }"')
 
 inl gas_profile_box ({ cost cost_category gas_used } : gas_profile) : gas_profile' =
     !\($'"crate::model::near::rpc::GasProfile { cost: !cost, cost_category: !cost_category, gas_used: !gas_used }"')
@@ -183,10 +187,14 @@ inl metadata_box ({ gas_profile version } : metadata) : metadata' =
     inl gas_profile = gas_profile |> am'.to_vec
     !\($'"crate::model::near::rpc::Metadata { gas_profile: !gas_profile, version: !version }"')
 
-inl outcome_detail_box ({ executor_id gas_burnt logs metadata receipt_ids status tokens_burnt } : outcome_detail) : outcome_detail' =
+inl outcome_detail_box
+    ({ executor_id gas_burnt logs metadata receipt_ids status tokens_burnt } : outcome_detail)
+    : outcome_detail'
+    =
     inl logs = logs |> am'.to_vec
     inl receipt_ids = receipt_ids |> am'.to_vec
-    !\($'"crate::model::near::rpc::OutcomeDetail { executor_id: !executor_id, gas_burnt: !gas_burnt, logs: !logs, metadata: !metadata, receipt_ids: !receipt_ids, status: !status, tokens_burnt: !tokens_burnt }"')
+    !\($'"crate::model::near::rpc::OutcomeDetail { executor_id: !executor_id, gas_burnt: !gas_burnt, logs: !logs, \
+        metadata: !metadata, receipt_ids: !receipt_ids, status: !status, tokens_burnt: !tokens_burnt }"')
 
 inl proof_box ({ direction hash } : proof) : proof' =
     !\($'"crate::model::near::rpc::Proof { direction: !direction, hash: !hash }"')
@@ -194,13 +202,19 @@ inl proof_box ({ direction hash } : proof) : proof' =
 inl receipts_outcome_box ({ block_hash id outcome proof } : receipts_outcome) : receipts_outcome' =
     inl outcome = outcome |> outcome_detail_box
     inl proof = proof |> am'.to_vec |> am'.vec_map' proof_box |> optionm'.some'
-    !\($'"crate::model::near::rpc::ReceiptsOutcome { block_hash: !block_hash, id: !id, outcome: !outcome, proof: !proof }"')
+    !\($'"crate::model::near::rpc::ReceiptsOutcome { block_hash: !block_hash, id: !id, outcome: !outcome, \
+        proof: !proof }"')
 
-inl action_detail_box ({ actions gas_price input_data_ids output_data_receivers signer_id signer_public_key } : action_detail) : action_detail' =
+inl action_detail_box
+    ({ actions gas_price input_data_ids output_data_receivers signer_id signer_public_key } : action_detail)
+    : action_detail'
+    =
     inl actions = actions |> am'.to_vec
     inl input_data_ids = input_data_ids |> am'.to_vec
     inl output_data_receivers = output_data_receivers |> am'.to_vec
-    !\($'"crate::model::near::rpc::ActionDetail { actions: !actions, gas_price: !gas_price, input_data_ids: !input_data_ids, output_data_receivers: !output_data_receivers, signer_id: !signer_id, signer_public_key: !signer_public_key }"')
+    !\($'"crate::model::near::rpc::ActionDetail { actions: !actions, gas_price: !gas_price, \
+        input_data_ids: !input_data_ids, output_data_receivers: !output_data_receivers, signer_id: !signer_id, \
+        signer_public_key: !signer_public_key }"')
 
 inl receipt_detail_box ({ action } : receipt_detail) : receipt_detail' =
     inl action = action |> action_detail_box
@@ -208,7 +222,8 @@ inl receipt_detail_box ({ action } : receipt_detail) : receipt_detail' =
 
 inl receipt_box ({ predecessor_id receipt receipt_id receiver_id } : receipt) : receipt' =
     inl receipt = receipt |> receipt_detail_box
-    !\($'"crate::model::near::rpc::Receipt { predecessor_id: !predecessor_id, receipt: !receipt, receipt_id: !receipt_id, receiver_id: !receiver_id }"')
+    !\($'"crate::model::near::rpc::Receipt { predecessor_id: !predecessor_id, receipt: !receipt, \
+        receipt_id: !receipt_id, receiver_id: !receiver_id }"')
 
 inl transaction_status_box ({ receipts receipts_outcome } : transaction_status) : transaction_status' =
     inl receipts = receipts |> am'.to_vec
@@ -262,7 +277,11 @@ inl gas_profile_unbox (x : gas_profile') : gas_profile =
     { cost; cost_category; gas_used }
 
 inl metadata_unbox (x : metadata') : metadata =
-    inl gas_profile = !\\(x, $'"$0.gas_profile"') |> am'.vec_map' gas_profile_unbox |> am'.from_vec |> fun (array x : array _) => x
+    inl gas_profile =
+        !\\(x, $'"$0.gas_profile"')
+        |> am'.vec_map' gas_profile_unbox
+        |> am'.from_vec
+        |> fun (array x : array _) => x
     inl version = !\\(x, $'"$0.version"')
     { gas_profile; version }
 
@@ -292,7 +311,11 @@ inl receipts_outcome_unbox (x : receipts_outcome') : receipts_outcome =
     { block_hash id outcome proof }
 
 inl action_detail_unbox (x : action_detail') : action_detail =
-    inl actions = !\\(x, $'"$0.actions"') |> am'.vec_map' (mapm.map' transfer_detail_unbox) |> am'.from_vec |> fun (array x : array _) => x
+    inl actions =
+        !\\(x, $'"$0.actions"')
+        |> am'.vec_map' (mapm.map' transfer_detail_unbox)
+        |> am'.from_vec
+        |> fun (array x : array _) => x
     inl gas_price = !\\(x, $'"$0.gas_price"')
     inl input_data_ids = !\\(x, $'"$0.input_data_ids"') |> am'.from_vec |> fun (array x : array _) => x
     inl output_data_receivers = !\\(x, $'"$0.output_data_receivers"') |> am'.from_vec |> fun (array x : array _) => x
@@ -312,8 +335,16 @@ inl receipt_unbox (x : receipt') : receipt =
     { predecessor_id; receipt; receipt_id; receiver_id }
 
 inl transaction_status_unbox (x : transaction_status') : transaction_status =
-    inl receipts = !\\(x, $'"$0.receipts"') |> am'.vec_map' receipt_unbox |> am'.from_vec |> fun (array x : array _) => x
-    inl receipts_outcome = !\\(x, $'"$0.receipts_outcome"') |> am'.vec_map' receipts_outcome_unbox |> am'.from_vec |> fun (array x : array _) => x
+    inl receipts =
+        !\\(x, $'"$0.receipts"')
+        |> am'.vec_map' receipt_unbox
+        |> am'.from_vec
+        |> fun (array x : array _) => x
+    inl receipts_outcome =
+        !\\(x, $'"$0.receipts_outcome"')
+        |> am'.vec_map' receipts_outcome_unbox
+        |> am'.from_vec
+        |> fun (array x : array _) => x
     { receipts; receipts_outcome }
 
 inl rpc_response_unbox (x : rpc_response') : rpc_response =
