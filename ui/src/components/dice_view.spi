@@ -1,21 +1,21 @@
-open rust.rust_operators
-open leptos
-open sm'_operators
+:< rust.rust_operators
+:< leptos
+:< sm'_operators
 
-inl render () =
+:= render () =
     print_static "<dice_view.render>"
     leptos.log "dice_view.render (1)"
 
-    inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
+    := global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
-    inl { accounts_txns_requests txns rpc_responses } = hooks.use_transactions.render global_state
+    := { accounts_txns_requests txns rpc_responses } = hooks.use_transactions.render global_state
 
-    inl roll_action = leptos.new_arc_action fun (value : heap i32) =>
-        inl value_log = #?*value
+    := roll_action = leptos.new_arc_action \ (value : heap i32) =>
+        := value_log = #?*value
         leptos.log ("dice_view.render (2) / set_max_action / value: " ++# value_log)
-        fun () =>
-            inl url = "https://rpc.mainnet.near.org"
-            inl body =
+        \ () =>
+            := url = "https://rpc.mainnet.near.org"
+            := body =
                 {
                     jsonrpc = "2.0" |> sm'.to_std_string
                     id = "dontcare" |> sm'.to_std_string
@@ -27,7 +27,7 @@ inl render () =
                 }
                 |> model.near.rpc.rpc_input_box
 
-            inl result : _ _ sm'.std_string =
+            := result : _ _ sm'.std_string =
                 url
                 |> networking.new_request_post
                 |> networking.request_json body
@@ -42,9 +42,10 @@ inl render () =
                 |> Some
                 |> Ok
                 |> resultm.box
-                |> leptos.log_format fun log => "dice_view.render (x) / roll_action new_arc_action / result1 / result: " ++# log
+                |> leptos.log_format \ log =>
+                    "dice_view.render (x) / roll_action new_arc_action / result1 / result: " ++# log
 
-            match result |> resultm.unbox with
+            ?= result |> resultm.unbox ?|
             | Ok (Some value) =>
                 value
                 |> sm'.from_std_string
@@ -54,11 +55,11 @@ inl render () =
                 |> resultm.map Some
             | _ => Ok None
             |> resultm.box
-            |> leptos.log_format fun log => "dice_view.render (x) / roll_action new_arc_action / result2 / result: " ++# log
+            |> leptos.log_format \ log => "dice_view.render (x) / roll_action new_arc_action / result2 / result: " ++# log
         |> async.new_future_move
 
-    inl roll =
-        fun () =>
+    := roll =
+        \ () =>
             roll_action
             |> leptos.arc_action_value_get
             |> optionm'.map'' resultm.unbox
@@ -66,80 +67,80 @@ inl render () =
             |> resultm.flatten_option
             |> resultm.map optionm'.box
             |> resultm.box
-            |> leptos.log_format fun log => "dice_view.render (x) / roll new_arc_memo / result: " ++# log
+            |> leptos.log_format \ log => "dice_view.render (x) / roll new_arc_memo / result: " ++# log
         |> leptos.new_arc_memo
 
-    inl error_message =
-        fun () =>
-            match roll |> leptos.signal_get |> resultm.unbox |> resultm.map optionm'.unbox with
+    := error_message =
+        \ () =>
+            ?= roll |> leptos.signal_get |> resultm.unbox |> resultm.map optionm'.unbox ?|
             | Ok (Some { error }) => error |> model.near.rpc.format_error
             | _ => None
             |> optionm'.box
-            |> leptos.log_format fun log => "dice_view.render (x) / error_message new_arc_memo / result: " ++# log
+            |> leptos.log_format \ log => "dice_view.render (x) / error_message new_arc_memo / result: " ++# log
         |> leptos.new_arc_memo
 
-    inl account =
-        fun () =>
+    := account =
+        \ () =>
             leptos.signal_get_untracked global_state.core_state .data
             |> leptos.signal_get
-            |> fun data =>
+            |> \ data =>
                 data.account
                 |> optionm'.unbox
                 |> optionm.map sm'.from_std_string
         |> leptos.new_arc_memo
 
-    inl accounts =
-        fun () =>
+    := accounts =
+        \ () =>
             leptos.signal_get_untracked global_state.core_state .data
             |> leptos.signal_get
-            |> fun data =>
+            |> \ data =>
                 data.accounts
                 |> am'.vec_map' from_pair
                 |> am'.vec_filter fst
                 |> am'.vec_map' snd
-                |> am'.vec_mapi fun (i : i32) account =>
+                |> am'.vec_mapi \ (i : i32) account =>
                     new_pair
                         i
                         (leptos.create_signal account)
         |> leptos.new_arc_memo
 
-    inl accounts_data =
-        fun () =>
+    := accounts_data =
+        \ () =>
             accounts
             |> leptos.signal_get
             |> am'.vec_map' from_pair
-            |> am'.vec_map' fun i, x =>
+            |> am'.vec_map' \ i, x =>
                 i, x |> fst
         |> leptos.new_arc_memo
 
     :>[
         ui.accordion.render
-            fun props => { props with
-                title = fun () => "Roll"
-                summary_class = fun () => "py-[7px]"
+            \ props => { props ?|
+                title = \ () => "Roll"
+                summary_class = \ () => "py-[7px]"
             }
-            fun () => :>[
+            \ () => :>[
                 leptos.div [
                     $'"class=\\\"flex flex-col p-[10px] gap-[11px]\\\""'
-                ] fun () =>
+                ] \ () =>
                     :>[
                         leptos.div [
                             $'"class=\\\"flex [flex-direction:column] [gap:2px] [align-items:flex-start]\\\""'
-                        ] fun () =>
+                        ] \ () =>
                             :>[
                                 "Account" |> leptos.text_view
 
-                                ui.dropdown.render fun props => { props with
+                                ui.dropdown.render \ props => { props ?|
                                     data = accounts_data |> Some |> optionm'.box
                                     item = account |> Some |> optionm'.box
-                                    select = fun (i, value) =>
-                                        inl data =
+                                    select = \ (i, value) =>
+                                        := data =
                                             leptos.signal_get_untracked global_state.core_state .data
                                             |> leptos.signal_get_untracked
-                                            |> fun data => !data
+                                            |> \ data => !data
 
                                         leptos.signal_get_untracked global_state.core_state .data
-                                        |> leptos.signal_set (heap { data with
+                                        |> leptos.signal_set (heap { data ?|
                                             account = value |> sm'.to_std_string |> Some |> optionm'.box
                                         })
                                 }
@@ -149,29 +150,29 @@ inl render () =
 
                         leptos.div [
                             $'"class=\\\"flex [flex-direction:column] [gap:2px] [align-items:flex-start]\\\""'
-                        ] fun () =>
+                        ] \ () =>
                             :>[
                                 "Max" |> leptos.text_view
 
                                 ui.text_input.render
-                                    fun () => ""
+                                    \ () => ""
                                     [
                                     ]
-                                    fun () =>
+                                    \ () =>
                                         leptos.signal_get_untracked global_state.core_state .data
                                         |> leptos.signal_get_untracked
-                                        |> fun x => x.max
+                                        |> \ x => x.max
 
-                                    fun value =>
-                                        inl data =
+                                    \ value =>
+                                        := data =
                                             leptos.signal_get_untracked global_state.core_state .data
                                             |> leptos.signal_get_untracked
-                                            |> fun data => !data
+                                            |> \ data => !data
 
                                         leptos.signal_get_untracked global_state.core_state .data
-                                        |> leptos.signal_set (heap { data with
+                                        |> leptos.signal_set (heap { data ?|
                                             max =
-                                                match value |> sm'.obj_to_string with
+                                                ?= value |> sm'.obj_to_string ?|
                                                 | "" => 1
                                                 | x => x |> convert.i32
                                         })
@@ -181,22 +182,22 @@ inl render () =
 
                         leptos.div [
                             $'"class=\\\"flex\\\""'
-                        ] fun () =>
+                        ] \ () =>
                             :>[
                                 ui.loading_button.render
                                     "Roll"
                                     (roll_action |> leptos.arc_action_pending_fn)
-                                    fun () =>
-                                        inl max =
+                                    \ () =>
+                                        := max =
                                             leptos.signal_get_untracked global_state.core_state .data
                                             |> leptos.signal_get_untracked
-                                            |> fun x => heap x.max
+                                            |> \ x => heap x.max
 
                                         roll_action |> leptos.arc_action_dispatch max
                                 |> leptos.element_to_view
 
-                                leptos.reactive_view fun () =>
-                                    match error_message |> leptos.signal_get |> optionm'.unbox with
+                                leptos.reactive_view \ () =>
+                                    ?= error_message |> leptos.signal_get |> optionm'.unbox ?|
                                     | Some error_message =>
                                         error_message
                                         |> ui.error_label.render
@@ -209,13 +210,13 @@ inl render () =
         |> leptos.element_to_view
 
         ui.accordion.render
-            fun props => { props with
-                title = fun () => "History"
-                summary_class = fun () => "py-[7px]"
+            \ props => { props ?|
+                title = \ () => "History"
+                summary_class = \ () => "py-[7px]"
             }
-            fun () => :>[
-                leptos.reactive_view fun () =>
-                    match accounts_txns_requests |> leptos.signal_get |> am'.from_vec with
+            \ () => :>[
+                leptos.reactive_view \ () =>
+                    ?= accounts_txns_requests |> leptos.signal_get |> am'.from_vec ?|
                     | (array ;[] : array _) =>
                         "No account selected"
                         |> ui.error_label.render
@@ -225,17 +226,17 @@ inl render () =
                         |> leptos.signal_get
                         |> resultm.unbox
                         |> resultm.map optionm'.unbox
-                        |> function
+                        |> \|
                             | Ok (Some transactions) =>
-                                inl transactions =
+                                := transactions =
                                     transactions
                                     |> am'.to_vec
-                                    |> am'.vec_filter function
+                                    |> am'.vec_filter \|
                                         | { account txn } =>
-                                            inl is_call =
+                                            := is_call =
                                                 txn.actions
                                                 |> am'.to_vec
-                                                |> am'.vec_map' fun transaction =>
+                                                |> am'.vec_map' \ transaction =>
                                                     {
                                                         action =
                                                             transaction.action
@@ -245,78 +246,85 @@ inl render () =
                                                             |> optionm'.unbox
                                                             |> optionm.map sm'.from_std_string
                                                     }
-                                                |> am'.vec_filter fun transaction =>
+                                                |> am'.vec_filter \ transaction =>
                                                     {
                                                         action = "FUNCTION_CALL"
                                                         method = Some "generate_random_number"
                                                     } = transaction
                                                 |> am'.from_vec
-                                                |> fun (x : array _) => length x > 0
-                                            inl is_receiver =
+                                                |> \ (x : array _) => length x > 0
+                                            := is_receiver =
                                                 account = (txn.receiver_account_id |> sm'.from_std_string)
                                             is_call && is_receiver
-                                        | _ => false
+                                        | _ => !-
 
                                 ui.table.render
                                     (
                                         leptos.tr [
 
-                                        ] fun () =>
+                                        ] \ () =>
                                             :>[
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                ] fun () =>
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
+                                                        text-gray-900 dark:text-white\\\""'
+                                                ] \ () =>
                                                     "Block Timestamp" |> leptos.text_fragment
                                                 |> leptos.element_to_view
 
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                ] fun () =>
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
+                                                        text-gray-900 dark:text-white\\\""'
+                                                ] \ () =>
                                                     "Predecessor" |> leptos.text_fragment
                                                 |> leptos.element_to_view
 
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                ] fun () =>
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
+                                                        text-gray-900 dark:text-white\\\""'
+                                                ] \ () =>
                                                     "Receiver" |> leptos.text_fragment
                                                 |> leptos.element_to_view
 
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                ] fun () =>
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
+                                                        text-gray-900 dark:text-white\\\""'
+                                                ] \ () =>
                                                     "Fee" |> leptos.text_fragment
                                                 |> leptos.element_to_view
 
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                ] fun () =>
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
+                                                        text-gray-900 dark:text-white\\\""'
+                                                ] \ () =>
                                                     "Result" |> leptos.text_fragment
                                                 |> leptos.element_to_view
 
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
-                                                ] fun () =>
+                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
+                                                        text-gray-900 dark:text-white\\\""'
+                                                ] \ () =>
                                                     "Status" |> leptos.text_fragment
                                                 |> leptos.element_to_view
                                             ]
                                         |> leptos.element_to_fragment
                                     )
                                     (
-                                        inl rpc_responses =
+                                        := rpc_responses =
                                             rpc_responses
                                             |> leptos.signal_get
                                         transactions
-                                        |> am'.vec_map fun { txn i } =>
-                                            inl rpc_response =
+                                        |> am'.vec_map \ { txn i } =>
+                                            := rpc_response =
                                                 rpc_responses |> am'.from_vec |> am'.index (i |> convert.i32)
 
                                             leptos.tr [
                                                 $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
-                                            ] fun () =>
+                                            ] \ () =>
                                                 :>[
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
+                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
+                                                            dark:text-gray-500\\\""'
+                                                    ] \ () =>
                                                         txn.block_timestamp
                                                         |> sm'.from_std_string
                                                         |> convert.i64
@@ -326,42 +334,46 @@ inl render () =
                                                     |> leptos.element_to_view
 
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
+                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
+                                                            dark:text-gray-500\\\""'
+                                                    ] \ () =>
                                                         txn.predecessor_account_id
                                                         |> to_string
                                                         |> leptos.text_fragment
                                                     |> leptos.element_to_view
 
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
+                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
+                                                            dark:text-gray-500\\\""'
+                                                    ] \ () =>
                                                         txn.receiver_account_id
                                                         |> to_string
                                                         |> leptos.text_fragment
                                                     |> leptos.element_to_view
 
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
+                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
+                                                            dark:text-gray-500\\\""'
+                                                    ] \ () =>
                                                         txn.outcomes_agg.transaction_fee
                                                         |> sm'.obj_to_string
                                                         |> leptos.text_fragment
                                                     |> leptos.element_to_view
 
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
-                                                        match txn.logs with
+                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
+                                                            dark:text-gray-500\\\""'
+                                                    ] \ () =>
+                                                        ?= txn.logs ?|
                                                         | ;[] => "" |> leptos.text_fragment
                                                         | _ =>
                                                             ((array txn.logs : array _), None)
-                                                            ||> arraym.foldBack fun x acc =>
-                                                                inl logs =
+                                                            ||> arraym.foldBack \ x acc =>
+                                                                := logs =
                                                                     x
                                                                     |> sm'.from_std_string
                                                                     |> sm'.split " / result: "
-                                                                match acc, logs with
+                                                                ?= acc, logs ?|
                                                                 | None, ;[ _; result ] => Some result
                                                                 | _ => acc
                                                             |> optionm'.default_value "?"
@@ -369,18 +381,19 @@ inl render () =
                                                     |> leptos.element_to_view
 
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
-                                                    ] fun () =>
-                                                        if txn.outcomes.status
-                                                        then "Ok"
-                                                        else "Outcome Error"
-                                                        |> fun s =>
+                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
+                                                            dark:text-gray-500\\\""'
+                                                    ] \ () =>
+                                                        ? txn.outcomes.status
+                                                        ?> "Ok"
+                                                        |: "Outcome Error"
+                                                        |> \ s =>
                                                             rpc_response
                                                             |> resultm.unbox
                                                             |> resultm.map optionm'.unbox
-                                                            |> function
-                                                                | Ok (Some ({ error } as rpc_response)) =>
-                                                                    match error |> optionm'.unbox with
+                                                            |> \|
+                                                                | Ok (Some ({ error } &= rpc_response)) =>
+                                                                    ?= error |> optionm'.unbox ?|
                                                                     | Some _ =>
                                                                         error
                                                                         |> model.near.rpc.format_error
@@ -397,18 +410,18 @@ inl render () =
                                                                 | rpc_response =>
                                                                     rpc_response
                                                                     |> sm'.format_ellipsis
-                                                                    |> fun rpc_response_log =>
+                                                                    |> \ rpc_response_log =>
                                                                         "RPC Response: " ++# rpc_response_log
                                                                     |> Error
-                                                                |> function
+                                                                |> \|
                                                                     | Ok rpc_response =>
                                                                         rpc_response
                                                                         |> sm'.format_ellipsis
-                                                                        |> fun rpc_response_log =>
+                                                                        |> \ rpc_response_log =>
                                                                             "RPC Response: " ++# rpc_response_log
                                                                     | Error error =>
                                                                         "Error: " ++# error
-                                                            |> fun (rpc_response_log : string) =>
+                                                            |> \ (rpc_response_log : string) =>
                                                                 s ++# " / " ++# rpc_response_log
                                                         |> leptos.text_fragment
                                                     |> leptos.element_to_view

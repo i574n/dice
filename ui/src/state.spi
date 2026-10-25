@@ -1,13 +1,13 @@
-open rust.rust_operators
+:< rust.rust_operators
 
 
-union view_type =
+:| view_type =
     | Details
     | Table
 
-type account = sm'.std_string
+:== account = sm'.std_string
 
-type state_data =
+:== state_data =
     heap {
         accounts : am'.vec (pair bool account)
         account : optionm'.option' account
@@ -16,4 +16,4 @@ type state_data =
         transactions_view_type : view_type
     }
 
-type global_state = state_core.global_state state_data
+:== global_state = state_core.global_state state_data

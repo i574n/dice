@@ -1,17 +1,17 @@
 /// # dice_contract
 ///- --package ../dice
 
-open rust
-open rust.rust_operators
-open sm'_operators
+:< rust
+:< rust.rust_operators
+:< sm'_operators
 
 test dice_contract static =
-    open testing
+    :< testing
 
 /// ## dice_contract
 
 /// ### state
-type state =
+:== state =
     {
         version : u32
         seeds : near.vector u8
@@ -23,10 +23,10 @@ test state =
 
 ///> rust -c
 test state_2 =
-    trace Verbose (fun () => "") id
+    trace Verbose (\ () => "") id
 
 /// ### new
-inl new () : state =
+:= new () : state =
     {
         version = 2
         seeds = "seeds" |> sm'.byte_slice |> near.new_vector
@@ -34,47 +34,47 @@ inl new () : state =
 
 ///> rust -c
 test new =
-    inl state = new ()
-    trace Verbose (fun () => "dice_contract") fun () => { state = #?*state }
-    trace Verbose (fun () => "") id
+    := state = new ()
+    trace Verbose (\ () => "dice_contract") \ () => { state = #?*state }
+    trace Verbose (\ () => "") id
 
 /// ### max_seeds
-inl max_seeds () : convert.unativeint =
+:= max_seeds () : convert.unativeint =
     100i32 |> convert.convert
 
 /// ### contribute_seed
-inl contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.vec u8) : () =
+:= contribute_seed (seeds : rust.ref (rust.mut' (near.vector u8))) (seed : am'.vec u8) : () =
     seeds |> near.vector_extend seed
-    inl seed_excess_len =
-        (seeds |> rust.len |> fun x => x : u32 |> convert.i32) - (max_seeds () |> convert.i32)
-    if seed_excess_len > 0 then
-        inl seed_excess : am'.vec u8 =
+    := seed_excess_len =
+        (seeds |> rust.len |> \ x => x : u32 |> convert.i32) - (max_seeds () |> convert.i32)
+    ? seed_excess_len > 0 ?>
+        := seed_excess : am'.vec u8 =
             !\\(seed_excess_len, $'"!seeds.drain(0..$0 as u32).collect::<Vec<_>>()"')
         trace Debug
-            fun () => "dice_contract.contribute_seed"
-            fun () => { seed_excess_len seed_excess = #?*seed_excess }
-    trace Debug (fun () => "") (join id)
+            \ () => "dice_contract.contribute_seed"
+            \ () => { seed_excess_len seed_excess = #?*seed_excess }
+    trace Debug (\ () => "") (~~ id)
 
 ///> rust -c
 test contribute_seed =
-    inl replicate n =
-        let rec 루프 i acc =
-            if i > n
-            then acc
-            else
-                inl i' = i % 10
-                inl i' =
-                    if i' = 0
-                    then i % limit.max
-                    else i'
+    := replicate n =
+        :~ ^ 루프 i acc =
+            ? i > n
+            ?> acc
+            |:
+                := i' = i % 10
+                := i' =
+                    ? i' = 0
+                    ?> i % limit.max
+                    |: i'
                 루프 (i + 1) (i' :: acc)
         루프 1 []
         |> listm.rev
         |> listm'.box
         |> listm'.to_array'
 
-    inl max_seeds : u32 = max_seeds () |> convert.convert
-    inl seeds = "" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut
+    := max_seeds : u32 = max_seeds () |> convert.convert
+    := seeds = "" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut
 
     conv max_seeds * 1.2f64
     |> replicate
@@ -87,21 +87,21 @@ test contribute_seed =
     |> _assert_eq max_seeds
 
 /// ### generate_random_number
-inl generate_random_number
+:= generate_random_number
     (seeds : rust.ref (rust.mut' (near.vector u8)))
     (key : sm'.std_string)
     (proof : sm'.std_string)
     (max : u64)
     : u64
     =
-    inl seed = near.random_seed ()
-    inl epoch_height = near.epoch_height ()
-    inl block_height = near.block_height ()
-    inl block_timestamp = near.block_timestamp ()
-    inl account_balance = near.account_balance ()
-    inl signer_account_id = near.signer_account_id ()
-    inl predecessor_account_id = near.predecessor_account_id ()
-    inl entropy =
+    := seed = near.random_seed ()
+    := epoch_height = near.epoch_height ()
+    := block_height = near.block_height ()
+    := block_timestamp = near.block_timestamp ()
+    := account_balance = near.account_balance ()
+    := signer_account_id = near.signer_account_id ()
+    := predecessor_account_id = near.predecessor_account_id ()
+    := entropy =
         ;[
             seed
             seeds |> rust.reref |> near.vector_to_vec
@@ -117,9 +117,9 @@ inl generate_random_number
         |> am'.base
         |> am'.to_vec
         |> rust.concat
-    inl hash_u8 = entropy |> near.keccak512
+    := hash_u8 = entropy |> near.keccak512
     hash_u8 |> contribute_seed seeds
-    inl rolls_list =
+    := rolls_list =
         hash_u8
         |> am'.from_vec_base
         |> am'.to_list_base'
@@ -128,8 +128,8 @@ inl generate_random_number
         |> lib.dice.rotate_numbers 6
         |> stream.to_list
     trace Debug
-        fun () => "dice_contract.generate_random_number"
-        fun () => {
+        \ () => "dice_contract.generate_random_number"
+        \ () => {
             max
             key
             proof
@@ -146,9 +146,9 @@ inl generate_random_number
             hash_u8 = #?*hash_u8
             rolls = rolls_list |> listm'.box |> listm'.to_array' |> am'.to_vec |> sm'.format_debug
         }
-    inl sequential_roll = rolls_list |> lib.dice.create_sequential_roller
-    inl result = lib.dice.roll_progressively sequential_roll true max
-    trace Debug (fun () => "") (join id)
+    := sequential_roll = rolls_list |> lib.dice.create_sequential_roller
+    := result = lib.dice.roll_progressively sequential_roll !+ max
+    trace Debug (\ () => "") (~~ id)
     result
 
 ///> rust -cd near-token
@@ -161,8 +161,8 @@ test generate_random_number =
     |> _assert_gt 0
 
 /// ### roll_within_bounds
-inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
-    inl result =
+:= roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
+    := result =
         rolls
         |> am'.from_vec_base
         |> am'.to_list_base'
@@ -170,14 +170,14 @@ inl roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
         |> lib.dice.roll_within_bounds max
         |> optionm'.box
     trace Debug
-        fun () => "dice_contract.roll_within_bounds"
-        fun () => { max rolls = #?*rolls; result = #?*result }
-    trace Debug (fun () => "") (join id)
+        \ () => "dice_contract.roll_within_bounds"
+        \ () => { max rolls = #?*rolls; result = #?*result }
+    trace Debug (\ () => "") (~~ id)
     result
 
 ///> rust -c
 test roll_within_bounds =
-    inl rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.base |> am'.to_vec
+    := rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.base |> am'.to_vec
 
     rolls
     |> roll_within_bounds 2000
@@ -185,7 +185,7 @@ test roll_within_bounds =
 
 ///> rust -c
 test roll_within_bounds_2 =
-    inl rolls = ;[ 2; 2; 6; 4; 5 ] |> am'.base |> am'.to_vec
+    := rolls = ;[ 2; 2; 6; 4; 5 ] |> am'.base |> am'.to_vec
 
     rolls
     |> roll_within_bounds 2000
@@ -194,7 +194,7 @@ test roll_within_bounds_2 =
 /// ### main
 ///> _
 
-inl main_native () : () =
+:= main_native () : () =
     global """
         #[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]
         pub struct OldState {
@@ -243,14 +243,41 @@ inl main_native () : () =
             }
         }
         """
-    inl quiet () : () = set_trace_level Info
-    !!!!Export("dice_contract_new", ((fun () => inl () = quiet () in inl x = new () in x.version, x.seeds) : () -> u32 * near.vector u8))
-    !!!!Export("dice_contract_contribute_seed", ((fun (seeds, seed) => inl () = quiet () in contribute_seed seeds seed) : rust.ref (rust.mut' (near.vector u8)) * am'.vec u8 -> ()))
-    !!!!Export("dice_contract_generate_random_number", ((fun (seeds, key, proof, max) => inl () = quiet () in generate_random_number seeds key proof max) : rust.ref (rust.mut' (near.vector u8)) * sm'.std_string * sm'.std_string * u64 -> u64))
-    !!!!Export("dice_contract_roll_within_bounds", ((fun (max, rolls) => inl () = quiet () in roll_within_bounds max rolls) : u64 * am'.vec u8 -> optionm'.option' u64))
+    := quiet () : () = set_trace_level Info
+    !!!!Export(
+        "dice_contract_new",
+        ((\ () => := () = quiet () ;; := x = new () ;; x.version, x.seeds) : () -> u32 * near.vector u8)
+    )
+    !!!!Export(
+        "dice_contract_contribute_seed",
+        (
+            \ (seeds, seed) =>
+                := () = quiet ()
+                contribute_seed seeds seed
+            : rust.ref (rust.mut' (near.vector u8)) * am'.vec u8 -> ()
+        )
+    )
+    !!!!Export(
+        "dice_contract_generate_random_number",
+        (
+            \ (seeds, key, proof, max) =>
+                := () = quiet ()
+                generate_random_number seeds key proof max
+            : rust.ref (rust.mut' (near.vector u8)) * sm'.std_string * sm'.std_string * u64 -> u64
+        )
+    )
+    !!!!Export(
+        "dice_contract_roll_within_bounds",
+        (
+            \ (max, rolls) =>
+                := () = quiet ()
+                roll_within_bounds max rolls
+            : u64 * am'.vec u8 -> optionm'.option' u64
+        )
+    )
 
 
-inl main () =
-    if is_rust ()
-    then main_native ()
-    else ()
+:= main () =
+    ? is_rust ()
+    ?> main_native ()
+    |: ()

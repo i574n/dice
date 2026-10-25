@@ -1,48 +1,48 @@
-open rust.rust_operators
+:< rust.rust_operators
 
 
-nominal block' = $'crate::model::near::nearblocks::Block'
+:! block' = $'crate::model::near::nearblocks::Block'
 
-nominal action' = $'crate::model::near::nearblocks::Action'
+:! action' = $'crate::model::near::nearblocks::Action'
 
-nominal actions_agg' = $'crate::model::near::nearblocks::ActionsAgg'
+:! actions_agg' = $'crate::model::near::nearblocks::ActionsAgg'
 
-nominal outcomes' = $'crate::model::near::nearblocks::Outcomes'
+:! outcomes' = $'crate::model::near::nearblocks::Outcomes'
 
-nominal outcomes_agg' = $'crate::model::near::nearblocks::OutcomesAgg'
+:! outcomes_agg' = $'crate::model::near::nearblocks::OutcomesAgg'
 
-nominal txn' = $'crate::model::near::nearblocks::Txn'
+:! txn' = $'crate::model::near::nearblocks::Txn'
 
-nominal root' = $'crate::model::near::nearblocks::Root'
+:! root' = $'crate::model::near::nearblocks::Root'
 
 
-type block =
+:== block =
     {
         block_height : u32
     }
 
-type action =
+:== action =
     {
         action : sm'.std_string
         method : optionm'.option' sm'.std_string
     }
 
-type actions_agg =
+:== actions_agg =
     {
         deposit : f64
     }
 
-type outcomes =
+:== outcomes =
     {
         status : bool
     }
 
-type outcomes_agg =
+:== outcomes_agg =
     {
         transaction_fee : f64
     }
 
-type txn =
+:== txn =
     {
         receipt_id : sm'.std_string
         predecessor_account_id : sm'.std_string
@@ -58,85 +58,85 @@ type txn =
         logs : array_base sm'.std_string
     }
 
-type root =
+:== root =
     {
         txns : array_base txn
     }
 
-inl block_box ({ block_height } : block) : block' =
+:= block_box ({ block_height } : block) : block' =
     !\($'"crate::model::near::nearblocks::Block { block_height: !block_height }"')
 
-inl action_box ({ action method } : action) : action' =
+:= action_box ({ action method } : action) : action' =
     !\($'"crate::model::near::nearblocks::Action { action: !action, method: !method }"')
 
-inl actions_agg_box ({ deposit } : actions_agg) : actions_agg' =
+:= actions_agg_box ({ deposit } : actions_agg) : actions_agg' =
     !\($'"crate::model::near::nearblocks::ActionsAgg { deposit: !deposit }"')
 
-inl outcomes_box ({ status } : outcomes) : outcomes' =
+:= outcomes_box ({ status } : outcomes) : outcomes' =
     !\($'"crate::model::near::nearblocks::Outcomes { status: !status }"')
 
-inl outcomes_agg_box ({ transaction_fee } : outcomes_agg) : outcomes_agg' =
+:= outcomes_agg_box ({ transaction_fee } : outcomes_agg) : outcomes_agg' =
     !\($'"crate::model::near::nearblocks::OutcomesAgg { transaction_fee: !transaction_fee }"')
 
-inl txn_box
+:= txn_box
     ({ receipt_id predecessor_account_id receiver_account_id transaction_hash included_in_block_hash block_timestamp block actions actions_agg outcomes outcomes_agg logs } : txn)
     : txn'
     =
-    inl block = block |> block_box
-    inl actions = actions |> am'.map_base action_box
-    inl actions_agg = actions_agg |> actions_agg_box
-    inl outcomes = outcomes |> outcomes_box
-    inl outcomes_agg = outcomes_agg |> outcomes_agg_box
-    inl logs = logs |> am'.to_vec |> optionm'.some'
+    := block = block |> block_box
+    := actions = actions |> am'.map_base action_box
+    := actions_agg = actions_agg |> actions_agg_box
+    := outcomes = outcomes |> outcomes_box
+    := outcomes_agg = outcomes_agg |> outcomes_agg_box
+    := logs = logs |> am'.to_vec |> optionm'.some'
     !\($'"crate::model::near::nearblocks::Txn { receipt_id: !receipt_id, predecessor_account_id: \
         !predecessor_account_id, receiver_account_id: !receiver_account_id, transaction_hash: !transaction_hash, \
         included_in_block_hash: !included_in_block_hash, block_timestamp: !block_timestamp, block: !block, actions: \
         !actions, actions_agg: !actions_agg, outcomes: !outcomes, outcomes_agg: !outcomes_agg, logs: !logs }"')
 
-inl root_box ({ txns } : root) : root' =
-    inl txns = txns |> am'.map_base txn_box
+:= root_box ({ txns } : root) : root' =
+    := txns = txns |> am'.map_base txn_box
     !\($'"crate::model::near::nearblocks::Root { txns: !txns }"')
 
-inl block_unbox (x : block') : block =
-    inl block_height = !\\(x, $'"$0.block_height"')
+:= block_unbox (x : block') : block =
+    := block_height = !\\(x, $'"$0.block_height"')
     { block_height }
 
-inl action_unbox (x : action') : action =
-    inl action = !\\(x, $'"$0.action"')
-    inl method = !\\(x, $'"$0.method"')
+:= action_unbox (x : action') : action =
+    := action = !\\(x, $'"$0.action"')
+    := method = !\\(x, $'"$0.method"')
     { action; method }
 
-inl actions_agg_unbox (x : actions_agg') : actions_agg =
-    inl deposit = !\\(x, $'"$0.deposit"')
+:= actions_agg_unbox (x : actions_agg') : actions_agg =
+    := deposit = !\\(x, $'"$0.deposit"')
     { deposit }
 
-inl outcomes_unbox (x : outcomes') : outcomes =
-    inl status = !\\(x, $'"$0.status"')
+:= outcomes_unbox (x : outcomes') : outcomes =
+    := status = !\\(x, $'"$0.status"')
     { status }
 
-inl outcomes_agg_unbox (x : outcomes_agg') : outcomes_agg =
-    inl transaction_fee = !\\(x, $'"$0.transaction_fee"')
+:= outcomes_agg_unbox (x : outcomes_agg') : outcomes_agg =
+    := transaction_fee = !\\(x, $'"$0.transaction_fee"')
     { transaction_fee }
 
-inl txn_unbox (x : txn') : txn =
-    inl receipt_id = !\\(x, $'"$0.receipt_id"')
-    inl predecessor_account_id = !\\(x, $'"$0.predecessor_account_id"')
-    inl receiver_account_id = !\\(x, $'"$0.receiver_account_id"')
-    inl transaction_hash = !\\(x, $'"$0.transaction_hash"')
-    inl included_in_block_hash = !\\(x, $'"$0.included_in_block_hash"')
-    inl block_timestamp = !\\(x, $'"$0.block_timestamp"')
-    inl block = !\\(x, $'"$0.block"') |> block_unbox
-    inl actions =
+:= txn_unbox (x : txn') : txn =
+    := receipt_id = !\\(x, $'"$0.receipt_id"')
+    := predecessor_account_id = !\\(x, $'"$0.predecessor_account_id"')
+    := receiver_account_id = !\\(x, $'"$0.receiver_account_id"')
+    := transaction_hash = !\\(x, $'"$0.transaction_hash"')
+    := included_in_block_hash = !\\(x, $'"$0.included_in_block_hash"')
+    := block_timestamp = !\\(x, $'"$0.block_timestamp"')
+    := block = !\\(x, $'"$0.block"') |> block_unbox
+    := actions =
         !\\(x, $'"$0.actions"')
         |> am'.vec_map' action_unbox
         |> am'.from_vec
-        |> fun (array x : array _) => join x
-    inl actions_agg = !\\(x, $'"$0.actions_agg"') |> actions_agg_unbox
-    inl outcomes = !\\(x, $'"$0.outcomes"') |> outcomes_unbox
-    inl outcomes_agg = !\\(x, $'"$0.outcomes_agg"') |> outcomes_agg_unbox
-    inl logs =
+        |> \ (array x : array _) => ~~ x
+    := actions_agg = !\\(x, $'"$0.actions_agg"') |> actions_agg_unbox
+    := outcomes = !\\(x, $'"$0.outcomes"') |> outcomes_unbox
+    := outcomes_agg = !\\(x, $'"$0.outcomes_agg"') |> outcomes_agg_unbox
+    := logs =
         !\\(x, $'"$0.logs"')
-        |> optionm'.map (am'.from_vec >> fun (array x : array _) => x)
+        |> optionm'.map (am'.from_vec >> \ (array x : array _) => x)
         |> optionm'.default_value' (;[] |> am'.base)
     {
         receipt_id
@@ -153,10 +153,10 @@ inl txn_unbox (x : txn') : txn =
         logs
     }
 
-inl root_unbox (x : root') : root =
-    inl txns =
+:= root_unbox (x : root') : root =
+    := txns =
         !\\(x, $'"$0.txns"')
         |> am'.vec_map' txn_unbox
         |> am'.from_vec
-        |> fun (array x : array _) => join x
+        |> \ (array x : array _) => ~~ x
     { txns }

@@ -1,38 +1,38 @@
-open rust.rust_operators
-open sm'_operators
+:< rust.rust_operators
+:< sm'_operators
 
 
-nominal rpc_input' = $'crate::model::near::rpc::RpcInput'
+:! rpc_input' = $'crate::model::near::rpc::RpcInput'
 
-nominal error_cause_info' = $'crate::model::near::rpc::ErrorCauseInfo'
+:! error_cause_info' = $'crate::model::near::rpc::ErrorCauseInfo'
 
-nominal error_cause' = $'crate::model::near::rpc::ErrorCause'
+:! error_cause' = $'crate::model::near::rpc::ErrorCause'
 
-nominal rpc_error' = $'crate::model::near::rpc::RpcError'
+:! rpc_error' = $'crate::model::near::rpc::RpcError'
 
-nominal transfer_detail' = $'crate::model::near::rpc::TransferDetail'
+:! transfer_detail' = $'crate::model::near::rpc::TransferDetail'
 
-nominal gas_profile' = $'crate::model::near::rpc::GasProfile'
+:! gas_profile' = $'crate::model::near::rpc::GasProfile'
 
-nominal metadata' = $'crate::model::near::rpc::Metadata'
+:! metadata' = $'crate::model::near::rpc::Metadata'
 
-nominal outcome_detail' = $'crate::model::near::rpc::OutcomeDetail'
+:! outcome_detail' = $'crate::model::near::rpc::OutcomeDetail'
 
-nominal proof' = $'crate::model::near::rpc::Proof'
+:! proof' = $'crate::model::near::rpc::Proof'
 
-nominal receipts_outcome' = $'crate::model::near::rpc::ReceiptsOutcome'
+:! receipts_outcome' = $'crate::model::near::rpc::ReceiptsOutcome'
 
-nominal action_detail' = $'crate::model::near::rpc::ActionDetail'
+:! action_detail' = $'crate::model::near::rpc::ActionDetail'
 
-nominal receipt_detail' = $'crate::model::near::rpc::ReceiptDetail'
+:! receipt_detail' = $'crate::model::near::rpc::ReceiptDetail'
 
-nominal receipt' = $'crate::model::near::rpc::Receipt'
+:! receipt' = $'crate::model::near::rpc::Receipt'
 
-nominal transaction_status' = $'crate::model::near::rpc::TransactionStatus'
+:! transaction_status' = $'crate::model::near::rpc::TransactionStatus'
 
-nominal rpc_response' = $'crate::model::near::rpc::RpcResponse'
+:! rpc_response' = $'crate::model::near::rpc::RpcResponse'
 
-type rpc_input =
+:== rpc_input =
     {
         jsonrpc : sm'.std_string
         id : sm'.std_string
@@ -40,19 +40,19 @@ type rpc_input =
         params : array sm'.std_string
     }
 
-type error_cause_info =
+:== error_cause_info =
     {
         error_message : optionm'.option' sm'.std_string
         requested_transaction_hash : optionm'.option' sm'.std_string
     }
 
-type error_cause =
+:== error_cause =
     {
         name : sm'.std_string
         info : optionm'.option' error_cause_info
     }
 
-type rpc_error =
+:== rpc_error =
     {
         name : sm'.std_string
         cause : error_cause
@@ -61,7 +61,7 @@ type rpc_error =
         data : sm'.std_string
     }
 
-type transfer_detail =
+:== transfer_detail =
     {
         deposit : sm'.std_string
         args : optionm'.option' sm'.std_string
@@ -69,20 +69,20 @@ type transfer_detail =
         method_name : optionm'.option' sm'.std_string
     }
 
-type gas_profile =
+:== gas_profile =
     {
         cost : sm'.std_string
         cost_category : sm'.std_string
         gas_used : sm'.std_string
     }
 
-type metadata =
+:== metadata =
     {
         gas_profile : array_base gas_profile
         version : u8
     }
 
-type outcome_detail =
+:== outcome_detail =
     {
         executor_id : sm'.std_string
         gas_burnt : u64
@@ -93,13 +93,13 @@ type outcome_detail =
         tokens_burnt : optionm'.option' sm'.std_string
     }
 
-type proof =
+:== proof =
     {
         direction : sm'.std_string
         hash : sm'.std_string
     }
 
-type receipts_outcome =
+:== receipts_outcome =
     {
         block_hash : sm'.std_string
         id : sm'.std_string
@@ -107,7 +107,7 @@ type receipts_outcome =
         proof : array_base proof
     }
 
-type action_detail =
+:== action_detail =
     {
         actions : array_base (mapm.hash_map sm'.std_string transfer_detail)
         gas_price : sm'.std_string
@@ -117,12 +117,12 @@ type action_detail =
         signer_public_key : sm'.std_string
     }
 
-type receipt_detail =
+:== receipt_detail =
     {
         action : action_detail
     }
 
-type receipt =
+:== receipt =
     {
         predecessor_id : sm'.std_string
         receipt : receipt_detail
@@ -130,19 +130,19 @@ type receipt =
         receiver_id : sm'.std_string
     }
 
-type transaction_status =
+:== transaction_status =
     {
         receipts : array_base receipt
         receipts_outcome : array_base receipts_outcome
     }
 
-type result =
+:== result =
     {
         final_execution_status : sm'.std_string
         receipts : array_base receipt
     }
 
-type rpc_response =
+:== rpc_response =
     {
         jsonrpc : sm'.std_string
         result : optionm'.option' transaction_status
@@ -150,206 +150,206 @@ type rpc_response =
         id : optionm'.option' sm'.std_string
     }
 
-inl format_error (error : _ rpc_error) =
-    match error |> optionm'.unbox with
+:= format_error (error : _ rpc_error) =
+    ?= error |> optionm'.unbox ?|
     | Some { cause = { name = cause_name } data name message } =>
-        inl text = sm'.from_std_string
+        := text = sm'.from_std_string
         text name ++# ": " ++# text message ++# " - " ++# text data ++# " (" ++# text cause_name ++# ")"
         |> Some
     | _ => None
 
-inl rpc_input_box ({ jsonrpc id method params } : rpc_input) : rpc_input' =
-    inl params = params |> am'.base |> am'.to_vec
+:= rpc_input_box ({ jsonrpc id method params } : rpc_input) : rpc_input' =
+    := params = params |> am'.base |> am'.to_vec
     !\\((jsonrpc, id, method), $'"crate::model::near::rpc::RpcInput { jsonrpc: $0, id: $1, method: $2, \
         params: !params }"')
 
-inl error_cause_info_box ({ error_message requested_transaction_hash } : error_cause_info) : error_cause_info' =
+:= error_cause_info_box ({ error_message requested_transaction_hash } : error_cause_info) : error_cause_info' =
     !\($'"crate::model::near::rpc::ErrorCauseInfo { error_message: !error_message, \
         requested_transaction_hash: !requested_transaction_hash }"')
 
-inl error_cause_box ({ name info } : error_cause) : error_cause' =
-    inl info = info |> optionm'.map'' error_cause_info_box
+:= error_cause_box ({ name info } : error_cause) : error_cause' =
+    := info = info |> optionm'.map'' error_cause_info_box
     !\($'"crate::model::near::rpc::ErrorCause { name: !name, info: !info }"')
 
-inl rpc_error_box ({ name cause code message data } : rpc_error) : rpc_error' =
-    inl cause = cause |> error_cause_box
+:= rpc_error_box ({ name cause code message data } : rpc_error) : rpc_error' =
+    := cause = cause |> error_cause_box
     !\($'"crate::model::near::rpc::RpcError { name: !name, cause: !cause, code: !code, message: !message, \
         data: !data }"')
 
-inl transfer_detail_box ({ deposit args gas method_name } : transfer_detail) : transfer_detail' =
+:= transfer_detail_box ({ deposit args gas method_name } : transfer_detail) : transfer_detail' =
     !\($'"crate::model::near::rpc::TransferDetail { deposit: !deposit, args: !args, gas: !gas, \
         method_name: !method_name }"')
 
-inl gas_profile_box ({ cost cost_category gas_used } : gas_profile) : gas_profile' =
+:= gas_profile_box ({ cost cost_category gas_used } : gas_profile) : gas_profile' =
     !\($'"crate::model::near::rpc::GasProfile { cost: !cost, cost_category: !cost_category, gas_used: !gas_used }"')
 
-inl metadata_box ({ gas_profile version } : metadata) : metadata' =
-    inl gas_profile = gas_profile |> am'.to_vec
+:= metadata_box ({ gas_profile version } : metadata) : metadata' =
+    := gas_profile = gas_profile |> am'.to_vec
     !\($'"crate::model::near::rpc::Metadata { gas_profile: !gas_profile, version: !version }"')
 
-inl outcome_detail_box
+:= outcome_detail_box
     ({ executor_id gas_burnt logs metadata receipt_ids status tokens_burnt } : outcome_detail)
     : outcome_detail'
     =
-    inl logs = logs |> am'.to_vec
-    inl receipt_ids = receipt_ids |> am'.to_vec
+    := logs = logs |> am'.to_vec
+    := receipt_ids = receipt_ids |> am'.to_vec
     !\($'"crate::model::near::rpc::OutcomeDetail { executor_id: !executor_id, gas_burnt: !gas_burnt, logs: !logs, \
         metadata: !metadata, receipt_ids: !receipt_ids, status: !status, tokens_burnt: !tokens_burnt }"')
 
-inl proof_box ({ direction hash } : proof) : proof' =
+:= proof_box ({ direction hash } : proof) : proof' =
     !\($'"crate::model::near::rpc::Proof { direction: !direction, hash: !hash }"')
 
-inl receipts_outcome_box ({ block_hash id outcome proof } : receipts_outcome) : receipts_outcome' =
-    inl outcome = outcome |> outcome_detail_box
-    inl proof = proof |> am'.to_vec |> am'.vec_map' proof_box |> optionm'.some'
+:= receipts_outcome_box ({ block_hash id outcome proof } : receipts_outcome) : receipts_outcome' =
+    := outcome = outcome |> outcome_detail_box
+    := proof = proof |> am'.to_vec |> am'.vec_map' proof_box |> optionm'.some'
     !\($'"crate::model::near::rpc::ReceiptsOutcome { block_hash: !block_hash, id: !id, outcome: !outcome, \
         proof: !proof }"')
 
-inl action_detail_box
+:= action_detail_box
     ({ actions gas_price input_data_ids output_data_receivers signer_id signer_public_key } : action_detail)
     : action_detail'
     =
-    inl actions = actions |> am'.to_vec
-    inl input_data_ids = input_data_ids |> am'.to_vec
-    inl output_data_receivers = output_data_receivers |> am'.to_vec
+    := actions = actions |> am'.to_vec
+    := input_data_ids = input_data_ids |> am'.to_vec
+    := output_data_receivers = output_data_receivers |> am'.to_vec
     !\($'"crate::model::near::rpc::ActionDetail { actions: !actions, gas_price: !gas_price, \
         input_data_ids: !input_data_ids, output_data_receivers: !output_data_receivers, signer_id: !signer_id, \
         signer_public_key: !signer_public_key }"')
 
-inl receipt_detail_box ({ action } : receipt_detail) : receipt_detail' =
-    inl action = action |> action_detail_box
+:= receipt_detail_box ({ action } : receipt_detail) : receipt_detail' =
+    := action = action |> action_detail_box
     !\($'"crate::model::near::rpc::ReceiptDetail { action: !action }"')
 
-inl receipt_box ({ predecessor_id receipt receipt_id receiver_id } : receipt) : receipt' =
-    inl receipt = receipt |> receipt_detail_box
+:= receipt_box ({ predecessor_id receipt receipt_id receiver_id } : receipt) : receipt' =
+    := receipt = receipt |> receipt_detail_box
     !\($'"crate::model::near::rpc::Receipt { predecessor_id: !predecessor_id, receipt: !receipt, \
         receipt_id: !receipt_id, receiver_id: !receiver_id }"')
 
-inl transaction_status_box ({ receipts receipts_outcome } : transaction_status) : transaction_status' =
-    inl receipts = receipts |> am'.to_vec
-    inl receipts_outcome = receipts_outcome |> am'.to_vec
+:= transaction_status_box ({ receipts receipts_outcome } : transaction_status) : transaction_status' =
+    := receipts = receipts |> am'.to_vec
+    := receipts_outcome = receipts_outcome |> am'.to_vec
     !\($'"crate::model::near::rpc::TransactionStatus { receipts: !receipts, receipts_outcome: !receipts_outcome }"')
 
-inl rpc_response_box ({ jsonrpc result error id } : rpc_response) : rpc_response' =
-    inl result = result |> optionm'.map'' transaction_status_box
-    inl error = error |> optionm'.map'' rpc_error_box
+:= rpc_response_box ({ jsonrpc result error id } : rpc_response) : rpc_response' =
+    := result = result |> optionm'.map'' transaction_status_box
+    := error = error |> optionm'.map'' rpc_error_box
     !\($'"crate::model::near::rpc::RpcResponse { jsonrpc: !jsonrpc, result: !result, error: !error, id: !id }"')
 
-inl rpc_input_unbox (x : rpc_input') : rpc_input =
-    inl jsonrpc = !\\(x, $'"$0.jsonrpc"')
-    inl id = !\\(x, $'"$0.id"')
-    inl method = !\\(x, $'"$0.method"')
-    inl params =
+:= rpc_input_unbox (x : rpc_input') : rpc_input =
+    := jsonrpc = !\\(x, $'"$0.jsonrpc"')
+    := id = !\\(x, $'"$0.id"')
+    := method = !\\(x, $'"$0.method"')
+    := params =
         !\\(x, $'"$0.params"')
         |> am'.from_vec
-        |> fun (x : array _) => join x
+        |> \ (x : array _) => ~~ x
     { jsonrpc; id; method; params }
 
-inl error_cause_info_unbox (x : error_cause_info') : error_cause_info =
-    inl error_message = !\\(x, $'"$0.error_message"')
-    inl requested_transaction_hash = !\\(x, $'"$0.requested_transaction_hash"')
+:= error_cause_info_unbox (x : error_cause_info') : error_cause_info =
+    := error_message = !\\(x, $'"$0.error_message"')
+    := requested_transaction_hash = !\\(x, $'"$0.requested_transaction_hash"')
     { error_message; requested_transaction_hash }
 
-inl error_cause_unbox (x : error_cause') : error_cause =
-    inl name = !\\(x, $'"$0.name"')
-    inl info = !\\(x, $'"$0.info"') |> optionm'.map'' error_cause_info_unbox
+:= error_cause_unbox (x : error_cause') : error_cause =
+    := name = !\\(x, $'"$0.name"')
+    := info = !\\(x, $'"$0.info"') |> optionm'.map'' error_cause_info_unbox
     { name; info }
 
-inl rpc_error_unbox (x : rpc_error') : rpc_error =
-    inl name = !\\(x, $'"$0.name"')
-    inl cause = !\\(x, $'"$0.cause"') |> error_cause_unbox
-    inl code = !\\(x, $'"$0.code"')
-    inl message = !\\(x, $'"$0.message"')
-    inl data = !\\(x, $'"$0.data"')
+:= rpc_error_unbox (x : rpc_error') : rpc_error =
+    := name = !\\(x, $'"$0.name"')
+    := cause = !\\(x, $'"$0.cause"') |> error_cause_unbox
+    := code = !\\(x, $'"$0.code"')
+    := message = !\\(x, $'"$0.message"')
+    := data = !\\(x, $'"$0.data"')
     { name; cause; code; message; data }
 
-inl transfer_detail_unbox (x : transfer_detail') : transfer_detail =
-    inl deposit = !\\(x, $'"$0.deposit"')
-    inl args = !\\(x, $'"$0.args"')
-    inl gas = !\\(x, $'"$0.gas"')
-    inl method_name = !\\(x, $'"$0.method_name"')
+:= transfer_detail_unbox (x : transfer_detail') : transfer_detail =
+    := deposit = !\\(x, $'"$0.deposit"')
+    := args = !\\(x, $'"$0.args"')
+    := gas = !\\(x, $'"$0.gas"')
+    := method_name = !\\(x, $'"$0.method_name"')
     { deposit args gas method_name }
 
-inl gas_profile_unbox (x : gas_profile') : gas_profile =
-    inl cost = !\\(x, $'"$0.cost"')
-    inl cost_category = !\\(x, $'"$0.cost_category"')
-    inl gas_used = !\\(x, $'"$0.gas_used"')
+:= gas_profile_unbox (x : gas_profile') : gas_profile =
+    := cost = !\\(x, $'"$0.cost"')
+    := cost_category = !\\(x, $'"$0.cost_category"')
+    := gas_used = !\\(x, $'"$0.gas_used"')
     { cost; cost_category; gas_used }
 
-inl metadata_unbox (x : metadata') : metadata =
-    inl gas_profile =
+:= metadata_unbox (x : metadata') : metadata =
+    := gas_profile =
         !\\(x, $'"$0.gas_profile"')
         |> am'.vec_map' gas_profile_unbox
         |> am'.from_vec
-        |> fun (array x : array _) => x
-    inl version = !\\(x, $'"$0.version"')
+        |> \ (array x : array _) => x
+    := version = !\\(x, $'"$0.version"')
     { gas_profile; version }
 
-inl outcome_detail_unbox (x : outcome_detail') : outcome_detail =
-    inl executor_id = !\\(x, $'"$0.executor_id"')
-    inl gas_burnt = !\\(x, $'"$0.gas_burnt"')
-    inl logs = !\\(x, $'"$0.logs"') |> am'.from_vec |> fun (array x : array _) => x
-    inl metadata = !\\(x, $'"$0.metadata"') |> metadata_unbox
-    inl receipt_ids = !\\(x, $'"$0.receipt_ids"') |> am'.from_vec |> fun (array x : array _) => x
-    inl status = !\\(x, $'"$0.status"')
-    inl tokens_burnt = !\\(x, $'"$0.tokens_burnt"')
+:= outcome_detail_unbox (x : outcome_detail') : outcome_detail =
+    := executor_id = !\\(x, $'"$0.executor_id"')
+    := gas_burnt = !\\(x, $'"$0.gas_burnt"')
+    := logs = !\\(x, $'"$0.logs"') |> am'.from_vec |> \ (array x : array _) => x
+    := metadata = !\\(x, $'"$0.metadata"') |> metadata_unbox
+    := receipt_ids = !\\(x, $'"$0.receipt_ids"') |> am'.from_vec |> \ (array x : array _) => x
+    := status = !\\(x, $'"$0.status"')
+    := tokens_burnt = !\\(x, $'"$0.tokens_burnt"')
     { executor_id gas_burnt logs metadata receipt_ids status tokens_burnt }
 
-inl proof_unbox (x : proof') : proof =
-    inl direction = !\\(x, $'"$0.direction"')
-    inl hash = !\\(x, $'"$0.hash"')
+:= proof_unbox (x : proof') : proof =
+    := direction = !\\(x, $'"$0.direction"')
+    := hash = !\\(x, $'"$0.hash"')
     { direction hash }
 
-inl receipts_outcome_unbox (x : receipts_outcome') : receipts_outcome =
-    inl block_hash = !\\(x, $'"$0.block_hash"')
-    inl id = !\\(x, $'"$0.id"')
-    inl outcome = !\\(x, $'"$0.outcome"') |> outcome_detail_unbox
-    inl proof =
+:= receipts_outcome_unbox (x : receipts_outcome') : receipts_outcome =
+    := block_hash = !\\(x, $'"$0.block_hash"')
+    := id = !\\(x, $'"$0.id"')
+    := outcome = !\\(x, $'"$0.outcome"') |> outcome_detail_unbox
+    := proof =
         !\\(x, $'"$0.proof"')
-        |> optionm'.map'' (am'.vec_map' proof_unbox >> am'.from_vec >> fun (array x : array _) => x)
+        |> optionm'.map'' (am'.vec_map' proof_unbox >> am'.from_vec >> \ (array x : array _) => x)
         |> optionm'.default_value' (;[] |> am'.base)
     { block_hash id outcome proof }
 
-inl action_detail_unbox (x : action_detail') : action_detail =
-    inl actions =
+:= action_detail_unbox (x : action_detail') : action_detail =
+    := actions =
         !\\(x, $'"$0.actions"')
         |> am'.vec_map' (mapm.map' transfer_detail_unbox)
         |> am'.from_vec
-        |> fun (array x : array _) => x
-    inl gas_price = !\\(x, $'"$0.gas_price"')
-    inl input_data_ids = !\\(x, $'"$0.input_data_ids"') |> am'.from_vec |> fun (array x : array _) => x
-    inl output_data_receivers = !\\(x, $'"$0.output_data_receivers"') |> am'.from_vec |> fun (array x : array _) => x
-    inl signer_id = !\\(x, $'"$0.signer_id"')
-    inl signer_public_key = !\\(x, $'"$0.signer_public_key"')
+        |> \ (array x : array _) => x
+    := gas_price = !\\(x, $'"$0.gas_price"')
+    := input_data_ids = !\\(x, $'"$0.input_data_ids"') |> am'.from_vec |> \ (array x : array _) => x
+    := output_data_receivers = !\\(x, $'"$0.output_data_receivers"') |> am'.from_vec |> \ (array x : array _) => x
+    := signer_id = !\\(x, $'"$0.signer_id"')
+    := signer_public_key = !\\(x, $'"$0.signer_public_key"')
     { actions; gas_price; input_data_ids; output_data_receivers; signer_id; signer_public_key }
 
-inl receipt_detail_unbox (x : receipt_detail') : receipt_detail =
-    inl action = !\\(x, $'"$0.action"') |> action_detail_unbox
+:= receipt_detail_unbox (x : receipt_detail') : receipt_detail =
+    := action = !\\(x, $'"$0.action"') |> action_detail_unbox
     { action }
 
-inl receipt_unbox (x : receipt') : receipt =
-    inl predecessor_id = !\\(x, $'"$0.predecessor_id"')
-    inl receipt = !\\(x, $'"$0.receipt"') |> receipt_detail_unbox
-    inl receipt_id = !\\(x, $'"$0.receipt_id"')
-    inl receiver_id = !\\(x, $'"$0.receiver_id"')
+:= receipt_unbox (x : receipt') : receipt =
+    := predecessor_id = !\\(x, $'"$0.predecessor_id"')
+    := receipt = !\\(x, $'"$0.receipt"') |> receipt_detail_unbox
+    := receipt_id = !\\(x, $'"$0.receipt_id"')
+    := receiver_id = !\\(x, $'"$0.receiver_id"')
     { predecessor_id; receipt; receipt_id; receiver_id }
 
-inl transaction_status_unbox (x : transaction_status') : transaction_status =
-    inl receipts =
+:= transaction_status_unbox (x : transaction_status') : transaction_status =
+    := receipts =
         !\\(x, $'"$0.receipts"')
         |> am'.vec_map' receipt_unbox
         |> am'.from_vec
-        |> fun (array x : array _) => x
-    inl receipts_outcome =
+        |> \ (array x : array _) => x
+    := receipts_outcome =
         !\\(x, $'"$0.receipts_outcome"')
         |> am'.vec_map' receipts_outcome_unbox
         |> am'.from_vec
-        |> fun (array x : array _) => x
+        |> \ (array x : array _) => x
     { receipts; receipts_outcome }
 
-inl rpc_response_unbox (x : rpc_response') : rpc_response =
-    inl jsonrpc = !\\(x, $'"$0.jsonrpc"')
-    inl result = !\\(x, $'"$0.result"') |> optionm'.map'' transaction_status_unbox
-    inl error = !\\(x, $'"$0.error"') |> optionm'.map'' rpc_error_unbox
-    inl id = !\\(x, $'"$0.id"')
+:= rpc_response_unbox (x : rpc_response') : rpc_response =
+    := jsonrpc = !\\(x, $'"$0.jsonrpc"')
+    := result = !\\(x, $'"$0.result"') |> optionm'.map'' transaction_status_unbox
+    := error = !\\(x, $'"$0.error"') |> optionm'.map'' rpc_error_unbox
+    := id = !\\(x, $'"$0.id"')
     { jsonrpc; result; error; id }

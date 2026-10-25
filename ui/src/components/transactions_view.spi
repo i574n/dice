@@ -1,29 +1,29 @@
-open rust.rust_operators
-open sm'_operators
-open leptos
+:< rust.rust_operators
+:< sm'_operators
+:< leptos
 
-inl render () =
+:= render () =
     print_static "<transactions_view.render>"
     leptos.log "transactions_view.render (1)"
 
-    inl global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
+    := global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
-    inl { accounts_txns_requests txns } = hooks.use_transactions.render global_state
+    := { accounts_txns_requests txns } = hooks.use_transactions.render global_state
 
-    inl (settings_visible, set_settings_visible) = leptos.create_signal false
+    := (settings_visible, set_settings_visible) = leptos.create_signal !-
 
-    inl settings_button =
-        inl on_click () =
+    := settings_button =
+        := on_click () =
             set_settings_visible
             |> leptos.signal_update not
 
         ui.icon_button.render
-            (svg.settings.render (fun () => "h-5 w-5") [])
-            fun () =>
-                inl class =
-                    if settings_visible |> leptos.signal_get
-                    then ""
-                    else "bg-gray-300 hover:bg-gray-200"
+            (svg.settings.render (\ () => "h-5 w-5") [])
+            \ () =>
+                := class =
+                    ? settings_visible |> leptos.signal_get
+                    ?> ""
+                    |: "bg-gray-300 hover:bg-gray-200"
                 class ++# " hover:bg-gray-200"
             [
                 leptos.on_click on_click
@@ -33,54 +33,54 @@ inl render () =
 
     :>[
         ui.accordion.render
-            fun props => { props with
-                title = fun () => "Transactions"
-                summary_class = fun () => "py-[7px]"
+            \ props => { props ?|
+                title = \ () => "Transactions"
+                summary_class = \ () => "py-[7px]"
                 right_element = Some settings_button
             }
-            fun () => :>[
-                leptos.reactive_view fun () =>
-                    if settings_visible |> leptos.signal_get
-                    then
+            \ () => :>[
+                leptos.reactive_view \ () =>
+                    ? settings_visible |> leptos.signal_get
+                    ?>
                         leptos.div [
                             $'"class=\\\"px-[12px] py-[10px]\\\""'
-                        ] fun () =>
+                        ] \ () =>
                             :>[
-                                ui.divider.render fun () =>
+                                ui.divider.render \ () =>
                                     "Settings" |> leptos.text_fragment
                                 |> leptos.element_to_view
 
                                 ui.grid_pair.render
-                                    fun props => { props with
-                                        class = fun () => "items-center"
+                                    \ props => { props ?|
+                                        class = \ () => "items-center"
                                     }
-                                    fun () => "Table View" |> leptos.text_fragment
-                                    fun () =>
+                                    \ () => "Table View" |> leptos.text_fragment
+                                    \ () =>
                                         ui.toggle.render
-                                            fun () => "table-view"
-                                            fun () =>
+                                            \ () => "table-view"
+                                            \ () =>
                                                 leptos.signal_get_untracked global_state.core_state .data
                                                 |> leptos.signal_get
-                                                |> fun data => data.transactions_view_type = state.Table
-                                            fun _ =>
+                                                |> \ data => data.transactions_view_type = state.Table
+                                            \ _ =>
                                                 leptos.signal_get_untracked global_state.core_state .data
-                                                |> leptos.signal_update fun data =>
-                                                    inl data = !data
+                                                |> leptos.signal_update \ data =>
+                                                    := data = !data
                                                     heap {
-                                                        data with
+                                                        data ?|
                                                             transactions_view_type =
-                                                                if data.transactions_view_type = state.Table
-                                                                then state.Details
-                                                                else state.Table
+                                                                ? data.transactions_view_type = state.Table
+                                                                ?> state.Details
+                                                                |: state.Table
                                                     }
                                             |> leptos.element_to_fragment
                                 |> leptos.element_to_view
                             ]
                         |> leptos.element_to_view
-                    else [] |> leptos.view_list_to_view
+                    |: [] |> leptos.view_list_to_view
 
-                leptos.reactive_view fun () =>
-                    match accounts_txns_requests |> leptos.signal_get |> am'.from_vec with
+                leptos.reactive_view \ () =>
+                    ?= accounts_txns_requests |> leptos.signal_get |> am'.from_vec ?|
                     | (array ;[] : array _) =>
                         "No account selected"
                         |> ui.error_label.render
@@ -90,20 +90,21 @@ inl render () =
                         |> leptos.signal_get
                         |> resultm.unbox
                         |> resultm.map optionm'.unbox
-                        |> function
+                        |> \|
                             | Ok (Some transactions) =>
-                                match
+                                ?=
                                     leptos.signal_get_untracked global_state.core_state .data
                                     |> leptos.signal_get
-                                    |> fun data => data.transactions_view_type = state.Details
-                                with
-                                | true =>
+                                    |> \ data => data.transactions_view_type = state.Details
+                                ?|
+                                | !+ =>
                                     leptos.div [
-                                        $'"class=\\\"grid flex-1 py-[10px] px-[12px] [gap:15px] sm:[grid-template-columns:repeat(auto-fill,minmax(500px,1fr))]\\\""'
-                                    ] fun () =>
+                                        $'"class=\\\"grid flex-1 py-[10px] px-[12px] [gap:15px] \
+                                            sm:[grid-template-columns:repeat(auto-fill,minmax(500px,1fr))]\\\""'
+                                    ] \ () =>
                                         transactions
                                         |> am'.to_vec
-                                        |> am'.vec_map fun { account i txn } =>
+                                        |> am'.vec_map \ { account i txn } =>
                                             !txn
                                             |> transaction.render account (i |> convert.i64)
                                             |> leptos.element_to_view
@@ -111,7 +112,7 @@ inl render () =
                                         |> leptos.view_to_fragment
                                     |> leptos.element_to_view
 
-                                | false =>
+                                | !- =>
                                     transactions
                                     |> am'.to_vec
                                     |> am'.vec_map (transaction.tr_render >> leptos.element_to_view)
@@ -133,23 +134,23 @@ inl render () =
             ]
         |> leptos.element_to_view
 
-        if leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get then
+        ? leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get ?>
             ui.accordion.render
-                fun props => { props with
-                    title = fun () => "Debug"
-                    summary_class = fun () => "py-[7px]"
+                \ props => { props ?|
+                    title = \ () => "Debug"
+                    summary_class = \ () => "py-[7px]"
                 }
-                fun () => :>[
+                \ () => :>[
                     ui.grid_pair.render
                         id
-                        fun () => "Transactions" |> leptos.text_fragment
-                        fun () =>
+                        \ () => "Transactions" |> leptos.text_fragment
+                        \ () =>
                             txns
                             |> leptos.signal_get
                             |> sm'.format_pretty
-                            |> ui.text_block_pre.render fun () => "[max-height:70vh]"
+                            |> ui.text_block_pre.render \ () => "[max-height:70vh]"
                             |> leptos.element_to_fragment
                 ]
             |> leptos.element_to_view
-        else [] |> leptos.view_list_to_view
+        |: [] |> leptos.view_list_to_view
     ]

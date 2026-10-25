@@ -1,32 +1,32 @@
-open rust.rust_operators
-open rust
-open leptos
-open sm'_operators
+:< rust.rust_operators
+:< rust
+:< leptos
+:< sm'_operators
 
-inl run_main () =
+:= run_main () =
     leptos.log "main"
 
     !\($'"let _ = console_log::init_with_level(log::Level::Debug)"')
     !\($'"console_error_panic_hook::set_once()"')
 
-    inl body : optionm'.option' wasm.html_element = !\($'"leptos::prelude::document().body()"')
-    inl body = body |> optionm'.unbox
-    inl body_log = #?*body
+    := body : optionm'.option' wasm.html_element = !\($'"leptos::prelude::document().body()"')
+    := body = body |> optionm'.unbox
+    := body_log = #?*body
 
     leptos.log ("main / mount_to_body / body: " ++# body_log)
 
-    let mount () =
+    :~ mount () =
         leptos.mount_to_body components.app.render
 
-    match body with
+    ?= body ?|
     | Some body =>
         body |> wasm.set_inner_html ""
 
         mount ()
     | _ =>
-        inl fn : rust.box (rust.dyn' rust.fn_unit) = rust.box_fn mount
-        inl fn_closure = fn |> wasm.closure_wrap
-        inl fn = fn_closure |> wasm.closure_as_ref |> wasm.unchecked_ref
+        := fn : rust.box (rust.dyn' rust.fn_unit) = rust.box_fn mount
+        := fn_closure = fn |> wasm.closure_wrap
+        := fn = fn_closure |> wasm.closure_as_ref |> wasm.unchecked_ref
 
         !\($'"leptos::prelude::document().add_event_listener_with_callback(\\\"DOMContentLoaded\\\", !fn).unwrap()"')
 
@@ -34,7 +34,7 @@ inl run_main () =
 
     0i32
 
-inl main () =
+:= main () =
     print_static "<dice_ui>"
     run_main () |> ignore
     print_static "</dice_ui>"

@@ -1,62 +1,62 @@
 /// # dice (Dice)
 test dice_dice static =
-    open testing
+    :< testing
 
-open sm'_operators
+:< sm'_operators
 
 /// ## sixth_power_sequence
-inl sixth_power_sequence () =
-    stream.iterate_map ((*) 6) (fun x => if x <= 0 then None else Some x) 1
+:= sixth_power_sequence () =
+    stream.iterate_map ((*) 6) (\ x => ? x <= 0 ?> None |: Some x) 1
 
 test sixth_power_sequence =
     sixth_power_sequence ()
-    |> stream.take_while (fun _ i => i <= 7i32)
+    |> stream.take_while (\ _ i => i <= 7i32)
     |> stream.to_list
     |> _assert_eq [ 1u64; 6; 36; 216; 1296; 7776; 46656; 279936 ]
 
 /// ## accumulate_dice_rolls
-inl accumulate_dice_rolls
+:= accumulate_dice_rolls
     (rolls : list u8)
     (power : i8)
     acc
     =
-    inl rec body forall a {number} b {number} c {number}.
+    := ^ body \* a {number} b {number} c {number}.
         (acc : a)
         (power : b)
         (rolls : list c)
         : option (a * list c)
         =
-        match rolls with
-        | _ when power < 0 =>
-            inl result = acc + 1
+        ?= rolls ?|
+        | _ ?& power < 0 =>
+            := result = acc + 1
             trace Debug
-                fun () => "dice.accumulate_dice_rolls"
-                fun () => { power acc result }
+                \ () => "dice.accumulate_dice_rolls"
+                \ () => { power acc result }
             Some (result, rolls)
         | [] => None
-        | roll :: rest when roll > 1 =>
-            inl coeff = sixth_power_sequence () |> stream.item power
-            inl value = conv (roll - 1) * coeff
+        | roll :: rest ?& roll > 1 =>
+            := coeff = sixth_power_sequence () |> stream.item power
+            := value = conv (roll - 1) * coeff
             trace Debug
-                fun () => "dice.accumulate_dice_rolls"
-                fun () => { power acc roll value }
+                \ () => "dice.accumulate_dice_rolls"
+                \ () => { power acc roll value }
             루프 (acc + value) (power - 1) rest
         | roll :: rest =>
             trace Debug
-                fun () => "dice.accumulate_dice_rolls"
-                fun () => { power acc roll }
+                \ () => "dice.accumulate_dice_rolls"
+                \ () => { power acc roll }
             루프 acc (power - 1) rest
-    and inl 루프 forall a {number} b {number} c {number}.
+    :& := 루프 \* a {number} b {number} c {number}.
         (acc : a)
         (power : b)
         (rolls : list c)
         : option (a * list c)
         =
-        if var_is rolls |> not
-        then body acc power rolls
-        else
-            inl acc = dyn acc
-            join body acc power rolls
+        ? var_is rolls |> not
+        ?> body acc power rolls
+        |:
+            := acc = dyn acc
+            ~~ body acc power rolls
     루프 acc power rolls
 
 test accumulate_dice_rolls =
@@ -72,10 +72,10 @@ test accumulate_dice_rolls_3 =
     |> _assert_eq (Some (1208, [ 3; 2 ]))
 
 /// ## roll_within_bounds
-inl roll_within_bounds max rolls =
-    inl power = listm.length rolls - 1
-    match accumulate_dice_rolls rolls power 0 with
-    | Some (result, _) when result >= 1 && result <= max => Some result
+:= roll_within_bounds max rolls =
+    := power = listm.length rolls - 1
+    ?= accumulate_dice_rolls rolls power 0 ?|
+    | Some (result, _) ?& result >= 1 && result <= max => Some result
     | _ => None
 
 test roll_within_bounds =
@@ -91,31 +91,31 @@ test roll_within_bounds_3 =
     |> _assert_eq None
 
 /// ## calculate_dice_count
-inl calculate_dice_count forall a {number} b {number}. (max : a) : b =
-    inl rec body forall t {number}. (n : t) (p : a) : t =
-        inl return () =
+:= calculate_dice_count \* a {number} b {number}. (max : a) : b =
+    := ^ body \* t {number}. (n : t) (p : a) : t =
+        := return () =
             trace Debug
-                fun () => "dice.calculate_dice_count"
-                fun () => { max p n }
+                \ () => "dice.calculate_dice_count"
+                \ () => { max p n }
             n
-        if p < max then
-            if p > (limit.max : a) / 6
-            then
+        ? p < max ?>
+            ? p > (limit.max : a) / 6
+            ?>
                 failwith (
                     "dice.calculate_dice_count / max: " ++# #?max ++# " is above the largest supported bound " ++# #?p
                 )
-            else 루프 (n + 1) (p * 6)
-        else return ()
-    and inl 루프 forall t {number}. (n : t) (p : a) : t =
-        if var_is max |> not
-        then body n p
-        else
-            inl n = dyn n
-            inl p = dyn p
-            join body n p
-    if max = 1
-    then 1
-    else 루프 0 1
+            |: 루프 (n + 1) (p * 6)
+        |: return ()
+    :& := 루프 \* t {number}. (n : t) (p : a) : t =
+        ? var_is max |> not
+        ?> body n p
+        |:
+            := n = dyn n
+            := p = dyn p
+            ~~ body n p
+    ? max = 1
+    ?> 1
+    |: 루프 0 1
 
 test calculate_dice_count =
     calculate_dice_count 36i32
@@ -135,41 +135,41 @@ test calculate_dice_count_4 =
 
 ///> rust
 test calculate_dice_count_5 =
-    fun () =>
+    \ () =>
         (calculate_dice_count 4738381338321616897u64 : i32)
         |> ignore
     |> _throws
     |> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 4738381338321616896")
-    |> _assert_eq (Some true)
+    |> _assert_eq (Some !+)
 
 ///> rust
 test calculate_dice_count_6 =
-    fun () =>
+    \ () =>
         (calculate_dice_count (limit.max : i64) : i32)
         |> ignore
     |> _throws
     |> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 4738381338321616896")
-    |> _assert_eq (Some true)
+    |> _assert_eq (Some !+)
 
 ///> rust
 test calculate_dice_count_7 =
-    fun () =>
+    \ () =>
         (calculate_dice_count 362797057i32 : i32)
         |> ignore
     |> _throws
     |> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 362797056")
-    |> _assert_eq (Some true)
+    |> _assert_eq (Some !+)
 
 /// ## roll_dice
-let roll_dice () : u8 =
+:~ roll_dice () : u8 =
     random' 1 7
 
 /// ## rotate_number
-inl rotate_number forall t {number}. (max : i64) (n : t) : t =
+:= rotate_number \* t {number}. (max : i64) (n : t) : t =
     (conv n - 1 + max) % max + 1 |> conv
 
 /// ## rotate_numbers
-inl rotate_numbers max items =
+:= rotate_numbers max items =
     items |> stream.map (rotate_number max)
 
 test rotate_numbers =
@@ -180,140 +180,140 @@ test rotate_numbers =
     |> _assert_eq [ 5; 6; 1; 2; 3; 4; 5; 6; 1; 2; 3; 4; 5; 6; 1; 2 ]
 
 /// ## create_sequential_roller
-inl create_sequential_roller list =
-    inl s = list |> listm.rev |> listm.append list |> stream.from_list |> stream.memoize
-    inl current_index = mut 0i64
-    inl acc = mut 1
-    inl len = mut -1
-    inl last_item = mut None
-    let rec 루프 () =
-        fun () =>
-            inl current_index = *current_index
-            inl acc = *acc
-            inl len = *len
-            inl last_item = *last_item |> optionm'.box
+:= create_sequential_roller list =
+    := s = list |> listm.rev |> listm.append list |> stream.from_list |> stream.memoize
+    := current_index = mut 0i64
+    := acc = mut 1
+    := len = mut -1
+    := last_item = mut None
+    :~ ^ 루프 () =
+        \ () =>
+            := current_index = *current_index
+            := acc = *acc
+            := len = *len
+            := last_item = *last_item |> optionm'.box
             trace Debug
-                fun () => "dice.create_sequential_roller / roll"
-                fun () => { current_index acc len last_item = #?*last_item }
-        |> fun x => x ()
-        match s () |> stream.try_item *current_index with
+                \ () => "dice.create_sequential_roller / roll"
+                \ () => { current_index acc len last_item = #?*last_item }
+        |> \ x => x ()
+        ?= s () |> stream.try_item *current_index ?|
         | Some item =>
             current_index <- *current_index + 1
             last_item <- Some item
             item
         | None =>
-            trace Debug (fun () => "dice.create_sequential_roller / roll / None") id
-            if *len = -1
-            then len <- *current_index
+            trace Debug (\ () => "dice.create_sequential_roller / roll / None") id
+            ? *len = -1
+            ?> len <- *current_index
             acc <-
-                if *acc >= *len
-                then 1
-                else *acc + 1
+                ? *acc >= *len
+                ?> 1
+                |: *acc + 1
             current_index <- *acc - 1
             last_item <- None
             루프 ()
     루프
 
 test create_sequential_roller =
-    inl sequential_roll = create_sequential_roller [ 1i32; 2; 3; 4 ]
+    := sequential_roll = create_sequential_roller [ 1i32; 2; 3; 4 ]
 
     arraym.init 50i32 (ignore >> sequential_roll)
     |> _assert_eq (;[ 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
     4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2 ] : array i32)
 
 /// ## roll_progressively
-inl roll_progressively roll reroll max =
-    inl power = (calculate_dice_count max) - 1
-    let rec 루프 rolls size =
-        if size < power + 1
-        then 루프 (roll () :: rolls) (size + 1)
-        else accumulate_dice_rolls rolls power 0 |> function
-            | Some (result, _) when result <= max => result
-            | _ when reroll => 루프 (listm.init power (fun _ => roll ())) power
+:= roll_progressively roll reroll max =
+    := power = (calculate_dice_count max) - 1
+    :~ ^ 루프 rolls size =
+        ? size < power + 1
+        ?> 루프 (roll () :: rolls) (size + 1)
+        |: accumulate_dice_rolls rolls power 0 |> \|
+            | Some (result, _) ?& result <= max => result
+            | _ ?& reroll => 루프 (listm.init power (\ _ => roll ())) power
             | _ => 루프 (roll () :: rolls) (size + 1)
     루프 [] 0
 
 test roll_progressively =
-    roll_progressively roll_dice false 1
+    roll_progressively roll_dice !- 1
     |> _assert_eq 1i32
 
 test roll_progressively_2 =
-    inl sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 1 ]
+    := sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 1 ]
 
-    roll_progressively sequential_roll false 2000i32
+    roll_progressively sequential_roll !- 2000i32
     |> _assert_eq 995
 
 test roll_progressively_3 =
-    inl sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 2 ]
+    := sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 2 ]
 
-    roll_progressively sequential_roll false 2000i32
+    roll_progressively sequential_roll !- 2000i32
     |> _assert_eq 1678
 
 test roll_progressively_4 =
-    inl sequential_roll =
+    := sequential_roll =
         create_sequential_roller [ 6u8; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]
 
-    roll_progressively sequential_roll false 4738381338321616896u64
+    roll_progressively sequential_roll !- 4738381338321616896u64
     |> _assert_eq 4738381338321616896u64
 
 test roll_progressively_5 =
-    inl histogram (reroll : bool) : i32 =
-        inl { level } = get_trace_state_or_init None
+    := histogram (reroll : bool) : i32 =
+        := { level } = get_trace_state_or_init None
         level <- Info
-        let rec insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =
-            match rows with
+        :~ ^ insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =
+            ?= rows ?|
             | [] => [ row ]
             | (k2, v2) :: rest =>
-                inl k, v = row
-                if k <= k2 then (k, v) :: (k2, v2) :: rest
-                else (k2, v2) :: insert row rest
-        join dyn listm'.init_series 1i32 10000 1
-        |> listm.map (fun _ => roll_progressively roll_dice reroll 10i32)
+                := k, v = row
+                ? k <= k2 ?> (k, v) :: (k2, v2) :: rest
+                |: (k2, v2) :: insert row rest
+        ~~ dyn listm'.init_series 1i32 10000 1
+        |> listm.map (\ _ => roll_progressively roll_dice reroll 10i32)
         |> listm'.group_by id
-        |> listm.map (fun (k, v) => k, (listm.length v : i32))
-        |> listm.fold (fun acc row => insert row acc) []
-        |> listm.fold fun acc (k, v) =>
-                if acc = "" then #?k ++# " = " ++# #?v else acc ++# "; " ++# #?k ++# " = " ++# #?v
+        |> listm.map (\ (k, v) => k, (listm.length v : i32))
+        |> listm.fold (\ acc row => insert row acc) []
+        |> listm.fold \ acc (k, v) =>
+                ? acc = "" ?> #?k ++# " = " ++# #?v |: acc ++# "; " ++# #?k ++# " = " ++# #?v
             ""
         |> console.write_line
         0i32
 
-    histogram false
+    histogram !-
 
 test roll_progressively_6 =
-    inl histogram (reroll : bool) : i32 =
-        inl { level } = get_trace_state_or_init None
+    := histogram (reroll : bool) : i32 =
+        := { level } = get_trace_state_or_init None
         level <- Info
-        let rec insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =
-            match rows with
+        :~ ^ insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =
+            ?= rows ?|
             | [] => [ row ]
             | (k2, v2) :: rest =>
-                inl k, v = row
-                if k <= k2 then (k, v) :: (k2, v2) :: rest
-                else (k2, v2) :: insert row rest
-        join dyn listm'.init_series 1i32 10000 1
-        |> listm.map (fun _ => roll_progressively roll_dice reroll 10i32)
+                := k, v = row
+                ? k <= k2 ?> (k, v) :: (k2, v2) :: rest
+                |: (k2, v2) :: insert row rest
+        ~~ dyn listm'.init_series 1i32 10000 1
+        |> listm.map (\ _ => roll_progressively roll_dice reroll 10i32)
         |> listm'.group_by id
-        |> listm.map (fun (k, v) => k, (listm.length v : i32))
-        |> listm.fold (fun acc row => insert row acc) []
-        |> listm.fold fun acc (k, v) =>
-                if acc = "" then #?k ++# " = " ++# #?v else acc ++# "; " ++# #?k ++# " = " ++# #?v
+        |> listm.map (\ (k, v) => k, (listm.length v : i32))
+        |> listm.fold (\ acc row => insert row acc) []
+        |> listm.fold \ acc (k, v) =>
+                ? acc = "" ?> #?k ++# " = " ++# #?v |: acc ++# "; " ++# #?k ++# " = " ++# #?v
             ""
         |> console.write_line
         0i32
 
-    histogram true
+    histogram !+
 
 test roll_progressively_7 =
-    inl check_progress () : i32 =
-        inl { level } = get_trace_state_or_init None
+    := check_progress () : i32 =
+        := { level } = get_trace_state_or_init None
         level <- Info
-        join dyn listm'.init_series 1i32 100 1
-        |> listm.iter fun n =>
+        ~~ dyn listm'.init_series 1i32 100 1
+        |> listm.iter \ n =>
             listm'.init_series 0i32 1 1
-            |> listm.iter fun reroll =>
-                join dyn listm'.init_series 1i32 3500 1
-                |> listm.map fun _ => roll_progressively roll_dice (reroll = 1) n
+            |> listm.iter \ reroll =>
+                ~~ dyn listm'.init_series 1i32 3500 1
+                |> listm.map \ _ => roll_progressively roll_dice (reroll = 1) n
                 |> listm'.group_by id
                 |> listm.length
                 |> __assert_eq Silent n
@@ -322,24 +322,24 @@ test roll_progressively_7 =
     check_progress ()
 
 /// ## main
-inl main (_args : array_base string) =
-    inl result = roll_progressively roll_dice true 4738381338321616896i64
+:= main (_args : array_base string) =
+    := result = roll_progressively roll_dice !+ 4738381338321616896i64
     trace Debug
-        fun () => "dice.main"
-        fun () => { result }
+        \ () => "dice.main"
+        \ () => { result }
     0i32
 
-inl main () =
-    inl rotate_numbers' : i64 -> stream.stream u8 -> stream.stream u8 =
+:= main () =
+    := rotate_numbers' : i64 -> stream.stream u8 -> stream.stream u8 =
         rotate_numbers
 
-    inl create_sequential_roller' :
+    := create_sequential_roller' :
         list u8
         -> (() -> u8)
         =
         create_sequential_roller
 
-    inl roll_progressively' :
+    := roll_progressively' :
         (() -> u8)
         -> bool
         -> u64
@@ -347,38 +347,38 @@ inl main () =
         =
         roll_progressively
 
-    inl roll_within_bounds' :
+    := roll_within_bounds' :
         u64
         -> list u8
         -> optionm'.option' u64
         =
-        fun a b =>
+        \ a b =>
             roll_within_bounds a b
             |> optionm'.box
 
     backend_switch {
-        Fsharp = fun () => $'let rotate_numbers x = !rotate_numbers' x' : ()
-        Rust = fun () => ()
-        TypeScript = fun () => ()
+        Fsharp = \ () => $'let rotate_numbers x = !rotate_numbers' x' : ()
+        Rust = \ () => ()
+        TypeScript = \ () => ()
     } : ()
     backend_switch {
-        Fsharp = fun () => $'let create_sequential_roller x = !create_sequential_roller' x' : ()
-        Rust = fun () => ()
-        TypeScript = fun () => ()
+        Fsharp = \ () => $'let create_sequential_roller x = !create_sequential_roller' x' : ()
+        Rust = \ () => ()
+        TypeScript = \ () => ()
     } : ()
     backend_switch {
-        Fsharp = fun () => $'let roll_progressively x = !roll_progressively' x' : ()
-        Rust = fun () => ()
-        TypeScript = fun () => ()
+        Fsharp = \ () => $'let roll_progressively x = !roll_progressively' x' : ()
+        Rust = \ () => ()
+        TypeScript = \ () => ()
     } : ()
     backend_switch {
-        Fsharp = fun () => $'let roll_within_bounds x = !roll_within_bounds' x' : ()
-        Rust = fun () => ()
-        TypeScript = fun () => ()
+        Fsharp = \ () => $'let roll_within_bounds x = !roll_within_bounds' x' : ()
+        Rust = \ () => ()
+        TypeScript = \ () => ()
     } : ()
     backend_switch {
-        Fsharp = fun () => $'let main args = !main args' : ()
-        Rust = fun () => main (;[] |> am'.base) |> ignore
-        Python = fun () => main (;[] |> am'.base) |> ignore
-        TypeScript = fun () => main (;[] |> am'.base) |> ignore
+        Fsharp = \ () => $'let main args = !main args' : ()
+        Rust = \ () => main (;[] |> am'.base) |> ignore
+        Python = \ () => main (;[] |> am'.base) |> ignore
+        TypeScript = \ () => main (;[] |> am'.base) |> ignore
     } : ()
